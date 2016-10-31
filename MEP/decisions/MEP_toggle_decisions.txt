@@ -1,0 +1,93 @@
+decisions = {
+	#Employment
+	open_employment_decisions = {
+		potential = {
+			ai = no
+			NOT = {
+				has_character_flag = employment_decisions_open
+				has_character_flag = festivity_decisions_open
+				has_character_flag = special_decisions_open
+				has_character_flag = family_decisions_open
+			}
+		}
+		effect = { set_character_flag = employment_decisions_open }
+	}
+	close_employment_decisions = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			has_character_flag = employment_decisions_open
+		}
+		effect = { clr_character_flag = employment_decisions_open }
+	}
+	#Special/MEP
+	open_special_decisions = {
+		potential = {
+			ai = no
+			NOT = {
+				has_character_flag = employment_decisions_open
+				has_character_flag = festivity_decisions_open
+				has_character_flag = special_decisions_open
+				has_character_flag = family_decisions_open
+			}
+		}
+		effect = { set_character_flag = special_decisions_open }
+	}
+	close_special_decisions = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			has_character_flag = special_decisions_open
+		}
+		effect = { clr_character_flag = special_decisions_open }
+	}
+	#Family
+	open_family_decisions = {
+		potential = {
+			ai = no
+			NOT = {
+				has_character_flag = employment_decisions_open
+				has_character_flag = festivity_decisions_open
+				has_character_flag = special_decisions_open
+				has_character_flag = family_decisions_open
+			}
+			NOT = {
+				culture_group = culture_group_onodrim
+				culture_group = culture_group_eru
+				culture_group = culture_group_melkor
+				culture_group = culture_group_wilderness
+			}
+		}
+		effect = { set_character_flag = family_decisions_open }
+	}
+	close_family_decisions = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			has_character_flag = family_decisions_open
+		}
+		effect = { clr_character_flag = family_decisions_open }
+	}
+	#Festivity
+	open_festivity_decisions = {
+		potential = {
+			ai = no
+			NOT = {
+				has_character_flag = employment_decisions_open
+				has_character_flag = festivity_decisions_open
+				has_character_flag = special_decisions_open
+				has_character_flag = family_decisions_open
+			}
+			NOT = { has_character_flag = sauron }
+		}
+		effect = { set_character_flag = festivity_decisions_open }
+	}
+	close_festivity_decisions = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			has_character_flag = festivity_decisions_open
+		}
+		effect = { clr_character_flag = festivity_decisions_open }
+	}
+}

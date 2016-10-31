@@ -1,0 +1,260 @@
+decisions = {
+	## Decision for a Numenorean to cleanse the Barrow-downs ##
+	cleanse_barrows = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_barrow_downs
+			any_realm_title = { has_building = ca_barrow_downs }
+			NOT = { has_global_flag = barrows_cleansed }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			NOT = { trait = wight }
+			NOT = { religion_group = religion_group_melkor }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.126 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild Fornost Erain ##
+	rebuild_fornost = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_fornost
+			any_realm_title = { has_building = ca_fornost_ruins }
+			NOT = { has_global_flag = fornost_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.1 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild Amon Sûl ##
+	rebuild_amon_sul = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_weather_hills
+			any_realm_title = { has_building = ca_amon_sul_ruins }
+			NOT = { has_global_flag = amon_sul_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.33 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild Annuminas ##
+	rebuild_annuminas = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_annuminas
+			any_realm_title = { has_building = ca_annuminas_ruins }
+			NOT = { has_global_flag = annuminas_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.8 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild the Bridge of Tharbad ##
+	rebuild_tharbad = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_tharbad
+			any_realm_title = {
+				NOT = { has_building = ca_tharbad_bridge }
+			}
+			NOT = { has_global_flag = tharbad_bridge }
+			NOT = { has_global_flag = tharbad_bridge_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.16 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild Osgiliath West ##
+	rebuild_osgiliath_west = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_west_osgiliath
+			year = 9900
+			NOT = { has_global_flag = west_osgiliath_rebuilded_finally }
+			has_character_flag = special_decisions_open
+			NOT = { has_character_flag = osgiliath_west }
+			NOT = { has_character_flag = east_osgiliath }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.26 }
+			wealth = -50
+			set_character_flag = osgiliath_west
+		}
+	}
+	rebuild_osgiliath_east = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_east_osgiliath
+			year = 9900
+			NOT = { has_global_flag = east_osgiliath_rebuilded_finally }
+			has_character_flag = special_decisions_open
+			NOT = { has_character_flag = osgiliath_west }
+			NOT = { has_character_flag = east_osgiliath }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.26 }
+			wealth = -50
+			set_character_flag = east_osgiliath
+		}
+	}
+	## Decision for a Numenorean or an Elf to rebuild the Haven of Edhellond ##
+	rebuild_edhellond = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			OR = {
+				culture_group = culture_group_numenorean
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+			}
+			NOT = { trait = incapable }
+			has_landed_title = c_edhellond
+			year = 10325
+			NOT = { has_global_flag = edhellond_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.20 }
+			wealth = -50
+		}
+	}
+	## Decision for an Elf to rebuild Ost-in-Edhil ##
+	rebuild_ost_in_edhil = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+			}
+			NOT = { trait = incapable }
+			has_landed_title = c_south_eregio
+			NOT = { has_global_flag = gwaith_mirdain_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.120 }
+			wealth = -50
+		}
+	}
+	## Decision for a Numenorean to rebuild Minas Ithil ##
+	rebuild_minas_ithil = {
+		is_high_prio = no
+		potential = {
+			is_playable = yes
+			culture_group = culture_group_numenorean
+			NOT = { trait = incapable }
+			has_landed_title = c_morgul
+			any_realm_title = { has_building = ca_minas_ithil_ruins }
+			NOT = { has_global_flag = minas_ithil_rebuilded }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 1000
+			wealth = 500
+		}
+		effect = {
+			character_event = { id = buildings.133 }
+			wealth = -50
+		}
+	}
+}

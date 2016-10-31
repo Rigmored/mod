@@ -1,0 +1,401 @@
+decisions = {
+	employ_chancellor = {
+		potential = {
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+		}
+		allow = {
+			NOT = { has_character_modifier = employment_timer }
+			treasury = 10
+		}
+		effect = {
+			treasury = -10
+			create_random_diplomat = {
+				random_traits = yes
+				dynasty = random
+				female = no
+			}
+			add_character_modifier = {
+				name = employment_timer
+				duration = 1
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	employ_marshal = {
+		potential = {
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+		}
+		allow = {
+			NOT = { has_character_modifier = employment_timer }
+			treasury = 10
+		}
+		effect = {
+			treasury = -10
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = random
+				female = no
+			}
+			add_character_modifier = {
+				name = employment_timer
+				duration = 1
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	employ_steward = {
+		potential = {
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+		}
+		allow = {
+			NOT = { has_character_modifier = employment_timer }
+			treasury = 10
+		}
+		effect = {
+			treasury = -10
+			create_random_steward = {
+				random_traits = yes
+				dynasty = random
+				female = no
+			}
+			add_character_modifier = {
+				name = employment_timer
+				duration = 1
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	employ_spymaster = {
+		potential = {
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+		}
+		allow = {
+			NOT = { has_character_modifier = employment_timer }
+			treasury = 10
+		}
+		effect = {
+			treasury = -10
+			create_random_intriguer = {
+				random_traits = yes
+				dynasty = random
+				female = no
+			}
+			add_character_modifier = {
+				name = employment_timer
+				duration = 1
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	present_female_slave = {
+		potential = {
+			ai = no
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+			OR = {
+			culture_group = culture_group_melkor
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture = culture_black_numenorean
+            AND = {
+            culture = culture_maiar
+			trait = evil_side
+			}
+			}
+		}
+		allow = {
+			treasury = 100
+			prestige = 100
+			NOT = {
+				has_character_modifier = in_seclusion
+			}
+			NOT = { has_character_modifier = employment_timer }
+		}
+		effect = {
+			treasury = 100
+			prestige = 100
+			create_character = {
+				random_traits = yes
+				dynasty = none
+				female = yes
+				age = 17
+			}
+			new_character = {
+				remove_trait = slow
+				remove_trait = imbecile
+				remove_trait = dull
+				set_character_flag = debutante
+				save_event_target_as = invited_character
+			}
+			character_event = { id = NE.1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	present_debutante = {
+		potential = {
+			ai = no
+			has_character_flag = employment_decisions_open
+			NOT = { religion_group = religion_group_melkor }
+		}
+		allow = {
+			treasury = 100
+			prestige = 100
+			NOT = {
+				has_character_modifier = in_seclusion
+			}
+		}
+		effect = {
+			treasury = 100
+			prestige = 100
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 17
+			}
+			new_character = {
+				remove_trait = slow
+				remove_trait = imbecile
+				remove_trait = dull
+				set_character_flag = debutante
+				save_event_target_as = invited_character
+			}
+			character_event = { id = NE.1 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+			}
+	}
+	
+	present_male_slave = {
+		potential = {
+			is_female = yes
+			ai = no
+			OR = {
+				AND = {
+					ai = no
+					is_ruler = yes
+					has_character_flag = employment_decisions_open
+				}
+				AND = {
+					ai = yes
+					NOT = { religion = religion_wilderness }
+				}
+			}
+			OR = {
+			culture_group = culture_group_melkor
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture = culture_black_numenorean
+			AND = {
+            culture = culture_maiar
+			trait = evil_side
+			}
+			}
+		}
+		allow = {
+			treasury = 100
+			prestige = 100
+			NOT = {
+				has_character_modifier = in_seclusion
+			}
+			NOT = { has_character_modifier = employment_timer }
+		}
+		effect = {
+			treasury = 100
+			prestige = 100
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				female = no
+				attributes = {
+					diplomacy = 2
+					learning = 2
+					stewardship = 2
+					intrigue = 2
+					martial = 8
+				}
+			}
+			new_character = {
+				remove_trait = weak
+				remove_trait = slow
+				remove_trait = imbecile
+				remove_trait = dull
+				remove_trait = mystic
+				remove_trait = socializer
+				remove_trait = gamer
+				remove_trait = hedonist
+				remove_trait = duelist
+				remove_trait = hunter
+				remove_trait = strategist
+				remove_trait = administrator
+				remove_trait = architect
+				remove_trait = gardener
+				remove_trait = schemer
+				remove_trait = impaler
+				remove_trait = seducer
+				remove_trait = seductress
+				remove_trait = theologian
+				remove_trait = scholar
+				
+				random_list = { # Flavor Randomization
+					35 = { 
+						# Nothing
+					}
+					15 = {
+						change_martial = 2
+					}
+					10 = {
+						add_trait = robust
+					}
+					10 = {
+						add_trait = duelist
+					}
+					10 = {
+						add_trait = hunter
+					}
+					5 = {
+						add_trait = strategist
+					}
+					5 = {
+						change_martial = 4
+					}
+					5 = {
+						if = {
+							limit = {
+								has_dlc = "Reapers"
+							}
+							add_trait = one_eyed
+						}
+					}
+					5 = { 
+						add_trait = shrewd
+					}
+				}
+				set_character_flag = invited_soldier
+				save_event_target_as = invited_character
+				character_event = { id = NE.1 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	create_orc = {
+		potential = {
+				ai = no
+				is_ruler = yes
+				has_character_flag = employment_decisions_open
+				OR = {
+				trait = nazgul
+				AND = {
+					OR = {
+						trait = valar
+						trait = maiar
+					}
+					religion_group = religion_group_melkor
+				}
+				}
+		}
+		allow = {
+			NOT = { has_character_modifier = employment_timer }
+			treasury = 100
+			prestige = 100
+		}
+		effect = {
+			treasury = -100
+			prestige = 100
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = random
+				female = no
+				trait = orkish
+				religion = religion_orkish
+				culture = culture_orkish
+			}
+			if = {
+				limit = {
+					culture = culture_goblin
+				}
+				new_character = {
+					culture = culture_goblin
+				}
+			}
+			add_character_modifier = {
+				name = employment_timer
+				duration = 1
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

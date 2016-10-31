@@ -1,0 +1,858 @@
+namespace = warofthering
+
+
+##Introductory events##
+character_event = {
+    id = warofthering.1
+    title = "EVTTITwarofthering.1"
+    desc = "EVTDESCwarofthering.1"
+    picture = "GFX_sauron_commands"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		year = 11362
+		NOT = { year = 11363 } 
+		NOT = { has_character_flag = intro_event }
+		NOT = { has_global_flag = disabledwotr }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = {
+		name = "EVTOPTAwarofthering.1"
+        set_character_flag = intro_event
+	}
+}
+
+character_event = {
+    id = warofthering.90
+    title = "EVTTITwarofthering.90"
+    desc = "EVTDESCwarofthering.90"
+    picture = "GFX_oath_of_eorl"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		has_landed_title = e_steward_gondor
+		NOT = { has_character_flag = warofthering1b }
+		year = 11362
+		NOT = { year = 11363 }
+		NOT = { has_global_flag = disabledwotr }
+	}
+
+	immediate = {
+		set_global_flag = rohan_threatened
+        set_character_flag = warofthering1b
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = {
+		name = "EVTOPTAwarofthering.90"	  
+	}
+}
+
+character_event = {
+    id = warofthering.91
+    title = "EVTTITwarofthering.91"
+    desc = "EVTDESCwarofthering.91"
+    picture = "GFX_gondor_army"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		has_landed_title = k_rohan
+		year = 11362
+		NOT = { year = 11363 }
+		NOT = { has_character_flag = warofthering1c }
+		NOT = { has_global_flag = disabledwotr }
+	}
+
+	immediate = {
+		set_global_flag = gondor_threatened
+        set_character_flag = warofthering1c
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = {
+		name = "EVTOPTAwarofthering.91"
+	}
+}
+
+character_event = {
+    id = warofthering.2
+    title = "EVTTITwarofthering.2"
+    desc = "EVTDESCwarofthering.2"
+    picture = "GFX_sauron_commands"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		trait = evil_side
+		year = 11362 
+		NOT = { year = 11363 }
+		NOT = { has_character_flag = intro_event }
+		NOT = { has_landed_title = c_barad_dur }
+		NOT = { has_landed_title = d_isengard }
+		NOT = { has_global_flag = disabledwotr }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = {
+		name = "EVTOPTAwarofthering.2"
+		set_character_flag = intro_event
+	}
+}
+
+
+#Gondor is informed Rohan's borders are under attack#	
+#character_event = {
+#   id = warofthering.92
+#   title = "EVTTITwarofthering.92"
+#   desc = "EVTDESCwarofthering.92"
+#   picture = "GFX_shadows_coming"
+#   trigger = {
+#		year = 11363
+#		NOT = { year = 11365 }
+#       }
+#	
+#	mean_time_to_happen = {
+#		days = 7
+#	}
+#		
+#	option = {
+#       name = "EVTOPTAwarofthering.92"
+#	}				
+#}
+
+				
+#Saruman's forces try to kill Theodred - make id 6.1##	
+## Now in events/MEP_rohan_isengard_wars.txt##
+		
+## EASTERN OSGILIATH EVENTS IN events/MEP_Gondor_wotr.txt##
+		
+##Event for Sauron if he has not yet taken Osgiliath by 11364
+character_event = {
+    id = warofthering.9
+    title = "EVTTITwarofthering.9"
+    desc = "EVTDESCwarofthering.9"
+    picture = "GFX_war_gondor"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		war = yes
+		year = 11364
+		NOT = { year = 11366 }
+		trait = evil_side
+		has_landed_title = c_barad_dur
+		any_realm_lord = { NOT = { has_landed_title = c_east_osgiliath } }
+		NOT = { has_character_flag = warofthering9 }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTAwarofthering.9"
+		trigger = {
+			dynasty = 10012
+		}
+		set_character_flag = warofthering9
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = culture_group_easterling
+					culture_group = culture_group_southron
+					culture = culture_black_numenorean
+				}
+				trait = evil_side
+			}
+			character_event = { id = warofthering.10 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBwarofthering.9"
+		trigger = { ai = no }
+	}
+}
+
+#Sauron's servants receives the call for aid#		
+character_event = {
+    id = warofthering.10
+    title = "EVTTITwarofthering.10"
+    desc = "EVTDESCwarofthering.10"
+    picture = "GFX_war_gondor"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = "EVTOPTAwarofthering.10"
+		trigger = {
+			trait = evil_side
+		}
+		ROOT = {
+			join_attacker_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+						has_landed_title = k_mordor
+						has_landed_title = c_barad_dur
+				}
+				dynasty = 10012	
+			}
+			character_event = { id = sauron.16 days = 7 }
+		}				
+	}
+	
+	option = {
+        name = "EVTOPTBwarofthering.10"
+		trigger = {
+			NOT = { trait = evil_side }
+		}				
+	}
+}
+				
+##Now to get started on the Ring Events##
+
+##Sauron hears of "Baggin's and Shire from Gollum!#
+
+##Event for Sauron to send the Nazgul to hunt for the ring
+character_event = {
+    id = warofthering.11
+    title = "EVTTITwarofthering.11"
+    desc = "EVTDESCwarofthering.11"
+    picture = "GFX_sauron_commands"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		year = 11363
+		NOT = { year = 11365 }
+		trait = evil_side
+		has_landed_title = c_barad_dur
+		NOT = { has_character_flag = warofthering11 }
+	}
+
+	immediate = {
+		set_character_flag = warofthering11
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	option = {
+		name = "EVTOPTAwarofthering.11"
+		any_realm_character = {
+			limit = {
+				trait = nazgul 			
+			}
+			character_event = { id = warofthering.12 days = 7 }
+		}
+	}
+		
+	option = {
+		name = "EVTOPTBwarofthering.11"
+		trigger = {
+			ai = no
+		}
+	}	
+}	
+		
+##The Nazgul are informed they must ride forth##
+character_event = {
+    id = warofthering.12
+    title = "EVTTITwarofthering.12"
+    desc = "EVTDESCwarofthering.12"
+    picture = "GFX_sauron_commands"
+	age = 16	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = nazgul_hunting
+	}
+		
+	option = {
+		name = "EVTOPTAwarofthering.12"
+		add_trait = huntforring
+	}		
+}
+	
+##Frodo decides to leave ##
+##Sets out together with his hobbit companions##
+character_event = {
+    id = warofthering.13
+    title = "EVTTITwarofthering.13"
+    desc = "EVTDESCwarofthering.13"
+    picture = "GFX_shadows_coming"
+	age = 16
+
+	trigger = {
+		year = 11363
+		NOT = { year = 11365 }
+		trait = ring
+		dynasty = 803
+		NOT = { has_global_flag = fellowshipquest }
+	}
+	
+	immediate = {
+		set_global_flag = fellowshipquest
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = { 
+		name = "EVTOPTAwarofthering.13"
+		add_trait = on_fellowshipquest
+		any_realm_character  = {
+			limit = {
+				dynasty=814
+				NOT = { age = 50 }
+			}
+			character_event = { id = warofthering.14 }
+		}
+		liege = {
+			any_realm_character  = {
+				limit = {
+					dynasty=802
+					age = 38
+					NOT = { age = 39 }
+				}
+				character_event = { id = warofthering.14 }
+			}
+			any_realm_character  = {
+				limit = {
+					dynasty=801
+					NOT = { age = 31 }
+				}
+				character_event = { id = warofthering.14 }
+			}
+		}
+	}
+}
+		
+##Sam goes with him##
+character_event = {
+    id = warofthering.14
+    title = "EVTTITwarofthering.14"
+    desc = "EVTDESCwarofthering.14"
+    picture = "GFX_shadows_coming"
+	age = 16
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAwarofthering.14"
+		add_trait = on_fellowshipquest
+	}
+}
+
+		
+##Players are informed that the fellowship has set out from the Shire##
+#character_event = {
+#	id = warofthering.94
+#	title = "EVTTITwarofthering.94"
+#	desc = "EVTDESCwarofthering.94"
+#	picture = "GFX_good"
+#	only_playable = yes
+#    
+#	trigger = {
+#		year = 11363
+#		NOT = { year = 11365 }
+#        }
+#	
+#	mean_time_to_happen = {
+#		months = 1
+#	}
+#	
+#	option = {
+#		name = "EVTOPTAwarofthering.94"
+#	}
+#}
+	
+##Aragorn is concerned at no word of Gandalf, decides to go to Bree##
+character_event = {
+    id = warofthering.17
+    title = "EVTTITwarofthering.17"
+    desc = "EVTDESCwarofthering.17"
+    picture = "GFX_shadows_coming"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		year = 11363
+		NOT = { year = 11365 }
+		age = 30
+		trait = blood_of_isildur
+		NOT = { has_character_flag = warofthering17 }
+	}
+
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+        name = "EVTOPTAwarofthering.17"
+		set_character_flag = warofthering17
+		add_trait = on_fellowshipquest
+		set_global_flag = aragornactive
+	}
+	
+	option = {
+        name = "EVTOPTBwarofthering.17"
+		trigger = { ai = no }
+		set_global_flag = aragorninactive
+		set_character_flag = warofthering17
+	}
+}
+
+		
+##Aragorn meets the hobbits at Bree##
+character_event = {
+    id = warofthering.18
+    title = "EVTTITwarofthering.18"
+    desc = "EVTDESCwarofthering.18"
+    picture = "GFX_shadows_coming"
+	age = 16
+
+	trigger = {
+		year = 11363
+		NOT = { year = 11365 }
+		trait = blood_of_isildur
+		has_global_flag = aragornactive
+		has_global_flag = fellowshipquest
+		NOT = { has_character_flag = warofthering18 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+        name = "EVTOPTAwarofthering.18"
+		set_character_flag = warofthering18
+		any_playable_ruler  = {
+			limit = {
+				trait = ring
+			}
+			character_event = { id = warofthering.19 }	
+		}
+	}
+
+	option = {
+        name = "EVTOPTBwarofthering.18"
+		trigger = { ai = no }
+		set_character_flag = warofthering18
+		add_trait = ring
+		set_global_flag = aragornhasring
+		remove_trait = on_fellowshipquest
+		clr_global_flag = fellowshipquest
+		any_playable_ruler  = {
+			limit = {
+				trait = ring
+			}
+			remove_trait = ring
+			add_trait = ringbearer2
+		}
+	}
+}
+
+##Fellowship disbands if Aragorn takes the Ring##
+	character_event = {
+    id = warofthering.26
+    title = "EVTTITwarofthering.26"#Aragorn took the ring
+    desc = "EVTDESCwarofthering.26"#The strange man you met at Bree has taken the ring from you by force, and left! There is nothing you can do now... your quest has failed before it even began.
+    picture = "GFX_shadows_coming"
+	age = 16
+	
+	trigger = {
+		has_global_flag = aragornhasring
+		trait = on_fellowshipquest
+		age = 16
+		NOT = { has_character_flag = warofthering19 }
+	}
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	option = {
+		name = "EVTOPTAwotr.19"
+		remove_trait = on_fellowshipquest
+		set_character_flag = warofthering19
+	}
+}
+
+
+##################################################################################################################
+#######Here there could be made subsections of event 18 for when Aragorn takes the ring, but that is for later####
+##################################################################################################################
+
+
+##Frodo is informed that he has met Aragorn##
+character_event = {
+    id = warofthering.19
+    title = "EVTTITwarofthering.19"
+    desc = "EVTDESCwarofthering.19"
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = "EVTOPTAwarofthering.19"
+		character_event = { id = warofthering.20 days = 30 }
+	}				
+}
+
+##Fellowship is attacked by Nazgul on way to Rivendell, but Aragorn is with them##
+character_event = {
+    id = warofthering.20
+    title = "EVTTITwarofthering.20"
+    desc = "EVTDESCwarofthering.20"
+    picture = "GFX_nazgul"
+	age = 16
+	
+    is_triggered_only = yes
+		
+	option = {
+        name = "EVTOPTAwarofthering.20"
+		random_list = {
+			5 = {
+				set_character_flag = warofthering20_1
+				set_character_flag = warofthering20
+            }
+            95 = {
+				set_character_flag = warofthering20_2
+				set_character_flag = warofthering20
+			}
+		}
+	}
+}
+				
+##Nazgul take the Ring!##
+character_event = {
+    id = warofthering.95
+    title = "EVTTITwarofthering.95"
+    desc = "EVTDESCwarofthering.95"
+    picture = "GFX_nazgul"
+	age = 16		
+	
+	trigger = {
+		has_character_flag = warofthering20_1
+		year = 11362
+		NOT = { year = 11380 }
+	}
+	
+	mean_time_to_happen = {
+		days = 7 
+	}
+	
+	option = {
+		name = "EVTOPTAwarofthering.95"
+		set_global_flag = nazgulsuccess
+		clr_global_flag = fellowshipquest
+		remove_trait = ring
+		death = {
+			death_reason = death_battle
+		}
+		any_independent_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				age = 16
+			}
+			character_event = { id = warofthering.97 }
+		}
+	}
+}
+	
+##Nazgul are driven back##
+character_event = {
+    id = warofthering.96
+    title = "EVTTITwarofthering.96"
+    desc = "EVTDESCwarofthering.96"
+    picture = "GFX_boromir_death"
+	age = 16		
+	
+	trigger = {
+		has_character_flag = warofthering20_2
+		year = 11362
+		NOT = { year = 11380 }
+	}
+	
+	immediate = {
+		set_global_flag = nazguldefeated
+	}
+	
+	mean_time_to_happen = {
+		days = 7 
+	}
+	
+	option = {
+		name = "EVTOPTAwarofthering.96"
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					age = 1
+					is_alive=yes 
+				}
+			}
+			character_event = { id = warofthering.23 }
+		}
+	clr_character_flag = warofthering20_2
+		set_character_flag = wotr2
+			any_independent_ruler  = {
+				limit = {
+					has_landed_title = d_rivendell
+				}
+				character_event = { id = wotr.3 days = 7}
+			}
+			any_independent_ruler  = {
+			limit = {
+				trait = blood_of_isildur
+				age = 16
+			}
+			character_event = { id = wotr.4 days = 7}
+		}	
+	}
+}
+			
+###Aragorn loses against the Nazgul and is informed##
+character_event = {
+    id = warofthering.97
+    title = "EVTTITwarofthering.97"
+    desc = "EVTDESCwarofthering.97"
+    picture = "GFX_boromir_death"
+	age = 16		
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwarofthering.97"
+		remove_trait = on_fellowshipquest
+		random_list = {
+			50 = { 
+				add_trait = wounded
+			}
+			50 = {
+				add_maimed_trait_effect = yes
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBwarofthering.97"
+		trigger = { ai = no }
+		remove_trait = on_fellowshipquest
+		add_trait = craven
+	}
+}
+			
+	
+##Sauron gets the ring!##
+character_event = {
+    id = warofthering.21
+    title = "EVTTITwarofthering.21"
+    desc = "EVTDESCwarofthering.21 "
+    picture = "GFX_sauron_commands"
+	age = 16
+	
+	trigger = {
+		has_global_flag = nazgul_hunting
+		has_global_flag = nazgulsuccess
+		has_landed_title = c_barad_dur
+		culture = culture_maiar
+		NOT = { year = 11365 }
+		NOT = { has_character_flag = warofthering21 }
+	}
+	
+	mean_time_to_happen = {
+		days = 180 
+	}
+	
+	option = {
+		name = "EVTOPTAwarofthering.21"
+		set_character_flag = warofthering21
+		add_trait = ring
+		remove_trait = ringbearer2
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					age = 1
+					is_alive=yes 
+				}
+			}
+			character_event = { id = warofthering.22 }
+		}
+		any_realm_character = {
+			limit = {
+				trait = huntforring 			
+			}
+			remove_trait = huntforring
+		}
+	}
+}
+		
+	
+##The world is informed of Saurons victory
+	
+character_event = {
+    id = warofthering.22
+    title = "EVTTITwarofthering.22"
+    desc = "EVTDESCwarofthering.22"
+    picture = "GFX_sauron_commands"
+	age = 16
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwarofthering.22"
+		any_realm_character = {
+			limit = {
+			trait = on_fellowshipquest			
+			}
+			remove_trait = on_fellowshipquest
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBwarofthering.22"
+		trigger = { trait = evil_side }
+	}
+}
+	
+	
+##The world is informed that the ring is safe in rivendell
+character_event = {
+    id = warofthering.23
+    title = "EVTTITwarofthering.23"
+    desc = "EVTDESCwarofthering.23"
+    picture = "GFX_council_elrond"
+	age = 16
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwarofthering.23"
+		trigger = {
+			NOT = { has_landed_title = c_barad_dur }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBwarofthering.23"
+		trigger = {
+			has_landed_title = c_barad_dur
+			culture = culture_maiar
+		}
+		any_realm_character = {
+			limit = {
+				trait = huntforring 			
+			}
+			remove_trait = huntforring
+		}	
+	}
+	
+	option = {
+		name = "EVTOPTCwarofthering.23"
+		trigger = {
+			trait = blood_of_isildur
+		}
+		prestige = 200
+	}
+}
+	
+#################################################################################
+##Now to backtrack a bit - these are the events for sending other chars to ######
+##the council at Imladris so they are all there##################################
+#################################################################################
+	
+	
+##Denethor sends either Boromir or Faramir##
+character_event = {
+    id = warofthering.24
+    title = "EVTTITwarofthering.24"
+    desc = "EVTDESCwarofthering.24"
+    picture = "GFX_council_elrond"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		has_landed_title = e_steward_gondor
+		year = 11363
+		NOT = { year = 11364 }
+		NOT = { has_character_flag = warofthering24 }
+	}
+	
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	option = {
+        name = "EVTOPTAwarofthering.24"
+		set_global_flag = boromirwent
+		set_character_flag = warofthering24
+		any_child ={
+			limit = { age = 40 }
+			add_trait = on_fellowshipquest 
+		}
+	}
+		
+	option = {
+        name = "EVTOPTBwarofthering.24"
+		trigger = { ai = no }
+		set_global_flag = faramirwent
+		set_character_flag = warofthering24
+		any_child ={
+			limit = { NOT = { age = 40 } }
+			add_trait = on_fellowshipquest
+		}
+	}
+}
+		
+##Thranduil sends legolas##
+character_event = {
+    id = warofthering.25
+    title = "EVTTITwarofthering.25"
+    desc = "EVTDESCwarofthering.25"
+    picture = "GFX_council_elrond"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		has_landed_title = k_mirkwood
+		year = 11363
+		NOT = { year = 11364 }
+		NOT = { has_character_flag = warofthering25 }
+	}
+	
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	option = {
+        name = "EVTOPTAwarofthering.25"
+		set_character_flag = warofthering25
+		any_child ={
+			limit = { age = 40 }
+			add_trait = on_fellowshipquest 
+		}
+	}
+}
+	
+##warofthering26 used above###

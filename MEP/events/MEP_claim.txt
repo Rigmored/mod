@@ -1,0 +1,236 @@
+namespace = mepclaims
+	
+##Umbar claim on Gondor coasts##
+character_event = {
+	id = mepclaims.0
+	desc = "DESCmepclaims.0"
+	picture = "GFX_evt_coronation"
+	age = 16
+	
+	trigger = {
+		culture = culture_black_numenorean
+		has_landed_title = d_umbar
+		NOT = { has_character_flag = claimzeroasked }
+		year = 11370
+	}
+		  
+	is_triggered_only = yes
+
+	option = {
+		name = "mepclaims0a" #Yes!
+		d_tolfalas = { add_claim = ROOT }
+		d_anfalas = { add_claim = ROOT }
+		d_dol_amroth = { add_claim = ROOT }
+		set_character_flag = claimzeroasked
+	}
+		
+}
+
+##Gondorian Claim on Umbar##
+character_event = {
+	id = mepclaims.1
+	desc = "DESCmepclaims.1"
+	picture = "GFX_evt_coronation"
+	age = 16
+	
+	trigger = {
+		culture = culture_gondorian
+		has_landed_title = d_royal_demesne
+		prestige = 1000
+		NOT = { has_character_flag = claimzeroasked }
+		NOT = { has_landed_title = c_umbar }
+		any_vassal = { NOT = { has_landed_title = c_umbar } }
+	}
+		  
+	is_triggered_only = yes
+
+	option = {
+		name = "mepclaims1a" #Yes!
+		b_umbar = { add_claim = ROOT }
+		set_character_flag = claimzeroasked
+		}
+		
+	option = {
+		name = "mepclaims1b" #No...
+		trigger = { ai = no }
+		set_character_flag = claimzeroasked
+		}
+}
+
+##Isengards claim on Rohan##
+character_event = {
+	id = mepclaims.2
+	desc = "DESCmepclaims.2"
+	picture = "GFX_evt_coronation"
+	age = 16
+	
+	trigger = {
+		culture = culture_istari
+		has_landed_title = d_isengard
+		prestige = 1000
+		NOT = { has_character_flag = claimzeroasked }
+	}
+		  
+	is_triggered_only = yes
+
+	option = {
+		name = "mepclaims2a" #Yes!
+		k_rohan = { add_claim = ROOT }
+		set_character_flag = claimzeroasked
+		}
+		
+
+}
+
+##Dunlending claim on Rohan##
+character_event = {
+	id = mepclaims.3
+	desc = "DESCmepclaims.3"
+	picture = "GFX_evt_coronation"
+	age = 16
+	only_rulers = yes
+	
+	trigger = {
+		culture = culture_dunlending
+		prestige = 500
+		NOT = { has_global_flag = dunlendingclaim }
+	}
+		  
+	is_triggered_only = yes
+
+	option = {
+		name = "mepclaims3a" #Yes!
+		d_westmarch = { add_claim = ROOT }
+		c_adornfold = { add_claim = ROOT }
+		c_westmarch = { add_claim = ROOT }
+		c_isenangle = { add_claim = ROOT }
+		c_isengard = { add_claim = ROOT }
+		c_gap_of_rohan = { add_claim = ROOT }
+		set_global_flag = dunlendingclaim
+		}
+		
+}
+	
+
+### If Sauron is defeated, Dwarves get a claim on Khazad-Dum ##
+character_event = {
+	id = mepclaims.4
+	desc = "DESCmepclaims.4"
+	picture = "GFX_evt_dwarves"
+
+	trigger = {
+		has_landed_title = e_durins_folk
+		culture = culture_longbeard
+		age = 200
+		NOT = { has_global_flag = moriaclaim }
+		NOT = { has_character_flag = declinemoriaclaim }
+		NOT = { has_landed_title = c_moria }
+		NOT = { has_landed_title = d_moria }
+		has_global_flag = saurondefeated
+		is_female = no	
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mepclaims4a"
+		set_global_flag = moriaclaim
+		c_moria = { add_claim = ROOT }
+		d_moria = { add_claim = ROOT }
+		any_playable_ruler = {
+			character_event = { id = mepclaims.5 days = 30 }
+		}
+	}
+	
+	option = {
+		name = "mepclaims4b" 
+		trigger = { ai = no }
+		set_character_flag = declinemoriaclaim		
+	}
+}	
+
+##Other rulers are informed of this venture to reclaim Moria##
+character_event = {
+	id = mepclaims.5
+	desc = "DESCmepclaims.5"
+	picture = "GFX_evt_dwarves"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "mepclaims5a"
+		trigger = { 
+			NOT = { culture_group = culture_group_melkor }
+		}			
+	}
+	
+	option = {
+		name = "mepclaims5b"
+	}	
+	option = {
+		name = "mepclaims5c"
+	}	
+}
+
+### If Khazad-Dum is reconquered and Sauron defeated, Dwarves get a claim on Gundabad, ten years after ##
+character_event = {
+	id = mepclaims.6
+	desc = "DESCmepclaims.6"
+	picture = "GFX_evt_dwarves"
+
+	trigger = {
+		has_landed_title = e_durins_folk
+		has_landed_title = c_moria
+		culture = culture_longbeard
+		age = 200
+		NOT = { has_global_flag = gundabadclaim }
+		NOT = { has_character_flag = declinegundabadclaim }
+		NOT = { has_landed_title = c_gundabad }
+		NOT = { has_landed_title = d_gundabad }		
+		NOT = { has_landed_title = k_gundabad }	
+		has_global_flag = saurondefeated
+		is_female = no	
+	}
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "mepclaims6a"
+		set_global_flag = gundabadclaim
+		c_gundabad = { add_claim = ROOT }
+		d_gundabad = { add_claim = ROOT }
+		k_gundabad = { add_claim = ROOT }		
+		any_playable_ruler = {
+			character_event = { id = mepclaims.7 days = 30 }
+		}
+	}
+	
+	option = {
+		name = "mepclaims6b" 
+		trigger = { ai = no }
+		set_character_flag = declinegundabadclaim		
+	}
+}	
+
+##Other rulers are informed of this venture to reclaim Moria##
+character_event = {
+	id = mepclaims.7
+	desc = "DESCmepclaims.7"
+	picture = "GFX_evt_dwarves"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "mepclaims7a"
+		trigger = { 
+			NOT = { culture_group = culture_group_melkor }
+		}		
+	}
+	
+	option = {
+		name = "mepclaims7b"
+	}	
+	option = {
+		name = "mepclaims7c"
+	}	
+}

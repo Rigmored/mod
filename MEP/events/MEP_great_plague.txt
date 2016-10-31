@@ -1,0 +1,49 @@
+namespace = greatplague
+
+narrative_event = {
+    id = greatplague.0
+    title = "EVTTITgreatplague.0" ## The Great Plague appears in East
+    desc = "EVTDESCgreatplague.0" ## 
+    picture = "GFX_evt_abandoned_lands"
+
+	trigger = {
+		year = 9978
+		NOT = { year = 10180 }
+		NOT = { has_global_flag = great_plague }
+		has_landed_title = c_uldovhar
+	}
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAgreatplague.0" ## OK		
+		set_global_flag = great_plague
+		activate_disease = bubonic_plague
+		any_playable_ruler = {
+			narrative_event = { id = greatplague.1 }
+		}
+	}
+}
+
+### All the rulers of Middle-Earth are alerted of the coming of the Plague ##
+narrative_event = {
+    id = greatplague.1
+    title = "EVTTITgreatplague.1" 
+    desc = "EVTDESCgreatplague.1"  
+    picture = "GFX_evt_abandoned_lands"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAgreatplague.1" ## OK		
+		trigger = { 
+			NOT = { trait = evil_side }
+		}
+	}
+	option = {
+		name = "EVTOPTBgreatplague.1" ## OK		
+		trigger = { 
+			trait = evil_side
+		}
+	}	
+}

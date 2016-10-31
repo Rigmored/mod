@@ -1,0 +1,42 @@
+decisions = {
+	sail_to_west = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			}
+			OR = {
+				trait = stressed
+				trait = depressed
+				trait = ill
+				trait = wounded
+				trait = infirm
+				trait = has_tuberculosis
+				trait = has_typhoid_fever
+				trait = has_typhus
+				trait = has_bubonic_plague
+				trait = has_measles
+				trait = has_small_pox
+				trait = pneumonic
+				trait = possessed
+			}
+			NOT = { trait = sailed_west }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			piety = 200
+			age = 2500
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = 400002 }
+			}
+			set_character_flag = asked_west
+		}
+	}
+}

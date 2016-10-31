@@ -1,0 +1,24 @@
+decisions = {
+	## Decision for a dwarf to receive the province of Gundabad if he is elected as King of All the Moutains ##
+	receive_gundabad = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			NOT = { has_landed_title = c_gundabad }
+			has_landed_title = e_all_mountains
+			any_realm_lord = {
+				ai = yes
+				has_landed_title = c_gundabad
+			}
+		}
+		allow = {
+			NOT = { has_landed_title = c_gundabad }
+			any_realm_lord = { has_landed_title = c_gundabad }
+		}
+		effect = {
+			ROOT = {
+				c_gundabad = { usurp_title_plus_barony_if_unlanded_and_vassals = PREV }
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+###decision to hunt for the ring##
+decisions = {
+	##ruler begins the hunt##
+	hunt_for_the_ring = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			age = 16
+			is_ruler = yes
+			NOT = { trait = ring }
+			NOT = { has_global_flag = saurondefeated }
+			NOT = { year = 11363 }
+			NOT = { has_character_flag = huntforring }
+			has_character_flag = special_decisions_open
+		}
+		allow = { wealth = 1000 }
+		effect = {
+			ROOT = {
+				character_event = { id = huntforring.0 }
+			}
+		}
+	}
+}

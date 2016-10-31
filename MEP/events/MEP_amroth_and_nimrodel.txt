@@ -1,0 +1,835 @@
+namespace = amroth
+
+## Introduction for Amroth ##
+narrative_event = {
+	id = amroth.0
+	title = EVTTITamroth.0
+	desc = EVTDESCamroth.0
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_landed_title = k_elves
+		has_character_flag = amroth
+		age = 20
+		NOT = { year = 11323 }
+		NOT = { has_character_flag = amroth_intro }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.0 ## I'll only love her !
+		add_trait = love_amroth
+		set_character_flag = amroth_intro
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_wester_south_lorien
+				age = 1
+				has_character_flag = nimrodel
+			}
+			add_trait = love_amroth
+		}
+	}
+}
+
+## The Fall of Moria - Nimrodel fled to the edge of Fangorn ##
+narrative_event = {
+	id = amroth.1
+	title = EVTTITamroth.1
+	desc = EVTDESCamroth.1
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_landed_title = c_wester_south_lorien
+		has_character_flag = nimrodel
+		age = 20
+		NOT = { year = 11323 }
+		has_global_flag = moriaminesareclosed
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.1 ## I need to leave my river !
+		add_trait = story_amroth
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_elves
+				has_character_flag = amroth
+				age = 20
+			}
+			narrative_event = { id = amroth.2 days = 10 }
+		}
+	}
+	option = {
+		name = EVTOPTBamroth.1 ## This is my river.
+		trigger = { ai = no }
+	}	
+}
+
+## Amroth is alerted of the departure of Nimrodel ##
+narrative_event = {
+	id = amroth.2
+	title = EVTTITamroth.2
+	desc = EVTDESCamroth.2
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.2 ## I need to find her !
+		add_trait = story_amroth
+		character_event = { id = amroth.3 days = 50 }
+	}
+	option = {
+		name = EVTOPTBamroth.2 ## I can't leave my Kingdom...
+		trigger = { ai = no }
+	}	
+}
+
+## Amroth find a way... ##
+character_event = {
+	id = amroth.3
+	title = EVTTITamroth.3
+	desc = EVTDESCamroth.3
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.3 ## I'll follow these footsteps !
+		random_list = { 
+			80 = {
+				character_event = { id = amroth.4 days = 30 } ## Here she is!
+			}
+			20 = {
+				character_event = { id = amroth.31 days = 40 } ## i can't find here...
+			}	
+		}
+	}
+	option = {
+		name = EVTOPTBamroth.3 ## I can't leave my Kingdom...
+		trigger = { ai = no }
+		remove_trait = story_amroth
+		character_event = { id= amroth.31 days = 40 } ## i can't find here...
+	}	
+}
+
+## Amroth find Nimrodel in the edges of Fangorn ##
+character_event = {
+	id = amroth.4
+	title = EVTTITamroth.4
+	desc = EVTDESCamroth.4
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.4 ## I want to marry you !
+		any_playable_ruler = {
+			limit = {
+				age = 1
+				has_character_flag = nimrodel
+				trait = story_amroth
+			}
+			character_event = { id = amroth.5 days = 2 }
+		}	
+	}	
+}
+
+## Amroth ask Nimrodel to marry her ##
+character_event = {
+	id = amroth.5
+	title = EVTTITamroth.5
+	desc = EVTDESCamroth.5
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.5 ## I agree if he find a kingdom without wars
+		trigger = { ai = no }
+		FROM = {
+			narrative_event = { id = amroth.6 }
+		}	
+	}
+	option = {
+		name = EVTOPTBamroth.5 ## I refuse.
+		trigger = { ai = no }
+		remove_trait = love_amroth
+		remove_trait = story_amroth
+		FROM = {
+			narrative_event = { id = amroth.7 }
+		}	
+	}
+	option = {
+		name = EVTOPTCamroth.5 ## FOR AI - YES OR NO?
+		trigger = { ai = yes }
+		random_list = {
+			85 = {
+				FROM = {
+					narrative_event = { id = amroth.6 } # YES
+				}
+			}
+			15 = {
+				remove_trait = love_amroth
+				remove_trait = story_amroth			
+				FROM = {
+					narrative_event = { id = amroth.7 } # NO
+				}	
+			}
+		}
+	}	
+}
+
+
+## Amroth can marry Nimrodel ##
+narrative_event = {
+	id = amroth.6
+	title = EVTTITamroth.6
+	desc = EVTDESCamroth.6
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.6 ## I love you Nimrodel
+		add_spouse = FROM
+		character_event = { id = amroth.8 days = 2 }
+	}	
+}
+
+## Amroth can't marry Nimrodel ##
+narrative_event = {
+	id = amroth.7
+	title = EVTTITamroth.7
+	desc = EVTDESCamroth.7
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.7 ## I'm depressed.
+		add_trait = depressed
+		remove_trait = love_amroth
+		remove_trait = story_amroth
+		character_event = { id = amroth.31 days = 2 }
+		FROM = { character_event = { id = amroth.31 days = 2 } }
+	}	
+}
+
+## Amroth and Nimrodel starts their roads to Edhellond ##
+character_event = {
+	id = amroth.8
+	title = EVTTITamroth.8
+	desc = EVTDESCamroth.8
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.8 ## To Edhellond !
+		character_event = { id = amroth.9 days = 100 }
+	}	
+}
+
+## Amroth can see some robbers on the road ##
+character_event = {
+	id = amroth.9
+	title = EVTTITamroth.9
+	desc = EVTDESCamroth.9
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.9 ## Go ahead Nimrodel !
+		random_list = {
+			70 = {
+				any_playable_ruler = {
+					limit = {
+						age = 1
+						has_character_flag = nimrodel
+						trait = story_amroth
+					}
+					character_event = { id = amroth.10 days = 2 }
+				}
+			}
+			30 = {
+				any_playable_ruler = {
+					limit = {
+						age = 1
+						has_character_flag = nimrodel
+						trait = story_amroth
+					}
+					character_event = { id = amroth.11 days = 2 }
+				}
+			}			
+		}
+	}
+	option = {
+		name = EVTOPTBamroth.9 ## Nimrodel, stay at my side!
+		trigger = { ai = no }
+		random_list = {
+			70 = {
+				any_playable_ruler = {
+					limit = {
+						age = 1
+						has_character_flag = nimrodel
+						trait = story_amroth
+					}
+					character_event = { id = amroth.11 days = 2 }
+				}
+			}
+			30 = {
+				any_playable_ruler = {
+					limit = {
+						age = 1
+						has_character_flag = nimrodel
+						trait = story_amroth
+					}
+					character_event = { id = amroth.12 days = 2 }
+				}
+			}			
+		}
+	}	
+}
+
+## If Amroth and Nimrodel are on different roads ##
+## Amroth and Nimrodel are now on different roads ##
+character_event = {
+	id = amroth.10
+	desc = EVTDESCamroth.10
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.10 ## I escape the trap !
+		set_global_flag = nimrodel_lost
+		FROM = { character_event = { id = amroth.13 days = 5 } }
+	}	
+}
+## Amroth and Nimrodel are now on different roads ##
+character_event = {
+	id = amroth.13
+	desc = EVTDESCamroth.13
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.13 ## I'll go to Edhellond directly !
+		character_event = { id = amroth.17 days = 30 }
+	}
+	option = {
+		name = EVTOPTBamroth.13 ## I'll search Nimrodel on the road
+		random_list = {
+			70 = {
+				character_event = { id = amroth.18 days = 90 } ## You can't find her
+			}
+			30 = {
+				character_event = { id = amroth.21 days = 90 } ## You find her
+			}
+		}
+	}	
+}
+
+## Nimrodel was killed by the robbers ##
+character_event = {
+	id = amroth.11
+	desc = EVTDESCamroth.11
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.11 ## Nimrodel is killed
+		death= {
+			death_reason = death_battle
+		}
+		set_global_flag = nimrodel_dead
+		FROM = { character_event = { id = amroth.14 days = 5 } }
+	}	
+}
+## Nimrodel was killed by the robbers ##
+character_event = {
+	id = amroth.14
+	desc = EVTDESCamroth.14
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.14 ## Noooooo !
+		character_event = { id = amroth.15 days = 20 }
+		add_trait = depressed
+	}	
+}
+## Amroth leave Middle-Earth ##
+character_event = {
+	id = amroth.15
+	desc = EVTDESCamroth.15
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.15 ## No more Middle-Earth for me.
+		remove_trait = story_amroth
+		abdicate = yes
+		recalc_succession = yes
+		e_valinor = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}		
+	}	
+}
+
+
+### IF NIMRODEL AND AMROTH ARE STILL TOGETHER ###
+## Nimrodel and Amroth are still together ##
+character_event = {
+	id = amroth.12
+	desc = EVTDESCamroth.12
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.12 ## Nimrodel is with Amroth
+		FROM = { character_event = { id = amroth.16 days = 30 } }
+	}	
+}
+## Nimrodel and Amroth are in Edhellond ##
+character_event = {
+	id = amroth.16
+	desc = EVTDESCamroth.16
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.16 ## To Valinor.
+		remove_trait = story_amroth
+		add_trait = sailed_west
+		abdicate = yes
+		recalc_succession = yes
+		e_valinor = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}
+		any_playable_ruler = {
+			limit = {
+				age = 1
+				has_character_flag = nimrodel
+				trait = story_amroth
+			}
+			add_spouse = ROOT
+			remove_trait = story_amroth
+			add_trait = sailed_west
+			abdicate = yes
+			recalc_succession = yes
+			e_valinor = {
+				holder_scope = { ROOT = { move_character = PREV } }
+			}
+		}		
+	}	
+}
+
+### If Amroth goes to Edhellond directly ###
+
+## Nimrodel is not in Edhellond ##
+character_event = {
+	id = amroth.17
+	desc = EVTDESCamroth.17
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.17 ## She's not there...
+		any_playable_ruler = {
+			limit = {
+				age = 1
+				has_character_flag = nimrodel
+				trait = story_amroth
+			}
+		character_event = { id = amroth.19 days = 45 }
+		}
+	}
+}
+
+## Nimrodel is always lost ##
+character_event = {
+	id = amroth.19
+	desc = EVTDESCamroth.19
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAamroth.19" ## What a beautiful river !
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = amroth.20 days = 55 }
+				}
+			}
+			30 = {
+				character_event = { id = amroth.21 days = 55 }			
+			}
+		}
+	}
+}
+
+## Tempest in Belfalas Bay ! ##
+character_event = {
+	id = amroth.20
+	desc = EVTDESCamroth.20
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.20 ## Nooo!
+		death = {
+			death_reason = death_accident
+		}
+		FROM = {
+			remove_trait = story_amroth
+			abdicate = yes
+		}
+	}
+}
+
+## Nimrodel wake up and go in Edhellond ##
+character_event = {
+	id = amroth.21
+	desc = EVTDESCamroth.21
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.20 ## I'm coming my love !
+		FROMFROM = {
+			character_event = { id = amroth.22 days = 20 }
+		}
+	}
+}
+## Nimrodel is in Edhellond ##
+character_event = {
+	id = amroth.22
+	desc = EVTDESCamroth.22
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.22 ## We'll travel now !
+		character_event = { id = amroth.16 days = 10 }
+	}
+}
+
+
+### If Amroth search after Nimrodel ###
+
+## Amroth search during some monthes ##
+character_event = {
+	id = amroth.18
+	desc = EVTDESCamroth.18
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.18 ## I'll go to Edhellond directly !
+		character_event = { id = amroth.17 days = 5 }
+	}
+	option = {
+		name = EVTOPTBamroth.18 ## I'll search Nimrodel on the road
+		trigger = { ai = no }
+		random_list = {
+			85 = {
+				character_event = { id = amroth.18 days = 90 } ## You can't find her
+			}
+			15 = {
+				character_event = { id = amroth.23 days = 90 } ## You find her
+			}
+		}
+	}
+}
+
+## Amroth find Nimrodel near to a river ##
+character_event = {
+	id = amroth.23
+	desc = EVTDESCamroth.23
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.23 ## We have t go now!
+		character_event = { id = amroth.16 days = 35 }
+	}
+}
+
+
+
+
+#### NOW THE EVENTS OF MITHRELLAS / IMRAZOR ####
+## Introduction for the Lord of Belfalas ##
+narrative_event = {
+	id = amroth.24
+	title = EVTTITamroth.24
+	desc = EVTDESCamroth.24
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_landed_title = k_belfalas
+		age = 20
+		OR = {
+			has_global_flag = nimrodel_lost
+			has_global_flag = nimrodel_dead
+		}
+		NOT = { has_global_flag = mithrellas_imrazor_events }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.24 ## I'll welcome her.
+		set_global_flag = mithrellas_imrazor_events
+		create_character = {
+			dynasty = 101
+			name = "Imrazor"
+			religion="religion_dunedain"
+			culture="culture_gondorian"
+			age = 54
+			dna="ahgkd0kjba0"
+			# Sorry, but the validator doesn't like this
+			#properties="gl0fhhbebbb"
+			attributes = {
+				martial = 3
+				stewardship = 3
+				intrigue = 3
+				learning = 3
+				diplomacy = 3
+			}
+			trait=blood_of_numenor
+			trait=brilliant_strategist
+			trait=tall
+			trait=just
+			trait=honest
+			trait=fair
+			trait=amroth_knight
+		}
+		new_character = {
+			set_character_flag = bloodline_passed	
+			set_character_flag = imrazor
+			give_nickname = nick_the_numenorean
+			c_ernil = {
+				grant_title = PREV
+			}
+		}
+		create_character = {
+			dynasty = 3004
+			name = "Mithrellas"
+			religion="religion_moriquendi"
+			culture="culture_silvan"
+			female = yes
+			age = 2527
+			dna="ahgkd0kjba0"
+			# Sorry, but the validator doesn't like this
+			#properties="gl0fhhbebbb"
+			trait=elf
+			trait=kind
+			trait=just
+			trait=honest
+			trait=fair
+			trait=underhanded_rogue
+		}
+		new_character = {
+			set_character_flag = bloodline_passed	
+			set_character_flag = mithrellas
+			character_event = { id = amroth.25 }
+		}		
+	}
+	option = {
+		name = EVTOPTAamroth.24 ## I won't welcome her.
+		set_global_flag = mithrellas_imrazor_events
+		trigger = { ai = no }
+	}	
+}
+
+## Mithrellas come in the court of Belfalas ##
+character_event = {
+	id = amroth.25
+	desc = EVTDESCamroth.25
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.25 ## Thanks, Lord
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = imrazor
+				age = 1
+			}
+			character_event = { id = amroth.26 days = 1 }	
+		}
+	}
+}
+
+## Imrazor the Numenorean will ask Mithrellas to marry him ##
+character_event = {
+	id = amroth.26
+	desc = EVTDESCamroth.26
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.26 ## She's a beauty !
+		FROM = {
+			character_event = { id = amroth.27 days = 1 }
+		}	
+	}
+}
+
+## Mithrellas will answer ##
+character_event = {
+	id = amroth.27
+	desc = EVTDESCamroth.27
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.27 ## I agree
+		add_spouse = FROM
+		set_character_flag = elfhumanmarriage
+		FROM = {
+			character_event = { id = amroth.28 days = 100 }	
+			set_character_flag = elfhumanmarriage
+		}
+	}
+}
+
+## Imrazor is now the spouse of Mithrellas ##
+character_event = {
+	id = amroth.28
+	desc = EVTDESCamroth.28
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.28 ## What? Already a Child?
+		character_event = { id = amroth.29 days = 270 }	## Birth of Galador
+	}
+}
+
+## Birth of Galador ##
+character_event = {
+	id = amroth.29
+	desc = EVTDESCamroth.29
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.29 ## His name will be Galador.
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_belfalas
+				age = 1
+			}
+			character_event = { id = amroth.30 days = 20 }
+		}
+		any_spouse = {
+			create_character = {
+				dynasty = ROOT
+				name = "Galador"
+				religion="religion_dunedain"
+				culture="culture_gondorian"
+				age = 0
+				dna="bgakk0imcc0"
+				# Sorry, but the validator doesn't like this
+				#properties="kl0bhabebbb"				
+				attributes = {
+					martial = 2
+					stewardship = 2
+					intrigue = 2
+					learning = 2
+					diplomacy = 2
+				}
+				trait = blood_of_numenor
+				trait = half_elf
+			}
+			new_character = {
+				set_father = ROOT
+				set_mother = PREV
+				set_character_flag = bloodline_passed				
+			}		
+		}	
+	}
+}
+
+## The Prince of Belfalas will give his "throne" to Imrazor ##
+character_event = {
+	id = amroth.30
+	desc = EVTDESCamroth.30
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.30 ## He's nobliest than me.
+		k_belfalas = {
+			grant_title = FROM
+		}
+		d_dol_amroth = {
+			grant_title = FROM
+		}
+		c_dol_amroth = {
+			grant_title = FROM
+		}		
+	}
+	option = {
+		name = EVTOPTBamroth.30 ## I won't do it!
+		trigger = { ai = no }
+	}	
+}
+
+
+### Back to Amroth and Nimrodel ###
+## Amroth don't find Nimrodel in the first events, or she refuse to marry him ##
+character_event = {
+	id = amroth.31
+	desc = EVTDESCamroth.31
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAamroth.31 ## He's nobliest than me.
+		remove_trait = story_amroth
+		remove_trait = love_amroth
+		add_trait = depressed
+		FROM = {
+			remove_trait = story_amroth
+			remove_trait = love_amroth
+			add_trait = depressed		
+		}
+	}
+}

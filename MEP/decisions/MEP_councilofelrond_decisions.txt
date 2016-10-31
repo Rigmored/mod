@@ -1,0 +1,26 @@
+decisions = {
+	##Character can attempt to sway the Council to his decision on the ring##
+	influence_the_council = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			independent = yes
+			is_ruler = yes
+			age = 16
+			prisoner = no
+			trait = good_side
+			has_global_flag = councilofelrond
+			NOT = { has_character_flag = councileinfluenced }
+			NOT = { year = 11363 }
+			year = 11360
+			has_character_flag = special_decisions_open
+		}
+		allow = { prestige = 500 }
+		effect = {
+			ROOT = {
+				character_event = { id = wotr.6 }
+			}
+			set_character_flag = councileinfluenced
+		}
+	}
+}

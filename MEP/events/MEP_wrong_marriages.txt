@@ -1,0 +1,162 @@
+namespace = wrongmarriage
+
+### Marriage between different races - Dwarves side
+character_event = {
+    id = wrongmarriage.0
+    title = "EVTTITwrongmarriage.0"
+    desc = "EVTDESCwrongmarriage.0"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		spouse = {
+			NOT = { culture_group = culture_group_dwarves }
+		}
+		ROOT = {
+			culture_group = culture_group_dwarves
+		}
+		NOT = { has_character_flag = wrongmarriage1 }
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAwrongmarriage.0" ### Revoke it and banish it!
+			any_spouse = {
+				limit = {
+					is_landed = no
+					NOT = { culture_group = culture_group_dwarves }
+				}
+			remove_spouse = ROOT
+			banish = yes
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBwrongmarriage.0"#Actually, I kind of like her...
+		trigger = { ai = no }
+		set_character_flag = wrongmarriage
+	}	
+}
+
+### Marriage between different races - Elves side
+character_event = {
+    id = wrongmarriage.1
+    title = "EVTTITwrongmarriage.1"
+    desc = "EVTDESCwrongmarriage.1"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		spouse = {
+			NOT = { trait = elf }
+		}
+		ROOT = {
+			trait = elf
+		}
+		NOT = { has_character_flag = wrongmarriage1 }
+		NOT = { has_character_flag = elfhumanmarriage }
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAwrongmarriage.1" ### Revoke it and banish it!
+			any_spouse = {
+				limit = {
+					is_landed = no
+					NOT = { trait = elf }
+				}
+			remove_spouse = ROOT
+			banish = yes
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBwrongmarriage.1"#Actually, I kind of like her..."
+		trigger = { ai = no }
+		set_character_flag = wrongmarriage
+	}	
+}
+
+
+### Marriage between different races - Orcs Side
+character_event = {
+    id = wrongmarriage.2
+    title = "EVTTITwrongmarriage.2"
+    desc = "EVTDESCwrongmarriage.2"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		spouse = {
+			NOT = { trait = orkish }
+		}
+		ROOT = {
+			trait = orkish
+		}
+		NOT = { has_character_flag = wrongmarriage1 }
+		NOT = { has_character_flag = orchumanmarriage }
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAwrongmarriage.2" ### Revoke it and banish it!
+			any_spouse = {
+				limit = {
+					is_landed = no
+					NOT = { trait = orkish }
+				}
+			remove_spouse = ROOT
+			banish = yes
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBwrongmarriage.2"#Actually, I kind of like her...
+		trigger = { ai = no }
+		set_character_flag = wrongmarriage
+	}	
+}
+
+
+### Marriage between different races - Wight Side
+character_event = {
+    id = wrongmarriage.3
+    title = "EVTTITwrongmarriage.3"
+    desc = "EVTDESCwrongmarriage.3"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		spouse = {
+			NOT = { trait = wight }
+		}
+		ROOT = {
+			trait = wight
+		}
+		NOT = { has_character_flag = wrongmarriage1 }
+		NOT = { has_character_flag = orchumanmarriage }
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAwrongmarriage.3" ### Revoke it and banish it!
+			any_spouse = {
+				limit = {
+					is_landed = no
+					NOT = { trait = wight }
+				}
+			remove_spouse = ROOT
+			banish = yes
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBwrongmarriage.3"#Actually, I kind of like her...
+		trigger = { ai = no }
+		set_character_flag = wrongmarriage
+	}	
+}

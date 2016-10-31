@@ -1,0 +1,85 @@
+decisions = {
+	## ##
+	increase_pop_dunedain = {
+	
+		potential = {
+		culture_group = culture_group_numenorean
+		any_realm_province = {
+		OR = { 
+		has_province_modifier = lightly_populated_by_dunedain
+		has_province_modifier = populated_by_dunedain
+		}
+		}
+		has_character_flag = special_decisions_open
+		}
+		
+
+		allow = { 
+		prestige = 500
+		wealth = 1000
+		}
+		
+		effect = {
+			ROOT = {
+				character_event = { id = population.5 }
+			}
+		}
+	}
+	
+	increase_pop_elves = {
+	
+		potential = {
+		OR = {
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_moriquendi
+	}
+		any_realm_province = {
+		OR = { 
+		has_province_modifier = lightly_populated_by_elves
+		has_province_modifier = populated_by_elves
+		}
+		}
+		has_character_flag = special_decisions_open
+		}
+		
+
+		allow = { 
+		prestige = 500
+		wealth = 1000
+		}
+		
+		effect = {
+			ROOT = {
+				character_event = { id = population.12 }
+			}
+		}
+	}
+
+	increase_pop_dwarves = {
+	
+		potential = {
+		culture_group = culture_group_dwarves
+		any_realm_province = {
+		OR = { 
+		has_province_modifier = lightly_populated_by_dwarves
+		has_province_modifier = populated_by_dwarves
+		}
+		}
+		has_character_flag = special_decisions_open
+		}
+		
+
+		allow = { 
+		prestige = 500
+		wealth = 1000
+		}
+		
+		effect = {
+			ROOT = {
+				character_event = { id = population.18 }
+			}
+		}
+	}	
+	}

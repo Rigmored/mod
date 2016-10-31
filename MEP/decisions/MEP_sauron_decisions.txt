@@ -1,0 +1,75 @@
+decisions = {
+	##Sauron commands those rulers who have been corrupted by Darkness##
+	command_servants = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			OR = {
+				has_landed_title = c_barad_dur
+				has_landed_title = e_barad_dur
+			}
+			dynasty = 10012
+			independent = yes
+			is_ruler = yes
+			has_character_flag = special_decisions_open
+		}
+		allow = { prestige = 1000 }
+		effect = {
+			ROOT = {
+				character_event = { id = sauron.1 }
+			}
+		}
+	}
+	##Some madman has attacked Mordor - Sauron should call in his minions to show them who them the folly of this!##
+	sauron_call_allies = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			OR = {
+				has_landed_title = c_barad_dur
+				has_landed_title = e_barad_dur
+			}
+			dynasty = 10012
+			independent = yes
+			is_ruler = yes
+			is_primary_war_defender = yes
+			NOT = { has_character_flag = sauroncalled_allies }
+			has_character_flag = special_decisions_open
+		}
+		allow = { prestige = 100 }
+		effect = {
+			ROOT = {
+				character_event = { id = sauron.14 }
+			}
+		}
+	}
+	##Sauron can command his Nazguls ##
+	command_nazgul = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			OR = {
+				has_landed_title = c_amon_lanc
+				has_landed_title = k_dol_guldur
+			}
+			NOT = { has_landed_title = e_barad_dur }
+			dynasty = 10012
+			independent = yes
+			is_ruler = yes
+			NOT = { has_character_flag = call_his_nazguls }
+			NOT = { has_global_flag = khamul_in_angmar }
+			NOT = { has_global_flag = numenorean_nazguls_in_angmar }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 1000
+			wealth = 1000
+			piety = 1000
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = sauron.21 }
+			}
+		}
+	}
+}

@@ -1,0 +1,291 @@
+namespace = humaninfertility
+character_event = {
+	id = humaninfertility.0
+	title = "EVTTITelveninfertility.0"
+	desc = "EVTDESCelveninfertility.0"
+	picture = GFX_evt_pregnancy
+	is_triggered_only = yes	
+		
+    	trigger = {
+			age=45
+			is_female=yes
+			NOT = { has_character_flag = human_infertility }
+           	NOT = { trait = elf }
+           	NOT = { trait = dwarven }
+		}
+		
+	option = {
+		name = "OPTAhumaninfertility.0" #OK
+		add_trait = human_infertility	
+		set_character_flag = human_infertility
+	           }
+
+	}  
+
+
+### DEATH OF A NUMENOREAN OF HIGH BLOOD CHARACTER ###
+character_event = {
+	id = humaninfertility.1
+	title = "EVTIThumaninfertility.1"
+	desc = "EVTDESChumaninfertility.1"
+	picture = GFX_evt_death
+	
+		
+    trigger = {
+			age = 120
+			NOT = { has_character_flag = numenorean_death }
+           	NOT = { trait = elf }
+           	NOT = { trait = dwarven }
+			OR = {
+				trait = blood_of_numenor
+				trait = blood_of_anarion
+				trait = blood_of_isildur
+				trait = elven_blood
+			}
+	}
+
+	mean_time_to_happen = {
+		days = 3650
+		
+		### Dates Modifiers ###
+		modifier = {
+			factor = 1.2
+			year = 8000
+		}
+		modifier = {
+			factor = 4
+			year = 9000
+		}
+		modifier = {
+			factor = 1.1
+			year = 10000
+		}
+		modifier = {
+			factor = 0.9
+			year = 11400
+		}		
+		### Age Modifiers ###
+		modifier = {
+			factor = 0.8
+			age = 150
+		}
+		modifier = {
+			factor = 0.65
+			age = 160
+		}
+		modifier = {
+			factor = 0.5
+			age = 170
+		}
+		modifier = {
+			factor = 0.4
+			age = 180
+		}
+		### Health Modifiers ###
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.55
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			health = 20.0
+		}
+		#### Traits Modifier ####
+		modifier = {
+			factor = 10.0
+			OR = {
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+				trait = elven_blood
+			}
+		}		
+		modifier = {
+			factor = 7.0
+			trait = half_elf
+		}	
+		modifier = {
+			factor = 4.0
+			trait = elven_blood
+		}	
+		modifier = {
+			factor = 0.5
+				trait = infirm
+		}	
+		modifier = {
+			factor = 0.3
+				trait = depressed
+		}	
+		modifier = {
+			factor = 0.7
+				trait = stressed
+		}					
+	}
+
+	option = {
+		name = "EVTOPTAhumaninfertility.1" # I'll sleep now.
+		death = {
+			death_reason = death_natural
+		}			
+		set_character_flag = numenorean_death
+	}
+	
+	option = {
+		name = "EVTOPTBhumaninfertility.1" # I won't leave this world!
+		trigger = { ai = no }
+		set_character_flag = numenorean_death
+		health = -5
+		random_list = {
+			22 = {
+					add_trait = stressed
+				}
+			22 = {
+					add_trait = depressed
+			}
+			22 = {
+					add_trait = envious
+			}	
+			22 = {
+					add_trait = zealous
+			}	
+			12 = {
+					add_trait = infirm
+			}				
+		}		
+	}	
+
+}
+
+### DEATH OF A NUMENOREAN OF MEDIUM BLOOD CHARACTER ###
+character_event = {
+	id = humaninfertility.2
+	title = "EVTIThumaninfertility.1"
+	desc = "EVTDESChumaninfertility.1"
+	picture = GFX_evt_death
+	
+		
+    trigger = {
+			age = 100
+			NOT = { has_character_flag = numenorean_death }
+           	NOT = { trait = elf }
+           	NOT = { trait = dwarven }
+			trait = blood_of_numenor2
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		
+		### Dates Modifiers ###
+		modifier = {
+			factor = 5
+			year = 8000
+		}
+		modifier = {
+			factor = 0.8
+			year = 9000
+		}
+		modifier = {
+			factor = 2
+			year = 10000
+		}
+		modifier = {
+			factor = 3
+			year = 11400
+		}		
+		### Age Modifiers ###
+		modifier = {
+			factor = 0.8
+			age = 120
+		}
+		modifier = {
+			factor = 0.65
+			age = 130
+		}
+		modifier = {
+			factor = 0.5
+			age = 140
+		}
+		modifier = {
+			factor = 0.4
+			age = 150
+		}
+		### Health Modifiers ###
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.55
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 5.0
+			health = 20.0
+		}
+		#### Traits Modifier ####
+		modifier = {
+			factor = 10.0
+			OR = {
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+				trait = elven_blood
+			}
+		}		
+		modifier = {
+			factor = 7.0
+			trait = half_elf
+		}	
+		modifier = {
+			factor = 4.0
+			trait = elven_blood
+		}
+		modifier = {
+			factor = 0.5
+				trait = infirm
+		}	
+		modifier = {
+			factor = 0.3
+				trait = depressed
+		}	
+		modifier = {
+			factor = 0.7
+				trait = stressed
+		}					
+	}
+
+	option = {
+		name = "EVTOPTAhumaninfertility.1" # I'll sleep now.
+		death = {
+			death_reason = death_natural
+		}			
+		set_character_flag = numenorean_death
+	}
+	
+	option = {
+		name = "EVTOPTBhumaninfertility.1" # I won't leave this world!
+		trigger = { ai = no }
+		set_character_flag = numenorean_death
+		health = -5
+		random_list = {
+			22 = {
+					add_trait = stressed
+				}
+			22 = {
+					add_trait = depressed
+			}
+			22 = {
+					add_trait = envious
+			}	
+			22 = {
+					add_trait = zealous
+			}	
+			12 = {
+					add_trait = infirm
+			}				
+		}		
+	}	
+
+}    

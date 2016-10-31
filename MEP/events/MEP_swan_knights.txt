@@ -1,0 +1,847 @@
+namespace = swan_knights
+
+### swanknights.0 = will give the Knights of Dol Amroth traits to vassals of the Knights title
+### swanknights.1 = The Captain died - Event for the Prince
+
+narrative_event = {
+	id = swan_knights.0
+	title = "EVTNAMEswan_knights.0"
+	desc = "EVTDESCswan_knights.0"
+	picture = GFX_evt_ring_craft
+	hide_window=yes
+	
+	trigger = {
+		has_landed_title = d_swan_knights
+		OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			culture = culture_dunedain
+			culture = culture_numenorean
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate ={
+		any_courtier = {
+			limit = {
+				NOT = { trait = amroth_knight }
+				is_female = no
+			}
+			add_trait = amroth_knight
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAswan_knights.0"
+	}		
+}
+
+### Death of the Captain - Alert the Prince ###
+narrative_event = {
+	id = swan_knights.1
+	title = "EVTNAMEswan_knights.0"
+	desc = "EVTDESCswan_knights.0"
+	picture = GFX_evt_ring_craft
+	hide_window=yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		liege = {
+			limit = {
+				OR = {
+					has_landed_title = k_belfalas
+					has_landed_title = e_gondor
+					has_landed_title = e_reunited_kingdom
+					has_landed_title = e_arnor
+				}
+			}
+			character_event = { id = swan_knights.2 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAswan_knights.0"
+	}		
+}
+
+### Death of the Captain - Choose a new heir! ###
+narrative_event = {
+	id = swan_knights.2
+	title = "EVTNAMEswan_knights.2"
+	desc = "EVTDESCswan_knights.2"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { #Prominent son
+			limit = {
+				any_realm_character = {
+					is_female = no
+					is_married = no
+					prisoner = no
+					age = 20
+					NOT = { character = ROOT }
+					is_ruler = no
+					is_priest = no
+					NOT = { is_rival = ROOT }
+					NOT = { has_character_flag = refused_swan_captain }
+					father_even_if_dead = {
+						OR = {
+							higher_tier_than = COUNT
+							tier = COUNT
+						}	
+					}
+				}	
+			}
+			set_character_flag = swansknight_son
+		}
+		if = { #Prince's Sons
+			limit = {
+				top_liege = {
+					any_realm_character = {
+						is_female = no
+						is_married = no
+						prisoner = no
+						age = 20
+						NOT = { character = ROOT }
+						is_ruler = no
+						is_priest = no
+						NOT = { is_rival = ROOT }
+						NOT = { has_character_flag = refused_swan_captain }
+						father_even_if_dead = {
+							character = ROOT
+						}
+					}
+				}	
+			}
+			set_character_flag = swansknight_son_prince
+		}		
+	}	
+	
+	option = {
+		name = "EVTOPTAswan_knights.2" ## Keep the heir he choose
+	}		
+	
+	option = {
+		name = "EVTOPTBswan_knights.2" ## I'll choose one of my lord's son
+		trigger = {
+			OR = {
+				has_character_flag = swansknight_son_prince
+				has_character_flag = swansknight_son
+			}
+		}	
+		character_event = { id = swan_knights.3 }
+	}	
+	
+	option = {
+		name = "EVTOPTCswan_knights.2" ## I'll choose a great knight
+		character_event = { id = swan_knights.4 }
+	}
+}
+
+### Death of the Captain - Choose a new Captain - Son of Lords including prince ###
+character_event = {
+	id = swan_knights.3
+	title = "EVTNAMEswan_knights.3"
+	desc = "EVTDESCswan_knights.3"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAswan_knights.3" ## I'll choose one of my sons
+		character_event = { id = swan_knights.5 }
+	}		
+	
+	option = {
+		name = "EVTOPTBswan_knights.3" ## I'll choose one of my lord's son
+		character_event = { id = swan_knights.4 }
+	}	
+
+}
+
+### Death of the Captain - Choose a new Captain - Son of Lords ###
+character_event = {
+	id = swan_knights.4
+	title = "EVTNAMEswan_knights.4"
+	desc = "EVTDESCswan_knights.4"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_realm_character = {
+			limit = {
+				is_female = no
+				is_married = no
+				prisoner = no
+					age = 30
+					NOT = { character = ROOT }
+					is_ruler = no
+					is_priest = no
+					NOT = { is_rival = ROOT }
+					NOT = { has_character_flag = refused_swan_captain }	
+					father_even_if_dead = {
+						OR = {
+							higher_tier_than = COUNT
+							AND = { 
+								tier = COUNT
+								prestige = 500
+							}
+						}
+					}
+				}
+				save_event_target_as = SW_1
+				set_character_flag = SW_candidate
+			}
+			random_realm_character = {
+				limit = {
+					is_female = no
+					is_married = no
+					prisoner = no
+					age = 30
+					NOT = { character = ROOT }
+					is_ruler = no
+					is_priest = no
+					NOT = { is_rival = ROOT }
+					NOT = { has_character_flag = refused_swan_captain }	
+					father_even_if_dead = {
+						OR = {
+							higher_tier_than = COUNT
+							tier = COUNT
+						}
+					}
+				}
+				save_event_target_as = SW_2
+				set_character_flag = SW_candidate
+			}
+			random_realm_character = {
+				limit = {
+					is_female = no
+					is_married = no
+					prisoner = no
+					age = 30
+					NOT = { character = ROOT }
+					is_ruler = no
+					is_priest = no
+					NOT = { is_rival = ROOT }
+					NOT = { has_character_flag = refused_swan_captain }	
+					father_even_if_dead = {
+						OR = {
+							higher_tier_than = COUNT 
+							tier = COUNT
+						}
+					}
+				}
+				save_event_target_as = SW_3
+				set_character_flag = SW_candidate
+			}
+	}
+	
+	option = {
+		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		trigger = { event_target:SW_1 = { always = yes }	}
+		event_target:SW_1 = {		
+			character_event = { id = swan_knights.5 }	
+			clr_character_flag = SW_candidate			
+		}
+		hidden_tooltip = {
+			event_target:SW_2 = { clr_character_flag = SW_candidate }	
+			event_target:SW_3 = { clr_character_flag = SW_candidate }
+		}
+	}		
+	
+	option = {
+		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		trigger = { event_target:SW_2 = { always = yes }	}
+		event_target:SW_2 = {		
+			character_event = { id = swan_knights.5 }	
+			clr_character_flag = SW_candidate			
+		}
+		hidden_tooltip = {
+			event_target:SW_1 = { clr_character_flag = SW_candidate }	
+			event_target:SW_3 = { clr_character_flag = SW_candidate }
+		}
+	}	
+
+	option = {
+		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		trigger = { event_target:SW_3 = { always = yes }	}
+		event_target:SW_3 = {		
+			character_event = { id = swan_knights.5 }	
+			clr_character_flag = SW_candidate			
+		}
+		hidden_tooltip = {
+			event_target:SW_2 = { clr_character_flag = SW_candidate }	
+			event_target:SW_1 = { clr_character_flag = SW_candidate }
+		}
+	}
+
+	option = {
+		name = "EVTOPTDkingsguard.3" #None
+		trigger = { ai = no }
+		hidden_tooltip = {
+			event_target:SW_2 = { clr_character_flag = SW_candidate }	
+			event_target:SW_1 = { clr_character_flag = SW_candidate }
+			event_target:SW_3 = { clr_character_flag = SW_candidate }			
+		}
+		character_event = { id = swan_knights.2 }
+	}	
+
+}
+
+#kingsguard.8 - Drafted to the Kingsguard. [Ai only]
+character_event = {
+	id = swan_knights.5
+	# desc = "EVTDESCswan_knights.5"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		#consider parent's reaction?
+		if = {
+			limit = {
+				#is_primary_heir = yes
+				father = {
+					is_alive = yes
+					is_ruler = yes
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = k_belfalas }
+				}
+			}
+			set_character_flag = father_reaction
+			break = yes
+		}
+		if = {
+			limit = {
+				#is_primary_heir = yes
+				mother = {
+					is_alive = yes
+					is_ruler = yes
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = k_belfalas }
+				}
+			}
+			set_character_flag = mother_reaction
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAkingsguard.8" #Accept	
+		ai_chance = {
+			factor = 25
+			
+			#consider father's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { NOT = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { NOT = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { NOT = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { NOT = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+			#consider mother's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+			
+			modifier = {
+				factor = 1.5
+				top_liege = { dynasty = ROOT }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { is_close_relative = ROOT }
+			}
+			modifier = {
+				factor = 2.5
+				trait = familyperson
+				top_liege = { 
+					OR = {
+						dynasty = ROOT
+						is_close_relative = ROOT
+					}	
+				}
+			}
+			modifier = {
+				factor = 2
+				top_liege = { is_friend = ROOT }
+			}
+			modifier = {
+				factor = 0
+				top_liege = { is_rival = ROOT }
+			}
+			modifier = {
+				factor = 4
+				trait = ambitious
+				NOR = {
+					is_primary_heir = yes
+					any_heir_title = { always = yes }
+					is_pretender = yes
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+					any_claim = { always = yes }
+				}
+			}
+			modifier = {
+				factor = 1.5
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				trait = celibate
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.5
+				trait = honorable
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+		}
+		if = {
+			limit = { is_betrothed = yes }
+			betrothed = {
+				if = {
+					limit = { 
+						is_ruler = yes 
+						NOT = { has_landed_title = k_belfalas }
+					}
+					opinion = {
+						who = ROOT
+						modifier = opinion_betrothal_broken
+					}
+				}
+				if = {
+					limit = { 
+						is_ruler = no 
+						liege = { 
+							is_close_relative = PREV 
+							NOT = { has_landed_title = k_belfalas }
+						}
+					}
+					opinion = {
+						who = ROOT
+						modifier = opinion_betrothal_broken
+					}
+					liege = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_betrothal_broken
+						}
+					}	
+				}
+				break_betrothal = PREV
+			}	
+		}
+		#Inform family/reaction
+		father = {
+			if = {
+				limit = {
+					is_alive = yes
+					OR = {
+						is_primary_heir = yes
+						is_ruler = yes
+					}	
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = k_belfalas }
+				}
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = SW_renounced_inheritance
+				}
+				character_event = { id = swan_knights.7 }
+			}
+		}
+		mother = {
+			if = {
+				limit = {
+					is_alive = yes
+					OR = {
+						is_primary_heir = yes
+						is_ruler = yes
+					}
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = k_belfalas }
+				}
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = SW_renounced_inheritance
+				}
+				character_event = { id = swan_knights.7 }
+			}
+		}
+		any_dynasty_member = {
+			if = {
+				limit = {
+					is_ruler = yes
+					is_close_relative = ROOT
+					NOT = { any_child = { character = ROOT } }
+					OR = {
+						ai = no
+						current_heir = { character = ROOT }
+						current_heir = { any_child = { character = ROOT } }
+					}
+					
+					is_alive = yes
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = k_belfalas }
+				}
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = SW_renounced_inheritance
+				}
+				character_event = { id = swan_knights.7 }
+			}
+		}
+		clr_character_flag = father_reaction
+		clr_character_flag = mother_reaction
+		
+		add_trait = swan_knight
+		d_swan_knights = { grant_title = ROOT }
+		b_tower_of_the_swan = { grant_title = ROOT }
+		recalc_succession = yes
+		FROM = { character_event = { id = swan_knights.6 } }
+		#Make sure they a parent to avoid culling
+		if = {
+			limit = { 
+				NOT = { father_even_if_dead = { always = yes } } 
+				NOT = { mother_even_if_dead = { always = yes } }
+			}
+			if = {
+				limit = { NOT = { age = 20 } }
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					female = no
+					age = 36
+					culture = ROOT
+					religion = ROOT
+				}
+				new_character = {
+					ROOT = { set_father = PREV }
+					death = yes
+				}
+			}
+			if = {
+				limit = { 
+					age = 20
+					NOT = { age = 35 } 
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					female = no
+					age = 51
+					culture = ROOT
+					religion = ROOT
+				}
+				new_character = {
+					ROOT = { set_father = PREV }
+					death = yes
+				}
+			}
+			if = {
+				limit = { age = 35 }
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					female = no
+					age = 66
+					culture = ROOT
+					religion = ROOT
+				}
+				new_character = {
+					ROOT = { set_father = PREV }
+					death = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAswan_knights.5" #Refuse
+		
+		ai_chance = {
+			factor = 10		
+			#consider father's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { reverse_opinion = { who = ROOT value = 25 } } 
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { reverse_opinion = { who = ROOT value = 50 } } 
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { reverse_opinion = { who = ROOT value = 75 } } 
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction	
+				father = { reverse_opinion = { who = ROOT value = 100 } } 
+			}
+			#consider mother's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction	
+				mother = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+			
+			
+			modifier = {
+				factor = 30
+				is_female = yes
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				any_claim = { always = yes }
+			}
+			modifier = {
+				factor = 3
+				is_pretender = yes
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					is_primary_heir = yes
+					any_heir_title = { always = yes }
+				}	
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+				}
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { age = 16 }
+			}
+			modifier = {
+				factor = 1.5
+				is_ill = yes
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					trait = blinded
+					trait = infirm
+					trait = maimed
+				}
+			}
+			modifier = { #doesn't like celibacy
+				factor = 5
+				OR = {
+					trait = hedonist
+					trait = lustful
+				}
+				NOT = { trait = eunuch }
+			}
+			modifier = {
+				factor = 2
+				is_weak_trigger = yes
+			}
+			modifier = {
+				factor = 2
+				trait = poet
+			}
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 4
+				trait = ambitious
+				OR = {
+					is_primary_heir = yes
+					any_heir_title = { always = yes }
+					is_pretender = yes
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+					any_claim = { always = yes }
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+			modifier = {
+				factor = 2
+				trait = slothful
+			}
+			modifier = {
+				factor = 2
+				trait = cynical
+			}
+			modifier = {
+				factor = 2
+				trait = arbitrary
+			}			
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+			
+		}
+		FROM = { character_event = { id = swan_knights.7 } }
+	}
+}
+
+### Death of the Captain - Choose a new Captain - Son of Lords accepts ###
+character_event = {
+	id = swan_knights.6
+	title = "EVTNAMEswan_knights.6"
+	desc = "EVTDESCswan_knights.6"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAswan_knights.6" ## Great.
+	}			
+
+}
+
+### Death of the Captain - Choose a new Captain - Son of Lords refuses ###
+character_event = {
+	id = swan_knights.7
+	title = "EVTNAMEswan_knights.7"
+	desc = "EVTDESCswan_knights.7"
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAswan_knights.7" ## So sad.
+		character_event = { id = swan_knights.2 }
+	}			
+
+}
+
+
+####### SONS EVENTS ########

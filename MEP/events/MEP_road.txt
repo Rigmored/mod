@@ -1,0 +1,152 @@
+#namespace = roads
+	
+## Men-i-Naugrim
+#province_event = {
+#	id = roads.0
+#	desc = "EVTDESCroads.0"
+#	picture = "GFX_evt_abandoned_lands"
+#	
+#	trigger = {
+#		capital_holding = {
+#			has_building = ca_men_i_naugrim	
+#		}
+#		NOT = { has_province_modifier = meninaugrim }
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 1
+#	}
+#		
+#	option = {
+#		name = "EVTOPTAroads.0"		
+#		if = {
+#			limit = {
+#				capital_holding = {
+#					has_building = ca_men_i_naugrim	
+#				}
+#			}	
+#			add_province_modifier = { name = meninaugrim duration = -1 }
+#		}
+#		
+#	}
+#}
+
+## Roads
+#province_event = {
+#	id = roads.1
+#	desc = "EVTDESCroads.1"
+#	picture = "GFX_evt_abandoned_lands"
+#
+#	hide_window=yes
+#	
+#	trigger = {
+#		capital_holding = {
+#			OR = {
+#				has_building = ca_dirt_road_2
+#				has_building = ct_dirt_road_2			
+#			}
+#		}
+#		NOT = { has_province_modifier = dirtroad }
+#		NOT = { has_province_modifier = pavedroad }
+#		NOT = { has_province_modifier = greatroute }
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 1
+#	}
+#		
+#	option = {
+#		name = "EVTOPTAroads.1"		
+#		if = {
+#			limit = {
+#				capital_holding = {
+#					OR = {
+#						has_building = ca_dirt_road_2	
+#						has_building = ct_dirt_road_2	
+#					}
+#				}
+#			}		
+#			add_province_modifier = { name = dirtroad duration = -1 }
+#		}		
+#	}
+#}
+#
+#
+### Roads 2
+#province_event = {
+#	id = roads.2
+#	desc = "EVTDESCroads.2"
+#	picture = "GFX_evt_abandoned_lands"
+#
+#	hide_window=yes
+#	
+#	trigger = {
+#		capital_holding = {
+#			OR = {
+#				has_building = ca_paved_road_3
+#				has_building = ct_paved_road_3			
+#			}
+#		}
+#		NOT = { has_province_modifier = pavedroad }
+#		NOT = { has_province_modifier = greatroute }
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 1
+#	}
+#		
+#	option = {
+#		name = "EVTOPTAroads.2"		
+#		if = {
+##			limit = {
+#				capital_holding = {
+#					OR = {
+#						has_building = ca_great_route_4
+#					}
+#				}
+#			}		
+#			add_province_modifier = { name = pavedroad duration = -1 }
+#			remove_province_modifier = dirtroad
+#		}	
+#		
+#	}
+#}
+
+## Roads
+#province_event = {
+#	id = roads.3
+#	desc = "EVTDESCroads.3"
+#	picture = "GFX_evt_abandoned_lands"
+#
+#	hide_window=yes
+#	
+#	trigger = {
+#		capital_holding = {
+#			OR = {
+#				has_building = ca_great_route_4
+#			   	has_building = ct_great_route_4				
+#			}
+#		}
+#		NOT = { has_province_modifier = greatroute }
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 1
+#	}
+#		
+#	option = {
+#		name = "EVTOPTAroads.1"		
+#		if = {
+#			limit = {
+#				capital_holding = {
+#					OR = {
+#						has_building = ca_great_route_4
+#						has_building = ct_great_route_4	
+#					}
+#				}
+#			}		
+#			add_province_modifier = { name = greatroute duration = -1 }
+#			remove_province_modifier = pavedroad
+#		}		
+#	}
+#}

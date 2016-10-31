@@ -1,0 +1,1645 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+# Castle buildings for generic humans group 'H" - Culture groups Edain ,Southron, Easterlings and Middlemen (except rohirrim) #
+
+castle = {
+###################### Walls , gives fortlevel###################### 
+	ca_Hwall_1 = {
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+        	ai_creation_factor = 80
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}		
+	}
+	ca_Hwall_2 = {
+		desc = ca_Hwall_2_desc
+		upgrades_from = ca_Hwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 79
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ca_Hwall_3 = {
+		desc = ca_Hwall_3_desc
+		upgrades_from = ca_Hwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 78
+        potential = {
+           	has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ca_Hwall_4 = {
+		desc = ca_Hwall_4_desc
+		
+		upgrades_from = ca_Hwall_3
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1.0
+		ai_creation_factor = 77
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ca_Hwall_5 = {
+		desc = ca_Hwall_5_desc
+		upgrades_from = ca_Hwall_4
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1.0
+		ai_creation_factor = 76
+        	potential = {
+           	has_global_flag = building
+			year = 9770
+            province_id = 539 # Dale
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+	
+###################### #Watchtowers, give garrison size ###################### 
+	ca_Hwatchtower_1 = {
+		desc = ca_Hwatchtower_1_desc
+		prerequisites = { ca_Hwall_1 }
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.05
+		ai_creation_factor = 90
+        	potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ca_Hwatchtower_2 = {
+		desc = ca_Hwatchtower_2_desc
+		
+		upgrades_from = ca_Hwatchtower_1
+		gold_cost = 100
+		build_time = 375
+		garrison_size = 0.1
+		ai_creation_factor = 89
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hwatchtower_3 = {
+		desc = ca_Hwatchtower_3_desc
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Hwatchtower_2
+		gold_cost = 150
+		build_time = 525
+		garrison_size = 0.15
+		ai_creation_factor = 88
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hwatchtower_4 = {
+		desc = ca_Hwatchtower_4_desc
+		
+		upgrades_from = ca_Hwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 87
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hwatchtower_5 = {
+		desc = ca_Hwatchtower_5_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Hwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.2
+		ai_creation_factor = 86
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+
+	ca_Hwatchtower_6 = {
+		desc = ca_Hwatchtower_6_desc
+		
+		upgrades_from = ca_Hwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.2
+		ai_creation_factor = 86
+        	potential = {
+        	   	has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+
+###################### Keeps, gives levy size ###################### 
+	ca_Hkeep_1 = {
+		desc = ca_Hkeep_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            }
+	}
+	ca_Hkeep_2 = {
+		desc = ca_Hkeep_1_desc
+		prerequisites = { ca_Hwall_1 }
+		upgrades_from = ca_Hkeep_1
+		gold_cost = 100
+		build_time = 375
+		levy_size = 0.1
+		ai_creation_factor = 101
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ca_Hkeep_3 = {
+		desc = ca_Hkeep_1_desc
+		
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Hkeep_2
+		gold_cost = 150
+		build_time = 550
+		levy_size = 0.15
+		ai_creation_factor = 100
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hkeep_4 = {	
+		desc = ca_Hkeep_1_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Hkeep_3
+		gold_cost = 200
+		build_time = 730
+		levy_size = 0.2
+		ai_creation_factor = 99
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hkeep_5 = {
+		desc = ca_Hkeep_1_desc
+		prerequisites = { ca_Hwall_4 }
+		upgrades_from = ca_Hkeep_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.25
+		ai_creation_factor = 98
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			 
+		}
+	}
+	ca_Hkeep_6 = {
+		desc = ca_Hkeep_1_desc
+		prerequisites = { ca_Hwall_5 }
+		upgrades_from = ca_Hkeep_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.3
+		
+		ai_creation_factor = 97
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }		 
+		}
+	}
+	
+####################### Militia barracks, gives light infantry and archers###################### 
+	ca_Hmilitia_barracks_1 = {
+		desc = ca_Hmilitia_barracks_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hmilitia_barracks_2 = {
+		desc = ca_Hmilitia_barracks_2_desc
+
+		prerequisites = { ca_Hwall_1 }
+		upgrades_from = ca_Hmilitia_barracks_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hmilitia_barracks_3 = {
+		desc = ca_Hmilitia_barracks_3_desc
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Hmilitia_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 20
+		archers = 90
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hmilitia_barracks_4 = {
+		desc = ca_Hmilitia_barracks_3_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Hmilitia_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 30
+		archers = 120
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+
+####################### Training grounds, gives morale and reinforce rate #######################
+	ca_Htraining_grounds_1 = {
+		desc = ca_Htraining_grounds_1_desc
+		
+		prerequisites = { ca_Hwall_2 }
+		gold_cost = 200
+		build_time = 730
+		land_morale = 0.1
+		levy_reinforce_rate = 0.1
+		retinuesize = 20
+		ai_creation_factor = 89
+        	potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htraining_grounds_2 = {
+		desc = ca_Htraining_grounds_1_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Htraining_grounds_1
+		gold_cost = 250
+		build_time = 1095
+		land_morale = 0.15
+		levy_reinforce_rate = 0.15
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htraining_grounds_3 = {
+		desc = ca_Htraining_grounds_1_desc
+		prerequisites = { ca_Hwall_4 }
+		upgrades_from = ca_Htraining_grounds_2
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.2
+		levy_reinforce_rate = 0.2
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	
+####################### Castle Guard, gives heavy infantry and pikemen #######################
+	ca_Hcastleguards_1 = {
+		desc = ca_Hcastleguards_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 30
+		pikemen = 15
+		ai_creation_factor = 105
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hcastleguards_2 = {
+		desc = ca_Hcastleguards_1_desc
+		
+		prerequisites = { ca_Hwall_1 }
+		upgrades_from = ca_Hcastleguards_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 40
+		pikemen = 15
+		ai_creation_factor = 104
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hcastleguards_3 = {
+		desc = ca_Hcastleguards_1_desc
+		
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Hcastleguards_2
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 45
+		pikemen = 20
+		ai_creation_factor = 103
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hcastleguards_4 = {
+		desc = ca_Hcastleguards_1_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Hcastleguards_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 50
+		pikemen = 25
+		ai_creation_factor = 102
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hcastleguards_5 = {
+		desc = ca_Hcastleguards_1_desc
+		prerequisites = { ca_Hwall_4 }
+		upgrades_from = ca_Hcastleguards_4
+		gold_cost = 400
+		build_time = 2190
+		heavy_infantry = 60
+		pikemen = 25
+		ai_creation_factor = 101
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hcastleguards_6 = {
+		desc = ca_Hcastleguards_1_desc
+		prerequisites = { ca_Hwall_5 }
+		upgrades_from = ca_Hcastleguards_5
+		gold_cost = 500
+		build_time = 2190
+		heavy_infantry = 65
+		pikemen = 30
+		ai_creation_factor = 100
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	
+####################### Stable, gives light cavalry and some heavy cavalry #######################
+	ca_Hstable_1 = {
+		desc = ca_Hstable_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_cavalry = 35
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hstable_2 = {
+		desc = ca_Hstable_1_desc
+		
+		prerequisites = { ca_Hwall_1 }
+		upgrades_from = ca_Hstable_1
+		gold_cost = 120
+		build_time = 547
+		light_cavalry = 45
+		ai_creation_factor = 88
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }	
+            	}
+	}
+	ca_Hstable_3 = {
+		desc = ca_Hstable_1_desc
+		
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Hstable_2
+		gold_cost = 200
+		build_time = 730
+		light_cavalry = 55
+		ai_creation_factor = 87
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hstable_4 = {
+		desc = ca_Hstable_1_desc
+		
+		upgrades_from = ca_Hstable_3
+		gold_cost = 300
+		build_time = 1095
+		light_cavalry = 55
+		knights = 5
+		ai_creation_factor = 86
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hstable_5 = {
+		desc = ca_Hstable_1_desc
+		upgrades_from = ca_Hstable_4
+		gold_cost = 400
+		build_time = 2190
+		light_cavalry = 55
+		knights = 10
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Hstable_6 = {
+		desc = ca_Hstable_1_desc
+		
+		upgrades_from = ca_Hstable_5
+		gold_cost = 500
+		build_time = 2190
+		light_cavalry = 55
+		knights = 20
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }	
+            	}
+	}
+	
+####################### Castle town, gives income #######################
+	ca_Htown_1 = {
+		desc = ca_Htown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htown_2 = {
+		desc = ca_Htown_2_desc
+		
+		prerequisites = { ca_Hwall_1 }
+		upgrades_from = ca_Htown_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htown_3 = {
+		desc = ca_Htown_3_desc
+		
+		prerequisites = { ca_Hwall_2 }
+		upgrades_from = ca_Htown_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 2
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htown_4 = {
+		desc = ca_Htown_4_desc
+		prerequisites = { ca_Hwall_3 }
+		upgrades_from = ca_Htown_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 2
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htown_5 = {
+		desc = ca_Htown_4_desc
+		prerequisites = { ca_Hwall_4 }
+		upgrades_from = ca_Htown_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ca_Htown_6 = {
+		desc = ca_Htown_5_desc
+		prerequisites = { ca_Hwall_4 }
+		upgrades_from = ca_Htown_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+####################### Shipyard, gives galleys #######################
+	ca_Hshipyard_1 = {
+		desc = Hshipyard_desc
+		port = yes
+		gold_cost = 100
+		build_time = 365
+		galleys = 6
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	
+	ca_Hshipyard_2 = {
+		desc = Hshipyard_desc
+		port = yes
+		upgrades_from = ca_Hshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 7
+		ai_creation_factor = 99
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }			
+            	}
+	}
+	ca_Hshipyard_3 = {
+		desc = Hshipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Hshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 8
+		ai_creation_factor = 98
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	
+	ca_Hshipyard_4 = {
+		desc = Hshipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Hshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 9
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+############################## Easterlings special buildings##############################
+	ca_khamul_palace = { ## The Palace of Khamul - Kas Rhûn
+		desc = ca_khamul_palace_desc
+		gold_cost = 350
+		build_time = 470
+		fort_level = 2.0	
+		garrison_size = 1.2		
+		ai_creation_factor = 106
+        potential = {
+			FROMFROM = { title = b_kas_rhun }
+			OR = {
+			culture = culture_easterling
+			FROM = { trait=nazgul }
+			}
+        }
+	}	
+	ca_slavers_1 = {
+		desc = ca_slavers_desc
+		gold_cost = 295
+		build_time = 1105
+		heavy_infantry = 50
+		light_cavalry = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			culture_group = culture_group_easterling
+				NOT = { culture = culture_balchoth }
+				NOT = { culture = culture_wainriders }
+		}
+	}
+	ca_slavers_2 = {
+		desc = ca_slavers_desc
+		upgrades_from = ca_slavers_1
+		gold_cost = 315
+		build_time = 1385
+		heavy_infantry = 50
+		light_cavalry = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			culture_group = culture_group_easterling
+			NOT = { culture = culture_balchoth }
+			NOT = { culture = culture_wainriders }
+		}
+	}
+	ca_slavers_3 = {
+		desc = ca_slavers_desc
+		upgrades_from = ca_slavers_2
+		gold_cost = 435
+		build_time = 1745
+		heavy_infantry = 50
+		light_cavalry = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    	potential = {
+			has_global_flag = building
+			culture_group = culture_group_easterling
+			NOT = { culture = culture_balchoth }
+			NOT = { culture = culture_wainriders }
+		}
+	}
+	
+	ca_wainriders_1 = {
+		desc = ca_wainriders_desc
+		gold_cost = 185
+		build_time = 700
+		knights = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_balchoth
+			culture = culture_wainriders
+			}
+		}
+	}
+	ca_wainriders_2 = {
+		desc = ca_wainriders_desc
+		upgrades_from = ca_wainriders_1
+		gold_cost = 205
+		build_time = 890
+		knights = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_balchoth
+			culture = culture_wainriders
+			}
+		}
+	}
+	ca_wainriders_3 = {
+		desc = ca_wainriders_desc
+		upgrades_from = ca_wainriders_2
+		gold_cost = 285
+		build_time = 1030
+		knights = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_balchoth
+			culture = culture_wainriders
+			}
+		}
+	}
+	ca_wainriders_4 = {
+		desc = ca_wainriders_desc
+		upgrades_from = ca_wainriders_3
+		gold_cost = 400
+		build_time = 1465
+		knights = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_balchoth
+			culture = culture_wainriders
+			}
+		}
+	}
+
+############################## Southron special buildings##############################
+#Haradrim Buildings - Elite troops#
+	ca_serpentg_1 = {
+		desc = ca_serpentg_desc
+		gold_cost = 115
+		build_time = 428
+		pikemen = 40
+		knights = 10
+		ai_creation_factor = 50
+		add_number_to_name = no
+   		potential = {
+        		has_global_flag = building
+	    		FROM = { culture = culture_haradrim }
+    		}
+	}
+	ca_serpentg_2 = {
+		desc = ca_serpentg_desc
+		upgrades_from = ca_serpentg_1
+		gold_cost = 120
+		build_time = 520
+		pikemen = 40
+		knights = 10
+		ai_creation_factor = 50
+		add_number_to_name = no
+   		potential = {
+        		has_global_flag = building
+	    		FROM = { culture = culture_haradrim }
+    		}
+	}
+	ca_serpentg_3 = {
+		desc = ca_serpentg_desc
+		upgrades_from = ca_serpentg_2
+		gold_cost = 160
+		build_time = 705
+		pikemen = 40
+		knights = 10
+		ai_creation_factor = 50
+		add_number_to_name = no
+   		potential = {
+        		has_global_flag = building
+	    		FROM = { culture = culture_haradrim }
+    		}
+	}
+	ca_serpentg_4 = {
+		desc = ca_serpentg_desc
+		upgrades_from = ca_serpentg_3
+		gold_cost = 210
+		build_time = 770
+		pikemen = 40
+		knights = 10
+		ai_creation_factor = 50
+		add_number_to_name = no
+   		potential = {
+        		has_global_flag = building
+	    		FROM = { culture = culture_haradrim }
+    		}
+	}
+	
+	ca_trollmen_1 = {
+		desc = ca_trollmen_desc
+		gold_cost = 110
+		build_time = 405
+		heavy_infantry = 50
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			culture = culture_far_haradrim
+		}
+	}
+	ca_trollmen_2 = {
+		desc = ca_trollmen_desc
+		upgrades_from = ca_trollmen_1
+		gold_cost = 115
+		build_time = 500
+		heavy_infantry = 50
+		ai_creation_factor = 50
+		add_number_to_name = no
+    	potential = {
+        	has_global_flag = building
+			culture = culture_far_haradrim
+		}
+	}
+	ca_trollmen_3 = {
+		desc = ca_trollmen_desc
+		upgrades_from = ca_trollmen_2
+		gold_cost = 155
+		build_time = 715
+		heavy_infantry = 50
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			culture = culture_far_haradrim
+		}
+	}
+	ca_trollmen_4 = {
+		desc = ca_trollmen_desc
+		upgrades_from = ca_trollmen_3
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 50
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			culture = culture_far_haradrim
+		}
+	}
+	
+	ca_desertraiders_1 = {
+		desc = ca_desertraiders_desc
+		gold_cost = 240
+		build_time = 905
+		light_infantry = 50
+		light_cavalry = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_bellakaze
+			culture = culture_harondorian
+			}
+		}
+	}
+	ca_desertraiders_2 = {
+		desc = ca_desertraiders_desc
+		upgrades_from = ca_desertraiders_1
+		gold_cost = 240
+		build_time = 905
+		light_infantry = 50
+		light_cavalry = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_bellakaze
+			culture = culture_harondorian
+			}
+		}
+	}
+
+##Mumakil Paddock##
+	ca_mumakil1 = {
+		desc = ca_mumakil1_desc
+		gold_cost = 100
+		build_time = 375
+		war_elephants = 1
+		monthly_character_prestige = 0.2
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			FROM = { 
+			OR = {
+				culture = culture_haradrim 
+				culture = culture_far_haradrim
+				}
+			}
+			FROM = { 
+				OR = {
+				trait=mumakil_raiser
+				trait=mumakil_groom
+				trait=mumakil_rider
+				trait=mumakil_commander
+				}
+			}
+		}
+	}
+	ca_mumakil2 = {
+		desc = ca_mumakil1_desc
+		upgrades_from = ca_mumakil1
+		gold_cost = 105
+		build_time = 455
+		war_elephants = 1
+		monthly_character_prestige = 0.2
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			FROM = { 
+			OR = {
+				culture = culture_haradrim 
+				culture = culture_far_haradrim
+					}
+				}
+			FROM = { 
+				OR = {
+				trait=mumakil_raiser
+				trait=mumakil_groom
+				trait=mumakil_rider
+				trait=mumakil_commander
+				}
+			}
+		}
+	}
+	ca_mumakil3 = {
+		desc = ca_mumakil1_desc
+		upgrades_from = ca_mumakil2
+		gold_cost = 145
+		build_time = 580
+		war_elephants = 1
+		monthly_character_prestige = 0.2
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			FROM = { 
+			OR = {
+				culture = culture_haradrim 
+				culture = culture_far_haradrim
+					}
+				}
+			FROM = { 
+				OR = {
+				trait=mumakil_raiser
+				trait=mumakil_groom
+				trait=mumakil_rider
+				trait=mumakil_commander
+				}
+			}
+		}
+	}
+	ca_mumakil4 = {
+		desc = ca_mumakil1_desc
+		upgrades_from = ca_mumakil3
+		gold_cost = 185
+		build_time = 710
+		war_elephants = 1
+		monthly_character_prestige = 0.2
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+        		has_global_flag = building
+			FROM = { 
+			OR = {
+				culture = culture_haradrim 
+				culture = culture_far_haradrim
+					}
+				}
+			FROM = { 
+				OR = {
+				trait=mumakil_raiser
+				trait=mumakil_groom
+				trait=mumakil_rider
+				trait=mumakil_commander
+				}
+			}
+		}
+	}
+	ca_mumakil5 = {
+		desc = ca_mumakil1_desc
+		upgrades_from = ca_mumakil4
+		gold_cost = 220
+		build_time = 1060
+		war_elephants = 1
+		monthly_character_prestige = 0.2
+		ai_creation_factor = 50
+		add_number_to_name = no
+    	potential = {
+        		has_global_flag = building
+			FROM = { 
+			OR = {
+				culture = culture_haradrim 
+				culture = culture_far_haradrim
+					}
+				}
+			FROM = { 
+				OR = {
+				trait=mumakil_raiser
+				trait=mumakil_groom
+				trait=mumakil_rider
+				trait=mumakil_commander
+				}
+			}
+		}
+	}
+
+##############################Umbar unique buildings : see Black Numenoreans ##############################
+
+############################## Beornings special buildings##############################
+	ca_shapechangers_1 = {
+		desc = ca_shapechangers_1_desc
+		
+		gold_cost = 55
+		build_time = 210
+		knights = 20
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+            	}
+	}
+	ca_shapechangers_2 = {
+		desc = ca_shapechangers_1_desc
+		upgrades_from = ca_shapechangers_1
+		gold_cost = 60
+		build_time = 245
+		knights = 20
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+            	}
+	}
+	ca_shapechangers_3 = {
+		desc = ca_shapechangers_1_desc
+		upgrades_from = ca_shapechangers_2
+		gold_cost = 75
+		build_time = 265
+		knights = 20
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+            	}
+	}
+	ca_shapechangers_4 = {
+		desc = ca_shapechangers_1_desc
+		upgrades_from = ca_shapechangers_3
+		gold_cost = 100
+		build_time = 365
+		knights = 20
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+            	}
+	}
+	ca_shapechangers_5 = {
+		desc = ca_shapechangers_1_desc
+		upgrades_from = ca_shapechangers_4
+		gold_cost = 125
+		build_time = 584
+		knights = 20
+		ai_creation_factor = 89
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+            	}
+	}
+############################## Dale special buildings##############################
+	ca_dale = { ## The Grand city of Dale
+		desc = ca_dale_desc
+		gold_cost = 300
+		build_time = 1090
+		fort_level = 2.0	
+		tax_income = 2		
+		ai_creation_factor = 106
+        potential = {
+			year = 9770
+            		province_id = 539 # Dale
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+	ca_daleelite_1 = { ## Dale Elite Forces
+		desc = ca_daleelite_1_desc
+		gold_cost = 85
+		build_time = 320
+		heavy_infantry = 15
+		knights = 15
+		archers = 10
+		ai_creation_factor = 90
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+	ca_daleelite_2 = { ## Dale Elite Forces
+		desc = ca_daleelite_1_desc
+		upgrades_from = ca_daleelite_1
+		gold_cost = 90
+		build_time = 390
+		heavy_infantry = 15
+		knights = 15
+		archers = 10
+		ai_creation_factor = 90
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+	ca_daleelite_3 = { ## Dale Elite Forces
+		desc = ca_daleelite_1_desc
+		upgrades_from = ca_daleelite_2
+		gold_cost = 120
+		build_time = 515
+		heavy_infantry = 15
+		knights = 15
+		archers = 10
+		ai_creation_factor = 90
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+	ca_daleelite_4 = { ## Dale Elite Forces
+		desc = ca_daleelite_1_desc
+		upgrades_from = ca_daleelite_3
+		gold_cost = 155
+		build_time = 565
+		heavy_infantry = 15
+		knights = 15
+		archers = 10
+		ai_creation_factor = 90
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+		}
+	}
+############################## Woodsmen special buildings : hunters ##############################
+	ca_woodsmenhunters_1 = {
+		desc = woodsmenhunters_1_desc
+		
+		gold_cost = 45
+		build_time = 160
+		archers = 40
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			culture = culture_woodsmen
+            	}
+	}
+	ca_woodsmenhunters_2 = {
+		desc = woodsmenhunters_1_desc
+		upgrades_from = ca_woodsmenhunters_1
+		gold_cost = 48
+		build_time = 220
+		archers = 40
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			culture = culture_woodsmen
+            	}
+	}
+	ca_woodsmenhunters_3 = {
+		desc = woodsmenhunters_1_desc
+		upgrades_from = ca_woodsmenhunters_2
+		gold_cost = 75
+		build_time = 292
+		archers = 40
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			culture = culture_woodsmen
+            	}
+	}
+	ca_woodsmenhunters_4 = {
+		desc = woodsmenhunters_1_desc
+		upgrades_from = ca_woodsmenhunters_3
+		gold_cost = 80
+		build_time = 400
+		archers = 40
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			culture = culture_woodsmen
+            	}
+	}
+	ca_woodsmenhunters_5 = {
+		desc = woodsmenhunters_1_desc
+		upgrades_from = ca_woodsmenhunters_4
+		gold_cost = 95
+		build_time = 460
+		archers = 40
+		ai_creation_factor = 100
+		potential = {
+			has_global_flag = building
+			culture = culture_woodsmen
+            	}
+	}
+
+
+
+
+
+}

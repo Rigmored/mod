@@ -1,0 +1,822 @@
+###################### Castle buildings for Goblins and Half Orcs - MG code- ###################### 
+ 
+castle = {
+###################### Walls , gives fortlevel###################### 
+	ca_MGwall_1 = {
+		desc = ca_MGwall_1_desc
+		
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+        	ai_creation_factor = 80
+		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}		
+	}
+	ca_MGwall_2 = {
+		desc = ca_MGwall_2_desc
+		
+		upgrades_from = ca_MGwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 79
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	ca_MGwall_3 = {
+		desc = ca_MGwall_3_desc
+		
+		upgrades_from = ca_MGwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 78
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}		 
+		}
+	}
+	ca_MGwall_4 = {
+		desc = ca_MGwall_4_desc
+		
+		upgrades_from = ca_MGwall_3
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1.0
+		ai_creation_factor = 77
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}	 
+		}
+	}
+	ca_MGwall_5 = {
+		desc = ca_MGwall_5_desc
+		
+		upgrades_from = ca_MGwall_4
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1.0
+		ai_creation_factor = 76
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	
+###################### #Watchtowers, give garrison size ###################### 
+	ca_MGwatchtower_1 = {
+		desc = ca_MGwatchtower_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.05
+		ai_creation_factor = 90
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}			 
+		}
+	}
+	ca_MGwatchtower_2 = {
+		desc = ca_MGwatchtower_2_desc
+		
+		upgrades_from = ca_MGwatchtower_1
+		gold_cost = 100
+		build_time = 375
+		garrison_size = 0.1
+		ai_creation_factor = 89
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	ca_MGwatchtower_3 = {
+		desc = ca_MGwatchtower_3_desc
+		
+		upgrades_from = ca_MGwatchtower_2
+		gold_cost = 150
+		build_time = 525
+		garrison_size = 0.15
+		ai_creation_factor = 88
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	ca_MGwatchtower_4 = {
+		desc = ca_MGwatchtower_4_desc
+		
+		upgrades_from = ca_MGwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 87
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	ca_MGwatchtower_5 = {
+		desc = ca_MGwatchtower_5_desc
+		
+		upgrades_from = ca_MGwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.2
+		ai_creation_factor = 86
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+	ca_MGwatchtower_6 = {
+		desc = ca_MGwatchtower_6_desc
+		
+		upgrades_from = ca_MGwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.2
+		ai_creation_factor = 86
+        	potential = {
+        	   	has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+
+###################### Keeps, gives levy size ###################### 
+	ca_MGkeep_1 = {
+		desc = ca_MGkeep_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            }
+	}
+	ca_MGkeep_2 = {
+		desc = ca_MGkeep_1_desc
+
+		prerequisites = { ca_MGwall_1 }
+		upgrades_from = ca_MGkeep_1
+		gold_cost = 100
+		build_time = 375
+		levy_size = 0.1
+		ai_creation_factor = 101
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+	ca_MGkeep_3 = {
+		desc = ca_MGkeep_1_desc
+		
+		prerequisites = { ca_MGwall_2 }
+		upgrades_from = ca_MGkeep_2
+		gold_cost = 150
+		build_time = 550
+		levy_size = 0.15
+		ai_creation_factor = 100
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}			 
+		}
+	}
+	ca_MGkeep_4 = {	
+		desc = ca_MGkeep_1_desc
+		
+		upgrades_from = ca_MGkeep_3
+		gold_cost = 200
+		build_time = 730
+		levy_size = 0.2
+		ai_creation_factor = 99
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}				 
+		}
+	}
+	ca_MGkeep_5 = {
+		desc = ca_MGkeep_1_desc
+		
+		upgrades_from = ca_MGkeep_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.25
+		ai_creation_factor = 98
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}			 
+		}
+	}
+	ca_MGkeep_6 = {
+		desc = ca_MGkeep_1_desc
+		
+		upgrades_from = ca_MGkeep_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.3
+		
+		ai_creation_factor = 97
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}			 
+		}
+	}
+	
+####################### Militia barracks, gives light infantry and archers###################### 
+	ca_MGmilitia_barracks_1 = {
+		desc = ca_MGmilitia_barracks_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGmilitia_barracks_2 = {
+		desc = ca_MGmilitia_barracks_2_desc
+
+		prerequisites = { ca_MGwall_1 }
+		upgrades_from = ca_MGmilitia_barracks_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGmilitia_barracks_3 = {
+		desc = ca_MGmilitia_barracks_3_desc
+		
+		upgrades_from = ca_MGmilitia_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 20
+		archers = 90
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGmilitia_barracks_4 = {
+		desc = ca_MGmilitia_barracks_3_desc
+		
+		upgrades_from = ca_MGmilitia_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 30
+		archers = 120
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+
+####################### Training grounds, gives morale and reinforce rate #######################
+	ca_MGtraining_grounds_1 = {
+		desc = ca_MGtraining_grounds_1_desc
+		
+		prerequisites = { ca_MGwall_2 }
+		gold_cost = 200
+		build_time = 730
+		land_morale = 0.1
+		levy_reinforce_rate = 0.1
+		retinuesize = 20
+		ai_creation_factor = 89
+        	potential = {
+	    		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtraining_grounds_2 = {
+		desc = ca_MGtraining_grounds_1_desc
+		
+		upgrades_from = ca_MGtraining_grounds_1
+		gold_cost = 250
+		build_time = 1095
+		land_morale = 0.15
+		levy_reinforce_rate = 0.15
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtraining_grounds_3 = {
+		desc = ca_MGtraining_grounds_1_desc
+		
+		upgrades_from = ca_MGtraining_grounds_2
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.2
+		levy_reinforce_rate = 0.2
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	
+####################### Castle Guard, gives heavy infantry and pikemen #######################
+	ca_MGcastleguards_1 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 105
+		potential = {
+	 		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGcastleguards_2 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		prerequisites = { ca_MGwall_1 }
+		upgrades_from = ca_MGcastleguards_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 104
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGcastleguards_3 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		prerequisites = { ca_MGwall_2 }
+		upgrades_from = ca_MGcastleguards_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 103
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGcastleguards_4 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		upgrades_from = ca_MGcastleguards_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 102
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGcastleguards_5 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		upgrades_from = ca_MGcastleguards_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 101
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGcastleguards_6 = {
+		desc = ca_MGcastleguards_1_desc
+		
+		upgrades_from = ca_MGcastleguards_5
+		gold_cost = 500
+		build_time = 2190
+		pikemen = 95
+		ai_creation_factor = 100
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	
+####################### Stable, gives light cavalry and some heavy cavalry #######################
+	ca_MGstable_1 = {
+		desc = ca_MGstable_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_cavalry = 35
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}		
+            	}
+	}
+	ca_MGstable_2 = {
+		desc = ca_MGstable_1_desc
+		
+		prerequisites = { ca_MGwall_1 }
+		upgrades_from = ca_MGstable_1
+		gold_cost = 120
+		build_time = 547
+		light_cavalry = 45
+		ai_creation_factor = 88
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}	
+            	}
+	}
+	ca_MGstable_3 = {
+		desc = ca_MGstable_1_desc
+		
+		prerequisites = { ca_MGwall_2 }
+		upgrades_from = ca_MGstable_2
+		gold_cost = 200
+		build_time = 730
+		light_cavalry = 55
+		ai_creation_factor = 87
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGstable_4 = {
+		desc = ca_MGstable_1_desc
+		
+		upgrades_from = ca_MGstable_3
+		gold_cost = 300
+		build_time = 1095
+		light_cavalry = 60
+		ai_creation_factor = 86
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGstable_5 = {
+		desc = ca_MGstable_1_desc
+		upgrades_from = ca_MGstable_4
+		gold_cost = 400
+		build_time = 2190
+		light_cavalry = 65
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGstable_6 = {
+		desc = ca_MGstable_1_desc
+		
+		upgrades_from = ca_MGstable_5
+		gold_cost = 500
+		build_time = 2190
+		light_cavalry = 75
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	
+####################### Castle town, gives income #######################
+	ca_MGtown_1 = {
+		desc = ca_MGtown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtown_2 = {
+		desc = ca_MGtown_2_desc
+		
+		prerequisites = { ca_MGwall_1 }
+		upgrades_from = ca_MGtown_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtown_3 = {
+		desc = ca_MGtown_3_desc
+		
+		prerequisites = { ca_MGwall_2 }
+		upgrades_from = ca_MGtown_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 2
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtown_4 = {
+		desc = ca_MGtown_4_desc
+		
+		upgrades_from = ca_MGtown_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 2
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtown_5 = {
+		desc = ca_MGtown_4_desc
+		upgrades_from = ca_MGtown_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+	ca_MGtown_6 = {
+		desc = ca_MGtown_5_desc
+		
+		upgrades_from = ca_MGtown_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+####################### Shipyard, gives galleys #######################
+	ca_MGshipyard_1 = {
+		desc = MGshipyard_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		galleys = 6
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}	
+            	}
+	}
+	ca_MGshipyard_2 = {
+		desc = MGshipyard_desc
+		port = yes
+		upgrades_from = ca_MGshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 7
+		ai_creation_factor = 99
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}			
+            	}
+	}
+	ca_MGshipyard_3 = {
+		desc = MGshipyard_desc
+		port = yes
+		upgrades_from = ca_MGshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 8
+		ai_creation_factor = 98
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            }
+	}
+	ca_MGshipyard_4 = {
+		desc = MGshipyard_desc
+		port = yes
+		upgrades_from = ca_MGshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 9
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+            	}
+	}
+
+####################### Special buildings #######################
+	ca_MGraiders_1 = {
+		desc = ca_MGraiders_desc
+		gold_cost = 165
+		build_time = 585
+		light_infantry = 50
+		archers = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+	ca_MGraiders_2 = {
+		desc = ca_MGraiders_desc
+		upgrades_from = ca_MGraiders_1
+		gold_cost = 180
+		build_time = 825
+		light_infantry = 50
+		archers = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+	ca_MGraiders_3 = {
+		desc = ca_MGraiders_desc
+		upgrades_from = ca_MGraiders_2
+		gold_cost = 285
+		build_time = 1095
+		light_infantry = 50
+		archers = 50
+		tax_income = 1
+		ai_creation_factor = 50
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_goblin
+				culture = culture_half_orc
+            			}
+		}
+	}
+}

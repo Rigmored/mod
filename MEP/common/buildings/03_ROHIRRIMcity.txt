@@ -1,0 +1,818 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+# City buildings for humans group 'R" - Rohirrim and Eothed #
+city = {
+
+################## Defense : fort level -lvl 3 max- ###############################
+	ct_Rwall_1 = {
+		desc = ct_Rwall_1_desc
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 60
+		potential = {
+	   		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_Rwall_2 = {
+		desc = ct_Rwall_1_desc
+		upgrades_from = ct_Rwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 59
+        	potential = {
+           		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}	
+	ct_Rwall_3 = {
+		desc = ca_wall_1_desc
+		upgrades_from = ct_Rwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 58
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+
+################## Defense : garrison size ###############################	
+	ct_Rwatchtower_1 = {
+		desc = ct_Rwatchtower_1_desc
+		prerequisites = { ct_Rwall_1 }
+		gold_cost = 75
+		build_time = 270
+		garrison_size = 0.05
+		ai_creation_factor = 99	
+		potential = {
+	   		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+
+	ct_Rwatchtower_2 = {
+		desc = ct_Rwatchtower_1_desc
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_Rwatchtower_1
+		gold_cost = 100
+		build_time = 370
+		garrison_size = 0.1
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+	ct_Rwatchtower_3 = {
+		desc = ct_Rwatchtower_1_desc
+		
+		upgrades_from = ct_Rwatchtower_2
+		gold_cost = 150
+		build_time = 550
+		garrison_size = 0.15
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+	ct_Rwatchtower_4 = {
+		desc = ct_Rwatchtower_1_desc
+		
+		upgrades_from = ct_Rwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+	ct_Rwatchtower_5 = {
+		desc = ct_Rwatchtower_1_desc
+		
+		upgrades_from = ct_Rwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}	
+	ct_Rwatchtower_6 = {
+		desc = ct_Rwatchtower_1_desc
+		
+		upgrades_from = ct_Rwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+
+	}
+
+################## Offense : Levy size ###############################
+	ct_Rbarracks_1 = {
+		desc = ct_Rbarracks_1_desc
+		
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+	   		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+	ct_Rbarracks_2 = {
+		desc = ct_Rbarracks_1_desc
+		
+		prerequisites = { ct_Rwall_1 }
+		upgrades_from = ct_Rbarracks_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	} 
+	ct_Rbarracks_3 = {
+		desc = ct_Rbarracks_1_desc
+		
+		upgrades_from = ct_Rbarracks_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	} 
+	ct_Rbarracks_4 = {
+		desc = ct_Rbarracks_1_desc
+		
+		upgrades_from = ct_Rbarracks_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+	   		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	} 
+	ct_Rbarracks_5 = {
+		desc = ct_Rbarracks_1_desc
+		
+		upgrades_from = ct_Rbarracks_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+	             }
+	}
+	ct_Rbarracks_6 = {
+		desc = ct_Rbarracks_1_desc
+		upgrades_from = ct_Rbarracks_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+	  		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }
+	}
+
+################## Offense : Light infantry + archers -50% each ###############################
+	ct_Rtownmilitia_1 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		gold_cost = 50
+		build_time = 180
+		light_infantry = 30
+		archers = 15
+		ai_creation_factor = 95
+		potential = {
+	  		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            }	
+	}
+	ct_Rtownmilitia_2 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		prerequisites = { ct_Rwall_1 }
+		upgrades_from = ct_Rtownmilitia_1
+		gold_cost = 60
+		build_time = 270
+		light_infantry = 20
+		archers = 35
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}	
+	}
+	ct_Rtownmilitia_3 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_Rtownmilitia_2
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 40
+		archers = 25
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}	
+	}
+	ct_Rtownmilitia_4 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		upgrades_from = ct_Rtownmilitia_3
+		gold_cost = 150
+		build_time = 545
+		light_infantry = 30
+		archers = 45
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}	
+        	}	
+	}
+	ct_Rtownmilitia_5 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		upgrades_from = ct_Rtownmilitia_4
+		gold_cost = 200
+		build_time = 980
+		light_infantry = 50
+		archers = 35
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}	
+	}
+	ct_Rtownmilitia_6 = {
+		desc = ct_Rtownmilitia_1_desc
+		
+		upgrades_from = ct_Rtownmilitia_5
+		gold_cost = 250
+		build_time = 1225
+		light_infantry = 40
+		archers = 55
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}	
+	}
+	
+################## Troops : pikemen -50% ###############################
+	ct_Rguard_1 = {
+		desc = ct_Rguard_1_desc
+		
+		gold_cost = 50
+		build_time = 185
+		pikemen = 23
+		ai_creation_factor = 96
+		potential = {	
+     			has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	
+	}
+	ct_Rguard_2 = {
+		desc = ct_Rguard_1_desc
+		
+		prerequisites = { ct_Rwall_1 }
+		upgrades_from = ct_Rguard_1
+		gold_cost = 65
+		build_time = 275
+		pikemen = 28
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+		
+	}
+	ct_Rguard_3 = {
+		desc = ct_Rguard_1_desc
+		
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_Rguard_2
+		gold_cost = 100
+		build_time = 370
+		pikemen = 33
+		ai_creation_factor = 94
+		potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+		
+	}
+	ct_Rguard_4 = {
+		desc = ct_Rguard_1_desc
+		
+		upgrades_from = ct_Rguard_3
+		gold_cost = 155
+		build_time = 550
+		pikemen = 38
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}	
+        	}
+		
+	}
+	ct_Rguard_5 = {
+		desc = ct_Rguard_1_desc
+		
+		upgrades_from = ct_Rguard_4
+		gold_cost = 205
+		build_time = 1105
+		pikemen = 43
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+		
+	}
+	
+################## Economy : tax income ###############################
+	ct_Rmarketplace_1 = {
+		desc = ct_Rmarketplace_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        }
+	}
+	ct_Rmarketplace_2 = {
+		desc = ct_Rmarketplace_1_desc
+		prerequisites = { ct_Rwall_1 }
+		
+		upgrades_from = ct_Rmarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+           	has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}	
+		}
+	}
+	ct_Rmarketplace_3 = {
+		desc = ct_Rmarketplace_1_desc
+		
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_Rmarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+       	potential = {
+            has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        }
+	}
+	ct_Rmarketplace_4 = {
+		desc = ct_Rmarketplace_1_desc
+		
+		upgrades_from = ct_Rmarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+       	potential = {
+           	has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+	ct_Rmarketplace_5 = {
+		desc = ct_Rmarketplace_1_desc
+		
+		upgrades_from = ct_Rmarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+       	potential = {
+           	has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+	ct_Rmarketplace_6 = {
+		desc = ct_Rmarketplace_1_desc
+		
+		upgrades_from = ct_Rmarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        potential = {
+           	has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        }
+	}
+	
+	ct_Rport_1 = {
+		desc = ct_Rport_1_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+	ct_Rport_2 = {
+		desc = ct_Rport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Rwall_1 }
+		upgrades_from = ct_Rport_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+	ct_Rport_3 = {
+		desc = ct_Rport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_Rport_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+	ct_Rport_4 = {
+		desc = ct_Rport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Rport_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+	ct_Rport_5 = {
+		desc = ct_Rport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Rport_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+        	potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+
+################## Shipyard : galleys -50% ###############################
+	ct_Rshipyard_1 = {
+		desc = Rshipyard_desc
+		port = yes
+		gold_cost = 25
+		build_time = 120
+		galleys = 2
+		ai_creation_factor = 98
+		potential = {
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+	
+	ct_Rshipyard_2 = {
+		desc = Rshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Rshipyard_1
+		gold_cost = 45
+		build_time = 365
+		galleys = 3
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+	
+	ct_Rshipyard_3 = {
+		desc = Rshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Rshipyard_2
+		gold_cost = 70
+		build_time = 625
+		galleys = 4
+		ai_creation_factor = 96
+		potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        	}
+	}
+	
+	ct_Rshipyard_4 = {
+		desc = Rshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Rshipyard_3
+		gold_cost = 80
+		build_time = 730
+		galleys = 4
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+####################### Special builging, mustering ground (city stables) :gives light cavalry and some heavy cavalry, +50% both #######################
+	ct_barracks_1rohan = {
+		desc = ct_barracks_1rohan_desc
+		gold_cost = 170
+		build_time = 665
+		light_cavalry = 48
+		knights = 16
+		
+		ai_creation_factor = 95
+		potential = {
+			has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_barracks_2rohan = {
+		desc = ct_barracks_1rohan_desc
+		prerequisites = { ct_Rwall_1 }
+		upgrades_from = ct_barracks_1rohan
+		gold_cost = 205
+		build_time = 875
+		light_cavalry = 54
+		knights = 18
+		
+		ai_creation_factor = 94
+        	potential = {
+           		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_barracks_3rohan = {
+		desc = ct_barracks_1rohan_desc
+		prerequisites = { ct_Rwall_2 }
+		upgrades_from = ct_barracks_2rohan
+		gold_cost = 290
+		build_time = 1060
+		light_cavalry = 60
+		knights = 20
+		
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_barracks_4rohan = {
+		desc = ct_barracks_1rohan_desc
+		upgrades_from = ct_barracks_3rohan
+		gold_cost = 440
+		build_time = 1606
+		light_cavalry = 66
+		knights = 22
+		
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+	   		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_barracks_5rohan = {
+		desc = ct_barracks_1rohan_desc
+		upgrades_from = ct_barracks_4rohan
+		gold_cost = 590
+		build_time = 2800
+		light_cavalry = 72
+		knights = 24
+		
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	ct_barracks_6rohan = {
+		desc = ct_barracks_1rohan_desc
+		upgrades_from = ct_barracks_5rohan
+		gold_cost = 670
+		build_time = 3370
+		light_cavalry = 75
+		knights = 25
+		
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+            	}
+	}
+	
+}

@@ -1,0 +1,1699 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+ 
+####################### Castle buildings for Numenorean culture group 'N" #######################
+castle = {
+###################### Walls , gives fortlevel###################### 
+	ca_Nwall_1 = {
+		desc = ca_Nwall_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		fort_level = 0.75
+        	ai_creation_factor = 80
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_numenorean
+		}		
+		
+	}
+	ca_Nwall_2 = {
+		desc = ca_Nwall_2_desc
+		
+		upgrades_from = ca_Nwall_1
+		gold_cost = 75
+		build_time = 275
+		fort_level = 0.75
+		ai_creation_factor = 79
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean				 
+		}
+	}
+	ca_Nwall_3 = {
+		desc = ca_Nwall_3_desc
+		
+		upgrades_from = ca_Nwall_2
+		gold_cost = 75
+		build_time = 275
+		fort_level = 0.75
+		ai_creation_factor = 78
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean	 
+		}
+	}
+	ca_Nwall_4 = {
+		desc = ca_Nwall_4_desc
+		
+		upgrades_from = ca_Nwall_3
+		gold_cost = 150
+		build_time = 550
+		fort_level = 1.5
+		ai_creation_factor = 77
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean		 
+		}
+	}
+	ca_Nwall_5 = {
+		desc = ca_Nwall_5_desc
+		
+		upgrades_from = ca_Nwall_4
+		gold_cost = 150
+		build_time = 550
+		fort_level = 1.5
+		ai_creation_factor = 76
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean			 
+		}
+	}
+	
+###################### #Watchtowers, give garrison size ###################### 
+	ca_Nwatchtower_1 = {
+		desc = ca_Nwatchtower_1_desc
+		
+		gold_cost = 30
+		build_time = 90
+		garrison_size = 0.025
+		ai_creation_factor = 90
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean			 
+		}
+	}
+	ca_Nwatchtower_2 = {
+		desc = ca_Nwatchtower_2_desc
+		
+		upgrades_from = ca_Nwatchtower_1
+		gold_cost = 50
+		build_time = 185
+		garrison_size = 0.05
+		ai_creation_factor = 89
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean				 
+		}
+	}
+	ca_Nwatchtower_3 = {
+		desc = ca_Nwatchtower_3_desc
+		
+		upgrades_from = ca_Nwatchtower_2
+		gold_cost = 75
+		build_time = 285
+		garrison_size = 0.075
+		ai_creation_factor = 88
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean				 
+		}
+	}
+	ca_Nwatchtower_4 = {
+		desc = ca_Nwatchtower_4_desc
+		
+		upgrades_from = ca_Nwatchtower_3
+		gold_cost = 125
+		build_time = 550
+		garrison_size = 0.1
+		ai_creation_factor = 87
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean				 
+		}
+	}
+	ca_Nwatchtower_5 = {
+		desc = ca_Nwatchtower_5_desc
+		
+		upgrades_from = ca_Nwatchtower_4
+		gold_cost = 125
+		build_time = 550
+		garrison_size = 0.1
+		ai_creation_factor = 86
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean
+		}
+	}
+	ca_Nwatchtower_6 = {
+		desc = ca_Nwatchtower_6_desc
+		
+		upgrades_from = ca_Nwatchtower_5
+		gold_cost = 150
+		build_time = 550
+		garrison_size = 0.1
+		ai_creation_factor = 86
+        	potential = {
+        	   	has_global_flag = building
+			culture_group = culture_group_numenorean
+		}
+	}
+
+###################### Keeps, gives levy size ###################### 
+	ca_Nkeep_1 = {
+		desc = ca_Nkeep_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            }
+	}
+	ca_Nkeep_2 = {
+		desc = ca_Nkeep_1_desc
+
+		prerequisites = { ca_Nwall_1 }
+		upgrades_from = ca_Nkeep_1
+		gold_cost = 100
+		build_time = 375
+		levy_size = 0.1
+		ai_creation_factor = 101
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean			
+		}
+	}
+	ca_Nkeep_3 = {
+		desc = ca_Nkeep_1_desc
+		
+		prerequisites = { ca_Nwall_2 }
+		upgrades_from = ca_Nkeep_2
+		gold_cost = 150
+		build_time = 550
+		levy_size = 0.15
+		ai_creation_factor = 100
+        potential = {
+           	has_global_flag = building
+		culture_group = culture_group_numenorean				 
+		}
+	}
+	ca_Nkeep_4 = {	
+		desc = ca_Nkeep_1_desc
+		
+		upgrades_from = ca_Nkeep_3
+		gold_cost = 200
+		build_time = 730
+		levy_size = 0.2
+		ai_creation_factor = 99
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean
+		}
+	}
+	ca_Nkeep_5 = {
+		desc = ca_Nkeep_1_desc
+		
+		upgrades_from = ca_Nkeep_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.25
+		ai_creation_factor = 98
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean
+		}
+	}
+	ca_Nkeep_6 = {
+		desc = ca_Nkeep_1_desc
+		
+		upgrades_from = ca_Nkeep_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.3
+		
+		ai_creation_factor = 97
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean
+		}
+	}
+	
+####################### Militia barracks, gives light infantry and archers###################### 
+	ca_Nmilitia_barracks_1 = {
+		desc = ca_Nmilitia_barracks_1_desc
+	
+		gold_cost = 60
+		build_time = 200
+		light_infantry = 40
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nmilitia_barracks_2 = {
+		desc = ca_Nmilitia_barracks_2_desc
+
+		prerequisites = { ca_Nwall_1 }
+		upgrades_from = ca_Nmilitia_barracks_1
+		gold_cost = 90
+		build_time = 410
+		light_infantry = 25
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nmilitia_barracks_3 = {
+		desc = ca_Nmilitia_barracks_3_desc
+		
+		upgrades_from = ca_Nmilitia_barracks_2
+		gold_cost = 180
+		build_time = 730
+		light_infantry = 10
+		archers = 90
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nmilitia_barracks_4 = {
+		desc = ca_Nmilitia_barracks_3_desc
+		
+		upgrades_from = ca_Nmilitia_barracks_3
+		gold_cost = 270
+		build_time = 1095
+		light_infantry = 15
+		archers = 120
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+
+####################### Training grounds, gives morale and reinforce rate #######################
+	ca_Ntraining_grounds_1 = {
+		desc = ca_Ntraining_grounds_1_desc
+		
+		prerequisites = { ca_Nwall_2 }
+		gold_cost = 200
+		build_time = 730
+		land_morale = 0.1
+		levy_reinforce_rate = 0.1
+		retinuesize = 20
+		ai_creation_factor = 89
+        	potential = {
+	    		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntraining_grounds_2 = {
+		desc = ca_Ntraining_grounds_1_desc
+		
+		upgrades_from = ca_Ntraining_grounds_1
+		gold_cost = 250
+		build_time = 1095
+		land_morale = 0.15
+		levy_reinforce_rate = 0.15
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+        }
+	}
+	ca_Ntraining_grounds_3 = {
+		desc = ca_Ntraining_grounds_1_desc
+		
+		upgrades_from = ca_Ntraining_grounds_2
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.2
+		levy_reinforce_rate = 0.2
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	
+####################### Castle Guard, gives heavy infantry and pikemen #######################
+	ca_Ncastleguards_1 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		gold_cost = 130
+		build_time = 490
+		heavy_infantry = 45
+		pikemen = 15
+		ai_creation_factor = 105
+		potential = {
+	 		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ncastleguards_2 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		prerequisites = { ca_Nwall_1 }
+		upgrades_from = ca_Ncastleguards_1
+		gold_cost = 170
+		build_time = 745
+		heavy_infantry = 60
+		pikemen = 15
+		ai_creation_factor = 104
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ncastleguards_3 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		prerequisites = { ca_Nwall_2 }
+		upgrades_from = ca_Ncastleguards_2
+		gold_cost = 270
+		build_time = 1250
+		heavy_infantry = 68
+		pikemen = 20
+		ai_creation_factor = 103
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ncastleguards_4 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		upgrades_from = ca_Ncastleguards_3
+		gold_cost = 400
+		build_time = 1460
+		heavy_infantry = 75
+		pikemen = 25
+		ai_creation_factor = 102
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ncastleguards_5 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		upgrades_from = ca_Ncastleguards_4
+		gold_cost = 545
+		build_time = 2650
+		heavy_infantry = 90
+		pikemen = 25
+		ai_creation_factor = 101
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ncastleguards_6 = {
+		desc = ca_Ncastleguards_1_desc
+		
+		upgrades_from = ca_Ncastleguards_5
+		gold_cost = 675
+		build_time = 3285
+		heavy_infantry = 98
+		pikemen = 30
+		ai_creation_factor = 100
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	
+####################### Stable, gives light cavalry and some heavy cavalry #######################
+	ca_Nstable_1 = {
+		desc = ca_Nstable_1_desc
+		
+		gold_cost = 85
+		build_time = 335
+		light_cavalry = 17
+		knights = 5
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean		
+            	}
+	}
+	ca_Nstable_2 = {
+		desc = ca_Nstable_1_desc
+		
+		prerequisites = { ca_Nwall_1 }
+		upgrades_from = ca_Nstable_1
+		gold_cost = 105
+		build_time = 450
+		light_cavalry = 22
+		knights = 5
+		ai_creation_factor = 88
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean	
+            	}
+	}
+	ca_Nstable_3 = {
+		desc = ca_Nstable_1_desc
+		
+		prerequisites = { ca_Nwall_2 }
+		upgrades_from = ca_Nstable_2
+		gold_cost = 155
+		build_time = 555
+		light_cavalry = 27
+		knights = 5
+		ai_creation_factor = 87
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nstable_4 = {
+		desc = ca_Nstable_1_desc
+		
+		upgrades_from = ca_Nstable_3
+		gold_cost = 210
+		build_time = 765
+		light_cavalry = 27
+		knights = 5
+		ai_creation_factor = 86
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nstable_5 = {
+		desc = ca_Nstable_1_desc
+		upgrades_from = ca_Nstable_4
+		gold_cost = 415
+		build_time = 1955
+		light_cavalry = 28
+		knights = 13
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Nstable_6 = {
+		desc = ca_Nstable_1_desc
+		
+		upgrades_from = ca_Nstable_5
+		gold_cost = 595
+		build_time = 2995
+		light_cavalry = 29
+		knights = 20
+		ai_creation_factor = 85
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean	
+            	}
+	}
+	
+####################### Castle town, gives income #######################
+	ca_Ntown_1 = {
+		desc = ca_Ntown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntown_2 = {
+		desc = ca_Ntown_2_desc
+		
+		prerequisites = { ca_Nwall_1 }
+		upgrades_from = ca_Ntown_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntown_3 = {
+		desc = ca_Ntown_3_desc
+		
+		prerequisites = { ca_Nwall_2 }
+		upgrades_from = ca_Ntown_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 2
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntown_4 = {
+		desc = ca_Ntown_4_desc
+		
+		upgrades_from = ca_Ntown_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 2
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntown_5 = {
+		desc = ca_Ntown_4_desc
+		upgrades_from = ca_Ntown_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	ca_Ntown_6 = {
+		desc = ca_Ntown_5_desc
+		
+		upgrades_from = ca_Ntown_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+	
+	
+	ca_Nforge_1 = {
+		desc = ca_Nforge_1_desc
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_numenorean
+			}
+            	}
+	}
+	ca_Nforge_2 = {
+		desc = ca_Nforge_1_desc
+		upgrades_from = ca_Nforge_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+
+	ca_Napothecary_1 = {
+		desc = ca_Napothecary_1_desc
+		gold_cost = 50
+		build_time = 180
+		tax_income = 1
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_numenorean
+			}
+            	}
+	}
+	ca_Napothecary_2 = {
+		desc = ca_Napothecary_1_desc
+		upgrades_from = ca_Napothecary_1
+		gold_cost = 60
+		build_time = 274
+		tax_income = 1
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+####################### Shipyard, gives galleys #######################
+	ca_Nshipyard_1 = {
+		desc = Nshipyard_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		galleys = 6
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			culture_group = culture_group_numenorean	
+            	}
+	}
+	
+	ca_Nshipyard_2 = {
+		desc = Nshipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Nshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 7
+		ai_creation_factor = 99
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean			
+            	}
+	}
+	
+	ca_Nshipyard_3 = {
+		desc = Nshipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Nshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 8
+		ai_creation_factor = 98
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            }
+	}
+	
+	ca_Nshipyard_4 = {
+		desc = Nshipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Nshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 9
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+            	}
+	}
+
+############Gondor and Arnor Special Units############
+
+	ca_dol_amroth1 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights_desc
+		gold_cost = 300
+		build_time = 365
+		garrison_size = 1.1
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth2 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights_desc
+		prerequisites = { ca_Nkeep_2 }
+		upgrades_from = ca_dol_amroth1		
+		gold_cost = 250
+		build_time = 480
+		garrison_size = 1.2
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth3 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights2_desc
+		prerequisites = { ca_Nkeep_3 }
+		upgrades_from = ca_dol_amroth2	
+		gold_cost = 300
+		build_time = 730
+		fort_level = 1.5
+		garrison_size = 1.3
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth4 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights2_desc
+		prerequisites = { ca_Nkeep_4 }
+		upgrades_from = ca_dol_amroth3
+		gold_cost = 450
+		build_time = 850
+		fort_level = 2.0
+		garrison_size = 1.4
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}	
+
+	ca_Nelitetroops_1 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		not_if_x_exists = { ca_Nrangers_1 }
+		prerequisites = { ca_Nkeep_1 }
+		gold_cost = 60
+		build_time = 225
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nrangers_1 }	
+            	}
+	}
+	ca_Nelitetroops_2 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		prerequisites = { ca_Nkeep_2 }
+		upgrades_from = ca_Nelitetroops_1
+		gold_cost = 65
+		build_time = 270
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nrangers_1 }		
+            	}
+	}
+	ca_Nelitetroops_3 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		prerequisites = { ca_Nkeep_3 }
+		upgrades_from = ca_Nelitetroops_2
+		gold_cost = 85
+		build_time = 345
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nrangers_1 }		
+            	}
+	}
+	ca_Nelitetroops_4 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		prerequisites = { ca_Nkeep_4 }
+		upgrades_from = ca_Nelitetroops_3
+		gold_cost = 110
+		build_time = 400
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nrangers_1 }		
+            	}
+	}
+	ca_Nelitetroops_5 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		prerequisites = { ca_Nkeep_5 }
+		upgrades_from = ca_Nelitetroops_4
+		gold_cost = 135
+		build_time = 635
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nrangers_1 }		
+            	}
+	}
+	ca_Nelitetroops_6 = { #Elite troops like Citadel Guards
+		desc = ca_Nelitetroops_1_desc
+		prerequisites = { ca_Nkeep_6 }
+		upgrades_from = ca_Nelitetroops_5
+		gold_cost = 145
+		build_time = 720
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }	
+            	}
+	}
+
+	ca_Nrangers_1 = { 
+		desc = ca_Nrangers_1_desc
+		not_if_x_exists = { ca_Nelitetroops_1 }
+		prerequisites = { ca_Nkeep_1 }
+		gold_cost = 45
+		build_time = 160
+		light_infantry = 15
+		archers = 25
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }
+            	}
+	}
+	ca_Nrangers_2 = { 
+		desc = ca_Nrangers_1_desc
+		prerequisites = { ca_Nkeep_2 }
+		upgrades_from = ca_Nrangers_1
+		gold_cost = 50
+		build_time = 215
+		light_infantry = 15
+		archers = 25
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }	
+            	}
+	}
+	ca_Nrangers_3 = { 
+		desc = ca_Nrangers_1_desc
+		prerequisites = { ca_Nkeep_3 }
+		upgrades_from = ca_Nrangers_2
+		gold_cost = 75
+		build_time = 290
+		light_infantry = 15
+		archers = 25
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }	
+            	}
+	}
+	ca_Nrangers_4 = { 
+		desc = ca_Nrangers_1_desc
+		prerequisites = { ca_Nkeep_4 }
+		upgrades_from = ca_Nrangers_3
+		gold_cost = 80
+		build_time = 395
+		light_infantry = 15
+		archers = 25
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }	
+            	}
+	}
+	ca_Nrangers_5 = { 
+		desc = ca_Nrangers_1_desc
+		prerequisites = { ca_Nkeep_5 }
+		upgrades_from = ca_Nrangers_4
+		gold_cost = 95
+		build_time = 460
+		light_infantry = 15
+		archers = 25
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }	
+            	}
+	}
+	ca_Nrangers_6 = { 
+		desc = ca_Nrangers_1_desc
+		prerequisites = { ca_Nkeep_6 }
+		upgrades_from = ca_Nrangers_5
+		gold_cost = 135
+		build_time = 640
+		light_infantry = 20
+		archers = 30
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { culture = culture_black_numenorean }
+			NOT = { has_building = ca_Nelitetroops_1 }	
+            	}
+	}
+
+############Gondor Special Buildings############
+	ca_stone_erech = { ### The Stone of Erech
+		desc = ca_stone_erech_desc
+		gold_cost = 250
+		build_time = 360 #4y
+		tax_income = 2	
+		heavy_infantry = 150
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_erech }
+        	}
+	}
+	
+	ca_argonath_isildur = { ### The Statue of Isildur in Argonath
+		desc = ca_argonath_isildur_desc
+		gold_cost = 250
+		build_time = 360
+		tax_income = 2	
+		heavy_infantry = 150
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_argonath_isildur }
+        		}
+	}	
+	ca_argonath_anarion = { ### The Statue of Anarion in Argonath
+		desc = ca_argonath_anarion_desc
+		gold_cost = 250
+		build_time = 360
+		tax_income = 2	
+		heavy_infantry = 150
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_argonath_anarion }
+        		}
+	}
+
+	ca_healing2 = {
+		desc = ca_healing2_desc
+		gold_cost = 300
+		build_time = 547
+		levy_reinforce_rate = 0.1
+		ai_creation_factor = 109
+		add_number_to_name = no
+   		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			culture = culture_dunedain
+			}
+		}
+	}
+
+	ca_warning_beacons = {
+		desc = ca_warning_beacons_desc
+		gold_cost = 400
+		build_time = 180
+		garrison_size = 1.5
+		ai_creation_factor = 100
+		add_number_to_name = no
+   		potential = {
+			has_global_flag = building
+			OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			}
+		}
+	}
+
+	ca_tower_of_ecthelion = { # Minas Tirith
+		desc = ca_tower_of_ecthelion_desc
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 500
+		pikemen = 500
+		archers = 500
+        	potential = {
+			FROMFROM = { title = b_citadel_tirith }
+			culture_group = culture_group_numenorean
+            	}
+	}
+	
+	ca_tower_of_moon = { # Minas ithil
+		desc = ca_tower_of_moon_desc
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 500
+		pikemen = 500
+		archers = 500
+        	potential = {
+			province_id = 426 #minas_morgul
+			culture_group = culture_group_numenorean
+			not_if_x_exists	= { ca_minas_ithil_ruins }
+            	}
+	}
+
+	ca_henneth_annun = { ## Henneth Annun - The Forbidden Pool
+		desc = ca_henneth_annun_desc
+		gold_cost = 350
+		build_time = 470
+		fort_level = 4.0	
+		garrison_size = 2.50	
+		archers = 500
+		heavy_infantry = 250		
+		ai_creation_factor = 106
+        	potential = {
+			FROMFROM = { title = b_henneth_annun }
+			OR = {
+				culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+        	}
+	}	
+	
+	ca_amon_hen = { ## Amon Hen - The Seat of Seeing
+		desc = ca_amon_hen_desc
+		gold_cost = 350
+		build_time = 470
+		tax_income = 2		
+		ai_creation_factor = 106
+        	potential = {
+			FROMFROM = { title = b_amon_hen }
+        	}
+	}
+	
+	ca_amon_lhaw = { ## Amon Lhaw - the Seat of Hearing
+		desc = ca_amon_lhaw_desc
+		gold_cost = 350
+		build_time = 470
+		tax_income = 2		
+		ai_creation_factor = 106
+        	potential = {
+			FROMFROM = { title = b_amon_lhaw }
+        	}
+	}
+	
+	ca_rammas_echor = { ## Rammas Echor
+	    desc = ca_rammas_echor_desc
+		gold_cost = 450
+		build_time = 540
+		fort_level = 3.5
+		garrison_size = 0.10
+		pikemen = 100
+		heavy_infantry = 200
+		ai_creation_factor = 104
+		    potential = {
+			FROMFROM = { title = b_rammas_echor }
+			OR = {
+			    culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+			}
+	}
+	
+	ca_great_gate_1 = { # The Great Gate of Minas Tirith
+	    desc = ca_great_gate_desc
+		gold_cost = 500
+		build_time = 240
+		fort_level = 2.0
+		garrison_size = 0.05
+		pikemen = 150
+		heavy_infantry = 200
+		archers = 100
+		ai_creation_factor = 120
+		    potential = {
+			FROMFROM = { title = b_citadel_tirith }
+			OR = { 
+			    culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+	        }
+    }			
+	
+	ca_great_gate_2 = { # The Great Gate rebuilt with Mithril
+	    desc = ca_great_gate_mithril_desc
+		upgrades_from = ca_great_gate_1
+		gold_cost = 800
+		build_time = 365
+		fort_level = 1.5
+		garrison_size = 0.05
+		pikemen = 100
+		heavy_infantry = 200
+		archers = 50
+		ai_creation_factor = 112
+		    potential = {
+			FROMFROM = { title = b_citadel_tirith }
+			OR = { 
+			    culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+			any_playable_ruler = {
+			    has_character_flag = gimli
+				has_landed_title = k_aglarond
+	        }
+		    }
+	}	
+
+    ca_causeway_forts = { # The Causeway Forts
+	    desc = ca_causeway_forts_desc
+		gold_cost = 250
+		build_time = 480
+		fort_level = 2.0
+		garrison_size = 0.30
+		pikemen = 250
+		heavy_infantry = 300
+		archers = 100
+		light_cavalry = 50
+		ai_creation_factor = 104
+		    potential = {
+			FROMFROM = { title = b_rammas_echor }
+			OR = {
+			    culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+			}
+	}
+	ca_cair_andros = { # Cair Andros
+	    desc = ca_cair_andros_desc
+		gold_cost = 600
+		build_time = 450
+		fort_level = 3.0
+		garrison_size = 1.80
+		pikemen = 150
+		archers = 250
+		heavy_infantry = 250
+		ai_creation_factor = 108
+		    potential = {
+			FROMFROM = { title = b_cair_andros }
+			OR = {
+			    culture = culture_gondorian
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+		    }
+	}
+###################### Osgiliath unique buildings ######################	
+	ca_great_hall_osgiliath = { #The Great Hall of Osgiliath
+		desc = ca_great_hall_osgiliath_desc
+		not_if_x_exists	= { ca_osgiliath_ruins }
+		gold_cost = 2250
+		build_time = 1500
+		tax_income = 4
+		heavy_infantry = 350
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+			has_global_flag = building
+            		FROMFROM = { title = b_minasnumen }
+			culture_group = culture_group_numenorean
+			NOT = { has_building = ca_osgiliath_ruins }
+        	}
+	}
+	ca_dome_of_the_stars = { #Osgiliath East
+		desc = ca_dome_of_the_stars_desc
+		not_if_x_exists = { ca_osgiliath_ruins }	
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 500
+        	potential = {
+			has_global_flag = building
+			FROMFROM = { title = b_dome_of_the_stars }
+			culture_group = culture_group_numenorean
+			NOT = { has_building = ca_osgiliath_ruins }
+		}
+	}
+	ca_osgiliath_ruins = { # Osgiliath ruins
+		desc = ca_osgiliath_ruins_desc
+		gold_cost = 100
+		build_time = 100
+		ai_creation_factor = 80
+		not_if_x_exists = { ca_dome_of_the_stars ca_great_hall_osgiliath }	
+        	potential = {
+            	has_global_flag = building
+				OR = {
+				AND = {
+					province_id=427
+					NOT = { has_global_flag = east_osgiliath_rebuilded_finally }
+				}
+				AND = {
+					province_id=428
+					NOT = { has_global_flag = west_osgiliath_rebuilded_finally }
+				}
+			}
+			year=9980
+		}
+	}
+	ca_minas_ithil_ruins = { # Minas Ithil ruins
+		desc = ca_minas_ithil_ruins_desc
+		gold_cost = 1
+		build_time = 1
+		not_if_x_exists = { ca_tower_of_moon ca_numenorean2 ca_numenorean2up }
+		ai_creation_factor = 80	
+        	potential = {
+            	has_global_flag = building
+				province_id=426 
+				NOT = { has_global_flag = minas_ithil_rebuilded_finally }
+				NOT = { has_building = ca_numenorean2 }
+				NOT = { has_building = ca_numenorean2up }
+				year=9980
+				
+		}
+	}
+	
+###################### Numenorean Fortresses ######################
+	ca_isengard1 = { #Numenorean Walls of Isengard#
+		desc = ca_isengard1_desc
+		gold_cost = 150
+		build_time = 1460
+		fort_level = 6.0
+		garrison_size = 2.00
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 225 # Orthanc
+            	}
+	}
+
+	ca_numenorean = { #Numenorean Walls of Minas Tirith#
+		desc = ca_numenorean_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 8.5
+		garrison_size = 2.00
+		heavy_infantry = 150
+		archers = 150
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 422 #minas_tirith
+            	}
+	}
+	
+	ca_numenorean2 = { #Numenorean Walls of Minas Ithil#
+		desc = ca_numenorean2_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 6
+		garrison_size = 2.00
+		ai_creation_factor = 86
+		heavy_infantry = 150
+		archers = 150
+        	potential = {
+            		province_id = 426 #minas_morgul
+					culture_group = culture_group_numenorean 
+					not_if_x_exists	= { ca_minas_ithil_ruins }
+            }
+	}	
+
+	
+	ca_numenorean4 = { #Numenorean Walls of Dol Amroth#
+		desc = ca_numenorean4_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 6.0
+		knights = 100
+		heavy_infantry = 200
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 656 #Dol Amroth
+            	}
+	}	
+	
+	ca_pelargir = { #Great port of Pelargir#
+		desc = ca_pelargir_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 4.0
+		galleys = 25
+		heavy_infantry = 250
+		light_infantry = 250
+		archers = 500
+		tax_income = 3
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 18 #Pelargir
+            	}
+	}		
+
+########## Dunedains Buildings ##########
+
+	ca_lond_daer = { #Great port of Lond Daer#
+		desc = ca_lond_daer_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2.0
+		galleys = 10
+		heavy_infantry = 50
+		light_infantry = 50
+		archers = 200
+		tax_income = 1
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 155 #Pelargir
+            	}
+	}
+
+	ca_numenorean_Annuminas = { #Numenorean Walls of Annuminas
+		desc = ca_numenorean_Annimunas_desc
+		not_if_x_exists = { ca_annuminas_ruins }	
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 6
+		garrison_size = 2.00
+		heavy_infantry = 150
+		archers = 150
+		ai_creation_factor = 86
+        	potential = {
+			province_id = 659 # Annuminas
+			has_global_flag = building
+			culture_group = culture_group_numenorean
+			NOT = { has_building = ca_annuminas_ruins }
+            		}
+	}
+	ca_hall_of_kings = { #Annuminas
+		desc = ca_hall_of_kings_desc
+		not_if_x_exists = { ca_annuminas_ruins }
+		gold_cost = 1500
+		build_time = 2190 #6y
+		ai_creation_factor = 80
+		tax_income = 5
+		heavy_infantry = 350
+        	potential = {
+            		FROMFROM = { title = b_annuminas }
+					culture_group = culture_group_numenorean
+					has_global_flag = building
+					NOT = { has_building = ca_annuminas_ruins }
+        	}
+	}
+	ca_annuminas_ruins = { #Annuminas Ruins
+		desc = ca_annuminas_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.50		
+		ai_creation_factor = 86		
+        	potential = {
+            		province_id = 659 # Annuminas
+					has_global_flag = building
+					year = 10317
+					#NOT = { has_building = ca_hall_of_kings }	
+					NOT = { has_global_flag = annuminas_rebuilded_finally }
+        		}
+	}
+
+	ca_amon_sul = { ### Tower of Amon Sûl
+		desc = ca_amon_sul_desc
+		not_if_x_exists = { ca_amon_sul_ruins }
+		gold_cost = 850
+		build_time = 1460 #4y
+		fort_level = 5.0
+		ai_creation_factor = 86
+		heavy_infantry = 250
+		knights = 250		
+        	potential = {
+					has_global_flag = building
+            		FROMFROM = { title = b_amon_sul }
+					culture_group = culture_group_numenorean
+					NOT = { has_building = ca_amon_sul_ruins }
+        	}
+	}	
+	ca_amon_sul_ruins = { ### Amon Sûl Ruins
+		desc = ca_amon_sul_ruins_desc
+		not_if_x_exists = { ca_amon_sul }
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.50			
+		ai_creation_factor = 86		
+        	potential = {
+            		has_global_flag = building
+					FROMFROM = { title = b_amon_sul }
+					year = 9751
+					#NOT = { has_building = ca_amon_sul }	
+					NOT = { has_global_flag = amon_sul_rebuilded_finally }
+       		}
+	}	
+
+	ca_fornost_erain = { ### Fornost Erain
+		desc = ca_fornost_erain_desc
+		not_if_x_exists = { ca_fornost_ruins }
+		gold_cost = 850
+		build_time = 1460 #4y
+		fort_level = 5.0
+		ai_creation_factor = 86
+		heavy_infantry = 250
+		knights = 250		
+        	potential = {
+					has_global_flag = building
+            		province_id = 270 # Fornost Erain
+					culture_group = culture_group_numenorean
+					NOT = { has_building = ca_fornost_ruins }
+        	}
+	}	
+	
+	ca_fornost_ruins = { ### Fornost Ruins
+		desc = ca_fornost_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -3	
+		garrison_size = -0.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		has_global_flag = building
+					province_id = 270 # Fornost Erain
+					year = 10317
+					#NOT = { has_building = ca_fornost_erain }	
+					NOT = { has_global_flag = fornost_rebuilded_finally }
+       		}
+	}		
+
+	ca_tharbad_bridge = { ### The Bridge of Tharbad
+		desc = ca_tharbad_bridge_desc
+		gold_cost = 850
+		build_time = 1460
+		tax_income = 5
+		garrison_size = 1.2	
+		heavy_infantry = 150		
+		ai_creation_factor = 86		
+        	potential = {
+					has_global_flag = building
+            		FROMFROM = { title = b_tharbad }
+					has_global_flag = tharbad_bridge
+					culture_group = culture_group_numenorean
+        	}
+	}	
+	
+	ca_hidden_halls = {
+		desc = ca_hidden_halls_desc
+		gold_cost = 400
+		build_time = 180
+		garrison_size = 1.5
+		ai_creation_factor = 100
+		add_number_to_name = no
+    		potential = {
+			has_global_flag = building
+			culture = culture_dunedain
+		}
+	}
+
+
+###########Black Numenorean Buildings###########
+	
+	ca_numenorean3 = { #Numenorean Walls#
+		desc = ca_umbar_haven_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 4
+		garrison_size = 2.00
+		galleys = 10
+		tax_income = 3
+		ai_creation_factor = 86
+        potential = { province_id = 430 }
+	}
+	ca_umbar_haven = { #Haven of Umbar#
+		desc = ca_umbar_haven_desc
+		upgrades_from = ca_numenorean3
+		gold_cost = 150
+		build_time = 1460
+		tax_income = 3
+		fort_level = 3.0
+		heavy_infantry = 300
+		archers = 100
+		galleys = 10
+		ai_creation_factor = 86
+        potential = {
+        	province_id = 430 #Umbar
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+			}
+        }
+	}
+
+	ca_corsairs_1 = { #Corsairs of Umbar#
+		desc = ca_corsairs_desc
+		port = yes
+		gold_cost = 175
+		build_time = 650
+		tax_income = 1
+		light_infantry = 50
+		archers = 50
+		galleys = 3
+		ai_creation_factor = 86
+        	potential = {
+			has_global_flag = building
+			year = 9770	
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+				}
+            	}
+	}
+	ca_corsairs_2 = { #Corsairs of Umbar#
+		desc = ca_corsairs_desc
+		port = yes
+		upgrades_from = ca_corsairs_1
+		gold_cost = 195
+		build_time = 930
+		tax_income = 1
+		light_infantry = 50
+		archers = 50
+		galleys = 3
+		ai_creation_factor = 86
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+				}
+            	}
+	}
+	ca_corsairs_3 = { #Corsairs of Umbar#
+		desc = ca_corsairs_desc
+		port = yes
+		upgrades_from = ca_corsairs_2
+		gold_cost = 300
+		build_time = 1230
+		tax_income = 1
+		light_infantry = 50
+		archers = 50
+		galleys = 3
+		ai_creation_factor = 86
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+				}
+            	}
+	}	
+	ca_corsairs_4 = { #Corsairs of Umbar#
+		desc = ca_corsairs_desc
+		port = yes
+		upgrades_from = ca_corsairs_3
+		gold_cost = 370
+		build_time = 1700
+		tax_income = 1
+		light_infantry = 50
+		archers = 50
+		galleys = 3
+		ai_creation_factor = 86
+        	potential = {
+			has_global_flag = building
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+				}
+            	}
+	}	
+
+	ca_bnpalace = {
+		desc = ca_bnpalace_desc
+		gold_cost = 300
+		build_time = 547
+		heavy_infantry = 50
+		knights = 50
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+    		potential = {
+       			has_global_flag = building
+	    		culture = culture_black_numenorean
+    		}
+	}
+	ca_barrow_downs = {
+		desc = ca_barrow_downs_desc
+		gold_cost = 1
+		build_time = 1
+		tax_income = -3	
+		garrison_size = -0.2
+		ai_creation_factor = 86
+    		potential = {
+				province_id = 105
+       			has_global_flag = building
+	    		culture = culture_wight
+				NOT = { has_global_flag = barrows_cleansed }
+    		}
+	}
+	ca_royal_burial_mounds = {
+		desc = ca_royal_burial_mounds_desc
+		gold_cost = 300
+		build_time = 547
+		tax_income = 3
+		liege_piety = 0.10
+		ai_creation_factor = 109
+		add_number_to_name = no
+    		potential = {
+				province_id = 105
+       			has_global_flag = building
+				NOT = { has_building = ca_barrow_downs }
+				NOT = {culture = culture_wight }
+				NOT = {culture = culture_wilderness }
+    		}
+	}
+}

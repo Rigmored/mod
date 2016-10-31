@@ -1,0 +1,114 @@
+decisions = {
+	## Go to the tomb of Thorin Oakenshield ##
+	tomb_of_thorin = {
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			has_landed_title = c_erebor
+			has_landed_title = k_erebor
+			culture_group = culture_group_dwarves
+			NOT = { has_character_flag = tombofthorin }
+			year = 11285
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 350
+			piety = 150
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = erebor.1 }
+			}
+		}
+	}
+	## Try to find some Mithril in the deeps of the Moria ##
+	mine_moria_decision = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			has_landed_title = c_moria
+			culture_group = culture_group_dwarves
+			NOT = { has_character_flag = mineinmoria }
+			NOT = { has_global_flag = moriaminesareclosed }
+			NOT = { year = 10324 }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 16
+			wealth = 150
+			piety = 150
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = moria.0 }
+				set_character_flag = mineinmoria
+			}
+			wealth = -150
+			piety = -150
+		}
+	}
+	## Improve the City of Erebor ##
+	erebor_craft_decision = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			has_landed_title = c_erebor
+			culture_group = culture_group_dwarves
+			NOT = { has_character_flag = craftinerebor }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 16
+			wealth = 150
+			piety = 150
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = erebor.6 }
+				set_character_flag = mineinerebor
+			}
+			wealth = -150
+			piety = -150
+		}
+	}
+	## Call the Assembly of the Dwarves ##
+	call_assembly_dwarves = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			culture_group = culture_group_dwarves
+			NOT = { has_global_flag = unification_dwarves }
+			NOT = { has_global_flag = dwarvishunion }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 100
+			prestige = 1000
+			piety = 1000
+			has_landed_title = c_erebor
+			has_landed_title = c_moria
+			has_landed_title = c_gundabad
+			culture_group = culture_group_dwarves
+		}
+		effect = {
+			ROOT = {
+				narrative_event = { id = unificatedwarves.0 }
+			}
+			prestige = -1000
+			piety = -1000
+		}
+	}
+}

@@ -1,0 +1,24 @@
+namespace = elveninfertility
+
+character_event = {
+	id = elveninfertility.0
+	title = "EVTTITelveninfertility.0"
+	desc = "EVTDESCelveninfertility.0"
+	picture = GFX_evt_pregnancy
+	is_triggered_only = yes	
+	
+	trigger = {
+		trait = elf
+	    NOT = { has_character_flag = elven_infertility }	
+		  }
+		  
+	option = {
+		name = "EVTOPTAelveninfertility.0" #OK
+          random = { 
+          chance = 60
+		  add_trait = elven_infertility	
+		  set_character_flag = elven_infertility
+	           }
+
+	}  
+}

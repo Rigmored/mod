@@ -1,0 +1,47 @@
+# namespace = sauronreturn
+
+# ## Sauron come to the ruins of Amon Lanc ##	
+# character_event = {
+    # id = sauronreturn.1
+    # title = EVTTITsauronreturn.1
+    # desc = EVTDESCsauronreturn.1
+	# picture = "GFX_sauron_commands"
+	# age = 16
+
+	# trigger = {
+		# has_character_flag = sauron
+		# NOT = { has_character_flag = sauronreturn1 }
+		# NOT = { has_character_flag = sauronreturn2 }
+		# age = 1
+		# year = 9343
+		# NOT = { year = 9344 }
+	# }
+
+	# mean_time_to_happen = {
+		# days = 365
+	# }
+	
+	# option = {
+		# name = EVTOPTAsauronreturn.1
+		# c_amon_lanc = {
+			# grant_title = ROOT
+		# }
+		# k_dol_guldur = {
+			# grant_title = ROOT
+		# }	
+		# set_character_flag = sauronreturn1
+		# any_playable_ruler = {
+			# limit = {
+				# trait = good_side
+			# }
+			# character_event = { id = sauronreturn.2 }
+		# }	
+		# any_playable_ruler = {
+			# limit = {
+				# trait = evil_side
+			# }
+			# character_event = { id = sauronreturn.3 }
+		# }		
+	# }
+# }
+		

@@ -1,0 +1,38 @@
+namespace = sauronrestoreform
+
+#Event for Sauron upon restoring material form
+
+character_event = {
+    id = sauronrestoreform.0
+    title = "EVTNAMEsauronrestoreform.0"
+    desc = "EVTDESCsauronrestoreform.0"
+    picture = "GFX_evil"
+	age = 16
+    is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauronrestoreform.0"
+        remove_trait = spiritform
+		remove_trait = ringbearer2
+		narrative_event = { id = sauronrestoreform.1 }
+    }
+}
+
+narrative_event = {
+    id = sauronrestoreform.1
+    title = "EVTNAMEsauronrestoreform.1"
+    desc = "EVTDESCsauronrestoreform.1"
+    picture = "GFX_evt_sauronreturns"
+	age = 16
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauronrestoreform.1"
+		trigger = { trait = good_side }
+    }
+	option = {
+        name = "EVTOPTBsauronrestoreform.1"
+		trigger = { trait = evil_side }
+    }
+}

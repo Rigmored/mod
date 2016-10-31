@@ -1,0 +1,201 @@
+namespace = mepstartup
+
+#Startup Event - Eru
+narrative_event = {
+	id = mepstartup.0
+	title = "EVTNAMEmepstartup.0"
+	desc = "EVTDESCmepstartup.0"
+	major = yes
+	hide_new = yes
+	hide_from = yes
+	is_triggered_only = yes
+
+	picture = "GFX_evt_middleearthmap"
+
+	option = {
+		name = "EVTOPTAmepstartup.0"
+		hidden_tooltip = { 
+		character_event = { id = mepstartup.1 }
+		}
+	}
+}
+
+#Welcome to Middle Earth
+narrative_event = {
+	id = mepstartup.1
+	title = "EVTNAMEmepstartup.1"
+	desc = "EVTDESCmepstartup.1"
+	#major = yes
+	#hide_new = yes
+	#hide_from = yes
+	is_triggered_only = yes
+	
+	picture = "GFX_evt_middleearthmap"
+	
+	immediate = {
+		## FORNOST is capital of Arthedain
+		if = {
+			limit = {
+				year = 9204
+				NOT = { year = 11362 }
+				has_landed_title = k_arthedain
+				has_landed_title = c_fornost
+			}
+			hidden_tooltip = {
+				b_citadel_fornost = { province_capital = yes }
+				ROOT = {
+					b_citadel_fornost = {
+							usurp_title = PREV
+						}
+					}
+				b_citadel_fornost = { 
+					ROOT = { capital = PREV }
+				}
+			}			
+		}
+		## Annuminas is the capital of Arnor
+		if = {
+			limit = {
+				year = 8343
+				NOT = { year = 9204 }
+				has_landed_title = e_arnor
+				has_landed_title = c_annuminas
+			}
+			hidden_tooltip = {
+				b_annuminas = { province_capital = yes }
+				ROOT = {
+					b_annuminas = {
+							usurp_title = PREV
+						}
+					}
+				b_annuminas = { 
+					ROOT = { capital = PREV }
+				}
+			}			
+		}
+		## CARN DUM is capital of Angmar
+		if = {
+			limit = {
+				year = 9643
+				NOT = { year = 10318 }
+				OR = {
+					has_landed_title = e_angmar
+					has_landed_title = k_angmar
+				}
+			}
+			hidden_tooltip = {
+				b_carn_dum = { province_capital = yes }
+				ROOT = {
+					c_carn_dum = {
+							usurp_title = PREV
+						}				
+					b_carn_dum = {
+							usurp_title = PREV
+						}
+					}
+				b_carn_dum = { 
+					ROOT = { capital = PREV }
+				}
+			}			
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTAmepstartup.1"
+		piety = 15
+		narrative_event = { id = mepstartup.2 } 
+	}
+	option = {
+		name = "EVTOPTBmepstartup.1"
+		prestige = 15
+	}
+}
+#Main guide page
+narrative_event = {
+	id = mepstartup.2
+	title = "EVTNAMEmepstartup.2"
+	desc = "EVTDESCmepstartup.2"
+	#major = yes
+	#hide_new = yes
+	#hide_from = yes
+	is_triggered_only = yes
+	
+	picture = "GFX_evt_middleearthmap"
+	
+	option = {
+		name = "EVTOPTAmepstartup.2"
+		narrative_event = { id = mepstartup.3 } 
+	}
+	option = {
+		name = "EVTOPTBmepstartup.2"
+		narrative_event = { id = mepstartup.4 } 
+	}
+	option = {
+		name = "EVTOPTCmepstartup.2"
+		narrative_event = { id = mepstartup.5 } 
+	}
+	option = {
+		name = "EVTOPTDmepstartup.2"
+	}
+}
+# Troops and other info
+narrative_event = {
+	id = mepstartup.3
+	title = "EVTNAMEmepstartup.3"
+	desc = "EVTDESCmepstartup.3"
+	#major = yes
+	#hide_new = yes
+	#hide_from = yes
+	is_triggered_only = yes
+	
+	picture = "GFX_evt_middleearthmap"
+	
+	option = {
+		name = "EVTOPTAmepstartup.3"
+		narrative_event = { id = mepstartup.2 } 
+	}
+	option = {
+		name = "EVTOPTBmepstartup.3"
+	}
+}
+# Purge and colonisation
+narrative_event = {
+	id = mepstartup.4
+	title = "EVTNAMEmepstartup.4"
+	desc = "EVTDESCmepstartup.4"
+	#major = yes
+	#hide_new = yes
+	#hide_from = yes
+	is_triggered_only = yes
+	
+	picture = "GFX_evt_middleearthmap"
+	
+	option = {
+		name = "EVTOPTAmepstartup.4"
+		narrative_event = { id = mepstartup.2 } 
+	}
+	option = {
+		name = "EVTOPTBmepstartup.4"
+	}
+}
+
+# Purge and colonisation
+narrative_event = {
+	id = mepstartup.5
+	title = "EVTNAMEmepstartup.5"
+	desc = "EVTDESCmepstartup.5"
+	#major = yes
+	#hide_new = yes
+	#hide_from = yes
+	is_triggered_only = yes
+	
+	picture = "GFX_evt_middleearthmap"
+	
+	option = {
+		name = "EVTOPTAmepstartup.5"
+		narrative_event = { id = mepstartup.2 } 
+	}
+	option = {
+		name = "EVTOPTBmepstartup.5"
+	}
+}

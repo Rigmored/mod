@@ -1,0 +1,444 @@
+namespace = powers
+
+
+##### VILYA IN WAR #####
+# The Holder of Vilya choose to use it #
+	character_event = {
+		id = powers.1
+		title = EVTNAMEpowers.1
+		desc = EVTDESCpowers.1
+		picture = "GFX_good"
+
+		is_triggered_only = yes
+		
+		option={
+			name=EVTOPTApowers.1 ## Stronger the defenses of Rivendell
+			character_event = { id = powers.2 }
+		}
+		
+		option={
+			name=EVTOPTBpowers.1 ## Don't use it
+		}
+	}
+	
+# The Holder of Vilya stronger the defenses of Rivendell #
+	character_event = {
+		id = powers.2
+		title = EVTNAMEpowers.2
+		desc = EVTDESCpowers.2
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.2
+			set_character_flag = vilya_power
+		}
+	}	
+	
+	
+	
+# The Holder of Vilya strike the ennemy #
+	character_event = {
+		id = powers.3
+		title = EVTNAMEpowers.3
+		desc = EVTDESCpowers.3	
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.3
+			if = {
+				limit = { 
+					war = yes
+					OR = {
+						is_primary_war_attacker = yes
+						is_primary_war_defender = yes
+						independent = yes
+					}
+				}
+				any_current_enemy = {
+					limit = { 
+						at_location = ROOT
+						in_command = yes
+						prisoner = no
+					}
+					troops = -0.4
+					morale = -0.4
+					character_event = { id = powers.4 }
+				}
+				any_current_enemy = {
+					any_realm_character = {
+						limit = { 
+							at_location = ROOT
+							in_command = yes
+							prisoner = no
+						}
+						troops = -0.4
+						morale = -0.4
+						character_event = { id = powers.4 }					
+					}			
+				}			
+			}
+		}
+
+		option= {
+			name=EVTOPTBpowers.3	
+			trigger={ai=no}
+		}	
+	}			
+	
+# The ennemy is alerted #
+	character_event = {
+		id = powers.4
+		title = EVTNAMEpowers.4
+		desc = EVTDESCpowers.4
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.4
+			trigger = {
+				NOT = {
+					religion_group = religion_group_eldar
+				}
+				in_command = yes
+				prisoner = no
+			}
+			morale = -0.2
+		}
+		option={
+			name=EVTOPTBpowers.4
+			trigger = {
+				religion_group = religion_group_eldar
+				in_command = yes
+				prisoner = no
+			}
+			morale = -0.2
+		}		
+	}		
+	
+# The Holder of Vilya can use once again vilya #
+	character_event = {
+		id = powers.5
+		title = OK
+		desc = OK
+		picture = "GFX_good"
+		hide_window = yes
+		
+		trigger = {
+			trait = vilya
+			has_character_flag = vilya_released
+			age = 1
+		}
+	
+		mean_time_to_happen = {
+			days = 1825
+		}	
+		
+		option={
+			name=OK
+			clr_character_flag = vilya_released
+		}
+	}	
+	
+	
+##### NENYA IN WAR #####
+# The Holder of Nenya choose to use it #
+	character_event = {
+		id = powers.6
+		title = EVTNAMEpowers.6
+		desc = EVTDESCpowers.6
+		picture = "GFX_good"
+
+		is_triggered_only = yes
+		
+		option={
+			name=EVTOPTApowers.6 ## Stronger the defenses of Rivendell
+			character_event = { id = powers.7 }
+		}
+
+		option={
+			name=EVTOPTCpowers.6 ## Spawn help
+			character_event = { id = powers.8 }
+		}
+		
+		option={
+			name=EVTOPTBpowers.6 ## Don't use it
+		}
+	}
+	
+# The Holder of Nenya stronger the defenses of Rivendell #
+	character_event = {
+		id = powers.7
+		title = EVTNAMEpowers.7
+		desc = EVTDESCpowers.7
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.7
+			set_character_flag = nenya_power
+		}
+	}	
+	
+	
+	
+# The Holder of Nenya strike the ennemy #
+	character_event = {
+		id = powers.8
+		title = EVTNAMEpowers.8
+		desc = EVTDESCpowers.8
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.8
+			if = {
+				limit = { 
+					war = yes
+					OR = {
+						is_primary_war_attacker = yes
+						is_primary_war_defender = yes
+						independent = yes
+					}
+				}		
+				create_random_soldier = {
+					random_traits = yes
+					dynasty = none
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 25
+				}			
+				new_character = {				
+					spawn_unit = {
+						province = 235 # Caras Galadhon
+						disband_on_peace = yes
+						troops = {
+							light_infantry = { 200 200 }
+							heavy_infantry = { 200 200 }
+							archers = { 1000 1000 }
+						}	
+					}	
+				}				
+				any_current_enemy = {
+					limit = { 
+						at_location = ROOT
+						in_command = yes
+						prisoner = no
+					}
+					troops = -0.1
+					morale = -0.4
+					character_event = { id = powers.9 }
+				}
+				any_current_enemy = {
+					any_realm_character = {
+						limit = { 
+							at_location = ROOT
+							in_command = yes
+							prisoner = no
+						}
+						troops = -0.1
+						morale = -0.4
+						character_event = { id = powers.9 }					
+					}			
+				}			
+			}
+		}
+
+		option= {
+			name=EVTOPTBpowers.8	
+			trigger={ai=no}
+		}	
+	}			
+	
+# The ennemy is alerted #
+	character_event = {
+		id = powers.9
+		title = EVTNAMEpowers.9
+		desc = EVTDESCpowers.9
+		picture = "GFX_good"
+		
+		is_triggered_only=yes
+		
+		option={
+			name=EVTOPTApowers.9
+			trigger = {
+				NOT = {
+					religion_group = religion_group_eldar
+				}
+				in_command = yes
+				prisoner = no
+			}
+			morale = -0.2
+		}
+		option={
+			name=EVTOPTBpowers.9
+			trigger = {
+				religion_group = religion_group_eldar
+				in_command = yes
+				prisoner = no
+			}
+			morale = -0.2
+		}		
+	}		
+	
+# The Holder of Nenya can use once again nenya #
+	character_event = {
+		id = powers.10
+		title = OK
+		desc = OK
+		picture = "GFX_good"
+		hide_window = yes
+		
+		trigger = {
+			trait = vilya
+			has_character_flag = nenya_released
+			age = 1
+		}
+	
+		mean_time_to_happen = {
+			days = 1825
+		}	
+		
+		option={
+			name=OK
+			clr_character_flag = nenya_released
+		}
+	}	
+	
+	
+##### SAURON POWERS #####
+
+## The Black Fume from Mordor ##
+character_event = {
+    id = powers.11
+	title = EVTNAMEpowers.11
+	desc = EVTDESCpowers.11
+	picture = "GFX_evil"
+	
+	is_triggered_only = yes
+	
+	option={
+		name = EVTOPTApowers.11 ## I'll spread it on a single ennemy province
+		character_event = { id = powers.12 }
+		wealth = -200
+	}
+	
+	option={
+		name = EVTOPTBpowers.11 ## I'll spread it on a entire region
+		character_event = { id = powers.14 }
+		wealth = -240
+	}	
+	
+	option={
+		name = EVTOPTCpowers.11 ## I won't spread it.
+		trigger = { ai = no }
+	}	
+	
+}
+
+
+# The Black Fume is ready to use on an enemy province #
+character_event = {
+    id = powers.12
+	title = EVTNAMEpowers.12
+	desc = EVTDESCpowers.12
+	picture = "GFX_evil"
+	
+	is_triggered_only=yes
+	
+	option={
+		name = EVTOPTApowers.12 ## The black Fume will be send in the land where your spymaster is working
+		trigger = { ai = no }
+		any_courtier = {
+			limit = {
+				has_job_title = job_spymaster 
+			}
+			location = { 
+				add_province_modifier = { name = black_fume duration = 1500 }  
+				owner = { character_event = { id = powers.13 days = 7 } }
+			}
+		}
+	}
+	
+	option={
+		name = EVTOPTBpowers.12 ## The Black Fume will be send on a random ennemy province
+		any_current_enemy = {
+			limit = { 
+				higher_tier_than = BARON 
+			}
+			any_realm_province = {
+				add_province_modifier = { name = black_fume duration = 1500 }
+				owner = { character_event = { id = powers.13 days = 7 } }
+			}
+		}
+	}
+	
+}
+
+
+#The Ennemy is informed of the Black Fume #
+character_event = {
+	id = powers.13
+	title = EVTNAMEpowers.13
+	desc = EVTDESCpowers.13
+	picture = "GFX_evil"
+	
+	is_triggered_only=yes
+	
+	option={
+		name=EVTOPTApowers.13 ## Curses !
+	}
+}
+	
+##The Black Fume will be on an entire region ##
+character_event = {
+	id = powers.14
+	title = EVTNAMEpowers.14
+	desc = EVTDESCpowers.14
+	picture = "GFX_evil"
+	
+	is_triggered_only=yes
+	
+	option={
+		name=EVTOPTApowers.14 ## The Fume will be spread where the spymaster is.
+		trigger = { ai = no }
+		any_courtier ={
+			limit = {
+				has_job_title = job_spymaster 
+			}
+			location = { 
+				add_province_modifier = { name = black_fume duration = 1500 }
+				owner = { character_event = { id = powers.13 days = 7 } }			
+				any_neighbor_province = { 
+					add_province_modifier = { name = black_fume duration = 1500 } 
+					owner = { character_event = { id = powers.13 days = 7 } }			
+				}
+			}
+		}
+	}
+		
+	option = {
+		name=EVTOPTBpowers.14  ## On a random province
+		any_current_enemy = {
+			limit = { 
+				higher_tier_than = BARON 
+			}
+			any_realm_province = {
+				add_province_modifier = { name = black_fume duration = 1500 }
+				owner = { character_event = { id = powers.13 days = 7 } }	
+				any_neighbor_province = { 
+					add_province_modifier = { name = black_fume duration = 1500 } 
+					owner = { character_event = { id = powers.13 days = 7 } }			
+				}
+			}
+		}
+	}
+		
+}

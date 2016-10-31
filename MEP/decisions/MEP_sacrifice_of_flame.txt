@@ -1,0 +1,41 @@
+decisions = {
+	#Sacrifice of the Flame#
+	sacrifice_of_flame = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			has_landed_title = c_moria
+			prisoner = no
+			has_character_flag = special_decisions_open
+			OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+			}
+			NOT = { has_character_flag = flamesacrificestarted }
+			NOT = { has_character_flag = flamesacrificedone }
+			NOT = { has_character_flag = sacrificedone }
+			NOT = { trait = worship_balrog }
+			any_realm_character = {
+				culture = culture_balrog
+				religion = religion_eruhini
+			}
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 16
+			OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+			}
+			any_demesne_title = { is_occupied = no }
+			any_courtier = { prisoner = yes }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = sacrificeflame.0 }
+			}
+		}
+	}
+}

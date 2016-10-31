@@ -1,0 +1,18 @@
+#Remove ringbearer title from one without ring
+narrative_event = {
+    id = shiretorivendell.03
+    title = "EVTNAMEshiretorivendell.03"
+    desc = "EVTDESCshiretorivendell.03"
+    picture = "GFX_nazgul"
+	age = 16
+
+    trigger = {
+        has_landed_title = d_ringbearer
+        NOT = { trait = ring }
+    }
+	
+	option = {
+        name = "EVTOPTAshiretorivendell.03"
+        d_ringbearer = { destroy_landed_title = THIS }
+    }
+}

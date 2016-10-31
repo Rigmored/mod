@@ -1,0 +1,405 @@
+namespace = craft_upgrade
+
+narrative_event = {
+	id = craft_upgrade.0
+	title = "EVTNAMEcraft_upgrade.0"
+	desc = "EVTDESCcraft_upgrade.0"
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft_upgrade.0"
+		trigger = {
+			trait = elvish_sword
+		}
+		hidden_tooltip = {
+			set_character_flag = imbues_elvish_sword
+			character_event = { id = craft_upgrade.1 days = 10 }
+		}
+	}		
+	option = {
+		name = "EVTOPTBcraft_upgrade.0"
+		trigger = {
+			trait = ancient_elvish_sword
+		}
+		hidden_tooltip = {
+			set_character_flag = imbues_ancient_elvish_sword
+			character_event = { id = craft_upgrade.1 days = 10 }
+		}
+	}	
+	option = {
+		name = "EVTOPTDcraft_upgrade.0"
+		trigger = {
+			trait = elf_necklace
+		}
+		hidden_tooltip = {
+			set_character_flag = imbues_elf_necklace
+			character_event = { id = craft_upgrade.1 days = 10 }
+		}
+	}
+	option = {
+		name = "EVTOPTEcraft_upgrade.0"
+		trigger = {
+			trait = elf_brooch
+		}
+		hidden_tooltip = {
+			set_character_flag = imbues_elf_brooch
+			character_event = { id = craft_upgrade.1 days = 10 }
+		}
+	}
+	option = {
+		name = "EVTOPTZcraft_upgrade.0" ## No thanks
+		hidden_tooltip = {
+			clr_character_flag = crafts_object
+			prestige = 200 ##give em back
+			piety = 200
+		}
+	}
+}
+
+character_event = {
+	id = craft_upgrade.1
+	title = "EVTNAMEcraft_upgrade.1"
+	desc = "EVTDESCcraft_upgrade.1"
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft_upgrade.1" ## martial (bloodlust)
+		trigger = {
+			OR = {
+				has_character_flag = imbues_elvish_sword
+				has_character_flag = imbues_ancient_elvish_sword
+			}
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_martial
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBcraft_upgrade.1" ## combat (finesse)
+		trigger = {
+			OR = {
+				has_character_flag = imbues_elvish_sword
+				has_character_flag = imbues_ancient_elvish_sword
+			}
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_combat
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTCcraft_upgrade.1" ## speech (diplomacy)
+		trigger = {
+			has_character_flag = imbues_elf_necklace
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_diplomacy
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTDcraft_upgrade.1" ## insight (learning)
+		trigger = {
+			has_character_flag = imbues_elf_necklace
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_learning
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTEcraft_upgrade.1" ## intrigue
+		trigger = {
+			has_character_flag = imbues_elf_brooch
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_intrigue
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}	
+	option = {
+		name = "EVTOPTFcraft_upgrade.1" ## wealth (stewardship)
+		trigger = {
+			has_character_flag = imbues_elf_brooch
+		}
+		hidden_tooltip = {
+			set_character_flag = imbue_choose_stewardship
+			character_event = { id = craft_upgrade.2 days = 10 }
+		}
+	}
+
+	
+	option = {
+		name = "EVTOPTZcraft_upgrade.1" ## No thanks
+		hidden_tooltip = {
+			clr_character_flag = crafts_object
+			clr_character_flag = imbues_elvish_sword
+			clr_character_flag = imbues_ancient_elvish_sword
+			clr_character_flag = imbues_elf_necklace
+			clr_character_flag = imbues_elf_brooch
+			prestige = 200 ##give em back
+			piety = 200
+		}
+	}
+}
+character_event = {
+	id = craft_upgrade.2
+	title = "EVTNAMEcraft_upgrade.2"
+	desc = "EVTDESCcraft_upgrade.2"
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	option = {
+		name = "EVTOPTAcraft_upgrade.2" ## Enchant it!
+		hidden_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						trait = skilled_craftsman
+						trait = ancient
+					}
+				}		
+				random_list = {
+					45 = {
+						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
+					}
+					55 = {
+						character_event = { id = craft_upgrade.5 days = 10 } ## Success
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						trait = master_craftsman
+						trait = ancient
+					}
+				}		
+				random_list = {
+					25 = {
+						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
+					}
+					10 = {
+						character_event = { id = craft_upgrade.4 days = 10 } ## Exceptional!
+					}
+					65 = {
+						character_event = { id = craft_upgrade.5 days = 10 } ## Success
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					trait = legendary_craftman
+					trait = ancient
+				}		
+				random_list = {
+					10 = {
+						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
+					}
+					15 = {
+						character_event = { id = craft_upgrade.4 days = 10 } ## Exceptional!
+					}
+					75 = {
+						character_event = { id = craft_upgrade.5 days = 10 } ## Success
+					}
+				}
+			}
+		}
+	}
+}
+
+#enchantment Fail
+character_event = {
+	id = craft_upgrade.3
+	title = "EVTNAMEcraft_upgrade.3"
+	desc = "EVTDESCcraft_upgrade.3"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft_upgrade.3" ## Oh no!
+		hidden_tooltip = {
+			character_event = { id = craft_upgrade.8 }
+		}
+	}
+}
+
+#enchantment Exceptional
+character_event = {
+	id = craft_upgrade.4
+	title = "EVTNAMEcraft_upgrade.4"
+	desc = "EVTDESCcraft_upgrade.4"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft_upgrade.4" ## YES!
+		if = {
+			limit = {
+				OR = {
+					has_character_flag = imbues_elvish_sword
+					has_character_flag = imbues_ancient_elvish_sword
+				}
+			}
+			add_trait = elvish_sword_magic_exceptional
+			change_martial = -2
+			#change_combat_rating = -2
+			hidden_tooltip = {
+				remove_trait = elvish_sword
+				remove_trait = ancient_elvish_sword
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_character_flag = imbues_elf_necklace
+			}
+			add_trait = elf_necklace_magic_exceptional
+			change_learning = -2
+			change_diplomacy = -2
+			hidden_tooltip = {
+				remove_trait = elf_necklace
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_character_flag = imbues_elf_brooch
+			}
+			add_trait = elf_brooch_magic_exceptional
+			change_intrigue = -2
+			change_stewardship = -2
+			hidden_tooltip = {
+				remove_trait = elf_brooch
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+	}
+}
+
+#enchantment Success
+character_event = {
+	id = craft_upgrade.5
+	title = "EVTNAMEcraft_upgrade.5"
+	desc = "EVTDESCcraft_upgrade.5"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft_upgrade.5" ## YES!
+		if = {
+			limit = {
+				OR = {
+					has_character_flag = imbues_elvish_sword
+					has_character_flag = imbues_ancient_elvish_sword
+				}
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_martial
+				}
+				add_trait = elvish_sword_magic_martial
+				change_martial = -2
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_combat
+				}
+				add_trait = elvish_sword_magic_combat
+				#change_combat_rating = -2 
+			}
+			hidden_tooltip = {
+				remove_trait = elvish_sword
+				remove_trait = ancient_elvish_sword
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_character_flag = imbues_elf_necklace
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_learning
+				}
+				add_trait = elf_necklace_magic_learning
+				change_learning = -2
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_diplomacy
+				}
+				add_trait = elf_necklace_magic_diplomacy
+				change_diplomacy = -2
+			}
+			hidden_tooltip = {
+				remove_trait = elf_necklace
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				has_character_flag = imbues_elf_brooch
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_intrigue
+				}
+				add_trait = elf_brooch_magic_intrigue
+				change_intrigue = -2
+			}
+			if = {
+				limit = {
+					has_character_flag = imbue_choose_stewardship
+				}
+				add_trait = elf_brooch_magic_stewardship
+				change_stewardship = -2
+			}
+			hidden_tooltip = {
+				remove_trait = elf_brooch
+				character_event = { id = craft_upgrade.8 }
+			}
+			break = yes
+		}
+	}
+}
+
+
+#reset after enchantment fail/success/exceptional
+character_event = {
+	id = craft_upgrade.8
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		clr_character_flag = crafts_object
+		clr_character_flag = imbues_elvish_sword
+		clr_character_flag = imbues_ancient_elvish_sword
+		clr_character_flag = imbues_elf_necklace
+		clr_character_flag = imbues_elf_brooch
+		clr_character_flag = imbue_choose_martial
+		clr_character_flag = imbue_choose_combat
+		clr_character_flag = imbue_choose_diplomacy
+		clr_character_flag = imbue_choose_learning
+		clr_character_flag = imbue_choose_intrigue
+		clr_character_flag = imbue_choose_stewardship
+	}
+}

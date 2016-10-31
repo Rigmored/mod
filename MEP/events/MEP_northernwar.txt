@@ -1,0 +1,679 @@
+namespace = northernwar
+
+###King Brand is informed that Sauron is moving the Easterlings against him###
+
+character_event = {
+    id = northernwar.1
+    title = "EVTTITnorthernwar.1"#Ill tidings
+    desc = "EVTDESCnorthernwar.1"#You hear reports that the Easterlings are preparing for some kind of war, gathering under the black flag of Mordor. Mercenaries and warlike clans flock to them.
+    picture = "GFX_good"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		has_landed_title = c_dale
+		year = 11362
+		NOT = { year = 11364 } 
+		NOT = { has_character_flag = northernwar1 }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+					  
+	option = {
+		name = "EVTOPTAnorthernwar.1"#We must prepare our defenses.
+		set_character_flag = northernwar1
+	}
+}
+
+##King of Erebor is informed that the easterlings are preparing for war##
+character_event = {
+    id = northernwar.2
+    title = "EVTTITnorthernwar.2"#Ill tidings
+    desc = "EVTDESCnorthernwar.2"#You hear reports that the Easterlings are preparing for some kind of war, gathering under the black flag of Mordor. Mercenaries and warlike clans flock to them.
+    picture = "GFX_good"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		has_landed_title = c_erebor
+		year = 11362
+		NOT = { year = 11364 } 
+		NOT = { has_character_flag = northernwar2 }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.2"#Our gates cannot be breached.
+		set_character_flag = northernwar2
+	}
+}
+
+##Thranduil is informed that the orcs of Dol Guldur and the Misty Mountains are preparing for war##
+character_event = {
+	id = northernwar.3
+	title = "EVTTITnorthernwar.3"#Ill tidings
+	desc = "EVTDESCnorthernwar.3"#Your scouts report increased activity amonst the orcs of the mountains. They seem to be preparing for war, and have gathered a large host already, tens of thousands strong.
+	picture = "GFX_good"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		has_landed_title = c_thanduils_halls
+		year = 11362
+		NOT = { year = 11364 } 
+		NOT = { has_character_flag = northernwar3 }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.3"#The shadow strengthens.
+		set_character_flag = northernwar3
+	}
+}
+
+##Galadriel is informed that the orcs of Dol Guldur and the Misty Mountains are preparing for war##
+character_event = {
+	id = northernwar.4
+	title = "EVTTITnorthernwar.4"#Ill tidings
+	desc = "EVTDESCnorthernwar.4"#Your scouts report increased activity amongst the orcs of the mountains. Dol Guldur is also marshalling it's forces, they will no doubt try to attack us.
+	picture = "GFX_good"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		has_landed_title = c_wester_north_lorien
+		year = 11362
+		NOT = { year = 11364 } 
+		NOT = { has_character_flag = northernwar4 }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.4"#Yet still we stand.
+		set_character_flag = northernwar4
+	}
+}
+
+##Grimbeorn is informed that the orcs of Dol Guldur and the Misty Mountains are preparing for war##
+character_event = {
+	id = northernwar.5
+	title = "EVTTITnorthernwar.5"#Ill tidings
+	desc = "EVTDESCnorthernwar.5"#Your scouts report increased activity amongst the orcs of the mountains. Wargs howl in the night, and the southern lands are awash in blood. War is coming.
+	picture = "GFX_good"
+	age = 16
+	only_independent = yes
+
+	trigger = {
+		is_ruler = yes
+		trait = good_side
+		has_landed_title = k_anduin_vale
+		year = 11362
+		NOT = { year = 11364 } 
+		NOT = { has_character_flag = northernwar5 }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.5"#War is coming.
+		set_character_flag = northernwar5
+	}
+}
+
+#############################################################################################################
+##############11367 is the Great War year, unless triggered early by decision################################
+#############################################################################################################
+
+##The Event to spawn an invasion of Lorien##
+##tricky... needs old gods, and we cant just steal it from there, Paradox wont like it. So if we do this, we need all to have DLC Old Gods##
+
+##Sauron tells his courtier to plan invasion of Lorien##
+character_event = {
+	id = northernwar.6
+	title = "EVTTITnorthernwar.6"#Invasion of Lorien
+	desc = "EVTDESCnorthernwar.6"#The Elves of Lorien and their cursed Queen have defied you for far too long. It is time to send the armies gathered at Dol Guldur against them with orders to slay every elf they find.
+	picture="GFX_good"
+	age = 16
+
+	trigger = {
+		has_landed_title = c_barad_dur
+		NOT = { trait = incapable }
+		NOT = { has_global_flag = lorieninvasion }
+		has_dlc = "The Old Gods"
+		age = 16
+		has_global_flag = greatwar1
+		NOT = { year = 11368 }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	option = {
+		name = "OK"
+		set_global_flag = lorieninvasion
+		random_realm_lord = {
+			limit = {
+				age = 16
+				is_female = no
+				is_ruler = yes
+				culture = culture_orkish
+				NOT = { has_landed_title = c_amon_lanc }
+			}
+			character_event = { id = northernwar.7 }
+		}
+	}
+}
+
+	
+	
+##A courtier in Barad Dur plans the invasion of Lorien##
+character_event = {
+	id = northernwar.7
+	title = "EVTTITnorthernwar.7"#Invasion of Lorien
+	desc = "EVTDESCnorthernwar.7"#Your Lord Sauron has placed you in command of the armies that will march against Lorien. It is a great honor.
+	picture = "GFX_good"
+	is_triggered_only = yes
+
+	immediate = {
+		wealth = 500
+		ROOT = {
+			create_title = {
+				tier = COUNT
+				landless = yes
+				temporary = yes
+				culture = ROOT
+				name = "northernwar_lorien_invasion_force"
+				holder = ROOT
+			}
+		}
+	}
+
+	option = { 
+		name = "OK"
+		add_claim = k_elves
+		add_claim =d_lorien
+		add_claim =c_lorien
+		add_claim =c_wester_north_lorien
+		add_claim =c_north_of_lorien
+		add_claim =c_wester_south_lorien
+		set_character_flag = claimant_adventurer
+
+		ROOT = { character_event = { id = northernwar.8 } }
+	}
+
+}
+
+			
+##The attack is launched on Lorien##
+character_event = {
+	id = northernwar.8
+	title = "EVTTITnorthernwar.8"#Invasion of Lorien
+	desc = "EVTDESCnorthernwar.8"#The time has come. The armies are ready. Nothing will stand against you now!
+	picture = "GFX_good"
+	is_triggered_only = yes			
+
+
+	option = { 
+		name = "EVTOPTAnorthernwar.8"#To War!
+		k_elves = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 310 #Amon Lanc
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 10000 10000 }
+					heavy_infantry = { 500 500 }
+					archers = { 1000 1000 }
+				}
+			}		
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 310 #Amon Lanc
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 4000 4000 }
+					archers = { 500 500 }
+				}
+			}		
+		}		
+	}
+}
+
+###############################################################################			
+##Now for the attack on Dale, a Rhun-ish landed courtier will lead the attack##
+###############################################################################
+
+character_event = {
+	id = northernwar.9
+	title = "EVTTITnorthernwar.9"#Invasion of Dale
+	desc = "EVTDESCnorthernwar.9"#Your Lord Sauron has commanded you to raise an invasion force to attack the Northmen. The army is ready to march!
+	picture="GFX_good"
+	age = 16
+
+	trigger = {
+		has_landed_title = k_rhun
+		NOT = { has_global_flag = daleinvasion }
+		has_dlc = "The Old Gods"
+		age = 16
+		has_global_flag = greatwar1
+		NOT = { year = 11368 }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.9"#Inform the war-chief.
+		set_global_flag = daleinvasion
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = no
+				is_ruler = yes
+			}
+			character_event = { id = northernwar.10 }
+		}
+	}
+}
+
+
+	
+##A courtier in Rhun plans the invasion of Dale##
+character_event = {
+	id = northernwar.10
+	title = "EVTTITnorthernwar.10"#Invasion of Dale
+	desc = "EVTDESCnorthernwar.10"#You have been tasked with leading a mighty army against Dale. It is a great honor.
+	picture = "GFX_good"
+	is_triggered_only = yes
+
+	immediate = {
+		wealth = 500
+		ROOT = {
+			create_title = {
+				tier = COUNT
+				landless = yes
+				temporary = yes
+				culture = ROOT
+				name = "northernwar_dale_invasion_force"
+				holder = ROOT
+			}
+		}
+	}
+
+	option = { 
+		name = "OK"
+		add_claim = c_dale
+		add_claim =d_dale
+		add_claim =c_esgaroth
+		add_claim =d_grasgard
+		add_claim =c_erebor
+		set_character_flag = claimant_adventurer
+
+		ROOT = { character_event = { id = northernwar.11 } }
+	}
+
+}
+
+			
+##The attack is launched on Dale##
+character_event = {
+	id = northernwar.11
+	title = "EVTTITnorthernwar.11"#Invasion of Dale
+	desc = "EVTDESCnorthernwar.11"#The time has come. The armies are ready. Nothing will stand against you now!
+	picture = "GFX_good"
+	is_triggered_only = yes			
+
+
+	option = { 
+		name = "EVTOPTAnorthernwar.11"#To War!
+		k_dale = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		k_erebor = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 590 #Thrumav
+				disband_on_peace = no
+				troops = {
+					light_cavalry = { 4000 4000 }
+					horse_archers = { 500 500 }
+				}
+			}		
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 590 #Thrumav
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 4000 4000 }
+					archers = { 4000 4000 }
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 590 #Thrumav
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 2000 2000 }
+					heavy_infantry = { 4000 4000 }
+				}
+			}		
+		}
+	}
+}
+
+###############################################################################			
+##Now for the attack on Mirkwood, a Sauron landed courtier will lead the attack####
+###################################################################################
+
+##Sauron tells his courtier to plan invasion of Lorien##
+character_event = {
+	id = northernwar.12
+	title = "EVTTITnorthernwar.12"#Invasion of Mirkwood
+	desc = "EVTDESCnorthernwar.12"#The Goblins of the North, together with a force from Dol Guldur are ready to assault Thranduil's realm in Mirkwood. The woodland realm will burn with the fires of war!
+	picture="GFX_good"
+	age = 16
+
+	trigger = {
+		has_landed_title = c_barad_dur
+		NOT = { has_global_flag = mirkwoodinvasion }
+		has_dlc = "The Old Gods"
+		age = 16
+		NOT = { year = 11368 }
+		has_global_flag = greatwar1
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = "OK"
+		set_global_flag = mirkwoodinvasion
+		any_realm_lord = {
+			limit = {
+				age = 16
+				is_female = no
+				is_ruler = yes
+				has_landed_title = c_amon_lanc
+			}
+			character_event = { id = northernwar.13 }
+		}
+	}
+}
+
+
+	
+##A courtier in Barad Dur plans the invasion of Mirkwood##
+character_event = {
+	id = northernwar.13
+	title = "EVTTITnorthernwar.13"#Invasion of Mirkwood
+	desc = "EVTDESCnorthernwar.13"#Your Lord Sauron has placed you in command of the armies that will march against Mirkwood. It is a great honor.
+	picture = "GFX_good"
+	is_triggered_only = yes
+
+	immediate = {
+		wealth = 500
+		ROOT = {
+			create_title = {
+				tier = COUNT
+				landless = yes
+				temporary = yes
+				culture = ROOT
+				name = "northernwar_mirkwood_invasion_force"
+				holder = ROOT
+			}
+		}
+	}
+
+	option = { 
+		name = "OK"
+		add_claim =c_thanduils_halls
+		add_claim =d_mirkwood
+		add_claim =c_north_mirkwood
+		add_claim =c_north_west_mirkwood
+		add_claim =c_mountains_of_mirkwood
+		add_claim =c_north_east_mirkwood
+		add_claim =c_west_forest_road
+		set_character_flag = claimant_adventurer
+
+		ROOT = { character_event = { id = northernwar.14 } }
+	}
+
+}
+
+			
+##The attack is launched on Mirkwood##
+character_event = {
+	id = northernwar.14
+	title = "EVTTITnorthernwar.14"#Invasion of Mirkwood
+	desc = "EVTDESCnorthernwar.14"#The time has come. The armies are ready. Nothing will stand against you now!
+	picture = "GFX_good"
+	is_triggered_only = yes			
+
+
+	option = { 
+		name = "EVTOPTAnorthernwar.14"#To War!
+		k_mirkwood = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 310 #Amon Lanc
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 10000 10000 }
+					heavy_infantry = { 1000 1000 }
+					archers = { 4000 4000 }
+				}
+			}		
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 642 # Gundabad
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 7000 7000 }
+					archers = { 1000 1000 }
+				}
+			}		
+		}
+	}
+}
+			
+#####################################################			
+####Now for the Assault on the men of Anduin Vale####
+#####################################################
+
+##The chief of Gundabad is informed that he must take the valley, and he leads his own orcs - the claims should ensure war is declared as these are adjacent###
+character_event = {
+	id = northernwar.15
+	title = "EVTTITnorthernwar.15"#Invasion of Anduin Vale
+	desc = "EVTDESCnorthernwar.15"#The Dark Lord has instructed you to crush the men of Anduin vale, while his other northern armies ravage the elves and men of Dale. Kill them all, and let the age of the orc begin!
+	picture = "GFX_good"
+
+	trigger = {
+		has_landed_title = k_gundabad
+		NOT = { has_global_flag = anduinvaleinvasion }
+		has_dlc = "The Old Gods"
+		age = 16
+		NOT = { year = 11368 }
+		has_global_flag = greatwar1
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.15"#At last!
+		set_global_flag = anduinvaleinvasion
+		add_claim = d_langwed_vale
+		add_claim = c_langwed_vale
+		add_claim = c_eredlangwed
+		add_claim = c_north_of_mirkwood
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		new_character = {
+			spawn_unit = {
+				province = 642 # Gundabad
+				disband_on_peace = no
+				troops = {
+					light_infantry = { 5000 5000 }
+				}
+			}		
+		}
+	}
+}
+	
+##Dale spawns some troops when under attack##
+character_event = {
+	id = northernwar.16
+	title = "EVTTITnorthernwar.16"#Invasion of Dale
+	desc = "EVTDESCnorthernwar.16"#The men of Rhun march against you in great force from the south - you should prepare every last man to defend their homeland, or they will surely lose it!
+	picture="GFX_good"
+	age = 16
+
+	trigger = {
+		has_landed_title = k_dale
+		has_global_flag = daleinvasion
+		NOT = { has_global_flag = daledefense }
+		has_dlc = "The Old Gods"
+		age = 16
+		has_global_flag = greatwar1
+		NOT = { year = 11368 }
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = "EVTOPTAnorthernwar.16"#Gather the militia!
+		set_global_flag = daledefense
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 35
+		}
+		new_character = {
+			spawn_unit = {
+				province = 539 # Dale
+				disband_on_peace = yes
+				troops = {
+					light_infantry = { 5000 5000 }
+					heavy_infantry = { 4000 4000 }
+					archers = { 2000 2000 }
+					light_cavalry = { 500 500 }
+					knights = { 250 250 }
+				}
+			}		
+		}
+	}
+}

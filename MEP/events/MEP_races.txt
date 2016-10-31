@@ -1,0 +1,411 @@
+namespace = racetrait
+
+## The characters is an Elf ##
+character_event = {
+	id = racetrait.1
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_elves"
+	
+	trigger = {
+		OR = {
+			culture_group = culture_group_quendi
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_moriquendi	
+		}	
+		NOT = { trait = elf }
+		NOT = { trait = half_elf }
+		AND = {
+			NOT = { father = { always = yes } }
+			NOT = { mother = { always = yes } }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = elf
+	}
+}
+
+## The character is a Dwarf ##
+character_event = {
+	id = racetrait.2
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_dwarves"
+	is_triggered_only = yes
+	
+	trigger = {
+		culture_group = culture_group_dwarves		
+		NOT = { trait = dwarven }
+	}
+
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = dwarven
+	}
+}
+
+## The character is born from an Elf and a Dwarf ##
+character_event = {
+	id = racetrait.3
+	title = EVTNAMEracetrait.2
+	desc = EVTDESCracetrait.2
+	picture = "GFX_evt_choice"
+
+	min_age = 25	   
+				   
+	is_triggered_only = yes
+	
+	trigger = {		
+		trait = elf
+		trait = dwarven	
+		NOT = { has_character_flag = made_choice }
+	}
+
+		
+	immediate = {
+		remove_trait = elf
+		remove_trait = dwarven
+		set_character_flag = made_choice
+	}
+		
+	option = { 
+			  name = EVTOPTAracetrait.2  ## I'm an Eldar !
+			  add_trait = elf
+	}
+	option = {
+			  name = EVTOPTBracetrait.2  ## I'm a Dwarf !
+			  add_trait = dwarven
+	}
+}
+
+## The characters is Wilderness ##
+character_event = {
+	id = racetrait.4
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_elves"
+
+	is_triggered_only = yes
+	
+	trigger = {
+		culture_group = culture_group_wilderness
+		NOT = { trait = wilderness }
+	}
+
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = wilderness
+		remove_trait = amateurish_plotter
+		remove_trait =flamboyant_schemer
+		remove_trait =intricate_webweaver
+		remove_trait =elusive_shadow
+		remove_trait =naive_appeaser
+		remove_trait =underhanded_rogue
+		remove_trait =charismatic_negotiator
+		remove_trait =grey_eminence
+		remove_trait =indulgent_wastrel
+		remove_trait =thrifty_clerk
+		remove_trait =fortune_builder
+		remove_trait =midas_touched
+		remove_trait =misguided_warrior
+		remove_trait =tough_soldier
+		remove_trait =skilled_tactician
+		remove_trait =brilliant_strategist
+		remove_trait =detached_priest
+		remove_trait =martial_cleric
+		remove_trait =scholarly_theologian
+		remove_trait =mastermind_theologian
+		remove_trait =clubfooted
+		remove_trait =harelip
+		remove_trait =hunchback
+		remove_trait =lisp
+		remove_trait =stutter
+		remove_trait =fair
+		remove_trait =ugly
+		remove_trait =dwarf
+		remove_trait =genius
+		remove_trait =quick
+		remove_trait =slow
+		remove_trait =imbecile
+		remove_trait =inbred
+		remove_trait =strong
+		remove_trait =weak
+		remove_trait =lustful
+		remove_trait =chaste
+		remove_trait =gluttonous
+		remove_trait =temperate
+		remove_trait =greedy
+		remove_trait =charitable
+		remove_trait =slothful
+		remove_trait =diligent
+		remove_trait =envious
+		remove_trait =kind
+		remove_trait =wroth
+		remove_trait =patient
+		remove_trait =proud
+		remove_trait =humble
+		remove_trait =deceitful
+		remove_trait =honest
+		remove_trait =craven
+		remove_trait =brave
+		remove_trait =shy
+		remove_trait =gregarious
+		remove_trait =ambitious
+		remove_trait =content
+		remove_trait =arbitrary
+		remove_trait =just
+		remove_trait =cynical
+		remove_trait =zealous
+		remove_trait =paranoid
+		remove_trait =trusting
+		remove_trait =cruel
+		remove_trait =tall
+		remove_trait =agile
+		remove_trait =perceptive
+		remove_trait =melodious_voice
+		remove_trait =powerful_voice
+		remove_trait =ambidextrous
+		remove_trait =lefthanded
+		remove_trait =deaf
+		remove_trait =absentminded
+		remove_trait =calm_voice
+		remove_trait =fertile
+		remove_trait =imposing
+		remove_trait =fashionable
+		remove_trait =authoritative
+		remove_trait =rude
+		remove_trait =stubborn
+		remove_trait =honorable
+		remove_trait =selfish
+		remove_trait =light_foot_leader
+		remove_trait =heavy_infantry_leader
+		remove_trait =administrator
+		remove_trait =architect
+		remove_trait =strategist
+		remove_trait =socializer
+		remove_trait =schemer
+		remove_trait =theologian
+		remove_trait =gamer
+		remove_trait =animal_lover
+		remove_trait =nature_lover
+		remove_trait =torturer
+		remove_trait =blood_thirsty
+		remove_trait =animal_tongue
+		remove_trait =dreamer
+		remove_trait =resolute_leader
+		remove_trait =scholar
+		wealth = -100
+	}
+}
+
+
+
+## The characters is an Ent ##
+character_event = {
+	id = racetrait.6
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_coronation"
+
+	is_triggered_only = yes
+	
+	trigger = {
+		culture = culture_entish
+		NOT = { trait = ent }
+	}
+
+
+	option = {
+	name = EVTOPTAracetrait.1
+	add_trait = ent
+	}
+}
+
+## The characters is an Orc ##
+character_event = {
+   id = racetrait.5
+   title = EVTNAMEracetrait.1
+   desc = EVTDESCracetrait.1
+   picture = "GFX_evt_coronation"
+
+   is_triggered_only = yes
+   
+	trigger = {
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai
+			culture = culture_troll
+		}	
+		NOT = { trait = half_orc }
+	}
+
+
+	option = {
+	    name = EVTOPTAracetrait.1
+	    add_trait = orkish
+	}
+}
+
+## The characters is a spider ##
+character_event = {
+	id = racetrait.7
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_coronation"
+
+	is_triggered_only = yes
+	
+	trigger = {
+		culture = culture_spider
+		NOT = { trait = spider }
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = spider
+	}
+}
+
+## The character is an Hobbit ##
+character_event = {
+    id = racetrait.8
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_dwarves"
+	hide_window = yes
+
+	is_triggered_only = yes
+	
+	trigger = {
+		culture_group = culture_group_halfling		
+		NOT = { trait = hobbit }
+	}
+
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = hobbit
+	}
+}
+
+## The character is an Eagle ##
+character_event = {
+    id = racetrait.9
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_dwarves"
+	hide_window = yes
+
+	is_triggered_only = yes
+	
+	trigger = {
+		culture = culture_eagles	
+		NOT = { trait = eagle }
+	}
+
+
+	option = {
+		name = EVTOPTAracetrait.1
+		add_trait = eagle
+	}
+}
+
+## The characters is an Orc, but don't have any of the orcs warriors traits at beginning ##
+character_event = {
+	id = racetrait.10
+	title = EVTNAMEracetrait.10
+	desc = EVTDESCracetrait.10
+	picture = "GFX_evt_coronation"
+	hide_window = yes 
+
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai
+		}
+		NOT = { trait = weak_orc }
+		NOT = { trait = orc_warrior }
+		NOT = { trait = strong_orc }
+		NOT = { trait = great_orc }
+		age = 16
+	}
+
+
+	option = {
+	    name = EVTOPTAracetrait.1
+		trigger = {
+			culture = culture_goblin
+		}
+	    random_list = {
+			70 = {
+				add_trait = weak_orc
+			}
+			15 = {
+				add_trait = orc_warrior
+			}	
+			10 = {
+				add_trait = strong_orc
+			}
+			5 = {
+				add_trait = great_orc
+			}	
+		}
+	}
+	
+	option = {
+	    name = EVTOPTAracetrait.1
+		trigger = {
+			culture = culture_orkish
+		}
+	    random_list = {
+			40 = {
+				add_trait = weak_orc
+			}
+			30 = {
+				add_trait = orc_warrior
+			}	
+			20 = {
+				add_trait = strong_orc
+			}
+			10 = {
+				add_trait = great_orc
+			}	
+		}
+	}	
+	
+	option = {
+	    name = EVTOPTAracetrait.1
+		trigger = {
+			culture = culture_urukhai
+		}
+	    random_list = {
+			20 = {
+				add_trait = weak_orc
+			}
+			30 = {
+				add_trait = orc_warrior
+			}	
+			30 = {
+				add_trait = strong_orc
+			}
+			20 = {
+				add_trait = great_orc
+			}	
+		}
+	}	
+}
+	
+	

@@ -1,0 +1,974 @@
+namespace = ABDICATE
+
+character_event = {
+	id = ABDICATE.1
+	desc = "ABD.001.DESC"
+	picture = GFX_evt_council
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "ABD.001.A"
+		
+		ai_chance = {
+			factor = 1
+		}
+
+		FROM = { character_event = { id = ABDICATE.002 } }
+	}
+}
+
+character_event = {
+	id = ABDICATE.2
+	desc = "ABD.002.DESC"
+	picture = GFX_evt_council
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "ABD.002.A"	
+		ai_chance = {
+			factor = 1
+		}
+	
+		## Steward Sceptre ##
+		if = {
+			limit = { trait = stewardscept }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { trait = stewardscept } 
+					}
+				}
+				current_heir = {
+					add_trait = stewardscept 
+					character_event = { id = 250277 }
+				}
+				remove_trait = stewardscept 
+			}
+		}
+		## The One Ring ##	
+		if = {
+			limit = { trait = ring }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { trait = ring } 
+					}
+				}
+				current_heir = {
+					add_trait = ring 
+					character_event = { id = 250278 }
+				}
+				remove_trait = ring
+			}
+		}
+		## Narya ##	
+		if = {
+				limit = { trait = narya }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = {  
+							is_alive = yes  
+							NOT = { trait = narya } 
+						}
+					}
+					current_heir = {
+						add_trait = narya 
+						character_event = { id = 250279 }
+					}
+					remove_trait = narya
+				}
+		}
+		## Nenya ##	
+		if = {
+			limit = { trait = nenya }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = nenya } 
+						}
+					}
+					current_heir = {
+						add_trait = nenya 
+						character_event = { id = 250298 }
+					}
+					remove_trait = nenya
+				}
+			}
+		## Vilya ##	
+		if = {
+				limit = { trait = vilya }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = vilya } 
+						}
+					}
+					current_heir = {
+						add_trait = vilya 
+						character_event = { id = 250299 }
+					}
+					remove_trait = vilya
+				}
+			}
+		## Ring of Barahir ##
+		if = {
+			limit = { trait = barahir }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = barahir } 
+						}
+					}
+					current_heir = {
+						add_trait = barahir 
+						character_event = { id = 250300 }
+					}
+					remove_trait = barahir 
+				}
+			}	
+		## The Elessar ##
+		if = {
+				limit = { trait = elessar }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = elessar } 
+						}
+					}
+					current_heir = {
+						add_trait = elessar 
+						character_event = { id = 250283 }
+					}
+					remove_trait = elessar
+				}
+			}	
+		## The Arkenstone ##
+		if = {
+				limit = { trait = arkenstone }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = arkenstone } 
+						}
+					}
+					current_heir = {
+						add_trait = arkenstone
+						character_event = { id = 250301 }
+					}
+					remove_trait = arkenstone
+				}
+			}
+		## the Palantir ##
+		if = {
+				limit = { trait = palantir }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir
+						character_event = { id = 250285 }
+					}
+					remove_trait = palantir
+				}
+			}	
+		## Scepter of Annuminas ##
+		if = {
+				limit = { trait = annunimas }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = annunimas } 
+						}
+					}
+					current_heir = {
+						add_trait = annunimas 
+						character_event = { id = 250286 }
+					}
+					remove_trait = annunimas 
+				}
+			}	
+		## The Horn of Gondor ##
+		if = {
+				limit = { trait = horngondor }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = horngondor } 
+						}
+					}
+					current_heir = {
+						add_trait = horngondor
+						character_event = { id = 250287 }
+					}
+					remove_trait = horngondor
+				}
+			}	
+		## Anduril ##
+		if = {
+				limit = { trait = anduril }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = anduril } 
+						}
+					}
+					current_heir = {
+						add_trait = anduril 
+						character_event = { id = 250288 }
+					}
+					remove_trait = anduril
+				}
+			}
+		## Narsil ##
+		if = {
+				limit = { trait = narsil }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = narsil } 
+						}
+					}
+					current_heir = {
+						add_trait = narsil
+						character_event = { id = 250289 }					
+					}
+					remove_trait = narsil
+				}
+			}	
+		## Glamdring ##
+		if = {
+				limit = { trait = glamdring }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = glamdring } 
+						}
+					}
+					current_heir = {
+						add_trait = glamdring
+						character_event = { id = 250290 }		
+					}
+					remove_trait = glamdring
+				}
+			}	
+		## Sting ##	
+		if = {
+				limit = { trait = sting }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = sting } 
+						}
+					}
+					current_heir = {
+						character_event = { id = 250291 }
+						add_trait = sting 
+					}
+					remove_trait = sting
+				}
+			}
+		## Herugrim ##	
+		if = {
+				limit = { trait = herugrim }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = herugrim } 
+						}
+					}
+					current_heir = {
+						add_trait = herugrim 
+						character_event = { id = 250292 }	
+					}
+					remove_trait = herugrim
+				}
+			}	
+		## Orcrist ##	
+		if = {
+				limit = { trait = orcrist }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = {  
+							is_alive = yes  
+							NOT = { trait = orcrist } 
+						}
+					}
+					current_heir = {
+						character_event = { id = 250293 }
+						add_trait = orcrist 
+					}
+					remove_trait = orcrist
+				}
+			}
+		## Gutwhine ##		
+		if = {
+				limit = { trait = gutwhine }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = gutwhine } 
+						}
+					}
+					current_heir = {
+						add_trait = gutwhine 
+						character_event = { id = 250294 }
+					}
+					remove_trait = gutwhine
+				}
+			}	
+		## Mithril Chest ##	
+		if = {
+				limit = { trait = mithril }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = mithril } 
+						}
+					}
+					current_heir = {
+						character_event = { id = 250295 }
+						add_trait = mithril 
+					}
+					remove_trait = mithril
+				}
+			}	
+		## Armor founded in the ruins of Himling ##	
+		if = {
+				limit = { trait = himling_armour }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = himling_armour } 
+						}
+					}
+					current_heir = {
+						character_event = { id = 250296 }
+						add_trait = himling_armour 
+					}
+					remove_trait = himling_armour
+				}
+			}	
+		## The Heir of Durin is passed to the heir ##	
+		if = {
+				limit = { trait = heir_of_durin }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							dynasty = ROOT
+							is_alive = yes  
+							NOT = { trait = heir_of_durin } 
+						}
+					}
+					current_heir = {
+						add_trait = heir_of_durin 
+					}
+					remove_trait = heir_of_durin
+				}
+			}
+		## The Sword founded in the ruins of Himling ##	
+		if = {
+				limit = { trait = himling_sword }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = himling_sword } 
+						}
+					}
+					current_heir = {
+						character_event = { id = 250297 }
+						add_trait = himling_sword 
+					}
+					remove_trait = himling_sword
+				}
+			}	
+		## The Palantir of Annuminas ##	
+		if = {
+				limit = { trait = palantir_annuminas }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir_annuminas } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_annuminas 
+					}
+					remove_trait = palantir_annuminas 
+				}
+			}
+		## The Palantir of Orthanc ##	
+		if = {
+				limit = { trait = palantir_orthanc }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir_orthanc } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_orthanc 
+					}
+					remove_trait = palantir_orthanc
+				}
+			}
+		## The Palantir of Amon Sûl ##	
+		if = {
+				limit = { trait = palantir_sul }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir_sul } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_sul 
+					}
+					remove_trait = palantir_sul
+				}
+			}
+		## The Palantir of Elostirion ##	
+		if = {
+				limit = { trait = palantir_elostirion }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = {  
+							is_alive = yes  
+							NOT = { trait = palantir_elostirion } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_elostirion 
+					}
+					remove_trait = palantir_elostirion
+				}
+			}
+		## The Palantir of Osgiliath ##	
+		if = {
+				limit = { trait = palantir_osgiliath }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir_osgiliath } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_osgiliath 
+					}
+					remove_trait = palantir_osgiliath
+				}
+			}
+		## The Palantir of Minas Ithil ##	
+		if = {
+			limit = { trait = palantir_ithil }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = palantir_ithil } 
+						}
+					}
+					current_heir = {
+						add_trait = palantir_ithil 
+					}
+					remove_trait = palantir_ithil
+				}
+			}	
+		## Lesser Ring ##	
+		if = {
+				limit = { trait = lesser_ring }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = lesser_ring } 
+						}
+					}
+					current_heir = {
+						add_trait = lesser_ring 
+					}
+					remove_trait = lesser_ring 
+				}
+			}	
+		## A Spear forged in Erebor ##	
+		if = {
+			limit = { trait = erebor_spear }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = erebor_spear } 
+						}
+					}
+					current_heir = {
+						add_trait = erebor_spear 
+					}
+					remove_trait = erebor_spear
+				}
+			}
+		## An Armor forged in Erebor ##	
+		if = {
+			limit = { trait = erebor_armor }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = {  
+							is_alive = yes  
+							NOT = { trait = erebor_armor } 
+						}
+					}
+					current_heir = {
+						add_trait = erebor_armor 
+					}
+					remove_trait = erebor_armor
+				}
+			}		
+		## The Durin Ring ##	
+		if = {
+				limit = { trait = durin_ring }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = {  
+							is_alive = yes  
+							NOT = { trait = durin_ring } 
+						}
+					}
+					current_heir = {
+						add_trait = durin_ring 
+					}
+					remove_trait = durin_ring
+				}
+			}	
+		## A Dwarven Ring ##	
+		if = {
+				limit = { trait = dwarf_ring }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = dwarf_ring } 
+						}
+					}
+					current_heir = {
+						add_trait = dwarf_ring 
+					}
+					remove_trait = dwarf_ring
+				}
+			}	
+		## A Dwarven Necklace ##	
+		if = {
+				limit = { trait = dwarf_necklace }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = dwarf_necklace } 
+						}
+					}
+					current_heir = {
+						add_trait = dwarf_necklace 
+					}
+					remove_trait = dwarf_necklace
+				}
+			}	
+		## An Elvish Necklace ##	
+		if = {
+				limit = { trait = elf_necklace }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = elf_necklace } 
+						}
+					}
+					current_heir = {
+						add_trait = elf_necklace 
+					}
+					remove_trait = elf_necklace
+				}
+			}	
+		## A Dwarf Jewel ##	
+		if = {
+				limit = { trait = dwarf_jewel }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = dwarf_jewel } 
+						}
+					}
+					current_heir = {
+						add_trait = dwarf_jewel 
+					}
+					remove_trait = dwarf_jewel
+				}
+			}	
+		## An Elvish Brooch ##	
+		if = {
+				limit = { trait = elf_brooch }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = elf_brooch } 
+						}
+					}
+					current_heir = {
+						add_trait = elf_brooch 
+					}
+					remove_trait = elf_brooch
+				}
+			}	
+		## the Crown of Herumor ##	
+		if = {
+				limit = { trait = crown_herumor }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = crown_herumor } 
+						}
+					}
+					current_heir = {
+						add_trait = crown_herumor 
+					}
+					remove_trait = crown_herumor
+				}
+			}	
+		## the Seal of Herumor ##	
+		if = {
+				limit = { trait = seal_herumor }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = seal_herumor } 
+						}
+					}
+					current_heir = {
+						add_trait = seal_herumor 
+					}
+					remove_trait = seal_herumor
+				}
+			}	
+		## the Throne of Isildur ##	
+		if = {
+				limit = { trait = isildur_throne }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = isildur_throne } 
+						}
+					}
+					current_heir = {
+						add_trait = isildur_throne 
+					}
+					remove_trait = isildur_throne
+				}
+			}		
+		## the Helmet of Arveleg ##	
+		if = {
+				limit = { trait = arveleg_helmet }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = arveleg_helmet } 
+						}
+					}
+					current_heir = {
+						add_trait = arveleg_helmet 
+					}
+					remove_trait = arveleg_helmet
+				}
+			}	
+		## the Armour of Arvedui ##	
+		if = {
+				limit = { trait = arvedui_armor }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = arvedui_armor } 
+						}
+					}
+					current_heir = {
+						add_trait = arvedui_armor 
+					}
+					remove_trait = arvedui_armor
+				}
+			}	
+		## the Axe of Durin ##	
+		if = {
+				limit = { trait = durins_axe }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = durins_axe } 
+						}
+					}
+					current_heir = {
+						add_trait = durins_axe 
+					}
+					remove_trait = durins_axe
+				}
+			}		
+		## the Sword of Amroth ##	
+		if = {
+			limit = { trait = amroth_sword }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = amroth_sword } 
+						}
+					}
+					current_heir = {
+						add_trait = amroth_sword 
+					}
+					remove_trait = amroth_sword
+				}
+			}	
+		## Narsil - not broken ##	
+		if = {
+			limit = { trait = narsil_elendil }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = narsil_elendil } 
+						}
+					}
+					current_heir = {
+						add_trait = narsil_elendil 
+					}
+					remove_trait = narsil_elendil
+				}
+			}	
+		## A Morgul's Blade ##	
+		if = {
+				limit = { trait = morgul_blade }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = morgul_blade } 
+						}
+					}
+					current_heir = {
+						add_trait = morgul_blade 
+					}
+					remove_trait = morgul_blade
+				}
+			}	
+		## Gurthang ##	
+		if = {
+				limit = { trait = gurthang }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = gurthang } 
+						}
+					}
+					current_heir = {
+						add_trait = gurthang 
+					}
+					remove_trait = gurthang
+				}
+			}	
+		## Shards of Gurthang ##	
+		if = {
+				limit = { trait = shards_gurthang }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = shards_gurthang } 
+						}
+					}
+					current_heir = {
+						add_trait = shards_gurthang 
+					}
+					remove_trait = shards_gurthang
+				}
+			}	
+		## Anguirel ##	
+		if = {
+				limit = { trait = anguirel }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = anguirel } 
+						}
+					}
+					current_heir = {
+						add_trait = anguirel 
+					}
+					remove_trait = anguirel
+				}
+			}	
+		## Anglachel ##	
+		if = {
+				limit = { trait = anglachel }
+				if = { 
+					limit = { 
+						is_ruler = yes
+						current_heir = { 
+							is_alive = yes  
+							NOT = { trait = anglachel } 
+						}
+					}
+					current_heir = {
+						add_trait = anglachel 
+					}
+					remove_trait = anglachel
+				}
+			}	
+	
+		FROM = {
+			clr_character_flag = abdicate
+		}
+		
+		clr_character_flag = wants_to_abdicate
+		
+		abdicate_to = FROM
+		
+		set_character_flag = abdicated
+		
+		any_claim = {
+			remove_claim = ROOT
+		}
+	}
+}
+
+
+### Death of an abdicated character ###
+character_event = {
+	id = ABDICATE.3
+	title = OK
+	desc = OK
+	picture = GFX_evt_death
+	
+	#hide_window = yes	
+	
+	trigger = {
+		OR = {
+			culture_group = culture_group_numenorean
+			culture_group = culture_group_dwarves
+		}
+		has_character_flag = abdicated
+		age = 180
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAhumaninfertility.1" # I'll sleep now.
+		death = {
+			death_reason = death_natural
+		}			
+	}
+	
+	option = {
+		name = "EVTOPTBhumaninfertility.1" # I won't leave this world!
+		trigger = { ai = no }
+		health = -5
+		random_list = {
+			22 = {
+				add_trait = stressed
+			}
+			22 = {
+					add_trait = depressed
+			}
+			22 = {
+					add_trait = envious
+			}	
+			22 = {
+					add_trait = zealous
+			}	
+			12 = {
+					add_trait = infirm
+			}				
+		}		
+	}	
+
+}  

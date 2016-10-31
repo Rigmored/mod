@@ -1,0 +1,548 @@
+namespace = ambitions
+
+############# ROHAN TRAITS ###############
+### The Riders Events ###
+## An Horseman propose you to train ##
+character_event = {
+	id = ambitions.0
+	title = EVTTITambitions.0
+	desc = EVTDESCambitions.0
+	picture = GFX_oath_of_eorl
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_ambition = obj_become_a_rider
+		NOT = { has_character_flag = rider_education }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.0 ## I'll try to be a true rider !
+		set_character_flag = rider_education
+		change_martial = 1
+		wealth = -50
+		character_event = { id = ambitions.1 days = 5 }
+	}
+	option = {
+		name = EVTOPTBambitions.0 ## I don't have enough time for it.
+		trigger = { ai = no }
+	}	
+}
+
+## You begin to train ##
+character_event = {
+	id = ambitions.1	
+	desc = EVTDESCambitions.1
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.1 ## I hope my skills will be improved !
+		random_list = {
+			25 = { 
+				character_event = { id = ambitions.2 days = 50 } ## You failed
+			}
+			25 = {
+				character_event = { id = ambitions.4 days = 50 } ## You're a Good Rider		
+			}
+			50 = {
+				character_event = { id = ambitions.3 days = 50 } ## You're a Squire		
+			}
+		}		
+	}
+}
+
+## You failed to train ##
+character_event = {
+	id = ambitions.2
+	title = EVTTITambitions.2	
+	desc = EVTDESCambitions.2
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.2 ## So bad...
+		clr_character_flag = rider_education
+		set_character_flag = not_a_rider
+		random_list = {
+			15 = {
+				add_trait = depressed
+			}
+			15 = {
+				add_trait = envious
+			}
+			70 = {
+			}
+		}
+	}
+}
+
+## You're now a Squire ##
+character_event = {
+	id = ambitions.3
+	title = EVTTITambitions.3	
+	desc = EVTDESCambitions.3
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.3 ## I'll continue to train myself !
+		add_trait = squire
+		wealth = -100
+		random_list = {
+			60 = {
+				character_event = { id = ambitions.4 days = 50 } ## You're a Good Rider		
+			}
+			40 = {
+				character_event = { id = ambitions.7 days = 50 } ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.3 ## It's enough for me.
+		clr_character_flag = rider_education
+		trigger = { ai = no }
+		add_trait = squire
+	}	
+}
+
+## You're now a Good Rider ##
+character_event = {
+	id = ambitions.4
+	title = EVTTITambitions.4	
+	desc = EVTDESCambitions.4
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.4 ## I'll continue to train myself !
+		remove_trait = squire
+		add_trait = good_rider		
+		wealth = -150
+		random_list = {
+			50 = {
+				character_event = { id = ambitions.5 days = 60 } ## You're a Great Rider	
+			}
+			50 = {
+				character_event = { id = ambitions.7 days = 60} ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.4 ## It's enough for me.
+		clr_character_flag = rider_education
+		trigger = { ai = no }
+		remove_trait = squire
+		add_trait = good_rider			
+	}	
+}
+
+## You're now a Great Rider ##
+character_event = {
+	id = ambitions.5
+	title = EVTTITambitions.5	
+	desc = EVTDESCambitions.5
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.5 ## I'll continue to train myself !
+		remove_trait = good_rider
+		add_trait = great_rider
+		wealth = -200
+		prestige = 50
+		trigger = { ai = no }
+		random_list = {
+			40 = {
+				character_event = { id = ambitions.6 days = 70 } ## You're a Horse-Master	
+			}
+			60 = {
+				character_event = { id = ambitions.7 days = 70} ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.5 ## It's enough for me.
+		clr_character_flag = rider_education
+		remove_trait = good_rider
+		add_trait = great_rider	
+		prestige = 50		
+	}	
+}
+
+## You're now a Horse Master ##
+character_event = {
+	id = ambitions.6
+	title = EVTTITambitions.6	
+	desc = EVTDESCambitions.6
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.6 ## I proud of my skills.
+		prestige = 150
+		remove_trait = great_rider
+		add_trait = horse_master
+		clr_character_flag = rider_education
+	}
+}
+
+## You can't progress more ##
+character_event = {
+	id = ambitions.7
+	title = EVTTITambitions.7
+	desc = EVTDESCambitions.7
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.7 ## I see.
+		clr_character_flag = rider_education		
+	}
+}
+
+
+############# ELF TRAITS ###############
+### The Elf Warriors Events ###
+## You'll go to the barracks ##
+character_event = {
+	id = ambitions.8
+	title = EVTTITambitions.8
+	desc = EVTDESCambitions.8
+	picture = GFX_good
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_ambition = obj_become_elf_warrior
+		NOT = { has_character_flag = elf_warrior_education }
+		age = 150
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.8 ## I'll try to be a true rider !
+		set_character_flag = elf_warrior_education
+		change_martial = 1
+		wealth = -50
+		character_event = { id = ambitions.9 days = 5 }
+	}
+	option = {
+		name = EVTOPTBambitions.8 ## I don't have enough time for it.
+		trigger = { ai = no }
+	}	
+}
+
+## You begin to train ##
+character_event = {
+	id = ambitions.9
+	desc = EVTDESCambitions.9
+	picture = GFX_good
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.9 ## I hope my skills will be improved !
+		random_list = {
+			25 = { 
+				character_event = { id = ambitions.10 days = 100 } ## You failed
+			}
+			25 = {
+				character_event = { id = ambitions.12 days = 100 } ## You're an Elf Warrior		
+			}
+			50 = {
+				character_event = { id = ambitions.11 days = 100 } ## You're a Trained Elf		
+			}
+		}		
+	}
+}
+
+## You failed to train ##
+character_event = {
+	id = ambitions.10
+	title = EVTTITambitions.10
+	desc = EVTDESCambitions.10
+	picture = GFX_war_at_north
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.2 ## So bad...
+		clr_character_flag = elf_warrior_education
+		set_character_flag = not_elf_warrior
+	}
+}
+
+## You're now a Trained Elf ##
+character_event = {
+	id = ambitions.11
+	title = EVTTITambitions.11	
+	desc = EVTDESCambitions.11
+	picture = GFX_war_at_north
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.11 ## I'll continue to train myself !
+		add_trait = trained_elf
+		wealth = -100
+		random_list = {
+			60 = {
+				character_event = { id = ambitions.12 days = 150 } ## You're an Elf Warrior	
+			}
+			40 = {
+				character_event = { id = ambitions.14 days = 150 } ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.11 ## It's enough for me.
+		clr_character_flag = elf_warrior_education
+		trigger = { ai = no }
+		add_trait = trained_elf
+	}	
+}
+
+## You're now a Good Rider ##
+character_event = {
+	id = ambitions.12
+	title = EVTTITambitions.12
+	desc = EVTDESCambitions.12
+	picture = GFX_war_at_north
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.12 ## I'll continue to train myself !
+		remove_trait = trained_elf
+		add_trait = great_elf		
+		wealth = -150
+		random_list = {
+			50 = {
+				character_event = { id = ambitions.13 days = 300 } ## You're a Great Rider	
+			}
+			50 = {
+				character_event = { id = ambitions.14 days = 300} ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.12 ## It's enough for me.
+		clr_character_flag = elf_warrior_education
+		trigger = { ai = no }
+		remove_trait = trained_elf
+		add_trait = great_elf			
+	}	
+}
+
+## You're now a Legendary Warrior ##
+character_event = {
+	id = ambitions.13
+	title = EVTTITambitions.13
+	desc = EVTDESCambitions.13
+	picture = GFX_war_at_north
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.13 ## I proud of my skills.
+		prestige = 150
+		remove_trait = great_elf
+		add_trait = legendary_warrior
+		clr_character_flag = elf_warrior_education
+	}
+}
+
+## You can't progress more ##
+character_event = {
+	id = ambitions.14
+	title = EVTTITambitions.14
+	desc = EVTDESCambitions.14
+	picture = GFX_war_at_north
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.14 ## I see.
+		clr_character_flag = elf_warrior_education		
+	}
+}
+
+############# CIVIL TRAITS ###############
+### The Craftsman events ###
+## You'll go to the forge ##
+character_event = {
+	id = ambitions.15
+	title = EVTTITambitions.15
+	desc = EVTDESCambitions.15
+	picture = GFX_evt_ring_craft
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_ambition = obj_become_a_craftsman
+		NOT = { has_character_flag = craftsman_education }
+		age = 100
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.15 ## I'll try to be a true rider !
+		set_character_flag = craftsman_education
+		change_martial = 1
+		wealth = -50
+		character_event = { id = ambitions.16 days = 5 }
+	}
+	option = {
+		name = EVTOPTBambitions.15 ## I don't have enough time for it.
+		trigger = { ai = no }
+		set_character_flag = not_a_craftsman
+	}	
+}
+
+## You begin to train ##
+character_event = {
+	id = ambitions.16
+	desc = EVTDESCambitions.16
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.16 ## I hope my skills will be improved !
+		random_list = {
+			40 = { 
+				character_event = { id = ambitions.17 days = 100 } ## You failed
+			}
+			60 = {
+				character_event = { id = ambitions.18 days = 100 } ## You're a Trained Elf		
+			}
+		}		
+	}
+}
+
+## You failed to train ##
+character_event = {
+	id = ambitions.17
+	title = EVTTITambitions.17
+	desc = EVTDESCambitions.17
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.17 ## So bad...
+		clr_character_flag = craftsman_education
+		set_character_flag = not_a_craftsman
+	}
+}
+
+## You're now a Craftsman. ##
+character_event = {
+	id = ambitions.18
+	title = EVTTITambitions.18
+	desc = EVTDESCambitions.18
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.18 ## Ok.
+		clr_character_flag = craftsman_education
+		trigger = { ai = no }
+		add_trait = craftsman
+	}	
+	
+	option = {
+		name = EVTOPTBambitions.18 ## I want to learn more from you, master.
+		add_trait = craftsman
+		wealth = -100
+		random_list = {
+			60 = {
+				character_event = { id = ambitions.19 days = 150 } ## You're a Skilled Craftsman
+			}
+			40 = {
+				character_event = { id = ambitions.21 days = 150 } ## You failed		
+			}
+		}		
+	}	
+}
+
+## You're now a Skilled Craftsman ##
+character_event = {
+	id = ambitions.19
+	title = EVTTITambitions.19
+	desc = EVTDESCambitions.19
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.19 ## I'll continue to train myself !
+		remove_trait = craftsman
+		add_trait = skilled_craftsman		
+		wealth = -200
+		random_list = {
+			40 = {
+				character_event = { id = ambitions.20 days = 300 } ## You're a Master Craftsman
+			}
+			60 = {
+				character_event = { id = ambitions.21 days = 300} ## You failed		
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTBambitions.19 ## It's enough for me.
+		clr_character_flag = craftsman_education
+		trigger = { ai = no }
+		remove_trait = craftsman
+		add_trait = skilled_craftsman			
+	}	
+}
+
+## You're now a master Crafstman ##
+character_event = {
+	id = ambitions.20
+	title = EVTTITambitions.20
+	desc = EVTDESCambitions.20
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.20 ## I proud of my skills.
+		prestige = 150
+		remove_trait = skilled_craftsman
+		add_trait = master_craftsman
+		clr_character_flag = craftsman_education
+	}
+}
+
+## You can't progress more ##
+character_event = {
+	id = ambitions.21
+	title = EVTTITambitions.21
+	desc = EVTDESCambitions.21
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAambitions.21 ## I see.
+		clr_character_flag = craftsman_education	
+	}
+}

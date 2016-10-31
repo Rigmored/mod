@@ -1,0 +1,1084 @@
+namespace = colonisation
+
+character_event = {
+	id = colonisation.0
+	desc = "colonisation0desc" #Do you want to colonize this province? It can take up to 20 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources in the new lands.
+	picture = GFX_evt_ruins
+	is_triggered_only = yes
+
+	option = {
+		name = "colonisation0A" #Yes, our people need new lands to settle.
+		job_treasurer = {
+			location = {
+				add_province_modifier = { name = being_colonised duration = -1 }
+			}
+		}
+		wealth = -250
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+} 
+
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.1
+	desc = "colonisation1desc" #This province has been colonised, and will now start paying taxes and contributing troops to your realm. The wilderness has given way to settlements, and your people will surely prosper here.
+	picture = GFX_evt_ruins
+	
+	trigger = {
+		AND = {
+			has_province_modifier = being_colonised
+			NOR = { has_province_modifier = sending_colonists
+					has_province_modifier = being_colonised_with_dwarves
+					has_province_modifier = being_colonised_with_elves
+					has_province_modifier = being_colonised_with_halflings
+					has_province_modifier = being_colonised_with_gondorian_middlemen
+					has_province_modifier = being_colonised_with_arnorian_middlemen
+					has_province_modifier = being_colonised_with_southrons
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 120 
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = PREV
+				religion = PREV
+			}
+		}
+	}
+	
+	}
+	
+character_event = {
+	id = colonisation.2
+	desc = "colonisation2desc" #A dwarf noble is in your court. It will be extremely costly, but you can send him to convince some of his people to settle in a new province, while you start building the infrastructure and clearing the lands of enemies.
+	picture = GFX_evt_dwarves
+	is_triggered_only = yes
+
+	option = {
+		name = "colonisation2A" #Yes, dwarves will live in this province.
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_dwarves 
+					duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -1000
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+}	
+
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.3
+	desc = "colonisation3desc" #This province has been settled by dwarves, who will be a valuable addition to your realm.
+	picture = GFX_evt_dwarves
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_dwarves
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_dwarves
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_longbeard
+				religion = religion_mahal
+			}
+		}
+	}
+	
+	}
+	
+character_event = {
+	id = colonisation.4
+	desc = "colonisation4desc" #An elven noble is in your court. It will be extremely costly, but you can send him to convince some of his people to settle in a new province, while you start building the infrastructure and clearing the lands of enemies.
+	picture = GFX_elf_meeting
+	is_triggered_only = yes
+
+	option = {
+		name = "colonisation4A" #Yes, elves will live in this province.
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_elves
+					duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -1000
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+}	
+
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.5
+	desc = "colonisation5desc" #This province has been settled by elves, who will be a valuable addition to your realm.
+	picture = GFX_elf_meeting
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_elves
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_elves
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_silvan
+				religion = religion_moriquendi
+			}
+		}
+	}
+	
+	}
+	
+character_event = {
+	id = colonisation.6
+	desc = "colonisation6desc" #An influential halfing is in your court. It will be very costly, but you can send him to convince some of his people to settle in a new province, while you start building the infrastructure and clearing the lands of enemies.
+	picture = GFX_evt_hobbitsmial
+	is_triggered_only = yes
+
+	option = {
+		name = "colonisation6A" #Yes, halflings will live in this province.
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_halflings
+					duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -500
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+}	
+
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.7
+	desc = "colonisation7desc" #This province has been settled by halflings, who will be a valuable addition to your realm.
+	picture = GFX_evt_hobbitsmial
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_halflings
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_halflings
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_hobbit
+				religion = religion_perian
+			}
+		}
+	}
+	
+	}
+	
+	#Now for Dunedain culture group - they have the choice to colonize with Dunedain for 1000 gold, or with either Arnorian or Gondorian middlemen for 250 gold
+character_event = {
+	id = colonisation.8
+	desc = "colonisation8desc" #It will be very expensive to settle these lands with those of Dunedain ancestry, as their numbers are few. Do you want to settle with middle men instead?
+	picture = GFX_travel_gondor
+	is_triggered_only = yes
+
+	option = {
+		name = "colonisation8A" #No, this province will be for the High Men.
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = sending_colonists duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised duration = -1
+
+				}
+			}
+		}
+		wealth = -1000
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation8B" #Yes, send in some Gondorian Middle-Men.
+		trigger = { NOT = { culture = culture_black_numenorean } }
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_gondorian_middlemen
+					duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -250
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+		option = {
+		name = "colonisation8C" #Yes, send in some Arnorian Middle-Men.
+		trigger = { NOT = { culture = culture_black_numenorean } }
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_arnorian_middlemen
+					duration = -1
+				}
+				add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -250
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+
+		option = {
+		name = "colonisation8D" #Yes, send in some Southrons instead.
+		trigger = { culture = culture_black_numenorean }
+		job_treasurer = {
+			location = {
+					add_province_modifier = {
+					name = being_colonised_with_southrons
+					duration = -1
+				}
+					add_province_modifier = {
+					name = being_colonised
+					duration = -1
+				}
+			}
+		}
+		wealth = -250
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							culture = ROOT
+							religion = ROOT
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				job_treasurer = {
+					location = {
+						owner = {
+							is_liege_or_above = ROOT
+							OR = {
+								NOT = { culture = ROOT }
+								NOT = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+			job_treasurer = {
+				location = {
+					owner = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_colonizes_my_province_wrong
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+}	
+
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.9
+	desc = "colonisation9desc" #This province has been settled by Gondorian Middle Men, who will be a valuable addition to your realm.
+	picture = GFX_travel_gondor
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_gondorian_middlemen
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_gondorian_middlemen
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_gondorian_middlemen
+				religion = religion_dunedain
+			}
+		}
+	}
+	
+	}	
+	
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.10
+	desc = "colonisation10desc" #This province has been settled by Arnorian Middle Men, who will be a valuable addition to your realm.
+	picture = GFX_travel_gondor
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_arnorian_middlemen
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_arnorian_middlemen
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_arnorian_middlemen
+				religion = religion_dunedain
+			}
+		}
+	}
+	
+	}
+	
+province_event = {
+	id = colonisation.14
+	desc = "colonisation14desc" #This province has been settled by High Men, who will be a valuable addition to your realm.
+	picture = GFX_travel_gondor
+	
+	trigger = {
+	has_province_modifier = sending_colonists
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = sending_colonists
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_dunedain
+				religion = religion_dunedain
+			}
+		}
+	}
+	
+	}		
+	
+#Now the province has the modifier, MTTH of 10 years for it to be colonized
+province_event = {
+	id = colonisation.11
+	desc = "colonisation11desc" #This province has been settled by Southrons, who will be a valuable addition to your realm.
+	picture = GFX_harad_market
+	
+	trigger = {
+	has_province_modifier = being_colonised_with_southrons
+	}
+	
+	mean_time_to_happen = {
+	months = 120
+	}
+	
+	option = {
+	name = OK
+	remove_province_modifier = being_colonised_with_southrons
+	remove_province_modifier = being_colonised
+	owner = {
+			ROOT = {
+				culture = culture_haradrim
+				religion = religion_southron
+			}
+		}
+	}
+	
+	}
+	
+##AI wont use the decisions properly, we make them colonize via event instead - first for non numenoreans
+character_event = {
+	id = colonisation.12
+	desc = "colonisation11desc" #doesnt matter, only AI sees this
+	picture = GFX_harad_market
+	
+	trigger = {
+	wealth = 500
+	NOT = { culture_group = culture_group_numenorean }
+	NOT = { culture = culture_maiar }
+	NOT = { culture = culture_istari }
+	ai = yes
+	any_realm_province = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		AND = {
+		NOT = { has_province_modifier = sending_colonists }
+		NOT = { has_province_modifier = being_colonised }
+		NOT = { has_province_modifier = being_colonised_with_dwarves }
+		NOT = { has_province_modifier = being_colonised_with_elves }
+		NOT = { has_province_modifier = being_colonised_with_halflings }
+		NOT = { has_province_modifier = being_colonised_with_gondorian_middlemen }
+		NOT = { has_province_modifier = being_colonised_with_arnorian_middlemen }
+		NOT = { has_province_modifier = being_colonised_with_southrons }
+			}
+			}
+	any_realm_province = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+	months = 12
+	}
+	
+	option = {
+	name = OK
+	random_realm_province = {
+		limit = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		}
+		add_province_modifier = { name = being_colonised duration = -1 }
+			}	
+	random_demesne_province = {
+		limit = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = sending_colonists }
+			}
+			}
+		add_province_modifier = { name = sending_colonists duration = 7200 }
+			}	
+	}
+	
+	}
+	
+##AI wont use the decisions properly, we make them colonize via event instead - now for numenorean culture group, as AI, they will only colonise with middlemen
+character_event = {
+	id = colonisation.13
+	desc = "colonisation11desc" #doesnt matter, only AI sees this
+	picture = GFX_harad_market
+	
+	trigger = {
+	wealth = 500
+	culture_group = culture_group_numenorean
+	NOT = { culture = culture_maiar }
+	NOT = { culture = culture_istari }
+	ai = yes
+	any_realm_province = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		AND = {
+		NOT = { has_province_modifier = sending_colonists }
+		NOT = { has_province_modifier = being_colonised }
+		NOT = { has_province_modifier = being_colonised_with_dwarves }
+		NOT = { has_province_modifier = being_colonised_with_elves }
+		NOT = { has_province_modifier = being_colonised_with_halflings }
+		NOT = { has_province_modifier = being_colonised_with_gondorian_middlemen }
+		NOT = { has_province_modifier = being_colonised_with_arnorian_middlemen }
+		NOT = { has_province_modifier = being_colonised_with_southrons }
+			}
+	}
+	any_realm_province = {
+		AND = {
+			NOT = { culture = culture_wilderness }
+			NOT = { has_province_modifier = being_colonised }
+		}
+	}
+	}
+	
+	mean_time_to_happen = {
+	months = 12
+	}
+	
+	#Dunedain AI colonise with gondorian middle men if gondorian
+	option = {
+	name = OK
+	trigger = { 
+	culture = culture_gondorian
+	}
+	wealth = -250
+	random_realm_province = {
+		limit = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		}
+		add_province_modifier = { name = being_colonised_with_gondorian_middlemen duration = -1 }
+			}	
+	random_demesne_province = {
+		limit = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = being_colonised }
+			}
+			}
+		add_province_modifier = { name = being_colonised duration = 7200 }
+			}	
+	} 
+
+	#Dunedain colonise with arnorian if arnorian
+	option = {
+	name = OK
+	trigger = { 
+	culture = culture_arnorian
+	}
+	wealth = -250
+	random_realm_province = {
+		limit = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		}
+		add_province_modifier = { name = being_colonised_with_arnorian_middlemen duration = -1 }
+			}	
+	random_demesne_province = {
+		limit = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = being_colonised }
+			}
+			}
+		add_province_modifier = { name = being_colonised duration = 7200 }
+			}	
+	}
+	
+	#Dunedain colonise with dunedain if dunedain
+	option = {
+	name = OK
+	trigger = { 
+	culture = culture_dunedain
+	}
+	wealth = -500
+	random_realm_province = {
+		limit = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		}
+		add_province_modifier = { name = being_colonised duration = -1 }
+			}	
+	random_demesne_province = {
+		limit = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = being_colonised }
+			}
+			}
+		add_province_modifier = { name = being_colonised duration = 7200 }
+			}	
+	}
+	#Black Numenoreans colonise with Haradrim
+	option = {
+	name = OK
+	trigger = { 
+	culture = culture_black_numenorean 
+	}
+	wealth = -250
+	random_realm_province = {
+		limit = {
+		OR = {
+			religion = religion_wilderness
+			culture = culture_wilderness
+			culture = culture_mountains
+		}
+		}
+		add_province_modifier = { name = being_colonised_with_southrons duration = -1 }
+			}	
+	random_demesne_province = {
+		limit = {
+		AND = {
+		NOT = { culture = culture_wilderness }
+		NOT = { has_province_modifier = being_colonised }
+			}
+			}
+		add_province_modifier = { name = being_colonised duration = 7200 }
+			}	
+	}	
+}
+
+#Removes province modifiers if vanilla conversion happend first
+character_event = {
+id = colonisation.15
+hidden = yes
+
+	trigger = {
+		any_realm_province = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+			}
+			OR = {
+			has_province_modifier = sending_colonists 
+			has_province_modifier = being_colonised 
+			has_province_modifier = being_colonised_with_dwarves 
+			has_province_modifier = being_colonised_with_elves 
+			has_province_modifier = being_colonised_with_halflings 
+			has_province_modifier = being_colonised_with_gondorian_middlemen 
+			has_province_modifier = being_colonised_with_arnorian_middlemen 
+			has_province_modifier = being_colonised_with_southrons
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	option = {
+		any_realm_province = {
+			limit = {
+				NOR = {
+					religion = religion_wilderness
+					culture = culture_wilderness
+					culture = culture_mountains
+				}
+				OR = {
+				has_province_modifier = sending_colonists 
+				has_province_modifier = being_colonised 
+				has_province_modifier = being_colonised_with_dwarves 
+				has_province_modifier = being_colonised_with_elves 
+				has_province_modifier = being_colonised_with_halflings 
+				has_province_modifier = being_colonised_with_gondorian_middlemen 
+				has_province_modifier = being_colonised_with_arnorian_middlemen 
+				has_province_modifier = being_colonised_with_southrons
+				}
+			}
+			remove_province_modifier = being_colonised
+			remove_province_modifier = being_colonised_with_dwarves
+			remove_province_modifier = being_colonised_with_elves
+			remove_province_modifier = being_colonised_with_halflings
+			remove_province_modifier = being_colonised_with_gondorian_middlemen
+			remove_province_modifier = being_colonised_with_arnorian_middlemen
+			remove_province_modifier = sending_colonists
+			remove_province_modifier = being_colonised_with_southrons
+		}
+	}
+}

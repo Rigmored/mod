@@ -1,0 +1,197 @@
+decisions = {
+	looking_at_palantir = {
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				trait = palantir
+				trait = palantir_orthanc
+			}
+			NOT = { has_character_flag = looked_at_palantir }
+			NOT = { has_character_flag = looked_at_palantir2 }
+			NOT = { has_global_flag = saurondefeated }
+			NOT = { has_character_flag = renounce_to_palantir }
+			NOT = { has_character_flag = palantir_locked }
+			year = 10345
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 300
+			piety = 200
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir_use.1 }
+			}
+			prestige = -300
+			piety = -200
+		}
+	}
+	looking_at_palantir2 = {
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				trait = palantir
+				trait = palantir_orthanc
+			}
+			has_character_flag = looked_at_palantir
+			NOT = { has_character_flag = looked_at_palantir2 }
+			NOT = { has_global_flag = saurondefeated }
+			NOT = { has_character_flag = renounce_to_palantir }
+			NOT = { has_character_flag = palantir_locked }
+			year = 10345
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 300
+			piety = 200
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir_use.7 }
+			}
+			prestige = -300
+			piety = -200
+		}
+	}
+	looking_at_palantir3 = {
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				trait = palantir
+				trait = palantir_orthanc
+			}
+			has_character_flag = looked_at_palantir2
+			NOT = { has_global_flag = saurondefeated }
+			NOT = { has_character_flag = renounce_to_palantir }
+			NOT = { has_character_flag = palantir_locked }
+			year = 10345
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 300
+			piety = 200
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir_use.8 }
+			}
+			prestige = -300
+			piety = -200
+		}
+	}
+	locked_the_palantir = {
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				trait = palantir
+				trait = palantir_orthanc
+			}
+			has_character_flag = renounce_to_palantir
+			NOT = { has_global_flag = saurondefeated }
+			NOT = { has_character_flag = palantir_locked }
+			year = 10345
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 100
+			piety = 100
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir_use.9 }
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+	#### The Elves and the Numenoreans can visit the Palantir of Elostirion ####
+	visit_palantir_elostirion = {
+		potential = {
+			ai = no
+			NOT = { has_character_flag = visit_elostirion }
+			OR = {
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_quendi
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_numenorean
+			}
+			NOT = { culture = culture_black_numenorean }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			NOT = { trait = incapable }
+			OR = {
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_quendi
+				culture_group = culture_group_umanyar
+				AND = {
+					age = 70
+					culture_group = culture_group_numenorean
+				}
+			}
+			prestige = 100
+			piety = 100
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir.7 }
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+	#### Call another Guardian of a Palantiri to help ####
+	use_palantir_war = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			OR = {
+				trait = palantir
+				trait = palantir_orthanc
+				trait = palantir_annuminas
+				trait = palantir_osgiliath
+				trait = palantir_ithil
+				trait = palantir_sul
+			}
+			NOT = { has_character_flag = use_palantir_war }
+			NOT = { has_character_flag = palantir_locked }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = yes
+			prisoner = no
+			age = 16
+			prestige = 300
+			piety = 200
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = palantir.53 }
+			}
+		}
+	}
+}

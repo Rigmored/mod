@@ -1,0 +1,1041 @@
+namespace = orcfeast
+
+### Food Preparations ###
+character_event = {
+	id = orcfeast.0
+	title = "EVTTITorcfeast.0"
+	desc = "EVTDESCorcfeast.0"
+	picture = "GFX_war_at_north"
+	
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		war = no
+		has_character_modifier = holding_large_feast
+		NOT = {
+			has_character_flag = lavishly_food
+		}
+		NOT = {
+			has_character_flag = medium_food
+		}
+		NOT = {
+			has_character_flag = low_food
+		}
+		OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+	}
+
+	option = {
+		name = "EVTOPTAorcfeast.0" #Spend lavishly on food
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		OR = {
+				religion = religion_dunedain
+				religion = religion_rhovanion
+				religion = religion_haldadian
+				religion = religion_black_numenorean
+				religion = religion_ishmalogim
+				religion = religion_easterlings
+				religion = religion_southron
+				religion = religion_nurning
+			}
+			}
+				}
+		set_character_flag = lavishly_food
+		scaled_wealth = -0.15
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		OR = {
+				religion = religion_dunedain
+				religion = religion_rhovanion
+				religion = religion_haldadian
+				religion = religion_black_numenorean
+				religion = religion_ishmalogim
+				religion = religion_easterlings
+				religion = religion_southron
+				religion = religion_nurning
+			}
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+	}
+	
+		option = {
+		name = "EVTOPTBorcfeast.0" #Spend lavishly on food
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_moriquendi
+			}
+				}
+		set_character_flag = lavishly_food
+		scaled_wealth = -0.15
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_moriquendi
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+	}
+	
+			option = {
+		name = "EVTOPTCorcfeast.0" #Spend lavishly on food
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_mahal
+			}
+				}
+		set_character_flag = lavishly_food
+		scaled_wealth = -0.15
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_mahal
+		}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+	}
+	
+		option = {
+		name = "EVTOPTDorcfeast.0" #Spend lavishly on food
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_perian
+			}
+				}
+		set_character_flag = lavishly_food
+		scaled_wealth = -0.15
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_perian
+		}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTEorcfeast.0" #Spend medium on food
+			trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_orkish
+			}
+				}
+		set_character_flag = lavishly_food
+		scaled_wealth = -0.15
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion = religion_orkish
+		}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTForcfeast.0" #Spend low on food
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 2.5
+				trait = greedy
+			}
+			modifier = {
+				factor = 0.5
+				trait = gluttonous
+			}
+		}
+		set_character_flag = low_food
+		scaled_wealth = -0.05
+		hidden_tooltip = {
+			character_event = {
+				id = orcfeast.1
+				days = 2
+				random = 5
+			}
+		}
+		
+	}
+}
+
+### Send invites ###
+character_event = {
+	id = orcfeast.1
+	desc = EVTDESC72010
+	picture = "GFX_war_at_north"
+
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		war = no
+		has_character_modifier = holding_large_feast
+		OR = {
+			has_character_flag = lavishly_food
+			has_character_flag = medium_food
+			has_character_flag = low_food
+		}
+		NOT = {
+			has_character_flag = sent_invitations
+		}
+				OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = EVTOPTA72010
+		set_character_flag = sent_invitations
+		set_character_flag = feast_musicians ##there are always musicians at elven courts, no need to invite##
+		any_vassal = {
+			limit = {
+				prisoner = no
+				war = no
+				in_command = no
+				age = 16
+			}
+			letter_event = {
+				id = orcfeast.16
+				days = 1
+				random = 2
+				tooltip = EVTTOOLTIP72011
+			}
+		}
+	}
+}
+
+#Vassal is invited to the feast
+letter_event = {
+	id = orcfeast.16
+	desc = EVTDESC72011
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA72011 #Travel to the feast
+		ai_chance = {
+			factor = 2
+			modifier  = {
+				factor = 2
+				opinion = { who = from value = -10 }
+			}
+			modifier  = {
+				factor = 5
+				opinion = { who = from value = 10 }
+			}
+			modifier  = {
+				factor = 5
+				opinion = { who = from value = 20 }
+			}
+		}
+		set_character_flag = coming_to_feast
+	}
+	option = {
+		name = EVTOPTB72011 #Refuse
+		ai_chance = {
+			factor = 1
+			modifier  = {
+				factor = 0
+				opinion = { who = from value = 25 }
+			}
+		}
+		FROM = {
+			letter_event = {
+				id = orcfeast.2
+				days = 1
+				random = 2
+				tooltip = EVTTOOLTIP72012
+			}
+		}
+	}
+}
+
+#Vassal refused to come to the feast
+letter_event = {
+	id = orcfeast.2
+	desc = "EVTDESCorcfeast.2" 
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAorcfeast.2"
+		opinion = {
+			modifier = opinion_dislike
+			who = FROM
+			years = 100
+		}
+	}
+}
+
+###################################
+#Events during feast
+###################################
+
+#The guests have arrived
+character_event = {
+	id = orcfeast.3
+	desc = EVTDESC72015
+	picture = "GFX_war_at_north"
+	
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		war = no
+		has_character_modifier = holding_large_feast
+		has_character_flag = sent_invitations
+		NOT = {
+			has_character_flag = host_orcfeast_started
+		}
+		any_vassal = {
+			NOT = {
+				has_character_flag = guest_orcfeast_started
+			}
+			had_character_flag = {
+				flag = coming_to_feast
+				days = 5
+			}
+		}
+		OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = EVTOPTA72015
+		set_character_flag = host_orcfeast_started
+		any_vassal = {
+			limit = {
+				has_character_flag = coming_to_feast
+			}
+			character_event = {
+				id = orcfeast.4
+				tooltip = EVTTOOLTIP72016
+			}
+		}
+	}
+}
+
+#Welcome to the feast!
+character_event = {
+	id = orcfeast.4
+	desc = EVTDESC72016
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA72016
+		set_character_flag = guest_orcfeast_started
+	}
+}
+
+#Lavish Food
+character_event = {
+	id = orcfeast.5
+	desc = "EVTDESCorcfeast.5"
+	picture = "GFX_war_at_north"
+	
+	min_age = 16
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+				OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+		war = no
+		has_character_flag = guest_orcfeast_started
+		liege = {
+			NOT = {
+				has_character_modifier = complain_food_timer
+			}
+			NOT = {
+				has_character_modifier = compliment_food_timer
+			}
+			has_character_flag = host_orcfeast_started
+			has_character_modifier = holding_large_feast
+			has_character_flag = lavishly_food
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 180
+		
+		modifier = {
+			factor = 1.1
+			liege = { num_of_vassals = 10 }
+		}
+		modifier = {
+			factor = 1.2
+			liege = { num_of_vassals = 20 }
+		}
+		modifier = {
+			factor = 1.3
+			liege = { num_of_vassals = 30 }
+		}
+		modifier = {
+			factor = 1.4
+			liege = { num_of_vassals = 40 }
+		}
+		modifier = {
+			factor = 1.5
+			liege = { num_of_vassals = 50 }
+		}
+		modifier = {
+			factor = 3
+			liege = { num_of_vassals = 100 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAorcfeast.5" #Approve publicly
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				factor = 5
+				trait = gluttonous
+			}
+			modifier = {
+				factor = 0.1
+				trait = temperate
+			}
+		}
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = lavishly_food
+			}
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = compliment_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.6
+				tooltip = EVTTOOLTIP72023 #Liege is glad you liked it
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBorcfeast.5" #Disapprove
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				factor = 0.1
+				trait = gluttonous
+			}
+			modifier = {
+				factor = 5
+				trait = temperate
+			}
+		}
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = lavishly_food
+			}
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = complain_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.7
+				tooltip = EVTTOOLTIP72024 #Liege dislike you complaining about the food
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTC72020
+		prestige = -10
+	}
+}
+
+#Medium Food
+character_event = {
+	id = orcfeast.8
+	desc = "EVTDESCorcfeast.8"
+	picture = "GFX_war_at_north"
+	
+	min_age = 16
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+				OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+		war = no
+		has_character_flag = guest_orcfeast_started
+		any_liege = {
+			NOT = {
+				has_character_modifier = complain_food_timer
+			}
+			NOT = {
+				has_character_modifier = compliment_food_timer
+			}
+			has_character_flag = host_orcfeast_started
+			has_character_modifier = holding_large_feast
+			has_character_flag = medium_food
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 180
+		
+		modifier = {
+			factor = 1.1
+			liege = { num_of_vassals = 10 }
+		}
+		modifier = {
+			factor = 1.2
+			liege = { num_of_vassals = 20 }
+		}
+		modifier = {
+			factor = 1.3
+			liege = { num_of_vassals = 30 }
+		}
+		modifier = {
+			factor = 1.4
+			liege = { num_of_vassals = 40 }
+		}
+		modifier = {
+			factor = 1.5
+			liege = { num_of_vassals = 50 }
+		}
+		modifier = {
+			factor = 3
+			liege = { num_of_vassals = 100 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAorcfeast.8" #Approve publicly
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = medium_food
+			}
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = compliment_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.6
+				tooltip = EVTTOOLTIP72023 #Liege is glad you liked it
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBorcfeast.8" #Disapprove
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = medium_food
+			}
+			
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = complain_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.7
+				tooltip = EVTTOOLTIP72024 #Liege dislike you complaining about the food
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTC72021
+		prestige = -10
+	}
+}
+
+#Low Food
+character_event = {
+	id = orcfeast.9
+	desc = "EVTDESCorcfeast.9"
+	picture = "GFX_war_at_north"
+	
+	min_age = 16
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		war = no
+		OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+		has_character_flag = guest_orcfeast_started
+		any_liege = {
+			NOT = {
+				has_character_modifier = complain_food_timer
+			}
+			NOT = {
+				has_character_modifier = compliment_food_timer
+			}
+			has_character_flag = host_orcfeast_started
+			has_character_modifier = holding_large_feast
+			has_character_flag = low_food
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 180
+		
+		modifier = {
+			factor = 1.1
+			liege = { num_of_vassals = 10 }
+		}
+		modifier = {
+			factor = 1.2
+			liege = { num_of_vassals = 20 }
+		}
+		modifier = {
+			factor = 1.3
+			liege = { num_of_vassals = 30 }
+		}
+		modifier = {
+			factor = 1.4
+			liege = { num_of_vassals = 40 }
+		}
+		modifier = {
+			factor = 1.5
+			liege = { num_of_vassals = 50 }
+		}
+		modifier = {
+			factor = 3
+			liege = { num_of_vassals = 100 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAorcfeast.9" #Approve publicly
+		ai_chance = {
+			factor = 1
+			
+			modifier = {
+				factor = 0.1
+				trait = gluttonous
+			}
+			modifier = {
+				factor = 5
+				trait = temperate
+			}
+		}
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = low_food
+			}
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = compliment_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.6
+				tooltip = EVTTOOLTIP72023 #Liege is glad you liked it
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBorcfeast.9" #Disapprove
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				factor = 5
+				trait = gluttonous
+			}
+			modifier = {
+				factor = 0.1
+				trait = temperate
+			}
+		}
+		any_liege = {
+			limit = {
+				has_character_flag = host_orcfeast_started
+				has_character_modifier = holding_large_feast
+				has_character_flag = low_food
+			}
+			hidden_tooltip = {
+				add_character_modifier = {
+					name = complain_food_timer
+					duration = 14
+					hidden = yes
+				}
+			}
+			character_event = {
+				id = orcfeast.7
+				tooltip = EVTTOOLTIP72024 #Liege dislike you complaining about the food
+			}
+		}		
+	}
+	option = {
+		name = EVTOPTC72022
+		prestige = -10
+	}
+}
+
+#Liege is glad you liked the food at the feast
+character_event = {
+	id = orcfeast.6
+	desc = "EVTDESCorcfeast.6"
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA72023
+		opinion = {
+			modifier = opinion_happy
+			who = FROM
+			years = 2
+		}
+	}
+}
+
+#Liege dislikes you complaining about the food at the feast
+character_event = {
+	id = orcfeast.7
+	desc = "EVTDESCorcfeast.7"
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAorcfeast.7"
+		opinion = {
+			modifier = opinion_irritated
+			who = FROM
+			years = 2
+		}
+	}
+	
+		option = {
+		name = "EVTOPTBorcfeast.7"
+		FROM = { character_event = { id = orcfeast.11 } }
+		opinion = {
+			modifier = opinion_irritated
+			who = FROM
+			years = 2
+		}
+	}
+}
+
+#vassal is informed he is imprisoned#
+character_event = {
+	id = orcfeast.11
+	desc = "EVTDESCorcfeast.11"
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+
+		option = {
+		name = "EVTOPTAorcfeast.11"
+		imprison = FROM
+		add_trait = wounded
+	}
+	
+	}
+	
+	
+###################################
+#Events to end the Feast
+###################################
+
+#The feast has ended
+character_event = {
+	id = orcfeast.12
+	desc = EVTDESC72110
+	picture = "GFX_war_at_north"
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		war = no
+		OR = {
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_urukhai
+	}
+		had_character_flag = {
+			flag = host_orcfeast_started
+			days = 20
+		}
+		has_character_modifier = holding_large_feast
+		any_vassal = {
+			had_character_flag = {
+				flag = guest_orcfeast_started
+				days = 20
+			} 
+		}
+	}
+	
+	mean_time_to_happen = {	
+		days = 1
+	}
+	
+	option = {
+		name = EVTOPTA72110
+		add_character_modifier = {
+			name = fabulous_feast
+			duration = 365
+		}
+		remove_character_modifier = holding_large_feast
+		hidden_tooltip = {
+			add_character_modifier = {
+				name = large_feast_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+		clr_character_flag = sent_invitations
+		clr_character_flag = host_orcfeast_started
+		clr_character_flag = feast_jongleur
+		clr_character_flag = feast_musicians
+		clr_character_flag = feast_minstrel
+		clr_character_flag = feast_fireeaters
+		clr_character_flag = feast_conjurer
+		clr_character_flag = lavishly_food
+		clr_character_flag = medium_food
+		clr_character_flag = low_food
+		clr_character_flag = castle_problems
+		clr_character_flag = feast_jester 
+		clr_character_flag = feast_drunkard_guest
+		clr_character_flag = feast_duel
+		clr_character_flag = feast_boar_hunt
+		any_vassal = {
+			limit = {
+				has_character_flag = guest_orcfeast_started
+			}
+			character_event = {
+				id = orcfeast.13
+				tooltip = EVTTOOLTIP72111
+			}
+			clr_character_flag = coming_to_feast
+			clr_character_flag = guest_orcfeast_started
+			clr_character_flag = wounded_opponent
+			clr_character_flag = maimed_opponent
+			clr_character_flag = killed_opponent
+		}
+	}
+}
+
+#Vassal: Feast ended
+character_event = {
+	id = orcfeast.13
+	desc = EVTDESC72111
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA72111
+		prestige = 5
+	}
+}
+
+#The feast is cancelled
+character_event = {
+	id = orcfeast.14
+	desc = EVTDESC72112
+	picture = "GFX_war_at_north"
+	
+	only_rulers = yes
+	
+	trigger = {
+		war = yes
+		has_character_modifier = holding_large_feast
+		religion = religion_orkish
+	}
+	
+	mean_time_to_happen = {	
+		days = 1
+	}
+	
+	option = {
+		name = EVTOPTA72112
+		remove_character_modifier = holding_large_feast
+		hidden_tooltip = {
+			add_character_modifier = {
+				name = large_feast_timer
+				duration = 90
+				hidden = yes
+			}
+		}
+		clr_character_flag = sent_invitations
+		clr_character_flag = host_orcfeast_started
+		clr_character_flag = feast_jongleur
+		clr_character_flag = feast_musicians
+		clr_character_flag = feast_minstrel
+		clr_character_flag = feast_fireeaters
+		clr_character_flag = feast_conjurer
+		clr_character_flag = lavishly_food
+		clr_character_flag = medium_food
+		clr_character_flag = low_food
+		clr_character_flag = castle_problems
+		clr_character_flag = feast_jester 
+		clr_character_flag = feast_drunkard_guest
+		clr_character_flag = feast_duel
+		clr_character_flag = feast_boar_hunt
+		any_vassal = {
+			limit = {
+				has_character_flag = guest_orcfeast_started
+			}
+			letter_event = {
+				id = orcfeast.15
+				tooltip = EVTTOOLTIP72113
+			}
+			clr_character_flag = coming_to_feast
+			clr_character_flag = guest_orcfeast_started
+			clr_character_flag = wounded_opponent
+			clr_character_flag = maimed_opponent
+			clr_character_flag = killed_opponent
+		}
+	}
+}
+
+#Feast cancelled: notify invited vassals
+letter_event = {
+	id = orcfeast.15
+	desc = EVTDESC72113
+	picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA72113
+	}
+}
+
+##orcfeast16 used above##

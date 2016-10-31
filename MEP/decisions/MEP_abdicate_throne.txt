@@ -1,0 +1,200 @@
+decisions = {
+	abdicate_throne_numenorean = {
+		potential = {
+			ai = no
+			is_ruler = yes
+			is_feudal = yes
+			NOT = { has_character_flag = wants_to_abdicate }
+			current_heir = { dynasty = ROOT }
+			culture_group = culture_group_numenorean
+			age = 170
+			has_character_flag = family_decisions_open
+			# Traits checks
+			NOT = { trait = lunatic }
+			NOT = { trait = possessed }
+			NOT = { trait = imbecile }
+			NOT = { trait = cruel }
+			NOT = { trait = paranoid }
+			NOT = { trait = envious }
+			NOT = { trait = greedy }
+			NOT = { trait = incapable }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			# Age checks
+			OR = {
+				AND = {
+					OR = {
+						trait = blood_of_numenor
+						trait = blood_of_numenor2
+						trait = half_elf
+						trait = elven_blood
+					}
+					age = 210
+				}
+				AND = {
+					trait = stressed
+					OR = {
+						trait = blood_of_numenor
+						trait = blood_of_numenor2
+						trait = half_elf
+						trait = elven_blood
+					}
+					age = 190
+				}
+				AND = {
+					OR = {
+						trait = blood_of_numenor
+						trait = blood_of_numenor2
+						trait = half_elf
+						trait = elven_blood
+					}
+					trait = depressed
+					age = 180
+				}
+			}
+			# Costs
+			prestige = 250
+			piety = 100
+		}
+		effect = {
+			prestige = -250
+			piety = -100
+			set_character_flag = wants_to_abdicate
+			current_heir = {
+				character_event = {
+					id = ABDICATE.1
+					days = 3
+					tooltip = "abd_ask"
+				}
+			}
+		}
+	}
+	abdicate_throne_elf = {
+		potential = {
+			ai = no
+			is_ruler = yes
+			is_feudal = yes
+			NOT = { has_character_flag = wants_to_abdicate }
+			current_heir = { dynasty = ROOT }
+			age = 1700
+			has_character_flag = family_decisions_open
+			OR = {
+				culture_group = culture_group_moriquendi
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_quendi
+			}
+			# Traits checks
+			NOT = { trait = lunatic }
+			NOT = { trait = possessed }
+			NOT = { trait = imbecile }
+			NOT = { trait = cruel }
+			NOT = { trait = paranoid }
+			NOT = { trait = envious }
+			NOT = { trait = greedy }
+			NOT = { trait = incapable }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			# Age checks
+			OR = {
+				AND = {
+					OR = {
+						trait = amateurish_plotter
+						trait = naive_appeaser
+						trait = indulgent_wastrel
+						trait = misguided_warrior
+					}
+					age = 2100
+					trait = elf
+				}
+				AND = {
+					trait = stressed
+					age = 1900
+					trait = elf
+				}
+				AND = {
+					trait = depressed
+					age = 1800
+				}
+			}
+			# Costs
+			prestige = 250
+			piety = 100
+		}
+		effect = {
+			prestige = -250
+			piety = -100
+			set_character_flag = wants_to_abdicate
+			current_heir = {
+				character_event = {
+					id = ABDICATE.1
+					days = 3
+					random = 3
+					tooltip = "abd_ask"
+				}
+			}
+		}
+	}
+	abdicate_throne_dwarves = {
+		potential = {
+			ai = no
+			is_ruler = yes
+			is_feudal = yes
+			NOT = { has_character_flag = wants_to_abdicate }
+			current_heir = { dynasty = ROOT }
+			culture_group = culture_group_dwarves
+			has_character_flag = family_decisions_open
+			age = 200
+			# Traits checks
+			NOT = { trait = lunatic }
+			NOT = { trait = possessed }
+			NOT = { trait = imbecile }
+			NOT = { trait = cruel }
+			NOT = { trait = paranoid }
+			NOT = { trait = envious }
+			NOT = { trait = greedy }
+			NOT = { trait = incapable }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			# Age checks
+			OR = {
+				AND = {
+					trait = dwarven
+					age = 260
+				}
+				AND = {
+					trait = stressed
+					trait = dwarven
+					age = 245
+				}
+				AND = {
+					trait = dwarven
+					trait = depressed
+					age = 220
+				}
+			}
+			# Costs
+			prestige = 250
+			piety = 100
+		}
+		effect = {
+			prestige = -250
+			piety = -100
+			set_character_flag = wants_to_abdicate
+			current_heir = {
+				character_event = {
+					id = ABDICATE.1
+					days = 3
+					random = 3
+					tooltip = "abd_ask"
+				}
+			}
+		}
+	}
+}

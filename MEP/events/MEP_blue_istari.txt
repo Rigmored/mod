@@ -1,0 +1,323 @@
+namespace = blueistari
+
+## An eastern ruler receives Pallando
+narrative_event = {
+	id = blueistari.1
+	title = EVTTITblueistari.1
+	desc = EVTDESCblueistari.1
+	picture = GFX_evt_blue_istari
+	
+	
+	trigger = {
+		independent = yes
+		OR = {
+				has_landed_title = e_rhun
+				has_landed_title = k_rhun
+				has_landed_title = d_rhun
+				has_landed_title = d_sagathavuld
+				has_landed_title = d_gathod
+				has_landed_title = d_agasha_dag
+				has_landed_title = k_khand
+				has_landed_title = d_khand
+				has_landed_title = d_laorki
+				has_landed_title = d_ubesesh
+				has_landed_title = k_nurad
+				has_landed_title = d_harmal
+			}
+		NOT = { has_character_flag = blueistariatcourt }
+		NOT = { has_character_flag = blueistarirefused }
+		NOT = { has_global_flag = pallandofoundacourt }
+		NOT = { culture_group = culture_group_wilderness }
+		NOT = { culture_group = culture_group_melkor }
+		NOT = { culture_group = culture_group_eru }
+		NOT = { culture_group = culture_group_onodrim }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAblueistari.1 ## His help will be appreciated !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 0.5
+				trait = envious
+			}	
+			modifier = {
+				factor = 0.7
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 0.7
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 0.8
+				trait = imposing
+			}	
+			modifier = {
+				factor = 0.2
+				trait = cruel
+			}	
+			modifier = {
+				factor = 0.3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 0.8
+				trait = brave
+			}	
+			modifier = {
+				factor = 0.7
+				trait = cynical
+			}	
+			modifier = {
+				factor = 0.5
+				trait = proud
+			}		
+			modifier = {
+				factor = 0.2
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 5
+				trait = perceptive
+			}			
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					has_character_flag = pallando
+					age = 1
+					prisoner = no
+				}
+				move_character = ROOT
+			}
+		}
+		set_character_flag = blueistariatcourt
+		set_global_flag = pallandofoundacourt
+	}
+	
+	option = {
+		name = EVTOPTBblueistari.1 ## I don't need his help !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = envious
+			}	
+			modifier = {
+				factor = 2
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 2
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 2
+				trait = imposing
+			}	
+			modifier = {
+				factor = 4
+				trait = cruel
+			}	
+			modifier = {
+				factor = 3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.1
+				trait = brave
+			}	
+			modifier = {
+				factor = 2
+				trait = cynical
+			}	
+			modifier = {
+				factor = 1.2
+				trait = proud
+			}		
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 0.1
+				trait = just
+			}
+			modifier = {
+				factor = 0.1
+				trait = perceptive
+			}			
+		}
+		set_character_flag = blueistarirefused
+	}	
+}
+
+## An eastern ruler receives Alatar
+narrative_event = {
+	id = blueistari.2
+	title = EVTTITblueistari.2
+	desc = EVTDESCblueistari.2
+	picture = GFX_evt_blue_istari
+	
+	
+	trigger = {
+		independent = yes
+		OR = {
+				has_landed_title = e_rhun
+				has_landed_title = k_rhun
+				has_landed_title = d_rhun
+				has_landed_title = d_sagathavuld
+				has_landed_title = d_gathod
+				has_landed_title = d_agasha_dag
+				has_landed_title = k_khand
+				has_landed_title = d_khand
+				has_landed_title = d_laorki
+				has_landed_title = d_ubesesh
+				has_landed_title = k_nurad
+				has_landed_title = d_harmal
+			}
+		NOT = { has_character_flag = blueistariatcourt }
+		NOT = { has_character_flag = blueistarirefused }
+		NOT = { has_global_flag = alatarfoundacourt }
+		NOT = { culture_group = culture_group_wilderness }
+		NOT = { culture_group = culture_group_melkor }
+		NOT = { culture_group = culture_group_eru }
+		NOT = { culture_group = culture_group_onodrim }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAblueistari.2 ## His help will be appreciated !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 0.5
+				trait = envious
+			}	
+			modifier = {
+				factor = 0.7
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 0.7
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 0.8
+				trait = imposing
+			}	
+			modifier = {
+				factor = 0.2
+				trait = cruel
+			}	
+			modifier = {
+				factor = 0.3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 0.8
+				trait = brave
+			}	
+			modifier = {
+				factor = 0.7
+				trait = cynical
+			}	
+			modifier = {
+				factor = 0.5
+				trait = proud
+			}		
+			modifier = {
+				factor = 0.2
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 5
+				trait = perceptive
+			}			
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					has_character_flag = alatar
+					age = 1
+					prisoner = no
+				}
+				move_character = ROOT
+			}
+		}
+		set_character_flag = blueistariatcourt
+		set_global_flag = alatarfoundacourt
+	}
+	
+	option = {
+		name = EVTOPTBblueistari.2 ## I don't need his help !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = envious
+			}	
+			modifier = {
+				factor = 2
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 2
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 2
+				trait = imposing
+			}	
+			modifier = {
+				factor = 4
+				trait = cruel
+			}	
+			modifier = {
+				factor = 3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.1
+				trait = brave
+			}	
+			modifier = {
+				factor = 2
+				trait = cynical
+			}	
+			modifier = {
+				factor = 1.2
+				trait = proud
+			}		
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 0.1
+				trait = just
+			}
+			modifier = {
+				factor = 0.1
+				trait = perceptive
+			}			
+		}
+		set_character_flag = blueistarirefused
+	}	
+}

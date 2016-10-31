@@ -1,0 +1,37 @@
+decisions = {
+	#Feed the Wargs#
+	feed_wargs = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			OR = {
+				has_landed_title = c_moria
+				has_landed_title = e_isengard
+				has_landed_title = c_goblin_town
+				has_landed_title = c_carn_dum
+				has_landed_title = c_gundabad
+			}
+			has_character_flag = special_decisions_open
+			prisoner = no
+			prestige = 100
+			piety = 100
+			OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+				culture = culture_istari
+			}
+		}
+		allow = {
+			in_command = no
+			prisoner = no
+			age = 16
+			any_demesne_title = { is_occupied = no }
+			any_courtier = { prisoner = yes }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = feedwargs.0 }
+			}
+		}
+	}
+}

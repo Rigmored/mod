@@ -1,0 +1,329 @@
+namespace = valinor
+
+#################################################
+###### THE LAST TRAVEL OF THE RINGBEARERS #######
+#################################################
+
+##  Do you want to join the Ringbears in their Journey to Valinor? ##
+character_event = {
+	id = valinor.1
+	title = "EVTvalinor.1"
+	desc = "EVTDESCvalinor.1"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAvalinor.1" # I'll sail to West!
+		character_event = { id = valinor.2 days = 20 }
+		set_character_flag = sailed_west
+	}
+	option = {
+		name = "EVTOPTBvalinor.1" # I'll live and die in Middle-Earth.
+		trigger = { ai = no }
+	}
+}
+
+##  The Last Journey of the Ringbearers ##
+character_event = {
+	id = valinor.2
+	title = "EVTvalinor.2"
+	desc = "EVTDESCvalinor.2"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.2" # I can see the Grey Heavens!
+		character_event = { id = valinor.3 days = 30 }
+		
+	}
+}
+
+##  The Ship sail to west ##
+character_event = {
+	id = valinor.3
+	title = "EVTvalinor.3"
+	desc = "EVTDESCvalinor.3"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.3" # At last, i'll leave these lands.
+		ROOT = {
+			add_trait = sailed_west
+			recalc_succession = yes
+			abdicate = yes
+			any_claim = {
+				remove_claim = ROOT
+			}
+		}
+		e_valinor = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}		
+		recalc_succession = yes	
+		any_playable_ruler = {
+			limit = {
+				NOT = { has_character_flag = fourth_age }
+			}
+			character_event = { id = valinor.4 }
+			set_character_flag = fourth_age
+		}		
+	}
+	option = {
+		name = "EVTOPTBvalinor.3" # No! I can't go away from my home!	
+		trigger = { ai = no }
+	}	
+}
+
+##  The End of the Third Age - Every independant ruler know that the ringbearers sailed to west ##
+character_event = {
+	id = valinor.4
+	title = "EVTvalinor.4"
+	desc = "EVTDESCvalinor.4"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.4" # The Fourth Age !	
+	}
+}
+
+#################################
+######### ARAGORN DIED ##########
+#################################
+
+##  After the death of the King Elessar, Legolas wants to sail to West ##
+character_event = {
+	id = valinor.5
+	title = "EVTvalinor.5"
+	desc = "EVTDESCvalinor.5"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.5" # I'll sail to West!
+		character_event = { id = valinor.6 days = 5 }
+		set_character_flag = sailed_west
+	}
+	option = {
+		name = "EVTOPTBvalinor.5" # I'll live and die in Middle-Earth.
+		trigger = { ai = no }		
+	}
+}
+
+##  Legolas ask Gimli to join him ##
+character_event = {
+	id = valinor.6
+	title = "EVTvalinor.6"
+	desc = "EVTDESCvalinor.6"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.6" # I'll sail to West!
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = gimli
+			}
+		character_event = { id = valinor.7 days = 15 }		
+		}
+	}
+	option = {
+		name = "EVTOPTBvalinor.6" # No, I want to travel alone.
+		trigger = { ai = no }		
+	}
+}
+
+##  Gimli choose to travel with Legolas ##
+character_event = {
+	id = valinor.7
+	title = "EVTvalinor.7"
+	desc = "EVTDESCvalinor.7"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.7" # I'll sail to West!
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = legolas
+			}
+			character_event = { id = valinor.8 days = 15 }		
+		}
+		character_event = { id = valinor.8 days = 15 }		
+	}
+	option = {
+		name = "EVTOPTBvalinor.7" # No, I don't want to leave.
+		trigger = { ai = no }	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = legolas
+			}
+			character_event = { id = valinor.9 days = 15 }		
+		}		
+	}
+}
+
+##  Gimli and Legolas are building a mighty ship ##
+character_event = {
+	id = valinor.8
+	title = "EVTvalinor.8"
+	desc = "EVTDESCvalinor.8"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.8" # This Ship will be huge !
+		character_event = { id = valinor.10 days = 145 }				
+	}			
+}
+
+##  Legolas build a mighty ship alone ##
+character_event = {
+	id = valinor.9
+	title = "EVTvalinor.9"
+	desc = "EVTDESCvalinor.9"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.9" # This Ship will be huge !
+		character_event = { id = valinor.10 days = 145 }				
+	}
+}
+
+##  The Ship is ready to travel ##
+character_event = {
+	id = valinor.10
+	title = "EVTvalinor.10"
+	desc = "EVTDESCvalinor.10"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.10" # We go to Valinor !
+		if = {
+			limit = {
+				OR = {
+					has_character_flag = legolas
+					has_character_flag = gimli
+				}
+			}				
+			ROOT = {
+				add_trait = sailed_west
+				recalc_succession = yes
+				abdicate = yes
+				any_claim = {
+					remove_claim = ROOT
+				}
+				e_valinor = {
+					holder_scope = { ROOT = { move_character = PREV } }
+				}		
+
+			}
+		}
+		any_independent_ruler = {
+			character_event = { id = valinor.11 }
+		}				
+	}
+	option = {
+		name = "EVTOPTBvalinor.10" # No, i'll finally stay here.
+		trigger = { ai = no }
+	}	
+}
+
+##  Every rulers are informed that Gimli and Legolas sailed to West ##
+character_event = {
+	id = valinor.11
+	title = "EVTvalinor.11"
+	desc = "EVTDESCvalinor.11"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.11" # So bad...				
+	}
+}
+
+
+##  Aragorn died, and Arwen will soon died too ##
+character_event = {
+	id = valinor.12
+	title = "EVTvalinor.12"
+	desc = "EVTDESCvalinor.12"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	hide_window = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.12" # I'll die...
+		remove_trait = elf
+	}
+}
+
+##  Aragorn died, and everybody is informed ##
+character_event = {
+	id = valinor.13
+	title = "EVTvalinor.13"
+	desc = "EVTDESCvalinor.13"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.13" # A Great King.
+	}
+}
+
+
+######### Back to the Ringbearers events ##########
+## Beginning of the ringbearers departure events ##
+character_event = {
+	id = valinor.14
+	title = "EVTvalinor.14"
+	desc = "EVTDESCvalinor.14"
+	picture = GFX_evt_grey_havens
+
+	trigger = {
+		has_global_flag = saurondefeated
+		has_character_flag = elrond
+		NOT = { has_character_flag = endthirdage }
+		age = 1
+		year = 11370
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	hide_window = yes
+	
+	option = {
+		name = "EVTOPTAvalinor.14"
+		set_character_flag = endthirdage
+		any_playable_ruler  = {
+			limit = {
+					has_character_flag = ringbearer
+					age = 1
+			}
+				character_event = { id = valinor.1 }
+		}
+		narya =	{	character_event = { id = valinor.1 } }
+		nenya =	{	character_event = { id = valinor.1 } }
+		vilya =	{	character_event = { id = valinor.1 } }	
+		ringbearer1 =	{	character_event = { id = valinor.1 } }
+		ringbearer2 =	{	character_event = { id = valinor.1 } }	
+		character_event = { id = valinor.1 }
+	}
+}

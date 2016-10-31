@@ -1,0 +1,62 @@
+## By Decision ##
+
+##  Your character choose to sail to west
+character_event = {
+	id = 400002
+	title = "EVTsailedtowest.3"
+	desc = "EVTDESCsailedtowest.3"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsailedwest.3" #Yes
+		ai_chance = {
+			factor = 1
+		}
+		ROOT = {
+			clr_character_flag = asked_west
+			add_trait = sailed_west
+			recalc_succession = yes
+			abdicate = yes
+			any_claim = {
+				remove_claim = ROOT
+			}
+		}
+		e_valinor = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}		
+		recalc_succession = yes	
+	}
+	option = {
+		name = "EVTOPTBsailedwest.3" # Not now
+	}
+}
+
+
+## The character sailed to Valinor ##
+character_event = {
+                   id = 400003
+                   title = "EVTsailedtowest.4"
+                   desc = "EVTDESCsailedtowest.4"
+                   picture = "GFX_evt_grey_havens"
+
+trigger = {	
+	OR = {
+		trait = sailed_west
+		trait = at_east
+	}
+	has_character_flag = sailed_west	
+}
+
+mean_time_to_happen = { 
+days = 1 
+} 
+
+option = {
+		name = "EVTOPTAsailedwest.4"
+		e_valinor = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}	
+}
+}

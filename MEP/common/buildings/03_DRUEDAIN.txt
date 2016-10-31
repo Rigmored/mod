@@ -1,0 +1,188 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+###################### Castle buildings dor Druedain culture - I code- (very primitive) all buildings limited to level 1 ###################### 
+castle = {
+###################### Walls , gives fortlevel###################### 
+	ca_Iwall_1 = {
+		desc = ca_Iwall_1_desc
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+        	ai_creation_factor = 80
+		potential = {
+			has_global_flag = building
+			culture = culture_druedain
+		}		
+		
+	}
+	
+	
+###################### Púkel-men (Watchtowers) give garrison size ###################### 
+	ca_pukel_men = {
+		desc = ca_pukel_men_desc
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.05
+		ai_creation_factor = 90
+        	potential = {
+           		has_global_flag = building
+			culture = culture_druedain		 
+		}
+	}
+
+###################### Keeps (huts), gives levy size ###################### 
+	ca_Ikeep_1 = {
+		desc = ca_Ikeep_1_desc
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+            		has_global_flag = building
+			culture = culture_druedain
+            }
+	}
+	
+####################### Militia barracks, gives light infantry and archers###################### 
+##################### Provisionners giving gatherers (primitive light infantry) and game bird hunters (slingers) ########################
+	ca_Imilitia_barracks_1 = {
+		desc = ca_Imilitia_barracks_1_desc	
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			culture = culture_druedain
+            	}
+	}
+	
+####################### Castle Guard, gives pikemen #######################
+####################### Big game hunters : primitive spearmen #######################
+	ca_Icastleguards_1 = {
+		desc = ca_Icastleguards_1_desc
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 105
+		potential = {
+	 		has_global_flag = building
+			culture = culture_druedain
+            	}
+	}
+	
+	
+####################### Castle town, gives income #######################
+####################### Basketwork, gives income #######################
+	ca_Itown_1 = {
+		desc = ca_Itown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			culture = culture_druedain
+            	}
+	}
+}
+
+
+###################### City buildings dor Druedain culture - I code- (very primitive) all buildings limited to level 1 ###################### 
+city = {
+
+################## Defense : fort level ###############################
+	ct_Iwall_1 = {
+		desc = ct_Iwall_1_desc
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 60
+		potential = {
+	   		has_global_flag = building
+			culture = culture_druedain 
+        }
+	}
+
+
+###################### Púkel-men (Watchtowers) give garrison size ###################### 
+	ct_pukel_men = {
+		desc = ct_pukel_men_desc
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.05
+		ai_creation_factor = 90
+        	potential = {
+           		has_global_flag = building
+			culture = culture_druedain		 
+		}
+	}
+
+###################### Keeps (huts), gives levy size ###################### 
+	ct_Ikeep_1 = {
+		desc = ct_Ikeep_1_desc
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+            		has_global_flag = building
+			culture = culture_druedain
+            }
+	}
+
+####################### Militia barracks, gives light infantry and archers###################### 
+##################### Provisionners giving gatherers (primitive light infantry) and game bird hunters (slingers) ########################
+	ct_Imilitia_barracks_1 = {
+		desc = ct_Imilitia_barracks_1_desc	
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			culture = culture_druedain
+            	}
+	}
+	
+####################### Big game hunters : primitive spearmen #######################
+	ct_Icastleguards_1 = {
+		desc = ct_Icastleguards_1_desc
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 105
+		potential = {
+	 		has_global_flag = building
+			culture = culture_druedain
+            	}
+	}
+	
+####################### Basketwork, gives income #######################
+	ct_Itown_1 = {
+		desc = ct_Itown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			culture = culture_druedain
+        }
+	}
+}

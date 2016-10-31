@@ -1,0 +1,837 @@
+###################### City buildings for Orcs and Huruk-Hai - MO code- ###################### 
+
+city = {
+################## Defense : fort level ###############################
+	ct_MOwall_1 = {
+		desc = ct_MOwall_1_desc
+		
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 60
+		potential = {
+	   		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOwall_2 = {
+		desc = ct_MOwall_1_desc
+
+		upgrades_from = ct_MOwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 59
+        	potential = {
+           		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            	}
+	}	
+	ct_MOwall_3 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_MOwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 58
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            	}
+	}
+	ct_MOwall_4 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_MOwall_3
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 57
+       		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOwall_5 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_MOwall_4
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 56
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+################## Defense : garrison size ###############################	
+	ct_MOwatchtower_1 = {
+		desc = ct_MOwatchtower_1_desc
+		prerequisites = { ct_MOwall_1 }
+		gold_cost = 75
+		build_time = 270
+		garrison_size = 0.05
+		ai_creation_factor = 99	
+		potential = {
+	   		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+	ct_MOwatchtower_2 = {
+		desc = ct_MOwatchtower_1_desc
+		prerequisites = { ct_MOwall_2 }
+		upgrades_from = ct_MOwatchtower_1
+		gold_cost = 100
+		build_time = 370
+		garrison_size = 0.1
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOwatchtower_3 = {
+		desc = ct_MOwatchtower_1_desc
+		
+		upgrades_from = ct_MOwatchtower_2
+		gold_cost = 150
+		build_time = 550
+		garrison_size = 0.15
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOwatchtower_4 = {
+		desc = ct_MOwatchtower_1_desc
+		
+		upgrades_from = ct_MOwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOwatchtower_5 = {
+		desc = ct_MOwatchtower_1_desc
+		
+		upgrades_from = ct_MOwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+	ct_MOwatchtower_6 = {
+		desc = ct_MOwatchtower_1_desc
+		
+		upgrades_from = ct_MOwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+################## Offense : Levy size ###############################
+	ct_MOorctraining_grounds_1 = {
+		desc = ct_MOorctraining_grounds_1_desc
+		
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+	        	has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorctraining_grounds_2 = {
+		desc = ct_MOorctraining_grounds_1_desc
+		
+		prerequisites = { ct_MOwall_1 }
+		upgrades_from = ct_MOorctraining_grounds_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	} 
+	ct_MOorctraining_grounds_3 = {
+		desc = ct_MOorctraining_grounds_1_desc
+
+		upgrades_from = ct_MOorctraining_grounds_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	} 
+	ct_MOorctraining_grounds_4 = {
+		desc = ct_MOorctraining_grounds_1_desc
+		
+		upgrades_from = ct_MOorctraining_grounds_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	} 
+	ct_MOorctraining_grounds_5 = {
+		desc = ct_MOorctraining_grounds_1_desc
+		
+		upgrades_from = ct_MOorctraining_grounds_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorctraining_grounds_6 = {
+		desc = ct_MOorctraining_grounds_1_desc
+		
+		upgrades_from = ct_MOorctraining_grounds_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	
+	ct_MOorcbarracks_1 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		        potential = {
+	        has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcbarracks_2 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		prerequisites = { ct_MOwall_1 }
+		upgrades_from = ct_MOorcbarracks_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcbarracks_3 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		prerequisites = { ct_MOwall_2 }
+		upgrades_from = ct_MOorcbarracks_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcbarracks_4 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		upgrades_from = ct_MOorcbarracks_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 60
+		archers = 90
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcbarracks_5 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		upgrades_from = ct_MOorcbarracks_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 100
+		archers = 70
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcbarracks_6 = {
+		desc = ct_MOorcbarracks_1_desc
+		
+		upgrades_from = ct_MOorcbarracks_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 80
+		archers = 110
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+################## Troops : pikemen ###############################
+	ct_MOorcguard_1 = {
+		desc = ct_MOorcguard_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 96
+		potential = {
+	        	has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcguard_2 = {
+		desc = ct_MOorcguard_1_desc
+		
+		prerequisites = { ct_MOwall_1 }
+		upgrades_from = ct_MOorcguard_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcguard_3 = {
+		desc = ct_MOorcguard_1_desc
+		
+		prerequisites = { ct_MOwall_2 }
+		upgrades_from = ct_MOorcguard_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 94
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcguard_4 = {
+		desc = ct_MOorcguard_1_desc
+		
+		upgrades_from = ct_MOorcguard_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcguard_5 = {
+		desc = ct_MOorcguard_1_desc
+		
+		upgrades_from = ct_MOorcguard_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 92
+      		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+################## Economy : tax income ###############################
+	ct_MOorcmarketplace_1 = {
+		desc = ct_MOorcmarketplace_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+	        	has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcmarketplace_2 = {
+		desc = ct_MOorcmarketplace_1_desc
+		prerequisites = { ct_MOwall_1 }
+		
+		upgrades_from = ct_MOorcmarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcmarketplace_3 = {
+		desc = ct_MOorcmarketplace_1_desc
+		
+		prerequisites = { ct_MOwall_2 }
+		upgrades_from = ct_MOorcmarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcmarketplace_4 = {
+		desc = ct_MOorcmarketplace_1_desc
+		
+		upgrades_from = ct_MOorcmarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcmarketplace_5 = {
+		desc = ct_MOorcmarketplace_1_desc
+		
+		upgrades_from = ct_MOorcmarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+	ct_MOorcmarketplace_6 = {
+		desc = ct_MOorcmarketplace_1_desc
+		
+		upgrades_from = ct_MOorcmarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+            }
+	}
+
+	ct_MOport_1 = {
+		desc = ct_MOport_1_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+		}
+	}
+	ct_MOport_2 = {
+		desc = ct_MOport_1_desc
+		port = yes
+		
+		prerequisites = { ct_MOwall_1 }
+		upgrades_from = ct_MOport_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+	ct_MOport_3 = {
+		desc = ct_MOport_1_desc
+		port = yes
+		
+		prerequisites = { ct_MOwall_2 }
+		upgrades_from = ct_MOport_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+		}
+	}
+	ct_MOport_4 = {
+		desc = ct_MOport_1_desc
+		port = yes
+		
+		upgrades_from = ct_MOport_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+	ct_MOport_5 = {
+		desc = ct_MOport_1_desc
+		port = yes
+		
+		upgrades_from = ct_MOport_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+        	potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+
+################## Shipyard : galleys ###############################
+	ct_MOshipyard_1 = {
+		desc = MOshipyard_desc
+		port = yes
+		gold_cost = 100
+		build_time = 365
+		galleys = 5
+		ai_creation_factor = 98
+		potential = {
+			has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+	
+	ct_MOshipyard_2 = {
+		desc = MOshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_MOshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 6
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+	
+	ct_MOshipyard_3 = {
+		desc = MOshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_MOshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 7
+		ai_creation_factor = 96
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+        	}
+	}
+	
+	ct_MOshipyard_4 = {
+		desc = MOshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_MOshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 8
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+            		OR = {
+				culture = culture_orkish
+				culture = culture_urukhai
+            			}
+		}
+	}
+
+####################### Orc special fortresses #######################
+	ct_numenorean2up = { #Minas Morgul for Nazgûl#
+		desc = ca_numenorean2up_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2
+		ai_creation_factor = 86
+		light_infantry = 600
+		heavy_infantry = 500
+		archers = 350
+        	potential = {
+            		province_id = 426 #minas_morgul
+	    		culture_group = culture_group_melkor
+            }
+	}	
+	ct_witchking_fortress = { #Angmar fortress
+		desc = ca_witchking_fortress_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2
+		ai_creation_factor = 86
+		light_infantry = 400
+		heavy_infantry = 300
+		archers = 250
+        	potential = {
+            		province_id = 624 #Carn Dum
+	    		culture_group = culture_group_melkor
+			FROM = { trait=nazgul }
+		}
+	}
+	ct_Gundabad_Orc = { #Orc Stronghold
+		desc = ca_Gundabad_Orc_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 1.0
+		ai_creation_factor = 86
+		tax_income = 4
+		light_infantry = 250
+		heavy_infantry = 200
+		archers = 200
+       		potential = {
+         		province_id = 642 # Gundabad
+			culture_group = culture_group_melkor
+           	}
+	}
+	ct_dolguldur = { #DolGuldur#
+		desc = ca_dolguldur_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 5.0
+		ai_creation_factor = 86
+		light_infantry = 250
+		heavy_infantry = 250
+		archers = 250
+        	potential = {
+            		province_id = 310 #Amon Lanc
+			culture_group = culture_group_melkor
+            	}
+	}
+	ct_isengarduruk = { #Isengard#
+		desc = ca_isengarduruk_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 1.0
+		ai_creation_factor = 86
+		tax_income = 5
+		light_infantry = 250
+		heavy_infantry = 750
+		archers = 250
+       		potential = {
+         		province_id = 225 # Orthanc
+			OR = {
+				culture_group = culture_group_melkor
+				culture = culture_istari
+			}
+           	}
+	}
+
+	ct_moria = { #Moria for orcs
+		desc = ca_moria_desc
+		gold_cost = 150
+		build_time = 1460
+		fort_level = 5.0
+		garrison_size = 1.50
+		heavy_infantry = 200
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 285 #Moria
+			culture_group = culture_group_melkor
+		}
+	}	
+
+# Shrine of Melkor #
+	tp_shrine_melkor = {
+		desc = tp_shrine_melkor_desc
+		gold_cost = 150
+		build_time = 547
+		liege_piety = 0.05
+		heavy_infantry = 40
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_melkor	
+		}
+	}	
+}

@@ -1,0 +1,217 @@
+namespace = sacrificeflame
+
+### Balrog restless ###
+character_event = {
+	id = sacrificeflame.0
+	title = EVTTITsacrificeflame.0
+	desc = EVTDESCsacrificeflame.0
+	picture = GFX_evt_worship_balrog
+	
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAsacrificeflame.0 #Slaughter prisoner
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		OR = {
+			religion_group = religion_group_eldar
+			religion_group = religion_group_periannath
+			religion_group = religion_group_edain
+			religion_group = religion_group_hildor
+			}
+			}
+				}
+	    set_character_flag = flamesacrificestarted
+		set_character_flag = offeredgenericprisoner
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		OR = {
+			religion_group = religion_group_eldar
+			religion_group = religion_group_periannath
+			religion_group = religion_group_edain
+			religion_group = religion_group_hildor
+			}
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = sacrificeflame.1
+				days = 5
+				random = 5
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTBsacrificeflame.0 #Slaughter dwarf
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion_group = religion_group_khazad
+			
+			}
+				}
+		set_character_flag = flamesacrificestarted
+		set_character_flag = offereddwarfprisoner
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		religion_group = religion_group_khazad
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = sacrificeflame.2
+				days = 5
+				random = 5
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTCsacrificeflame.0 #Sacrifice orks/goblins
+			trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+			}
+			}
+				}
+		set_character_flag = flamesacrificestarted	
+		set_character_flag = offeredorkprisoner
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+		age = 16
+		OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+			}
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+			}
+		hidden_tooltip = {
+			character_event = {
+				id = sacrificeflame.3
+				days = 5
+				random = 5
+			}
+		}
+	}
+	}
+	
+#Sacrifice offered
+
+character_event = {
+	id = sacrificeflame.1
+	title = EVTTITsacrificeflame.1
+	desc = EVTDESCsacrificeflame.1
+	picture = GFX_evt_worship_balrog
+
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+		option = {
+		name = EVTOPTAsacrificeflame.1 #General prisoner killed
+		set_character_flag = sacrificedone
+		prestige = 100
+		random_list = {
+		60 = {
+			add_trait = worship_balrog
+		}
+		40 = {
+		    add_trait = craven
+		}
+	}
+		
+	}
+	}
+	
+	character_event = {
+	id = sacrificeflame.2
+	title = EVTTITsacrificeflame.2
+	desc = EVTDESCsacrificeflame.2
+	picture = GFX_evt_worship_balrog
+
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+	
+		option = {
+		name = EVTOPTAsacrificeflame.2 #Dwarf killed
+		set_character_flag = sacrificedone
+		prestige = 200
+		random_list = {
+		80 = {
+			add_trait = worship_balrog
+		}
+	}
+		
+	}
+	}
+	
+	character_event = {
+	id = sacrificeflame.3
+	title = EVTTITsacrificeflame.3
+	desc = EVTDESCsacrificeflame.3
+	picture = GFX_evt_worship_balrog
+
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+		option = {
+		name = EVTOPTAsacrificeflame.3 #Ork killed
+		set_character_flag = sacrificedone
+		prestige = 50
+		random_list = {
+		40 = {
+			add_trait = worship_balrog
+		}
+		60 = {
+		    add_trait = craven
+		}
+	}
+	}
+	}
+
+	
+	
+	

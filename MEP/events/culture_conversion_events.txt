@@ -1,0 +1,247 @@
+#################################################
+#
+# CULTURAL CONVERSION EVENTS
+#
+#################################################
+
+# Province culture changes
+province_event = {
+	id = 55000
+	desc = "EVTDESC55000"
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		owner = {
+			top_liege = {
+				culture = PREV
+			}
+			NOT = { culture = ROOT }
+		}
+		any_neighbor_province = {
+			has_owner = yes
+			ROOT = {
+				owner = {
+					culture = PREVPREV
+				}
+			}
+			owner = {
+				ROOT = {
+					owner = {
+						culture = PREVPREV
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				OR = {
+					primary_title = {
+						conquest_culture = PREV
+					}
+					ROOT = {
+						county = {
+							conquest_culture = PREVPREV
+						}
+					}
+					ROOT = {
+						duchy = {
+							holder_scope = {
+								character = PREVPREVPREV
+							}
+							conquest_culture = PREVPREV
+						}
+					}
+					ROOT = {
+						kingdom = {
+							holder_scope = {
+								character = PREVPREVPREV
+							}
+							conquest_culture = PREVPREV
+						}
+					}
+					ROOT = {
+						empire = {
+							holder_scope = {
+								character = PREVPREVPREV
+							}
+							conquest_culture = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA55000"
+		owner = {
+			ROOT = {
+				culture = PREV
+				religion = PREV
+			}
+		}
+	}
+}
+
+# Bring in some settlers
+province_event = {
+	id = 55001
+	desc = "EVTDESC55001"
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		owner = {
+			top_liege = {
+				culture = PREV
+			}
+			NOT = { culture = ROOT }
+			capital_scope = {
+				province_id = ROOT
+			}
+			
+			OR = {
+				primary_title = {
+					conquest_culture = PREV
+				}
+				ROOT = {
+					county = {
+						conquest_culture = PREVPREV
+					}
+				}
+				ROOT = {
+					duchy = {
+						holder_scope = {
+							character = PREVPREVPREV
+						}
+						conquest_culture = PREVPREV
+					}
+				}
+				ROOT = {
+					kingdom = {
+						holder_scope = {
+							character = PREVPREVPREV
+						}
+						conquest_culture = PREVPREV
+					}
+				}
+				ROOT = {
+					empire = {
+						holder_scope = {
+							character = PREVPREVPREV
+						}
+						conquest_culture = PREVPREV
+					}
+				}
+			}
+		}
+		
+		NOT = { # Exclude provinces covered by event 55000
+			any_neighbor_province = {
+				has_owner = yes
+				ROOT = {
+					owner = {
+						culture = PREVPREV
+					}
+				}
+				owner = {
+					ROOT = {
+						owner = {
+							culture = PREVPREV
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+		
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTA55001"
+		owner = {
+			ROOT = {
+				culture = PREV
+				if = {
+					limit = {
+						NOT = { religion = PREV }
+					}
+					religion = PREV
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+namespace = opinionmodifier
+
+
+##  All the vassals of The Kings of Cardolan/Rhudaur/Arthedain/Angmar get a better opinion during some years ##
+character_event = {
+	id = opinionmodifier.0
+	title = "OK"
+	desc = "OK"
+	picture = GFX_evt_grey_havens
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_character_flag = stabilizermodifier }
+		OR = {
+			AND = {
+				OR = {
+					has_landed_title = k_arthedain
+					has_landed_title = k_cardolan
+					has_landed_title = k_rhudaur
+				}
+				trait = blood_of_isildur
+			}
+			AND = {
+				has_landed_title = e_gondor
+				trait = blood_of_anarion
+			}
+			AND = {
+				has_landed_title = e_gondor
+				trait = blood_of_isildur
+			}
+			AND = {
+				has_landed_title = e_barad_dur
+				has_character_flag = sauron
+			}
+			AND = {
+				has_landed_title = e_angmar
+				trait = nazgul
+			}		
+		}
+	}
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "OK" # I'll die..
+		set_character_flag = stabilizermodifier
+		any_vassal = {
+			opinion = { modifier = true_king who = ROOT years = 20 }
+		}
+	}
+}

@@ -1,0 +1,990 @@
+#########################################################
+#
+# Landless Character Adventures for The Old Gods DLC
+# ( ORCINVASION.1200 to ORCINVASION.1499)
+#
+#
+#########################################################
+
+# Written by Henrik Fåhraeus
+
+namespace = ORCINVASION
+
+# An ambitious landless claimant begins to plan an adventure for the title
+character_event = {
+	id = ORCINVASION.1200
+	desc = "OK"
+	picture = "GFX_evt_crusaders"
+	border = GFX_event_normal_frame_war
+	
+	#hide_window = yes # Only fires for unplayable landless characters
+	
+	min_age = 16
+	only_men = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_dlc = "The Old Gods"
+		
+		OR = {
+		culture = culture_orkish
+		culture = culture_urukhai
+		culture = culture_goblin
+		}
+		
+		is_ruler = no
+		
+		any_claim = {
+			has_holder = yes
+			holder_scope = {
+				independent = yes # Only do this vs independent rulers
+			}
+			OR = {
+				tier = KING
+				holder_scope = { tier = PREV }
+			}
+		}
+		
+		NOT = { # Somewhat clunky way of checking that the character does not stand to inherit any titles
+			any_heir_title = {
+				always = yes
+			}
+		}
+		
+		diplomacy = 7
+		martial = 10
+		
+		health = 4
+		NOT = { trait = content }
+		NOT = { trait = craven }
+		
+		NOT = { has_character_modifier = planning_claimant_adventure }
+	}
+	
+	mean_time_to_happen = {
+		years = 30
+		modifier = {
+			factor = 0.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.5
+			trait = orkish
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.5
+			has_character_flag = flag_denied_title
+		}
+		modifier = {
+			factor = 0.75
+			diplomacy = 12
+		}
+		modifier = {
+			factor = 0.75
+			trait = brave
+		}
+		modifier = {
+			factor = 0.85
+			trait = proud
+		}
+
+		modifier = {
+			factor = 1.5
+			trait = slothful
+		}
+		modifier = {
+			factor = 1.5
+			trait = humble
+		}
+		modifier = {
+			factor = 2.0
+			trait = kind
+		}
+	}
+	
+	immediate = {
+		random_claim = {
+			limit = {
+				has_holder = yes
+				holder_scope = {
+					independent = yes # Only do this vs independent rulers
+					OR = {
+						# Don't target a liege unless I am ambitious
+						NOT = { is_vassal_or_below = ROOT }
+						ROOT = { trait = ambitious }
+					}
+				}
+			}
+			
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					years = 3
+					modifier = opinion_claimant_adventure_target
+				}
+				character_event = {
+					id = ORCINVASION.1201 # Warn the target
+				}
+			}
+			ROOT = {
+				add_character_modifier = {
+					name = planning_claimant_adventure
+					hidden = yes
+					days = 730
+				}
+				character_event = {
+					id = ORCINVASION.1202 # Fire the attack
+					days = 730
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1201
+	desc = "EVTDESCORCINVASION.1201"#You hear word that an orc raid is being prepared against you. Strengthen the defenses!"
+	picture = "GFX_war_at_north"
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1201"#I hate orcs!
+	}
+}
+
+# An ambitious landless claimant starts an adventure for the title
+character_event = {
+	id = ORCINVASION.1202
+    desc = "OK"
+	picture = GFX_evt_crusaders
+	border = GFX_event_normal_frame_war
+	#hide_window = yes # Only fires for unplayable landless characters
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ruler = no
+		prisoner = no
+		NOT = { trait = incapable }
+		
+		any_claim = {
+			has_holder = yes
+			holder_scope = {
+				independent = yes # Only do this vs independent rulers
+				OR = {
+					# Don't target a liege unless I am ambitious
+					NOT = { is_vassal_or_below = ROOT }
+					ROOT = { trait = ambitious }
+				}
+			}
+			OR = {
+				tier = KING
+				holder_scope = { tier = PREV }
+			}
+		}
+		
+		NOT = { # Somewhat clunky way of checking that the character does not stand to inherit any titles
+			any_heir_title = {
+				always = yes
+			}
+		}
+	}
+	
+	immediate = {
+		
+		wealth = 1000
+		
+		liege = {
+			character_event = {
+				id = ORCINVASION.1203
+				days = 1
+			}
+		}
+		
+		liege = {
+			capital_scope = {
+				ROOT = {
+					set_defacto_liege = ROOT
+					create_title = {
+						tier = DUKE
+						landless = yes
+						temporary = yes
+						culture = ROOT
+						name = "CLAIMANT_ADVENTURE"
+						holder = ROOT
+					}
+					
+					random_claim = {
+						limit = {
+							has_holder = yes
+							holder_scope = {
+								independent = yes # Only do this vs independent rulers
+								reverse_has_opinion_modifier = {
+									who = ROOT
+									modifier = opinion_claimant_adventure_target
+								}
+							}
+							OR = {
+								tier = KING
+								holder_scope = { tier = PREV }
+							}
+						}
+						holder_scope = {
+							ROOT = {
+								set_character_flag = claimant_adventurer
+								random_list = {
+									34 = {
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											leader = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.2
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+									}
+									33 = {
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											leader = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.15
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+									}
+									33 = {
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											leader = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+										spawn_unit = {
+											province = PREVPREVPREVPREV
+											home = PREVPREVPREVPREV
+											owner = THIS
+											match_character = PREV
+											match_mult = 0.125
+											match_min = 300
+											match_max = 5000
+											attrition = 0.25
+											earmark = claimant_adventure
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		# Create some decent commander characters
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 30
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 25
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 33
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 29
+		}
+		
+		
+		random_claim = {
+			limit = {
+				has_holder = yes
+				holder_scope = {
+					independent = yes # Only do this vs independent rulers
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = opinion_claimant_adventure_target
+					}
+				}
+			}
+			
+			holder_scope = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+				reverse_remove_opinion = {
+					who = ROOT
+					modifier = opinion_claimant_adventure_target
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1203
+	desc = "EVTDESCORCINVASION.1203"#An orc warlord from your court is preparing an army to invade a foreign realm.
+	picture = "GFX_war_at_north"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { is_ruler = yes } # The DoW worked and the adventurer has a temporary title
+	}
+	
+	immediate = {
+			any_liege = {
+				character_event = {
+					id = ORCINVASION.1204
+				}
+			}
+	}
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1203"
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1204
+	desc = "EVTDESCORCINVASION.1204"
+	picture = "GFX_war_at_north"
+	border = GFX_event_normal_frame_war
+	
+	show_from_from = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1204"
+	}
+}
+
+# An ambitious character with no inheritance begins to plan an adventure for a foreign title
+character_event = {
+	id = ORCINVASION.1210
+	desc = OK
+	picture = GFX_evt_crusaders
+	border = GFX_event_normal_frame_war
+	
+	hide_window = yes # Only fires for unplayable landless characters
+	
+	min_age = 16
+	only_men = yes
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_dlc = "The Old Gods"
+		
+		is_ruler = no
+		
+		diplomacy = 9
+		martial = 9
+		
+		NOT = { trait = content }
+		NOT = { trait = craven }
+		
+		OR = { # Only these for now
+		culture = culture_orkish
+		culture = culture_urukhai
+		culture = culture_goblin
+		}
+		
+		NOT = { # Somewhat clunky way of checking that the character does not stand to inherit any titles
+			any_heir_title = {
+				always = yes
+			}
+		}
+		
+		NOT = { # Handled by event 1200
+			any_claim = {
+				has_holder = yes
+				holder_scope = {
+					independent = yes
+				}
+				OR = {
+					tier = KING
+					holder_scope = { tier = PREV }
+				}
+			}
+		}
+		
+		OR = {
+			father_even_if_dead = {
+				OR = {
+					primary_title = { higher_tier_than = BARON }
+					father_even_if_dead = {
+						primary_title = { higher_tier_than = BARON }
+					}
+					mother_even_if_dead = {
+						primary_title = { higher_tier_than = BARON }
+					}
+				}
+			}
+			mother_even_if_dead = {
+				OR = {
+					primary_title = { higher_tier_than = BARON }
+					father_even_if_dead = {
+						primary_title = { higher_tier_than = BARON }
+					}
+					mother_even_if_dead = {
+						primary_title = { higher_tier_than = BARON }
+					}
+				}
+			}
+		}
+		
+		NOT = { has_character_modifier = planning_duchy_adventure }
+	}
+	
+	mean_time_to_happen = {
+		years = 30
+		modifier = {
+			factor = 0.5
+			trait = ambitious
+		}
+
+		modifier = {
+			factor = 0.5
+			has_character_flag = flag_denied_title
+		}
+		modifier = {
+			factor = 0.2
+			trait = orkish
+		}
+		modifier = {
+			factor = 0.75
+			diplomacy = 12
+		}
+		modifier = {
+			factor = 0.75
+			martial = 12
+		}
+		modifier = {
+			factor = 0.75
+			trait = brave
+		}
+		modifier = {
+			factor = 0.85
+			trait = proud
+		}
+		modifier = {
+			factor = 3.0
+			trait = slothful
+		}
+		modifier = {
+			factor = 3.0
+			trait = humble
+		}
+		modifier = {
+			factor = 3.0
+			trait = kind
+		}
+		modifier = {
+			factor = 3.0
+			any_liege = {
+				ai = no
+			}
+		}
+	}
+	
+	immediate = {
+		random_independent_ruler = {
+			limit = {
+				NOT = { culture = ROOT }
+				is_landed = yes
+				independent = yes
+				NOT = { is_vassal_or_below = ROOT }
+				any_realm_province = {
+					any_neighbor_province = {
+						owner = {
+							same_realm = ROOT
+						}
+					}
+					NOT = {
+						duchy = {
+							title = d_rivendell
+						}
+					}
+				}
+			}
+			
+			random_realm_province = {
+				limit = {
+					any_neighbor_province = {
+						owner = {
+							same_realm = ROOT
+						}
+					}
+					NOT = {
+						duchy = {
+							title = d_rivendell
+						}
+					}
+				}
+				
+				ROOT = {
+					opinion = {
+						who = PREVPREV
+						years = 3
+						modifier = opinion_duchy_adventure_target
+					}
+					add_character_modifier = {
+						name = planning_duchy_adventure
+						hidden = yes
+						days = 730
+					}
+					character_event = {
+						id = ORCINVASION.1212 # Fire the attack
+						days = 730
+					}
+				}
+				PREV = {
+					character_event = {
+						id = ORCINVASION.1211 # Warn the target
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1211
+	desc = "EVTDESCORCINVASION.1211"#You receive word that a massive orc horde is preparing to march against your lands. Let us hope we have the strength to repel them!
+	picture = "GFX_war_at_north"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1211"#I hate orcs...
+	}
+}
+
+# An ambitious character with no inheritance starts an adventure for a foreign title
+# (Temporary title created and a war declared)
+character_event = {
+	id = ORCINVASION.1212
+	desc = OK
+	picture = "GFX_war_at_north"
+	border = GFX_event_normal_frame_war
+	
+	hide_window = yes # Only fires for unplayable landless characters
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "The Old Gods"
+		
+		is_ruler = no
+		prisoner = no
+		NOT = { trait = incapable }
+		
+		NOT = {
+			any_heir_title = {
+				always = yes
+			}
+		}
+		
+		any_independent_ruler = {
+			NOT = { culture = ROOT }
+			is_landed = yes
+			independent = yes
+			NOT = { is_vassal_or_below = ROOT }
+			any_realm_province = {
+				any_neighbor_province = {
+					owner = {
+						same_realm = ROOT
+					}
+				}
+			}
+			reverse_has_opinion_modifier = {
+				who = ROOT
+				modifier = opinion_duchy_adventure_target
+			}
+		}
+	}
+	
+	immediate = {
+		wealth = 1000
+		
+		liege = {
+			character_event = {
+				id = ORCINVASION.1213
+				days = 1
+			}
+		}
+		
+		liege = {
+			capital_scope = {
+				random_independent_ruler = {
+					limit = {
+						NOT = { culture = ROOT }
+						is_landed = yes
+						independent = yes
+						NOT = { is_vassal_or_below = ROOT }
+						any_realm_province = {
+							any_neighbor_province = {
+								owner = {
+									same_realm = ROOT
+								}
+							}
+						}
+						reverse_has_opinion_modifier = {
+							who = ROOT
+							modifier = opinion_duchy_adventure_target
+						}
+					}
+					random_realm_province = {
+						limit = {
+							any_neighbor_province = {
+								owner = {
+									same_realm = ROOT
+								}
+							}
+						}
+						
+						ROOT = {
+							set_defacto_liege = ROOT
+							create_title = {
+								tier = DUKE
+								landless = yes
+								temporary = yes
+								culture = ROOT
+								name = "CLAIMANT_ADVENTURE"
+								holder = ROOT
+							}
+							
+							set_character_flag = duchy_adventurer
+						
+							spawn_unit = {
+								province = PREVPREVPREV
+								home = PREVPREVPREV
+								owner = THIS
+								leader = THIS
+								match_character = PREVPREV
+								match_mult = 0.2
+								match_min = 500
+								match_max = 10000
+								attrition = 0.25
+							}
+							spawn_unit = {
+								province = PREVPREVPREV
+								home = PREVPREVPREV
+								owner = THIS
+								match_character = PREVPREV
+								match_mult = 0.2
+								match_min = 500
+								match_max = 10000
+								attrition = 0.25
+							}
+							spawn_unit = {
+								province = PREVPREVPREV
+								home = PREVPREVPREV
+								owner = THIS
+								match_character = PREVPREV
+								match_mult = 0.2
+								match_min = 500
+								match_max = 10000
+								attrition = 0.25
+							}
+							war = {
+								target = PREVPREV
+								casus_belli = duchy_adventure
+								thirdparty_title = PREV
+								tier = DUKE
+							}
+							remove_opinion = {
+								who = PREVPREV
+								modifier = opinion_duchy_adventure_target
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		# Create some decent commander characters
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 30
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 25
+		}
+		
+		spawn_fleet = {
+			province = closest # closest sea zone
+			owner = ROOT
+			disband_on_peace = yes
+			troops =
+			{
+				galleys = { 200 200 }
+			}
+		}
+	}
+	
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1213
+	desc = "EVTDESCORCINVASION.1213"# One of your warlords has gathered a large horde, and is preparing to lead it out for pillage and slaughter.
+	picture = "GFX_war_at_north"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { is_ruler = yes } # The DoW worked and the adventurer has a temporary title
+	}
+	
+	immediate = {
+			any_liege = {
+				character_event = {
+					id = ORCINVASION.1214
+				}
+			}
+	}
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1213"#We need more of his kind!
+	}
+}
+
+character_event = {
+	id = ORCINVASION.1214
+	desc = "EVTDESCORCINVASION.1214"
+	picture = GFX_war_at_north
+	border = GFX_event_normal_frame_war
+	
+	show_from_from = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAORCINVASION.1214"
+	}
+}

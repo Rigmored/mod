@@ -1,0 +1,684 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+ 
+# Castle buildings for humans group 'P" - Forodwaith and Haldadian - limited to lvl 3 #
+castle = {
+###################### Walls , gives fortlevel###################### 
+	ca_Pwall_1 = {
+		desc = ca_Pwall_1_desc
+		
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+        	ai_creation_factor = 80
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+		}		
+		
+	}
+	ca_Pwall_2 = {
+		desc = ca_Pwall_2_desc
+		
+		upgrades_from = ca_Pwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 79
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}		 
+		}
+	}
+	ca_Pwall_3 = {
+		desc = ca_Pwall_3_desc
+		
+		upgrades_from = ca_Pwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 78
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}	 
+		}
+	}
+	
+###################### #Watchtowers, give garrison size ###################### 
+	ca_Pwatchtower_1 = {
+		desc = ca_Pwatchtower_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.05
+		ai_creation_factor = 90
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}	 
+		}
+	}
+	ca_Pwatchtower_2 = {
+		desc = ca_Pwatchtower_2_desc
+		
+		upgrades_from = ca_Pwatchtower_1
+		gold_cost = 100
+		build_time = 375
+		garrison_size = 0.1
+		ai_creation_factor = 89
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}	 
+		}
+	}
+	ca_Pwatchtower_3 = {
+		desc = ca_Pwatchtower_3_desc
+		
+		upgrades_from = ca_Pwatchtower_2
+		gold_cost = 150
+		build_time = 525
+		garrison_size = 0.15
+		ai_creation_factor = 88
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}		 
+		}
+	}
+
+###################### Keeps, gives levy size ###################### 
+	ca_Pkeep_1 = {
+		desc = ca_Pkeep_1_desc
+		
+		gold_cost = 75
+		build_time = 275
+		levy_size = 0.05
+		ai_creation_factor = 102
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            }
+	}
+	ca_Pkeep_2 = {
+		desc = ca_Pkeep_1_desc
+
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Pkeep_1
+		gold_cost = 100
+		build_time = 375
+		levy_size = 0.1
+		ai_creation_factor = 101
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+		}
+	}
+	ca_Pkeep_3 = {
+		desc = ca_Pkeep_1_desc
+		
+		prerequisites = { ca_Pwall_2 }
+		upgrades_from = ca_Pkeep_2
+		gold_cost = 150
+		build_time = 550
+		levy_size = 0.15
+		ai_creation_factor = 100
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}	 
+		}
+	}
+	
+####################### Militia barracks, gives light infantry and archers###################### 
+	ca_Pmilitia_barracks_1 = {
+		desc = ca_Pmilitia_barracks_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 10
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pmilitia_barracks_2 = {
+		desc = ca_Pmilitia_barracks_2_desc
+
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Pmilitia_barracks_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+	   		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pmilitia_barracks_3 = {
+		desc = ca_Pmilitia_barracks_3_desc
+		
+		upgrades_from = ca_Pmilitia_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 20
+		archers = 90
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pmilitia_barracks_4 = {
+		desc = ca_Pmilitia_barracks_4_desc
+		
+		upgrades_from = ca_Pmilitia_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 30
+		archers = 120
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	
+####################### Training grounds, gives morale and reinforce rate #######################
+	ca_Ptraining_grounds_1 = {
+		desc = ca_Ptraining_grounds_1_desc
+		
+		prerequisites = { ca_Pwall_2 }
+		gold_cost = 200
+		build_time = 730
+		land_morale = 0.1
+		levy_reinforce_rate = 0.1
+		retinuesize = 20
+		ai_creation_factor = 89
+        	potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Ptraining_grounds_2 = {
+		desc = ca_Ptraining_grounds_1_desc
+		
+		upgrades_from = ca_Ptraining_grounds_1
+		gold_cost = 250
+		build_time = 1095
+		land_morale = 0.15
+		levy_reinforce_rate = 0.15
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+	   		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Ptraining_grounds_3 = {
+		desc = ca_Ptraining_grounds_1_desc
+		
+		upgrades_from = ca_Ptraining_grounds_2
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.2
+		levy_reinforce_rate = 0.2
+		retinuesize = 20
+		ai_creation_factor = 88
+		potential = {
+            		has_global_flag = building
+	  		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	
+####################### Castle Guard, gives heavy infantry and pikemen #######################
+	ca_Pcastleguards_1 = {
+		desc = ca_Pcastleguards_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 105
+		potential = {
+	 		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pcastleguards_2 = {
+		desc = ca_Pcastleguards_1_desc
+		
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Pcastleguards_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 104
+		potential = {
+            		has_global_flag = building
+	   		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pcastleguards_3 = {
+		desc = ca_Pcastleguards_1_desc
+		
+		prerequisites = { ca_Pwall_2 }
+		upgrades_from = ca_Pcastleguards_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 103
+        	potential = {
+            		has_global_flag = building
+	  		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	
+####################### Stable, gives light cavalry and some heavy cavalry #######################
+	ca_Pstable_1 = {
+		desc = ca_Pstable_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_cavalry = 35
+		ai_creation_factor = 89
+		potential = {
+	   		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pstable_2 = {
+		desc = ca_Pstable_1_desc
+		
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Pstable_1
+		gold_cost = 120
+		build_time = 547
+		light_cavalry = 45
+		ai_creation_factor = 88
+        	potential = {
+            		has_global_flag = building
+	    		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Pstable_3 = {
+		desc = ca_Pstable_1_desc
+		
+		prerequisites = { ca_Pwall_2 }
+		upgrades_from = ca_Pstable_2
+		gold_cost = 200
+		build_time = 730
+		light_cavalry = 55
+		ai_creation_factor = 87
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	
+####################### Castle town, gives income #######################
+	ca_Ptown_1 = {
+		desc = ca_Ptown_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Ptown_2 = {
+		desc = ca_Ptown_2_desc
+		
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Ptown_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	ca_Ptown_3 = {
+		desc = ca_Ptown_3_desc
+		
+		prerequisites = { ca_Pwall_2 }
+		upgrades_from = ca_Ptown_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 2
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	   		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+
+####################### Shipyard, gives galleys #######################
+	ca_Pshipyard_1 = {
+		desc = shipyard_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		galleys = 6
+		ai_creation_factor = 100
+		potential = {
+	    		has_global_flag = building
+			OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+		}
+	}
+	
+	ca_Pshipyard_2 = {
+		desc = shipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Pshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 7
+		ai_creation_factor = 99
+		potential = {
+            		has_global_flag = building
+	    		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            	}
+	}
+	
+	ca_Pshipyard_3 = {
+		desc = shipyard_desc
+		port = yes
+		
+		upgrades_from = ca_Pshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 8
+		ai_creation_factor = 98
+		potential = {
+            		has_global_flag = building
+	    		OR = {
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian	
+            		}
+            }
+	}
+
+####################### Special units : snowmen/hillsmen, to lvl 4 #######################
+	ca_Psnowmen_1 = {
+		desc = ca_Psnowmen_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 45
+		archers = 45
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			culture = culture_lossoth
+            	}
+	}
+	ca_Psnowmen_2 = {
+		desc = ca_Psnowmen_1_desc
+
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Psnowmen_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+	   		culture = culture_lossoth
+            	}
+	}
+	ca_Psnowmen_3 = {
+		desc = ca_Psnowmen_1_desc
+		
+		upgrades_from = ca_Psnowmen_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 55
+		archers = 55
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		culture = culture_lossoth
+            	}
+	}
+	ca_Psnowmen_4 = {
+		desc = ca_Psnowmen_1_desc
+		
+		upgrades_from = ca_Psnowmen_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 75
+		archers = 75
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		culture = culture_lossoth
+            	}
+	}
+	ca_Psnowmen_5 = {
+		desc = ca_Psnowmen_1_desc
+		upgrades_from = ca_Psnowmen_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 85
+		archers = 85
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			culture = culture_lossoth
+        	}	
+	}
+	ca_Psnowmen_6 = {
+		desc = ca_Psnowmen_1_desc
+		upgrades_from = ca_Psnowmen_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 95
+		archers = 95
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			culture = culture_lossoth
+        	}	
+	}
+	
+	ca_Phillsmen_1 = {
+		desc = ca_Phillsmen_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 45
+		archers = 45
+		ai_creation_factor = 100
+		potential = {
+	   		has_global_flag = building
+			NOT = { culture = culture_breelander }
+			OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+            	}
+	}
+	ca_Phillsmen_2 = {
+		desc = ca_Phillsmen_1_desc
+
+		prerequisites = { ca_Pwall_1 }
+		upgrades_from = ca_Phillsmen_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+			OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+            	}
+	}
+	ca_Phillsmen_3 = {
+		desc = ca_Phillsmen_1_desc
+		
+		upgrades_from = ca_Phillsmen_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 55
+		archers = 55
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+            	}
+	}
+	ca_Phillsmen_4 = {
+		desc = ca_Phillsmen_1_desc
+		
+		upgrades_from = ca_Phillsmen_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 75
+		archers = 75
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+            	}
+	}
+	ca_Phillsmen_5 = {
+		desc = ca_Phillsmen_1_desc
+		upgrades_from = ca_Phillsmen_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 85
+		archers = 85
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+        	}	
+	}
+	ca_Phillsmen_6 = {
+		desc = ca_Phillsmen_1_desc
+		upgrades_from = ca_Phillsmen_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 95
+		archers = 95
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			OR = {	
+			culture_group = culture_group_haldadian
+			culture = culture_hillmen
+			}
+        	}	
+	}
+}

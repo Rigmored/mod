@@ -1,0 +1,1244 @@
+﻿-------MIDDLE-EARTH PROJECT----------
+
+#### 0.6b HOTFIX #2 ####
+- Fixed a bug where the steward can't be send to a wilderness province to colonize it.
+- Added the trait "elven blood" to Elfwine the Fair, grandson of Imrahil and son of Eomer.
+- Give the title of the Swans Knights of Dol Amroth to new non-dynastic characters instead of the Prince of Dol Amroth.
+- The Courtiers of the Captain of the Swans Knights of Dol Amroth will have the "Knights of Dol Amroth" traits
+- Gave back the Belfalas to the heirs of Imrahil during the New Shadow
+
+#### 0.6b HOTFIX ####
+- Fixed a crash because of performance in 1th february, governments vanilla values are settled
+- Added several characters to Bookmarks selection screen (Fall of Arnor, Kinstrife)
+- Changed death dates for numenoreans with the traits "Blood of Anarion / blood of Isildur", so they won't die around 150 years old, but around 200-220.
+- Changed the max age in the ruler designer to 350 instead of 50
+- Fixed a bug with bearded elves
+- Fixed a bug with inheritance of elf trait / trait given to random characters
+- Fixed a bug where Osgiliath is holded by the heirs of Isildur before 9980
+
+
+#### 0.6b Changelog ####
+- Compatibility to CKII 2.5.x
+- Added two new bookmarks
+- Expanded several lines to new bookmarks
+- Added some new portraits
+- Numenorean characters of medium blood now should die at around 120ish, those of high blood at around 150ish. This is modified by things like date (earlier bookmarks the Dunedain have not waned so much), health, whether you have elven blood or are of the royal lines, etc.
+- NOT FIXED: War of the Ring event chain. It probably needs to be redone entirely. Sometimes it works brilliantly, sometimes it half works, sometimes it doesn't work at all. If you find it doesn't work and you want it to, just start over, it's only the first 5-6 years we're talking about anyways.
+- Army sizes are all off, and I can't find the old settings. Increased orc levy size from 100% to 200%, gave them a bit more combat maluses. Removed combat bonuses for black numenoreans for light infantry, pikemen, archers, and light cavalry - they would use slave troops, not black numenoreans for these ranks.
+- Feudal governments can now call vassals during wars. It doesn't make sense that in the wars of Middle-Earth, which tend to be quite conclusive, powerful vassals will just sit by and only give a small percentage of their troops due to some realm law or another. Wars in Middle-Earth tend to be epic all-in affairs.
+- Removed elven childhood restriction for councillors. Was causing a lot of lag as AI kept appointing and then removing endlessly.
+- Code optimizations, moved a lot of events to on_actions. Also deleted many not-used events from on_actions, such as the RoI ones and such. The mod still runs a bit slower than I would expect, but it's faster than Warhammer and the other big ones, though not as fast as Birthright (which is odd, since Birthright and the MEP are roughly the same size).
+
+- A lot of the old slightly modded vanilla files were still in the mod, from several patches ago some of them. These were removed, and now the mod uses a lot more unmodded vanilla files.
+- This means that until an MEP team goes through them all again with more recent versions of the files, many of the restrictions have been removed that were there previously. Sauron can take up gardening, Elrond can (probably) try to seduce Arwen, and whatever other kind of silliness that might arise. Yeah, it's not ideal, but updating all files to the more recent versions is better than having old and potentially buggy files in the mod.
+- The mod now uses vanilla CBs, only slightly modded (in that holy wars cost piety and have a faster cooldown period). This means that things like subjugations etc are in.
+- Generally, the mod should - hopefully - be more stable now and play more like vanilla in some areas. Restrictions we had in place that prevented dunedain vassals etc from rebelling are also removed, so you may very well now see Imrahil plotting to overthrow Denethor or have a bloody civil war in the Shire as the Tooks wage ruthless war on the Bagginses. Rivenell, Lindon, and the dwarves of the Blue Mountains also tend to expand into the wilderness duchies. Again, it's not ideal, but fixing all those old files would simply take longer than I was willing to commit to.
+
+
+##### 0.5.1b Patch Changelog ##### 
+
+- Fixed game breaking bugs after 2.4.3 
+- Race traits now check real_father instead of father
+- Evil rulers now have the 'create orc' decision
+- Fixed broken trigger for fall of arnor event chain
+- Tweaked raiding frequency
+- Integrated horse lords static modifiers
+- Fixed some localisations for population modifiers, titles, etc
+
+##### 0.5b Changelog #####
+
+TLDR:
+- WoL and HL features integrated
+- Perfomance massively increased
+- Many bug fixes and tweaks
+- Population mechanics added
+- Colonisation tweaked
+- Wilderness overhauled
+- Playable holy orders (Swan Knights, Black Serpent)
+- Map changes, Mirkwood appearance overhauled
+
+-Removed buggy and recurring events from wotr informing that hobbits have left, and that rohan is under attack
+-Deleted file MEP_Narsil, it was causing CTD with aragorn and I dont see why narsil should be so easily reforged anyways
+-Removed all those wilderness holdings from Aragorn, had to give them to new wilderness chars, since he always got them even though holder was set to 0 due to inheritance i suppose
+-Deleted events buildings 100, 101, and 102. They were buggy and kept repeating endlessly when holding any of those, aragorn kept getting them in the WOTR bookmark
+-Changed end date to 99999 in hopes of fixing the CTD on load/resign (if a character has a death date beyond the mod end date, it will cause this crash) but it didnt work so the problem is somewhere else in /history folder
+-Fixed rather annoying load/resign CTD. The problem was that someone had used those special dwarven/elven letters in both landes_titles and history/provinces. That causes problems - special characters like that should only be used in localisation, not directly in game files.
+-Removed MEP_gondor_wotr events: They re good flavor, but it means that AI Gondor will always lose the main war because it uses up its levies in battles vs event armies before the main assault
+-Fixed title history so that Rohan no longer holds half the Vale of Anduin
+
+*Added population mechanics for Dunedain/Numenorean Group, Elves, and Dwarves.
+-Their lands are either lightly populated, populated, or densely populated
+-Set up starting event to populate the major areas
+-When you get a new province in-game to your culture, it'll automatically be lightly populated with a -66% penalty to troops and income
+-Populations can be increased via a decision, which is very costly and takes 20 years
+-When a province is occupied by enemies, there is a MTTH event of 5 years which lowers the population level by one (from dense to normal, from normal to light)
+
+-Removed shire provinces from Aragorn, it makes no sense to have the hobbits attack him with dejure cb
+-Changed retinue values. Seems they no longer stack with culture, so some dunedain and elven/dwarven ones needed a stat boost
+-Nerfed Isengard Uruk pits. Saruman had 45k troops, it was crazy.
+-Removed file MEP_alliance.txt from events, it was all unlocalised and therefore useless until someone localises it
+-Deleted orcs_decisions since it was a duplicate of MEP_orcs_decisions
+-Copied over vanilla dynasty_decisions.txt, since ours was out of date and possibly not working
+-Removed all special troops for now. They cause CTDs when seen on the map since a recent patch if they are not all individualy graphically defined (which I don't know how to do)
+-Quite a few event and decision validator errors fixed
+-Made it so that the special buildings, at least in many cases, are only in the barony where theyre supposed to be, not the whole province and sub-baronies
+-Removed coat_of_arms.txt from /interface. Something in there was causing a CTD when a certain army in that region was spotted, most likely related to Rivendells Banner/COA
+-Retinues were vastly overpowered, Gondor could raise something like 30,000 troops in retinues alone if at full strength. Brought them back in line with vanilla values, except that reinforce cost is still half of vanilla.
+-Did some balancing of realm power by editing some buildings, it might still need some work but seems better now. Before, Saruman and Sauron won 99% of the time.
+-Fixed crash with CTD on checking fort tab
+
+-Integrated events/decisions from Way of Life and Horselords
+-Updated some event files with more recent vanilla versions where I could see there was no custom content in ours
+-For the event file adventures_the_old_gods.txt these cultures can spawn adventurers to take on a duchy title (orcs already have another mechanic in-game):
+culture = culture_black_numenorean
+culture_group = culture_barding
+culture_group = culture_northmen
+culture = culture_eotheod
+culture = culture_rohirrim
+culture = culture_hillmen
+culture = culture_umbareans
+-In the same event file, any character with a claim to a king title can try to take it via an adventure army (vanilla mechanic)
+-Brought back the Old Gods rebel events, not sure why they were removed.
+-I now know why they were removed. They're annoying as hell for a large empire. Kept the event, but reduced frequency by 75%
+-Tweaked the Aragorn coronation event so he doesnt just automatically gain the extra provinces in the north. This is unfair to players who have expand that far, suddenly their lands are just taken away by event.
+-Small fix for MEP_population_mechanics regarding new elven provinces not getting the lightly populated modifier. 
+-Bigger fix for MEP population mechanics, it should work properly now
+-Removed personalty = yes from Numenorean traits, they got randomly assigned because of it
+-Restricted some Way of Life seductions so that you cant go around seducing Sauron, Eagles, Balrogs, ents, or orcs etc
+
+*Couldnt figure out why purge province job action didn't work, so I re-did the whole thing. Now if there are hostile cultures in your realm, you get an event asking if you want to purge your land of enemies. The hostile cultured provinces get a modifier for 10 years with a +5% revolt risk, and after that, the province becomes wilderness and must be colonised again. To prevent maiar and such cultured provinces when Sauron or Saruman takes over, those provinces are immediately turned orcish, instead of wilderness. I removed the job action purge province and the purge decision - it might have worked once, but I played 50 years, and Ithilien was still full of orcs in my Aragorn game so something is clearly not working anymore.
+
+-Removed the events giving both types of Blood of Numenor to random courtiers. It should be rare in the 3rd Age, and if there are too few, the solution is rather to give the trait to more starting nobles rather than just have a random courtier appear with a bloodline as powerful as Denethor or Aragorn...
+-On that note, also changed localisation from "Drops of Numenorean Blood" to "Strong Traces of Numenorean Blood" and the strongest one is now "True Blood of Numenor"". Everyone in Gondor and Arnor have "drops", the 2nd trait is still meant to be something special.
+-Reduced number of event troops Aragorn gets when he joins Rohan. Those 2.5k heavy cavalry smashes Sarumans army too easily.
+-Took away lands from Boromir and Faramir. If landed, they ll often marry commoners, which many players wont like - myself included :p
+
+-Code optimization. Moved all events that could be, to on_actions instead of MTTH.
+-I m afraid I had to delete the calender events entirely - with this as MTTH:
+mean_time_to_happen = {
+days = 1
+modifier = {
+factor = 0.00001
+always = yes
+}
+}
+It is extremely resource intensive, and not worth the drain on performance for just that small yearly event notification.
+-Also deleted MEP_numenor_reconquest.txt. It uses these triggers several times:
+completely_controls = d_umbar ### WARNING: completely_controls is a very demanding trigger.
+-Incidentally, this was the cause of the 20 day slowdown of the mod, together with the other MEP_Numenor file which inexplicably also caused huge lag.
+-Deleted event where Sauron gets 1000 gold from the Variags every few months while at war. It is quite unbalancing, and there is no way that the Variags are that rich.
+
+*Remake of colonization system. Sorry Lon, but I got too annoyed trying to colonize Annunimas and nothing happening 3 times in a row, and its always easier rebuilding an event from scratch than fixing someone else's
+Features:
+-Special mechanics for dunedain, you can choose to colonise with middle men at a lower cost
+-If you have an elf, dwarf, or a halfling in your court you can at higher cost colonise a province with these cultures
+
+
+-Changed localisation of Gondorian Commoners back to Gondorian Middlemen. It doesn't make sense to call them commoners, as they can also be nobles. Middlemen is a more accurate term, describing their lack of Dunedain "High Men" ancestry.
+-Added Arnorian Middle men culture also.
+-Fixed issue with commanders not working properly
+-Removed these # groups from the Duchy adventure old gods event, we don't want Rohirrim and such attacking Gondor or Bardings attacking the elves and dwarves
+OR = { # Only these for now
+culture = culture_black_numenorean
+#culture = culture_barding
+#culture = culture_northmen
+#culture = culture_eotheod
+#culture = culture_rohirrim
+culture = culture_hillmen
+culture = culture_umbareans
+has_character_flag = demon_child_non_pagan
+}
+-Temporary fix: Patricians and their families no longer get banished when good/evil side conquers and banishes the nobles of another side. This is to prevent Mordor from getting the Pelargir republic and becoming a republic himself. Placeholder fix until better one is found.
+
+*New Blood of Numenor mechanics
+-At start up, before the kinstrife bookmark, everyone of gondorian, arnorian, dunedain etc culture gets the lesser trait blood of numenor if they dont have it
+-After the kinstrife, only 70% of Gondorians and Arnorians get it, while 100% of dunedain still get it
+-If you lose the trait, Dunedain and Arnorians become Arnorian middle men, and Gondorians become Gondorian Middle men. Black Numenoreans can remain black numenorean cultured even if losing the trait, as there is no real need for a "black numenorean middle men" culture, and they shouldn't switch portraits to haradrim either :p
+
+-Temporary fix. Internal version has patrician portrait bug with elves and possibly some others, i m reverting the elven, hobbit, and dwarf portrait sets to thsoe from Birthright, which do not have the patrician portrait bug - at least until Lonhaldar comes back and fixes the current versions.
+
+##### 0.4.2b Changlog #####
+
+
+BUGFIX
+- Fixed bug with Orc, Human, Noldor and Silvan/Sindar feast events not firing correct events
+- Fixed bug where Orcs couldn't eat/sacrifice Beornings during feasts
+- Fixed some colours on Harad titles
+- Fixed some minor bugs in infertility events
+- Fixed some minor bugs in race traits assignment
+- Fixed bug where items weren't passed on to heirs after abdication
+- Fixed bug where Become a Craftsman ambition was available for all races, instead of only Noldor/Dwarves
+- Fixed capitals of Angmar + Arthedain
+- Fixed bug when creating Arnor, that said Arthedain wasn't completely controlled
+- Fixed Gwaith-i-Mirdain building appearing outside capital barony of Ost-in-Edhil
+- Fixed Arathorn I being married to a man
+- Fixed bug where immortal races could become incapable and never recover
+
+CASUS BELLI
+- Added 'Good Invasion' usable by Free Peoples against Orcs and other Creatures of Melkor
+
+CHARACTERS
+- Added gluttonous and charismatic negotiator to Will Whitfoot
+- Added Tauriel as courtisan in Thranduil's Halls
+- Added a bunch of new holders characters in Northern Mirkwood
+- Added Beorning characters from LOTRO
+- Added traits to some historic characters
+
+DECISIONS
+- Added Dwarven feast decision
+- Summer Fair only available for Hobbits
+
+DIPLOMACY
+- Disabled 'demand religious conversion' diplomatic interaction
+- Disabled 'send to monastery' diplomatic interaction
+- Integrated new version of Pledge Mod v4 (thanks Hoony)
+
+EVENTS
+- Added Dwarven feasts events
+- Relocalised all Summer Fair events for Hobbits
+
+GAMEPLAY
+- Extended end date by 200 years
+
+GFX
+- Reworked icons for Elf Warrior, Rider and Craftsman ambitions
+- Added unique icon for Eldar races
+- New title logo
+
+INTERFACE
+- New character view interface window 
+
+LAWS
+- Updated laws
+
+LOCALISATION
+- Re-added Middle Earth descriptions and names for education traits
+- Hobbit counts are now Messr
+- Edited localisation for feast events
+
+MAP
+- Changed Stonefoots in Zirakdum back to Stiffbeards
+- Added province of Azanulbizar to Duchy of Moria, west of Lorien
+- Moved Redhorn/Caradhras to correct position north of Moria
+- Better borders in West Gondor and Enedwaith
+- Overhauled Enedwaith landed_titles
+
+NICKNAMES
+- Added Flourdumpling to Will Whitfoot
+- Re-added Strider to Aragorn II
+
+OBJECTIVES
+- Disabled Seduction focus for Elves
+- Disabled Family focus for Creatures of Melkor
+- Disabled War focus for Hobbits
+- Disabled all focuses for Wilderness
+
+RELIGION
+- Added High and Evil god names for all religions
+- Added feminist = yes for Eldar and Spiders
+- Added conversion desire = 0 to all religions (races can't convert)
+- Removed Moriquendi/Calaquendi elven racial distinction and removed Calaquendi
+- Tweaked some religion names for consistency (Elven, Dwarven, Halfling, etc)
+- Added Umaiar religion for Sauron, Morgoth, Balrogs, etc
+
+SUBMODS
+- Integrated latest version of Pledge mod (v.4)
+
+TITLES
+- Assigned some Northern Mirkwood titles
+- Assigned some Vales of Anduin titles
+- Reworked Vales of Anduin titles, less power to Beornings, more wilderness lands to colonize
+- Added titular Mayordom of Shire held by Will Whitfoot
+- Restructured Shire, no duchy titles other than Mayordom at WotR start, no counts hold more than one township
+- Changed Thaindom of the Shire colour to beige
+- Removed d_ringbearer title
+
+TRAITS
+- Added combat stats to soldier and weapon traits
+- Added generic combat skill traits for all other races
+- Added more conditions for passing on Elf Blood/Blood of Numenor in special cases
+
+
+##### 0.4b Changelog #####
+
+AMBITIONS :
+- Added the Ambition to become a craftsman (only for Noldor and Dwarves, and only for characters who don't have one of these traits : healer/musician/mariner)
+
+BUGFIX :
+- The Ambition to become a Elf Warrior is now fixed for characters aged more than 45.
+- Some Object-Traits can be inherited, like the Dwarven Rings.
+- Fixed a bug where the Mithril Mail trait doesn't appear in game.
+- Fixed a bug with an event during the Kin-Strife bookmark, for the Witch-King, that pops but don't have any options to close.
+- Fixed some bugs with colonisation/purge mechanics
+- Fixed bug with an event related to the alliance system that kept to pop up
+- Fixed lots of errors in Hobbit families
+- Fixed a bug when the King of Gondor gain some claims on Umbar even if he's the liege of this land
+- Fixed a bug where colonisation decisions didn't show for orcs/evil characters
+- Fixed a bug where wights can die of old age, even with an immortality trait.
+- Fixed missing province in Nurad
+- Fixed a bug where you can't claim the title of High King of the Noldor if Galadriel don't rule the Lorien.
+- Maiar characters can't lead armies now (including the Istari)
+- Fixed missing sprite for Enigma trait
+- CB icons no longer misaligned
+- Fixed a bug with the abdication decision
+- Removed Dol Amroth special troops due to crash problem
+- Removed bugged road province modifiers
+- Fixed wilderness levy + income province malus
+
+BUILDINGS :
+- Major building system overhaul:
+-- Added several levels for the buildings "Khazad-Dum" and "Erebor"
+-- Added specific buildings for the cities of Thorin's Gate, Azanulimbar-Dum, Tamnogoth, Zirakdum and Nurunkhizdin
+-- Added new cultural buildings for all the cultures
+-- Any buildings in Ruined Provinces will now be automatically destroyed
+
+CHARACTERS :
+- The Sons of Aragorn and Arwen will have now the trait "Half-Elf"
+- Added some new Hobbit dynasties in game
+- Added some new Rohirrim dynasties from LOTRO
+- Added "imposing" and "strong" traits to Bandobras Took
+- Added missing nicknames for some Hobbits
+- Added correct friends/rivals for the main Hobbits
+- Added correct relations for the Dwarves of the Erebor Company
+- Saruman is now rival of Gandalf
+- Added "Half-elven" nickname to Elrond
+- Added "Steelsheen" nickname to Morwen of Lossarnach, King Theoden's wife
+- Added death_reasons for Rohirrim characters
+- Faramir now has the Scholar lifestyle trait
+- The Stiffbeard kings of Zirakdum are now Stonefoots
+
+CULTURES AND RACES :
+- Added a general Hobbit culture to replace Stoors, Harfoots and Fallohides within Shire in War of the Rings period
+- Elves will now be children until 50-100 years old. They won't be able to marry or to lead armies during this period.
+- Added Dorwinrim culture in Dorwinion
+- Added Wights race
+- Made Haldadians, Lossoth and Druwathings tribal
+- Elven childhood mechanics, an Elf won't reach adulthood until age 50
+
+DECISIONS :
+- Rebuild the Cities of Edhellond, Amon Sûl and Osgiliath
+- If the Dwarves rule Erebor, Khazad-Dum and Gundabad, as King of Gundabad, call the Assembly of the Dwarves, and try to unificate all the Dwarves of Middle-Earth.
+- Use only one decision to open all the lists of holders of artefacts (rings/palantiri/weapons for now)
+- New decision system divides decisions into Family/Special/Employment/Festivity
+
+EVENTS :
+- "Call the Council of Gondor" feature, and try to gain the vote on several possibilities.
+- Added some events to remove automatically wives from other races, without some events
+- Added calendar events (Durin's Day for Dwarves and Lithe + Yule for Hobbits, more to come)
+- AI will now colonize one wilderness province each 20-30 years
+- Trolls will now flee from a province conquered by a "good" character
+- Gandalf will now travel to the realms of Good characters if they're at war, to help them.
+- An eastern ruler has now the possibility to find and invite as courtisans one of the Blue Istari: Alatar and Pallando
+- When the King of Gondor is crowned, he's now able to renew the Oath of Eorl, or to try to vassalize/conquer the land for Gondor.
+- Added event to remove Ringbearer title from non-ringbearer
+- Elves can now only have one spouse in their lives. Hobbits and Dwarves can choose this option too.
+- Added startup guide event with index
+- Added events for hobbits to hold parties and give gifts to each other
+- Added global event informing of Sauron restoring/coming to full power
+
+GFX :
+- Changed a lot of old flags
+- Changed main menu title gfx and dev logo gfx
+- Fixed mistake in religion/race mapmode button gfx
+- Fixed bug where Hobbit's hat feather was overlapping portrait boundary
+- Removed crosses from CB icons and changed imperial reconquest cb from LoR laurel to Arnorian crown
+- New unique portraits for Sauron with the ring and the Mouth of Sauron
+- Fixed broken religion icons and ironman selection button
+- New decision icons for most decisions and some changed
+- Removed vast amount of vanilla gfx that was increasing file size
+- Minimap improved
+
+JOB ACTIONS :
+- As an Evil Character, send your emissary in a weaker realm, and threaten them to improve your own glory
+- Use your Loremaster to heal the troops and stronger your reinforce rate.
+
+LINKS :
+- Added some main characters to in-game wiki links list (Tolkien Gateway)
+
+LOCALISATIONS :
+- Added Khuzdul names for Dwarven Realms
+- Fixed missing localisation for Anadune title
+- Many updated and mixed localisations throughout
+- Added a number to the month names to help with season/year progression awareness
+- Race descriptions on character view, with info on troops bonuses and maluses
+
+MAP :
+- Revamped trees map: palms in Harad, pines in the North, cyprus in Harondor and some other trees here and there to fill the map
+- Now Lorien has a golden wood
+- New marsh textures for Dagorlad, Overbourn Marshes, Swanfleet and Gladden Fields
+- New terrains for Brownlands, Dale, Forodwaith and Angmar
+- Removed the trees which overlap rivers
+- Fixed wrong terrain types in some provinces
+- Better borders for those provinces which match with rivers
+- Added 4 new river-crossings:
+ . Carrock
+ . Riavod-Logath
+ . Amon Hen-Amon Lhaw
+ . Wold Undeeps
+- Mirkwood Forest Road provinces now more realisticly shaped
+- Mirkwood Forest Road now covered with trees
+- Climate snow map added, northern middle earth covered in Snow until North Shire-Rivendell-Thranduil's Halls-Esgaroth line
+- Forodwaith wasteland province divided into 4
+- Bellakar mountain range reworked
+
+MINOR TITLES :
+- You can now grant only one minor title by character in Gondor.
+
+PORTRAITS :
+- Added portraits for orcs children
+
+PROVINCES :
+- Added all the baronies and revamped provinces in the following places: 
+ . Dorwinion
+ . Gondor
+ . Nurad
+ . Rhun
+ . Taur Romen
+ . Iron Hills
+ . Rhovanion
+ . Lindon
+- Edhellond is now a wilderness province during the War of the Ring, and a vassal of Lindon before
+- Moved Fanuidhol province to Vales of Anduin and renamed in Burh Anduin
+- Reduced number of pre-built baronies in Vales of Anduin, Celebrant and Weather Hills
+- Aglarond is now a Mountain province
+- Deleted 2 baronies in Midgewater Marshes
+- Added new baronies in Rohirrim Eastfolde
+- Moved Brownlands capital to Talath Harroch
+- Changed the capital of the duchy of Elostirion to Elostirion (was Undertowers)
+
+TRAITS :
+- Added the Nine Rings of the Men to the Nazgul
+- The Numenorean Helmet you can find during the Rebuilding of Fornost Erain is replaced by the Armour of Arvedui.
+- Added Spirit Form trait for Sauron before he recovers ring, linked to new decision for Sauron 
+- Added Westernesse Dagger trait
+- Reworked a little the bonus/malus of the Hobbit trait
+- Added more chance to gain the "gardener", "charitable", "gluttonous" and "hedonist" traits for random hobbits
+
+TITLES :
+- Changed most of the centralisation_law for kingdoms and empires titles
+- Moved Redhorn Pass to Moria duchy
+- The title of Anadûnë is now a de jure one, but needs some conditions to be created
+- the Witch King holds now more titles in the Fall of Arnor/Kin Strife bookmarks
+- Added Ringbearer titular duchy held by current ringbearer
+- The Tribes of Harad are now independant
+- Fixed problem with Shire titles in FoA
+- Fixed some incorrect duchy, kingdom and empire capitals
+
+#####HOTFIX 0.3.1b#####
+
+BUGFIX:
+- Add one missing holy site for Moriquendi religion
+- Fixed a bug with technology levels
+- The Travel to Elostirion decision can now be used by elves, as it should be
+- Fixed a bug with the Colonization of Wilderness CB
+
+#####0.3.1b Patch Changelog#####
+
+AMBITIONS :
+- You can now try to reclaim a Palantir if the stone isn't in its original location, and you're the ruler of this location
+
+BUGFIX :
+- The "Visit the Tomb of Thorin Oakenshield" decision is now unavailable before 11284 ingame
+- Fixed a bug with some orkish portraits with men faces instead of orkish ones
+- Fixed bug with a missing title in Blue Mountains that caused displacement when clicking on it
+- Fixed bug with a mercenary company that had no soldiers and was impossible to hire
+- Beren is now married to Luthien, and the wife of Hyarmendacil II of Gondor is now a woman, as it should be
+- Fixed a bug when the game crished on religion panel
+- Fixed a bug when the game crashed when raising some troops
+- Fixed a Bug when Mordor attacked directly the Gondor for all the Royal Demesne at beginning of the War of the Ring scenario.
+- The Kingdom of Angmar can now be created by any character
+
+CASUS BELLI :
+- Dwarves, Orcs, Dragons and Trolls now have a casus belli on mountains territories.
+
+CHARACTERS :
+- Added new Dunlending holders in Dunland
+- Added new Dunir holders in Andrast
+- Changed culture of Andrast holders in the last years of Third Age
+- Added the "At East" trait to several characters
+- Added several eagles, including the line of Thorondor
+- Added the line of Golfimbul in Mount Gram
+
+CULTURES :
+- Changed Lossoth cultural name to "Snowmen"
+- The Dwarves of Zirakdum are now Stonefoots instead of Stiffbeards, and are the descendants of Loni instead of Lit
+- Added the "Eagle" culture
+- Added the "Mountains" culture, similar to the Wilderness one, with other mechanics.
+
+DECISIONS :
+- You can now give some of your "traits-objects" to one of your children, by decision
+- You can now use the palantir during a war, to call another guardian to aid
+- You can now see a list of all the guardians of the Palantiri, or of the Elven/Dwarven/Lesser Rings
+- You can now, if you're an Elf or a Numenorean character, travel to Elostirion to try to see the Undying Lands with the Palantir
+- Improve the Resources of Erebor with some specific event triggered by decision
+- Use your artisan skills to create some new weapons or jewels, and improve your skills!
+
+EVENTS :
+- If you find some Mithril in the mines of the Moria, the province will now have a tax income bonus
+- Random Gondorian Characters will now have a chance to gain one of the "Blood of Numenor" trait
+- Removed the ability to take a lover when married for elves characters
+- Re-create the Brotherhood of the Gwaith-i-Mirdain in Ost-in-Edhil, with a Noldor craftsman
+- After 100 years, immortals characters can hunt a new time for the ring
+
+GRAPHICS :
+- Changed some old flags
+- Added Portraits for eagles
+- Changed the Interface during loading screen
+
+JOB ACTIONS :
+- You now can send your marshal purge a province of one of your vassals
+- You now can send your steward to colonize a province of one of your vassals
+
+LOCALISATION :
+- Reworked some English event localisations
+- Rohan is called Riddermark if held by Rohirrim
+- Added Sindarin names for Rohan duchies
+
+MAP :
+- Converted map from 2048x2048 to 3072x2048
+- 2 new islands: Tol Fuin and Tol Morwen
+- Map now shows sunken Beleriand and Numenor
+- Now Wheather Hills can only be sieged from Marshwater
+- Added impassable mountains in Bellakar
+
+MILITARY :
+- Added new mercenary companies (1 in Forochel, 9 in Harad, 4 for orcs)
+- Balanced a bit the number of mercenary companies
+
+MODIFIERS :
+- Added some modifiers for the troops of Arnorian culture
+
+NICKNAMES :
+- Add several new nicknames for dwarves, like "Dragonhelm", "Goldenshield", "Stonebeard", "Firehammer", ...
+
+PROVINCES :
+- Added baronies in Dol Caladir duchy
+- Added baronies in Bellakar
+- Revamped Lamedon territories (new names, borders and baronies) (as seen in LOTRO upcoming update)
+- Erebor is now a wilderness land before the coming of the dwarves in 1999 TA
+- Added three new provinces in Gundabad
+- Added new provinces within the Misty Mountains
+
+RELIGIONS :
+- Added Holy Sites to all the religions
+
+TITLES :
+- Changed the succession law of several kingdoms to elective, for Gundabad, Jangovars, Khundolars, Balchoths, Hillmen, ...
+- Added a new duchy in Bellakar
+- Added two new duchies in Gundabad (Nan Loke and Mount Gram)
+- Added one new duchy in Misty Mountains (Cîthoron)
+- Added the titular title "Lord of the Eagles"
+- Enedwaith and Druwaith iaur are now part of an "Isenvale" de jure empire, instead of Gondor.
+- The High King of the Noldor title is now a titular title, and could be created by A Noldorin King of Eregion and of one of the following title : Mithlond, Forlindon, Harlindon or Lorien.
+- The duchy of Isenmarch is now de jure part of the Kingdom of Enedwaith
+
+TRAITS :
+- Added different traits for each palantir: Osgiliath, Minas Anor, Minas Ithil, Orthanc, Elostirion, Amon Sûl, Annuminas
+- Nazgul trait now gives health buff to stop natural causes deaths
+- Added the Dwarven Rings
+- Added the Ring of Saruman, and the "Lesser Ring" trait
+- The "At East" trait will now prevent the holders to inherits.
+
+
+
+
+-------0.2.2.1b Hotfix Changelog-------
+
+AMBITIONS :
+- Removed vanilla ambitions for particular characters (Valar/Maiar/Ents/Creatures of Melkor etc)
+
+BUGFIX :
+- Fixed problem with missing "Dirt Roads" in cities
+- Removed duplicates in Lossoth names
+- Fixed a bug with the nickname "the Old" appearing for Elves, Dwarves, Maiar, Istari, Orcs etc
+- Fixed a problem with some Rhun titles not appearing properly in the selection menu
+- Fixed error with Numenoreans able to build Dwarven Ancestral Halls
+- Fixed some event that didn't fire for Easterlings
+- Fixed a bug with colonisation of wilderness provinces
+- Fixed a bug with the purge events
+- Fixed a bug where the Variags events spawned every monthes for Sauron
+- Fixed a bug where Aragorn goes to Rohan too early.
+
+DECISIONS :
+- The Decisions "Rebuild Fornost Erain"/"Rebuild Annuminas"/"Rebuild the Bridge of Tharbad" are now only triggered if the province was colonised before.
+- The "Hunt for Ring" decision is now available only once per life
+
+GRAPHICS :
+- Added new religion icons for Dunedain, Dwarves, Ents, Hobbits, Southrons and Easterlings (Anaxiphos)
+- Added a lot of decision icons
+- Added some new flags
+
+JOB ACTIONS :
+- You can now send your steward to a province, to colonize it. The Colonisation decision will be triggered by this now.
+- You can now send your marshal in a province to purge it. The purge decisions will now be triggered with this action.
+
+PLOTS:
+- You cannot plot to kill Valar, Maiar, Istari, Balrogs, Spiders, Onodrim, Wilderness, Dragons and Wights anymore
+- Plots disabled for Wilderness and Onodrim
+
+-------0.2.2b Patch Changelog-------
+
+AMBITIONS:
+- If you don't have any civil or warrior traits, you can try to gain them by ambitions (only for Elven Warriors and Rohirrim Riders for now)
+
+BALANCE:
+- Saruman will have less troops in the events of the War between Rohan and Isengard
+
+BUGS :
+- Fixed the bug with the events of Grima and Theoden during the Fall of Arnor scenario
+- Fixed the orkish casus belli bug, which other races can use it
+- You can now colonize a wilderness province if it has culture OR the religion "Wilderness"
+- Fixed some wrong positions in Morannon, Rhudaur and Dunland
+- Gimli will now travel with the Fellowship
+- Fixed a bug with some retinues who had 0/0/0 as stats
+- Fixed a bug where you weren't able to name your children
+- Fixed some wrong brackets in several files
+- Fixed bug with alliance_event that kept to pop up
+- Fixed a bug with the inheritance of the elven blood trait
+- Fixed a bug with the Palantir events that kept to pop up
+- Fixed a bug with the localisation for dwarves ("son ofDurin" are now correctly "son of Durin")
+- Fixed a wrong mother for some characters of the House of Isildur
+- Fixed the wrong father of Gidebats is Gedere
+- Fixed Human Infertility, Corrupted by Darkness, Redeemed by Light, Pipe-Weed Farmer, chivalrous, ruthless and writer trait icons not appearing
+- Fixed the missing icon for the decision "Employ a Diplomat"
+- Fixed the missing event pictures for the Worship of the Balrog
+- The Orkish Invasion can be use only on independant territories (not on vassals)
+- Forodacil of Rudhaur will now be killed if Ulfang choose his option when he imprison him
+- Fixed east_lithad missing title
+- Fixed a bug with the Kin-Strife events, where the rebellious King, once defeated, keep his title and his vassals.
+- Fixed missing "Feed Wargs" decision
+- Fixed a bug where Saruman gets the Kingdom of Rohan instead of the Westmarch territory in the first events of the war of the ring
+- The random-created Hobbits characters will now have the "Hobbit" trait
+- Fixed a Bug where if Arwen is landed, the events of the children of Aragorn and Arwen won't fire correctly
+- The Blood of Numenor will now disappear more slowly
+- The "Wilderness" Characters are now banished or killed when they're in the court of a "real" character
+
+BUILDINGS:
+- Added Roads (Dirt Roads/Paved Roads/Great Routes)
+
+CASUS BELLI :
+- Added a new casus belli for members of religion group of Melkor. They now can invade any "good rulers"
+- Easterlings and Southron now have the "Tribal Invasion" casus belli.
+
+CHARACTERS :
+- More civil and warrior traits for the characters of the Fall of Arnor scenario
+- Added three new Nazguls : Ren, Uvatha and Abrazîr
+- Added Blood of Numenor for Umbarian characters
+- Khamûl now get the nickname "the Easterling"
+- Added five "historical" dragons : Glaurung the Father of Dragons, Ancalagon the Black, Smaug the Golden, Scatha the Worm and a fictive Helegraug the Terrible, killer of Dain I in the Grey Mountains.
+- Imrazôr now get the nickname "the Numenorean"
+
+COMPATIBILITY :
+- Made some compatibility changes because of the 2.1.4 patch of CKII
+
+CULTURES/RELIGIONS/RACES
+- Started Religions/Cultures revamping. Now religions will be considered as Races
+- Most of the cultures will now have their dynasties named from the founder
+- Added Holy Sites for Dwarves : Gundabad, Khazad-Dûm and Erebor
+- Added 3 new Easterling cultures: Khundolars, Nuriags and Jangovars
+- Changed some names of cultures and races
+- Now also the Huorns have the Onodrim malus in reinforcements
+- Gondorians don't have the Dunedain malus anymore, but a minor one
+- Added Druedain malus in reinforcements
+- Better names for some races and cultures
+- Added some new first names for Trolls
+- Added some new first names for Dragons
+- Added some new first names for Breelanders
+
+DECISIONS :
+- Dwarves, Elves and Numenorean Rulers can now abdicate, under some conditions
+- The Members of the House of Durin can now try to reclaim Khazad-Dûm if the mines are ruled by another culture
+- If the Members of the House of Durin have reconquered/ruled Khazad-Dûm, they can reclaim Gundabad
+- The Rulers of Gondor can reclaim Osgiliath if the city is occupied by another culture
+- The Colonisation of Wilderness is now triggered on the location of your Steward
+- Removed the ability to create the "Reunited Kingdom" empire title
+
+DYNASTIES :
+- The Nazgul get now the same dynasty
+- Added more dynasties names for Uruk-Hai and Dunland cultures
+- Added lines of Khundolars and Jangovars tribes
+- Added Druwaithing families
+
+EVENTS :
+- The characters with the Blood of Numenor/Elven Blood of Half Elf traits get lesser chances to become infirm before 180 years old
+- The Characters with Blood of Numenor/Elven Blood/Half-Elf traits will now have an event around 180-200 years old, with the choice to accept the death before to be infirm/incapable
+- The Dwarves will now have an event that kill them around 240 - 260 years old
+- Sauron now have the ability to call two invasions from East, and an attack on Mordor, during his period in Dol Guldur
+- Sauron now have the possibility to send some of his Nazgul to weak up the Orcs in Misty Mountains, or to make the Dunlendings invade Eregion
+- Expanded Alliance mechanics, now Hobbits can ask for Dunedain help if they're under attack
+- In the scenario before 10324 ingame, you can try to search for Mithril in the mines of Moria. Be careful, you can awake a big threat...
+- In the Grey Mountains, if you're a Dwarf and rich, you can see a Cold-Drake coming for you now.
+- Added events for the Story of Amroth/Nimrodel and Mithrellas/Imrazor
+
+GENERAL :
+- Removed taxes/levies for Temples from the Laws Tab
+- Removed Papal Investiture from the Laws Tab
+
+
+GRAPHICS :
+- Added more dynasties crests
+- Some new flags for Rohan and Rosghobel
+- Harondorians now use southrongfx instead of the vanilla westerngfx
+- Lossoth now use hillmengfx instead of the vanilla westerngfx
+- Gondorian Middlemen, Dunir and Ishmalogim now use hillmengfx instead of the dunedaingfx
+- New icon for "Look into Palantir" decision
+- New icons for Rohirrim and Elvish castles/cities
+- Added new icons for Wilderness castles
+- Added new icons for Haldadian castles/cities
+
+LOCALISATION :
+- Replaced any reference to "Religion" with "Race", now Races replace Religions
+- Replaced any reference to "Prestige" with "Influence"
+- Fixed various mistakes in English events, traits and other texts
+- Updated bookmark text for all scenarios
+- New cultural names for Rohirrim titles
+- Added localisations for Gondorian/Arnorian/Dunedain Counciliors
+- Added localisations for 'Kingdoms' in Valinor
+- Changed some provinces and duchies names
+- Added missing localisations for racial penalties
+- Added several missing baronies localisations
+
+MAP :
+- Added Navigable Celduin
+- Added Sea Provinces positions
+- Added coast textures
+- Changed Anorien borders a bit
+- Changed borders of some Dwarven settlements to make them coincide with mountains 
+
+MILITARY :
+- Added 7 mercenary fleets (Corsairs of Umbar, Raiders of Bellakar, Pirates of Mirlond, Pelargir, Dol Amroth, Mithlond and Tolfalas Shipping Companies)
+- Reduced general number of mercenaries
+
+PROVINCES :
+- Harondor revamped, filled with more than 50 new baronies, new colors and names
+- Added Sindarin names for Shire counties with Numenorean rulers
+- Inlilo is now part of the Brandyvale duchy and Arthedain kingdom, no more part of Cardolan
+- The Hobbits of Gladden Fields now hold a castle barony title instead of a city , so they're playable in the Fall of Arnor scenario
+- Added baronies in lower Lebennin
+- Added more baronies in Anorien
+- Added new baronies and a province in Ered Mithrin
+- Added baronies in Minhiriath
+
+TITLES :
+- Angmar successions law set to "Seniority"
+- Added troll holders of Coldfells
+- Moved Edhellond into Belfalas
+- Moved Lossarnach into Anorien
+- Assigned title of Lossarnach
+- Moved some titles in Anfalas the cause useless civil wars
+- Added tribes of Khundolars and Jangovars in Rhovanion
+- Assigned titles in Druwaith Iaur
+- Rosghobel is now vassal of Anduin Vale to avoid odd wars between Beornings and the Istari
+
+TRAITS :
+- Added the trait "In the East" for the characters who're in mission in the east of the sea and Rhûn (like the Blue Wizards, Saruman, or Khamûl if Sauron command him)
+- Added the racial traits "Urulókë"(Fire-Drakes)/"Ringlókë"(Cold-Drakes)/"Penrámalókë"(Long-Worms), Removed the trait "Dragon" for the dragons.
+- Added the "Heir of Durin" trait, passed at death to the heir of the holder
+
+
+
+
+
+
+
+
+-------0.2.1b Patch Changelog----------
+
+	BOOKMARKS :
+- Added a new Fall of Arnor bookmark, it starts in 9651 (1308 TA). Choose to resist to Angmar, or to destroy the heirs of Isildur!
+- Added a new "Kin-Strife" bookmark, starts in 9770 ingame (1427 TA) - Still WIP. Choose to claim the title of Gondor as Castamir the Usurper, or try to resist him with the King Eldacar of Gondor !
+
+	BUGS :
+- Bilbo now travels to Aman correctly
+- The son of Aragorn and Arwen will be now from the Aragorn dynasty, even if he's still Isildurionath.
+- Fixed the freezing problems by changing the inheritance events of some traits.
+- Fixed the crash with some hillmen characters
+- Fixed missing Seazone in Druwaith
+- Fixed assassination bug
+- Fixed a little bug with buildings
+
+	BUILDINGS :
+- Added some new buildings:
+Unique Buildings :
+- Tomb of Balin - Chamber of Mazarbul barony in Moria
+- Tomb of Durin the Deathless - Tomb of Durin barony in Moria
+- Durin's Stone - Nandhuirion
+- Kheled-zâram - Nandhuirion
+- Oath of Eorl - Eilenaer barony in Amon Anwar
+- Tomb of Elendil - Eilenaer barony in Amon Anwar
+- The Great Hall of Osgiliath - Minas Numen barony in West Osgiliath
+- Argond Anarion - Argond Anarion barony in Amon Lhaw
+- Argond Isildur - Argond Isildur barony in Amon Hen
+- The Stone of Erech - Erech barony in Erech
+- The Prancing Pony - Bree barony in Bree-land
+- Fornost Erain - Fornost county
+- The Bridge of Tharbad - Tharbad county
+- Amon Lanc - Dol Guldur building for Elves
+- Khamûl's Palace - Kas Rhûn 
+- The Forbidden Pool - Henneth Annun
+- The Grey Havens - Mithlond
+- Watcher's Lake - Moria
+- Khazad-dûm - Moria for Dwarves
+- Moria - Moria for Orcs
+
+
+Cultural Buildings :
+- Inns (lvl 1/2/3) for Hobbits and Breelander cities
+- Halls of Remembrance for elvish temples
+- Halls of Archives for numenorean temples
+- Númenoreans Tombs for numenorean temples
+- Halls of the Ancestrors for dwarvish temples
+- Barrowfields for middlemen temples
+- Shrine of Melkor for melkor temples
+- Púkel-men for druedain castles
+- Telain for elvish cities and castles (only in Lorien)
+- Mumakil's Enclosure for Haradrim castles (if the character have one of the four mumakils traits)
+- Warning Beacon for Gondorian-Dunedain-Arnorian castles
+- Hidden Halls for Gondorian-Dunedain-Arnorian castles
+
+Ruins Buildings (needs a decision and some events to be able to build something there):
+- Fornost Ruins - Fornost
+- Annuminas Ruins - Annuminas
+
+	CASUS BELLI :
+- The Orcs now have an invasion casus belli on each territories not ruled by an evil ruler
+- Now the "Colonize" casus belli requires a cost in prestige
+
+	CHARACTERS/DYNASTIES :
+- Added Goodbody Family in the Shire
+- Added North-Tooks and Burrows families, North-Farthing has now the correct holders.
+- Added House Hengestfeld and Gyldengren in the Rohirrim Westmarch
+- Added Troll clan of Hugath of Trollshaws 
+- Added 5 spider characters in Mirkwood (MERP)
+- Added Tenderlarch Family in Bree-land (LOTRO)
+- Added Wights characters in Barrow-downs (LOTRO)
+- Added dynasty for Shelob
+- Added dynasties in Saralainn and Rhunen Druwaith (MERP)
+- Added more dynasties crests for Hobbit, Numenorean, Breeish and Elvish dynasties.
+- Added Orkish tribes in Mordor (MERP)
+- Added some new Ents (MERP)
+- Added some friends and rivals
+
+	CULTURES:
+- Added Daoine culture, inhabitants of Saralainn (MERP)
+- Andrasting renamed in Dunir (MERP)
+
+	DECISIONS :
+- Added "Steal One Ring" decision if a prisoner holds the One Ring
+- Added "Hire Emissary", "Hire Soldier" and "Hire Spy" decisions
+- Added "Take a female slave" and "Take a male slave" decision for evil rulers
+- Replaced "Present Debutante to court" with a more general "Receive Maiden"
+- Removed the possibility to employ a priest by decision
+- The Holder of Vilya can now strike his enemies if he's besieged, using the power of the Ring
+- Added the possibility for Orks and Goblins of Moria to offer a prisoner in a "Sacrifice of Flame" (MERP)
+- Possibility to rebuild the fortress of Fornost Erain and the cities of Annuminas, Osgiliath and Tharbad.
+
+	EVENTS :
+- The Fall of Rhudaur events chain. You'll be able to play as Ulfang, the Hillman who wants the crown of Rhudaur, or Forodacil, the last Dunedain King!
+- The Fall of Cardolan events chain. Play with the King of Cardolan, the King of Arthedain, the Witch-King or Elrond for more fun in this event chain!
+- The Kin-Strife events chain. Play with Eldacar or Castamir, and try to win the Crown of Gondor !
+- The Steward of Gondor can now claim the title of King of Gondor if the last heir of Isildur is dead, and if he's got the required lands. (Legacy of Rome DLC required)
+- The Kings of Bellakar and Mirkwood can claims new titles, if they rules the required lands : The High Kingship of Anadûnê and the High Kingship of the Silvan Elves (Legacy of Rome DLC required)
+- Added a little chain of events related to the "Sacrifice of Flame" decision
+- If Sauron is defeated, Mirkwood will be renamed "Eryn Lasgalen", and Celeborn will rule the Kingdom of "East Lorien".
+- Added several vanilla events
+- Orcs will now fight for the leadership of their clans. They'll fight against their liege to take their primary title.
+- The King of Gondor will now have the possibility to change his regnal Name
+
+	GRAPHICS:
+- New icons for races : Onodrim, Hobbit, Spider, Dwarf, Elf, Orc, Skin Changer, Evil Side and Good Side traits (Thanks to AnaxXiphos)
+- New icons for the decisions (Thanks to AnaxXiphos)
+- New icons for several traits (Thanks to AnaxXiphos)
+- Fixed Frodo Baggins' portrait
+- Replaced missing, duplicates and some old flags 
+- New graphics for Gondorian/Arnorian holdings
+
+	LOCALISATION:
+- Added localisations for Sea zones and rivers
+- Added Black Speech names for some Gondorian counties and Brownlands
+- Fixed missing decision_desc localisations
+- Fixed missing descriptions for Istari Staffs
+- Fixed missing descriptions for some traits
+- Added Numenorean names for Shire Farthings
+- Added custom localisations for Hobbits counciliors
+- Added missing cultural titles (Daoine, Lossoth, Druwaithing, Hillmen, Beorning, Northmen)
+- Fixed Casus Belli localisations
+
+	MAP:
+- Retextured Middle-Earth
+- Reshaped some provinces (West Farthing, Brandyvale, Moria, Goblintown, Redhorn Pass, Thror's Coomb, Eregion, Angmar)
+- Reshaped Misty Mountains impassable zone to reflect actual mountains
+- Reshaped Dwarven counties
+- Removed impassable zones within Mirkwood
+- Removed unnecessary impassable zones in Gondor
+- Added a province in Rhudaur
+- Added 2 new provinces in Vales of Anduin (Beorn's Hall and Carrock)
+- Added 2 new provinces in Northern Enedwaith
+- Reshaped Bree-land
+- Fixed wrong crossings and added 5 new crossings
+- Added Ithilien forest and lots of woods here and there
+- Changed some terrains: added ice in Forochel and snow on highest mountains, added fields in Rohan Crofts.
+
+	MECHANICS:
+- Added Hooni's "Pledge Mod", now you can become part of your liege's wars if your liege is the primary attacker.
+- Added Duel Engine mechanics
+
+	MILITARY:
+- Added retinues for Bree-land
+- Added retinues for Orcs
+- Added retinues for Uruk-Hai
+- Added retinues for Variags
+- Reworked mercenary system, added several mercenaries (Blackwolds/Ruffians/Axes of Nargubraz/Mornaugrim Clans/Dourhands Clans)
+- Added the Mumakil as Special Unit for the Haradrim
+- Added lots of Mercenaries
+
+	NICKNAMES :
+- Added the nickname "Angmardacil" for Dunedain rulers who'll defeat Angmar.
+- Added the nickname "Wormtongue" to Grima.
+
+	PROVINCES:
+- A completely redone Angmar, with more than 50 baronies, new names for counties and duchies
+- Filled Brownlands with more than 50 new baronies
+- Filled Ithilien with dozens of new baronies, changed names of the duchies and of baronies
+- Filled Arthedain with more than 100 new baronies
+- Andrast revamped, new names (MERP), new colors and more than 20 new baronies
+- Anfalas revamped, new names (MERP), new colors and more than 20 new baronies
+- Belfalas revamped, new names (MERP), new colors and more than 20 new baronies
+- Added new names and filled Vales of Anduin with baronies
+- Added baronies in Saralainn, added new names for counties
+- Added baronies in Rhudaur
+- Added baronies in Gundabad territories
+- Added baronies in Ithilien
+- Added baronies in Greenholm, Eryn Vorn and Undertower
+- Fixed wrong Brownlands capital
+- Fixed some wrong cultures/religions in Eriador
+- Added correct Harondor capital
+
+	RULER DESIGNER :
+- The Age limit is now at 500 years old.
+	
+	TITLES :
+- Added holders of Waymeet, Greenfields and Longleeve in North-Farthing
+- Assigned Rohirrim Westmarch titles
+- The King of Zirakdum is now landed
+- Breeland has now elective succession
+- Shire Farthings have now elective succession
+- Added holders in Saralainn, a duke and 4 counts, it is now playable in both bookmarks
+- Added holders in Druwaith Nimrais and Umb Daier
+- Added a new duchy in Vales of Anduin (Beorncrofts)
+- Added duchy of Weather Hills
+- Added the Lordship of Andunië
+- Added the East Lorien titular kingdom
+- Added the "Shadows of Mirkwood" titular kingdom in Southern Mirkwood
+- Given Henneth Annun to Gondor
+- Assigned titles of Durthang and Minas Girithlin
+- Raised crown authority in Mordor
+- Assigned Barrow-downs titles during War of the Ring
+
+	TRAITS : 
+- The "Heir of Isildur" trait won't be passed from mother, but only from fathers
+- Added "Balrog" race trait
+- Added "Servant of the Flame" trait
+- Added the "Blood of Anarion" trait
+- Added the "Ship-King", "Romendacil", "Hyarmendacil", "Umbardacil" traits for the Kings of Gondor
+- Added several "warriors" traits, specific for some races/cultures. For now : Rohirrim/Variags/Gondor/Elves/Harad/Orcs/Dwarves/Dunedain/Bardings. These traits can be gained from the guardian during the childhood.
+- Added several "civilian" traits, like "craftsman", "trader", "composer" or "mushroom farmer"
+
+-------0.1.5b Patch Changelog----------
+BUGS :
+- Fixed a bug with one of the colonization events
+- Now the option to choose to take Orcrist during the event chain of the Tomb of Thorin works correctly
+- The House Telcontar won't have factions for independance or new feudal/succession laws anymore
+- Fixed bug where sometimes frodo kept the ring when gollum took it and was captured, because another Baggins character was identified in the event trigger
+- Fixed minor issue where Frodo got the wrong "ex-ringbearer" trait when Boromir takes it
+- Put further blocks on the event where some people report Saruman gets called into Gondor's war if he has taken Rohan. Should be fixed now
+- Fixed issue where the Dale decision to call dwarves for help went to the Dunedain, not Erebor
+- Ents and spiders now get their race traits assigned via event where needed also
+- Ents and former ring bearers (and current ring bearers) no longer get the incapable trait with age
+- Gave Hillsmen of Rhudaur hillsmen culture instead of wilderness in their capital, so they at least have a tiny bit of income
+- Fixed bug with faction claimant ultimatum not working
+
+CHARACTERS :
+- Fixed some spouses of Gondorian Kings (Valacar, Romendacil II, Calmacil, Atanatar II)
+- Imrahil of Dol Amroth now get the nickname "the Fair". Forlong got the nickname "the Fat". Hirluin got the nickname "the Fair"
+- Fixed some elvish characters with wrong parents or missing spouses
+- Added the "Vow of Cerin Amroth" trait for Aragorn and Arwen, so they can't marry
+- Added the daughters of Aragorn and Arwen : Luthien, Indis and Altariel
+- Added some hobbit characters, added some missing marriages and relations
+- Added all the missing Nazguls
+
+DYNASTIES
+- Added Sandyman family, rulers of the Old Mill of Hobbiton
+- Added Bank Family, rulers of Frogmorton
+- Cotton family expanded, made them rulers in Bywater
+- Added Noake Family, rulers of Bywaterpool, in Bywater
+- Added Brockhouse Family
+- Added Roper-Gamgee, Gummidge families and expanded Gamgee family. Made Roper-Gamgee rulers of Gamwich
+
+EVENTS : 
+- Changed the colonization events. You'll have to wait 200 days instead of 2 years now.
+- If Sauron is defeated, the King of Gondor will have an event to give -or not- Ithilien to the House of the Stewards.
+- If Sauron is defeated, Gimli can be the Lord of Aglarond.
+- If Sauron is defeated, and after the "reconquer of Ithilien" events, Legolas could ask to install a silvan realm in Southern Ithilien.
+- Aragorn will now change his name and his dynasty to Elessar Telcontar instead of Aragorn Isildurionath after his crown.
+- Aragorn will now marry Arwen if he's crowned as King of Gondor and Arnor. You can refuse it as Elrond or Aragorn.
+- Aragorn and Arwen will have automatically four children after their wedding: Eldarion one year after, Luthien 2,5 years after, Indis around 5 years after, and Altariel, around 8 years after.
+- Gimli and Legolas will leave Middle-Earth after the death of Aragorn, if Sauron is defeated.
+- Arwen will loose her "elf" trait after the death of Aragorn, if she marry him.
+- The Ringbearers will leave Middle-Earth two years after the defeat of Sauron.
+- Minor fix to event when Arnor is made independent; all rulers now get the info event
+- Umbar now joins Mordor for the main assault on Gondor, it does not fight a separate conflict 
+- included "ambition events", but only from Vanilla CK II so far. May need to be customized later for Middle-Earth
+- When Sauron is defeated, the empire title of Mordor is now destroyed.
+- Aragorn can ask Elrond to break the "Vow of Cerin Amroth" after 11380, and then we'll be able to marry again, Arwen will sail to West.
+	
+	*Added event chain to get the ring by more dynamic means :
+-Chances (and cost) of getting it will depend on holder's rank. Getting it from an emperor will cost 5000 gold and be almost impossible.
+-Getting it from an unlanded courtier will cost 1000 gold, and have much higher chance of success
+-The best method therefore is to defeat the emperor who has the ring and hope his heirs scatter to some insignificant court with the ring
+-Beware of taking the ring if Sauron is still alive! Life expectancies drop drastically for known ringbearers who have his ring and are not in constant hiding.
+-You need at least 1000 wealth before the decision will show up
+	
+	*Added Kinstrife event to Gondor : 
+-If the heir is not of numenorean blood or half-elven/elven blood then the King will be warned his vassals may not accept him or her
+-If that heir takes the throne, the vassals with the blood of numenor will attempt to find another heir of isildur who has the blood of numenor (either version)
+-If that fails, a Gondorian prince with the trait will try to take the throne himself
+-This starts a new kinstrife war all over gondor
+
+GRAPHICS : 
+- Fixed the blank portraits bugs
+- Added the missing event picture for colonizations.
+- Removed the gondorian helmets for the haradrim
+- New religious mapmode icon
+
+GAMEPLAY :
+- Changed defines.lua with tech start dates, and trade tech so that trade posts can be built with level 1 tech. Umbar republic still needs to research for 20 or so years to get that for some reason, but Lindon and Pelargir start with tradetech 1. 
+- BATTLE_WARSCORE_WORTH = 120, *was 100 before
+- Minor fix so ringbearers and former ringbearers do not become incapable with age
+- Added a bonus of vassal opinion for the Heir of Isildur trait.
+- Added retinues to Avari elves
+- Moved Black Numenoreans, Southron, and Easterling religions to their own separate religion group, so that they can now raid the other "religions" of men. This should stop the Black Numenoreans from constantly raiding Lindon
+- Added a few more mercenary companies, the Stonefoot and Stiffbeard dwarves in Harad now can be hired + a haradrim tribe and rohirrim squires
+
+LOCALISATION
+- Fixed error in "son of" and "daugther of" for Hobbits
+- Added some Hobbit nicknames (Gaffer, Longhom etc)
+- Changed Nobottle to Gamwich
+
+MAP
+- Changed the borders of the Shire, 3 new counties, proper county placement and revised duchy borders
+- New 'Brandyvale' duchy below the Shire
+- New provinces in former Arnor
+- Added province of Emyn Beraid (Towerhills)
+- Small changes in terrain map
+- Topology map updated to include features of Beleriand under the sea
+
+TITLES :
+- Fixed a bug with the title of Durin's Folk
+- Added "the Mill" in Hobbiton
+- Made Pelargir de jure part of k_lebennin, this should prevent the liege from attacking you over de jure claim
+- Moved Overbourn marshes to South Farthing
+- Added a new dunedain in Oronyar.
+- Uluimur is now not de-jure vassal of Dorwinion, but get his own duchy/kingdom level, so Avari elves won't be attacked all the time by Dorwinion.
+
+-------0.1.4b Patch Changelog----------
+
+BUGS :
+- Fixed the parents of Celeborn and his siblings
+- Mouth of Sauron is now the heir of Sauron and not Saruman
+- Fixed mistakes in health file, changes months to days for relevant events, the incapable/infirm traits for humans and dwarves should now trigger at the correct ages
+- Fixed Dunlending claim event on Rohan
+- Fixed missing bracket in human infertility event, it should trigger properly now for human women
+- fixed issue with aragorns dynasty not being able to call on rohan; they now can, just like the house of stewards
+- Fixed event so that the Last Alliance still attacks Sauron once he has the ring, even if Gondor was restored
+- Fixed a bug with the events of the chain "Visit the Tomb of Thorin Oakenshield", so now, the events fires correctly
+
+GFX :
+-Updated icon_piety to include shadow
+-Updated minimap_area, now coloured with terrain features
+
+UI :
+-Implemented new UI from Witcher Mod made by Talias
+
+REPUBLICS :
+- Added three new "republics" : The Guild of Venturers of Pelargir, The Sindar Mariners of Lindon, and the Black Fleet of Umbar
+- Changed some vanilla events for republics
+
+LANDED TITLES :
+- Cleaned the landed_titles.txt file.
+- Removed two provinces in the landed titles, but not present on the map.
+
+LOCALISATION :
+- Fixed the localisation for titles of the istari culture, replaced a false "Royaume de" on "Kingdom of" for english language.
+- Fixed wrong cultural localisations for castles
+- Added new french translations for some event chains (still WIP)
+- Added new french translations for some baronies
+- Added new names for baronies of Minas Tirith
+- Added religion_desc localisations
+
+TITLES/CHARACTERS/DYNASTIES :
+- Assigned Pass of Shelob to Shelob
+- Added the Broadbeams and the Firebeards dwarves in Ered Luin.
+- Added the lines of the Kings of Nurunkhizdin and Zirakdum.
+- Now, Galadriel get the Elven Infertility trait at beginning of the War of the Ring.
+- Maglor is nomore in Lorien, but in the Avari province at north of Sea of Rhun.
+- Changed the succession law in Lorien.
+
+WILDERNESS COLONIZATION : 
+- The colonization of the wilderness provinces won't be as easy as before. Now, you'll have some new events, like an attack of wolves, a mysterious disease who'll compromise the chance to colonize correctly.
+- In the same way, some new bonuses possible : you'll be able to gain new characters in your court, or to gain a new nickname.
+- Colonizations will be able only once in two years.
+- Vassals will be able to colonize now.
+
+CLAIMS : 
+- Dwarves will now have a claim on Moria if Sauron is defeated, and a claim on Gundbad if the Moria is reconquered.
+- Every 5 years or so after 11375, Sauron gets a claim on a random bordering duchy from the "good side" cultures, to encourage mordorian expansion
+- added a few events for non halfling/non-maiar ringbearers, still WIP
+- added a few events for galadriel when she has ring, still WIP
+- High King of hte Noldor event for Elrond if he has K_Eregion and other conditions, and also choice to re-build Eregion for his sons if Sauron is defeated
+- Changed "invasion" casus belli for hostile religions/cultures so it only works on duchies not kingdoms
+
+FLAVOUR :
+- Added new objects : Nimphelos, the great Pearl offered by Thingol to the Dwarves of Belegost, the Mirror of Galadriel, and the Necklace of Girion.
+- Added new special buildings : The Dome of Stars in Osgiliath east, The Tower of Ecthelion in Minas Tirith, Meduseld in Edoras, and the Hall of the Kings in Annuminas.
+- Added two new titular kingdoms for historical flavour : Nogrod and Belegost.
+- Added new nickname for Durin I : the Deathless
+- Added new random dynasties names for Dunedain culture.
+
+GAMEPLAY :
+- General changes to racial traits, no longer inherit_chance = 100, they are given via events to those who should have them already. It should no longer be possible to get health of 100+ from marrying those with creature of melkor traits.
+- Also made event that if an evil AI ruler marries an orc, he kills her once he sees her. Evil human-played rulers, however, have the option to say they rather like her and keep her.
+- This should further make half-orcs very rare. Evil rulers also spawn some evil female courtiers of cult of melkor, so that they don't have to go lookign for orc brides.
+- The only half-orcs (if you want to get that trait for your heirs) are now spawned in Saruman's court shortly after start-up
+- Tweaked (drastically lowered in most cases) health bonuses for racial traits
+- Tweaked (drastically lowered) opinion bonuses from most items 
+- Increase ai_ambition for those corrupted by darkness, hopefully leading to more wars from Mordor
+- Uruk Hai now also get the creature of melkor trait
+- Sauron now really DOES lose the ringbearer trait when he get the ring. Alllmost sure it's fixed properly now!
+*Tweaked health_events again
+- Humans get the vanilla infirm-to-incapable health events
+- Those with high blood of numenor get it later in life, and those with lower blood of numenor a bit earlier, but still after 100. Let us know how long people live on 
+average in your games, those with health added health bonuses such as blood of isildur or elven blood on top of their numenor trait should be able to live to 200ish (if they're lucky)
+- Dwarves also begin to get infirm at around 300ish years of age, but can live to 400ish if they're healthy
+- Half-Elves, if anyone ever gets one, live to be 150-250ish (Yes, I know Elros lived 450ish, but this is the later 3rd age, and you're just the descendant of a silvan elf, not a royal line
+with maiar blood)
+- Sauron can build a 75-man Olog Hai elite retinue, they're x5 for combat purposes. Hopefully AI will use them against Dunedain doomstacks in late-game.
+- Gave Barad-Dur special building more income; half the reason Sauron is inactive, I suspect, is because he is constantly broke and broke rulers can't declare war
+- Gave Sauron an event to max out city and feudal taxes if they are not already; a human player can say no, of course, and won't get it again if so
+- In defines.lua, changed BASE_AI_ARMY_SIZE = 40000, (it was 10,000 before). This should mean orcs should horde better together, and hopefully give an edge against the lower troop numbers of the good side
+- Also reduced LEVY_MAINTENANCE_FACTOR = 1.5 to LEVY_MAINTENANCE_FACTOR = 0.75, it was only hurting Sauron who kept getting -40 income per day when he raised his hordes and spent most of the game in bankruptcy and inactive
+- Nerfed halfling income buildings
+*War scores
+- Sometimes the war for gondor was lost as Sauron took some provinces, but the gondorian army was not defeated in the field. Changed to this in defines.lua
+    SETTLEMENT_WARSCORE_MULTIPLIER = 0.1,            
+    VASSAL_SETTLEMENT_WARSCORE_MULTIPLIER = 0.1,
+So occupied provinces now count for only 1/3rd as they did previously. Wars now depend more on the battles won and armies defeated, not occupied land (though occupied capitals still give same warscore as before)
+Increased warscore for battles by 33% to make up for this
+- religious conversion of vassals now requries 10,000 piety (to prevent AI spamming it, because the event is disabled)
+- Slightly increased health bonus from blood of numenors, even the ones with the strong trait could die at 80 (they should die at 120ish now, hopefully, or earlier if they get sick of course)
+- Sometimes elves die of "natural reasons", health file issue? In any case, gave them 50 health bonus now, they shouldn't die
+- New event to encourage Arnor and Gondor to be split into two realms if the king has an available heir to take either one; there will be opinion penalties from vassals if you do not do this due to the difficulty of administering 
+two such large and distant realms at once. It triggers from 11400 onwards.
+- Anyone with learning less than 20 who is not a hobbit or maiar will now begin to be corrupted by the ring over a period of time
+
+MAP:
+-Changed terrain of certain provinces to Forest (Mirkwood etc)
+
+--------0.1.3b Patch Changelog---------
+
+BUGS : 
+- Fixed some bad lines in the landed_titles file
+- Corrected the death date of the Mouth of Sauron
+- Fixed the parents of the siblings of Celeborn
+- Fixed some incorrect lines in the health_events file
+- Fixed a bug with the human_infertility file
+- Fixed a bug in the Elvish characters file, bug who crashed the game at reload or return.
+
+GAMEPLAY :
+- Added more female characters with "Cult of Melkor" religion at beginning.
+- Now, an event will pop-up if you're an human and your spouse is an ork/goblin/evil thing, to prevent weird intermarriages.
+- Added "Spider" trait
+
+
+
+--------0.1.2b Patch Changelog----------
+
+BUGS :
+- Fixed a bug when characters can't recover after a wounding trait
+- Fixed a bug in the province_racechanges events.
+- Immortal characters can't be incapable because of old age anymore
+- Immortal characters can't have the nickname "the Old" anymore.
+- Removed the "male" spouse of Gil-Galad
+- Fixed the bug where Celeborn get two women as parents.
+- Fixed a duplicate id characters. Now, the house Ferny of Combe is not the ancestor of the house map Buldar (who begins in 5500)
+- Fixed the bug with the Maia of Tulkas in the Sauron's court
+- Now the event "The character sailed to West" fires immediatly, it was one day to happens before.
+- The titles of Valinor can be only created or usurped by Valar now.
+- All the characters with the "Sailed to Valinor" trait are now in the court of Manwë at beginning.
+- Added the missing gfx for some traits
+- Fixed some little bugs with cultural names.
+- Changed the maximum age in the Ruler Designer to 500 years old.
+- The race traits are now available in the Ruler Designer.
+- Added missing event pictures for colonisations.
+- Fixed an issue with the heir of the Witch-King. Is now Black Numenorean, and evil.
+- Fixed a little issue with minor titles of Mordor.
+- The One Ring can't be inherited anymore if Sauron is destroyed.
+- Sauron will not be affected by the Palantir effects.
+- Maiar and Valar characters can't be killed or captured in battles now.
+- Removed the -1 health malus to the Palantir.
+- Fixed the issue with ringbearer traits, should now be added and removed as intended once ring is destroyed/recovered
+- Fixed issue with recurring "A hostile ruler is in your realm", it now doesn't trigger if that person is in prison, which previously created a looping event
+- Fixed crash for Sindar/Silvan rulers when they got the woodsman chopping down trees event
+- Fixed so hobbits go home if Aragorn takes the ring and lose the fellowship quest trait
+- Fixed some issues with custom random courtier events
+- Added some health_events so that wounds heal, non-elves can now also get illnesses
+- Saruman gets a 100-man Uruk Hai pike regiment to help against Rohan cavalry
+- Fixed issue with recurring event when Saruman says he has "more cunning plans" instead of invading Rohan
+- When a good side rulers turns to evil, courtiers and vassals now wait 180 days before leaving you, giving you time to revoke their titles
+- Fixed "marry in secret" event so elves won't secretly marry orcs and such
+- Fixed so that Gondor does not call upon the aid of Saruman in the great battle, when Saruman has won and has K_Rohan title
+- Fixed it so that the special buildings "Thranduil's Halls" now appear as they should, and give extra troops and income
+- Fixed the issue with Frodo not losing the ring, turns out another baggins was handling the last part of the quest! But yes, fixed now.
+
+
+GAMEPLAY :
+- Added new stats for Sauron
+- Added new traits to dwarves characters and to Faramir.
+- Changed the laws of Mordor
+- Added the trait "Human Infertility", and an event triggered in the two years after the 45 years old of a woman.
+- Changed the Global menopause age to 5000 years old.
+- The Mouth of Sauron is now the heir of Sauron, an now get the minor title "Lieutenant of Barad-Dur" at beginning.
+- The opinion_infidel is now set at -30, instead of -5 before.
+- Now, the decision "Visit the Tomb of Thorin Oakenshield" will be allowed only once time in a life of a ruler.
+* Made tweaks to cultural modifiers for troops:
+- Removed offensive penalty from orcs, but they still don't defend as well as others
+- Light infantry modifiers for the powerful races (Gondorians, Dunedain, elves, dwarves) greatly reduced. Light infantry are militias, they don't get the super-armor and weapons the other troops get. Also reduced defensive modifiers for archers for those races.This should balance the scales a little bit in favor of the evil races again
+
+PROVINCES :
+- Added baronies in Dagorlad, Emyn Muil, Barrow-downs and Dead Marshes
+- Removed wrong cultures/religions in Deveney and Daelmoth
+- Added correct cultures/religions in Druwaith Nimrais
+- Added cultural names for Dagorlad, Barrow-downs and Dead Marshes
+
+MAP :
+- Fixed error with crossing between the two sides of Osgiliath
+- Now Rauros Falls can't be passed by ships
+- Added Ethir Anduin crossing
+ 
+FLAVOUR :
+- Added new dynasties to the End Game Screen.
+- Added nicknames "Ironfoot", "Stonehelm" and "Oakenshield" to Dain II, Thorin III and Thorin II
+- Sauron now got the nickname "the Great"
+
+LOCALISATION :
+- Changed some Dunedain cultural titles names
+- Fixed some bad codes in the french localisation of the loading tips.
+- Fixed some localisations in minor titles.
+- Fixed some localisations in traits and events
+
+TITLES :
+- Assigned the Hall of the Mouth in Barad-Dur to the Mouth of Sauron.
+
+KNOWN BUGS :
+- Portraits bugs with wraith/orcs/goblins
+- Errors with wrong soldiers positions

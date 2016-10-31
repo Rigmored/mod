@@ -1,0 +1,214 @@
+##This is to prevent orc marriages between AI rulers and orcs from court of Cult of Melkor, such as Sauron##
+
+namespace = orcmarriage
+
+#someone discovers what their wife really looks like#
+character_event = {
+    id = orcmarriage.1
+    title = "EVTTITorcmarriage.1"#You've married a Monster
+    desc = "EVTDESCorcmarriage.1"#By all that is holy, your new wife is a monster! Not the fair maid you were promised... what cruel joke is this?
+    picture = "GFX_war_at_north"
+	age = 16
+	
+	trigger = {
+		spouse = {
+			OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+				culture = culture_urukhai
+				culture = culture_troll
+				culture = culture_spider
+				religion = religion_orkish
+				culture = culture_wight
+			}
+		}
+		ROOT = {
+			OR = {
+				culture_group = culture_group_edain
+				culture_group = culture_group_numenorean
+				culture_group = culture_group_middlemen
+				culture_group = culture_group_forodwaith
+				culture_group = culture_group_haldadian
+				culture_group = culture_group_southron
+				culture_group = culture_group_easterling
+			}
+		}
+		NOT = { has_character_flag = orcmarriage1 }
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAorcmarriage.1"#Kill it! Kill it with fire!
+			any_spouse = {
+				limit = {
+					is_landed = no
+					OR = {
+						culture = culture_orkish
+						culture = culture_goblin
+						culture = culture_urukhai
+						culture = culture_troll
+						culture = culture_spider
+						religion = religion_orkish
+						culture = culture_wight
+					}
+				}
+			death = {
+				death_reason = death_suicide
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBorcmarriage.1"#Actually, I kind of like her...
+		trigger = { ai = no }
+		set_character_flag = orcmarriage1
+	}	
+}
+	
+#and now spawn some melkor brides, so the poor bastards wont have to marry orcs!#
+character_event = {
+    id = orcmarriage.2
+    title = "EVTTITorcmarriage.2"#Brides of Melkor
+    desc = "EVTDESCorcmarriage.2"#A few women have joined your inner circle, and have become devout worshippers of the Dark Lord!
+    picture = "GFX_death"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_numenorean
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+		}
+		trait = evil_side
+		NOT = { has_character_flag = orcmarriage2 }
+		is_ruler = yes
+		NOT = { year = 11363 }
+	}
+
+	mean_time_to_happen = { days = 1 }
+		
+	option = {
+		name = "EVTOPTAorcmarriage.2"#Excellent...
+		trigger = { 
+			OR = {
+				NOT = { trait = blood_of_numenor }  
+				NOT = { trait = blood_of_numenor2 }
+			}
+		}
+		set_character_flag = orcmarriage2
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 21
+			health = 6
+			fertility = 0.7
+			trait = mastermind_theologian
+			trait = hedonist
+			trait = proud
+			trait = cruel
+			trait = evil_side
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = impaler
+		}
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 23
+			health = 6
+			fertility = 0.7
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = lustful
+			trait = craven
+		}
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 26
+			health = 6
+			fertility = 0.7
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = lustful
+			trait = impaler
+			trait = cruel
+		}
+	}
+
+	option = {
+		name = "EVTOPTBorcmarriage.2"#Excellent...
+		trigger = { 
+			OR = {
+				trait = blood_of_numenor 
+				trait = blood_of_numenor2 
+			}
+		}
+		set_character_flag = orcmarriage2
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 21
+			health = 6
+			fertility = 0.7
+			trait = mastermind_theologian
+			trait = hedonist
+			trait = proud
+			trait = cruel
+			trait = evil_side
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = impaler
+			trait = blood_of_numenor2
+		}
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 23
+			health = 6
+			fertility = 0.7
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = lustful
+			trait = craven
+			trait = blood_of_numenor2
+		}
+		create_random_soldier = {
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = yes
+			age = 26
+			health = 6
+			fertility = 0.7
+			trait = envious
+			trait = deceitful
+			trait = ambitious
+			trait = lustful
+			trait = impaler
+			trait = cruel
+			trait = blood_of_numenor2
+		}
+	}		
+}

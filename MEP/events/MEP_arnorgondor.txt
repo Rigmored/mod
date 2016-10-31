@@ -1,0 +1,355 @@
+###This is for tensions within the re-united Kingdom, where one side wants independence once sauron is destroyed##
+
+namespace = arnorgondor
+
+##Tension in Gondor and Arnor##
+character_event = {
+    id = arnorgondor.1
+    title = "EVTTITarnorgondor.1"
+    desc = "EVTDESCarnorgondor.1"#It is hard to effectively rule both Arnor and Gondor. Even Elendil himself saw the truth of this, and divided his realm into two...
+    picture = "GFX_kinstrife"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		num_of_children = 2
+		has_landed_title = e_gondor
+		has_landed_title = e_arnor
+		year = 11400
+		NOT = { has_character_flag = arnorgondor1 }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.1"#It may be wise, yes.
+		set_character_flag = dividerealm
+		set_character_flag = arnorgondor1
+	}
+	
+	option = {
+		name = "EVTOPTBarnorgondor.1"#No, the Kingdom will stay united.
+		set_character_flag = arnorgondor1
+		set_character_flag = realmunited
+	}
+	
+}
+	
+	##The King has refused to split his realm##
+character_event = {
+    id = arnorgondor.2
+    title = "EVTTITarnorgondor.2"
+    desc = "EVTDESCarnorgondor.2"#Your nobles seem to accept the decision to keep the realm intact, but many are simply taking local decisions into their own hands now
+    picture = "GFX_kinstrife"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		num_of_children = 2
+		has_landed_title = e_gondor
+		has_landed_title = e_arnor
+		year = 11400
+		NOT = { has_character_flag = arnorgondor2 }
+		has_character_flag = realmunited
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.2"#Hmm... alright, we divide the realm then!
+		set_character_flag = dividerealm
+		set_character_flag = arnorgondor2
+	}
+	
+	option = {
+		name = "EVTOPTBarnorgondor.2"#Fine, but we still stay united as one realm.
+		trigger = { ai = no }
+		set_character_flag = arnorgondor2
+		clr_character_flag = realmunited
+		any_vassal = {
+			character_event = { id = arnorgondor.3 days = 7 }
+		}
+	}
+	
+}
+	
+##Vassals are told the realm will not be split##
+character_event = {
+    id = arnorgondor.3
+    title = "EVTTITarnorgondor.3"
+    desc = "EVTDESCarnorgondor.3"#The High King has refused to split Arnor and Gondor between his heirs, and insists on holding both titles for himself. He can not possibly rule two such large and distant realms effectively.
+    picture = "GFX_kinstrife"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.3"#We'll just have to make do.
+		opinion = {
+			who = FROM
+			modifier = opinion_undivided_realm
+			years = 100
+		}
+	}
+		
+}
+		
+##The King splits the realm##
+character_event = {
+    id = arnorgondor.4
+    title = "EVTTITarnorgondor.4"
+    desc = "EVTDESCarnorgondor.4"#You have decided to divide the realm. Do you want to do it yourself (give away one either Arnor or Gondor title within 30 days) or do you want it to be done automatically now?
+    picture = "GFX_gondor_army"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		num_of_children = 2
+		has_landed_title = e_gondor
+		has_landed_title = e_arnor
+		year = 11400
+		NOT = { has_character_flag = arnorgondor4 }
+		has_character_flag = dividerealm
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.4"#I'll do it myself right now.
+		trigger = { ai = no }
+		set_character_flag = arnorgondor4
+		set_character_flag = promisedtosplit
+	}
+	
+	option = {
+		name = "EVTOPTBarnorgondor.4"#Give my non-heir child Arnor automatically.
+		set_character_flag = arnorgondor4
+		random_child = {
+			limit = {
+				is_primary_heir = no
+			}
+			character_event = { id = arnorgondor.5 days = 7 }
+		}
+	}
+	
+	
+	option = {
+		name = "EVTOPTCarnorgondor.4"#I changed my mind, we stay United!
+		trigger = { ai = no }
+		set_character_flag = realmunited
+		set_character_flag = arnorgondor4
+	}
+
+}
+	
+##Child is told it will rule Gondor#
+character_event = {
+    id = arnorgondor.5
+    title = "EVTTITarnorgondor.5"
+    desc = "EVTDESCarnorgondor.5"#You father the High King has decided to give you the rule of Arnor, to hold in his name. It is a daunting task, but one which you must accept and fulfill to the best of your ability.
+    picture = "GFX_gondor_army"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.5"#I will not let him down!
+		ROOT = { culture = culture_arnorian }
+		wealth = 2000
+		e_arnor = {
+			usurp_title = ROOT
+			copy_title_laws = e_gondor	
+		}
+		#@FIXME@ this title is missing
+#		c_ered_nimrais = {
+#			grant_title = ROOT
+#			copy_title_laws = e_gondor
+#		}	
+		c_fornost = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_annuminas = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_evendim = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_west_emenyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_east_emenyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_eketyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_west_orromenyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		#@FIXME@ this title is missing
+#		c_annumenyar = {
+#			grant_title = ROOT
+#			copy_title_laws = e_gondor
+#		}	
+		d_evendim = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_fornost = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_fornost = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_oronyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_celephyar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_maenthirost = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_esteldin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		k_arthedain = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		any_playable_ruler = {
+			character_event = { id = arnorgondor.7 days = 7 }
+		}
+	}
+		
+}
+		
+##If the King didn't split##
+character_event = {
+    id = arnorgondor.6
+    title = "EVTTITarnorgondor.6"
+    desc = "EVTDESCarnorgondor.6"#You have broken your promise, and have not split the realm immediately as you said you would. Your vassals are not amused.;
+    picture = "GFX_kinstrife"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		num_of_children = 2
+		has_landed_title = e_gondor
+		has_landed_title = e_arnor
+		year = 11400
+		NOT = { has_character_flag = arnorgondor6 }
+		has_character_flag = promisedtosplit
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.6"#I was just getting to it!
+		set_character_flag = arnorgondor6
+		any_vassal = {
+			character_event = { id = arnorgondor.3 days = 7 }
+		}
+	}
+	
+}
+	
+##The world is told The Re-United Kingdom has split##
+character_event = {
+    id = arnorgondor.7
+    title = "EVTTITarnorgondor.7"
+    desc = "EVTDESCarnorgondor.7"#Arnor and Gondor have split, as it was nearly impossible to rule such realms from one location. They remain kin however, and have sworn oaths of abiding friendship and aid in need.
+    picture = "GFX_gondor_army"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.7"#Interesting...
+	}
+		
+}
+		
+##If not already so, new e_arnor ruler becomes Arnorian culture - player can refuse##
+character_event = {
+    id = arnorgondor.8
+    title = "EVTTITarnorgondor.8"
+    desc = "EVTDESCarnorgondor.8"#A new realm is rising, and it is quickly developing its own culture apart from that of Gondor. A mix of Dunedain, Bree-lander, hillsfolk and simple isolated fishing villages. Do you want to embrace this new culture?
+    picture = "GFX_good"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		has_landed_title = e_arnor
+		NOT = { has_landed_title = e_gondor }
+		NOT = { culture = culture_arnorian }
+		NOT = { culture = culture_orkish }
+		NOT = { culture = culture_goblin }
+		NOT = { culture = culture_istari }
+		year = 11400
+		NOT = { has_character_flag = arnorgondor8 }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.8"#I do feel like an Arnorian!
+		set_character_flag = arnorgondor8
+		ROOT = { culture = culture_arnorian }
+	}
+	
+	option = {
+		name = "EVTOPTBarnorgondor.8"#No, I'll stay what I am.
+		trigger = { ai = no }
+		set_character_flag = arnorgondor8
+	}
+}
+	
+	
+	
+## If the Chief of the Dunedain of the North is King of Arnor or Gondor, the title of the Dunedain will be removed ##
+character_event = {
+    id = arnorgondor.9
+    title = "EVTTITarnorgondor.9"
+    desc = "EVTDESCarnorgondor.9" #You are now the King of one of the ancients Numenorian's Kingdoms in Exile. The title of Chief of the Dunedain of North is no more interesting for you
+	picture = "GFX_good"
+	age = 16
+	only_independent = yes
+	
+	trigger = {
+		OR = {
+			has_landed_title = e_arnor
+			has_landed_title = e_gondor 
+		}
+		has_landed_title = d_dunedain_of_north
+		NOT = { has_character_flag = dunedainking }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAarnorgondor.9" ## I don't need to hold this.
+		set_character_flag = dunedainking
+		d_dunedain_of_north = { destroy_landed_title = THIS }
+	}
+	
+	option = {
+		name = "EVTOPTBarnorgondor.9" ## This is the title of my family.
+		trigger = { ai = no }
+		set_character_flag = dunedainking
+	}
+}
+		

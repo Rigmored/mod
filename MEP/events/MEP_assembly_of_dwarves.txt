@@ -1,0 +1,6007 @@
+namespace = unificatedwarves
+
+##################################################################################################
+######unificatedwarves.0 to unificatedwarves.7 = events to unificate the tribes of the dwarves####
+######unificatedwwarves.8 to unificatedwarves.34 = events of the election of the King#############
+
+#############################################################################
+######################## UNIFICATION OF THE DWARVES #########################
+
+## The character who used the decision will call all the Kings of the Dwarves ##
+narrative_event = {
+    id = unificatedwarves.0
+    title = EVTTITunificatedwarves.0
+    desc = EVTDESCunificatedwarves.0
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+			FROM = { set_character_flag = 0assemblymember }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = e_durins_folk
+				culture_group = culture_group_dwarves
+				NOT = { character = FROM }
+				NOT = { trait = incapable }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor1
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_grey_mountains
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor2
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_misty_mountains
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor3			
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_erebor
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor4				
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_iron_mountains
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor5		
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_aglarond
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor6				
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_nurunkhizdin
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor7
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_zirakdum
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor8
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_ered_luin
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor9
+		}
+	}
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.0 ### I'll call all the Dwarves !
+		set_global_flag = unification_dwarves
+		set_character_flag = call_the_assembly			
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 25 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 27 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 29 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 31 }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 33 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 35 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 37 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			narrative_event = { id = unificatedwarves.1 days = 39 }
+		}	
+		narrative_event = { id = unificatedwarves.3 days = 80 }
+	}	
+	
+	option = {
+        name = EVTOPTBunificatedwarves.0 ### I won't unificate.
+	}
+}
+
+
+## All the Dwarves Kings are called in Gundabad ##
+narrative_event = {
+    id = unificatedwarves.1
+    title = EVTTITunificatedwarves.1
+    desc = EVTDESCunificatedwarves.1
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAunificatedwarves.1 ### I'll come.
+		ai_chance = {
+			factor = 80
+			
+			modifier = {
+				factor = 2
+				trait = kind
+			}
+			modifier = {
+				factor = 1.5
+				trait = honest
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = just }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = strong }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = arkenstone }
+			}			
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = 50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = 100 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 1assemblymember
+				clr_character_flag = 0assemblymember
+			}
+		}			
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 2assemblymember
+				clr_character_flag = 1assemblymember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 3assemblymember
+				clr_character_flag = 2assemblymember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 4assemblymember
+				clr_character_flag = 3assemblymember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 5assemblymember
+				clr_character_flag = 4assemblymember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 6assemblymember
+				clr_character_flag = 5assemblymember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 7assemblymember
+				clr_character_flag = 6assemblymember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 8assemblymember
+				clr_character_flag = 7assemblymember
+			}
+		}		
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8assemblymember }
+				NOT = { has_character_flag = join_assembly_dwarves }
+			}
+			set_character_flag = join_assembly_dwarves
+			FROM = {
+				set_character_flag = 9assemblymember
+				clr_character_flag = 8assemblymember
+			}
+		}	
+		clr_character_flag = called_for_assembly
+		FROM = {
+			narrative_event = { id = unificatedwarves.2 days = 5 }
+		}
+	}
+	
+	option = {
+        name = EVTOPTBunificatedwarves.1 ### I won't join him.
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				factor = 2
+				trait = cruel
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 2
+				trait = proud
+			}		
+		}
+	}
+}
+
+
+## The First one is informed that the Kings are coming ##
+narrative_event = {
+    id = unificatedwarves.2
+    title = EVTTITunificatedwarves.2
+    desc = EVTDESCunificatedwarves.2
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.2 ### Perfect.
+	}
+}
+
+## The Assembly begin to work ##
+narrative_event = {
+    id = unificatedwarves.3
+    title = EVTTITunificatedwarves.3
+    desc = EVTDESCunificatedwarves.3
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAunificatedwarves.3 ### I ask you to unificate the tribe under a King of All the Mountains!
+		set_character_flag = vote0
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 1 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 3 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 4 }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+			}
+			narrative_event = { id = unificatedwarves.4 days = 8 }
+		}		
+		FROM = { narrative_event = { id = unificatedwarves.5 days = 12 } } ## The Result is known		
+	}
+	
+	option = {
+        name = EVTOPTBunificatedwarves.3 ### No, i won't ask anything.
+		trigger = { ai = no }
+	}
+}
+
+
+## The Kings are asked to unificate the Tribes ##
+narrative_event = {
+    id = unificatedwarves.4
+    title = EVTTITunificatedwarves.4
+    desc = EVTDESCunificatedwarves.4
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAunificatedwarves.4 ### I accept to unificate the tribe under a King of All the Mountains!	
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = kind
+			}
+			modifier = {
+				factor = 1.5
+				trait = honest
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = fortune_builder }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = midas_touched }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = brilliant_strategist }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = charismatic_negotiator }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = grey_eminence }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = elusive_shadow }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = just }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = strong }
+			}	
+			modifier = {
+				factor = 10
+				FROM = { trait = arkenstone }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = perceptive }
+			}		
+			modifier = {
+				factor = 2
+				FROM = { trait = powerful_voice }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = 50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = 100 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote0 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote1 }
+			FROM = { clr_character_flag = vote0 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote1 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote2 }
+			FROM = { clr_character_flag = vote1 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote2 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote3 }
+			FROM = { clr_character_flag = vote2 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote3 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote4 }
+			FROM = { clr_character_flag = vote3 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote4 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote5 }
+			FROM = { clr_character_flag = vote4 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote5 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote6 }
+			FROM = { clr_character_flag = vote5 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote6 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote7 }
+			FROM = { clr_character_flag = vote6 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote7 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote8 }
+			FROM = { clr_character_flag = vote7 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote8 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote9 }
+			FROM = { clr_character_flag = vote8 }
+			set_character_flag = voted
+		}
+		FROM = { narrative_event = { id = unificatedwarves.4001 } }		
+		set_character_flag = agree_to_unificate
+	}
+	
+	option = {
+        name = EVTOPTBunificatedwarves.4 ### No, i don't want to vote this
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.5
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 0.9
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = thrifty_clerk }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = indulgent_wastrel }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tough_soldier}
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = misguided_warrior }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = underhanded_rogue }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = naive_appeaser }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = amateurish_plotter }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = cruel }
+			}			
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value = 0 }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = -25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = -50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = -100 }
+			}
+		}
+		FROM = { narrative_event = { id = unificatedwarves.4002 } }	
+	}
+}
+
+### A King voted for
+narrative_event = {
+	id = unificatedwarves.4001
+	desc = EVTDESCunificatedwarves.4001
+	picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAunificatedwarves.4001 ## Great
+	}
+}
+
+### A King voted against
+narrative_event = {
+	id = unificatedwarves.4002
+	desc = EVTDESCunificatedwarves.4002
+	picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.4002 ## So bad...
+	}
+}
+
+## The Kings are asked to unificate the Tribes ##
+narrative_event = {
+    id = unificatedwarves.5
+    title = EVTTITunificatedwarves.5
+    desc = EVTDESCunificatedwarves.5
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAunificatedwarves.5 ### And the result is...
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote0
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					} 
+					has_character_flag = vote2
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
+		}		
+		if = {
+			limit = {
+				FROM = {
+					has_character_flag = 9assemblymember
+					has_character_flag = vote4
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
+		}		
+
+		### The Vote is Won ###
+		if = {
+			limit = {
+				FROM = { 
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					OR = {
+						has_character_flag = vote9 
+						has_character_flag = vote8 
+					}
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote7
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+						has_character_flag = 9assemblymember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+						has_character_flag = 7assemblymember
+						has_character_flag = 8assemblymember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6} } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+						has_character_flag = 5assemblymember
+						has_character_flag = 6assemblymember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+						has_character_flag = 3assemblymember
+						has_character_flag = 4assemblymember
+					}
+					has_character_flag = vote2
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0assemblymember
+						has_character_flag = 1assemblymember
+						has_character_flag = 2assemblymember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { narrative_event = { id = unificatedwarves.6 } } ## The Vote is won
+		}
+	}	
+}
+
+## The Kings are agree, all the Tribes of the Dwarves will now unificate ##
+narrative_event = {
+    id = unificatedwarves.6
+    title = EVTTITunificatedwarves.6
+    desc = EVTDESCunificatedwarves.6
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.6 ### Now it's time to choose a King.
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = voted
+			}
+			clr_character_flag = join_assembly_dwarves
+			clr_character_flag = voted
+		}		
+		narrative_event = { id = unificatedwarves.8 }
+		clr_global_flag = unification_dwarves
+		set_global_flag = dwarvishunion
+	}
+}
+
+## The Kings aren"t agree, you failed to unificate the Tribes of the Dwarves ##
+narrative_event = {
+    id = unificatedwarves.7
+    title = EVTTITunificatedwarves.7
+    desc = EVTDESCunificatedwarves.7
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.7 ### Too bad...
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = voted
+			}
+			clr_character_flag = join_assembly_dwarves
+			clr_character_flag = voted
+		}			
+		clr_global_flag = unification_dwarves
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = agree_to_unificate
+				age = 20
+			}
+			clr_character_flag = agree_to_unificate
+		}
+	}
+}
+
+
+## Now It's time to elect the King of the Assembly ##
+narrative_event = {
+    id = unificatedwarves.8
+    title = EVTTITunificatedwarves.8
+    desc = EVTDESCunificatedwarves.8
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.8 ### Who's candidate ?
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 1 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 3 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 4 }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.9 days = 8 }
+		}		
+		narrative_event = { id = unificatedwarves.11 days = 10 } ## The Result is known		
+		set_character_flag = 1candidate
+		set_character_flag = candidate1
+	}	
+}
+
+
+## All the Dwarves Kings can be candidate to the High King Title ##
+narrative_event = {
+    id = unificatedwarves.9
+    title = EVTTITunificatedwarves.9
+    desc = EVTDESCunificatedwarves.9
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAunificatedwarves.9 ### I'll come.
+		ai_chance = {
+			factor = 40
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 0.01
+				trait = misguided_warrior
+			}
+			modifier = {
+				factor = 0.5
+				trait = tough_soldier
+			}
+			modifier = {
+				factor = 1.1
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 2
+				trait = brilliant_strategist
+			}
+			# Intrigue Education Effects
+			modifier = {
+				factor = 0.01
+				 trait = amateurish_plotter
+			}
+			modifier = {
+				factor = 0.5
+				trait = flamboyant_schemer
+			}
+			modifier = {
+				factor = 1.1
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 2
+				trait = elusive_shadow
+			}
+			# Diplomacy Education Effects
+			modifier = {
+				factor = 0.01
+				trait = naive_appeaser
+			}
+			modifier = {
+				factor = 0.5
+				trait = underhanded_rogue
+			}
+			modifier = {
+				factor = 1.1
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 2
+				trait = grey_eminence
+			}
+			# Stewardship Education Effects
+			modifier = {
+				factor = 0.01
+				trait = indulgent_wastrel
+			}
+			modifier = {
+				factor = 0.05
+				trait = thrifty_clerk
+			}
+			modifier = {
+				factor = 1.01
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 2
+				trait = midas_touched
+			}			
+			### Dwarves Skills ###
+			modifier = {
+				factor = 0.3
+				trait = dwarf_warrior
+			}
+			modifier = {
+				factor = 0.5
+				trait = trained_dwarf
+			}
+			modifier = {
+				factor = 1.01
+				trait = great_axeman
+			}
+			modifier = {
+				factor = 1.5
+				trait = dragon_slayer
+			}	
+			modifier = {
+				factor = 0.2
+				trait = craftsman
+			}
+			modifier = {
+				factor = 0.4
+				trait = skilled_craftsman
+			}
+			modifier = {
+				factor = 0.8
+				trait = master_craftsman
+			}
+			modifier = {
+				factor = 1.2
+				trait = legendary_craftman
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 2
+				trait = orcrist
+			}	
+			modifier = {
+				factor = 15
+				trait = arkenstone
+			}
+			modifier = {
+				factor = 1.1
+				trait = mithril
+			}				
+			modifier = {
+				factor = 6
+				dynasty = 4001
+			}	
+		
+			
+			# Various Martial Traits
+			modifier = {
+				factor = 1.2
+				trait = duelist
+			}
+			
+			# Martial Skill
+			modifier = {
+				factor = 1.1
+				martial = 10
+				NOT = { martial = 15 }
+			}
+			modifier = {
+				factor = 1.3
+				martial = 15
+				NOT = { martial = 20 }
+			}
+			modifier = {
+				factor = 1.5
+				martial = 20
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 1.5
+				trait = strong
+			}
+			modifier = {
+				factor = 0.005
+				trait = weak
+			}
+			modifier = {
+				factor = 0.8
+				trait = light_foot_leader
+			}	
+			modifier = {
+				factor = 1.5
+				trait = heavy_infantry_leader
+			}	
+			modifier = {
+				factor = 3
+				trait = inspiring_leader
+			}	
+			modifier = {
+				factor = 1.2
+				trait = trickster
+			}
+			modifier = {
+				factor = 2.2
+				trait = organizer
+			}	
+			modifier = {
+				factor = 1.2
+				trait = defensive_leader
+			}	
+			modifier = {
+				factor = 1.2
+				trait = siege_leader
+			}	
+			modifier = {
+				factor = 0.15
+				trait = blinded
+			}	
+			modifier = {
+				factor = 2.2
+				trait = mountain_terrain_leader
+			}				
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 3
+				trait = genius
+			}
+			modifier = {
+				factor = 1.5
+				trait = quick
+			}
+			modifier = {
+				factor = 0.005
+				trait = imbecile
+			}
+			modifier = {
+				factor = 0.3
+				trait = slow
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 2
+				trait = brave
+			}
+			modifier = {
+				factor = 0.7
+				trait = wroth
+			}
+			modifier = {
+				factor = 0.001
+				trait = craven
+			}
+			modifier = {
+				factor = 0.8
+				trait = deceitful
+			}
+			modifier = {
+				factor = 0.7
+				trait = honest
+			}
+			modifier = {
+				factor = 1.2
+				trait = fair
+			}	
+			modifier = {
+				factor = 1.1
+				trait = scholar
+			}	
+			modifier = {
+				factor = 1.1
+				trait = hunter
+			}
+			modifier = {
+				factor = 1.1
+				trait = poet
+			}
+			modifier = {
+				factor = 1.1
+				trait = falconer
+			}		
+			modifier = {
+				factor = 0.4
+				trait = chaste
+			}	
+			modifier = {
+				factor = 0.6
+				trait = lustful
+			}	
+			modifier = {
+				factor = 1.2
+				trait = temperate
+			}	
+			modifier = {
+				factor = 0.7
+				trait = gluttonous
+			}	
+			modifier = {
+				factor = 1.8
+				trait = greedy
+			}	
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}	
+			modifier = {
+				factor = 0.7
+				trait = diligent
+			}	
+			modifier = {
+				factor = 1.2
+				trait = slothful
+			}	
+			modifier = {
+				factor = 0.7
+				trait = kind
+			}	
+			modifier = {
+				factor = 1.5
+				trait = envious
+			}	
+			modifier = {
+				factor = 1.1
+				trait = patient
+			}	
+			modifier = {
+				factor = 1.2
+				trait = wroth
+			}	
+			modifier = {
+				factor = 2.2
+				trait = proud
+			}	
+			modifier = {
+				factor = 0.05
+				trait = humble
+			}	
+			modifier = {
+				factor = 1.3
+				trait = gregarious
+			}	
+			modifier = {
+				factor = 0.07
+				trait = shy
+			}	
+			modifier = {
+				factor = 3
+				trait = ambitious
+			}	
+			modifier = {
+				factor = 0.07
+				trait = content
+			}	
+			modifier = {
+				factor = 0.2
+				trait = just
+			}	
+			modifier = {
+				factor = 1.1
+				trait = arbitrary
+			}	
+			modifier = {
+				factor = 2
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 0.1
+				trait = paranoid
+			}				
+			
+			# Wound Effects
+			modifier = {
+				factor = 0.6
+				trait = wounded
+			}
+			modifier = {
+				factor = 0.4
+				trait = maimed
+			}
+			modifier = {
+				factor = 0.01
+				trait = lunatic
+			}			
+			modifier = {
+				factor = 0.001
+				trait = incapable
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 0.2
+				is_ill = yes
+			}
+			modifier = {
+				factor = 0.01
+				trait = pneumonic
+			}
+			modifier = {
+				factor = 0.4
+				trait = bastard
+			}
+			modifier = {
+				factor = 0.001
+				trait = infirm
+			}
+			modifier = {
+				factor = 0.05
+				OR = {
+					trait = has_tuberculosis
+					trait = has_typhoid_fever 
+					trait = has_typhus 
+					trait = has_bubonic_plague 
+					trait = has_measles 
+					trait = has_small_pox 
+				}
+			}
+			modifier = {
+				factor = 0.01
+				trait = blinded
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 1.5
+				trait = tall
+			}
+			modifier = {
+				factor = 1.1
+				trait = agile
+			}
+			modifier = {
+				factor = 2.5
+				trait = perceptive
+			}
+			modifier = {
+				factor = 0.01
+				trait = absentminded
+			}
+			modifier = {
+				factor = 0.4
+				trait = hunchback
+			}
+			modifier = {
+				factor = 0.4
+				trait = clubfooted
+			}
+			modifier = {
+				factor = 1.1
+				OR = {
+					trait = lefthanded
+					trait = ambidextrous
+				}
+			}			
+			
+			# Age Effects
+			modifier = {
+				factor = 1.1
+				NOT = { age = 230 }
+			}
+			modifier = {
+				factor = 1.2
+				age = 200
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { age = 180 }
+			}
+		}
+		FROM = {
+			narrative_event = { id = unificatedwarves.10 days = 1 }
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate2
+			FROM = {
+				set_character_flag = 2candidate
+				clr_character_flag = 1candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2candidate } 
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate3
+			FROM = {
+				set_character_flag = 3candidate
+				clr_character_flag = 2candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate4
+			FROM = {
+				set_character_flag = 4candidate
+				clr_character_flag = 3candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate5
+			FROM = {
+				set_character_flag = 5candidate
+				clr_character_flag = 4candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate6
+			FROM = {
+				set_character_flag = 6candidate
+				clr_character_flag = 5candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate7
+			FROM = {
+				set_character_flag = 7candidate
+				clr_character_flag = 6candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate8
+			FROM = {
+				set_character_flag = 8candidate
+				clr_character_flag = 7candidate
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8candidate }
+				NOT = { 
+					has_character_flag = candidate2
+					has_character_flag = candidate3 
+					has_character_flag = candidate4
+					has_character_flag = candidate5
+					has_character_flag = candidate6
+					has_character_flag = candidate7 
+					has_character_flag = candidate8
+					has_character_flag = candidate9
+				}
+			}
+			set_character_flag = candidate9
+			FROM = {
+				set_character_flag = 9candidate
+				clr_character_flag = 8candidate
+			}
+		}			
+	}
+	
+	option = {
+        name = EVTOPTBunificatedwarves.9 ### I won't be candidate
+		ai_chance = {
+			factor = 60
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 3
+				trait = misguided_warrior
+			}
+			modifier = {
+				factor = 2
+				trait = tough_soldier
+			}
+			modifier = {
+				factor = 0.9
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 0.5
+				trait = brilliant_strategist
+			}
+			# Intrigue Education Effects
+			modifier = {
+				factor = 3
+				 trait = amateurish_plotter
+			}
+			modifier = {
+				factor = 2
+				trait = flamboyant_schemer
+			}
+			modifier = {
+				factor = 0.9
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 0.5
+				trait = elusive_shadow
+			}
+			# Diplomacy Education Effects
+			modifier = {
+				factor = 3
+				trait = naive_appeaser
+			}
+			modifier = {
+				factor = 2
+				trait = underhanded_rogue
+			}
+			modifier = {
+				factor = 0.9
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 0.5
+				trait = grey_eminence
+			}
+			# Stewardship Education Effects
+			modifier = {
+				factor = 3
+				trait = indulgent_wastrel
+			}
+			modifier = {
+				factor = 2
+				trait = thrifty_clerk
+			}
+			modifier = {
+				factor = 0.9
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 0.5
+				trait = midas_touched
+			}			
+			### Dwarves Skills ###
+			modifier = {
+				factor = 4
+				trait = dwarf_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = trained_dwarf
+			}
+			modifier = {
+				factor = 1.1
+				trait = great_axeman
+			}
+			modifier = {
+				factor = 0.7
+				trait = dragon_slayer
+			}	
+			modifier = {
+				factor = 4
+				trait = craftsman
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_craftsman
+			}
+			modifier = {
+				factor = 2
+				trait = master_craftsman
+			}
+			modifier = {
+				factor = 0.8
+				trait = legendary_craftman
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 0.5
+				trait = orcrist
+			}	
+			modifier = {
+				factor = 0.001
+				trait = arkenstone
+			}
+			modifier = {
+				factor = 0.9
+				trait = mithril
+			}				
+			modifier = {
+				factor = 3
+				dynasty = 4001
+			}	
+		
+			
+			# Various Martial Traits
+			modifier = {
+				factor = 0.9
+				trait = duelist
+			}
+			
+			# Martial Skill
+			modifier = {
+				factor = 3
+				martial = 10
+				NOT = { martial = 15 }
+			}
+			modifier = {
+				factor = 0.8
+				martial = 15
+				NOT = { martial = 20 }
+			}
+			modifier = {
+				factor = 0.5
+				martial = 20
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 0.7
+				trait = strong
+			}
+			modifier = {
+				factor = 100
+				trait = weak
+			}
+			modifier = {
+				factor = 1.2
+				trait = light_foot_leader
+			}	
+			modifier = {
+				factor = 0.7
+				trait = heavy_infantry_leader
+			}	
+			modifier = {
+				factor = 0.8
+				trait = inspiring_leader
+			}	
+			modifier = {
+				factor = 0.6
+				trait = trickster
+			}
+			modifier = {
+				factor = 0.8
+				trait = organizer
+			}	
+			modifier = {
+				factor = 0.6
+				trait = defensive_leader
+			}	
+			modifier = {
+				factor = 0.6
+				trait = siege_leader
+			}	
+			modifier = {
+				factor = 7
+				trait = blinded
+			}	
+			modifier = {
+				factor = 0.9
+				trait = mountain_terrain_leader
+			}				
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 0.5
+				trait = genius
+			}
+			modifier = {
+				factor = 0.8
+				trait = quick
+			}
+			modifier = {
+				factor = 100
+				trait = imbecile
+			}
+			modifier = {
+				factor = 50
+				trait = slow
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 0.7
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 50
+				trait = craven
+			}
+			modifier = {
+				factor = 1.8
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.7
+				trait = honest
+			}
+			modifier = {
+				factor = 0.8
+				trait = fair
+			}	
+			modifier = {
+				factor = 0.99
+				trait = scholar
+			}	
+			modifier = {
+				factor = 0.92
+				trait = hunter
+			}
+			modifier = {
+				factor = 0.95
+				trait = poet
+			}
+			modifier = {
+				factor = 0.95
+				trait = falconer
+			}		
+			modifier = {
+				factor = 1.5
+				trait = chaste
+			}	
+			modifier = {
+				factor = 2
+				trait = lustful
+			}	
+			modifier = {
+				factor = 3
+				trait = temperate
+			}	
+			modifier = {
+				factor = 2.5
+				trait = gluttonous
+			}	
+			modifier = {
+				factor = 0.3
+				trait = greedy
+			}	
+			modifier = {
+				factor = 2.5
+				trait = charitable
+			}	
+			modifier = {
+				factor = 2.5
+				trait = diligent
+			}	
+			modifier = {
+				factor = 0.4
+				trait = slothful
+			}	
+			modifier = {
+				factor = 3
+				trait = kind
+			}	
+			modifier = {
+				factor = 0.7
+				trait = envious
+			}	
+			modifier = {
+				factor = 3
+				trait = patient
+			}	
+			modifier = {
+				factor = 2
+				trait = wroth
+			}	
+			modifier = {
+				factor = 0.5
+				trait = proud
+			}	
+			modifier = {
+				factor = 100
+				trait = humble
+			}	
+			modifier = {
+				factor = 0.9
+				trait = gregarious
+			}	
+			modifier = {
+				factor = 50
+				trait = shy
+			}	
+			modifier = {
+				factor = 0.2
+				trait = ambitious
+			}	
+			modifier = {
+				factor = 100
+				trait = content
+			}	
+			modifier = {
+				factor = 5
+				trait = just
+			}	
+			modifier = {
+				factor = 0.4
+				trait = arbitrary
+			}	
+			modifier = {
+				factor = 0.3
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 50
+				trait = paranoid
+			}				
+			
+			# Wound Effects
+			modifier = {
+				factor = 1.8
+				trait = wounded
+			}
+			modifier = {
+				factor = 3
+				trait = maimed
+			}
+			modifier = {
+				factor = 10
+				trait = lunatic
+			}			
+			modifier = {
+				factor = 100
+				trait = incapable
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 10
+				is_ill = yes
+			}
+			modifier = {
+				factor = 100
+				trait = pneumonic
+			}
+			modifier = {
+				factor = 4
+				trait = bastard
+			}
+			modifier = {
+				factor = 100
+				trait = infirm
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					trait = has_tuberculosis
+					trait = has_typhoid_fever 
+					trait = has_typhus 
+					trait = has_bubonic_plague 
+					trait = has_measles 
+					trait = has_small_pox 
+				}
+			}
+			modifier = {
+				factor = 10
+				trait = blinded
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 0.5
+				trait = tall
+			}
+			modifier = {
+				factor = 0.9
+				trait = agile
+			}
+			modifier = {
+				factor = 0.5
+				trait = perceptive
+			}
+			modifier = {
+				factor = 100
+				trait = absentminded
+			}
+			modifier = {
+				factor = 3
+				trait = hunchback
+			}
+			modifier = {
+				factor = 2.6
+				trait = clubfooted
+			}
+			modifier = {
+				factor = 0.9
+				OR = {
+					trait = lefthanded
+					trait = ambidextrous
+				}
+			}			
+			
+			# Age Effects
+			modifier = {
+				factor = 0.5
+				NOT = { age = 230 }
+			}
+			modifier = {
+				factor = 0.8
+				age = 200
+			}
+			modifier = {
+				factor = 4
+				NOT = { age = 180  }
+			}
+		}		
+	}
+}
+
+
+## A Kings is candidate ! ##
+narrative_event = {
+    id = unificatedwarves.10
+    title = "EVTTITunificatedwarves.10"
+    desc = "EVTDESCunificatedwarves.10"
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAunificatedwarves.10"
+	}
+}
+
+
+## Time to Vote ! ##
+narrative_event = {
+    id = unificatedwarves.11
+    title = "EVTTITunificatedwarves.11"
+    desc = "EVTDESCunificatedwarves.11"
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTBunificatedwarves.11"
+		trigger = {
+			FROM = { has_character_flag = 1candidate }
+		}
+		narrative_event = { id = unificatedwarves.33 }	
+	}	
+	option = {
+		name = "EVTOPTAunificatedwarves.11"
+		trigger = {
+			FROM = { NOT = { has_character_flag = 1candidate } }
+		}
+		narrative_event = { id = unificatedwarves.12 }
+		narrative_event = { id = unificatedwarves.14 days = 20 }
+		set_character_flag = 0voteforking 
+		if = {
+			limit = {
+				has_character_flag = 2candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+		}	
+		if = {
+			limit = {
+				has_character_flag = 3candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+		}
+		if = {
+			limit = {
+				has_character_flag = 4candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+		}
+		if = {
+			limit = {
+				has_character_flag = 5candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+			set_character_flag = 0votecandidate5
+		}
+		if = {
+			limit = {
+				has_character_flag = 6candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+			set_character_flag = 0votecandidate5
+			set_character_flag = 0votecandidate6
+		}
+		if = {
+			limit = {
+				has_character_flag = 7candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+			set_character_flag = 0votecandidate5
+			set_character_flag = 0votecandidate6
+			set_character_flag = 0votecandidate7
+		}
+		if = {
+			limit = {
+				has_character_flag = 8candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+			set_character_flag = 0votecandidate5
+			set_character_flag = 0votecandidate6
+			set_character_flag = 0votecandidate7
+			set_character_flag = 0votecandidate8
+		}
+		if = {
+			limit = {
+				has_character_flag = 9candidate
+			}
+			set_character_flag = 0votecandidate1
+			set_character_flag = 0votecandidate2
+			set_character_flag = 0votecandidate3
+			set_character_flag = 0votecandidate4
+			set_character_flag = 0votecandidate5
+			set_character_flag = 0votecandidate6
+			set_character_flag = 0votecandidate7
+			set_character_flag = 0votecandidate8
+			set_character_flag = 0votecandidate9
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 1 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 3 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 4 }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				culture_group = culture_group_dwarves
+				has_character_flag = join_assembly_dwarves
+				has_character_flag = agree_to_unificate
+			}
+			narrative_event = { id = unificatedwarves.12 days = 8 }
+		}				
+	}
+}
+
+
+
+
+## Vote ! ##
+narrative_event = {
+    id = unificatedwarves.12
+    title = "EVTTITunificatedwarves.12"
+    desc = "EVTDESCunificatedwarves.12"
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 1voteforking
+				clr_character_flag = 0voteforking
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 2voteforking
+				clr_character_flag = 1voteforking
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 3voteforking
+				clr_character_flag = 2voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 4voteforking
+				clr_character_flag = 3voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 5voteforking
+				clr_character_flag = 4voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 6voteforking
+				clr_character_flag = 5voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 7voteforking
+				clr_character_flag = 6voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 8voteforking
+				clr_character_flag = 7voteforking
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8voteforking }
+				NOT = { has_character_flag = votefordwarfking }
+			}
+			set_character_flag = votefordwarfking
+			FROM = { 
+				set_character_flag = 9voteforking
+				clr_character_flag = 8voteforking
+			}
+		}		
+	}
+
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the first candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 1candidate
+					has_character_flag = 2candidate
+					has_character_flag = 3candidate
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 9
+				FROM = { has_character_flag = 1candidate }
+			}			
+			modifier = {
+				factor = 4.16
+				FROM = { has_character_flag = 2candidate }
+			}
+			modifier = {
+				factor = 2.83
+				FROM = { has_character_flag = 3candidate }
+			}
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				FROM = { trait = dwarf_warrior }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = trained_dwarf }
+			}
+			modifier = {
+				factor = 5
+				FROM = { trait = great_axeman }
+			}
+			modifier = {
+				factor = 7
+				FROM = { trait = dragon_slayer }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = craftsman }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = skilled_craftsman }
+			}
+			modifier = {
+				factor = 5
+				FROM = { trait = master_craftsman }
+			}
+			modifier = {
+				factor = 7
+				FROM = { trait = legendary_craftman }
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				FROM = { trait = orcrist }
+			}	
+			modifier = {
+				factor = 15
+				FROM = { trait = arkenstone }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = mithril }
+			}				
+			modifier = {
+				factor = 6
+				FROM = { dynasty = 4001 }
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate1 
+				clr_character_flag = 0votecandidate1 
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate1 
+				clr_character_flag = 1votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate1 
+				clr_character_flag = 2votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate1 
+				clr_character_flag = 3votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate1 
+				clr_character_flag = 4votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate1 
+				clr_character_flag = 5votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate1 
+				clr_character_flag = 6votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate1 
+				clr_character_flag = 7votecandidate1 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate1 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate1 
+				clr_character_flag = 8votecandidate1 
+			}
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate1
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Second candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 2candidate
+					has_character_flag = 3candidate
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 9
+				FROM = { has_character_flag = 1candidate }
+			}			
+			modifier = {
+				factor = 4.16
+				FROM = { has_character_flag = 2candidate }
+			}
+			modifier = {
+				factor = 2.83
+				FROM = { has_character_flag = 3candidate }
+			}
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate2 
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate2 
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate2 
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate2
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate2
+				clr_character_flag = 0votecandidate2
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate2
+				clr_character_flag = 1votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate2 
+				clr_character_flag = 2votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate2 
+				clr_character_flag = 3votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate2 
+				clr_character_flag = 4votecandidate2 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate2 
+				clr_character_flag = 5votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate2 
+				clr_character_flag = 6votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate2
+				clr_character_flag = 7votecandidate2
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate2 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate2
+				clr_character_flag = 8votecandidate2
+			}
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate2
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}
+
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Third candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 3candidate
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.83
+				FROM = { has_character_flag = 3candidate }
+			}
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate3
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate3
+				clr_character_flag = 0votecandidate3
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate3
+				clr_character_flag = 1votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate3 
+				clr_character_flag = 2votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate3 
+				clr_character_flag = 3votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate3 
+				clr_character_flag = 4votecandidate3 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate3 
+				clr_character_flag = 5votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate3 
+				clr_character_flag = 6votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate3
+				clr_character_flag = 7votecandidate3
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate3 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate3
+				clr_character_flag = 8votecandidate3
+			}
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate3
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}	
+	
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Fourth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate4
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate4
+				clr_character_flag = 0votecandidate4
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate4
+				clr_character_flag = 1votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate4 
+				clr_character_flag = 2votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate4 
+				clr_character_flag = 3votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate4 
+				clr_character_flag = 4votecandidate4 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate4 
+				clr_character_flag = 5votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate4 
+				clr_character_flag = 6votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate4
+				clr_character_flag = 7votecandidate4
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate4 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate4
+				clr_character_flag = 8votecandidate4
+			}
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate4
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}	
+
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Fifth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate5
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate5
+				clr_character_flag = 0votecandidate5
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate5
+				clr_character_flag = 1votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate5 
+				clr_character_flag = 2votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate5 
+				clr_character_flag = 3votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate5 
+				clr_character_flag = 4votecandidate5 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate5 
+				clr_character_flag = 5votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate5 
+				clr_character_flag = 6votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate5
+				clr_character_flag = 7votecandidate5
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate5 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate5
+				clr_character_flag = 8votecandidate5
+			}
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate5
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Sixth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate6
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate6
+				clr_character_flag = 0votecandidate6
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate6
+				clr_character_flag = 1votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate6 
+				clr_character_flag = 2votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate6 
+				clr_character_flag = 3votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate6 
+				clr_character_flag = 4votecandidate6 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate6 
+				clr_character_flag = 5votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate6 
+				clr_character_flag = 6votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate6
+				clr_character_flag = 7votecandidate6
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate6 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate6
+				clr_character_flag = 8votecandidate6
+			}
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate6
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}
+	
+	
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Fifth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate7
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate7
+				clr_character_flag = 0votecandidate7
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate7
+				clr_character_flag = 1votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate7 
+				clr_character_flag = 2votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate7 
+				clr_character_flag = 3votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate7 
+				clr_character_flag = 4votecandidate7 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate7 
+				clr_character_flag = 5votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate7 
+				clr_character_flag = 6votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate7
+				clr_character_flag = 7votecandidate7
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate7 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate7
+				clr_character_flag = 8votecandidate7
+			}
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate7
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}	
+	
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Fifth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate8
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate8
+				clr_character_flag = 0votecandidate8
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate8
+				clr_character_flag = 1votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate8 
+				clr_character_flag = 2votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate8 
+				clr_character_flag = 3votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate8 
+				clr_character_flag = 4votecandidate8 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate8 
+				clr_character_flag = 5votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate8 
+				clr_character_flag = 6votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate8
+				clr_character_flag = 7votecandidate8
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate8 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate8
+				clr_character_flag = 8votecandidate8
+			}
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate8
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTAunificatedwarves.12" ### Vote for the Fifth candidate 
+		trigger = {
+			FROM = {
+				OR = {
+					has_character_flag = 4candidate
+					has_character_flag = 5candidate
+					has_character_flag = 6candidate
+					has_character_flag = 7candidate
+					has_character_flag = 8candidate
+					has_character_flag = 9candidate
+				}
+			}
+		}
+		ai_chance = {
+			factor = 12
+			
+			#### Modifier by number of candidates
+			modifier = {
+				factor = 2.08
+				FROM = { has_character_flag = 4candidate }
+			}
+			modifier = {
+				factor = 1.67
+				FROM = { has_character_flag = 5candidate }
+			}	
+			modifier = {
+				factor = 1.39
+				FROM = { has_character_flag = 6candidate }
+			}	
+			modifier = {
+				factor = 1.19
+				FROM = { has_character_flag = 7candidate }
+			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 8candidate }
+			}	
+
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = dwarf_warrior 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = trained_dwarf 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = great_axeman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = dragon_slayer 
+				}
+			}	
+			modifier = {
+				factor = 2
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = craftsman 
+				}
+			}
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = skilled_craftsman 
+				}
+			}
+			modifier = {
+				factor = 5
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = master_craftsman 
+				}
+			}
+			modifier = {
+				factor = 7
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = legendary_craftman 
+				}
+			}	
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = orcrist 
+				}
+			}	
+			modifier = {
+				factor = 15
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = arkenstone 
+				}
+			}
+			modifier = {
+				factor = 3
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					trait = mithril 
+				}
+			}				
+			modifier = {
+				factor = 6
+				any_playable_ruler = { 
+					has_character_flag = candidate9
+					dynasty = 4001 
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0votecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 1votecandidate9
+				clr_character_flag = 0votecandidate9
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1votecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 2votecandidate9
+				clr_character_flag = 1votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2votecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 3votecandidate9 
+				clr_character_flag = 2votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3votecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 4votecandidate9 
+				clr_character_flag = 3votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4vvotecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 5votecandidate9 
+				clr_character_flag = 4votecandidate9 
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5vvotecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 6votecandidate9 
+				clr_character_flag = 5votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6vvotecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 7votecandidate9 
+				clr_character_flag = 6votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7vvotecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 8votecandidate9
+				clr_character_flag = 7votecandidate9
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8vvotecandidate9 }
+				NOT = { has_character_flag = votedfordwarfking }
+			}
+			set_character_flag = votedfordwarfking
+			FROM = { 
+				set_character_flag = 9votecandidate9
+				clr_character_flag = 8votecandidate9
+			}
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = candidate9
+				age  = 1
+			}
+			custom_tooltip = { text = CURRENTRINGMYVOTE }
+		}		
+	}		
+}
+
+
+narrative_event = {
+    id = unificatedwarves.14
+    title = "EVTTITunificatedwarves.14"
+    desc = "EVTDESCunificatedwarves.14"
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAunificatedwarves.14"
+		### Candidate 1 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate1
+						has_character_flag = 8votecandidate1
+						has_character_flag = 7votecandidate1
+						has_character_flag = 6votecandidate1
+						has_character_flag = 5votecandidate1
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate1
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate1
+						has_character_flag = 8votecandidate1
+						has_character_flag = 7votecandidate1
+						has_character_flag = 6votecandidate1
+						has_character_flag = 5votecandidate1
+						has_character_flag = 4votecandidate1
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate1
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate1
+						has_character_flag = 8votecandidate1
+						has_character_flag = 7votecandidate1
+						has_character_flag = 6votecandidate1
+						has_character_flag = 5votecandidate1
+						has_character_flag = 4votecandidate1
+						has_character_flag = 3votecandidate1
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate1
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate1
+						has_character_flag = 8votecandidate1
+						has_character_flag = 7votecandidate1
+						has_character_flag = 6votecandidate1
+						has_character_flag = 5votecandidate1
+						has_character_flag = 4votecandidate1
+						has_character_flag = 3votecandidate1
+						has_character_flag = 2votecandidate1
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate1
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate1
+						has_character_flag = 8votecandidate1
+						has_character_flag = 7votecandidate1
+						has_character_flag = 6votecandidate1
+						has_character_flag = 5votecandidate1
+						has_character_flag = 4votecandidate1
+						has_character_flag = 3votecandidate1
+						has_character_flag = 2votecandidate1
+						has_character_flag = 1votecandidate1
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate1
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		### Candidate 2 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate2
+						has_character_flag = 8votecandidate2
+						has_character_flag = 7votecandidate2
+						has_character_flag = 6votecandidate2
+						has_character_flag = 5votecandidate2
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate2
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate2
+						has_character_flag = 8votecandidate2
+						has_character_flag = 7votecandidate2
+						has_character_flag = 6votecandidate2
+						has_character_flag = 5votecandidate2
+						has_character_flag = 4votecandidate2
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate2
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate2
+						has_character_flag = 8votecandidate2
+						has_character_flag = 7votecandidate2
+						has_character_flag = 6votecandidate2
+						has_character_flag = 5votecandidate2
+						has_character_flag = 4votecandidate2
+						has_character_flag = 3votecandidate2
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate2
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate2
+						has_character_flag = 8votecandidate2
+						has_character_flag = 7votecandidate2
+						has_character_flag = 6votecandidate2
+						has_character_flag = 5votecandidate2
+						has_character_flag = 4votecandidate2
+						has_character_flag = 3votecandidate2
+						has_character_flag = 2votecandidate2
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate2
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate2
+						has_character_flag = 8votecandidate2
+						has_character_flag = 7votecandidate2
+						has_character_flag = 6votecandidate2
+						has_character_flag = 5votecandidate2
+						has_character_flag = 4votecandidate2
+						has_character_flag = 3votecandidate2
+						has_character_flag = 2votecandidate2
+						has_character_flag = 1votecandidate2
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate2
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 3 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate3
+						has_character_flag = 8votecandidate3
+						has_character_flag = 7votecandidate3
+						has_character_flag = 6votecandidate3
+						has_character_flag = 5votecandidate3
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate3
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate3
+						has_character_flag = 8votecandidate3
+						has_character_flag = 7votecandidate3
+						has_character_flag = 6votecandidate3
+						has_character_flag = 5votecandidate3
+						has_character_flag = 4votecandidate3
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate3
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate3
+						has_character_flag = 8votecandidate3
+						has_character_flag = 7votecandidate3
+						has_character_flag = 6votecandidate3
+						has_character_flag = 5votecandidate3
+						has_character_flag = 4votecandidate3
+						has_character_flag = 3votecandidate3
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate3
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate3
+						has_character_flag = 8votecandidate3
+						has_character_flag = 7votecandidate3
+						has_character_flag = 6votecandidate3
+						has_character_flag = 5votecandidate3
+						has_character_flag = 4votecandidate3
+						has_character_flag = 3votecandidate3
+						has_character_flag = 2votecandidate3
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate3
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate3
+						has_character_flag = 8votecandidate3
+						has_character_flag = 7votecandidate3
+						has_character_flag = 6votecandidate3
+						has_character_flag = 5votecandidate3
+						has_character_flag = 4votecandidate3
+						has_character_flag = 3votecandidate3
+						has_character_flag = 2votecandidate3
+						has_character_flag = 1votecandidate3
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate3
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 4 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate4
+						has_character_flag = 8votecandidate4
+						has_character_flag = 7votecandidate4
+						has_character_flag = 6votecandidate4
+						has_character_flag = 5votecandidate4
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate4
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate4
+						has_character_flag = 8votecandidate4
+						has_character_flag = 7votecandidate4
+						has_character_flag = 6votecandidate4
+						has_character_flag = 5votecandidate4
+						has_character_flag = 4votecandidate4
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate4
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate4
+						has_character_flag = 8votecandidate4
+						has_character_flag = 7votecandidate4
+						has_character_flag = 6votecandidate4
+						has_character_flag = 5votecandidate4
+						has_character_flag = 4votecandidate4
+						has_character_flag = 3votecandidate4
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate4
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate4
+						has_character_flag = 8votecandidate4
+						has_character_flag = 7votecandidate4
+						has_character_flag = 6votecandidate4
+						has_character_flag = 5votecandidate4
+						has_character_flag = 4votecandidate4
+						has_character_flag = 3votecandidate4
+						has_character_flag = 2votecandidate4
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate4
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate4
+						has_character_flag = 8votecandidate4
+						has_character_flag = 7votecandidate4
+						has_character_flag = 6votecandidate4
+						has_character_flag = 5votecandidate4
+						has_character_flag = 4votecandidate4
+						has_character_flag = 3votecandidate4
+						has_character_flag = 2votecandidate4
+						has_character_flag = 1votecandidate4
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate4
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 5 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate5
+						has_character_flag = 8votecandidate5
+						has_character_flag = 7votecandidate5
+						has_character_flag = 6votecandidate5
+						has_character_flag = 5votecandidate5
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate5
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate5
+						has_character_flag = 8votecandidate5
+						has_character_flag = 7votecandidate5
+						has_character_flag = 6votecandidate5
+						has_character_flag = 5votecandidate5
+						has_character_flag = 4votecandidate5
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate5
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate5
+						has_character_flag = 8votecandidate5
+						has_character_flag = 7votecandidate5
+						has_character_flag = 6votecandidate5
+						has_character_flag = 5votecandidate5
+						has_character_flag = 4votecandidate5
+						has_character_flag = 3votecandidate5
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate5
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate5
+						has_character_flag = 8votecandidate5
+						has_character_flag = 7votecandidate5
+						has_character_flag = 6votecandidate5
+						has_character_flag = 5votecandidate5
+						has_character_flag = 4votecandidate5
+						has_character_flag = 3votecandidate5
+						has_character_flag = 2votecandidate5
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate5
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate5
+						has_character_flag = 8votecandidate5
+						has_character_flag = 7votecandidate5
+						has_character_flag = 6votecandidate5
+						has_character_flag = 5votecandidate5
+						has_character_flag = 4votecandidate5
+						has_character_flag = 3votecandidate5
+						has_character_flag = 2votecandidate5
+						has_character_flag = 1votecandidate5
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate5
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 6 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate6
+						has_character_flag = 8votecandidate6
+						has_character_flag = 7votecandidate6
+						has_character_flag = 6votecandidate6
+						has_character_flag = 5votecandidate6
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate6
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate6
+						has_character_flag = 8votecandidate6
+						has_character_flag = 7votecandidate6
+						has_character_flag = 6votecandidate6
+						has_character_flag = 5votecandidate6
+						has_character_flag = 4votecandidate6
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate6
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate6
+						has_character_flag = 8votecandidate6
+						has_character_flag = 7votecandidate6
+						has_character_flag = 6votecandidate6
+						has_character_flag = 5votecandidate6
+						has_character_flag = 4votecandidate6
+						has_character_flag = 3votecandidate6
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate6
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate6
+						has_character_flag = 8votecandidate6
+						has_character_flag = 7votecandidate6
+						has_character_flag = 6votecandidate6
+						has_character_flag = 5votecandidate6
+						has_character_flag = 4votecandidate6
+						has_character_flag = 3votecandidate6
+						has_character_flag = 2votecandidate6
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate6
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate6
+						has_character_flag = 8votecandidate6
+						has_character_flag = 7votecandidate6
+						has_character_flag = 6votecandidate6
+						has_character_flag = 5votecandidate6
+						has_character_flag = 4votecandidate6
+						has_character_flag = 3votecandidate6
+						has_character_flag = 2votecandidate6
+						has_character_flag = 1votecandidate6
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate6
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 7 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate7
+						has_character_flag = 8votecandidate7
+						has_character_flag = 7votecandidate7
+						has_character_flag = 6votecandidate7
+						has_character_flag = 5votecandidate7
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate7
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate7
+						has_character_flag = 8votecandidate7
+						has_character_flag = 7votecandidate7
+						has_character_flag = 6votecandidate7
+						has_character_flag = 5votecandidate7
+						has_character_flag = 4votecandidate7
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate7
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate7
+						has_character_flag = 8votecandidate7
+						has_character_flag = 7votecandidate7
+						has_character_flag = 6votecandidate7
+						has_character_flag = 5votecandidate7
+						has_character_flag = 4votecandidate7
+						has_character_flag = 3votecandidate7
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate7
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate7
+						has_character_flag = 8votecandidate7
+						has_character_flag = 7votecandidate7
+						has_character_flag = 6votecandidate7
+						has_character_flag = 5votecandidate7
+						has_character_flag = 4votecandidate7
+						has_character_flag = 3votecandidate7
+						has_character_flag = 2votecandidate7
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate7
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate7
+						has_character_flag = 8votecandidate7
+						has_character_flag = 7votecandidate7
+						has_character_flag = 6votecandidate7
+						has_character_flag = 5votecandidate7
+						has_character_flag = 4votecandidate7
+						has_character_flag = 3votecandidate7
+						has_character_flag = 2votecandidate7
+						has_character_flag = 1votecandidate7
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate7
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 8 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate8
+						has_character_flag = 8votecandidate8
+						has_character_flag = 7votecandidate8
+						has_character_flag = 6votecandidate8
+						has_character_flag = 5votecandidate8
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate8
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate8
+						has_character_flag = 8votecandidate8
+						has_character_flag = 7votecandidate8
+						has_character_flag = 6votecandidate8
+						has_character_flag = 5votecandidate8
+						has_character_flag = 4votecandidate8
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate8
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate8
+						has_character_flag = 8votecandidate8
+						has_character_flag = 7votecandidate8
+						has_character_flag = 6votecandidate8
+						has_character_flag = 5votecandidate8
+						has_character_flag = 4votecandidate8
+						has_character_flag = 3votecandidate8
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate8
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate8
+						has_character_flag = 8votecandidate8
+						has_character_flag = 7votecandidate8
+						has_character_flag = 6votecandidate8
+						has_character_flag = 5votecandidate8
+						has_character_flag = 4votecandidate8
+						has_character_flag = 3votecandidate8
+						has_character_flag = 2votecandidate8
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate8
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate8
+						has_character_flag = 8votecandidate8
+						has_character_flag = 7votecandidate8
+						has_character_flag = 6votecandidate8
+						has_character_flag = 5votecandidate8
+						has_character_flag = 4votecandidate8
+						has_character_flag = 3votecandidate8
+						has_character_flag = 2votecandidate8
+						has_character_flag = 1votecandidate8
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate8
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		### Candidate 9 is elected ###
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 9voteforking						
+					OR = {
+						has_character_flag = 9votecandidate9
+						has_character_flag = 8votecandidate9
+						has_character_flag = 7votecandidate9
+						has_character_flag = 6votecandidate9
+						has_character_flag = 5votecandidate9
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate9
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 8voteforking
+						has_character_flag = 7voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate9
+						has_character_flag = 8votecandidate9
+						has_character_flag = 7votecandidate9
+						has_character_flag = 6votecandidate9
+						has_character_flag = 5votecandidate9
+						has_character_flag = 4votecandidate9
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate9
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 6voteforking
+						has_character_flag = 5voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate9
+						has_character_flag = 8votecandidate9
+						has_character_flag = 7votecandidate9
+						has_character_flag = 6votecandidate9
+						has_character_flag = 5votecandidate9
+						has_character_flag = 4votecandidate9
+						has_character_flag = 3votecandidate9
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate9
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 4voteforking
+						has_character_flag = 3voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate9
+						has_character_flag = 8votecandidate9
+						has_character_flag = 7votecandidate9
+						has_character_flag = 6votecandidate9
+						has_character_flag = 5votecandidate9
+						has_character_flag = 4votecandidate9
+						has_character_flag = 3votecandidate9
+						has_character_flag = 2votecandidate9
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate9
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					OR = { 
+						has_character_flag = 2voteforking
+						has_character_flag = 1voteforking						
+					}
+					OR = {
+						has_character_flag = 9votecandidate9
+						has_character_flag = 8votecandidate9
+						has_character_flag = 7votecandidate9
+						has_character_flag = 6votecandidate9
+						has_character_flag = 5votecandidate9
+						has_character_flag = 4votecandidate9
+						has_character_flag = 3votecandidate9
+						has_character_flag = 2votecandidate9
+						has_character_flag = 1votecandidate9
+					}
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_character_flag = candidate9
+					culture_group = culture_group_dwarves
+				}
+				narrative_event = { id = unificatedwarves.33 }
+			}
+		}		
+	}
+}
+
+
+
+
+
+
+## The King is elected ##
+narrative_event = {
+    id = unificatedwarves.33
+    title = EVTTITunificatedwarves.33
+    desc = EVTDESCunificatedwarves.33
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.33
+		e_all_mountains = { 			
+			grant_title = ROOT
+			copy_title_laws = e_durins_folk
+		}
+		e_durins_folk = {
+			destroy_landed_title = THIS
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = e_durins_folk
+					has_landed_title = k_grey_mountains
+					has_landed_title = k_misty_mountains
+					has_landed_title = k_erebor
+					has_landed_title = k_iron_mountains
+					has_landed_title = k_aglarond
+					has_landed_title = k_nurunkhizdin
+					has_landed_title = k_zirakdum
+					has_landed_title = k_ered_luin
+				}
+				culture_group = culture_group_dwarves
+				has_character_flag = agree_to_unificate
+				age = 1
+			}
+			set_defacto_liege = e_all_mountains
+			clr_character_flag = agree_to_unificate
+		}
+		FROM = { narrative_event = { id = unificatedwarves.34 } }
+	}						
+}
+
+
+## The King is elected - Kings are informed ##
+narrative_event = {
+    id = unificatedwarves.34
+    title = EVTTITunificatedwarves.34
+    desc = EVTDESCunificatedwarves.34
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAunificatedwarves.34
+	}						
+}

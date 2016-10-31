@@ -1,0 +1,1223 @@
+namespace = moria
+
+##### EVENTS FOR DWARVES IN THE MORIA ######
+
+#### Search for Mithril in Moria ####
+character_event = {
+	id = moria.0
+	desc = "EVTDESCmoria.0"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			NOT = { has_global_flag = moria_upper_mines_empty }
+		}
+		name = "EVTOPTAmoria.0" ## I will search in the upper galleries!
+		character_event = { id = moria.1 }
+	}
+	
+	option = {
+		name = "EVTOPTBmoria.0" ## I will search deeper.
+		character_event = { id = moria.7 }		
+	}	
+	
+	option = {
+		name = "EVTOPTCmoria.0" ## I won't search.	
+		clr_character_flag = mineinmoria		
+	}	
+	
+}
+
+
+#### What will you find in the upper mines? ####
+character_event = {
+	id = moria.1
+	desc = "EVTDESCmoria.1"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.1" ## I hope they'll find something...
+		random_list = {
+			10 = {
+				character_event = { id = moria.2 days = 50 } ## Mithril !
+			}
+			30 = {
+				character_event = { id = moria.3 days = 50 } ## No chance...
+			}
+			60 = {
+				character_event = { id = moria.4 days = 50 } ## The Upper mines are empty.
+			}				
+		}
+	}
+}
+
+
+#### Mithril in the Mines of Moria ! ####
+character_event = {
+	id = moria.2
+	desc = "EVTDESCmoria.2"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			location = {
+				add_province_modifier = { name = mithril_moria duration = 730 }
+			}
+		}
+		add_trait = mithril_found
+	}
+	
+	option = {
+		name = "EVTOPTAmoria.2" ## I'll sold it for more gold!
+		wealth = 500
+	}
+	option = {
+		name = "EVTOPTBmoria.2" ## I'll make a mithril chest with it !
+		character_event = { id = moria.5 days = 10}
+	}	
+}
+
+#### Your miners didn't find anything... ####
+character_event = {
+	id = moria.3
+	desc = "EVTDESCmoria.3"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.3" ## So bad...
+		prestige = -100
+	}
+}
+
+
+#### Your miners told you that the upper mines are empty. ####
+character_event = {
+	id = moria.4
+	desc = "EVTDESCmoria.4"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.4" ## So bad...
+		prestige = -150
+		set_global_flag = moria_upper_mines_empty
+	}
+}
+
+
+#### Your can fabricate a mithril chest, but for who ? ####
+character_event = {
+	id = moria.5
+	desc = "EVTDESCmoria.5"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			NOT = { trait = mithril }
+		}
+		name = "EVTOPTAmoria.5" ## For me !.
+		add_trait = mithril
+	}
+	
+	option = {
+		trigger = {
+			job_marshal = { NOT = { trait = mithril } }
+		}
+		name = "EVTOPTBmoria.5" ## For my marshal!
+		job_marshal = { 
+			add_trait = mithril
+			character_event = { id = moria.6 }
+			opinion = { modifier = mithril_gift who = ROOT years = 200 }
+		}
+	}
+	
+	option = {
+		trigger = {
+			any_child = {
+				is_landed = yes
+				NOT = { trait = mithril }
+			}
+		}
+		name = "EVTOPTCmoria.5" ## For one of my other sons
+		any_child = { 
+			limit = {
+				is_landed = yes
+				NOT = { trait = mithril }
+			}
+			add_trait = mithril
+			character_event = { id = moria.6 }
+			opinion = { modifier = mithril_gift who = ROOT years = 200 }
+		}
+	}	
+	
+	option = {
+		trigger = {
+			any_vassal = {
+				OR = {
+					trait = great_axeman
+					trait = dragon_slayer
+				}
+				NOT = { trait = mithril }
+			}
+		}
+		name = "EVTOPTDmoria.5" ## For one of my vassals
+		any_vassal = {
+			limit = {
+					OR = {
+						trait = great_axeman
+						trait = dragon_slayer
+					}
+					NOT = { trait = mithril }
+				}
+			add_trait = mithril
+			character_event = { id = moria.6 }
+			opinion = { modifier = mithril_gift who = ROOT years = 200 }
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTEmoria.5" ## I prefer some gold.
+		wealth = 500
+	}		
+	
+}
+
+
+#### The holder of the new mithril chest is alerted ####
+character_event = {
+	id = moria.6
+	desc = "EVTDESCmoria.6"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.6" ## Thanks a lot!
+	}
+}
+
+
+#### The miners are in the deeps of the Moria ####
+character_event = {
+	id = moria.7
+	desc = "EVTDESCmoria.7"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.7" ## What will they find?
+		random_list = {
+			25 = {
+				character_event = { id = moria.2 days = 50 } ## Mithril !
+			}
+			60 = {
+				character_event = { id = moria.3 days = 50 } ## No chance...
+			}
+			15 = {
+				narrative_event = { id = moria.8 days = 50 } ## There's something in the deeps...
+			}				
+		}		
+	}
+}
+
+#################################################################
+#################### COMING OF THE BALROG #######################
+#################################################################
+
+#### There's something in the deeps... ####
+narrative_event = {
+	id = moria.8
+	title = "EVTTITmoria.8"
+	desc = "EVTDESCmoria.8"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.8" ## I'll see it.
+		character_event = { id = moria.9 } ## What is this thing?	
+		create_character = { 
+			name = "Nameless Terror"
+			random_traits = no
+			dynasty=10018
+			religion = religion_umaiar
+			culture = culture_balrog
+			female = no
+			age = 8500
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+			trait = balrog
+			trait = evil_side
+			trait = wroth
+			trait = cruel
+			trait = aggressive_leader
+			trait = patient
+		}
+		new_character = {
+			set_character_flag = moriabalrog
+		}
+	}
+	option = {
+		name = "EVTOPTBmoria.8" ## My Marshal will look at it...
+		job_marshal = { character_event = { id = moria.10 } } ##  What is this thing?.
+		create_character = { 
+			name = "Nameless Terror"
+			random_traits = no
+			dynasty=10018
+			religion = religion_umaiar
+			culture = culture_balrog
+			female = no
+			age = 8500
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+			trait = balrog
+			trait = evil_side
+			trait = wroth
+			trait = cruel
+			trait = aggressive_leader
+			trait = patient
+		}
+		new_character = {
+			set_character_flag = moriabalrog
+		}
+	}	
+}
+
+#### This thing will kill us all! ####
+character_event = {
+	id = moria.9
+	desc = "EVTDESCmoria.9"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.8" ## I'll fight it !
+		set_character_flag = balroginmoria
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.11 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBmoria.8" ## i'll try to flew ! 
+		set_character_flag = balroginmoria
+		random_list = {
+			35 = {
+				character_event = { id = moria.12 } ## I flew away !
+			}
+			65 = {
+				character_event = { id = moria.11 } ## The Balrog face me !
+			}			
+		}		
+	}	
+}
+
+#### The Marshal will fight ! ####
+character_event = {
+	id = moria.10
+	desc = "EVTDESCmoria.10"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.10" ## I'll fight it !
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.11 }
+		}		
+	}
+}
+
+#### The Balrog face the character ####
+character_event = {
+	id = moria.11
+	desc = "EVTDESCmoria.11"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	immediate = {
+		add_trait = duel_target
+		FROM = {
+			add_trait = duel_target
+			opinion = { who = ROOT modifier = opinion_duel_target }
+			reverse_opinion = { who = ROOT modifier = opinion_duel_target }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAmoria.11" ## I'll fight it !
+		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = moria.13 } } } }		
+	}
+}
+
+#### The King decide to abandon the Mines ... or not. ####
+character_event = {
+	id = moria.12
+	desc = "EVTDESCmoria.12"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.12" ## We'll leave the city of Khazad-dûm !
+		narrative_event =  { id = moria.14 }
+	}
+	option = {
+		name = "EVTOPTBmoria.12" ## I'll fight for my Kingdom.
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.11 }
+		}	
+	}	
+}
+
+### Determine who'll won the fight between the Balrog and the Dwarf ###
+character_event = {
+	id = moria.13
+	is_triggered_only = yes
+	picture = GFX_evt_duel0
+	desc = "AI_EVENT"
+	hide_window = yes		
+	
+	# Nobody but the actual referee should ever get this
+	trigger = { has_landed_title = e_rebels }
+
+	# FROMFROM wins the round
+	option = {
+		name = "AI_EVENT"
+		ai_chance = {
+			factor = 50
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = misguided_warrior }
+			}
+			modifier = {
+				factor = 3
+				FROMFROM = { trait = tough_soldier }
+			}
+			modifier = {
+				factor = 4.5
+				FROMFROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 6
+				FROMFROM = { trait = brilliant_strategist }
+			}
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = dwarf_warrior }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = trained_dwarf }
+			}
+			modifier = {
+				factor = 5
+				FROMFROM = { trait = great_axeman }
+			}
+			modifier = {
+				factor = 7
+				FROMFROM = { trait = dragon_slayer }
+			}							
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = anduril }
+			}
+			modifier = {
+				factor = 3
+				FROMFROM = { trait = glamdring }
+			}
+			modifier = {
+				factor = 3
+				FROMFROM = { trait = orcrist }
+			}
+			modifier = {
+				factor = 5
+				FROMFROM = { trait = mithril }
+			}
+			modifier = {
+				factor = 30
+				FROMFROM = { trait = balrog }
+			}
+			
+			# Various Martial Traits
+			modifier = {
+				factor = 3
+				FROMFROM = { trait = duelist }
+			}
+			
+			# Martial Skill
+			modifier = {
+				factor = 1.1
+				FROMFROM = { martial = 10 }
+				NOT = { FROMFROM = { martial = 15 } }
+			}
+			modifier = {
+				factor = 1.3
+				FROMFROM = { martial = 15 }
+				NOT = { FROMFROM = { martial = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { martial = 20 }
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = strong }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = weak }
+			}
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = genius }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = quick }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = imbecile }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = slow }
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = brave }
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = wroth }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = craven }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = deceitful }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = honest }
+			}
+			
+			# Wound Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = wounded }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = maimed }
+			}
+			modifier = {
+				factor = 999999
+				FROM = { trait = incapable }
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = ill }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = pneumonic }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = infirm }
+			}
+			modifier = {
+				factor = 6
+				OR = {
+					FROM = { trait = has_tuberculosis }
+					FROM = { trait = has_typhoid_fever }
+					FROM = { trait = has_typhus }
+					FROM = { trait = has_bubonic_plague }
+					FROM = { trait = has_measles }
+					FROM = { trait = has_small_pox }
+				}
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = blinded }
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = agile }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = perceptive }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = absentminded }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = hunchback }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = dwarf }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = clubfooted }
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					FROMFROM = { trait = lefthanded }
+					FROMFROM = { trait = ambidextrous }
+				}
+				NOT = { FROM = { trait = lefthanded } }
+				NOT = { FROM = { trait = ambidextrous } }
+			}		
+		}
+	
+		FROMFROM = { character_event = { id = moria.19 } }
+	}
+	
+	# FROM wins the round
+	option = {
+		name = "AI_EVENT"
+		ai_chance = {
+			factor = 50
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = misguided_warrior }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = tough_soldier }
+			}
+			modifier = {
+				factor = 4.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 6
+				FROM = { trait = brilliant_strategist }
+			}
+			### Dwarves Skills ###
+			modifier = {
+				factor = 2
+				FROM = { trait = dwarf_warrior }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = trained_dwarf }
+			}
+			modifier = {
+				factor = 5
+				FROM = { trait = great_axeman }
+			}
+			modifier = {
+				factor = 7
+				FROM = { trait = dragon_slayer }
+			}	
+						
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 4
+				FROM = { trait = anduril }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = glamdring }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = orcrist }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = mithril }
+			}	
+			modifier = {
+				factor = 30
+				FROM = { trait = balrog }
+			}				
+			
+			
+			# Martial Skill
+			modifier = {
+				factor = 1.1
+				FROM = { martial = 10 }
+				NOT = { FROM = { martial = 15 } }
+			}
+			modifier = {
+				factor = 1.3
+				FROM = { martial = 15 }
+				NOT = { FROM = { martial = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { martial = 20 }
+			}
+			
+			# Physical Strength Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = strong }
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = weak }
+			}
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = genius }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = quick }
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = imbecile }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = slow }
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = brave }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = wroth }
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = craven }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = deceitful }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = honest }
+			}
+			
+			# Wound Effects
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = wounded }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = maimed }
+			}
+			modifier = {
+				factor = 10
+				FROMFROM = { trait = blinded }
+			}
+			modifier = {
+				factor = 999999
+				FROMFROM = { trait = incapable }
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 1.5
+				FROMFROM = { is_ill = yes }
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = { trait = pneumonic }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = infirm }
+			}
+			modifier = {
+				factor = 6
+				OR = {
+					FROMFROM = { trait = has_tuberculosis }
+					FROMFROM = { trait = has_typhoid_fever }
+					FROMFROM = { trait = has_typhus }
+					FROMFROM = { trait = has_bubonic_plague }
+					FROMFROM = { trait = has_measles }
+					FROMFROM = { trait = has_small_pox }
+				}
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = agile }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = perceptive }
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = { trait = absentminded }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = hunchback }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = dwarf }
+			}
+			modifier = {
+				factor = 4
+				FROMFROM = { trait = clubfooted }
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					FROM = { trait = lefthanded }
+					FROM = { trait = ambidextrous }
+				}
+				NOT = { FROMFROM = { trait = lefthanded } }
+				NOT = { FROMFROM = { trait = ambidextrous } }
+			}
+
+		}
+		FROM = { character_event = { id = moria.19 } }
+	}
+}
+
+
+#### The King decide to abandon the city of Khazad-Dûm ####
+narrative_event = {
+	id = moria.14
+	title = "EVTTITmoria.14"
+	desc = "EVTDESCmoria.14"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = moriaminesareclosed
+	}
+	
+	option = {
+		name = "EVTOPTAmoria.14" ## We'll go in the Grey Mountains
+		c_cirith_auris = {
+			grant_title = ROOT
+		}
+		k_grey_mountains = {
+			grant_title = ROOT
+		}
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.15 }
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = { 
+					has_character_flag = moriabalrog
+					age = 1
+				}
+				character_event = { id = moria.15 }
+			}
+		}	
+		any_playable_ruler = {
+			narrative_event = { id = moria.21 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmoria.14" ## We'll go to Ered Luin
+		c_vale_of_thrain = {
+			grant_title = ROOT
+		}
+		k_ered_luin = {
+			grant_title = ROOT
+		}
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.15 }
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = { 
+					has_character_flag = moriabalrog
+					age = 1
+				}
+				character_event = { id = moria.15 }
+			}
+		}	
+		any_playable_ruler = {
+			narrative_event = { id = moria.21 }
+		}		
+	}	
+	option = {
+		name = "EVTOPTCmoria.14" ## We'll go to Iron Hills
+		c_azanulimbar_dum = {
+			grant_title = ROOT
+		}
+		k_iron_mountains = {
+			grant_title = ROOT
+		}
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.15 }
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = { 
+					has_character_flag = moriabalrog
+					age = 1
+				}
+				character_event = { id = moria.15 }
+			}
+		}
+		any_playable_ruler = {
+			narrative_event = { id = moria.21 }
+		}		
+	}		
+}
+
+#### The balrog become the new ruler of Moria ####
+character_event = {
+	id = moria.15
+	desc = "EVTDESCmoria.15"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.15" ## The Mines are mine!
+		c_moria = {
+			grant_title = ROOT
+			culture = culture_wilderness
+			religion = religion_wilderness
+		}
+		d_moria = {
+			grant_title = ROOT
+		}	
+		k_misty_mountains = { 
+			destroy_landed_title = THIS 
+		}	
+		set_defacto_liege = ROOT
+	}	
+}
+
+#### Victory ! ####
+character_event = {
+	id = moria.19
+	desc = "EVTDESCmoria.19"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	hide_window = yes
+	
+	option = {
+		name = "EVTOPTAmoria.19"
+		duel_target = {
+			limit = { has_opinion_modifier = { who = ROOT modifier = opinion_duel_target } }
+			character_event = { id = moria.16 }
+			remove_trait = duel_target
+		}
+		remove_trait = duel_target	
+	}	
+}	 
+
+#### Death of one of the character after the battle ####
+character_event = {
+	id = moria.16
+	desc = "EVTDESCmoria.16"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			culture_group = culture_group_dwarves
+		}
+		name = "EVTOPTAmoria.16" ## Aaaargh...
+		if = {
+			limit = {
+				age = 1
+				culture = culture_balrog
+			}
+			current_heir = {
+				character_event = { id = moria.20 days = 2 }
+			}
+		}		
+		if = {
+			limit = {
+				OR = {
+					has_landed_title = e_durins_folk
+					has_landed_title = c_moria
+				}
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			current_heir = {
+				character_event = { id = moria.17 days = 5 }
+			}
+		}	
+		if = {
+			limit = {
+				has_job_title = job_marshal
+				age = 1
+				culture_group = culture_group_dwarves
+			}
+			any_playable_ruler = {
+				limit = {
+					OR = {
+						has_landed_title = e_durins_folk
+						has_landed_title = c_moria
+					}
+					age = 1
+					culture_group = culture_group_dwarves
+				}
+				character_event = { id = moria.17 days = 5 }
+			}
+		}		
+		death = {
+			death_reason = death_duel
+			killer = FROM
+		}
+	}	
+}
+
+#### Death of your Liege ####
+character_event = {
+	id = moria.17
+	desc = "EVTDESCmoria.17"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.17" ## We'll leave the land!.
+		narrative_event = { id = moria.14 }
+	}	
+	option = {
+		name = "EVTOPTBmoria.17" ## I'll avenge him !
+		any_courtier = {
+			limit = { 
+				has_character_flag = moriabalrog
+				age = 1
+			}
+			character_event = { id = moria.11 }
+		}
+	}	
+}
+
+
+##### EVENT TO CLEAR THE CHARACTER FLAG ######
+
+
+# The Holder of Nenya can use once again nenya #
+character_event = {
+	id = moria.18
+	title = EVTTITmoria.18
+	desc = EVTDESCmoria.18
+	picture = "GFX_good"
+	hide_window = yes
+		
+	trigger = {
+		has_landed_title = c_moria
+		has_character_flag = mineinmoria
+		age = 1
+	}
+	
+	mean_time_to_happen = {
+		days = 5475
+	}	
+		
+	option={
+		name=EVTOPTAmoria.18
+		clr_character_flag = mineinmoria
+	}
+}
+	
+#### The Balrog was killed ! ####
+character_event = {
+	id = moria.20
+	desc = "EVTDESCmoria.20"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.20" ## Victory for the Dwarves !	
+	}	
+}	 	
+
+#### Middle-Earth is alerted of the situation in Moria ####
+narrative_event = {
+	id = moria.21
+	title = "EVTTITmoria.21"
+	desc = "EVTDESCmoria.21"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.21" ## I see.	
+	}	
+}	 
+
+
+#### 100 years later, Orcs will come to rules the Moria, if the Balrog decide to sleep ####
+
+#### Balrog will choose to let the orcs come in the mines ####
+character_event = {
+	id = moria.22
+	title = "EVTTITmoria.22"
+	desc = "EVTDESCmoria.22"
+	picture = GFX_evt_dwarves_mines
+
+	trigger = {
+		has_landed_title = c_moria
+		has_landed_title = d_moria
+		culture = culture_balrog
+		age = 1	
+	}
+	
+	mean_time_to_happen = {
+		years = 100
+	}
+	
+	option = {
+		name = "EVTOPTAmoria.22" ## I'll sleep, the orcs can come.	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_gundabad
+				has_landed_title = c_gundabad
+				age = 1
+				culture_group = culture_group_melkor
+			}
+			character_event = { id = moria.23 days = 50 }
+		}
+	}	
+}	 
+
+#### The orcs will choose to come in Moria... or not ####
+character_event = {
+	id = moria.23
+	title = "EVTTITmoria.23"
+	desc = "EVTDESCmoria.23"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.23" ## we'll install in Moria !	
+		c_moria = {
+			grant_title = ROOT
+		}
+		d_moria = {
+			grant_title = ROOT
+		}	
+		k_misty_mountains = {
+			grant_title = ROOT
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_moria
+				age = 1
+				culture = culture_balrog
+			}
+			character_event = { id = moria.24 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBmoria.23" ## we won't go to Moria.
+		trigger = { ai = no }
+	}	
+}	 
+
+
+#### The orcs will choose to come in Moria... or not ####
+character_event = {
+	id = moria.24
+	title = "EVTTITmoria.24"
+	desc = "EVTDESCmoria.24"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAmoria.24" ## we'll install in Moria !	
+		b_zirak_zigil = {
+			grant_title = ROOT
+		}	
+		set_defacto_liege = ROOT
+	}	
+}	 

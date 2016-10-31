@@ -1,0 +1,35 @@
+namespace = dwarvenrings
+
+########## LIST OF THE GUARDIANS #############
+### Holders of the Dwarf Rings ###
+character_event = {
+	id = dwarvenrings.0
+	picture = "GFX_evt_dwarven_rings"
+	desc = "EVTDESCdwarvenrings.0"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAdwarvenrings.0" #Living holders
+		durin_ring = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTDURINRING }
+		}
+		if = {
+			limit = { trait = durin_ring }
+			custom_tooltip = { text = CURRENTDURINRING }
+		}		
+		dwarf_ring = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTDWARFRING }
+		}
+		if = {
+			limit = { trait = dwarf_ring }
+			custom_tooltip = { text = CURRENTDWARFRING }
+		}		
+	}
+}

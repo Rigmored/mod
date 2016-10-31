@@ -1,0 +1,57 @@
+namespace = feedwargs
+
+###Feed Wargs###
+character_event = {
+	id = feedwargs.0
+	title = EVTTITfeedwargs.0
+	desc = EVTDESCfeedwargs.0
+	picture = GFX_evt_feed_wargs
+	
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAfeedwargs.0 #Slaughter prisoner
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+			}
+				}
+	    set_character_flag = wargfeed
+		any_courtier = {
+		limit = {
+		prisoner = yes
+		host = { character = ROOT }
+			}
+		death = {
+		death_reason = death_sacrificed
+		killer = ROOT
+			}
+		prestige = -100
+		piety = -100
+			}
+			}
+			
+		option = {
+		name = EVTOPTBfeedwargs.0 #No, i don't want
+		trigger = {
+		any_courtier = {
+		prisoner = yes
+		host = { character = ROOT }
+			}
+				}
+		piety = 100
+        prestige = -50		
+	    	
+	}
+	}
+	
+	
+
+	
+	
+	

@@ -1,0 +1,1143 @@
+####SHIRE MINOR TITLE#####
+
+title_shirrifs = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    grant_limit = 12
+    opinion_effect = 15
+    
+    monthly_salary = 0.5
+    monthly_prestige = 0.3
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = no
+	religion_group = religion_group_periannath
+	}
+	
+    allowed_to_grant = {
+        is_feudal = yes
+        primary_title = {
+        	OR = {
+                	tier = king
+                	tier = emperor
+        		}
+		}
+		religion_group = religion_group_periannath
+    	}
+                
+                
+                
+    
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+
+    message = no
+}
+
+title_postmaster = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    grant_limit = 1
+    opinion_effect = 15
+    
+    monthly_salary = 1.5
+    monthly_prestige = 0.3
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = no
+		religion_group = religion_group_periannath
+	}
+   allowed_to_grant = {
+            is_feudal = yes
+            primary_title = {
+                OR = {
+                    tier = king
+                    tier = emperor
+                }
+            }
+                religion_group = religion_group_periannath
+	}
+      
+            
+        
+
+    
+    
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+
+    message = no
+}
+
+title_matriarch = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    revoke_allowed = no
+    opinion_effect = 25
+    
+    monthly_salary = 1.0
+    monthly_prestige = 0.9
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = yes
+	religion_group = religion_group_periannath
+        ROOT = { is_close_relative = FROM }
+	}
+   allowed_to_grant = {
+            is_feudal = yes
+            primary_title = {
+                OR = {
+                    tier = king
+                    tier = emperor
+                }
+            }
+                religion_group = religion_group_periannath
+        }
+      
+            
+        
+    
+    
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+    
+    message = no
+}
+
+######GONDOR MINOR TITLES#####
+
+title_co_ruler = {
+	dignity = 1
+	grant_limit = 2
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 1.0
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_ruler_gondor }
+		}
+		
+	allowed_to_grant = {
+		has_character_flag = coruler
+		is_feudal = yes
+		ROOT = { is_close_relative = FROM }
+		OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}
+		
+	
+	
+	gain_effect = { 
+		prestige = 20
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+title_ruler_gondor = {
+	dignity = 3
+	grant_limit = 1
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 3.0
+	monthly_prestige = 3.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_co_ruler }
+		NOT = { has_minor_title = title_ruler_arnor }
+		has_character_flag = ruler_gondor
+		}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		ROOT = { is_close_relative = FROM }
+		OR = {
+			AND = {
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+				}
+			}
+		}
+		
+	
+	
+	gain_effect = { 
+		prestige = 200
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+title_ruler_arnor = {
+	dignity = 3
+	grant_limit = 1
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 3.0
+	monthly_prestige = 3.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_co_ruler }
+		NOT = { has_minor_title = title_ruler_gondor }
+		has_character_flag = ruler_gondor
+		}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		ROOT = { is_close_relative = FROM }
+		OR = {
+			AND = {
+					has_landed_title = e_gondor
+					has_landed_title = e_arnor
+				}
+			has_landed_title = e_reunited_kingdom
+			}
+		}
+		
+	
+	
+	gain_effect = { 
+		prestige = 200
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+## Gondor Minor Titles ##
+
+title_captaingeneral = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.5
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = {
+			has_landed_title = e_steward_gondor
+			has_landed_title = e_gondor
+			has_landed_title = e_arnor
+			has_landed_title = k_arthedain
+			has_landed_title = k_cardolan
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_wardenofthekeys = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_captainoffountain }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}
+
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_captainoffountain = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_captaincitadel = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenofwhitetree = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_admiralofpelargir = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_honorarycitadelguard = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_lieutenantgeneral = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_keeperofswans = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_belfalas
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_admiral = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 2
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = k_belfalas
+				has_landed_title = k_anfalas
+				has_landed_title = k_lebennin
+				has_landed_title = k_harondor
+				has_landed_title = k_cardolan
+				has_landed_title = e_arnor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenofbeacons = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenoferech }		
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_anorien
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenoferech = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = d_mornan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_masterbow = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = d_mornan
+				has_landed_title = k_lamedon
+				has_landed_title = k_pinnath_gelin
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_captainaxebearers = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }		
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = d_mornan
+				has_landed_title = k_lamedon
+				has_landed_title = k_pinnath_gelin
+				has_landed_title = k_erebor
+				has_landed_title = k_ered_luin
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenrammasechor = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+            has_landed_title = d_royal_demesne
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_astrologer = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				culture_group = culture_group_numenorean
+				religion_group = religion_group_eldar
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+####ROHAN MINOR TITLES######
+
+title_firstmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = { }
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_secondmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.3
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_thirdmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.3
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+			}
+		
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_kingcouncillor = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			tier = king
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_master_of_the_horse = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = k_rohan
+				culture_group = culture_group_middlemen
+				culture_group = culture_group_haldadian
+				culture_group = culture_group_easterling
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+####MORDOR MINOR TITLES####
+
+
+title_LieutenantofDolGuldur = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+				has_landed_title = e_barad_dur
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_masterofslaves = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.6
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				culture_group = culture_group_melkor
+				culture_group = culture_group_easterling
+				culture_group = culture_group_southron
+				trait = evil_side
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_lieutenantofbaraddur = {
+    dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 30
+	
+	monthly_salary = 0.8
+	monthly_prestige = 0.9
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = e_barad_dur
+			ROOT = {
+			is_feudal = yes
+			has_landed_title = c_amon_lanc
+		}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}

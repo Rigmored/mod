@@ -1,0 +1,280 @@
+namespace = gandalf
+
+## The ruler at war is alerted of the coming of gandalf ##
+narrative_event = {
+	id = gandalf.1
+	title = EVTTITgandalf.1
+	desc = EVTDESCgandalf.1
+	picture = GFX_evt_elven_story
+	
+	
+	trigger = {
+		is_primary_war_defender = yes
+		trait = good_side
+		independent = yes
+		OR = {
+			tier = KING
+			tier = EMPEROR
+			tier = DUKE
+		}
+		NOT = { has_character_flag = gandalfinrealm }
+		any_playable_ruler = {
+			any_courtier = {
+				has_character_flag = gandalf
+				age = 1
+				prisoner = no
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAgandalf.1 ## His help will be appreciate !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 0.5
+				trait = envious
+			}	
+			modifier = {
+				factor = 0.7
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 0.7
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 0.8
+				trait = imposing
+			}	
+			modifier = {
+				factor = 0.2
+				trait = cruel
+			}	
+			modifier = {
+				factor = 0.3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 0.8
+				trait = brave
+			}	
+			modifier = {
+				factor = 0.7
+				trait = cynical
+			}	
+			modifier = {
+				factor = 0.5
+				trait = proud
+			}		
+			modifier = {
+				factor = 0.2
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 5
+				trait = perceptive
+			}			
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					has_character_flag = gandalf
+					age = 1
+					prisoner = no
+				}
+				move_character = ROOT
+			}
+		}
+		set_character_flag = gandalfinrealm
+	}
+	
+	option = {
+		name = EVTOPTBgandalf.1 ## I don't need his help !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = envious
+			}	
+			modifier = {
+				factor = 2
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 2
+				trait = melodious_voice
+			}		
+			modifier = {
+				factor = 2
+				trait = imposing
+			}	
+			modifier = {
+				factor = 4
+				trait = cruel
+			}	
+			modifier = {
+				factor = 3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.1
+				trait = brave
+			}	
+			modifier = {
+				factor = 2
+				trait = cynical
+			}	
+			modifier = {
+				factor = 1.2
+				trait = proud
+			}		
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 0.1
+				trait = just
+			}
+			modifier = {
+				factor = 0.1
+				trait = perceptive
+			}			
+		}
+		set_character_flag = gandalfinrealm
+	}	
+}
+
+
+
+##### PROVINCE MODIFIER WHEN GANDALF IS HERE ######
+
+## Province Modifier when Gandalf is a courtier ##
+character_event = {
+	id = gandalf.2
+	title = EVTTITgandalf.2
+	desc = EVTDESCgandalf.2
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		any_courtier = {
+			culture = culture_istari
+			trait = narya
+			trait = maiar
+			has_character_flag = gandalf
+			age = 1
+			prisoner = no
+		}
+		NOT = { has_character_flag = coming_of_gandalf }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAgandalf.2 ## Good.
+		set_character_flag = coming_of_gandalf 
+		capital_scope = {
+			add_province_modifier = { name = gandalf_is_here duration = -1 }
+		}
+	}
+}
+
+## When Gandalf leaves ##
+character_event = {
+	id = gandalf.3
+	title = EVTTITgandalf.3
+	desc = EVTDESCgandalf.3
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		NOT = {
+			any_courtier = {
+				has_character_flag = gandalf
+				age = 1
+			}
+		}
+		has_character_flag = coming_of_gandalf
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = EVTOPTAgandalf.3 ## So bad...
+		clr_character_flag = coming_of_gandalf 
+		capital_scope = {
+			remove_province_modifier = gandalf_is_here
+		}
+	}
+}
+
+
+##### GANDALF CAN TRAVEL A NEW TIME ######
+
+## Gandalf will be able to travel to a good land in war again, after one year ##
+character_event = {
+	id = gandalf.4
+	title = EVTTITgandalf.4
+	desc = EVTDESCgandalf.4
+	picture = GFX_evt_elven_story
+	
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		trait = staff_of_gandalf
+		year = 9434
+		has_character_flag = coming_of_gandalf
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = {
+		name = EVTOPTAgandalf.4 ## Good.
+		clr_character_flag = coming_of_gandalf 
+	}
+}
+
+
+## Gandalf character flag ##
+character_event = {
+	id = gandalf.5
+	title = EVTTITgandalf.5
+	desc = EVTDESCgandalf.5
+	picture = GFX_evt_elven_story
+	
+	trigger = {
+		trait = narya
+		trait = maiar
+		trait = staff_of_gandalf
+		NOT = { has_character_flag = gandalf }
+		culture = culture_istari
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = EVTOPTAgandalf.5
+		set_character_flag = gandalf
+	}
+}

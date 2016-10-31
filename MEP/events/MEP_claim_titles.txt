@@ -1,0 +1,229 @@
+namespace = claimtitles
+
+### New Specific Titles ###
+
+## The High King of the Silvan Elves ##
+narrative_event = {
+	id = claimtitles.1
+	title = EVTNAMEclaimtitles.1
+	desc = EVTDESCclaimtitles.1
+	
+	picture = GFX_evt_silvan_elves_high_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.1
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = e_silvan_elves
+				}
+			}
+		}
+		e_silvan_elves = {
+			grant_title = ROOT
+			copy_title_laws = k_mirkwood
+		}
+		give_nickname = nick_galadhir
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					NOT = { has_landed_title = e_silvan_elves}
+					ai = no
+				}
+				narrative_event = { id = claimtitles.2}
+			}
+		}
+	}	
+	option = {
+		name = EVTOPTBclaimtitles.1
+		trigger = { ai = no }
+	}	
+}
+
+# Informed about the High kingship of the Silvan Elves
+narrative_event = {
+	id = claimtitles.2
+	title = EVTNAMEclaimtitles.2
+	desc = EVTDESCclaimtitles.2
+	
+	picture = GFX_evt_silvan_elves_high_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.2
+	}
+}
+
+
+#### The High Kingship of Anadûnê ####
+
+narrative_event = {
+	id = claimtitles.3
+	title = EVTNAMEclaimtitles.3
+	desc = EVTDESCclaimtitles.3
+	
+	picture = GFX_evt_anadune_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.3
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = e_anadune
+				}
+			}
+		}
+		e_anadune = {
+			grant_title = ROOT
+			copy_title_laws = k_bellakar
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					NOT = { has_landed_title = e_anadune }
+					ai = no
+				}
+				narrative_event = { id = claimtitles.4 }
+			}
+		}
+	}	
+	option = {
+		name = EVTOPTBclaimtitles.3
+		trigger = { ai = no }
+	}	
+}
+
+
+# Informed about the High kingship of the Silvan Elves
+narrative_event = {
+	id = claimtitles.4
+	title = EVTNAMEclaimtitles.4
+	desc = EVTDESCclaimtitles.4
+	
+	picture = GFX_evt_anadune_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.4
+	}
+}
+
+#### The Kingdom of Arnor ####
+
+narrative_event = {
+	id = claimtitles.5
+	title = EVTNAMEclaimtitles.5
+	desc = EVTDESCclaimtitles.5
+	
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.5
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = e_arnor
+				}
+			}
+		}
+		e_arnor = {
+			grant_title = ROOT
+			copy_title_laws = k_arthedain
+		}
+		hidden_tooltip = {
+			activate_title = { title = e_arnor status = no }
+			any_playable_ruler = {
+				limit = {
+					NOT = { has_landed_title = e_arnor }
+					ai = no
+				}
+				narrative_event = { id = claimtitles.6 }
+			}
+		}
+	}	
+	option = {
+		name = EVTOPTBclaimtitles.5
+		trigger = { ai = no }
+	}	
+}
+
+
+# Informed about the High kingship of Arnor
+narrative_event = {
+	id = claimtitles.6
+	title = EVTNAMEclaimtitles.6
+	desc = EVTDESCclaimtitles.6
+	
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.6
+	}
+}
+
+##### THE REUNITED KINGDOM ######
+
+narrative_event = {
+	id = claimtitles.7
+	title = EVTNAMEclaimtitles.7
+	desc = EVTDESCclaimtitles.7
+	
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.7
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = e_reunited_kingdom
+				}
+			}
+		}
+		e_reunited_kingdom = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		hidden_tooltip = {
+			activate_title = { title = e_reunited_kingdom status = no }
+			any_playable_ruler = {
+				limit = {
+					NOT = { has_landed_title = e_reunited_kingdom }
+					ai = no
+				}
+				narrative_event = { id = claimtitles.8 }
+			}
+		}
+	}	
+	option = {
+		name = EVTOPTBclaimtitles.7
+		trigger = { ai = no }
+	}	
+}
+
+
+# Informed about the High kingship of Arnor
+narrative_event = {
+	id = claimtitles.8
+	title = EVTNAMEclaimtitles.8
+	desc = EVTDESCclaimtitles.8
+	
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAclaimtitles.8
+	}
+}

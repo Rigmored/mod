@@ -1,0 +1,237 @@
+namespace = knoldor
+##  Claim the High Kingship of the Noldor
+character_event = {
+	id = knoldor.1
+	title = "EVTknoldor.1"
+	desc = "EVTDESCknoldor.1"
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.1" # I'll claim the High Kingship
+		set_character_flag=claimcrownnoldor
+		any_independent_ruler  = {
+			limit = {
+				has_landed_title = k_elves
+				culture = culture_noldor
+			}
+		character_event = { id = knoldor.2 }
+		}
+		any_independent_ruler  = {
+			limit = {
+				has_landed_title = k_elves
+				NOT = { culture = culture_noldor }
+			}
+		FROM = { character_event = { id = knoldor.8 } }
+		}		
+	}
+	option = {
+		name = "EVTOPTBknoldor.1" # I won't claim it!	
+	}
+}
+
+## A character claims the High Kingship of the Noldor - Galadriel side
+character_event = {
+	id = knoldor.2
+	title = "EVTknoldor.2"
+	desc = "EVTDESCknoldor.2"
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.2" # He'll be a true King!
+		ai_chance = {
+			factor = 70
+		}
+		any_independent_ruler  = {
+			limit = {
+				has_character_flag=claimcrownnoldor
+			}
+		character_event = { id = knoldor.3 }
+		}		
+	}	
+	option = {
+		name = "EVTOPTBknoldor.2" # No more Kings for the Noldor!
+		ai_chance = {
+			factor = 30
+		}		
+		any_independent_ruler  = {
+			limit = {
+			has_character_flag=claimcrownnoldor
+			}
+		character_event = { id = knoldor.4 }
+		}			
+	}		
+}
+
+##  Crown of a High King!
+character_event = {
+	id = knoldor.3
+	title = "EVTknoldor.3"
+	desc = "EVTDESCknoldor.3"
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.3" # I'm the heir of Gil-Galad!
+		clr_character_flag=claimcrownnoldor
+		set_character_flag = hisghkingnoldor
+		activate_title = { title = e_noldor status = yes }
+		e_noldor = {
+			grant_title = ROOT
+		}
+		any_independent_ruler  = {
+			limit = {
+			has_landed_title = k_elves
+			culture = culture_noldor
+			}
+		character_event = { id = knoldor.5 days = 7 }
+		}
+	}
+}
+
+##  Galadriel refuse!
+character_event = {
+	id = knoldor.4
+	title = "EVTknoldor.4"
+	desc = "EVTDESCknoldor.4"
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.4" # I'll take the crown anyway!
+		clr_character_flag=claimcrownnoldor
+		set_character_flag = hisghkingnoldor
+		activate_title = { title = e_noldor status = yes }
+		e_noldor = {
+			grant_title = ROOT
+		}
+		add_trait = envious		
+		any_independent_ruler  = {
+			limit = {
+			has_landed_title = k_elves
+			culture = culture_noldor
+			}
+		add_claim = e_noldor
+		}
+	}
+	option = {
+		name = "EVTOPTBknoldor.4" # No more Kings for the Noldor!
+		clr_character_flag=claimcrownnoldor
+		set_character_flag = hisghkingnoldor		
+	}		
+}
+
+##  Galadriel accepts and gets the message where she declares allegiance!
+character_event = {
+	id = knoldor.5
+	desc = "EVTDESCknoldor.5"#Elrond has taken up his crown, and it is time for you to swear allegiance to him.
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.5"#I swear...
+		set_defacto_liege = FROM
+	}
+		
+}
+
+###Now backtrack, if Sauron is defeated, the Sons of Elrond begin dreaming of restoring the ancient realm of Eregion#
+character_event = {
+	id = knoldor.6
+	desc = "EVTDESCknoldor.6"#With Sauron defeated, hope is renewed for the Elves. Your sons wish to rule lands of their own, and together with the elven smiths remaining, restore the glories of old Eregion here in the 4th Age.
+	picture = GFX_elf_meeting
+
+	trigger = {
+		has_landed_title = d_rivendell
+		age = 3000
+		NOT = { has_global_flag = knoldor6 }
+		has_global_flag = saurondefeated
+	}
+	
+	option = {
+		name = "EVTOPTAknoldor.6"#A good idea!
+		set_global_flag = knoldor6
+		random_child = {
+			limit = {
+				is_primary_heir = yes
+				age = 99
+				is_female = no
+			}
+			add_claim = c_north_eregion
+			add_claim = c_norther_eregion
+			add_claim = c_west_eregion
+		}
+		random_child = {
+			limit = {
+				is_primary_heir = no
+				age = 99
+				is_female = no
+			}
+			add_claim = c_swanfleet
+			add_claim = c_redhorn_pass
+			add_claim = c_south_eregio
+			add_claim = c_middle_eregion
+		}
+		any_playable_ruler = {
+			character_event = { id = knoldor.7 days = 30 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBknoldor.6"#No, that is a bad idea.
+		trigger = { ai = no }
+	}
+}
+
+##Other rulers are informed of this venture to reclaim eregion##
+character_event = {
+	id = knoldor.7
+	desc = "EVTDESCknoldor.7"#Word reaches you that the sons of Elrond are planning to reclaim the ancient realm of Eregion, and make it a kingdom of the Noldor once again.
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.7"#They better not make any more rings!
+	}
+	
+	option = {
+		name = "EVTOPTBknoldor.7"#Well good luck to them.
+	}	
+	option = {
+		name = "EVTOPTCknoldor.7"#Why don't they just sail west already?
+	}	
+}
+
+##  Crown of a High King! - No Galadriel in Lorien
+character_event = {
+	id = knoldor.8
+	title = "EVTknoldor.8"
+	desc = "EVTDESCknoldor.8"
+	picture = GFX_elf_meeting
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAknoldor.3" # I'm the heir of Gil-Galad!
+		clr_character_flag=claimcrownnoldor
+		set_character_flag = hisghkingnoldor
+		activate_title = { title = e_noldor status = yes }
+		e_noldor = {
+			grant_title = ROOT
+		}
+		any_independent_ruler  = {
+			limit = {
+			has_landed_title = k_elves
+			culture = culture_noldor
+			}
+		character_event = { id = knoldor.5 days = 7 }
+		}
+	}
+}

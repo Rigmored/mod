@@ -1,0 +1,426 @@
+namespace = elfchild
+
+####### An Elf is still a child #######
+narrative_event = {
+    id = elfchild.0
+    #title = "EVTTITelfchild.0"
+    #desc = "EVTDESCelfchild.0"
+    #picture = "GFX_evt_elven_story"
+	age = 16
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			culture_group = culture_group_quendi
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_moriquendi
+		}
+		age = 16
+		NOT = { age = 60 }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		#name = "EVTOPTAelfchild.0" ## Ok.
+		add_trait = elf_childhood
+	}	
+}
+
+####### An Elf is now an adult #######
+narrative_event = {
+    id = elfchild.1
+    title = "EVTTITelfchild.1"
+    desc = "EVTDESCelfchild.1"
+    picture = "GFX_evt_elven_story"
+	age = 16
+
+	trigger = {
+		OR = {
+			culture_group = culture_group_quendi
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_moriquendi
+		}
+		age = 45
+		trait = elf_childhood
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAelfchild.1" ## Ok.
+		remove_trait = elf_childhood
+		if = {
+			limit = {
+				is_female = no
+			}
+			narrative_event = { id = elfchild.2 } ## TODO: Will be implemented later
+		}
+	}	
+}
+
+######## CHOOSE YOUR NAME EVENT ########
+#### An elf can choose his name once adult ####
+narrative_event = {
+    id = elfchild.2
+    title = "EVTTITelfchild.2"
+    desc = "EVTDESCelfchild.2"
+    picture = "GFX_evt_elven_story"
+	is_triggered_only = yes		
+	
+	#### Keep his father name #####	
+	option = {
+		name = "EVTOPTAelfchild.2" ## I keep my father name	
+		ai_chance = {
+			factor = 50 
+		}
+	}	
+	
+	#### Suggest a Name based on your skills #####	
+	option = {
+		name = "EVTOPTCelfchild.2" ## Suggest a Name	
+		ai_chance = {
+			factor = 20 
+		}		
+		narrative_event = { id = elfchild.3 }		
+	}		
+}	
+
+#### Names based on skills ####
+narrative_event = {
+    id = elfchild.3
+    title = "EVTTITelfchild.3"
+    desc = "EVTDESCelfchild.3"
+    picture = "GFX_evt_elven_story"
+	is_triggered_only = yes		
+	
+	option = {
+		name = "EVTOPTAelfchild.3" ## I want to be called "Amroth"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = agile
+		}
+		set_name = "Amroth"
+	}	
+	option = {
+		name = "EVTOPTBelfchild.3" ## I want to be called "Amdir"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = perceptive
+			trait = kind
+		}
+		set_name = "Amdír"
+	}	
+	option = {
+		name = "EVTOPTCelfchild.3" ## I want to be called "Bladorthin"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = charitable
+			trait = proud
+		}
+		set_name = "Bladorthin"
+	}		
+	option = {
+		name = "EVTOPTDelfchild.3" ## I want to be called "Annael"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = ambidextrous
+			trait = brave
+		}
+		set_name = "Annael"
+	}	
+	option = {
+		name = "EVTOPTEelfchild.3" ## I want to be called "Beleg"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = ambidextrous
+			trait = brave
+			trait = fea_strong
+		}
+		set_name = "Beleg"
+	}	
+	option = {
+		name = "EVTOPTFelfchild.3" ## I want to be called "Círdan"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			stewardship = 15
+			trait = kind
+			trait = brave
+			trait = fea_strong
+		}
+		set_name = "Círdan"
+	}		
+	option = {
+		name = "EVTOPTGelfchild.3" ## I want to be called "Daeron"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = tall
+		}
+		set_name = "Daeron"
+	}	
+	option = {
+		name = "EVTOPTHelfchild.3" ## I want to be called "Galadhon"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = just
+			trait = fea_strong
+		}
+		set_name = "Galadhon"
+	}	
+	option = {
+		name = "EVTOPTIelfchild.3" ## I want to be called "Galathil"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = honest
+		}
+		set_name = "Galathil"
+	}	
+	option = {
+		name = "EVTOPTJelfchild.3" ## I want to be called "Galdor"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = temperate
+			trait = honest
+		}
+		set_name = "Galdor"
+	}		
+	option = {
+		name = "EVTOPTKelfchild.3" ## I want to be called "Voronwë"
+		trigger = {
+			OR = {
+				culture = culture_silvan
+				culture = culture_sindar
+			}
+			trait = fair
+		}
+		set_name = "Voronwë"
+	}			
+	option = {
+		name = "EVTOPTLelfchild.3" ## I want to be called "Arminas"
+		trigger = {
+			trait = tall
+			trait = brave
+		}
+		set_name = "Arminas"
+	}	
+	option = {
+		name = "EVTOPTMelfchild.3" ## I want to be called "Auredhir"
+		trigger = {
+			trait = just
+			trait = fair
+			trait = kind
+		}
+		set_name = "Auredhir"
+	}		
+	option = {
+		name = "EVTOPTNelfchild.3" ## I want to be called "Amnon"
+		trigger = {
+			trait = perceptive
+			learning = 12
+		}
+		set_name = "Amnon"
+	}	
+	option = {
+		name = "EVTOPTOelfchild.3" ## I want to be called "Ausir"
+		trigger = {
+			trait = greedy
+			wealth = 150
+		}
+		set_name = "Ausir"
+	}		
+	option = {
+		name = "EVTOPTPelfchild.3" ## I want to be called "Eglathron"
+		trigger = {
+			trait = bastard
+			trait = just
+		}
+		set_name = "Eglathron"
+	}			
+	option = {
+		name = "EVTOPTQelfchild.3" ## I want to be called "Erestor"
+		trigger = {
+			trait = brave
+			trait = charismatic_negotiator
+		}
+		set_name = "Erestor"
+	}	
+	option = {
+		name = "EVTOPTRelfchild.3" ## I want to be called "Elfriniol"
+		trigger = {
+			trait = kind
+			trait = charitable
+			trait = just
+		}
+		set_name = "Elfriniol"
+	}
+	option = {
+		name = "EVTOPTSelfchild.3" ## I want to be called "Ingilmo"
+		trigger = {
+			trait = master_craftsman
+			trait = proud
+			trait = just
+		}
+		set_name = "Ingilmo"
+	}	
+	option = {
+		name = "EVTOPTTelfchild.3" ## I want to be called "Inglor"
+		trigger = {
+			trait = fea_strong
+			trait = proud
+			OR = {
+				trait = charismatic_negotiator
+				trait = grey_eminence
+				trait = midas_touched 
+				trait = fortune_builder
+			}
+		}
+		set_name = "Inglor"
+	}	
+	option = {
+		name = "EVTOPTUelfchild.3" ## I want to be called "Gelion"
+		trigger = {
+			OR = {
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		set_name = "Gelion"
+	}		
+	option = {
+		name = "EVTOPTVelfchild.3" ## I want to be called "Elemmírë"
+		trigger = {
+			OR = {
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		set_name = "Elemmírë"
+	}	
+	option = {
+		name = "EVTOPTWelfchild.3" ## I want to be called "Lenwë"
+		trigger = {
+			trait = tall
+			trait = perceptive
+		}
+		set_name = "Lenwë"
+	}	
+	option = {
+		name = "EVTOPTXelfchild.3" ## I want to be called "Denethor"
+		trigger = {
+			trait = proud
+			trait = cynical
+		}
+		set_name = "Denethor"
+	}	
+	option = {
+		name = "EVTOPTYelfchild.3" ## I want to be called "Galion"
+		trigger = {
+			trait = just
+			trait = brave
+			trait = ship_builder
+		}
+		set_name = "Galion"
+	}			
+	option = {
+		name = "EVTOPTZelfchild.3" ## I want to be called "Haldir"
+		trigger = {
+			trait = brave
+			OR = {
+				trait = great_elf
+				trait = legendary_warrior
+			}
+		}
+		set_name = "Haldir"
+	}		
+	option = {
+		name = "EVTOPTAAelfchild.3" ## I want to be called "Ithilbor"
+		trigger = {
+			trait = just
+			OR = {
+				trait = grey_eminence
+				trait = charismatic_negotiator
+			}
+		}
+		set_name = "Ithilbor"
+	}	
+	option = {
+		name = "EVTOPTABelfchild.3" ## I want to be called "Orophin"
+		trigger = {
+			trait = brave
+			OR = {
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		set_name = "Orophin"
+	}	
+	option = {
+		name = "EVTOPTACelfchild.3" ## I want to be called "Saeros"
+		trigger = {
+			trait = brave
+			trait = fea_strong
+			OR = {
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		set_name = "Saeros"
+	}		
+	option = {
+		name = "EVTOPTADelfchild.3" ## I want to be called "Belenthrond"
+		trigger = {
+			trait = fea_weak
+			OR = {
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		set_name = "Belenthrond"
+	}		
+	option = {
+		name = "EVTOPTAEelfchild.3" ## I'll keep my name.
+	}		
+}
+
+
+
+######## Will remove any children as councillors ########
+#### An elf child is a councillor #### -BR NOTE: Deleted because it causes AI Lag
+	

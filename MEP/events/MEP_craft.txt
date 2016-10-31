@@ -1,0 +1,1521 @@
+namespace = craft
+
+######## craft.100 = Start event
+######## craft.0 - craft.11 = forge a weapon events
+######## craft.12 - craft.28 = create a jewel events
+######## craft.29 -  = rebuild the gwaith-i-mirdain events
+
+### Weapon Event ###
+narrative_event = {
+	id = craft.100
+	title = "EVTTITcraft.100"
+	desc = "EVTDESCcraft.100"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.100" ## I'll forge a sword !
+		trigger = {
+			NOT = {
+				trait = elvish_sword
+				trait = ancient_elvish_sword
+				trait = dwarvish_sword
+				trait = elvish_sword_magic_exceptional
+				trait = elvish_sword_magic_combat
+				trait = elvish_sword_magic_martial
+			}
+		}
+		character_event = { id = craft.0 days = 10 }
+	}
+	
+	option = {
+		name = "EVTOPTBcraft.100" ## I'll create a great jewel !
+		trigger = {
+			NOT = {
+				trait = dwarf_necklace
+				trait = elf_necklace
+				trait = dwarf_jewel
+				trait = elf_brooch
+				trait = elf_necklace_magic_exceptional
+				trait = elf_necklace_magic_learning
+				trait = elf_necklace_magic_diplomacy
+				trait = elf_brooch_magic_exceptional
+				trait = elf_brooch_magic_intrigue
+				trait = elf_brooch_magic_stewardship
+			}
+		}
+		character_event = { id = craft.12 }		
+	}	
+	
+	option = {
+		name = "EVTOPTCcraft.100" ## I'll rebuild the Gwaith-i-Mirdain !
+		trigger = {
+			has_landed_title = c_south_eregio
+			NOT = { has_global_flag = gwaith_mirdain_rebuilded }
+			culture = culture_noldor
+			age = 1
+			OR = {
+				trait = master_craftsman
+				trait = legendary_craftman				
+			}
+		}
+		narrative_event = { id = craft.29 days = 5 }
+	}
+	option = {
+		name = "EVTOPTDcraft.100" ## I won't forge anything for now.
+		clr_character_flag = crafts_object
+	}		
+}
+
+
+############# CRAFT EVENTS ###############
+
+### Weapon Event ###
+character_event = {
+	id = craft.0
+	title = "EVTTITcraft.0"
+	desc = "EVTDESCcraft.0"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.0" ## I'll reforge an ancient elvish sword !
+		trigger = {
+			culture = culture_noldor
+		}
+		set_character_flag = elvish_sword
+		wealth = -50
+		character_event = { id = craft.1 days = 10 }
+	}
+	
+	option = {
+		name = "EVTOPTBcraft.0" ## I'll make a great dwarvish sword !
+		trigger = {
+			culture_group = culture_group_dwarves
+		}
+		set_character_flag = dwarvish_sword
+		wealth = -50
+		character_event = { id = craft.8 days = 10 }		
+	}	
+	
+	option = {
+		name = "EVTOPTCcraft.0" ## I won't forge anything for now.
+		clr_character_flag = crafts_object
+	}		
+}
+
+### Elvish Sword ###
+### First Step of the Forge ###
+character_event = {
+	id = craft.1
+	title = "EVTTITcraft.1"
+	desc = "EVTDESCcraft.1"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.1" ## I'll use the fragments of an ancient sword.
+		character_event = { id = craft.2 days = 15 } ## You needs some more materials
+	}
+	
+	option = {
+		name = "EVTOPTBcraft.1" ## I'll make my own sword.
+		character_event = { id = craft.5 days = 15 }		
+	}		
+}
+
+### Second Step of the Forge - Reforge an ancient sword - you needs some more materials ###
+character_event = {
+	id = craft.2
+	title = "EVTTITcraft.2"
+	desc = "EVTDESCcraft.2"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.2" ## I'll try to reforge it now !
+		wealth = -150
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				35 = {		
+					character_event = { id = craft.3 days = 10 } ## You succeed
+				}
+				65 = {		
+					character_event = { id = craft.4 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				50 = {		
+					character_event = { id = craft.3 days = 10 } ## You succeed
+				}
+				50 = {		
+					character_event = { id = craft.4 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				65 = {		
+					character_event = { id = craft.3 days = 10 } ## You succeed
+				}
+				35 = {		
+					character_event = { id = craft.4 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				80 = {		
+					character_event = { id = craft.3 days = 10 } ## You succeed
+				}
+				20 = {		
+					character_event = { id = craft.4 days = 10 } ## You failed
+				}
+			}
+		}		
+	}
+	option = {
+		name = "EVTOPTBcraft.2" ## I don't want to work on it anymore.	
+	}		
+}
+
+### Reforge an ancient sword - Success ###
+character_event = {
+	id = craft.3
+	title = "EVTTITcraft.3"
+	desc = "EVTDESCcraft.3"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.3" ## Great !
+		clr_character_flag = crafts_object
+		add_trait = ancient_elvish_sword
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}			
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}				
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}		
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}
+		}		
+	}	
+}
+
+### Reforge an ancient sword - Fail ###
+character_event = {
+	id = craft.4
+	title = "EVTTITcraft.4"
+	desc = "EVTDESCcraft.4"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.4" ## So bad...
+		clr_character_flag = crafts_object
+		prestige = -50
+	}	
+}
+
+### Second Step of the Forge - forge a new sword - you needs some more materials ###
+character_event = {
+	id = craft.5
+	title = "EVTTITcraft.5"
+	desc = "EVTDESCcraft.5"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.5" ## I'll try to reforge it now !
+		wealth = -30
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				40 = {		
+					character_event = { id = craft.6 days = 10 } ## You succeed
+				}
+				60 = {		
+					character_event = { id = craft.7 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				60 = {		
+					character_event = { id = craft.6 days = 10 } ## You succeed
+				}
+				40 = {		
+					character_event = { id = craft.7 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				75 = {		
+					character_event = { id = craft.6 days = 10 } ## You succeed
+				}
+				25 = {		
+					character_event = { id = craft.7 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				85 = {		
+					character_event = { id = craft.6 days = 10 } ## You succeed
+				}
+				15 = {		
+					character_event = { id = craft.7 days = 10 } ## You failed
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBcraft.5" ## I don't want to work on it anymore.	
+	}		
+}
+
+### Reforge an ancient sword - Success ###
+character_event = {
+	id = craft.6
+	title = "EVTTITcraft.6"
+	desc = "EVTDESCcraft.6"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.6" ## Great !
+		clr_character_flag = crafts_object
+		add_trait = elvish_sword
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}			
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}		
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}		
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}
+		}		
+	}	
+}
+
+### Reforge an ancient sword - Failed ###
+character_event = {
+	id = craft.7
+	title = "EVTTITcraft.7"
+	desc = "EVTDESCcraft.7"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.7" ## So bad...
+		prestige = -50
+		clr_character_flag = crafts_object
+	}	
+}
+
+
+####### DWARVISH SWORD #######
+##### FIRST STEP #####
+character_event = {
+	id = craft.8
+	title = EVTTITcraft.8
+	desc = EVTDESCcraft.8
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcraft.8 ## I'll make a brand new sword.
+		random_list = {
+			65 = {		
+				character_event = { id = craft.9 days = 5 } ## You needs some more materials
+			}
+			35 = {		
+				character_event = { id = craft.10 days = 5 } ## You can reforge it directly
+			}
+		}
+	}	
+}
+
+### Second Step of the Forge - Reforge an ancient sword - you needs some more materials ###
+character_event = {
+	id = craft.9
+	title = "EVTTITcraft.9"
+	desc = "EVTDESCcraft.9"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.9" ## I'll try to reforge it now !
+		wealth = -80
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				35 = {		
+					character_event = { id = craft.10 days = 10 } ## You succeed
+				}
+				65 = {		
+					character_event = { id = craft.11 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				50 = {		
+					character_event = { id = craft.10 days = 10 } ## You succeed
+				}
+				50 = {		
+					character_event = { id = craft.11 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				65 = {		
+					character_event = { id = craft.10 days = 10 } ## You succeed
+				}
+				35 = {		
+					character_event = { id = craft.11 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				80 = {		
+					character_event = { id = craft.10 days = 10 } ## You succeed
+				}
+				20 = {		
+					character_event = { id = craft.11 days = 10 } ## You failed
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBcraft.9" ## I don't want to work on it anymore.	
+	}		
+}
+
+### Reforge an ancient sword - Success ###
+character_event = {
+	id = craft.10
+	title = "EVTTITcraft.10"
+	desc = "EVTDESCcraft.10"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.10" ## Great !
+		clr_character_flag = crafts_object
+		add_trait = dwarvish_sword
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}
+			random = {
+				chance = 5
+				give_nickname = nick_fire_hammer
+			}				
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_fire_hammer
+			}				
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}
+			random = {
+				chance = 15
+				give_nickname = nick_fire_hammer
+			}			
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}
+			random = {
+				chance = 25
+				give_nickname = nick_fire_hammer
+			}
+		}		
+	}	
+}
+
+### Reforge an ancient sword - Failed ###
+character_event = {
+	id = craft.11
+	title = "EVTTITcraft.11"
+	desc = "EVTDESCcraft.11"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.11" ## So bad...
+		prestige = -50
+		clr_character_flag = crafts_object
+	}	
+}
+
+
+#### JEWEL CRAFTS ####
+
+### Jewel Event ###
+character_event = {
+	id = craft.12
+	title = EVTTITcraft.12
+	desc = EVTDESCcraft.12
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcraft.12 ## I'll try to make a necklace
+		character_event = { id = craft.13 days = 10 }
+		wealth = -50
+	}
+	
+	option = {
+		name = EVTOPTBcraft.12 ## I'll search after a rare gem
+		character_event = { id = craft.20 days = 5 }
+		wealth = -100	
+	}	
+	
+	option = {
+		name = EVTOPTCcraft.12 ## I won't create anything for now.
+		clr_character_flag = crafts_object
+	}		
+}
+
+##### NECKLACE #####
+### First Step ###
+character_event = {
+	id = craft.13
+	title = "EVTTITcraft.13"
+	desc = "EVTDESCcraft.13"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.13" ## Go ahead!
+		character_event = { id = craft.14 days = 10 }
+	}	
+}
+
+### Second Step - You needs some gems ###
+character_event = {
+	id = craft.14
+	title = "EVTTITcraft.14"
+	desc = "EVTDESCcraft.14"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.14" ## I'll search for them myself !
+		if = {
+			limit = {
+				culture_group = culture_group_dwarves
+			}
+			random_list = {
+				80 = {
+					character_event = { id = craft.15 days = 60 }
+				}
+				20 = {
+					character_event = { id = craft.16 days = 60 }			
+				}
+			}
+		}
+		if = {
+			limit = {
+				culture = culture_noldor
+			}
+			random_list = {
+				60 = {
+					character_event = { id = craft.15 days = 60 }
+				}
+				40 = {
+					character_event = { id = craft.16 days = 60 }			
+				}
+			}
+		}		
+		wealth = -100
+	}	
+	
+	option = {
+		name = "EVTOPTBcraft.14" ## I'll buy some gems to a merchant !
+		character_event = { id = craft.17 days = 10 }
+		wealth = -200
+	}	
+	
+	option = {
+		name = "EVTOPTCcraft.14" ## I don't want to continue this task.
+	}	
+	
+}
+
+### Second Step - You're searching some gems - Success ###
+character_event = {
+	id = craft.15
+	title = "EVTTITcraft.15"
+	desc = "EVTDESCcraft.15"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.15" ## Great !
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				35 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				65 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				50 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				50 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				65 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				35 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				80 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				20 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+	}	
+}
+
+### Second Step - You're searching some gems - Failed ###
+character_event = {
+	id = craft.16
+	title = "EVTTITcraft.16"
+	desc = "EVTDESCcraft.16"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.16" ## So bad...
+		clr_character_flag = crafts_object
+	}	
+}
+
+### Second Step - You're buying some gems - Success ###
+character_event = {
+	id = craft.17
+	title = "EVTTITcraft.17"
+	desc = "EVTDESCcraft.17"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.17" ## Let's go.
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				35 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				65 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				50 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				50 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				65 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				35 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				80 = {		
+					character_event = { id = craft.18 days = 10 } ## You succeed
+				}
+				20 = {		
+					character_event = { id = craft.19 days = 10 } ## You failed
+				}
+			}
+		}		
+	}	
+}
+
+
+### Success of the Necklace work ###
+character_event = {
+	id = craft.18
+	title = "EVTTITcraft.18"
+	desc = "EVTDESCcraft.18"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.18" ## Great !
+		clr_character_flag = crafts_object
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}			
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}				
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}			
+		}
+		if = {
+			limit = {
+				culture_group = culture_group_dwarves
+				age = 1
+			}
+			add_trait = dwarf_necklace
+			random = {
+				chance = 10
+				give_nickname = nick_golden_hands
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_sparkling_beard
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_emerald_hairs
+			}			
+		}	
+		if = {
+			limit = {
+				culture = culture_noldor
+				age = 1
+			}
+			add_trait = elf_necklace		
+		}			
+	}	
+}
+
+### Reforge an ancient sword - Failed ###
+character_event = {
+	id = craft.19
+	title = "EVTTITcraft.19"
+	desc = "EVTDESCcraft.19"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.19" ## So bad...
+		prestige = -50
+		clr_character_flag = crafts_object
+	}	
+}
+
+
+##### GEM SEARCHING #####
+### First Step ###
+character_event = {
+	id = craft.20
+	title = "EVTTITcraft.20"
+	desc = "EVTDESCcraft.20"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.20" ## Go ahead!
+		if = {
+			limit = {
+				culture_group = culture_group_dwarves
+			}
+			random_list = {
+				75 = {
+					character_event = { id = craft.21 days = 60 } ## Success
+				}
+				25 = {
+					character_event = { id = craft.22 days = 60 }			
+				}
+			}
+		}
+		if = {
+			limit = {
+				culture = culture_noldor
+			}
+			random_list = {
+				55 = {
+					character_event = { id = craft.21 days = 60 }
+				}
+				45 = {
+					character_event = { id = craft.22 days = 60 }			
+				}
+			}
+		}	
+	}	
+}
+
+### You found a gem ###
+character_event = {
+	id = craft.21
+	title = "EVTTITcraft.21"
+	desc = "EVTDESCcraft.21"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.21" ## I'll rework it !
+		wealth = -150		
+		if = {
+			limit = {
+				culture_group = culture_group_dwarves
+			}
+			character_event = { id = craft.23 days = 5 } ## Success
+		}
+		if = {
+			limit = {
+				culture = culture_noldor
+			}
+			character_event = { id = craft.26 days = 5 } ## Success			
+		}	
+	}	
+	option = {
+		name = "EVTOPTBcraft.21" ## I'll sell it !
+		wealth = 150
+		clr_character_flag = crafts_object
+	}	
+}
+
+### You failed to find a gem ###
+character_event = {
+	id = craft.22
+	title = "EVTTITcraft.22"
+	desc = "EVTDESCcraft.22"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.22" ## So bad...
+		clr_character_flag = crafts_object
+	}		
+}
+
+### You're reworking a gem - Dwarves side ###
+character_event = {
+	id = craft.23
+	title = "EVTTITcraft.23"
+	desc = "EVTDESCcraft.23"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.23" ## I'll rework it !
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				25 = {		
+					character_event = { id = craft.24 days = 20 } ## You succeed
+				}
+				75 = {		
+					character_event = { id = craft.25 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				40 = {		
+					character_event = { id = craft.24 days = 20 } ## You succeed
+				}
+				60 = {		
+					character_event = { id = craft.25 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				55 = {		
+					character_event = { id = craft.24 days = 20 } ## You succeed
+				}
+				45 = {		
+					character_event = { id = craft.25 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				70 = {		
+					character_event = { id = craft.24 days = 20 } ## You succeed
+				}
+				30 = {		
+					character_event = { id = craft.25 days = 20 } ## You failed
+				}
+			}
+		}		
+	}		
+}
+
+
+### You succeed to rework the gem ###
+character_event = {
+	id = craft.24
+	title = "EVTTITcraft.24"
+	desc = "EVTDESCcraft.24"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.24" ## A great jewel !
+		add_trait = dwarf_jewel
+		clr_character_flag = crafts_object
+		prestige = 100
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}			
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}				
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}			
+		}
+		if = {
+			limit = {
+				culture_group = culture_group_dwarves
+				age = 1
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_ruby_belt
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_diamond_hands
+			}
+			random = {
+				chance = 10
+				give_nickname = nick_golden_shield
+			}
+		}			
+	}		
+}
+
+### You failed to rework the gem ###
+character_event = {
+	id = craft.25
+	title = "EVTTITcraft.25"
+	desc = "EVTDESCcraft.25"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.25" ## So bad...
+		prestige = -50
+		clr_character_flag = crafts_object
+	}		
+}
+
+
+### You're reworking a gem - Elf side ###
+character_event = {
+	id = craft.26
+	title = "EVTTITcraft.26"
+	desc = "EVTDESCcraft.26"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.26" ## I'll rework it !
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}		
+			random_list = {
+				35 = {		
+					character_event = { id = craft.27 days = 20 } ## You succeed
+				}
+				65 = {		
+					character_event = { id = craft.28 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}		
+			random_list = {
+				50 = {		
+					character_event = { id = craft.27 days = 20 } ## You succeed
+				}
+				50 = {		
+					character_event = { id = craft.28 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}		
+			random_list = {
+				65 = {		
+					character_event = { id = craft.27 days = 20 } ## You succeed
+				}
+				35 = {		
+					character_event = { id = craft.28 days = 20 } ## You failed
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}		
+			random_list = {
+				80 = {		
+					character_event = { id = craft.27 days = 20 } ## You succeed
+				}
+				20 = {		
+					character_event = { id = craft.28 days = 20 } ## You failed
+				}
+			}
+		}		
+	}		
+}
+
+
+### You succeed to rework the gem ###
+character_event = {
+	id = craft.27
+	title = "EVTTITcraft.27"
+	desc = "EVTDESCcraft.27"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.27" ## A great jewel !
+		add_trait = elf_brooch
+		clr_character_flag = crafts_object
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+			}
+			random = {
+				chance = 70
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}			
+		}	
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}				
+		}	
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random = {
+				chance = 30
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}			
+		}			
+	}		
+}
+
+### You failed to rework the gem ###
+character_event = {
+	id = craft.28
+	title = "EVTTITcraft.28"
+	desc = "EVTDESCcraft.28"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.28" ## So bad...
+		prestige = -50
+		clr_character_flag = crafts_object
+	}		
+}
+
+
+
+
+
+################ GWAITH-i-MIRDAIN #############
+### Begin of the event chain ###
+narrative_event = {
+	id = craft.29
+	title = "EVTTITcraft.29"
+	desc = "EVTDESCcraft.29"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.29" ## I'll rebuild it !
+		character_event = { id = craft.30 days = 20 }
+	}	
+	option = {
+		name = "EVTOPTBcraft.29" ## I won't rebuild it !
+		clr_character_flag = crafts_object		
+	}	
+}
+
+### Reunite some artisans in Ost-in-Edhil ###
+character_event = {
+	id = craft.30
+	title = "EVTTITcraft.30"
+	desc = "EVTDESCcraft.30"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.30" ## Call some artisans in Ost-in-Edhil !
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+			}
+			random_list = {
+				65 = {
+					character_event = { id = craft.31 days = 50 } ## They'll come
+				}
+				35 = {
+					character_event = { id = craft.32 days = 50 } ## They won't come
+				}
+			}
+		}	
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+			}
+			random_list = {
+				75 = {
+					character_event = { id = craft.31 days = 50 } ## They'll come
+				}
+				25 = {
+					character_event = { id = craft.32 days = 50 } ## They won't come
+				}
+			}
+		}		
+	}		
+}
+
+### Some artisans joins you in Ost-in-Edhil ###
+character_event = {
+	id = craft.31
+	title = "EVTTITcraft.31"
+	desc = "EVTDESCcraft.31"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.31" ## Great !
+		narrative_event = { id = craft.33 days = 20 }
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 2543
+			trait = master_craftsman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 3207
+			trait = legendary_craftman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 4100
+			trait = skilled_craftsman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 1725
+			trait = master_craftsman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 2108
+			trait = legendary_craftman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}
+		create_character = {
+			religion = religion_moriquendi
+			culture = culture_noldor
+			female = no
+			age = 1887
+			trait = master_craftsman
+			trait = elf
+		}
+		new_character = {
+			set_character_flag = call_to_gwaith
+		}		
+	}	
+}
+
+### Artisans refuse to join you in Ost-in-Edhil ###
+character_event = {
+	id = craft.32
+	title = "EVTTITcraft.32"
+	desc = "EVTDESCcraft.32"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.32" ## so bad...	
+		clr_character_flag = crafts_object
+	}	
+}
+
+### You recreate the Brotherhood ###
+narrative_event = {
+	id = craft.33
+	title = "EVTTITcraft.33"
+	desc = "EVTDESCcraft.33"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcraft.33" ## Time to recreate the brotherhood !
+		add_trait = gwaith_i_mirdain
+		set_global_flag = gwaith_mirdain_rebuilded
+		clr_character_flag = crafts_object
+		wealth = -200
+		any_courtier = {
+			limit = {
+				culture = culture_noldor
+				has_character_flag = call_to_gwaith
+			}
+			clr_character_flag = call_to_gwaith
+			add_trait = gwaith_i_mirdain_member
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBcraft.33" ## It's not time.
+		clr_character_flag = crafts_object
+	}	
+}

@@ -1,0 +1,157 @@
+namespace = purge
+
+#First for the goodies, purging the baddies
+character_event = {
+	id = purge.0
+	desc = purge0desc #There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...
+	picture = GFX_abandoned_lands
+	
+	is_triggered_only = yes #annual pulse
+	
+	trigger = {
+		independent = yes
+		age = 1
+		NOT = { has_character_flag = very_tolerant_of_evil } 
+		OR = {
+			religion_group = religion_group_eruhini
+			religion_group = religion_group_enyd
+			religion_group = religion_group_khazad
+			religion_group = religion_group_eldar
+			religion_group = religion_group_periannath
+			religion_group = religion_group_edain
+		}
+		any_realm_province = {
+			religion_group = religion_group_melkor
+			NOT = { has_province_modifier = being_purged }
+		}
+	}
+	
+	option = {
+		name = purge0A #Yes, send them at once!
+		ROOT = { character_event = { id = purge.1 days = 3650 } }
+		any_realm_province = {
+			limit = {
+				religion_group = religion_group_melkor
+				NOT = { has_province_modifier = being_purged }
+				}
+			add_province_modifier = { name = being_purged duration = 3650 }
+		}
+	}
+	
+}
+	
+character_event = {
+	id = purge.1
+	desc = purge1desc #Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
+	picture = GFX_abandoned_lands	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = OK
+		any_realm_province = {
+			limit = {
+				AND = {
+					religion_group = religion_group_melkor
+					has_province_modifier = being_purged
+				}
+			}
+			culture = culture_wilderness
+			religion = religion_wilderness
+		}
+	}
+	
+}
+	
+	
+#Now for the baddies
+character_event = {
+	id = purge.3
+	desc = purge3desc #There are enemies living in your demesne who will never submit to you. It's time to send in the troops and get rid of them once and for all.
+	picture = GFX_abandoned_lands
+	
+	is_triggered_only = yes #annual pulse
+	
+	trigger = {
+		independent = yes
+		age = 1
+		NOT = { has_character_flag = very_tolerant_of_good } 
+		religion_group = religion_group_melkor
+		OR = {
+			any_realm_province = { 	religion_group = religion_group_edain
+									NOT = {has_province_modifier = being_purged}
+									}
+			any_realm_province = { 	religion_group = religion_group_enyd
+									NOT = {has_province_modifier = being_purged}
+									}
+			any_realm_province = { 	religion_group = religion_group_khazad
+									NOT = {has_province_modifier = being_purged}			
+									}
+			any_realm_province = { 	religion_group = religion_group_eldar
+									NOT = {has_province_modifier = being_purged}
+									}
+			any_realm_province = { 	religion_group = religion_group_periannath
+									NOT = {has_province_modifier = being_purged}
+									}
+			any_realm_province = { 	religion_group = religion_group_eruhini
+									NOT = {has_province_modifier = being_purged}
+									}
+		}
+	}
+	
+	option = {
+		name = purge0A #Yes, send them at once!
+		ROOT = { character_event = { id = purge.4 days = 3650 } }
+		any_realm_province = {
+			limit = {
+				NOT = {has_province_modifier = being_purged}
+				OR = {
+					religion_group = religion_group_edain 
+					religion_group = religion_group_enyd
+					religion_group = religion_group_khazad
+					religion_group = religion_group_eldar
+					religion_group = religion_group_periannath
+					religion_group = religion_group_eruhini
+				}
+			}
+			add_province_modifier = { name = being_purged duration = 3650 }
+		}
+	}
+	
+}
+	
+character_event = {
+	id = purge.4
+	desc = purge4desc #Your land has been purged of enemies, and now orcs are swarming in to settle the abandoned places.
+	picture = GFX_abandoned_lands	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = OK
+		any_realm_province = {
+			limit = {
+				AND = {
+					has_province_modifier = being_purged
+				}
+				OR = {
+					religion_group = religion_group_eruhini
+					religion_group = religion_group_enyd
+					religion_group = religion_group_khazad
+					religion_group = religion_group_eldar
+					religion_group = religion_group_periannath
+					AND = { 
+						religion_group = religion_group_edain 
+						NOT = { culture = culture_nurnim }
+						NOT = { culture = culture_hillmen }
+						
+					}
+				}
+			}
+			culture = culture_orkish
+			religion = religion_orkish
+		}
+	}
+	
+}
+	

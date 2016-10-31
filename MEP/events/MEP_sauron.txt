@@ -1,0 +1,2855 @@
+namespace = sauron
+
+##Option for Sauron to command his allies##
+character_event = {
+    id = sauron.1
+    title = "EVTTITsauron.1"#Command Your Allies
+    desc = "EVTDESCsauron.1"#You can send your agents to instruct your allies to attack certain targets. They may refuse if the targets are too strong, however.
+    picture = "GFX_good"
+	is_triggered_only = yes
+		  
+	option = {
+		name = "EVTOPTAsauron.1"#Command the Orcs of Gundabad
+		trigger = {
+			dynasty = 10012
+		}				
+		character_event = { id = sauron.2 }
+	}
+		
+	option = {
+		name = "EVTOPTBsauron.1"#Command the men of the East
+		trigger = {
+			dynasty = 10012
+		}				
+		character_event = { id = sauron.6 }
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.1"#Command the men of the South
+		trigger = {
+			dynasty = 10012
+		}				
+		character_event = { id = sauron.10 }
+	}
+
+	option = {
+		name = "EVTOPTDsauron.1"#No, now is not the time.
+	}	
+}
+		
+##Option for Sauron to command his allies in K_Gundabad##
+character_event = {
+    id = sauron.2
+    title = "EVTTITsauron.2"#Command the Orcs of Gundabad
+    desc = "EVTDESCsauron.2"#Who shall the Orcs of Gundabad attack?
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.2"#Destroy Imladris!
+		trigger = {
+			dynasty = 10012
+		}	
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = k_gundabad
+				OR = {
+					trait = evil_side
+					culture_group = culture_group_melkor
+				}
+			}
+			character_event = { id = sauron.3 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTBsauron.2"#Conquer Rhudaur!
+		trigger = {
+			dynasty = 10012
+		}				
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = k_gundabad
+				OR = {
+					trait = evil_side
+					culture_group = culture_group_melkor
+				}
+			}
+			character_event = { id = sauron.4 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.2"#Destroy the men of Anduin Vale!
+		trigger = {
+			dynasty = 10012
+		}				
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = k_gundabad
+				OR = {
+					trait = evil_side
+					culture_group = culture_group_melkor
+				}
+			}
+			character_event = { id = sauron.5 days = 30}
+		}
+	}
+
+	option = {
+		name = "EVTOPTDsauron.2"#No, now is not the time.
+	}
+}
+		
+		
+##Orcs of Gundabad get instructions##
+character_event = {
+    id = sauron.3
+    title = "EVTTITsauron.3"#Sauron commands you
+    desc = "EVTDESCsauron.3"#Too long has little Rivendell stood against us. Now they are few, and weak - gather your forces and leave none alive!
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.3"#Death to all elves!
+		add_claim = d_rivendell
+		add_claim = c_imladris
+	}
+}
+			
+character_event = {
+    id = sauron.4
+    title = "EVTTITsauron.4"#Sauron commands you
+    desc = "EVTDESCsauron.4"#Expand into Rhudaur, and build up this region as a base for further attacks into Eriador. Failure will not be tolerated. The Eye is on you!
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.4"#As you command, Lord!
+		add_claim = c_south_melosse
+		add_claim = c_north_melosse
+		add_claim = c_trollshaws
+		add_claim = c_river_vale
+		add_claim = c_hoardale
+		add_claim = c_magillos
+		add_claim = c_ettendales
+		add_claim = c_angmarbound
+		#@FIXME@
+		#add_claim = c_west_frontier
+		add_claim = c_east_eldenaryar
+		add_claim = c_southest_eredoriath
+		add_claim = c_south_eredoriath
+		add_claim = c_west_eredoriath
+		add_claim = c_east_eredoriath
+		add_claim = c_north_eredoriath
+		add_claim = c_rhudaur_nimrais
+		add_claim = c_coldfells
+		add_claim = c_wolfdale
+		add_claim = c_rhudaur
+	}
+}
+			
+character_event = {
+    id = sauron.5
+    title = "EVTTITsauron.5"#Sauron commands you
+    desc = "EVTDESCsauron.5"#Go East across the mountains, and destroy the new realm that has arisen there! 
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.5"#As you command, Lord!
+		add_claim = k_anduin_vale
+		add_claim = c_gladden_fields
+		add_claim = c_south_gladden
+		add_claim = c_opposite_gladden
+		add_claim = c_west_bight
+		add_claim = c_south_opposite_lorien
+		add_claim = c_north_opposite_lorien
+		add_claim = c_langwed_vale
+		add_claim = c_eredlangwed
+		add_claim = c_north_west_of_mirkwood
+		add_claim = c_north_of_mirkwood
+		add_claim = c_north_ninglor_vale
+		add_claim = c_north_gladden
+		add_claim = c_forest_gate
+		add_claim = c_mirkmaer
+		add_claim = c_south_rhimdath
+	}
+}
+			
+##Option for Sauron to command his servants amongst the men of the East##
+character_event = {
+    id = sauron.6
+    title = "EVTTITsauron.6"#Command the men of the East
+    desc = "EVTDESCsauron.6"#Who shall the Easterlings be commanded to attack?
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = "EVTOPTAsauron.6"#Destroy Rhovanion!
+		trigger = {
+			dynasty = 10012
+		}	
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				culture_group = culture_group_easterling
+				trait = evil_side
+				NOT = { culture = culture_variags }
+			}
+			character_event = { id = sauron.7 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTBsauron.6"#Conquer Dale!
+		trigger = {
+			dynasty = 10012
+		}
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				culture_group = culture_group_easterling
+				trait = evil_side
+				NOT = { culture = culture_variags }
+			}
+			character_event = { id = sauron.8 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.6"#Attack the Dwarves of the North
+		trigger = {
+			dynasty = 10012
+		}				
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				culture_group = culture_group_easterling
+				trait = evil_side
+				NOT = { culture = culture_variags }
+			}
+			character_event = { id = sauron.9 days = 30}
+		}
+	}
+
+	option = {
+		name = "EVTOPTDsauron.6"#No, now is not the time.
+	}		
+}
+		
+character_event = {
+    id = sauron.7
+    title = "EVTTITsauron.7"#Sauron commands you
+    desc = "EVTDESCsauron.7"#Assemble the tribes, and attack Dorwinion. Enslave these fools, and destroy all who oppose you!
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.7"#As you command, Lord!
+		add_claim = k_dorwinion
+	}			
+}
+			
+character_event = {
+    id = sauron.8
+    title = "EVTTITsauron.8"#Sauron commands you
+    desc = "EVTDESCsauron.8"#Assemble the tribes, and attack Dale. Enslave these fools, and keep those dwarves under siege in their mountain stronghold!
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.8"#As you command, Lord!
+		add_claim = k_dale
+		add_claim = d_dale
+		add_claim = c_dale
+	}
+}
+			
+character_event = {
+    id = sauron.9
+    title = "EVTTITsauron.9"#Sauron commands you
+    desc = "EVTDESCsauron.9"#Assemble the tribes, and attack the Dwarves of the North. 
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+            name = "EVTOPTAsauron.9"#As you command, Lord!
+			add_claim = c_erebor
+			add_claim = c_azanulimbar_dum
+			add_claim = c_duban_nala
+			add_claim = c_baraz_duban
+	}
+}
+			
+##Option for Sauron to command his servants amongst the men of the South##
+character_event = {
+    id = sauron.10
+    title = "EVTTITsauron.10"#Command the men of the South
+    desc = "EVTDESCsauron.10"#Who shall your southern servants be commanded to attack?
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = "EVTOPTAsauron.10"#I grant them Belfalas if they can take it.
+		trigger = {
+			dynasty = 10012
+		}	
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture = culture_black_numenorean
+					culture_group = culture_group_southron
+					culture = culture_variags
+				}
+				trait = evil_side
+			}
+			character_event = { id = sauron.11 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTBsauron.10"#I grant them Anfalas if they can take it.
+		trigger = {
+			dynasty = 10012
+		}				
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture = culture_black_numenorean
+					culture_group = culture_group_southron
+					culture = culture_variags
+				}
+				trait = evil_side
+			}
+			character_event = { id = sauron.12 days = 30}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.10"#I grant them Andrast if they can take it.
+		trigger = {
+			dynasty = 10012
+		}				
+		prestige = -1000
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture = culture_black_numenorean
+					culture_group = culture_group_southron
+					culture = culture_variags
+				}
+				trait = evil_side
+			}
+			character_event = { id = sauron.13 days = 30}
+		}
+	}
+
+	option = {
+		name = "EVTOPTDsauron.10"#No, now is not the time.
+	}		
+}
+		
+character_event = {
+    id = sauron.11
+    title = "EVTTITsauron.11"#Sauron commands you
+    desc = "EVTDESCsauron.11"#Eastern Gondor shall go to Mordor and there my Orcs shall dwell, but the rich lands of Belfalas are yours - if you can take them.
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.11"#Thank you, Great Lord!"
+		add_claim = k_belfalas
+	}
+}
+
+character_event = {
+    id = sauron.12
+    title = "EVTTITsauron.12"#Sauron commands you
+    desc = "EVTDESCsauron.12"#Eastern Gondor shall go to Mordor and there my Orcs shall dwell, but the rich lands of Anfalas are yours - if you can take them."
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.12"#Thank you, Great Lord!
+		add_claim = k_anfalas
+	}
+			
+}
+			
+character_event = {
+    id = sauron.13
+    title = "EVTTITsauron.13"#Sauron commands you
+    desc = "EVTDESCsauron.13"#Eastern Gondor shall go to Mordor and there my Orcs shall dwell, but the rich lands of Andrast are yours - if you can take them.
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+	option = {
+        name = "EVTOPTAsauron.13"#Thank you, Great Lord!
+		add_claim = k_andrast
+	}
+			
+}
+			
+##Events for when Mordor is under attack, calling in Easterling and Southron allies##
+
+character_event = {
+    id = sauron.14
+    title = "EVTTITsauron.14"#Call in your vassal troops
+    desc = "EVTDESCsauron.14"#Some fool has dared to attack Mordor! Shall we send word to your servants in the East and South to come to Mordor's defense?
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = "EVTOPTAsauron.14"#Yes, let them defend their Lord and God!
+		trigger = {
+			dynasty = 10012
+		}
+		set_character_flag = sauroncalled_allies					
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = culture_group_easterling
+					culture_group = culture_group_southron
+					culture = culture_black_numenorean
+				}
+				trait = evil_side
+			}
+			character_event = { id = sauron.15 }
+		}
+	}	
+
+	option = {
+            name = "EVTOPTBsauron.14"#No, Mordor can handle this alone.
+	}		
+}
+		
+#Sauron's servants receives the call for aid#		
+character_event = {
+    id = sauron.15
+    title = "EVTTITsauron.15"#Mordor commands you
+    desc = "EVTDESCsauron.15"#Lord Sauron the Great demands that you assemble your full might and come to Mordor to beat back this so-called invasion.
+    picture = "GFX_good"
+	
+	is_triggered_only = yes	
+		
+	option = {
+        name = "EVTOPTAsauron.15"#We'll be right there, Great Lord!
+		trigger = {
+			trait = evil_side
+		}
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_mordor
+					has_landed_title = c_barad_dur
+				}
+				dynasty = 10012	
+			}
+			character_event = { id = sauron.16 days = 7 }
+		}				
+	}				
+}
+				
+#Mordor gets replies#	
+character_event = {
+    id = sauron.16
+    title = "EVTTITsauron.16"#Your servants Respond
+    desc = "EVTDESCsauron.16"#An answer returns from your servant - they have answered Mordor's call, and will march immediately to its defense.
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = "EVTOPTAsauron.16"#Of course they will.
+	}				
+}
+				
+##Event to remove the character flag once peace returns##
+
+character_event = {
+    id = sauron.17
+    title = "EVTTITsauron.17"#Calling for Aid
+    desc = "EVTDESCsauron.17"#Enough time has passed, that you can now call in allies to Mordor's defense again if needed.
+    picture = "GFX_good"
+	mean_time_to_happen = { months = 50 }
+	
+	trigger = {
+		has_character_flag = sauroncalled_allies
+		has_raised_levies = ROOT
+	}
+			  
+	option = {
+		name = "OK"
+		clr_character_flag = sauroncalled_allies
+	}
+}
+		
+##Events for when AI Mordor is under attack, since decisions are too slow##
+
+character_event = {
+    id = sauron.18
+    title = "EVTTITsauron.18"#Call in your vassal troops
+    desc = "EVTDESCsauron.18"#Some fool has dared to attack Mordor! Shall we send word to your servants in the East and South to come to Mordor's defense?
+    picture = "GFX_good"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = c_barad_dur
+			has_landed_title = k_mordor
+		}	
+		dynasty = 10012
+		ai = yes
+		is_primary_war_defender = yes
+		NOT = { has_character_flag = sauroncalled_allies }
+	}
+		
+		
+	option = {
+		name = "EVTOPTAsauron.18"#Yes, let them defend their Lord and God!
+		trigger = {
+			dynasty = 10012
+		}
+		set_character_flag = sauroncalled_allies					
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = culture_group_easterling
+					culture_group = culture_group_southron
+					culture = culture_black_numenorean
+				}
+				trait = evil_side
+			}
+			character_event = { id = sauron.15 }
+		}		
+	}
+}
+	
+##Sauron gets event to raise taxes##
+character_event = {
+    id = sauron.19
+    title = "EVTTITsauron.19"#Exploit your minions
+    desc = "EVTDESCsauron.19"#Your steward informs you that you are not fully exploiting your vassals. He suggests you raise taxes immediately.
+    picture = "GFX_sauron_commands"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+				has_landed_title = c_barad_dur
+				has_landed_title = k_mordor
+			}	
+		dynasty = 10012
+		NOT = { has_character_flag = sauron19 }
+		OR = {
+			primary_title = {
+				OR = {
+					has_law = city_tax_0
+					has_law = city_tax_1
+					has_law = city_tax_2
+				}
+			}
+			primary_title = {
+				OR = {
+					has_law = feudal_tax_0
+					has_law = feudal_tax_1
+					has_law = feudal_tax_2
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	option = {
+		name = "EVTOPTAsauron.19"#Silence! Do not bother me with this again.
+		trigger = { ai = no }
+		set_character_flag = sauron19
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.19"#Do so! This army doesn't feed itself...
+		primary_title = { add_law = city_tax_3 }
+		primary_title = { add_law = feudal_tax_3 }
+	}
+}
+	
+##AI Mordor is too inactive, we will give it a random claim on a neighboring duchy held by hostile culture every 10 years##
+	
+character_event = {
+    id = sauron.20
+    title = "EVTTITsauron.20"#Expand your Realm
+    desc = "EVTDESCsauron.20"#The lands of Middle-Earth are yours, you have but to send forth your armies and take what is rightfully yours! This neighboring duchy, for example...
+    picture = "GFX_sauron_commands"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = c_barad_dur
+			has_landed_title = k_mordor
+		}	
+		dynasty = 10012
+		num_of_claims = 0
+		year = 11375
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+		
+	option = { 
+		name = "EVTOPTAsauron.20"#It will be mine.
+		random_realm_province = {
+			limit = {
+				any_neighbor_province = {
+					OR = {
+						owner = { religion = religion_dunedain }
+						owner = { religion = religion_rhovanion }
+						owner = { religion = religion_mahal }
+						owner = { religion_group = religion_group_eldar }
+						owner = { religion = religion_haldadian }
+					}					
+				}
+			}
+			random_neighbor_province = {
+				limit = {
+					OR = {
+						owner = { religion = religion_dunedain }
+						owner = { religion = religion_rhovanion }
+						owner = { religion = religion_mahal }
+						owner = { religion_group = religion_group_eldar }
+						owner = { religion = religion_haldadian }
+					}
+				}
+				county = { add_claim = ROOT }
+				duchy = { add_claim = ROOT }
+			}
+		}
+	}				  
+}
+
+
+
+##Option for Sauron to command the Nazgul##
+character_event = {
+    id = sauron.21
+    title = "EVTTITsauron.21"
+    desc = "EVTDESCsauron.21"
+    picture = "GFX_sauron_commands"
+	is_triggered_only = yes
+		  
+	option = {
+		name = "EVTOPTAsauron.21"	## Command Khamûl
+		trigger = {
+			NOT = { has_global_flag = khamul_in_angmar }
+		}			
+		character_event = { id = sauron.22 days = 5 }
+		set_character_flag = call_his_nazguls
+		ai_chance = { factor = 50 }
+	}
+		
+	option = {
+		name = "EVTOPTBsauron.21" ## Command Akhôrahil, Adûnaphazôr	and Abrazîr	
+		trigger = {
+			NOT = { has_global_flag = numenorean_nazguls_in_angmar }
+		}
+		character_event = { id = sauron.32 days = 5 }
+		set_character_flag = call_his_nazguls
+		ai_chance = { factor = 25 }
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.21" ## Command Uvatha, Ren, Ji-Undur, Dwar
+		character_event = { id = sauron.37 days = 5}
+		set_character_flag = call_his_nazguls
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = "EVTOPTDsauron.21"
+		trigger = { ai = no }
+	}	
+}
+
+
+## Option for Sauron to command Khamûl the Easterling ##
+character_event = {
+    id = sauron.22
+    title = "EVTTITsauron.22"
+    desc = "EVTDESCsauron.22"
+    picture = "GFX_sauron_commands"
+	is_triggered_only = yes
+		  
+	option = {
+		name = "EVTOPTAsauron.22" ## Make an Invasion from the East.
+		trigger = {
+			prestige = 500
+			wealth = 500
+			has_landed_title = c_amon_lanc
+			has_landed_title = k_dol_guldur
+			NOT = { has_global_flag = balchoths_invasion }
+			NOT = { has_global_flag = wainriders_invasion }
+		}
+		ai_chance = { factor = 80 }
+		prestige = -500
+		wealth = -500		
+		any_courtier = {
+			limit = { 
+				has_character_flag = khamul
+				age = 1
+			}
+			add_trait = at_east
+			character_event = { id = sauron.23 days = 365 }
+		}
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.22" ## Join the Witch-King in Angmar
+		trigger = {
+			prestige = 500
+			wealth = 500
+			has_landed_title = c_amon_lanc
+			has_landed_title = k_dol_guldur
+			NOT = { has_global_flag = khamul_in_angmar }
+			any_playable_ruler = {
+				has_landed_title = e_angmar
+				has_character_flag = witchking
+			}
+		}	
+		ai_chance = { factor = 20 }
+		prestige = -500
+		wealth = -500	
+		set_global_flag = khamul_in_angmar
+		any_courtier = {
+			limit = { 
+				has_character_flag = khamul
+				age = 1
+			}
+			character_event = { id = sauron.30 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTDsauron.22"
+		trigger = { ai = no }
+	}	
+}
+
+## Khamul will raise an army to invade from East ##
+
+character_event = {
+    id = sauron.23
+    title = "EVTTITsauron.23"
+    desc = "EVTDESCsauron.23"
+    picture = "GFX_sauron_commands"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.23" ## I'll call the Balchoths.
+		trigger = {
+			NOT = { has_global_flag = balchoths_invasion }
+		}		
+		ai_chance = { factor = 50 }
+		set_global_flag = balchoths_invasion
+		create_random_soldier = {
+			name = "Donát"
+			dynasty = 5011
+			random_traits = yes
+			culture = culture_balchoth
+			religion = religion_easterlings
+			age = 30
+			attributes = {
+				martial = 10
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = zealous
+		}	
+		new_character = {
+			k_balchoths = {
+				grant_title = PREV
+			}
+			set_defacto_liege = THIS	
+			c_srzel_kain = {
+				grant_title = PREV
+			}
+			narrative_event = { id = sauron.24 days = 20 }
+		}	
+		FROM = { character_event = { id = sauron.26 days = 20 } }
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.23" ## I'll call the Wainriders.
+		trigger = {
+			NOT = { has_global_flag = wainriders_invasion }
+		}
+		ai_chance = { factor = 50 }
+		set_global_flag = wainriders_invasion
+		create_random_soldier = {
+			random_traits = yes
+			name = "Khudbard"
+			dynasty = 5012
+			culture = culture_balchoth
+			religion = religion_easterlings
+			age = 30
+			attributes = {
+				martial = 10
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = zealous
+		}	
+		new_character = {
+			k_wainriders = {
+				grant_title = PREV
+			}
+			set_defacto_liege = THIS
+			c_ilapar = { 
+				grant_title = PREV 
+			}
+			narrative_event = { id = sauron.25	days = 50 }
+		}	
+		FROM = { character_event = { id = sauron.27 days = 20 }	}
+	}	
+}
+
+
+### Invasion of the Balchoths ###
+narrative_event = {
+	id = sauron.24
+	title = "EVTTITsauron.24"
+	desc = "EVTDESCsauron.24"	
+	hide_new = yes
+	
+	picture = "GFX_evt_gondor_kingdom"
+	border = "GFX_event_narrative_frame_war"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.24"
+		trigger = {
+			has_landed_title = k_balchoths
+			culture = culture_balchoth
+			age = 16
+		}
+		set_global_flag = balchoths_arrival
+		if = {
+			limit = {
+				614 = {
+					owner = {
+						realm = {
+							NOT = { title = k_balchoths }
+						}
+					}
+				}
+			}
+			614 = { # Kas Rhûn
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				578 = {
+					owner = {
+						realm = {
+							NOT = { title = k_balchoths }
+						}
+					}
+				}
+			}
+			578 = { # Uldonavan
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				569 = {
+					owner = {
+						realm = {
+							NOT = { title = k_balchoths }
+						}
+					}
+				}
+			}
+			569 = { # Dor Rhovanion
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		
+		wealth = 5000
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 2600 2600 }
+					heavy_infantry = { 400 400 }
+					knights = { 50 50 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 1541 1541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		random = {
+			chance = 50
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_balchoth
+				female = no
+				age = 30
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 614 # Kas Rhûn
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_balchoth
+				female = no
+				age = 35
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 614 # Kas Rhûn
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+		}
+		random = {
+			chance = 50
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_balchoth
+				female = no
+				age = 30
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_balchoth
+				female = no
+				age = 35
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_balchoth
+				female = no
+				age = 39
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+		}
+		
+		# Some extra courtiers
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 16
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 20
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 25
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 26
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = no
+			age = 28
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = yes
+			age = 16
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = yes
+			age = 17
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = yes
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = yes
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_balchoth
+			female = yes
+			age = 20
+		}
+		any_playable_ruler = {
+			character_event = { id = sauron.28 days = 1 }
+		}	
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.24"
+		trigger = {
+			OR = {
+				NOT = { culture = culture_balchoth }
+				NOT = { has_landed_title = k_balchoths }
+			}
+		}
+	}
+}
+
+
+### Invasion of the Wainriders - Attack of Gondor ###
+narrative_event = {
+	id = sauron.25
+	title = "EVTTITsauron.25"
+	desc = "EVTDESCsauron.25"
+	hide_new = yes	
+	picture = "GFX_evt_gondor_kingdom"
+	border = "GFX_event_narrative_frame_war"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.25"
+		trigger = {
+			has_landed_title = k_wainriders
+			age = 16
+		}
+		any_playable_ruler = {
+			character_event = { id = sauron.29 days = 1 }
+		}		
+		set_global_flag = wainriders_arrival
+		if = {
+			limit = {
+				422 = {
+					owner = {
+						realm = {
+							NOT = { title = k_wainriders }
+						}
+					}
+				}
+			}
+			422 = { # Minas Tirith
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				115 = {
+					owner = {
+						realm = {
+							NOT = { title = k_wainriders }
+						}
+					}
+				}
+			}
+			115 = { # Edoras
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				329 = {
+					owner = {
+						realm = {
+							NOT = { title = k_wainriders }
+						}
+					}
+				}
+			}
+			329 = { # South Emyn Muil
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = tribal_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		
+		wealth = 5000
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 2600 2600 }
+					heavy_infantry = { 400 400 }
+					knights = { 50 50 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 1541 1541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 30
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 35
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 39
+			attributes = {
+				martial = 12
+			}
+			trait = brilliant_strategist
+		}
+		new_character = {
+			spawn_unit = {
+				province = 614 # Kas Rhûn
+				troops =
+				{
+					light_cavalry = { 1600 1600 }
+					light_infantry = { 541 541 }
+					heavy_infantry = { 210 210 }
+					knights = { 47 47 }
+				}
+				attrition = 0.25
+			}
+		}
+		
+		random = {
+			chance = 50
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_wainriders
+				female = no
+				age = 30
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 614 # Kas Rhûn
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_wainriders
+				female = no
+				age = 35
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 614 # Kas Rhûn
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+		}
+		random = {
+			chance = 50
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_wainriders
+				female = no
+				age = 30
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_wainriders
+				female = no
+				age = 35
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				religion = religion_easterlings
+				culture = culture_wainriders
+				female = no
+				age = 39
+				attributes = {
+					martial = 12
+				}
+				trait = brilliant_strategist
+			}
+			new_character = {
+				spawn_unit = {
+					province = 576
+					troops =
+					{
+						light_cavalry = { 1600 1600 }
+						light_infantry = { 541 541 }
+						heavy_infantry = { 210 210 }
+						knights = { 47 47 }
+					}
+					attrition = 0.25
+				}
+			}
+		}
+		
+		# Some extra courtiers
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 16
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 20
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 25
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 26
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = no
+			age = 28
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = yes
+			age = 16
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = yes
+			age = 17
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = yes
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = yes
+			age = 18
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_easterlings
+			culture = culture_wainriders
+			female = yes
+			age = 20
+		}
+	}
+}
+
+
+## Sauron is informed that the Balchoths will invade Rhûn and Rhovanion ##
+
+character_event = {
+	id = sauron.26
+	title = "EVTTITsauron.26"
+	desc = "EVTDESCsauron.26"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.26"
+		clr_character_flag = call_his_nazguls
+		any_courtier = {
+			limit = {
+				has_character_flag = khamul
+				age = 1
+			}	
+			remove_trait = at_east
+		}
+	}
+}
+
+## Sauron is informed that the Wainriders will invade Anorien, Calenardhon and Brownlands ##
+
+character_event = {
+	id = sauron.27
+	title = "EVTTITsauron.27"
+	desc = "EVTDESCsauron.27"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.27"
+		clr_character_flag = call_his_nazguls
+		any_courtier = {
+			limit = {
+				has_character_flag = khamul
+				age = 1
+			}	
+			remove_trait = at_east
+		}		
+	}
+}
+
+## Players are informed that the Balchoths will invade Rhûn and Rhovanion ##
+
+character_event = {
+	id = sauron.28
+	title = "EVTTITsauron.28"
+	desc = "EVTDESCsauron.28"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.28" ## Great !
+		trigger = { NOT = { trait = good_side } }
+	}
+	option = {
+		name = "EVTOPTBsauron.28" ## Curses !
+		trigger = { NOT = { trait = evil_side } }
+	}	
+}
+
+## Players are informed that the Wainriders will invade Anorien, Calenardhon and Brownlands ##
+
+character_event = {
+	id = sauron.29
+	title = "EVTTITsauron.29"
+	desc = "EVTDESCsauron.29"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.29" ## Great !
+		trigger = { NOT = { trait = good_side } }		
+	}
+	option = {
+		name = "EVTOPTBsauron.29" ## Curses !
+		trigger = { NOT = { trait = evil_side } }
+	}	
+}
+
+
+## Khamûl will join the Witch-king in Angmar ##
+
+character_event = {
+	id = sauron.30
+	title = "EVTTITsauron.30"
+	desc = "EVTDESCsauron.30"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.30" ## Yes, my Lord.
+		e_angmar = {
+			holder_scope = { ROOT = { move_character = PREV } }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1	
+			}
+			character_event = { id = sauron.31 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = call_his_nazguls
+				age = 1	
+			}
+			clr_character_flag = call_his_nazguls
+		}
+	}
+}
+
+## Witch-king is alerted ##
+
+character_event = {
+	id = sauron.31
+	title = "EVTTITsauron.31"
+	desc = "EVTDESCsauron.31"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.30" ## Yes, my Lord.	
+	}
+}
+
+
+## Option for Sauron to command Akhorahil, Adunaphazor and Abrazir ##
+character_event = {
+    id = sauron.32
+    title = "EVTTITsauron.32"
+    desc = "EVTDESCsauron.32"
+    picture = "GFX_sauron_commands"
+	is_triggered_only = yes
+		  
+	option = {
+		name = "EVTOPTAsauron.32" ## Conquers the lands of Mordor
+		trigger = {
+			prestige = 500
+			wealth = 500
+			has_landed_title = c_amon_lanc
+			has_landed_title = k_dol_guldur
+			NOT = { has_landed_title = k_mordor }
+			NOT = { has_global_flag = mordor_sauron_reconquest }
+		}
+		ai_chance = { factor = 80 }
+		prestige = -500
+		wealth = -500
+		character_event = { id = sauron.33 }
+	}
+		
+	option = {
+		name = "EVTOPTCsauron.32" ## Join the Witch-King in Angmar
+		trigger = {
+			prestige = 500
+			wealth = 500
+			has_landed_title = c_amon_lanc
+			has_landed_title = k_dol_guldur
+			any_playable_ruler = {
+				has_landed_title = e_angmar
+				has_character_flag = withcking
+			}
+		NOT = { has_global_flag = numenorean_nazguls_in_angmar }
+		}	
+		ai_chance = { factor = 20 }		
+		prestige = -500
+		wealth = -500
+		set_global_flag = numenorean_nazguls_in_angmar
+		any_courtier = {
+			limit = { 
+				has_character_flag = akhorahil
+				age = 1
+			}
+			character_event = { id = sauron.30 }
+		}
+		any_courtier = {
+			limit = { 
+				has_character_flag = adunaphazor
+				age = 1
+			}
+			character_event = { id = sauron.30 }
+		}	
+		any_courtier = {
+			limit = { 
+				has_character_flag = abrazir
+				age = 1
+			}
+			character_event = { id = sauron.30 }
+		}			
+	}
+
+	option = {
+		name = "EVTOPTDsauron.32"
+		trigger = { ai = no }
+	}	
+}
+
+
+## Reconquest of Mordor ##
+
+character_event = {
+	id = sauron.33
+	title = "EVTTITsauron.33"
+	desc = "EVTDESCsauron.33"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.33" ## Yes, my Lord.
+		trigger = {
+			has_landed_title = k_dol_guldur
+		}	
+		clr_character_flag = call_his_nazguls
+		set_global_flag = balchoths_arrival
+		if = {
+			limit = {
+				654 = {
+					owner = {
+						realm = {
+							NOT = { title = k_dol_guldur }
+						}
+					}
+				}
+			}
+			654 = { # Barad-Dur
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				148 = {
+					owner = {
+						realm = {
+							NOT = { title = k_dol_guldur }
+						}
+					}
+				}
+			}
+			148 = { # Orodruin
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				440 = {
+					owner = {
+						realm = {
+							NOT = { title = k_dol_guldur }
+						}
+					}
+				}
+			}
+			440 = { # Nurn
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		
+		wealth = 2500
+		
+		any_courtier = {
+			limit = {
+				has_character_flag = akhorahil
+				age = 1
+			}
+			spawn_unit = {
+				province = 310 # Dol Guldur
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 1000 1000 }
+					knights = { 150 150 }
+				}
+			}
+		}
+		any_courtier = {
+			limit = {
+				has_character_flag = adunaphazor
+				age = 1
+			}
+			spawn_unit = {
+				province = 310 # Dol Guldur
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 1000 1000 }
+					knights = { 150 150 }
+				}
+			}
+		}
+		any_courtier = {
+			limit = {
+				has_character_flag = abrazir
+				age = 1
+			}
+			spawn_unit = {
+				province = 310 # Dol Guldur
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 1000 1000 }					
+					knights = { 150 150 }
+				}
+			}
+		}
+		
+	}
+}
+
+
+## If Sauron conquered Barad-Dur, he can take the title of e_barad_dur ##
+
+character_event = {
+	id = sauron.34
+	title = "EVTTITsauron.34"
+	desc = "EVTDESCsauron.34"
+    picture = "GFX_evil"
+
+	trigger = {
+		has_character_flag = sauron
+		age = 16
+		has_landed_title = c_barad_dur
+		NOT = { has_landed_title = e_barad_dur }
+		culture = culture_maiar
+	}
+	
+	mean_time_to_happen = {
+		days = 20
+	}
+			  
+	option = {
+		name = "EVTOPTAsauron.34"
+		e_barad_dur = {
+			grant_title = ROOT
+		}
+		character_event = { id = sauron.35 days = 1 }
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.34"
+		trigger = { ai = no }
+		character_event = { id = sauron.35 days = 1 }
+	}	
+}
+
+
+## If Sauron holds the title of e_barad_dur, he can choose to reveal himself as Sauron ##
+
+character_event = {
+	id = sauron.35
+	title = "EVTTITsauron.35"
+	desc = "EVTDESCsauron.35"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.35"
+		set_name = "Sauron"
+		any_playable_ruler = {
+			narrative_event = { id = sauron.36 days = 25 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.35"
+		trigger = { ai = no }
+	}	
+}
+
+
+## Players are informed that Sauron came back in Mordor ##
+
+narrative_event = {
+	id = sauron.36
+	title = "EVTTITsauron.36"
+	desc = "EVTDESCsauron.36"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.36" ## Great !
+		trigger = { NOT = { trait = good_side } }		
+	}
+	option = {
+		name = "EVTOPTBsauron.36" ## Curses !
+		trigger = { NOT = { trait = evil_side } }
+	}	
+}
+
+#####################################
+### Events for the 4 last Nazguls ###
+## Ji-Undur, Dwar, Uvatha and Ren are coming in front of Sauron ##
+
+character_event = {
+	id = sauron.37
+	title = "EVTTITsauron.37"
+	desc = "EVTDESCsauron.37"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.37" ### Weak Up the Orcs in Misty Mountains ###
+		trigger = {
+			NOT = { 
+				has_global_flag = misty_guldur
+			}
+		}
+		set_global_flag = misty_guldur
+		any_playable_ruler ={
+			limit = { 
+				has_landed_title = k_gundabad 
+				age = 1
+			}
+			character_event = { id = sauron.38 days = 150 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAsauron.37" ### Make the Dunlendings invade Eregion ###
+		trigger = {
+			NOT = { 
+				has_global_flag = dunlendings_guldur
+			}
+		}
+		set_global_flag = dunlendings_guldur
+		any_playable_ruler ={
+			limit = { 
+				has_landed_title = d_dunland
+				age = 1
+			}
+			character_event = { id = sauron.40	days = 150 }
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTCsauron.37" ## Stay there.
+		trigger = { ai = no }
+	}	
+}
+
+
+## The King of Gundabad will send an army to conquer Goblintown and Moria ##
+
+character_event = {
+	id = sauron.38
+	title = "EVTTITsauron.38"
+	desc = "EVTDESCsauron.38"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.38" ### I'll appoint a new general.
+		create_random_soldier = {
+			random_traits = yes
+			culture = culture_orkish
+			religion = religion_orkish
+			age = 30
+			attributes = {
+				martial = 10
+				diplomacy = 4
+				stewardship = 5
+				intrigue = 4
+				learning = 3
+			}
+			health = 6
+			fertility = 0.7
+			trait = brilliant_strategist
+			trait = wroth
+			trait = cruel
+			trait = proud
+			trait = imposing
+			trait = great_orc
+		}	
+		new_character = {
+			set_character_flag = orc_for_misty_mountains
+		}	
+		character_event = { id = sauron.39 days = 100 }
+		FROMFROM = { clr_character_flag = call_his_nazguls }
+	}
+	
+	option = {
+		name = "EVTOPTBsauron.38" ### I'll lead myself this war!
+		trigger = { ai = no }
+		set_character_flag = orc_for_misty_mountains
+		character_event = { id = sauron.39 days = 100 }	
+		FROMFROM = { clr_character_flag = call_his_nazguls }		
+	}	
+	
+	option = {
+		name = "EVTOPTCsauron.38" ## Stay there.
+		trigger = { ai = no }
+	}	
+}
+
+
+## Conquest of Misty Mountains ##
+
+character_event = {
+	id = sauron.39
+	title = "EVTTITsauron.39"
+	desc = "EVTDESCsauron.39"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.39" ## Yes, my Lord.
+		trigger = {
+			has_landed_title = k_gundabad
+		}	
+		set_global_flag = war_on_misty_mountains
+		if = {
+			limit = {
+				285 = {
+					owner = {
+						realm = {
+							NOT = { title = k_gundabad }
+						}
+					}
+				}
+			}
+			285 = { # Moria
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = orkish_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				570 = {
+					owner = {
+						realm = {
+							NOT = { title = k_gundabad }
+						}
+					}
+				}
+			}
+			570 = { # Goblin-town
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = orkish_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				676 = {
+					owner = {
+						realm = {
+							NOT = { title = k_gundabad }
+						}
+					}
+				}
+			}
+			676 = { # Redhorn Pass
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = orkish_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}		
+		
+		wealth = 500
+		
+		any_courtier = {
+			limit = {
+				has_character_flag = orc_for_misty_mountains
+				age = 1
+			}
+			spawn_unit = {
+				province = 642 # Gundabad
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 2000 2000 }
+				}
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = orc_for_misty_mountains
+				age = 1
+			}
+			spawn_unit = {
+				province = 642 # Gundabad
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 2000 2000 }
+				}
+			}
+		}		
+	}
+}
+
+
+
+
+
+## The King of Dunland will invade Eregion ##
+
+character_event = {
+	id = sauron.40
+	title = "EVTTITsauron.40"
+	desc = "EVTDESCsauron.40"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAsauron.38" ### I'll appoint a new general.
+		character_event = { id = sauron.41 days = 80 }
+		add_trait = evil_side
+		FROMFROM = { clr_character_flag = call_his_nazguls }
+	}
+	
+	option = {
+		name = "EVTOPTCsauron.38" ## Stay there.
+		trigger = { ai = no }
+	}	
+}
+
+
+## Conquest the Eregion ##
+
+character_event = {
+	id = sauron.41
+	title = "EVTTITsauron.41"
+	desc = "EVTDESCsauron.41"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAsauron.41" ## Yes, my Lord.
+		trigger = {
+			has_landed_title = k_gundabad
+		}	
+		if = {
+			limit = {
+				290 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			290 = { # Ost-in-Edhil
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				286 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			286 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				287 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			287 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				288 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			288 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}	
+		if = {
+			limit = {
+				289 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			289 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}	
+		if = {
+			limit = {
+				291 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			291 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}	
+		if = {
+			limit = {
+				293 = {
+					owner = {
+						realm = {
+							NOT = { title = d_dunland }
+						}
+					}
+				}
+			}
+			293 = { # Echad Bruinen
+				kingdom = {
+					ROOT = {
+						war = {
+							casus_belli = viking_invasion
+							target = PREVPREV # The top liege of the owner of the province
+							thirdparty_title = PREV # The de jure kingdom
+						}
+					}
+				}
+			}
+		}			
+				
+		wealth = 500
+		
+		any_courtier = {
+			limit = {
+				has_character_flag = orc_for_misty_mountains
+				age = 1
+			}
+			spawn_unit = {
+				province = 642 # Gundabad
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 2000 2000 }
+				}
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = orc_for_misty_mountains
+				age = 1
+			}
+			spawn_unit = {
+				province = 642 # Gundabad
+				troops =
+				{
+					light_cavalry = { 600 600 }
+					light_infantry = { 2500 2500 }
+					heavy_infantry = { 2200 2200 }
+					archers = { 2000 2000 }
+				}
+			}
+		}		
+	}
+}

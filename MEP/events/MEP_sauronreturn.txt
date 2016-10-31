@@ -1,0 +1,171 @@
+namespace = sauronreturn
+
+## Sauron come to the ruins of Amon Lanc ##	
+character_event = {
+    id = sauronreturn.1
+    title = EVTTITsauronreturn.1
+    desc = EVTDESCsauronreturn.1
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	trigger = {
+		has_character_flag = sauron
+		NOT = { has_character_flag = sauronreturn1 }
+		NOT = { has_character_flag = sauronreturn2 }
+		age = 1
+		year = 9343
+		NOT = { year = 9344 }
+	}
+
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = {
+		name = EVTOPTAsauronreturn.1
+		set_character_flag = sauronreturn1		
+		c_amon_lanc = {
+			grant_title = ROOT
+		}
+		k_dol_guldur = {
+			grant_title = ROOT
+		}	
+		any_playable_ruler = {
+			limit = {
+				trait = good_side
+				NOT = { has_landed_title = k_mirkwood }
+			}
+			character_event = { id = sauronreturn.2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				trait = evil_side
+				NOT = { has_landed_title = k_mirkwood }						
+			}
+			character_event = { id = sauronreturn.3 }			
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_mirkwood
+			}
+			character_event = { id = sauronreturn.4 }	
+		}		
+	}
+}
+		
+## The "Good" Rulers are informed ##	
+character_event = {
+    id = sauronreturn.2
+    title = EVTTITsauronreturn.2
+    desc = EVTDESCsauronreturn.2
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAsauronreturn.2
+	}
+}		
+
+## The "Evil" Rulers are informed ##	
+character_event = {
+    id = sauronreturn.3
+    title = EVTTITsauronreturn.3
+    desc = EVTDESCsauronreturn.3
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAsauronreturn.3
+	}
+}	
+
+## The king of Mirkwood is informed ##	
+character_event = {
+    id = sauronreturn.4
+    title = EVTTITsauronreturn.4
+    desc = EVTDESCsauronreturn.4
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAsauronreturn.4
+	}
+}			
+
+## Sauron start to corrupt Eryn Galen ##	
+character_event = {
+    id = sauronreturn.5
+    title = EVTTITsauronreturn.5
+    desc = EVTDESCsauronreturn.5
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	trigger = {
+		has_character_flag = sauron
+		has_character_flag = sauronreturn1
+		NOT = { has_character_flag = sauronreturn2 }
+		age = 1
+		year = 9393
+		NOT = { year = 9394 }
+		has_landed_title = k_dol_guldur
+	}
+
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = {
+		name = EVTOPTAsauronreturn.5
+		set_character_flag = sauronreturn1		
+		d_emyn_guldur = {
+			grant_title = ROOT
+		}
+		c_south_east_mirkwood = {
+			grant_title = ROOT
+		}	
+		c_south_west_mirkwood = {
+			grant_title = ROOT
+		}	
+		c_south_north_east_mirkwood = {
+			grant_title = ROOT
+		}	
+		c_south_mirkwood  = {
+			grant_title = ROOT
+		}	
+		c_south_north_west_mirkwood  = {
+			grant_title = ROOT
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_mirkwood
+			}
+			character_event = { id = sauronreturn.6 }	
+		}		
+	}
+	option = {
+		name = EVTOPTAsauronreturn.6
+		set_character_flag = sauronreturn1	
+		trigger = { ai = no }	
+	}	
+}
+
+## The king of Mirkwood is informed ##	
+character_event = {
+    id = sauronreturn.6
+    title = EVTTITsauronreturn.6
+    desc = EVTDESCsauronreturn.6
+	picture = "GFX_sauron_commands"
+	age = 16
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAsauronreturn.6
+	}
+}	

@@ -1,0 +1,432 @@
+namespace = building_erebor
+
+############### building_erebor.0-building_erebor.8 = Building the first level of Erebor from the lonely mountain
+
+########## EREBOR ###########
+## Building of Erebor Events ##
+character_event = {
+	id = building_erebor.0
+	title = "EVTTITbuilding_erebor.0"
+	desc = "EVTDESCbuilding_erebor.0"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.0" ## We will create the kingdom under the moutain
+		set_global_flag = building_erebor
+		wealth = -100
+		FROM = {
+			character_event = { id = building_erebor.1 days = 90 } # building  - First Step#
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuilding_erebor.0"
+		trigger = { ai = no }
+	}		
+}
+
+## Building of Erebor 1 - First step : Orc raiders ##
+character_event = {
+	id = building_erebor.1
+	title = "EVTTITbuilding_erebor.1"
+	desc = "EVTDESCbuilding_erebor.1"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.1" # Pay mercenaries but do not figth# 
+		wealth = -100
+		random_list = {
+			75 = {
+				random_list = {
+					50 = {	add_trait = craven }
+					50 = {  }
+				}
+				FROM = {
+					character_event = { id = building_erebor.3 days = 90 } # Second Step
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_erebor.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_erebor.1" # Do not pay but figth #
+		random_list = {
+			70 = {	
+				random_list = {
+					35 = {  }
+					30 = { add_trait = brave }
+					30 = { add_trait = greedy }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.3 days = 90 } # Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_erebor.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_erebor.1" # Pay AND fight #
+		wealth = -100
+		random_list = {
+			80 = {	
+				random_list = {
+					65 = {  }
+					30 = { add_trait = brave }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.3 days = 90 } # Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_erebor.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTDbuilding_erebor.1" # Run away#
+		trigger = { ai = no } 
+		add_trait = craven
+		clr_global_flag = building_erebor
+	}		
+}
+## Building of Erebor 2- First Fail ##
+character_event = {
+	id = building_erebor.2
+	title = "EVTTITbuilding_erebor.2"
+	desc = "EVTDESCbuilding_erebor.2"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.2"
+		clr_global_flag = building_erebor
+		random_list = {
+					75 = {  }
+					20 = { add_trait = wounded }
+					3 = { add_trait = maimed }
+					2 = { add_trait = infirm }
+				}
+		}		
+}
+
+## Building of Erebor 3 - Second Step - Collapse ##
+character_event = {
+	id = building_erebor.3
+	title = "EVTTITbuilding_erebor.3"
+	desc = "EVTDESCbuilding_erebor.3"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.3" ## Pay but do nothing else
+		wealth = -100
+		random_list = {
+			75 = {	
+				random_list = {
+					50 = {  }
+					50 = { add_trait = slothful }
+				}
+				FROM = {
+					character_event = { id = building_erebor.5 days = 90 } # Third Step
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_erebor.4 days = 45 } # Second Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_erebor.3" ## Do not pay but act
+		random_list = {
+			70 = {	
+				random_list = {
+					35 = {  }
+					30 = { add_trait = diligent }
+					30 = { add_trait = greedy }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.5 days = 90 } # Third Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_erebor.4 days = 45 } # Second Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_erebor.3" ## Landslide
+		wealth = -100
+		random_list = {
+			80 = {	
+				random_list = {
+					65 = {  }
+					30 = { add_trait = diligent }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.5 days = 90 } # Third Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_erebor.4 days = 45 } # First Fail
+				}
+			}			
+		}
+	}		
+	option = {
+		name = "EVTOPTDbuilding_erebor.3"
+		trigger = { ai = no }
+		add_trait = slothful
+		clr_global_flag = building_erebor
+	}		
+}
+
+## Building of Erebor 4- Second fail ##
+character_event = {
+	id = building_erebor.4
+	title = "EVTTITbuilding_erebor.4"
+	desc = "EVTDESCbuilding_erebor.4"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.4" ## Ok.
+		clr_global_flag = building_erebor
+		random_list = {
+					75 = {  }
+					20 = { add_trait = wounded }
+					3 = { add_trait = maimed }
+					2 = { add_trait = infirm }
+		}			
+	}		
+}
+
+
+## Building of Erebor 5- Second Step - Magma ##
+character_event = {
+	id = building_erebor.5
+	title = "EVTTITbuilding_erebor.5"
+	desc = "EVTDESCbuilding_erebor.5"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.5" ## Do not help the trapped miners first
+		wealth = -100
+		random_list = {
+			70 = {	
+				random_list = {
+					45 = {  }
+					50 = { add_trait = cruel }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.7 days = 90 } # Building of Erebor - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_erebor.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_erebor.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_erebor.5" ## Help the miners first
+		wealth = -100
+		random_list = {
+			60 = {	
+				random_list = {
+					65 = {  }
+					15 = { add_trait = patient }
+					15 = { add_trait = kind }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.7 days = 90 } # Building of Erebor - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_erebor.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_erebor.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_erebor.5" ## Divide the water
+		wealth = -100
+		random_list = {
+			65 = {	
+				random_list = {
+					75 = {  }
+					10 = { add_trait = cruel }
+					5 = { add_trait = patient }
+					5 = { add_trait = kind }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_erebor.7 days = 90 } # Building of Erebor is Complete
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_erebor.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_erebor.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}				
+	option = {
+		name = "EVTOPTDbuilding_erebor.5" #Leave without helping the miners
+		trigger = { ai = no }
+		add_trait = cruel
+		clr_global_flag = building_erebor
+	}		
+}
+
+## Building of Erebor 6 - Third fail ##
+character_event = {
+	id = building_erebor.6
+	title = "EVTTITbuilding_erebor.6"
+	desc = "EVTDESCbuilding_erebor.6"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.6" ## Ok.
+		clr_global_flag = building_erebor
+		random_list = {
+			75 = {  }
+			20 = { add_trait = wounded }
+			3 = { add_trait = maimed }
+			2 = { add_trait = infirm }					
+		}
+	}		
+}
+
+
+## Building of Erebor 7 - Complete ##
+character_event = {
+	id = building_erebor.7
+	title = "EVTTITbuilding_erebor.7"
+	desc = "EVTDESCbuilding_erebor.7"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.7" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = erebor_built
+		clr_global_flag = building_erebor	
+		add_trait = erebor_founder
+		b_gate_of_erebor = { #castle
+			remove_building = ca_lonely_mountain
+			add_building = ca_erebor			
+		}
+		b_chamber_of_thror = { #city
+			remove_building = ct_lonely_mountain
+			add_building = ct_erebor
+		}
+		b_hall_of_thrain = { #city
+			remove_building = ct_lonely_mountain
+			add_building = ct_erebor
+		}
+		b_ravenhill = { #castle
+			remove_building = ca_lonely_mountain
+			add_building = ca_erebor			
+		}	
+		b_hall_of_treasure = { #city
+			remove_building = ct_lonely_mountain
+			add_building = ct_erebor
+		}
+		b_back_door = { #castle
+			remove_building = ca_lonely_mountain
+			add_building = ca_erebor			
+		}
+		b_erebor = { #city
+			remove_building = ct_lonely_mountain
+			add_building = ct_erebor
+		}			
+		c_erebor = {
+			culture = ROOT
+			religion = ROOT
+		}
+	}		
+}
+
+## Building of Erebor - Major Success - Gem mines ##
+character_event = {
+	id = building_erebor.8
+	title = "EVTTITbuilding_erebor.8"
+	desc = "EVTDESCbuilding_erebor.8"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_erebor.8" ## Great !
+		add_trait = erebor_gem_mine
+		character_event = { id = building_erebor.7 days = 60 }		
+	}		
+}

@@ -1,0 +1,32 @@
+decisions = {
+	## Decision for a dwarf to found the major building of Erebor ##
+	build_erebor = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			culture_group = culture_group_dwarves
+			NOT = { trait = incapable }
+			has_landed_title = c_erebor
+			any_realm_title = { has_building = ca_lonely_mountain }
+			292 = {
+				OR = {
+					NOT = { culture = culture_wilderness }
+					NOT = { religion = religion_wilderness }
+				}
+			}
+			NOT = { has_global_flag = building_erebor }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 500
+			wealth = 600
+		}
+		effect = {
+			character_event = { id = building_erebor.0 }
+			wealth = -200
+		}
+	}
+}

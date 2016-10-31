@@ -1,0 +1,969 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+# City buildings for generic humans group 'H" - Culture groups Edain ,Southron, Easterlings and Middlemen (except rohirrim, eothed and druedain)  #
+
+city = {
+
+################## Defense : fort level ###############################
+	ct_Hwall_1 = {
+		desc = ct_Hwall_1_desc
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 60
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwall_2 = {
+		desc = ct_Hwall_1_desc
+		upgrades_from = ct_Hwall_1
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.4
+		ai_creation_factor = 59
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}	
+	ct_Hwall_3 = {
+		desc = ca_wall_1_desc
+		upgrades_from = ct_Hwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 58
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwall_4 = {
+		desc = ca_wall_1_desc
+		upgrades_from = ct_Hwall_3
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 57
+       		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+           	}
+	}
+	ct_Hwall_5 = {
+		desc = ca_wall_1_desc
+		upgrades_from = ct_Hwall_4
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 56
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+
+################## Defense : garrison size ###############################	
+	ct_Hwatchtower_1 = {
+		desc = ct_Hwatchtower_1_desc
+		prerequisites = { ct_Hwall_1 }
+		gold_cost = 75
+		build_time = 270
+		garrison_size = 0.05
+		ai_creation_factor = 99	
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwatchtower_2 = {
+		desc = ct_Hwatchtower_1_desc
+		prerequisites = { ct_Hwall_2 }
+		upgrades_from = ct_Hwatchtower_1
+		gold_cost = 100
+		build_time = 370
+		garrison_size = 0.1
+		ai_creation_factor = 98
+        	potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwatchtower_3 = {
+		desc = ct_Hwatchtower_1_desc
+		upgrades_from = ct_Hwatchtower_2
+		gold_cost = 150
+		build_time = 550
+		garrison_size = 0.15
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwatchtower_4 = {
+		desc = ct_Hwatchtower_1_desc
+		upgrades_from = ct_Hwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwatchtower_5 = {
+		desc = ct_Hwatchtower_1_desc
+		upgrades_from = ct_Hwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hwatchtower_6 = {
+		desc = ct_Hwatchtower_1_desc
+		upgrades_from = ct_Hwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+
+	}
+
+################## Offense : Levy size ###############################
+	ct_Hbarracks_1 = {
+		desc = ct_Hbarracks_1_desc
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	}
+	ct_Hbarracks_2 = {
+		desc = ct_Hbarracks_1_desc
+		prerequisites = { ct_Hwall_1 }
+		upgrades_from = ct_Hbarracks_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	} 
+	ct_Hbarracks_3 = {
+		desc = ct_Hbarracks_1_desc
+		upgrades_from = ct_Hbarracks_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	} 
+	ct_Hbarracks_4 = {
+		desc = ct_Hbarracks_1_desc
+		upgrades_from = ct_Hbarracks_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}
+	} 
+	ct_Hbarracks_5 = {
+		desc = ct_Hbarracks_1_desc
+		upgrades_from = ct_Hbarracks_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+	       	}
+	}
+	ct_Hbarracks_6 = {
+		desc = ct_Hbarracks_1_desc
+		upgrades_from = ct_Hbarracks_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            }
+	}
+
+################## Offense : Light infantry + archers ###############################
+	ct_Htownmilitia_1 = {
+		desc = ct_Htownmilitia_1_desc
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+            	}	
+	}
+	ct_Htownmilitia_2 = {
+		desc = ct_Htownmilitia_1_desc
+		prerequisites = { ct_Hwall_1 }
+		upgrades_from = ct_Htownmilitia_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}	
+	}
+	ct_Htownmilitia_3 = {
+		desc = ct_Htownmilitia_1_desc
+		prerequisites = { ct_Hwall_2 }
+		upgrades_from = ct_Htownmilitia_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}	
+	}
+	ct_Htownmilitia_4 = {
+		desc = ct_Htownmilitia_1_desc
+		upgrades_from = ct_Htownmilitia_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 60
+		archers = 90
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}	
+	}
+	ct_Htownmilitia_5 = {
+		desc = ct_Htownmilitia_1_desc
+		upgrades_from = ct_Htownmilitia_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 100
+		archers = 70
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}	
+	}
+	ct_Htownmilitia_6 = {
+		desc = ct_Htownmilitia_1_desc
+		upgrades_from = ct_Htownmilitia_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 80
+		archers = 110
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}	
+	}
+	
+################## Troops : pikemen ###############################
+	ct_Hguard_1 = {
+		desc = ct_Hguard_1_desc
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 96
+		potential = {	
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hguard_2 = {
+		desc = ct_Hguard_1_desc
+		prerequisites = { ct_Hwall_1 }
+		upgrades_from = ct_Hguard_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hguard_3 = {
+		desc = ct_Hguard_1_desc
+		prerequisites = { ct_Hwall_2 }
+		upgrades_from = ct_Hguard_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 94
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}	
+	}
+	ct_Hguard_4 = {
+		desc = ct_Hguard_1_desc
+		upgrades_from = ct_Hguard_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hguard_5 = {
+		desc = ct_Hguard_1_desc
+		
+		upgrades_from = ct_Hguard_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	
+################## Economy : tax income ###############################
+	ct_Hmarketplace_1 = {
+		desc = ct_Hmarketplace_1_desc
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hmarketplace_2 = {
+		desc = ct_Hmarketplace_1_desc
+		prerequisites = { ct_Hwall_1 }
+		upgrades_from = ct_Hmarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hmarketplace_3 = {
+		desc = ct_Hmarketplace_1_desc
+		prerequisites = { ct_Hwall_2 }
+		upgrades_from = ct_Hmarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hmarketplace_4 = {
+		desc = ct_Hmarketplace_1_desc
+		upgrades_from = ct_Hmarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hmarketplace_5 = {
+		desc = ct_Hmarketplace_1_desc
+		upgrades_from = ct_Hmarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hmarketplace_6 = {
+		desc = ct_Hmarketplace_1_desc
+		upgrades_from = ct_Hmarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hport_1 = {
+		desc = ct_Hport_1_desc
+		port = yes
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hport_2 = {
+		desc = ct_Hport_1_desc
+		port = yes
+		prerequisites = { ct_Hwall_1 }
+		upgrades_from = ct_Hport_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hport_3 = {
+		desc = ct_Hport_1_desc
+		port = yes
+		prerequisites = { ct_Hwall_2 }
+		upgrades_from = ct_Hport_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+	ct_Hport_4 = {
+		desc = ct_Hport_1_desc
+		port = yes
+		upgrades_from = ct_Hport_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	ct_Hport_5 = {
+		desc = ct_Hport_1_desc
+		port = yes
+		upgrades_from = ct_Hport_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+        	potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+
+################## Shipyard : galleys ###############################
+	ct_Hshipyard_1 = {
+		desc = Hshipyard_desc
+		port = yes
+		gold_cost = 100
+		build_time = 365
+		galleys = 5
+		ai_creation_factor = 98
+		potential = {
+			has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	
+	ct_Hshipyard_2 = {
+		desc = Hshipyard_desc
+		port = yes
+		upgrades_from = ct_Hshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 6
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	
+	ct_Hshipyard_3 = {
+		desc = Hshipyard_desc
+		port = yes
+		upgrades_from = ct_Hshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 7
+		ai_creation_factor = 96
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+        	}
+	}
+	
+	ct_Hshipyard_4 = {
+		desc = Hshipyard_desc
+		port = yes
+		upgrades_from = ct_Hshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 8
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+			OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture_group = culture_group_middlemen
+			}
+			NOT = { culture = culture_rohirrim }
+			NOT = { culture = culture_eotheod }
+			NOT = { culture = culture_druedain }
+		}
+	}
+
+############################## Beornings special buildings##############################
+ct_beorningbakery_1 = {
+		desc = ct_beorningbakery_desc
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture = culture_beorning
+        	}
+	}
+
+############################## Dale special buildings##############################
+	ct_dale = { ## The Grand city of Dale
+		desc = ca_dale_desc
+		gold_cost = 280
+		build_time = 970
+		fort_level = 2.0	
+		tax_income = 2		
+		ai_creation_factor = 106
+        potential = {
+			year = 9770
+            		province_id = 539 # Dale
+			OR = {
+				culture = culture_barding
+				culture = culture_northmen
+				}
+
+		}
+	}
+
+# Middlemen Barrow Fields #
+	
+	tp_barrow_field = {
+		desc = tp_barrow_field_desc
+		gold_cost = 150
+		build_time = 547
+		liege_piety = 0.05
+		knights = 20
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+			culture_group = culture_group_middlemen
+        	}
+	}		
+}

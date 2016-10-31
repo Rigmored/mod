@@ -1,0 +1,533 @@
+namespace = holywars
+
+######################################################################
+######################## RECONQUEST OF MORIA #########################
+######################################################################
+
+## The character who used the decision can gather his forces ##
+narrative_event = {
+    id = holywars.1
+    title = EVTTITholywars.1
+    desc = EVTDESCholywars.1
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.1 ### I'll call all the Dwarves !
+		any_playable_ruler = {
+			limit = { 
+				culture_group = culture_group_dwarves
+				age = 60
+			}
+			narrative_event = { id = holywars.2 days = 50 } ## All the Dwarves will be called to War.
+		}
+		narrative_event = { id = holywars.5 days = 90 }
+		add_claim = c_moria
+		add_claim = d_moria
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_moria
+				age = 1
+			}
+			narrative_event = { id = holywars.4 days = 50 } ## The Holder of Moria is informed
+		}	
+	}
+	
+	option = {
+		name = EVTOPTBholywars.1 ### My strength will be enough !
+		trigger = {
+			OR = {
+				trait = proud
+				trait = envious
+				trait = brave
+			}
+		}
+		narrative_event = { id = holywars.5 days = 30 }
+		add_claim = c_moria
+		add_claim = d_moria
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_moria
+				age = 1
+			}
+			narrative_event = { id = holywars.4 days = 20 } ## The Holder of Moria is informed
+		}	
+	}	
+	
+	option = {
+        name = EVTOPTCholywars.1 ### I'll
+	}
+}
+
+
+## All the Dwarves will receive a call to war ##
+narrative_event = {
+    id = holywars.2
+    title = EVTTITholywars.2
+    desc = EVTDESCholywars.2
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.2 ### I'll join this War for the Halls of our Ancestrors!
+		set_character_flag = join_reconquest_moria
+		FROM = {
+			character_event = { id = holywars.3 days = 25 }
+		}
+	}
+	option = {
+        name = EVTOPTBholywars.2 ### I won't join him.
+	}
+}
+
+## The Leader is informed that another clan will join him ##
+character_event = {
+    id = holywars.3
+    title = EVTTITholywars.3
+    desc = EVTDESCholywars.3
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.3 ### Perfect.
+	}
+}
+
+## The Holder of Moria is informed that the Dwarves gather their forces ##
+narrative_event = {
+    id = holywars.4
+    title = EVTTITholywars.4
+    desc = EVTDESCholywars.4
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.4 ### I'll crush them.
+	}
+}
+
+## Begin of the War ##
+narrative_event = {
+    id = holywars.5
+    title = EVTTITholywars.5
+    desc = EVTDESCholywars.5
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.5 ### Time to Fight Now!
+		c_moria = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}	
+		character_event = { id = holywars.6 }
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_moria
+				age = 1
+			}
+			narrative_event = { id = holywars.7 } ## The Holder of Moria will have some help
+		}		
+	}
+}
+
+## The Forces of the Dwarves join the War ##
+character_event = {
+    id = holywars.6
+    title = EVTTITholywars.6
+    desc = EVTDESCholywars.6
+    picture = "GFX_evt_dwarves"
+	
+	hide_window = yes
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.6 ### Time to Fight Now!
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = join_reconquest_moria
+				culture_group = culture_group_dwarves
+				age = 1
+			}
+			join_attacker_wars = ROOT
+			spawn_unit = {
+				province = ROOT
+				disband_on_peace = yes
+				troops = {
+					heavy_infantry = { 350 350 }
+					archers = { 200 200 }
+				}
+			}			
+		}
+	}
+}
+
+## The Holder of Moria get some reinforcements ##
+narrative_event = {
+    id = holywars.7
+    title = EVTTITholywars.7
+    desc = EVTDESCholywars.7
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.7 ### Thanks my friends!
+		ROOT = {
+			spawn_unit = {
+				province = ROOT
+				disband_on_peace = yes
+				troops = {
+					light_infantry = { 1500 1500 }				
+					heavy_infantry = { 2200 2200 }
+					archers = { 1200 1200 }
+				}
+			}			
+		}
+	}
+}
+
+
+
+
+######################################################################
+###################### RECONQUEST OF OSGILIATH #######################
+######################################################################
+
+## The character who used the decision can gather his forces ##
+narrative_event = {
+    id = holywars.8
+    title = EVTTITholywars.8
+    desc = EVTDESCholywars.8
+    picture = "GFX_gondor_guard"
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = EVTOPTAholywars.8 ### My strength will be enough !
+		narrative_event = { id = holywars.10 days = 30 }
+		add_claim = c_west_osgiliath
+		add_claim = c_east_osgiliath
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = c_west_osgiliath
+					has_landed_title = c_east_osgiliath
+				}
+				age = 1
+			}
+			narrative_event = { id = holywars.9 days = 20 } ## The Holder of Moria is informed
+		}	
+	}	
+	
+	option = {
+        name = EVTOPTCholywars.8 ### I won't fight.
+	}
+}
+
+
+
+## The Holder of Osgiliath is informed that Gondor gather his forces ##
+narrative_event = {
+    id = holywars.9
+    title = EVTTITholywars.9
+    desc = EVTDESCholywars.9
+    picture = "GFX_gondor_guard"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.9 ### I'll crush them.
+	}
+}
+
+## Begin of the War ##
+narrative_event = {
+    id = holywars.10
+    title = EVTTITholywars.10
+    desc = EVTDESCholywars.10
+    picture = "GFX_gondor_guard"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.10 ### Time to Fight Now!
+		c_west_osgiliath = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}	
+		c_east_osgiliath = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}			
+		spawn_unit = {
+			province = ROOT
+			disband_on_peace = yes
+			troops = {
+				light_infantry = { 2000 2000 }
+				heavy_infantry = { 1350 1350 }
+				archers = { 1200 1200 }
+			}
+		}			
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = c_west_osgiliath
+					has_landed_title = c_east_osgiliath
+				}
+				age = 1
+			}
+			narrative_event = { id = holywars.11 } ## The Holder of Moria will have some help
+		}		
+	}
+}
+
+
+## The Holder of Osgiliath get some reinforcements ##
+narrative_event = {
+    id = holywars.11
+    title = EVTTITholywars.11
+    desc = EVTDESCholywars.11
+    picture = "GFX_gondor_guard"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.11 ### Thanks my friends!
+		ROOT = {
+			spawn_unit = {
+				province = ROOT
+				disband_on_peace = yes
+				troops = {
+					light_infantry = { 2500 2500 }				
+					heavy_infantry = { 2200 2200 }
+					archers = { 1200 1200 }
+				}
+			}			
+		}
+	}
+}
+
+
+
+#########################################################################
+######################## RECONQUEST OF GUNDABAD #########################
+#########################################################################
+
+## The character who used the decision can gather his forces ##
+narrative_event = {
+    id = holywars.12
+    title = EVTTITholywars.12
+    desc = EVTDESCholywars.12
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.12 ### I'll call all the Dwarves !
+		any_playable_ruler = {
+			limit = { 
+				culture_group = culture_group_dwarves
+				age = 60
+			}
+			narrative_event = { id = holywars.13 days = 50 } ## All the Dwarves will be called to War.
+		}
+		narrative_event = { id = holywars.16 days = 90 }
+		add_claim = c_gundabad
+		add_claim = d_gundabad
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_gundabad
+				age = 1
+			}
+			narrative_event = { id = holywars.15 days = 50 } ## The Holder of Gundabad is informed
+		}	
+	}
+	
+	option = {
+		name = EVTOPTBholywars.12 ### My strength will be enough !
+		trigger = {
+			OR = {
+				trait = proud
+				trait = envious
+				trait = brave
+			}
+		}
+		narrative_event = { id = holywars.16 days = 30 }
+		add_claim = c_gundabad
+		add_claim = d_gundabad
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_gundabad
+				age = 1
+			}
+			narrative_event = { id = holywars.15 days = 20 } ## The Holder of Gundabad is informed
+		}	
+	}	
+	
+	option = {
+        name = EVTOPTCholywars.12 ### I'll
+	}
+}
+
+
+## All the Dwarves will receive a call to war ##
+narrative_event = {
+    id = holywars.13
+    title = EVTTITholywars.13
+    desc = EVTDESCholywars.13
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.13 ### I'll join this War for the Mountain of the Awaiken!
+		set_character_flag = join_reconquest_gundabad
+		FROM = {
+			character_event = { id = holywars.14 days = 25 }
+		}
+	}
+	option = {
+        name = EVTOPTBholywars.13 ### I won't join him.
+	}
+}
+
+## The Leader is informed that another clan will join him ##
+character_event = {
+    id = holywars.14
+    title = EVTTITholywars.14
+    desc = EVTDESCholywars.14
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.14 ### Perfect.
+	}
+}
+
+## The Holder of Gundabad is informed that the Dwarves gather their forces ##
+narrative_event = {
+    id = holywars.15
+    title = EVTTITholywars.15
+    desc = EVTDESCholywars.15
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.15 ### I'll crush them.
+	}
+}
+
+## Begin of the War ##
+narrative_event = {
+    id = holywars.16
+    title = EVTTITholywars.16
+    desc = EVTDESCholywars.16
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.16 ### Time to Fight Now!
+		c_gundabad = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}	
+		character_event = { id = holywars.17 }
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = c_gundabad
+				age = 1
+			}
+			narrative_event = { id = holywars.18 } ## The Holder of Gundabad will have some help
+		}		
+	}
+}
+
+## The Forces of the Dwarves join the War ##
+character_event = {
+    id = holywars.17
+    title = EVTTITholywars.17
+    desc = EVTDESCholywars.17
+    picture = "GFX_evt_dwarves"
+	
+	hide_window = yes
+	is_triggered_only = yes
+			  
+	option = {
+		name = EVTOPTAholywars.17 ### Time to Fight Now!
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = join_reconquest_gundabad
+				culture_group = culture_group_dwarves
+				age = 1
+			}
+			join_attacker_wars = ROOT
+			spawn_unit = {
+				province = ROOT
+				disband_on_peace = yes
+				troops = {
+					heavy_infantry = { 550 550 }
+					archers = { 250 250 }
+				}
+			}			
+		}
+	}
+}
+
+## The Holder of Gundabad get some reinforcements ##
+narrative_event = {
+    id = holywars.18
+    title = EVTTITholywars.18
+    desc = EVTDESCholywars.18
+    picture = "GFX_evt_dwarves"
+	
+	is_triggered_only = yes
+	
+			  
+	option = {
+		name = EVTOPTAholywars.18 ### Thanks my friends!
+		ROOT = {
+			spawn_unit = {
+				province = ROOT
+				disband_on_peace = yes
+				troops = {
+					light_infantry = { 3500 3500 }				
+					heavy_infantry = { 4000 4000 }
+					archers = { 3000 3000 }
+				}
+			}			
+		}
+	}
+}

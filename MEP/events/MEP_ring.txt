@@ -1,0 +1,346 @@
+namespace = ring
+
+##ring corruption events - halflings are mostly immune##
+
+
+##wearer becomes paranoid##
+character_event = {
+	id = ring.0
+	title = "EVTTITring.0"#My Precious...
+	desc = "EVTDESCring.0"#It came to me, and it will stay with me forever. But the others... can't trust them... they want to steal my ring!
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		NOT = { trait = paranoid }
+		trait = ring
+	}
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	option = {
+		name = "EVTOPTAring.0"#I must keep a close eye on them...
+		add_trait = paranoid
+	}
+
+	option = {
+		name = "EVTOPTBring.0"#No, I will not get paranoid!
+		trigger = { 
+			learning = 20 
+		}
+		add_trait = stressed
+	}
+
+}
+
+
+##someone was looking at your ring!##
+character_event = {
+	id = ring.1
+	title = "EVTTITring.1"#An Outrage
+	desc = "EVTDESCring.1"#This person was staring at me, as if trying to catch a glimpse of the ring. I will not tolerate plots to steal what is mine!
+	picture = "GFX_shadows_coming"
+	only_rulers = yes
+	only_independent = yes
+
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		trait = ring
+		trait = paranoid
+	}
+
+
+	option = {
+		name = "EVTOPTAring.1"#To the dungeon with this cretin!
+		random_courtier = {
+			limit = {
+				age = 12
+			}
+			imprison = yes
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_tyrant
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBring.1"#Execute them immediately!
+		random_courtier = {
+			limit = {
+				age = 16
+			}
+			death = {
+				death_reason = death_execution
+				killer = ROOT
+			}
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_tyrant
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCring.1"#Banish them, on pain of death!
+		random_courtier = {
+			limit = {
+				age = 12
+			}
+			banish = yes
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_tyrant
+				years = 1
+			}
+		}
+	}
+
+}
+	
+##ruler gets wroth##
+character_event = {
+	id = ring.2
+	title = "EVTTITring.2"#My Precious...
+	desc = "EVTDESCring.2"#The ring is so pretty, so powerful. But it makes me so angry that other people may try to take it from me!
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		NOT = { trait = wroth }
+	}
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	option = {
+		name = "EVTOPTAring.2"#It's mine, mine alone!
+		add_trait = wroth
+	}
+
+	option = {
+		name = "EVTOPTBring.2"#I won't give in to these thoughts!
+		trigger = { 
+			learning = 20 
+		}
+		add_trait = stressed
+	}
+
+}
+	
+##ruler gets hedonist##
+character_event = {
+	id = ring.3
+	title = "EVTTITring.3"#My Precious...
+	desc = "EVTDESCring.3"#Everything I want, I have the power to take. Why should I deny myself anything? I am the Wielder of the Ring!
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		NOT = { trait = hedonist }
+	}
+
+	mean_time_to_happen = {
+		years = 4
+		modifier = {
+			factor = 0.5
+			NOT = { learning = 10 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { learning = 15 }
+		}
+		modifier = {
+			factor = 4.0
+			NOT = { learning = 20 }
+		}
+		modifier = {
+		factor = 5.0
+		NOT = { learning = 25 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAring.3"#I deserve only the finest things.
+		add_trait = hedonist
+	}
+
+}
+	
+##ruler gets impaler##
+character_event = {
+	id = ring.4
+	title = "EVTTITring.4"#My Precious...
+	desc = "EVTDESCring.4"#Good me doesn't want to hurt prisoners, but evil me... evil me wants to see them suffer an excruciating death! They want my ring! They'll suffer, they will all suffer...
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		NOT = { trait = impaler }
+		trait = wroth
+		trait = paranoid
+	}
+
+	mean_time_to_happen = {
+		years = 5
+
+		modifier = {
+			factor = 0.5
+			NOT = { learning = 10 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { learning = 15 }
+		}
+		modifier = {
+			factor = 4.0
+			learning = 20
+		}
+		modifier = {
+			factor = 5.0
+			learning = 25
+		}
+	}
+
+	option = {
+		name = "EVTOPTAring.4"#It's their own fault for opposing me.
+		add_trait = impaler
+	}
+
+}
+	
+##ruler becomes lunatic if not wise enough to wield the ring##
+character_event = {
+	id = ring.5
+	title = "EVTTITring.5"#My Precious...
+	desc = "EVTDESCring.5"#I'm not... strong willed... or wise... enough... to wield this ring! Aggghhh! I can feel my mind cracking! It's cracking open, and the ring is reaching into my skull! It's telling me to ... to...
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		NOT = { trait = lunatic }
+		NOT = { learning = 20 }
+	}
+
+	mean_time_to_happen = {
+		years = 20 
+	}
+
+	option = {
+		name = "EVTOPTAring.5"#Precious wants me to do terrible things!
+		add_trait = lunatic
+		add_trait = stressed
+	}
+
+}
+	 
+##Now the ring-bearer, if not halfling, gets random claims##
+character_event = {
+	id = ring.6
+	title = "EVTTITring.6"#You must expand
+	desc = "EVTDESCring.6"#Your enemies will not stand still and wait. You must expand your borders and grow your armies, and finally one day you will be strong enough to challenge Sauron himself!
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+	}
+
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	option = {
+		name = "EVTOPTAring.6"#I could take that kingdom...
+		random_realm_province = {
+			limit = {
+				any_neighbor_province = {
+					NOT = { owner = { character = ROOT } }
+				}
+			}
+			random_neighbor_province = {
+				limit = { NOT = { owner = { character = ROOT } } }
+				kingdom = { add_claim = ROOT }
+			}
+		}
+	}
+
+}
+	
+##ruler becomes corrupted by darkness##
+character_event = {
+	id = ring.7
+	title = "EVTTITring.7"#My Precious...
+	desc = "EVTDESCring.7"#The ring and I are becoming attuned. I see clearly now for the first time ever - I must rule this Middle-Earth, and nothing will stand in my way!
+	picture = "GFX_shadows_coming"
+
+
+	trigger = {
+		trait = ring
+		NOT = { culture_group = culture_group_halfling }
+		NOT = { culture = culture_maiar }
+		trait = impaler
+		trait = wroth
+		NOT = { learning = 20 }
+		NOT = { trait = evil_side }
+	}
+
+	mean_time_to_happen = {
+		years = 20 
+	}
+
+	option = {
+		name = "EVTOPTAring.7"#I can't deny it any longer!
+		add_trait = evil_side
+		remove_trait = good_side
+		any_playable_ruler = {
+			character_event = { id = ring.8 days = 30 }
+		}
+	}
+}
+
+##galadriel gets positive reply##
+character_event = {
+	id = ring.8
+	title = "EVTTITring.8"#Corrupted by Darkness
+	desc = "EVTDESCring.8"#The ruler who wields the ring has been corrupted by it, as would inevitably happen. The wielder is apparently bare recognizable from his or her true self now...
+	picture = "GFX_shadows_coming"
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAring.8"#I'm not surprised.
+	}
+
+}

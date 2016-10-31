@@ -1,0 +1,968 @@
+###For Gondorians/Dunedain###
+
+namespace = dunedaincourtier
+
+##A courtier wins a victory against enemies##
+character_event = {
+	id = dunedaincourtier.0
+	title = "EVTTITdunedaincourtier.0"#A courtier wins a victory
+	desc = "EVTDESCdunedaincourtier.0"#While on a border patrol, a courtier won a great victory against when cornered by a dozen enemies. He slew half of them, and the rest fled. The court is hailing him as a great warrior!"
+	picture = "GFX_boromir_death"
+	age = 16
+
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_dunedain
+			culture = culture_gondorian
+			culture = culture_dunedain
+		}
+		any_courtier = {
+			martial = 12
+			trait = brave
+			is_female = no
+			age = 16
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAdunedaincourtier.0"#We shall honor him!
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 50
+			change_martial = 1
+		}
+	}
+
+	option = {
+		name = "EVTOPTBdunedaincourtier.0"#I could have done just as well.
+		trigger = {
+			trait = proud
+			trait = cruel
+			trait = brave
+			martial = 12
+			age = 16
+		}
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 5
+			change_martial = 1
+		}
+	}
+
+}
+		  
+##A courtier flees from enemies##
+character_event = {
+	id = dunedaincourtier.1
+	title = "EVTTITdunedaincourtier.1"#A courtier disgraces himself
+	desc = "EVTDESCdunedaincourtier.1"#While on a border patrol, a courtier was ambushed, but fled and left his men to die! His name is in disgrace.
+	picture = "GFX_travel_gondor"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_dunedain
+			culture = culture_gondorian
+			culture = culture_dunedain
+		}
+		any_courtier = {
+			OR = {
+				trait = craven
+				trait = misguided_warrior
+				trait = drunkard
+				trait = weak
+				is_female = no
+				age = 16
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAdunedaincourtier.1"#That was ill-done.
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTBdunedaincourtier.1"#Imprison him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			imprison = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTCdunedaincourtier.1"#Banish him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			banish = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+}
+
+##Wights trouble a province##
+character_event = {
+	id = dunedaincourtier.3
+	title = "EVTTITdunedaincourtier.3"#Wights
+	desc = "EVTDESCdunedaincourtier.3"#Wights have been spotted on some nights at some isolated hills. Your people beg you to drive them out, but what can men do against such dark magic?
+	picture = "GFX_dead_army"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_dunedain
+			culture = culture_gondorian
+			culture = culture_dunedain
+		}
+		is_ruler = yes
+		is_female = no
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAdunedaincourtier.3"#Send a small force to end the threat.
+		trigger = {
+			any_courtier = {
+				martial = 10
+				trait = brave
+				is_female = no
+				age = 16
+			}
+		}
+		random_courtier = {
+			limit = {
+				martial = 10
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			random_list = {
+				20 = {
+					death = {
+						death_reason = death_battle
+					}
+				}
+				80 = {
+					change_martial = 2
+					prestige = 100
+					piety = 100
+				}
+			}
+		}
+	}
+		
+	option = {
+		name = "EVTOPTBdunedaincourtier.3"#I'll handle this myself!
+		trigger = { ai = no }
+		random_list = {
+			10 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			50 = {
+				change_martial = 1
+				prestige = 500
+				piety = 500
+				add_trait = wounded
+			}
+			40 = {
+				change_martial = 1
+				prestige = 500
+				piety = 500
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCdunedaincourtier.3"#There's nothing we can do...
+		prestige = -500
+		piety = -100
+	}
+}
+				 
+
+				 
+################################################
+####Rohirrim courtiers##########################
+################################################
+
+namespace = rohirrimcourtier
+
+##A courtier wins a victory against enemies##
+character_event = {
+	id = rohirrimcourtier.0
+	title = "EVTTITrohirrimcourtier.0"#A courtier wins a victory
+	desc = "EVTDESCrohirrimcourtier.0"#While on a border patrol, a courtier won a great victory against when cornered by a dozen enemies. He slew half of them, and the rest fled. The court is hailing him as a great warrior!"
+	picture = "GFX_oath_of_eorl"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_rohirrim
+		}
+		any_courtier = {
+			martial = 12
+			trait = brave
+			is_female = no
+			age = 16
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTArohirrimcourtier.0"#We shall honor him!
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 50
+			change_martial = 1
+		}
+	}
+
+	option = {
+		name = "EVTOPTBrohirrimcourtier.0"#I could have done just as well.
+		trigger = {
+			trait = proud
+			trait = cruel
+			trait = brave
+			martial = 12
+		}
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 5
+			change_martial = 1
+		}
+	}
+
+}
+		  
+##A courtier flees from enemies##
+character_event = {
+	id = rohirrimcourtier.1
+	title = "EVTTITrohirrimcourtier.1"#A courtier disgraces himself
+	desc = "EVTDESCrohirrimcourtier.1"#While on a border patrol, a courtier was ambushed, but fled and left his men to die! His name is in disgrace.
+	picture = "GFX_oath_of_eorl"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_rohirrim
+		}
+		any_courtier = {
+			OR = {
+				trait = craven
+				trait = misguided_warrior
+				trait = drunkard
+				trait = weak
+				is_female = no
+				age = 16
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTArohirrimcourtier.1"#That was ill-done.
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTBrohirrimcourtier.1"#Imprison him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			imprison = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTCrohirrimcourtier.1"#Banish him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			banish = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+}
+
+##Wights trouble a province##
+character_event = {
+	id = rohirrimcourtier.3
+	title = "EVTTITrohirrimcourtier.3"#Wights
+	desc = "EVTDESCrohirrimcourtier.3"#Wights have been spotted on some nights at some isolated hills. Your people beg you to drive them out, but what can men do against such dark magic?
+	picture = "GFX_dead_army"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_rohirrim
+		}
+		is_female = no
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTArohirrimcourtier.3"#Send a small force to end the threat.
+		trigger = {
+			any_courtier = {
+				martial = 10
+				trait = brave
+				is_female = no
+			}
+		}
+		random_courtier = {
+			limit = {
+				martial = 10
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			random_list = {
+				20 = {
+					death = {
+						death_reason = death_battle
+					}
+				}
+				80 = {
+					change_martial = 2
+					prestige = 100
+					piety = 100
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBrohirrimcourtier.3"#I'll handle this myself!
+		trigger = { ai = no }
+		random_list = {
+			20 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			80 = {
+				change_martial = 2
+				prestige = 500
+				piety = 500
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCrohirrimcourtier.3"#There's nothing we can do...
+		prestige = -500
+		piety = -250
+	}
+}
+				 
+
+				 				 
+################################################
+####barding courtiers##########################
+################################################
+
+namespace = bardingcourtier
+
+##A courtier wins a victory against enemies##
+character_event = {
+	id = bardingcourtier.0
+	title = "EVTTITbardingcourtier.0"#A courtier wins a victory
+	desc = "EVTDESCbardingcourtier.0"#While on a border patrol, a courtier won a great victory against when cornered by a dozen enemies. He slew half of them, and the rest fled. The court is hailing him as a great warrior!
+	picture = "GFX_travel_gondor"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_barding
+		}
+		any_courtier = {
+			martial = 12
+			trait = brave
+			is_female = no
+			age = 16
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAbardingcourtier.0"#We shall honor him!
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 50
+			change_martial = 1
+		}
+	}
+
+	option = {
+		name = "EVTOPTBbardingcourtier.0"#I could have done just as well.
+		trigger = {
+			trait = proud
+			trait = cruel
+			trait = brave
+			martial = 12
+		}
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 5
+			change_martial = 1
+		}
+	}
+
+}
+		  
+##A courtier flees from enemies##
+character_event = {
+	id = bardingcourtier.1
+	title = "EVTTITbardingcourtier.1"#A courtier disgraces himself
+	desc = "EVTDESCbardingcourtier.1"#While on a border patrol, a courtier was ambushed, but fled and left his men to die! His name is in disgrace.
+	picture = "GFX_travel_gondor"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_barding
+		}
+		any_courtier = {
+			OR = {
+				trait = craven
+				trait = misguided_warrior
+				trait = drunkard
+				trait = weak
+				is_female = no
+				age = 16
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAbardingcourtier.1"#That was ill-done.
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTBbardingcourtier.1"#Imprison him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			imprison = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTCbardingcourtier.1"#Banish him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			banish = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+}
+
+##Wights trouble a province##
+character_event = {
+	id = bardingcourtier.3
+	title = "EVTTITbardingcourtier.3"#Wights
+	desc = "EVTDESCbardingcourtier.3"#Wights have been spotted on some nights at some isolated hills. Your people beg you to drive them out, but what can men do against such dark magic?
+	picture = "GFX_dead_army"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_barding
+		}
+		is_female = no
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAbardingcourtier.3"#Send a small force to end the threat.
+		trigger = {
+			any_courtier = {
+				martial = 10
+				trait = brave
+			}
+		}
+		random_courtier = {
+			limit = {
+				martial = 10
+				trait = brave
+				is_female = no
+			}
+			random_list = {
+				33 = {
+					death = {
+						death_reason = death_battle
+					}
+				}
+				67 = {
+					change_martial = 2
+					prestige = 100
+					piety = 100
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBbardingcourtier.3"#I'll handle this myself!
+		trigger = { ai = no }
+		random_list = {
+			33 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			67 = {
+				change_martial = 2
+				prestige = 500
+				piety = 500
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCbardingcourtier.3"#There's nothing we can do...
+		prestige = -500
+		piety = -250
+	}
+}
+
+			 
+################################################
+####silvan/sindar courtiers##########################
+################################################
+
+namespace = sindarcourtier
+
+##A courtier wins a victory against enemies##
+character_event = {
+	id = sindarcourtier.0
+	title = "EVTTITsindarcourtier.0"#A courtier wins a victory
+	desc = "EVTDESCsindarcourtier.0"#While on a border patrol, a courtier won a great victory against when cornered by a dozen enemies. He slew half of them, and the rest fled. The court is hailing him as a great warrior!
+	picture = "GFX_war_at_north"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			culture = culture_sindar
+			culture = culture_silvan
+		}
+		any_courtier = {
+			martial = 12
+			trait = brave
+			is_female = no
+			age = 16
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAsindarcourtier.0"#We shall honor him!
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 100
+			change_martial = 1
+		}
+	}
+
+	option = {
+		name = "EVTOPTBsindarcourtier.0"#I could have done just as well.
+		trigger = {
+			trait = proud
+			trait = cruel
+			trait = brave
+			martial = 12
+			age = 16
+		}
+		random_courtier = {
+			limit = {
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
+			}
+			prestige = 5
+			change_martial = 1
+		}
+	}
+
+}
+		  
+##A courtier flees from enemies##
+character_event = {
+	id = sindarcourtier.1
+	title = "EVTTITsindarcourtier.1"#A courtier disgraces himself
+	desc = "EVTDESCsindarcourtier.1"#While on a border patrol, a courtier was ambushed, but fled and left his patrol to die! His name is in disgrace.
+	picture = "GFX_war_at_north"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			religion = religion_rhovanion
+			culture = culture_barding
+		}
+		any_courtier = {
+			OR = {
+				trait = craven
+				trait = misguided_warrior
+				trait = drunkard
+				trait = weak
+				is_female = no
+				age = 16
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAsindarcourtier.1"#That was ill-done.
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			prestige = -100
+			piety = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTBsindarcourtier.1"#Imprison him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			imprison = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+
+	option = {
+		name = "EVTOPTCsindarcourtier.1"#Banish him for cowardice!
+		random_courtier = {
+			limit = {
+				OR = {
+					trait = craven
+					trait = misguided_warrior
+					trait = drunkard
+					trait = weak
+					is_female = no
+					age = 16
+				}
+			}
+			banish = yes
+			piety = -100
+			prestige = -100
+		}
+	}
+}
+		  
+##woodsmen caught logging in your forests##
+character_event = {
+	id = sindarcourtier.3
+	title = "EVTTITsindarcourtier.3"#Trespassers
+	desc = "EVTDESCsindarcourtier.3"#A man was caught felling trees and clearing land for a farm inside your realm's borders. What shall be done with him and his family?
+	picture = "GFX_shadows_coming"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			culture = culture_sindar
+			culture = culture_silvan
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAsindarcourtier.3"#Let them go - but warn them not to return.
+		add_trait = kind
+	}
+
+	option = {
+		name = "EVTOPTBsindarcourtier.3"#Imprison them all!
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_rhovanion
+			culture = culture_woodsmen
+			female = no
+			age = 30
+		}
+		new_character = {
+			imprison = yes
+		}
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_rhovanion
+			culture = culture_woodsmen
+			female = yes
+			age = 26
+		}
+		new_character = {
+			imprison = yes
+		} 
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_rhovanion
+			culture = culture_woodsmen
+			female = yes
+			age = 6
+		}
+		new_character = {
+			imprison = yes
+		}   
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_rhovanion
+			culture = culture_woodsmen
+			female = no
+			age = 4
+		}
+		new_character = {
+			imprison = yes
+		}   
+	}
+
+	option = {
+		name = "EVTOPTCsindarcourtier.3"#Let the family go, but imprison the father.
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_rhovanion
+			culture = culture_woodsmen
+			female = no
+			age = 30
+		}
+		new_character = {
+			imprison = yes
+		}
+	}
+}
+		  
+##excellent singer in your forests##
+character_event = {
+	id = sindarcourtier.4
+	title = "EVTTITsindarcourtier.4"#A new song
+	desc = "EVTDESCsindarcourtier.4"#This courtier has composed a stunning new epic, which brings tears to the eyes of anyone who hears it. It will be played at the annual Feast of Starlight this year.
+	picture = "GFX_shadows_coming"
+	age = 16
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			culture = culture_sindar
+			culture = culture_silvan
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAsindarcourtier.4"#It reminds me of the first light of a winter moon!
+		random_courtier = {
+			limit = {
+				age = 16
+			}
+			prestige = 100
+			piety = 100
+		}
+	}	
+
+	option = {
+		name = "EVTOPTBsindarcourtier.4"#I don't like it.
+		trigger = { ai = no }
+			random_courtier = {
+			limit = {
+				age = 16
+			}
+			prestige = -50
+		}
+	}
+}

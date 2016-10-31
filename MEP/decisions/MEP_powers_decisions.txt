@@ -1,0 +1,166 @@
+decisions = {
+	use_vilya_war = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			age = 16
+			prisoner = no
+			NOT = { trait = incapable }
+			NOT = { has_character_flag = vilya_released }
+			NOT = { has_character_flag = vilya_power }
+			trait = vilya
+			OR = {
+				religion_group = religion_group_eldar
+				religion = religion_eruhini
+			}
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			piety = 300
+			wealth = 200
+			prestige = 500
+			war = yes
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = powers.1 }
+			}
+		}
+	}
+	release_power_vilya = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			has_character_flag = vilya_power
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			OR = {
+				any_current_enemy = {
+					OR = {
+						AND = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+						any_realm_lord = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+						any_courtier = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+					}
+				}
+				any_independent_ruler = {
+					mercenary = yes
+					at_location = ROOT
+					in_command = yes
+					prisoner = no
+				}
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = powers.3 }
+			}
+			clr_character_flag = vilya_power
+		}
+	}
+	use_nenya_war = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			age = 16
+			prisoner = no
+			NOT = { trait = incapable }
+			NOT = { has_character_flag = nenya_released }
+			NOT = { has_character_flag = nenya_power }
+			trait = nenya
+			OR = {
+				religion_group = religion_group_eldar
+				religion = religion_eruhini
+			}
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			piety = 300
+			wealth = 200
+			prestige = 500
+			war = yes
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = powers.6 }
+			}
+		}
+	}
+	release_power_nenya = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			has_character_flag = nenya_power
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			OR = {
+				any_current_enemy = {
+					OR = {
+						AND = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+						any_realm_lord = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+						any_courtier = {
+							at_location = ROOT
+							prisoner = no
+							in_command = yes
+						}
+					}
+				}
+				any_independent_ruler = {
+					mercenary = yes
+					at_location = ROOT
+					in_command = yes
+					prisoner = no
+				}
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = powers.3 }
+			}
+			clr_character_flag = nenya_power
+		}
+	}
+	create_fumes = {
+		potential = {
+			ai = no
+			age = 16
+			prisoner = no
+			has_character_flag = sauron
+			has_landed_title = e_barad_dur
+			has_landed_title = c_orodruin
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			piety = 300
+			wealth = 200
+			prestige = 500
+			war = yes
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = powers.11 }
+			}
+		}
+	}
+}

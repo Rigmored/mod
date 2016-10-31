@@ -1,0 +1,128 @@
+namespace = dwarveninfertility
+
+character_event = {
+	id = dwarveninfertility.0
+	title = "EVTTITelveninfertility.0"
+	desc = "EVTDESCelveninfertility.0"
+	picture = GFX_evt_pregnancy
+	is_triggered_only = yes	
+		
+	trigger = {
+		trait = dwarven
+		NOT = { has_character_flag = dwarven_infertility }
+	}
+	
+	option = {
+		name = "EVTOPTAdwarveninfertility.0" #OK
+		random = { 
+			chance = 40
+			add_trait = dwarven_infertility	
+			set_character_flag = dwarven_infertility
+	    }
+	} 
+}
+ 
+#### Death of the Dwarves ####
+character_event = {
+	id = dwarveninfertility.1
+	title = "EVTTITdwarveninfertility.1"
+	desc = "EVTDESCdwarveninfertility.1"
+	picture = GFX_evt_death
+	hide_window = yes	
+		
+	trigger = {
+		trait = dwarven
+		age = 240
+		NOT = { has_character_flag = death_dwarves }
+	}
+	
+	mean_time_to_happen = {
+		days = 7300
+		
+		### Age Modifiers ###
+		modifier = {
+			factor = 0.8
+			age = 250
+		}
+		modifier = {
+			factor = 0.65
+			age = 260
+		}
+		modifier = {
+			factor = 0.5
+			age = 270
+		}
+		modifier = {
+			factor = 0.4
+			age = 275
+		}
+		modifier = {
+			factor = 0.3
+			age = 290
+		}	
+		modifier = {
+			factor = 0.2
+			age = 300
+		}			
+		### Health Modifiers ###
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.55
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			health = 20.0
+		}
+		#### Traits Modifier ####
+		modifier = {
+			factor = 0.5
+				trait = infirm
+		}	
+		modifier = {
+			factor = 0.3
+				trait = depressed
+		}	
+		modifier = {
+			factor = 0.7
+				trait = stressed
+		}	
+		modifier = {
+			factor = 2.0
+				trait = strong
+		}
+		modifier = {
+			factor = 2.0
+				trait = tall
+		}
+		modifier = {
+			factor = 2.0
+				trait = imposing
+		}		
+		
+		#### Titles Modifier ####
+		modifier = {
+			factor = 4.0
+			has_landed_title = e_durins_folk
+		}	
+		modifier = {
+			factor = 2.0
+			has_landed_title = d_moria
+		}	
+		modifier = {
+			factor = 4.0
+			has_landed_title = d_erebor
+		}			
+	}
+
+	option = {
+		name = "EVTOPTAdwarveninfertility.1" #OK
+		death = {
+			death_reason = death_natural
+		}	
+		set_character_flag = death_dwarves
+	}
+}

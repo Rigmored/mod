@@ -1,0 +1,2178 @@
+namespace = fallofarnor
+#### fallofarnor.1 = introduction
+#### FALL OF RHUDAUR ####
+#### fallofarnor.2/3/4/5/6 = The first events of Ulfang the Hillman
+#### fallofarnor.7/8/9/10 = The Assassinate of the dunedain heirs of Rhudaur
+#### fallofarnor.11/12/13/14/15/16/17/18/19 = War in Rhudaur
+#### fallofarnor.20/21/22/23/24/25/26/27/28/29 = Alternative events
+#### fallofarnor.30/31/32 = End of the Event chains for the Fall of Rhudaur.
+#### fallofarnor.33 = Reenforcements for Angmar
+#### FALL OF CARDOLAN ####
+
+## Introduction ##
+
+character_event = {
+    id = fallofarnor.1
+    title = "EVTTITfallofarnor.1" ## The Fall of Arnor
+    desc = "EVTDESCfallofarnor.1" ## The former Kingdom of Arnor is now split in three Kingdoms : Arthedain, the most powerful, Cardolan, 
+    picture = "GFX_good"
+
+	trigger = {
+		year = 9651
+		NOT = { year = 9652 }
+		is_ruler = yes
+		NOT = { has_character_flag = fallofarnor_intro }
+	}
+	
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.1" ## OK		
+		set_character_flag = fallofarnor_intro
+		#hidden_tooltip = {
+		#	character_event = { id = buildings_at_start_FoA.11 }
+		#	character_event = { id = buildings_at_start_FoA.12 }
+		#}
+	}
+}
+
+######################################
+### FIRST EVENTS - FALL OF RHUDAUR ###
+######################################
+
+## Ulfang the Hillman wants to claim the title of Rhudaur from the Dunedain ##
+
+character_event = {
+    id = fallofarnor.2
+    title = "EVTTITfallofarnor.2"
+    desc = "EVTDESCfallofarnor.2"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.2" ## I want to be the King of Rhudaur	
+		set_global_flag = fallofrhudaur
+		k_rhudaur = { add_pressed_claim = ROOT }
+		c_rhudaur = { add_pressed_claim = ROOT }
+		c_wolfdale = { add_pressed_claim = ROOT }		
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_arthedain
+					has_landed_title = k_cardolan
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.4 }	## The Kings of Cardolan and Arthedain are alerted		
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil				
+				age = 1
+			}
+			character_event = { id = fallofarnor.3 }	## Forodacil of Rhudaur	is alerted	
+		}			
+	}
+
+	option = {
+		name = "EVTOPTBfallofarnor.2" ## No, they're wise rulers.
+		trigger = { ai = no }
+		any_independent_ruler = {
+			limit = {
+				has_character_flag = witchking 
+			}
+			character_event = { id = fallofarnor.25 days = 20 }	## The Witch-King is informed that Ulfang failed.
+		}			
+	}		
+}
+
+## Forodacil of Rhudaur is alerted that one of his hillman vassal wants to take the throne ##
+character_event = {
+    id = fallofarnor.3
+    title = "EVTTITfallofarnor.3"
+    desc = "EVTDESCfallofarnor.3"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.3" ## He can't be more powerful than me!
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.5 days = 365 }	 ## Ulfang will try to assassinate the heirs of Forodacil
+		}
+	}
+
+	option = {
+		name = "EVTOPTBfallofarnor.3" ## I'll need to be more prudent...
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = ulfang
+				age = 1
+			}		
+		character_event = { id = fallofarnor.6 days = 365 }	 ## Ulfang will try to assemble an army
+		}
+	}		
+}
+
+## The Kings of Arthedain and Cardolan are alerted of the situation in Rhudaur ##
+character_event = {
+    id = fallofarnor.4
+    title = "EVTTITfallofarnor.4"
+    desc = "EVTDESCfallofarnor.4"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.4" ## I hope my kin will resist!			
+	}
+}
+
+
+## Ulfang the Hillman begin to plot against Forodacil of Rhudaur - Forodacil isn't prudent ##
+character_event = {
+    id = fallofarnor.5
+    title = "EVTTITfallofarnor.5"
+    desc = "EVTDESCfallofarnor.5"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.5" ## First, I'll assassinate his heirs...	
+		random_list = {	
+			65 = {
+				any_playable_ruler = {
+					limit = { 
+						has_landed_title = k_rhudaur
+						has_character_flag = forodacil				
+						age = 1
+					}
+					character_event = { id = fallofarnor.7 days = 15 }	## The heirs of Forodacil are killed
+				}
+			}
+			35 = {
+				any_playable_ruler = {
+					limit = { 
+						has_landed_title = k_rhudaur
+						has_character_flag = forodacil				
+						age = 1
+					}
+					character_event = { id = fallofarnor.21 days = 15 }	## The plot failes, but Forodacil knows it.
+				}
+			}			
+		}			
+	}
+
+	option = {
+		name = "EVTOPTBfallofarnor.5" ## No, Forodacil and his heir are great kings.
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = witchking 
+			}
+			character_event = { id = fallofarnor.25 days = 15 }	## Angmar is alerted that Ulfman doesn't do his job.
+		}			
+	}		
+}
+
+## Ulfang the Hillman begins to plot against Forodacil of Rhudaur - Forodacil keeps an eye on him ##
+character_event = {
+    id = fallofarnor.6
+    title = "EVTTITfallofarnor.6"
+    desc = "EVTDESCfallofarnor.6"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.6" ## I'll assemble an army...	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.20 days = 20 }			
+		}				
+	}
+
+	option = {
+		name = "EVTOPTBfallofarnor.6" ## No, Forodacil and his heir are great kings.
+		any_independent_ruler = {
+			limit = {
+				has_character_flag = witchking 
+			}
+			character_event = { id = fallofarnor.25 days = 20 }	## The Witch-King is informed that Ulfang failed.
+		}			
+		trigger = { ai = no }
+	}		
+}
+
+### ASSASSINATE OF THE HEIRS OF RHUDAUR ###
+## The heirs of Forodacil are killed during an hunt.. Accident? ##
+character_event = {
+    id = fallofarnor.7
+    title = "EVTTITfallofarnor.7"
+    desc = "EVTDESCfallofarnor.7"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.7" ## Noooo, my sons !
+		any_child = {
+			death = {
+				death_reason = death_battle
+			}			
+		}
+		any_dynasty_member = {
+			limit = {
+			has_character_flag = mamandur
+			}
+			death = {
+				death_reason = death_battle
+			}	
+		}
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_arthedain
+					has_landed_title = k_cardolan
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.8 days = 15 }	## The Kings of Cardolan and Arthedain are alerted that the line of Isildur is broken in Rhudaur	
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.9 days = 2 }	## Ulfang is alerted that he killed the heirs
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_angmar
+				has_character_flag = witchking
+				age = 1
+			}
+			character_event = { id = fallofarnor.10 days = 2 }	## The Witch King is alerted that the heirs of Forodacil are dead
+		}				
+	}	
+}
+
+## The kings of Cardolan and Arthedain are alerted that the line of Isildur is broken in Rhudaur ##
+character_event = {
+    id = fallofarnor.8
+    title = "EVTTITfallofarnor.8"
+    desc = "EVTDESCfallofarnor.8"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.8" ## I'll have to keep an eye on Rhudaur...	
+	}			
+}
+
+## Ulfang can assemble an army to attack the King ##
+character_event = {
+    id = fallofarnor.9
+    title = "EVTTITfallofarnor.9"
+    desc = "EVTDESCfallofarnor.9"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.9" ## I can now assemble an army.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.11 days = 10 }	## Forodacil is alerted that Ulfang assemble an army
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.9" ## No, it's over for me.
+		any_independent_ruler = {
+			limit = {
+				has_character_flag = witchking 
+			}
+			character_event = { id = fallofarnor.25 days = 20 }	## The Witch-King is informed that Ulfang failed.
+		}			
+		trigger = { ai = no }				
+	}		
+}
+
+## The Witch-King of Angmar is alerted about the fate of the heirs ##
+character_event = {
+    id = fallofarnor.10
+    title = "EVTTITfallofarnor.10"
+    desc = "EVTDESCfallofarnor.10"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.9" ## Good.
+	}		
+}
+
+
+## WAR IN RHUDAUR ##
+## Ulfang assemble an army ! ##
+character_event = {
+    id = fallofarnor.11
+    title = "EVTTITfallofarnor.11"
+    desc = "EVTDESCfallofarnor.11"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.11" ## I'll have to fight !	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.12  }	## Ulfang is alerted that Forodacil will fight !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.11" ## A diplomatic way is possible again.
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.22 }	## Forodacil will try to negociate with Ulfang
+		}			
+	}		
+}
+
+## Ulfang is told that Forodacil assemble his army ! ##
+character_event = {
+    id = fallofarnor.12
+    title = "EVTTITfallofarnor.12"
+    desc = "EVTDESCfallofarnor.12"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	immediate = {
+		ROOT = { 
+			set_defacto_liege = ROOT 
+		}
+	}		
+	
+	option = {
+		name = "EVTOPTAfallofarnor.12" ## War, then !	
+		set_global_flag = civilwar_rhudaur
+		k_rhudaur = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.13 }	## It's War !
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_angmar
+				has_character_flag = witchking
+				age = 1
+			}
+			character_event = { id = fallofarnor.16 days = 2 }	## The Witch-King is informed of the beginning of the War.
+		}			
+		character_event = { id = fallofarnor.15 }	## Ask the Hillmen of Rhudaur to join you		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.12" ## I won't fight.
+		trigger = { ai = no }
+	}		
+}
+
+## Forodacil is informed of the beginning of the War ##
+character_event = {
+    id = fallofarnor.13
+    title = "EVTTITfallofarnor.13"
+    desc = "EVTDESCfallofarnor.13"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.13" ## I'll fight alone !
+		trigger = { ai = no }
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.13" ## I'll ask Cardolan and Arthedain to help !
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_cardolan
+					has_landed_title = k_arthedain
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.17 days = 3 }	## The Kings of Cardolan and Rhudaur are called !
+		}			
+	}		
+}
+
+## The Hillmen of Rhudaur will join the war ##
+character_event = {
+    id = fallofarnor.14
+    title = "EVTTITfallofarnor.14"
+    desc = "EVTDESCfallofarnor.14"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.14" ## We'll fight against this King with you, Ulfang !	
+		ROOT = {
+			join_attacker_wars = FROM
+		}
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.14" ## No, Forodacil is our True King.
+		trigger = { ai = no }
+	}		
+}
+
+## The Hillmen of Rhudaur are called to war ##
+character_event = {
+    id = fallofarnor.15
+    title = "EVTTITfallofarnor.15"
+    desc = "EVTDESCfallofarnor.15"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.15" ## We'll fight against this King with you, Ulfang !	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			any_vassal = {
+				limit = {
+					culture = culture_hillmen
+					age = 16
+				}
+				character_event = { id = fallofarnor.14 }	## The Hillmen of Rhudaur will join Ulfang, or not.
+			}
+		}	
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.15" ## No, I can fight alone.
+		trigger = { ai = no }
+	}		
+}
+
+## The Witch-King of Angmar is alerted of the Beginning of the War ##
+character_event = {
+    id = fallofarnor.16
+    title = "EVTTITfallofarnor.16"
+    desc = "EVTDESCfallofarnor.16"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.16" ## it's time to reveal myself.	
+		ROOT = {
+			join_attacker_wars = FROM
+		}
+		character_event = { id = fallofarnor.33 }	## Angmar get new armies	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.18 }	## Ulfang is informed that the Witch-King joined him
+		}	
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					NOT = { has_character_flag = witchking }
+					NOT = { has_character_flag = ulfang }
+				}
+			}
+			character_event = { id = fallofarnor.19 }	## Every rulers are informed that the Witch-King is now in War!
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.16" ## I'll wait to see what happens.
+		trigger = { ai = no }
+	}		
+}
+
+## Cardolan and Arthedain are called by Forodacil of Rhudaur to war ! ##
+character_event = {
+    id = fallofarnor.17
+    title = "EVTTITfallofarnor.17"
+    desc = "EVTDESCfallofarnor.17"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.17" ## To War !	
+		ROOT = {
+			join_defender_wars = FROM
+		}		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.17" ## That's not my War !
+		trigger = { ai = no }
+	}		
+}
+
+## Ulfang is informed that the Witch King joined him ##
+character_event = {
+    id = fallofarnor.18
+    title = "EVTTITfallofarnor.18"
+    desc = "EVTDESCfallofarnor.18"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.18" ## I'll win this war !	
+	}		
+}
+
+## Every rulers are informed that the Witch-King is at War ##
+character_event = {
+    id = fallofarnor.19
+    title = "EVTTITfallofarnor.19"
+    desc = "EVTDESCfallofarnor.19"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.19" ## The Witch-King?
+	}		
+}
+
+## BACK TO THE PLOT EVENTS ##
+## Ulfang assemble an army directly ! ##
+character_event = {
+    id = fallofarnor.20
+    title = "EVTTITfallofarnor.20"
+    desc = "EVTDESCfallofarnor.20"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.20" ## I'll have to fight !
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.12 days = 10 }	## Ulfang is alerted that Forodacil will fight !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.20" ## A diplomatic way is possible again.
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.22 days = 10 }	## Forodacil will try to negociate with Ulfang
+		}			
+	}		
+}
+
+## Ulfang failed to killed the heirs of Forodacil, but Forodacil know it ##
+character_event = {
+    id = fallofarnor.21
+    title = "EVTTITfallofarnor.21"
+    desc = "EVTDESCfallofarnor.21"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.21" ## I'll have to fight !
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.12 days = 10 }	## Ulfang is alerted that Forodacil will fight !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.21" ## A diplomatic way is possible again.
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.22 days = 10 }	## Forodacil will try to negociate with Ulfang
+		}			
+	}		
+}
+
+## Forodacil wants to negociate a peace ##
+character_event = {
+    id = fallofarnor.22
+    title = "EVTTITfallofarnor.22"
+    desc = "EVTDESCfallofarnor.22"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.22" ## I'll negociate a peace.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.23 days = 10 }	## A diplomatic issue.
+		}	
+		any_independent_ruler = {
+			limit = {
+				has_character_flag = witchking 
+			}
+			character_event = { id = fallofarnor.25 days = 20 }	## The Witch-King is informed that Ulfang failed.
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.22" ## I'll try to kill him during the negociation.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.24 days = 10 }	## Forodacil will try to negociate with Ulfang
+		}			
+	}	
+	option = {
+		name = "EVTOPTCfallofarnor.22" ## I'll fight !
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.12 days = 10 }	## To war !
+		}			
+	}	
+}
+
+## A diplomatic issue. ##
+character_event = {
+    id = fallofarnor.23
+    title = "EVTTITfallofarnor.23"
+    desc = "EVTDESCfallofarnor.23"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.23" ## That's better...
+		any_vassal = {
+			opinion = { modifier = diplomatic_rhudaur who = ROOT years = 10 }	
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			remove_claim = k_rhudaur
+		}			
+	}		
+}
+
+## Forodacil goes to a meeting with Ulfang. ##
+character_event = {
+    id = fallofarnor.24
+    title = "EVTTITfallofarnor.24"
+    desc = "EVTDESCfallofarnor.24"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.24" ## It looks bad... 
+		random_list = {	
+			55 = {			
+				any_playable_ruler = {
+					limit = { 
+						has_character_flag = ulfang
+						age = 1
+					}
+				character_event = { id = fallofarnor.26 }	## Forodacil is imprisonned !
+				}
+				ROOT = { imprison = FROM }
+			}	
+			45 = {			
+				any_playable_ruler = {
+					limit = { 
+						has_character_flag = ulfang
+						age = 1
+					}
+				character_event = { id = fallofarnor.12 days = 2 }	## Forodacil escaped the trap	
+				}
+			}				
+		}
+	}		
+}
+
+
+## The Witch-King is informed that Ulfang failed ##
+character_event = {
+    id = fallofarnor.25
+    title = "EVTTITfallofarnor.25"
+    desc = "EVTDESCfallofarnor.25"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.25" ## I'll make this war by myself then !
+		k_rhudaur = { add_pressed_claim = ROOT }
+		c_rhudaur = { add_pressed_claim = ROOT }
+		c_wolfdale = { add_pressed_claim = ROOT }	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				has_character_flag = forodacil
+				age = 1
+			}
+			character_event = { id = fallofarnor.27 days = 20 }	## It's War !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.25" ## All is doomed...
+		trigger = { ai = no }
+	}		
+}
+
+## Forodacil is imprisoned by your men ! ##
+character_event = {
+    id = fallofarnor.26
+    title = "EVTTITfallofarnor.26"
+    desc = "EVTDESCfallofarnor.26"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.26" ## I'll kill him !
+		k_rhudaur = {
+			grant_title = ROOT
+		}
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_cardolan
+					has_landed_title = k_arthedain
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.34 }		
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = forodacil
+				age = 1
+			}
+			death = {
+				death_reason = death_execution killer = ROOT
+			}			
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.26" ## The Prison seems good for him...
+		trigger = { ai = no }
+		k_rhudaur = {
+			grant_title = ROOT
+		}
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_cardolan
+					has_landed_title = k_arthedain
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.34 }		
+		}			
+	}	
+	option = {
+		name = "EVTOPTCfallofarnor.26" ## I'll banish him !
+		k_rhudaur = {
+			grant_title = ROOT
+		}	
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = forodacil
+				age = 1
+			}
+			banish = yes		
+		}	
+		any_playable_ruler = {
+			limit = { 
+				OR = {
+					has_landed_title = k_cardolan
+					has_landed_title = k_arthedain
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.34 }		
+		}			
+	}		
+}
+
+## Forodacil is informed that the Witch-King is coming to claim his throne ##
+character_event = {
+    id = fallofarnor.27
+    title = "EVTTITfallofarnor.27"
+    desc = "EVTDESCfallofarnor.27"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.27" ## Curses!
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_angmar
+				has_character_flag = witchking
+				age = 1
+			}
+			character_event = { id = fallofarnor.28 days = 5 }	## It's War !
+		}			
+	}		
+}
+
+## The Witch-King is informed that Ulfang failed ##
+character_event = {
+    id = fallofarnor.28
+    title = "EVTTITfallofarnor.28"
+    desc = "EVTDESCfallofarnor.28"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.28" ## I'll take the crown of Rhudaur!
+		k_rhudaur = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		character_event = { id = fallofarnor.33 days = 2}	## The Witch-King will declare war			
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				age = 1
+			}
+			character_event = { id = fallofarnor.13 }	## It's War !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.28" ## No... it's not time...
+		trigger = { ai = no }
+	}		
+}
+
+### FIRST EVENT - The Witch-King will ask Ulfang to take the throne of Rhudaur ##
+character_event = {
+    id = fallofarnor.29
+    title = "EVTTITfallofarnor.29"
+    desc = "EVTDESCfallofarnor.29"
+    picture = "GFX_good"
+
+	trigger = {
+		has_character_flag = witchking
+		age = 1
+		year = 9651
+		NOT = { year = 9652 }
+		NOT = { has_global_flag = fallofrhudaur }
+		war = no
+	}
+	
+	mean_time_to_happen = {
+		days = 200
+	}	
+	
+	option = {
+		name = "EVTOPTAfallofarnor.29" ## Ulfang, take this crown!
+		any_playable_ruler = {
+			limit = { 
+				has_character_flag = ulfang
+				age = 1
+			}
+			character_event = { id = fallofarnor.2 }	## Ulfang got the event to choose if he'll be an evil or a good character.
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.29" ## No... I'll wait...
+		trigger = { ai = no }
+	}		
+}
+
+### If Ulfang take the crown of Rhudaur ##
+character_event = {
+    id = fallofarnor.30
+    title = "EVTTITfallofarnor.30"
+    desc = "EVTDESCfallofarnor.30"
+    picture = "GFX_good"
+
+	trigger = {
+		culture=culture_hillmen
+		has_landed_title = k_rhudaur
+		has_global_flag = civilwar_rhudaur
+		year = 9650
+		NOT = { year = 10319 }
+		top_liege = {
+			NOT = {
+				has_landed_title = e_angmar
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}	
+	
+	option = {
+		name = "EVTOPTAfallofarnor.30" ## I'm a vassal of the Witch-King.
+		clr_global_flag = civilwar_rhudaur
+		set_defacto_liege = e_angmar
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_angmar
+				has_character_flag = witchking
+				age = 1
+			}
+			character_event = { id = fallofarnor.31 }	## The Witch-king is alerted
+		}
+		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.30" ## I'm a KING !
+		clr_global_flag = civilwar_rhudaur		
+		trigger = { ai = no }
+	}		
+}
+
+### The Witch-King is alerted thar Rhudaur is now part of his Kingdom. ##
+character_event = {
+    id = fallofarnor.31
+    title = "EVTTITfallofarnor.31"
+    desc = "EVTDESCfallofarnor.31"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfallofarnor.31" ## Good.	
+		any_vassal = {
+			opinion = { modifier = king_restored who = ROOT years = 50 }
+		}
+	}	
+}
+
+### If Ulfang failed to take the crown after the war against Rhudaur - Fires likely in 9658 ##
+character_event = {
+    id = fallofarnor.32
+    title = "EVTTITfallofarnor.32"
+    desc = "EVTDESCfallofarnor.32"
+    picture = "GFX_good"
+
+	trigger = {
+		has_character_flag = witchking
+		has_global_flag = civilwar_rhudaur
+		NOT = { year = 9657 }
+		any_realm_lord = { NOT = { has_landed_title = k_rhudaur } }
+		NOT = { has_global_flag = angmarattackonrhudaur }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+	}	
+	
+	option = {
+		name = "EVTOPTAfallofarnor.32" ## I'll take this crown by myself!
+		set_global_flag = angmarattackonrhudaur
+		k_rhudaur = { add_pressed_claim = ROOT }
+		c_rhudaur = { add_pressed_claim = ROOT }
+		c_wolfdale = { add_pressed_claim = ROOT }			
+		character_event = { id = fallofarnor.28 days = 5}	## The Witch-King will declare war	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_rhudaur
+				age = 1
+			}
+			character_event = { id = fallofarnor.27 days = 20 }	## It's War !
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.32" ## 
+		trigger = { ai = no }
+	}		
+}
+
+
+### Angmar get new troops for this war ###
+character_event = {
+    id = fallofarnor.33
+    title = "EVTTITfallofarnor.33"
+    desc = "EVTDESCfallofarnor.33"
+    picture = "GFX_good"
+	
+	is_triggered_only=yes
+	
+	option = {
+		name = "EVTOPTAfallofarnor.33" ## Release all my troops!
+		create_random_soldier = { ## Orkish Troops
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			female = no
+			age = 25
+		}
+		new_character = {
+			spawn_unit = {
+				province = 624 # Carn D没m
+				disband_on_peace = yes
+				troops =
+				{
+					light_infantry = { 4000 4000 }
+					heavy_infantry = { 1000 1000 }
+					archers = { 2000 2000 }
+				}
+			}		
+		}
+		
+		create_random_soldier = { ## Trolls Troops
+			random_traits = yes
+			dynasty = none
+			religion = religion_olog
+			culture = culture_troll
+			female = no
+			age = 25
+		}
+		new_character = {
+			spawn_unit = {
+				province = 624 # Carn D没m
+				disband_on_peace = yes
+				troops =
+				{
+					heavy_infantry = { 100 100 }
+				}
+			}		
+		}	
+
+		create_random_soldier = { ## Hillmen Troops
+			random_traits = yes
+			dynasty = none
+			religion = religion_haldadian
+			culture = culture_hillmen
+			female = no
+			age = 25
+		}
+		new_character = {
+			spawn_unit = {
+				province = 624 # Carn D没m
+				disband_on_peace = yes
+				troops =
+				{
+					light_infantry = { 2000 2000 }
+					heavy_infantry = { 500 500 }
+					archers = { 1000 1000 }
+				}
+			}		
+		}			
+	}
+	option = {
+		name = "EVTOPTCfallofarnor.33" ## Only the Orcs!
+		create_random_soldier = { ## Orkish Troops
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			female = no
+			age = 25
+		}
+		new_character = {
+			spawn_unit = {
+				province = 624 # Carn D没m
+				disband_on_peace = yes
+				troops =
+				{
+					light_infantry = { 8000 8000 }
+					heavy_infantry = { 2000 2000 }
+					archers = { 4000 4000 }
+				}
+			}		
+		}	
+	}	
+	option = {
+		name = "EVTOPTDfallofarnor.33" ## Only the Hillmen !
+		create_random_soldier = { ## Hillmen Troops
+			random_traits = yes
+			dynasty = none
+			religion = religion_haldadian
+			culture = culture_hillmen
+			female = no
+			age = 25
+		}
+		new_character = {
+			spawn_unit = {
+				province = 624 # Carn D没m
+				disband_on_peace = yes
+				troops =
+				{
+					light_infantry = { 4000 4000 }
+					heavy_infantry = { 1000 1000 }
+					archers = { 2000 2000 }
+				}
+			}		
+		}	
+	}		
+	option = {
+		name = "EVTOPTBfallofarnor.33" ## No
+		trigger = { ai = no }
+	}		
+}
+
+## Cardolan and Arthedain are alerted that Rhudaur fell to the Hillmen ##
+character_event = {
+    id = fallofarnor.34
+    title = "EVTTITfallofarnor.34"
+    desc = "EVTDESCfallofarnor.34"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.34" ## Curses!		
+	}		
+}
+
+
+###############################
+####### FALL OF CARDOLAN ######
+###############################
+
+#### The Witch-King is planned his attack on Cardolan ####
+
+character_event = {
+    id = fallofarnor.35
+    title = "EVTTITfallofarnor.35"
+    desc = "EVTDESCfallofarnor.35"
+    picture = "GFX_good"
+
+	trigger = {
+		has_character_flag = witchking
+		age = 1
+		year = 9688
+		NOT = { year = 9689 }
+		has_global_flag = fallofrhudaur
+		NOT = { has_global_flag = threatoncardolan }
+		war=no
+	}
+	
+	mean_time_to_happen = {
+		days = 200
+	}	
+	
+	option = {
+		name = "EVTOPTAfallofarnor.35" ## I'll kill the last heirs of Isildur in Cardolan !
+		set_global_flag = threatoncardolan
+		k_cardolan = { add_pressed_claim = ROOT }
+		d_minhiriath = { add_pressed_claim = ROOT }
+		c_annithir = { add_pressed_claim = ROOT }			
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_cardolan
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.36 days = 10 }	## Ostoher of Cardolan is alerted that the Witch-King is looking for his kingdom now.
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.35" ## No... Rhudaur is enough
+		trigger = { ai=no }
+	}		
+}
+
+## The King of Cardolan is alerted of the claims of the Witch-King##
+character_event = {
+    id = fallofarnor.36
+    title = "EVTTITfallofarnor.36"
+    desc = "EVTDESCfallofarnor.36"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.36" ## I'll prepare my war !
+		trigger = {ai=no}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+		character_event = { id = fallofarnor.37 days = 15 }	 ## The Witch-King is alerted of the coming war.
+		}
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.40 days = 15 }	## The King of Arthedain is alerted of the next war
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.36" ## I'll accept my fate.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}	
+			character_event = { id = fallofarnor.41 days = 15 }	
+		}
+	}	
+	option = {
+		name = "EVTOPTCfallofarnor.36" ## Attack th Rhudaur !
+		trigger = {ai=no}
+		k_rhudaur = { add_pressed_claim = ROOT }
+		c_rhudaur = { add_pressed_claim = ROOT }
+		c_wolfdale = { add_pressed_claim = ROOT }	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+		character_event = { id = fallofarnor.40 days = 15 }	 ## The Witch-King is alerted
+		}		
+	}		
+}
+
+
+###### WAR IN CARDOLAN ######
+## The Witch King is alerted that Cardolan prepare to War ##
+character_event = {
+    id = fallofarnor.37
+    title = "EVTTITfallofarnor.37"
+    desc = "EVTDESCfallofarnor.37"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.37" ## That's what i expected...
+		k_cardolan = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_cardolan
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.38 }	## Ostoher of Cardolan is alerted that the Witch-King is attacking !
+		}	
+		character_event = { id = fallofarnor.33 }	## The Witch-King will have more troops	
+	}		
+}
+
+## The King of Cardolan is alerted that Angmar attacks! ##
+character_event = {
+    id = fallofarnor.38
+    title = "EVTTITfallofarnor.38"
+    desc = "EVTDESCfallofarnor.38"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.38" ## I'll fight alone !	
+		trigger = {ai=no}
+	}		
+	option = {
+		name = "EVTOPTBfallofarnor.38" ## I'll ask Arthedain and Rivendell to help !
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.39 days = 2 }	## The King of Arthedain is call to aid
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.39 days = 2 }	## Elrond is call to aid
+		}			
+	}	
+	option = {
+		name = "EVTOPTCfallofarnor.38" ## I'll ask Arthedain only to help!	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}			
+			character_event = { id = fallofarnor.39 days = 2 }	## The King of Arthedain is call to aid
+		}		
+	}		
+}
+
+## Cardolan call to aid some of his allies ! ##
+character_event = {
+    id = fallofarnor.39
+    title = "EVTTITfallofarnor.39"
+    desc = "EVTDESCfallofarnor.39"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.39" ## To War !	
+		ROOT = {
+			join_defender_wars = FROM
+		}		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.39" ## That's not my War !
+		trigger = { ai=no }
+	}		
+}
+
+## Arthedain is alerted of the war ##
+character_event = {
+    id = fallofarnor.40
+    title = "EVTTITfallofarnor.40"
+    desc = "EVTDESCfallofarnor.40"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.40" ## It looks bad...
+	}		
+}
+
+###### The Reunificate of Arnor ######
+## Arthedain is alerted that the Cardolan is weak. ##
+character_event = {
+    id = fallofarnor.41
+    title = "EVTTITfallofarnor.41"
+    desc = "EVTDESCfallofarnor.41"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.41" ## I should claim the crown of Arnor.		
+		character_event = { id = fallofarnor.42 days = 1 }	## The King of Arthedain is call to aid	
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.41" ## All is lost...
+		trigger = { ai=no }
+	}		
+}
+
+## Arthedain will choose to claim the crown for his Kingdom, or to vassalize Cardolan as well. ##
+character_event = {
+    id = fallofarnor.42
+    title = "EVTTITfallofarnor.42"
+    desc = "EVTDESCfallofarnor.42"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.42" ## Arthedain is the last strong Kingdom.		
+		character_event = { id = fallofarnor.43 days = 1 }
+		e_arnor = {
+			grant_title = ROOT
+			copy_title_laws = k_arthedain
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+		character_event = { id = fallofarnor.44 days = 2 }	 ## The Witch-King is alerted
+		}		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.41" ## Cardolan remains to this Kingdom.		
+		character_event = { id = fallofarnor.43 days = 1 }
+		e_arnor = {
+			grant_title = ROOT
+			copy_title_laws = k_arthedain
+		}			
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_cardolan
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.45 days = 1 }	## Ostoher of Cardolan is alerted that the Witch-King is attacking !
+		}			
+	}		
+	option = {
+		name = "EVTOPTCfallofarnor.41" ## All is lost...
+		trigger = { ai=no }
+	}		
+}
+
+## The King of Arnor ##
+character_event = {
+    id = fallofarnor.43
+    title = "EVTTITfallofarnor.43"
+    desc = "EVTDESCfallofarnor.43"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+			  
+	option = {
+		name = "EVTOPTAfallofarnor.43" ## I'm the True King.		
+	}	
+}
+
+## The King of Arnor - Witch-King is alerted ##
+character_event = {
+    id = fallofarnor.44
+    title = "EVTTITfallofarnor.44"
+    desc = "EVTDESCfallofarnor.44"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTBfallofarnor.44" ## Curses !
+		trigger = { ai=no }		
+	}
+	option = {
+		name = "EVTOPTAfallofarnor.44" ## I should prepare other plans...		
+		character_event = { id = fallofarnor.48 days = 15 }		
+	}				  
+	option = {
+		name = "EVTOPTCfallofarnor.44" ## I'll attack Cardolan.
+		trigger = { ai=no }		
+		k_cardolan = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_cardolan
+				OR = {
+					religion = religion_dunedain
+					religion = religion_numenorean
+				}
+				age = 1
+			}
+			character_event = { id = fallofarnor.38 }	## Ostoher of Cardolan is alerted that the Witch-King is attacking !
+		}	
+		character_event = { id = fallofarnor.33 }	## The Witch-King will have more troops			
+	}		
+}
+
+## The King of Arnor - Cardolan is asking to be a vassal ##
+character_event = {
+    id = fallofarnor.45
+    title = "EVTTITfallofarnor.45"
+    desc = "EVTDESCfallofarnor.45"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.45" ## You're my King.
+		set_defacto_liege = e_arnor		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				trait = blood_of_isildur
+				age = 1
+			}			
+			character_event = { id = fallofarnor.46 }	## The King of Arthedain is alerted
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+		character_event = { id = fallofarnor.44 days = 2 }	 ## The Witch-King is alerted
+		}			
+	}				  
+	option = {
+		name = "EVTOPTBfallofarnor.45" ## This crown remains to me!
+		trigger = { ai=no }	
+		e_arnor = { add_pressed_claim = ROOT }
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_arthedain
+				trait = blood_of_isildur
+				age = 1
+			}			
+			character_event = { id = fallofarnor.47 }	## The King of Arthedain is alerted
+		}			
+	}	
+}
+
+## The King of Arnor - Cardolan is now a vassal ##
+character_event = {
+    id = fallofarnor.46
+    title = "EVTTITfallofarnor.46"
+    desc = "EVTDESCfallofarnor.46"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.46" ## Perfect.		
+	}				  
+}
+
+## The King of Arnor - Cardolan is not a vassal ##
+character_event = {
+    id = fallofarnor.47
+    title = "EVTTITfallofarnor.47"
+    desc = "EVTDESCfallofarnor.47"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.47" ## Curses !		
+	}				  
+}
+
+
+## ALTERNATIVE PLANS FOR THE WITCH-KING ##
+## The Witch-King prepare other plans ##
+character_event = {
+    id = fallofarnor.48
+    title = "EVTTITfallofarnor.48"
+    desc = "EVTDESCfallofarnor.48"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.48" ## I'll try to kill this King !
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_arnor
+				trait = blood_of_isildur
+				age = 1
+			}			
+			character_event = { id = fallofarnor.49 }	## The King of Arnor will have an event to prepar his defenses
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.48" ## I'll attack the elves during this time.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.56 }	## Elrond is alerted
+		}			
+	}	
+	option = {
+		name = "EVTOPTCfallofarnor.48" ## I'll attack the Anduin Vale.
+		character_event = { id = fallofarnor.64 }
+	}		
+}
+
+## DEATH OF THE KING OF ARNOR ##
+## The King of Arnor will try to securise his borders ##
+character_event = {
+    id = fallofarnor.49
+    title = "EVTTITfallofarnor.49"
+    desc = "EVTDESCfallofarnor.49"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.49" ## I'll command myself, from Amon S鹟.
+		c_weather_hills = {
+			grant_title = ROOT
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+			character_event = { id = fallofarnor.50 days = 20 }	 ## The Witch-King is alerted
+		}			
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.49" ## I'll send one of my generals to stronger the hills.
+		trigger = { ai = no }
+		create_random_soldier = { ## A General for Arnor
+			random_traits = yes
+			dynasty = none
+			religion = religion_dunedain
+			culture = culture_arnorian
+			female = no
+			age = 25
+		}
+		new_character = {
+			c_weather_hills = {
+				grant_title = PREV
+			}			
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}		
+			character_event = { id = fallofarnor.55 days = 20 }	 ## The Witch-King is alerted
+		}			
+	}		
+}
+
+## The King of Arnor is in Amon S鹟 - The Witch-King is alerted ##
+character_event = {
+    id = fallofarnor.50
+    title = "EVTTITfallofarnor.50"
+    desc = "EVTDESCfallofarnor.50"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.50" ## Good... He's closer now.		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = e_arnor
+				trait = blood_of_isildur
+				age = 1
+			}			
+			character_event = { id = fallofarnor.51 days = 50 }	## The King of Arnor will be alerted of hillmen near to Amon S鹟.
+		}		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.50" ## I'll have to prepare my defenses too...	
+			trigger= { ai = no }
+	}		
+}
+
+## The King of Arnor is in Amon S鹟 - Hillmen are attacking ##
+character_event = {
+    id = fallofarnor.51
+    title = "EVTTITfallofarnor.51"
+    desc = "EVTDESCfallofarnor.51"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.51" ## So close... I'll fight !		
+		random_list = {	
+			65 = {
+				death = {
+					death_reason = death_battle
+				}	
+				any_playable_ruler = {
+					limit = {
+						has_character_flag = witchking
+						age = 1
+					}
+				character_event = { id = fallofarnor.52 days = 25 }	## The King of Arnor (Argeleb I normally) is killed in battle.
+				}
+			}
+			35 = {
+				character_event = { id = fallofarnor.53 days = 25 }	## The King will survive the battle
+				any_playable_ruler = {
+					limit = {
+						has_character_flag = witchking
+						age = 1
+					}
+				character_event = { id = fallofarnor.54	days = 25 }	## The King of Arnor (Argeleb I normally) is still alive after the battle.
+				}				
+			}			
+		}		
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.51" ## Our defenses will resist this army !	
+		trigger= { ai = no }
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}
+		character_event = { id = fallofarnor.54	days = 25 }	## The King of Arnor (Argeleb I normally) is still alive after the battle.
+		}				
+	}		
+}
+
+## The King of Arnor is killed in battle near to Amon S鹟 ##
+character_event = {
+    id = fallofarnor.52
+    title = "EVTTITfallofarnor.52"
+    desc = "EVTDESCfallofarnor.52"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.52" ## Excellent... My troops can come back.			
+	}		
+}
+
+## The King of Arnor is still alive after the battle against Hillmen - Angmar side##
+character_event = {
+    id = fallofarnor.54
+    title = "EVTTITfallofarnor.54"
+    desc = "EVTDESCfallofarnor.54"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTBfallofarnor.54" ## I'll attack the elves instead.
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.56 days = 20 }	## Elrond is alerted
+		}			
+	}	
+	
+	option = {
+		name = "EVTOPTCfallofarnor.48" ## I'll attack the Anduin Vale.
+		character_event = { id = fallofarnor.64 }	
+	}		
+}
+
+## The King of Arnor is still alive after the battle against Hillmen - Arnor side ##
+character_event = {
+    id = fallofarnor.53
+    title = "EVTTITfallofarnor.53"
+    desc = "EVTDESCfallofarnor.53"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.53" ## I'm a true Numenorean.
+		random = {
+			chance = 20
+				FROM = {
+					give_nickname = nick_angmardacil
+				}
+		}		
+	}		
+}
+
+## The King of Arnor is not in Amon S鹟 - Witch King is alerted ##
+character_event = {
+    id = fallofarnor.55
+    title = "EVTTITfallofarnor.55"
+    desc = "EVTDESCfallofarnor.55"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.55" ## My plan fails.
+		character_event = { id = fallofarnor.54  days = 150 }
+	}		
+}
+
+
+
+#### Attack on Rivendell ####
+## Elrond is alerted ##
+character_event = {
+    id = fallofarnor.56
+    title = "EVTTITfallofarnor.56"
+    desc = "EVTDESCfallofarnor.56"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.55" ## I'll try to resist.
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}
+		character_event = { id = fallofarnor.57	days = 30 }	## The Witch-King will get a claim
+		}	
+	}		
+}
+
+
+## Witch-King get the claim ##
+character_event = {
+    id = fallofarnor.57
+    title = "EVTTITfallofarnor.57"
+    desc = "EVTDESCfallofarnor.57"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.55" ## I'll try to resist.
+		d_rivendell= { add_pressed_claim = ROOT }
+		c_imladris = { add_pressed_claim = ROOT }
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.58 days = 25 }	## Elrond is alerted
+		}	
+	}		
+}
+
+## Elrond will choose who'll lead the armies ##
+character_event = {
+    id = fallofarnor.58
+    title = "EVTTITfallofarnor.58"
+    desc = "EVTDESCfallofarnor.58"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.58" ## Glorfindel will
+		trigger = { 
+			any_vassal = {
+				has_character_flag = glorfindel
+				is_alive = yes
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}			
+			character_event = { id = fallofarnor.59 days = 25 }	## War will begins
+		}	
+	}	
+	option = {
+		name = "EVTOPTBfallofarnor.58" ## Glorfindel will
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = witchking
+				age = 1
+			}			
+			character_event = { id = fallofarnor.62 days = 25 }	## War will begins
+		}	
+	}		
+}
+
+
+## Witch-King start the War - Glorfindel will lead the elvish armies ##
+character_event = {
+    id = fallofarnor.59
+    title = "EVTTITfallofarnor.59"
+    desc = "EVTDESCfallofarnor.59"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	option = {
+		name = "EVTOPTAfallofarnor.59" ## To WAR !
+		d_rivendell = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.60 }	## Elrond is alerted
+		}	
+	}		
+}
+
+
+## Glorfindel will lead the elvish armies ##
+character_event = {
+    id = fallofarnor.60
+    title = "EVTTITfallofarnor.60"
+    desc = "EVTDESCfallofarnor.60"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfallofarnor.60" ## To WAR !
+		any_vassal = {
+			limit = {
+				has_character_flag = glorfindel
+				age = 1
+			}
+			character_event = { id = fallofarnor.61 }	## Glorfindel will lead the army			
+		}
+	}		
+}
+
+## Glorfindel will lead the elvish armies - Glorfindel side ##
+character_event = {
+    id = fallofarnor.61
+    title = "EVTTITfallofarnor.61"
+    desc = "EVTDESCfallofarnor.61"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfallofarnor.61" ## To WAR !
+		spawn_unit = {
+			province = 234 # Rivendell
+			owner = ROOT
+			disband_on_peace = yes
+			troops =
+			{
+				light_infantry = { 400 400 }			
+				heavy_infantry = { 800 800 }
+				archers = { 1000 1000 }				
+				light_cavalry = { 100 100 }
+				horse_archers = { 100 100 } 
+				knights = { 500 500 }
+			}
+		}	
+	}		
+}
+
+
+## Witch-King start the War - Elrond will lead the elvish armies ##
+character_event = {
+    id = fallofarnor.62
+    title = "EVTTITfallofarnor.62"
+    desc = "EVTDESCfallofarnor.62"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	option = {
+		name = "EVTOPTAfallofarnor.62" ## To WAR !
+		d_rivendell = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = d_rivendell
+				has_character_flag = elrond
+				age = 1
+			}			
+			character_event = { id = fallofarnor.63 }	## Elrond is alerted
+		}	
+	}		
+}
+
+
+## Elrond will lead the elvish armies ##
+character_event = {
+    id = fallofarnor.63
+    title = "EVTTITfallofarnor.63"
+    desc = "EVTDESCfallofarnor.63"
+    picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfallofarnor.63" ## To WAR !
+		spawn_unit = {
+			province = 234 # Rivendell
+			owner = ROOT
+			disband_on_peace = yes
+			troops =
+			{
+				light_infantry = { 400 400 }			
+				heavy_infantry = { 800 800 }
+				archers = { 1000 1000 }				
+				light_cavalry = { 100 100 }
+				horse_archers = { 100 100 } 
+				knights = { 500 500 }
+			}
+		}			
+	}		
+}
+
+### Witch-King can expend in Anduin Vale and Grey Mountains ###
+
+## Witch-King get the claim ##
+character_event = {
+    id = fallofarnor.64
+    title = "EVTTITfallofarnor.64"
+    desc = "EVTDESCfallofarnor.64"
+    picture = "GFX_evil"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfallofarnor.64" ## I'll claim the Anduin Vale and the Grey Mountains
+		k_grey_mountains = { add_pressed_claim = ROOT }
+		d_grey_mountains = { add_pressed_claim = ROOT }
+		c_cirith_auris = { add_pressed_claim = ROOT }
+		c_withered_heath = { add_pressed_claim = ROOT }
+		c_cirith_himmimond = { add_pressed_claim = ROOT }
+		c_cirith_mirhlim = { add_pressed_claim = ROOT }	
+		k_anduin_vale = { add_pressed_claim = ROOT }
+		d_beorncrofts = { add_pressed_claim = ROOT }
+		c_beornhall = { add_pressed_claim = ROOT }
+		c_forest_gate = { add_pressed_claim = ROOT }
+		c_mirkmaer = { add_pressed_claim = ROOT }
+		c_opposite_gladden = { add_pressed_claim = ROOT }
+		d_langwed_vale = { add_pressed_claim = ROOT }
+		c_langwed_vale = { add_pressed_claim = ROOT }
+		c_eredlangwed = { add_pressed_claim = ROOT }
+		c_north_west_of_mirkwood = { add_pressed_claim = ROOT }		
+		c_north_of_mirkwood = { add_pressed_claim = ROOT }
+		d_carrock = { add_pressed_claim = ROOT }
+		c_carrock = { add_pressed_claim = ROOT }
+		c_north_ninglor_vale = { add_pressed_claim = ROOT }
+		c_north_gladden = { add_pressed_claim = ROOT }
+		c_south_rhimdath = { add_pressed_claim = ROOT }	
+	}		
+}
+
+
+
+### If Witch-King don't have the lands of Cardolan in 9750 ###
+
+## Witch-King get the claim ##
+character_event = {
+    id = fallofarnor.65
+    title = "EVTTITfallofarnor.65"
+    desc = "EVTDESCfallofarnor.65"
+    picture = "GFX_evil"
+
+	trigger = {
+		has_character_flag = witchking
+		year = 9750
+		any_realm_lord = { NOT = { has_landed_title = k_cardolan } }
+		NOT = { has_character_flag = warincardolan }
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	option = {
+		name = "EVTOPTAfallofarnor.65" ## I'll claim the Cardolan
+		k_cardolan= { add_pressed_claim = ROOT }
+		d_girithlin = { add_pressed_claim = ROOT }
+		c_cithrenor = { add_pressed_claim = ROOT }
+		c_angoth = { add_pressed_claim = ROOT }
+		d_dol_caladir = { add_pressed_claim = ROOT }
+		c_daelmoth= { add_pressed_claim = ROOT }	
+		set_character_flag = warincardolan
+	}		
+}

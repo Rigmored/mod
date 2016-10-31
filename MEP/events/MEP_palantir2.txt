@@ -1,0 +1,3743 @@
+##### palantir.0 -> Automatically granted to the holder of the land if no-one holds the trait ####
+##### palantir.7 -> events of Elostirion ######
+##### palantir.14 -> Ambitions events #####
+##### palantir.52 -> list of the guardians of the palantiri #####
+##### palantir.53 -> use a palantir during a war #####
+
+namespace=palantir
+
+#### EVENTS OF THE PALANTIRI #####
+
+## Event to give the Palantir of Amon Sûl if not owned before 10318 ##
+character_event = {
+	id = palantir.0
+	desc = "EVTDESCpalantir.0"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_sul = { is_alive = yes } }
+		has_landed_title = c_weather_hills
+		age=1
+		NOT = { year = 10318 }
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_sul }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.0" # I'll keep this Stone !
+		add_trait = palantir_sul
+		set_global_flag = palantir_sul
+	}	
+} 
+
+## Event to give the Palantir of Elostirion if not owned##
+character_event = {
+	id = palantir.1
+	desc = "EVTDESCpalantir.1"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_elostirion = { is_alive = yes } }
+		has_landed_title = c_towerhills
+		age=1
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_elostirion }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.1" # I'll keep this Stone !
+		add_trait = palantir_elostirion
+		set_global_flag = palantir_elostirion
+	}	
+} 
+
+## Event to give the Palantir of Minas Anor if not owned##
+character_event = {
+	id = palantir.2
+	desc = "EVTDESCpalantir.2"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir = { is_alive = yes } }
+		has_landed_title = c_minas_tirith
+		age=1
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_anor }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.2" # I'll keep this Stone !
+		add_trait = palantir
+		set_global_flag = palantir_anor
+	}	
+} 
+
+## Event to give the Palantir of Minas Ithil if not owned##
+character_event = {
+	id = palantir.3
+	desc = "EVTDESCpalantir.3"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_ithil = { is_alive = yes } }
+		has_landed_title = c_morgul
+		age=1
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_ithil }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.3" # I'll keep this Stone !
+		add_trait = palantir_ithil
+		set_global_flag = palantir_ithil
+	}	
+} 
+
+## Event to give the Palantir of Ortanc if not owned ##
+character_event = {
+	id = palantir.4
+	desc = "EVTDESCpalantir.4"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_orthanc = { is_alive = yes } }
+		has_landed_title = c_orthanc
+		age=1
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_orthanc }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.4" # I'll keep this Stone !
+		add_trait = palantir_orthanc
+		set_global_flag = palantir_orthanc
+	}	
+} 
+
+## Event to give the Palantir of Osgiliath if not owned ##
+character_event = {
+	id = palantir.5
+	desc = "EVTDESCpalantir.5"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_osgiliath = { is_alive = yes } }
+		NOT = { year = 9780 }
+		has_landed_title = c_east_osgiliath
+		age=1
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_osgiliath }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.5" # I'll keep this Stone !
+		add_trait = palantir_osgiliath
+		set_global_flag = palantir_osgiliath
+	}	
+} 
+
+## Event to give the Palantir of Annuminas if not owned before 10318 ##
+character_event = {
+	id = palantir.6
+	desc = "EVTDESCpalantir.6"
+	picture = GFX_evt_palantir
+	
+	trigger = {
+		NOT = { palantir_annuminas = { is_alive = yes } }
+		has_landed_title = c_annuminas
+		age=1
+		NOT = { year = 10318 }
+		NOT = { culture = culture_wilderness }
+		NOT = { religion = religion_wilderness }
+		NOT = { has_global_flag = palantir_annuminas }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTApalantir.6" # I'll keep this Stone !
+		add_trait = palantir_annuminas	
+		set_global_flag = palantir_annuminas		
+	}	
+} 
+
+###########################################################################
+################### EVENTS OF PALANTIR OF ELOSTIRION ######################
+###########################################################################
+
+## A Character want to travel to visit the Elendil-Stone ##
+character_event = {
+	id = palantir.7
+	desc = "EVTDESCpalantir.7"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.7" # I want to see the Undying Lands
+		set_character_flag = visit_elostirion
+		if = {
+			limit = { 
+				NOT = { trait = palantir_elostirion }
+			}
+			any_playable_ruler = {
+				limit = { 
+					trait = palantir_elostirion
+					age = 1
+				}
+				character_event = { id = palantir.8 days = 100 }
+			}
+		}
+		if = {
+			limit = { 
+				trait = palantir_elostirion
+			}
+			character_event = { id = palantir.9 days = 5 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBpalantir.7" # I don't want to see the Tower of Avallonë !	
+	}	
+} 
+
+## The Holder of the Elendil-Stone is asked to show the stone ##
+character_event = {
+	id = palantir.8
+	desc = "EVTDESCpalantir.8"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.8" # You can try to have a look.
+		FROM = { character_event = { id = palantir.9 days = 2 } }
+	}	
+	
+	option = {
+		name = "EVTOPTBpalantir.8" # The Stone is locked.
+		FROM = { character_event = { id = palantir.10 days = 2 } }
+	}	
+} 
+
+## You can enter the Tower ##
+character_event = {
+	id = palantir.9
+	desc = "EVTDESCpalantir.9"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.9" # I'll try to see the Undyiang Lands.
+		random_list = {
+			89 = {
+				character_event = { id = palantir.11 days = 1 } ## You can't see anything
+			}
+			10 = {
+				character_event = { id = palantir.12 days = 1 } ## You just see a light
+			}
+			1 = {
+				character_event = { id = palantir.13 days = 1 } ## You can see the Tower of Avallonë !
+			}
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTBpalantir.9" # I just wanted to see the Stone.	
+		piety = 150
+	}	
+} 
+
+## You can't look to the Stone ##
+character_event = {
+	id = palantir.10
+	desc = "EVTDESCpalantir.10"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.10" # An useless journey...
+		random_list = {
+			75 = {
+			}
+			25 = {
+				add_trait = depressed
+			}
+		}
+	}		
+} 
+
+## You look into the Stone, but you can't see anything ##
+character_event = {
+	id = palantir.11
+	desc = "EVTDESCpalantir.11"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.11" # At least, i saw the stone.
+		random_list = {
+			85 = {
+			}
+			15 = {
+				add_trait = depressed
+			}
+		}
+	}		
+} 
+
+## You look into the Stone, and you was jut able to see a bright light ##
+character_event = {
+	id = palantir.12
+	desc = "EVTDESCpalantir.12"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.12" # At least, i saw something.
+		prestige = 50
+		random_list = {
+			35 = {
+				add_trait = perceptive
+			}
+			60 = {
+			}
+			5 = {
+				add_trait = depressed
+			}
+		}
+	}		
+} 
+
+## You look into the Stone, and you can see the Tower of Avallonë ! ##
+character_event = {
+	id = palantir.13
+	desc = "EVTDESCpalantir.13"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.13" # A great day!
+		prestige = 250
+		add_trait = perceptive
+	}		
+} 
+
+
+######################################################################
+######################### AMBITIONS EVENTS ###########################
+######################################################################
+
+########### Anor-Stone #############
+# The Lord of Minas Anor/Tirith will ask another dunedain to give him the Anor-Stone #
+character_event = {
+	id = palantir.14
+	title = "EVTTITpalantir.14"
+	desc = "EVTDESCpalantir.14"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_minas_tirith
+		has_ambition = obj_claim_palantir_anor
+		NOT = { trait = palantir }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir			
+			}
+		}
+		NOT = { has_character_flag = requested_anor_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.14" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_anor_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir
+				age=1			
+			}
+			character_event = { id = palantir.15 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.14" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Anor-Stone is asked
+character_event = {
+	id = palantir.15
+	title = "EVTTITpalantir.15"
+	desc = "EVTDESCpalantir.15"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.15" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir
+		FROM = {
+			add_trait = palantir 
+			character_event = { id = palantir.16 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.15" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.17 days = 5 } }
+	}
+}
+
+## You receive the Anor-Stone ##
+character_event = {
+	id = palantir.16
+	title = "EVTTITpalantir.16"	
+	desc = "EVTDESCpalantir.16"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.16" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Anor-Stone ##
+character_event = {
+	id = palantir.17
+	title = "EVTTITpalantir.17"		
+	desc = "EVTDESCpalantir.17"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.17" # I'll remember this...
+		set_character_flag = anor_stone_denied
+	}		
+} 
+
+# The Lord of Minas Anor/Tirith will try to plot to gain the Anor-Stone #
+character_event = {
+	id = palantir.18
+	title = "EVTTITpalantir.18"	
+	desc = "EVTDESCpalantir.18"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		OR = {
+			AND = {
+				has_landed_title = c_minas_tirith
+				has_ambition = obj_claim_palantir_anor
+				NOT = { trait = palantir }
+				NOT = { has_character_flag = requested_anor_stone }
+				NOT = { has_character_flag = plot_for_anor_stone }	
+				has_character_flag = anor_stone_denied
+			}
+			AND = {
+				has_landed_title = c_morgul
+				has_ambition = obj_claim_palantir_ithil
+				NOT = { trait = palantir_ithil }
+				NOT = { has_character_flag = requested_ithil_stone }
+				NOT = { has_character_flag = plot_for_ithil_stone }	
+				has_character_flag = ithil_stone_denied
+			}
+			AND = {
+				has_landed_title = c_weather_hills
+				has_ambition = obj_claim_palantir_sul
+				NOT = { trait = palantir_sul }
+				NOT = { has_character_flag = requested_sul_stone }
+				NOT = { has_character_flag = plot_for_sul_stone }	
+				has_character_flag = sul_stone_denied
+			}
+			AND = {
+				has_landed_title = c_east_osgiliath
+				has_ambition = obj_claim_palantir_osgiliath
+				NOT = { trait = palantir_osgiliath }
+				NOT = { has_character_flag = requested_osgiliath_stone }
+				NOT = { has_character_flag = plot_for_osgiliath_stone }	
+				has_character_flag = osgiliath_stone_denied
+			}	
+			AND = {
+				has_landed_title = c_towerhills
+				has_ambition = obj_claim_palantir_elostirion
+				NOT = { trait = palantir_elostirion }
+				NOT = { has_character_flag = requested_elostirion_stone }
+				NOT = { has_character_flag = plot_for_elostirion_stone }	
+				has_character_flag = elostirion_stone_denied
+			}	
+			AND = {
+				has_landed_title = c_annuminas
+				has_ambition = obj_claim_palantir_annuminas
+				NOT = { trait = palantir_annuminas }
+				NOT = { has_character_flag = requested_annuminas_stone }
+				NOT = { has_character_flag = plot_for_annuminas_stone }	
+				has_character_flag = annuminas_stone_denied
+			}	
+			AND = {
+				has_landed_title = c_orthanc
+				has_ambition = obj_claim_palantir_orthanc
+				NOT = { trait = palantir_orthanc }
+				NOT = { has_character_flag = requested_orthanc_stone }
+				NOT = { has_character_flag = plot_for_orthanc_stone }	
+				has_character_flag = orthanc_stone_denied
+			}			
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.18" # I'll stole it!
+		ai_chance = { factor = 100 }
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_anor
+				NOT = { trait = palantir }
+				age = 1
+			}
+			set_character_flag = plot_for_anor_stone
+		}
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_ithil
+				NOT = { trait = palantir_ithil }
+				age = 1
+			}
+			set_character_flag = plot_for_ithil_stone
+		}	
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_sul
+				NOT = { trait = palantir_sul }
+				age = 1
+			}
+			set_character_flag = plot_for_sul_stone
+		}	
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_osgiliath
+				NOT = { trait = palantir_osgiliath }
+				age = 1
+			}
+			set_character_flag = plot_for_osgiliath_stone
+		}	
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_elostirion
+				NOT = { trait = palantir_elostirion }
+				age = 1
+			}
+			set_character_flag = plot_for_elostirion_stone
+		}	
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_annuminas
+				NOT = { trait = palantir_annuminas }
+				age = 1
+			}
+			set_character_flag = plot_for_annuminas_stone
+		}	
+		if = {
+			limit = {
+				has_ambition = obj_claim_palantir_orthanc
+				NOT = { trait = palantir_orthanc }
+				age = 1
+			}
+			set_character_flag = plot_for_orthanc_stone
+		}		
+		character_event = { id = palantir.19 days = 10 } 
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.18" # We won't want a fight...
+		set_character_flag = abort_claim_palantir
+		ai_chance = { factor = 0 }
+	}
+}
+
+
+## Plot to gain the stone ##
+character_event = {
+	id = palantir.19
+	title = "EVTTITpalantir.19"		
+	desc = "EVTDESCpalantir.19"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.19" # Steal only the stone
+		ai_chance = { factor = 50 }
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_anor
+				NOT = { trait = palantir }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_ithil
+				NOT = { trait = palantir_ithil }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_ithil
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_sul
+				NOT = { trait = palantir_sul }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_sul
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_osgiliath
+				NOT = { trait = palantir_osgiliath }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_osgiliath
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_elostirion
+				NOT = { trait = palantir_elostirion }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_elostirion
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_annuminas
+				NOT = { trait = palantir_annuminas }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_annuminas
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_orthanc
+				NOT = { trait = palantir_orthanc }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_orthanc
+					age=1			
+				}
+				character_event = { id = palantir.20 days = 10 } 
+			}
+		}		
+	}	
+	option = {
+		name = "EVTOPTBpalantir.19" # Steal the stone and slain the guardian
+		add_trait = cruel
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_anor
+				NOT = { trait = palantir }
+				age = 1
+			}	
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir
+					age=1			
+				}
+			character_event = { id = palantir.27 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_ithil
+				NOT = { trait = palantir_ithil }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_ithil
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_sul
+				NOT = { trait = palantir_sul }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_sul
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_osgiliath
+				NOT = { trait = palantir_osgiliath }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_osgiliath
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_elostirion
+				NOT = { trait = palantir_elostirion }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_elostirion
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_annuminas
+				NOT = { trait = palantir_annuminas }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_annuminas
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}	
+		if = { 
+			limit = {
+				has_ambition = obj_claim_palantir_orthanc
+				NOT = { trait = palantir_orthanc }
+				age = 1
+			}			
+			any_playable_ruler = { 
+				limit = {
+					trait = palantir_orthanc
+					age=1			
+				}
+				character_event = { id = palantir.27 days = 10 } 
+			}
+		}		
+	}
+	option = {
+		name = "EVTOPTCpalantir.19" # We won't want a fight...
+		set_character_flag = abort_claim_palantir
+		ai_chance = { factor = 50 }
+	}	
+} 
+
+## Attack to stole the palantir ##
+character_event = {
+	id = palantir.20
+	title = "EVTTITpalantir.20"		
+	desc = "EVTDESCpalantir.20"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.20" # I see.
+		random_list = {
+			55 = {
+				FROM = { character_event = { id = palantir.21 days = 2 } } ## The Palantir is stolen
+				character_event = { id = palantir.22 days = 2 }
+			}
+			30 = {
+				FROM = { character_event = { id = palantir.23 days = 2 } } ## The Palantir is still in the hands of the guardian
+				character_event = { id = palantir.24 days = 2 }
+			}
+			15 = {
+				FROM = { character_event = { id = palantir.25 days = 2 } } ## The Palantir is stolen, the Guardian is killed in action
+				character_event = { id = palantir.26 days = 2 }
+			}			
+		}
+	}		
+} 
+
+## You now have the Anor-Stone ##
+character_event = {
+	id = palantir.21
+	title = "EVTTITpalantir.21"		
+	desc = "EVTDESCpalantir.21"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.21" # The Stone is mine!
+		if = {
+			limit = {
+				has_character_flag = plot_for_anor_stone
+				age=1
+			}
+			clr_character_flag = plot_for_anor_stone
+			add_trait = palantir
+			prestige = -50
+			piety = -50
+		}
+		if = {
+			limit = {
+				has_character_flag = plot_for_ithil_stone
+				age=1
+			}
+			clr_character_flag = plot_for_ithil_stone
+			add_trait = palantir_ithil
+			prestige = -50
+			piety = -50
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_sul_stone
+				age=1
+			}
+			clr_character_flag = plot_for_sul_stone
+			add_trait = palantir_sul
+			prestige = -50
+			piety = -50
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_osgiliath_stone
+				age=1
+			}
+			clr_character_flag = plot_for_osgiliath_stone
+			add_trait = palantir_osgiliath
+			prestige = -50
+			piety = -50
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_elostirion_stone
+				age=1
+			}
+			clr_character_flag = plot_for_elostirion_stone
+			add_trait = palantir_elostirion
+			prestige = -50
+			piety = -50
+		}
+		if = {
+			limit = {
+				has_character_flag = plot_for_annuminas_stone
+				age=1
+			}
+			clr_character_flag = plot_for_annuminas_stone
+			add_trait = palantir_annuminas
+			prestige = -50
+			piety = -50
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_orthanc_stone
+				age=1
+			}
+			clr_character_flag = plot_for_orthanc_stone
+			add_trait = palantir_orthanc
+			prestige = -50
+			piety = -50
+		}		
+	}		
+} 
+
+## You lost the Anor-Stone ##
+character_event = {
+	id = palantir.22
+	title = "EVTTITpalantir.22"		
+	desc = "EVTDESCpalantir.22"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.22" # Argh!
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_anor_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir
+			prestige = -150
+			piety = -150
+		}
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_ithil_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_ithil
+			prestige = -150
+			piety = -150
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_sul_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_sul
+			prestige = -150
+			piety = -150
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_osgiliath_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_osgiliath
+			prestige = -150
+			piety = -150
+		}		
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_elostirion_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_elostirion
+			prestige = -150
+			piety = -150
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_annuminas_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_annuminas
+			prestige = -150
+			piety = -150
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_orthanc_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_orthanc
+			prestige = -150
+			piety = -150
+		}			
+	}		
+} 
+
+## You failed to get the Anor-Stone ##
+character_event = {
+	id = palantir.23
+	title = "EVTTITpalantir.23"		
+	desc = "EVTDESCpalantir.23"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.21" # Argh!
+		prestige = -100
+		clr_character_flag = plot_for_anor_stone
+		clr_character_flag = plot_for_ithil_stone
+		clr_character_flag = plot_for_sul_stone	
+		clr_character_flag = plot_for_osgiliath_stone	
+		clr_character_flag = plot_for_elostirion_stone	
+		clr_character_flag = plot_for_annuminas_stone
+		clr_character_flag = plot_for_orthanc_stone		
+		set_character_flag = abort_claim_palantir
+	}		
+} 
+
+## You keep the Anor-Stone ##
+character_event = {
+	id = palantir.24
+	title = "EVTTITpalantir.24"		
+	desc = "EVTDESCpalantir.24"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.22" # Good
+		prestige = 50
+		piety = 50
+	}		
+} 
+
+## You get the Anor-Stone and killed the former guardian ##
+character_event = {
+	id = palantir.25
+	title = "EVTTITpalantir.25"		
+	desc = "EVTDESCpalantir.25"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.25" # A good lesson.
+		if = {
+			limit = {
+				has_character_flag = plot_for_anor_stone
+				age=1
+			}
+			clr_character_flag = plot_for_anor_stone
+			add_trait = palantir
+			prestige = -200
+			piety = -200
+		}
+		if = {
+			limit = {
+				has_character_flag = plot_for_ithil_stone
+				age=1
+			}
+			clr_character_flag = plot_for_ithil_stone
+			add_trait = palantir_ithil
+			prestige = -200
+			piety = -200
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_sul_stone
+				age=1
+			}
+			clr_character_flag = plot_for_sul_stone
+			add_trait = palantir_sul
+			prestige = -200
+			piety = -200
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_osgiliath_stone
+				age=1
+			}
+			clr_character_flag = plot_for_osgiliath_stone
+			add_trait = palantir_osgiliath
+			prestige = -200
+			piety = -200
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_elostirion_stone
+				age=1
+			}
+			clr_character_flag = plot_for_elostirion_stone
+			add_trait = palantir_elostirion
+			prestige = -200
+			piety = -200
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_annuminas_stone
+				age=1
+			}
+			clr_character_flag = plot_for_annuminas_stone
+			add_trait = palantir_annuminas
+			prestige = -200
+			piety = -200
+		}	
+		if = {
+			limit = {
+				has_character_flag = plot_for_orthanc_stone
+				age=1
+			}
+			clr_character_flag = plot_for_orthanc_stone
+			add_trait = palantir_orthanc
+			prestige = -200
+			piety = -200
+		}		
+	}		
+} 
+
+## You were killed while defending the Anor-Stone ##
+character_event = {
+	id = palantir.26
+	title = "EVTTITpalantir.26"		
+	desc = "EVTDESCpalantir.26"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.26" # Argh!
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_anor_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir
+		}
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_ithil_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_ithil
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_sul_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_sul
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_osgiliath_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_osgiliath
+		}
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_elostirion_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_elostirion
+		}	
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_annuminas_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_annuminas
+		}
+		if = {
+			limit = {
+				FROMFROM = {
+					has_character_flag = plot_for_orthanc_stone
+					age=1				
+				}
+			}
+			remove_trait = palantir_orthanc
+		}		
+		death = {
+			death_reason = death_murder
+			killer = FROMFROM
+		}		
+	}		
+} 
+
+## Attack to stole the palantir and Kill the guardian ##
+character_event = {
+	id = palantir.27
+	title = "EVTTITpalantir.27"		
+	desc = "EVTDESCpalantir.27"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.27" # I see.
+		random_list = {
+			30 = {
+				FROM = { character_event = { id = palantir.21 days = 2 } } ## The Palantir is stolen
+				character_event = { id = palantir.22 days = 2 }
+			}
+			30 = {
+				FROM = { character_event = { id = palantir.23 days = 2 } } ## The Palantir is still in the hands of the guardian
+				character_event = { id = palantir.24 days = 2 }
+			}
+			40 = {
+				FROM = { character_event = { id = palantir.25 days = 2 } } ## The Palantir is stolen, the Guardian is killed in action
+				character_event = { id = palantir.26 days = 2 }
+			}			
+		}
+	}		
+} 
+
+
+
+
+########### Anor-Stone #############
+# The Lord of Minas Ithil will ask another dunedain to give him the ithil-Stone #
+character_event = {
+	id = palantir.28
+	title = "EVTTITpalantir.28"
+	desc = "EVTDESCpalantir.28"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_morgul
+		has_ambition = obj_claim_palantir_ithil
+		NOT = { trait = palantir_ithil }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_ithil
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_ithil			
+			}
+		}
+		NOT = { has_character_flag = requested_ithil_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 280
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.28" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_ithil_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_ithil
+				age=1			
+			}
+			character_event = { id = palantir.29 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.28" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Ithil-Stone is asked
+character_event = {
+	id = palantir.29
+	title = "EVTTITpalantir.29"
+	desc = "EVTDESCpalantir.29"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.29" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_ithil
+		FROM = {
+			add_trait = palantir_ithil
+			character_event = { id = palantir.30 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.29" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.31 days = 5 } }
+	}
+}
+
+## You receive the Ithil-Stone ##
+character_event = {
+	id = palantir.30
+	title = "EVTTITpalantir.30"	
+	desc = "EVTDESCpalantir.30"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.30" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Ithil-Stone ##
+character_event = {
+	id = palantir.31
+	title = "EVTTITpalantir.31"		
+	desc = "EVTDESCpalantir.31"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.31" # I'll remember this...
+		set_character_flag = ithil_stone_denied
+	}		
+} 
+
+########### Osgiliath-Stone #############
+# The Lord of Osgiliath will ask another dunedain to give him the Osgiliath-Stone #
+character_event = {
+	id = palantir.32
+	title = "EVTTITpalantir.32"
+	desc = "EVTDESCpalantir.32"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_east_osgiliath
+		has_ambition = obj_claim_palantir_osgiliath
+		NOT = { trait = palantir_osgiliath }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_osgiliath
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_osgiliath			
+			}
+		}
+		NOT = { has_character_flag = requested_osgiliath_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.14" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_osgiliath_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_osgiliath
+				age=1			
+			}
+			character_event = { id = palantir.33 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.32" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Anor-Stone is asked
+character_event = {
+	id = palantir.33
+	title = "EVTTITpalantir.33"
+	desc = "EVTDESCpalantir.33"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.33" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_osgiliath
+		FROM = {
+			add_trait = palantir_osgiliath
+			character_event = { id = palantir.34 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.33" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.35 days = 5 } }
+	}
+}
+
+## You receive the Anor-Stone ##
+character_event = {
+	id = palantir.34
+	title = "EVTTITpalantir.34"	
+	desc = "EVTDESCpalantir.34"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.34" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Anor-Stone ##
+character_event = {
+	id = palantir.35
+	title = "EVTTITpalantir.35"		
+	desc = "EVTDESCpalantir.35"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.35" # I'll remember this...
+		set_character_flag = osgiliath_stone_denied
+	}		
+} 
+
+########### Orthanc-Stone #############
+# The Lord of Orthanc will ask another dunedain to give him the Orthanc-Stone #
+character_event = {
+	id = palantir.36
+	title = "EVTTITpalantir.36"
+	desc = "EVTDESCpalantir.36"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_orthanc
+		has_ambition = obj_claim_palantir_orthanc
+		NOT = { trait = palantir_orthanc }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_orthanc
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_orthanc			
+			}
+		}
+		NOT = { has_character_flag = requested_orthanc_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.36" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_orthanc_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_orthanc
+				age=1			
+			}
+			character_event = { id = palantir.37 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.32" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Orthanc-Stone is asked
+character_event = {
+	id = palantir.37
+	title = "EVTTITpalantir.37"
+	desc = "EVTDESCpalantir.37"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.37" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_orthanc
+		FROM = {
+			add_trait = palantir_orthanc
+			character_event = { id = palantir.38 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.33" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.39 days = 5 } }
+	}
+}
+
+## You receive the Orthanc-Stone ##
+character_event = {
+	id = palantir.38
+	title = "EVTTITpalantir.38"	
+	desc = "EVTDESCpalantir.38"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.38" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Orthanc-Stone ##
+character_event = {
+	id = palantir.39
+	title = "EVTTITpalantir.39"		
+	desc = "EVTDESCpalantir.39"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.39" # I'll remember this...
+		set_character_flag = orthanc_stone_denied
+	}		
+} 
+
+########### Elendil-Stone #############
+# The Lord of Elostirion will ask another dunedain to give him the Elendil-Stone #
+character_event = {
+	id = palantir.40
+	title = "EVTTITpalantir.40"
+	desc = "EVTDESCpalantir.40"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_towerhills
+		has_ambition = obj_claim_palantir_elostirion
+		NOT = { trait = palantir_elostirion }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_elostirion
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_elostirion			
+			}
+		}
+		NOT = { has_character_flag = requested_elostirion_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.40" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_elostirion_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_elostirion
+				age=1			
+			}
+			character_event = { id = palantir.41 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.32" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Elendil-Stone is asked
+character_event = {
+	id = palantir.41
+	title = "EVTTITpalantir.41"
+	desc = "EVTDESCpalantir.41"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.41" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_elostirion
+		FROM = {
+			add_trait = palantir_elostirion
+			character_event = { id = palantir.42 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.33" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.43 days = 5 } }
+	}
+}
+
+## You receive the Elendil-Stone ##
+character_event = {
+	id = palantir.42
+	title = "EVTTITpalantir.42"	
+	desc = "EVTDESCpalantir.42"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.42" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Elendil-Stone ##
+character_event = {
+	id = palantir.43
+	title = "EVTTITpalantir.43"		
+	desc = "EVTDESCpalantir.43"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.43" # I'll remember this...
+		set_character_flag = elostirion_stone_denied
+	}		
+} 
+
+########### Annuminas-Stone #############
+# The Lord of Annuminas will ask another dunedain to give him the Annuminas-Stone #
+character_event = {
+	id = palantir.44
+	title = "EVTTITpalantir.44"
+	desc = "EVTDESCpalantir.44"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_annuminas
+		has_ambition = obj_claim_palantir_annuminas
+		NOT = { trait = palantir_annuminas }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_annuminas
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_annuminas			
+			}
+		}
+		NOT = { has_character_flag = requested_annuminas_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.44" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_annuminas_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_annuminas
+				age=1			
+			}
+			character_event = { id = palantir.45 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.32" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Annuminas-Stone is asked
+character_event = {
+	id = palantir.45
+	title = "EVTTITpalantir.45"
+	desc = "EVTDESCpalantir.45"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.45" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_annuminas
+		FROM = {
+			add_trait = palantir_annuminas
+			character_event = { id = palantir.46 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.33" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.47 days = 5 } }
+	}
+}
+
+## You receive the Annuminas-Stone ##
+character_event = {
+	id = palantir.46
+	title = "EVTTITpalantir.46"	
+	desc = "EVTDESCpalantir.46"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.46" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Annuminas-Stone ##
+character_event = {
+	id = palantir.47
+	title = "EVTTITpalantir.47"		
+	desc = "EVTDESCpalantir.47"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.47" # I'll remember this...
+		set_character_flag = annuminas_stone_denied
+	}		
+} 
+
+########### Amon-Sûl-Stone #############
+# The Lord of Amon Sûl will ask another dunedain to give him the Amon Sûl-Stone #
+character_event = {
+	id = palantir.48
+	title = "EVTTITpalantir.48"
+	desc = "EVTDESCpalantir.48"
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	only_playable = yes
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	min_age = 16
+	
+	trigger = {
+		independent = no
+		war = no
+		has_landed_title = c_weather_hills
+		has_ambition = obj_claim_palantir_sul
+		NOT = { trait = palantir_sul }
+		OR = {
+			liege = {
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_sul
+			}
+			any_playable_ruler = {
+				culture_group = culture_group_numenorean
+				NOT = { character = ROOT }
+				war = no
+				trait = palantir_sul			
+			}
+		}
+		NOT = { has_character_flag = requested_sul_stone }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.25
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.25
+			trait = ambitious
+		}
+		modifier = {
+			factor = 10.0
+			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			trait = perceptive
+		}
+		modifier = {
+			factor = 0.25
+			trait = blood_of_numenor
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+				has_landed_title = k_rhudaur				
+			}
+		}		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.48" # Ask him
+		ai_chance = { factor = 100 }
+		set_character_flag = requested_sul_stone
+		any_playable_ruler = { 
+			limit = {
+				trait = palantir_sul
+				age=1			
+			}
+			character_event = { id = palantir.49 days = 4 } 
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.32" # It's not that important
+		ai_chance = { factor = 0 }
+	}
+}
+
+# The Guardian of the Amon Sûl-Stone is asked
+character_event = {
+	id = palantir.49
+	title = "EVTTITpalantir.49"
+	desc = "EVTDESCpalantir.49"
+	
+	picture = GFX_evt_palantir
+	border = GFX_event_normal_frame_intrigue
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.49" # Very well
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2.0
+				trait = charitable
+			}
+			modifier = {
+				factor = 2.0
+				trait = just
+			}
+			modifier = {
+				factor = 2.0
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = greedy
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					opinion = { who = FROM value = 0 }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		remove_trait = palantir_sul
+		FROM = {
+			add_trait = palantir_sul
+			character_event = { id = palantir.50 days = 5 }
+		}
+	}
+	option = {
+		name = "EVTOPTBpalantir.33" # I think not
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 10.0
+				trait = greedy
+			}
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_disappointed
+			months = 60
+		}
+		FROM = { character_event = { id = palantir.51 days = 5 } }
+	}
+}
+
+## You receive the Amon Sûl-Stone ##
+character_event = {
+	id = palantir.50
+	title = "EVTTITpalantir.50"	
+	desc = "EVTDESCpalantir.50"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.50" # A great day!
+		prestige = 100
+	}		
+} 
+
+## You don't receive the Amon Sûl-Stone ##
+character_event = {
+	id = palantir.51
+	title = "EVTTITpalantir.51"		
+	desc = "EVTDESCpalantir.51"
+	picture = GFX_evt_palantir
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTApalantir.51" # I'll remember this...
+		set_character_flag = sul_stone_denied
+	}		
+} 
+
+
+########## LIST OF THE GUARDIANS #############
+### Holders of the Palantiri ###
+character_event = {
+	id = palantir.52
+	picture = "GFX_evt_palantir"
+	desc = "EVTDESCpalantir.52"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.52" #Living holders
+		palantir = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTANOR }
+		}
+		if = {
+			limit = { trait = palantir }
+			custom_tooltip = { text = CURRENTANOR }
+		}		
+		palantir_sul = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTSUL }
+		}
+		if = {
+			limit = { trait = palantir_sul }
+			custom_tooltip = { text = CURRENTSUL }
+		}		
+		palantir_ithil = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTITHIL }
+		}
+		if = {
+			limit = { trait = palantir_ithil }
+			custom_tooltip = { text = CURRENTITHIL }
+		}		
+		palantir_osgiliath = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTOSGILIATH }
+		}
+		if = {
+			limit = { trait = palantir_osgiliath }
+			custom_tooltip = { text = CURRENTOSGILIATH }
+		}		
+		palantir_elostirion = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTELENDIL }
+		}
+		if = {
+			limit = { trait = palantir_elostirion }
+			custom_tooltip = { text = CURRENTELENDIL }
+		}		
+		palantir_annuminas = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTANNUMINAS }
+		}
+		if = {
+			limit = { trait = palantir_annuminas }
+			custom_tooltip = { text = CURRENTANNUMINAS }
+		}		
+		palantir_orthanc = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTORTHANC }
+		}
+		if = {
+			limit = { trait = palantir_orthanc }
+			custom_tooltip = { text = CURRENTORTHANC }
+		}		
+	}
+}
+
+
+
+########### USE THE PALANTIR DURING WAR ###############
+## Look to the Palantir ? ##
+character_event = {
+	id = palantir.53
+	title = "EVTTITpalantir.53"
+	desc = "EVTDESCpalantir.53"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.53" # Yes, i'll use the Palantir!
+		set_character_flag = use_palantir_war
+		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = palantir.62 } } } }
+	}
+	option = {
+		name = "EVTOPTBpalantir.53" # Not now
+	}
+}
+
+## What will you do? ##
+character_event = {
+	id = palantir.54
+	title = "EVTTITpalantir.54"
+	desc = "EVTDESCpalantir.54"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.54" # I'll try to contact another guardian
+		character_event = { id = palantir.55 }
+	}
+	option = {
+		name = "EVTOPTBpalantir.54" # I'll try to know more about the ennemy
+		random_list = {
+			33 = {
+				change_intrigue = 2
+			}
+			33 = {
+				change_learning = 3
+			}
+			33 = {
+				add_trait = perceptive
+			}
+		}
+	}
+}
+
+## You try to contact another guardian ##
+character_event = {
+	id = palantir.55
+	title = "EVTTITpalantir.55"
+	desc = "EVTDESCpalantir.55"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.55" # I'll try to contact one in Gondor
+		character_event = { id = palantir.56 }
+	}
+	option = {
+		name = "EVTOPTBpalantir.55" # I'll try to contact one in Arnor
+		character_event = { id = palantir.57 }
+	}
+}
+
+## You try to contact another guardian in Gondor ##
+character_event = {
+	id = palantir.56
+	title = "EVTTITpalantir.56"
+	desc = "EVTDESCpalantir.56"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir_orthanc }
+			palantir_orthanc = { is_alive = yes religion = FROM }
+		}
+		name = "EVTOPTApalantir.56" # The Guardian of the Orthanc-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir_orthanc
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir_osgiliath }
+			palantir_osgiliath = { is_alive = yes religion = FROM }
+		}	
+		name = "EVTOPTBpalantir.56" # The Guardian of the Osgiliath-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir_osgiliath
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir_ithil }
+			palantir_ithil = { is_alive = yes religion = FROM }
+		}	
+		name = "EVTOPTCpalantir.56" # The Guardian of the Ithil-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir_ithil
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}	
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir }
+			palantir = { is_alive = yes religion = FROM }
+		}	
+		name = "EVTOPTDpalantir.56" # The Guardian of the Anor-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}	
+	
+	option = {
+		trigger = {
+			palantir = { is_alive = no }
+			palantir_ithil = { is_alive = no }
+			palantir_osgiliath = { is_alive = no }
+			palantir_orthanc = { is_alive = no }			
+		}	
+		name = "EVTOPTEpalantir.56" # No Stones in the South
+		clr_character_flag = use_palantir_war
+	}	
+
+	option = {
+		trigger = {
+			palantir = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}
+			palantir_ithil = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}
+			palantir_osgiliath = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}
+			palantir_orthanc = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}			
+		}	
+		name = "EVTOPTFpalantir.56" # No Stones in the hands of our allies in North
+		clr_character_flag = use_palantir_war
+	}		
+}
+
+## You try to contact another guardian in Arnor ##
+character_event = {
+	id = palantir.57
+	title = "EVTTITpalantir.57"
+	desc = "EVTDESCpalantir.57"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir_annuminas }
+			palantir_annuminas = { 
+				is_alive = yes 
+				religion = FROM 
+			}
+		}
+		name = "EVTOPTApalantir.57" # The Guardian of the Annuminas-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir_annuminas
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}
+	
+	option = {
+		trigger = {
+			NOT = { trait = palantir_sul }
+			palantir_sul = { 
+				is_alive = yes 
+				religion = FROM
+			}
+		}	
+		name = "EVTOPTBpalantir.57" # The Guardian of the Osgiliath-Stone
+		any_playable_ruler = {
+			limit = { 
+				trait = palantir_sul
+				age = 1
+			}
+			character_event = { id = palantir.58 }
+		}
+	}
+	
+	option = {
+		trigger = {
+			palantir_sul = { is_alive = no }
+			palantir_annuminas = { is_alive = no }
+		}	
+		name = "EVTOPTCpalantir.57" # No Stones in the North
+		clr_character_flag = use_palantir_war
+	}	
+
+	option = {
+		trigger = {
+			palantir_sul = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}
+			palantir_annuminas = { 
+				is_alive = yes 
+				NOT = { religion = FROM } 
+			}
+		}	
+		name = "EVTOPTDpalantir.57" # No Stones in the hands of our allies in North
+		clr_character_flag = use_palantir_war
+	}	
+}
+
+
+## The other Guardian is asked to join the War ##
+character_event = {
+	id = palantir.58
+	title = "EVTTITpalantir.58"
+	desc = "EVTDESCpalantir.58"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { 
+			liege = { character = FROM }
+		}
+		name = "EVTOPTApalantir.58" # I'll send you more soldiers - Vassal of FROM
+		ai_chance = { 
+			factor = 50 
+			
+			modifier = {
+				factor = 2
+				OR = {
+					trait = brave
+					trait = strong
+					trait = tall
+					trait = charitable
+				}
+			}
+		}
+		FROM = { character_event = { id = palantir.59 days = 5 } }
+	}
+	
+	option = {
+		name = "EVTOPTBpalantir.58" # We'll join your war
+		trigger = {
+			liege = { NOT = { character = FROM } }
+		}		
+		ai_chance = { 
+			factor = 50 
+			
+			modifier = {
+				factor = 2
+				OR = {
+					trait = brave
+					trait = strong
+					trait = tall
+					trait = charitable
+				}
+			}
+		}
+		if = {
+			limit = { 
+				liege = { character = ROOT }
+			}
+			ROOT = { join_attacker_wars = FROM } 
+			ROOT = { join_defender_wars = FROM } 
+		}	
+		if = {
+			limit = { 
+				liege = { NOT = { character = ROOT } }
+			}
+			liege = { join_attacker_wars = FROM } 
+			liege = { join_defender_wars = FROM } 
+		}	
+		FROM = { character_event = { id = palantir.60 days = 5 } }		
+	}
+	
+	option = {
+		name = "EVTOPTApalantir.58" # I won't help you
+		ai_chance = { 
+			factor = 50 
+			
+			modifier = {
+				factor = 2
+				OR = {
+					trait = cruel
+					trait = deceitful
+					trait = craven
+					trait = greedy
+				}
+			}
+		}
+		FROM = { character_event = { id = palantir.61 days = 5 } }
+	}	
+}
+
+
+## Your vassal send you more troops ##
+character_event = {
+	id = palantir.59
+	title = "EVTTITpalantir.59"
+	desc = "EVTDESCpalantir.59"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.59" # Great !
+		spawn_unit = {
+			province = ROOT
+			disband_on_peace = yes
+			troops = {
+				heavy_infantry = { 200 200 }
+				archers = { 300 300 }
+				heavy_cavalry = { 100 100 }				
+			}
+		}
+	}
+}
+
+## Your allies will helps you ##
+character_event = {
+	id = palantir.60
+	title = "EVTTITpalantir.60"
+	desc = "EVTDESCpalantir.60"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.60" # Great !
+	}
+}
+
+## Your allies won't help you ##
+character_event = {
+	id = palantir.61
+	title = "EVTTITpalantir.61"
+	desc = "EVTDESCpalantir.61"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.61" # So bad...
+		random_list = {
+			40 = {
+				add_trait = cynical		
+			}		
+			35 = {
+				add_trait = stressed
+			}
+			25 = {
+				add_trait = depressed
+			}
+		}
+	}
+}
+
+
+## Event to see if the character is strong enough to use the palantir ##
+character_event = {
+	id = palantir.62
+	title = "EVTTITpalantir.62"
+	desc = "EVTDESCpalantir.62"
+	picture = GFX_evt_palantir
+	
+	hide_window = yes		
+	is_triggered_only = yes
+	
+	# Nobody but the actual referee should ever get this
+	trigger = { has_landed_title = e_rebels }	
+	
+
+	# FROM can use the palantir without damages
+	option = {
+		name = "AI_EVENT"
+		ai_chance = {
+			factor = 33
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 0.5
+				FROM = { trait = misguided_warrior }
+			}
+			modifier = {
+				factor = 1.2
+				FROM= { trait = tough_soldier }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = brilliant_strategist }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = amroth_knight }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = ithilien_captain }
+			}
+			modifier = {
+				factor = 2.5
+				FROM = { trait = dunedain_ranger }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = dunedain_captain }
+			}	
+			modifier = {
+				factor = 5
+				FROM = { trait = grey_member }
+			}		
+
+			
+			### Weapons Modifier ###
+			modifier = {
+				factor = 10
+				FROM = { trait = anduril }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = narsil }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = glamdring }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = orcrist }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = staff_of_gandalf }
+			}
+			modifier = {
+				factor = 4
+				FROM = { trait = staff_of_saruman }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = staff_of_radagast }
+			}		
+			modifier = {
+				factor = 2
+				FROM = { trait = mithril }
+			}	
+			modifier = {
+				factor = 500
+				FROM = { trait = ring }
+			}	
+			modifier = {
+				factor = 150
+				FROM = { trait = nazgul }
+			}	
+			modifier = {
+				factor = 150
+				FROM = { trait = maiar }
+			}	
+			modifier = {
+				factor = 10
+				OR = {
+					FROM = { trait = uruloke }
+					FROM = { trait = cold_drake }
+					FROM = { trait = long_worms }
+				}
+			}				
+			modifier = {
+				factor = 30
+				FROM = { trait = blood_of_isildur }
+			}	
+			modifier = {
+				factor = 30
+				FROM = { trait = blood_of_anarion }
+			}				
+			modifier = {
+				factor = 5
+				FROM = { trait = blood_of_numenor }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = blood_of_numenor2 }
+			}	
+			modifier = {
+				factor = 100
+				FROM = { has_character_flag = elendil }
+			}	
+			modifier = {
+				factor = 100
+				FROM = { has_character_flag = isildur }
+			}	
+			modifier = {
+				factor = 100
+				FROM = { has_character_flag = anarion }
+			}					
+			
+			
+			# Intrigue Skill
+			modifier = {
+				factor = 1.5
+				FROM = { intrigue = 5 }
+			}
+			modifier = {
+				factor = 2
+				FROM = { intrigue = 7 }
+			}
+			modifier = {
+				factor = 3
+				FROM = { intrigue = 10 }
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = strong }
+			}
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 5
+				FROM = { trait = genius }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = quick }
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 2
+				FROM = { trait = brave }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = wroth }
+			}
+			
+			modifier = {
+				factor = 0.0001
+				FROM = { trait = incapable }
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 0.001
+				FROM = { trait = ill }
+			}
+			modifier = {
+				factor = 0.001
+				FROM = { trait = pneumonic }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = infirm }
+			}
+			modifier = {
+				factor = 0.01
+				OR = {
+					FROM = { trait = has_tuberculosis }
+					FROM = { trait = has_typhoid_fever }
+					FROM = { trait = has_typhus }
+					FROM = { trait = has_bubonic_plague }
+					FROM = { trait = has_measles }
+					FROM = { trait = has_small_pox }
+				}
+			}
+			modifier = {
+				factor = 0.0001
+				FROM = { trait = blinded }
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = agile }
+			}
+			modifier = {
+				factor = 8
+				FROM = { trait = perceptive }
+			}
+			modifier = {
+				factor = 0.01
+				FROM = { trait = absentminded }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = hunchback }
+			}			
+			
+			# Age Effects
+			modifier = {
+				factor = 1.1
+				FROM = { age = 40 }
+			}
+			modifier = {
+				factor = 1.3
+				FROM = { age = 50 }
+			}
+			modifier = {
+				factor = 1.4
+				FROM = { age = 70 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { age = 90 }
+			}
+		}
+		
+		FROM = { character_event = { id = palantir.54 } }
+	}
+	option = {
+		name = "AI_EVENT"
+		ai_chance = {
+			factor = 33
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 0.5
+				FROM = { trait = misguided_warrior }
+			}
+			modifier = {
+				factor = 1.2
+				FROM= { trait = tough_soldier }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = brilliant_strategist }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = amroth_knight }
+			}
+			modifier = {
+				factor = 3
+				FROM = { trait = ithilien_captain }
+			}
+			modifier = {
+				factor = 2.5
+				FROM = { trait = dunedain_ranger }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = dunedain_captain }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = grey_member }
+			}		
+
+			
+			### Traits Modifier ###			
+			modifier = {
+				factor = 0.8
+				FROM = { trait = blood_of_isildur }
+			}	
+			modifier = {
+				factor = 0.8
+				FROM = { trait = blood_of_anarion }
+			}				
+			modifier = {
+				factor = 3
+				FROM = { trait = blood_of_numenor }
+			}	
+			modifier = {
+				factor = 6
+				FROM = { trait = blood_of_numenor2 }
+			}				
+			
+			
+			# Intrigue Skill
+			modifier = {
+				factor = 3
+				FROM = { intrigue = 5 }
+			}
+			modifier = {
+				factor = 1.8
+				FROM = { intrigue = 7 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { intrigue = 10 }
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 1.2
+				FROM = { trait = strong }
+			}
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = genius }
+			}
+			modifier = {
+				factor = 2.5
+				FROM = { trait = quick }
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = brave }
+			}
+			modifier = {
+				factor = 2.5
+				FROM = { trait = wroth }
+			}
+			
+			modifier = {
+				factor = 0.0001
+				FROM = { trait = incapable }
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 0.001
+				FROM = { trait = ill }
+			}
+			modifier = {
+				factor = 0.001
+				FROM = { trait = pneumonic }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = infirm }
+			}
+			modifier = {
+				factor = 0.01
+				OR = {
+					FROM = { trait = has_tuberculosis }
+					FROM = { trait = has_typhoid_fever }
+					FROM = { trait = has_typhus }
+					FROM = { trait = has_bubonic_plague }
+					FROM = { trait = has_measles }
+					FROM = { trait = has_small_pox }
+				}
+			}
+			modifier = {
+				factor = 0.0001
+				FROM = { trait = blinded }
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = agile }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { trait = perceptive }
+			}
+			modifier = {
+				factor = 0.01
+				FROM = { trait = absentminded }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = hunchback }
+			}			
+			
+			# Age Effects
+			modifier = {
+				factor = 3
+				FROM = { age = 20 }
+			}
+			modifier = {
+				factor = 5
+				FROM = { age = 30 }
+			}
+			modifier = {
+				factor = 7
+				FROM = { age = 40 }
+			}
+			modifier = {
+				factor = 8
+				FROM = { age = 50 }
+			}
+		}
+		
+		FROM = { character_event = { id = palantir.63 } }
+	}	
+	option = {
+		name = "AI_EVENT"
+		ai_chance = {
+			factor = 33
+			
+			# Martial Education Effects
+			modifier = {
+				factor = 5
+				FROM = { trait = misguided_warrior }
+			}
+			modifier = {
+				factor = 5.5
+				FROM= { trait = tough_soldier }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 0.2
+				FROM = { trait = brilliant_strategist }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = amroth_knight }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = ithilien_captain }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = dunedain_ranger }
+			}	
+			modifier = {
+				factor = 0.1
+				FROM = { trait = dunedain_captain }
+			}	
+			modifier = {
+				factor = 0.1
+				FROM = { trait = grey_member }
+			}		
+
+			
+			### Traits Modifier ###			
+			modifier = {
+				factor = 0.3
+				FROM = { trait = blood_of_isildur }
+			}	
+			modifier = {
+				factor = 0.3
+				FROM = { trait = blood_of_anarion }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = blood_of_numenor }
+			}	
+			modifier = {
+				factor = 10
+				FROM = { trait = blood_of_numenor2 }
+			}				
+			
+			
+			# Intrigue Skill
+			modifier = {
+				factor = 7
+				FROM = { intrigue = 1 }
+			}
+			modifier = {
+				factor = 8
+				FROM = { intrigue = 3 }
+			}
+			modifier = {
+				factor = 0.05
+				FROM = { intrigue = 10 }
+			}
+			# Physical Strength Effects
+			modifier = {
+				factor = 5
+				FROM = { trait = weak }
+			}
+			
+			# Cunning/Intelligence Effects
+			modifier = {
+				factor = 8
+				FROM = { trait = slow }
+			}
+			modifier = {
+				factor = 8
+				FROM = { trait = imbecile }
+			}
+			
+			# Personality Effects
+			modifier = {
+				factor = 5
+				FROM = { trait = craven }
+			}
+			
+			modifier = {
+				factor = 100
+				FROM = { trait = incapable }
+			}
+			
+			# Health Effects
+			modifier = {
+				factor = 10
+				FROM = { trait = ill }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = pneumonic }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = infirm }
+			}
+			modifier = {
+				factor = 8
+				OR = {
+					FROM = { trait = has_tuberculosis }
+					FROM = { trait = has_typhoid_fever }
+					FROM = { trait = has_typhus }
+					FROM = { trait = has_bubonic_plague }
+					FROM = { trait = has_measles }
+					FROM = { trait = has_small_pox }
+				}
+			}
+			modifier = {
+				factor = 12
+				FROM = { trait = blinded }
+			}
+			
+			# Body Shape Effects
+			modifier = {
+				factor = 0.8
+				FROM = { trait = tall }
+			}
+			modifier = {
+				factor = 0.3
+				FROM = { trait = agile }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { trait = perceptive }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = absentminded }
+			}
+			modifier = {
+				factor = 10
+				FROM = { trait = hunchback }
+			}			
+			
+			# Age Effects
+			modifier = {
+				factor = 10
+				FROM = { age = 16 }
+			}
+			modifier = {
+				factor = 10
+				FROM = { age = 20 }
+			}
+			modifier = {
+				factor = 10
+				FROM = { age = 30 }
+			}
+			modifier = {
+				factor = 10
+				FROM = { age = 40 }
+			}
+		}
+		
+		FROM = { character_event = { id = palantir.64 } }
+	}	
+}
+
+## You're exhausted after trying to use the palantir ##
+character_event = {
+	id = palantir.63
+	title = "EVTTITpalantir.63"
+	desc = "EVTDESCpalantir.63"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.63" # It's so hard to use...
+		character_event = { id = palantir.54 }
+		random_list = {
+			33 = {
+				add_trait = stressed			
+			}
+			33 = {
+				add_trait = ill
+			}
+			33 = {
+				change_martial = -2
+			}
+		}
+	}
+}
+
+## You can't use the palantir ##
+character_event = {
+	id = palantir.64
+	title = "EVTTITpalantir.64"
+	desc = "EVTDESCpalantir.64"
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTApalantir.64" # It's so hard to use...
+		random_list = {
+			40 = {
+				add_trait = depressed	
+			}
+			40 = {
+				change_martial = -4
+			}
+			20 = {
+				add_trait = absentminded
+			}			
+		}
+	}
+}

@@ -1,0 +1,514 @@
+### Healing Traits - Elves/Dunedain ###
+
+herbalist = {
+	leader = yes
+
+	intrigue = 1	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}	
+	opposites =  {
+		apothecary
+		great_healer
+		healer_master
+	}
+}
+
+apothecary = {
+	leader = yes
+
+	intrigue = 2
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}	
+	
+	opposites =  {
+		herbalist
+		great_healer
+		healer_master
+	}	
+}
+
+great_healer = {
+	leader = yes
+
+	intrigue = 3
+	diplomacy = 1
+	health = 1
+	
+	monthly_character_prestige = 0.1
+	vassal_opinion = 10
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}	
+	
+	opposites =  {
+		herbalist
+		apothecary
+		healer_master
+	}		
+}
+
+healer_master = {
+	leader = yes
+
+	intrigue = 4
+	diplomacy = 2
+	health = 1
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 15
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}
+	
+	opposites =  {
+		herbalist
+		apothecary
+		great_healer
+	}		
+}
+
+
+#### Artisans Traits - Noldor/Dwarves ####
+
+craftsman = {
+	leader = yes
+
+	stewardship = 1	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}		
+	}	
+	opposites =  {
+		skilled_craftsman
+		master_craftsman
+		legendary_craftman
+	}
+}
+
+skilled_craftsman = {
+	leader = yes
+
+	stewardship = 2
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}		
+	}	
+	
+	opposites =  {
+		craftsman
+		master_craftsman
+		legendary_craftman
+	}	
+}
+
+master_craftsman = {
+	leader = yes
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 10
+	
+	stewardship = 3	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}		
+	}		
+	
+	opposites =  {
+		craftsman
+		skilled_craftsman
+		legendary_craftman
+	}		
+}
+
+legendary_craftman = {
+	leader = yes
+	
+	monthly_character_prestige = 0.5
+	vassal_opinion = 15
+	
+	stewardship = 5
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}		
+	}	
+	
+	opposites =  {
+		craftsman
+		skilled_craftsman
+		master_craftsman
+	}		
+}
+
+### Musician Traits  - For Elves/Numenoreans/Middlemen/Hobbits/Dwarves ###
+
+poet_2 = {
+	leader = yes
+
+	diplomacy = 1	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}	
+	opposites =  {
+		composer
+		skilled_composer
+		legendary_musician
+	}
+}
+
+composer = {
+	leader = yes
+
+	diplomacy = 2
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}	
+	
+	opposites =  {
+		poet_2
+		skilled_composer
+		legendary_musician
+	}	
+}
+
+skilled_composer = {
+	leader = yes
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 10
+	
+	diplomacy = 3	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}		
+	
+	opposites =  {
+		poet_2
+		composer
+		legendary_musician
+	}		
+}
+
+legendary_musician = {
+	leader = yes
+	
+	monthly_character_prestige = 0.5
+	vassal_opinion = 15
+	
+	diplomacy = 5
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}	
+	
+	opposites =  {
+		poet_2
+		composer
+		skilled_composer
+	}		
+}
+
+
+#### Sailor Traits - Elves / Numenoreans ####
+
+mariner = {
+	leader = yes
+
+	diplomacy = 1	
+	stewardship = 1	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}		
+	}	
+	opposites =  {
+		navigator
+		captain
+		ship_builder
+	}
+}
+
+navigator = {
+	leader = yes
+
+	diplomacy = 2	
+	stewardship = 1
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}		
+	}	
+	
+	opposites =  {
+		mariner
+		captain
+		ship_builder
+	}	
+}
+
+captain = {
+	leader = yes
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 10
+	
+	diplomacy = 3	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}		
+	}		
+	
+	opposites =  {
+		mariner
+		navigator
+		ship_builder
+	}		
+}
+
+ship_builder = {
+	leader = yes
+	
+	monthly_character_prestige = 0.5
+	vassal_opinion = 15
+	
+	diplomacy = 3
+	stewardship = 3	
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}		
+	}	
+	
+	opposites =  {
+		mariner
+		navigator
+		captain
+	}		
+}
+
+
+#### Trader Traits - Middlemen/Southron/Easterlings ####
+
+trader = {
+	leader = yes
+	
+	stewardship = 1	
+	global_tax_modifier = 0.5
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}			
+	}	
+	opposites =  {
+		tradesman
+		great_merchant
+	}
+}
+
+tradesman = {
+	leader = yes
+	
+	stewardship = 2
+	global_tax_modifier = 0.1
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}		
+	}	
+	
+	opposites =  {
+		trader
+		great_merchant
+	}	
+}
+
+great_merchant = {
+	leader = yes
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 10
+	
+	stewardship = 4
+	global_tax_modifier = 0.15
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}		
+	}		
+	
+	opposites =  {
+		trader
+		tradesman
+	}		
+}
+
+
+### Farmers for Hobbits ###
+
+mushroom_farmer = {
+	leader = yes
+	
+	stewardship = 1	
+	
+	potential = {
+		culture_group = culture_group_halfling
+	}	
+	opposites =  {
+		hop_farmer
+		pipe_weed_farmer
+	}
+}
+
+hop_farmer = {
+	leader = yes
+	
+	stewardship = 2
+	
+	potential = {
+		culture_group = culture_group_halfling
+	}	
+	
+	opposites =  {
+		mushroom_farmer
+		pipe_weed_farmer
+	}	
+}
+
+pipe_weed_farmer = {
+	leader = yes
+	
+	monthly_character_prestige = 0.2
+	vassal_opinion = 10
+	
+	stewardship = 4
+	
+	potential = {
+		culture_group = culture_group_halfling
+	}		
+	
+	opposites =  {
+		hop_farmer
+		mushroom_farmer
+	}		
+}

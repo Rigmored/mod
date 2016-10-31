@@ -1,0 +1,285 @@
+###Events for when Galadriel has ring##
+
+
+namespace = galadrielring
+
+##She looks to bring moria under her control##
+character_event = {
+    id = galadrielring.0
+    title = "EVTTITgaladrielring.0"
+    desc = "EVTDESCgaladrielring.0"
+    picture = "GFX_war_at_north"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_lorien
+			has_landed_title = c_lorien
+		}	
+		dynasty = 3004
+		is_female = yes
+		trait = ring
+		NOT = { has_character_flag = galadrielring0 }
+	}
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAgaladrielring.0"
+		set_character_flag = galadrielring0
+		activate_title = { title = e_noldor status = yes }
+		e_noldor = {
+			grant_title = ROOT
+		}	
+		any_independent_ruler = {
+			limit = { trait = elf }
+			character_event = { id = galadrielring.5 days = 14 }
+		}
+	}
+}
+
+		
+##She looks to bring moria under her control##
+character_event = {
+    id = galadrielring.1
+    title = "EVTTITgaladrielring.1"
+    desc = "EVTDESCgaladrielring.1"
+    picture = "GFX_war_at_north"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_lorien
+			has_landed_title = c_lorien
+		}	
+		dynasty = 3004
+		is_female = yes
+		trait = ring
+		NOT = { has_character_flag = galadrielring1 }
+	}
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAgaladrielring.1"
+		set_character_flag = galadrielring1
+		add_claim = c_moria
+	}
+}
+		
+##She looks to bring the men of Anduin Vale under her control##
+character_event = {
+    id = galadrielring.2
+    title = "EVTTITgaladrielring.2"
+    desc = "EVTDESCgaladrielring.2"
+    picture = "GFX_war_at_north"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_lorien
+			has_landed_title = c_lorien
+		}	
+		dynasty = 3004
+		is_female = yes
+		trait = ring
+		has_character_flag = galadrielring1
+		NOT = { has_character_flag = galadrielring2 }
+		year = 11370
+	}
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAgaladrielring.2"
+		set_character_flag = galadrielring2
+		add_claim = k_anduin_vale
+		any_playable_ruler = {
+			character_event = { id = galadrielring.3 days = 7 }
+ 		}
+	}
+}
+		
+##rulers are informed that Galadriel is moving in on Anduin Vale##
+character_event = {
+    id = galadrielring.3
+    title = "EVTTITgaladrielring.3"
+    desc = "EVTDESCgaladrielring.3"
+    picture = "GFX_shadows_coming"
+	only_rulers = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAgaladrielring.3"
+		trigger = { trait = good_side }
+	}
+	
+	option = {
+		name = "EVTOPTBgaladrielring.3"
+	}
+	
+	option = {
+		name = "EVTOPTCgaladrielring.3"
+		trigger = { trait = evil_side }
+	}
+}
+	
+	
+##She looks to bring the woodsmen under her control##
+character_event = {
+    id = galadrielring.4
+    title = "EVTTITgaladrielring.4"
+    desc = "EVTDESCgaladrielring.4"
+    picture = "GFX_war_at_north"
+	only_rulers = yes
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_lorien
+			has_landed_title = c_lorien
+		}	
+		dynasty = 3004
+		is_female = yes
+		trait = ring
+		has_character_flag = galadrielring1
+		NOT = { has_character_flag = galadrielring4 }
+		year = 11372
+	}
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAgaladrielring.4"
+		set_character_flag = galadrielring4
+		add_claim = k_woodsmen_mirkwood
+		any_playable_ruler = {
+			character_event = { id = galadrielring.8 days = 7 }
+ 		}
+	}
+}
+	
+##the other elven rulers are asked to accept her high kingship - only mirkwood accepts##
+character_event = {
+    id = galadrielring.5
+    title = "EVTTITgaladrielring.5"
+    desc = "EVTDESCgaladrielring.5"
+    picture = "GFX_elf_meeting"
+	only_rulers = yes
+
+	is_triggered_only = yes
+	
+
+	option = {
+		name = "EVTOPTAgaladrielring.5"
+		trigger = { ai = no }
+		set_defacto_liege = FROM
+		FROM = { character_event = { id = galadrielring.6 days = 7 } }
+	}
+	
+	option = {
+		name = "EVTOPTBgaladrielring.5"
+		trigger = { ai = no }
+		FROM = { character_event = { id = galadrielring.7 days = 7 } }
+	}
+	
+	option = {
+		name = "EVTOPTCgaladrielring.5"
+		FROM = { character_event = { id = galadrielring.7 days = 7 } }
+	}
+}
+
+##galadriel gets positive reply##
+character_event = {
+    id = galadrielring.6
+    title = "EVTTITgaladrielring.6"
+    desc = "EVTDESCgaladrielring.6"
+    picture = "GFX_elf_meeting"
+	only_rulers = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAgaladrielring.6"
+	}
+
+}
+	
+##galadriel gets negative reply##
+character_event = {
+    id = galadrielring.7
+    title = "EVTTITgaladrielring.7"
+    desc = "EVTDESCgaladrielring.7"
+    picture = "GFX_elf_meeting"
+	only_rulers = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAgaladrielring.7"
+		add_trait = wroth
+	}
+
+}
+	
+##rulers are informed that Galadriel is moving in on Anduin Vale##
+character_event = {
+    id = galadrielring.8
+    title = "EVTTITgaladrielring.8"
+    desc = "EVTDESCgaladrielring.8"
+    picture = "GFX_shadows_coming"
+	only_rulers = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAgaladrielring.8"
+		trigger = { trait = good_side }
+	}
+	
+	option = {
+		name = "EVTOPTBgaladrielring.8"
+	}
+	
+	option = {
+		name = "EVTOPTCgaladrielring.8"
+		trigger = { trait = evil_side }
+	}
+}
+	
+##She looks to bring the mirkwood under her control##
+character_event = {
+    id = galadrielring.9
+    title = "EVTTITgaladrielring.9"
+    desc = "EVTDESCgaladrielring.9"
+    picture = "GFX_war_at_north"
+	only_independent = yes
+	only_rulers = yes
+	
+	trigger = {
+		OR = {
+			has_landed_title = d_lorien
+			has_landed_title = c_lorien
+		}	
+		OR = {	
+			NOT = { any_vassal = { has_landed_title = k_mirkwood } }
+			NOT = { has_landed_title = k_mirkwood }
+		}
+		dynasty = 3004
+		is_female = yes
+		trait = ring
+		NOT = { has_character_flag = galadrielring9 }
+		year = 11380
+	}
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAgaladrielring.9"
+		set_character_flag = galadrielring9
+		add_claim = k_mirkwood
+	}
+}

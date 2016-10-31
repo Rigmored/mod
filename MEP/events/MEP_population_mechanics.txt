@@ -1,0 +1,845 @@
+###Dunedain, Elves, and Dwarves are waning in the 3rd Age. While it may be possible to "paint the map" with these cultures, the provinces should mostly be lightly populated and it ##should be extremely expensive and time consuming to get fully populated new provinces of elves, dwarves or dunedain
+
+namespace = population
+
+#DUNEDAIN - First we set the province modifier for the provinces at start, only Minas Tirith, Pelargir, and Dol Amroth gets dense population, a few others get medium, the others get #lightly populated
+
+province_event = {
+	id = population.0
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	NOT = { has_global_flag = population_setup }
+	culture_group = culture_group_numenorean
+	AND = {
+	NOT = { has_province_modifier = lightly_populated_by_dunedain }
+	NOT = { has_province_modifier = populated_by_dunedain }
+	NOT = { has_province_modifier = densely_populated_by_dunedain }
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1	
+	}
+	
+
+	
+	option = {
+	name = "OK"
+	#the provinces that are not majorly settled all get the lightly populated one
+	if = { 
+	limit = {
+	AND = {
+	NOT = { province_id = 422  } #minas tirith
+	NOT = { province_id = 656  } # Dol Amroth
+	NOT = { province_id = 18  }# Pelargir
+	NOT = { province_id = 17  }#Minas Arnach
+	NOT = { province_id = 1 } #pelennor
+	NOT = { province_id = 270 } #Fornost
+	NOT = { province_id = 659 } # Annunimas
+	NOT = { province_id = 105 } # Barrow Downs/Tyrn Gorthad capital of cardolan
+	#lossarnach is also stated to be at least normally settled
+	NOT = { province_id = 10 } # Celerdain
+	NOT = { province_id = 11 } 
+	NOT = { province_id = 12 }
+	NOT = { province_id = 13 }
+	#also the pelargir duchy should have normal dunedain settlement level
+	NOT = { province_id = 16 }
+	NOT = { province_id = 24 }
+	#dol amroth duchy also gets normal settlement levels
+	NOT = { province_id = 429 }
+	NOT = { province_id = 40 }
+	NOT = { province_id = 41 }
+	NOT = { province_id = 42 }
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = lightly_populated_by_dunedain duration = -1 }
+	}
+	}
+
+	#the provinces of the major duchies get normal population levels
+	if = { 
+	limit = {
+	OR = {
+	province_id = 1 #pelennor
+	#lossarnach is also stated to be at least normally settled
+	province_id = 10 # Celerdain
+	province_id = 11 
+	province_id = 12
+	province_id = 13
+	#also the pelargir duchy should have normal dunedain settlement level
+	province_id = 16
+	province_id = 24
+	#dol amroth duchy also gets normal settlement levels
+	province_id = 429
+	province_id = 40
+	province_id = 41
+	province_id = 42
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = populated_by_dunedain duration = -1 }
+	}
+}	
+#the major urban centers get heavily populated
+	if = { 
+	limit = {
+	OR = {
+	province_id = 422 #minas tirith
+	province_id = 656 # Dol Amroth
+	province_id = 17 #Minas Arnach
+	province_id = 18 #Pelargir
+	province_id = 270 #Fornost
+	province_id = 659 # Annunimas
+	province_id = 105 # Barrow Downs/Tyrn Gorthad capital of cardolan
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = densely_populated_by_dunedain duration = -1 }
+	}
+}
+
+}
+
+}
+
+
+#Now we remove the province modifier if the population of the province changes#
+province_event = {
+	id = population.1
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	NOT = { culture_group = culture_group_numenorean }
+	OR = {
+	has_province_modifier = lightly_populated_by_dunedain
+	has_province_modifier = populated_by_dunedain
+	has_province_modifier = densely_populated_by_dunedain
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1	
+	}
+	
+	option = {
+	name = "OK"
+	remove_province_modifier = lightly_populated_by_dunedain
+	remove_province_modifier = populated_by_dunedain
+	remove_province_modifier = densely_populated_by_dunedain
+	}
+	
+	}
+	
+#Now if a new province is changed to numenorean group culture, it gets the lightly populated modifier#
+province_event = {
+	id = population.2
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	culture_group = culture_group_numenorean
+	AND = {
+	NOT = {	has_province_modifier = lightly_populated_by_dunedain }
+	NOT = {	has_province_modifier = populated_by_dunedain }
+	NOT = {	has_province_modifier = densely_populated_by_dunedain }
+	}
+	}
+	
+	mean_time_to_happen = {
+	months = 6
+	}
+	
+	option = {
+	name = "OK"
+	add_province_modifier = { name = lightly_populated_by_dunedain duration = -1 }
+	}
+	
+	}
+	
+###Fix event set to fire 2 years after start, so that the initial event doesnt refire, ie, a reconquered minas tirith shouldnt get the heavily populated modifer, it should get the lightly populated one
+
+character_event = {
+	id = population.3
+	desc = "EVTDESCcultureconversion.0"
+	picture = GFX_evt_throne_room
+	hide_window = yes
+	
+	trigger = {	
+	ai = no
+	NOT = { has_global_flag = population_setup }
+	}
+	
+	is_triggered_only = yes #annual pulse
+	
+	option = {
+	name = OK
+	set_global_flag = population_setup
+	}
+	
+	}
+	
+	##Now for when a province is occupied, a population decline happens##
+	character_event = {
+	id = population.4
+	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
+	picture = "GFX_shadows_coming"
+	
+	trigger = {
+	culture_group = culture_group_numenorean
+	higher_tier_than = BARON
+		any_demesne_title = {
+		location = {
+		OR = {
+			has_province_modifier = populated_by_dunedain
+			has_province_modifier = densely_populated_by_dunedain
+				}
+				}
+		tier = baron
+		NOT = { controlled_by = ROOT }
+				}
+	}
+	
+	mean_time_to_happen = {
+	months = 60 #5 years
+	}
+	
+	option = {
+	name = population4A
+	random_demesne_province={
+	if = {
+	limit = {
+	NOT = { controlled_by = ROOT }
+	}
+	#goes from densely to normally populated
+	if = {
+	limit = {
+	has_province_modifier = densely_populated_by_dunedain
+	}
+	add_province_modifier = { name = populated_by_dunedain duration = -1 }
+	remove_province_modifier = densely_populated_by_dunedain
+	}
+	#goes from normal to lightly populated
+	if = {
+	limit = {
+	has_province_modifier = populated_by_dunedain
+	}
+	add_province_modifier = { name = lightly_populated_by_dunedain duration = -1 }
+	remove_province_modifier = populated_by_dunedain
+	}
+	}	
+	}
+	}	
+	
+	}
+	
+#Now to increase the population level via decision event#
+	character_event = {
+	id = population.5
+	desc = population5desc # Though the Men of the West replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage young Dunedain families to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
+	picture = "GFX_good"
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = population5A #No, not right now
+	trigger = { ai = no }
+	}
+	
+	option = { 
+	name = population5B #Yes, make efforts to increase population in a random province
+	wealth = -1000
+	prestige = -500
+	random_realm_province = {
+	limit = { 
+	OR = {
+	has_province_modifier = lightly_populated_by_dunedain
+	has_province_modifier = populated_by_dunedain
+	}
+	}
+	add_province_modifier = { name = population_increasing duration = -1 }
+	}
+	}
+	
+	option = {
+	name = population5C #Yes, make the effort where my steward is located
+	trigger = { ai = no }
+	wealth = -1000
+	prestige = -500	
+	any_courtier = {
+	limit = { has_job_title = job_treasurer }
+	location = { add_province_modifier = { name = population_increasing duration = -1 } }
+	}
+	}
+	
+	}
+	
+#Event where you are told the efforts have succeeded, and population is growing#
+province_event = {
+	id = population.6
+	desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
+	picture = GFX_good
+	
+	trigger = {
+	has_province_modifier = population_increasing
+	OR = {
+	has_province_modifier = lightly_populated_by_dunedain
+	has_province_modifier = populated_by_dunedain
+	}
+	}
+	
+	mean_time_to_happen = {
+	months = 240
+	}
+	
+	option = {
+	name = population6A #Good tidings!
+	remove_province_modifier = population_increasing
+	if = { 
+	limit = { has_province_modifier = populated_by_dunedain }
+	remove_province_modifier = populated_by_dunedain
+	add_province_modifier = { name = densely_populated_by_dunedain duration = -1 }
+	}
+	if = { 
+	limit = { has_province_modifier = lightly_populated_by_dunedain }
+	remove_province_modifier = lightly_populated_by_dunedain
+	add_province_modifier = { name = populated_by_dunedain duration = -1 }
+	}
+	}
+
+}
+
+##Now for ELVES
+
+province_event = {
+	id = population.7
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	NOT = { has_global_flag = population_setup }
+	OR = {
+	culture_group = culture_group_amanyar
+	culture_group = culture_group_quendi
+	culture_group = culture_group_umanyar
+	culture_group = culture_group_moriquendi
+	}
+	AND = {
+	NOT = { has_province_modifier = lightly_populated_by_elves }
+	NOT = { has_province_modifier = populated_by_elves }
+	NOT = { has_province_modifier = densely_populated_by_elves }
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1	
+	}
+	
+
+	
+	option = {
+	name = "OK"
+	#the provinces that are not majorly settled all get the lightly populated one
+	if = { 
+	limit = {
+	AND = {
+	NOT = { province_id = 235 } # Lorien  
+	NOT = { province_id = 234 } # Imladris 
+	NOT = { province_id = 657 } # Mithlond	
+	NOT = { province_id = 323 } # #Thranduill's Halls
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = lightly_populated_by_elves duration = -1 }
+	}
+	}
+	
+#the major urban centers get heavily populated
+	if = { 
+	limit = {
+	OR = {
+	province_id = 235  # Lorien  
+	province_id = 234  # Imladris 
+	province_id = 657  # Mithlond	
+	province_id = 323  # #Thranduill's Halls
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = densely_populated_by_elves duration = -1 }
+	}
+}
+
+}
+
+}
+
+
+#Now we remove the province modifier if the population of the province changes#
+province_event = {
+	id = population.8
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	AND = {
+	NOT = { culture_group = culture_group_amanyar}
+	NOT = { culture_group = culture_group_quendi}
+	NOT = { culture_group = culture_group_umanyar }
+	NOT = { culture_group = culture_group_moriquendi }
+	}
+	OR = {
+	has_province_modifier = lightly_populated_by_elves
+	has_province_modifier = populated_by_elves
+	has_province_modifier = densely_populated_by_elves
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1	
+	}
+	
+	option = {
+	name = "OK"
+	remove_province_modifier = lightly_populated_by_elves
+	remove_province_modifier = populated_by_elves
+	remove_province_modifier = densely_populated_by_elves
+	}
+	
+	}
+	
+#Now if a new province is changed to elven group culture, it gets the lightly populated modifier#
+province_event = {
+	id = population.9
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	OR = {
+	culture_group = culture_group_amanyar
+	culture_group = culture_group_quendi
+	culture_group = culture_group_umanyar
+	culture_group = culture_group_moriquendi
+	}
+	AND = {
+	NOT = {	has_province_modifier = lightly_populated_by_elves }
+	NOT = {	has_province_modifier = populated_by_elves }
+	NOT = {	has_province_modifier = densely_populated_by_elves }
+	}
+	}	
+	
+	mean_time_to_happen = {
+	months = 6
+	}
+	
+	option = {
+	name = "OK"
+	add_province_modifier = { name = lightly_populated_by_elves duration = -1 }
+	}
+	
+	}
+
+	
+	##Now for when a province is occupied, a population decline happens##
+	character_event = {
+	id = population.11
+	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
+	picture = "GFX_shadows_coming"
+	
+	trigger = {
+	OR = {
+	culture_group = culture_group_amanyar
+	culture_group = culture_group_quendi
+	culture_group = culture_group_umanyar
+	culture_group = culture_group_moriquendi
+	}
+	higher_tier_than = BARON
+		any_demesne_title = {
+		location = {
+		OR = {
+			has_province_modifier = populated_by_elves
+			has_province_modifier = densely_populated_by_elves
+				}
+				}
+		tier = baron
+		NOT = { controlled_by = ROOT }
+				}
+	}
+	
+	mean_time_to_happen = {
+	months = 60 #5 years
+	}
+	
+	option = {
+	name = population4A
+	random_demesne_province={
+	if = {
+	limit = {
+	NOT = { controlled_by = ROOT }
+	}
+	#goes from densely to normally populated
+	if = {
+	limit = {
+	has_province_modifier = densely_populated_by_elves
+	}
+	add_province_modifier = { name = populated_by_elves duration = -1 }
+	remove_province_modifier = densely_populated_by_elves
+	}
+	#goes from normal to lightly populated
+	if = {
+	limit = {
+	has_province_modifier = populated_by_elves
+	}
+	add_province_modifier = { name = lightly_populated_by_elves duration = -1 }
+	remove_province_modifier = populated_by_elves
+	}
+	}	
+	}
+	}	
+	
+	}
+	
+#Now to increase the population level via decision event#
+	character_event = {
+	id = population.12
+	desc = population12desc # Though Elves replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage your people to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = population5A #No, not right now
+	trigger = { ai = no }
+	}
+	
+	option = { 
+	name = population5B #Yes, make efforts to increase population in a random province
+	wealth = -1000
+	prestige = -500
+	random_realm_province = {
+	limit = { 
+	OR = {
+	has_province_modifier = lightly_populated_by_elves
+	has_province_modifier = populated_by_elves
+	}
+	}
+	add_province_modifier = { name = population_increasing duration = -1 }
+	}
+	}
+	
+	option = {
+	name = population5C #Yes, make the effort where my steward is located
+	trigger = { ai = no }
+	wealth = -1000
+	prestige = -500	
+	any_courtier = {
+	limit = { has_job_title = job_treasurer }
+	location = { add_province_modifier = { name = population_increasing duration = -1 } }
+	}
+	}
+	
+	}
+	
+#Event where you are told the efforts have succeeded, and population is growing#
+province_event = {
+	id = population.13
+	desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
+	picture = GFX_good
+	
+	trigger = {
+	has_province_modifier = population_increasing
+	OR = {
+	has_province_modifier = lightly_populated_by_elves
+	has_province_modifier = populated_by_elves
+	}
+	}
+	
+	mean_time_to_happen = {
+	months = 240
+	}
+	
+	
+	option = {
+	name = population6A #Good tidings!
+	remove_province_modifier = population_increasing
+	if = { 
+	limit = { has_province_modifier = populated_by_elves }
+	remove_province_modifier = populated_by_elves
+	add_province_modifier = { name = densely_populated_by_elves duration = -1 }
+	}
+	if = { 
+	limit = { has_province_modifier = lightly_populated_by_elves }
+	remove_province_modifier = lightly_populated_by_elves
+	add_province_modifier = { name = populated_by_elves duration = -1 }
+	}
+	}
+
+}
+
+##Now for DWARVES
+
+province_event = {
+	id = population.14
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	NOT = { has_global_flag = population_setup }
+	culture_group = culture_group_dwarves
+	AND = {
+	NOT = { has_province_modifier = lightly_populated_by_dwarves }
+	NOT = { has_province_modifier = populated_by_dwarves }
+	NOT = { has_province_modifier = densely_populated_by_dwarves }
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1	
+	}
+	
+
+	
+	option = {
+	name = "OK"
+	#the provinces that are not majorly settled all get the medium populated one
+	if = { 
+	limit = {
+	AND = {
+	NOT = { province_id = 285 } # Khazad-Dum
+	NOT = { province_id = 292 } # Erebor  
+	NOT = { province_id = 644 } # Zirakdum 
+	NOT = { province_id = 812 } # Stonefoot2
+	NOT = { province_id = 679 }  #Dain's Halls
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = populated_by_dwarves duration = -1 }
+	}
+	}
+	
+#the major urban centers get heavily populated
+	if = { 
+	limit = {
+	OR = {
+	province_id = 285  # Khazad-Dum
+	province_id = 292  # Erebor  
+	province_id = 644  # Zirakdum 
+	province_id = 812  # Stonefoot2
+	province_id = 679  # Dain's Halls
+	}
+	}
+	ROOT = {
+	add_province_modifier = { name = densely_populated_by_dwarves duration = -1 }
+	}
+}
+
+}
+
+}
+
+
+#Now we remove the province modifier if the population of the province changes#
+province_event = {
+	id = population.15
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	NOT = { culture_group = culture_group_dwarves }
+	OR = {
+	has_province_modifier = lightly_populated_by_dwarves
+	has_province_modifier = populated_by_dwarves
+	has_province_modifier = densely_populated_by_dwarves
+	}
+	}	
+	
+	mean_time_to_happen = {
+	days = 1
+	}
+	
+	option = {
+	name = "OK"
+	remove_province_modifier = lightly_populated_by_dwarves
+	remove_province_modifier = populated_by_dwarves
+	remove_province_modifier = densely_populated_by_dwarves
+	}
+	
+	}
+	
+#Now if a new province is changed to dwarven group culture, it gets the lightly populated modifier#
+province_event = {
+	id = population.16
+	title = population0title #hidden
+	desc = population0desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+	culture_group = culture_group_dwarves
+	AND = {
+	NOT = {	has_province_modifier = lightly_populated_by_dwarves }
+	NOT = {	has_province_modifier = populated_by_dwarves }
+	NOT = {	has_province_modifier = densely_populated_by_dwarves }
+	}
+	}	
+	
+	mean_time_to_happen = {
+	months = 6
+	}
+	
+	option = {
+	name = "OK"
+	add_province_modifier = { name = lightly_populated_by_dwarves duration = -1 }
+	}
+	
+	}
+
+	
+	##Now for when a province is occupied, a population decline happens##
+	character_event = {
+	id = population.17
+	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
+	picture = "GFX_shadows_coming"
+	
+	trigger = {
+	culture_group = culture_group_dwarves
+	higher_tier_than = BARON
+		any_demesne_title = {
+		location = {
+		OR = {
+			has_province_modifier = populated_by_dwarves
+			has_province_modifier = densely_populated_by_dwarves
+				}
+				}
+		tier = baron
+		NOT = { controlled_by = ROOT }
+				}
+	}
+	
+	mean_time_to_happen = {
+	months = 60 #5 years
+	}
+	
+	option = {
+	name = population4A
+	random_demesne_province={
+	if = {
+	limit = {
+	NOT = { controlled_by = ROOT }
+	}
+	#goes from densely to normally populated
+	if = {
+	limit = {
+	has_province_modifier = densely_populated_by_dwarves
+	}
+	add_province_modifier = { name = populated_by_dwarves duration = -1 }
+	remove_province_modifier = densely_populated_by_dwarves
+	}
+	#goes from normal to lightly populated
+	if = {
+	limit = {
+	has_province_modifier = populated_by_dwarves
+	}
+	add_province_modifier = { name = lightly_populated_by_dwarves duration = -1 }
+	remove_province_modifier = populated_by_dwarves
+	}
+	}	
+	}
+	}	
+	
+	}
+	
+#Now to increase the population level via decision event#
+	character_event = {
+	id = population.18
+	desc = population18desc # Though Dwarves replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage your people to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = population5A #No, not right now
+	trigger = { ai = no }
+	}
+	
+	option = { 
+	name = population5B #Yes, make efforts to increase population in a random province
+	wealth = -1000
+	prestige = -500
+	random_realm_province = {
+	limit = { 
+	OR = {
+	has_province_modifier = lightly_populated_by_dwarves
+	has_province_modifier = populated_by_dwarves
+	}
+	}
+	add_province_modifier = { name = population_increasing duration = -1 }
+	}
+	}
+	
+	option = {
+	name = population5C #Yes, make the effort where my steward is located
+	trigger = { ai = no }
+	wealth = -1000
+	prestige = -500	
+	any_courtier = {
+	limit = { has_job_title = job_treasurer }
+	location = { add_province_modifier = { name = population_increasing duration = -1 } }
+	}
+	}
+	
+	}
+	
+#Event where you are told the efforts have succeeded, and population is growing#
+province_event = {
+	id = population.19
+	desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
+	picture = GFX_good
+	
+	trigger = {
+	has_province_modifier = population_increasing
+	OR = {
+	has_province_modifier = lightly_populated_by_dwarves
+	has_province_modifier = populated_by_dwarves
+	}
+	}
+	
+	mean_time_to_happen = {
+	months = 240
+	}
+	
+	
+	option = {
+	name = population6A #Good tidings!
+	remove_province_modifier = population_increasing
+	if = { 
+	limit = { has_province_modifier = populated_by_dwarves }
+	remove_province_modifier = populated_by_dwarves
+	add_province_modifier = { name = densely_populated_by_dwarves duration = -1 }
+	}
+	if = { 
+	limit = { has_province_modifier = lightly_populated_by_dwarves }
+	remove_province_modifier = lightly_populated_by_dwarves
+	add_province_modifier = { name = populated_by_dwarves duration = -1 }
+	}
+	}
+
+}

@@ -1,0 +1,68 @@
+namespace = lesserrings
+
+########## LIST OF THE GUARDIANS #############
+### Holders of the Lesser Rings ###
+character_event = {
+	id = lesserrings.0
+	picture = "GFX_evt_dwarven_rings"
+	desc = "EVTDESClesserrings.0"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlesserrings.0" #Living holders
+		ring_saruman = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTRINGSARUMAN }
+		}
+		if = {
+			limit = { trait = ring_saruman }
+			custom_tooltip = { text = CURRENTRINGSARUMAN }
+		}		
+		lesser_ring = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTLESSERRING }
+		}
+		if = {
+			limit = { trait = lesser_ring }
+			custom_tooltip = { text = CURRENTLESSERRING }
+		}	
+		barahir = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTRINGBARAHIR }
+		}
+		if = {
+			limit = { trait = barahir }
+			custom_tooltip = { text = CURRENTRINGBARAHIR }
+		}		
+	}
+}
+
+
+
+######## DURING THE HUNT FOR THE RING, YOU FOUND A LESSER RING ########
+### Holders of the Lesser Rings ###
+narrative_event = {
+	id = lesserrings.1
+	title = "EVTTITlesserrings.1"	
+	desc = "EVTDESClesserrings.1"
+	picture = "GFX_evt_ring_craft"	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlesserrings.1" ## It's a Ring !
+		add_trait = lesser_ring
+		clr_character_flag = huntforring
+		prestige = 100
+	}
+	option = {
+		name = "EVTOPTBlesserrings.1" ## I don't mind.
+	}	
+}

@@ -1,0 +1,302 @@
+namespace = rulegondor
+
+##### INHERITANCE OF GONDOR AND ARNOR - SPLIT OF THE REUNITED KINGDOM #####
+
+#### The High-King of the Dunedain can choose to split his kingdom at his death ####
+narrative_event = {
+	id = rulegondor.0
+	title = EVTNAMErulegondor.0
+	desc = EVTDESCrulegondor.0
+	picture = GFX_evt_gondor_kingdom
+	border = GFX_event_narrative_frame_economy	
+	
+	trigger = {
+		has_landed_title = e_reunited_kingdom
+		NOT = { has_character_flag = split_of_kingdom }
+		NOT = { has_character_flag = kingdom_remain_one }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTArulegondor.0" ## Yep!
+		set_character_flag = split_of_kingdom
+	}
+	option = {
+		name = "EVTOPTBrulegondor.0" ## No!
+		trigger = { ai = no }
+		set_character_flag = kingdom_remain_one
+	}
+}
+
+#### Split of the Reunited Kingdom ####
+character_event = {
+	id = rulegondor.1
+	title = EVTNAMErulegondor.1
+	desc = EVTDESCrulegondor.1
+	picture = "GFX_good"
+	
+	hide_window = yes
+	
+	trigger = {
+		has_landed_title = e_reunited_kingdom
+		has_character_flag = split_of_kingdom
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_landed_title = e_reunited_kingdom
+			}
+			e_gondor = { 
+				grant_title = ROOT
+				succession = gavelkind
+			}
+			e_arnor = { 
+				grant_title = ROOT
+				succession = gavelkind
+				make_primary_title = yes
+			}	
+			e_reunited_kingdom = { destroy_landed_title = THIS }
+			e_arnor = {
+				current_heir = {
+					character_event = { id = rulegondor.2 days = 2}
+				}	
+			}
+			e_gondor = {
+				current_heir = {
+					character_event = { id = rulegondor.3 days = 2}
+				}	
+			}				
+		}
+	}
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTArulegondor.1" ## The current heir will have the rule of Arnor		
+	}
+}
+
+
+
+#### The New ruler of Arnor will destroy his titles in Gondor ####
+narrative_event = {
+	id = rulegondor.2
+	title = EVTNAMErulegondor.2
+	desc = EVTDESCrulegondor.2
+	picture = GFX_evt_gondor_kingdom
+	border = GFX_event_narrative_frame_economy	
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTArulegondor.2"
+		if = {
+			limit = {
+				has_landed_title = k_ithilien
+			}
+			k_ithilien = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_anorien
+			}
+			k_anorien = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_lebennin
+			}
+			k_lebennin = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_anfalas
+			}
+			k_ithilien = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_andrast
+			}
+			k_andrast = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_lamedon
+			}
+			k_lamedon = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_pinnath_gelin
+			}
+			k_pinnath_gelin = { destroy_landed_title = THIS }
+		}		
+		if = {
+			limit = {
+				has_landed_title = k_belfalas
+			}
+			k_belfalas = { destroy_landed_title = THIS }
+		}	
+		if = {
+			limit = {
+				has_character_flag = isildur
+			}
+			character_event = { id = rulegondor.4 days = 10 }
+		}
+		if = {
+			limit = {
+				has_character_flag = anarion
+			}
+			character_event = { id = rulegondor.5 days = 10 }
+		}		
+	}
+}
+
+
+#### The New ruler of Gondor will destroy his titles in Arnor ####
+narrative_event = {
+	id = rulegondor.3
+	title = EVTNAMErulegondor.3
+	desc = EVTDESCrulegondor.3
+	picture = GFX_evt_gondor_kingdom
+	border = GFX_event_narrative_frame_economy	
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTArulegondor.1" ## The current heir will have the rule of Arnor
+		if = {
+			limit = {
+				has_landed_title = k_arthedain
+			}
+			k_arthedain = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_cardolan
+			}
+			k_cardolan = { destroy_landed_title = THIS }
+		}
+		if = {
+			limit = {
+				has_landed_title = k_rhudaur
+			}
+			k_rhudaur = { destroy_landed_title = THIS }
+		}	
+		if = {
+			limit = {
+				has_character_flag = isildur
+			}
+			character_event = { id = rulegondor.4 days = 10 }
+		}
+		if = {
+			limit = {
+				has_character_flag = anarion
+			}
+			character_event = { id = rulegondor.5 days = 10 }
+		}		
+	}
+}
+
+
+#### Isildur create his own lineage ####
+narrative_event = {
+	id = rulegondor.4
+	title = EVTNAMErulegondor.4
+	desc = EVTDESCrulegondor.4
+	picture = GFX_evt_gondor_kingdom
+	border = GFX_event_narrative_frame_economy	
+
+	trigger = {
+		has_character_flag = isildur
+	}
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTArulegondor.4" ## Yes!
+		dynasty = 2001
+		any_child = {
+			dynasty = 2001
+		}
+		any_child = {
+			any_child = {
+				dynasty = 2001
+			}
+		}
+		any_child={
+			any_child = {
+				any_child = {
+					dynasty = 2001
+				}
+			}
+		}
+		any_child = {
+			any_child = {
+				any_child = {
+					any_child = {
+						dynasty = 2001
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBrulegondor.4" ## No!
+		trigger = { ai = no }
+	}
+}
+
+
+#### Anarion create his own lineage ####
+narrative_event = {
+	id = rulegondor.5
+	title = EVTNAMErulegondor.5
+	desc = EVTDESCrulegondor.5
+	picture = GFX_evt_gondor_kingdom
+	border = GFX_event_narrative_frame_economy	
+	
+	trigger = {
+		has_character_flag = anarion
+	}
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTArulegondor.0" ## Yes!
+		dynasty = 102
+		any_child = {
+			dynasty = 102
+		}
+		any_child = {
+			any_child = {
+				dynasty = 102
+			}
+		}
+		any_child={
+			any_child = {
+				any_child = {
+					dynasty = 102
+				}
+			}
+		}
+		any_child = {
+			any_child = {
+				any_child = {
+					any_child = {
+						dynasty = 102
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBrulegondor.0" ## No!
+		trigger = { ai = no }
+	}
+}

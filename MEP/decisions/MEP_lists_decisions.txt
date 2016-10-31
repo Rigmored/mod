@@ -1,0 +1,32 @@
+decisions = {
+	### Show a list of the Artefact Holders ###
+	list_artefact = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			year = 6405
+			has_character_flag = special_decisions_open
+		}
+		allow = { always = yes }
+		effect = {
+			character_event = { id = rings.2 }
+		}
+	}
+	### Open the Archives of Gondor ###
+	gondor_archives = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			year = 8221
+			OR = {
+				has_landed_title = e_gondor
+				has_landed_title = e_steward_gondor
+			}
+			has_character_flag = special_decisions_open
+		}
+		allow = { always = yes }
+		effect = {
+			character_event = { id = archivesgondor.0 }
+		}
+	}
+}

@@ -1,0 +1,1118 @@
+namespace = kinstrife
+
+## King Valacar is informed that his heir is not considered suitable by some peoples in Gondor ##
+character_event = {
+	id = kinstrife.1
+	desc = EVTDESCkinstrife.1
+	picture = "GFX_kinstrife"
+		
+	trigger = {
+		has_landed_title = e_gondor
+		trait = blood_of_numenor
+		current_heir = {
+			age = 5
+			NOT = { trait = blood_of_numenor }
+			NOT = { trait = elven_blood }
+			NOT = { trait = half_elf }
+		}
+		NOT = { has_character_flag = kinstrife1 }
+	}
+		
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	 option = {
+		name = EVTOPTAkinstrife.1
+		set_character_flag = kinstrife1
+	 }	
+}
+	
+## Eldacar is not a pure numenorean... ##
+character_event = {
+	id = kinstrife.2
+	desc = EVTDESCkinstrife.2
+	picture = "GFX_kinstrife"
+			
+	trigger = {
+		has_landed_title = e_gondor
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+			religion = religion_dunedain
+		}
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = elven_blood }
+		NOT = { trait = half_elf }
+		NOT = { has_character_flag = kinstrife2 }
+	}
+		
+	mean_time_to_happen = {
+		days = 20
+	}
+				  
+	option = {
+		 name = EVTOPTAkinstrife.2
+		 set_character_flag = kinstrife2
+		 set_global_flag = kinstrife
+	}
+}
+	
+## Castamir begins to plot ##
+	character_event = {
+	id = kinstrife.3
+	title = EVTTITkinstrife.3
+	desc = EVTDESCkinstrife.3
+	picture = "GFX_kinstrife"
+			
+	trigger = {
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+		}
+		trait = blood_of_anarion
+		NOT = { has_character_flag = kinstrife3 }
+		NOT = { has_landed_title = e_gondor }
+		NOT = { has_landed_title = e_arnor  }
+		has_global_flag = kinstrife
+		has_character_flag = castamir
+	}
+		
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	 option = {
+		 name = EVTOPTAkinstrife.3
+		 set_character_flag = kinstrife3
+		 clr_global_flag = kinstrife
+		 any_playable_ruler  = {
+			limit = {
+				trait = blood_of_numenor
+				NOT = { has_landed_title = e_gondor }
+				NOT = { has_landed_title = e_arnor }
+				NOT = { has_landed_title = k_anorien }
+				NOT = { has_landed_title = k_rohan }
+				NOT = { has_landed_title = k_ithilien }
+				age = 16
+				top_liege = { has_landed_title = e_gondor }
+			}
+			character_event = { id = kinstrife.4 days = 25 }
+		 }
+		 character_event = { id = kinstrife.5 days = 60 }
+	 }
+	 
+	option = {
+		 name = EVTOPTBkinstrife.3
+		 trigger = { ai = no }
+		 set_character_flag = kinstrife3
+		 clr_global_flag = kinstrife
+	}
+}
+	
+## Every Numenorean rulers of Gondor will be alerted of the situation, and will join or no ##
+	
+character_event = {
+	id = kinstrife.4
+	title = EVTTITkinstrife.4
+	desc = EVTDESCkinstrife.4
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.4
+		set_character_flag = kinstrifemember
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 3
+				trait = strong
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = cruel
+			}	
+			modifier = {
+				factor = 3
+				trait = wroth
+			}	
+			modifier = {
+				factor = 3
+				trait = envious
+			}	
+			modifier = {
+				factor = 5
+				trait = ambitious
+			}				
+		}	
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_character_flag = castamir
+				has_landed_title = c_pelargir
+			}
+			character_event = { id = kinstrife.11 days = 5 }
+		}	
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					trait = blood_of_anarion
+					has_character_flag = castamir
+					NOT = { has_landed_title = c_pelargir }
+				}
+				character_event = { id = kinstrife.11 days = 5}
+			}
+		}			
+	}
+	
+	option = {
+		name = EVTOPTBkinstrife.4
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 5
+				trait = craven
+			}
+			modifier = {
+				factor = 5
+				trait = weak
+			}
+			modifier = {
+				factor = 4
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}			
+		}		
+	}	
+}
+	
+## Castamir will now claim the crown ##	
+character_event = {
+	id = kinstrife.5
+	title = EVTTITkinstrife.5
+	desc = EVTDESCkinstrife.5
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.5
+		e_gondor = {
+				add_claim = ROOT	
+		}	
+		c_minas_tirith = {
+				add_claim = ROOT	
+		}
+		c_west_osgiliath = {
+				add_claim = ROOT	
+		}
+		c_east_osgiliath = {
+				add_claim = ROOT	
+		}	
+		c_pelennor = {
+				add_claim = ROOT	
+		}	
+		d_royal_demesne = {
+				add_claim = ROOT	
+		}
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}
+			character_event = { id = kinstrife.6 days = 3 }
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.5
+		trigger = { ai = no }
+	}	
+}
+	
+## Eldacar is alerted of the claim of Castamir ##	
+character_event = {
+	id = kinstrife.6
+	title = EVTTITkinstrife.6
+	desc = EVTDESCkinstrife.6
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.6 ## I'm the legitime heir!
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_character_flag = castamir
+				has_landed_title = c_pelargir				
+			}
+			character_event = { id = kinstrife.7 days = 10 }
+		}	
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					trait = blood_of_anarion
+					has_character_flag = castamir
+					NOT = { has_landed_title = c_pelargir }					
+				}
+				character_event = { id = kinstrife.7 days = 10 }
+			}
+		}			
+	}	
+	option = {
+		name = EVTOPTBkinstrife.6 ## This crown is not for me...
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_character_flag = castamir
+			}
+			character_event = { id = kinstrife.8 days = 8 }
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					trait = blood_of_anarion
+					has_character_flag = castamir
+				}
+				character_event = { id = kinstrife.8 days = 8 }
+			}
+		}			
+	}	
+}
+
+
+## Castamir receive the answer of Eldacar - War is coming ##	
+character_event = {
+	id = kinstrife.7
+	title = EVTTITkinstrife.7
+	desc = EVTDESCkinstrife.7
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.7 ## To War then !
+		e_gondor_kinstrife = {
+			grant_title = ROOT
+			copy_title_history = e_gondor			
+		}	
+		c_pelargir = {
+			grant_title = ROOT		
+		}			
+		e_gondor = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_numenor
+				has_character_flag = kinstrifemember
+			}
+			character_event = { id = kinstrife.9 } ## The other vassals joins Castamir in Civil War
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.6 ## This crown is not for me...
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}
+			character_event = { id = kinstrife.10 days = 5 } ## Eldacar is informed that war is gone.
+		}		
+	}	
+}
+
+## Castamir is the new King of Gondor - Eldacar give his crown before war ##	
+character_event = {
+	id = kinstrife.8
+	title = EVTTITkinstrife.8
+	desc = EVTDESCkinstrife.8
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.8 ## This crown is for me...
+		trigger = { ai = no }
+		give_nickname = nick_the_usurper		
+		set_global_flag = castamir_the_usurper			
+		any_claim = {
+			limit = {
+				holder_scope = { has_landed_title = e_gondor }
+			}
+			grant_title = ROOT
+		}	
+		any_vassal = {
+			opinion = { modifier = opinion_castamirusurper who = ROOT years = 20 }
+		}	
+	}	
+}
+
+## The Kin-Strife - Every member of the Kin-Strife can join the War ##	
+character_event = {
+	id = kinstrife.9
+	title = EVTTITkinstrife.9
+	desc = EVTDESCkinstrife.9
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.9 ## I join his forces!
+		set_defacto_liege = FROM
+	}	
+	option = {
+		name = EVTOPTBkinstrife.9 ## I won't join him.
+		trigger = { ai = no }
+	}		
+}
+
+## Eldacar is informed that Castamir recognize him as a true king ##	
+character_event = {
+	id = kinstrife.10
+	title = EVTTITkinstrife.10
+	desc = EVTDESCkinstrife.10
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.10 ## Good.		
+	}		
+}
+
+## Castamir is informed that a lord accept to join him ##	
+character_event = {
+	id = kinstrife.11
+	title = EVTTITkinstrife.11
+	desc = EVTDESCkinstrife.11
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.11 ## Good.		
+	}		
+}
+
+## The title of Gondor_Kinstrife is broken if Castamir win the war ##	
+character_event = {
+	id = kinstrife.12
+	title = EVTTITkinstrife.12
+	desc = EVTDESCkinstrife.12
+	picture = "GFX_kinstrife"
+	hide_window = yes	
+	
+	trigger = {
+		has_landed_title = e_gondor
+		has_landed_title = e_gondor_kinstrife
+		age = 16
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = EVTOPTAkinstrife.12
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_numenor
+				OR = {
+					has_character_flag = kinstrifemember
+					has_character_flag = kinstrifemember2				
+				}
+			}
+			set_defacto_liege = e_gondor
+		}			
+		e_gondor_kinstrife = {
+			destroy_landed_title = THIS
+		}
+	}		
+}
+
+
+####### Now, if Castamir won the Kin-Strife #######
+## Eldacar, even in exile, can claim his former titles ##
+character_event = {
+	id = kinstrife.13
+	title = EVTTITkinstrife.13	
+	desc = EVTDESCkinstrife.13
+	picture = "GFX_kinstrife"
+		
+	trigger = {
+		NOT = { has_landed_title = e_gondor }
+		trait = blood_of_anarion
+		has_character_flag = eldacar
+		NOT = { has_global_flag = kinstrife4 }
+		has_global_flag = kinstrife
+	}
+		
+	mean_time_to_happen = {
+		days = 365
+	}
+				  
+	option = {
+		name = EVTOPTAkinstrife.13
+		set_global_flag = kinstrife4
+		any_playable_ruler  = {
+			limit = {
+				trait = blood_of_numenor
+				NOT = { has_landed_title = e_gondor }
+				NOT = { has_landed_title = e_arnor }
+				NOT = { has_landed_title = k_umbar }
+				NOT = { has_landed_title = k_harondor }
+				NOT = { has_landed_title = k_lamedon }
+				age = 16
+				top_liege = { has_landed_title = e_gondor }
+			}
+			character_event = { id = kinstrife.14 days = 100 }
+		}
+		any_playable_ruler  = {
+			limit = {
+				has_landed_title = e_rhovanion
+				age = 16
+			}
+			character_event = { id = kinstrife.15 days = 50 }
+		}		
+		e_gondor = {
+				add_claim = ROOT	
+		}	
+		c_minas_tirith = {
+				add_claim = ROOT	
+		}
+		c_west_osgiliath = {
+				add_claim = ROOT	
+		}
+		c_east_osgiliath = {
+				add_claim = ROOT	
+		}	
+		c_pelennor = {
+				add_claim = ROOT	
+		}	
+		d_royal_demesne = {
+				add_claim = ROOT	
+		}
+		character_event = { id = kinstrife.17 days = 150 }		
+	}	
+}
+
+## Some Numenoreans lords ask Eldacar to come back ##
+character_event = {
+	id = kinstrife.14
+	desc = EVTDESCkinstrife.14
+	picture = "GFX_kinstrife"
+		
+	is_triggered_only = yes
+				  
+	option = {
+		name = EVTOPTAkinstrife.14
+		set_character_flag = kinstrifemember2
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 3
+				trait = strong
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}	
+			modifier = {
+				factor = 3
+				trait = kind
+			}	
+			modifier = {
+				factor = 3
+				trait = fair
+			}	
+			modifier = {
+				factor = 5
+				trait = ambitious
+			}				
+		}	
+		any_playable_ruler = {
+			limit = {
+				NOT = { has_landed_title = e_gondor }
+				trait = blood_of_anarion
+				has_character_flag = eldacar
+			}
+			character_event = { id = kinstrife.16 days = 5 }
+		}			
+	}
+	
+	option = {
+		name = EVTOPTBkinstrife.14
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 5
+				trait = craven
+			}
+			modifier = {
+				factor = 5
+				trait = weak
+			}
+			modifier = {
+				factor = 4
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}			
+		}		
+	}
+}
+
+## The King of Rhovanion swear to help his cousin Eldacar to reconquer his crown ##
+character_event = {
+	id = kinstrife.15
+	desc = EVTDESCkinstrife.15
+	picture = "GFX_kinstrife"
+		
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.15
+		set_character_flag = kinstrifemember2
+		ai_chance = {
+			factor = 50		
+			modifier = {
+				factor = 3
+				trait = strong
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}	
+			modifier = {
+				factor = 3
+				trait = kind
+			}	
+			modifier = {
+				factor = 3
+				trait = fair
+			}	
+			modifier = {
+				factor = 5
+				trait = ambitious
+			}				
+		}		
+		any_playable_ruler = {
+			limit = {
+				NOT = { has_landed_title = e_gondor }
+				trait = blood_of_anarion
+				has_character_flag = eldacar
+			}
+			character_event = { id = kinstrife.16 days = 5 }
+		}			
+	}
+	
+	option = {
+		name = EVTOPTBkinstrife.15
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 5
+				trait = craven
+			}
+			modifier = {
+				factor = 5
+				trait = weak
+			}
+			modifier = {
+				factor = 4
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}			
+		}		
+	}
+}
+
+## Eldacar is informed that a Lord will help him ##	
+character_event = {
+	id = kinstrife.16
+	title = EVTTITkinstrife.16
+	desc = EVTDESCkinstrife.16
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.16 ## Good.		
+	}		
+}
+
+## Eldacar will now claim the crown from Castamir ##	
+character_event = {
+	id = kinstrife.17
+	title = EVTTITkinstrife.17
+	desc = EVTDESCkinstrife.17
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.17
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}
+			character_event = { id = kinstrife.18 days = 5 }
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.17
+		trigger = { ai = no }
+	}	
+}
+
+## Castamir is alerted ##	
+character_event = {
+	id = kinstrife.18
+	title = EVTTITkinstrife.18
+	desc = EVTDESCkinstrife.18
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.18
+		any_playable_ruler = {
+			limit = {
+				NOT = { has_landed_title = e_gondor }
+				trait = blood_of_anarion
+				has_character_flag = eldacar
+			}
+			character_event = { id = kinstrife.19 days = 5 }
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.18
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				NOT = { has_landed_title = e_gondor }
+				trait = blood_of_anarion
+				has_character_flag = eldacar
+			}
+			character_event = { id = kinstrife.20 days = 5 }
+		}			
+	}	
+}
+
+## eldacar receive the answer - War is coming ##	
+character_event = {
+	id = kinstrife.19
+	title = EVTTITkinstrife.19
+	desc = EVTDESCkinstrife.19
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.19 ## To War then !
+		e_gondor_kinstrife = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor			
+		}	
+		c_west_osgiliath = {
+			grant_title = ROOT		
+		}		
+		c_east_osgiliath = {
+			grant_title = ROOT		
+		}			
+		e_gondor = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}		
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					has_landed_title = e_rhovanion
+				}
+				has_character_flag = kinstrifemember2
+			}
+			character_event = { id = kinstrife.21 } ## The other vassals joins Eldacar in Civil War
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.19 ## This crown is not for me...
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}
+			character_event = { id = kinstrife.22 days = 5 } ## Castamir is informed that war is gone.
+		}		
+	}	
+}
+
+## Eldacar is the new King of Gondor - Castamir give his crown before war ##	
+character_event = {
+	id = kinstrife.20
+	title = EVTTITkinstrife.20
+	desc = EVTDESCkinstrife.20
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.20 ## This crown is for me...
+		trigger = { ai = no }
+		clr_global_flag = kinstrife		
+		set_global_flag = eldacar_recrowned			
+		any_claim = {
+			limit = {
+				holder_scope = { has_landed_title = e_gondor }
+			}
+			grant_title = ROOT
+		}	
+	}	
+}
+
+## The Kin-Strife - Every member of the Kin-Strife can join the War ##	
+character_event = {
+	id = kinstrife.21
+	title = EVTTITkinstrife.21
+	desc = EVTDESCkinstrife.21
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.21 ## I join his forces! - Gondor
+		trigger = {
+			NOT = {
+				has_landed_title = e_rhovanion
+			}
+		}
+		set_defacto_liege = FROM
+	}
+	option = {
+		name = EVTOPTCkinstrife.21 ## I join his forces! - Rhovanion
+		trigger = {
+			NOT = { 
+				trait = blood_of_numenor
+				top_liege = { has_landed_title = e_gondor }
+			}
+		}
+		ROOT = { join_attacker_wars = FROM }
+		ROOT = { join_defender_wars = FROM }
+	}	
+	option = {
+		name = EVTOPTBkinstrife.21 ## I won't join him.
+		trigger = { ai = no }
+	}		
+}
+
+## Castamir is informed that Eldacar recognize him as a true king ##	
+character_event = {
+	id = kinstrife.22
+	title = EVTTITkinstrife.22
+	desc = EVTDESCkinstrife.22
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.22 ## Good.		
+	}		
+}
+
+
+###### After the second war, if Castamir is defeated and alive #######
+
+## Castamir try to escape from Pelargir ##
+	character_event = {
+	id = kinstrife.23
+	title = EVTTITkinstrife.23
+	desc = EVTDESCkinstrife.23
+	picture = "GFX_kinstrife"
+			
+	trigger = {
+		trait = blood_of_anarion
+		NOT = { has_landed_title = e_gondor }
+		has_global_flag = kinstrife4
+		has_character_flag = castamir
+	}
+		
+	mean_time_to_happen = {
+		days = 1
+	}
+				  
+	option = {
+		name = EVTOPTAkinstrife.23
+		clr_global_flag = kinstrife4
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_character_flag = eldacar
+			}
+			character_event = { id = kinstrife.24 }
+		}			 
+	 }
+	 
+	option = {
+		name = EVTOPTBkinstrife.23
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = e_gondor
+				prisoner = no
+			}
+			imprison = ROOT 
+		}
+	}
+}
+
+
+## Eldacar is informed that Castamir try to escape from Pelargir ##	
+
+character_event = {
+	id = kinstrife.24
+	title = EVTTITkinstrife.24
+	desc = EVTDESCkinstrife.24
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.24 ## Capture him !		
+		random_list = {
+			60 = {
+				any_playable_ruler = {
+					limit = {
+						trait = blood_of_anarion
+						has_character_flag = castamir
+					}
+					character_event = { id = kinstrife.25 days = 5 } ## Castamir is killed
+				}	
+			}
+			20 = {
+				any_playable_ruler = {
+					limit = {
+						trait = blood_of_anarion
+						has_character_flag = castamir
+					}
+					character_event = { id = kinstrife.26 days = 5 } ## Castamir escaped to Umbar
+				}	
+			}
+			20 = {
+				any_playable_ruler = {
+					limit = {
+						trait = blood_of_anarion
+						has_character_flag = castamir
+					}
+					character_event = { id = kinstrife.27 days = 5 } ## Castamir is captured
+				}	
+			}			
+		}		
+	}	
+	option = {
+		name = EVTOPTBkinstrife.24 ## Let him.
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_character_flag = castamir
+			}
+			character_event = { id = kinstrife.26 days = 5 } ## Castamir escaped to Umbar
+		}			
+	}		
+}
+
+
+## Castamir is killed ##	
+
+character_event = {
+	id = kinstrife.25
+	title = EVTTITkinstrife.25
+	desc = EVTDESCkinstrife.25
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.25 ## Aaaargh	
+		death = {
+			death_reason = death_battle
+			killer = FROM
+		}		
+		current_heir = {
+			character_event = { id = kinstrife.27 days = 5 } ## His sons are sailing to Umbar
+		}
+	}		
+}
+
+## Castamir escaped to Umbar ##	
+
+character_event = {
+	id = kinstrife.26
+	title = EVTTITkinstrife.26
+	desc = EVTDESCkinstrife.26
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.26 ## Umbar won't be part of Gondor now!	
+		c_umbar = {
+			grant_title = ROOT		
+		}		
+		d_umbar = {
+			grant_title = ROOT		
+		}	
+		k_umbar = {
+			grant_title = ROOT		
+		}		
+		set_defacto_liege = ROOT
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}
+			character_event = { id = kinstrife.28 days = 5 } ## Eldacar is informed that Umbar is independant
+		}	
+	}		
+}
+
+## Heir of Castamir become Lord of Umbar ##	
+
+character_event = {
+	id = kinstrife.27
+	title = EVTTITkinstrife.27
+	desc = EVTDESCkinstrife.27
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.27 ## Aaaargh	
+		c_umbar = {
+			grant_title = ROOT		
+		}		
+		d_umbar = {
+			grant_title = ROOT		
+		}	
+		k_umbar = {
+			grant_title = ROOT		
+		}		
+		set_defacto_liege = ROOT
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_anarion
+				has_landed_title = e_gondor
+			}			
+			character_event = { id = kinstrife.29 days = 5 } ## Eldacar is informed that Umbar is independant
+		}		
+	}		
+}
+
+## Eldacar is informed that Umbar is now independant ##	
+
+character_event = {
+	id = kinstrife.28
+	title = EVTTITkinstrife.28
+	desc = EVTDESCkinstrife.28
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.28 ## Bad news...	
+		c_pelargir = {
+			grant_title = ROOT		
+		}		
+	}		
+}
+
+## Eldacar is informed that Umbar is now independant ##	
+
+character_event = {
+	id = kinstrife.29
+	title = EVTTITkinstrife.29
+	desc = EVTDESCkinstrife.29
+	picture = "GFX_kinstrife"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAkinstrife.29 ## Bad news...	
+		c_pelargir = {
+			grant_title = ROOT		
+		}		
+	}		
+}
+
+
+
+###### Destroy the title of the rebellious King of Gondor if he's defeated #######
+character_event = {
+	id = kinstrife.30
+	title = EVTTITkinstrife.30
+	desc = EVTDESCkinstrife.30
+	picture = "GFX_kinstrife"
+	hide_window = yes
+			
+	trigger = {
+		trait = blood_of_anarion
+		has_landed_title = e_gondor_kinstrife
+		e_gondor_kinstrife = {
+			holder_scope = {
+				war = no
+				is_landed = yes
+			}
+		}		
+	}
+		
+	mean_time_to_happen = {
+		days = 2
+	}
+				  
+	option = {
+		name = EVTOPTAkinstrife.30
+		any_vassal = {
+			limit = { 
+				NOT = { has_landed_title = k_umbar } 
+			}
+			set_defacto_liege = e_gondor	
+		}
+		ROOT = { set_defacto_liege = e_gondor }
+		e_gondor_kinstrife = { 
+			destroy_landed_title = THIS 
+		}
+	}
+}

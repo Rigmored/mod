@@ -1,0 +1,1751 @@
+namespace = blackserpent
+###### blackserpent.0 : Choose to create the order
+###### blackserpent.1-7 : Choose the First Commandant
+###### blackserpent.10 : The order will always be open elective
+###### blackserpent.20-23 : Give the Fortress of Kadar Sulâdan 
+###### blackserpent.100 : A new member will join the order
+
+
+
+########### CREATE THE ORDER ############
+
+### Create the Legion of the Black Serpent ###
+narrative_event = {
+	id = blackserpent.0
+	desc = "EVTDESCblackserpent.0"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = "EVTOPTAblackserpent.0" ## I'll create this Legion.
+		wealth = -200
+		prestige = 100
+		character_event = { id = blackserpent.1 days = 3 } ## Choose the First Commander of the Black Serpent
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.0" ## No, i don't need it.
+		clr_global_flag = black_serpent_initialising
+	}
+}
+
+## Choose the First Commander ##
+narrative_event = {
+	id = blackserpent.1
+	desc = "EVTDESCblackserpent.1"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_landed_title = e_harad
+		
+		any_realm_character = {
+			is_female = no
+			prisoner = no
+			age = 14
+			NOT = { character = ROOT }
+			is_ruler = no
+			NOT = { is_rival = ROOT }
+			OR = {
+				trait = brave
+				trait = strong
+				trait = mumakil_rider
+				trait = mumakil_commander
+			}
+		}	
+	}	
+	
+	
+	immediate = {
+		if = {
+			limit = {			
+				any_realm_character = {
+					is_female = no
+					is_married = no
+					prisoner = no
+					age = 20
+					NOT = { character = ROOT }
+					is_ruler = no
+					NOT = { is_rival = ROOT }
+					OR = {
+						trait = mumakil_rider
+						trait = mumakil_commander
+					}
+					OR = {
+						martial = 15
+						trait = strong
+						trait = brave
+						trait = imposing
+						trait = ambidextrous
+						trait = tall
+						trait = quick
+						trait = genius
+					}	
+				}
+			}
+			set_character_flag = great_candidate_bs
+		}
+		if = {
+			limit = {						
+				any_realm_character = {
+					is_female = no
+					prisoner = no
+					age = 30
+					NOT = { character = ROOT }
+					is_ruler = no
+					NOT = { is_rival = ROOT }
+					opinion = { who = ROOT value = 30 }
+					reverse_opinion = { who = ROOT value = 30 }
+					OR = {
+						trait = skilled_tactician
+						trait = brilliant_strategist
+						OR = {
+							trait = strong
+							trait = brave
+							trait = tall
+							trait = quick
+							trait = genius
+							martial = 12
+						}
+					}
+				}
+			}
+			set_character_flag = good_candidate_bs
+		}
+		if = { #Prominent son
+			limit = {						
+				any_realm_character = {
+					is_female = no
+					prisoner = no
+					age = 14
+					NOT = { character = ROOT }
+					is_ruler = no
+					NOT = { is_rival = ROOT }
+					OR = {
+						trait = mumakil_rider
+						trait = mumakil_commander
+						OR = {
+							trait = strong
+							trait = brave
+							trait = tall
+							trait = quick
+							trait = genius
+						}
+					}
+					father_even_if_dead = {
+						war = no
+						higher_tier_than = COUNT
+						num_of_children = 2
+					}
+				}
+			}
+			set_character_flag = prominent_son_bs
+		}
+	}
+
+	
+	option = { 
+		name = "EVTOPTAblackserpent.1" #Choose from among the strongest fighters in the realm.		
+		trigger = {
+			has_character_flag = great_candidate_bs
+		}		
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				trait = diligent
+			}
+			modifier = {
+				factor = 2
+				trait = honest
+			}
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+		}		
+		character_event = { id = blackserpent.2 }
+		clr_character_flag = great_candidate_bs
+		clr_character_flag = good_candidate_bs
+		clr_character_flag = prominent_son_bs
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.1" #Choose someone i can trust.	
+		trigger = {
+			has_character_flag = good_candidate_bs
+		}		
+		ai_chance = {
+			factor = 0.5
+			modifier = {
+				factor = 3
+				trait = deceitful
+			}
+			modifier = {
+				factor = 3
+				trait = paranoid
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 3
+				trait = lunatic
+			}
+		}
+		
+		character_event = { id = blackserpent.3 }
+		clr_character_flag = great_candidate_bs
+		clr_character_flag = good_candidate_bs
+		clr_character_flag = prominent_son_bs
+	}
+	
+	option = {
+		name = "EVTOPTCblackserpent.1" #Choose a prominent son of a prominent family.	
+		trigger = {
+			has_character_flag = prominent_son_bs
+		}	
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 3
+				trait = greedy
+			}
+			modifier = {
+				factor = 3
+				trait = envious
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				trait = ambitious
+			}
+		}		
+		character_event = { id = blackserpent.4 }
+		clr_character_flag = great_candidate_bs
+		clr_character_flag = good_candidate_bs
+		clr_character_flag = prominent_son_bs
+	}
+	
+	#No suitable candidates
+	option = {
+		name = "EVTOPTDblackserpent.1" #Choose any bozo
+		trigger = {
+			NOT = { has_character_flag = great_candidate_bs }
+			NOT = { has_character_flag = good_candidate_bs }
+			NOT = { has_character_flag = prominent_son_bs }	
+		}
+		character_event = { id = blackserpent.4 }
+	}	
+	
+}
+
+
+character_event = {
+	id = blackserpent.2
+	desc = "EVTDESCblackserpent.2"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 20
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				OR = {
+					trait = mumakil_rider
+					trait = mumakil_commander
+				}
+				OR = {
+					martial = 15
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}	
+			}
+			save_event_target_as = BS_1
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 20
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				OR = {
+					trait = mumakil_rider
+					trait = mumakil_commander
+				}
+				OR = {
+					martial = 15
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}	
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_2
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 20
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }	
+				OR = {
+					trait = mumakil_rider
+					trait = mumakil_commander
+				}
+				OR = {
+					martial = 15
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}	
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_3
+			set_character_flag = BS_candidate
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_1 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_1 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_1 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 4
+				event_target:BS_1 = { trait = mumakil_commander }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_1 = { trait = mumakil_rider }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = genius }
+			}
+		}
+		event_target:BS_1 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_2 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_2 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_2 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 4
+				event_target:BS_2 = { trait = mumakil_commander }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_2 = { trait = mumakil_rider }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = genius }
+			}
+		}		
+		event_target:BS_2 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_1 = { clr_character_flag = BS_candidate }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTCblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_3 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_3 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_3 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 4
+				event_target:BS_3 = { trait = mumakil_commander }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_3 = { trait = mumakil_rider }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = genius }
+			}
+		}		
+		event_target:BS_3 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }				
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTDblackserpent.2" #None
+		trigger = { ai = no }
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+		character_event = { id = blackserpent.1 }
+	}
+}
+
+#blackserpent.3 - Choose someone i can trust.
+character_event = {
+	id = blackserpent.3
+	desc = "EVTDESCblackserpent.3"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				opinion = { who = ROOT value = 30 }
+				reverse_opinion = { who = ROOT value = 30 }
+				OR = {
+					trait = skilled_tactician
+					trait = brilliant_strategist
+				}
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+					martial = 8
+				}
+			}
+			save_event_target_as = BS_1
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				opinion = { who = ROOT value = 30 }
+				reverse_opinion = { who = ROOT value = 30 }
+				OR = {
+					trait = skilled_tactician
+					trait = brilliant_strategist
+				}				
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+					martial = 8
+				}
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_2
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				opinion = { who = ROOT value = 30 }
+				reverse_opinion = { who = ROOT value = 30 }
+				OR = {
+					trait = skilled_tactician
+					trait = brilliant_strategist
+					has_job_title = job_marshal
+				}				
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+					martial = 8
+				}
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_3
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_1 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_1 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_1 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = genius }
+			}
+		}
+		event_target:BS_1 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_2 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_2 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_2 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = genius }
+			}
+		}		
+		event_target:BS_2 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_1 = { clr_character_flag = BS_candidate }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTCblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_3 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_3 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_3 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = genius }
+			}
+		}		
+		event_target:BS_3 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }				
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTDblackserpent.2" #None
+		trigger = { ai = no }
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+		character_event = { id = blackserpent.1 }
+	}
+}
+
+#blackserpent.4 - Choose a prominent son of a prominent family.
+character_event = {
+	id = blackserpent.4
+	desc = "EVTDESCblackserpent.4"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}
+				father_even_if_dead = {
+					war = no
+					higher_tier_than = COUNT
+					num_of_children = 2
+				}
+			}
+			save_event_target_as = BS_1
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}
+				father_even_if_dead = {
+					war = no
+					higher_tier_than = COUNT
+					num_of_children = 2
+				}
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_2
+			set_character_flag = BS_candidate
+		}
+		random_realm_character = {
+			limit = {
+				is_female = no
+				prisoner = no
+				age = 16
+				NOT = { character = ROOT }
+				is_ruler = no
+				NOT = { is_rival = ROOT }
+				OR = {
+					trait = strong
+					trait = brave
+					trait = tall
+					trait = quick
+					trait = genius
+				}
+				father_even_if_dead = {
+					war = no
+					higher_tier_than = COUNT
+					num_of_children = 2
+				}
+				NOT = { has_character_flag = BS_candidate }
+			}
+			save_event_target_as = BS_3
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_1 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_1 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_1 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_1 = { trait = genius }
+			}
+		}
+		event_target:BS_1 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_2 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_2 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_2 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_2 = { trait = genius }
+			}
+		}		
+		event_target:BS_2 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }	
+			clr_character_flag = BS_candidate			
+		}
+		hidden_tooltip = {
+			event_target:BS_1 = { clr_character_flag = BS_candidate }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTCblackserpent.2" #Choose him!	
+		trigger = { event_target:BS_3 = { always = yes }	}
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -45 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { NOT = { reverse_opinion = { who = ROOT value = -20 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 20 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 45 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 70 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { reverse_opinion = { who = ROOT value = 95 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:BS_3 = { father_even_if_dead = { higher_tier_than = DUKE } }
+			}
+			modifier = {
+				factor = 0.33
+				event_target:BS_3 = { dynasty = 0 }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = strong }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = tall }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = brave }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = quick }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:BS_3 = { trait = genius }
+			}
+		}		
+		event_target:BS_3 = {		
+			character_event = { id = blackserpent.5 tooltip = TOOLTIPBSchoosen }				
+		}
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+	}
+	
+	option = {
+		name = "EVTOPTDblackserpent.2" #None
+		trigger = { ai = no }
+		hidden_tooltip = {
+			event_target:BS_2 = { clr_character_flag = BS_candidate }
+			event_target:BS_1 = { clr_character_flag = BS_candidate }	
+		}
+		character_event = { id = blackserpent.1 }
+	}
+}
+
+
+
+### The character can become the new Commandant of the Legion of the Black Serpent ##
+character_event = {
+	id = blackserpent.5
+	desc = "EVTDESCblackserpent.5"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.5" #Accept	
+		ai_chance = {
+			factor = 2
+			
+			modifier = {
+				factor = 3
+				OR = {
+					trait = mumakil_rider
+					trait = mumakil_commander
+				}	
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { dynasty = ROOT }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { is_close_relative = ROOT }
+			}
+			modifier = {
+				factor = 2
+				top_liege = { is_friend = ROOT }
+			}
+			modifier = {
+				factor = 0
+				top_liege = { is_rival = ROOT }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { trait = mumakil_commander }
+			}
+			modifier = {
+				factor = 1.5
+				trait = strong
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				trait = celibate
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.5
+				trait = honorable
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.25
+				top_liege = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+		}
+		set_global_flag = black_serpent_organized
+		d_black_serpent = { grant_title = ROOT }
+		k_black_serpent = { grant_title = ROOT }
+		set_defacto_liege = FROM
+		add_trait = black_serpent
+		recalc_succession = yes
+		FROM = { character_event = { id = blackserpent.6 } }
+	}
+	
+	option = {
+		name = "EVTOPTBblackserpent.5" #Refuse
+		
+		ai_chance = {
+			factor = 1		
+			
+			modifier = {
+				factor = 30
+				is_female = yes
+			}
+			modifier = {
+				factor = 1.5
+				is_pretender = yes
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					is_primary_heir = yes
+					any_heir_title = { always = yes }
+				}	
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { age = 16 }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { culture = culture_haradrim }
+			}
+			modifier = {
+				factor = 1.5
+				is_ill = yes
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { 
+					NOT = { dynasty = ROOT }
+					NOT = { is_close_relative = ROOT }
+				}
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					trait = blinded
+					trait = infirm
+					trait = maimed
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = weak
+			}
+			modifier = {
+				factor = 2
+				trait = poet
+			}
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+			modifier = {
+				factor = 2
+				trait = slothful
+			}
+			modifier = {
+				factor = 2
+				trait = cynical
+			}
+			modifier = {
+				factor = 2
+				trait = arbitrary
+			}			
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = 49 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { top_liege = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+		}
+		top_liege = { character_event = { id = blackserpent.7 } }
+	}
+}
+
+# the character accepted to be the Commandant
+character_event = {
+	id = blackserpent.6
+	desc = "EVTDESCblackserpent.6"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.6"
+		if = {
+			limit = { has_global_flag = black_serpent_initialising }
+			clr_global_flag = black_serpent_initialising
+		}
+		set_global_flag = legionblackserpent	
+		FROM = {
+			prestige = 100
+			opinion = {
+				modifier = opinion_happy
+				who = ROOT
+				years = 20
+			}
+		}
+		k_black_serpent = {
+			holder_scope = {
+				if = {
+					limit = { NOT = { character = FROM } }
+					FROM = { move_character = PREV }
+				}	
+				give_nickname = nick_black_serpent
+				create_random_soldier = {
+					dynasty = none
+					religion = ROOT
+					culture = ROOT
+					female = no
+					trait = black_serpent
+				}
+				create_random_soldier = {
+					dynasty = none
+					religion = ROOT
+					culture = ROOT
+					female = no
+					trait = black_serpent
+				}	
+				create_random_soldier = {
+					dynasty = none
+					religion = ROOT
+					culture = ROOT
+					female = no
+					trait = black_serpent
+				}	
+				create_random_soldier = {
+					dynasty = none
+					religion = ROOT
+					culture = ROOT
+					female = no
+					trait = black_serpent
+				}					
+			}
+		}
+	}
+}
+
+# The character refused
+character_event = {
+	id = blackserpent.7
+	desc = "EVTDESCblackserpent.7"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.7"
+		FROM = {
+			set_character_flag = refused_black_serpent
+		}
+		character_event = { id = blackserpent.1 }
+	}
+}
+
+
+
+#BS is open elective
+character_event = {
+	id = blackserpent.10
+	desc = "EVTDESCblackserpent.10"
+	picture = GFX_harad_serpent_guards
+	
+	only_rulers = yes
+	hide_window = yes
+	
+	trigger = {
+		trait = black_serpent
+		primary_title = { title = k_black_serpent }
+		primary_title = { 
+			NOT = { 
+				OR = {
+					AND = {
+						title = k_black_serpent
+						has_law = succ_open_elective
+					}	
+					AND = {
+						NOT = { title = k_black_serpent }
+						has_law = succ_appointment
+					}
+				}	
+			} 
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+		
+	option = {
+		name = "EVTOPTAblackserpent.10" 
+		any_demesne_title = { 
+			limit = { NOT = { title = k_black_serpent } }
+			succession = appointment
+		}
+		any_demesne_title = { 
+			limit = { title = k_black_serpent } 
+			succession = open_elective
+			gender_succ = agnatic
+		}			
+		recalc_succession = yes
+	}
+}
+
+
+
+####### WILL GIVE A CASTLE TO THE ORDER ##########
+
+### Kadar Sulâdan ###
+
+# Grand Master writes a letter
+character_event = {
+	id = blackserpent.20
+	desc = "EVTDESCblackserpent.20"
+	picture = GFX_harad_fortress
+	border = GFX_event_normal_frame_religion
+	
+	trigger = {
+		# The settlement has not been built yet
+		b_kadar_suladan = {
+			has_holder = no
+		}
+
+		# The Hospitallers exist
+		primary_title = {
+			title = k_black_serpent
+		}
+
+		# Dunamrûn
+		468 = {
+			owner = {
+				NOT = { character = ROOT }
+				religion = religion_southron
+				NOT = { has_character_flag = denied_kadarsuladan }
+				NOT = { has_character_flag = no_land_for_black_serpent }
+				top_liege = { NOT = { has_character_flag = no_land_for_black_serpent } }
+			}
+			NOT = { num_of_settlements = 4 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAblackserpent.20"
+		468 = {
+			owner = { letter_event = { id = blackserpent.21 days = 7 } }
+		}
+	}
+}
+
+# Ask permission from the Count
+letter_event = {
+	id = blackserpent.21
+	desc = "EVTDESCblackserpent.21"
+	border = GFX_event_letter_frame_religion
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.21"
+		piety = 100
+		FROM = {
+			opinion = {
+				modifier = opinion_granted_barony_to_holy_order
+				who = ROOT
+				years = 100
+			}
+		}
+		hidden_tooltip = { 468 = { province_event = { id = blackserpent.22 days = 1 } } }
+	}
+	option = {
+		name = "EVTOPTBblackserpent.21"
+		piety = -10
+		FROM = {
+			opinion = {
+				modifier = opinion_angry
+				who = ROOT
+				years = 10
+			}
+
+		}
+		religion_head = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 5
+			}
+		}
+		set_character_flag = denied_kadarsuladan
+	}
+	option = {
+		name = "EVTOPTCblackserpent.21"
+		piety = -25
+		set_character_flag = no_land_for_black_serpent
+		FROM = {
+			opinion = {
+				modifier = opinion_angry
+				who = ROOT
+				years = 20
+			}
+
+		}
+		religion_head = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+
+# Castle has been erected
+province_event = {
+	id = blackserpent.22
+	desc = "EVTDESCblackserpent.22"
+	picture = "GFX_harad_fortress"
+	border = GFX_event_normal_frame_religion
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.22"
+		build_holding = {
+		   title = b_kadar_suladan
+		   type = castle
+		   holder = FROMFROM
+		}
+		hidden_tooltip = {
+			owner = {
+				set_character_flag = event_blackserpent23
+				narrative_event = { id = blackserpent.23 days = 7 }
+			}
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { character = FROM }
+					OR = {
+						religion = religion_southron
+						war_with = FROM
+						capital_scope = {
+							NOT = {
+								distance = {
+								where = ROOT
+								value = 250	# Means we live fairly near the province where the castle is built
+								}
+							}
+						}
+					}
+				}
+				narrative_event = { id = blackserpent.23 days = 7 }
+			}
+		}
+	}
+}
+
+# News spread about the new castle
+narrative_event = {
+	id = blackserpent.23
+	title = "EVTNAMEblackserpent.23"
+	desc = "EVTDESCblackserpent.23"
+	picture = "GFX_harad_fortress"
+	border = "GFX_event_narrative_frame_religion"
+	
+	only_rulers = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAblackserpent.23"
+		trigger = {
+			has_character_flag = event_blackserpent23
+		}
+		clr_character_flag = event_blackserpent23
+		prestige = 100
+	}
+	option = {
+		name = "EVTOPTBblackserpent.23"
+		trigger = {
+			NOT = { has_character_flag = event_blackserpent23 }
+			religion = religion_southron
+		}
+	}
+	option = {
+		name = "EVTOPTCblackserpent.23"
+		trigger = {
+			NOT = { religion_group = religion_southron }
+			NOT = { religion_group = religion_group_melkor }
+		}
+	}
+	option = {
+		name = "EVTOPTDblackserpent.23"
+		trigger = {
+			OR = {
+			religion_group = religion_group_hildor
+			religion_group = religion_group_melkor
+			}
+			NOT = { religion = religion_southron }
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+######## NEW MEMBERS IN ORDER ###########
+
+### Send your son to the Black Serpent ###
+character_event = {
+	id = blackserpent.100
+	desc = "EVTDESCblackserpent.100"
+	picture = "GFX_harad_serpent_guards"
+	
+	is_triggered_only = yes
+	
+	trigger = { FROM = { trait = black_serpent } }
+	
+	option = { 
+		name = "Ok" 
+		random_independent_ruler = {
+			limit = { 
+					has_landed_title = d_black_serpent
+			}
+			FROM = { move_character = PREV }
+		}
+	}
+}
+
+
+
+
+

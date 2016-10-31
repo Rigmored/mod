@@ -1,0 +1,99 @@
+namespace = stealonering
+
+###Event to steal the Ring###
+character_event = {
+	id = stealonering.0
+	title = "EVTTITstealonering.0"
+	desc = "EVTDESCstealonering.0"
+	picture = "GFX_worship_balrog"
+
+	only_rulers = yes
+	capable_only = yes
+	prisoner = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAstealonering.0" #Steal the Ring
+		trigger = {
+			any_courtier = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait = ring
+			}
+		}
+		add_trait = ring
+		prestige = 200
+		any_courtier = {
+			limit = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait=ring
+			}
+			remove_trait = ring
+			add_trait = ringbearer2
+			add_rival = ROOT
+		}
+	}
+
+	option = {
+		name = "EVTOPTBstealonering.0" #Steal Ring and kill the prisoner
+		trigger = {
+			any_courtier = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait = ring
+			}
+		}
+		add_trait = ring
+		prestige = -100
+		piety = -50
+		any_courtier = {
+			limit = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait=ring
+			}
+			remove_trait = ring
+			add_trait = ringbearer2
+			death = { death_reason = death_execution killer = ROOT }
+		}
+	}
+
+	option = {
+		name = "EVTOPTCstealonering.0" #Steal Ring and banish
+		trigger = {
+			any_courtier = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait = ring
+			}
+		}
+		add_trait = ring
+		prestige = -50
+		piety = -50
+		any_courtier = {
+			limit = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait=ring
+			}
+			remove_trait = ring
+			add_trait = ringbearer2
+			banish = yes
+			prestige = -200
+			add_rival = ROOT
+		}
+	}
+	option = {
+		name = "EVTOPTDstealonering.0" #Do nothing
+		trigger = {
+			any_courtier = {
+				prisoner = yes
+				host = { character = ROOT }
+				trait = ring
+			}
+		}
+		prestige = -50
+	}
+}

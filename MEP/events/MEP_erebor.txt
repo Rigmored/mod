@@ -1,0 +1,457 @@
+namespace = erebor
+
+##  Visit the Tomb of Thorin Oakenshield
+character_event = {
+	id = erebor.1
+	title = "EVTerebor.1"
+	desc = "EVTDESCerebor.1"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+
+	option = {
+		name = "EVTOPTAerebor.1" # I'll meditate on his fate
+		character_event = { id = erebor.2 }
+	}
+	option = {
+		name = "EVTOPTBerebor.1" # The Arkenstone should be on the hands of a King
+		trigger = { 
+			NOT = { has_global_flag = arkenstonealive }
+		}	
+		character_event = { id = erebor.3 }
+	}
+	option = {
+		name = "EVTOPTCerebor.1" # Orcrist can't be let in dust...
+		trigger = { 
+			NOT = { has_global_flag = orcristalive }
+		}		
+		character_event = { id = erebor.4 }
+	}	
+}
+
+## You meditate on the fate of Thorin Oakenshield
+character_event = {
+	id = erebor.2
+	title = "EVTerebor.2"
+	desc = "EVTDESCerebor.2"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.2" # Too cupid at the end...
+		set_character_flag=tombofthorin	
+		random_list = {
+			15 = {
+				FROM = {
+					add_trait = perceptive
+				}
+			}
+			15 = {
+				FROM = {
+					add_trait = depressed
+				}
+			}
+			70 = {
+				FROM = {
+					prestige = 100
+				}	
+			}
+		}
+	}	
+}
+	
+## Will you take the Arkenstone?
+character_event = {
+	id = erebor.3
+	title = "EVTerebor.3"
+	desc = "EVTDESCerebor.3"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.3" # It's my right!
+		trigger = { 
+			NOT = { has_global_flag = arkenstonealive }
+		}
+		add_trait = arkenstone
+		set_global_flag = arkenstonealive
+		set_character_flag=tombofthorin
+		prestige = -100
+		character_event = { id = erebor.5 }				
+	}	
+	option = {
+		name = "EVTOPTBerebor.3" # Too many troubles will come with this stone!
+	}	
+}
+
+## Will you take Orcrist?
+character_event = {
+	id = erebor.4
+	title = "EVTerebor.4"
+	desc = "EVTDESCerebor.4"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.4" # An usefull sword...
+		trigger = { 
+			NOT = { has_global_flag = orcristalive }
+		}
+		add_trait = orcrist
+		set_global_flag = orcristalive
+		set_character_flag=tombofthorin
+		prestige = -50
+	}	
+	option = {
+		name = "EVTOPTBerebor.4" # it's the Sword of Thorin, not mine!
+	}	
+}
+
+## The Arkenstone
+character_event = {
+	id = erebor.5
+	title = "EVTerebor.5"
+	desc = "EVTDESCerebor.5"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.5" # It's my legacy!
+		random_list = {		
+			15 = {
+				FROM = {
+					add_trait = paranoid
+				}
+			}
+			15 =  {
+				FROM = {
+					add_trait = envious
+				}
+			}
+			15 =  {
+				FROM = {
+					add_trait = zealous
+				}
+			}
+			55 =  {
+				FROM = {
+					add_trait = proud
+				}
+			}
+		}	
+	}	
+}
+
+
+##### INCREASE THE RESSOURCES OF EREBOR ######
+
+#### Will you increase the ressources of Erebor? ####
+character_event = {
+	id = erebor.6
+	title = "EVTTITerebor.6"
+	desc = "EVTDESCerebor.6"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.6" ## I will mine into the mountain
+		character_event = { id = erebor.7 }
+	}
+	
+	option = {
+		name = "EVTOPTBerebor.6" ## I will craft more weapons
+		character_event = { id = erebor.12 }		
+	}	
+	
+	option = {
+		trigger = {
+			k_dale = { 
+			holder_scope = { 
+				is_alive = yes 
+				NOT = { trait = evil_side }
+				} 
+			} 
+		}
+		name = "EVTOPTCerebor.6" ## I will trade with Dale	
+		any_playable_ruler = {
+			limit = { 
+				has_landed_title = k_dale
+				age = 1
+				NOT = { trait = evil_side }
+			}
+			character_event = { id = erebor.16 days = 10 }
+		}
+	}	
+	
+	option = {
+		name = "EVTOPTDerebor.6" ## I won't search.		
+		clr_character_flag = craftinerebor
+	}		
+}
+
+
+#### What will you find in the mines? ####
+character_event = {
+	id = erebor.7
+	title = "EVTTITerebor.7"
+	desc = "EVTDESCerebor.7"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.7" ## I hope they'll find something...
+		random_list = {
+			30 = {
+				modifier = {
+					factor = 2
+					OR = {
+						trait = durin_ring
+						trait = dwarf_ring
+					}
+				}
+				character_event = { id = erebor.8 days = 50 } ## Gold !
+			}
+			30 = {
+				character_event = { id = erebor.10 days = 50 } ## No chance...
+			}
+			40 = {
+				character_event = { id = erebor.11 days = 50 } ## Iron and Cupper.
+			}				
+		}
+	}
+}
+
+
+#### Gold in the Mines ! ####
+character_event = {
+	id = erebor.8
+	title = "EVTTITerebor.8"
+	desc = "EVTDESCerebor.8"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.8" ## Wonderful !
+		capital_scope = {
+			add_province_modifier = { name = erebor_improved duration = 1825 }
+		}
+		if = {
+			limit = {
+				NOT = { arkenstone = { is_alive = yes } }
+				NOT = { year = 11100 }
+			}
+			random = {
+				chance = 20
+				narrative_event = { id = erebor.9 days = 25 } ## You find the Arkenstone !
+			}
+		}
+	}
+}
+
+
+#### A Strange Stone... ####
+narrative_event = {
+	id = erebor.9
+	title = "EVTTITerebor.9"
+	desc = "EVTDESCerebor.9"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.9" ## The Heart of the Mountain.
+		add_trait = arkenstone
+		prestige = 500
+	}
+}
+
+#### Nothing in the mines ####
+character_event = {
+	id = erebor.10
+	title = "EVTTITerebor.10"
+	desc = "EVTDESCerebor.10"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.10" ## There's nothing.
+		prestige = -100
+	}
+}
+
+#### Iron and Cupper in the Mines ! ####
+character_event = {
+	id = erebor.11
+	title = "EVTTITerebor.11"
+	desc = "EVTDESCerebor.11"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.11" ## At least.
+		capital_scope = {
+			add_province_modifier = { name = erebor_improved_iron duration = 1825 }
+		}
+	}
+}
+
+
+#### New Weapons Craft in Erebor ####
+character_event = {
+	id = erebor.12
+	title = "EVTTITerebor.12"
+	desc = "EVTDESCerebor.12"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.12" ## I'll make some spears.
+		random_list = {
+			65 = {
+				character_event = { id = erebor.13 days = 50 }
+			}
+			35 = {
+				character_event = { id = erebor.15 days = 50 }			
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBerebor.12" ## I'll make some armors.
+		random_list = {
+			65 = {
+				character_event = { id = erebor.14 days = 50 }
+			}
+			35 = {
+				character_event = { id = erebor.15 days = 50 }			
+			}
+		}
+	}	
+}
+
+#### You made some spears ####
+character_event = {
+	id = erebor.13
+	title = "EVTTITerebor.13"
+	desc = "EVTDESCerebor.13"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.13" ## A great work.
+		add_trait = erebor_spear
+		prestige = 40
+	}	
+}
+
+#### You made some armors ####
+character_event = {
+	id = erebor.14
+	title = "EVTTITerebor.14"
+	desc = "EVTDESCerebor.14"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.14" ## A great work.
+		add_trait = erebor_armor
+		prestige = 40
+	}	
+}
+
+#### You made some armors ####
+character_event = {
+	id = erebor.15
+	title = "EVTTITerebor.15"
+	desc = "EVTDESCerebor.15"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.15" ## Useless craftmen.
+		prestige = -50
+		wealth = -50
+	}	
+}
+
+#### The holder of Dale is asked to trade with Erebor ####
+character_event = {
+	id = erebor.16
+	title = "EVTTITerebor.16"
+	desc = "EVTDESCerebor.16"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.16" ## I'll trade with them.
+		ai_chance = { factor = 70 }	
+		FROM = {
+			character_event = { id = erebor.17 days = 20 }
+		}
+	}	
+	option = {
+		name = "EVTOPTBerebor.16" ## I don't want to trade with them.
+		ai_chance = { factor = 30 }
+		FROM = {
+			character_event = { id = erebor.18 days = 20 }
+		}		
+	}	
+}
+
+#### The holder of Dale agreed to trade with Erebor ####
+character_event = {
+	id = erebor.17
+	title = "EVTTITerebor.17"
+	desc = "EVTDESCerebor.17"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.17" ## Great.
+		prestige = 100
+		FROM = { prestige = 100 }
+		FROM = {
+			capital_scope = {
+				c_erebor = {
+					location = {
+						add_province_modifier = { name = trade_erebor_dale duration = 3650 }
+					}
+				}
+			}
+		}
+		capital_scope = {
+			add_province_modifier = { name = trade_erebor_dale duration = 3650 }		
+		}
+	}	
+}
+
+#### The holder of Dale refused to trade with Erebor ####
+character_event = {
+	id = erebor.18
+	title = "EVTTITerebor.18"
+	desc = "EVTDESCerebor.18"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAerebor.18" ## So bad...
+		prestige = -100
+		ROOT = { opinion = { modifier = opinion_refused_to_trade who = FROM years = 10 } }
+	}	
+}

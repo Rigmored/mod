@@ -1,0 +1,623 @@
+﻿maiar = {
+	vassal_opinion = 100	#Sauron stopgag measure...
+	fertility_penalty = -5.0
+    health = 100.0
+    diplomacy = 3
+	stewardship = 3
+	martial = 3
+	intrigue = 3
+	learning = 3
+    immortal = yes
+	customizer = yes	
+	cannot_marry = yes
+	cached = yes
+}
+
+eagle = {	
+	fertility_penalty = -5.0
+    	health = 100.0
+   	diplomacy = 3
+	stewardship = 3
+	martial = 3
+	intrigue = 3
+	learning = 5
+       	opposites = {
+		balrog
+		spider
+		nazgul
+		orkish
+		half_orc
+		long_worms
+		cold_drake
+		uruloke
+       	} 
+	opposite_opinion = -100
+    	immortal = yes
+	customizer = yes	
+	cached = yes
+}
+
+balrog = {	
+	fertility_penalty= -5.0
+	opposites = { 
+		worship_balrog 
+	}
+	opposite_opinion = 20
+   	 health = 100.0
+	martial = 15
+	intrigue = 15
+    	immortal = yes
+	customizer = yes	
+	cannot_marry = yes
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+   	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	ai_zeal = -100
+		cached = yes
+}
+spider = {	
+	fertility_penalty = -5.0
+    	health = 100.0
+    	diplomacy_penalty = -20
+	stewardship_penalty = -20
+	martial_penalty = -20
+	intrigue_penalty = -20
+	learning_penalty = -20
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		maiar
+		istari
+		valar
+       	} 
+	opposite_opinion = -100
+    	immortal = yes
+	customizer = no
+	cannot_marry = yes
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+hobbit = {
+   	health = 6.5
+  	same_opinion = 20
+	inherit_chance = 100
+	martial_penalty = -10
+	intrigue_penalty = -10
+	learning_penalty = -10
+	customizer = yes
+	opposites = { 		
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		istari 
+		maiar
+		valar
+		enigma
+		spider
+		balrog
+		ent
+		nazgul
+		half_elf
+		elven_blood
+		skin_changer
+		orkish
+		half_orc
+		wight
+	}
+   	opposite_opinion = -10
+	ai_ambition = -60 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    	ai_rationality = 50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+	cached = yes
+}
+
+dwarven = {
+   	health = 15.0	
+	opposites = { elf }
+   	opposite_opinion = -15
+  	same_opinion = 20	
+	martial = 2
+    	stewardship = 3
+	customizer = yes
+	command_modifier = {
+		terrain = mountain
+	}
+	ai_ambition = -15 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    	ai_rationality = 20 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    	ai_honor = 45 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+
+#durin_reincarnation = {	
+#   	health = 2.0	
+#  	vassal_opinion = 20	
+#	martial = 3
+#    stewardship = 2
+#	customizer = no
+#	monthly_character_piety = 2.0	
+#    monthly_character_prestige = 1.0	
+#	command_modifier = {
+#		terrain = mountain
+#		damage = 0.3		
+#		morale_offence = 0.2
+#		morale_defence = 0.2		
+#	}
+#	cached = yes
+#}
+
+ent = {	
+    opposites = { orkish }
+    opposite_opinion = -50
+    same_opinion = 20	
+	fertility_penalty = -5.0
+    health = 100.0
+    diplomacy = 3
+	intrigue_penalty = -10
+	learning = 3
+    immortal = yes
+	customizer = yes	
+	command_modifier = {
+		terrain = forest
+		terrain = woods
+	}
+	cannot_marry = yes
+	ai_ambition = -80 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = 40 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+	cached = yes
+}
+elf = {
+    opposites = { 
+		half_orc
+		spider
+		balrog
+		nazgul
+		orkish
+		wight
+		long_worms
+		cold_drake
+		uruloke
+	}
+    opposite_opinion = -200
+    same_opinion = 20	
+	sex_appeal_opinion = 10
+	diplomacy = 2
+	stewardship = 2
+    fertility_penalty = -0.2
+	health = 50
+    immortal = yes
+	customizer = yes	
+    command_modifier = {
+		terrain = forest
+	}
+    ai_ambition = -15 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = 20 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = 45 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+dwarven_infertility = {
+	potential = {
+		religion_group = religion_group_khazad
+	}
+    fertility_penalty = -5.0
+	customizer = no	
+	cached = yes
+}
+elven_infertility = {
+potential = {
+		religion_group = religion_group_eldar
+	}
+    fertility_penalty = -5.0
+	customizer = no	
+	cached = yes
+}
+elf_childhood = {
+	fertility_penalty = -5.0
+	health = 100.0 #Hope to see less Nazgul deaths of old age
+	potential = {
+		religion_group = religion_group_eldar
+	}	
+	immortal = yes
+	customizer = no	
+	cannot_marry = yes
+	cached = yes
+}
+fea_strong = {
+	fertility = 2.0
+	martial = 4
+	learning = 1
+	diplomacy = 2
+	potential = {
+		religion_group = religion_group_eldar
+		NOT = { trait = fea_normal }
+		NOT = { trait = fea_weak }
+	}	
+	random = no
+	customizer = no	
+	cached = yes
+}
+fea_normal = {
+	martial = 2
+	potential = {
+		religion_group = religion_group_eldar
+		NOT = { trait = fea_strong }
+		NOT = { trait = fea_weak }
+	}	
+	random = no
+	customizer = no	
+	cached = yes
+}
+
+fea_weak = {
+	fertility_penalty = -2.0
+	martial_penalty = -1
+	diplomacy_penalty = -1
+	potential = {
+		religion_group = religion_group_eldar
+		NOT = { trait = fea_normal }
+		NOT = { trait = fea_strong }
+	}	
+	random = no
+	customizer = no	
+	cached = yes
+}
+valar = {	
+	fertility_penalty = -5.0
+	immortal = yes
+    health = 100.0
+	diplomacy = 20
+	martial = 20
+	stewardship = 20
+	intrigue = 20
+	learning = 20
+	customizer = no	
+	cannot_marry = yes
+	cached = yes
+}
+enigma = {
+	fertility_penalty = -5.0
+	immortal = yes
+    health = 100.0
+	customizer = no	
+	cannot_marry = yes
+	cached = yes
+}
+wilderness = {	
+	fertility_penalty = -5.0
+	immortal = no
+	diplomacy_penalty = -30
+	stewardship_penalty = -30
+	martial_penalty = -30
+	intrigue_penalty = -30
+	learning_penalty = -30
+	health = -20.0
+   	potential = {
+		culture_group = culture_group_wilderness
+	}
+	customizer = no	
+	cannot_marry = yes
+	incapacitating = yes
+	cannot_inherit = yes
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+   	ai_rationality = 100 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    	ai_honor = 100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    	ai_zeal = -100
+	cached = yes
+	ai_greed = -100
+}
+
+numenorean = {
+	random = no
+    health = 15.0
+	intrigue = 2
+	martial = 1
+	diplomacy = 2
+	customizer = yes
+	same_opinion = 25
+	opposite_opinion = 20
+	vassal_opinion = 15
+	agnatic = yes
+	fertility_penalty = -0.1
+	opposites =  {
+		blood_of_numenor2
+		blood_of_numenor
+		elf
+		blood_of_isildur
+		blood_of_anarion
+	}
+	cached = yes
+}
+
+prince_numenor = {
+	random = no
+    health = 20.0
+	intrigue = 3
+	martial = 2
+	diplomacy = 3
+	stewardship = 2
+	customizer = yes
+	same_opinion = 35
+	opposite_opinion = 30
+	vassal_opinion = 30	
+	agnatic = yes
+	fertility_penalty = -0.1
+	over_vassal_limit = 15	
+	opposites =  {
+		blood_of_numenor2
+		blood_of_numenor
+		elf
+		blood_of_isildur
+		blood_of_anarion
+	}
+	cached = yes
+}
+
+blood_of_numenor = {
+    health = 10.0
+	intrigue = 2
+	customizer = yes
+	same_opinion = 25
+	fertility_penalty = -0.1
+	opposites =  {
+		blood_of_numenor2
+	}
+	cached = yes
+}
+blood_of_numenor2 = {
+	health = 6.0
+	intrigue = 1
+	customizer = yes
+	same_opinion = 25
+	fertility_penalty = -0.1
+	opposites =  {
+		blood_of_numenor
+	}
+	cached = yes
+}
+blood_of_isildur = {
+	health = 7.0
+	fertility_penalty = -0.1	
+	intrigue = 3
+	martial = 5
+	agnatic = yes
+	customizer = no
+	same_opinion = 20
+	vassal_opinion = 50	
+	over_vassal_limit = 15
+	cached = yes
+}
+blood_of_anarion = {
+	health = 7.0
+	fertility_penalty = -0.1	
+	intrigue = 2
+	martial = 2
+	agnatic = yes
+	customizer = no
+	same_opinion = 20
+	vassal_opinion = 50	
+	over_vassal_limit = 15	
+	cached = yes	
+}
+heir_of_durin = {
+	health = 3.0
+	stewardship = 3
+	martial = 5
+	diplomacy = 2
+	customizer = no
+	vassal_opinion = 50	
+	cached = yes
+}
+nazgul = {
+	fertility_penalty = -5.0
+	health = 100.0 #Hope to see less Nazgul deaths of old age
+	immortal = yes
+	intrigue = 5
+	martial = 15 #More possibilities to see a Nazgul commanding an army
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		istari
+       	} 
+	opposite_opinion = -100
+	customizer = no	
+	cannot_marry = yes
+	vassal_opinion = 130
+	same_opinion = 100
+	cached = yes
+}
+half_elf = {
+    health = 12.0
+	customizer = yes
+	same_opinion = 20
+	fertility_penalty = -0.1
+	cached = yes
+}
+elven_blood = {
+    health = 2.0
+	customizer = yes
+	same_opinion = 25
+	fertility_penalty = -0.1
+	cached = yes
+}
+skin_changer = {
+    health = 4.0
+	customizer = yes
+	inherit_chance = 75
+	same_opinion = 20
+	cached = yes
+}
+orkish = {
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+       	} 
+	opposite_opinion = -100
+	customizer = no
+        health = -100.0
+	fertility = -100.0
+	martial = 2
+	ai_ambition = 300 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = -150 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = -150 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    same_opinion = 5
+	cached = yes
+}
+half_orc = {
+	customizer = yes
+	intrigue = 1
+	martial = 3
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+       	}
+	opposite_opinion = -100
+	sex_appeal_opinion = -50
+        health = 15.0
+	fertility = -0.4
+	ai_ambition = 50 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = -15 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = -15 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    same_opinion = 5
+	cached = yes
+}
+human_infertility = {
+	potential = {
+		OR = {
+			culture_group = culture_group_edain
+			culture_group = culture_group_numenorean
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_forodwaith
+			culture_group = culture_group_haldadian
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+            culture_group = culture_group_halfling			
+		}
+	}
+    fertility_penalty = -5.0
+	customizer = no	
+	cached = yes
+}
+
+worship_balrog = {	
+	customizer = no	
+	opposites = { balrog }
+    opposite_opinion = 50
+    diplomacy = 1
+	stewardship = 1
+	martial = 2
+	learning = 1
+	same_opinion = 30
+	cached = yes
+}
+
+beard_elf = {	
+	customizer = no	
+	learning = 1
+	cached = yes
+}
+
+wight = {
+	fertility_penalty = -5.0
+	health = 200
+	immortal = yes
+	intrigue = 4
+	martial = 3
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+       	}
+	opposite_opinion = -100
+	customizer = yes	
+	cannot_marry = yes
+	same_opinion = 100
+	cached = yes
+}
+
+## Fire-Dragons
+uruloke = {	
+	opposites = { 
+		eagle
+		dwarven 
+		elf
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+	}
+	martial = 3
+	opposite_opinion = -200
+   	health = 100.0
+	immortal = yes
+	customizer = yes	
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+## RinglÃ³kÃ«
+cold_drake = {	
+       	opposites = {
+			eagle
+			elf
+			dwarven
+			blood_of_numenor
+			blood_of_numenor2
+			ent
+       	}
+	martial = 2
+	opposite_opinion = -200
+   	health = 100.0
+	immortal = yes
+	customizer = yes	
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+
+## PenrÃ¡malÃ³kÃ«
+long_worms = {	
+       	opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+       	}
+	martial = 1
+	opposite_opinion = -200
+   	health = 100.0
+    	immortal = yes
+	customizer = yes	
+	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+	cached = yes
+}
+
+wilderness_health = {
+	health = 40.0
+	unique = yes
+	random = no	
+	cached = yes # Keep a cache of all trait holders, to use with the corresponding event trigger
+}

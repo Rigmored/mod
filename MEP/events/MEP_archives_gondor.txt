@@ -1,0 +1,369 @@
+namespace = archivesgondor
+
+## The Archives of Gondor
+character_event = {
+	id = archivesgondor.0
+	picture = "GFX_gondor"
+	desc = "EVTDESCarchivesgondor.0"
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = "OPTAarchivesgondor.0" # Notable Past Kings of Gondor
+		any_independent_ruler = {
+			limit = { 
+				is_alive = no
+				has_landed_title = e_gondor
+			}
+			custom_tooltip = { text = TOOLTIPKINGGONDOR }
+			if = {
+				limit = {
+					trait = romendacil
+				}
+				custom_tooltip = { text = TOOLTIPROMENDACIL }
+			}
+			if = {
+				limit = {
+					prestige = 1000
+				}
+				custom_tooltip = { text = TOOLTIPPRESTIGIOUS }
+			}			
+			if = {
+				limit = {
+					trait = hyarmendacil
+				}
+				custom_tooltip = { text = TOOLTIPHYARMENDACIL }
+			}
+			if = {
+				limit = {
+					trait = umbardacil
+				}
+				custom_tooltip = { text = TOOLTIPUMBARDACIL }
+			}
+			if = {
+				limit = {
+					trait = ring
+				}
+				custom_tooltip = { text = TOOLTIPRING }
+			}
+			if = {
+				limit = {
+					trait = narsil
+				}
+				custom_tooltip = { text = TOOLTIPNARSIL }
+			}
+			if = {
+				limit = {
+					trait = anduril
+				}
+				custom_tooltip = { text = TOOLTIPANDURIL }
+			}
+			if = {
+				limit = {
+					trait = ship_king
+				}
+				custom_tooltip = { text = TOOLTIPSHIPKING }
+			}			
+
+		}
+	}
+	
+	option = {
+		name = "OPTBarchivesgondor.0" ## Notable Rangers of Ithilien
+		ithilien_captain = {
+			limit = { 
+				is_alive = no
+				NOT = { has_landed_title = e_gondor }
+			}
+			custom_tooltip = { text = TOOLTIPRANGERSITHILIEN }
+			if = {
+				limit = {
+					NOT = { has_nickname = no }
+				}
+				custom_tooltip = { text = TOOLTIPKNOWNNICK  }#, also known as  [This.GetBestName],
+			}
+			if = {
+				limit = { 
+					NOT = { liege = { character = PREV } } 
+					NOT = { liege = { liege = { character = PREV } } }
+				}
+				custom_tooltip = { text = TOOLTIPMEMDURINGKING  }#during the reign of [This.Liege.GetTitledFirstName] of the House [This.Liege.GetOnlyDynastyName]
+			}	
+			if = {
+				limit = {
+					trait = brave
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+				}
+				custom_tooltip = { text = TOOLTIPBRAVE }
+			}
+			if = {
+				limit = {
+					trait = kind
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+				}
+				custom_tooltip = { text = TOOLTIPKIND }
+			}
+			if = {
+				limit = {
+					trait = humble
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+					NOT = { trait = kind }
+					NOT = { trait = lunatic }
+					NOT = { trait = drunkard }
+					NOT = { trait = lustful }
+					NOT = { trait = gluttonous }
+					NOT = { trait = wroth }
+				}
+				custom_tooltip = { text = TOOLTIPhumble }
+			}
+			if = {
+				limit = {
+					trait = fair
+				}
+				custom_tooltip = { text = TOOLTIPfair }
+			}
+			if = {
+				limit = {
+					trait = strong
+					NOT = { trait = fair }
+				}
+				custom_tooltip = { text = TOOLTIPfair }
+			}
+			if = {
+				limit = {
+					trait = tall
+					NOT = { trait = fair }
+					NOT = { trait = strong }
+				}
+				custom_tooltip = { text = TOOLTIPtall }
+			}
+			if = {
+				limit = {
+					trait = imposing
+					NOT = { trait = fair }
+					NOT = { trait = strong }
+					NOT = { trait = tall }
+				}
+				custom_tooltip = { text = TOOLTIPimposing }
+			}			
+		}
+	}
+	
+	option = {
+		name = "OPTCarchivesgondor.0" # Notable members of the Knights of Dol Amroth
+		amroth_knight = {
+			limit = { 
+				is_alive = no
+				NOT = {
+					OR = {
+						trait = genius
+						trait = quick
+						trait = brave
+						trait = strong
+						trait = horngondor
+					}
+				}	
+			}
+			custom_tooltip = { text = TOOLTIPKNIGHTAMROTH  }
+			if = {
+				limit = {
+					NOT = { has_nickname = no }
+				}
+				custom_tooltip = { text = TOOLTIPKNOWNNICK  }#, also known as  [This.GetBestName], 
+			}
+			if = {
+				limit = { 
+					NOT = { liege = { character = PREV } } 
+					NOT = { liege = { liege = { character = PREV } } }
+				}
+				custom_tooltip = { text = TOOLTIPMEMDURINGKING  }#during the reign of [This.Liege.GetTitledFirstName] of the House [This.Liege.GetOnlyDynastyName]
+			}	
+			if = {
+				limit = {
+					trait = brave
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+				}
+				custom_tooltip = { text = TOOLTIPBRAVE }
+			}
+			if = {
+				limit = {
+					trait = diligent
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+				}
+				custom_tooltip = { text = TOOLTIPDILIGENT }
+			}
+			if = {
+				limit = {
+					trait = kind
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+				}
+				custom_tooltip = { text = TOOLTIPKIND }
+			}
+
+			if = {
+				limit = {
+					trait = humble
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+					NOT = { trait = kind }
+					NOT = { trait = lunatic }
+					NOT = { trait = drunkard }
+					NOT = { trait = lustful }
+					NOT = { trait = gluttonous }
+					NOT = { trait = wroth }
+				}
+				custom_tooltip = { text = TOOLTIPhumble }
+			}
+			if = {
+				limit = {
+					trait = fair
+				}
+				custom_tooltip = { text = TOOLTIPfair }
+			}
+			if = {
+				limit = {
+					trait = strong
+					NOT = { trait = fair }
+				}
+				custom_tooltip = { text = TOOLTIPstrong }
+			}
+			if = {
+				limit = {
+					trait = tall
+					NOT = { trait = fair }
+					NOT = { trait = strong }
+				}
+				custom_tooltip = { text = TOOLTIPtall }
+			}
+			if = {
+				limit = {
+					trait = imposing
+					NOT = { trait = fair }
+					NOT = { trait = strong }
+					NOT = { trait = tall }
+				}
+				custom_tooltip = { text = TOOLTIPimposing }
+			}				
+		}	
+	}
+	
+	option = {
+		name = "OPTDarchivesgondor.0" # Notable Captain-Generals of Gondor
+		any_realm_character = {
+			limit = { 
+				is_alive = no
+				has_minor_title = title_captaingeneral
+				NOT = {
+					OR = {
+						trait = genius
+						trait = quick
+						trait = brave
+						trait = strong
+						trait = horngondor
+					}
+				}	
+			}
+			custom_tooltip = { text = TOOLTIPCAPTAINGENERAL  }#Ser [This.GetFirstName]  [This.GetOnlyDynastyName]
+			if = {
+				limit = {
+					NOT = { has_nickname = no }
+				}
+				custom_tooltip = { text = TOOLTIPKNOWNNICK  }#, also known as  [This.GetBestName], 
+			}
+			if = {
+				limit = { 
+					NOT = { liege = { character = PREV } } 
+					NOT = { liege = { liege = { character = PREV } } }
+				}
+				custom_tooltip = { text = TOOLTIPMEMDURINGKING  }#during the reign of [This.Liege.GetTitledFirstName] of the House [This.Liege.GetOnlyDynastyName]
+			}	
+			if = {
+				limit = {
+					trait = brave
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+				}
+				custom_tooltip = { text = TOOLTIPBRAVE }
+			}
+			if = {
+				limit = {
+					trait = diligent
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+				}
+				custom_tooltip = { text = TOOLTIPDILIGENT }
+			}
+			if = {
+				limit = {
+					trait = kind
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+				}
+				custom_tooltip = { text = TOOLTIPKIND }
+			}
+
+			if = {
+				limit = {
+					trait = humble
+					NOT = { trait = honorable }
+					NOT = { trait = ruthless }
+					NOT = { trait = brave }
+					NOT = { trait = diligent }
+					NOT = { trait = kind }
+					NOT = { trait = lunatic }
+					NOT = { trait = drunkard }
+					NOT = { trait = lustful }
+					NOT = { trait = gluttonous }
+					NOT = { trait = wroth }
+				}
+				custom_tooltip = { text = TOOLTIPhumble }
+			}
+			if = {
+				limit = {
+					trait = fair
+				}
+				custom_tooltip = { text = TOOLTIPfair }
+			}
+			if = {
+				limit = {
+					trait = horngondor
+				}
+				custom_tooltip = { text = TOOLTIPhorngondor }
+			}			
+			if = {
+				limit = {
+					trait = strong
+					NOT = { trait = fair }
+				}
+				custom_tooltip = { text = TOOLTIPstrong }
+			}
+			if = {
+				limit = {
+					trait = tall
+					NOT = { trait = fair }
+					NOT = { trait = strong }
+				}
+				custom_tooltip = { text = TOOLTIPtall }
+			}
+		}	
+	}	
+}

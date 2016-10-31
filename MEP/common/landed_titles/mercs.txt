@@ -1,0 +1,1493 @@
+#MERCENARIES
+
+#BREE-LAND
+
+d_blackwolds = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 267 #Bree
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_breelander
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	            any_realm_title = { title = k_angmar }
+				any_realm_title = { title = d_bree-land }
+				any_realm_title = { title = c_mendriyar } 
+				any_realm_title = { title = c_north_bree-land } 
+				any_realm_title = { title = c_west_bree-land }
+				any_realm_title = { title = c_bree-land } 
+	}
+	}
+	mercenary_type = blackwolds_mercenaries
+}
+
+#BREE-LAND/DUNLAND/SHIRE
+d_ruffians = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 267 #Bree
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	OR = {
+				any_realm_title = { title = d_bree-land }
+				any_realm_title = { title = c_mendriyar } 
+				any_realm_title = { title = c_north_bree-land } 
+				any_realm_title = { title = c_west_bree-land }
+				any_realm_title = { title = c_bree-land } 
+				any_realm_title = { title = k_shire }
+				any_realm_title = { title = d_east_farthing }
+				any_realm_title = { title = d_north_farthing }
+				any_realm_title = { title = d_west_farthing }
+				any_realm_title = { title = d_south_farthing }
+	}		
+	trait = evil_side
+	culture = culture_dunlending
+	}
+	}
+	mercenary_type = ruffians_mercenaries
+}
+
+#DWARVES
+d_iron_guard = {
+	color={ 230 230 230 }
+	color2={ 255 255 255 }
+	
+	graphical_culture = holygfx	
+	capital = 285 # Moria
+	
+	allow = {
+		religion_group = religion_group_khazad
+	}	
+	
+	title = "Captain"
+	foa = "MyCaptain"
+
+	# Always exists
+	landless = yes
+	
+	holy_order = yes
+	mercenary_type = iron_guard_mercenaries
+	
+	culture = culture_longbeard
+	religion = religion_mahal
+	
+	# Cannot be held as a secondary title
+	primary = yes
+	
+	# Extra income due to banking, etc
+	monthly_income = 2 # (Must be an integer between 1 and 512)
+}
+d_nargubraz = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 292 #Erebor
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_blacklock
+	religion = religion_mahal
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	religion = religion_mahal
+	NOT = { trait = evil_side }
+	}
+	mercenary_type = nargubraz_mercenaries
+}
+d_mornaugrim = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 654 # Barad-Dûr
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_blacklock
+	religion = religion_mahal
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	
+	OR = {
+				any_realm_title = { title = k_mordor } 
+				any_realm_title = { title = d_mordor } 
+				any_realm_title = { title = c_barad_dur }
+				any_realm_title = { title = d_north_gorgoroth } 
+				any_realm_title = { title = k_nurn }
+				any_realm_title = { title = d_lugskai }
+				any_realm_title = { title = d_nurn }
+				any_realm_title = { title = d_emyn_burzum }
+				any_realm_title = { title = d_neburkha }
+				any_realm_title = { title = k_khand }
+				any_realm_title = { title = d_khand } 
+				any_realm_title = { title = d_laorki } 
+				any_realm_title = { title = d_ubesesh }
+				any_realm_title = { title = k_nurad } 
+				any_realm_title = { title = d_nurad }
+				any_realm_title = { title = d_harmal }
+	
+	}
+	OR = {
+				culture_group = culture_group_melkor
+				culture = culture_maiar
+				trait = evil_side
+	
+	}
+
+	}
+	mercenary_type = mornaugrim_mercenaries
+}
+
+
+d_dourhands = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 239 # Northern range/Thorin's Gate
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_longbeard
+	religion = religion_mahal
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	
+	OR = {
+				any_realm_title = { title = k_ered_luin } 
+				any_realm_title = { title = d_north_luin } 
+				any_realm_title = { title = d_south_luin }
+	
+	}
+	OR = {
+				culture_group = culture_group_dwarves
+				trait = evil_side
+	
+	}
+	}
+	mercenary_type = dourhands_mercenaries
+}
+#ERIADOR
+d_airund = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 172 #Tharbad
+	mercenary = yes
+	title = Captain
+	foa = "MyCaptain"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = airund_mercenaries
+}
+
+d_rivermen_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 102 #Minas Girithlin
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	
+	any_realm_title = { title = d_girithlin }
+	any_realm_title = { title = d_dol_caladir }
+	any_realm_title = { title = d_dol_tiinereb }
+	any_realm_title = { title = d_faerdor }
+	any_realm_title = { title = d_saralainn }
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = rivermen_mercenaries
+}
+
+d_circinn_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 383 #Galtrev
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = circinn_mercenaries
+}
+d_caerinn_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 383 #Galtrev
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = caerinn_mercenaries
+}
+d_fortriu_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 383 #Galtrev
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = fortriu_mercenaries
+}
+d_smertiu_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 383 #Galtrev
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = smertiu_mercenaries
+}
+d_lugiu_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 383 #Galtrev
+	mercenary = yes
+	title = Head
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture_group = culture_group_haldadian
+	any_realm_title = { title = k_enedwaith }
+	any_realm_title = { title = d_dunland } 
+	any_realm_title = { title = d_enedwaith }
+	any_realm_title = { title = d_angren }
+	any_realm_title = { title = d_gwathlo }
+	any_realm_title = { title = k_isengard } 
+	any_realm_title = { title = d_isengard }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = lugiu_mercenaries
+}
+
+#RHOVANION MERCENARIES
+
+d_gadrauhteis = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	culture = culture_woodsmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = gadrauhteis_mercenaries
+}
+
+d_eolhgardings = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = eolhgardings_mercenaries
+}
+
+d_beoralas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = beoralas_mercenaries
+}
+
+d_ontheras = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = ontheras_mercenaries
+}
+
+d_dryhtenas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = dryhtenas_mercenaries
+}
+
+d_eoedreas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = eoedreas_mercenaries
+}
+
+d_padricas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_northmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	culture = culture_northmen
+	any_realm_title = { title = k_dale }
+	any_realm_title = { title = d_dale } 
+	any_realm_title = { title = c_dale }
+	any_realm_title = { title = d_grasgard }
+	any_realm_title = { title = d_carnen }
+	any_realm_title = { title = k_brownlands } 
+	any_realm_title = { title = d_haradnur }
+	any_realm_title = { title = d_brownlands }
+	any_realm_title = { title = k_rhovanion }
+	any_realm_title = { title = d_dor_rhunen }
+	any_realm_title = { title = d_rhovanion }
+	any_realm_title = { title = d_celduin }
+	any_realm_title = { title = k_dorwinion }
+	any_realm_title = { title = d_riavod }
+	any_realm_title = { title = d_uldonavan }
+	}
+	}
+	mercenary_type = padricas_mercenaries
+}
+
+d_waldingas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 539 # Dale
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_woodsmen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	any_realm_title = { title = c_east_bight }
+	}
+	mercenary_type = waldingas_mercenaries
+}
+
+#MORDOR MERCENARIES
+
+d_snaga_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 285 # Moria
+	mercenary = yes
+	title = "Master"
+	foa = "mymaster"
+	culture = culture_goblin
+	religion = religion_orkish
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+                culture_group = culture_group_melkor
+				culture = culture_maiar
+				trait = evil_side	
+	}
+	}
+	mercenary_type = snaga_mercenaries
+}
+
+
+#OTHER ORCS MERCENARIES
+
+d_snaga_gundabad = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 285 # Moria
+	mercenary = yes
+	title = "Master"
+	foa = "mymaster"
+	culture = culture_goblin
+	religion = religion_orkish
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+		culture_group = culture_group_melkor
+		has_landed_title = k_gundabad
+	}
+	mercenary_type = snaga_mercenaries1
+}
+d_snaga_moria = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 285 # Moria
+	mercenary = yes
+	title = "Master"
+	foa = "mymaster"
+	culture = culture_goblin
+	religion = religion_orkish
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+		culture_group = culture_group_melkor
+		has_landed_title = c_moria
+	}
+	mercenary_type = snaga_mercenaries1
+}
+d_snaga_goblintown = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 285 # Moria
+	mercenary = yes
+	title = "Master"
+	foa = "mymaster"
+	culture = culture_goblin
+	religion = religion_orkish
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+		culture_group = culture_group_melkor
+		has_landed_title = c_goblin_town
+	}
+	mercenary_type = snaga_mercenaries1
+}
+
+d_snaga_all = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 285 # Moria
+	mercenary = yes
+	title = "Master"
+	foa = "mymaster"
+	culture = culture_goblin
+	religion = religion_orkish
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+		culture_group = culture_group_melkor
+	}
+	mercenary_type = snaga_mercenaries1
+}
+
+#ELVISH MERCENARIES
+
+d_avari_wandering = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 583 #Ulumuir
+	mercenary = yes
+	title = "Lord"
+	foa = "mylord"
+	culture = culture_avari
+	religion = religion_moriquendi
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+                culture_group = culture_group_quendi
+			    culture_group = culture_group_amanyar
+			    culture_group = culture_group_umanyar
+			    culture_group = culture_group_moriquendi
+				any_realm_title = { title = k_eregion }
+	            any_realm_title = { title = k_mirkwood }
+	            any_realm_title = { title = k_elves }
+	            any_realm_title = { title = k_avari }
+	            any_realm_title = { title = k_mithlond }
+				any_realm_title = { title = k_harlindon }
+	            any_realm_title = { title = k_forlindon }
+	}
+	}
+	mercenary_type = avari_mercenaries
+}
+d_silvan_tribes = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 323 #Thranduill's Halls
+	mercenary = yes
+	title = "Lord"
+	foa = "mylord"
+	culture = culture_avari
+	religion = religion_moriquendi
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+				any_realm_title = { title = k_eregion }
+	            any_realm_title = { title = k_mirkwood }
+	            any_realm_title = { title = k_elves }
+				any_realm_title = { title = d_emyn_guldur }
+				any_realm_title = { title = d_mirkwood }
+				any_realm_title = { title = d_emyn_lasgalen }
+	            any_realm_title = { title = d_cell_angol }
+	            any_realm_title = { title = k_east_lorien }
+				any_realm_title = { title = d_lorien }
+				any_realm_title = { title = d_nimrodel }
+				any_realm_title = { title = d_rivendell }
+				any_realm_title = { title = d_eregion }
+				any_realm_title = { title = d_ost_in_edhil }
+	}
+	NOT = { trait = evil_side }
+	}
+	mercenary_type = silvan_mercenaries
+}
+
+
+
+#GONDOR MERCENARIES
+
+d_swan_knights = {
+	color={ 230 230 230 }
+	color2={ 255 255 255 }
+	
+	graphical_culture = holygfx
+	
+	capital = 656 # Dol Amroth
+	
+	allow = {
+		OR = {
+			any_realm_title = { title = k_belfalas }
+			any_realm_title = { title = e_gondor }
+			any_realm_title = { title = e_steward_gondor }
+		}
+		OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			culture = culture_dunedain
+			culture = culture_numenorean
+		}
+	}	
+	
+	title = "Captain"
+	foa = "MyCaptain"
+
+	# Always exists
+	landless = yes
+	
+	holy_order = yes
+	mercenary_type = swan_knights_mercenaries
+	
+	culture = culture_gondorian
+	religion = religion_dunedain
+	
+	# Cannot be held as a secondary title
+	primary = yes
+	
+	# Extra income due to banking, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+}
+
+d_grey_company = {
+	color={ 230 230 230 }
+	color2={ 255 255 255 }
+	
+	graphical_culture = holygfx
+	
+	capital = 269 # Amon Sul
+	
+	allow = {
+		OR = {
+			any_realm_title = { title = k_belfalas }
+			any_realm_title = { title = e_gondor }
+			any_realm_title = { title = e_steward_gondor }
+		}
+		OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			culture = culture_dunedain
+			culture = culture_numenorean
+		}
+	}	
+	
+	title = "Captain"
+	foa = "MyCaptain"
+
+	# Always exists
+	landless = yes
+	
+	holy_order = yes
+	mercenary_type = grey_company_mercenaries
+	
+	culture = culture_dunedain
+	religion = religion_dunedain
+	
+	# Cannot be held as a secondary title
+	primary = yes
+	
+	# Extra income due to banking, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+}
+
+d_rangers_ithilien = {
+	color={ 230 230 230 }
+	color2={ 255 255 255 }
+	
+	graphical_culture = holygfx
+	
+	capital = 51 # Henneth Annun
+	
+	allow = {
+		OR = {
+			any_realm_title = { title = k_belfalas }
+			any_realm_title = { title = e_gondor }
+			any_realm_title = { title = e_steward_gondor }
+		}
+		OR = {
+			culture = culture_gondorian
+			culture = culture_arnorian
+			culture = culture_dunedain
+			culture = culture_numenorean
+		}
+	}	
+	
+	title = "Captain"
+	foa = "MyCaptain"
+
+	# Always exists
+	landless = yes
+	
+	holy_order = yes
+	mercenary_type = rangers_ithilien_mercenaries
+	
+	culture = culture_dunedain
+	religion = religion_dunedain
+	
+	# Cannot be held as a secondary title
+	primary = yes
+	
+	# Extra income due to banking, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+}
+
+d_sakalai_peoples = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 18 # Pelargir
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_gondorian_middlemen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	
+	OR = {
+	any_realm_title = { title = k_lebennin }
+	any_realm_title = { title = d_arnach }
+	any_realm_title = { title = d_pelargir }
+	any_realm_title = { title = d_celosien }
+	any_realm_title = { title = d_lebennivet }
+	any_realm_title = { title = d_gilrain }
+	any_realm_title = { title = k_belfalas }
+	any_realm_title = { title = d_dudhrandir }
+	any_realm_title = { title = d_vilyatil-merhast }
+	any_realm_title = { title = d_dol_amroth }
+	any_realm_title = { title = d_tolfalas }
+	any_realm_title = { title = k_harondor }
+	any_realm_title = { title = d_laergaladrin }
+	any_realm_title = { title = d_amonost } 			
+	}
+	}
+	mercenary_type = sakalai_mercenaries
+}
+
+
+d_eredrim_peoples = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 10 # Celerdain
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_gondorian_middlemen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	
+	OR = {
+	any_realm_title = { title = d_danorien }
+	any_realm_title = { title = d_entyn-i-onodlo }
+	any_realm_title = { title = d_eastfolde }
+	any_realm_title = { title = d_kings_land }
+	any_realm_title = { title = d_westfolde }
+	any_realm_title = { title = d_east_druwaith }
+	any_realm_title = { title = d_west_pinnath }
+	any_realm_title = { title = d_east_pinnath }
+	any_realm_title = { title = d_mornan }
+	any_realm_title = { title = d_lamedon }
+	any_realm_title = { title = d_ringlo_vale }
+	any_realm_title = { title = d_celosien }
+	any_realm_title = { title = d_lossarnach }
+	any_realm_title = { title = d_arnach }
+	}
+	}
+	mercenary_type = eredrim_mercenaries
+}
+d_ninniden_peoples = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	capital = 68 # Astirian
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_gondorian_middlemen
+	religion = religion_rhovanion
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_entyn-i-onodlo }
+	any_realm_title = { title = d_nindalf }
+	}
+	}
+	mercenary_type = ninniden_mercenaries
+}
+
+#ROHAN MERCENARIES
+
+d_healfblodas = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 121 # Adornfold
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_dunlending
+	religion = religion_haldadian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_westmarch }
+	any_realm_title = { title = d_isenmarch }
+	}
+	}
+	mercenary_type = healfblodas_mercenaries
+}
+d_hobbit_bands = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 95 # Michel Delving
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_harfoot
+	religion = religion_perian
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_north_farthing }
+	any_realm_title = { title = d_south_farthing }
+	any_realm_title = { title = d_east_farthing }
+	any_realm_title = { title = d_west_farthing }
+	religion_group = religion_group_periannath
+	}
+	}
+	mercenary_type = hobbit_mercenaries
+}
+
+#FOROCHEL MERCENARIES
+
+d_umlir_tribes = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 95 # Michel Delving
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_lossoth
+	religion = religion_lossoth
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_forochel }
+	culture = culture_lossoth
+	religion = religion_lossoth
+	}
+	}
+	mercenary_type = umlir_mercenaries
+}
+
+
+
+
+
+#HARAD MERCENARIES
+
+
+d_black_serpent = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 533 # Khôrsaj
+	holy_order = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	culture = culture_haradrim
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+		AND = {
+			any_realm_title = { title = e_harad }
+			culture_group = culture_group_southron
+		}
+	}
+	mercenary_type = black_serpent_mercenaries
+}
+
+d_eraguk_tribes = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+   capital = 131 #Gobel Mirlond
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_harondorian
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = k_harondor }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = eraguk_mercenaries
+}
+d_kibic_tribes = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+   capital = 131 #Gobel Mirlond
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_harondorian
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	any_realm_title = { title = k_harondor }
+	}
+	mercenary_type = kibic_mercenaries
+}
+d_urdwan_nomads = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 131 #Gobel Mirlond
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_harondorian
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = k_harondor }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = urdwan_mercenaries
+}
+
+d_men_bozisha = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 533 # Khôrsaj
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_haradrim
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = e_harad }
+	any_realm_title = { title = k_chelkar }
+	any_realm_title = { title = k_haruzan }
+	any_realm_title = { title = k_akhor }
+	any_realm_title = { title = k_pezarsan }
+	any_realm_title = { title = k_lurmsakun }
+	any_realm_title = { title = k_arysis }
+	any_realm_title = { title = k_haradwaith }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = bozisha_mercenaries
+}
+
+d_koanoze_peoples = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 533 # Khôrsaj
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_haradrim
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = e_harad }
+	any_realm_title = { title = k_chelkar }
+	any_realm_title = { title = k_haruzan }
+	any_realm_title = { title = k_akhor }
+	any_realm_title = { title = k_pezarsan }
+	any_realm_title = { title = k_lurmsakun }
+	any_realm_title = { title = k_arysis }
+	any_realm_title = { title = k_haradwaith }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = koanoze_mercenaries
+}
+
+d_mardruak_men = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 517 # Urezayân
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_bellakaze
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = k_bellakar }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	culture = culture_black_numenorean
+	}
+	}
+	mercenary_type = mardruak_mercenaries
+}
+
+d_aukuag_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 533 # Khôrsaj
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_far_haradrim
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = e_harad }
+	any_realm_title = { title = k_chelkar }
+	any_realm_title = { title = k_haruzan }
+	any_realm_title = { title = k_akhor }
+	any_realm_title = { title = k_pezarsan }
+	any_realm_title = { title = k_lurmsakun }
+	any_realm_title = { title = k_arysis }
+	any_realm_title = { title = k_haradwaith }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = aukuag_mercenaries
+}
+
+d_ayten_clans = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 533 # Khôrsaj
+	mercenary = yes
+	title = "Head"
+	foa = "myhead"
+	culture = culture_far_haradrim
+	religion = religion_southron
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = e_harad }
+	any_realm_title = { title = k_chelkar }
+	any_realm_title = { title = k_haruzan }
+	any_realm_title = { title = k_akhor }
+	any_realm_title = { title = k_pezarsan }
+	any_realm_title = { title = k_lurmsakun }
+	any_realm_title = { title = k_arysis }
+	any_realm_title = { title = k_haradwaith }
+	culture_group = culture_group_southron
+	religion_group = religion_group_hildor
+	}
+	}
+	mercenary_type = ayten_mercenaries
+}
+
+#FLEETS
+d_corsairs_of_umbar = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 430 # Umbar
+	culture = culture_black_numenorean
+	religion = religion_black_numenorean
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = c_umbar }
+	trait = evil_side
+	culture = culture_maiar
+	culture = culture_black_numenorean
+	religion_group = religion_group_melkor
+	culture_group = culture_group_easterling
+	culture_group = culture_group_southron
+	}
+	}
+	mercenary_type = corsairs_of_umbar_mercenaries
+}
+d_raiders_of_bellakar = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+   capital = 517 # Urezayân
+	culture = culture_black_numenorean
+	religion = religion_black_numenorean
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_mardruak }
+	any_realm_title = { title = d_ashatur }
+	any_realm_title = { title = k_bellakar }
+	trait = evil_side
+	culture = culture_maiar
+	culture = culture_black_numenorean
+	religion_group = religion_group_melkor
+	culture_group = culture_group_easterling
+	culture_group = culture_group_southron
+	}
+	}
+	mercenary_type = raiders_of_bellakar_mercenaries
+}
+d_pirates_of_mirlond = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 131 #Gobel Mirlond
+	culture = culture_black_numenorean
+	religion = religion_black_numenorean
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = d_mirlond }
+	any_realm_title = { title = c_mirlond }
+	trait = evil_side
+	culture = culture_maiar
+	culture = culture_black_numenorean
+	religion_group = religion_group_melkor
+	culture_group = culture_group_easterling
+	culture_group = culture_group_southron
+	}
+	}
+	mercenary_type = pirates_of_mirlond_mercenaries
+}
+d_pelargir_company = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+   capital = 18 # Pelargir
+	culture = culture_gondorian
+	religion = religion_dunedain
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = c_pelargir }
+	trait = good_side
+	culture = culture_dunedain
+	culture = culture_gondorian
+	}
+	}
+	mercenary_type = pelargir_company_mercenaries
+}
+d_dol_amroth_company = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 656 # Dol Amroth
+	culture = culture_gondorian
+	religion = religion_dunedain
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = c_dol_amroth }
+	trait = good_side
+	culture = culture_dunedain
+	culture = culture_gondorian
+	}
+	}
+	mercenary_type = dol_amroth_company_mercenaries
+}
+d_tolfalas_company = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 67 # Gobel Tolfalas
+	culture = culture_gondorian
+	religion = religion_dunedain
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = c_tolfalas }
+	any_realm_title = { title = c_south_tolfalas }
+	trait = good_side
+	culture = culture_dunedain
+	culture = culture_gondorian
+	}
+	}
+	mercenary_type = tolfalas_company_mercenaries
+}
+d_mithlond_company = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+    capital = 657 # Mithlond
+	culture = culture_gondorian
+	religion = religion_dunedain
+	mercenary = yes
+	title = "Captain"
+	foa = "MyCaptain"
+	landless = yes
+	primary = yes
+	independent = yes
+	allow = {
+	OR = {
+	any_realm_title = { title = c_mithlond }
+	trait = good_side
+	religion_group = religion_group_eldar
+	}
+	}
+	mercenary_type = mithlond_company_mercenaries
+}

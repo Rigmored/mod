@@ -1,0 +1,50 @@
+decisions = {
+	## Claim the title of High King of the Noldor ##
+	claim_noldor = {
+		potential = {
+			ai = no
+			has_landed_title = d_rivendell
+			has_landed_title = k_eregion
+			culture = culture_noldor
+			NOT = { has_character_flag = hisghkingnoldor }
+			NOT = { has_landed_title = e_noldor }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			in_command = no
+			prisoner = no
+			age = 16
+			prestige = 3000
+			piety = 800
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = knoldor.1 }
+			}
+		}
+	}
+	## Break the vow of Cerin Amroth ##
+	#break_the_vow = {
+	#	potential = {
+	#		ai = no
+	#		trait = vow_of_cerin_amroth
+	#		year = 11380
+	#		NOT = { has_character_flag = vowofcerinamroth }
+	#		has_character_flag = special_decisions_open
+	#	}
+	#	allow = {
+	#		war = no
+	#		in_command = no
+	#		prisoner = no
+	#		age = 16
+	#		prestige = 1500
+	#		piety = 600
+	#	}
+	#	effect = {
+	#		ROOT = {
+	#			character_event = { id = wotr.105 }
+	#		}
+	#	}
+	#}
+}

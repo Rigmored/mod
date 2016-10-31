@@ -1,0 +1,1803 @@
+namespace = buildings
+
+############### buildings.0 = Global Flag to allow all the buildings at start
+############### buildings.1-buildings.7 = Fornost Erain Rebuilding
+############### buildings.8-buildings.14 = Annuminas Rebuilding
+############### buildings.15-buildings.19 = Bridge of Tharbad Events
+############### buildings.20-buildings.25 =  Edhellond Rebuilding
+############### buildings.120-buildings.125 =  Ost-in-Edhil Rebuilding
+############### buildins.26-buildings.32 = Osgiliath Rebuilding
+############### buildings.33-buildings.39 = Amon Sûl Events 
+############### buildings.100 - buildings.102 = Destruction of buildings in Ruins provinces
+
+
+
+## Event that will unlock all the buildings after 10000 ##
+character_event = {
+	id = buildings.0
+	desc = OK
+	picture = GFX_good
+	hide_window = yes	
+
+	is_triggered_only = yes 
+	
+	option = {
+		name = "OK"
+		set_global_flag = building
+	}	
+}
+
+########## FORNOST ###########
+## Rebuilding of Fornost Events ##
+character_event = {
+	id = buildings.1
+	title = "EVTTITbuildings.1"
+	desc = "EVTDESCbuildings.1"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.1" ## I'll rebuild Fornost Erain
+		set_global_flag = fornost_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.2 days = 30 } # Rebuilding of Fornost Erain - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.1"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of Fornost Events - First Step - Wolves and Wights into the ruins ##
+character_event = {
+	id = buildings.2
+	title = "EVTTITbuildings.2"
+	desc = "EVTDESCbuildings.2"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.2" ## I'll slain these beasts
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.3 days = 30 } # Rebuilding of Fornost Erain - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.4 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.2"
+		trigger = { ai = no }
+		clr_global_flag = fornost_rebuilded
+	}		
+}
+
+## Rebuilding of Fornost Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.3
+	title = "EVTTITbuildings.3"
+	desc = "EVTDESCbuildings.3"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.3" ## I'll clean the land
+		random_list = {
+			15 = {
+				FROM = {
+					character_event = { id = buildings.5 days = 30 } # Rebuilding of Fornost Erain - Second Step
+				}
+			}
+			15 = {
+				FROM = {
+					character_event = { id = buildings.6 days = 45 } # Fail
+				}
+			}	
+			70 = {
+				FROM = {
+					character_event = { id = buildings.7 days = 25} # You found something into the ruins...
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.3"
+		trigger = { ai = no }
+		clr_global_flag = fornost_rebuilded
+	}		
+}
+
+## Rebuilding of Fornost Events - First Fail ##
+character_event = {
+	id = buildings.4
+	title = "EVTTITbuildings.4"
+	desc = "EVTDESCbuildings.4"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.4" ## Ok.
+		clr_global_flag = fornost_rebuilded
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Fornost Events - Ruins cleaned ##
+character_event = {
+	id = buildings.5
+	title = "EVTTITbuildings.5"
+	desc = "EVTDESCbuildings.5"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = "EVTOPTAbuildings.5" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = fornost_rebuilded_finally		
+		b_citadel_fornost = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}
+		b_gates_norbury = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}
+		b_ost_nuaran = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}
+		b_tower_of_amlaith = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}
+		b_hall_of_arveleg = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}		
+		b_minas_vrun = {
+			remove_building = ca_fornost_ruins
+			remove_building = ct_fornost_ruins
+		}			
+		c_fornost = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+				}
+		}
+	}		
+}
+
+## Rebuilding of Fornost Events - Fail ##
+character_event = {
+	id = buildings.6
+	title = "EVTTITbuildings.6"
+	desc = "EVTDESCbuildings.6"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.6" ## Ok.
+		clr_global_flag = fornost_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Fornost Events - You found something into the ruins ##
+character_event = {
+	id = buildings.7
+	title = "EVTTITbuildings.7"
+	desc = "EVTDESCbuildings.7"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.7" ## Great !
+		add_trait = arvedui_armor
+		character_event = { id = buildings.5 days = 10 }		
+	}		
+}
+
+######### ANNUMINAS ###########
+## Rebuilding of Annuminas Events ##
+character_event = {
+	id = buildings.8
+	title = "EVTTITbuildings.8"
+	desc = "EVTDESCbuildings.8"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.8" ## I'll rebuild annuminas Erain
+		set_global_flag = annuminas_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.9 days = 20 } # Rebuilding of annuminas Erain - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.8"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of annuminas Events - First Step - Wolves and Wights into the ruins ##
+character_event = {
+	id = buildings.9
+	title = "EVTTITbuildings.9"
+	desc = "EVTDESCbuildings.9"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.9" ## I'll slain these beasts
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.10 days = 30 } # Rebuilding of annuminas - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.11 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.9"
+		trigger = { ai = no }
+		clr_global_flag = annuminas_rebuilded
+	}		
+}
+
+## Rebuilding of annuminas Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.10
+	title = "EVTTITbuildings.10"
+	desc = "EVTDESCbuildings.10"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.10" ## I'll clean the land
+		random_list = {
+			15 = {
+				FROM = {
+					character_event = { id = buildings.12 days = 30 } # Rebuilding of annuminas Erain - Second Step
+				}
+			}
+			15 = {
+				FROM = {
+					character_event = { id = buildings.13 days = 45 } # Fail
+				}
+			}	
+			70 = {
+				FROM = {
+					character_event = { id = buildings.14 days = 25 } # You found something into the ruins...
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.10"
+		trigger = { ai = no }
+		clr_global_flag = annuminas_rebuilded
+	}		
+}
+
+## Rebuilding of annuminas Events - First Fail ##
+character_event = {
+	id = buildings.11
+	title = "EVTTITbuildings.11"
+	desc = "EVTDESCbuildings.11"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.11" ## Ok.
+		clr_global_flag = annuminas_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of annuminas Events - Ruins cleaned ##
+character_event = {
+	id = buildings.12
+	title = "EVTTITbuildings.12"
+	desc = "EVTDESCbuildings.12"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.12" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = annuminas_rebuilded_finally	
+		
+		b_annuminas = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}
+		b_adannon = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}
+		b_ariant = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}
+		b_clorhir = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}
+		b_gaerannon = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}		
+		b_menelband = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}	
+		b_tyl_annun = {
+			remove_building = ca_annuminas_ruins
+			remove_building = ct_annuminas_ruins
+		}			
+		c_annuminas = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+	}		
+}
+
+## Rebuilding of annuminas Events - Fail ##
+character_event = {
+	id = buildings.13
+	title = "EVTTITbuildings.13"
+	desc = "EVTDESCbuildings.13"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.13" ## Ok.
+		clr_global_flag = annuminas_rebuilded
+		random_list = {
+			10 = {
+			}
+			90 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of annuminas Events - You found something into the ruins ##
+character_event = {
+	id = buildings.14
+	title = "EVTTITbuildings.14"
+	desc = "EVTDESCbuildings.14"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.14" ## Great !
+		add_trait = isildur_throne
+		character_event = { id = buildings.12 days = 10 }		
+	}		
+}
+
+
+######## The Bridge of Tharbad #########
+#### Automatic event to get the Bridge of Tharbad during Arnorian period ####
+character_event = {
+	id = buildings.15
+	title = "EVTTITbuildings.15"
+	desc = "EVTDESCbuildings.15"
+	picture = GFX_good	
+
+	trigger = {
+		has_landed_title = c_tharbad
+		NOT = { has_global_flag = tharbad_bridge }
+		age = 1
+		NOT = { year = 10318 }
+		culture_group = culture_group_numenorean
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "EVTOPTAbuildings.15"
+		set_global_flag = tharbad_bridge
+		b_tharbad = {
+			add_building = ca_tharbad_bridge	
+		}
+		prestige = 50
+	}	
+}
+
+## Rebuilding of The Bridge of Tharbad ##
+character_event = {
+	id = buildings.16
+	title = "EVTTITbuildings.16"
+	desc = "EVTDESCbuildings.16"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.16" ## I'll rebuild the Bridge
+		set_global_flag = tharbad_bridge_rebuilded
+		wealth = -450
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.17 days = 30 } # Rebuilding of Bridge of Tharbad
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.18 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.16"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of The Bridge of Tharbad - First Step ##
+character_event = {
+	id = buildings.17
+	title = "EVTTITbuildings.17"
+	desc = "EVTDESCbuildings.17"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.17" ## I'm proud of this Bridge.
+		set_global_flag = tharbad_bridge
+		clr_global_flag = tharbad_bridge_rebuilded
+		b_tharbad = {
+			add_building = ca_tharbad_bridge	
+		}
+	}		
+}
+
+## Rebuilding of The Bridge of Tharbad - Second test##
+character_event = {
+	id = buildings.18
+	title = "EVTTITbuildings.18"
+	desc = "EVTDESCbuildings.18"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.18" ## I'll rebuild the bridge
+		set_global_flag = tharbad_bridge_rebuilded
+		wealth = -350
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.17 days = 30 } # Rebuilding of Bridge of Tharbad
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.19 days = 45 } # Second Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.18"
+		clr_global_flag = tharbad_bridge_rebuilded
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of The Bridge of Tharbad - Fail ##
+character_event = {
+	id = buildings.19
+	title = "EVTTITbuildings.19"
+	desc = "EVTDESCbuildings.19"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.19"
+		clr_global_flag = tharbad_bridge_rebuilded
+		trigger = { ai = no }
+	}		
+}
+
+
+
+
+########## EDHELLOND ###########
+## Rebuilding of Edhellond Events ##
+character_event = {
+	id = buildings.20
+	title = "EVTTITbuildings.20"
+	desc = "EVTDESCbuildings.20"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.20" ## I'll rebuild Edhellond
+		set_global_flag = edhellond_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.21 days = 30 } # Rebuilding of Edhellond - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.20"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of Edhellond - First Step - Flood ! ##
+character_event = {
+	id = buildings.21
+	title = "EVTTITbuildings.21"
+	desc = "EVTDESCbuildings.21"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.21" ## I need to build a dam.
+		wealth = -50
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.22 days = 30 } # Rebuilding of Edhellond - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.23 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.21"
+		trigger = { ai = no }
+		clr_global_flag = edhellond_rebuilded
+	}		
+}
+
+## Rebuilding of edhellond Events - Second Step - Clean the Haven ##
+character_event = {
+	id = buildings.22
+	title = "EVTTITbuildings.22"
+	desc = "EVTDESCbuildings.22"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.22" ## I'll clean the land
+		random_list = {
+			80 = {
+				FROM = {
+					character_event = { id = buildings.24 days = 30 } # Rebuilding of Edhllond - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = buildings.25 days = 45 } # Fail
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.22"
+		trigger = { ai = no }
+		clr_global_flag = edhellond_rebuilded
+	}		
+}
+
+## Rebuilding of Edhellond Events - First Fail ##
+character_event = {
+	id = buildings.23
+	title = "EVTTITbuildings.23"
+	desc = "EVTDESCbuildings.23"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.23" ## Ok.
+		clr_global_flag = edhellond_rebuilded
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = depressed
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Edhellond Events - Ruins cleaned ##
+character_event = {
+	id = buildings.24
+	title = "EVTTITbuildings.24"
+	desc = "EVTDESCbuildings.24"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.24" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = edhellond_rebuilded_finally		
+		b_edhellond = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}
+		b_lond_cobas = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}
+		b_tirith_cobas = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}
+		b_annubad = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}
+		b_silagond = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}	
+		b_sirionad = {
+			remove_building = ca_edhellond_ruins
+			remove_building = ct_edhellond_ruins
+		}			
+		c_edhellond = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+				}
+		}
+	}		
+}
+
+## Rebuilding of Edhellond Events - Fail ##
+character_event = {
+	id = buildings.25
+	title = "EVTTITbuildings.25"
+	desc = "EVTDESCbuildings.25"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.25" ## Ok.
+		clr_global_flag = edhellond_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = depressed
+			}				
+		}
+	}		
+}
+
+
+
+######### OSGILIATH ###########
+## Rebuilding of Osgiliath Events ##
+character_event = {
+	id = buildings.26
+	title = "EVTTITbuildings.26"
+	desc = "EVTDESCbuildings.26"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.26" ## I'll rebuild osgiliath	
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.27 days = 20 } # Rebuilding of osgiliath - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.26"
+		trigger = { ai = no }
+		clr_character_flag = east_osgiliath
+		clr_character_flag = osgiliath_west		
+	}		
+}
+
+## Rebuilding of osgiliath Events - First Step - Looters ##
+character_event = {
+	id = buildings.27
+	title = "EVTTITbuildings.27"
+	desc = "EVTDESCbuildings.27"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.27" ## I'll slain these beasts
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.28 days = 30 } # Rebuilding of osgiliath - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.29 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.9"
+		trigger = { ai = no }
+		clr_character_flag = east_osgiliath
+		clr_character_flag = osgiliath_west
+	}		
+}
+
+## Rebuilding of osgiliath Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.28
+	title = "EVTTITbuildings.28"
+	desc = "EVTDESCbuildings.28"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.28" ## I'll clean the land
+		random_list = {
+			10 = {
+				FROM = {
+					character_event = { id = buildings.30 days = 30 } # Rebuilding of osgiliath - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = buildings.31 days = 45 } # Fail
+				}
+			}	
+			70 = {
+				FROM = {
+					if = {
+						limit = {
+							palantir_osgiliath = { NOT = { is_alive = yes } }
+						}						
+						character_event = { id = buildings.32 days = 25 } # You found something into the ruins...
+					}
+					if = {
+						limit = {
+							palantir_osgiliath = { is_alive = yes }
+						}						
+						character_event = { id = buildings.30 days = 25 } # You found something into the ruins...
+					}					
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.10"
+		trigger = { ai = no }
+		clr_character_flag = east_osgiliath
+		clr_character_flag = osgiliath_west
+	}		
+}
+
+## Rebuilding of osgiliath Events - First Fail ##
+character_event = {
+	id = buildings.29
+	title = "EVTTITbuildings.29"
+	desc = "EVTDESCbuildings.29"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.29" ## Ok.
+		clr_character_flag = east_osgiliath
+		clr_character_flag = osgiliath_west
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of osgiliath Events - Ruins cleaned ##
+character_event = {
+	id = buildings.30
+	title = "EVTTITbuildings.30"
+	desc = "EVTDESCbuildings.30"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.30" ## Great !
+		prestige = 100
+		piety = 100
+		if = {
+			limit = {
+				has_character_flag = osgiliath_west
+				NOT = { has_global_flag = west_osgiliath_rebuilded_finally }
+			}
+			set_global_flag = west_osgiliath_rebuilded_finally	
+			b_minasnumen = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_golden_gate = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_bar_annabon = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_lumbar_quays = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_rozinbarad = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}		
+			b_forum_of_turambar = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}	
+			b_belthil = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}			
+			c_west_osgiliath = {
+				location = {
+					culture = culture_gondorian 
+					religion = ROOT
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = east_osgiliath
+				NOT = { has_global_flag = east_osgiliath_rebuilded_finally }
+			}
+			set_global_flag = east_osgiliath_rebuilded_finally					
+			b_dome_of_the_stars = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_tol_gilthoniel = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_gate_of_tulkas = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_silver_gate = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}
+			b_menelvagor_quays = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}		
+			b_bar_raudh = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}	
+			b_abad_atanatar = {
+				remove_building = ca_osgiliath_ruins
+				remove_building = ct_osgiliath_ruins
+			}			
+			c_east_osgiliath = {
+				location = {
+					culture = culture_gondorian
+					religion = ROOT
+				}
+			}
+		}		
+		clr_character_flag = osgiliath_west		
+		clr_character_flag = east_osgiliath
+	}		
+}
+
+## Rebuilding of osgiliath Events - Fail ##
+character_event = {
+	id = buildings.31
+	title = "EVTTITbuildings.31"
+	desc = "EVTDESCbuildings.31"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.31" ## Ok.
+		clr_character_flag = east_osgiliath
+		clr_character_flag = osgiliath_west
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of osgiliath Events - You found something into the ruins ##
+character_event = {
+	id = buildings.32
+	title = "EVTTITbuildings.32"
+	desc = "EVTDESCbuildings.32"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.32" ## Great !
+		add_trait = palantir_osgiliath
+		character_event = { id = buildings.30 days = 10 }		
+	}		
+}
+######## Amon Sûl #########
+## Rebuilding of Amon Sûl ##
+character_event = {
+	id = buildings.33
+	title = "EVTTITbuildings.33"
+	desc = "EVTDESCbuildings.33"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.33" ## I'll rebuild Amon Sûl
+		set_global_flag = amon_sul_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.34 days = 30 } # Rebuilding of Amon Sûl - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.33"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of Amon Sûl Events - First Step - Wolves and Wights into the ruins ##
+character_event = {
+	id = buildings.34
+	title = "EVTTITbuildings.34"
+	desc = "EVTDESCbuildings.34"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.34" ## I'll slain these beasts
+		random_list = {
+			60 = {
+				FROM = {
+					character_event = { id = buildings.35 days = 30 } # Rebuilding of Amon Sûl - Second Step
+				}
+			}
+			40 = {
+				FROM = {
+					character_event = { id = buildings.36 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.34"
+		trigger = { ai = no }
+		clr_global_flag = amon_sul_rebuilded
+	}		
+}
+
+## Rebuilding of Amon Sûl Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.35
+	title = "EVTTITbuildings.35"
+	desc = "EVTDESCbuildings.35"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.35" ## I'll clean the land
+		random_list = {
+			60 = {
+				FROM = {
+					character_event = { id = buildings.37 days = 30 } # Rebuilding of Amon Sûl - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = buildings.38 days = 45 } # Fail
+				}
+			}	
+			20 = {
+				FROM = {
+					character_event = { id = buildings.39 days = 25} # You found something into the ruins...
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.35"
+		trigger = { ai = no }
+		clr_global_flag = amon_sul_rebuilded
+	}		
+}
+
+## Rebuilding of Amon Sûl Events - First Fail ##
+character_event = {
+	id = buildings.36
+	title = "EVTTITbuildings.36"
+	desc = "EVTDESCbuildings.36"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.36" ## Ok.
+		clr_global_flag = amon_sul_rebuilded
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Amon Sûl Events - Ruins cleaned ##
+character_event = {
+	id = buildings.37
+	title = "EVTTITbuildings.37"
+	desc = "EVTDESCbuildings.37"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = "EVTOPTAbuildings.37" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = amon_sul_rebuilded_finally		
+		b_amon_sul = {
+			remove_building = ca_amon_sul_ruins
+			remove_building = ct_amon_sul_ruins
+			add_building = ca_amon_sul
+		}
+		b_ost_alagos = {
+			remove_building = ca_amon_sul_ruins
+			remove_building = ct_amon_sul_ruins
+		}
+		b_ost_laden = {
+			remove_building = ca_amon_sul_ruins
+			remove_building = ct_amon_sul_ruins
+		}
+		b_ost_laden = {
+			remove_building = ca_amon_sul_ruins
+			remove_building = ct_amon_sul_ruins
+		}
+		b_gondrinn = {
+			remove_building = ca_amon_sul_ruins
+			remove_building = ct_amon_sul_ruins
+		}		
+					
+		c_weather_hills = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+				}
+		}
+	}		
+}
+
+## Rebuilding of Amon Sûl Events - Fail ##
+character_event = {
+	id = buildings.38
+	title = "EVTTITbuildings.38"
+	desc = "EVTDESCbuildings.38"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.38" ## Ok.
+		clr_global_flag = amon_sul_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Amon Sûl Events - You found something into the ruins ##
+character_event = {
+	id = buildings.39
+	title = "EVTTITbuildings.39"
+	desc = "EVTDESCbuildings.39"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.39" ## Great !
+		add_trait = numenorean_helmet
+		character_event = { id = buildings.37 days = 10 }		
+	}		
+}
+########## OST-IN-EDHIL ###########
+## Rebuilding of Ost-in-Edhil Events ##
+character_event = {
+	id = buildings.120
+	title = "EVTTITbuildings.120"
+	desc = "EVTDESCbuildings.120"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.120" ## I'll rebuild Ost-in-Edhil
+		set_global_flag = gwaith_mirdain_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.121 days = 30 } # Rebuilding of Ost-in-Edhil - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.120"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of Ost-in-Edhil - First Step ##
+character_event = {
+	id = buildings.121
+	title = "EVTTITbuildings.121"
+	desc = "EVTDESCbuildings.121"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.121" 
+		wealth = -50
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.122 days = 30 } # Rebuilding of Ost-in-Edhil - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.123 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.121"
+		trigger = { ai = no }
+		clr_global_flag = gwaith_mirdain_rebuilded
+	}		
+}
+
+## Rebuilding of Ost-in-Edhil Events - Second Step ##
+character_event = {
+	id = buildings.122
+	title = "EVTTITbuildings.122"
+	desc = "EVTDESCbuildings.122"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.122" ## I'll clean the land
+		random_list = {
+			80 = {
+				FROM = {
+					character_event = { id = buildings.124 days = 30 } # Rebuilding of Ost-in-Edhil - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = buildings.125 days = 45 } # Fail
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.122"
+		trigger = { ai = no }
+		clr_global_flag = gwaith_mirdain_rebuilded
+	}		
+}
+
+## Rebuilding of Ost-in-Edhil Events - First Fail ##
+character_event = {
+	id = buildings.123
+	title = "EVTTITbuildings.123"
+	desc = "EVTDESCbuildings.123"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.123" ## Ok.
+		clr_global_flag = gwaith_mirdain_rebuilded
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = depressed
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Ost-in-Edhil Events - Ruins cleaned ##
+character_event = {
+	id = buildings.124
+	title = "EVTTITbuildings.124"
+	desc = "EVTDESCbuildings.124"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.124" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = gwaith_mirdain_rebuilded		
+		b_ostinedhil = {
+			add_building = ca_gwaith_i_mirdain
+			}
+		b_dor_telperion = {
+			add_building = ct_gwaith_i_mirdain
+			}
+		b_amon_alamir = {
+			add_building = ca_gwaith_i_mirdain
+			}
+		b_teremil = {
+			add_building = ct_gwaith_i_mirdain
+			}
+		b_casarel = {
+			add_building = ct_gwaith_i_mirdain
+			}
+		b_amunir = {
+			add_building = ct_gwaith_i_mirdain
+			}			
+		c_south_eregio = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}		
+	}
+	}
+
+## Rebuilding of Ost-in-Edhil Events - Fail ##
+character_event = {
+	id = buildings.125
+	title = "EVTTITbuildings.125"
+	desc = "EVTDESCbuildings.125"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.125" ## Ok.
+		clr_global_flag = ost_in_edhil_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = depressed
+			}				
+		}
+	}		
+}
+
+
+########## TYRN GORTHRAD ###########
+## Cleansing of the barrow-downs Events ##
+character_event = {
+	id = buildings.126
+	title = "EVTTITbuildings.126"
+	desc = "EVTDESCbuildings.126"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.126" ## I'll cleanse the borrow-downs
+		set_global_flag = cleansing_barrows
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.127 days = 30 } # Cleansing of the barrow-downs Events - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.126"
+		trigger = { ai = no }
+	}		
+}
+
+## Cleansing of the barrow-downs Events - First Step - Wolves and Wights into the ruins ##
+character_event = {
+	id = buildings.127
+	title = "EVTTITbuildings.127"
+	desc = "EVTDESCbuildings.127"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.127" ## I'll slain these beasts
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.128 days = 30 } # Cleansing of the barrow-downs Events - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.129 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.127"
+		trigger = { ai = no }
+		clr_global_flag = cleansing_barrows
+	}		
+}
+
+## Cleansing of the barrow-downs Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.128
+	title = "EVTTITbuildings.128"
+	desc = "EVTDESCbuildings.128"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.128" ## I'll clean the land
+		random_list = {
+			15 = {
+				FROM = {
+					character_event = { id = buildings.130 days = 30 } # Cleansing of the barrow-downs Events - Second Step
+				}
+			}
+			15 = {
+				FROM = {
+					character_event = { id = buildings.131 days = 45 } # Fail
+				}
+			}	
+			70 = {
+				FROM = {
+					character_event = { id = buildings.132 days = 25} # You found something into the ruins...
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.128"
+		trigger = { ai = no }
+		clr_global_flag = cleansing_barrows
+	}		
+}
+
+## Cleansing of the barrow-downs Events - First Fail ##
+character_event = {
+	id = buildings.129
+	title = "EVTTITbuildings.129"
+	desc = "EVTDESCbuildings.129"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.129" ## Ok.
+		clr_global_flag = cleansing_barrows
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Cleansing of the barrow-downs Events - Ruins cleaned ##
+character_event = {
+	id = buildings.130
+	title = "EVTTITbuildings.130"
+	desc = "EVTDESCbuildings.130"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = "EVTOPTAbuildings.130" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = barrows_cleansed		
+		b_tyrn_gorthad = {
+			remove_building = ca_barrow_downs
+			remove_building = ct_barrow_downs
+		}
+		b_bar_en_dindol = {
+			remove_building = ca_barrow_downs
+			remove_building = ct_barrow_downs
+		}			
+		c_barrow_downs = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+				}
+		}
+	}		
+}
+
+## Cleansing of the barrow-downs Events - Fail ##
+character_event = {
+	id = buildings.131
+	title = "EVTTITbuildings.131"
+	desc = "EVTDESCbuildings.131"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.131" ## Ok.
+		clr_global_flag = cleansing_barrows
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+## Cleansing of the barrow-downs Events - You found something into the barrows ##
+character_event = {
+	id = buildings.132
+	title = "EVTTITbuildings.132"
+	desc = "EVTDESCbuildings.132"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.132" ## Great !
+		add_trait = daggerwesternesse
+		character_event = { id = buildings.130 days = 10 }		
+	}		
+}
+
+########## MINAS ITHIL ###########
+## Rebuilding of Minas Ithil Events ##
+character_event = {
+	id = buildings.133
+	title = "EVTTITbuildings.133"
+	desc = "EVTDESCbuildings.133"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.133" ## I'll rebuild minas_ithil 
+		set_global_flag = minas_ithil_rebuilded
+		wealth = -150
+		FROM = {
+			character_event = { id = buildings.134 days = 30 } # Rebuilding of minas_ithil - First Step
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.133"
+		trigger = { ai = no }
+	}		
+}
+
+## Rebuilding of Minas Ithill Events - First Step - Wolves and Wights into the ruins ##
+character_event = {
+	id = buildings.134
+	title = "EVTTITbuildings.134"
+	desc = "EVTDESCbuildings.134"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.134" ## I'll slain these beasts
+		random_list = {
+			70 = {
+				FROM = {
+					character_event = { id = buildings.135 days = 30 } # Rebuilding of Minas Ithil - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = buildings.136 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.134"
+		trigger = { ai = no }
+		clr_global_flag = minas_ithil_rebuilded
+	}		
+}
+
+## Rebuilding of Minas Ithil Events - Second Step - Clean the Rubbles ##
+character_event = {
+	id = buildings.135
+	title = "EVTTITbuildings.135"
+	desc = "EVTDESCbuildings.135"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.135" ## I'll clean the land
+		random_list = {
+			15 = {
+				FROM = {
+					character_event = { id = buildings.137 days = 30 } # Rebuilding of Minas Ithil - Second Step
+				}
+			}
+			15 = {
+				FROM = {
+					character_event = { id = buildings.138 days = 45 } # Fail
+				}
+			}	
+			70 = {
+				FROM = {
+					character_event = { id = buildings.139 days = 25} # You found something into the ruins...
+				}
+			}				
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuildings.135"
+		trigger = { ai = no }
+		clr_global_flag = minas_ithil_rebuilded
+	}		
+}
+
+## Rebuilding of Minas Ithil Events - First Fail ##
+character_event = {
+	id = buildings.136
+	title = "EVTTITbuildings.136"
+	desc = "EVTDESCbuildings.136"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.136" ## Ok.
+		clr_global_flag = minas_ithil_rebuilded
+		random_list = {
+			70 = {
+			}
+			30 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Minas Ithil Events - Ruins cleaned ##
+character_event = {
+	id = buildings.137
+	title = "EVTTITbuildings.137"
+	desc = "EVTDESCbuildings.137"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = "EVTOPTAbuildings.137" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = minas_ithil_rebuilded_finally		
+		b_minas_morgul = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}
+		b_morgul_bridge = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}
+		b_gate_of_morgul = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}
+		b_moon_courtyard = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}
+		b_tower_of_moon = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}		
+		b_ringwraith_residence = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+		}	
+		b_hall_witchking = {
+			remove_building = ca_minas_ithil_ruins
+			remove_building = ct_minas_ithil_ruins
+				}
+		c_morgul = {
+			location = {
+				culture = culture_gondorian
+				religion = ROOT
+				}
+		}
+	}		
+}
+
+## Rebuilding of Minas Ithil Events - Fail ##
+character_event = {
+	id = buildings.138
+	title = "EVTTITbuildings.138"
+	desc = "EVTDESCbuildings.138"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.138" ## Ok.
+		clr_global_flag = minas_ithil_rebuilded
+		random_list = {
+			80 = {
+			}
+			20 = {
+				add_trait = wounded
+			}				
+		}
+	}		
+}
+
+
+## Rebuilding of Minas Ithil Events - You found something into the ruins ##
+character_event = {
+	id = buildings.139
+	title = "EVTTITbuildings.139"
+	desc = "EVTDESCbuildings.139"
+	picture = GFX_evt_rebuilding
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuildings.139" ## Great !
+		add_trait = palantir_ithil
+		character_event = { id = buildings.137 days = 10 }	
+		hide_window = {
+		any_character = {
+			limit = {
+				trait = palantir_ithil
+				NOT = { ROOT }
+			}
+			remove_trait = palantir_ithil
+		}
+		}
+		
+			
+	}		
+}
+
+
+
+

@@ -1,0 +1,91 @@
+targetted_decisions = {
+
+send_son_black_serpent = {
+		ai_target_filter = dynasty
+		filter = dynasty
+		
+		from_potential = {
+			is_ruler = yes		
+		}
+		
+		potential = {
+			is_child_of = FROM
+			is_female = no
+			is_primary_heir = no
+			culture = culture_haradrim		
+			NOT = { trait = black_serpent }
+		}
+		
+		allow = {
+			FROM = { 
+				prestige = 40 
+				num_of_children = 3
+				NOT = { trait = incapable }
+			}
+			is_liege_or_above = FROM
+			is_ruler = no
+			age = 16
+			is_primary_heir = no
+			prisoner = no
+			NOT = { trait = incapable }
+		}
+		
+		effect = {
+			FROM = { prestige = -50 }
+			add_trait = black_serpent
+			recalc_succession = yes
+			prestige = 200
+			hidden_tooltip = {
+				FROM = { character_event = { id = blackserpent.100 } } 
+			}		
+		}
+		
+		ai_will_do = { 
+			factor = 0.05
+			modifier = {
+				factor = 0
+				FROM = {
+					OR = {
+						trait = brave
+						trait = cynical
+						trait = cruel
+						trait = strong
+						trait = proud
+						opinion = { who = ROOT value = 50 }
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+decisions = {
+
+	establish_black_serpent = {
+		is_high_prio = yes
+		potential = {
+			has_landed_title = e_harad
+			NOT = { has_global_flag = black_serpent_initialising }
+			NOT = { has_global_flag = legionblackserpent }
+		}
+		allow = {
+			has_landed_title = e_harad
+			prestige = 250
+			piety = 200
+			wealth = 200
+		}
+		effect = {
+			set_global_flag = black_serpent_initialising
+			character_event = { id = blackserpent.0 tooltip = "TOOLTIPESTABLISHBS" }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}

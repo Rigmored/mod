@@ -1,0 +1,232 @@
+namespace = indarnorgondor
+
+# Rohan is holded by a Rohirrim - King of Gondor is informed
+narrative_event = {
+	id = indarnorgondor.0
+	title = "EVTTITindarnorgondor.0"
+	desc = "EVTDESCindarnorgondor.0"
+	picture = GFX_oath_of_eorl
+	
+	trigger = {
+		has_landed_title = e_gondor
+		culture_group = culture_group_numenorean
+		year = 10853
+		any_playable_ruler = {
+			has_landed_title = k_rohan
+			NOT = { character = ROOT }
+			culture = culture_rohirrim
+		}
+		NOT = { has_global_flag = independancerohan }
+		NOT = { has_global_flag = gondorreclaimrohan }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.0 # I'll protect the independance of Rohan.
+		ai_chance = { factor = 100 }
+		set_global_flag = independancerohan
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			narrative_event = { id = indarnorgondor.1 }
+		}
+		random_list = {
+			50 = {
+				add_trait = just
+			}
+			30 = {
+				add_trait = charitable
+			}
+			20 = {
+				add_trait = kind
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTBindarnorgondor.0 # They should be my vassals.
+		ai_chance = { factor = 0 }
+		set_global_flag = gondorreclaimrohan
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			narrative_event = { id = indarnorgondor.2 }
+		}		
+	}
+	
+	option = {
+		name = EVTOPTCindarnorgondor.0 # This land remains to my kin.
+		ai_chance = { factor = 0 }
+		set_global_flag = gondorreclaimrohan
+		set_character_flag = broken_oath_eorl
+		k_rohan = {
+			add_pressed_claim = ROOT
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			narrative_event = { id = indarnorgondor.3 }
+		}	
+		random_list = {
+			50 = {
+				add_trait = deceitful
+			}
+			30 = {
+				add_trait = proud
+			}
+			20 = {
+				add_trait = envious
+			}
+		}		
+	}	
+}
+
+### Rohan won't be de jure part of Gondor anymore.
+narrative_event = {
+	id = indarnorgondor.1
+	title = "EVTTITindarnorgondor.1"
+	desc = "EVTDESCindarnorgondor.1"
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.1 # Thanks you, King of Gondor.
+		opinion = { modifier = protected_independance who = FROM years = 20 }
+		add_friend = FROM
+		k_rohan = {
+			de_jure_liege = k_rohan
+		}
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = k_rohan
+				}
+			}
+		}
+	}
+}
+
+
+### Rohan is asked to join the Gondor.
+narrative_event = {
+	id = indarnorgondor.2
+	title = "EVTTITindarnorgondor.2"
+	desc = "EVTDESCindarnorgondor.2"
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.2 # That's a just request.	
+		ai_chance = { factor = 30 }			
+		set_defacto_liege = FROM
+		FROM = {
+			character_event = { id = indarnorgondor.4 }
+		}
+	}
+	
+	option = {
+		name = EVTOPTBindarnorgondor.2 # What about the Oath of Eorl?	
+		ai_chance = { factor = 70 }	
+		FROM = {
+			character_event = { id = indarnorgondor.5 }
+		}
+	}	
+}
+
+### Rohan is alerted of the ambitions of Gondor.
+narrative_event = {
+	id = indarnorgondor.3
+	title = "EVTTITindarnorgondor.3"
+	desc = "EVTDESCindarnorgondor.3"
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.3 # I see.	
+	}
+}
+
+### Rohan join the Gondor.
+character_event = {
+	id = indarnorgondor.4
+	title = "EVTTITindarnorgondor.4"
+	desc = "EVTDESCindarnorgondor.4"
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.4 # Perfect.	
+	}
+}
+
+### Rohan is asked to join the Gondor.
+character_event = {
+	id = indarnorgondor.5
+	title = "EVTTITindarnorgondor.5"
+	desc = "EVTDESCindarnorgondor.5"
+	picture = GFX_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAindarnorgondor.5 # I'll respect the Oath of Eorl.	
+		ai_chance = { factor = 70 }		
+		set_global_flag = independancerohan
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			narrative_event = { id = indarnorgondor.1 }
+		}
+		random_list = {
+			50 = {
+				add_trait = just
+			}
+			30 = {
+				add_trait = charitable
+			}
+			20 = {
+				add_trait = kind
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTBindarnorgondor.5 # This land is part of my realm.	
+		ai_chance = { factor = 30 }
+		set_character_flag = broken_oath_eorl
+		k_rohan = {
+			add_pressed_claim = ROOT
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			narrative_event = { id = indarnorgondor.3 }
+		}	
+		random_list = {
+			50 = {
+				add_trait = deceitful
+			}
+			30 = {
+				add_trait = proud
+			}
+			20 = {
+				add_trait = envious
+			}
+		}
+	}	
+}

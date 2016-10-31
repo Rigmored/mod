@@ -1,0 +1,330 @@
+##Halfling buildings##
+
+##Castle buildings##
+castle = { 
+
+	ca_mushroom = {
+		desc = ca_mushroom_desc
+	
+		gold_cost = 150
+		build_time = 547
+		tax_income = 1
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_halfling
+   		}
+	}
+
+	ca_tobacco = {
+		desc = ca_tobacco_desc
+	
+		gold_cost = 150
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+	    	culture_group = culture_group_halfling
+       	}
+	}
+	
+	ca_halflinginn = {
+		desc = ca_halflinginn_desc
+		
+		gold_cost = 150
+		build_time = 547
+		tax_income = 1
+		land_morale = 0.1
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+
+	ca_militia_barracks_1halfling = {
+		desc = ca_militia_barracks_1halfling_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 100
+		potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_militia_barracks_2halfling = {
+		desc = ca_militia_barracks_1halfling_desc
+		upgrades_from = ca_militia_barracks_1halfling
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_1halfling = {
+		desc = ca_town_1halfling_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 100
+		potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_2halfling = {
+		desc = ca_town_1halfling_desc
+
+		upgrades_from = ca_town_1halfling
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2
+		ai_creation_factor = 99
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_3halfling = {
+		desc = ca_town_1halfling_desc
+		upgrades_from = ca_town_2halfling
+		gold_cost = 200
+		build_time = 730
+		tax_income = 2
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_4halfling = {
+		desc = ca_town_1halfling_desc
+		
+		upgrades_from = ca_town_3halfling
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 2
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_5halfling = {
+		desc = ca_town_1halfling_desc
+		
+		upgrades_from = ca_town_4halfling
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+	
+	ca_town_6halfling = {
+		desc = ca_town_1halfling_desc
+		
+		upgrades_from = ca_town_5halfling
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+
+	ca_prancing_pony = { ### The Prancing Pony
+		desc = ca_prancing_pony_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = 4
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+            FROMFROM = { title = b_bree }
+			OR = {
+				culture_group = culture_group_numenorean
+				culture = culture_breelander
+				culture_group = culture_group_halfling
+			}
+        	}
+	}	
+
+}
+
+##City buildings##
+city = {
+	ct_mushroom = {
+		desc = ct_mushroom_desc
+	
+		gold_cost = 100
+		build_time = 547
+		tax_income = 1
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+	    	culture_group = culture_group_halfling
+       	}
+	}
+
+	ct_tobacco = {
+		desc = ct_tobacco_desc
+		
+		gold_cost = 100
+		build_time = 547
+		tax_income = 1
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling
+            		}
+	}
+
+	ct_barracks_1halfling = {
+		desc = ct_barracks_1halfling_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling 
+            }
+	}
+	ct_barracks_2halfling = {
+		desc = ct_barracks_1halfling_desc
+
+		upgrades_from = ct_barracks_1halfling
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling 
+            }
+	}
+	ct_barracks_3halfling = {
+		desc = ct_barracks_1halfling_desc
+		
+		upgrades_from = ct_barracks_2halfling
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_halfling 
+            }
+	}
+
+### Inns for Hobbits and Breelander ###
+
+	ct_inn1 = {
+		desc = ct_inn1_desc
+
+		gold_cost = 250
+		build_time = 365
+		tax_income = 2
+		ai_creation_factor = 93
+        potential = {
+           	has_global_flag = building
+			FROM = {
+				OR = {
+					culture_group = culture_group_halfling 
+					culture = culture_breelander
+				}
+           	}
+		}
+	}
+	ct_inn2 = {
+		desc = ct_inn2_desc
+		
+		gold_cost = 300
+		build_time = 730
+		upgrades_from = ct_inn1			
+		tax_income = 3
+		light_infantry = 30
+		archers = 10
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			FROM = {
+				OR = {
+					culture_group = culture_group_halfling 
+					culture = culture_breelander
+				}
+            		}
+		}	
+	}
+	ct_inn3 = {
+		desc = ct_inn3_desc
+		
+		gold_cost = 400
+		build_time = 920
+		upgrades_from = ct_inn2		
+		tax_income = 5
+		light_infantry = 50
+		archers = 40
+		ai_creation_factor = 93
+        potential = {
+            has_global_flag = building
+			FROM = {
+				OR = {
+					culture_group = culture_group_halfling 
+					culture = culture_breelander
+				}
+			}
+		}
+	}
+
+	ct_prancing_pony = { ### The Prancing Pony
+		desc = ct_prancing_pony_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = 4
+		garrison_size = 1.2			
+		ai_creation_factor = 86			
+        potential = {
+            FROMFROM = { title = b_bree }
+			OR = {
+				culture_group = culture_group_numenorean
+				culture = culture_breelander
+				culture_group = culture_group_halfling
+			}
+       		}
+	}		
+
+
+}
+
+

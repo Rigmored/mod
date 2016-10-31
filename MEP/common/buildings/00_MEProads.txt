@@ -1,0 +1,435 @@
+###############TRIBAL ROAD###############
+tribal = {
+	tb_dirt_road_2 = {
+		desc = ca_dirt_road_2_desc
+		gold_cost = 45
+		build_time = 200
+		tax_income = 0.1
+		ai_creation_factor = 90
+		levy_reinforce_rate = 0.05
+		potential = {
+			has_global_flag = building
+			NOT = { culture_group = culture_group_wilderness }
+    	}			 	
+		convert_to_city = ct_dirt_road_2
+		convert_to_castle = ca_dirt_road_2	
+	}
+
+	tb_old_south_road_ruins = { #Ruined North-South road name from Swanfleet to Isendale
+		desc = ca_old_south_road_ruins_desc
+		gold_cost = 65
+		build_time = 275
+		tax_income = 0.5
+		levy_reinforce_rate = 0.05
+		ai_creation_factor = 85
+		potential = {
+        		FROMFROM = {
+			OR = {
+			title = b_echad_eregion #291
+			title = b_fordirith #777
+			title = b_dunered #381
+			title = b_galtrev #383
+			title = b_fidach #385
+			title = b_talorgan #384
+			title = b_forthbrond #226
+				}
+			}
+    	}
+		convert_to_castle = ca_old_south_road_ruins
+	}
+	tb_old_south_road = { #North-South road name from Swanfleet to Isendale
+		desc = ca_old_south_road_desc
+		upgrades_from = ca_old_south_road_ruins
+		gold_cost = 260
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		#monthly_character_prestige = 1.5
+		potential = {
+        	has_global_flag = building
+			FROMFROM = {
+			OR = {
+			title = b_echad_eregion #291
+			title = b_fordirith #777
+			title = b_dunered #381
+			title = b_galtrev #383
+			title = b_fidach #385
+			title = b_talorgan #384
+			title = b_forthbrond #226
+				}
+			}
+			OR = { 
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_numenorean
+			}
+    	}
+		convert_to_castle = ca_old_south_road
+	}
+}
+
+###############CITY ROAD###############
+city = {	
+	ct_dirt_road_2 = {
+		desc = ct_dirt_road_2_desc
+		gold_cost = 45
+		build_time = 200
+		tax_income = 0.1
+		ai_creation_factor = 90
+		levy_reinforce_rate = 0.05
+		potential = {
+       			NOT = { culture_group = culture_group_wilderness }
+    			}
+		}
+	ct_paved_road_3 = {
+		desc = ct_paved_road_3_desc
+		gold_cost = 75
+		build_time = 325
+		upgrades_from = ct_dirt_road_2
+		tax_income = 0.5	
+		ai_creation_factor = 88
+		levy_reinforce_rate = 0.05
+		potential = {
+        		has_global_flag = building
+    			}
+		}
+	ct_great_route_4 = {
+		desc = ct_great_route_4_desc
+		gold_cost = 190
+		build_time = 875
+		upgrades_from = ct_paved_road_3
+		tax_income = 0.9	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.1
+		potential = {
+       			has_global_flag = building
+    		}
+	}	
+}
+
+###############CASTLE ROAD###############	
+castle = {
+	ca_dirt_road_2 = {
+		desc = ca_dirt_road_2_desc
+		gold_cost = 45
+		build_time = 200
+		tax_income = 0.1
+		ai_creation_factor = 90
+		levy_reinforce_rate = 0.05
+		potential = {
+			NOT = { culture_group = culture_group_wilderness }
+    	}			 
+	}	
+	ca_paved_road_3 = {
+		desc = ca_paved_road_3_desc
+		gold_cost = 75
+		build_time = 325
+		upgrades_from = ca_dirt_road_2
+		tax_income = 0.5	
+		ai_creation_factor = 88
+		levy_reinforce_rate = 0.05
+		potential = {
+        		has_global_flag = building
+    	}
+	}
+	ca_great_route_4 = {
+		desc = ca_great_route_4_desc
+		gold_cost = 190
+		build_time = 875
+		upgrades_from = ca_paved_road_3
+		tax_income = 0.9	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.1
+		potential = {
+       		has_global_flag = building
+    	}
+	}	
+
+	ca_men_i_naugrim_ruins = {
+		desc = ca_men_i_naugrim_ruins_desc
+		gold_cost = 65
+		build_time = 275
+		tax_income = 0.5
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.05
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_adlig #684
+			title = b_forstburg #683
+				}
+			}
+    	}
+	}
+	ca_men_i_naugrim_rebuilt = {
+		desc = ca_men_i_naugrim_desc
+		upgrades_from = ca_men_i_naugrim_ruins
+		gold_cost = 400
+		build_time = 1655
+		tax_income = 2	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.3
+		potential = {
+			has_global_flag = building
+        		FROMFROM = {
+			OR = {
+			title = b_adlig #684
+			title = b_forstburg #683
+				}
+			}
+    		}
+	}
+	ca_men_i_naugrim = {
+		desc = ca_men_i_naugrim_desc
+		gold_cost = 400
+		build_time = 1655
+		tax_income = 2	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.3
+		potential = {
+        		FROMFROM = {
+			OR = {
+			title = b_mekhem_bizru #295
+			title = b_burh_anduin #398
+			title = b_imlad_inglor #399
+			title = b_sir_ninglor #400
+			title = b_methelburg #403
+			title = b_ford_carrock #688
+			title = b_beornhall #689
+			title = b_forest_gate #417
+			title = b_western_wood_gate
+			title = b_eastern_wood_gate
+			title = b_celebannon #328
+			title = b_dale_king_hall #539
+			title = b_blueport #539
+				}
+			}
+    	}
+	}
+
+	ca_great_east_road = {
+		desc = ca_great_east_road_desc
+		gold_cost = 400
+		build_time = 1655
+		tax_income = 2	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.3
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_mithlond #657
+			title = b_gobel_lhun #236
+			title = b_elostirion #687
+			title = b_undertowers #664
+			title = b_michel_delving #95
+			title = b_waymeet #86
+			title = b_hobbiton #84
+			title = b_bywater #85
+			title = b_frogmorton #75
+			title = b_bridge_fields #76
+			title = b_brandy_hills #266
+			title = b_bree #267
+			title = b_combe #265
+			title = b_marshwaterford #268
+			title = b_menegaur #305
+			title = b_mithereithel #307
+			title = b_nenim #369
+			title = b_pinnath_tereg #297
+			title = b_wolfdale #372
+			title = b_glan_vraig #371
+			title = b_goblin_town #570
+			title = b_norther_eregion #287
+			title = b_north_eregion #286
+			title = b_middle_eregion #288
+			title = b_last_homely_house #234
+				}
+			}
+    	}
+	}
+	
+	ca_greenway_road = { #North-South road name from Fornost to Tharbad
+		desc = ca_greenway_road_desc
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_citadel_fornost #270
+			title = b_esteldin #263
+			title = b_bree #267
+			title = b_tyrn_gorthad #105
+			title = b_andrath #169
+			title = b_arnach #170
+			title = b_herwen #173
+			title = b_tharbad #172
+				}
+			}
+    	}
+	}
+	ca_old_south_road_ruins = { #Ruined North-South road name from Swanfleet to Isendale
+		desc = ca_old_south_road_ruins_desc
+		gold_cost = 65
+		build_time = 275
+		tax_income = 0.5
+		levy_reinforce_rate = 0.05
+		ai_creation_factor = 85
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_echad_eregion #291
+			title = b_fordirith #777
+			title = b_dunered #381
+			title = b_galtrev #383
+			title = b_fidach #385
+			title = b_talorgan #384
+			title = b_forthbrond #226
+				}
+			}
+    	}
+	}
+	ca_old_south_road = { #North-South road name from Swanfleet to Isendale
+		desc = ca_old_south_road_desc
+		upgrades_from = ca_old_south_road_ruins
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	has_global_flag = building
+			FROMFROM = {
+			OR = {
+			title = b_echad_eregion #291
+			title = b_fordirith #777
+			title = b_dunered #381
+			title = b_galtrev #383
+			title = b_fidach #385
+			title = b_talorgan #384
+			title = b_forthbrond #226
+				}
+			}
+			OR = { 
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_numenorean
+			}
+    	}
+	}
+	ca_great_west_road = { #North-South road name from Orthanc/The Gap of Rohan to Maldred
+		desc = ca_great_west_road_desc
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_orthanc #225
+			title = b_fords_of_isen #120
+			title = b_marton #119
+			title = b_grimslade #118
+			title = b_king_fold #117
+			title = b_edoras #115
+			title = b_snowbourn #112
+			title = b_foldburg #111
+			title = b_aldburg #114
+			title = b_fenmarch #110
+			title = b_beacon_of_amon_awar #3
+			title = b_garth_harnastin #69
+			title = b_bar_sindbar #4
+			title = b_dunmardo #5
+			title = b_tir_elena #7
+			title = b_herenyand #9
+			title = b_bar_malred #45
+				}
+			}
+    	}
+	}
+	ca_harad_road = { #North-South road name from Morannon to Harad
+		desc = ca_harad_road_desc
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_morannon #
+			title = b_caras_gwindor #
+			title = b_drinbar #
+			title = b_finnarphen #
+			title = b_asgaril #
+			title = b_wilwarin #
+			title = b_curedain #
+			title = b_usuluni #
+			title = b_rian #
+			title = b_telengaur #
+			title = b_tir_ethraid #
+			title = b_galadrin #
+			title = b_caradhram #
+			title = b_bar_malduin #
+			title = b_imlad_carnen #
+			title = b_romenor #
+			title = b_tirith_argon #
+			title = b_kadar_argon #
+			title = b_korb_haruzan #
+			title = b_khorsaj #
+				}
+			}
+    	}
+	}
+	ca_south_road = { #North-South road name Pelennor to Pelargir
+		desc = ca_south_road_desc
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_rammas_echor #1
+			title = b_celerdain #10
+			title = b_beleganor #11
+			title = b_imloth_melui #14
+			title = b_minas_arnach #17
+			title = b_minas_anduin # 18
+			title = b_balimur
+			title = b_arnbad
+			title = b_linhir
+			title = b_bar_lymen
+			title = b_lothgobel
+			title = b_ethring
+			title = b_calembel
+			title = b_lancrath
+			title = b_erech
+				}
+			}
+    	}
+	}
+	ca_kings_highway = { 
+		desc = ca_kings_highway_desc
+		gold_cost = 300
+		build_time = 1150
+		tax_income = 1.5	
+		ai_creation_factor = 85
+		levy_reinforce_rate = 0.2
+		potential = {
+        	FROMFROM = {
+			OR = {
+			title = b_citadel_tirith #422
+			title = b_rammas_echor #1
+			title = b_minasnumen #428
+			title = b_dome_of_the_stars #427
+			title = b_curedain #53
+			title = b_othnir #54
+			title = b_minas_morgul #426
+				}
+			}
+    	}
+	}
+}

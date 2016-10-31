@@ -1,0 +1,210 @@
+namespace = evilside
+
+character_event = {
+	id = evilside.1
+	title = "EVTNAMEevilside.1"
+	desc = "EVTDESCevilside.1"
+	picture = "GFX_evil"
+	age = 16
+	only_rulers = yes
+	only_independent = yes
+
+
+	trigger = {
+		OR = {
+			culture_group = culture_group_southron
+			culture_group = culture_group_easterling
+			culture = culture_black_numenorean
+		}
+		NOT = { culture = culture_ishmalogim }	
+		NOT = { culture = culture_nurnim }
+		NOT = { trait = evil_side }
+		NOT = { trait = good_side }
+		NOT = { has_character_flag = evilsidestartup }
+		NOT = { has_global_flag = saurondefeated }
+	}
+
+	immediate = { set_character_flag = evilsidestartup }
+
+	option = {
+		name = "EVTOPTAevilside.1"				  
+		add_trait = evil_side
+	}
+	option = {
+		name = "EVTOPTBevilside.1"
+		prestige = 100
+	}
+}
+
+##Event to switch to the Good side for players only##
+character_event = {
+	id = evilside.2
+	title = "EVTNAMEevilside.2"
+	desc = "EVTDESCevilside.2"#Perhaps you were wrong, perhaps Sauron is not a God. Maybe your people deserve hope, and not fear. If you dare, you could forsake the darkness, and try to help the enemies of the Dark Lord.
+	picture = "GFX_evil"
+	is_triggered_only = yes
+
+	trigger = {
+		trait = evil_side 
+	}
+
+	immediate = { set_character_flag = switched_side }
+
+	option = {
+		trigger = {
+			culture = culture_black_numenorean
+		}
+		name = "EVTOPTAevilside.2"				  
+		ROOT = { religion = religion_black_numenorean }
+		remove_trait = evil_side
+		add_trait = good_side
+	}
+	option = {
+		trigger = {
+			culture_group = culture_group_southron
+		}
+		name = "EVTOPTAevilside.2"				  
+		ROOT = { religion = religion_southron }
+		remove_trait = evil_side
+		add_trait = good_side				  
+	}
+	option = {
+		trigger = {
+			culture_group = culture_group_easterling
+		}
+		name = "EVTOPTAevilside.2"				
+		remove_trait = evil_side
+		add_trait = good_side
+	}
+	option = {
+		trigger = {
+			OR = {
+				culture = culture_gondorian
+				culture = culture_gondorian_middlemen
+				culture = culture_dunedain
+			}
+		}
+		name = "EVTOPTAevilside.2"				  
+		remove_trait = evil_side
+		add_trait = good_side
+	}
+	option = {
+		trigger = {
+			OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			}
+		}
+		name = "EVTOPTAevilside.2"				  
+		remove_trait = evil_side
+		add_trait = good_side
+	}
+	option = {
+		trigger = {
+			culture_group = culture_group_dwarves
+		}
+		name = "EVTOPTAevilside.2"				  
+		remove_trait = evil_side
+		add_trait = good_side
+	}
+	option = {
+		name = "EVTOPTBevilside.2"	
+		piety = 10
+	}
+}
+
+
+character_event = {
+	id = evilside.3
+	title = "EVTNAMEevilside.3"#Corrupted by Darkness
+	desc = "EVTDESCevilside.3"#As a creature of Melkor's making, you are corrupted by Darkness and work with other evil rulers to defeat those who stand in your way.
+	picture = "GFX_evil"
+	age = 16
+	only_rulers = yes
+	only_independent = yes
+	religion_group = religion_group_melkor
+
+	trigger = {
+		religion_group = religion_group_melkor
+		# NOT = { trait = evil_side } (additional effects mean this event must fire for already-evil rulers)
+		NOT = { trait = good_side }
+		NOT = { has_character_flag = evilsidestartup }
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	immediate = { set_character_flag = evilsidestartup }
+
+	option = {
+		name = "OK"	
+
+		if = {
+			limit = { NOT = { trait = evil_side } } 
+			add_trait = evil_side
+		}		
+		# adds evil side to high-ranking vassals. since 
+		any_vassal = {
+			limit = {
+				primary_title = { higher_tier_than = count } 
+				NOT = { trait = good_side }
+				NOT = { has_character_flag = evilsidestartup }
+				NOT = { religion_group = religion_group_eldar }
+				# perhaps some additional limitations here
+			}
+			if = {
+				limit = { NOT = { trait = evil_side } } 
+				add_trait = evil_side
+			}	
+			set_character_flag = evilsidestartup 
+			# for evil king level vassals (like the Witch-Kings) we do their duke-level vassals as well
+			if = {
+				limit = {
+					real_tier = king
+				}
+				any_vassal = {
+					limit = {
+						primary_title = { higher_real_tier_than = count } 
+						NOT = { trait = good_side }
+						NOT = { has_character_flag = evilsidestartup }
+						NOT = { religion_group = religion_group_eldar }
+					}
+					if = {
+						limit = { NOT = { trait = evil_side } } 
+						add_trait = evil_side
+					}
+					set_character_flag = evilsidestartup 
+				}
+				any_courtier = {
+					limit = {
+						NOT = { trait = evil_side }
+						NOT = { trait = good_side }
+						NOT = { has_character_flag = evilsidestartup }
+						NOT = { religion_group = religion_group_eldar }
+					}
+					add_trait = evil_side
+					set_character_flag = evilsidestartup 
+				}
+			}
+		}
+		# the courtiers of the ruler (if that ruler is a king or more)
+		if = {
+			limit = { primary_title = { higher_tier_than = duke } }
+			any_courtier = {
+				limit = {
+					NOT = { trait = evil_side }
+					NOT = { trait = good_side }
+					NOT = { has_character_flag = evilsidestartup }
+					NOT = { religion_group = religion_group_eldar }
+				}
+				add_trait = evil_side
+				set_character_flag = evilsidestartup 
+			}
+		}
+
+
+	}
+}

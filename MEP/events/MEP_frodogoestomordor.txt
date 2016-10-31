@@ -1,0 +1,1329 @@
+namespace = frodo
+
+##Frodo goes east with Sam##
+character_event = {
+    id = frodo.1
+    title = "EVTTITfrodo.1"
+    desc = "EVTDESCfrodo.1"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		age = 30
+		NOT = { age = 60 }
+		NOT = { year = 11368 }
+		NOT = { has_character_flag = frodo1 }
+		NOT = { has_global_flag = boromirhasring }
+		dynasty = 803
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	option = {
+        name = "EVTOPTAfrodo.1"
+		set_character_flag = frodo1
+	}
+		
+}
+		
+##Frodo Reaches the Black Gate##
+character_event = {
+    id = frodo.2
+    title = "EVTTITfrodo.2"
+    desc = "EVTDESCfrodo.2"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		has_character_flag = frodo1
+		age = 30
+		NOT = { age = 60 }
+		NOT = { has_character_flag = frodo2 }
+		dynasty = 803
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	option = {
+        name = "EVTOPTAfrodo.2"
+		set_character_flag = frodo2
+	}
+		
+}
+		
+##Frodo in Ithilien##
+character_event = {
+    id = frodo.3
+    title = "EVTTITfrodo.3"
+    desc = "EVTDESCfrodo.3"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		has_character_flag = frodo2
+		age = 30
+		NOT = { age = 60 }
+		year = 11367
+		NOT = { has_character_flag = frodo3 }
+		dynasty = 803
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	option = {
+        name = "EVTOPTAfrodo.3"
+		set_character_flag = frodo3
+	}
+		
+}
+		
+##If Aragorn is King, Frodo gets told of him seeing armies of mordor defeated - first Aragorn gets an event, this is for when he won##
+character_event = {
+    id = frodo.4
+    title = "EVTTITfrodo.4"
+    desc = "EVTDESCfrodo.4"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		NOT = { has_global_flag = gondor_restoreddefeat }
+		NOT = { has_global_flag = boromirhasring }
+		NOT = { has_global_flag = frodo4 }
+		has_global_flag = gondor_restored
+		year = 11367
+		has_landed_title = e_gondor
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = "EVTOPTAfrodo.4"
+		set_global_flag = frodo4
+		character_event = { id = frodo.5 days = 7 }
+	}
+}
+	
+##Aragorn's War Council##
+character_event = {
+    id = frodo.5
+    title = "EVTTITfrodo.5"
+    desc = "EVTDESCfrodo.5"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.5"
+		set_global_flag = invademordor
+		add_claim = k_ithilien
+		add_claim = c_morgul
+		add_claim = d_dagorlad
+	}
+	
+	option = {
+		name = "EVTOPTBfrodo.5"
+		trigger = { ai = no }
+		any_playable_ruler = {
+			limit = {
+				is_alive=yes
+				trait = ring
+			}
+			character_event = { id = frodo.6 days = 30}
+		}
+	}
+}
+		
+##event for frodo if aragorn sends scouts##
+character_event = {
+    id = frodo.6
+    title = "EVTTITfrodo.6"
+    desc = "EVTDESCfrodo.6"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.6"
+		imprison = FROM
+		any_independent_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				age = 16
+			}
+			character_event = { id = frodo.25 }
+		}
+	}
+}
+	
+##Aragorn is told that Frodo is safe##
+character_event = {
+    id = frodo.25
+    title = "EVTTITfrodo.25"
+    desc = "EVTDESCfrodo.25"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.25"
+		add_trait = hunter
+	}
+}
+	
+##Now backtrack, for when a successful King Aragorn decides to attack Mordor##
+character_event = {
+    id = frodo.7
+    title = "EVTTITfrodo.7"
+    desc = "EVTDESCfrodo.7"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		NOT = { has_global_flag = gondor_restoreddefeat }
+		NOT = { has_global_flag = boromirhasring }
+		has_global_flag = gondor_restored
+		has_global_flag = invademordor
+		NOT = { has_global_flag = frodo7 }
+		year = 11367
+		has_landed_title = e_gondor
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	immediate = {
+	add_claim = k_ithilien
+	}
+	
+	option = {
+		name = "EVTOPTAfrodo.7"
+		set_global_flag = frodo7
+		e_barad_dur = {
+			reverse_war = {
+			target = ROOT
+			casus_belli = claim_all
+			}
+		}
+		any_independent_ruler = {
+			limit = {
+				dynasty = 5
+				has_landed_title = k_rohan
+				has_landed_title = c_kings_land
+				NOT = { has_landed_title = c_orthanc }
+			}
+			character_event = { id = frodo.8 days = 30 }
+		}
+	}
+}
+			
+###Rohan joins the war###
+character_event = {
+    id = frodo.8
+    title = "EVTTITfrodo.8"
+    desc = "EVTDESCfrodo.8"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.8"
+		ROOT = {
+			join_attacker_wars = FROM
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBfrodo.8"
+		trigger = { ai = no }
+		add_trait = craven
+	}
+}
+	
+###Now Frodo is told that Aragorn is marching on Mordor, and makes a run for it##
+character_event = {
+    id = frodo.9
+    title = "EVTTITfrodo.9"
+    desc = "EVTDESCfrodo.9"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		has_global_flag = invademordor
+		age = 30
+		NOT = { age = 80 }
+		NOT = { has_global_flag = frodo9 }
+		NOT = { has_global_flag = boromirhasring }
+		dynasty = 803
+		trait = ring
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	option = {
+		name = "EVTOPTAfrodo.9"
+		set_global_flag = frodo9
+		character_event = { id = frodo.10 days = 30 }
+	}
+	
+}
+	
+###Frodo crosses into mordor###
+character_event = {
+    id = frodo.10
+    title = "EVTTITfrodo.10"
+    desc = "EVTDESCfrodo.10"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.10"
+		random_list = {
+			10 = { 
+				character_event = { id = frodo.11 }
+			}
+			90 = {
+				character_event = { id = frodo.12 }
+			}
+		}
+	}
+}
+	
+###Sam is killed while trying to rescue Frodo, Sauron gets the ring###
+character_event = {
+    id = frodo.11
+    title = "EVTTITfrodo.11"
+    desc = "EVTDESCfrodo.11"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.11"
+		remove_trait = ring
+		death = {
+			death_reason = death_battle
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_mordor
+					has_landed_title = c_barad_dur
+				}
+				dynasty = 10012	
+			}
+			character_event = { id = frodo.21 days = 7 }
+		}
+	}
+
+}
+
+###Sam saves frodo##
+character_event = {
+    id = frodo.12
+    title = "EVTTITfrodo.12"
+    desc = "EVTDESCfrodo.12"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes		
+	
+	option = {
+		name = "EVTOPTAfrodo.12"
+		character_event = { id = frodo.13 days = 60 }
+	}
+}
+	
+	
+###They reach Mt.Doom##
+character_event = {
+    id = frodo.13
+    title = "EVTTITfrodo.13"
+    desc = "EVTDESCfrodo.13"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.13"
+		random_list = {
+			80 = { 
+				character_event = { id = frodo.14 }
+			}
+			20 = {
+				character_event = { id = frodo.15 }
+			}
+		}
+	}
+}
+	
+###They reach Mt.Doom##
+character_event = {
+    id = frodo.14
+    title = "EVTTITfrodo.14"
+    desc = "EVTDESCfrodo.14"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.14"
+		remove_trait = ring
+		add_trait = ringbearer1
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_mordor
+					has_landed_title = c_barad_dur
+				}
+				dynasty = 10012	
+			}
+			character_event = { id = frodo.16 }
+		}
+	}
+}
+	
+###They reach Mt.Doom##
+character_event = {
+    id = frodo.15
+    title = "EVTTITfrodo.15"
+    desc = "EVTDESCfrodo.15"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAfrodo.15"
+		remove_trait = ring
+		death = {
+			death_reason = death_suicide
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_mordor
+					has_landed_title = c_barad_dur
+				}
+				dynasty = 10012	
+			}
+			character_event = { id = frodo.24 }
+		}			
+	}
+}
+	
+##Sauron is destroyed##
+character_event = {
+    id = frodo.16
+    title = "EVTTITfrodo.16"
+    desc = "EVTDESCfrodo.16"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.16"
+		set_global_flag = saurondefeated
+		death = {
+			death_reason = death_battle
+		}
+		any_realm_lord  = {
+			limit = {
+				OR = {
+					tier = duke
+					tier = king
+				}
+			}
+			character_event = { id = frodo.17 }
+		}
+		any_realm_character  = {
+			limit = {
+				trait = nazgul	
+			}
+			character_event = { id = frodo.18 }
+		}
+		any_playable_ruler  = {
+			character_event = { id = frodo.19 }
+		}
+		any_playable_ruler  = {
+			limit = {
+				has_landed_title = k_mirkwood
+				age = 1
+			}
+			character_event = { id = frodo.40 }
+		}		
+		any_playable_ruler  = {
+			limit = {
+				has_character_flag = celeborn
+				age = 1
+			}
+			character_event = { id = frodo.41 }
+		}		
+		any_playable_ruler  = {
+			limit = {
+				has_landed_title = k_rohan 
+				OR = {
+					d_westmarch = { 
+						holder_scope = { 
+							NOR = { 
+								has_landed_title = k_isengard 
+								dynasty = 10
+							}
+						}
+					}
+					c_adornfold = {
+						holder_scope = { 
+							NOR = { 
+								has_landed_title = k_isengard 
+								dynasty = 10
+							}
+						}
+					}		
+						
+				}
+			}
+			any_realm_character  = {
+				limit = {	
+					trait = strong	
+					has_claim = d_westmarch
+				}
+				character_event = { id = frodo.43 }
+			}
+		}
+		any_playable_ruler  = {
+			limit = {
+				has_character_flag = aragorn
+				has_landed_title = e_gondor
+				age = 1
+			    
+			}
+			character_event = { id = frodo.29 }
+		}	
+
+		e_barad_dur = {
+			destroy_landed_title = THIS
+		}	
+		k_mordor = {
+			destroy_landed_title = THIS
+		}			
+	}
+}
+		
+##Mordor's vassals are rebelling##
+character_event = {
+    id = frodo.17
+    title = "EVTTITfrodo.17"
+    desc = "EVTDESCfrodo.17"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.17"
+		set_defacto_liege = THIS
+	}
+}
+	
+##Nazgul die##
+character_event = {
+    id = frodo.18
+    title = "EVTTITfrodo.18"
+    desc = "EVTDESCfrodo.18"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.18"
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+	
+##The world is informed##
+character_event = {
+    id = frodo.19
+    title = "EVTTITfrodo.19"
+    desc = "EVTDESCfrodo.19"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAfrodo.19"	
+	}
+	
+	option = {
+		name = "EVTOPTBfrodo.19"
+		trigger = { trait = evil_side }
+	}
+}
+	
+##fellowship disbands##
+character_event = {
+    id = frodo.20
+    title = "EVTTITfrodo.20"
+    desc = "EVTDESCfrodo.20"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		trait = on_fellowshipquest
+		has_global_flag = saurondefeated
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	option = {
+		name = "EVTOPTAfrodo.20"
+		remove_trait = on_fellowshipquest
+	}
+}
+	
+##Now backtrack - for when Frodo loses##
+character_event = {
+    id = frodo.21
+    title = "EVTTITfrodo.21"
+    desc = "EVTDESCfrodo.21"
+    picture = "GFX_evil"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.21"
+		set_global_flag = sauronhasring
+		add_trait = ring
+		any_independent_ruler  = {
+			character_event = { id = frodo.22 }
+		}
+	}
+}
+	
+##rulers are informed that sauron has his ring##
+character_event = {
+    id = frodo.22
+    title = "EVTTITfrodo.22"
+    desc = "EVTDESCfrodo.22"
+    picture = "GFX_evil"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.22"
+	}
+	
+	option = {
+		name = "EVTOPTBfrodo.22"
+		trigger = { trait = evil_side }
+	}
+}
+ 
+##fellowship disbands##
+character_event = {
+    id = frodo.23
+    title = "EVTTITfrodo.23"
+    desc = "EVTDESCfrodo.23"
+    picture = "GFX_evil"
+	age = 16
+	
+	trigger = {
+		trait = on_fellowshipquest
+		has_global_flag = sauronhasring
+	}
+	
+	mean_time_to_happen = { days = 10 }
+	
+	option = {
+		name = "EVTOPTAfrodo.23"
+		remove_trait = on_fellowshipquest
+	}
+}
+	
+##now backtrack again, for if gollum gets the ring##
+##Now backtrack - for when Frodo loses##
+character_event = {
+    id = frodo.24
+    title = "EVTTITfrodo.24"
+    desc = "EVTDESCfrodo.24"
+    picture = "GFX_evil"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.24"
+		set_global_flag = sauronhasring
+		add_trait = ring
+		any_independent_ruler  = {
+			character_event = { id = frodo.22 }
+		}
+	}
+}
+	
+#####################################################################
+##backtrack even more, now for the questline where gondor has lost###
+#####################################################################
+	
+##frodo.25 used above##
+	
+###Now Frodo sees that Gondor is defeated, and makes a desperate attempt##
+character_event = {
+    id = frodo.26
+    title = "EVTTITfrodo.26"
+    desc = "EVTDESCfrodo.26"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		has_global_flag = ringleaveslorien
+		has_global_flag = frodogoestomordor
+		has_global_flag = gondor_restoreddefeat
+		age = 30
+		NOT = { age = 80 }
+		NOT = { has_global_flag = frodo26 }
+		NOT = { has_global_flag = boromirhasring }
+		dynasty = 803
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	option = {
+		name = "EVTOPTAfrodo.26"
+		set_global_flag = frodo26
+		character_event = { id = frodo.27 days = 30 }
+	}
+	
+}
+	
+###Frodo crosses into mordor though it is full of orcs###
+character_event = {
+    id = frodo.27
+    title = "EVTTITfrodo.27"
+    desc = "EVTDESCfrodo.27"
+    picture = "GFX_good"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.27"
+		random_list = {
+			90 = { 
+				character_event = { id = frodo.11 }
+			}
+			10 = {
+				character_event = { id = frodo.12 }
+			}
+		}
+	}
+}
+	
+
+	
+###nazgul lose nazgul trait after sauron is defeated###
+character_event = {
+    id = frodo.28
+    title = "EVTTITfrodo.28"
+    desc = "EVTDESCfrodo.28"
+    picture = "GFX_good"
+	age = 16
+	
+	trigger = {
+		culture = culture_wight
+		trait = nazgul
+		has_global_flag = saurondefeated
+	}
+	
+	mean_time_to_happen = { days = 3 }	
+	
+	option = {
+		name = "EVTOPTAfrodo.28"
+		remove_trait = nazgul
+	}
+	
+}
+
+### Aragorn is asking about Ithilien ###
+character_event = {
+    id = frodo.29
+    title = "EVTTITfrodo.29"
+    desc = "EVTDESCfrodo.29"
+    picture = "GFX_gondor_guard"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.29" ## Give Ithilien to the House of the Steward !	
+		random_playable_ruler = {
+			limit = {
+				trait = stewardscept
+			}
+			character_event = { id = frodo.30 }
+		}
+	}
+	option = {
+		name = "EVTOPTBfrodo.29" ## Ithilien is for me !	
+		trigger = { ai = no }		
+		character_event = { id = frodo.30 }
+	}	
+}
+
+## The House of the Stewards inherits Ithilien if Sauron is destroyed ##	
+character_event = {
+    id = frodo.30
+    title = "EVTTITfrodo.30"
+    desc = "EVTDESCfrodo.30"
+    picture = "GFX_gondor_guard"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = "EVTOPTAfrodo.30"
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = k_mirkwood
+				culture = culture_sindar
+			}
+			character_event = { id = frodo.35 days = 15 }
+		}	
+		k_ithilien = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_nindalf = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}		
+		c_arandal = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_drinbar = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_finnarphen = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		d_north_ithilduin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_morgul = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_asgaril = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_curedain = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_othnir = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_coruvegil = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_faerdur = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_wilwarin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		d_emyn_arnen = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		c_usuluni = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_elemir = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		d_south_ithilduin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_alagdor = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_rian = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_glorel = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}			
+		c_telengaur = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}		
+		c_tiridor = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_nepos = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_morgevil = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		c_faron = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		set_defacto_liege = e_gondor		
+	}
+}
+
+
+### The Ruler of Durin's Folk is asked about Aglarond by Gimli ###
+character_event = {
+    id = frodo.31
+    title = "EVTTITfrodo.31"
+    desc = "EVTDESCfrodo.31"
+    picture = "GFX_dwarf"
+	age = 16
+	
+	trigger = {
+		has_global_flag = saurondefeated
+		has_landed_title = e_durins_folk
+		NOT = { has_global_flag = gimli_aglarond }
+		any_courtier = {
+			has_character_flag = gimli
+			age = 1
+		}
+	}
+	
+	mean_time_to_happen = { days = 30 }	
+	
+	option = {
+		name = "EVTOPTAfrodo.31" ## We'll have to ask the King of Rohan.
+		set_global_flag = gimli_aglarond 
+		any_independent_ruler = {
+			limit = {
+				age = 1
+				has_landed_title = k_rohan
+				culture = culture_rohirrim
+			}
+			character_event = { id = frodo.32 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBfrodo.31" ## No, i need him in Erebor.
+		set_global_flag = gimli_aglarond 		
+		trigger = { ai = no }
+	}	
+}
+
+### The King of Rohan is asked about Aglarond by the King of Durin's Folk ###
+character_event = {
+    id = frodo.32
+    title = "EVTTITfrodo.32"
+    desc = "EVTDESCfrodo.32"
+    picture = "GFX_evt_dwarves_hall"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.32" ## Yes.
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = e_durins_folk
+			}
+			character_event = { id = frodo.33 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBfrodo.32" ## No.
+		trigger = { ai = no }		
+	}	
+}
+
+### the King of Durin's Folk give Aglarond to Gimli ###
+character_event = {
+    id = frodo.33
+    title = "EVTTITfrodo.33"
+    desc = "EVTDESCfrodo.33"
+    picture = "GFX_evt_dwarves_hall"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.33" ## Go, Gimli son of Gloin, lord of the Glittering Caves!
+		random_dynasty_member = {
+			limit = {
+				has_character_flag = gimli
+				age = 1
+			}
+			character_event = { id = frodo.34 }
+		}
+	}		
+	option = {
+		name = "EVTOPTBfrodo.33" ## No.
+		trigger = { ai = no }		
+	}	
+}
+
+### Gimli is Lord of the Glittering Caves ###
+character_event = {
+    id = frodo.34
+    title = "EVTTITfrodo.34"
+    desc = "EVTDESCfrodo.34"
+    picture = "GFX_evt_dwarves_hall"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.34" ## Go, Gimli son of Gloin, lord of the Glittering Caves!
+		if = {
+			limit = {
+				has_character_flag = gimli
+			}
+			c_glittering_caves = {
+				grant_title = ROOT
+				copy_title_laws = e_durins_folk
+			}	
+			d_aglarond = {
+				grant_title = ROOT
+				copy_title_laws = e_durins_folk
+			}
+			k_aglarond = {
+				grant_title = ROOT
+				copy_title_laws = e_durins_folk
+			}	
+			set_defacto_liege = FROM			
+		}		
+	}
+}
+
+
+### Legolas wants to come in Ithilien with some elves - He ask his father ###
+character_event = {
+    id = frodo.35
+    title = "EVTTITfrodo.35"
+    desc = "EVTDESCfrodo.35"
+    picture = "GFX_elf_meeting"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.35" ## The King of Gondor must give you the Right
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = e_gondor
+			}
+			character_event = { id = frodo.36 days=20 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBfrodo.35" ## No, i need him in Erebor.		
+		trigger = { ai = no }
+	}	
+}
+
+### The King of Gondor is asked about a realm Kingdom in Ithilien for Legolas ###
+character_event = {
+    id = frodo.36
+    title = "EVTTITfrodo.36"
+    desc = "EVTDESCfrodo.36"
+    picture = "GFX_elf_meeting"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.36" ## Yes.
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = k_mirkwood
+			}
+			character_event = { id = frodo.37 days=20 }
+		}		
+	}
+	option = {
+		name = "EVTOPTBfrodo.36" ## No.
+		trigger = { ai = no }	
+		character_event = { id = frodo.39 }		
+	}	
+}
+
+### Thranduil give his final decision to Legolas ###
+character_event = {
+    id = frodo.37
+    title = "EVTTITfrodo.37"
+    desc = "EVTDESCfrodo.37"
+    picture = "GFX_elf_meeting"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.37" ## Go, Legolas, my son!
+		random_dynasty_member = {
+			limit = {
+				has_character_flag = legolas
+				age = 1
+			}
+			character_event = { id = frodo.38 }
+		}
+	}		
+	option = {
+		name = "EVTOPTBfrodo.37" ## No.
+		trigger = { ai = no }		
+	}	
+}
+
+### Legolas install a silvan kingdom in Ithilien ###
+character_event = {
+    id = frodo.38
+    title = "EVTTITfrodo.38"
+    desc = "EVTDESCfrodo.38"
+    picture = "GFX_elf_meeting"
+	age = 16
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.38" ## I'm near to Aragorn !
+		if = {
+			limit = {
+				has_character_flag = legolas
+			}
+			k_silvan_ithilien = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			d_south_ithilduin = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}
+			c_alagdor = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_rian = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_glorel = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_telengaur = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_tiridor = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_nepos = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_morgevil = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}	
+			c_faron = {
+				grant_title = ROOT
+				copy_title_laws = e_gondor
+			}				
+			set_defacto_liege = e_gondor	
+			prestige = 200
+			any_independent_ruler = {
+				limit = {
+					has_landed_title = e_gondor
+				}
+				character_event = { id = frodo.39 }
+			}	
+		}		
+	}
+}
+
+##  All the vassals of Aragorn get a better opinion during some years ##
+character_event = {
+	id = frodo.39
+	title = "EVTfrodo.39"
+	desc = "EVTDESCfrodo.39"
+	picture = GFX_evt_grey_havens
+
+	is_triggered_only = yes
+	hide_window = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.39" # I'll die..
+		any_vassal = {
+		opinion = { modifier = king_restored who = ROOT years = 30 }
+		}
+		opinion = { modifier = opinion_friend who = FROM years = 150 }
+	}		
+}
+
+
+##  Mirkwood become Eryn Lasgalen ##
+character_event = {
+	id = frodo.40
+	title = "EVTfrodo.40"
+	desc = "EVTDESCfrodo.40"
+	picture = "GFX_elf_meeting"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.40" # A great news!
+		k_mirkwood = {
+			set_name = "Eryn Lasgalen"
+		}
+	}		
+}
+
+## Celeborn is now the leader of East Lorien ##
+character_event = {
+	id = frodo.41
+	title = "EVTfrodo.41"
+	desc = "EVTDESCfrodo.41"
+	picture = "GFX_elf_meeting"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.41" # These lands remains to elves.
+		hidden_tooltip = {
+			primary_title = {
+				any_direct_de_jure_vassal_title = {
+					de_jure_liege = k_east_lorien
+				}
+			}
+		}		
+		k_east_lorien = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}	
+		d_emyn_guldur = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}	
+		c_amon_lanc = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}		
+		c_south_north_west_mirkwood = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_south_mirkwood = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_south_north_east_mirkwood = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_south_west_mirkwood = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_south_east_mirkwood = {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		d_nan_anduin= {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_west_bight= {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_south_opposite_lorien= {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+		c_north_opposite_lorien= {
+			grant_title = ROOT
+			copy_title_laws = k_elves
+		}
+	}	
+	option = {
+		name = "EVTOPTBfrodo.41" # No.
+		trigger = { ai = no }
+	}
+}
+
+character_event = {
+	id = frodo.43
+	title = "EVTfrodo.43"
+	desc = "EVTDESCfrodo.43"
+	picture = "GFX_event_palantir"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.43" # Return the west-march to its rightful Heath-thane.
+		d_westmarch = {
+			grant_title = ROOT
+			copy_title_laws = k_rohan
+		}	
+		c_adornfold = {
+			grant_title = ROOT
+			copy_title_laws = k_rohan
+		}
+	}
+}

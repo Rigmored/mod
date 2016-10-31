@@ -1,0 +1,57 @@
+decisions = {
+	convert_to_good_side = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			trait = evil_side
+			NOT = { has_character_flag = switched_side }
+			NOT = {
+				culture_group = culture_group_wilderness
+				culture_group = culture_group_melkor
+				culture = culture_maiar
+			}
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 1000
+			piety = 1000
+			war = no
+			age = 16
+			prisoner = no
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = evilside.2 }
+			}
+			prestige = -1000
+			piety = -1000
+		}
+	}
+	convert_to_evil_side = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			#ai cannot use dynasty decisions
+			trait = good_side
+			NOT = { has_character_flag = switched_side }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 1000
+			piety = 1000
+			war = no
+			age = 16
+			prisoner = no
+			NOT = { trait = incapable }
+		}
+		effect = {
+			ROOT = {
+				character_event = { id = goodside.2 }
+			}
+			prestige = -1000
+			piety = -1000
+		}
+	}
+}

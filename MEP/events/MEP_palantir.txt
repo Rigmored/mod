@@ -1,0 +1,238 @@
+## Palantir Events ##
+namespace = palantir_use
+##  Looking to the Palantir?
+character_event = {
+	id = palantir_use.1
+	title = EVTpalantir_use.1
+	desc = EVTDESCpalantir_use.1
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.1 # Yes, i'll use the Palantir!
+		character_event = { id = palantir_use.2 }
+	}
+	option = {
+		name = EVTOPTBpalantir_use.1 # Not now
+		prestige = -50
+	}
+}
+
+## You use the Palantir ! ##
+character_event = {
+	id = palantir_use.2
+	title = EVTpalantir_use.2
+	desc = EVTDESCpalantir_use.2
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.2 #Yes, i'll use the Palantir!
+		set_character_flag = looked_at_palantir
+		
+		random_list = {
+			30 = {
+				FROM = {
+					character_event = { id = palantir_use.3 } # You're more perceptive !
+				}
+			}
+			25 =  {
+				FROM = {
+					character_event = { id = palantir_use.4 } # You're depressed !
+				}
+			}
+			25 =  {
+				FROM = {
+					character_event = { id = palantir_use.5 } # You become craven !
+				}
+			}
+			20 =  {
+				FROM = {
+					character_event = { id = palantir_use.6 } # You become paranoid !
+				}
+			}
+		}
+	}
+}
+
+##  You're more perceptive !
+character_event = {
+	id = palantir_use.3
+	title = EVTpalantir_use.3
+	desc = EVTDESCpalantir_use.3
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.3 # I understand the walk of the world.
+		add_trait = perceptive
+		prestige = 100
+		change_martial = 2
+		change_intrigue = 2
+	}
+}
+
+##  You're depressed
+character_event = {
+	id = palantir_use.4
+	title = EVTpalantir_use.4
+	desc = EVTDESCpalantir_use.4
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.4 # So many dangers ...
+		add_trait = depressed
+		prestige = -100
+		piety= -100
+		change_intrigue = 1
+	}
+}
+
+##  You're craven
+character_event = {
+	id = palantir_use.5
+	title = EVTpalantir_use.5
+	desc = EVTDESCpalantir_use.5
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.5 # I may flew away !
+		add_trait = craven
+		prestige = -100
+	}
+}
+
+##  You're paranoid !
+character_event = {
+	id = palantir_use.6
+	title = EVTpalantir_use.6
+	desc = EVTDESCpalantir_use.6
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.6 # Everyone could kill me!
+		add_trait = paranoid
+		add_trait = craven
+		prestige = -200
+		piety = -200
+	}
+}
+
+## One more time ... ##
+character_event = {
+	id = palantir_use.7
+	title = EVTpalantir_use.7
+	desc = EVTDESCpalantir_use.7
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.7 # Yes, i'll use the Palantir!
+		set_character_flag = looked_at_palantir2
+			
+		random_list = {
+			20 = {
+				FROM = {
+					character_event = { id = palantir_use.3 } # You're more perceptive !
+				}
+			}
+			25 =  {
+				FROM = {
+					character_event = { id = palantir_use.4 } # You're depressed !
+					add_trait = obsessed_by_palantir
+				}
+			}
+			25 =  {
+				FROM = {
+					character_event = { id = palantir_use.5 } # You become craven !
+					add_trait = obsessed_by_palantir
+				}
+			}
+			30 =  {
+				FROM = {
+					character_event = { id = palantir_use.6 } # You become paranoid !
+					add_trait = obsessed_by_palantir
+				}
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBpalantir_use.7 # Not now
+		prestige= -50
+	}
+}
+## One more time 2 ... ##
+character_event = {
+	id = palantir_use.8
+	title = EVTpalantir_use.8
+	desc = EVTDESCpalantir_use.8
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.8 # Yes, i'll use the Palantir!
+	
+		random_list = {
+			10 = {
+				FROM = {
+					character_event = { id = palantir_use.3 } # You're more perceptive !
+				}
+			}
+			30 =  {
+				FROM = {
+					character_event = { id = palantir_use.4 } # You're depressed !
+				}
+			}
+			30 =  {
+				FROM = {
+					character_event = { id = palantir_use.5 } # You become craven !
+				}
+			}
+			30 =  {
+				FROM = {
+					character_event = { id = palantir_use.6 } # You become paranoid !
+				}
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBpalantir_use.8 # Not now
+		set_character_flag = renounce_to_palantir
+	}
+}
+
+## Hide the Palantir ##
+character_event = {
+	id = palantir_use.9
+	title = EVTpalantir_use.9
+	desc = EVTDESCpalantir_use.9
+	picture = GFX_evt_palantir
+
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTApalantir_use.9 # Yes !
+		remove_trait = obsessed_by_palantir
+		set_character_flag = palantir_locked
+	}
+	option = {
+		name = EVTOPTBpalantir_use.9 # No!
+		random = {
+			chance = 40
+			FROM = {
+			add_trait = lunatic
+			}
+	}
+}
+}

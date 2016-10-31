@@ -1,0 +1,33 @@
+decisions = {
+	imbue_item = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+			age = 16
+			OR = {
+				trait = elvish_sword
+				trait = ancient_elvish_sword
+				trait = elf_necklace
+				trait = elf_brooch
+			}
+			OR = {
+				trait = craftsman
+				trait = master_craftsman
+				trait = legendary_craftman
+			}
+			trait = ancient
+			NOT = { has_character_flag = crafts_object }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 200
+			piety = 200
+		}
+		effect = {
+			set_character_flag = crafts_object
+			narrative_event = { id = craft_upgrade.0 }
+			prestige = -200
+			piety = -200
+		}
+	}
+}

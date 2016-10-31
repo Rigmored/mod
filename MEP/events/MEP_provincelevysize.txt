@@ -1,0 +1,362 @@
+namespace = provincelevysize
+
+#ELVISH PROVINCES
+province_event = {
+	id = provincelevysize.0
+	title = OK #"Province levy penalty"
+	desc = OK #"elves reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		culture = culture_noldor
+		NOT = { has_province_modifier = noldor_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = noldor_penalty duration = -1 }
+		}
+	}
+}
+
+#elves PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.1
+	title = OK #"Province levy penalty"
+	desc = OK #"Noldor penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { culture = culture_noldor }
+		has_province_modifier = noldor_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = noldor_penalty
+		}
+	}
+}
+
+
+#DWARVEN PROVINCES
+province_event = {
+	id = provincelevysize.2
+	title = OK #"Province levy penalty"
+	desc = OK #"dwarves reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		religion = religion_mahal
+		NOT = { has_province_modifier = dwarven_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = dwarven_penalty duration = -1 }
+		}
+	}
+}
+
+#DWARVEN PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.3
+	title = OK #"Province levy penalty"
+	desc = OK #"dwarven penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { religion = religion_mahal }
+		has_province_modifier = dwarven_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = dwarven_penalty
+		}
+	}
+
+}
+
+
+#GONDORIAN PROVINCES
+province_event = {
+	id = provincelevysize.4
+	title = OK #"Province levy penalty"
+	desc = OK #"gondorians reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		culture = culture_gondorian
+		NOT = { has_province_modifier = gondorian_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = gondorian_penalty duration = -1 }
+		}
+	}
+
+}
+
+#GONDORIAN PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.5
+	title = OK #"Province levy penalty"
+	desc = OK #"dwarven penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { culture = culture_gondorian }
+		has_province_modifier = gondorian_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = gondorian_penalty
+		}
+	}
+
+}
+
+#DUNEDAIN/ARNORIAN PROVINCES
+province_event = {
+	id = provincelevysize.6
+	title = OK #"Province levy penalty"
+	desc = OK #"dunedain reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		OR = {
+			culture = culture_dunedain
+			culture = culture_arnorian
+		}
+		NOT = { has_province_modifier = dunedain_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = dunedain_penalty duration = -1 }
+		}
+	}
+
+}
+
+#DUNEDAIN/ARNORIAN PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.7
+	title = OK #"Province levy penalty"
+	desc = OK #"dunedain penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { culture = culture_dunedain }
+		NOT = { culture = culture_arnorian }
+		has_province_modifier = dunedain_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = dunedain_penalty
+		}
+	}
+
+}
+
+#ENT/HUORNS PROVINCES
+province_event = {
+	id = provincelevysize.8
+	title = OK #"Province levy penalty"
+	desc = OK #"ents reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		religion_group = religion_group_enyd
+		NOT = { has_province_modifier = ent_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = ent_penalty duration = -1 }
+		}
+	}
+
+}
+
+#ENT/HUORNS PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.9
+	title = OK #"Province levy penalty"
+	desc = OK #"ent penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+	NOT = { religion_group = religion_group_enyd }
+	has_province_modifier = ent_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = ent_penalty
+		}
+	}
+}
+
+#DRUEDAIN PROVINCES
+province_event = {
+	id = provincelevysize.10
+	title = OK# "Province levy penalty"
+	desc = OK #"Druedain reinforce slowly."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		culture = culture_druedain
+		NOT = { has_province_modifier = druedain_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = druedain_penalty duration = -1 }
+		}
+	}
+
+}
+
+#DRUEDAIN PROVINCES - REMOVING
+province_event = {
+	id = provincelevysize.11
+	title = OK #"Province levy penalty"
+	desc = OK #"druedain penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { culture = culture_druedain }
+		has_province_modifier = ent_penalty
+	}
+	
+	mean_time_to_happen = {
+	days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = druedain_penalty
+		}
+	}
+}
+#WILDERNESS PENALTY
+province_event = {
+	id = provincelevysize.12
+	title = OK #"Province levy penalty"
+	desc = OK #"wilderness penalty added."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		culture = culture_wilderness
+		NOT = { has_province_modifier = wilderness_penalty } 
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			add_province_modifier = { name = wilderness_penalty duration = -1 }
+		}
+	}
+}
+#WILDERNESS PENALTY - REMOVING
+province_event = {
+	id = provincelevysize.13
+	title = OK #"Province levy penalty"
+	desc = OK #"Wilderness penalty removed."
+	picture = "good"
+	hide_window = yes
+	
+	trigger = {
+		NOT = { culture = culture_wilderness }
+		has_province_modifier = wilderness_penalty
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		ROOT = {
+			remove_province_modifier = wilderness_penalty
+		}
+	}
+}

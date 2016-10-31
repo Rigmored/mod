@@ -1,0 +1,571 @@
+##These events are for when an heir to E_Gondor or E_Arnor does not have the blood of numenor traits##
+
+namespace = newkinstrife
+
+##King is informed that his heir is not considered suitable by many people in Gondor##
+character_event = {
+	id = newkinstrife.1
+	desc = "EVTDESCnewkinstrife.1"#Word reaches your ears that some of your vassals of old prestigious families do not consider your heir worthy, as the blood of Numenor is clearly weak in that individual. Hopefully it won't lead to a second kinstrife upon your death...
+	picture = "GFX_death"
+	
+		
+	trigger = {
+		has_landed_title = e_gondor
+		OR = {
+			trait = blood_of_numenor
+			trait = blood_of_numenor2
+		}
+		current_heir = {
+			age = 5
+			NOT = { trait = blood_of_numenor }
+			NOT = { trait = blood_of_numenor2 }
+			NOT = { trait = elven_blood }
+			NOT = { trait = half_elf }
+		}
+		NOT = { has_character_flag = newkinstrife1 }
+	}
+		
+	mean_time_to_happen = {
+		days = 7
+	}
+				  
+	option = {
+		name = "EVTOPTAnewkinstrife.1"#How dare they!
+		set_character_flag = newkinstrife1
+	}
+	 
+	option = {
+		name = "EVTOPTBnewkinstrife.1"#We don't want a second kinstrife...
+		clr_character_flag = newkinstrife1
+	}
+}
+	
+##Someone takes the throne who is not numenorean blooded, ##
+character_event = {
+	id = newkinstrife.2
+	desc = "EVTDESCnewkinstrife.2"#The former High King is dead, but many grumble at your lack of Numenorean ancestry; they are angry at what they call the debasement of the Royal Bloodline, and some openly say that they are better suited to rule than you... 
+	picture = "GFX_death"
+	
+		
+	trigger = {
+		has_landed_title = e_gondor
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+			religion = religion_dunedain
+		}
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = blood_of_numenor2 }
+		NOT = { trait = elven_blood }
+		NOT = { trait = half_elf }
+		NOT = { has_character_flag = newkinstrife2 }
+	}
+		
+	mean_time_to_happen = {
+		days = 7
+	}
+				  
+	option = {
+		name = "EVTOPTAnewkinstrife.2"#How dare they!
+		set_character_flag = newkinstrife2
+		set_global_flag = newkinstrife
+	}
+	 
+	option = {
+		name = "EVTOPTBnewkinstrife.2"#They better not try anything...
+		set_character_flag = newkinstrife2
+		set_global_flag = newkinstrife
+	}
+	
+}
+	
+##A King level vassal begins to plot and scheme##
+character_event = {
+	id = newkinstrife.3
+	title = "EVTTITnewkinstrife.3"#You are troubled
+	desc = "EVTDESCnewkinstrife.3"#The former High King is dead, but he married beneath his station, and his heir is not worthy of the throne of Elendil. Maybe there is another of the Royal House more... suitable?
+	picture = "GFX_death"
+
+
+	trigger = {
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+		}
+		trait = blood_of_numenor
+		NOT = { has_character_flag = newkinstrife3 }
+		NOT = { has_landed_title = e_gondor }
+		NOT = { has_landed_title = e_arnor  }
+		has_global_flag = newkinstrife
+		higher_tier_than = DUKE
+	}
+
+	mean_time_to_happen = {
+		days = 1000
+	}
+
+	option = {
+		name = "EVTOPTAnewkinstrife.3"#Let's see if there is...
+		set_character_flag = newkinstrife3
+		clr_global_flag = newkinstrife
+
+		any_playable_ruler  = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+				trait = blood_of_isildur
+				NOT = { has_landed_title = e_gondor }
+				NOT = { has_landed_title = e_arnor }
+				#age = 12
+			}
+			character_event = { id = newkinstrife.4 days = 14 }
+		}
+		character_event = { id = newkinstrife.5 days = 180 }
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.3"#No, I will not start another kinstrife!
+		trigger = { ai = no }
+		set_character_flag = newkinstrife3
+		clr_global_flag = newkinstrife
+	}
+}
+	
+##If there is an heir, a global flag called newkinstrife2 will appear, triggering an event. If there is not, an event will trigger after##
+##180 days, where the noble will put himself up for the throne##
+
+character_event = {
+	id = newkinstrife.4
+	title = "EVTTITnewkinstrife.4"#You receive word
+	desc = "EVTDESCnewkinstrife.4"#The former High King of Gondor is dead, but many nobles do not feel his heir worthy. You too are an heir of Kings, one more... suitable. They want you to take the throne. Do you accept?
+	picture = "GFX_death"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAnewkinstrife.4"#Yes, I was born to rule!
+		FROM = { character_event = { id = newkinstrife.6 days = 7 } }
+		set_global_flag = newkinstrife2
+		set_character_flag = kinstrifeclaimant
+	}
+	
+	option = {
+		name = "EVTOPTBnewkinstrife.4"#No, I will not plot against my liege!
+		trigger = { ai = no }
+	}
+	
+}
+	
+##this event checks to see if there was an heir that accepted the offer - if no global flag is newkinstrife2, then there was not##
+
+character_event = {
+	id = newkinstrife.5
+	desc = "EVTDESCnewkinstrife.5"#Did you find an heir of the royal house willing to take the throne?
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.5"#Yes, all is well!
+		trigger = { has_global_flag = newkinstrife2 }
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.5"#No, I'll have to take it myself then...
+		trigger = { NOT = { has_global_flag = newkinstrife2 } }
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+				higher_tier_than = DUKE
+				top_liege = {
+					has_landed_title = e_gondor
+				}
+				NOT = { has_landed_title = e_gondor }
+				NOT = { has_landed_title = e_arnor }
+			}
+			character_event = { id = newkinstrife.15 days = 30 }
+		}
+	}
+	
+}
+	
+	
+#########################################################################################################
+##########make events for the take-it-yourself path later, first do the part where there is a claimant###
+#########################################################################################################
+
+##the heir sends word back to the plot leader##
+character_event = {
+	id = newkinstrife.6
+	title = "EVTTITnewkinstrife.6"#A true heir is found!
+	desc = "EVTDESCnewkinstrife.6"#You receive word, there is another heir of high Numenorean blood, and is willing to take the throne! Do we send out word now to others who may feel like we do and join common cause?
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.6"#Yes, immediately!
+		any_playable_ruler = {
+			limit = {
+			OR = {
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+			}
+			top_liege = {
+				has_landed_title = e_gondor
+			}
+			higher_tier_than = DUKE
+			}
+			character_event = { id = newkinstrife.8 days = 30 }
+		}
+		set_global_flag = kinstrifewar
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.6"#No, I changed my mind...
+		trigger = { ai = no }
+	}
+
+}
+	
+##newkinstrife.7 used above##
+
+
+##the lords of numenorean blood get the message from the rebel leader##
+character_event = {
+	id = newkinstrife.8
+	title = "EVTTITnewkinstrife.8"#Some want a new ruler
+	desc = "EVTDESCnewkinstrife.8"#Your current King has little or no Numenorean blood, but you receive word, there is another heir of higher birth, and is willing to take the throne! This lord is plotting to make it happen - do you join with him?
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.8"#It's a new age! Who cares about such things?
+		trigger = { ai = no }
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.8"#It must be done, for the dignity of Gondor!
+		set_character_flag = kinstrifeplotter
+		FROM = { character_event = { id = newkinstrife.9 days = 14 } }
+	}
+
+}
+	
+##the rebel lords sends word back to the plot leader##
+character_event = {
+	id = newkinstrife.9
+	title = "EVTTITnewkinstrife.9"#You receive word
+	desc = "EVTDESCnewkinstrife.9"#This Lord is willing to support your cause, even if it means war. You should inform the claimant that all is ready...
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.9"#Send word.
+		set_character_flag = kinstrifeplotter
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+				has_character_flag = kinstrifeclaimant
+				top_liege = {
+					has_landed_title = e_gondor
+				}
+			}
+			character_event = { id = newkinstrife.10 days = 30 }
+		}
+	}
+
+}
+
+	
+##the heir is told that all is ready##
+character_event = {
+	id = newkinstrife.10
+	title = "EVTTITnewkinstrife.10"#You receive word
+	desc = "EVTDESCnewkinstrife.10"#The most noble lords of the realm are ready to support your claim. It is time to do what needs to be done.
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAnewkinstrife.10"#Send word. We gather our full strength.
+		add_claim = c_minas_tirith
+		add_claim = c_annuminas
+		add_claim = e_gondor
+		add_claim = e_arnor
+		set_character_flag = kinstrifeclaimthethrone
+	}
+}
+	
+##the claimant makes his final move##
+character_event = {
+	id = newkinstrife.19
+	title = "EVTTITnewkinstrife.19"#It is time.
+	desc = "EVTDESCnewkinstrife.19"#You've come this far, now there is no going back. You must declare yourself openly, and let your supporters know that they are with you to the end now.
+	picture = "GFX_kinstrife"
+
+	trigger = {
+		OR = {
+			trait = blood_of_numenor
+			trait = blood_of_numenor2
+		}
+		has_character_flag = kinstrifeclaimthethrone
+	}
+
+	immediate = {
+		wealth = 1000
+		ROOT = {
+			create_title = {
+				tier = EMPEROR
+				landless = yes
+				temporary = yes
+				culture = ROOT
+				name = "newkinstrife_claimant"
+				holder = ROOT
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTAnewkinstrife.19"#Do it.
+		clr_character_flag = kinstrifeclaimthethrone
+		e_gondor = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		any_playable_ruler = {
+			character_event = { id = newkinstrife.14 days = 7 }
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+				has_character_flag = kinstrifeplotter
+				top_liege = {
+					has_landed_title = e_gondor
+				}
+			}
+			character_event = { id = newkinstrife.12 }
+		}
+	}
+}
+	
+	
+##the top liege is informed the rebels are gathering##
+character_event = {
+	id = newkinstrife.11
+	title = "EVTTITnewkinstrife.11"#Kinstrife is upon us!
+	desc = "EVTDESCnewkinstrife.11"#Many of the nobles from the oldest families of Gondor do not think you fit to rule, and have found another claimant. They are ready to fight for him, if you do not step down!
+	picture = "GFX_kinstrife"
+
+	trigger = {
+		has_landed_title = e_gondor
+		has_global_flag = kinstrifewar 
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTAnewkinstrife.11"#Traitors!
+		set_character_flag = kinstrifevictim
+		clr_global_flag = kinstrifewar
+	}
+}
+	
+##the kinstrife plotters join with the claimant##
+character_event = {
+	id = newkinstrife.12
+	title = "EVTTITnewkinstrife.12"#Kinstrife is upon us!
+	desc = "EVTDESCnewkinstrife.12"#The time has come. You must march towards the throne, and if the ill-suited whelp will not stand down, then it will be open war!
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.12"#Ready the banners. We march.
+		ROOT = { set_defacto_liege = FROM }
+	}
+}
+	
+##the claimant declares war##
+##deleted 13##
+
+##the world is told of the dispute##
+character_event = {
+	id = newkinstrife.14
+	title = "EVTTITnewkinstrife.14"#Kinstrife
+	desc = "EVTDESCnewkinstrife.14"#In a dispute over the throne, the Lords of Gondor have fallen into civil war. Even now, the battle-lines are being drawn, and brother will fight against brother in this terrible war.
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.14"#Oh no, not again...
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.14"#Good!
+	}
+}
+	
+#############now for when the lord takes the throne himself, and there is no claimant##
+
+##the lords of numenorean blood get the message from the rebel leader##
+character_event = {
+	id = newkinstrife.15
+	title = "EVTTITnewkinstrife.15"#Some want a new ruler
+	desc = "EVTDESCnewkinstrife.15"#Your current King has little or no Numenorean blood, but you receive word from this Prince - if you will help him, he will seize the throne, and restore the dignity of Gondor and re-make it in the image of ancient Numenor!
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.15"#It's a new age! Who cares about such things?
+		trigger = { ai = no }
+	}
+
+	option = {
+		name = "EVTOPTBnewkinstrife.15"#It must be done, for the dignity of Gondor!
+		set_character_flag = kinstrifeplotter
+		FROM = { character_event = { id = newkinstrife.16 } }
+	}
+
+}
+	
+character_event = {
+	id = newkinstrife.16
+	title = "EVTTITnewkinstrife.16"#You receive word
+	desc = "EVTDESCnewkinstrife.16"#This Prince is willing to support your cause, even if it means war. You should prepare your armies.
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	immediate = {
+		wealth = 1000
+	}
+
+	option = {
+		name = "EVTOPTAnewkinstrife.16"#Send word. We gather our full strength.
+		add_claim = c_minas_tirith
+		add_claim = c_annuminas
+		add_claim = e_gondor
+		add_claim = e_arnor
+		set_character_flag = newkinstrife18
+		set_character_flag = newkinstrife20
+		FROM = { character_event = { id = newkinstrife.20 days = 45 } }
+	}
+
+}
+	
+##the kinstrife plotters join with the claimant##
+character_event = {
+	id = newkinstrife.17
+	title = "EVTTITnewkinstrife.17"#Kinstrife is upon us!
+	desc = "EVTDESCnewkinstrife.17"#The time has come. You must march towards the throne, and if the ill-suited whelp will not stand down, then it will be open war!
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.17"#Ready the banners. We march.
+		ROOT = { set_defacto_liege = FROM }
+	}
+}
+	
+##the claimant declares independence##
+character_event = {
+	id = newkinstrife.18
+	title = "EVTTITnewkinstrife.18"#It is time.
+	desc = "EVTDESCnewkinstrife.18"#You've come this far, now there is no going back. You must declare yourself openly, and let your supporters know that they are with you to the end now.
+	picture = "GFX_kinstrife"
+
+	trigger = {
+		OR = {
+			trait = blood_of_numenor
+			trait = blood_of_numenor2
+		}
+		has_character_flag = newkinstrife18
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		wealth = 1000
+		ROOT = {
+			create_title = {
+				tier = EMPEROR
+				landless = yes
+				temporary = yes
+				culture = ROOT
+				name = "newkinstrife_war"
+				holder = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAnewkinstrife.18"#Do it.
+		clr_character_flag = newkinstrife18
+		e_gondor = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = claim_all
+			}
+		}
+		any_playable_ruler = {
+			character_event = { id = newkinstrife.14 days = 7 }
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+				has_character_flag = kinstrifeplotter
+			}
+			character_event = { id = newkinstrife.17 }
+		}
+	}
+}
+	
+##newkinstrife.19 used above##
+
+##the kinstrife plotters join with the claimant##
+character_event = {
+	id = newkinstrife.20
+	title = "EVTTITnewkinstrife.20"#Kinstrife is upon us!
+	desc = "EVTDESCnewkinstrife.20"#The time has come. You must march towards the throne, and if the ill-suited whelp will not stand down, then it will be open war!
+	picture = "GFX_kinstrife"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAnewkinstrife.20"#Ready the banners. We march.
+		ROOT = { set_defacto_liege = FROM }
+	}
+}

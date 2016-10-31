@@ -1,0 +1,1390 @@
+namespace = kinggondor
+
+## You can change your Regnal Name as King of Gondor ##
+character_event = {
+    id = kinggondor.1
+    title = "EVTTITkinggondor.1"
+    desc = "EVTDESCkinggondor.1"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	trigger = {
+		age = 20
+		OR = {
+			has_landed_title = e_gondor
+			has_landed_title = e_arnor
+		}
+		OR = {
+			culture=culture_gondorian
+			culture=culture_arnorian
+			culture=culture_dunedain
+		}
+		is_ruler = yes
+		NOT = { has_character_flag = aragorn }
+		NOT = { has_character_flag = eldarion }
+		NOT = { trait = romendacil }
+		NOT = { trait = umbardacil }
+		NOT = { trait = hyarmendacil }
+		NOT = { has_character_flag = valacar }
+		NOT = { has_character_flag = eldacar }
+		NOT = { has_character_flag = castamir }
+		NOT = { is_female = yes }
+		NOT = { has_character_flag = regnal_name_gondor }
+	}
+	
+	
+	immediate = {
+		set_character_flag = regnal_name_gondor
+	}
+	
+	## The character choose a name from Past ##
+	option = {
+		name = "EVTOPTAAAkinggondor.1" ## I'll take the name of an hero
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}		
+		character_event = { id = kinggondor.2 }
+	}			
+	
+	#### Keep his birth name #####	
+	option = {
+		name = "EVTOPTBAkinggondor.1" ## I keep my name		
+	}		
+	#### Suggest a Name #####	
+	option = {
+		name = "EVTOPTBBkinggondor.1" ## Suggest a Name	
+		character_event = { id = kinggondor.6 }		
+	}		
+}
+
+
+
+
+## You can change your Regnal Name as King of Gondor - Name of Hero of Past ##
+character_event = {
+    id = kinggondor.2
+    title = "EVTTITkinggondor.2"
+    desc = "EVTDESCkinggondor.2"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAkinggondor.2" ## I'll choose the Name of a King of the Elf of First Age		
+		character_event = { id = kinggondor.5 }
+	}
+	
+	option = {
+		name = "EVTOPTBkinggondor.2" ## I'll choose the Name of an Elf of First Age		
+		character_event = { id = kinggondor.3 }
+	}	
+	
+	option = {
+		name = "EVTOPTCkinggondor.2" ## I'll choose the Name of a Man of First Age		
+		character_event = { id = kinggondor.4 }
+	}
+	
+	option = {
+		name = "EVTOPTDkinggondor.2" ## Return	
+		trigger = { ai = no }
+		character_event = { id = kinggondor.1 }
+	}	
+}
+ 
+ ## You can change your Regnal Name as King of Gondor - Name of an Elf of First Age ##
+character_event = {
+    id = kinggondor.3
+    title = "EVTTITkinggondor.3"
+    desc = "EVTDESCkinggondor.3"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAkinggondor.3" # Glorfindel
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Glorfindel"
+	}
+	option = {
+		name = "EVTOPTBkinggondor.3" # Beleg
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Beleg"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.3" # Galdor
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Galdor"
+	}			
+	option = {
+		name = "EVTOPTDkinggondor.3" ## Others	
+		trigger = { ai = no }		
+		character_event = { id = kinggondor.7 }
+	}		
+ }
+ 
+## You can change your Regnal Name as King of Gondor - Name of a Man of First Age ##
+character_event = {
+    id = kinggondor.4
+    title = "EVTTITkinggondor.4"
+    desc = "EVTDESCkinggondor.4"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAkinggondor.4" # Túrin
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Túrin"
+	}
+	option = {
+		name = "EVTOPTBkinggondor.4" # Húrin
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Húrin"
+	}	
+	option = {
+		name = "EVTOPTCkinggondor.4" # Barahir
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Barahir"
+	}	
+	option = {
+		name = "EVTOPTDkinggondor.3" ## Others	
+		trigger = { ai = no }		
+		character_event = { id = kinggondor.10 }
+	}		
+}
+
+ ## You can change your Regnal Name as King of Gondor - Name of a King of the Elves of First Age ##
+character_event = {
+    id = kinggondor.5
+    title = "EVTTITkinggondor.5"
+    desc = "EVTDESCkinggondor.5"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAkinggondor.5" # Turgon
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Turgon"
+	}
+	option = {
+		name = "EVTOPTBkinggondor.5" # Fingolfin
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Fingolfin"
+	}	
+	option = {
+		name = "EVTOPTCkinggondor.5" # Finrod
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Finrod"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.3" ## Others	
+		trigger = { ai = no }		
+		character_event = { id = kinggondor.9 }
+	}		
+ }
+ 
+ 
+ ## You can change your Regnal Name as King of Gondor - Suggested Name ##
+character_event = {
+    id = kinggondor.6
+    title = "EVTTITkinggondor.6"
+    desc = "EVTDESCkinggondor.6"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	#### Names of the historical Kings of Gondor #####	
+	option = {
+		name = "EVTOPTAkinggondor.1" ## I'll be the King Meneldil		
+		trigger = {
+			trait = perceptive
+			trait = kind
+		}
+		set_name = "Meneldil"
+	}
+	
+	option = {
+		name = "EVTOPTBkinggondor.1" ## I'll be the King Cemendur		
+		trigger = {
+			trait = content
+			trait = kind
+		}
+		set_name = "Cemendur"
+	}	
+	
+	option = {
+		name = "EVTOPTCkinggondor.1" ## I'll be the King Eärendil	
+		trigger = {
+			trait = proud
+			trait = just
+		}
+		set_name = "Earendil"
+	}		
+	
+	option = {
+		name = "EVTOPTDkinggondor.1" ## I'll be the King Anardil	
+		trigger = {
+			trait = kind
+			trait = perceptive
+		}
+		set_name = "Anardil"
+	}	
+	
+	option = {
+		name = "EVTOPTEkinggondor.1" ## I'll be the King Ostoher	
+		trigger = {
+			trait = brave
+		}
+		set_name = "Ostoher"
+	}	
+	
+	option = {
+		name = "EVTOPTFkinggondor.1" ## I'll be the King Tarostar	
+		trigger = {
+			trait = strong
+		}
+		set_name = "Tarostar"
+	}	
+
+	option = {
+		name = "EVTOPTGkinggondor.1" ## I'll be the King Turambar
+		trigger = {
+			trait = brilliant_strategist
+			trait = perceptive
+		}
+		set_name = "Turambar"
+	}		
+	
+	option = {
+		name = "EVTOPTHkinggondor.1" ## I'll be the King Atanatar
+		trigger = {
+			OR = {
+				trait = fertile
+				trait = fair
+			}
+		}
+		set_name = "Atanatar"
+	}	
+
+	option = {
+		name = "EVTOPTIkinggondor.1" ## I'll be the King Siriondil
+		trigger = {
+			trait = fair
+			trait = kind
+		}
+		set_name = "Siriondil"
+	}	
+	
+	option = {
+		name = "EVTOPTJkinggondor.1" ## I'll be the King Falastur
+		trigger = {
+				trait = skilled_tactician
+		}
+		set_name = "Falastur"
+	}	
+	
+	option = {
+		name = "EVTOPTKkinggondor.1" ## I'll be the King Earnil
+		trigger = {
+			trait = skilled_tactician
+			trait = kind
+		}
+		set_name = "Eärnil"
+	}	
+	
+	option = {
+		name = "EVTOPTKkinggondor.1" ## I'll be the King Ciryandil
+		trigger = {
+			trait = brave
+			trait = kind
+		}
+		set_name = "Cyriandil"
+	}	
+
+	option = {
+		name = "EVTOPTLkinggondor.1" ## I'll be the King Alcarin
+		trigger = {
+			OR = {
+				trait = midas_touched
+				trait = fortune_builder
+				trait = charismatic_negotiator
+				trait = grey_eminence
+			}
+		}
+		set_name = "Alcarin"
+	}	
+	
+	option = {
+		name = "EVTOPTMkinggondor.1" ## I'll be the King Narmacil
+		trigger = {
+			OR = {
+				trait = agile
+				trait = ambidextrous
+			}
+		}
+		set_name = "Narmacil"
+	}	
+
+	option = {
+		name = "EVTOPTNkinggondor.1" ## I'll be the King Calmacil
+		trigger = {
+			OR = {
+				trait = agile
+				trait = ambidextrous
+			}
+		}
+		set_name = "Calmacil"
+	}		
+	
+	option = {
+		name = "EVTOPTOkinggondor.1" ## I'll be the King Valacar
+		trigger = {
+			OR = {
+				trait = perceptive
+				trait = genius
+			}
+		}
+		set_name = "Valacar"
+	}	
+
+	option = {
+		name = "EVTOPTPkinggondor.1" ## I'll be the King Eldacar
+		trigger = {
+			OR = {
+				trait = half_elf
+				trait = elven_blood
+			}
+		}
+		set_name = "Eldacar"
+	}	
+
+	option = {
+		name = "EVTOPTQkinggondor.1" ## I'll be the King Aldamir
+		trigger = {
+			OR = {
+				trait = cruel
+				trait = proud
+			}
+		}
+		set_name = "Aldamir"
+	}	
+	
+	option = {
+		name = "EVTOPTRkinggondor.1" ## I'll be the King Minardil
+		trigger = {
+			trait = just
+			trait = patient
+		}
+		set_name = "Minardil"
+	}		
+	
+	option = {
+		name = "EVTOPTSkinggondor.1" ## I'll be the King Telemnar
+		trigger = {
+			trait = perceptive
+			trait = patient
+		}
+		set_name = "Telemnar"
+	}	
+
+	option = {
+		name = "EVTOPTTkinggondor.1" ## I'll be the King Tarondor
+		trigger = {
+			OR = {
+				AND = {
+					trait = strong
+					trait = fortune_builder
+				}
+				AND = {
+					trait = strong
+					trait = midas_touched
+				}
+				AND = {
+					trait = strong
+					trait = grey_eminence
+				}
+			}
+		}
+		set_name = "Tarondor"
+	}	
+	
+	option = {
+		name = "EVTOPTUkinggondor.1" ## I'll be the King Calimehtar
+		trigger = {
+			OR = {
+				AND = {
+					trait = strong
+					trait = agile
+				}
+				AND = {
+					trait = strong
+					trait = ambidextrous
+				}
+				AND = {
+					trait = strong
+					trait = brilliant_strategist
+				}
+				AND = {
+					trait = strong
+					trait = inspiring_leader
+				}				
+			}
+		}
+		set_name = "Calimehtar"
+	}	
+	
+	option = {
+		name = "EVTOPTVkinggondor.1" ## I'll be the King Ondoher
+		trigger = {
+			OR = {
+				trait = midas_touched
+				trait = fortune_builder
+				trait = thrifty_clerk
+				trait = indulgent_wastrel				
+			}
+		}
+		set_name = "Ondoher"
+	}	
+
+	option = {
+		name = "EVTOPTWkinggondor.1" ## I'll be the King Eärnur
+		trigger = {
+			OR = {
+				AND = {
+					trait = strong
+					trait = agile
+				}
+				AND = {
+					trait = strong
+					trait = ambidextrous
+				}
+				AND = {
+					trait = strong
+					trait = brilliant_strategist
+				}
+				AND = {
+					trait = strong
+					trait = inspiring_leader
+				}				
+			}
+		}
+		set_name = "Eärnur"
+	}	
+
+	option = {
+		name = "EVTOPTXkinggondor.1" ## I'll be the King Elessar
+		trigger = {
+			OR = {
+				AND = {
+					trait = elessar
+					trait = elven_blood
+					trait = blood_of_isildur
+				}
+				AND = {
+					trait = elessar
+					trait = genius
+					trait = blood_of_isildur
+				}	
+				AND = {
+					trait = elessar
+					trait = fair
+					trait = blood_of_isildur
+				}					
+			}
+		}
+		set_name = "Elessar"
+	}	
+	
+	option = {
+		name = "EVTOPTXkinggondor.1" ## I'll be the King Eldarion
+		trigger = {
+			OR = {
+				AND = {
+					trait = strong
+					trait = elven_blood
+					trait = blood_of_isildur
+				}
+				AND = {
+					trait = fair
+					trait = genius
+					trait = blood_of_isildur
+				}	
+				AND = {
+					trait = just
+					trait = fair
+					trait = blood_of_isildur
+				}					
+			}
+		}
+		set_name = "Eldarion"
+	}	
+	
+	#### Names of the historical Kings of Numenor #####		
+	option = {
+		name = "EVTOPTYkinggondor.1" ## I'll be the King Minyatur
+		trigger = {
+			OR = {
+				AND = {
+					trait = strong
+					trait = half_elf
+				}
+				AND = {
+					trait = fair
+					trait = half_elf
+				}	
+				AND = {
+					trait = just
+					trait = half_elf
+				}					
+			}
+		}
+		set_name = "Minyatur"
+	}	
+	
+	option = {
+		name = "EVTOPTZkinggondor.1" ## I'll be the King Vardamir
+		trigger = {
+			OR = {
+				AND = {
+					trait = just
+					trait = mastermind_theologian
+				}
+				AND = {
+					trait = just
+					trait = scholarly_theologian
+				}	
+				AND = {
+					trait = just
+					trait = martial_cleric
+				}
+				AND = {
+					trait = scholar
+					trait = just
+				}				
+			}
+		}
+		set_name = "Vardamir"
+	}
+	
+	option = {
+		name = "EVTOPTAAkinggondor.1" ## I'll be the King Amandil
+		trigger = {
+			OR = {
+				AND = {
+					trait = chaste
+					trait = mastermind_theologian
+				}
+				AND = {
+					trait = chaste
+					trait = scholarly_theologian
+				}	
+				AND = {
+					trait = chaste
+					trait = martial_cleric
+				}
+				AND = {
+					trait = chaste
+					trait = just
+				}				
+			}
+		}
+		set_name = "Amandil"
+	}	
+
+	option = {
+		name = "EVTOPTABkinggondor.1" ## I'll be the King Elendil
+		trigger = {
+			OR = {
+				AND = {
+					trait = mastermind_theologian
+					trait = imposing
+				}
+				AND = {
+					trait = scholarly_theologian
+					trait = imposing
+				}	
+				AND = {
+					trait = martial_cleric
+					trait = imposing
+				}
+				AND = {
+					trait = just
+					trait = imposing
+				}
+				AND = {
+					trait = just
+					trait = tall
+				}				
+			}
+		}
+		set_name = "Elendil"
+	}	
+
+	option = {
+		name = "EVTOPTACkinggondor.1" ## I'll be the King Meneldur
+		trigger = {
+			trait = fair
+			trait = kind
+		}
+		set_name = "Meneldur"
+	}	
+
+	option = {
+		name = "EVTOPTADkinggondor.1" ## I'll be the King Aldarion
+		trigger = {
+			OR = {
+				AND = {
+					trait = tall
+					trait = brave
+				}
+				AND = {
+					trait = tall
+					trait = kind
+				}	
+				AND = {
+					trait = tall
+					trait = just
+				}
+				AND = {
+					trait = tall
+					trait = proud
+				}				
+			}
+		}
+		set_name = "Aldarion"
+	}	
+	
+	option = {
+		name = "EVTOPTAEkinggondor.1" ## I'll be the King Anárion
+		trigger = {
+			OR = {
+				AND = {
+					trait = perceptive
+					trait = brave
+				}
+				AND = {
+					trait = perceptive
+					trait = kind
+				}	
+				AND = {
+					trait = perceptive
+					trait = just
+				}
+				AND = {
+					trait = perceptive
+					trait = proud
+				}				
+			}
+		}
+		set_name = "Anárion"
+	}	
+
+	option = {
+		name = "EVTOPTAFkinggondor.1" ## I'll be the King Súrion
+		trigger = {
+			OR = {
+				AND = {
+					trait = quick
+					trait = brave
+				}
+				AND = {
+					trait = quick
+					trait = kind
+				}	
+				AND = {
+					trait = quick
+					trait = just
+				}
+				AND = {
+					trait = quick
+					trait = proud
+				}				
+			}
+		}
+		set_name = "Súrion"
+	}	
+
+	option = {
+		name = "EVTOPTAGkinggondor.1" ## I'll be the King Minastir
+		trigger = {
+			OR = {
+				AND = {
+					trait = fortune_builder
+					trait = tall
+				}
+				AND = {
+					trait = fortune_builder
+					trait = fair
+				}	
+				AND = {
+					trait = midas_touched
+					trait = tall
+				}
+				AND = {
+					trait = midas_touched
+					trait = fair
+				}				
+			}
+		}
+		set_name = "Minastir"
+	}	
+
+	option = {
+		name = "EVTOPTAHkinggondor.1" ## I'll be the King Ciryatan
+		trigger = {
+			OR = {
+				AND = {
+					trait = fortune_builder
+					trait = strong
+				}
+				AND = {
+					trait = fortune_builder
+					trait = genius
+				}	
+				AND = {
+					trait = midas_touched
+					trait = strong
+				}
+				AND = {
+					trait = midas_touched
+					trait = genius
+				}				
+			}
+		}
+		set_name = "Ciryatan"
+	}
+
+	option = {
+		name = "EVTOPTAIkinggondor.1" ## I'll be the King Atanamir
+		trigger = {
+			OR = {
+				AND = {
+					trait = fertile
+					trait = fair
+				}
+				AND = {
+					trait = fertile
+					trait = genius
+				}	
+				AND = {
+					trait = patient
+					trait = fair
+				}
+				AND = {
+					trait = patient
+					trait = genius
+				}				
+			}
+		}
+		set_name = "Atanamir"
+	}	
+
+	option = {
+		name = "EVTOPTAJkinggondor.1" ## I'll be the King Ancalimon
+		trigger = {
+			OR = {
+				AND = {
+					trait = midas_touched
+					trait = tall
+				}
+				AND = {
+					trait = midas_touched
+					trait = genius
+				}	
+				AND = {
+					trait = midas_touched
+					trait = fair
+				}
+				AND = {
+					trait = midas_touched
+					trait = strong
+				}				
+			}
+		}
+		set_name = "Ancalimon"
+	}		
+	
+	option = {
+		name = "EVTOPTAKkinggondor.1" ## I'll be the King Telemmaitë
+		trigger = {
+			OR = {
+				AND = {
+					trait = midas_touched
+					trait = envious
+				}
+				AND = {
+					trait = midas_touched
+					trait = zealous
+				}	
+				AND = {
+					trait = fortune_builder
+					trait = envious
+				}
+				AND = {
+					trait = fortune_builder
+					trait = zealous
+				}				
+			}
+		}
+		set_name = "Telemmaitë"
+	}
+
+	option = {
+		name = "EVTOPTALkinggondor.1" ## I'll be the King Anducal
+		trigger = {
+			OR = {
+				AND = {
+					trait = cruel
+					trait = envious
+				}
+				AND = {
+					trait = cruel
+					trait = zealous
+				}	
+				AND = {
+					trait = wroth
+					trait = envious
+				}
+				AND = {
+					trait = wroth
+					trait = zealous
+				}				
+			}
+		}
+		set_name = "Anducal"
+	}		
+	
+	option = {
+		name = "EVTOPTAMkinggondor.1" ## I'll be the King Ardamin
+		trigger = {
+			OR = {
+				AND = {
+					trait = proud
+					trait = strong
+				}
+				AND = {
+					trait = proud
+					trait = tall
+				}	
+				AND = {
+					trait = inspiring_leader
+					trait = proud
+				}
+				AND = {
+					trait = inspiring_leader
+					trait = proud
+				}				
+			}
+		}
+		set_name = "Ardamin"
+	}	
+	
+	option = {
+		name = "EVTOPTANkinggondor.1" ## I'll be the King Herunúmen
+		trigger = {
+			OR = {
+				AND = {
+					trait = ambitious
+					trait = proud
+				}
+				AND = {
+					trait = proud
+					trait = powerful_voice
+				}	
+				AND = {
+					trait = imposing
+					trait = proud
+				}
+				AND = {
+					trait = authoritative
+					trait = proud
+				}				
+			}
+		}
+		set_name = "Herunúmen"
+	}	
+
+	option = {
+		name = "EVTOPTAOkinggondor.1" ## I'll be the King Hostamir
+		trigger = {
+			OR = {
+				AND = {
+					trait = fortune_builder
+					trait = envious
+				}
+				AND = {
+					trait = fortune_builder
+					trait = zealous
+				}	
+				AND = {
+					trait = thrifty_clerk
+					trait = envious
+				}
+				AND = {
+					trait = thrifty_clerk
+					trait = zealous
+				}				
+			}
+		}
+		set_name = "Hostamir"
+	}		
+	
+	option = {
+		name = "EVTOPTAPkinggondor.1" ## I'll be the King Falassion
+		trigger = {
+			OR = {
+				AND = {
+					trait = trusting
+					trait = just
+				}
+				AND = {
+					trait = content
+					trait = kind
+				}	
+				AND = {
+					trait = trusting
+					trait = kind
+				}
+				AND = {
+					trait = charitable
+					trait = kind
+				}				
+			}
+		}
+		set_name = "Falassion"
+	}		
+	
+	option = {
+		name = "EVTOPTAQkinggondor.1" ## I'll be the King Telemnar
+		trigger = {
+			OR = {
+				AND = {
+					trait = proud
+					trait = cruel
+				}
+				AND = {
+					trait = authoritative
+					trait = proud
+				}	
+				AND = {
+					trait = authoritative
+					trait = cruel
+				}					
+				AND = {
+					trait = stubborn
+					trait = cruel
+				}
+				AND = {
+					trait = stubborn
+					trait = proud
+				}			
+			}
+		}
+		set_name = "Telemnar"
+	}
+
+	option = {
+		name = "EVTOPTARkinggondor.1" ## I'll be the King Palantir
+		trigger = {
+			OR = {
+				AND = {
+					trait = perceptive
+					trait = just
+				}
+				AND = {
+					trait = perceptive
+					trait = kind
+				}	
+				AND = {
+					trait = perceptive
+					trait = charitable
+				}					
+				AND = {
+					trait = perceptive
+					trait = content
+				}
+				AND = {
+					trait = perceptive
+					trait = honest
+				}			
+			}
+		}
+		set_name = "Palantir"
+	}	
+
+	option = {
+		name = "EVTOPTASkinggondor.1" ## I'll be the King Calion
+		trigger = {
+			OR = {
+				AND = {
+					trait = cruel
+					trait = ambitious
+				}
+				AND = {
+					trait = cruel
+					trait = zealous
+				}	
+				AND = {
+					trait = cruel
+					trait = envious
+				}					
+				AND = {
+					trait = cruel
+					trait = arbitrary
+				}
+				AND = {
+					trait = cruel
+					trait = mystic
+				}
+				AND = {
+					trait = cruel
+					trait = wroth
+				}		
+				AND = {
+					trait = cruel
+					trait = greedy
+				}					
+			}
+		}
+		set_name = "Calion"
+	}	
+
+	option = {
+		name = "EVTOPTATkinggondor.1" ## I'll be the King Isildur
+		trigger = {
+			OR = {
+				AND = {
+					trait = perceptive
+					trait = envious
+				}
+				AND = {
+					trait = perceptive
+					trait = arbitrary
+				}	
+				AND = {
+					trait = perceptive
+					trait = authoritative
+				}					
+				AND = {
+					trait = perceptive
+					trait = zealous
+				}			
+			}
+		}
+		set_name = "Isildur"
+	}	
+
+	## Famous characters of Gondor ##
+	option = {
+		name = "EVTOPTAUkinggondor.1" ## I'll be the King Faramir
+		trigger = {
+			OR = {
+				AND = {
+					trait = perceptive
+					trait = charitable
+				}
+				AND = {
+					trait = perceptive
+					trait = kind
+				}	
+				AND = {
+					trait = perceptive
+					trait = just
+				}	
+				AND = {
+					trait = charitable
+					trait = kind
+				}					
+				AND = {
+					trait = just
+					trait = kind
+				}
+				AND = {
+					trait = just
+					trait = charitable
+				}	
+				AND = {
+					trait = just
+					trait = content
+				}					
+			}
+		}
+		set_name = "Faramir"
+	}	
+
+	option = {
+		name = "EVTOPTAVkinggondor.1" ## I'll be the King Boromir
+		trigger = {
+			OR = {
+				AND = {
+					trait = skilled_tactician
+					trait = brave
+				}
+				AND = {
+					trait = skilled_tactician
+					trait = strong
+				}	
+				AND = {
+					trait = skilled_tactician
+					trait = imposing
+				}	
+				AND = {
+					trait = brilliant_strategist
+					trait = brave
+				}					
+				AND = {
+					trait = brilliant_strategist
+					trait = strong
+				}
+				AND = {
+					trait = brilliant_strategist
+					trait = imposing
+				}	
+				AND = {
+					trait = tough_soldier
+					trait = imposing
+				}					
+			}
+		}
+		set_name = "Boromir"
+	}	
+
+	option = {
+		name = "EVTOPTAWkinggondor.1" ## I'll be the King Galador
+		trigger = {
+			OR = {
+				AND = {
+					trait = just
+					trait = half_elf
+				}
+				AND = {
+					trait = fair
+					trait = half_elf
+				}	
+				AND = {
+					trait = kind
+					trait = half_elf
+				}					
+			}
+		}
+		set_name = "Galador"
+	}	
+
+	option = {
+		name = "EVTOPTAXkinggondor.1" ## I'll be the King Peregrin
+		trigger = {
+			year = 11363
+			OR = {
+				AND = {
+					trait = just
+					trait = kind
+				}
+				AND = {
+					trait = fair
+					trait = just
+				}	
+				AND = {
+					trait = kind
+					trait = charitable
+				}					
+			}
+		}
+		set_name = "Peregrin"
+	}	
+	option = {
+		name = "EVTOPTDkinggondor.2" ## Return	
+		trigger = { ai = no }
+		character_event = { id = kinggondor.1 }
+	}			
+}
+
+
+ ## You can change your Regnal Name as King of Gondor - Name of a King of the Elves of First Age ##
+character_event = {
+    id = kinggondor.7
+    title = "EVTTITkinggondor.3"
+    desc = "EVTDESCkinggondor.3"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTEkinggondor.3" # Ecthelion
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Ecthelion"
+	}
+	option = {
+		name = "EVTOPTAkinggondor.7" # Voronwë
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Voronwë"
+	}	
+	option = {
+		name = "EVTOPTBkinggondor.7" # Egalmoth
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Egalmoth"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.3" ## Others	
+		trigger = { ai = no }		
+		character_event = { id = kinggondor.8 }
+	}		
+ }
+ 
+ ## You can change your Regnal Name as King of Gondor - Name of a King of the Elves of First Age ##
+character_event = {
+    id = kinggondor.8
+    title = "EVTTITkinggondor.3"
+    desc = "EVTDESCkinggondor.3"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAkinggondor.8" # Rumil
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Rúmil"
+	}
+	option = {
+		name = "EVTOPTBkinggondor.8" # Celebrimbor
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Celebrimbor"
+	}	
+	option = {
+		name = "EVTOPTCkinggondor.8" # Daeron
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Daeron"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.2" ## Return	
+		trigger = { ai = no }
+		character_event = { id = kinggondor.1 }
+	}		
+ } 
+ 
+  ## You can change your Regnal Name as King of Gondor - Name of a King of the Elves of First Age ##
+character_event = {
+    id = kinggondor.9
+    title = "EVTTITkinggondor.5"
+    desc = "EVTDESCkinggondor.5"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTDkinggondor.5" # Fingon
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Fingon"
+	}	
+	option = {
+		name = "EVTOPTEkinggondor.5" # Ereinion
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Ereinion"
+	}	
+	option = {
+		name = "EVTOPTAkinggondor.9" # Argon
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Argon"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.2" ## Return	
+		trigger = { ai = no }
+		character_event = { id = kinggondor.1 }
+	}		
+ } 
+ 
+   ## You can change your Regnal Name as King of Gondor - Name of a King of the Elves of First Age ##
+character_event = {
+    id = kinggondor.10
+    title = "EVTTITkinggondor.4"
+    desc = "EVTDESCkinggondor.4"
+    picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTDkinggondor.4" # Beren
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Beren"
+	}
+	option = {
+		name = "EVTOPTEkinggondor.4" # Tuor
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Tuor"
+	}	
+	option = {
+		name = "EVTOPTAkinggondor.10" # Huor
+		trigger = { 
+			NOT = { trait = cruel }
+			NOT = { trait = evil_side }
+		}
+		set_name = "Huor"
+	}		
+	option = {
+		name = "EVTOPTDkinggondor.2" ## Return	
+		trigger = { ai = no }
+		character_event = { id = kinggondor.1 }
+	}		
+ } 

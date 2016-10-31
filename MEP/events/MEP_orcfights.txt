@@ -1,0 +1,456 @@
+##This is to prevent orc marriages between AI rulers and orcs from court of Cult of Melkor, such as Sauron##
+
+namespace = orcfights
+
+## A vassal want the primary title of his liege
+character_event = {
+    id = orcfights.0
+    title = EVTTITorcfights.0
+    desc = EVTDESCorcfights.0
+    picture = "GFX_war_at_north"
+	
+	# Nobody but the actual referee should ever get this
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.0
+		liege = { character_event = { id = orcfights.1 } }
+		liege = {
+			primary_title = {
+				add_claim = ROOT
+			}	
+		}		
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 3
+				martial = 10
+			}
+			modifier = {
+				factor = 5
+				martial = 12
+			}		
+			modifier = {
+				factor = 7
+				martial = 14
+			}	
+			modifier = {
+				factor = 9
+				martial = 16
+			}	
+			modifier = {
+				factor = 11
+				martial = 18
+			}	
+			modifier = {
+				factor = 13
+				martial = 20
+			}	
+			modifier = {
+				factor = 2
+				trait=orc_warrior
+			}	
+			modifier = {
+				factor = 6
+				trait=strong_orc
+			}	
+			modifier = {
+				factor = 13
+				trait=great_orc
+			}				
+		}
+	}
+		
+	option = {
+		name = EVTOPTBorcfights.0
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = paranoid
+			}
+			modifier = {
+				factor = 2
+				trait = weak
+			}
+			modifier = {
+				factor = 2
+				trait = hunchback
+			}
+			modifier = {
+				factor = 5
+				trait=weak_orc
+			}				
+			modifier = {
+				factor = 2
+				trait = wounded
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+			modifier = {
+				factor = 4
+				trait = maimed
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+		}
+	}		
+}
+
+## The liege will have to fight
+character_event = {
+    id = orcfights.1
+    title = EVTTITorcfights.1
+    desc = EVTDESCorcfights.1
+    picture = "GFX_war_at_north"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.1 ## I'll crush him !	
+		FROM = { character_event = { id = orcfights.2 } }
+		set_character_flag = flag_orc_duel
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				trait=orc_warrior
+			}	
+			modifier = {
+				factor = 6
+				trait=strong_orc
+			}	
+			modifier = {
+				factor = 13
+				trait=great_orc
+			}			
+			modifier = {
+				factor = 3
+				martial = 10
+			}
+			modifier = {
+				factor = 5
+				martial = 12
+			}		
+			modifier = {
+				factor = 7
+				martial = 14
+			}	
+			modifier = {
+				factor = 9
+				martial = 16
+			}	
+			modifier = {
+				factor = 11
+				martial = 18
+			}	
+			modifier = {
+				factor = 13
+				martial = 20
+			}	
+		}		
+	}
+	
+	option = {
+		name = EVTOPTBorcfights.1 ## No fights in my realm!
+		FROM = { character_event = { id = orcfights.3 } }
+		ai_chance = {
+			factor = 33
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 10
+				trait = weak_orc
+			}			
+			modifier = {
+				factor = 2
+				trait = paranoid
+			}
+			modifier = {
+				factor = 2
+				trait = weak
+			}
+			modifier = {
+				factor = 2
+				trait = hunchback
+			}
+			modifier = {
+				factor = 2
+				trait = wounded
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+			modifier = {
+				factor = 4
+				trait = maimed
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+		}
+	}		
+}	
+
+## The First Orc can fight now ##	
+character_event = {
+    id = orcfights.2
+    title = EVTTITorcfights.2
+    desc = EVTDESCorcfights.2
+    picture = "GFX_war_at_north"
+	
+	# Nobody but the actual referee should ever get this
+	is_triggered_only = yes
+	
+	option = {	
+		name = EVTOPTAorcfights.2
+		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.1 } } } }
+		set_character_flag = flag_orc_duel		
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 3
+				martial = 10
+			}
+			modifier = {
+				factor = 5
+				martial = 12
+			}		
+			modifier = {
+				factor = 7
+				martial = 14
+			}	
+			modifier = {
+				factor = 9
+				martial = 16
+			}	
+			modifier = {
+				factor = 11
+				martial = 18
+			}	
+			modifier = {
+				factor = 13
+				martial = 20
+			}	
+			modifier = {
+				factor = 2
+				trait=orc_warrior
+			}	
+			modifier = {
+				factor = 6
+				trait=strong_orc
+			}	
+			modifier = {
+				factor = 13
+				trait=great_orc
+			}				
+		}
+	}
+		
+	option = {
+		name = EVTOPTBorcfights.2
+		hidden_tooltip = { FROM = { character_event = { id = orcfights.3 } } }
+		liege = { clr_character_flag = flag_orc_duel }
+		if = {
+			limit = {
+				NOT = { trait = craven }
+			}
+			random = {
+				chance = 60
+				add_trait = craven
+			}
+		}
+		ai_chance = {
+			factor = 33
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 10
+				trait = weak_orc
+			}			
+			modifier = {
+				factor = 2
+				trait = paranoid
+			}
+			modifier = {
+				factor = 2
+				trait = weak
+			}
+			modifier = {
+				factor = 2
+				trait = hunchback
+			}
+			modifier = {
+				factor = 2
+				trait = wounded
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+			modifier = {
+				factor = 4
+				trait = maimed
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+		}
+	}		
+}
+
+### The Orc refuse the duel ###
+character_event = {
+	id = orcfights.3
+	desc = EVTDESCorcfights.3
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.3
+		prestige = 20	 
+		any_claim = {
+			limit = {
+				holder_scope = { is_liege_of = ROOT }
+			}
+			grant_title = ROOT
+		}
+		FROM = {
+			character_event = { id = orcfights.8 }		
+		}
+	}
+}
+
+## The Other Orc was killed in duel ##
+character_event = {
+	id = orcfights.4
+	desc = EVTDESCorcfights.4
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.4
+		prestige = 20
+		any_claim = {
+			limit = {
+				holder_scope = { is_liege_of = ROOT }
+			}
+			grant_title = ROOT
+		}
+	}
+}
+
+## The Other Orc is imprisoned after the duel ##
+character_event = {
+	id = orcfights.5
+	desc = EVTDESCorcfights.5
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.5
+		prestige = 20
+		hidden_tooltip = {
+			FROMFROM = { character_event = { id = orcfights.6 } }		
+		}
+		any_claim = {
+			limit = {
+				holder_scope = { is_liege_of = ROOT }
+			}
+			grant_title = ROOT
+		}			
+	}
+}
+
+## The Orc is informed that he go into jail ##
+character_event = {
+	id = orcfights.6
+	desc = EVTDESCorcfights.6
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.6
+		imprison = FROM
+		set_character_flag = in_orc_prison
+	}
+}
+
+
+## Small event to let a new fight begins ##
+character_event = {
+	id = orcfights.7
+	desc = OK
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+		hide_window = yes
+		
+		trigger = {
+			has_character_flag = orcfight1
+			age = 1
+		}
+	
+		mean_time_to_happen = {
+			days = 250
+		}	
+		
+		option={
+			name=OK
+			clr_character_flag = orcfight1
+		}
+}
+
+## The Orc refuse the duel - gain a trait ##
+character_event = {
+	id = orcfights.8
+	desc = EVTDESCorcfights.8
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.8
+		prestige = -100
+		random_list = {
+			25 = {
+				give_nickname = nick_the_frightened
+			}
+			25 = {
+				give_nickname = nick_the_frightened
+				add_trait = craven
+			}
+			25 = {
+				add_trait = craven
+			}	
+			25 = {
+				any_vassal = {
+					opinion = { modifier = opinion_frightened who = ROOT years = 30 }
+				}	
+				liege = {
+					any_vassal = {
+						opinion = { modifier = opinion_frightened who = ROOT years = 30 }
+					}
+				}
+			}				
+		}
+	}
+}

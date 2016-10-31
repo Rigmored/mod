@@ -1,0 +1,4847 @@
+namespace = councilgondor
+
+
+############# The Council of Gondor #############
+#### First event, to reunite the Council ####
+narrative_event = {
+	id = councilgondor.0
+	title = "EVTTITcouncilgondor.0"
+	desc = "EVTDESCcouncilgondor.0"
+	picture = "GFX_evt_gondor_kingdom"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		FROM = { set_character_flag = 0councilmember }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_anorien
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor1
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_lebennin
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor2
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_belfalas
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor3			
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_ithilien
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor4				
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_rohan
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor5		
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_harondor
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor6				
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_andrast
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor7
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_anfalas
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor8
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_pinnath_gelin
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor9
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_lamedon
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor10
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_isengard
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor11
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_minor_title = title_captaingeneral
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor12
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_minor_title = title_admiralofpelargir
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+			}
+			set_character_flag = councillor13
+		}	
+		any_child = {
+			limit = {
+				is_female = no
+				religion = religion_dunedain
+				NOT = { trait = incapable }
+				age = 16
+				NOT = { 
+					has_character_flag = councillor13
+					has_character_flag = councillor12 
+					has_character_flag = councillor11
+					has_character_flag = councillor10 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor14
+		}					
+	}
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.0" ### The Council will be reunite - Steward Of Gondor
+		trigger = {
+			ROOT = { 
+				has_landed_title = e_steward_gondor
+				NOT = { has_landed_title = e_gondor }
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 1 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 3 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 4 }
+		}		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 8 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 10 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+			}
+			narrative_event = { id = councilgondor.1 days = 13 }
+		}			
+		character_event = { id = councilgondor.4 days = 15 }
+	}
+	
+	option = {
+		name = "EVTOPTBcouncilgondor.0" ### I don't need them.
+		clr_character_flag = councilgondor
+	}	
+}
+
+
+
+## The Council of Gondor - One of the Prince of Gondor is called ##
+narrative_event = {
+	id = councilgondor.1
+	title = EVTTITcouncilgondor.1
+	desc = EVTDESCcouncilgondor.1
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.1 ## I'll come !
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 1.5
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = just }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = blood_of_numenor }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = stewardscept }
+			}			
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = 50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = 100 }
+			}
+		}
+		set_character_flag = comingtocouncil
+		if = {
+			limit = {
+				FROM = { has_character_flag = 0councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 1councilmember
+				clr_character_flag = 0councilmember
+			}
+		}			
+		if = {
+			limit = {
+				FROM = { has_character_flag = 1councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 2councilmember
+				clr_character_flag = 1councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 2councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 3councilmember
+				clr_character_flag = 2councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 3councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 4councilmember
+				clr_character_flag = 3councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 4councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 5councilmember
+				clr_character_flag = 4councilmember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 5councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 6councilmember
+				clr_character_flag = 5councilmember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 6councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 7councilmember
+				clr_character_flag = 6councilmember
+			}
+		}	
+		if = {
+			limit = {
+				FROM = { has_character_flag = 7councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 8councilmember
+				clr_character_flag = 7councilmember
+			}
+		}		
+		if = {
+			limit = {
+				FROM = { has_character_flag = 8councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 9councilmember
+				clr_character_flag = 8councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 9councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 10councilmember
+				clr_character_flag = 9councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 10councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 11councilmember
+				clr_character_flag = 10councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 11councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 12councilmember
+				clr_character_flag = 11councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 12councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 13councilmember
+				clr_character_flag = 12councilmember
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = 13councilmember }
+				NOT = { has_character_flag = joinedcouncil }
+			}
+			set_character_flag = joinedcouncil
+			FROM = {
+				set_character_flag = 14councilmember
+				clr_character_flag = 13councilmember
+			}
+		}
+		FROM = { character_event = { id = councilgondor.2 } }			
+	}	
+	
+	
+	option = {
+		name = EVTOPTBcouncilgondor.1 ## I won't come.
+		ai_chance = {
+			factor = 25
+			
+			modifier = {
+				factor = 0.5
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 0.9
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value = 0 }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = -25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = -50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = -100 }
+			}
+		}		
+		FROM = { character_event = { id = councilgondor.3 } }
+	}	
+}
+
+
+### The Steward is informed that a Prince is coming
+character_event = {
+	id = councilgondor.2
+	title = EVTTITcouncilgondor.2
+	desc = EVTDESCcouncilgondor.2
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.2 ## Great
+	}
+}
+
+### The Steward is informed that a Prince won't come
+character_event = {
+	id = councilgondor.3
+	title = EVTTITcouncilgondor.3
+	desc = EVTDESCcouncilgondor.3
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.3 ## So bad...
+	}
+}
+
+
+#### Begining of the Council ####
+
+### The Steward will choose which action he want to do.
+character_event = {
+	id = councilgondor.4
+	title = EVTTITcouncilgondor.4
+	desc = EVTDESCcouncilgondor.4
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.4 ## I want to increase the Power of the Steward.
+		trigger = {
+			e_steward_gondor = {
+				NOT = { has_law = centralization_4 }
+			}
+		}			
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.8 days = 15 }
+	}
+	
+	
+	
+	option = {
+		name = EVTOPTBcouncilgondor.4 ## I want to declare war on an ennemy.
+		character_event = { id = councilgondor.11 }
+	}
+	
+	
+	
+	
+	option = {
+		name = EVTOPTCcouncilgondor.4 ## I want to stronger the defenses of Minas Tirith.
+		trigger = {
+			is_primary_war_defender = yes
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.16 days = 15 }		
+	}	
+	
+	
+	
+	
+	option = {
+		name = EVTOPTDcouncilgondor.4 ## I want to find the heir of Isildur.
+		trigger = {
+			has_landed_title = e_steward_gondor
+			blood_of_isildur = {
+				is_alive = yes
+				age = 1
+			}
+		}
+		character_event = { id = councilgondor.20 }
+	}		
+}
+
+######### RAISE THE POWER OF THE STEWARD #########
+##### Raise the Power of the Steward ######
+character_event = {
+	id = councilgondor.5
+	title = EVTTITcouncilgondor.5
+	desc = EVTDESCcouncilgondor.5
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.5 ## Ok
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 1.5
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}	
+			modifier = {
+				factor = 2
+				trait = kind
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = fortune_builder }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = midas_touched }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = brilliant_strategist }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = charismatic_negotiator }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = grey_eminence }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = elusive_shadow }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = just }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = blood_of_numenor }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = stewardscept }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = perceptive }
+			}		
+			modifier = {
+				factor = 2
+				FROM = { trait = powerful_voice }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = 50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = 100 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote0 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote1 }
+			FROM = { clr_character_flag = vote0 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote1 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote2 }
+			FROM = { clr_character_flag = vote1 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote2 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote3 }
+			FROM = { clr_character_flag = vote2 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote3 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote4 }
+			FROM = { clr_character_flag = vote3 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote4 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote5 }
+			FROM = { clr_character_flag = vote4 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote5 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote6 }
+			FROM = { clr_character_flag = vote5 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote6 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote7 }
+			FROM = { clr_character_flag = vote6 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote7 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote8 }
+			FROM = { clr_character_flag = vote7 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote8 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote9 }
+			FROM = { clr_character_flag = vote8 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote9 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote10 }
+			FROM = { clr_character_flag = vote9 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote10 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote11 }
+			FROM = { clr_character_flag = vote10 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote11 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote12 }
+			FROM = { clr_character_flag = vote11 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote12 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote13 }
+			FROM = { clr_character_flag = vote12 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote13 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote14 }
+			FROM = { clr_character_flag = vote13 }
+			set_character_flag = voted
+		}			
+		FROM = { character_event = { id = councilgondor.6 } }		
+	}
+	
+	option = {
+		name = EVTOPTBcouncilgondor.5 ## No
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.5
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 0.9
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = thrifty_clerk }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = indulgent_wastrel }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tough_soldier}
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = misguided_warrior }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = underhanded_rogue }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = naive_appeaser }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = amateurish_plotter }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = cruel }
+			}			
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value = 0 }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = -25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = -50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = -100 }
+			}
+		}	
+		set_character_flag = voteagainst
+		FROM = { character_event = { id = councilgondor.7 } }
+	}	
+}
+
+### The Steward is informed that a Prince voted for the proposal
+character_event = {
+	id = councilgondor.6
+	desc = EVTDESCcouncilgondor.6
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.6 ## Great
+	}
+}
+
+### The Steward is informed that a Prince voted against
+character_event = {
+	id = councilgondor.7
+	desc = EVTDESCcouncilgondor.7
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.7 ## So bad...
+	}
+}
+
+### Time to know the score !
+character_event = {
+	id = councilgondor.8
+	title = EVTTITcouncilgondor.8
+	desc = EVTDESCcouncilgondor.8
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.8 ## Then...
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0membercouncil
+						has_character_flag = 1membercouncil
+						has_character_flag = 2membercouncil
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6membercouncil
+						has_character_flag = 7membercouncil
+						has_character_flag = 8membercouncil
+						has_character_flag = 9membercouncil
+						has_character_flag = 10membercouncil
+						has_character_flag = 11membercouncil
+						has_character_flag = 12membercouncil
+						has_character_flag = 13membercouncil
+						has_character_flag = 14membercouncil
+					}
+					has_character_flag = vote0
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					} 
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9membercouncil
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}		
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 14membercouncil
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.9 } } ## The Vote is lost
+		}		
+
+		### The Vote is Won ###
+		if = {
+			limit = {
+				FROM = { 
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					OR = {
+						has_character_flag = vote14 
+						has_character_flag = vote13 
+						has_character_flag = vote12 
+						has_character_flag = vote11 
+						has_character_flag = vote10 
+						has_character_flag = vote9 
+						has_character_flag = vote8 
+					}
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+					}
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10} } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+					}
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.10 } } ## The Vote is won
+		}			
+	}		
+}
+
+### The Steward is informed that a Prince voted against the proposal
+character_event = {
+	id = councilgondor.9
+	title = EVTTITcouncilgondor.9
+	desc = EVTDESCcouncilgondor.9
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.9 ## Great
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}			
+	}
+}
+
+### The Steward is informed that a Prince voted for the proposal
+character_event = {
+	id = councilgondor.10
+	title = EVTTITcouncilgondor.10
+	desc = EVTDESCcouncilgondor.10
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.10 ## Great
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}			
+		FROM = {
+			crownlaw_title = {
+				if = {
+					limit = { has_law = centralization_0 }
+					add_law_w_cooldown = centralization_1
+				}
+				if = {
+					limit = { has_law = centralization_1 }
+					add_law_w_cooldown = centralization_2
+				}
+				if = {
+					limit = { has_law = centralization_2 }
+					add_law_w_cooldown = centralization_3
+				}
+				if = {
+					limit = { has_law = centralization_3 }
+					add_law_w_cooldown = centralization_4
+				}
+			}
+		}
+		any_vassal = {
+			limit = {
+				NOT = { has_character_flag = vote_against }
+			}
+			opinion = {
+				modifier = opinion_steward_raised_authority
+				who = FROM
+				months = 120
+			}
+		}		
+	}
+}
+
+
+######## DECLARE WAR ########
+### Which realm do you want to attack? ###
+character_event = {
+	id = councilgondor.11
+	title = EVTTITcouncilgondor.11
+	desc = EVTDESCcouncilgondor.11
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.11 ## Umbar is my target
+		trigger = {
+			k_umbar = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+		}			
+		set_character_flag = gondorumbarcouncil
+		k_umbar = {
+			add_claim = ROOT
+		}
+		d_umbar = {
+			add_claim = ROOT
+		}	
+		c_umbar = {
+			add_claim = ROOT
+		}			
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }
+	}
+	
+	
+	
+	option = {
+		name = EVTOPTBcouncilgondor.11 ## Harondor is my target
+		trigger = {
+			k_harondor = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+		}		
+		set_character_flag = gondorharondorcouncil
+		k_harondor = {
+			add_claim = ROOT
+		}
+		d_laergaladrin = {
+			add_claim = ROOT
+		}	
+		d_mirlond = {
+			add_claim = ROOT
+		}	
+		c_mirlond = {
+			add_claim = ROOT
+		}	
+		d_amonost = {
+			add_claim = ROOT
+		}
+		d_east_march = {
+			add_claim = ROOT
+		}
+		d_harnen = {
+			add_claim = ROOT
+		}			
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }
+	}	
+	
+	
+	
+	option = {
+		name = EVTOPTCcouncilgondor.11 ## Near-Harad is my target
+		trigger = {
+			k_akhor = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+			k_chelkar = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+		}		
+		set_character_flag = gondornearharadcouncil
+		k_chelkar = {
+			add_claim = ROOT 
+		}
+		k_akhor = {
+			add_claim = ROOT 
+		}	
+		d_chelkar = {
+			add_claim = ROOT 
+		}
+		d_kajbah = {
+			add_claim = ROOT 
+		}	
+		d_ilaz = {
+			add_claim = ROOT 
+		}	
+		d_akhor = {
+			add_claim = ROOT 
+		}	
+		d_pharaz = {
+			add_claim = ROOT 
+		}			
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }
+	}	
+	
+	
+	
+	option = {
+		name = EVTOPTDcouncilgondor.11 ## Middle-Harad is my target
+		trigger = {
+			k_akhor = { holder_scope = {
+				liege = { character = ROOT }
+			} }
+			k_chelkar = { holder_scope = {
+				liege = { character = ROOT }
+			} }
+			k_haradwaith = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+			k_haruzan = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+		}
+		k_haruzan = {
+			add_claim = ROOT
+		}
+		k_haradwaith = {
+			add_claim = ROOT
+		}
+		d_amrun = {
+			add_claim = ROOT
+		}
+		d_haruzan = {
+			add_claim = ROOT
+		}
+		d_belabar = {
+			add_claim = ROOT
+		}
+		d_isra = {
+			add_claim = ROOT
+		}		
+		set_character_flag = gondormiddleharadcouncil
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }
+	}	
+	
+	option = {
+		name = EVTOPTEcouncilgondor.11 ## Far-Harad is my target
+		trigger = {
+			k_akhor = { holder_scope = {
+				liege = { character = ROOT } 
+			} }
+			k_chelkar = { holder_scope = {
+				liege = { character = ROOT } 
+			} }
+			k_haradwaith = { holder_scope = {
+				liege = { character = ROOT } 
+			} }
+			k_haruzan = { holder_scope = {
+				liege = { character = ROOT } 
+			} }
+			k_lurmsakun = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+			k_pezarsan = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }			
+		}
+		k_pezarsan = {
+			add_claim = ROOT
+		}
+		k_lurmsakun = {
+			add_claim = ROOT
+		}
+		d_lurmsakun = {
+			add_claim = ROOT
+		}
+		d_brafenas = {
+			add_claim = ROOT
+		}
+		d_mikarin = {
+			add_claim = ROOT
+		}
+		d_parzee = {
+			add_claim = ROOT
+		}	
+		d_ovathrac = {
+			add_claim = ROOT
+		}			
+		set_character_flag = gondorfarharadcouncil
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }
+	}
+	
+	option = {
+		name = EVTOPTFcouncilgondor.11 ## Mordor is my target
+		trigger = {
+			k_mordor = { holder_scope = {
+				NOT = { liege = { character = ROOT } }
+			} }
+		}
+		k_mordor = {
+			add_claim = ROOT
+		}
+		set_character_flag = gondormordorcouncil
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.15 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.12 days = 15 }		
+	}	
+}
+
+### Time to know the score !
+character_event = {
+	id = councilgondor.12
+	title = EVTTITcouncilgondor.8
+	desc = EVTDESCcouncilgondor.8
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.8 ## Then
+		
+		### Vote Lost ###
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0membercouncil
+						has_character_flag = 1membercouncil
+						has_character_flag = 2membercouncil
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6membercouncil
+						has_character_flag = 7membercouncil
+						has_character_flag = 8membercouncil
+						has_character_flag = 9membercouncil
+						has_character_flag = 10membercouncil
+						has_character_flag = 11membercouncil
+						has_character_flag = 12membercouncil
+						has_character_flag = 13membercouncil
+						has_character_flag = 14membercouncil
+					}
+					has_character_flag = vote0
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					} 
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9membercouncil
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}		
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 14membercouncil
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.13 } } ## The Vote is lost
+		}		
+
+		### The Vote is Won ###
+		if = {
+			limit = {
+				FROM = { 
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					OR = {
+						has_character_flag = vote14 
+						has_character_flag = vote13 
+						has_character_flag = vote12 
+						has_character_flag = vote11 
+						has_character_flag = vote10 
+						has_character_flag = vote9 
+						has_character_flag = vote8 
+					}
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+					}
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+					}
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.14 } } ## The Vote is won
+		}			
+	}
+}
+
+
+### The Steward is informed that a Prince voted against the War
+character_event = {
+	id = councilgondor.13
+	desc = EVTDESCcouncilgondor.13
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.13 ## So bad.
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}		
+	}
+}
+
+### The Steward is informed that a Prince voted for the War
+character_event = {
+	id = councilgondor.14
+	desc = EVTDESCcouncilgondor.14
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.14 ## Great
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondorumbarcouncil
+				}
+			}
+			k_umbar = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}			
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondormordorcouncil
+				}
+			}
+			k_mordor = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}			
+		}		
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondorharondorcouncil
+				}
+			}
+			k_harondor = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			d_laergaladrin = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			d_mirlond = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			d_amonost = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_east_march = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_harnen = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}			
+		}
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondornearharadcouncil
+				}
+			}
+			k_chelkar = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			k_akhor = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_chelkar = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_kajbah = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_ilaz = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_akhor = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_pharaz = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}				
+		}
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondormiddleharadcouncil
+				}
+			}
+			k_haruzan = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			k_haradwaith = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_amrun = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_haruzan = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_belabar = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_isra = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}				
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = gondorfarharadcouncil
+				}
+			}
+			k_pezarsan = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			k_lurmsakun = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_lurmsakun = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_brafenas = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_mikarin = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}	
+			d_parzee = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}
+			d_ovathrac = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim_all
+				}
+			}				
+		}		
+	}
+}
+
+
+character_event = {
+	id = councilgondor.15
+	title = EVTTITcouncilgondor.15
+	desc = EVTDESCcouncilgondor.15
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.5 ## Ok
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 1.5
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}	
+			modifier = {
+				factor = 2
+				trait = kind
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = fortune_builder }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = midas_touched }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = skilled_tactician }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = brilliant_strategist }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = charismatic_negotiator }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = grey_eminence }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = elusive_shadow }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = just }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = blood_of_numenor }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = stewardscept }
+			}	
+			modifier = {
+				factor = 2
+				FROM = { trait = perceptive }
+			}		
+			modifier = {
+				factor = 2
+				FROM = { trait = powerful_voice }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = 50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = 100 }
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote0 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote1 }
+			FROM = { clr_character_flag = vote0 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote1 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote2 }
+			FROM = { clr_character_flag = vote1 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote2 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote3 }
+			FROM = { clr_character_flag = vote2 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote3 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote4 }
+			FROM = { clr_character_flag = vote3 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote4 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote5 }
+			FROM = { clr_character_flag = vote4 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote5 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote6 }
+			FROM = { clr_character_flag = vote5 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote6 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote7 }
+			FROM = { clr_character_flag = vote6 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote7 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote8 }
+			FROM = { clr_character_flag = vote7 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote8 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote9 }
+			FROM = { clr_character_flag = vote8 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote9 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote10 }
+			FROM = { clr_character_flag = vote9 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote10 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote11 }
+			FROM = { clr_character_flag = vote10 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote11 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote12 }
+			FROM = { clr_character_flag = vote11 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote12 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote13 }
+			FROM = { clr_character_flag = vote12 }
+			set_character_flag = voted
+		}
+		if = {
+			limit = {
+				FROM = { has_character_flag = vote13 }
+				NOT = { has_character_flag = voted }
+			}
+			FROM = { set_character_flag = vote14 }
+			FROM = { clr_character_flag = vote13 }
+			set_character_flag = voted
+		}			
+		FROM = { character_event = { id = councilgondor.6 } }		
+	}
+	
+	option = {
+		name = EVTOPTBcouncilgondor.5 ## No
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.5
+				trait = blood_of_numenor
+			}
+			modifier = {
+				factor = 0.9
+				trait = blood_of_numenor2
+			}
+			modifier = {
+				factor = 0.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = thrifty_clerk }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = indulgent_wastrel }
+			}	
+			modifier = {
+				factor = 1.5
+				FROM = { trait = tough_soldier}
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = misguided_warrior }
+			}			
+			modifier = {
+				factor = 3
+				FROM = { trait = underhanded_rogue }
+			}	
+			modifier = {
+				factor = 4
+				FROM = { trait = naive_appeaser }
+			}	
+			modifier = {
+				factor = 3
+				FROM = { trait = amateurish_plotter }
+			}				
+			modifier = {
+				factor = 1.5
+				FROM = { trait = cruel }
+			}			
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value = 0 }
+			}				
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = -25 }
+			}			
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value = -50 }
+			}	
+			modifier = {
+				factor = 4
+				opinion = { who = FROM value = -100 }
+			}
+		}	
+		set_character_flag = voteagainst
+		FROM = { character_event = { id = councilgondor.7 } }
+	}	
+}
+
+
+
+############### Stronger the defenses of Minas Tirith - Defensive War Decision ####################
+
+### Time to know the score !
+character_event = {
+	id = councilgondor.16
+	title = EVTTITcouncilgondor.8
+	desc = EVTDESCcouncilgondor.8
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.8 ## Then
+		
+		### Vote Lost ###
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0membercouncil
+						has_character_flag = 1membercouncil
+						has_character_flag = 2membercouncil
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6membercouncil
+						has_character_flag = 7membercouncil
+						has_character_flag = 8membercouncil
+						has_character_flag = 9membercouncil
+						has_character_flag = 10membercouncil
+						has_character_flag = 11membercouncil
+						has_character_flag = 12membercouncil
+						has_character_flag = 13membercouncil
+						has_character_flag = 14membercouncil
+					}
+					has_character_flag = vote0
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					} 
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9membercouncil
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}		
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 14membercouncil
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.17 } } ## The Vote is lost
+		}		
+
+		### The Vote is Won ###
+		if = {
+			limit = {
+				FROM = { 
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					OR = {
+						has_character_flag = vote14 
+						has_character_flag = vote13 
+						has_character_flag = vote12 
+						has_character_flag = vote11 
+						has_character_flag = vote10 
+						has_character_flag = vote9 
+						has_character_flag = vote8 
+					}
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+					}
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+					}
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.18 } } ## The Vote is won
+		}			
+	}
+}
+
+
+### The Vote is against more defenses for the capital
+character_event = {
+	id = councilgondor.17
+	desc = EVTDESCcouncilgondor.17
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.17 ## So bad.
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}	
+	}
+}
+
+### The Lord of Gondor is informed that the Council voted to stronger the defenses of the capital
+character_event = {
+	id = councilgondor.18
+	desc = EVTDESCcouncilgondor.18
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name ="EVTOPTAcouncilgondor.18"
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}	
+		capital_scope = {
+			add_province_modifier = { name = capital_defenses duration = 730 }
+		}
+		spawn_unit = {
+			province = ROOT
+			disband_on_peace = no
+			troops = {
+				light_infantry = { 1000 1000 }
+				heavy_infantry = { 700 700 }
+				archers = { 1200 1200 }
+				knights = { 100 100 }
+			}
+		}		
+	}
+}
+
+
+
+
+
+
+##### Give the Throne to the Heir of Isildur ######
+
+### The Lord of Gondor is informed that the Council voted to stronger the defenses of the capital
+character_event = {
+	id = councilgondor.20
+	title = "EVTTITcouncilgondor.20"
+	desc = EVTDESCcouncilgondor.20
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name ="EVTOPTAcouncilgondor.20" ## I want to search for the Heir of Isildur !
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor1
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 1}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor2
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 2 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor3
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 3 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor4
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 4 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor5
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 5 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor6
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 6 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor7
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 7 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor8
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor9
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 9 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor10
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 10 }
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor11
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 11 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor12
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 12 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor13
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 13 }
+		}	
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = councillor14
+				age = 1
+				religion = religion_dunedain
+				has_character_flag = comingtocouncil
+			}
+			character_event = { id = councilgondor.5 days = 14 }
+		}			
+		set_character_flag = vote0
+		character_event = { id = councilgondor.21 days = 15 }	
+	}
+}
+
+### The Lord of Gondor is informed that the Council voted to stronger the defenses of the capital
+character_event = {
+	id = councilgondor.21
+	desc = EVTDESCcouncilgondor.8
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name ="EVTOPTAcouncilgondor.8" ## Then...
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0membercouncil
+						has_character_flag = 1membercouncil
+						has_character_flag = 2membercouncil
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6membercouncil
+						has_character_flag = 7membercouncil
+						has_character_flag = 8membercouncil
+						has_character_flag = 9membercouncil
+						has_character_flag = 10membercouncil
+						has_character_flag = 11membercouncil
+						has_character_flag = 12membercouncil
+						has_character_flag = 13membercouncil
+						has_character_flag = 14membercouncil
+					}
+					has_character_flag = vote0
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 3membercouncil
+						has_character_flag = 4membercouncil
+						has_character_flag = 5membercouncil
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					} 
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9membercouncil
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}		
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}	
+		if = {
+			limit = {
+				FROM = { 
+					has_character_flag = 14membercouncil
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.22 } } ## The Vote is lost
+		}		
+
+		### The Vote is Won ###
+		if = {
+			limit = {
+				FROM = { 
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+						has_character_flag = 14councilmember
+					}
+					OR = {
+						has_character_flag = vote14 
+						has_character_flag = vote13 
+						has_character_flag = vote12 
+						has_character_flag = vote11 
+						has_character_flag = vote10 
+						has_character_flag = vote9 
+						has_character_flag = vote8 
+					}
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+						has_character_flag = 13councilmember
+					}
+					has_character_flag = vote7
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+						has_character_flag = 11councilmember
+						has_character_flag = 12councilmember
+					}
+					has_character_flag = vote6
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+						has_character_flag = 9councilmember
+						has_character_flag = 10councilmember
+					}
+					has_character_flag = vote5
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+						has_character_flag = 7councilmember
+						has_character_flag = 8councilmember
+					}
+					has_character_flag = vote4
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+						has_character_flag = 5councilmember
+						has_character_flag = 6councilmember
+					}
+					has_character_flag = vote3
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+						has_character_flag = 3councilmember
+						has_character_flag = 4councilmember
+					}
+					has_character_flag = vote2
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}	
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						has_character_flag = 0councilmember
+						has_character_flag = 1councilmember
+						has_character_flag = 2councilmember
+					}
+					has_character_flag = vote1
+				}
+			}
+			FROM = { character_event = { id = councilgondor.23 } } ## The Vote is won
+		}			
+	}		
+}
+
+
+### The Council don't want to search after the Heir of Isildur
+character_event = {
+	id = councilgondor.22
+	desc = EVTDESCcouncilgondor.22
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAcouncilgondor.22 ## So bad.
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}
+	}
+}
+
+### The Council is agree to search after the Heir of Isildur
+character_event = {
+	id = councilgondor.23
+	desc = EVTDESCcouncilgondor.23
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name ="EVTOPTAcouncilgondor.23" ## I'll send some men in the North.
+		clr_character_flag = 0councilmember
+		clr_character_flag = 1councilmember
+		clr_character_flag = 2councilmember
+		clr_character_flag = 3councilmember
+		clr_character_flag = 4councilmember
+		clr_character_flag = 5councilmember
+		clr_character_flag = 6councilmember
+		clr_character_flag = 7councilmember
+		clr_character_flag = 8councilmember
+		clr_character_flag = 9councilmember
+		clr_character_flag = 10councilmember
+		clr_character_flag = 11councilmember
+		clr_character_flag = 12councilmember
+		clr_character_flag = 13councilmember
+		clr_character_flag = 14councilmember
+		clr_character_flag = vote1
+		clr_character_flag = vote2
+		clr_character_flag = vote3
+		clr_character_flag = vote4
+		clr_character_flag = vote5
+		clr_character_flag = vote6
+		clr_character_flag = vote7
+		clr_character_flag = vote8
+		clr_character_flag = vote9
+		clr_character_flag = vote10
+		clr_character_flag = vote11
+		clr_character_flag = vote12
+		clr_character_flag = vote13
+		clr_character_flag = vote14
+		clr_character_flag = vote0		
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = joinedcouncil
+				has_character_flag = voted
+			}
+			clr_character_flag = joinedcouncil
+			clr_character_flag = voted
+		}		
+		random_list = {
+			70 = {
+				character_event = { id = councilgondor.24 days = 150 } ## They found him
+			}
+			30 = {
+				character_event = { id = councilgondor.25 days = 150 } ## They didn't found him.
+			}
+		}
+	}
+}
+
+### You found the heir of Isildur !
+character_event = {
+	id = councilgondor.24
+	title = "EVTTITcouncilgondor.24"
+	desc = EVTDESCcouncilgondor.24
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.24" ## I'll ask him to come to take the Throne.
+		any_playable_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				trait = barahir
+			}
+			narrative_event = { id = councilgondor.26 days = 60 } 
+		}
+		any_playable_ruler = {
+			any_courtier = {
+				limit = {
+					trait = blood_of_isildur
+					trait = barahir
+				}
+				narrative_event = { id = councilgondor.26 days = 60 } 
+			}
+		}		
+	}
+}
+
+### You didn't found the heir of Isildur !
+character_event = {
+	id = councilgondor.25
+	title = "EVTTITcouncilgondor.24"
+	desc = EVTDESCcouncilgondor.25
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.25" ## So bad...
+	}
+}
+
+### The Heir of Isildur is asked
+narrative_event = {
+	id = councilgondor.26
+	title = "EVTTITcouncilgondor.24"
+	desc = EVTDESCcouncilgondor.26
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.26" ## I'll take the throne of Gondor.
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 2
+				trait = narsil
+			}
+			modifier = {
+				factor = 6
+				has_landed_title = e_arnor
+			}			
+			modifier = {
+				factor = 2
+				has_landed_title = d_dunedain_of_north
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = k_arthedain
+			}
+			modifier = {
+				factor = 2
+				has_landed_title = k_cardolan
+			}
+			modifier = {
+				factor = 1.5
+				has_landed_title = k_rhudaur
+			}			
+			modifier = {
+				factor = 3
+				trait = genius
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}	
+			modifier = {
+				factor = 3
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = powerful_voice
+			}	
+			modifier = {
+				factor = 1.5
+				trait = melodious_voice
+			}	
+			modifier = {
+				factor = 1.5
+				prestige = 1000
+			}	
+			modifier = {
+				factor = 2
+				prestige = 2000
+			}
+			modifier = {
+				factor = 3
+				prestige = 3000
+			}	
+			modifier = {
+				factor = 3
+				trait = strong
+			}	
+			modifier = {
+				factor = 2
+				trait = brave
+			}		
+		}
+		FROM = { narrative_event = { id = councilgondor.27 days = 50 } } ## He said YES!
+	}
+	
+	option = {
+		name = "EVTOPTBcouncilgondor.26" ## I won't take the throne of Gondor.
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 3
+				trait = weak
+			}
+			modifier = {
+				factor = 3
+				trait = humble
+			}	
+			modifier = {
+				factor = 3
+				trait = content
+			}
+			modifier = {
+				factor = 1.5
+				prestige = 500
+			}	
+			modifier = {
+				factor = 2
+				prestige = 200
+			}
+			modifier = {
+				factor = 3
+				prestige = 0
+			}	
+			modifier = {
+				factor = 100
+				trait = imbecile
+			}	
+			modifier = {
+				factor = 2
+				trait = craven
+			}		
+		}
+		FROM = { character_event = { id = councilgondor.28 days = 50 } } ## He said NO!
+	}	
+}
+
+
+### The Heir of Isildur accepts to take the Throne !
+narrative_event = {
+	id = councilgondor.27
+	title = "EVTTITcouncilgondor.24"
+	desc = EVTDESCcouncilgondor.27
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.27" ## Great !
+		set_global_flag = return_of_the_king
+		if = {
+			limit = {
+				any_vassal = {
+					has_landed_title = c_usuluni
+				}
+			}
+			c_usuluni = { grant_title = ROOT }
+			d_emyn_arnen = { grant_title = ROOT }
+		}
+		e_steward_gondor = {
+			grant_title = FROM
+		}
+		e_arnor = {
+			grant_title = FROM
+		}
+		c_minas_tirith = {
+			grant_title = FROM
+		}
+		c_west_osgiliath = {
+			grant_title = FROM
+		}
+		c_east_osgiliath = {
+			grant_title = FROM
+		}
+		#add_trait = annuminas
+		FROM = { character_event = { id = councilgondor.29 } }
+	}
+}
+
+### The heir won't take the throne.
+character_event = {
+	id = councilgondor.28
+	title = "EVTTITcouncilgondor.24"
+	desc = EVTDESCcouncilgondor.28
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.28" ## So bad...
+	}
+}
+
+### The New King is crowned
+character_event = {
+	id = councilgondor.29
+	title = "EVTTITcouncilgondor.29"
+	desc = EVTDESCcouncilgondor.29
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.29" ## I'm King !	
+		e_gondor = { 
+			grant_title = ROOT 
+			copy_title_laws = e_steward_gondor
+			#transfer_vassals = e_steward_gondor
+		}
+		e_steward_gondor = {
+			any_vassal = {
+				set_defacto_liege = e_gondor
+			}		
+			destroy_landed_title = THIS
+		}		
+		recalc_succession = yes
+		any_playable_ruler = {
+			limit = {
+				independent = yes
+			}
+			character_event = { id = councilgondor.30 days = 2 }
+		}
+		any_vassal = {
+			character_event = { id = councilgondor.31 days = 2 }
+		}		
+	}
+}
+
+### Everybody is informed
+character_event = {
+	id = councilgondor.30
+	title = "EVTTITcouncilgondor.29"
+	desc = EVTDESCcouncilgondor.30
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.30" ## A good news.
+		trigger = {
+			trait = good_side
+		}
+	}
+	option = {
+		name = "EVTOPTBcouncilgondor.30" ## A bad news.	
+		trigger = {
+			trait = evil_side
+		}
+	}	
+}
+
+### Vassals are informed
+character_event = {
+	id = councilgondor.31
+	title = "EVTTITcouncilgondor.29"
+	desc = EVTDESCcouncilgondor.31
+	picture = GFX_evt_gondor_kingdom
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAcouncilgondor.31" ## This is my King.
+	}
+}

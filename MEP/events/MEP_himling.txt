@@ -1,0 +1,153 @@
+## By Decision ##
+
+namespace = himling
+
+##  Explore the Ruins of Himling?
+character_event = {
+	id = himling.4
+	title = "EVThimling.4"
+	desc = "EVTDESChimling.4"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.4" # Yes, i'll explore it!
+		character_event = { id = himling.5 days = 30}
+	}
+	option = {
+		name = "EVTOPTBhimling.4" # Not now
+	}
+}
+
+##  Exploring the Ruins of Himling
+character_event = {
+	id = himling.5
+	title = "EVThimling.5"
+	desc = "EVTDESChimling.5"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.5" # Voyons voir...
+		random_list = {
+			15 = {
+				FROM = {
+					character_event = { id = himling.6 days = 15 } # You found something...
+				}
+			}
+			85 = {
+				FROM = {
+					character_event = { id = himling.10 days = 30 } # You found nothing...
+				}
+			}
+		}
+	}	
+}
+
+##  You found something in the ruins!
+character_event = {
+	id = himling.6
+	title = "EVThimling.6"
+	desc = "EVTDESChimling.6"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.6" # You found something !
+		random_list = {
+			15 = {
+				FROM = {
+					if = {
+						limit = { 
+							NOT = { has_character_flag = explorer_of_himling }
+							NOT = { himling_sword = { is_alive = yes } }
+						}
+						character_event = { id = himling.7 days = 2 } # A sword of First Age!
+					}
+				}
+			}
+			15 = {
+				FROM = {
+					if = {
+						limit = { 
+							NOT = { has_character_flag = explorer_of_himling }
+							NOT = { himling_armour = { is_alive = yes } }
+						}
+						character_event = { id = himling.8 days = 2 } # An Armour of First Age!
+					}
+				}
+			}
+			70 = {
+				FROM = {
+					character_event = { id = himling.9 days = 2} # Only old texts... So disappointing...
+				}
+			}			
+		}
+	}	
+}
+
+## You found an antic sword !
+character_event = {
+	id = himling.7
+	title = "EVThimling.7"
+	desc = "EVTDESChimling.7"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.7" # It'll be the treasure of my kin.
+		add_trait = himling_sword
+		prestige = 200
+		set_character_flag = explorer_of_himling
+	}	
+}
+
+## You found an antic armour !
+character_event = {
+	id = himling.8
+	title = "EVThimling.8"
+	desc = "EVTDESChimling.8"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.8" # # Certainly the armour of a Prince of the Noldor.
+		add_trait = himling_armour
+		prestige = 150
+		set_character_flag = explorer_of_himling		
+	}
+}
+
+## You found some antic documents
+character_event = {
+	id = himling.9
+	title = "EVThimling.9"
+	desc = "EVTDESChimling.9"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.9" # How Disappointing...	
+		prestige = 10
+	}
+}
+
+## You found nothing...
+character_event = {
+	id = himling.10
+	title = "EVThimling.10"
+	desc = "EVTDESChimling.10"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhimling.10" # How Disappointing...	
+	}
+}

@@ -1,0 +1,45 @@
+decisions = {
+	## Decision for an ork vassal to claim the crown of his liege ##
+	claim_throne_orcs = {
+		potential = {
+			ai = no
+			liege = {
+				OR = {
+					culture = culture_orkish
+					culture = culture_goblin
+					culture = culture_urukhai
+					culture = culture_troll
+					religion = religion_orkish
+				}
+				NOT = { has_character_flag = orcfight1 }
+				NOT = { character = ROOT }
+			}
+			OR = {
+				culture = culture_orkish
+				culture = culture_goblin
+				culture = culture_urukhai
+				culture = culture_troll
+				religion = religion_orkish
+			}
+			NOT = { has_character_flag = orcfight1 }
+			NOT = { is_female = yes }
+			NOT = { trait = incapable }
+			NOT = { trait = blinded }
+			NOT = { trait = craven }
+		}
+		allow = {
+			war = no
+			prisoner = no
+			liege = {
+				NOT = { martial = ROOT }
+			}
+			NOT = { trait = weak_orc }
+			prestige = 500
+		}
+		effect = {
+			character_event = { id = orcfights.0 }
+			set_character_flag = orcfight1
+			liege = { set_character_flag = orcfight1 }
+		}
+	}
+}

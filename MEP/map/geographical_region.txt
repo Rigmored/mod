@@ -1,0 +1,607 @@
+# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region.
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier
+###########################################################################
+
+#Rhovanion
+
+## South - Harad and Anadune
+world_south = {
+	duchies = {
+		d_kajbah d_chelkar d_ilaz d_amrun d_haruzan d_akhor d_pharaz d_mikarin d_parzee d_ovathrac d_lurmsakun d_brafenas d_arysis d_anrkaz d_belabar d_isra d_dusalan d_umbar d_caldur d_mardruak d_kes_arik d_ashatur d_laergaladrin d_mirlond d_amonost d_east_march d_harnen
+	}
+}
+
+## East - Rhun, Wainriders, Khand, Avari, Eastern Dwarves
+world_east = {
+	duchies = {
+		d_rhun d_sagathavuld d_gathod d_agasha_dag d_khand d_laorki d_ubesesh d_nurad d_harmal d_zirakdum d_stonefoot d_avari_elves
+	}
+}
+
+###########################################################################
+# Custom Regions
+###########################################################################
+
+custom_bellakar = {
+	duchies = {
+		d_mardruak d_kes_arik d_ashatur
+	}
+}
+
+custom_umbar = {
+	duchies = {
+		d_dusalan d_umbar d_caldur
+	}
+}
+
+custom_khand = {
+	duchies = {
+		d_khand d_laorki d_ubesesh
+	}
+}
+
+custom_anadune = {
+	duchies = {
+		d_dusalan d_umbar d_caldur d_mardruak d_kes_arik d_ashatur
+	}
+}
+
+#Mordor
+
+custom_gorgoroth = {
+	duchies = {
+		d_mordor d_north_gorgoroth
+	}
+}
+
+custom_nurn = {
+	duchies = {
+		d_lugskai d_nurn d_emyn_burzum d_neburkha
+	}
+}
+
+custom_mordor = {
+	regions = {
+		custom_gorgoroth custom_nurn
+	}
+}
+
+#Lindon
+
+custom_mithlond = {
+	duchies = {
+		d_mithlond
+	}
+}
+
+custom_harlindon = {
+	duchies = {
+		d_harlond d_laerglinn
+	}
+}
+
+custom_forlindon = {
+	duchies = {
+		d_forlond d_belegaer d_celanoriand
+	}
+}
+
+
+
+custom_lindon = {
+	regions = {
+		custom_mithlond custom_harlindon custom_forlindon
+	}
+}
+
+#############
+
+
+
+#Eriador
+
+
+##Angmar
+
+custom_angmar = {
+	duchies = {
+		d_nan_angmar d_carn_dum d_gorothlad
+	}
+}
+
+
+##Forochel
+
+custom_forochel = {
+	duchies = {
+		d_forochel
+	}
+}
+
+
+##Numeriador
+
+custom_numeriador = {
+	duchies = {
+		d_numeriador
+	}
+}
+
+
+##Arnor
+
+###Arthedain
+
+custom_tower_lands = {
+	duchies = {
+		d_hobbitwestmarch d_brandyvale d_siragale
+	}
+}
+
+custom_the_farthings = {
+	duchies = {
+		d_east_farthing d_south_farthing d_west_farthing d_north_farthing
+	}
+}
+
+custom_lands_of_evendim = {
+	duchies = {
+		d_noirinanyar d_evendim d_brethyar
+	}
+}
+
+custom_emyn_fornrim = {
+	duchies = {
+		d_weather_hills d_bree-land d_fornost d_formenyar
+	}
+}
+
+custom_arthedain = {
+	regions = {
+		custom_tower_lands custom_the_farthings custom_lands_of_evendim custom_emyn_fornrim
+	}
+}
+
+###Cardolan
+
+custom_minhiarath = {
+	duchies = {
+		d_minhiriath d_saralainn d_girithlin
+	}
+}
+
+custom_south_downs = {
+	duchies = {
+		d_tyrn_gorthad d_dol_caladir d_dol_tiinereb d_faerdor
+	}
+}
+
+custom_cardolan = {
+	regions = {
+		custom_minhiarath custom_south_downs
+	}
+}
+
+###Rhudaur
+
+custom_trollshaws = {
+	duchies = {
+		d_melosse d_rhudaur d_eredoriath
+	}
+}
+
+custom_ettenmoors = {
+	duchies = {
+		d_eldenaryar d_magillos
+	}
+}
+
+custom_rhudaur = {
+	regions = {
+		custom_trollshaws custom_ettenmoors
+	}
+}
+
+world_eriador_arnor = {
+	regions = {
+		custom_arthedain custom_cardolan custom_rhudaur
+	}
+}
+
+
+
+world_eriador = {
+	regions = {
+		custom_numeriador custom_forochel custom_angmar world_eriador_arnor
+	}
+}
+
+#############
+
+
+
+#Enedwaith
+
+
+##Vales of the Isen
+
+
+custom_vales_isen = {
+	duchies = {
+		d_isenmarch
+	}
+	counties = {
+		c_isenvale
+	}
+}
+
+
+##Barren Coastlands
+
+custom_barren_coastlands = {
+	counties = {
+		c_angren c_gwathlo_mouth c_carras
+	}
+}
+
+
+##The Gwathlo Shores
+
+custom_gwathlo_shores = {
+	counties = {
+		c_south_daelmoth c_gwathlo_basin c_gwathlo_vale c_swanfleet
+	}
+}
+
+
+##Greenlands of the Bruinen
+
+custom_bruinen_greenlands = {
+	duchies = {
+		d_eregion
+	}
+}
+
+
+##Foothills of the Misty Mountains
+
+custom_misty_foothills = {
+	duchies = {
+		d_dunland_north d_dunland_south
+	}
+	counties = {
+		c_south_eregio c_middle_eregion
+	}
+}
+
+
+##The Wild Fenlands
+
+custom_wild_fenlands = {
+	duchies = {
+		d_enedwaith
+	}
+	counties = {
+		c_bhainnan c_wredech c_cairill c_north_central_enedwaith c_west_enedwaith
+	}
+}
+
+
+
+world_enedwaith = {
+	regions = {
+		custom_vales_isen custom_barren_coastlands custom_gwathlo_shores
+		custom_bruinen_greenlands custom_misty_foothills custom_wild_fenlands
+	}
+}
+
+#############
+
+#Gondor
+
+##Anórien
+
+custom_anorien = {
+	duchies = {
+		d_royal_demesne d_danorien d_lossarnach d_entyn-i-onodlo
+	}
+}
+
+##Lebennin
+
+custom_lebennin = {
+	duchies = {
+		d_arnach d_pelargir d_celosien d_lebennivet d_gilrain
+	}
+}
+
+##Belfalas
+
+custom_belfalas = {
+	duchies = {
+		d_dudhrandir d_vilyatil-merhast d_dol_amroth d_tolfalas
+	}
+}
+
+##Ithilien
+
+custom_ithilien = {
+	duchies = {
+		d_nindalf d_north_ithilduin d_emyn_arnen d_south_ithilduin
+	}
+}
+
+##Harondor (Southern Gondor)
+
+custom_harondor = {
+	duchies = {
+		d_laergaladrin d_mirlond d_amonost d_east_march d_harnen
+	}
+}
+
+##Andrast
+
+custom_andrast = {
+	duchies = {
+		d_outer_andrast d_inner_andrast
+	}
+}
+
+##Anfalas
+
+custom_anfalas = {
+	duchies = {
+		d_anfalas d_edhellond
+	}
+}
+
+##Pinnath_gelin
+
+custom_pinnath_gelin = {
+	duchies = {
+		d_west_pinnath d_east_pinnath
+	}
+}
+
+##Lamedon
+
+custom_lamedon = {
+	duchies = {
+		d_ringlo_vale d_mornan
+	}
+}
+
+###
+
+world_gondor = {
+	regions = {
+		custom_anorien custom_lebennin custom_belfalas custom_ithilien custom_harondor
+		custom_andrast custom_anfalas custom_pinnath_gelin custom_lamedon
+	}
+}
+
+#############
+
+#Rohan and areas around it
+
+##Rohan
+
+custom_rohan = {
+	duchies = {
+		d_eastfolde d_kings_land d_celebrant d_westfolde d_westmarch
+		d_west_emnet d_east_emnet d_the_wold
+	}
+}
+
+##Fangorn
+
+custom_fangorn = {
+	duchies = {
+		d_fangorn
+	}
+}
+
+##Isengard
+
+custom_isengard = {
+	duchies = {
+		d_isengard
+	}
+}
+
+##Drúwaith Iaur
+
+custom_druwaith_iaur = {
+	duchies = {
+		d_west_druwaith d_east_druwaith
+	}
+}
+
+#############
+
+#Mountains
+
+##The Grey Mountains
+
+custom_grey_mountains = {
+	duchies = {
+		d_grey_mountains
+	}
+}
+
+##The Misty Mountains
+
+custom_misty_mountains = {
+	duchies = {
+		d_thror_combe d_moria d_misty_mountains d_pass_of_eagles
+	}
+}
+
+##Erebor
+
+custom_erebor = {
+	duchies = {
+		d_erebor
+	}
+}
+
+##Northern Misty Mountains
+
+custom_northern_misty_mountains = {
+	duchies = {
+		d_gram
+	}
+	counties = {
+		c_gundabad
+	}
+}
+
+##The Iron Mountains
+
+custom_iron_mountains = {
+	duchies = {
+		d_iron_mountains
+	}
+}
+
+##The Blue Mountains
+
+custom_blue_mountains = {
+	duchies = {
+		d_north_luin d_south_luin
+	}
+}
+
+##Mountains in the east
+
+custom_east_mountains = {
+	duchies = {
+		d_stonefoot d_zirakdum
+	}
+}
+
+##Nurunkhizdin
+
+custom_nurunkhizdin = {
+	duchies = {
+		d_nurunkhizdin
+	}
+}
+
+##Aglarond (Glittering Caves)
+
+custom_aglarond = {
+	duchies = {
+		d_aglarond
+	}
+}
+
+#############
+
+#Islands
+
+##Western Isles
+
+custom_western_isles = {
+	duchies = {
+		d_belegaer
+	}
+}
+
+custom_meneltarma = {
+	duchies = {
+		d_meneltarma
+	}
+}
+
+#############
+
+#Eregion
+
+custom_eregion = {
+	duchies = {
+		d_eregion d_rivendell d_ost_in_edhil
+	}
+}
+
+#############
+
+#Rhovanion
+
+##Mirkwood
+
+custom_mirkwood = {
+	duchies = {
+		d_mirkwood d_north_mirkwood d_emyn_lasgalen d_cell_angol d_emyn_guldur
+	}
+}
+
+##Dale
+
+custom_dale = {
+	duchies = {
+		d_esgaroth d_dale d_grasgard d_carnen
+	}
+}
+
+##Dorwinion
+
+custom_dorwinion = {
+	duchies = {
+		d_riavod d_uldonavan
+	}
+}
+
+##Kingdom of Rhovanion
+
+custom_rhovanion_kingdom = {
+	duchies = {
+		d_dor_rhunen d_rhovanion d_celduin
+	}
+}
+
+##Brownlands
+
+custom_brownlands = {
+	duchies = {
+		d_haradnur d_brownlands d_dagorlad
+	}
+}
+
+##Vales of Anduin
+
+custom_anduin_vale = {
+	duchies = {
+		d_beorncrofts d_gladden_fields d_nan_anduin d_langwed_vale d_carrock
+	}
+}
+
+##Lorien
+
+custom_lorien = {
+	duchies = {
+		d_lorien d_nimrodel
+	}
+}
+
+###
+
+world_rhovanion = {
+	regions = {
+		custom_mirkwood custom_dale custom_dorwinion custom_rhovanion_kingdom
+		custom_brownlands custom_anduin_vale custom_lorien custom_erebor
+		custom_nurunkhizdin
+	}
+	duchies = {
+		d_celebrant
+	}
+}

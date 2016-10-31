@@ -1,0 +1,810 @@
+
+
+
+namespace = alliancesystem
+
+#Imladris asks Dunedain of North for aid##
+
+character_event = {
+    id = alliancesystem.1
+	title = EVTTITalliancesystem.1
+    desc = EVTDESCalliancesystem.1
+    picture = "GFX_good"
+	
+	trigger = {		
+		OR = {
+		    has_landed_title = k_eregion
+			has_landed_title = d_rivendell
+			has_landed_title = c_imladris
+			has_landed_title = d_eregion
+			has_landed_title = d_ost_in_edhil
+		}
+		religion_group = religion_group_eldar
+		independent = yes
+		is_ruler = yes
+		prisoner = no
+		d_dunedain_of_north = {
+			has_holder = yes
+		}
+		is_primary_war_defender = yes
+		NOT = { has_character_flag = called_for_aid }
+		NOT = { trait = evil_side }
+		NOT = { has_character_flag = refused_for_aid }
+	}
+			
+	mean_time_to_happen = {
+		days = 5
+	}
+			  
+	option = {
+		name = EVTOPTAalliancesystem.1
+        set_character_flag = called_for_aid				
+		trigger = {
+			d_dunedain_of_north = {
+				has_holder = yes
+			}
+		}
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = d_dunedain_of_north
+				culture = culture_dunedain
+			}
+			character_event = { id = alliancesystem.2 }
+		}
+	}
+	
+	option = {
+        name = EVTOPTBalliancesystem.1
+		set_character_flag = refused_for_aid	
+		trigger = { ai = no }
+		random_list = {
+			70 = {
+				add_trait = proud
+			}
+			30 = {
+				add_trait = brave
+			}
+		}
+	}
+}
+		
+
+		
+#Dunedain rulers receive the call for aid#		
+character_event = {
+    id = alliancesystem.2
+    title = EVTTITalliancesystem.2
+    desc = EVTDESCalliancesystem.2
+    picture = "GFX_good"
+	is_triggered_only = yes
+		
+	option = {
+        name = EVTOPTAalliancesystem.2
+		trigger = {
+			NOT = { trait = evil_side }
+			NOT = { trait = incapable }
+			is_adult = yes
+			prisoner = no
+			is_abroad = no
+		}
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_eregion
+					has_landed_title = d_rivendell
+					has_landed_title = c_imladris
+					has_landed_title = d_eregion
+					has_landed_title = d_ost_in_edhil
+				}
+				is_primary_war_defender = yes
+				has_character_flag = called_for_aid
+			}
+			character_event = { id = alliancesystem.3 days = 7 }
+		}				
+	}
+	
+	option = {
+        name = EVTOPTBalliancesystem.2
+		trigger = { ai = no }
+		prestige = -200
+		piety = -200
+	}		
+}
+				
+#Rivendell receives reply from Dunedain#	
+character_event = {
+    id = alliancesystem.3
+    title = EVTTITalliancesystem.3
+    desc = EVTDESCalliancesystem.3
+	picture = "GFX_good"
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.3
+	}				
+}
+				
+##Event to remove the character flag once peace returns##
+character_event = {
+    id = alliancesystem.4
+	title = EVTTITalliancesystem.4
+    desc = EVTDESCalliancesystem.4
+    picture = "GFX_good"
+	mean_time_to_happen = { months = 200 }
+	
+	trigger = {
+		OR = {
+	        has_character_flag = refused_for_aid	
+	        has_character_flag = called_for_aid	
+		}
+		war = no		  
+	}
+			  
+	option = {
+        name = EVTOPTAalliancesystem.4
+		clr_character_flag = refused_for_aid
+		clr_character_flag = called_for_aid
+	}
+}
+
+
+		
+##Dale asks Dwarves of Erebor for aid##
+character_event = {
+    id = alliancesystem.5
+    title = EVTTITalliancesystem.5
+    desc = EVTDESCalliancesystem.5
+    picture = "GFX_good"
+	
+	trigger = {			
+		OR = {
+			has_landed_title = k_dale
+			has_landed_title = d_dale
+			has_landed_title = c_dale
+		}
+		culture = culture_barding
+		independent = yes
+		is_ruler = yes
+		is_primary_war_defender = yes
+		prisoner = no
+		NOT = { has_character_flag = called_for_aid }
+		NOT = { has_character_flag = refused_for_aid }
+		NOT = { trait = evil_side }
+	}
+	
+	mean_time_to_happen = {
+		days = 5
+	}
+			  
+	option = {
+            name = EVTOPTAalliancesystem.5
+			set_character_flag = called_for_aid				
+			any_independent_ruler = {
+			limit = {
+				culture_group = culture_group_dwarves
+				has_landed_title = c_erebor
+			}
+			character_event = { id = alliancesystem.6 }
+		}
+	}
+	option = {
+        name = EVTOPTBalliancesystem.5
+		set_character_flag = refused_for_aid	
+		trigger = { ai = no }
+		random_list = {
+			70 = {
+				add_trait = proud
+			}
+			30 = {
+				add_trait = brave
+			}
+		}
+	}
+		
+}
+		
+#Erebor ruler receive the call for aid#		
+character_event = {
+    id = alliancesystem.6
+    title = EVTTITalliancesystem.6
+    desc = EVTDESCalliancesystem.6
+    picture = "GFX_good"
+	is_triggered_only = yes
+		
+	option = {
+        name = EVTOPTAalliancesystem.6
+		trigger = {
+			NOT = { trait = evil_side }
+			NOT = { trait = incapable }
+			is_adult = yes
+			prisoner = no
+			is_abroad = no
+			}
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_dale
+					has_landed_title = d_dale
+					has_landed_title = c_dale
+				}
+				culture = culture_barding
+				is_primary_war_defender = yes
+				has_character_flag = called_for_aid	
+			}
+			character_event = { id = alliancesystem.7 days = 7 }
+		}				
+	}
+	
+	option = {
+        name = EVTOPTBalliancesystem.6
+		trigger = { ai = no }
+		prestige = -200
+		piety = -200
+	}
+				
+}
+				
+#Dale receives reply from Dwarves#	
+character_event = {
+    id = alliancesystem.7
+    title = EVTTITalliancesystem.7
+    desc = EVTDESCalliancesystem.7
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = EVTOPTAalliancesystem.7
+	}				
+}
+				
+
+		
+##Erebor asks Dale for aid##
+
+character_event = {
+    id = alliancesystem.8
+    title = EVTTITalliancesystem.8 
+    desc = EVTDESCalliancesystem.8
+    picture = "GFX_good"
+	only_independent = yes
+	ai = yes
+	
+	trigger = {			
+		culture_group = culture_group_dwarves
+		has_landed_title = c_erebor
+		independent = yes
+		is_ruler = yes
+		is_primary_war_defender = yes
+		NOT = { has_character_flag = called_for_aid }
+		NOT = { has_character_flag = refused_for_aid }
+		NOT = { trait = evil_side }
+	}
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+			  
+	option = {
+            name = EVTOPTAalliancesystem.8
+			set_character_flag = called_for_aid				
+			any_independent_ruler = {
+			limit = {
+				culture = culture_barding
+				is_primary_war_defender = yes
+				OR = {
+					has_landed_title = d_dale
+					has_landed_title = c_dale
+					has_landed_title = k_dale
+				}
+			}
+			character_event = { id = alliancesystem.9 }
+		}
+	}
+	option = {
+		name = EVTOPTBalliancesystem.8
+		set_character_flag = refused_for_aid	
+		trigger = { ai = no }
+		random_list = {
+			70 = {
+				add_trait = proud
+			}
+			30 = {
+				add_trait = brave
+			}
+		}
+	} 
+		
+}
+		
+#Dale receive the call for aid#		
+character_event = {
+    id = alliancesystem.9
+    title = EVTTITalliancesystem.9
+    desc = EVTDESCalliancesystem.9
+    picture = "GFX_good"
+	is_triggered_only = yes
+	ai = no
+		
+	option = {
+        name = EVTOPTAalliancesystem.9
+		trigger = {
+			ai = no
+			NOT = { trait = evil_side }
+		}
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				OR = {
+					has_landed_title = k_erebor
+					has_landed_title = d_erebor
+					has_landed_title = c_erebor
+				}
+				culture_group = culture_group_dwarves
+				is_primary_war_defender = yes
+				has_character_flag = called_for_aid	
+			}
+			character_event = { id = alliancesystem.13 days = 7 }	
+		}
+	}
+				
+	option = {
+        name = EVTOPTBalliancesystem.9
+		prestige= -200
+		piety= -100
+	}
+}
+	
+#Erebor receives reply from Dale#	
+character_event = {
+    id = alliancesystem.13
+    title = EVTTITalliancesystem.13
+    desc = EVTDESCalliancesystem.13
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = EVTOPTAalliancesystem.13
+	}				
+}	
+				
+				
+#Hobbits ask Dunedain of North for aid##
+character_event = {
+    id = alliancesystem.10
+	title = EVTTITalliancesystem.10
+    desc = EVTDESCalliancesystem.10
+    picture = "GFX_good"
+	
+	trigger = {		
+		has_landed_title = k_shire
+		religion_group = religion_group_periannath
+		independent = yes
+		is_ruler = yes
+		prisoner = no
+		d_dunedain_of_north = {
+			has_holder = yes
+		}
+		is_primary_war_defender = yes
+		NOT = { has_character_flag = called_for_aid }
+		NOT = { trait = evil_side }
+		NOT = { has_character_flag = refused_for_aid }
+	}
+			
+	mean_time_to_happen = {
+		days = 5
+	}
+			  
+	option = {
+		name = EVTOPTAalliancesystem.10
+        set_character_flag = called_for_aid				
+		trigger = {
+			d_dunedain_of_north = {
+				has_holder = yes
+			}
+		}
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = d_dunedain_of_north
+				culture = culture_dunedain
+			}
+			character_event = { id = alliancesystem.11 }
+		}
+	}
+	
+	option = {
+		name = EVTOPTBalliancesystem.10
+		set_character_flag = refused_for_aid	
+		trigger = { ai = no }
+		random_list = {
+			70 = {
+				add_trait = proud
+			}
+			30 = {
+				add_trait = brave
+			}
+		}
+	}
+}
+		
+
+		
+#Dunedain rulers receive the call for aid#		
+
+character_event = {
+    id = alliancesystem.11
+    title = EVTTITalliancesystem.11
+    desc = EVTDESCalliancesystem.11
+    picture = "GFX_good"
+	is_triggered_only = yes
+	
+		
+	option = {
+        name = EVTOPTAalliancesystem.11
+		trigger = {
+			NOT = { trait = evil_side }
+			NOT = { trait = incapable }
+			is_adult = yes
+			prisoner = no
+			is_abroad = no
+		}
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		any_independent_ruler  = {
+			limit = {
+				has_landed_title = k_shire
+				religion_group = religion_group_periannath
+				is_primary_war_defender = yes
+				has_character_flag = called_for_aid
+			}
+			character_event = { id = alliancesystem.12 days = 7 }
+		}				
+	}
+	
+	option = {
+        name = EVTOPTBalliancesystem.11
+		trigger = { ai = no }
+		prestige = -200
+		piety = -200
+	}				
+}
+				
+#Shire receives reply from Dunedain#	
+character_event = {
+    id = alliancesystem.12
+    title = EVTTITalliancesystem.12
+    desc = EVTDESCalliancesystem.12
+	picture = "GFX_good"
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.12
+	}				
+}				
+		
+
+
+
+##### If Good is at war with Sauron #####
+
+### An AI good faction should ask the White Council to gather Free Peoples ###	
+narrative_event = {
+    id = alliancesystem.20
+    title = EVTTITalliancesystem.20
+    desc = EVTDESCalliancesystem.20
+	picture = "GFX_good"
+
+	trigger = {
+		ai = yes
+		war = yes
+		any_current_enemy = {
+			has_character_flag = sauron
+			age = 16
+		}
+		trait = good_side
+		NOT = { has_global_flag = alliancevssauron }
+		NOT = { has_global_flag = noalliancevssauron }	
+		any_playable_ruler = {
+			trait = leader_whitecouncil
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30 
+	}
+			
+	option = {
+        name = EVTOPTAalliancesystem.20
+		ai_chance = {
+			factor = 15
+		}
+		any_playable_ruler = {
+			limit = {
+				trait = leader_whitecouncil
+			}
+			narrative_event = { id = alliancesystem.21 days = 10 }
+		}
+		set_global_flag = alliancevssauron
+	}	
+	
+	option = {
+        name = EVTOPTBalliancesystem.20
+		ai_chance = {
+			factor = 85
+		}
+	}	
+}		
+
+
+narrative_event = {
+    id = alliancesystem.21
+    title = EVTTITalliancesystem.21
+    desc = EVTDESCalliancesystem.21
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.21 ## Call all the Free People to help this Lord!
+		ai_chance = {
+			factor = 45
+		}	
+		FROM = { 
+			set_character_flag = leaderalliancevssauron 
+			character_event = { id = alliancesystem.24 days = 8 }
+		}
+		any_playable_ruler = {
+			limit = {
+				trait = good_side
+				independent = yes
+				NOT = { has_character_flag = leaderalliancevssauron }
+				NOT = { trait = white_council }
+			}
+			narrative_event = { id = alliancesystem.22 days = 10 }
+		}		
+		set_global_flag = alliancevssauron
+	}	
+	
+	option = {
+        name = EVTOPTBalliancesystem.21 ## We can't do this.
+		ai_chance = {
+			factor = 55
+		}
+		set_global_flag = noalliancevssauron
+		clr_global_flag = alliancevssauron
+	}	
+}				
+
+narrative_event = {
+    id = alliancesystem.22
+    title = EVTTITalliancesystem.22
+    desc = EVTDESCalliancesystem.22
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.22 ## I'll join them!
+		ai_chance = {
+			factor = 40
+		}
+		FROMFROM = {
+			character_event = { id = alliancesystem.23 days = 2 }
+		}
+	}	
+	
+	option = {
+        name = EVTOPTBalliancesystem.22 ## I can't do it.
+		ai_chance = {
+			factor = 60
+		}
+		remove_trait = good_side
+		random = {
+			chance = 40
+			add_trait = craven
+		}
+		random = {
+			chance = 10
+			add_trait = paranoid
+		}		
+	}	
+}				
+
+character_event = {
+    id = alliancesystem.23
+    title = EVTTITalliancesystem.23
+    desc = EVTDESCalliancesystem.23
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.23 ## Great!
+		FROM = {
+			join_defender_wars = ROOT
+			join_attacker_wars = ROOT
+		}
+	}	
+}	
+
+character_event = { ## The White Council will join you
+    id = alliancesystem.24
+    title = EVTTITalliancesystem.24
+    desc = EVTDESCalliancesystem.24
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+			
+	option = {
+        name = EVTOPTAalliancesystem.23 ## Great !
+		FROM = {
+			join_defender_wars = ROOT
+			join_attacker_wars = ROOT
+		}
+		any_playable_ruler = {
+			limit = {
+				trait = white_council
+			}
+			join_defender_wars = ROOT
+			join_attacker_wars = ROOT
+		}
+		any_playable_ruler = {
+			limit = {
+				has_character_flag = sauron
+				age = 16
+			}
+			narrative_event = { id = alliancesystem.27 days = 10 } ## Sauron is alerted
+		}
+	}	
+}	
+
+
+character_event = {
+    id = alliancesystem.25
+    title = EVTTITalliancesystem.25
+    desc = EVTDESCalliancesystem.25
+	picture = "GFX_good"
+	#hide_window = yes
+
+	trigger = {
+		ai = no
+		war = yes
+		any_current_enemy = {
+			has_character_flag = sauron
+			age = 16
+		}
+		trait = good_side
+		NOT = { has_global_flag = alliancevssauron }
+		NOT = { has_global_flag = noalliancevssauron }	
+		any_playable_ruler = {
+			trait = leader_whitecouncil
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+			
+	option = {
+        name = EVTOPTAalliancesystem.25
+		random = {
+			chance = 18		
+			narrative_event = { id = alliancesystem.26 days = 30 }
+		}
+	}	
+
+}	
+
+
+character_event = { ## The White Council will join you
+    id = alliancesystem.26
+    title = EVTTITalliancesystem.26
+    desc = EVTDESCalliancesystem.26
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	trigger = {
+		ai = no
+		war = yes
+		any_current_enemy = {
+			has_character_flag = sauron
+			age = 16
+		}
+		trait = good_side
+		NOT = { has_global_flag = alliancevssauron }
+		NOT = { has_global_flag = noalliancevssauron }	
+		any_playable_ruler = {
+			trait = leader_whitecouncil
+		}
+	}	
+	
+	option = {
+        name = EVTOPTAalliancesystem.26
+		any_playable_ruler = {
+			limit = {
+				trait = leader_whitecouncil
+			}
+			narrative_event = { id = alliancesystem.21 days = 10 }
+		}
+		set_global_flag = alliancevssauron
+	}	
+	
+	option = {
+        name = EVTOPTBalliancesystem.26
+	}		
+}
+
+
+character_event = { ## Sauron is alerted
+    id = alliancesystem.27
+    title = EVTTITalliancesystem.27
+    desc = EVTDESCalliancesystem.27
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+        name = EVTOPTAalliancesystem.27
+		ai_chance = {
+			factor = 35
+		}
+		any_playable_ruler = {
+			limit = {
+				trait = evil_side
+				independent = yes
+			}
+			narrative_event = { id = alliancesystem.28 days = 10 }
+		}
+	}	
+	
+	option = {
+        name = EVTOPTBalliancesystem.27
+		ai_chance = {
+			factor = 65
+		}		
+	}		
+}
+
+character_event = { ## The Evil Forces don't have any choice.
+    id = alliancesystem.28
+    title = EVTTITalliancesystem.28
+    desc = EVTDESCalliancesystem.28
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+        name = EVTOPTAalliancesystem.28
+		FROM = {
+			character_event = { id = alliancesystem.29 days = 10 }
+		}
+	}	
+}
+
+character_event = { ## The Evil Forces don't have any choice.
+    id = alliancesystem.29
+    title = EVTTITalliancesystem.29
+    desc = EVTDESCalliancesystem.29
+	picture = "GFX_good"
+
+	is_triggered_only = yes
+	
+	option = {
+        name = EVTOPTAalliancesystem.29
+		FROM = {
+			join_defender_wars = ROOT
+			join_attacker_wars = ROOT		
+		}
+	}	
+}

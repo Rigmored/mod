@@ -1,0 +1,3400 @@
+namespace = soldiertraits
+	
+#### Learning to ride from your guardian #####
+character_event = {
+	id = soldiertraits.1
+	desc = "EVTDESCsoldiertraits.1"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = squire
+				trait = good_rider
+				trait = great_rider
+				trait = horse_master
+			}
+		}
+		NOT = { trait = squire }
+		NOT = { trait = good_rider }
+		NOT = { trait = great_rider }
+		NOT = { trait = horse_master }
+		OR = {
+			culture = culture_variags
+			culture = culture_eotheod
+			culture = culture_rohirrim			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = squire }
+				guardian = { trait = good_rider }
+				guardian = { trait = great_rider }
+				guardian = { trait = horse_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2.5
+			is_female = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_female = yes
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.1" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		add_trait = squire 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.2
+	desc = "EVTDESCsoldiertraits.2"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = squire
+				trait = good_rider
+				trait = great_rider
+				trait = horse_master
+			}
+		}
+		trait = squire
+		NOT = { trait = good_rider }
+		NOT = { trait = great_rider }
+		NOT = { trait = horse_master }
+		OR = {
+			culture = culture_variags
+			culture = culture_eotheod
+			culture = culture_rohirrim			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = good_rider }
+				guardian = { trait = great_rider }
+				guardian = { trait = horse_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 1.4
+			is_female = yes
+		}
+		modifier = {
+			factor = 0.8
+			is_female = yes
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.2"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = squire 
+		add_trait = good_rider
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.3
+	desc = "EVTDESCsoldiertraits.3"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = squire
+				trait = good_rider
+				trait = great_rider
+				trait = horse_master
+			}
+		}
+		trait = good_rider
+		NOT = { trait = great_rider }
+		NOT = { trait = horse_master }
+		OR = {
+			culture = culture_variags
+			culture = culture_eotheod
+			culture = culture_rohirrim			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = great_rider }
+				guardian = { trait = horse_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 1.4
+			is_female = yes
+		}
+		modifier = {
+			factor = 0.8
+			is_female = yes
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.3"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = good_rider 
+		add_trait = great_rider
+	}
+}
+
+character_event = {
+	id = soldiertraits.4
+	desc = "EVTDESCsoldiertraits.4" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = squire
+				trait = good_rider
+				trait = great_rider
+				trait = horse_master
+			}
+		}
+		trait = great_rider
+
+		NOT = { trait = horse_master }		
+		OR = {
+			culture = culture_variags
+			culture = culture_eotheod
+			culture = culture_rohirrim			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = horse_master }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 1.4
+			is_female = yes
+		}
+		modifier = {
+			factor = 0.8
+			is_female = yes
+			OR = {
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.4"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = great_rider
+		add_trait = horse_master
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.5
+	desc = "EVTDESCsoldiertraits.5" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+
+#### Learning to ride from your guardian - Dol Amroth Knights #####
+character_event = {
+	id = soldiertraits.6
+	desc = "EVTDESCsoldiertraits.6"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {		
+			trait = amroth_knight
+		}
+		NOT = { trait = amroth_squire }
+		NOT = { trait = amroth_knight }
+		culture = culture_gondorian			
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+				guardian = { trait = amroth_knight }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2000
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.6" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.8} } } #Guardian Notification.
+		add_trait = amroth_squire 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.7
+	desc = "EVTDESCsoldiertraits.7"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			trait = amroth_knight
+		}
+		trait = amroth_squire
+		NOT = { trait = amroth_knight }
+		culture = culture_gondorian		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = amroth_knight }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.7"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.8} } } #Guardian Notification.
+		remove_trait = amroth_squire
+		add_trait = amroth_knight
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.8
+	desc = "EVTDESCsoldiertraits.8" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+
+#### Learning to fight from your guardian - Orcs #####
+character_event = {
+	id = soldiertraits.9
+	desc = "EVTDESCsoldiertraits.9"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = weak_orc
+				trait = orc_warrior
+				trait = strong_orc
+				trait = great_orc
+			}
+		}
+		NOT = { trait = weak_orc }
+		NOT = { trait = orc_warrior }
+		NOT = { trait = strong_orc }
+		NOT = { trait = great_orc }
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai		
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = weak_orc }
+				guardian = { trait = orc_warrior }
+				guardian = { trait = strong_orc }
+				guardian = { trait = great_orc }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.9" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.13} } } #Guardian Notification.
+		add_trait = weak_orc 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.10
+	desc = "EVTDESCsoldiertraits.10"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = weak_orc
+				trait = orc_warrior
+				trait = strong_orc
+				trait = great_orc
+			}
+		}
+		trait = weak_orc
+		NOT = { trait = orc_warrior }
+		NOT = { trait = strong_orc }
+		NOT = { trait = great_orc }
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai		
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = orc_warrior }
+				guardian = { trait = strong_orc }
+				guardian = { trait = great_orc }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.10"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.13} } } #Guardian Notification.
+		remove_trait = weak_orc 
+		add_trait = orc_warrior
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.11
+	desc = "EVTDESCsoldiertraits.11"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = weak_orc
+				trait = orc_warrior
+				trait = strong_orc
+				trait = great_orc
+			}
+		}
+		trait = orc_warrior
+
+		NOT = { trait = strong_orc }
+		NOT = { trait = great_orc }
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai		
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = strong_orc }
+				guardian = { trait = great_orc }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.11"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.13} } } #Guardian Notification.
+		remove_trait = orc_warrior 
+		add_trait = strong_orc
+	}
+}
+
+character_event = {
+	id = soldiertraits.12
+	desc = "EVTDESCsoldiertraits.12" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = weak_orc
+				trait = orc_warrior
+				trait = strong_orc
+				trait = great_orc
+			}
+		}
+		trait = strong_orc
+
+		NOT = { trait = great_orc }
+		OR = {
+			culture = culture_orkish
+			culture = culture_goblin
+			culture = culture_urukhai		
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = great_orc }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.12"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.13} } } #Guardian Notification.
+		remove_trait = strong_orc
+		add_trait = great_orc
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.13
+	desc = "EVTDESCsoldiertraits.13" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+
+#### Learning to fight from your guardian - Elves #####
+character_event = {
+	id = soldiertraits.14
+	desc = "EVTDESCsoldiertraits.14"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = pacifist_elf
+				trait = trained_elf
+				trait = great_elf
+				trait = legendary_warrior
+			}
+		}
+		NOT = { trait = pacifist_elf }
+		NOT = { trait = trained_elf }
+		NOT = { trait = great_elf }
+		NOT = { trait = legendary_warrior }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = pacifist_elf }
+				guardian = { trait = trained_elf }
+				guardian = { trait = great_elf }
+				guardian = { trait = legendary_warrior }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.14" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
+		add_trait = pacifist_elf 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.15
+	desc = "EVTDESCsoldiertraits.15"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = pacifist_elf
+				trait = trained_elf
+				trait = great_elf
+				trait = legendary_warrior
+			}
+		}
+		trait = pacifist_elf
+		NOT = { trait = trained_elf }
+		NOT = { trait = great_elf }
+		NOT = { trait = legendary_warrior }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = trained_elf }
+				guardian = { trait = great_elf }
+				guardian = { trait = legendary_warrior }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.15"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
+		remove_trait = pacifist_elf 
+		add_trait = trained_elf
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.16
+	desc = "EVTDESCsoldiertraits.16"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = pacifist_elf
+				trait = trained_elf
+				trait = great_elf
+				trait = legendary_warrior
+			}
+		}
+		trait = trained_elf
+
+		NOT = { trait = great_elf }
+		NOT = { trait = legendary_warrior }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = great_elf }
+				guardian = { trait = legendary_warrior }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.16"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
+		remove_trait = trained_elf 
+		add_trait = great_elf
+	}
+}
+
+character_event = {
+	id = soldiertraits.17
+	desc = "EVTDESCsoldiertraits.17" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = pacifist_elf
+				trait = trained_elf
+				trait = great_elf
+				trait = legendary_warrior
+			}
+		}
+		trait = great_elf
+
+		NOT = { trait = legendary_warrior }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = legendary_warrior }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.17"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
+		remove_trait = great_elf
+		add_trait = legendary_warrior
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.18
+	desc = "EVTDESCsoldiertraits.18" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+#### Learning to fight from your guardian - Harad #####
+character_event = {
+	id = soldiertraits.19
+	desc = "EVTDESCsoldiertraits.19"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mumakil_raiser
+				trait = mumakil_groom
+				trait = mumakil_rider
+				trait = mumakil_commander
+			}
+		}
+		NOT = { trait = mumakil_raiser }
+		NOT = { trait = mumakil_groom }
+		NOT = { trait = mumakil_rider }
+		NOT = { trait = mumakil_commander }
+		culture = culture_haradrim			
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = mumakil_raiser }
+				guardian = { trait = mumakil_groom }
+				guardian = { trait = mumakil_rider }
+				guardian = { trait = mumakil_commander }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.19" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.23} } } #Guardian Notification.
+		add_trait = mumakil_raiser 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.20
+	desc = "EVTDESCsoldiertraits.20"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = mumakil_raiser
+				trait = mumakil_groom
+				trait = mumakil_rider
+				trait = mumakil_commander
+			}
+		}
+		trait = mumakil_raiser
+		NOT = { trait = mumakil_groom }
+		NOT = { trait = mumakil_rider }
+		NOT = { trait = mumakil_commander }
+		culture = culture_haradrim			
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = mumakil_groom }
+				guardian = { trait = mumakil_rider }
+				guardian = { trait = mumakil_commander }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.20"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.23} } } #Guardian Notification.
+		remove_trait = mumakil_raiser 
+		add_trait = mumakil_groom
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.21
+	desc = "EVTDESCsoldiertraits.21"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mumakil_raiser
+				trait = mumakil_groom
+				trait = mumakil_rider
+				trait = mumakil_commander
+			}
+		}
+		trait = mumakil_groom
+
+		NOT = { trait = mumakil_rider }
+		NOT = { trait = mumakil_commander }
+		culture = culture_haradrim			
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = mumakil_rider }
+				guardian = { trait = mumakil_commander }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.21"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.23} } } #Guardian Notification.
+		remove_trait = mumakil_groom 
+		add_trait = mumakil_rider
+	}
+}
+
+character_event = {
+	id = soldiertraits.22
+	desc = "EVTDESCsoldiertraits.22" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = mumakil_raiser
+				trait = mumakil_groom
+				trait = mumakil_rider
+				trait = mumakil_commander
+			}
+		}
+		trait = mumakil_rider
+
+		NOT = { trait = mumakil_commander }
+		culture = culture_haradrim			
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = mumakil_commander }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.22"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.23} } } #Guardian Notification.
+		remove_trait = mumakil_rider
+		add_trait = mumakil_commander
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.23
+	desc = "EVTDESCsoldiertraits.23" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+#### Learning to fight from your guardian - Dwarves #####
+character_event = {
+	id = soldiertraits.24
+	desc = "EVTDESCsoldiertraits.24"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = dwarf_warrior
+				trait = trained_dwarf
+				trait = great_axeman
+				trait = dragon_slayer
+			}
+		}
+		NOT = { trait = dwarf_warrior }
+		NOT = { trait = trained_dwarf }
+		NOT = { trait = great_axeman }
+		NOT = { trait = dragon_slayer }
+		culture_group = culture_group_dwarves		
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = dwarf_warrior }
+				guardian = { trait = trained_dwarf }
+				guardian = { trait = great_axeman }
+				guardian = { trait = dragon_slayer }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.24" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.28} } } #Guardian Notification.
+		add_trait = dwarf_warrior 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.25
+	desc = "EVTDESCsoldiertraits.25"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = dwarf_warrior
+				trait = trained_dwarf
+				trait = great_axeman
+				trait = dragon_slayer
+			}
+		}
+		trait = dwarf_warrior
+		NOT = { trait = trained_dwarf }
+		NOT = { trait = great_axeman }
+		NOT = { trait = dragon_slayer }
+		culture_group = culture_group_dwarves		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = trained_dwarf }
+				guardian = { trait = great_axeman }
+				guardian = { trait = dragon_slayer }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.25"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.28} } } #Guardian Notification.
+		remove_trait = dwarf_warrior 
+		add_trait = trained_dwarf
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.26
+	desc = "EVTDESCsoldiertraits.26"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = dwarf_warrior
+				trait = trained_dwarf
+				trait = great_axeman
+				trait = dragon_slayer
+			}
+		}
+		trait = trained_dwarf
+
+		NOT = { trait = great_axeman }
+		NOT = { trait = dragon_slayer }
+		culture_group = culture_group_dwarves		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = great_axeman }
+				guardian = { trait = dragon_slayer }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.26"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.28} } } #Guardian Notification.
+		remove_trait = trained_dwarf 
+		add_trait = great_axeman
+	}
+}
+
+character_event = {
+	id = soldiertraits.27
+	desc = "EVTDESCsoldiertraits.27" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = dwarf_warrior
+				trait = trained_dwarf
+				trait = great_axeman
+				trait = dragon_slayer
+			}
+		}
+		trait = great_axeman
+
+		NOT = { trait = dragon_slayer }
+		culture_group = culture_group_dwarves		
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = dragon_slayer }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 2500
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.27"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.28} } } #Guardian Notification.
+		remove_trait = great_axeman
+		add_trait = dragon_slayer
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.28
+	desc = "EVTDESCsoldiertraits.28" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = OK }
+}
+
+
+#### Learning to be a Ranger of North from your guardian #####
+character_event = {
+	id = soldiertraits.29
+	desc = "EVTDESCsoldiertraits.29"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = dunedain_scout
+				trait = dunedain_ranger
+				trait = dunedain_captain
+				trait = grey_member
+			}
+		}
+		NOT = { trait = dunedain_scout }
+		NOT = { trait = dunedain_ranger }
+		NOT = { trait = dunedain_captain }
+		NOT = { trait = grey_member }
+		culture = culture_dunedain	
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		modifier = {
+			factor = 0.65
+			trait = blood_of_isildur
+		}		
+		
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = dunedain_scout }
+				guardian = { trait = dunedain_ranger }
+				guardian = { trait = dunedain_captain }
+				guardian = { trait = grey_member }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.29" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		add_trait = dunedain_scout 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.30
+	desc = "EVTDESCsoldiertraits.30"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = dunedain_scout
+				trait = dunedain_ranger
+				trait = dunedain_captain
+				trait = grey_member
+			}
+		}
+		trait = dunedain_scout
+		NOT = { trait = dunedain_ranger }
+		NOT = { trait = dunedain_captain }
+		NOT = { trait = grey_member }
+		culture = culture_dunedain	
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		modifier = {
+			factor = 0.65
+			trait = blood_of_isildur
+		}		
+		
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = dunedain_ranger }
+				guardian = { trait = dunedain_captain }
+				guardian = { trait = grey_member }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.30"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = dunedain_scout 
+		add_trait = dunedain_ranger
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.31
+	desc = "EVTDESCsoldiertraits.31"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = dunedain_scout
+				trait = dunedain_ranger
+				trait = dunedain_captain
+				trait = grey_member
+			}
+		}
+		trait = dunedain_ranger
+		NOT = { trait = dunedain_captain }
+		NOT = { trait = grey_member }
+		culture = culture_dunedain	
+		OR = {
+			trait = blood_of_numenor
+			trait = blood_of_numenor2
+			trait = elven_blood
+			trait = half_elf
+			trait = blood_of_isildur
+		}	
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = dunedain_captain }
+				guardian = { trait = grey_member }
+			}
+		}
+
+		modifier = {
+			factor = 0.65
+			trait = blood_of_isildur
+		}		
+		
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.31"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = dunedain_ranger 
+		add_trait = dunedain_captain
+	}
+}
+
+character_event = {
+	id = soldiertraits.32
+	desc = "EVTDESCsoldiertraits.32" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = dunedain_scout
+				trait = dunedain_ranger
+				trait = dunedain_captain
+				trait = grey_member
+			}
+		}
+		trait = dunedain_captain
+
+		NOT = { trait = grey_member }		
+		culture = culture_dunedain	
+		OR = {
+			trait = blood_of_numenor
+			trait = blood_of_numenor2
+			trait = elven_blood
+			trait = half_elf
+			trait = blood_of_isildur
+		}	
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = grey_member }
+		}
+		modifier = {
+			factor = 0.65
+			trait = blood_of_isildur
+		}		
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.32"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = dunedain_captain
+		add_trait = grey_member
+	}
+	
+}
+
+#### Learning to be a Bowman from your guardian #####
+character_event = {
+	id = soldiertraits.33
+	desc = "EVTDESCsoldiertraits.33"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = bowman
+				trait = skilled_bowman
+				trait = great_bowman
+				trait = master_bowman
+			}
+		}
+		NOT = { trait = bowman }
+		NOT = { trait = skilled_bowman }
+		NOT = { trait = great_bowman }
+		NOT = { trait = master_bowman }
+		culture = culture_barding	
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	
+		
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = bowman }
+				guardian = { trait = skilled_bowman }
+				guardian = { trait = great_bowman }
+				guardian = { trait = master_bowman }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.33" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		add_trait = bowman 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.34
+	desc = "EVTDESCsoldiertraits.34"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = bowman
+				trait = skilled_bowman
+				trait = great_bowman
+				trait = master_bowman
+			}
+		}
+		trait = bowman
+		NOT = { trait = skilled_bowman }
+		NOT = { trait = great_bowman }
+		NOT = { trait = master_bowman }
+		culture = culture_barding	
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = skilled_bowman }
+				guardian = { trait = great_bowman }
+				guardian = { trait = master_bowman }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.34"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = bowman 
+		add_trait = skilled_bowman
+	}
+	
+}
+
+character_event = {
+	id = soldiertraits.35
+	desc = "EVTDESCsoldiertraits.35"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = bowman
+				trait = skilled_bowman
+				trait = great_bowman
+				trait = master_bowman
+			}
+		}
+		trait = skilled_bowman
+		NOT = { trait = great_bowman }
+		NOT = { trait = master_bowman }
+		culture = culture_barding	
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = great_bowman }
+				guardian = { trait = master_bowman }
+			}
+		}
+	
+		
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.35"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = skilled_bowman 
+		add_trait = great_bowman
+	}
+}
+
+character_event = {
+	id = soldiertraits.36
+	desc = "EVTDESCsoldiertraits.36" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = bowman
+				trait = skilled_bowman
+				trait = great_bowman
+				trait = master_bowman
+			}
+		}
+		trait = great_bowman
+
+		NOT = { trait = master_bowman }		
+		culture = culture_barding	
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = master_bowman }
+		}		
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.36"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = great_bowman
+		add_trait = master_bowman
+	}
+	
+}
+
+
+#### Learning to be a Ranger of Ithilien from your guardian #####
+character_event = {
+	id = soldiertraits.37
+	desc = "EVTDESCsoldiertraits.37"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = ithilien_ranger
+				trait = ithilien_captain
+			}
+		}
+		NOT = { trait = ithilien_ranger }
+		NOT = { trait = ithilien_captain }
+		culture = culture_gondorian
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	
+		
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = ithilien_ranger }
+				guardian = { trait = ithilien_captain }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = weak
+		}
+		
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}		
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.37" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		add_trait = ithilien_ranger 
+	}
+}
+
+
+character_event = {
+	id = soldiertraits.38
+	desc = "EVTDESCsoldiertraits.38"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = ithilien_ranger
+				trait = ithilien_captain
+			}
+		}
+		trait = ithilien_ranger
+		NOT = { trait = ithilien_captain }
+		culture = culture_gondorian	
+	}
+
+	mean_time_to_happen = {
+		months = 150
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = ithilien_captain }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = diligent
+				trait = brave
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = strong
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			trait = weak
+		}
+		#Sexism
+		modifier = {
+			factor = 999
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAsoldiertraits.38"
+		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.5} } } #Guardian Notification.
+		remove_trait = ithilien_ranger 
+		add_trait = ithilien_captain
+	}
+	
+}

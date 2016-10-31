@@ -1,0 +1,707 @@
+namespace = huntforring
+character_event = {
+    id = huntforring.0
+    title = "EVTTIThuntforring.0"
+    desc = "EVTDESChuntforring.0" #The Ring is out there somewhere. Do you want to launch an expedition ...
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.0" #Yes, send out my best scouts!
+		set_character_flag = huntforring
+		trigger = {
+			wealth = 250
+		}
+		wealth = -250
+		random_list = {
+			10 = {
+				character_event = { id = huntforring.1 days = 365 } ## They found the ring
+			}
+			10 = {
+				if = {
+					limit = {
+						NOT = { trait = lesser_ring }
+					}
+					narrative_event = { id = lesserrings.1 days = 365 } ## They found a lesser ring
+				}
+				if = {
+					limit = {
+						trait = lesser_ring
+					}
+					character_event = { id = huntforring.2 days = 365 } ## Nothing
+				}				
+			}			
+			80 = {
+				character_event = { id = huntforring.2 days = 365 } ## They don't find it
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.0" #No, not now.
+	}			
+}
+	
+	
+	
+character_event = {
+    id = huntforring.1
+    title = "EVTTIThuntforring.1"
+    desc = "EVTDESChuntforring.1" #Your scouts return. They have found the holder 
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.1" #It is held by an Emperor! That will cost dearly...
+		trigger = {
+			wealth = 5000
+			ring = {
+				tier = EMPEROR
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -5000
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.1"#It is held by an Emperor! I can't afford that...
+		trigger = {
+			NOT = { wealth = 5000 }
+			ring = {
+				tier = EMPEROR
+			}
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTChuntforring.1" #It is held by a King! That will cost dearly...
+		trigger = {
+			wealth = 3000
+			ring = {
+				tier = KING
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -3000
+	}
+		
+	option = {
+		name = "EVTOPTDhuntforring.1"#It is held by a King! I can't afford that...
+		trigger = {
+			NOT = { wealth = 3000 }
+			ring = {
+				tier = KING
+			}
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTEhuntforring.1"#It is held by a Duke! That will cost dearly...
+		trigger = {
+			wealth = 2500
+			ring = {
+				tier = DUKE
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -2500
+	}
+		
+	option = {
+		name = "EVTOPTFhuntforring.1"#It is held by a Duke! I can't afford that...
+		trigger = {
+			NOT = { wealth = 2500 }
+			ring = {
+				tier = DUKE
+			}
+		}
+		clr_character_flag = huntforring
+	}
+
+	option = {
+		name = "EVTOPTGhuntforring.1"#It is held by a Count! That will cost dearly...
+		trigger = {
+			wealth = 1500
+			ring = {
+				tier = COUNT
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -1500
+	}
+
+	option = {
+		name = "EVTOPTHhuntforring.1"#It is held by a Count! I can't afford that...
+		trigger = {
+			NOT = { wealth = 1500 }
+			ring = {
+				tier = COUNT
+			}
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTIhuntforring.1"#It is held by a Baron! That will cost dearly...
+		trigger = {
+			wealth = 1000
+			ring = {
+				tier = BARON
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -1000
+	}
+		
+	option = {
+		name = "EVTOPTJhuntforring.1"#It is held by a Baron! I can't afford that...
+		trigger = {
+			NOT = { wealth = 1000 }
+			ring = {
+				tier = BARON
+			}
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTKhuntforring.1"#It is held by a nobody. But it will be expensive...
+		trigger = {
+			wealth = 1000
+			ring = {
+				is_ruler = no
+			}
+		}
+		character_event = { id = huntforring.3 }
+		wealth = -1000
+	}
+		
+	option = {
+		name = "EVTOPTLhuntforring.1"#I can't afford that...
+		trigger = {
+			NOT = { wealth = 1000 }
+			ring = {
+				is_ruler = no
+			}
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTMhuntforring.1"#The ring was destroyed, no one has it anymore.
+		trigger = {
+			has_global_flag = saurondefeated
+		}
+		clr_character_flag = huntforring
+	}
+		
+	option = {
+		name = "EVTOPTNhuntforring.1"#Never mind...
+		clr_character_flag = huntforring
+	}
+	
+}
+		
+character_event = {
+    id = huntforring.2
+    title = "EVTTIThuntforring.2"
+    desc = "EVTDESChuntforring.2"#Your scouts return. Though there were rumors everywhere, they did not manage...
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.2"#Better luck next time then..
+		clr_character_flag = huntforring
+	}	
+}
+
+character_event = {
+    id = huntforring.3
+    title = "EVTTIThuntforring.3"#
+    desc = "EVTDESChuntforring.3"#The expedition will be expensive, and dangerous no doubt. Who will you send to recover the Ring? Only you or your heir, if of age, can be trusted...
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.3"#I trust only myself to do this!
+		character_event = { id = huntforring.5 days = 7 }
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.3"#I will send my heir.
+		trigger = {
+			current_heir = { age = 16 }
+		}
+		set_character_flag = sentringhunters
+		current_heir = {
+			character_event = { id = huntforring.4 days = 7 }
+		}
+	}
+}
+	
+##Event for whoever is sent, if not the ruler himself##
+character_event = {
+    id = huntforring.4
+    title = "EVTTIThuntforring.4"
+    desc = "EVTDESChuntforring.4"#Your liege has ordered you to recover the ring, and you have no choice but to comply. Setting out with a well-funded and heavily armed expedition, you leave your home behind, and venture out on your quest.
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.4"#Onwards!
+		add_trait = huntforring
+		character_event = { id = huntforring.6 days = 180 }
+	}
+}
+	
+##Event for when the ruler goes himself##
+character_event = {
+    id = huntforring.5
+    title = "EVTTIThuntforring.5"
+    desc = "EVTDESChuntforring.5"#The quest to gain the ring has begun! Setting out with a well-funded and heavily armed expedition, you leave your home behind, and venture out on into strange lands.
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.5"#Onwards!
+		add_trait = huntforring
+		character_event = { id = huntforring.6 days = 180 }
+	}	
+}
+	
+##the expedition approaches the target##
+character_event = {
+    id = huntforring.6
+    title = "EVTTIThuntforring.6"
+    desc = "EVTDESChuntforring.6"
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.6"#Quietly... steadily...
+		trigger = {
+			NOT = { culture = culture_maiar }
+		}
+		ring = {
+			character_event = { id = huntforring.7 days = 7 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.6"#I fear nothing! We'll just go in and grab it by force!
+		trigger = { 
+			culture = culture_maiar
+		}
+		ring = {
+			character_event = { id = huntforring.8 days = 2 }
+		}
+	}
+}
+	
+##the expedition goes in quietly, the ringbearer is informed##
+character_event = {
+    id = huntforring.7
+    title = "EVTTIThuntforring.7"
+    desc = "EVTDESChuntforring.7"#A large and well-armed company of strangers has been observed scouting your domains and asking questions about you. Their intentions cannot be good.
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.7"#Arrest them!
+		trigger = {
+			is_ruler = yes
+		}
+		FROM = { character_event = { id = huntforring.9  days = 2 } }
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.7"#Uh oh...
+		trigger = {
+			is_ruler = no 
+		}
+		character_event = { id = huntforring.10 days = 2 }
+	}
+}
+	
+##the expedition is met by armed guards trying to arrest them##
+	character_event = {
+    id = huntforring.9
+    title = "EVTTIThuntforring.9"
+    desc = "EVTDESChuntforring.9"#As you lay low, scouting the area, you are intercepted by a large hostile force which wants to bring you in to their lord for questioning. What do you do?
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
+		trigger = {
+			ring = {
+				tier = EMPEROR 
+			}
+		}
+		random_list = {
+			5 = {
+				character_event = { id = huntforring.11 }
+			}
+			95 = {
+				character_event = { id = huntforring.12 }
+            }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
+		trigger = {
+			ring = {
+				tier = KING 
+			}
+		}
+		random_list = {
+			15 = {
+				character_event = { id = huntforring.11 }
+			}
+			85 = {
+				character_event = { id = huntforring.12 }
+			}
+		}
+	}	
+
+	option = {
+		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
+		trigger = {
+			ring = {
+				tier = DUKE 
+			}
+		}
+		random_list = {
+			20 = {
+				character_event = { id = huntforring.11 }
+			}
+			80 = {
+				character_event = { id = huntforring.12 }
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
+		trigger = {
+			ring = {
+				tier = COUNT 
+			}
+		}
+		random_list = {
+			25 = {
+				character_event = { id = huntforring.11 }
+			}
+			75 = {
+				character_event = { id = huntforring.12 }
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
+		trigger = {
+			ring = {
+				tier = BARON 
+			}
+		}
+		random_list = {
+			33 = {
+				character_event = { id = huntforring.11 }
+			}
+			67 = {
+				character_event = { id = huntforring.12 }
+			}
+		}
+	}
+	
+	
+	option = {
+		name = "EVTOPTBhuntforring.9"#We're discovered! Hold them off while I flee!
+		trigger = { ai = no }
+		remove_trait = huntforring
+	}
+}
+	
+##they win the fight##
+character_event = {
+    id = huntforring.11
+    title = "EVTTIThuntforring.11"
+    desc = "EVTDESChuntforring.11"#After a fierce battle, you fight off the guards, and quickly make haste towards the now lightly defended home of the ringbearer! If you're quick, you may slip in and out before reinforcements arrive!
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.11"#Have the tracker and dogs ready! They can find him when invisible!
+		ring = {
+			character_event = { id = huntforring.14 days = 7 }
+		}
+	}
+}
+	
+##they lose the fight##
+character_event = {
+    id = huntforring.12
+    title = "EVTTIThuntforring.12"
+    desc = "EVTDESChuntforring.12"#After a quick fierce battle, you are defeated! Your men lie dead around you, you must try to escape while you still can!
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAhuntforring.12"#Damnations!
+		clr_character_flag = huntforring
+		random_list = {
+			20 = {
+				death = {
+					death_reason = death_battle 
+				}
+				ring = {
+					character_event = { id = huntforring.13 }
+				}
+			}
+			20 = {
+				imprison = FROMFROM
+				remove_trait = huntforring
+				ring = {
+					character_event = { id = huntforring.13 }
+				}
+			}
+			40 = {
+				add_trait = wounded
+				remove_trait = huntforring
+				ring = {
+					character_event = { id = huntforring.13 }
+				}
+			}
+			20 = {
+				add_trait = maimed
+				remove_trait = huntforring
+				ring = {
+					character_event = { id = huntforring.13 }
+				}
+			}		 
+		}
+	}
+}
+
+##ringbearer is told that the threat has been dealt with##
+character_event = {
+    id = huntforring.13
+    title = "EVTTIThuntforring.13"
+    desc = "EVTDESChuntforring.13"#The fools who tried to enter your realm and claim your ring have been dealt with swiftly by your guards! You are safe ... for now.
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.13"#Excellent... my precious was worried...
+	}
+}
+	
+	
+##ringbearer finds out his guards have failed##
+character_event = {
+    id = huntforring.14
+    title = "EVTTIThuntforring.14"
+    desc = "EVTDESChuntforring.14"#Expecting the return of your guards triumphantly, instead your doors are knocked open by a large hostile force. Without thinking, you put on the ring and flee!
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.14"#They'll never get my precious!
+		random_list = {
+			25 = {
+				banish = yes ##he eescapes##
+				FROM = { character_event = { id = huntforring.15 days = 1 } }
+			}
+			75 = {
+				remove_trait = ring
+				death = {
+					death_reason = death_battle
+				}
+				FROM = { character_event = { id = huntforring.16  days = 1 } }
+			}
+		}
+	}
+}
+	
+	
+##ringbearer escapes, hunters informed##
+character_event = {
+    id = huntforring.15
+    title = "EVTTIThuntforring.15"
+    desc = "EVTDESChuntforring.15"#Curses! The ringbearer escaped, fleeing into the wilds! Your trackers lost his trail, and he could be anywhere by now... all that money and effort... wasted..."
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.15"#We were so close!
+		remove_trait = huntforring
+		clr_character_flag = huntforring
+	}
+}
+	
+##ringbearer is killed ,hunters take the ring##
+character_event = {
+    id = huntforring.16
+    title = "EVTTIThuntforring.16"
+    desc = "EVTDESChuntforring.16"#Success! The ringbearer is slain and you take the ring... it's power and beauty fill you with desire. It is... precious to you...
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.16"#At last!
+		remove_trait = huntforring
+		add_trait = ring
+		set_character_flag = courtierwithring
+		clr_character_flag = huntforring
+	}
+}
+	
+##liege is informed if he sent others to find the ring##
+character_event = {
+    id = huntforring.17
+    title = "EVTTIThuntforring.17"
+    desc = "EVTDESChuntforring.17"#Success! Your courtier returns carrying the ring. His guards are dragging him before you, he apparently tried to escape with it! What should you do?
+    picture = "GFX_shadows_coming"
+	
+	trigger = {
+		has_character_flag = sentringhunters
+		age = 1
+		any_courtier = {
+			has_character_flag = courtierwithring
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = "EVTOPTAhuntforring.17"#Just give me the ring, and all is forgiven.
+		ring = {
+			remove_trait = ring 
+			add_trait = ringbearer2
+		}
+		add_trait = ring
+		clr_character_flag = huntforring
+		clr_character_flag = sentringhunters
+		any_playable_ruler = {
+			character_event = { id = huntforring.18 days = 7 }
+		}
+	}
+	
+	option = {
+		name = "EVTOPTBhuntforring.17"#Betrayal! Throw him in the dungeon!
+		ring = {
+			remove_trait = ring 
+			add_trait = ringbearer2
+		}
+		add_trait = ring
+		clr_character_flag = sentringhunters
+		clr_character_flag = huntforring
+	}
+}
+	
+	
+
+##Sauron or a Balrog can go for the ring directly... any Maiar can##
+character_event = {
+    id = huntforring.8
+    title = "EVTTIThuntforring.8"
+    desc = "EVTDESChuntforring.8"#One day your doors are knocked open by a terrible explosion. A terrifying being using dark magic! A Balrog?! Sauron himself!?! It comes straight at you - Without thinking, you put on the ring and flee!
+    picture = "GFX_sauron_commands"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.8"#Whatever it is, it'll never get my precious!
+		random_list = {
+			25 = {
+				banish = yes
+				FROMFROM = { character_event = { id = huntforring.15 } }
+			}
+			75 = {
+				remove_trait = ring
+				death = {
+					death_reason = death_battle
+				}
+				FROMFROM = { character_event = { id = huntforring.16 } }
+			}
+		}
+	}
+}
+
+##ringbearer finds out his guards have failed##
+character_event = {
+    id = huntforring.10
+    title = "EVTTIThuntforring.10"
+    desc = "EVTDESChuntforring.10"#One day your doors are are knocked open by a large hostile force. They come straight at you - Without thinking, you put on the ring and flee!
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.10"#They'll never get my precious!
+		random_list = {
+			25 = {
+				banish = yes ##he eescapes##
+				FROMFROM = { character_event = { id = huntforring.15 } }
+			}
+			75 = {
+				remove_trait = ring
+				death = {
+					death_reason = death_battle
+				}
+				FROMFROM = { character_event = { id = huntforring.16 } }
+			}
+		}
+	}	
+}
+	
+##rulers are informed the ring has a new owner#
+character_event = {
+    id = huntforring.18
+    title = "EVTTIThuntforring.18"
+    desc = "EVTDESChuntforring.18"#Rumor spreads to every corner of middle-earth. A Ring-Lord has arisen, and either by force or stealth taken the ring of power from its previous holder! This cannot be good news...
+    picture = "GFX_shadows_coming"
+	is_triggered_only = yes	
+	
+	option = {
+		name = "EVTOPTAhuntforring.18"#Why don't rumors ever spread good news?
+	}
+}
+
+##For Immortels characters, ability to come back to the quest #
+character_event = {
+    id = huntforring.19
+    title = "EVTTIThuntforring.19"
+    desc = "EVTDESChuntforring.19"#Bla
+    picture = "GFX_shadows_coming"
+	
+	trigger = {
+		has_character_flag = huntforring
+		OR = { 
+			trait = elf
+			trait = uruloke
+			trait = cold_drake
+			trait = long_worms
+			trait = maiar
+			trait = balrog
+			trait = valar
+			trait = nazgul
+			trait = ent
+		}
+		age = 1
+		NOT = { trait = lesser_ring }
+	}
+	
+	mean_time_to_happen = {
+		years = 100
+	}
+	
+	option = {
+		name = "EVTOPTAhuntforring.19"#Why don't rumors ever spread good news?
+		clr_character_flag = huntforring
+	}
+}

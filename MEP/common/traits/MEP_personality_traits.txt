@@ -1,0 +1,144 @@
+animal_lover = {
+
+	diplomacy = 1	
+	learning = 1
+	
+	lifestyle = yes
+	
+	same_opinion = 20
+	opposite_opinion = -20
+	
+	monthly_character_piety = 0.10
+	random = no
+	
+	potential = {
+		NOT = {
+			culture_group = culture_group_melkor	
+		}		
+	}	
+	opposites =  {
+		orkish
+		balrog
+		troll
+		spider
+	}
+}
+
+nature_lover = {
+
+	diplomacy = 1	
+	learning = 1
+	random = no	
+	lifestyle = yes
+	
+	same_opinion = 20
+	opposite_opinion = -20
+
+	monthly_character_piety = 0.10	
+	
+	potential = {
+		NOT = {
+			culture_group = culture_group_melkor	
+		}		
+	}	
+	opposites =  {
+		orkish
+		balrog
+		troll
+		spider
+	}
+}
+
+torturer = {
+	personality = yes
+	martial = 1	
+	diplomacy_penalty = -2
+	random = no	
+	same_opinion = 10
+	general_opinion	= -5
+	opposite_opinion = -40
+	combat_rating = 1
+
+	monthly_character_piety = -0.15	
+	ai_honor = -10
+	ai_rationality = -10
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_melkor	
+			culture = culture_black_numenorean
+		}
+	}	
+	opposites =  {
+		good_side
+		just
+		kind
+		charitable
+		poet
+		temperate
+	}
+}
+
+blood_thirsty = {
+	personality = yes
+	martial = 3
+	diplomacy_penalty = -2
+	random = no	
+	same_opinion = 15
+	general_opinion	= -5
+	opposite_opinion = -45
+	combat_rating = 2
+	
+	ai_honor = -5
+	ai_rationality = -20
+	
+	potential = {
+		OR = {
+			culture_group = culture_group_melkor	
+			culture = culture_black_numenorean
+		}
+	}	
+	opposites =  {
+		good_side
+		just
+		kind
+		charitable
+		poet
+		temperate
+	}
+}
+
+animal_tongue = {
+	personality = yes
+	learning = 2
+	random = no	
+	same_opinion = 10
+	
+	opposites = {
+		elf
+		animal_lover
+		nature_lover
+		eagle
+		ent
+		skin_changer
+	}
+}
+
+dreamer = {
+	personality = yes
+	martial_penalty = -1
+	learning = 2
+	random = no	
+	same_opinion = 10
+	general_opinion	= -5	
+}
+
+resolute_leader = {
+	leader = yes
+	martial = 1
+	stewardship = 2
+	intrigue = 1
+	random = no	
+	same_opinion = 10
+	vassal_opinion = 10
+}

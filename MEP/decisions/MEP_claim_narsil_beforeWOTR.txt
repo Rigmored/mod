@@ -1,0 +1,122 @@
+decisions = {
+	########## Claim the Shards of Narsil ###########
+	claim_narsil = {
+		potential = {
+			ai = no
+			has_landed_title = e_arnor
+			trait = blood_of_isildur
+			age = 16
+			war = no
+			prisoner = no
+			NOT = { trait = incapable }
+			NOT = { trait = narsil }
+			NOT = { trait = anduril }
+		}
+		allow = {
+			NOT = {
+				OR = {
+					trait = inbred
+					trait = drunkard
+					trait = kinslayer
+					trait = cruel
+					trait = craven
+					trait = deceitful
+				}
+			}
+			OR = {
+				trait = diligent
+				trait = gregarious
+				trait = just
+				trait = brave
+				trait = honest
+			}
+			piety = 200
+		}
+		effect = {
+			narrative_event = { id = claim_narsil.1 }
+			piety = -200
+		}
+	}
+	########## Claim victory against Angmar ###########
+	claim_victory_vs_witchking = {
+		potential = {
+			ai = no
+			has_landed_title = e_arnor
+			trait = blood_of_isildur
+			age = 16
+			war = no
+			prisoner = no
+			NOT = { trait = incapable }
+			NOT = { trait = angmardacil }
+			any_playable_ruler = {
+				trait = ring_murazor
+				has_landed_title = e_angmar
+			}
+		}
+		allow = {
+			NOT = { trait = kinslayer }
+			prestige = 1000
+			completely_controls = k_angmar
+			OR = {
+				#completely_controls = e_arnor
+				completely_controls = k_arthedain
+				completely_controls = k_cardolan
+				completely_controls = k_rhudaur
+			}
+			any_playable_ruler = {
+				trait = ring_murazor
+				has_landed_title = e_angmar
+				NOT = {
+					has_landed_title = k_arthedain
+					has_landed_title = k_cardolan
+					has_landed_title = k_rhudaur
+				}
+			}
+			piety = 200
+		}
+		effect = {
+			narrative_event = { id = claim_narsil.2 }
+			piety = -200
+		}
+	}
+	########## Reforge Narsil into Anduril before the WOTR ###########
+	reforge_narsil = {
+		potential = {
+			ai = no
+			has_landed_title = e_arnor
+			trait = blood_of_isildur
+			age = 16
+			war = no
+			prisoner = no
+			NOT = { trait = incapable }
+			NOT = { trait = anduril }
+			trait = narsil
+		}
+		allow = {
+			NOT = {
+				OR = {
+					trait = inbred
+					trait = drunkard
+					trait = kinslayer
+					trait = cruel
+					trait = craven
+					trait = deceitful
+				}
+			}
+			OR = {
+				trait = diligent
+				trait = gregarious
+				trait = just
+				trait = brave
+				trait = honest
+			}
+			prestige = 1000
+			piety = 300
+			trait = angmardacil
+		}
+		effect = {
+			narrative_event = { id = claim_narsil.3 }
+			piety = -300
+		}
+	}
+}

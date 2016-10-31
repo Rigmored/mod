@@ -1,0 +1,2228 @@
+namespace = civiltraits
+	
+#### Learning to heal from your guardian #####
+character_event = {
+	id = civiltraits.1
+	desc = "EVTDESCciviltraits.1"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = herbalist
+				trait = apothecary
+				trait = great_healer
+				trait = healer_master
+			}
+		}
+		NOT = { trait = herbalist }
+		NOT = { trait = apothecary }
+		NOT = { trait = great_healer }
+		NOT = { trait = healer_master }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = herbalist }
+				guardian = { trait = apothecary }
+				guardian = { trait = great_healer }
+				guardian = { trait = healer_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.1" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = herbalist 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.2
+	desc = "EVTDESCciviltraits.2"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = herbalist
+				trait = apothecary
+				trait = great_healer
+				trait = healer_master
+			}
+		}
+		trait = herbalist
+		NOT = { trait = apothecary }
+		NOT = { trait = great_healer }
+		NOT = { trait = healer_master }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = apothecary }
+				guardian = { trait = great_healer }
+				guardian = { trait = healer_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.2"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = herbalist 
+		add_trait = apothecary
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.3
+	desc = "EVTDESCciviltraits.3"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = herbalist
+				trait = apothecary
+				trait = great_healer
+				trait = healer_master
+			}
+		}
+		trait = apothecary
+		NOT = { trait = great_healer }
+		NOT = { trait = healer_master }
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = great_healer }
+				guardian = { trait = healer_master }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.3"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = apothecary 
+		add_trait = great_healer
+	}
+}
+
+character_event = {
+	id = civiltraits.4
+	desc = "EVTDESCciviltraits.4" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = herbalist
+				trait = apothecary
+				trait = great_healer
+				trait = healer_master
+			}
+		}
+		trait = great_healer
+
+		NOT = { trait = healer_master }		
+		OR = {
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture = culture_gondorian	
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_numenorean			
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = healer_master }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+	}
+		
+
+	option = {
+		name = "EVTOPTAciviltraits.4"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = great_healer
+		add_trait = healer_master
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.5
+	desc = "EVTDESCciviltraits.5" 
+	picture = "GFX_knights"
+	
+	is_triggered_only = yes
+	
+	option = { name = "OK" }
+}
+
+#### Learning to craft from your guardian #####
+character_event = {
+	id = civiltraits.6
+	desc = "EVTDESCciviltraits.6"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = craftsman
+				trait = skilled_craftsman
+				trait = master_craftsman
+				trait = legendary_craftman
+			}
+		}
+		NOT = { trait = craftsman }
+		NOT = { trait = skilled_craftsman }
+		NOT = { trait = master_craftsman }
+		NOT = { trait = legendary_craftman }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor				
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = craftsman }
+				guardian = { trait = skilled_craftsman }
+				guardian = { trait = master_craftsman }
+				guardian = { trait = legendary_craftman }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.6" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = craftsman 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.7
+	desc = "EVTDESCciviltraits.7"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = craftsman
+				trait = skilled_craftsman
+				trait = master_craftsman
+				trait = legendary_craftman
+			}
+		}
+		trait = craftsman
+		NOT = { trait = skilled_craftsman }
+		NOT = { trait = master_craftsman }
+		NOT = { trait = legendary_craftman }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor				
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = skilled_craftsman }
+				guardian = { trait = master_craftsman }
+				guardian = { trait = legendary_craftman }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.7"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = craftsman 
+		add_trait = skilled_craftsman
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.8
+	desc = "EVTDESCciviltraits.8"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = craftsman
+				trait = skilled_craftsman
+				trait = master_craftsman
+				trait = legendary_craftman
+			}
+		}
+		trait = skilled_craftsman
+		NOT = { trait = master_craftsman }
+		NOT = { trait = legendary_craftman }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = master_craftsman }
+				guardian = { trait = legendary_craftman }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.8"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = skilled_craftsman 
+		add_trait = master_craftsman
+	}
+}
+
+character_event = {
+	id = civiltraits.9
+	desc = "EVTDESCciviltraits.9" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = craftsman
+				trait = skilled_craftsman
+				trait = master_craftsman
+				trait = legendary_craftman
+			}
+		}
+		trait = master_craftsman
+
+		NOT = { trait = legendary_craftman }		
+		OR = {
+			culture_group = culture_group_dwarves
+			culture = culture_noldor			
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = legendary_craftman }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+	}
+		
+
+	option = {
+		name = "EVTOPTAciviltraits.9"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = master_craftsman
+		add_trait = legendary_craftman
+	}
+	
+}
+
+#### Learning to make songs from your guardian #####
+character_event = {
+	id = civiltraits.10
+	desc = "EVTDESCciviltraits.10"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = poet_2
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		NOT = { trait = poet_2 }
+		NOT = { trait = composer }
+		NOT = { trait = skilled_composer }
+		NOT = { trait = legendary_musician }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = poet_2 }
+				guardian = { trait = composer }
+				guardian = { trait = skilled_composer }
+				guardian = { trait = legendary_musician }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.10" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = poet_2 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.11
+	desc = "EVTDESCciviltraits.11"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = poet_2
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		trait = poet_2
+		NOT = { trait = composer }
+		NOT = { trait = skilled_composer }
+		NOT = { trait = legendary_musician }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = composer }
+				guardian = { trait = skilled_composer }
+				guardian = { trait = legendary_musician }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.11"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = poet_2 
+		add_trait = composer
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.12
+	desc = "EVTDESCciviltraits.12"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = poet_2
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		trait = composer
+		NOT = { trait = skilled_composer }
+		NOT = { trait = legendary_musician }
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = skilled_composer }
+				guardian = { trait = legendary_musician }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.12"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = composer 
+		add_trait = skilled_composer
+	}
+}
+
+character_event = {
+	id = civiltraits.13
+	desc = "EVTDESCciviltraits.13" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = poet_2
+				trait = composer
+				trait = skilled_composer
+				trait = legendary_musician
+			}
+		}
+		trait = skilled_composer
+
+		NOT = { trait = legendary_musician }		
+		OR = {
+			culture_group = culture_group_dwarves
+			culture_group = culture_group_moriquendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+			culture_group = culture_group_halfling
+			culture_group = culture_group_middlemen
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = legendary_musician }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+	}
+		
+
+	option = {
+		name = "EVTOPTAciviltraits.13"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = skilled_composer
+		add_trait = legendary_musician
+	}
+	
+}
+
+
+	
+#### Learning to sail from your guardian #####
+
+character_event = {
+	id = civiltraits.14
+	desc = "EVTDESCciviltraits.14"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mariner
+				trait = navigator
+				trait = captain
+				trait = ship_builder
+			}
+		}
+		NOT = { trait = mariner }
+		NOT = { trait = navigator }
+		NOT = { trait = captain }
+		NOT = { trait = ship_builder }
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}				
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = mariner }
+				guardian = { trait = navigator }
+				guardian = { trait = captain }
+				guardian = { trait = ship_builder }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.14" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = mariner 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.15
+	desc = "EVTDESCciviltraits.15"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = mariner
+				trait = navigator
+				trait = captain
+				trait = ship_builder
+			}
+		}
+		trait = mariner
+		NOT = { trait = navigator }
+		NOT = { trait = captain }
+		NOT = { trait = ship_builder }
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = navigator }
+				guardian = { trait = captain }
+				guardian = { trait = ship_builder }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.15"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = mariner 
+		add_trait = navigator
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.16
+	desc = "EVTDESCciviltraits.16"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mariner
+				trait = navigator
+				trait = captain
+				trait = ship_builder
+			}
+		}
+		trait = navigator
+		NOT = { trait = captain }
+		NOT = { trait = ship_builder }
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}				
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = captain }
+				guardian = { trait = ship_builder }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.16"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = navigator 
+		add_trait = captain
+	}
+}
+
+character_event = {
+	id = civiltraits.17
+	desc = "EVTDESCciviltraits.17" 
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {		
+				trait = mariner
+				trait = navigator
+				trait = captain
+				trait = ship_builder
+			}
+		}
+		trait = captain
+
+		NOT = { trait = ship_builder }		
+		OR = {
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_numenorean	
+		}					
+	}
+
+	mean_time_to_happen = {
+		months = 180
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			guardian = { trait = ship_builder }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+	}
+		
+
+	option = {
+		name = "EVTOPTAciviltraits.17"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = captain
+		add_trait = ship_builder
+	}
+	
+}
+
+
+	
+#### Learning to trade from your guardian #####
+
+character_event = {
+	id = civiltraits.18
+	desc = "EVTDESCciviltraits.18"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = trader
+				trait = tradesman
+				trait = great_merchant
+			}
+		}
+		NOT = { trait = trader }
+		NOT = { trait = tradesman }
+		NOT = { trait = great_merchant }
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}					
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = trader }
+				guardian = { trait = tradesman }
+				guardian = { trait = great_merchant }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = greedy
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.18" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = trader 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.19
+	desc = "EVTDESCciviltraits.19"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = trader
+				trait = tradesman
+				trait = great_merchant
+			}
+		}
+		trait = trader
+		NOT = { trait = tradesman }
+		NOT = { trait = great_merchant }
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = tradesman }
+				guardian = { trait = great_merchant }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = greedy
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.19"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = trader 
+		add_trait = tradesman
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.20
+	desc = "EVTDESCciviltraits.20"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = trader
+				trait = tradesman
+				trait = great_merchant
+			}
+		}
+		trait = tradesman
+		NOT = { trait = great_merchant }
+		OR = {
+			culture_group = culture_group_middlemen
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+			culture = culture_breelander
+		}			
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+				guardian = { trait = great_merchant }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = greedy
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.20"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = tradesman 
+		add_trait = great_merchant
+	}
+}
+
+	
+#### Learning to cultivate from your guardian #####
+
+character_event = {
+	id = civiltraits.21
+	desc = "EVTDESCciviltraits.21"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mushroom_farmer
+				trait = hop_farmer
+				trait = pipe_weed_farmer
+			}
+		}
+		NOT = { trait = mushroom_farmer }
+		NOT = { trait = hop_farmer }
+		NOT = { trait = pipe_weed_farmer }
+		culture_group = culture_group_halfling				
+	}
+
+	mean_time_to_happen = {
+		months = 30
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = mushroom_farmer }
+				guardian = { trait = hop_farmer }
+				guardian = { trait = pipe_weed_farmer }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}				
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.21" # Stick 'em with the pointy end!
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		add_trait = mushroom_farmer 
+	}
+}
+
+
+character_event = {
+	id = civiltraits.22
+	desc = "EVTDESCciviltraits.22"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {
+				trait = mushroom_farmer
+				trait = hop_farmer
+				trait = pipe_weed_farmer
+			}
+		}
+		trait = mushroom_farmer
+		NOT = { trait = hop_farmer }
+		NOT = { trait = pipe_weed_farmer }
+		culture_group = culture_group_halfling		
+	}
+
+	mean_time_to_happen = {
+		months = 60
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+			OR = {
+				guardian = { trait = hop_farmer }
+				guardian = { trait = pipe_weed_farmer }
+			}
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}	
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.22"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = mushroom_farmer 
+		add_trait = hop_farmer
+	}
+	
+}
+
+character_event = {
+	id = civiltraits.23
+	desc = "EVTDESCciviltraits.23"
+	picture = GFX_evt_child_sword
+	
+	min_age = 6
+	max_age = 16
+
+	trigger = {
+		guardian = {
+			OR = {			
+				trait = mushroom_farmer
+				trait = hop_farmer
+				trait = pipe_weed_farmer
+			}
+		}
+		trait = hop_farmer
+		NOT = { trait = pipe_weed_farmer }
+		culture_group = culture_group_halfling			
+	}
+
+	mean_time_to_happen = {
+		months = 120
+
+		# Mentor Effects
+		modifier = {
+			factor = 0.85
+				guardian = { trait = pipe_weed_farmer }
+		}
+
+		# Personality Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			OR = {
+				trait = patient
+				trait = charitable
+			}
+		}
+		#Bad
+		modifier = {
+			factor = 1.35
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}		
+		
+		# Intelligence Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			trait = quick
+		}
+		#Bad
+		modifier = {
+			factor = 1.2
+			trait = slow
+		}
+		modifier = {
+			factor = 1.35
+			trait = imbecile
+		}
+		
+		# Physical Effects
+		#Good
+		modifier = {
+			factor = 0.85
+			trait = kind
+		}
+		#Bad
+		modifier = {
+			factor = 2
+			trait = cruel
+		}	
+		
+	}
+
+	option = {
+		name = "EVTOPTAciviltraits.23"
+		hidden_tooltip = { guardian = { character_event = {id = civiltraits.5} } } #Guardian Notification.
+		remove_trait = hop_farmer 
+		add_trait = pipe_weed_farmer
+	}
+}
