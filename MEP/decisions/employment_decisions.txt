@@ -139,6 +139,7 @@ decisions = {
 			factor = 0
 		}
 	}
+	
 	present_female_slave = {
 		potential = {
 			ai = no
@@ -154,32 +155,35 @@ decisions = {
 				}
 			}
 			OR = {
-			culture_group = culture_group_melkor
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture = culture_black_numenorean
+			culture = culture_urukhai 
+			culture = culture_half_orc 
+			culture = culture_goblin 
+			culture = culture_troll
             AND = {
-            culture = culture_maiar
+            culture = culture_enigma
 			trait = evil_side
 			}
 			}
 		}
 		allow = {
-			treasury = 100
-			prestige = 100
+			treasury = 200
+			prestige = 200
+			piety = 200
 			NOT = {
 				has_character_modifier = in_seclusion
 			}
 			NOT = { has_character_modifier = employment_timer }
 		}
 		effect = {
-			treasury = 100
-			prestige = 100
+			treasury = -200
+			prestige = -200
+			piety = -200
 			create_character = {
 				random_traits = yes
 				dynasty = none
 				female = yes
-				age = 17
+				age = 3000
+				add_trait = orkish
 			}
 			new_character = {
 				remove_trait = slow
@@ -188,12 +192,14 @@ decisions = {
 				set_character_flag = debutante
 				save_event_target_as = invited_character
 			}
-			character_event = { id = NE.1 }
+			character_event = { id = ork_baby_1 }
+			
 		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
+
 	present_debutante = {
 		potential = {
 			ai = no
