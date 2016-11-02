@@ -3,9 +3,9 @@ namespace = elfchild
 ####### An Elf is still a child #######
 narrative_event = {
     id = elfchild.0
-    #title = "EVTTITelfchild.0"
-    #desc = "EVTDESCelfchild.0"
-    #picture = "GFX_evt_elven_story"
+    title = "EVTTITelfchild.0"
+    desc = "EVTDESCelfchild.0"
+    picture = "GFX_evt_elven_story"
 	age = 16
 	hide_window = yes
 
@@ -23,7 +23,7 @@ narrative_event = {
 	is_triggered_only = yes
 	
 	option = {
-		#name = "EVTOPTAelfchild.0" ## Ok.
+		name = "EVTOPTAelfchild.0" ## Ok.
 		add_trait = elf_childhood
 	}	
 }
@@ -117,7 +117,7 @@ narrative_event = {
 			trait = perceptive
 			trait = kind
 		}
-		set_name = "Amdír"
+		set_name = "Amd’r"
 	}	
 	option = {
 		name = "EVTOPTCelfchild.3" ## I want to be called "Bladorthin"
@@ -157,7 +157,7 @@ narrative_event = {
 		set_name = "Beleg"
 	}	
 	option = {
-		name = "EVTOPTFelfchild.3" ## I want to be called "Círdan"
+		name = "EVTOPTFelfchild.3" ## I want to be called "C’rdan"
 		trigger = {
 			OR = {
 				culture = culture_silvan
@@ -168,7 +168,7 @@ narrative_event = {
 			trait = brave
 			trait = fea_strong
 		}
-		set_name = "Círdan"
+		set_name = "C’rdan"
 	}		
 	option = {
 		name = "EVTOPTGelfchild.3" ## I want to be called "Daeron"
@@ -217,7 +217,7 @@ narrative_event = {
 		set_name = "Galdor"
 	}		
 	option = {
-		name = "EVTOPTKelfchild.3" ## I want to be called "Voronwë"
+		name = "EVTOPTKelfchild.3" ## I want to be called "Voronw‘"
 		trigger = {
 			OR = {
 				culture = culture_silvan
@@ -225,7 +225,7 @@ narrative_event = {
 			}
 			trait = fair
 		}
-		set_name = "Voronwë"
+		set_name = "Voronw‘"
 	}			
 	option = {
 		name = "EVTOPTLelfchild.3" ## I want to be called "Arminas"
@@ -320,7 +320,7 @@ narrative_event = {
 		set_name = "Gelion"
 	}		
 	option = {
-		name = "EVTOPTVelfchild.3" ## I want to be called "Elemmírë"
+		name = "EVTOPTVelfchild.3" ## I want to be called "Elemm’r‘"
 		trigger = {
 			OR = {
 				trait = composer
@@ -328,15 +328,15 @@ narrative_event = {
 				trait = legendary_musician
 			}
 		}
-		set_name = "Elemmírë"
+		set_name = "Elemm’r‘"
 	}	
 	option = {
-		name = "EVTOPTWelfchild.3" ## I want to be called "Lenwë"
+		name = "EVTOPTWelfchild.3" ## I want to be called "Lenw‘"
 		trigger = {
 			trait = tall
 			trait = perceptive
 		}
-		set_name = "Lenwë"
+		set_name = "Lenw‘"
 	}	
 	option = {
 		name = "EVTOPTXelfchild.3" ## I want to be called "Denethor"
@@ -423,4 +423,167 @@ narrative_event = {
 
 ######## Will remove any children as councillors ########
 #### An elf child is a councillor #### -BR NOTE: Deleted because it causes AI Lag
+#### An elf child is a councillor ####
+character_event = {
+    id = elfchild.4
+    title = "EVTTITelfchild.4"
+    desc = "EVTDESCelfchild.4"
+    picture = "GFX_evt_elven_story"
 	
+	trigger = {
+		trait = elf
+		trait = elf_childhood
+		OR = {
+			has_job_title = job_chancellor
+			has_job_title = job_marshal
+			has_job_title = job_treasurer
+			has_job_title = job_spymaster
+			has_job_title = job_spiritual
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAelfchild.4" ## I'm too young for this!
+		liege = { character_event = { id = elfchild.5 } }
+		if = {	
+			limit = {
+				has_job_title = job_chancellor
+			}
+			remove_title = job_chancellor
+		}
+		if = {	
+			limit = {
+				has_job_title = job_marshal
+			}
+			remove_title = job_marshal
+		}
+		if = {	
+			limit = {
+				has_job_title = job_treasurer
+			}
+			remove_title = job_treasurer
+		}
+		if = {	
+			limit = {
+				has_job_title = job_spymaster
+			}
+			remove_title = job_spymaster
+		}
+		if = {	
+			limit = {
+				has_job_title = job_spiritual
+			}
+			remove_title = job_spiritual
+		}		
+	}			
+}	
+
+#### An elf child is a councillor ####
+character_event = {
+    id = elfchild.5
+    title = "EVTTITelfchild.5"
+    desc = "EVTDESCelfchild.5"
+    picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAelfchild.5" ## Ok.
+		FROM = { custom_tooltip = { text = ISACHILD } }		
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 150
+			trait = elf
+		}
+		new_character = {
+			random_list = {
+				20 = {
+					random_list = {
+						25 = {
+							add_trait = amateurish_plotter
+						}
+						25 = {
+							add_trait = flamboyant_schemer
+						}
+						25 = {
+							add_trait = intricate_webweaver
+						}
+						25 = {
+							add_trait = elusive_shadow
+						}
+					}
+				}
+				20 = {
+					random_list = {
+						25 = {
+							add_trait = naive_appeaser
+						}
+						25 = {
+							add_trait = underhanded_rogue
+						}
+						25 = {
+							add_trait = charismatic_negotiator
+						}
+						25 = {
+							add_trait = grey_eminence
+						}
+					}				
+				}
+				20 = {
+					random_list = {
+						25 = {
+							add_trait = indulgent_wastrel
+						}
+						25 = {
+							add_trait = thrifty_clerk
+						}
+						25 = {
+							add_trait = fortune_builder
+						}
+						25 = {
+							add_trait = midas_touched
+						}
+					}				
+				}
+				20 = {
+					random_list = {
+						25 = {
+							add_trait = misguided_warrior
+						}
+						25 = {
+							add_trait = tough_soldier
+						}
+						25 = {
+							add_trait = skilled_tactician
+						}
+						25 = {
+							add_trait = brilliant_strategist
+						}
+					}				
+				}
+				20 = {
+					random_list = {
+						25 = {
+							add_trait = detached_priest
+						}
+						25 = {
+							add_trait = martial_cleric
+						}
+						25 = {
+							add_trait = scholarly_theologian
+						}
+						25 = {
+							add_trait = mastermind_theologian
+						}
+					}				
+				}	
+			}
+		}
+	}			
+}	

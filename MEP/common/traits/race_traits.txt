@@ -1,4 +1,4 @@
-﻿maiar = {
+maiar = {
 	vassal_opinion = 100	#Sauron stopgag measure...
 	fertility_penalty = -5.0
     health = 100.0
@@ -135,21 +135,21 @@ dwarven = {
 }
 
 #durin_reincarnation = {	
-#   	health = 2.0	
-#  	vassal_opinion = 20	
-#	martial = 3
-#    stewardship = 2
-#	customizer = no
-#	monthly_character_piety = 2.0	
-#    monthly_character_prestige = 1.0	
-#	command_modifier = {
-#		terrain = mountain
-#		damage = 0.3		
-#		morale_offence = 0.2
-#		morale_defence = 0.2		
-#	}
-#	cached = yes
-#}
+   	health = 2.0	
+  	vassal_opinion = 20	
+	martial = 3
+    stewardship = 2
+	customizer = no
+	monthly_character_piety = 2.0	
+    monthly_character_prestige = 1.0	
+	command_modifier = {
+		terrain = mountain
+		damage = 0.3		
+		morale_offence = 0.2
+		morale_defence = 0.2		
+	}
+	cached = yes
+}
 
 ent = {	
     opposites = { orkish }
@@ -226,6 +226,7 @@ elf_childhood = {
 	customizer = no	
 	cannot_marry = yes
 	cached = yes
+	incapacitating = yes
 }
 fea_strong = {
 	fertility = 2.0
@@ -289,13 +290,12 @@ enigma = {
 }
 wilderness = {	
 	fertility_penalty = -5.0
-	immortal = no
+	immortal = yes
 	diplomacy_penalty = -30
 	stewardship_penalty = -30
 	martial_penalty = -30
 	intrigue_penalty = -30
 	learning_penalty = -30
-	health = -20.0
    	potential = {
 		culture_group = culture_group_wilderness
 	}
@@ -464,9 +464,9 @@ orkish = {
 		ent
        	} 
 	opposite_opinion = -100
-	customizer = no
-        health = -100.0
-	fertility = -100.0
+    health = 20.0
+	customizer = yes
+	fertility = 0.2
 	martial = 2
 	ai_ambition = 300 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = -150 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
@@ -476,8 +476,9 @@ orkish = {
 }
 half_orc = {
 	customizer = yes
-	intrigue = 1
-	martial = 2
+    health = 6.0
+	intrigue = 2
+	martial = 1
        	opposites = {
 		eagle
 		elf
@@ -488,8 +489,7 @@ half_orc = {
        	}
 	opposite_opinion = -100
 	sex_appeal_opinion = -50
-        health = 15.0
-	fertility = -9.0
+	fertility = 0.1	
 	ai_ambition = 50 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = -15 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
     ai_honor = -15 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
@@ -613,11 +613,4 @@ long_worms = {
     	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
     	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
 	cached = yes
-}
-
-wilderness_health = {
-	health = 40.0
-	unique = yes
-	random = no	
-	cached = yes # Keep a cache of all trait holders, to use with the corresponding event trigger
 }
