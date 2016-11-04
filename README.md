@@ -7,7 +7,8 @@ redit,
 Moridin,
 Glariamn,
 CaoJay,
-Disfunctionz
+Disfunctionz,
+GrandiSlayer
 
 Please make sure you don't overwrite recent changes when you make your commits. If your files are different this doesn't mean yours are necessarily more up to date, just that someone has changed them since you last synced.
 
