@@ -1,0 +1,470 @@
+castle = {
+
+    ca_umbar_haven = { #Haven of Umbar#
+		desc = ca_umbar_haven_desc
+		gold_cost = 350
+		build_time = 1460
+		tax_income = 3
+		fort_level = 3.0
+		heavy_infantry = 150
+		archers = 105
+		galleys = 13
+		ai_creation_factor = 86
+        potential = {
+		has_global_flag = building
+        	FROMFROM = { title = b_umbar }
+			ROOT = {
+			OR = {
+				culture = culture_black_numenorean
+				culture = culture_umbareans
+				}
+			}
+        }
+	}
+	
+	ca_urezayan = { #Black Palace of Urezayan#
+		desc = ca_urezayan_desc
+		gold_cost = 350
+		build_time = 1460
+		tax_income = 3.5
+		fort_level = 3.5
+		heavy_infantry = 100
+		pikemen = 75
+		knights = 45
+		galleys = 7
+		ai_creation_factor = 86
+        potential = {
+		has_global_flag = building
+        	FROMFROM = { title = b_urezayan }
+			ROOT = {
+				culture = culture_black_numenorean
+			}
+        }
+	}
+	
+	ca_numenorean_Annuminas = { #Numenorean Walls of Annuminas
+		desc = ca_numenorean_Annimunas_desc
+		not_if_x_exists = { ca_annuminas_ruins }	
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 4.5
+		garrison_size = 1.25
+		heavy_infantry = 35
+		archers = 20
+		ai_creation_factor = 86
+        potential = {
+			FROMFROM = { title = b_annuminas }
+			has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        }
+	}
+	ca_hall_of_kings = { #Annuminas
+		desc = ca_hall_of_kings_desc
+		not_if_x_exists = { ca_annuminas_ruins }
+		gold_cost = 1500
+		build_time = 2190 #6y
+		ai_creation_factor = 80
+		tax_income = 5
+		heavy_infantry = 150
+		archers = 75
+		knights = 35
+        potential = {
+            FROMFROM = { title = b_annuminas }
+				FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			has_global_flag = building
+        }
+	}
+	ca_annuminas_ruins = { #Annuminas Ruins
+		desc = ca_annuminas_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.50		
+		ai_creation_factor = 86		
+        potential = {
+            	province_id = 659 # Annuminas
+					has_global_flag = building
+					year = 10317
+					#NOT = { has_building = ca_hall_of_kings }	
+					NOT = { has_global_flag = annuminas_rebuilded_finally }
+        		}
+	}
+
+	ca_amon_sul = { ### Tower of Amon Sûl
+		desc = ca_amon_sul_desc
+		not_if_x_exists = { ca_amon_sul_ruins }
+		gold_cost = 850
+		build_time = 1460 #4y
+		fort_level = 5.0
+		garrison_size = 1.5
+		ai_creation_factor = 86
+		heavy_infantry = 75
+		archers = 75
+		knights = 25		
+        potential = {
+					has_global_flag = building
+            		FROMFROM = { title = b_amon_sul }
+					FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        	}
+	}	
+	ca_amon_sul_ruins = { ### Amon Sûl Ruins
+		desc = ca_amon_sul_ruins_desc
+		not_if_x_exists = { ca_amon_sul }
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.50			
+		ai_creation_factor = 86		
+        potential = {
+            		has_global_flag = building
+					FROMFROM = { title = b_amon_sul }
+					year = 9751
+					#NOT = { has_building = ca_amon_sul }	
+					NOT = { has_global_flag = amon_sul_rebuilded_finally }
+       		}
+	}	
+
+	ca_fornost_erain = { ### Fornost Erain
+		desc = ca_fornost_erain_desc
+		not_if_x_exists = { ca_fornost_ruins }
+		gold_cost = 850
+		build_time = 1460 #4y
+		fort_level = 4.0
+		garrison_size = 1.0
+		ai_creation_factor = 86
+		heavy_infantry = 175
+		archers = 125
+		knights = 100	
+        potential = {
+					has_global_flag = building
+            		FROMFROM = { title = b_citadel_fornost }
+					FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        }
+	}	
+	
+	ca_fornost_ruins = { ### Fornost Ruins
+		desc = ca_fornost_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -3	
+		garrison_size = -0.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		has_global_flag = building
+					province_id = 270 # Fornost Erain
+					year = 10317
+					#NOT = { has_building = ca_fornost_erain }	
+					NOT = { has_global_flag = fornost_rebuilded_finally }
+       		}
+	}		
+
+	ca_tharbad_bridge = { ### The Bridge of Tharbad
+		desc = ca_tharbad_bridge_desc
+		gold_cost = 850
+		build_time = 1460
+		tax_income = 5
+		garrison_size = 1.2	
+		heavy_infantry = 50		
+		pikemen = 50
+		archers = 25
+		ai_creation_factor = 86		
+        	potential = {
+					has_global_flag = building
+            		FROMFROM = { title = b_tharbad }
+					has_global_flag = tharbad_bridge
+        	}
+	}	
+	
+	ca_isengard1 = { #Numenorean Walls of Isengard#
+		desc = ca_isengard1_desc
+		gold_cost = 150
+		build_time = 1460
+		fort_level = 6.0
+		garrison_size = 2.00
+		heavy_infantry = 50
+		pikemen = 25
+		light_cavalry = 25
+		ai_creation_factor = 86
+        	potential = {
+            		FROMFROM = { title = b_orthanc }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        }
+	}
+
+	ca_minas_tirithwalls = { #Numenorean Walls of Minas Tirith#
+		desc = ca_minas_tirithwalls_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 8.5
+		garrison_size = 2.00
+		heavy_infantry = 50
+		archers = 25
+		ai_creation_factor = 86
+        	potential = {
+            		FROMFROM = { title = b_citadel_tirith }
+				FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+            	}
+	}
+	
+	ca_minasithilwalls = { #Numenorean Walls of Minas Ithil#
+		desc = ca_minasithilwalls_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 6
+		garrison_size = 2.00
+		ai_creation_factor = 86
+		heavy_infantry = 50
+		archers = 35
+        	potential = {
+            		FROMFROM = { title = b_minas_morgul }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+            }
+	}	
+
+	
+	ca_dolamrothwalls = { #Numenorean Walls of Dol Amroth#
+		desc = ca_dolamrothwalls_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 6.0
+		garrison_size = 1.0
+		knights = 125
+		heavy_infantry = 50
+		ai_creation_factor = 86
+        	potential = {
+            		FROMFROM = { title = b_tower_of_the_swan }
+				FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+            	}
+	}	
+	
+	ca_great_hall_osgiliath = { #The Great Hall of Osgiliath
+		desc = ca_great_hall_osgiliath_desc
+		not_if_x_exists	= { ca_osgiliath_ruins }
+		gold_cost = 2250
+		build_time = 1500
+		tax_income = 4
+		heavy_infantry = 200
+		knights = 75
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+			has_global_flag = building
+            		FROMFROM = { title = b_minasnumen }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        	}
+	}
+	ca_dome_of_the_stars = { #Osgiliath East
+		desc = ca_dome_of_the_stars_desc
+		not_if_x_exists = { ca_osgiliath_ruins }	
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 175
+        	potential = {
+			has_global_flag = building
+			FROMFROM = { title = b_dome_of_the_stars }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+		}
+	}
+	ca_osgiliath_ruins = { # Osgiliath ruins
+		desc = ca_osgiliath_ruins_desc
+		gold_cost = 100
+		build_time = 100
+		ai_creation_factor = 80
+		not_if_x_exists = { ca_dome_of_the_stars ca_great_hall_osgiliath }	
+        	potential = {
+            	has_global_flag = building
+				OR = {
+				AND = {
+					province_id=427
+					NOT = { has_global_flag = east_osgiliath_rebuilded_finally }
+				}
+				AND = {
+					province_id=428
+					NOT = { has_global_flag = west_osgiliath_rebuilded_finally }
+				}
+			}
+			year=9980
+		}
+	}
+	
+	ca_tower_of_ecthelion = { # Minas Tirith
+		desc = ca_tower_of_ecthelion_desc
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 200
+		pikemen = 100
+		archers = 75
+        	potential = {
+			FROMFROM = { title = b_citadel_tirith }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+            	}
+	}
+
+	ca_henneth_annun = { ## Henneth Annun - The Forbidden Pool
+		desc = ca_henneth_annun_desc
+		gold_cost = 350
+		build_time = 470
+		fort_level = 4.0	
+		garrison_size = 2.50	
+		archers = 125
+		heavy_infantry = 70	
+		ai_creation_factor = 106
+        potential = {
+			FROMFROM = { title = b_henneth_annun }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+        }
+	}	
+	
+	ca_stone_erech = { ### The Stone of Erech
+		desc = ca_stone_erech_desc
+		gold_cost = 250
+		build_time = 360 #4y
+		tax_income = 2	
+		heavy_infantry = 50
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_erech }
+        	}
+	}
+	
+	ca_argonath_isildur = { ### The Statue of Isildur in Argonath
+		desc = ca_argonath_isildur_desc
+		gold_cost = 250
+		build_time = 360
+		tax_income = 2	
+		heavy_infantry = 50
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_argonath_isildur }
+        		}
+	}	
+	ca_argonath_anarion = { ### The Statue of Anarion in Argonath
+		desc = ca_argonath_anarion_desc
+		gold_cost = 250
+		build_time = 360
+		tax_income = 2	
+		knights = 50
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        	potential = {
+            		FROMFROM = { title = b_argonath_anarion }
+        		}
+	}
+	
+	ct_Pelargir = { #Great port of Pelargir#
+		desc = ca_Pelargir_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2.0
+		galleys = 40
+		heavy_infantry = 125
+		archers = 75
+		tax_income = 5
+		ai_creation_factor = 86
+        	potential = {
+            		FROMFROM = { title = b_pelargir }
+            	}
+	}		
+
+}

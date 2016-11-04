@@ -1,0 +1,219 @@
+castle = {
+	ca_edhellond_ruins = { ### Edhellond Ruins
+		desc = ca_edhellond_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -3	
+		garrison_size = -0.2		
+		ai_creation_factor = 86		
+        	potential = {
+           		province_id = 429 # Edhellond
+			year = 10324
+			NOT = { has_global_flag = edhellond_rebuilded_finally }
+       		}
+	}
+	ca_imladris = { #Imladris#
+		desc = ca_imladris_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 3.5
+		garrison_size = 2.00
+		heavy_infantry = 100
+		horse_archers = 50
+		knights = 75
+		ai_creation_factor = 86
+        potential = {
+            FROMFROM = { title = b_last_homely_house }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+        }
+	}
+
+	ca_gwaith_i_mirdain = { ### Gwaith i Mirdain in Ost-in-Edhil
+		desc = ca_gwaith_i_mirdain_desc
+		gold_cost = 2050
+		build_time = 6460 #4y
+		fort_level = 4.0
+		heavy_infantry_offensive = 1.0
+		heavy_infantry_defensive = 1.0
+		pikemen_offensive = 1.0
+		pikemen_defensive = 1.0
+		light_infantry_offensive = 1.0
+		light_infantry_defensive = 1.0
+		archers_offensive = 1.0
+		archers_defensive = 1.0
+		horse_archers_offensive = 1.0
+		horse_archers_defensive = 1.0
+		light_cavalry_offensive = 1.0
+		light_cavalry_defensive = 1.0
+		knights_offensive = 1.0
+		knights_defensive = 1.0
+		tech_growth_modifier = 1.0
+		tax_income = 10	
+		heavy_infantry = 35
+		knights = 20
+		ai_creation_factor = 86
+		garrison_size = 2.00
+        	potential = {
+			FROMFROM = { title = b_ostinedhil }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+			has_global_flag = gwaith_mirdain_rebuilded
+        }
+	}
+	ca_lorien = { #Lorien#
+		desc = ca_lorien_desc
+		gold_cost = 1500
+		build_time = 1460 #4y
+		fort_level = 3.5
+		garrison_size = 1.0
+		light_infantry = 75
+		archers = 125
+		pikemen = 50
+		horse_archers = 105
+		ai_creation_factor = 86
+        	potential = {
+            		FROMFROM = { title = b_house_of_celeborn }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+		}
+	}
+	ca_amon_lanc = { ### The Rebuilded Amon Lanc, city of Oropher
+		desc = ca_amon_lanc_desc
+		gold_cost = 1000
+		build_time = 1460 #4y
+		fort_level = 4.5
+		garrison_size = 1.0
+		ai_creation_factor = 86
+		light_infantry = 105
+		pikemen = 85
+		archers = 105
+		tax_income = 6	
+        	potential = {
+            		FROMFROM = { title = b_amon_lanc }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+        }
+	}
+	ca_thranduil = { 
+		desc = ca_thranduil_desc
+		gold_cost = 1400
+		build_time = 1460 #4y
+		fort_level = 4.5
+		garrison_size = 2.00
+		light_infantry = 50
+		pikemen = 85
+		archers = 125
+		ai_creation_factor = 100
+        	potential = {
+            		FROMFROM = { title = b_king_thranduil_hall }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+		}
+	}
+	ca_grey_havens = { ## Grey Havens
+		desc = ca_grey_havens_desc
+		gold_cost = 850
+		build_time = 1460
+		fort_level = 3.0
+		galleys = 50
+		tax_income = 6.5
+		pikemen = 250
+		ai_creation_factor = 106
+        	potential = {
+            		FROMFROM = { title = b_mithlond }
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    OR = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+			    }
+			}
+        }
+	}
+}

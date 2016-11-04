@@ -1,0 +1,288 @@
+castle = {
+ ca_khazad = { ##moria for dwarves
+		desc = ca_khazad_desc
+		gold_cost = 1615
+		build_time = 5740
+		fort_level = 5
+		garrison_size = 1.5
+		heavy_infantry = 100
+		pikemen = 75
+		knights = 25
+		tech_growth_modifier = 0.5
+		tax_income = 6	
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+        	FROMFROM = { title = b_first_hall }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_lonely_mountain = { #Erebor wilderness#
+		desc = ca_lonely_mountain_desc
+		gold_cost = 10
+		build_time = 10
+		garrison_size = -2
+		tax_income = -1
+		ai_creation_factor = 110
+		add_number_to_name = no
+        	potential = {
+            		province_id = 292 #Erebor
+			NOT = { has_global_flag = erebor_built }
+			NOT = { year = 10342 }			
+            }
+	}
+	ca_erebor = { #Erebor#
+		desc = ca_erebor_desc
+		not_if_x_exists = { ca_lonely_mountain }
+		gold_cost = 1060
+		build_time = 3790
+		fort_level = 6
+		garrison_size = 2
+		tech_growth_modifier = 0.5
+		tax_income = 5
+		heavy_infantry = 105
+		archers = 50
+		pikemen = 50
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+        	FROMFROM = { title = b_gate_of_erebor }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+			ROOT = {
+			    NOT = { culture_group = culture_group_wilderness}
+			}
+        }
+	}
+	
+	ca_azanulimbardum = { #Azanulimbar-dûm#
+		desc = ca_azanulimbardum_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 3
+		garrison_size = 0.6
+		tech_growth_modifier = 0.5
+		pikemen = 175
+		archers = 85
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+        FROMFROM = { title = b_barak_shathur }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_nurunkhizdin = { #Nurunkhizdin#
+		desc = ca_nurunkhizdin_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 2.5
+		garrison_size = 0.4
+		tech_growth_modifier = 0.5
+		light_cavalry = 75
+		horse_archers = 75
+		knights = 100
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            FROMFROM = { title = b_nurunkhizdin }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_tamnogoth = { #Tamnogoth#
+		desc = ca_tamnogoth_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 3
+		garrison_size = 0.5
+		tech_growth_modifier = 0.5
+		heavy_infantry = 75
+		archers = 125
+		tax_income = 5
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	FROMFROM = { title = b_tamnogoth }
+				FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_zirakdum = { #Zirakdum#
+		desc = ca_zirakdum_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 2.5
+		garrison_size = 0.4
+		tech_growth_modifier = 0.5
+		light_cavalry = 150
+		horse_archers = 85
+		knights = 70
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	FROMFROM = { title = b_zirakdum }
+            FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_thorinsgate = { #Thorin's Gate#
+		desc = ca_thorinsgate_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 3
+		garrison_size = 0.5
+		tech_growth_modifier = 0.5
+		heavy_infantry = 150
+		archers = 95
+		tax_income = 5
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	FROMFROM = { title = b_thorin_hall }
+            FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_stonefoot = { #Stonefoot#
+		desc = ca_stonefoot_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 2.5
+		garrison_size = 0.4
+		tech_growth_modifier = 0.5
+		light_cavalry = 85
+		horse_archers = 150
+		knights = 70
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	FROMFROM = { title = b_stonefoot }
+            FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_Dgundabad = { ##gundabad for dwarves
+		desc = ca_dgundabad_desc
+		gold_cost = 1615
+		build_time = 5740
+		fort_level = 6
+		garrison_size = 2.5
+		heavy_infantry = 300
+		tech_growth_modifier = 1.0
+		tax_income = 10
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+        	FROMFROM = { title = b_gundabad_throne_hall }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+			}
+        }
+	}
+	
+	ca_assembly_dwarves_1 = { ### Hall of the Assembly in Gundabad
+		desc = ca_assembly_dwarves_desc
+		trigger = { FROM = { has_landed_title = e_all_mountains } }
+		gold_cost = 345
+		build_time = 1265
+		fort_level = 5.0
+		tax_income = 5.0
+		diplomacy = 1
+		demesne_size = 1
+		ai_creation_factor = 106
+        potential = {
+			FROM = {
+			has_landed_title = e_all_mountains
+			NOT = { culture_group = culture_group_melkor }
+			}
+			FROMFROM = { title = b_gundabad_throne_hall } 
+			culture_group = culture_group_dwarves
+        }
+	}
+	
+	ca_assembly_guard_1 = { ### Guard of the Assembly in Gundabad
+		desc = ca_assembly_guard_desc
+		trigger = { FROM = { has_landed_title = e_all_mountains } }
+		prerequisites = { ca_assembly_dwarves_1 }
+		gold_cost = 320
+		build_time = 1175
+		fort_level = 2
+		heavy_infantry = 150
+		ai_creation_factor = 106
+        potential = {
+			FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+			FROMFROM = { title = b_gundabad_throne_hall } 
+			culture_group = culture_group_dwarves
+        }
+	}
+	
+	ca_assembly_archives_1 = { ### Archives of the Assembly in Gundabad
+		desc = ca_assembly_archives_desc
+		trigger = { FROM = { has_landed_title = e_all_mountains } }
+		prerequisites = { ca_assembly_dwarves_1 ca_assembly_guard_1 }
+		gold_cost = 100
+		build_time = 360
+		tax_income = 6
+		tech_growth_modifier = 0.5
+		stewardship = 1	
+		ai_creation_factor = 106
+        potential = {
+			FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+			FROMFROM = { title = b_gundabad_throne_hall } 
+			culture_group = culture_group_dwarves
+        }
+	}	
+	
+	ca_stone_durin = { ## The Durin's Stone
+		desc = ca_stone_durin_desc
+		gold_cost = 100
+		build_time = 360
+		tax_income = 3
+		liege_prestige = 0.5
+		liege_piety = 0.5
+		garrison_size = 0.2
+		ai_creation_factor = 106		
+        	potential = {
+            		FROMFROM = { title = b_mekhem_bizru }
+        	}
+	}	
+	ca_mirrormere = { ## The Mirrormere
+		desc = ca_mirrormere_desc
+		gold_cost = 100
+		build_time = 360
+		tax_income = 1
+		liege_prestige = 0.5
+		liege_piety = 0.5
+		garrison_size = 0.3
+		ai_creation_factor = 106		
+        	potential = {
+            		FROMFROM = { title = b_mekhem_bizru }
+        	}
+	}
+
+}

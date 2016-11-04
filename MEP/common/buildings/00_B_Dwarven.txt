@@ -1,0 +1,3069 @@
+castle = {
+	#Dwarven Fortifications
+	ca_dwarvenfortifications_1 = {
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
+		not_if_x_exists = { ca_lonely_mountain }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		gold_cost = 150
+		build_time = 365
+		fort_level = 1.0
+		garrison_size = 0.03
+		ai_creation_factor = 90
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_dwarvenfortifications_2 = {
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarvenfortifications_1
+		gold_cost = 200
+		build_time = 547 #1.5y
+		fort_level = 1.0
+		garrison_size = 0.06
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarvenfortifications_3 = {
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarvenfortifications_2
+		gold_cost = 250
+		build_time = 730 #2y
+		fort_level = 1.0
+		garrison_size = 0.09
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarvenfortifications_4 = {
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarvenfortifications_3
+		gold_cost = 300
+		build_time = 1095 #3y
+		fort_level = 1.5
+		garrison_size = 0.12
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarvenfortifications_5 = {
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarvenfortifications_4
+		gold_cost = 350
+		build_time = 1460 #4y
+		fort_level = 1.5
+		garrison_size = 0.15
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarvenfortifications_6 = {
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		desc = ca_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 8 }
+		upgrades_from = ca_dwarvenfortifications_5
+		gold_cost = 400
+		build_time = 1460 #4y
+		fort_level = 2
+		garrison_size = 0.18
+		ai_creation_factor = 86
+	
+		extra_tech_building_start = 10.0
+	}
+
+	#Keeps, gives levy and garrison size
+	ca_dwarfkeep_1 = {
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
+		not_if_x_exists = { ca_lonely_mountain }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		gold_cost = 150
+		build_time = 547 #1.5y
+		levy_size = 0.05
+		garrison_size = 0.05
+		fort_level = 0.4
+		heavy_infantry = 80
+		tax_income = 0.3
+		ai_creation_factor = 300
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_dwarfkeep_2 = {
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_dwarfkeep_1
+		gold_cost = 200
+		build_time = 730 #2y
+		levy_size = 0.1
+		garrison_size = 0.1
+		tax_income = 0.3
+		fort_level = 0.4
+		ai_creation_factor = 101
+
+		extra_tech_building_start = 2.0
+	}
+	ca_dwarfkeep_3 = {
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_dwarfkeep_2
+		gold_cost = 300
+		build_time = 1095 #3y
+		levy_size = 0.15
+		garrison_size = 0.15
+		tax_income = 0.3
+		fort_level = 0.4
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_dwarfkeep_4 = {	
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarfkeep_3
+		gold_cost = 400
+		build_time = 1460 #4y
+		levy_size = 0.2
+		garrison_size = 0.2
+		tax_income = 0.3
+		fort_level = 0.5
+		ai_creation_factor = 99
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarfkeep_5 = {
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarfkeep_4
+		gold_cost = 500
+		build_time = 2190 #6y
+		levy_size = 0.25
+		garrison_size = 0.25
+		tax_income = 0.3
+		fort_level = 0.5
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarfkeep_6 = {
+		desc = ca_dwarfkeep_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_dwarfkeep_5
+		gold_cost = 500
+		build_time = 2190 #6y
+		levy_size = 0.3
+		garrison_size = 0.3
+		tax_income = 0.3
+		fort_level = 0.5
+		ai_creation_factor = 97
+		
+		extra_tech_building_start = 1.2
+	}
+	
+	#Training grounds, gives morale and reinforce rate
+	ca_Dtrainging_grounds_1 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 1 }
+		not_if_x_exists = { ca_lonely_mountain }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		gold_cost = 200
+		build_time = 730
+		land_morale = 0.03
+		levy_reinforce_rate = 0.05
+		retinuesize = 10
+		ai_creation_factor = 89
+
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtrainging_grounds_2 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtrainging_grounds_1
+		gold_cost = 250
+		build_time = 1095
+		land_morale = 0.06
+		levy_reinforce_rate = 0.06
+		retinuesize = 10
+		ai_creation_factor = 88
+		
+		extra_tech_building_start = 1.5
+	}
+	ca_Dtrainging_grounds_3 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtrainging_grounds_2
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.09
+		levy_reinforce_rate = 0.09
+		retinuesize = 10
+		ai_creation_factor = 88
+		
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtrainging_grounds_4 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtrainging_grounds_3
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.12
+		levy_reinforce_rate = 0.12
+		retinuesize = 10
+		ai_creation_factor = 88
+		
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtrainging_grounds_5 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtrainging_grounds_4
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.15
+		levy_reinforce_rate = 0.15
+		retinuesize = 10
+		ai_creation_factor = 88
+		
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtrainging_grounds_6 = {
+		desc = ca_Dtrainging_grounds_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtrainging_grounds_5
+		gold_cost = 300
+		build_time = 2190
+		land_morale = 0.18
+		levy_reinforce_rate = 0.18
+		retinuesize = 10
+		ai_creation_factor = 88
+		
+		extra_tech_building_start = 1.2
+	}
+	
+	#Castle town, gives income
+	ca_Dtown_1 = {
+		desc = ca_Dtown_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		not_if_x_exists = { ca_lonely_mountain }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.5
+	}
+	ca_Dtown_2 = {
+		desc = ca_Dtown_2_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_Dtown_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 99
+
+		extra_tech_building_start = 1.0
+	}
+	ca_Dtown_3 = {
+		desc = ca_Dtown_3_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_Dtown_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtown_4 = {
+		desc = ca_Dtown_4_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtown_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 97
+
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtown_5 = {
+		desc = ca_Dtown_4_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtown_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 96
+
+		extra_tech_building_start = 1.2
+	}
+	ca_Dtown_6 = {
+		desc = ca_Dtown_5_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dtown_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 96
+
+		extra_tech_building_start = 1.2
+	}
+	
+	ca_Dshipyard_1 = {
+		desc = Dshipyard_desc
+		port = yes
+		trigger = { TECH_NAVAL = 3 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		galleys = 6
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.3
+	}
+	
+	ca_Dshipyard_2 = {
+		desc = Dshipyard_desc
+		port = yes
+		trigger = { TECH_NAVAL = 5 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 7
+		ai_creation_factor = 99
+		
+		extra_tech_building_start = 1.3
+	}
+	
+	ca_Dshipyard_3 = {
+		desc = Dshipyard_desc
+		port = yes
+		trigger = { TECH_NAVAL = 8 }
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		upgrades_from = ca_Dshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 8
+		ai_creation_factor = 98
+		
+		extra_tech_building_start = 1.3
+	}
+	
+	ca_Dstatue_0 = { #no statue 
+		desc = ca_Dstatue_0_desc
+		not_if_x_exists = { ca_lonely_mountain }
+		gold_cost = 0
+		build_time = 0
+		liege_piety = -0.025
+		monthly_character_piety = -0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	ca_Dstatue_1 = {
+		desc = ca_Dstatue_1_desc
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_Dstatue_0 
+		gold_cost = 70
+		build_time = 150
+		liege_piety = 0.025
+		monthly_character_piety = 0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	ca_Dstatue_2 = {
+		desc = ca_Dstatue_1_desc
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_Dstatue_1
+		gold_cost = 100
+		build_time = 220
+		liege_piety = 0.025
+		monthly_character_piety = 0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	ca_Dstatue_3 = {
+		desc = ca_Dstatue_1_desc
+		prerequisites = { ca_dwarvenfortifications_3 }
+		upgrades_from = ca_Dstatue_2
+		gold_cost = 150
+		build_time = 365
+		liege_piety = 0.025
+		monthly_character_piety = 0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	ca_Dstatue_4 = {
+		desc = ca_Dstatue_1_desc
+		prerequisites = { ca_dwarvenfortifications_4 }
+		upgrades_from = ca_Dstatue_3
+		gold_cost = 240
+		build_time = 660
+		liege_piety = 0.025
+		monthly_character_piety = 0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	ca_Dstatue_5 = {
+		desc = ca_Dstatue_1_desc
+		prerequisites = { ca_dwarvenfortifications_5 }
+		upgrades_from = ca_Dstatue_4
+		gold_cost = 480
+		build_time = 1280
+		liege_piety = 0.025
+		monthly_character_piety = 0.1
+		ai_creation_factor = 102
+		potential = {
+		has_global_flag = building
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+	}
+	
+	ca_dwarvenforges_1 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 1 }
+		not_if_x_exists = { ca_lonely_mountain }
+		start = { always = no }
+		gold_cost = 75
+		build_time = 260
+		tax_income = 0.35
+		heavy_infantry = 10
+		heavy_infantry_offensive = 0.1
+		heavy_infantry_defensive = 0.1
+		pikemen_offensive = 0.1
+		pikemen_defensive = 0.1
+		archers_offensive = 0.1
+		archers_defensive = 0.1
+		light_cavalry_offensive = 0.1
+		light_cavalry_defensive = 0.1
+		knights_offensive = 0.1
+		knights_defensive = 0.1
+		horse_archers_offensive = 0.1
+		horse_archers_defensive = 0.1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		OR = {
+			terrain = hills
+			terrain = mountain
+		}
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_dwarvenforges_2 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		start = { always = no }
+		upgrades_from = ca_dwarvenforges_1
+		gold_cost = 165
+		build_time = 755
+		tax_income = 0.7
+		heavy_infantry = 10
+		heavy_infantry_offensive = 0.1
+		heavy_infantry_defensive = 0.1
+		pikemen_offensive = 0.1
+		pikemen_defensive = 0.1
+		archers_offensive = 0.1
+		archers_defensive = 0.1
+		light_cavalry_offensive = 0.1
+		light_cavalry_defensive = 0.1
+		knights_offensive = 0.1
+		knights_defensive = 0.1
+		horse_archers_offensive = 0.1
+		horse_archers_defensive = 0.1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		OR = {
+			terrain = hills
+			terrain = mountain
+		}
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_dwarvenforges_3 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		start = { always = no }
+		upgrades_from = ca_dwarvenforges_2
+		gold_cost = 395
+		build_time = 1520
+		tax_income = 0.9
+		heavy_infantry = 10
+		heavy_infantry_offensive = 0.1
+		heavy_infantry_defensive = 0.1
+		pikemen_offensive = 0.1
+		pikemen_defensive = 0.1
+		archers_offensive = 0.1
+		archers_defensive = 0.1
+		light_cavalry_offensive = 0.1
+		light_cavalry_defensive = 0.1
+		knights_offensive = 0.1
+		knights_defensive = 0.1
+		horse_archers_offensive = 0.1
+		horse_archers_defensive = 0.1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		OR = {
+			terrain = hills
+			terrain = mountain
+		}
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	
+	ca_dwarvenforges_4 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		start = { always = no }
+		upgrades_from = ca_dwarvenforges_3
+		gold_cost = 760
+		build_time = 2784
+		tax_income = 1.2
+		heavy_infantry = 10
+		heavy_infantry_offensive = 0.1
+		heavy_infantry_defensive = 0.1
+		pikemen_offensive = 0.1
+		pikemen_defensive = 0.1
+		archers_offensive = 0.1
+		archers_defensive = 0.1
+		light_cavalry_offensive = 0.1
+		light_cavalry_defensive = 0.1
+		knights_offensive = 0.1
+		knights_defensive = 0.1
+		horse_archers_offensive = 0.1
+		horse_archers_defensive = 0.1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		OR = {
+			terrain = hills
+			terrain = mountain
+		}
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+
+	ca_dwarvenforges_5 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		start = { always = no }
+		upgrades_from = ca_dwarvenforges_4
+		gold_cost = 1235
+		build_time = 6625
+		tax_income = 1.5
+		heavy_infantry = 15
+		heavy_infantry_offensive = 0.1
+		heavy_infantry_defensive = 0.1
+		pikemen_offensive = 0.1
+		pikemen_defensive = 0.1
+		archers_offensive = 0.1
+		archers_defensive = 0.1
+		light_cavalry_offensive = 0.1
+		light_cavalry_defensive = 0.1
+		knights_offensive = 0.1
+		knights_defensive = 0.1
+		horse_archers_offensive = 0.1
+		horse_archers_defensive = 0.1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		terrain = mountain
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_dwarvenforges_6 = {
+		desc = ca_dwarvenforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		start = { always = no }
+		upgrades_from = ca_dwarvenforges_5
+		gold_cost = 2050
+		build_time = 8950
+		tax_income = 2
+		heavy_infantry = 15
+		heavy_infantry_offensive = 0.2
+		heavy_infantry_defensive = 0.2
+		pikemen_offensive = 0.2
+		pikemen_defensive = 0.2
+		archers_offensive = 0.2
+		archers_defensive = 0.2
+		light_cavalry_offensive = 0.2
+		light_cavalry_defensive = 0.2
+		knights_offensive = 0.2
+		knights_defensive = 0.2
+		horse_archers_offensive = 0.2
+		horse_archers_defensive = 0.2
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+		has_global_flag = building
+		terrain = mountain
+		province_id = 285 #Moria
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_mithrilforges_1 = { # must character have found mithril #
+		desc = ca_mithrilforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 2 }
+		start = { always = no }
+		gold_cost = 100
+		build_time = 165
+		tax_income = 1
+		heavy_infantry = 20
+		heavy_infantry_offensive = 0.4
+		heavy_infantry_defensive = 0.4
+		pikemen_offensive = 0.4
+		pikemen_defensive = 0.4
+		archers_offensive = 0.4
+		archers_defensive = 0.4
+		light_cavalry_offensive = 0.4
+		light_cavalry_defensive = 0.4
+		knights_offensive = 0.4
+		knights_defensive = 0.4
+		horse_archers_offensive = 0.4
+		horse_archers_defensive = 0.4
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+		has_global_flag = building
+		province_id = 285 #Moria
+		    ruler = { trait = mithril_found }
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_mithrilforges_2 = { # must character have found mithril #
+		desc = ca_mithrilforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		upgrades_from = ca_mithrilforges_1
+		start = { always = no }
+		gold_cost = 200
+		build_time = 265
+		tax_income = 2
+		heavy_infantry = 20
+		heavy_infantry_offensive = 0.4
+		heavy_infantry_defensive = 0.4
+		pikemen_offensive = 0.4
+		pikemen_defensive = 0.4
+		archers_offensive = 0.4
+		archers_defensive = 0.4
+		light_cavalry_offensive = 0.4
+		light_cavalry_defensive = 0.4
+		knights_offensive = 0.4
+		knights_defensive = 0.4
+		horse_archers_offensive = 0.4
+		horse_archers_defensive = 0.4
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+		has_global_flag = building
+		province_id = 285 #Moria
+		    ruler = { trait = mithril_found }
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	ca_mithrilforges_3 = { # must character have found mithril #
+		desc = ca_mithrilforges_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		upgrades_from = ca_mithrilforges_2
+		start = { always = no }
+		gold_cost = 300
+		build_time = 365
+		tax_income = 3
+		heavy_infantry = 20
+		heavy_infantry_offensive = 0.4
+		heavy_infantry_defensive = 0.4
+		pikemen_offensive = 0.4
+		pikemen_defensive = 0.4
+		archers_offensive = 0.4
+		archers_defensive = 0.4
+		light_cavalry_offensive = 0.4
+		light_cavalry_defensive = 0.4
+		knights_offensive = 0.4
+		knights_defensive = 0.4
+		horse_archers_offensive = 0.4
+		horse_archers_defensive = 0.4
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+		has_global_flag = building
+		province_id = 285 #Moria
+		    ruler = { trait = mithril_found }
+		    FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			    culture_group = culture_group_dwarves
+			}
+		}
+		
+		extra_tech_building_start = 1.3
+	}
+	
+	
+	##Longbeards and Ironfists##
+    ca_lidwarf_traditions = {
+		desc = ca_lidwarf_traditions_desc
+		potential = {
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		gold_cost = 10
+		build_time = 10
+		ai_creation_factor = 300
+		heavy_infantry = 60
+		pikemen = 105
+		light_infantry = -60
+		archers = 60
+		light_cavalry = -15
+		knights = 20
+		tax_income = 1
+		tech_growth_modifier = 0.1
+		garrison_size = 0.15
+
+		extra_tech_building_start = 0.0
+	}
+	
+	# Dwarf Barracks
+	ca_lidwarf_barracks_1 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 50
+		archers = 30
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_lidwarf_barracks_2 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_lidwarf_barracks_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 55
+		archers = 35
+		ai_creation_factor = 99
+
+		extra_tech_building_start = 2.0
+	}
+	ca_lidwarf_barracks_3 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		upgrades_from = ca_lidwarf_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		heavy_infantry = 60
+		archers = 40
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_lidwarf_barracks_4 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		upgrades_from = ca_lidwarf_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 65
+		archers = 45
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_lidwarf_barracks_5 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		upgrades_from = ca_lidwarf_barracks_4
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 70
+		archers = 50
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_lidwarf_barracks_6 = {
+		desc = ca_lidwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+			    }
+			}
+		}
+		upgrades_from = ca_lidwarf_barracks_5
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 75
+		archers = 55
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	
+	#Longbeard Veteran Warriors
+	ca_longbeardveterans_1 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 45
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_longbeardveterans_2 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_longbeardveterans_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 50
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_longbeardveterans_3 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_longbeardveterans_2
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 55
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_longbeardveterans_4 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		upgrades_from = ca_longbeardveterans_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 65
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_longbeardveterans_5 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		upgrades_from = ca_longbeardveterans_4
+		gold_cost = 400
+		build_time = 2190
+		heavy_infantry = 70
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_longbeardveterans_6 = {
+		desc = ca_longbeardveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_longbeard
+			}
+		}
+		upgrades_from = ca_longbeardveterans_5
+		gold_cost = 500
+		build_time = 2190
+		heavy_infantry = 75
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	
+	#Ironfist Veteran Pikes
+	ca_ironfistveterans_1 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		pikemen = 50
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_ironfistveterans_2 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_ironfistveterans_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_ironfistveterans_3 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_ironfistveterans_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 60
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_ironfistveterans_4 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		upgrades_from = ca_ironfistveterans_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 65
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_ironfistveterans_5 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		upgrades_from = ca_ironfistveterans_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 70
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_ironfistveterans_6 = {
+		desc = ca_ironfistveterans_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			culture = culture_ironfist
+			}
+		}
+		upgrades_from = ca_ironfistveterans_5
+		gold_cost = 500
+		build_time = 2190
+		pikemen = 75
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+
+	#Stable, knights
+	ca_dwarf_stable_1 = {
+		desc = ca_dwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		knights = 20
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_dwarf_stable_2 = {
+		desc = ca_dwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_dwarf_stable_1
+		gold_cost = 120
+		build_time = 547
+		knights = 25
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_dwarf_stable_3 = {
+		desc = ca_avari_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_dwarf_stable_2
+		gold_cost = 200
+		build_time = 730
+		knights = 30
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarf_stable_4 = {
+		desc = ca_dwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_dwarf_stable_3
+		gold_cost = 300
+		build_time = 1095
+		knights = 35
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarf_stable_5 = {
+		desc = ca_dwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_dwarf_stable_4
+		gold_cost = 400
+		build_time = 2190
+		knights = 40
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_dwarf_stable_6 = {
+		desc = ca_dwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_longbeard
+				culture = culture_ironfist
+				culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_dwarf_stable_5
+		gold_cost = 500
+		build_time = 2190
+		knights = 45
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	
+	##Broadbeams and Firebeards##
+    ca_bfdwarf_traditions = {
+		desc = ca_bfdwarf_traditions_desc
+		potential = {
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		gold_cost = 10
+		build_time = 10
+		ai_creation_factor = 300
+		heavy_infantry = 65
+		light_infantry = -60
+		archers = 85
+		light_cavalry = -15
+		knights = 15
+		tax_income = 0.5
+		tech_growth_modifier = 0.05
+		garrison_size = 0.1
+
+		extra_tech_building_start = 0.0
+	}
+	
+	# Dwarf Barracks
+	ca_bfdwarf_barracks_1 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 60
+		archers = 65
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_bfdwarf_barracks_2 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_bfdwarf_barracks_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 65
+		archers = 70
+		ai_creation_factor = 99
+
+		extra_tech_building_start = 2.0
+	}
+	ca_bfdwarf_barracks_3 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_bfdwarf_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		heavy_infantry = 70
+		archers = 75
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_bfdwarf_barracks_4 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_bfdwarf_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 80
+		archers = 85
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_bfdwarf_barracks_5 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_bfdwarf_barracks_4
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 85
+		archers = 90
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_bfdwarf_barracks_6 = {
+		desc = ca_bfdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_bfdwarf_barracks_5
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 90
+		archers = 95
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	
+	#Eriador Rangers
+	ca_eriadorrangers_1 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 40
+		archers = 50
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_eriadorrangers_2 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_eriadorrangers_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 45
+		archers = 55
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_eriadorrangers_3 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_eriadorrangers_2
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 50
+		archers = 60
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_eriadorrangers_4 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_eriadorrangers_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 55
+		archers = 65
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_eriadorrangers_5 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_eriadorrangers_4
+		gold_cost = 400
+		build_time = 2190
+		heavy_infantry = 60
+		archers = 70
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_eriadorrangers_6 = {
+		desc = ca_eriadorrangers_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_firebeard
+				culture = culture_broadbeam
+				culture = culture_petty_dwarves
+			    }
+			}
+		}
+		upgrades_from = ca_eriadorrangers_5
+		gold_cost = 500
+		build_time = 2190
+		heavy_infantry = 65
+		archers = 75
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	
+	##Stonefoots, Blacklocks, Stiffbeards##
+    ca_sbsdwarf_traditions = {
+		desc = ca_sbsdwarf_traditions_desc
+		potential = {
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		gold_cost = 10
+		build_time = 10
+		ai_creation_factor = 300
+		pikemen = 75
+		light_infantry = -60
+		archers = 65
+		heavy_infantry = -110
+		light_cavalry = 75
+		horse_archers = 60
+		knights = 40
+		tax_income = 0.3
+		tech_growth_modifier = 0.15
+		garrison_size = 0.05
+
+		extra_tech_building_start = 0.0
+	}
+	
+	# Dwarf Barracks
+	ca_sbsdwarf_barracks_1 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		pikemen = 35
+		archers = 45
+		ai_creation_factor = 100
+		
+		extra_tech_building_start = 1.0
+	}
+	ca_sbsdwarf_barracks_2 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_sbsdwarf_barracks_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 40
+		archers = 50
+		ai_creation_factor = 99
+
+		extra_tech_building_start = 2.0
+	}
+	ca_sbsdwarf_barracks_3 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_barracks_2
+		gold_cost = 200
+		build_time = 1095
+		pikemen = 45
+		archers = 55
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_sbsdwarf_barracks_4 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_barracks_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 50
+		archers = 60
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_sbsdwarf_barracks_5 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_barracks_4
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 55
+		archers = 65
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	ca_sbsdwarf_barracks_6 = {
+		desc = ca_sbsdwarf_barracks_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_barracks_5
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 60
+		archers = 70
+		ai_creation_factor = 98
+
+		extra_tech_building_start = 1.5
+	}
+	
+	#Elite Dwarven cavalry
+	ca_sbselites_1 = {
+		desc = ca_sbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		light_cavalry = 35
+		horse_archers = 35
+		knights = 20
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_sbselites_2 = {
+		desc = ca_lsbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_sbselites_1
+		gold_cost = 120
+		build_time = 547
+		light_cavalry = 40
+		horse_archers = 40
+		knights = 25
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_sbselites_3 = {
+		desc = ca_sbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 5 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_sbselites_2
+		gold_cost = 200
+		build_time = 730
+		light_cavalry = 45
+		horse_archers = 45
+		knights = 30
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbselites_4 = {
+		desc = ca_sbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbselites_3
+		gold_cost = 300
+		build_time = 1095
+		light_cavalry = 50
+		horse_archers = 50
+		knights = 35
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbselites_5 = {
+		desc = ca_sbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbselites_4
+		gold_cost = 400
+		build_time = 2190
+		light_cavalry = 55
+		horse_archers = 55
+		knights = 40
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbselites_6 = {
+		desc = ca_sbselites_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbselites_5
+		gold_cost = 500
+		build_time = 2190
+		light_cavalry = 60
+		horse_archers = 60
+		knights = 45
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	
+	#Stable, light cavalry, horse archers, and knights
+	ca_sbsdwarf_stable_1 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		light_cavalry = 40
+		horse_archers = 30
+		knights = 15
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.4
+	}
+	ca_sbsdwarf_stable_2 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_sbsdwarf_stable_1
+		gold_cost = 120
+		build_time = 547
+		light_cavalry = 45
+		horse_archers = 35
+		knights = 20
+		ai_creation_factor = 88
+
+		extra_tech_building_start = 1.8
+	}
+	ca_sbsdwarf_stable_3 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 4 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		prerequisites = { ca_dwarvenfortifications_2 }
+		upgrades_from = ca_sbsdwarf_stable_2
+		gold_cost = 200
+		build_time = 730
+		light_cavalry = 50
+		horse_archers = 40
+		knights = 25
+		ai_creation_factor = 87
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbsdwarf_stable_4 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_stable_3
+		gold_cost = 300
+		build_time = 1095
+		light_cavalry = 55
+		horse_archers = 45
+		knights = 30
+		ai_creation_factor = 86
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbsdwarf_stable_5 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 7 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_stable_4
+		gold_cost = 400
+		build_time = 2190
+		light_cavalry = 60
+		horse_archers = 50
+		knights = 35
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+	ca_sbsdwarf_stable_6 = {
+		desc = ca_sbsdwarf_stable_1_desc
+		trigger = { TECH_CASTLE_CONSTRUCTION = 8 }
+		potential = {
+		has_global_flag = building
+			FROM = {
+				NOR = {
+				culture_group = culture_group_melkor
+				AND = {
+				    culture = culture_maiar
+					trait = evil_side
+				    }
+				}
+			}
+			ROOT = {
+			OR = {
+			    culture = culture_stonefoot
+				culture = culture_blacklock
+				culture = culture_stiffbeard
+			    }
+			}
+		}
+		upgrades_from = ca_sbsdwarf_stable_5
+		gold_cost = 500
+		build_time = 2190
+		light_cavalry = 65
+		horse_archers = 55
+		knights = 40
+		ai_creation_factor = 85
+
+		extra_tech_building_start = 1.2
+	}
+
+}
