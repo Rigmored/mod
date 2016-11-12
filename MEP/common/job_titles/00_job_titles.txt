@@ -21,6 +21,22 @@ job_chancellor = {
 	
 	allow = {
 		can_be_chancellor_trigger = yes
+		OR = {
+			AND = {
+				is_female = no
+				is_adult = yes
+			}
+			has_character_flag = special_chancellor
+		}
+				prisoner = no
+		NOT = { trait = incapable }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = on_fellowshipquest }
+		NOT = { trait = saruman_spell }
+		NOT = { trait = huntforring }
+		NOT = { trait = journey_to_valinor }
+		NOT = { trait = sailed_west }
+		NOT = { trait = at_east }
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -45,10 +61,12 @@ job_chancellor = {
 	action = action_fabricate_claims
 	action = action_clan_sentiment # Replaces Fabricate Claims for Nomads
 	action = action_sow_dissent
+	action = action_subjugate
 
 	lift_fow = yes
 }
 
+# NOTE: The allow trigger for this job also determines who can command armies!
 job_marshal = {
 	is_marshal = yes
 	is_voter = yes
@@ -61,6 +79,37 @@ job_marshal = {
 	
 	allow = {
 		can_be_marshal_trigger = yes
+		OR = {
+			AND = {
+				is_female = no
+				is_adult = yes
+			}
+			has_character_flag = special_marshal
+		}
+		
+		prisoner = no
+		NOT = { trait = incapable }
+		OR = {
+			AND = {
+				has_character_flag = sauron
+				trait = ring
+			}
+			NOT = {
+				AND = {
+					has_character_flag = sauron
+					NOT = { trait = ring }
+				}
+			}
+		}
+		NOT = { trait = staff_of_saruman }
+		NOT = { trait = staff_of_radagast }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = on_fellowshipquest }
+		NOT = { trait = saruman_spell }
+		NOT = { trait = huntforring }
+		NOT = { trait = journey_to_valinor }
+		NOT = { trait = sailed_west }		
+		NOT = { trait = at_east }
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -102,6 +151,23 @@ job_treasurer = {
 	
 	allow = {
 		can_be_treasurer_trigger = yes
+		OR = {
+			AND = {
+				is_female = no
+				is_adult = yes
+			}
+			has_character_flag = special_treasurer
+		}
+		prisoner = no
+		NOT = { trait = incapable }
+		NOT = { has_character_flag = guru }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = on_fellowshipquest }
+		NOT = { trait = saruman_spell }
+		NOT = { trait = huntforring }
+		NOT = { trait = journey_to_valinor }
+		NOT = { trait = sailed_west }		
+		NOT = { trait = at_east }
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -144,6 +210,32 @@ job_spymaster = {
 	
 	allow = {
 		can_be_spymaster_trigger = yes
+		OR = {
+			AND = {
+				OR = {
+					is_female = no
+					liege = { 
+						OR = {
+							mother = { character = FROM }
+							spouse = { character = FROM }
+						}
+					}
+				}
+				is_adult = yes
+			}
+			has_character_flag = special_spymaster
+		}
+		
+		prisoner = no
+		NOT = { trait = incapable }
+		NOT = { has_character_flag = guru }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = on_fellowshipquest }
+		NOT = { trait = saruman_spell }
+		NOT = { trait = huntforring }
+		NOT = { trait = journey_to_valinor }
+		NOT = { trait = sailed_west }		
+		NOT = { trait = at_east }
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -183,6 +275,26 @@ job_spiritual = {
 	
 	allow = {
 		can_be_spiritual_trigger = yes
+		prisoner = no
+		liege = {
+			religion = ROOT
+		}
+		OR = {
+			AND = {
+				is_adult = yes
+				is_female = no
+			}
+			has_character_flag = special_spiritual
+		}
+		
+		NOT = { trait = incapable }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = on_fellowshipquest }
+		NOT = { trait = saruman_spell }
+		NOT = { trait = huntforring }
+		NOT = { trait = journey_to_valinor }
+		NOT = { trait = sailed_west }		
+		NOT = { trait = at_east }
 	}
 	gain_effect = {
 	}
@@ -207,11 +319,12 @@ job_spiritual = {
 		}
 	}
 	
-	action = action_heal_troops
-	action = action_search_artefacts
-	action = action_claim_artefacts
+	action = action_inquisition
+	action = action_advance_cul_tech
+	action = action_improve_rel_relations
 	action = action_charity
 	action = action_build_zeal # Tribal replacement for 'action_advance_cul_tech'
+	action = action_heal_troops
 
 	lift_fow = yes
 }

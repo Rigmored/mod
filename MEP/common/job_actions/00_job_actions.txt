@@ -2,7 +2,7 @@
 # COUNCILLOR ACTIONS
 ##########################################
 # attribute = [diplomacy/stewardship/intrigue/martial/learning] - Character attribute is multiplied with the modifiers
-# trigger = Province scope trigger to determine if the action is meaningful in a province (the player character is FROM, the councillor is in 'new_character')
+# trigger = Province scope trigger to determine if the action is meaningful in a province (the player character is FROM)
 # Events that can trigger off this action. This info is only used by the GUI.
 # All modifiers (like 'local_build_time_modifier') are multiplied by the attribute
 
@@ -24,37 +24,6 @@ action_improve_relations = {
 	}
 	
 	events = { 910 911 }
-}
-
-action_clan_sentiment = {
-	attribute = diplomacy
-	
-	potential = {
-		FROM = {
-			is_nomadic = yes
-		}
-	}
-	
-	trigger = {
-		owner = {
-			is_nomadic = yes
-			NOT = { character = FROM }
-
-			FROM = {
-				job_chancellor = {
-					NOT = { character = PREVPREV } # Can't be sent to improve relations with himself...
-				}
-			}
-			
-			OR = {
-				vassal_of = FROM
-				same_liege = FROM
-				overlord_of = FROM
-			}
-		}
-	}
-	
-	events = { 20235 }
 }
 
 action_fabricate_claims = {
@@ -93,6 +62,37 @@ action_sow_dissent = {
 	events = { 916 917 }
 }
 
+#### For Evil Characters only ####
+action_subjugate = {
+	attribute = diplomacy
+
+	potential = {
+		FROM = {
+			prestige = 100
+			wealth = 100
+			trait = evil_side
+		}
+	}
+	
+	trigger = {
+		any_province_lord = {
+			NOT = { character = FROM }
+			NOT = { is_liege_or_above = FROM }
+			primary_title = { lower_tier_than = FROM }
+			OR = {
+				NOT = { has_landed_title = k_arthedain }
+				NOT = { has_landed_title = k_cardolan }
+			}
+			independent = yes
+			NOT = { culture_group = culture_group_wilderness }
+		}
+		is_capital = yes
+		is_within_diplo_range = FROM
+	}
+	
+	events = { subjugate.0 }
+}
+
 # Steward
 action_squeeze_peasants = {
 	attribute = stewardship
@@ -113,39 +113,6 @@ action_squeeze_peasants = {
 	local_tax_modifier = 0.025
 	
 	events = { 920 921 }
-}
-
-action_colonize_province = {
-	attribute = stewardship
-	
-	potential = {
-
-	}	
-
-	trigger = {
-		any_province_lord = {
-			OR = {		
-				top_liege = { character = FROM } 
-				liege = { liege = { character = FROM } } 
-				liege = { character = FROM }
-				character = FROM
-			}
-			NOT = {
-				OR = {
-					has_character_flag = colonizationwilderness
-					liege = { has_character_flag = colonizationwilderness} 
-					liege = { liege = { has_character_flag = colonizationwilderness} } 
-					top_liege = { has_character_flag = colonizationwilderness}
-				}
-			}
-		}
-		OR = {		
-			religion = religion_wilderness
-			culture = culture_wilderness
-		}
-	}
-	
-	events = { }
 }
 
 action_collect_tribute = {
@@ -214,7 +181,26 @@ action_oversee_construction = {
 	events = { 923 924 }
 }
 
+action_advance_eco_tech = {
+	attribute = stewardship
 
+	potential = {
+		FROM = {
+			is_tribal = no
+		}
+	}
+
+	trigger = {
+		any_province_lord = {
+			character = FROM
+		}
+		technology_can_spread = yes
+	}
+	
+	tech_growth_modifier_economy = 0.05
+	
+	events = { }
+}
 
 action_build_legend = {
 	attribute = stewardship
@@ -235,6 +221,34 @@ action_build_legend = {
 	
 	events = { 20208 }
 }
+
+action_colonize_province = {
+	attribute = stewardship
+
+	trigger = {
+		OR = {		
+			owner = { top_liege = { character = FROM } }
+			owner = { liege = { liege = { character = FROM } } }
+			owner = { liege = { character = FROM } }
+			owner = { character = FROM }
+		}
+		NOT = {
+			OR = {
+				owner = { has_character_flag = colonizationwilderness}
+				owner = { liege = { has_character_flag = colonizationwilderness} }
+				owner = { liege = { liege = { has_character_flag = colonizationwilderness} } }
+				owner = { top_liege = { has_character_flag = colonizationwilderness} }
+			}
+		}
+		OR = {	
+			religion = religion_wilderness
+			culture = culture_wilderness
+		}
+	}
+	
+	events = { }
+}
+
 
 # Spymaster
 action_uncover_plots = {
@@ -383,7 +397,100 @@ action_assist_arrest = {
 	events = {  }
 }
 
-# Court Chaplain
+
+#### Court Chaplain
+
+action_inquisition = {
+	attribute = learning
+	
+	trigger = {
+		num_of_settlements = 1
+		NAND = {
+			FROM = { job_spiritual = { has_character_modifier = spiritual_refused_pagans } }  # See Event ZE.5040
+			owner = { religion_group = pagan_group }
+		}
+		OR = {
+			owner = {
+				FROM = { NOT = { religion_group = pagan_group } }
+				independent = yes
+				NOT = { religion = FROM }
+				religion_group = pagan_group
+				OR = {
+					NOT = { religion = aztec }
+					year = 1350
+				}
+				is_reformed_religion = no
+				capital_scope = {
+					province = ROOT
+				}
+				controls_religion = no
+				FROM = {
+					higher_tier_than = COUNT
+					OR = {
+						independent = yes
+						higher_tier_than = DUKE
+					}
+				}
+				NOT = {
+					has_opinion_modifier = { who = FROM modifier = opinion_sent_preacher }
+				}
+				is_within_diplo_range = FROM
+			}
+			any_province_lord = {
+				OR = {
+					character = FROM
+					is_liege_or_above = FROM
+				}
+			}
+		}
+	}
+	
+	events = { 900 901 902 903 }
+}
+
+action_advance_cul_tech = {
+	attribute = learning
+	
+	potential = {
+		FROM = {
+			is_tribal = no
+		}
+	}
+	
+	trigger = {
+		any_province_lord = {
+			OR = {
+				character = FROM
+				is_liege_or_above = FROM
+			}
+		}
+		technology_can_spread = yes
+	}
+	
+	tech_growth_modifier_culture = 0.05
+	
+	events = { 926 927 }
+}
+
+action_build_zeal = {
+	attribute = learning
+
+	potential = {
+		FROM = {
+			is_tribal = yes
+		}
+	}
+
+	trigger = {
+		FROM = {
+			is_capital = PREV
+		}
+	}
+	
+	monthly_character_piety = 0.05
+	
+	events = { 20218 }
+}
 
 action_heal_troops = {
 	attribute = learning
@@ -406,60 +513,4 @@ action_heal_troops = {
 	events = { }
 	
 	levy_reinforce_rate = 0.15
-}
-
-action_search_artefacts = {
-	attribute = learning
-
-	potential = {
-		FROM = { 
-			NOT = { has_character_flag = searched_for_artefact }
-		}
-	}
-	
-	trigger = {
-		any_province_lord = {
-			character = FROM
-		}
-	}
-	
-	events = { }
-}
-
-action_claim_artefacts = {
-	attribute = learning
-
-	potential = {
-		FROM = { 
-			NOT = { has_character_flag = searched_for_artefact }
-		}
-	}
-	
-	trigger = {
-		any_province_lord = {
-			character = FROM
-		}
-	}
-	
-	events = { }
-}
-
-action_build_zeal = {
-	attribute = learning
-
-	potential = {
-		FROM = {
-			is_tribal = yes
-		}
-	}
-
-	trigger = {
-		FROM = {
-			is_capital = PREV
-		}
-	}
-	
-	monthly_character_piety = 0.05
-	
-	events = { 20218 }
 }
