@@ -2,7 +2,7 @@ decisions = {
 	## Decision for an ork vassal to claim the crown of his liege ##
 	claim_throne_orcs = {
 		potential = {
-			ai = no
+			#ai = no
 			liege = {
 				OR = {
 					culture = culture_orkish
@@ -40,6 +40,59 @@ decisions = {
 			character_event = { id = orcfights.0 }
 			set_character_flag = orcfight1
 			liege = { set_character_flag = orcfight1 }
+		}
+	}
+	
+	## Decision to draft a snaga mob to war ##
+	draft_snaga_mob = {
+		is_high_prio = yes
+		potential = {
+			OR = {
+				religion = religion_orkish
+				culture = culture_goblin
+				culture = culture_orkish
+				culture = culture_half_orc
+				culture = culture_urukhai
+			}
+		}
+		allow = {
+			war = yes
+			prisoner = no
+			wealth = 15
+		}
+		effect = {
+			prestige = -75
+			wealth = -15
+			capital_scope = {
+				PREV = {
+					spawn_unit = {
+						owner = ROOT
+						leader = none
+						province = PREV
+						home = PREV
+						troops = {
+							archers = { 25 25 }
+							light_infantry = { 125 125 }
+						}
+						attrition = 1.0
+						disband_on_peace = no
+						maintenance_multiplier = 1
+						leader = none
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { any_war = { war_score = -5 } }
+					NOT = { is_primary_war_defender = yes }
+				}
+				
+			}
 		}
 	}
 }
