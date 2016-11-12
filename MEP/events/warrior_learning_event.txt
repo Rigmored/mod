@@ -1,0 +1,251 @@
+namespace = learnwarrior
+
+#
+#
+#
+
+### Learn and improve warrior skills (ELF)  ###
+narrative_event = {
+	id = learnwarrior.1
+	title = "EVTTITlearnwarrior.1" # I should learn to craft. 
+	desc = "EVTDESClearnwarrior.1" # I want to learn how to craft,
+	picture = GFX_evt_battle_duel
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlearnwarrior.1" # I'll learn how to become a true elf warrior!
+		trigger = {
+			NOT = {
+				culture_group = culture_group_dwarves
+				trait = legendary_warrior
+				trait = dwarven
+			}
+		}
+		character_event = { id = learnwarrior.2 days = 30 }
+		wealth = -250
+	}
+	
+		option = {
+		name = "EVTOPTBlearnwarrior.1" # I'll learn how to become a true dwarf warrior!
+		trigger = {
+			NOT = {
+				culture_group = culture_group_moriquendi
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_quendi
+				trait = elf
+				trait = dragon_slayer
+			}
+		}
+		character_event = { id = learnwarrior.4 days = 30 }
+		wealth = -250
+	}
+	
+	option = {
+		name = "EVTOPTClearnwarrior.1" # I can't pay that!
+		clr_character_flag = learn_war
+	}
+}
+
+### Actual event to learn how to craft ###
+character_event = {
+	id = learnwarrior.2
+	title = "EVTTITlearnwarrior.2"
+	desc = "EVTDESClearnwarrior.2"
+	picture = GFX_evt_battle_duel
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnwarrior.2" ## Time to learn try!
+		if = {
+			limit = {
+				trait = legendary_warrior
+				age = 1
+				not = {
+					trait = great_elf
+					trait = trained_elf
+					trait = pacifist_elf
+				}
+			}
+			clr_character_flag = learn_war ## I am the best already!
+		}		
+		if = {
+			limit = {
+				trait = great_elf
+				age = 1
+				not = {
+					trait = legendary_warrior
+					trait = trained_elf
+					trait = pacifist_elf
+				}
+			}
+			random = {
+				chance = 20
+				add_trait = legendary_warrior
+				remove_trait = great_elf
+			}
+		}
+		if = {
+			limit = {
+				trait = trained_elf
+				age = 1
+				not = {
+					trait = legendary_warrior
+					trait = great_elf
+					trait = pacifist_elf
+				}
+			}
+			random = {
+				chance = 40
+				add_trait = great_elf
+				remove_trait = trained_elf
+			}
+			character_event = { id = learnwarrior.3 days = 70 } ## I can try again!
+		}
+		if = {
+			limit = {
+				trait = pacifist_elf
+				age = 1
+				not = {
+					trait = legendary_warrior
+					trait = great_elf
+					trait = trained_elf
+				}
+			}
+			random = {
+				chance = 50
+				add_trait = trained_elf
+				remove_trait = pacifist_elf
+			}
+			character_event = { id = learnwarrior.3 days = 60 } ## I can try again!
+		}
+		character_event = { id = learnwarrior.3 days = 90 } ## I can try again!
+		if = {
+			limit = {
+				age = 1
+				not = {
+					trait = legendary_warrior
+					trait = great_elf
+					trait = trained_elf
+					trait = pacifist_elf
+				}
+			}
+			random = {
+				chance = 30
+				add_trait = pacifist_elf
+			}
+			character_event = { id = learnwarrior.3 days = 50 } ## I can try again!
+		}
+	}
+}
+
+character_event = {
+	id = learnwarrior.3
+	title = "EVTTITlearnwarrior.3"
+	desc = "EVTDESClearnwarrior.3"
+	picture = GFX_evt_battle_duel
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnwarrior.3" ##
+		clr_character_flag = learn_war
+	}
+}
+
+### Learn and improve warrior skills (DWARF)  ###
+character_event = {
+	id = learnwarrior.4
+	title = "EVTTITlearnwarrior.4"
+	desc = "EVTDESClearnwarrior.4"
+	picture = GFX_evt_battle_duel
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnwarrior.4" ## Time to learn try!
+		if = {
+			limit = {
+				trait = dragon_slayer
+				age = 1
+				not = {
+					trait = great_axeman
+					trait = trained_dwarf
+					trait = dwarf_warrior
+				}
+			}
+			clr_character_flag = learn_war ## I am the best already!
+		}
+		if = {
+			limit = {
+				trait = great_axeman
+				age = 1
+				not = {
+					trait = dragon_slayer
+					trait = trained_dwarf
+					trait = dwarf_warrior
+				}
+			}
+			random = {
+				chance = 20
+				add_trait = dragon_slayer
+				remove_trait = great_axeman
+			}
+			character_event = { id = learnwarrior.3 days = 90 } ## I can try again!
+		}
+		if = {
+			limit = {
+				trait = trained_dwarf
+				age = 1
+				not = {
+					trait = dragon_slayer
+					trait = great_axeman
+					trait = dwarf_warrior
+				}
+			}
+			random = {
+				chance = 40
+				add_trait = great_axeman
+				remove_trait = trained_dwarf
+			}
+			character_event = { id = learnwarrior.3 days = 70 } ## I can try again!
+		}
+		if = {
+			limit = {
+				trait = dwarf_warrior
+				age = 1
+				not = {
+					trait = dragon_slayer
+					trait = great_axeman
+					trait = trained_dwarf
+				}
+			}
+			random = {
+				chance = 50
+				add_trait = trained_dwarf
+				remove_trait = dwarf_warrior
+			}
+			character_event = { id = learnwarrior.3 days = 60 } ## I can try again!
+		}
+		if = {
+			limit = {
+				age = 1
+				not = {
+					trait = dragon_slayer
+					trait = great_axeman
+					trait = trained_dwarf
+					trait = dwarf_warrior
+				}
+			}
+			random = {
+				chance = 30
+				add_trait = dwarf_warrior
+			}
+			character_event = { id = learnwarrior.3 days = 50 } ## I can try again!
+		}
+	}
+}
+
+

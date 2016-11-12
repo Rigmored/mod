@@ -1,0 +1,146 @@
+namespace = learncraft
+
+#
+#
+#
+
+### Learn and improve crafting skills  ###
+narative_event = {
+	id = learncraft.1
+	title = "EVTTITlearncraft.1" # I should learn to craft. 
+	desc = "EVTDESClearncraft.1" # I want to learn how to craft,
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlearncraft.1" # I'll learn how to craft!
+		trigger = {
+			NOT = {
+				trait = legendary_craftsman
+			}
+		}
+		character_event = { id = learncraft.2 days = 10 }
+		wealth = -250
+	}
+	
+	option = {
+		name = "EVTOPTBlearncraft.1" # I can't pay that!
+		clr_character_flag = learn_craft
+	}
+}
+
+### Actual event to learn how to craft ###
+character_event = {
+	id = learncraft.2
+	title = "EVTTITlearncraft.2"
+	desc = "EVTDESClearncraft.2"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearncraft.2" ## Chance to learn
+		if = {
+			limit = {
+				trait = legendary_craftman
+				age = 1
+				not = {
+					trait = master_craftsman
+					trait = skilled_craftsman
+					trait = craftman
+				}
+			}
+			clr_character_flag = learn_craft ## I am the best already!
+		}
+		if = {
+			limit = {
+				trait = master_craftsman
+				age = 1
+				not = {
+					trait = legendary_craftman
+					trait = skilled_craftsman
+					trait = craftman
+				}
+			}
+			random = {
+				chance = 20
+				add_trait = legendary_craftman
+				remove_trait = master_craftsman
+			}
+			character_event = { id = learncraft.3 days = 90 } ## Lets try to improve!
+		}
+		if = {
+			limit = {
+				trait = skilled_craftsman
+				age = 1
+				not = {
+					trait = legendary_craftman
+					trait = master_craftsman
+					trait = craftman
+				}
+			}
+			random = {
+				chance = 50
+				add_trait = master_craftsman
+				remove_trait = skilled_craftsman
+			}
+			character_event = { id = learncraft.3 days = 70 } ##
+		}
+		if = {
+			limit = {
+				trait = craftsman
+				age = 1
+				not = {
+					trait = legendary_craftman
+					trait = master_craftsman
+					trait = skilled_craftsman
+				}
+			}
+			random = {
+				chance = 30
+				add_trait = skilled_craftsman
+				remove_trait = craftsman
+			}
+			character_event = { id = learncraft.3 days = 60 } ##
+		}
+		if = {
+			limit = {
+				age = 1
+				not = {
+					trait = legendary_craftman
+					trait = master_craftsman
+					trait = skilled_craftsman
+					trait = craftsman
+				}
+			}
+			random = {
+				chance = 30
+				add_trait = craftsman
+			}
+			character_event = { id = learncraft.3 days = 50 } ## I can try again!
+		}
+	}
+}
+
+character_event = {
+	id = learncraft.3
+	title = "EVTTITlearncraft.3"
+	desc = "EVTDESClearncraft.3"
+	picture = GFX_evt_ring_craft
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearncraft.3" ##
+		clr_character_flag = learn_craft
+	}
+}
+		
+		
+
+		
+		
+		
+		
+		
