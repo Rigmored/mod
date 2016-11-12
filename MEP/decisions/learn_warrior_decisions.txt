@@ -1,0 +1,35 @@
+decisions = {
+	## Learn warrior skills abilities ##
+	learn_warrior_abilities = {
+		is_high_prio = yes
+		potential = {
+			or = {
+				trait = dwarven
+				trait = elf
+				has_character_flag = obj_become_elf_warrior
+			}
+			ai = no
+			age = 16
+			NOT = { has_character_flag = learn_war }
+			NOT = { trait = incapable }
+			NOT = { 
+				or = {
+				
+				trait = legendary_warrior
+				}
+			}
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 200
+			piety = 200
+			wealth = 250
+		}
+		effect = {
+			set_character_flag = learn_war
+			narrative_event = { id = learnwarrior.1 }
+			prestige = -200
+			piety = -200
+		}
+	}
+}
