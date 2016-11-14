@@ -23,3 +23,26 @@ decisions = {
 		}
 	}
 }
+decisions= {
+    recruit_rangers = {
+	    potential = {
+		    ai = no
+			OR = {
+			    has_landed_title = d_ithilien_rangers
+			}
+			age = 16
+			religion = religion_dunedain
+			has_character_flag = special_decisions_open
+			NOT = {
+			    has_character_flag = hiring_soldiers
+			}
+		}
+		allow = {
+		    treasury = 250
+		}
+		effect = {
+			character_event = { id = gondorwotr.19 }
+			set_character_flag = hiring_soldiers
+		}
+	}
+}
