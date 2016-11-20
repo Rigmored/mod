@@ -67,6 +67,20 @@ character_event = {
 			factor = 5.0
 			trait = chaste
 		}
+		modifier = {
+			factor = 5.0
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 10.0
+			trait = dwarven
+		}
 	}
 	
 	option = {
@@ -108,6 +122,20 @@ character_event = {
 		modifier = {
 			factor = 0.001
 			trait = elf
+		}
+		modifier = {
+			factor = 0.01
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.005
+			trait = dwarven
 		}
 	}
 	
@@ -169,7 +197,20 @@ character_event = {
 			factor = 0.5
 			trait = charitable
 		}
-		
+		modifier = {
+			factor = 5.0
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 10.0
+			trait = dwarven
+		}
 	}
 	
 	option = {
@@ -221,15 +262,18 @@ character_event = {
 	
 	trigger = {
 		OR = {
-			trait = elf
-		AND = {
-			health = 4
-			treasury = 25
-			trait = leper
-			NOT = {
-				has_game_rule = {
-					name = supernatural_events
-					value = off
+			AND = {
+				trait = elf
+				trait = leper
+			}
+			AND = {
+				health = 4
+				treasury = 25
+				trait = leper
+				NOT = {
+					has_game_rule = {
+						name = supernatural_events
+						value = off
 					}
 				}
 			}
@@ -304,7 +348,10 @@ character_event = {
 	
 	trigger = {
 		NOT = {
-			trait = lunatic
+			OR = {
+				trait = lunatic
+				trait = elf
+			}
 		}
 		OR = {
 			#Senile/comatose due to old age do not gain lunatic, immortals get a pass though
@@ -318,14 +365,14 @@ character_event = {
 		months = 48000 # once in 4000 years on average
 		
 		modifier = {
-			factor = 0.003 # 12 years on average
+			factor = 0.03 # 120 years on average
 			OR = {
 				trait = syphilitic
 				trait = has_aztec_disease
 			}
 		}
 		modifier = {
-			factor = 0.006 # 24 years on average
+			factor = 0.06 # 240 years on average
 			prisoner = yes
 			has_character_modifier = the_oubliette
 		}
@@ -353,7 +400,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.0025 # 1 year on average, rabies will also be ill
+			factor = 0.025 # 10 year on average, rabies will also be ill
 			trait = rabies
 		}
 		modifier = {
@@ -396,6 +443,20 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			trait = drunkard
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of infection.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 10.0 #Reduces chance of infection.
+			trait = dwarven
 		}
 	}
 	
@@ -488,10 +549,23 @@ character_event = {
 			health = 6
 		}
 		modifier = {
-			factor = 10
+			factor = 0.0001 #ORG 10
 			trait = elf
 		}
-		
+		modifier = {
+			factor = 0.001 #Increases chance of trait being cured.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.0005 #Increases chance of trait being cured.
+			trait = dwarven
+		}
 	}
 	
 	option = {
@@ -537,6 +611,25 @@ character_event = {
 			factor = 10.0
 			trait = slothful
 		}
+		
+		modifier = {
+			factor = 10.0
+			trait = elf
+		}
+		
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
 	}
 	
 	option = {
@@ -584,6 +677,24 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			NOT = { has_minor_title = title_regent }
+		}
+		modifier = {
+			factor = 0.01 #Increases chance of trait being cured.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.005 #Increases chance of trait being cured.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #Increases chance of trait being cured.
+			trait = elf
 		}
 	}
 	
@@ -655,6 +766,24 @@ character_event = {
 			factor = 2.0
 			trait = diligent
 		}
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 10.0 #Reduces chance of trait.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -720,6 +849,24 @@ character_event = {
 			factor = 1.3
 			in_command = yes
 		}
+		modifier = {
+			factor = 0.01 #Those of numenor bounce back from depression quickly.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.5 #Dwarves recover sooner from depression than elves but more slowly than humans.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 10.0 #Takes longer for elves to recover from depression.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -756,9 +903,12 @@ character_event = {
 		is_ill = no
 
 		NOT = {
-			has_game_rule = {
-				name = non_epidemic_diseases
-				value = none
+			OR = {
+				trait = elf
+				has_game_rule = {
+					name = non_epidemic_diseases
+					value = none
+				}
 			}
 		}
 	}
@@ -825,6 +975,24 @@ character_event = {
 				value = rare
 			}
 		}
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 100.0 #Reduces chance of trait.
+			trait = elf
+		}
 	}
 
 	immediate = {
@@ -881,6 +1049,24 @@ character_event = {
 		modifier = {
 			factor = 0.1
 			base_health = 7
+		}
+		modifier = {
+			factor = 0.01 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.001 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.0001 #Reduces chance of trait.
+			trait = elf
 		}
 	}
 	
@@ -981,6 +1167,24 @@ character_event = {
 			NOT = { month = 2 }		#jan and feb
 			in_command = yes
 		}
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 100.0 #Reduces chance of trait.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -1037,7 +1241,21 @@ character_event = {
 			base_health = 8
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.1 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.01 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #Reduces chance of trait.
 			trait = elf
 		}
 	}
@@ -1098,6 +1316,24 @@ character_event = {
 			factor = 1.1
 			trait = paranoid
 		}
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 10.0 #Reduces chance of trait.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -1130,6 +1366,24 @@ character_event = {
 		modifier = {
 			factor = 0.4
 			base_health = 6
+		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.3 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.1 #These heal swifter than most.
+			trait = elf
 		}
 	}
 	
@@ -1183,6 +1437,24 @@ character_event = {
 		modifier = {
 			factor = 0.8
 			age = 120
+		}
+		modifier = {
+			factor = 2.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 10.0 #Reduces chance of trait.
+			trait = elf
 		}
 	}
 	
@@ -1248,6 +1520,20 @@ character_event = {
 		modifier = {
 			factor = 2.0
 			base_health = 6.0
+		}
+		modifier = {
+			factor = 5.0 #Reduces chance of trait.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 10.0 #Reduces chance of trait.
+			trait = dwarven
 		}
 	}
 	
@@ -1331,6 +1617,24 @@ character_event = {
 			factor = 5.0
 			trait = incapable
 		}
+		modifier = {
+			factor = 0.05 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -1411,6 +1715,24 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
+		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
 		}
 	}
 	
@@ -1493,6 +1815,24 @@ character_event = {
 			factor = 5.0
 			trait = incapable
 		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -1568,6 +1908,24 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
+		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
 		}
 	}
 	
@@ -1650,6 +2008,24 @@ character_event = {
 			factor = 5.0
 			trait = incapable
 		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
+		}
 	}
 	
 	option = {
@@ -1726,6 +2102,24 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
+		}
+		modifier = {
+			factor = 0.5 #These heal swifter than most.
+			OR = {
+				trait = numenorean
+				trait = blood_of_numenor
+				trait = blood_of_numenor2
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}
+		modifier = {
+			factor = 0.03 #These heal swifter than most.
+			trait = dwarven
+		}
+		modifier = {
+			factor = 0.001 #These heal swifter than most.
+			trait = elf
 		}
 	}
 	
