@@ -58,166 +58,166 @@ colonisation_wilderness = { #for players only
 		}
 		}
 	
-	colonisation_wilderness_with_dwarves = { #for players only
-		ai = no
-		is_high_prio = no
-		potential = {
-			job_treasurer = { is_alive = yes }
+	# colonisation_wilderness_with_dwarves = { #for players only
+		# ai = no
+		# is_high_prio = no
+		# potential = {
+			# job_treasurer = { is_alive = yes }
 			
-			job_treasurer = {
-			location = {
-				OR = {
-					religion = religion_wilderness
-					culture = culture_wilderness
-					culture = culture_mountains
-				}
-				NOT = { has_province_modifier = being_colonised }
-			}
-			}
-			has_character_flag = special_decisions_open
-			NOT = { culture = culture_maiar }
-			NOT = { culture = culture_istari }
-			demesne_size = 1
-			#NOT = { has_character_flag = colonizationwilderness }
-			any_demesne_province = {
-			NOT = { culture = culture_wilderness }
-			NOT = { has_province_modifier = sending_colonists }
-		}
-		}
+			# job_treasurer = {
+			# location = {
+				# OR = {
+					# religion = religion_wilderness
+					# culture = culture_wilderness
+					# culture = culture_mountains
+				# }
+				# NOT = { has_province_modifier = being_colonised }
+			# }
+			# }
+			# has_character_flag = special_decisions_open
+			# NOT = { culture = culture_maiar }
+			# NOT = { culture = culture_istari }
+			# demesne_size = 1
+			# #NOT = { has_character_flag = colonizationwilderness }
+			# any_demesne_province = {
+			# NOT = { culture = culture_wilderness }
+			# NOT = { has_province_modifier = sending_colonists }
+		# }
+		# }
 		
-		allow = {
-			war = no
-			prisoner = no
-			age = 16
-			prestige = 500
-			wealth = 1000
-			any_courtier = {
-			culture_group = culture_group_dwarves
-			religion = religion_mahal
-			}
-			job_treasurer = {
-				location = {
-					OR = {
-						religion = religion_wilderness
-						culture = culture_wilderness
-						culture = culture_mountains
-					}
-				}
-				has_job_action = action_colonize_province
-			}
-		}
-		effect = {
-			character_event = { id = "colonisation.2" }
-		}
+		# allow = {
+			# war = no
+			# prisoner = no
+			# age = 16
+			# prestige = 500
+			# wealth = 1000
+			# any_courtier = {
+			# culture_group = culture_group_dwarves
+			# religion = religion_mahal
+			# }
+			# job_treasurer = {
+				# location = {
+					# OR = {
+						# religion = religion_wilderness
+						# culture = culture_wilderness
+						# culture = culture_mountains
+					# }
+				# }
+				# has_job_action = action_colonize_province
+			# }
+		# }
+		# effect = {
+			# character_event = { id = "colonisation.2" }
+		# }
+	# }
+	
+	# colonisation_wilderness_with_elves = { #for players only
+		# ai = no
+		# is_high_prio = no
+		# potential = {
+			# job_treasurer = { is_alive = yes }
+			
+			# job_treasurer = {
+			# location = {
+				# OR = {
+					# religion = religion_wilderness
+					# culture = culture_wilderness
+					# culture = culture_mountains
+				# }
+				# NOT = { has_province_modifier = being_colonised }
+			# }
+			# }
+			# has_character_flag = special_decisions_open
+			# NOT = { culture = culture_maiar }
+			# NOT = { culture = culture_istari }
+			# demesne_size = 1
+			# #NOT = { has_character_flag = colonizationwilderness }
+			# any_demesne_province = {
+			# NOT = { culture = culture_wilderness }
+			# NOT = { has_province_modifier = sending_colonists }
+		# }
+		# }
+		
+		# allow = {
+			# war = no
+			# prisoner = no
+			# age = 16
+			# prestige = 500
+			# wealth = 1000
+			# any_courtier = {
+			# OR = {
+			# culture_group = culture_group_amanyar
+			# culture_group = culture_group_umanyar
+			# culture_group = culture_group_moriquendi
+			# }
+			# religion_group = religion_group_eldar
+			# }
+			# job_treasurer = {
+				# location = {
+					# OR = {
+						# religion = religion_wilderness
+						# culture = culture_wilderness
+						# culture = culture_mountains
+					# }
+				# }
+				# has_job_action = action_colonize_province
+			# }
+		# }
+		# effect = {
+			# character_event = { id = "colonisation.4" }
+		# }
 	}
 	
-	colonisation_wilderness_with_elves = { #for players only
-		ai = no
-		is_high_prio = no
-		potential = {
-			job_treasurer = { is_alive = yes }
+	# colonisation_wilderness_with_halflings = { #for players only
+		# ai = no
+		# is_high_prio = no
+		# potential = {
+			# job_treasurer = { is_alive = yes }
 			
-			job_treasurer = {
-			location = {
-				OR = {
-					religion = religion_wilderness
-					culture = culture_wilderness
-					culture = culture_mountains
-				}
-				NOT = { has_province_modifier = being_colonised }
-			}
-			}
-			has_character_flag = special_decisions_open
-			NOT = { culture = culture_maiar }
-			NOT = { culture = culture_istari }
-			demesne_size = 1
-			#NOT = { has_character_flag = colonizationwilderness }
-			any_demesne_province = {
-			NOT = { culture = culture_wilderness }
-			NOT = { has_province_modifier = sending_colonists }
-		}
-		}
+			# job_treasurer = {
+			# location = {
+				# OR = {
+					# religion = religion_wilderness
+					# culture = culture_wilderness
+					# culture = culture_mountains
+				# }
+				# NOT = { has_province_modifier = being_colonised }
+			# }
+			# }
+			# has_character_flag = special_decisions_open
+			# NOT = { culture = culture_maiar }
+			# NOT = { culture = culture_istari }
+			# demesne_size = 1
+			# #NOT = { has_character_flag = colonizationwilderness }
+			# any_demesne_province = {
+			# NOT = { culture = culture_wilderness }
+			# NOT = { has_province_modifier = sending_colonists }
+		# }
+		# }
 		
-		allow = {
-			war = no
-			prisoner = no
-			age = 16
-			prestige = 500
-			wealth = 1000
-			any_courtier = {
-			OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-			}
-			religion_group = religion_group_eldar
-			}
-			job_treasurer = {
-				location = {
-					OR = {
-						religion = religion_wilderness
-						culture = culture_wilderness
-						culture = culture_mountains
-					}
-				}
-				has_job_action = action_colonize_province
-			}
-		}
-		effect = {
-			character_event = { id = "colonisation.4" }
-		}
-	}
-	
-	colonisation_wilderness_with_halflings = { #for players only
-		ai = no
-		is_high_prio = no
-		potential = {
-			job_treasurer = { is_alive = yes }
-			
-			job_treasurer = {
-			location = {
-				OR = {
-					religion = religion_wilderness
-					culture = culture_wilderness
-					culture = culture_mountains
-				}
-				NOT = { has_province_modifier = being_colonised }
-			}
-			}
-			has_character_flag = special_decisions_open
-			NOT = { culture = culture_maiar }
-			NOT = { culture = culture_istari }
-			demesne_size = 1
-			#NOT = { has_character_flag = colonizationwilderness }
-			any_demesne_province = {
-			NOT = { culture = culture_wilderness }
-			NOT = { has_province_modifier = sending_colonists }
-		}
-		}
-		
-		allow = {
-			war = no
-			prisoner = no
-			age = 16
-			prestige = 500
-			wealth = 500
-			any_courtier = {
-			culture_group = culture_group_halfling
-			religion = religion_perian
-			}
-			job_treasurer = {
-				location = {
-					OR = {
-						religion = religion_wilderness
-						culture = culture_wilderness
-						culture = culture_mountains
-					}
-				}
-				has_job_action = action_colonize_province
-			}
-		}
-		effect = {
-			character_event = { id = "colonisation.6" }
-		}
-	}
+		# allow = {
+			# war = no
+			# prisoner = no
+			# age = 16
+			# prestige = 500
+			# wealth = 500
+			# any_courtier = {
+			# culture_group = culture_group_halfling
+			# religion = religion_perian
+			# }
+			# job_treasurer = {
+				# location = {
+					# OR = {
+						# religion = religion_wilderness
+						# culture = culture_wilderness
+						# culture = culture_mountains
+					# }
+				# }
+				# has_job_action = action_colonize_province
+			# }
+		# }
+		# effect = {
+			# character_event = { id = "colonisation.6" }
+		# }
+	# }
 }
