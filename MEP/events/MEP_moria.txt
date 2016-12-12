@@ -25,7 +25,9 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTCmoria.0" ## I won't search.	
-		clr_character_flag = mineinmoria		
+		clr_character_flag = mineinmoria	
+		wealth = 150
+		piety = 150
 	}	
 	
 }
@@ -308,7 +310,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAmoria.8" ## I'll fight it !
+		name = "EVTOPTAmoria.9" ## I'll fight it !
 		set_character_flag = balroginmoria
 		any_courtier = {
 			limit = { 
@@ -319,7 +321,7 @@ character_event = {
 		}		
 	}
 	option = {
-		name = "EVTOPTBmoria.8" ## i'll try to flew ! 
+		name = "EVTOPTBmoria.9" ## i'll try to flew ! 
 		set_character_flag = balroginmoria
 		random_list = {
 			35 = {
@@ -866,6 +868,9 @@ narrative_event = {
 		name = "EVTOPTAmoria.14" ## We'll go in the Grey Mountains
 		c_cirith_auris = {
 			grant_title = ROOT
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
 		}
 		k_grey_mountains = {
 			grant_title = ROOT
@@ -894,6 +899,9 @@ narrative_event = {
 		name = "EVTOPTBmoria.14" ## We'll go to Ered Luin
 		c_vale_of_thrain = {
 			grant_title = ROOT
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
 		}
 		k_ered_luin = {
 			grant_title = ROOT
@@ -922,6 +930,9 @@ narrative_event = {
 		name = "EVTOPTCmoria.14" ## We'll go to Iron Hills
 		c_azanulimbar_dum = {
 			grant_title = ROOT
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
 		}
 		k_iron_mountains = {
 			grant_title = ROOT
@@ -958,6 +969,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAmoria.15" ## The Mines are mine!
+
 		b_first_hall = {
 			grant_title = ROOT
 		}
