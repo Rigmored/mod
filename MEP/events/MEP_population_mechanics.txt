@@ -780,33 +780,33 @@ province_event = {
 	trigger = { ai = no }
 	}
 	
-	option = { 
-	name = population5B #Yes, make efforts to increase population in a random province
-	wealth = -1000
-	prestige = -500
-	random_realm_province = {
-	limit = { 
-	OR = {
-	has_province_modifier = lightly_populated_by_dwarves
-	has_province_modifier = populated_by_dwarves
-	}
-	}
-	add_province_modifier = { name = population_increasing duration = -1 }
-	}
+	option = {
+		name = population5B #Yes, make efforts to increase population in a random province
+		wealth = -1000
+		prestige = -500
+		random_realm_province = {
+		limit = {
+			OR = {
+				has_province_modifier = lightly_populated_by_dwarves
+				has_province_modifier = populated_by_dwarves
+			}
+		}
+		add_province_modifier = { name = population_increasing duration = -1 }
+		}
 	}
 	
 	option = {
-	name = population5C #Yes, make the effort where my steward is located
-	trigger = { ai = no }
-	wealth = -1000
-	prestige = -500	
-	any_courtier = {
-	limit = { has_job_title = job_treasurer }
-	location = { add_province_modifier = { name = population_increasing duration = -1 } }
-	}
+		name = population5C #Yes, make the effort where my steward is located
+		trigger = { ai = no }
+		wealth = -1000
+		prestige = -500	
+		any_courtier = {
+			limit = { has_job_title = job_treasurer }
+			location = { add_province_modifier = { name = population_increasing duration = -1 } }
+		}
 	}
 	
-	}
+}
 	
 #Event where you are told the efforts have succeeded, and population is growing#
 province_event = {
