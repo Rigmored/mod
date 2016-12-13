@@ -12,64 +12,136 @@ narrative_event = {
     option = { 
 		name = "EVTOPTAgfe.0" #Invite each major ruler to send someone to join fellowship, Thranduil, Dain, Denethor, and player
 
-		#custom_tooltip = {
-			#text = CUSTOMTOOLTIPgfe.0
-			#hidden_tooltip = {
-				immediate = {
-					trigger = {
-						has_character_flag = thranduil
-					}
-					character_event = { id = gfe.01 }
-				}
-				immediate = {
-					trigger = {
-						has_character_flag = dainii
-					}
-					character_event = { id = gfe.02 }
-				}
-				immediate = {
-					trigger = {
-						has_character_flag = denethor
-					}
-					character_event = { id = gfe.03 }
-				}
-				immediate = {
-					trigger = {
-						has_character_flag = gandalf
-					}
-					character_event = { id = gfe.04 }
-				}
-			 	immediate = {
-					trigger = {
-						has_character_flag = aragorn
-					}
-					character_event = { id = gfe.05 }
-				}
-				immediate = {
-					trigger = {
-						ai = no
+			any_character = {
+				if = {
+					AND = {
+						has_landed_title = k_mirkwood
 						trait = good_side
-						is_ruler = yes
 					}
-					character_event = { id = gfe.06 }
 				}
-				immediate = {
-					set_global_flag = gfe0
-				}
+				character_event = { id = gfe.01 }
+			}
+				#immediate = {
+				#	trigger = {
+				#		has_character_flag = dainii
+				#	}
+				#	character_event = { id = gfe.02 }
+				#}
+				#immediate = {
+				#	trigger = {
+				#		has_character_flag = denethor
+				#	}
+				#	character_event = { id = gfe.03 }
+				#}
+				#immediate = {
+				#	trigger = {
+				#		has_character_flag = gandalf
+				#	}
+				#	character_event = { id = gfe.04 }
+				#}
+			 	#immediate = {
+				#	trigger = {
+				#		has_character_flag = aragorn
+				#	}
+				#	character_event = { id = gfe.05 }
+				#}
+				#immediate = {
+				#	trigger = {
+				#		ai = no
+				#		trait = good_side
+				#		is_ruler = yes
+				#	}
+				#	character_event = { id = gfe.06 }
+				#}
+				#immediate = {
+				#	set_global_flag = gfe0
+				#}
 			#}
 		#}
 	}
 
     option = {
 		name = "EVTOPTBgfe.0" # Trigger frodo event which kills hobbits and gives ring to Elrond
-		immediate = {
-            trigger = {
-				AND = {
-					has_character_flag = frodo
-					has_character_flag = reachedelrond
-				}
-            }
-            character_event = { id = gfe.07 }
+		
+		trigger = {
+			has_game_rule = {
+				name = RULE_WOTR
+				value = sandbox
+			}
+		}
+		
+        any_character = {
+			AND = {
+				has_character_flag = frodo
+				has_character_flag = reachedelrond
+			}
+			character_event = { id = gfe.02 }
         }
+    }
+}
+#Thranduil recieves request from Elrond
+narrative_event = {
+    id = gfe.01
+    title = "EVTNAMEgfe.01"
+    desc = "EVTDESCgfe.01"
+    picture = "GFX_shadows_coming"
+
+	is_triggered_only = yes
+	
+    option = { 
+		name = "EVTOPTAgfe.01" #Thranduil decides who to send
+		
+		trigger = {
+			any_child = {
+				if = {
+					age = 30
+				}
+			}
+		}
+		
+		any_child = {
+			if = {
+				age = 30
+			}
+			character_event = { id = gfe.08 }
+			set_global_flag = wotrthrsent
+		}
+		
+		ai_chance = {
+			factor = 80
+		}
+	}
+	
+	option = { 
+		name = "EVTOPTAgfe.01" #Thranduil decides who to send
+		
+		any_realm_character = {
+			if = {
+				OR = {
+					has_character_flag = tauriel
+					martial = 10
+				}
+			}
+			character_event = { id = gfe.09 }
+			set_global_flag = wotrthrsent
+		}
+		ai_chance = {
+			factor = 15
+		}
+	}
+
+    option = {
+		name = "EVTOPTCgfe.01" #Thranduil sends no one
+		
+		trigger = {
+			has_game_rule = {
+				name = RULE_WOTR
+				value = sandbox
+			}
+		}
+		
+		ai_chance = {
+			factor = 5
+		}
     }
 }
