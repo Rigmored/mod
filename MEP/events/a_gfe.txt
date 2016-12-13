@@ -1,0 +1,75 @@
+namespace = gfe
+
+#Elrond sends out invites to rulers or steals ring
+narrative_event = {
+    id = gfe.0
+    title = "EVTNAMEgfe.0"
+    desc = "EVTDESCgfe.0"
+    picture = "GFX_shadows_coming"
+
+	is_triggered_only = yes
+
+    option = { 
+		name = "EVTOPTAgfe.0" #Invite each major ruler to send someone to join fellowship, Thranduil, Dain, Denethor, and player
+
+		#custom_tooltip = {
+			#text = CUSTOMTOOLTIPgfe.0
+			#hidden_tooltip = {
+				immediate = {
+					trigger = {
+						has_character_flag = thranduil
+					}
+					character_event = { id = gfe.01 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = dainii
+					}
+					character_event = { id = gfe.02 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = denethor
+					}
+					character_event = { id = gfe.03 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = gandalf
+					}
+					character_event = { id = gfe.04 }
+				}
+			 	immediate = {
+					trigger = {
+						has_character_flag = aragorn
+					}
+					character_event = { id = gfe.05 }
+				}
+				immediate = {
+					trigger = {
+						ai = no
+						trait = good_side
+						is_ruler = yes
+					}
+					character_event = { id = gfe.06 }
+				}
+				immediate = {
+					set_global_flag = gfe0
+				}
+			#}
+		#}
+	}
+
+    option = {
+		name = "EVTOPTBgfe.0" # Trigger frodo event which kills hobbits and gives ring to Elrond
+		immediate = {
+            trigger = {
+				AND = {
+					has_character_flag = frodo
+					has_character_flag = reachedelrond
+				}
+            }
+            character_event = { id = gfe.07 }
+        }
+    }
+}

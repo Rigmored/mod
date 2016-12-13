@@ -1,0 +1,1288 @@
+namespace = shiretorivendell
+
+#Frodo chooses to leave or stay (live or die)
+narrative_event = {
+    id = shiretorivendell.0
+    title = "EVTNAMEshiretorivendell.0"
+    desc = "EVTDESCshiretorivendell.0"
+    picture = "GFX_shadows_coming"
+
+	trigger = {
+		year = 11362
+		month = 1
+		NOT = { month = 2 }
+		NOT = { year = 11363 }
+		trait = ring
+		has_character_flag = frodo
+		NOT = { has_global_flag = fellowship0 }
+		NOT = { has_global_flag = frodostay }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTAshiretorivendell.0"
+		set_global_flag = fellowship0
+		add_trait = brave
+	}
+	
+	option = {
+		name = "EVTOPTBshiretorivendell.0"
+		set_global_flag = frodostay
+		add_trait = craven
+		trigger = { 
+			ai = no 
+		}
+	}
+}
+#Frodo stays home and is killed
+narrative_event = {
+    id = shiretorivendell.01
+    title = "EVTNAMEshiretorivendell.01"
+    desc = "EVTDESCshiretorivendell.01"
+    picture = "GFX_nazgul"
+	age = 16
+	
+	trigger = {
+		has_global_flag = frodostay
+		trait = ring
+		has_landed_title = d_ringbearer
+		NOT = { has_global_flag = fellowship0 }
+		NOT = { has_global_flag = nazgulgainring }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.01"
+		clr_global_flag = frodostay
+		set_global_flag = nazgulgainring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+		}
+	}
+}
+#Remove ringbearer title from one without ring
+narrative_event = {
+    id = shiretorivendell.03
+    title = "EVTNAMEshiretorivendell.03"
+    desc = "EVTDESCshiretorivendell.03"
+    picture = "GFX_nazgul"
+	age = 16
+
+    trigger = {
+        has_landed_title = d_ringbearer
+        NOT = { trait = ring }
+    }
+	
+	option = {
+        name = "EVTOPTAshiretorivendell.03"
+        d_ringbearer = { destroy_landed_title = THIS }
+    }
+}
+#Give ring to Sauron if Nazgul successful
+narrative_event = {
+    id = shiretorivendell.04
+    title = "EVTNAMEshiretorivendell.04"
+    desc = "EVTDESCshiretorivendell.04"
+    picture = "GFX_nazgul"
+	age = 16
+
+    trigger = {
+	    has_global_flag = nazgulgainring
+        NOT = { trait = ring }
+        trait = maiar
+		trait = spiritform
+    }
+	
+	option = {
+        name = "EVTOPTAshiretorivendell.04"
+        d_ringbearer = {
+			grant_title = ROOT
+			copy_title_laws = e_barad_dur
+		}
+		add_trait = ring
+		remove_trait = ringbearer2
+		remove_trait = spiritform 
+    }
+}
+#Send Witchking on Quest to find Ring
+narrative_event = {
+    id = shiretorivendell.05
+    title = "EVTNAMEshiretorivendell.05"
+    desc = "EVTDESCshiretorivendell.05"
+    picture = "GFX_nazgul"
+	age = 16
+
+    trigger = {
+        has_character_flag = witchking
+		trait = nazgul
+		trait = ring_murazor
+		dynasty = 19017
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+        name = "EVTOPTAshiretorivendell.05"
+        add_trait = huntforring
+    }
+}
+#Frodo, Sam and Pippin leave Bag End and have a chance to be caught by a Black Rider
+narrative_event = {
+    id = shiretorivendell.1
+    title = "EVTNAMEshiretorivendell.1"
+    desc = "EVTDESCshiretorivendell.1"
+    picture = "GFX_evt_hobbitsmial"
+	
+	trigger = {
+		has_global_flag = fellowship0
+	    trait = ring
+		has_landed_title = d_ringbearer
+		NOT = { has_global_flag = nazgulgainring }
+		NOT = { has_global_flag = fellowship1 }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.1"
+
+		random_list = {
+            98 = {
+			    narrative_event = { id = shiretorivendell.11 }
+			}
+			2 = {
+			    narrative_event = { id = shiretorivendell.12 }
+			}	
+        }
+	}
+}
+#Frodo, Sam and Pippin leave Hobbiton
+narrative_event = {
+    id = shiretorivendell.11
+    title = "EVTNAMEshiretorivendell.11"
+    desc = "EVTDESCshiretorivendell.11"
+    picture = "GFX_evt_hobbitsmial"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.11"
+		set_global_flag = fellowship1
+		add_trait = on_fellowshipquest
+		any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    add_trait = on_fellowshipquest
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		}
+	}	
+}
+#Frodo, Sam and Pippin are killed leaving Hobbiton
+narrative_event = {
+    id = shiretorivendell.12
+    title = "EVTNAMEshiretorivendell.12"
+    desc = "EVTDESCshiretorivendell.12"
+    picture = "GFX_nazgul"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.12"
+		set_global_flag = nazgulgainring
+	    remove_trait = ring
+	    d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#On the road to Buckland 1
+narrative_event = {
+    id = shiretorivendell.2
+    title = "EVTNAMEshiretorivendell.2"
+    desc = "EVTDESCshiretorivendell.2"
+    picture = "GFX_evt_hobbittravel"
+	age = 16
+	
+	trigger = {
+		has_global_flag = fellowship1
+	    trait = ring
+		has_landed_title = d_ringbearer
+		NOT = { has_global_flag = nazgulgainring }
+		NOT = { has_global_flag = fellowship2 }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.2"
+
+		random_list = {
+		    98 = {
+			    narrative_event = { id = shiretorivendell.21 }
+	        }
+		    2 = {
+			    narrative_event = { id = shiretorivendell.22 }
+		    }
+        }
+	}
+}
+#Frodo, Sam and Pippin meet Gildor and are safe
+narrative_event = {
+    id = shiretorivendell.21
+    title = "EVTNAMEshiretorivendell.21"
+    desc = "EVTDESCshiretorivendell.21"
+    picture = "GFX_elf_meeting"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.21"
+		set_global_flag = fellowship2 
+		give_nickname = nick_elffriend
+	}	
+}
+#Frodo, Sam and Pippin are caught on the road
+narrative_event = {
+    id = shiretorivendell.22
+    title = "EVTNAMEshiretorivendell.22"
+    desc = "EVTDESCshiretorivendell.22"
+    picture = "GFX_nazgul"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.22"
+		set_global_flag = nazgulgainring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+	        }
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#Frodo, Sam and Pippin travel to the Marish
+narrative_event = {
+    id = shiretorivendell.3
+    title = "EVTNAMEshiretorivendell.3"
+    desc = "EVTDESCshiretorivendell.3"
+    picture = "GFX_evt_hobbittravel"
+	age = 16
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = fellowship2
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+			NOT = { has_global_flag = fellowship3 }
+		}
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.3"
+
+		random_list = {
+		    98 = {
+			    narrative_event = { id = shiretorivendell.31 }
+	        }
+		    2 = {
+			    narrative_event = { id = shiretorivendell.32 }
+		    }
+        }
+	}
+} 
+#Frodo, Sam and Pippin make it to Maggot's Farm
+narrative_event = {
+    id = shiretorivendell.31
+    title = "EVTNAMEshiretorivendell.31"
+    desc = "EVTDESCshiretorivendell.31"
+    picture = "GFX_evt_hobbittravel"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.31"
+		set_global_flag = fellowship3 
+	}	
+}
+#Frodo, Sam and Pippin are caught in the wilderness
+narrative_event = {
+    id = shiretorivendell.32
+    title = "EVTNAMEshiretorivendell.32"
+    desc = "EVTDESCshiretorivendell.32"
+    picture = "GFX_nazgul"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.32"
+		set_global_flag = nazgulgainring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+	        }
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#Frodo, Sam and Pippin travel to the Ferry and meet Merry
+narrative_event = {
+    id = shiretorivendell.4
+    title = "EVTNAMEshiretorivendell.4"
+    desc = "EVTDESCshiretorivendell.4"
+    picture = "GFX_evt_hobbittravel"
+	age = 16
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = fellowship3
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+			NOT = { has_global_flag = fellowship4 }
+		}
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.4"
+
+		random_list = {
+		    98 = {
+			    narrative_event = { id = shiretorivendell.41 }
+	        }
+		    2 = {
+			    narrative_event = { id = shiretorivendell.42 }
+		    }
+        }
+	}
+} 
+#Frodo, Sam, Merry and Pippin make it to the ferry
+narrative_event = {
+    id = shiretorivendell.41
+    title = "EVTNAMEshiretorivendell.41"
+    desc = "EVTDESCshiretorivendell.41"
+    picture = "GFX_evt_hobbittravel"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.41"
+		set_global_flag = fellowship4 
+	}	
+}
+#Frodo, Sam, Merry and Pippin are caught catching the ferry and cross
+narrative_event = {
+    id = shiretorivendell.42
+    title = "EVTNAMEshiretorivendell.42"
+    desc = "EVTDESCshiretorivendell.42"
+    picture = "GFX_nazgul"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.42"
+		set_global_flag = nazgulgainring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+	        }
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#Frodo, Sam, Merry and Pippin reach Crickhollow
+narrative_event = {
+    id = shiretorivendell.5
+    title = "EVTNAMEshiretorivendell.5"
+    desc = "EVTDESCshiretorivendell.5"
+    picture = "GFX_evt_hobbitsmial"
+	age = 16
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = fellowship4
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+			NOT = { has_global_flag = fellowship5 }
+			NOT = { has_global_flag = frodotakesroad }
+		}
+    }
+	
+	immediate = {
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+			add_trait = on_fellowshipquest
+		}
+		any_realm_character  = {
+		    limit = {
+				dynasty=802
+			    age = 29
+			}
+			add_trait = on_fellowshipquest
+	    }
+		any_realm_character  = {
+			limit = {
+		        AND = {
+			        dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=807
+				age = 39
+				NOT = { age = 40 }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.5"
+		set_global_flag = fellowship5
+	}
+	
+	option = {
+		name = "EVTOPTBshiretorivendell.5"
+		set_global_flag = frodotakesroad
+		trigger = { ai = no }
+	}
+	
+}
+#Frodo takes road and is caught...
+narrative_event = {
+    id = shiretorivendell.51
+    title = "EVTNAMEshiretorivendell.51"
+    desc = "EVTDESCshiretorivendell.51"
+    picture = "GFX_nazgul"
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = frodotakesroad
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+		}
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.51"
+		clr_global_flag = frodotakesroad
+		set_global_flag = nazgulgainring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+		}
+		any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+        any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}
+}
+#Frodo, Sam, Merry and Pippin travel through the Old Forest 
+narrative_event = {
+    id = shiretorivendell.6
+    title = "EVTNAMEshiretorivendell.6"
+    desc = "EVTDESCshiretorivendell.6"
+    picture = "GFX_evt_bandits"
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = fellowship5
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+			NOT = { has_global_flag = fellowship6 }
+		}
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.6"
+		
+		random_list = {
+		    98 = {
+			    narrative_event = { id = shiretorivendell.61 }
+	        }
+		    2 = {
+		        narrative_event = { id = shiretorivendell.62 }
+		    }
+        }
+	}
+}
+#Frodo, Sam, Merry and Pippin make it to the Withywindle
+narrative_event = {
+    id = shiretorivendell.61
+    title = "EVTNAMEshiretorivendell.61"
+    desc = "EVTDESCshiretorivendell.61"
+    picture = "GFX_evt_oldmanwillow"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.61"
+		set_global_flag = fellowship6 
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_the_old_forest
+				culture = culture_enigma
+				age = 1
+			}
+			character_event = { id = shiretorivendell.72 days = 1 } ## Tom is alerted
+		}
+	}	
+}
+#Frodo, Sam, Merry and Pippin are lost to the forest
+narrative_event = {
+    id = shiretorivendell.62
+    title = "EVTNAMEshiretorivendell.62"
+    desc = "EVTDESCshiretorivendell.62"
+    picture = "GFX_evt_bandits"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.62"
+		set_global_flag = ringlost
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+	        }
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#Frodo, Sam, Merry and Pippin fall asleep by the willow
+character_event = {
+    id = shiretorivendell.7
+    title = "EVTNAMEshiretorivendell.7"
+    desc = "EVTDESCshiretorivendell.7"
+    picture = "GFX_evt_oldmanwillow"
+	
+	trigger = {
+	    AND = {
+		    has_global_flag = fellowship6
+			trait = ring
+			has_landed_title = d_ringbearer
+			NOT = { has_global_flag = nazgulgainring }
+			NOT = { has_global_flag = fellowship7 }
+		}
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.7"
+		set_global_flag = fellowship7
+		character_event = { id = shiretorivendell.71 days = 1 } ## Frodo is alerted		
+	}
+}
+#Tom saves the day - Tom
+character_event = {
+    id = shiretorivendell.72
+    title = "EVTNAMEshiretorivendell.72"
+    desc = "EVTDESCshiretorivendell.72"
+    picture = "GFX_evt_oldmanwillow"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.72"
+	}	
+}
+#Tom saves the day - Frodo
+character_event = {
+    id = shiretorivendell.71
+    title = "EVTNAMEshiretorivendell.71"
+    desc = "EVTDESCshiretorivendell.71"
+    picture = "GFX_evt_oldmanwillow"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.71"
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_the_old_forest
+				culture = culture_enigma
+				age = 1
+			}
+			character_event = { id = shiretorivendell.8 days = 1 } ## Tom
+		}
+		character_event = { id = shiretorivendell.83 days = 1 } ## Frodo		
+	}	
+}
+#Tom's house 1 - Tom
+character_event = {
+    id = shiretorivendell.8
+    title = "EVTNAMEshiretorivendell.8"
+    desc = "EVTDESCshiretorivendell.8"
+    picture = "GFX_evt_hobbittravel"
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.8"
+		FROM = {
+            character_event = { id = shiretorivendell.81 days = 2 } ## Frodo
+        }
+        character_event = { id = shiretorivendell.84 days = 2 } ## Tom
+    }
+
+	option = {
+		name = "EVTOPTBshiretorivendell.8"
+		trigger = { ai = no }
+		FROM = {
+			character_event = { id = shiretorivendell.87 days = 2 } ## Frodo
+		}	
+		character_event = { id = shiretorivendell.82 days = 2 } ## Tom	
+	}
+}
+
+#Tom's house 1 - Frodo
+character_event = {
+    id = shiretorivendell.83
+    title = "EVTNAMEshiretorivendell.83"
+    desc = "EVTDESCshiretorivendell.83"
+    picture = "GFX_evt_hobbittravel"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.83"
+	}
+}
+#Frodos dream and Tom's help, they set off - Frodo
+character_event = {
+    id = shiretorivendell.81
+    title = "EVTNAMEshiretorivendell.81"
+    desc = "EVTDESCshiretorivendell.81"
+    picture = "GFX_evt_hobbittravel"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.81"
+		set_global_flag = fellowship8
+	}	
+}
+#Frodos dream and Tom's help, they set off - Tom
+character_event = {
+    id = shiretorivendell.84
+    title = "EVTNAMEshiretorivendell.84"
+    desc = "EVTDESCshiretorivendell.84"
+    picture = "GFX_evt_hobbittravel"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.84"
+	}	
+}
+#Tom takes the ring - Tom
+character_event = {
+    id = shiretorivendell.82
+    title = "EVTNAMEshiretorivendell.82"
+    desc = "EVTDESCshiretorivendell.82"
+    picture = "GFX_evt_lunatic"
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "EVTOPTAshiretorivendell.82"
+		d_ringbearer = {
+			grant_title = ROOT
+			copy_title_laws = e_barad_dur
+		}
+		add_trait = ring	
+	}
+}
+#Tom takes the ring - Frodo
+character_event = {
+    id = shiretorivendell.87
+    title = "EVTNAMEshiretorivendell.87"
+    desc = "EVTDESCshiretorivendell.87"
+    picture = "GFX_evt_lunatic"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.87"
+		set_global_flag = bombadilring
+		remove_trait = ring
+		d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+            killer = 10045
+		}
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 10045
+			}
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 10045
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 10045
+			}
+		}	
+	}
+}
+#Barrow downs
+narrative_event = {
+    id = shiretorivendell.9
+    title = "EVTNAMEshiretorivendell.9"
+    desc = "EVTDESCshiretorivendell.9"
+    picture = "GFX_evt_barrowdowns"
+	
+	trigger = {
+		has_global_flag = fellowship8
+		trait = ring
+	    has_landed_title = d_ringbearer
+		NOT = { has_global_flag = nazgulgainring }
+		NOT = { has_global_flag = fellowship9 }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.9"
+		set_global_flag = fellowship9
+		character_event = { id = shiretorivendell.91 }
+	}
+}
+#Trapped in a barrow
+character_event = {
+    id = shiretorivendell.91
+    title = "EVTNAMEshiretorivendell.91"
+    desc = "EVTDESCshiretorivendell.91"
+    picture = "GFX_evt_barrowdowns"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.91"
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_the_old_forest
+				culture = culture_enigma
+				age = 1
+			}
+		    character_event = { id = shiretorivendell.93 }
+		}
+	}	
+	option = {
+		name = "EVTOPTBshiretorivendell.91"
+		trigger = { ai = no }
+		add_trait = craven
+		character_event = { id = shiretorivendell.92 }
+	}	
+}
+#Frodo leaves Sam, Merry and Pippin to die
+character_event = {
+    id = shiretorivendell.92
+    title = "EVTNAMEshiretorivendell.92"
+    desc = "EVTDESCshiretorivendell.92"
+    picture = "GFX_evt_bloody_man"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.92"
+		set_global_flag = samdead
+		set_global_flag = merrydead
+		set_global_flag = pippindead
+		add_trait = depressed
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 22001
+			}
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 22001
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 22001
+			}
+		}
+	}	
+}
+#Tom saves the day - Barrows
+character_event = {
+    id = shiretorivendell.93
+    title = "EVTNAMEshiretorivendell.93"
+    desc = "EVTDESCshiretorivendell.93"
+    picture = "GFX_evt_barrowdowns"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.93" 
+        FROM = {
+			character_event = { id = shiretorivendell.94 days = 2 } ## Frodo
+		} 
+	    character_event = { id = shiretorivendell.95 days = 2 } ## Tom
+	}
+}
+#Tom gives daggers and ponies - Frodo
+character_event = {
+    id = shiretorivendell.94
+    title = "EVTNAMEshiretorivendell.94"
+    desc = "EVTDESCshiretorivendell.94"
+    picture = "GFX_evt_barrowdowns"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.94"
+		set_global_flag = fellowship10
+		add_trait = daggerwesternesse
+		 any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    add_trait = daggerwesternesse
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    add_trait = daggerwesternesse
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			add_trait = daggerwesternesse
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_the_old_forest
+				culture = culture_enigma
+				age = 1
+			}
+		}
+	}
+}
+#Tom gives daggers and ponies - Tom
+character_event = {
+    id = shiretorivendell.95
+    title = "EVTNAMEshiretorivendell.95"
+    desc = "EVTDESCshiretorivendell.95"
+    picture = "GFX_evt_barrowdowns"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.95" 
+	}
+}
+#F, S, M, P, T on way to Bree
+narrative_event = {
+    id = shiretorivendell.101
+    title = "EVTNAMEshiretorivendell.101"
+    desc = "EVTDESCshiretorivendell.101"
+    picture = "GFX_evt_hobbittravel"
+	
+	trigger = {
+		has_global_flag = fellowship10
+	    trait = ring
+		has_landed_title = d_ringbearer
+		NOT = { has_global_flag = nazgulgainring }
+		NOT = { has_global_flag = fellowship11 }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.101"
+		set_global_flag = fellowship11
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			character_event = { id = shiretorivendell.102 days = 1 } ## Tom
+		}
+	}
+}	
+#Tom escorts F, S, M & P
+character_event = {
+    id = shiretorivendell.102
+    title = "EVTNAMEshiretorivendell.102"
+    desc = "EVTDESCshiretorivendell.102"
+    picture = "GFX_evt_hobbittravel"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.102" 
+	}
+}
+#F, S, M & P have a chance to be caught on way to Bree
+narrative_event = {
+    id = shiretorivendell.111
+    title = "EVTNAMEshiretorivendell.111"
+    desc = "EVTDESCshiretorivendell.111"
+    picture = "GFX_evt_hobbittravel"
+	
+	trigger = {
+		has_global_flag = fellowship11
+	    trait = ring
+		has_landed_title = d_ringbearer
+		NOT = { has_global_flag = nazgulgainring }
+		NOT = { has_global_flag = fellowship12 }
+    }
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.111"
+
+		random_list = {
+            98 = {
+			    narrative_event = { id = shiretorivendell.121 }
+			}
+			2 = {
+			    narrative_event = { id = shiretorivendell.112 }
+			}	
+        }
+	}
+}
+#F, S, M & P caught on way to Bree
+narrative_event = {
+    id = shiretorivendell.112
+    title = "EVTNAMEshiretorivendell.112"
+    desc = "EVTDESCshiretorivendell.112"
+    picture = "GFX_nazgul"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.112"
+		set_global_flag = nazgulgainring
+	    remove_trait = ring
+	    d_ringbearer = { destroy_landed_title = THIS }
+		death = {
+			death_reason = death_murder
+			killer = 12223
+	    }
+	    any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		    death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+			death = {
+			    death_reason = death_murder
+				killer = 12223
+			}
+		}
+	}	
+}
+#F, S, M & P make it to Bree
+narrative_event = {
+    id = shiretorivendell.121
+    title = "EVTNAMEshiretorivendell.121"
+    desc = "EVTDESCshiretorivendell.121"
+    picture = "GFX_evt_prancingpony"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAshiretorivendell.121"
+		set_global_flag = fellowship12
+		any_realm_character  = {
+			limit = {
+				AND = {
+					dynasty=814
+					NOT = { age = 50 }
+				}
+			}
+		}
+	    any_realm_character  = {
+			limit = {
+				dynasty=801
+				age = 29
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=802
+				age = 29
+			}
+		}
+		any_realm_character  = {
+			limit = {
+				dynasty=7009
+				trait = gluttonous
+			}
+		}
+	}	
+}

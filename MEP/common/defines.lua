@@ -43,6 +43,10 @@ NDiplomacy = {
 	GAVELKIND_MAX_SIZE_BONUS = 0.30,			-- Max demesne size bonus from Gavelkind
 	DEMESNE_MAX_SIZE_JAIN_BONUS = 3,			-- Followers of the Jain religion have extra demesne
 	
+	GAME_RULE_DEMESNE_SIZE_HALF = 0.5,			-- Divider to decrease max demesne size when using "demesne size: half" game rule
+	GAME_RULE_DEMESNE_SIZE_QUARTERED = 0.25,	-- Divider to decrease max demesne size when using "demesne size: quartered" game rule
+	GAME_RULE_DEMESNE_SIZE_UNLIMITED = 10500,	-- Demesne size when using "demesne size: unlimited" game rule
+	
 	VASSAL_BASE_LIMIT = 1.0,					-- Base Vassal Limit
 	VASSAL_LIMIT_DUKE_MULT = 10.0, 				-- Extra Vassal Limit from the ruler's rank
 	VASSAL_LIMIT_KING_MULT = 20.0, 				-- Extra Vassal Limit from the ruler's rank
@@ -55,6 +59,10 @@ NDiplomacy = {
 	VASSAL_LIMIT_TAX_MULTIPLIER = 1,			-- Used for tax penalty calculation for being over vassal limit.
 	VASSAL_LIMIT_TAX_BASE = 4,					-- Used for tax penalty calculation for being over vassal limit.
 	VASSAL_LIMIT_COUNT_BARONS = 0,				-- If set to 1, baron-tier vassals will also count towards vassal limit.
+	
+	GAME_RULE_VASSAL_LIMIT_HALF = 0.5,			-- Divider to decrease vassal limit when using "vassal limit: half" game rule
+	GAME_RULE_VASSAL_LIMIT_QUARTERED = 0.25,	-- Divider to decrease max vassal limit when using "vassal limit: quartered" game rule
+	GAME_RULE_VASSAL_LIMIT_UNLIMITED = 5000,	-- Vassal limit when using "vassal limit: unlimited" game rule
 	
 	CONCLAVE_VASSAL_LIMIT_DUKE_MULT = 8.0, 				-- Extra Vassal Limit from the ruler's rank
 	CONCLAVE_VASSAL_LIMIT_KING_MULT = 15.0, 				-- Extra Vassal Limit from the ruler's rank
@@ -755,6 +763,10 @@ NCouncil = {
 	COUNCIL_REJECTION_ALL_CROWN_LAWS_TIMEOUT = 1,				-- How many years the timeout for doing a crown law change (for any crown law) is when the council has rejected a crown law change.
 },
 
+NSociety = {
+	SOCIETY_INFLUENCE_MEMBER_LIMIT_FACTOR = 100,				-- If less than 100 then society influence percentage is TotalSumOfStat/50, if greater or equal to 100 then TotalSumOfStat/(TotalMembers/2)
+},
+
 NInfamy = {
 	REALM_SIZE_BASE_MODIFIER = 1,
 	REALM_SIZE_GROWTH_MODIFIER = 0.125,							-- The bigger you are, the more dangerous you are, modifier for when nation is growing
@@ -868,6 +880,9 @@ NCharacter = {
 	AGE_CHILDHOOD_PULSE = 6,						-- The childhood pulse events start from this age
 	CHILDHOOD_AUTO_EDUCATION_FOCUS_AGE = 15,		-- Children automatically get education focus at this age.
 	MERCHANT_REPUBLIC_MAX_PATRICIANS = 5,			-- The amount of merchant republic patrician families that the game will keep active.
+	
+	TREASURY_CHANCE_TO_DISAPPEAR_STANDARD = 0.05,	-- Chances that artifacts disapear on inheritance
+	TREASURY_CHANCE_TO_DISAPPEAR_NO_HEIR = 0.5,		-- Chances that artifacts disapear on inheritance when the dying character doesn't have an heir
 },
 
 NTitle = {
@@ -1033,7 +1048,8 @@ NReligion = {
 	ELECTOR_TRAITS_FACTOR = 1.0,					-- Effect of personality traits that the church likes
 	HERESY_TAKEOVER_PROVINCES = 5,					-- The number of provinces a heresy needs MORE than the current norm for it to become the new Orthodoxy
 	PAPAL_SUCCESSION_PASS_ON_HOLDINGS = 1,			-- Set to zero if holdings shouldn't be passed on
-	PAPAL_SUCCESSION_LOSE_MINOR_TITLES = 1			-- Set to zero if minor religious titles should be lost
+	PAPAL_SUCCESSION_LOSE_MINOR_TITLES = 1,			-- Set to zero if minor religious titles should be lost
+	AUTHORITY_FROM_PIETY_CAP = 0.25,				-- Maxmimum boost to religious authority due to head's piety
 },
 
 NEconomy = {

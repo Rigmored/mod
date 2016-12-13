@@ -1,0 +1,37 @@
+decisions = {
+	#Steal the One Ring#
+	test = {
+		is_high_prio = yes
+		potential = {
+			ai = no
+		}
+		allow = {
+			has_character_flag = ringbearer
+		}
+		effect = {
+			ROOT = {
+				immediate = { add_artifact = one_ring_artifact }			}
+	}
+
+	test1 = {
+		is_high_prio = yes
+		potential = {
+			trait = balrog
+
+		}
+		allow = {
+			trait = balrog	
+			ai = no	
+		}
+		effect = {
+			immediate = {
+				location = {
+					any_realm_holding = {
+						culture = culture_wilderness
+						religion = religion_wilderness
+					}
+				}
+			}	
+		}
+	}
+}

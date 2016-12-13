@@ -1,0 +1,270 @@
+namespace = gathfell
+
+#Elrond sends out invites to rulers or steals ring
+narrative_event = {
+    id = gathfell.0
+    title = "EVTNAMEgathfell.0"
+    desc = "EVTDESCgathfell.0"
+    picture = "GFX_shadows_coming"
+	
+	is_triggered_only = yes
+
+	#trigger = {
+	#	year = 11362
+	#	month = 1
+   #     has_character_flag = elrond
+	#	has_landed_title = d_rivendell
+	#	has_global_flag = frodoreachedrivendell
+	#}
+
+   # mean_time_to_happen = {
+	#	days = 1
+   # }
+
+    option = { #Invite each major ruler to send someone to join fellowship, Thranduil, Dain, Denethor, and player
+		name = "EVTOPTAgathfell.0"
+		set_global_flag = gatheringfellowship0
+		custom_tooltip = {
+			text = EVTTOOLTIPgathfell.0
+			hidden_tooltip = {
+				immediate = {
+					trigger = {
+						has_character_flag = thranduil
+					}
+					character_event = { id = gathfell.01 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = dainii
+					}
+					character_event = { id = gathfell.02 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = denethor
+					}
+					character_event = { id = gathfell.03 }
+				}
+				immediate = {
+					trigger = {
+						has_character_flag = gandalf
+					}
+					character_event = { id = gathfell.04 }
+				}
+			 	immediate = {
+					trigger = {
+						has_character_flag = aragorn
+					}
+					character_event = { id = gathfell.05 }
+				}
+				immediate = {
+					trigger = {
+						ai = no
+						trait = good_side
+						is_ruler = yes
+					}
+					character_event = { id = gathfell.06 }
+				}
+			}
+		}
+	}
+
+    option = {
+		name = "EVTOPTBgathfell.0" # Trigger frodo event which kills hobbits and gives ring to Elrond
+		immediate = {
+            trigger = {
+				AND = {
+					has_character_flag = frodo
+					has_character_flag = reachedelrond
+				}
+            }
+            character_event = { id = gathfell.07 }
+        }
+    }
+}
+##Thranduil##
+character_event = {
+    id = gathfell.01
+    title = "EVTTITgathfell.01"
+    desc = "EVTDESCgathfell.01"
+    picture = "GFX_good"
+		
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAgathfell.01" #Send Legolas
+		immediate = {
+			trigger = {
+				has_character_flag = legolas
+			}
+			character_event = { id = gathfell.08 }
+			set_global_flag = thranduilsendslegolas
+		}
+	}
+	option = {
+		name = "EVTOPTBgathfell.01" #Send Tauriel
+		trigger = {
+			has_game_rule = { name = RULE_WOTR value = sandbox }
+		}
+		immediate = {
+			trigger = {
+			has_character_flag = tauriel
+			}
+		}
+		character_event = { id = gathfell.09 }
+		set_global_flag = thranduilsendstauriel	
+	}
+	option = { 
+		name = "EVTOPTCgathfell.01" #Send no-one
+		trigger = {
+			has_game_rule = { name = RULE_WOTR value = sandbox }
+		}
+		set_global_flag = thranduilsendsnoone
+	}
+}
+#Dain
+character_event = {
+    id = gathfell.02
+    title = "EVTTITgathfell.02"
+    desc = "EVTDESCgathfell.02"
+    picture = "GFX_good"
+	 
+	is_triggered_only = yes
+
+ 	option = {
+		name = "EVTOPTAgathfell.02"
+	}
+    option = {
+        name = "EVTOPTBgathfell.02"
+    }
+}
+#Denethor
+character_event = {
+    id = gathfell.03
+    title = "EVTTITgathfell.03"
+    desc = "EVTDESCgathfell.03"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.03"
+	}
+    option = {
+        name = "EVTOPTBgathfell.03"
+    }
+}
+#Gandalf
+character_event = {
+    id = gathfell.04
+    title = "EVTTITgathfell.04"
+    desc = "EVTDESCgathfell.04"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.04"
+	}
+    option = {
+        name = "EVTOPTBgathfell.04"
+    }
+}
+#Aragorn
+character_event = {
+    id = gathfell.05
+    title = "EVTTITgathfell.05"
+    desc = "EVTDESCgathfell.05"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.05"
+	}
+    option = {
+        name = "EVTOPTBgathfell.05"
+    }
+}
+#Player
+character_event = {
+    id = gathfell.06
+    title = "EVTTITgathfell.06"
+    desc = "EVTDESCgathfell.06"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.06"
+	}
+    option = {
+        name = "EVTOPTBgathfell.06"
+    }
+}
+#Frodo is killed and loses ring to Elrond
+character_event = {
+    id = gathfell.07
+    title = "EVTTITgathfell.07"
+    desc = "EVTDESCgathfell.07"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.07"
+	}
+}
+#Legolas is sent to Rivendell
+character_event = {
+    id = gathfell.08
+    title = "EVTTITgathfell.08"
+    desc = "EVTDESCgathfell.08"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.08"
+	}
+}
+#Tauriel is sent to Rivendell
+character_event = {
+    id = gathfell.09
+    title = "EVTTITgathfell.09"
+    desc = "EVTDESCgathfell.09"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.09"
+	}
+}
+#Gimli is sent to Rivendell
+character_event = {
+    id = gathfell.010
+    title = "EVTTITgathfell.010"
+    desc = "EVTDESCgathfell.010"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.010"
+	}
+}
+
+character_event = { 
+    id = gathfell.011
+    title = "EVTTITgathfell.011"
+    desc = "EVTDESCgathfell.011"
+    picture = "GFX_good"
+	
+	is_triggered_only = yes
+
+ 	option = {
+        name = "EVTOPTAgathfell.011"
+		trait = on_fellowshipquest
+	}
+}

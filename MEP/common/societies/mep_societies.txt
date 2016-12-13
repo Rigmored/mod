@@ -1,0 +1,432 @@
+#Dwarven Craftsmen#
+sons_of_telchar = {
+    primary_attribute = stewardship
+
+    society_rank = { #craftsman
+        level = 1
+        limit = 50 
+        startup_limit = 10
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #skilled_craftsman
+        level = 2
+        limit = 25
+        startup_limit = 6
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #master_craftsman
+        level = 3
+        limit = 15 
+        startup_limit = 3
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #legendary_craftman
+        level = 4
+        limit = 5
+        startup_limit = 2
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+
+    plots = {
+        plot1_tag
+        plot2_tag
+    }
+   
+    ambitions = {
+        ambition1_tag
+        ambition2_tag
+    }
+   
+    decisions = {
+        decision1_tag
+        decision2_tag
+    }
+   
+    is_secret = no
+   
+    criminal = no
+    
+    devil_worshipper = no
+    
+    can_join_society = {
+    
+   	 AND = { 
+		trait = dwarven 
+		OR = {
+        		 trait = diligent
+        		 trait = patient
+        		 trait = ambitious
+        		 trait = genius
+        		 trait = quick
+        		 trait = thrifty_clerk
+        		 trait = fortune_builder
+      	 		 trait = midas_touched
+		}
+	}
+    	age = 25    	
+    }
+    
+    show_society = {
+        age = 16
+    }
+
+    monthly_currency_gain = {
+        name = currency_name
+   
+        per_attribute = {
+            name = stewardship
+            value = 0.01
+        }
+        
+        has_trait = {
+            trait = patient
+            value = 0.1
+        }
+    }
+    
+    startup_populate = {
+        trigger = { 
+		AND = {
+			trait = dwarven
+          	        OR = {
+			    trait = craftsman
+			    trait = skilled_craftsman
+			    trait = master_craftsman
+	   	            trait = legendary_craftman
+      	         	}
+             
+                }
+		age = 18
+        }
+    }
+    
+    influence = {
+        additive_modifier = {
+            value = 50
+            trait = diligent
+        }
+    }
+}
+
+#Dwarven Craftsmen#
+sons_of_feanor = {
+    primary_attribute = stewardship
+
+    society_rank = { #craftsman
+        level = 1
+        limit = 50 
+        startup_limit = 10
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #skilled_craftsman
+        level = 2
+        limit = 25
+        startup_limit = 6
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #master_craftsman
+        level = 3
+        limit = 15 
+        startup_limit = 3
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #legendary_craftman
+        level = 4
+        limit = 5
+        startup_limit = 2
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+
+    plots = {
+        plot1_tag
+        plot2_tag
+    }
+   
+    ambitions = {
+        ambition1_tag
+        ambition2_tag
+    }
+   
+    decisions = {
+        decision1_tag
+        decision2_tag
+    }
+   
+    is_secret = no
+   
+    criminal = no
+    
+    devil_worshipper = no
+    
+    can_join_society = {
+    
+   	 AND = { 
+		trait = elf
+		OR = {
+        		 trait = diligent
+        		 trait = patient
+        		 trait = ambitious
+        		 trait = genius
+        		 trait = quick
+        		 trait = thrifty_clerk
+        		 trait = fortune_builder
+      	 		 trait = midas_touched
+		}
+	}
+    	age = 25    	
+    }
+    
+    show_society = {
+        age = 16
+    }
+
+    monthly_currency_gain = {
+        name = currency_name
+   
+        per_attribute = {
+            name = stewardship
+            value = 0.01
+        }
+        
+        has_trait = {
+            trait = patient
+            value = 0.1
+        }
+    }
+    
+    startup_populate = {
+        trigger = { 
+		AND = {
+			trait = elf
+          	        OR = {
+			    trait = craftsman
+			    trait = skilled_craftsman
+			    trait = master_craftsman
+	   	            trait = legendary_craftman
+      	         	}
+             
+                }
+		age = 18
+        }
+    }
+    
+    influence = {
+        additive_modifier = {
+            value = 50
+            trait = diligent
+        }
+    }
+}
+
+#Gwaith-i-MÃ­rdain#
+gwaith-i-mirdain = {
+    primary_attribute = stewardship
+
+    society_rank = { #craftsman
+        level = 1
+        limit = 1 
+        startup_limit = 1
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #skilled_craftsman
+        level = 2
+        limit = 2
+        startup_limit = 1
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #master_craftsman
+        level = 3
+        limit = 3 
+        startup_limit = 1
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+    
+    society_rank = { #legendary_craftman
+        level = 4
+        limit = 4
+        startup_limit = 1
+        effect = { 
+            fertility = 0.5
+            land_morale = 0.5
+        }
+    }
+
+    plots = {
+        plot1_tag
+        plot2_tag
+    }
+   
+    ambitions = {
+        ambition1_tag
+        ambition2_tag
+    }
+   
+    decisions = {
+        decision1_tag
+        decision2_tag
+    }
+   
+    is_secret = no
+   
+    criminal = no
+    
+    devil_worshipper = no
+    
+    can_join_society = {
+    
+		AND = { 
+			trait = elf
+			trait = legendary_craftman
+		}
+		age = 50    	
+    }
+    
+    show_society = {
+        age = 16
+    }
+
+    monthly_currency_gain = {
+        name = currency_name
+   
+        per_attribute = {
+            name = stewardship
+            value = 0.01
+        }
+        
+        has_trait = {
+            trait = patient
+            value = 0.1
+        }
+    }
+    
+    startup_populate = {
+        trigger = { 
+			AND = {
+				trait = elf
+				trait = legendary_craftman
+			}
+			age = 30
+		}
+	}
+    
+    influence = {
+        additive_modifier = {
+            value = 50
+            trait = diligent
+        }
+    }
+}
+
+#White Council
+white_council = {
+    primary_attribute = learning
+
+    society_rank = { #...
+        level = 1
+        limit = 20
+        startup_limit = 20
+        effect = { 
+            learning = 2
+            land_morale = 0.5
+        }
+    }
+   
+
+    plots = {
+        plot1_tag
+        plot2_tag
+    }
+   
+    ambitions = {
+        ambition1_tag
+        ambition2_tag
+    }
+   
+    decisions = {
+        decision1_tag
+        decision2_tag
+    }
+   
+    is_secret = no
+   
+    criminal = no
+    
+    devil_worshipper = no
+    
+    can_join_society = {
+		trait = white_council   	
+    }
+    
+    show_society = {
+        age = 16
+		trait = good_side
+    }
+
+    monthly_currency_gain = {
+        name = currency_name
+   
+        per_attribute = {
+            name = learning
+            value = 0.01
+        }
+    }
+    
+    startup_populate = {
+        trigger = { 
+			OR = {
+				has_character_flag = white_council
+				trait = white_council
+				trait = leader_whitecouncil
+			}
+			age = 30
+		}
+	}
+    
+    influence = {
+        additive_modifier = {
+            value = 50
+            trait = diligent
+        }
+    }
+}
