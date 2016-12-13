@@ -8,6 +8,9 @@ narrative_event = {
     picture = "GFX_good"
 
 	trigger = {
+		NOT = { has_character_flag = grey_dragon_event }
+		NOT = { has_character_modifier = successfully_fought_dragon }
+		NOT = { has_character_modifier = news_of_wealth }
 		OR = {
 			has_landed_title = c_cirith_auris
 			has_landed_title = c_withered_heath
@@ -39,8 +42,10 @@ narrative_event = {
 		random_list = {
 			55 = {
 				narrative_event = { id = dragon.1 days = 150 }
+				set_character_flag = grey_dragon_event
 			}
 			45 = {
+				add_character_modifier = { name = news_of_wealth duration = 365 }
 			}		
 		}
 	}	
@@ -88,7 +93,7 @@ narrative_event = {
 }
 
 
-## The Dwarf will defende his fortress - the Dragon is coming ##
+## The Dwarf will defend his fortress - the Dragon is coming ##
 character_event = {
     id = dragon.2
     title = "EVTTITdragon.2"
@@ -656,9 +661,13 @@ character_event = {
 			character_event = { id = dragon.7 }
 			remove_trait = duel_target
 		}
-		remove_trait = duel_target	
-	}	
-}	 
+		remove_trait = duel_target
+		clr_character_flag = grey_dragon_event
+		add_character_modifier = { name = successfully_fought_dragon duration = 3650 }
+		prestige = 500
+		piety = 250
+	}
+}
 
 #### Death of one of the character after the battle ####
 character_event = {
@@ -885,7 +894,7 @@ character_event = {
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	
 	}	
 	option = {
-		name = "EVTOPTBdragon.15" ## I'll try to flew away !
+		name = "EVTOPTBdragon.15" ## I'll try to flee away !
 		random_list = {
 			45 = {
 				hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	## You failed to escape, second duel
