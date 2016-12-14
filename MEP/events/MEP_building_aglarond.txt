@@ -1,0 +1,394 @@
+namespace = building_aglarond
+
+############### building_aglarond.0-building_aglarond.8 = Building the first level of Aglarond from the lonely mountain
+
+########## EREBOR ###########
+## Building of Aglarond Events ##
+character_event = {
+	id = building_aglarond.0
+	title = "EVTTITbuilding_aglarond.0"
+	desc = "EVTDESCbuilding_aglarond.0"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.0" ## We will create the kingdom under the moutain
+		set_global_flag = building_aglarond
+		wealth = -100
+		FROM = {
+			character_event = { id = building_aglarond.1 days = 90 } # building  - First Step#
+		}
+	}	
+	option = {
+		name = "EVTOPTBbuilding_aglarond.0"
+		trigger = { ai = no }
+	}		
+}
+
+## Building of Aglarond 1 - First step : Orc raiders ##
+character_event = {
+	id = building_aglarond.1
+	title = "EVTTITbuilding_aglarond.1"
+	desc = "EVTDESCbuilding_aglarond.1"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.1" # Pay mercenaries but do not figth# 
+		wealth = -100
+		random_list = {
+			75 = {
+				random_list = {
+					50 = {	add_trait = craven }
+					50 = {  }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.3 days = 90 } # Second Step
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_aglarond.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_aglarond.1" # Do not pay but fight #
+		random_list = {
+			70 = {	
+				random_list = {
+					35 = {  }
+					30 = { add_trait = brave }
+					30 = { add_trait = greedy }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.3 days = 90 } # Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_aglarond.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_aglarond.1" # Pay AND fight #
+		wealth = -100
+		random_list = {
+			80 = {	
+				random_list = {
+					65 = {  }
+					30 = { add_trait = brave }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.3 days = 90 } # Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_aglarond.2 days = 45 } # First Fail
+				}
+			}			
+		}
+	}	
+	option = {
+		name = "EVTOPTDbuilding_aglarond.1" # Run away#
+		trigger = { ai = no } 
+		add_trait = craven
+		clr_global_flag = building_aglarond
+	}		
+}
+## Building of Aglarond 2- First Fail ##
+character_event = {
+	id = building_aglarond.2
+	title = "EVTTITbuilding_aglarond.2"
+	desc = "EVTDESCbuilding_aglarond.2"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.2"
+		clr_global_flag = building_aglarond
+		random_list = {
+					75 = {  }
+					20 = { add_trait = wounded }
+					3 = { add_trait = maimed }
+					2 = { add_trait = infirm }
+				}
+		}		
+}
+
+## Building of Aglarond 3 - Second Step - Collapse ##
+character_event = {
+	id = building_aglarond.3
+	title = "EVTTITbuilding_aglarond.3"
+	desc = "EVTDESCbuilding_aglarond.3"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.3" ## Pay but do nothing else
+		wealth = -100
+		random_list = {
+			75 = {	
+				random_list = {
+					50 = {  }
+					50 = { add_trait = slothful }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.5 days = 90 } # Third Step
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_aglarond.4 days = 45 } # Second Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_aglarond.3" ## Do not pay but act
+		random_list = {
+			70 = {	
+				random_list = {
+					35 = {  }
+					30 = { add_trait = diligent }
+					30 = { add_trait = greedy }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.5 days = 90 } # Third Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_aglarond.4 days = 45 } # Second Fail
+				}
+			}			
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_aglarond.3" ## Landslide
+		wealth = -100
+		random_list = {
+			80 = {	
+				random_list = {
+					65 = {  }
+					30 = { add_trait = diligent }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.5 days = 90 } # Third Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_aglarond.4 days = 45 } # First Fail
+				}
+			}			
+		}
+	}		
+	option = {
+		name = "EVTOPTDbuilding_aglarond.3"
+		trigger = { ai = no }
+		add_trait = slothful
+		clr_global_flag = building_aglarond
+	}		
+}
+
+## Building of Aglarond 4- Second fail ##
+character_event = {
+	id = building_aglarond.4
+	title = "EVTTITbuilding_aglarond.4"
+	desc = "EVTDESCbuilding_aglarond.4"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.4" ## Ok.
+		clr_global_flag = building_aglarond
+		random_list = {
+					75 = {  }
+					20 = { add_trait = wounded }
+					3 = { add_trait = maimed }
+					2 = { add_trait = infirm }
+		}			
+	}		
+}
+
+
+## Building of Aglarond 5- Second Step - Magma ##
+character_event = {
+	id = building_aglarond.5
+	title = "EVTTITbuilding_aglarond.5"
+	desc = "EVTDESCbuilding_aglarond.5"
+	picture = GFX_evt_dwarves_mines
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.5" ## Do not help the trapped miners first
+		wealth = -100
+		random_list = {
+			70 = {	
+				random_list = {
+					45 = {  }
+					50 = { add_trait = cruel }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.7 days = 90 } # Building of Aglarond - Second Step
+				}
+			}
+			20 = {
+				FROM = {
+					character_event = { id = building_aglarond.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_aglarond.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}
+	option = {
+		name = "EVTOPTBbuilding_aglarond.5" ## Help the miners first
+		wealth = -100
+		random_list = {
+			60 = {	
+				random_list = {
+					65 = {  }
+					15 = { add_trait = patient }
+					15 = { add_trait = kind }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.7 days = 90 } # Building of Aglarond - Second Step
+				}
+			}
+			30 = {
+				FROM = {
+					character_event = { id = building_aglarond.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_aglarond.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}
+	option = {
+		name = "EVTOPTCbuilding_aglarond.5" ## Divide the water
+		wealth = -100
+		random_list = {
+			65 = {	
+				random_list = {
+					75 = {  }
+					10 = { add_trait = cruel }
+					5 = { add_trait = patient }
+					5 = { add_trait = kind }
+					3 = { add_trait = wounded }
+					1 = { add_trait = maimed }
+					1 = { add_trait = infirm }
+				}
+				FROM = {
+					character_event = { id = building_aglarond.7 days = 90 } # Building of Aglarond is Complete
+				}
+			}
+			25 = {
+				FROM = {
+					character_event = { id = building_aglarond.6 days = 45 } # Fail
+				}
+			}	
+			10 = {
+				FROM = {
+					character_event = { id = building_aglarond.8 days = 30} # You found something into the mountain...
+				}
+			}				
+		}
+	}				
+	option = {
+		name = "EVTOPTDbuilding_aglarond.5" #Leave without helping the miners
+		trigger = { ai = no }
+		add_trait = cruel
+		clr_global_flag = building_aglarond
+	}		
+}
+
+## Building of Aglarond 6 - Third fail ##
+character_event = {
+	id = building_aglarond.6
+	title = "EVTTITbuilding_aglarond.6"
+	desc = "EVTDESCbuilding_aglarond.6"
+	picture = GFX_evt_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.6" ## Ok.
+		clr_global_flag = building_aglarond
+		random_list = {
+			75 = {  }
+			20 = { add_trait = wounded }
+			3 = { add_trait = maimed }
+			2 = { add_trait = infirm }					
+		}
+	}		
+}
+
+
+## Building of Aglarond 7 - Complete ##
+character_event = {
+	id = building_aglarond.7
+	title = "EVTTITbuilding_aglarond.7"
+	desc = "EVTDESCbuilding_aglarond.7"
+	picture = GFX_evt_dwarves_hall
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_glittering_caves = {
+			location = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAbuilding_aglarond.7" ## Great !
+		prestige = 100
+		piety = 100
+		set_global_flag = aglarond_built
+		clr_global_flag = building_aglarond	
+		add_trait = aglarond_founder
+		b_glittering_caves = { #castle
+			remove_building = ca_glittering_caves
+			add_building = ca_aglarond			
+		}
+			
+	}		
+}
