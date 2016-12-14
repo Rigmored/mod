@@ -16,6 +16,7 @@ castle = {
         	FROMFROM = { title = b_first_hall }
 			FROM = {
 			    NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -52,6 +53,7 @@ castle = {
         	FROMFROM = { title = b_gate_of_erebor }
 			FROM = {
 			    NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
 			}
 			ROOT = {
 			    NOT = { culture_group = culture_group_wilderness}
@@ -75,6 +77,7 @@ castle = {
         FROMFROM = { title = b_barak_shathur }
 			FROM = {
 			    NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -95,7 +98,8 @@ castle = {
         potential = {
             FROMFROM = { title = b_nurunkhizdin }
 			FROM = {
-			    NOT = { culture_group = culture_group_melkor }
+				NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -116,7 +120,8 @@ castle = {
            	FROMFROM = { title = b_tamnogoth }
 				FROM = {
 			    NOT = { culture_group = culture_group_melkor }
-			}
+				culture_group = culture_group_dwarves
+				}
         }
 	}
 	
@@ -137,6 +142,7 @@ castle = {
            	FROMFROM = { title = b_zirakdum }
             FROM = {
 			NOT = { culture_group = culture_group_melkor }
+			culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -157,6 +163,7 @@ castle = {
            	FROMFROM = { title = b_thorin_hall }
             FROM = {
 			NOT = { culture_group = culture_group_melkor }
+			culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -178,6 +185,7 @@ castle = {
            	FROMFROM = { title = b_stonefoot }
             FROM = {
 			NOT = { culture_group = culture_group_melkor }
+			culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -197,6 +205,7 @@ castle = {
         	FROMFROM = { title = b_gundabad_throne_hall }
 			FROM = {
 			    NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
 			}
         }
 	}
@@ -284,5 +293,25 @@ castle = {
             		FROMFROM = { title = b_mekhem_bizru }
         	}
 	}
-
+	ca_aglarond = { ##The Glittering Caves
+		desc = ca_aglarond_desc
+		gold_cost = 2000
+		build_time = 6000
+		fort_level = 3
+		garrison_size = 1.5
+		heavy_infantry = 50
+		pikemen = 150
+		tax_income = 4
+		liege_piety = 0.05
+		monthly_character_piety = 1.0
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+        	FROMFROM = { title = b_glittering_caves }
+			FROM = {
+			    NOT = { culture_group = culture_group_melkor }
+				culture_group = culture_group_dwarves
+			}
+        }
+	}
 }
