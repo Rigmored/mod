@@ -371,6 +371,42 @@ province_event = {
 
 }
 
+province_event = { #Cleans up the counties with 2 province modifiers
+	id = population.27
+	title = population27title #hidden
+	desc = population27desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+		culture_group = culture_group_numenorean
+		OR = {
+			has_province_modifier = two_population_dunedain
+			has_province_modifier = three_population_dunedain
+			has_province_modifier = four_population_dunedain
+			has_province_modifier = five_population_dunedain
+			has_province_modifier = six_population_dunedain
+		}
+		has_province_modifier = one_population_dunedain #Has two province modifiers
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		remove_province_modifier = one_population_dunedain
+		remove_province_modifier = two_population_dunedain
+		remove_province_modifier = three_population_dunedain
+		remove_province_modifier = four_population_dunedain
+		remove_province_modifier = five_population_dunedain
+		remove_province_modifier = six_population_dunedain
+		remove_province_modifier = seven_population_dunedain
+		add_province_modifier = { name = four_population_dunedain duration = -1 }
+	}
+}
+
 ##Now for ELVES
 
 province_event = {
@@ -698,6 +734,47 @@ province_event = {
 	}
 }
 
+province_event = { #Cleans up the counties with 2 province modifiers
+	id = population.26
+	title = population26title #hidden
+	desc = population26desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+		OR = {
+			culture_group = culture_group_amanyar
+			culture_group = culture_group_quendi
+			culture_group = culture_group_umanyar
+			culture_group = culture_group_moriquendi
+		}
+		OR = {
+			has_province_modifier = two_population_elves
+			has_province_modifier = three_population_elves
+			has_province_modifier = four_population_elves
+			has_province_modifier = five_population_elves
+			has_province_modifier = six_population_elves
+		}
+		has_province_modifier = one_population_elves #Has two province modifiers
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		remove_province_modifier = one_population_elves
+		remove_province_modifier = two_population_elves
+		remove_province_modifier = three_population_elves
+		remove_province_modifier = four_population_elves
+		remove_province_modifier = five_population_elves
+		remove_province_modifier = six_population_elves
+		remove_province_modifier = seven_population_elves
+		add_province_modifier = { name = four_population_elves duration = -1 }
+	}
+}
+
 ##Now for DWARVES
 
 province_event = {
@@ -1006,6 +1083,42 @@ province_event = {
 			remove_province_modifier = one_population_dwarves
 			add_province_modifier = { name = two_population_dwarves duration = -1 }
 		}
+	}
+}
+
+province_event = {
+	id = population.25
+	title = population25title #hidden
+	desc = population25desc #hidden
+	picture = GFX_evt_council
+	hide_window = yes
+	
+	trigger = {
+		culture_group = culture_group_dwarves
+		OR = {
+			has_province_modifier = two_population_dwarves
+			has_province_modifier = three_population_dwarves
+			has_province_modifier = four_population_dwarves
+			has_province_modifier = five_population_dwarves
+			has_province_modifier = six_population_dwarves
+		}
+		has_province_modifier = one_population_dwarves #Has two province modifiers
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "OK"
+		remove_province_modifier = one_population_dwarves
+		remove_province_modifier = two_population_dwarves
+		remove_province_modifier = three_population_dwarves
+		remove_province_modifier = four_population_dwarves
+		remove_province_modifier = five_population_dwarves
+		remove_province_modifier = six_population_dwarves
+		remove_province_modifier = seven_population_dwarves
+		add_province_modifier = { name = four_population_dwarves duration = -1 }
 	}
 }
 
@@ -1349,5 +1462,50 @@ province_event = {
 			# remove_province_modifier = one_population_human
 			# add_province_modifier = { name = two_population_human duration = -1 }
 		# }
+	# }
+# }
+
+# province_event = { #Cleans up the counties with 2 province modifiers
+	# id = population.28
+	# title = population28title #hidden
+	# desc = population28desc #hidden
+	# picture = GFX_evt_council
+	# hide_window = yes
+	
+	# trigger = {
+		# OR = {
+			# culture_group = culture_group_edain
+			# culture_group = culture_group_middlemen
+			# culture_group = culture_group_forodwaith
+			# culture_group = culture_group_haldadian
+			# culture_group = culture_group_southron
+			# culture_group = culture_group_easterling
+			# culture_group = culture_group_halfling
+			# culture_group = culture_group_melkor
+		# }
+		# OR = {
+			# has_province_modifier = two_population_human
+			# has_province_modifier = three_population_human
+			# has_province_modifier = four_population_human
+			# has_province_modifier = five_population_human
+			# has_province_modifier = six_population_human
+		# }
+		# has_province_modifier = one_population_human
+	# }
+	
+	# mean_time_to_happen = {
+		# days = 1
+	# }
+	
+	# option = {
+		# name = "OK"
+		# remove_province_modifier = one_population_human
+		# remove_province_modifier = two_population_human
+		# remove_province_modifier = three_population_human
+		# remove_province_modifier = four_population_human
+		# remove_province_modifier = five_population_human
+		# remove_province_modifier = six_population_human
+		# remove_province_modifier = seven_population_human
+		# add_province_modifier = { name = four_population_human duration = -1 }
 	# }
 # }
