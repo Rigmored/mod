@@ -1,136 +1,106 @@
 namespace = dynamic_pop
 
-# character_event = {
-	# id = dynamic_pop.101
+character_event = {
+	id = dynamic_pop.101
 
-	# hide_window = yes
+	hide_window = yes
 	
-	# is_triggered_only = yes
+	is_triggered_only = yes
 	
-	# only_playable = yes
+	only_playable = yes
 	
-	# trigger = {
-		# has_dlc = "Reapers"
-	# }
+	trigger = {
+		has_dlc = "Reapers"
+	}
 	
-	# immediate = {
-		# any_realm_province = {
-			# limit = {
-				# any_province_holding = { #empty provinces (including provinces with ONLY a temple) do not prosper
-					# OR = {
-						# holding_type = city
-						# #holding_type = temple
-						# holding_type = castle
-						# #holding_type = tribal
-					# }
-				# }
-				# owner = { character = ROOT }
-				# NOR = { #disallows event if province has these modifiers
-					# has_province_modifier = depopulated_1
-					# has_province_modifier = depopulated_2
-					# has_province_modifier = depopulated_3
-				# }
-				# OR = { #allows event if province has one of these modifiers
-					# has_province_modifier = prosperity_modifier_1
-					# has_province_modifier = prosperity_modifier_2
-					# has_province_modifier = prosperity_modifier_3
-				# }
-			# }
-			# province_event = {
-				# id = dynamic_pop.110
-			# }
-		# }
-	# }
-# }
+	immediate = {
+		any_realm_province = {
+			limit = {
+				owner = {
+					OR = {
+						culture_group = culture_group_edain
+						culture_group = culture_group_middlemen
+						culture_group = culture_group_forodwaith
+						culture_group = culture_group_haldadian
+						culture_group = culture_group_southron
+						culture_group = culture_group_easterling
+						culture_group = culture_group_halfling
+						culture_group = culture_group_melkor
+						culture_group = culture_group_numenorean
+						culture_group = culture_group_quendi
+						culture_group = culture_group_amanyar
+						culture_group = culture_group_umanyar
+						culture_group = culture_group_moriquendi
+						culture_group = culture_group_dwarves
+					}
+				}
+				owner = { character = ROOT }
+				NOR = { #disallows event if province has these modifiers
+					has_province_modifier = depopulated_1
+					has_province_modifier = depopulated_2
+					has_province_modifier = depopulated_3
+				}
+				OR = { #allows event if province has one of these modifiers
+					has_province_modifier = prosperity_modifier_1
+					has_province_modifier = prosperity_modifier_2
+					has_province_modifier = prosperity_modifier_3
+				}
+				OR = {
+					has_province_modifier = one_population_human
+					has_province_modifier = two_population_human
+					has_province_modifier = three_population_human
+					has_province_modifier = four_population_human
+					has_province_modifier = five_population_human
+					has_province_modifier = six_population_human
+					has_province_modifier = one_population_dunedain
+					has_province_modifier = two_population_dunedain
+					has_province_modifier = three_population_dunedain
+					has_province_modifier = four_population_dunedain
+					has_province_modifier = five_population_dunedain
+					has_province_modifier = six_population_dunedain
+					has_province_modifier = one_population_elves
+					has_province_modifier = two_population_elves
+					has_province_modifier = three_population_elves
+					has_province_modifier = four_population_elves
+					has_province_modifier = five_population_elves
+					has_province_modifier = six_population_elves
+					has_province_modifier = one_population_dwarves
+					has_province_modifier = two_population_dwarves
+					has_province_modifier = three_population_dwarves
+					has_province_modifier = four_population_dwarves
+					has_province_modifier = five_population_dwarves
+					has_province_modifier = six_population_dwarves
+				}
+			}
+			province_event = { 
+				id = dynamic_pop.110
+			}
+		}
+	}
+}
 
 province_event = { #Population gain
 	id = dynamic_pop.110
 
 	hide_window = yes
 	
-	mean_time_to_happen = 6
-	
-	trigger = {
-		has_dlc = "Reapers"
-	}
-	
-	limit = {
-		NOR = { #disallows event if province has these modifiers
-			has_province_modifier = depopulated_1
-			has_province_modifier = depopulated_2
-			has_province_modifier = depopulated_3
-		}
-		OR = { #allows event if province has one of these modifiers
-			has_province_modifier = prosperity_modifier_1
-			has_province_modifier = prosperity_modifier_2
-			has_province_modifier = prosperity_modifier_3
-		}
-		OR = {
-			owner = {
-				culture_group = culture_group_edain
-				culture_group = culture_group_middlemen
-				culture_group = culture_group_forodwaith
-				culture_group = culture_group_haldadian
-				culture_group = culture_group_southron
-				culture_group = culture_group_easterling
-				culture_group = culture_group_halfling
-				culture_group = culture_group_melkor
-				culture_group = culture_group_numenorean
-				culture_group = culture_group_quendi
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_umanyar
-				culture_group = culture_group_moriquendi
-				culture_group = culture_group_dwarves
-			}
-		}
-		OR = {
-			has_province_modifier = one_population_human
-			has_province_modifier = two_population_human
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = one_population_dunedain
-			has_province_modifier = two_population_dunedain
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = one_population_elves
-			has_province_modifier = two_population_elves
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = one_population_dwarves
-			has_province_modifier = two_population_dwarves
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-		}
-	}
+	is_triggered_only = yes
+	# mean_time_to_happen = 1825 days #5 years
 	
 	option = {
 			random = {
 			chance = 5 #5% base chance to increase population
 				modifier = {
 					factor = 1.5 #good chance with the province modifier
-					location = 	{
-						has_province_modifier = prosperity_modifier_1
-					}
+					has_province_modifier = prosperity_modifier_1
 				}
 				modifier = {
 					factor = 2.0 #high chance with the province modifier
-					location = {
-						has_province_modifier = prosperity_modifier_2
-					}
+					has_province_modifier = prosperity_modifier_2
 				}
 				modifier = {
 					factor = 2.5 #very high chance with the province modifier
-					location = {
-						has_province_modifier = prosperity_modifier_3
-					}
+					has_province_modifier = prosperity_modifier_3
 				}
 				modifier = {
 					factor = 1.5 #over 18 stewardship you have a 15% chance
@@ -235,46 +205,6 @@ province_event = { #Population gain
 					}
 				}
 				modifier = {
-					factor = 0.7 #slightly lower chance if helping in a war
-					owner = {
-						any_war = {
-							NOR = {
-								is_primary_war_defender = yes
-								is_primary_war_attacker = yes
-							}
-						}
-						NOR = {
-							any_war = {
-								is_primary_war_defender = yes
-							}
-							any_war = {
-								is_primary_war_attacker = yes
-							}
-						}
-					}
-				}
-				modifier = {
-					factor = 0.5 #low chance if defending in a war
-					owner = {
-						any_war = {
-							is_primary_war_defender = yes
-						}
-						NOT = {
-							any_war = {
-								is_primary_war_attacker = yes
-							}
-						}
-					}
-				}
-				modifier = {
-					factor = 0.2 #very low chance if attacking in a war
-					owner = {
-						any_war = {
-							is_primary_war_attacker = yes
-						}
-					}
-				}
-				modifier = {
 					factor = 0 #no chance if under siege/occupied/diseased
 					OR = {
 						any_province_holding = {
@@ -292,6 +222,11 @@ province_event = { #Population gain
 ### INCREASE FROM 1 POPULATION to 2 POPULATION ###
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = one_population_human
 					NOR = {
 						has_province_modifier = two_population_human
@@ -326,14 +261,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = one_population_human
@@ -343,6 +280,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = one_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -387,6 +329,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = one_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -436,6 +383,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = one_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -481,6 +433,11 @@ province_event = { #Population gain
 ##### INCREASE FROM 2 POPULATION to 3 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = two_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -515,14 +472,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = two_population_human
@@ -532,6 +491,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = two_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -576,6 +540,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = two_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -625,6 +594,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = two_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -670,6 +644,11 @@ province_event = { #Population gain
 ##### INCREASE FROM 3 POPULATION to 4 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = three_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -704,14 +683,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = three_population_human
@@ -721,6 +702,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = three_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -765,6 +751,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = three_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -814,6 +805,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = three_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -859,6 +855,11 @@ province_event = { #Population gain
 ##### INCREASE FROM 4 POPULATION to 5 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = four_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -893,14 +894,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = four_population_human
@@ -910,6 +913,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = four_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -954,6 +962,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = four_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1003,6 +1016,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = four_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1048,6 +1066,11 @@ province_event = { #Population gain
 ##### INCREASE FROM 5 POPULATION to 6 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = five_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1082,14 +1105,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = five_population_human
@@ -1099,6 +1124,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = five_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1143,6 +1173,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = five_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1192,6 +1227,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = five_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1237,6 +1277,11 @@ province_event = { #Population gain
 ##### INCREASE FROM 6 POPULATION to 7 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = six_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1271,14 +1316,16 @@ province_event = { #Population gain
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = six_population_human
@@ -1288,6 +1335,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = six_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1332,6 +1384,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = six_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1381,6 +1438,11 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = prosperity_modifier_1
+						has_province_modifier = prosperity_modifier_2
+						has_province_modifier = prosperity_modifier_3
+					}
 					has_province_modifier = six_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -1426,618 +1488,590 @@ province_event = { #Population gain
 	}
 }
 
-character_event = { #when sieged population progress is wiped, with a major chance to drop a level of population
-	id = dynamic_pop.102 
-
-	hide_window = yes
-	
-	is_triggered_only = yes	# event triggered from the "00_on_actions.txt"
-	
-	immediate = {
-		FROM = {
-			location = {
-				set_variable = { which = population_decline_value value = 0 }
-				random = {
-				chance = 75 #chance to lower by 1 step
-					if = {
-						limit = {
-							has_province_modifier = seven_population_human
-							has_province_modifier = seven_population_dunedain
-							has_province_modifier = seven_population_elves
-							has_province_modifier = seven_population_dwarves
-						}
-						IF = {
-							has_province_modifier = seven_population_human
-
-							add_province_modifier = six_population_human
-							remove_province_modifier = seven_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_dunedain
-
-							add_province_modifier = six_population_dunedain
-							remove_province_modifier = seven_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_elves
-
-							add_province_modifier = six_population_elves
-							remove_province_modifier = seven_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_dwarves
-
-							add_province_modifier = six_population_dwarves
-							remove_province_modifier = seven_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = six_population_human
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = six_population_elves
-							has_province_modifier = six_population_dwarves
-						}
-						IF = {
-							has_province_modifier = six_population_human
-
-							add_province_modifier = five_population_human
-							remove_province_modifier = six_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_dunedain
-
-							add_province_modifier = five_population_dunedain
-							remove_province_modifier = six_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_elves
-								
-							add_province_modifier = five_population_elves
-							remove_province_modifier = six_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_dwarves
-								
-							add_province_modifier = five_population_dwarves
-							remove_province_modifier = six_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = five_population_human
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = five_population_elves
-							has_province_modifier = five_population_dwarves
-						}
-						IF = {
-							has_province_modifier = five_population_human
-
-							add_province_modifier = four_population_human
-							remove_province_modifier = five_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_dunedain
-
-							add_province_modifier = four_population_dunedain
-							remove_province_modifier = five_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_elves
-
-							add_province_modifier = four_population_elves
-							remove_province_modifier = five_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_dwarves
-
-							add_province_modifier = four_population_dwarves
-							remove_province_modifier = five_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = four_population_human
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = four_population_elves
-							has_province_modifier = four_population_dwarves
-						}
-						IF = {
-							has_province_modifier = four_population_human
-
-							add_province_modifier = three_population_human
-							remove_province_modifier = four_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_dunedain
-
-							add_province_modifier = three_population_dunedain
-							remove_province_modifier = four_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_elves
-
-							add_province_modifier = three_population_elves
-							remove_province_modifier = four_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_dwarves
-
-							add_province_modifier = three_population_dwarves
-							remove_province_modifier = four_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = three_population_human
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = three_population_elves
-							has_province_modifier = three_population_dwarves
-
-						}
-						IF = {
-							has_province_modifier = three_population_human
-									
-							add_province_modifier = two_population_human
-							remove_province_modifier = three_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = three_population_dunedain
-
-							add_province_modifier = two_population_dunedain
-							remove_province_modifier = three_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = three_population_elves
-
-							add_province_modifier = two_population_elves
-							remove_province_modifier = three_population_elves
-							break = yes
-						}
-						IF = {
-							FROM = {
-								location = {
-									has_province_modifier = three_population_dwarves
-								}
-							}
-							add_province_modifier = two_population_dwarves
-							remove_province_modifier = three_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = two_population_human
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = two_population_elves
-							has_province_modifier = two_population_dwarves
-						}
-						IF = {
-							has_province_modifier = two_population_human
-
-							add_province_modifier = one_population_human
-							remove_province_modifier = two_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_dunedain
-
-							add_province_modifier = one_population_dunedain
-							remove_province_modifier = two_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_elves
-
-							add_province_modifier = one_population_elves
-							remove_province_modifier = two_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_dwarves
-
-							add_province_modifier = one_population_dwarves
-							remove_province_modifier = two_population_dwarves
-							break = yes
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-character_event = { #when looted prosperity progress is wiped, with a minor chance to drop a level
-	id = dynamic_pop.103
-
-	hide_window = yes
-	
-	is_triggered_only = yes	# event triggered from the "00_on_actions.txt"
-	
-	immediate = {
-		FROM = {
-			location = {
-				set_variable = { which = population_decline_value value = 0 }
-				random = {
-				chance = 15 #chance to lower by 1 step
-					if = {
-						limit = {
-							has_province_modifier = seven_population_human
-							has_province_modifier = seven_population_dunedain
-							has_province_modifier = seven_population_elves
-							has_province_modifier = seven_population_dwarves
-						}
-						IF = {
-							has_province_modifier = seven_population_human
-
-							add_province_modifier = six_population_human
-							remove_province_modifier = seven_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_dunedain
-
-							add_province_modifier = six_population_dunedain
-							remove_province_modifier = seven_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_elves
-
-							add_province_modifier = six_population_elves
-							remove_province_modifier = seven_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = seven_population_dwarves
-
-							add_province_modifier = six_population_dwarves
-							remove_province_modifier = seven_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = six_population_human
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = six_population_elves
-							has_province_modifier = six_population_dwarves
-						}
-						IF = {
-							has_province_modifier = six_population_human
-
-							add_province_modifier = five_population_human
-							remove_province_modifier = six_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_dunedain
-
-							add_province_modifier = five_population_dunedain
-							remove_province_modifier = six_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_elves
-								
-							add_province_modifier = five_population_elves
-							remove_province_modifier = six_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = six_population_dwarves
-								
-							add_province_modifier = five_population_dwarves
-							remove_province_modifier = six_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = five_population_human
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = five_population_elves
-							has_province_modifier = five_population_dwarves
-						}
-						IF = {
-							has_province_modifier = five_population_human
-
-							add_province_modifier = four_population_human
-							remove_province_modifier = five_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_dunedain
-
-							add_province_modifier = four_population_dunedain
-							remove_province_modifier = five_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_elves
-
-							add_province_modifier = four_population_elves
-							remove_province_modifier = five_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = five_population_dwarves
-
-							add_province_modifier = four_population_dwarves
-							remove_province_modifier = five_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = four_population_human
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = four_population_elves
-							has_province_modifier = four_population_dwarves
-						}
-						IF = {
-							has_province_modifier = four_population_human
-
-							add_province_modifier = three_population_human
-							remove_province_modifier = four_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_dunedain
-
-							add_province_modifier = three_population_dunedain
-							remove_province_modifier = four_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_elves
-
-							add_province_modifier = three_population_elves
-							remove_province_modifier = four_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = four_population_dwarves
-
-							add_province_modifier = three_population_dwarves
-							remove_province_modifier = four_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = three_population_human
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = three_population_elves
-							has_province_modifier = three_population_dwarves
-
-						}
-						IF = {
-							has_province_modifier = three_population_human
-									
-							add_province_modifier = two_population_human
-							remove_province_modifier = three_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = three_population_dunedain
-
-							add_province_modifier = two_population_dunedain
-							remove_province_modifier = three_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = three_population_elves
-
-							add_province_modifier = two_population_elves
-							remove_province_modifier = three_population_elves
-							break = yes
-						}
-						IF = {
-							FROM = {
-								location = {
-									has_province_modifier = three_population_dwarves
-								}
-							}
-							add_province_modifier = two_population_dwarves
-							remove_province_modifier = three_population_dwarves
-							break = yes
-						}
-					}
-					if = {
-						limit = {
-							has_province_modifier = two_population_human
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = two_population_elves
-							has_province_modifier = two_population_dwarves
-						}
-						IF = {
-							has_province_modifier = two_population_human
-
-							add_province_modifier = one_population_human
-							remove_province_modifier = two_population_human
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_dunedain
-
-							add_province_modifier = one_population_dunedain
-							remove_province_modifier = two_population_dunedain
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_elves
-
-							add_province_modifier = one_population_elves
-							remove_province_modifier = two_population_elves
-							break = yes
-						}
-						IF = {
-							has_province_modifier = two_population_dwarves
-
-							add_province_modifier = one_population_dwarves
-							remove_province_modifier = two_population_dwarves
-							break = yes
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-# character_event = {
-	# id = dynamic_pop.104
+# character_event = { #when sieged population progress is wiped, with a major chance to drop a level of population
+	# id = dynamic_pop.102 
 
 	# hide_window = yes
 	
-	# is_triggered_only = yes
-	
-	# only_playable = yes
-	
-	# trigger = {
-		# has_dlc = "Reapers"
-	# }
+	# is_triggered_only = yes	# event triggered from the "00_on_actions.txt"
 	
 	# immediate = {
-		# any_realm_province = {
-			# limit = {
-				# any_province_holding = { #empty provinces (including provinces with ONLY a temple) do not prosper
-					# OR = {
-						# holding_type = city
-						# #holding_type = temple
-						# holding_type = castle
-						# #holding_type = tribal
+		# FROM = {
+			# location = {
+				# set_variable = { which = population_decline_value value = 0 }
+				# random = {
+				# chance = 75 #chance to lower by 1 step
+					# if = {
+						# limit = {
+							# has_province_modifier = seven_population_human
+							# has_province_modifier = seven_population_dunedain
+							# has_province_modifier = seven_population_elves
+							# has_province_modifier = seven_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_human
+
+							# add_province_modifier = six_population_human
+							# remove_province_modifier = seven_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_dunedain
+
+							# add_province_modifier = six_population_dunedain
+							# remove_province_modifier = seven_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_elves
+
+							# add_province_modifier = six_population_elves
+							# remove_province_modifier = seven_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_dwarves
+
+							# add_province_modifier = six_population_dwarves
+							# remove_province_modifier = seven_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = six_population_human
+							# has_province_modifier = six_population_dunedain
+							# has_province_modifier = six_population_elves
+							# has_province_modifier = six_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = six_population_human
+
+							# add_province_modifier = five_population_human
+							# remove_province_modifier = six_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_dunedain
+
+							# add_province_modifier = five_population_dunedain
+							# remove_province_modifier = six_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_elves
+								
+							# add_province_modifier = five_population_elves
+							# remove_province_modifier = six_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_dwarves
+								
+							# add_province_modifier = five_population_dwarves
+							# remove_province_modifier = six_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = five_population_human
+							# has_province_modifier = five_population_dunedain
+							# has_province_modifier = five_population_elves
+							# has_province_modifier = five_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = five_population_human
+
+							# add_province_modifier = four_population_human
+							# remove_province_modifier = five_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_dunedain
+
+							# add_province_modifier = four_population_dunedain
+							# remove_province_modifier = five_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_elves
+
+							# add_province_modifier = four_population_elves
+							# remove_province_modifier = five_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_dwarves
+
+							# add_province_modifier = four_population_dwarves
+							# remove_province_modifier = five_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = four_population_human
+							# has_province_modifier = four_population_dunedain
+							# has_province_modifier = four_population_elves
+							# has_province_modifier = four_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = four_population_human
+
+							# add_province_modifier = three_population_human
+							# remove_province_modifier = four_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_dunedain
+
+							# add_province_modifier = three_population_dunedain
+							# remove_province_modifier = four_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_elves
+
+							# add_province_modifier = three_population_elves
+							# remove_province_modifier = four_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_dwarves
+
+							# add_province_modifier = three_population_dwarves
+							# remove_province_modifier = four_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = three_population_human
+							# has_province_modifier = three_population_dunedain
+							# has_province_modifier = three_population_elves
+							# has_province_modifier = three_population_dwarves
+
+						# }
+						# IF = {
+							# has_province_modifier = three_population_human
+									
+							# add_province_modifier = two_population_human
+							# remove_province_modifier = three_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = three_population_dunedain
+
+							# add_province_modifier = two_population_dunedain
+							# remove_province_modifier = three_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = three_population_elves
+
+							# add_province_modifier = two_population_elves
+							# remove_province_modifier = three_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# FROM = {
+								# location = {
+									# has_province_modifier = three_population_dwarves
+								# }
+							# }
+							# add_province_modifier = two_population_dwarves
+							# remove_province_modifier = three_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = two_population_human
+							# has_province_modifier = two_population_dunedain
+							# has_province_modifier = two_population_elves
+							# has_province_modifier = two_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = two_population_human
+
+							# add_province_modifier = one_population_human
+							# remove_province_modifier = two_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_dunedain
+
+							# add_province_modifier = one_population_dunedain
+							# remove_province_modifier = two_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_elves
+
+							# add_province_modifier = one_population_elves
+							# remove_province_modifier = two_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_dwarves
+
+							# add_province_modifier = one_population_dwarves
+							# remove_province_modifier = two_population_dwarves
+							# break = yes
+						# }
 					# }
 				# }
-				# owner = { character = ROOT }
-				# NOR = { #disallows event if province has these modifiers
-					# has_province_modifier = population_decline_value_1
-					# has_province_modifier = population_decline_value_2
-					# has_province_modifier = population_decline_value_3
-				# }
-				# OR = { #allows event if province has one of these modifiers
-					# has_province_modifier = depopulated_1
-					# has_province_modifier = depopulated_2
-					# has_province_modifier = depopulated_3
-				# }
-			# }
-			# province_event = {
-				# id = dynamic_pop.111
 			# }
 		# }
 	# }
 # }
 
-##############################################
-### This event controls population decline ###
-##############################################
-province_event = { 
-	id = dynamic_pop.111
+# character_event = { #when looted prosperity progress is wiped, with a minor chance to drop a level
+	# id = dynamic_pop.103
+
+	# hide_window = yes
+	
+	# is_triggered_only = yes	# event triggered from the "00_on_actions.txt"
+	
+	# immediate = {
+		# FROM = {
+			# location = {
+				# set_variable = { which = population_decline_value value = 0 }
+				# random = {
+				# chance = 15 #chance to lower by 1 step
+					# if = {
+						# limit = {
+							# has_province_modifier = seven_population_human
+							# has_province_modifier = seven_population_dunedain
+							# has_province_modifier = seven_population_elves
+							# has_province_modifier = seven_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_human
+
+							# add_province_modifier = six_population_human
+							# remove_province_modifier = seven_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_dunedain
+
+							# add_province_modifier = six_population_dunedain
+							# remove_province_modifier = seven_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_elves
+
+							# add_province_modifier = six_population_elves
+							# remove_province_modifier = seven_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = seven_population_dwarves
+
+							# add_province_modifier = six_population_dwarves
+							# remove_province_modifier = seven_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = six_population_human
+							# has_province_modifier = six_population_dunedain
+							# has_province_modifier = six_population_elves
+							# has_province_modifier = six_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = six_population_human
+
+							# add_province_modifier = five_population_human
+							# remove_province_modifier = six_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_dunedain
+
+							# add_province_modifier = five_population_dunedain
+							# remove_province_modifier = six_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_elves
+								
+							# add_province_modifier = five_population_elves
+							# remove_province_modifier = six_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = six_population_dwarves
+								
+							# add_province_modifier = five_population_dwarves
+							# remove_province_modifier = six_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = five_population_human
+							# has_province_modifier = five_population_dunedain
+							# has_province_modifier = five_population_elves
+							# has_province_modifier = five_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = five_population_human
+
+							# add_province_modifier = four_population_human
+							# remove_province_modifier = five_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_dunedain
+
+							# add_province_modifier = four_population_dunedain
+							# remove_province_modifier = five_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_elves
+
+							# add_province_modifier = four_population_elves
+							# remove_province_modifier = five_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = five_population_dwarves
+
+							# add_province_modifier = four_population_dwarves
+							# remove_province_modifier = five_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = four_population_human
+							# has_province_modifier = four_population_dunedain
+							# has_province_modifier = four_population_elves
+							# has_province_modifier = four_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = four_population_human
+
+							# add_province_modifier = three_population_human
+							# remove_province_modifier = four_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_dunedain
+
+							# add_province_modifier = three_population_dunedain
+							# remove_province_modifier = four_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_elves
+
+							# add_province_modifier = three_population_elves
+							# remove_province_modifier = four_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = four_population_dwarves
+
+							# add_province_modifier = three_population_dwarves
+							# remove_province_modifier = four_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = three_population_human
+							# has_province_modifier = three_population_dunedain
+							# has_province_modifier = three_population_elves
+							# has_province_modifier = three_population_dwarves
+
+						# }
+						# IF = {
+							# has_province_modifier = three_population_human
+									
+							# add_province_modifier = two_population_human
+							# remove_province_modifier = three_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = three_population_dunedain
+
+							# add_province_modifier = two_population_dunedain
+							# remove_province_modifier = three_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = three_population_elves
+
+							# add_province_modifier = two_population_elves
+							# remove_province_modifier = three_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# FROM = {
+								# location = {
+									# has_province_modifier = three_population_dwarves
+								# }
+							# }
+							# add_province_modifier = two_population_dwarves
+							# remove_province_modifier = three_population_dwarves
+							# break = yes
+						# }
+					# }
+					# if = {
+						# limit = {
+							# has_province_modifier = two_population_human
+							# has_province_modifier = two_population_dunedain
+							# has_province_modifier = two_population_elves
+							# has_province_modifier = two_population_dwarves
+						# }
+						# IF = {
+							# has_province_modifier = two_population_human
+
+							# add_province_modifier = one_population_human
+							# remove_province_modifier = two_population_human
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_dunedain
+
+							# add_province_modifier = one_population_dunedain
+							# remove_province_modifier = two_population_dunedain
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_elves
+
+							# add_province_modifier = one_population_elves
+							# remove_province_modifier = two_population_elves
+							# break = yes
+						# }
+						# IF = {
+							# has_province_modifier = two_population_dwarves
+
+							# add_province_modifier = one_population_dwarves
+							# remove_province_modifier = two_population_dwarves
+							# break = yes
+						# }
+					# }
+				# }
+			# }
+		# }
+	# }
+# }
+
+character_event = {
+	id = dynamic_pop.104
 
 	hide_window = yes
 	
-	mean_time_to_happen = 6
+	is_triggered_only = yes
+	
+	only_playable = yes
 	
 	trigger = {
 		has_dlc = "Reapers"
 	}
 	
-	limit = {
-		OR = { #allows event if province has one of these modifiers
-			has_province_modifier = depopulated_1
-			has_province_modifier = depopulated_2
-			has_province_modifier = depopulated_3
-		}
-		NOR = { #disallows event if province has these modifiers
-			has_province_modifier = prosperity_modifier_1
-			has_province_modifier = prosperity_modifier_2
-			has_province_modifier = prosperity_modifier_3
-		}
-		OR = {
-			owner = {
-				culture_group = culture_group_edain
-				culture_group = culture_group_middlemen
-				culture_group = culture_group_forodwaith
-				culture_group = culture_group_haldadian
-				culture_group = culture_group_southron
-				culture_group = culture_group_easterling
-				culture_group = culture_group_halfling
-				culture_group = culture_group_melkor
-				culture_group = culture_group_numenorean
-				culture_group = culture_group_quendi
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_umanyar
-				culture_group = culture_group_moriquendi
-				culture_group = culture_group_dwarves
+	immediate = {
+		any_realm_province = {
+			limit = {
+				owner = {
+					OR = {
+						culture_group = culture_group_edain
+						culture_group = culture_group_middlemen
+						culture_group = culture_group_forodwaith
+						culture_group = culture_group_haldadian
+						culture_group = culture_group_southron
+						culture_group = culture_group_easterling
+						culture_group = culture_group_halfling
+						culture_group = culture_group_melkor
+						culture_group = culture_group_numenorean
+						culture_group = culture_group_quendi
+						culture_group = culture_group_amanyar
+						culture_group = culture_group_umanyar
+						culture_group = culture_group_moriquendi
+						culture_group = culture_group_dwarves
+					}
+				}
+				owner = { character = ROOT }
+				NOR = { #disallows event if province has these modifiers
+					has_province_modifier = prosperity_modifier_1
+					has_province_modifier = prosperity_modifier_2
+					has_province_modifier = prosperity_modifier_3
+				}
+				OR = { #allows event if province has one of these modifiers
+					has_province_modifier = depopulated_1
+					has_province_modifier = depopulated_2
+					has_province_modifier = depopulated_3
+				}
+				OR = {
+					has_province_modifier = seven_population_human
+					has_province_modifier = two_population_human
+					has_province_modifier = three_population_human
+					has_province_modifier = four_population_human
+					has_province_modifier = five_population_human
+					has_province_modifier = six_population_human
+					
+					has_province_modifier = seven_population_dunedain
+					has_province_modifier = two_population_dunedain
+					has_province_modifier = three_population_dunedain
+					has_province_modifier = four_population_dunedain
+					has_province_modifier = five_population_dunedain
+					has_province_modifier = six_population_dunedain
+					
+					has_province_modifier = seven_population_elves
+					has_province_modifier = two_population_elves
+					has_province_modifier = three_population_elves
+					has_province_modifier = four_population_elves
+					has_province_modifier = five_population_elves
+					has_province_modifier = six_population_elves
+					
+					has_province_modifier = seven_population_dwarves
+					has_province_modifier = two_population_dwarves
+					has_province_modifier = three_population_dwarves
+					has_province_modifier = four_population_dwarves
+					has_province_modifier = five_population_dwarves
+					has_province_modifier = six_population_dwarves
+				}
+			}
+			province_event = {
+				id = dynamic_pop.111
 			}
 		}
-		OR = {
-			has_province_modifier = one_population_human
-			has_province_modifier = two_population_human
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = one_population_dunedain
-			has_province_modifier = two_population_dunedain
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = one_population_elves
-			has_province_modifier = two_population_elves
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = one_population_dwarves
-			has_province_modifier = two_population_dwarves
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-		}
 	}
+}
+
+#############################################
+## This event controls population decline ###
+#############################################
+province_event = { 
+	id = dynamic_pop.111
+
+	hide_window = yes
+	
+	is_triggered_only = yes
 	
 	option = {
 			random = {
 			chance = 5 #5% base chance to increase population
 				modifier = {
 					factor = 1.5 #good chance with the province modifier
-					location = 	{
-						has_province_modifier = depopulated_1
-					}
+					has_province_modifier = depopulated_1
 				}
 				modifier = {
 					factor = 2.0 #high chance with the province modifier
-					location = {
-						has_province_modifier = depopulated_2
-					}
+					has_province_modifier = depopulated_2
 				}
 				modifier = {
 					factor = 2.5 #very high chance with the province modifier
-					location = {
-						has_province_modifier = depopulated_3
-					}
+					has_province_modifier = depopulated_3
 				}
 				modifier = {
 					factor = 0.5 #over 25 stewardship you reduce the chance
@@ -2138,46 +2172,6 @@ province_event = {
 					}
 				}
 				modifier = {
-					factor = 1.3 #slightly higher chance if helping in a war
-					owner = {
-						any_war = {
-							NOR = {
-								is_primary_war_defender = yes
-								is_primary_war_attacker = yes
-							}
-						}
-						NOR = {
-							any_war = {
-								is_primary_war_defender = yes
-							}
-							any_war = {
-								is_primary_war_attacker = yes
-							}
-						}
-					}
-				}
-				modifier = {
-					factor = 1.5 #high chance if defending in a war
-					owner = {
-						any_war = {
-							is_primary_war_defender = yes
-						}
-						NOT = {
-							any_war = {
-								is_primary_war_attacker = yes
-							}
-						}
-					}
-				}
-				modifier = {
-					factor = 2.0 #very high chance if attacking in a war
-					owner = {
-						any_war = {
-							is_primary_war_attacker = yes
-						}
-					}
-				}
-				modifier = {
 					factor = 2 #very high chance if under siege/occupied/diseased
 					OR = {
 						any_province_holding = {
@@ -2202,6 +2196,11 @@ province_event = {
 ### DECREASE FROM 2 POPULATION to 1 POPULATION ###
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = two_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2236,15 +2235,18 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
+					
 				}
 				remove_province_modifier = two_population_human
 				add_province_modifier = { name = one_population_human duration = -1 }
@@ -2253,6 +2255,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = two_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2297,6 +2304,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = two_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2346,6 +2358,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = two_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2391,6 +2408,11 @@ province_event = {
 ##### DECREASE FROM 3 POPULATION to 2 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = three_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2425,14 +2447,16 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = three_population_human
@@ -2442,6 +2466,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = three_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2486,6 +2515,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = three_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2535,6 +2569,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = three_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2580,6 +2619,11 @@ province_event = {
 ##### DECREASE FROM 4 POPULATION to 3 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = four_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2614,14 +2658,16 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = four_population_human
@@ -2631,6 +2677,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = four_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2675,6 +2726,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = four_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2724,6 +2780,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = four_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2769,6 +2830,11 @@ province_event = {
 ##### DECREASE FROM 5 POPULATION to 4 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = five_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2803,14 +2869,16 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = five_population_human
@@ -2820,6 +2888,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = five_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2864,6 +2937,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = five_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2913,6 +2991,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = five_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2958,6 +3041,11 @@ province_event = {
 ##### DECREASE FROM 6 POPULATION to 5 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = six_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -2992,14 +3080,16 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = six_population_human
@@ -3009,6 +3099,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = six_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3053,6 +3148,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = six_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3102,6 +3202,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = six_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3147,6 +3252,11 @@ province_event = {
 ##### DECREASE FROM 7 POPULATION to 6 POPULATION #####
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = seven_population_human
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3181,14 +3291,16 @@ province_event = {
 						has_province_modifier = seven_population_dwarves
 					}
 					owner = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+						}
 					}
 				}
 				remove_province_modifier = seven_population_human
@@ -3198,6 +3310,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = seven_population_dunedain
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3242,6 +3359,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = seven_population_elves
 					NOR = {
 						has_province_modifier = one_population_human
@@ -3291,6 +3413,11 @@ province_event = {
 			}
 			IF = {
 				limit = {
+					OR = { #allows event if province has one of these modifiers
+						has_province_modifier = depopulated_1
+						has_province_modifier = depopulated_2
+						has_province_modifier = depopulated_3
+					}
 					has_province_modifier = seven_population_dwarves
 					NOR = {
 						has_province_modifier = one_population_human
