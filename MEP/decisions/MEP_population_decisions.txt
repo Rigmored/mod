@@ -1,5 +1,41 @@
 decisions = {
 	## ##
+	increase_pop_other = {
+		potential = {
+			OR = {
+				culture_group = culture_group_edain
+				culture_group = culture_group_middlemen
+				culture_group = culture_group_forodwaith
+				culture_group = culture_group_haldadian
+				culture_group = culture_group_southron
+				culture_group = culture_group_easterling
+				culture_group = culture_group_halfling
+				culture_group = culture_group_melkor
+			}
+			any_realm_province = {
+				OR = {
+					has_province_modifier = one_population_human
+					has_province_modifier = two_population_human
+					has_province_modifier = three_population_human
+					has_province_modifier = four_population_human
+					has_province_modifier = five_population_human
+					has_province_modifier = six_population_human
+				}
+			}
+			has_character_flag = special_decisions_open
+		}
+		
+		allow = { 
+			prestige = 125
+			wealth = 250
+		}
+		
+		effect = {
+			ROOT = {
+				character_event = { id = population.24 }
+			}
+		}
+	}
 	increase_pop_dunedain = {
 		potential = {
 			culture_group = culture_group_numenorean
