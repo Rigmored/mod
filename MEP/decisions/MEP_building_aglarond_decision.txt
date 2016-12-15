@@ -1,0 +1,32 @@
+decisions = {
+	## Decision for a dwarf to found the major building of Aglarond (The Glittering Caves) ##
+	build_aglarond = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			culture_group = culture_group_dwarves
+			NOT = { trait = incapable }
+			has_landed_title = c_glittering_caves
+			any_realm_title = { has_building = ca_glittering_caves }
+			292 = {
+				OR = {
+					NOT = { culture = culture_wilderness }
+					NOT = { religion = religion_wilderness }
+				}
+			}
+			NOT = { has_global_flag = building_aglarond }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			NOT = { trait = evil_side }
+			prestige = 500
+			wealth = 600
+		}
+		effect = {
+			character_event = { id = building_aglarond.0 }
+			wealth = -200
+		}
+	}
+}

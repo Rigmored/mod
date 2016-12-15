@@ -34,6 +34,7 @@ character_event = {
 		trait = dwarven
 		age = 240
 		NOT = { has_character_flag = death_dwarves }
+		NOT = { trait = immortal }
 	}
 	
 	mean_time_to_happen = {
@@ -101,7 +102,19 @@ character_event = {
 		modifier = {
 			factor = 2.0
 				trait = imposing
-		}		
+		}
+		modifier = {
+			factor = 4.0 # Adds 80 years each increment of 10 = 200 years
+				trait = heir_of_durin
+		}
+		modifier = {
+			factor = 40.0 # Adds 1200 years each increment of 10 = 200 years
+				trait = durin_reincarnation
+		}
+		modifier = {
+			factor = 900.0 # Adds 18k years each increment of 1 = 20 years
+				trait = immortal
+		}
 		
 		#### Titles Modifier ####
 		modifier = {
