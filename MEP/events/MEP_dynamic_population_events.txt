@@ -115,6 +115,17 @@ province_event = { #Population gain
 					}
 				}
 				modifier = {
+					factor = 0.3 #these races have less of a chance of increasing their population.
+					
+					culture_group = culture_group_numenorean
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_dwarves
+				}
+						
+				modifier = {
 					factor = 1.2 #having trade posts increases the chance
 					has_trade_post = yes
 				}
@@ -216,12 +227,13 @@ province_event = { #Population gain
 						has_disease = yes
 					}
 				}
-			}
 
-###What follows is the dynamic increase of population for the various races.
+### What follows is the dynamic increase of population for the various races. ###
+### The following are still in the "Random block," if the random returns "true," the following are executed. ###
 ### INCREASE FROM 1 POPULATION to 2 POPULATION ###
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -280,6 +292,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -329,6 +342,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -383,6 +397,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -433,6 +448,7 @@ province_event = { #Population gain
 ##### INCREASE FROM 2 POPULATION to 3 POPULATION #####
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -491,6 +507,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					# #check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -540,6 +557,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -594,6 +612,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -644,6 +663,7 @@ province_event = { #Population gain
 ##### INCREASE FROM 3 POPULATION to 4 POPULATION #####
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -702,6 +722,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -751,6 +772,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -805,6 +827,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -855,6 +878,7 @@ province_event = { #Population gain
 ##### INCREASE FROM 4 POPULATION to 5 POPULATION #####
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -913,6 +937,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -962,6 +987,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1016,6 +1042,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1066,6 +1093,7 @@ province_event = { #Population gain
 ##### INCREASE FROM 5 POPULATION to 6 POPULATION #####
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1124,6 +1152,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1173,6 +1202,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1227,6 +1257,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1277,6 +1308,7 @@ province_event = { #Population gain
 ##### INCREASE FROM 6 POPULATION to 7 POPULATION #####
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1335,6 +1367,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1384,6 +1417,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1438,6 +1472,7 @@ province_event = { #Population gain
 			}
 			IF = {
 				limit = {
+					#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
 					OR = { #allows event if province has one of these modifiers
 						has_province_modifier = prosperity_modifier_1
 						has_province_modifier = prosperity_modifier_2
@@ -1485,6 +1520,7 @@ province_event = { #Population gain
 				owner = { character_event = { id = dynamic_pop.120 } }
 				break = yes
 			}
+		}
 	}
 }
 
@@ -2190,7 +2226,6 @@ province_event = {
 						has_province_modifier = increasing_population
 					}
 				}
-			}
 
 ###What follows is the dynamic increase of population for the various races.
 ### DECREASE FROM 2 POPULATION to 1 POPULATION ###
@@ -3460,9 +3495,9 @@ province_event = {
 				owner = { character_event = { id = dynamic_pop.121 } }
 				break = yes
 			}
+		}
 	}
 }
-
 character_event = { #population increase notification
 	id = dynamic_pop.120
 	title = "EVTTITdynamic_pop.120"
