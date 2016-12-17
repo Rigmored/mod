@@ -17,19 +17,16 @@ province_event = {
 			}
 			NOT = { culture = ROOT }
 			NOT = { culture = culture_maiar } #Keeps sauron from turning his lands to maiar culture.
-			IF = {
-				AI = no #Should only effect players
-				NOT = {
-					OR = { #Keeps the following cultures from having culture changing events.
-						culture_group = culture_group_numenorean
-						culture_group = culture_group_quendi
-						culture_group = culture_group_amanyar
-						culture_group = culture_group_umanyar
-						culture_group = culture_group_moriquendi
-						culture_group = culture_group_dwarves
-					}
-				}
-			}
+			# NOT = {
+				# OR = { #Keeps the following cultures from having culture changing events.
+					# culture_group = culture_group_numenorean
+					# culture_group = culture_group_quendi
+					# culture_group = culture_group_amanyar
+					# culture_group = culture_group_umanyar
+					# culture_group = culture_group_moriquendi
+					# culture_group = culture_group_dwarves
+				# }
+			# }
 		}
 		any_neighbor_province = {
 			has_owner = yes
@@ -50,7 +47,32 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 1200
-
+		
+		modifier = {
+			factor = 2.0
+			owner = {
+				OR = { #Makes the following cultures take longer to have culture changing events.
+					culture_group = culture_group_numenorean
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_dwarves
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			owner = {
+				OR = { #Makes the following cultures take longer to have culture changing events.
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_dwarves
+				}
+			}
+		}
 		modifier = {
 			factor = 1.5
 			owner = { NOT = { stewardship = 2 } }
@@ -151,19 +173,16 @@ province_event = {
 				province_id = ROOT
 			}
 			NOT = { culture = culture_maiar } #Keeps sauron from turning his lands to maiar culture.
-			IF = {
-				AI = no #Should only effect players
-				NOT = {
-					OR = { #Keeps the following cultures from having culture changing events.
-						culture_group = culture_group_numenorean
-						culture_group = culture_group_quendi
-						culture_group = culture_group_amanyar
-						culture_group = culture_group_umanyar
-						culture_group = culture_group_moriquendi
-						culture_group = culture_group_dwarves
-					}
-				}
-			}
+			# NOT = {
+				# OR = { #Keeps the following cultures from having culture changing events.
+					# culture_group = culture_group_numenorean
+					# culture_group = culture_group_quendi
+					# culture_group = culture_group_amanyar
+					# culture_group = culture_group_umanyar
+					# culture_group = culture_group_moriquendi
+					# culture_group = culture_group_dwarves
+				# }
+			# }
 			
 			OR = {
 				primary_title = {
@@ -224,6 +243,31 @@ province_event = {
 	mean_time_to_happen = {
 		months = 1200
 		
+		modifier = {
+			factor = 2.0
+			owner = {
+				OR = { #Makes the following cultures take longer to have culture changing events.
+					culture_group = culture_group_numenorean
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_dwarves
+				}
+			}
+		}
+		modifier = { #Adds additional time for dwarves and elves.
+			factor = 1.5
+			owner = {
+				OR = { #Makes the following cultures take longer to have culture changing events.
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_dwarves
+				}
+			}
+		}
 		modifier = {
 			factor = 1.5
 			owner = { NOT = { stewardship = 2 } }
