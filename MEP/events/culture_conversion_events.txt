@@ -48,6 +48,14 @@ province_event = {
 	mean_time_to_happen = {
 		months = 1200
 		
+		modifier = { # Added this a catch to make sure sauron isn't flipping cultures.
+			factor = 900
+			owner = {
+				OR = { 
+					culture = culture_maiar
+				}
+			}
+		}
 		modifier = {
 			factor = 2.0
 			owner = {
@@ -243,6 +251,14 @@ province_event = {
 	mean_time_to_happen = {
 		months = 1200
 		
+		modifier = { # Added this a catch to make sure sauron isn't flipping cultures.
+			factor = 900
+			owner = {
+				OR = {
+					culture = culture_maiar
+				}
+			}
+		}
 		modifier = {
 			factor = 2.0
 			owner = {
