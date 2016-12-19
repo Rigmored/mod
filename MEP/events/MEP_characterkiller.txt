@@ -410,9 +410,14 @@ character_event = {
 	mean_time_to_happen = { 30 days }
 	
 	trigger = {
-		culture_group = culture_group_melkor
-		liege = { 
-			NOT = { culture_group = culture_group_melkor } 
+		OR = {
+			culture_group = culture_group_wilderness
+			culture_group = culture_group_melkor
+		}
+		liege = {
+			NOT = { culture_group = culture_group_wilderness }
+			NOT = { culture_group = culture_group_melkor }
+			NOT = { culture = culture_umaiar }
 			NOT = { culture = culture_maiar }
 			NOT = { culture = culture_istari }
 		}
