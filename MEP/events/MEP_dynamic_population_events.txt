@@ -39,6 +39,7 @@ character_event = {
 						culture_group = culture_group_umanyar
 						culture_group = culture_group_moriquendi
 						culture_group = culture_group_dwarves
+						culture = culture_umaiar
 					}
 				}
 				owner = { character = ROOT }
@@ -112,24 +113,49 @@ province_event = { #Population gain
 				modifier = {
 					factor = 1.5 #over 18 stewardship you have a 15% chance
 					owner = {
+						stewardship = 18
+					}
+				}
+				modifier = {
+					factor = 1.5 #over 25 stewardship you have a 20% chance
+					owner = {
 						stewardship = 25
 					}
 				}
 				modifier = {
-					factor = 1.5 #over 22 stewardship you increase to a 20% chance
+					factor = 1.5 #over 30 stewardship you increase to a 25% chance
 					owner = {
 						stewardship = 30
 					}
 				}
 				modifier = {
+					factor = 2.0
+					owner = {
+						OR = {
+							culture_group = culture_group_edain
+							culture_group = culture_group_middlemen
+							culture_group = culture_group_forodwaith
+							culture_group = culture_group_haldadian
+							culture_group = culture_group_southron
+							culture_group = culture_group_easterling
+							culture_group = culture_group_halfling
+							culture_group = culture_group_melkor
+							culture = culture_umaiar
+						}
+					}
+				}
+				modifier = {
 					factor = 0.3 #these races have less of a chance of increasing their population.
-					
-					culture_group = culture_group_numenorean
-					culture_group = culture_group_quendi
-					culture_group = culture_group_amanyar
-					culture_group = culture_group_umanyar
-					culture_group = culture_group_moriquendi
-					culture_group = culture_group_dwarves
+					owner = {
+						OR = {
+							culture_group = culture_group_numenorean
+							culture_group = culture_group_quendi
+							culture_group = culture_group_amanyar
+							culture_group = culture_group_umanyar
+							culture_group = culture_group_moriquendi
+							culture_group = culture_group_dwarves
+						}
+					}
 				}
 						
 				modifier = {
@@ -289,6 +315,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -504,6 +531,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -719,6 +747,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -934,6 +963,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -1149,6 +1179,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -1364,6 +1395,7 @@ province_event = { #Population gain
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -2046,6 +2078,7 @@ character_event = {
 						culture_group = culture_group_umanyar
 						culture_group = culture_group_moriquendi
 						culture_group = culture_group_dwarves
+						culture = culture_umaiar
 					}
 				}
 				owner = { character = ROOT }
@@ -2291,6 +2324,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 						
@@ -2503,6 +2537,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -2714,6 +2749,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -2925,6 +2961,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -3136,6 +3173,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
@@ -3347,6 +3385,7 @@ province_event = {
 								culture_group = culture_group_easterling
 								culture_group = culture_group_halfling
 								culture_group = culture_group_melkor
+								culture = culture_umaiar
 							}
 						}
 					}
