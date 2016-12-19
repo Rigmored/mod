@@ -16,7 +16,7 @@ province_event = {
 				culture = PREV
 			}
 			NOT = { culture = ROOT }
-			NOT = { culture = culture_maiar } #Keeps sauron from turning his lands to maiar culture.
+			NOT = { culture_group = culture_group_eru } #Keeps sauron from turning his lands to maiar culture.
 			# NOT = {
 				# OR = { #Keeps the following cultures from having culture changing events.
 					# culture_group = culture_group_numenorean
@@ -50,11 +50,7 @@ province_event = {
 		
 		modifier = { # Added this a catch to make sure sauron isn't flipping cultures.
 			factor = 900
-			owner = {
-				OR = { 
-					culture = culture_maiar
-				}
-			}
+			owner = { culture_group = culture_group_eru }
 		}
 		modifier = {
 			factor = 2.0
@@ -180,7 +176,7 @@ province_event = {
 			capital_scope = {
 				province_id = ROOT
 			}
-			NOT = { culture = culture_maiar } #Keeps sauron from turning his lands to maiar culture.
+			NOT = { culture_group = culture_group_eru } #Keeps sauron from turning his lands to maiar culture.
 			# NOT = {
 				# OR = { #Keeps the following cultures from having culture changing events.
 					# culture_group = culture_group_numenorean
@@ -245,7 +241,6 @@ province_event = {
 				}
 			}
 		}
-		
 	}
 	
 	mean_time_to_happen = {
@@ -253,11 +248,7 @@ province_event = {
 		
 		modifier = { # Added this a catch to make sure sauron isn't flipping cultures.
 			factor = 900
-			owner = {
-				OR = {
-					culture = culture_maiar
-				}
-			}
+			owner = { culture_group = culture_group_eru }
 		}
 		modifier = {
 			factor = 2.0
