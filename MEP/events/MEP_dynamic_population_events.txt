@@ -1561,7 +1561,7 @@ province_event = { #Population gain
 				}
 			}
 			95 = { #95% base chance to remain at current level
-				owner = { character_event = { id = dynamic_pop.122 } }
+				#owner = { character_event = { id = dynamic_pop.122 } } #This sends an event notifying the player when this option is picked, used for debugging the code but feel free to uncomment it if you want.
 				break = yes
 			}
 		}
@@ -3548,7 +3548,7 @@ province_event = {
 				}
 			}
 			80 = { #80% base chance to remain at current level
-				owner = { character_event = { id = dynamic_pop.122 } } #DEBUGGING EVENT, COMMENT OUT BEFORE RELEASE!
+				#owner = { character_event = { id = dynamic_pop.122 } } #This sends an event notifying the player when this option is picked, used for debugging the code but feel free to uncomment it if you want.
 				break = yes
 			}
 		}
@@ -3586,17 +3586,17 @@ character_event = { #population increase notification
 }
 
 ### DEBUGGING EVENT, COMMENT OUT BEFORE RELEASE! ###
-character_event = { #population increase notification
-	id = dynamic_pop.122
-	title = "EVTTITdynamic_pop.122"
-	desc = "EVTDESCdynamic_pop.122.d"
-	picture = "GFX_evt_colonisation"
-	border = GFX_event_normal_frame_economy
+# character_event = { #population increase notification
+	# id = dynamic_pop.122
+	# title = "EVTTITdynamic_pop.122"
+	# desc = "EVTDESCdynamic_pop.122.d"
+	# picture = "GFX_evt_colonisation"
+	# border = GFX_event_normal_frame_economy
 	
-	is_triggered_only = yes	
+	# is_triggered_only = yes	
 	
-	option = {
-		name = "EVTOPTAdynamic_pop.122.a"
-		#break = yes
-	}
-}
+	# option = {
+		# name = "EVTOPTAdynamic_pop.122.a"
+		# #break = yes
+	# }
+# }
