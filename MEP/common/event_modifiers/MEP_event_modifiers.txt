@@ -231,81 +231,81 @@ subjugate_realm = { icon = 1 }
 #######################################################
 ##OLD Population Modifiers for Dunedain, Elves, Dwarves
 #######################################################
-increasing_population = {
-	icon = 7
-}
+# increasing_population = {
+	# icon = 7
+# }
 
-lightly_populated_by_dunedain = {
-	castle_levy_size = -0.66
-	city_levy_size = -0.66
-	temple_levy_size = -0.66
-	city_tax_modifier = -0.5
-	castle_tax_modifier = -0.5
-	temple_tax_modifier = -0.5
-	icon = 7
-}
+# lightly_populated_by_dunedain = {
+	# castle_levy_size = -0.66
+	# city_levy_size = -0.66
+	# temple_levy_size = -0.66
+	# city_tax_modifier = -0.5
+	# castle_tax_modifier = -0.5
+	# temple_tax_modifier = -0.5
+	# icon = 7
+# }
 
-populated_by_dunedain = {
-	icon = 7
-}
+# populated_by_dunedain = {
+	# icon = 7
+# }
 
-densely_populated_by_dunedain = {
-	castle_levy_size = 0.66
-	city_levy_size = 0.66
-	temple_levy_size = 0.66
-	city_tax_modifier = 0.5
-	castle_tax_modifier = 0.5
-	temple_tax_modifier = 0.5
-	icon = 7
-}
+# densely_populated_by_dunedain = {
+	# castle_levy_size = 0.66
+	# city_levy_size = 0.66
+	# temple_levy_size = 0.66
+	# city_tax_modifier = 0.5
+	# castle_tax_modifier = 0.5
+	# temple_tax_modifier = 0.5
+	# icon = 7
+# }
 
-lightly_populated_by_elves = {
-	castle_levy_size = -0.66
-	city_levy_size = -0.66
-	temple_levy_size = -0.66
-	city_tax_modifier = -0.5
-	castle_tax_modifier = -0.5
-	temple_tax_modifier = -0.5
-	icon = 7
-}
+# lightly_populated_by_elves = {
+	# castle_levy_size = -0.66
+	# city_levy_size = -0.66
+	# temple_levy_size = -0.66
+	# city_tax_modifier = -0.5
+	# castle_tax_modifier = -0.5
+	# temple_tax_modifier = -0.5
+	# icon = 7
+# }
 
-populated_by_elves = {
-	icon = 7
-}
+# populated_by_elves = {
+	# icon = 7
+# }
 
-densely_populated_by_elves = {
-	castle_levy_size = 0.66
-	city_levy_size = 0.66
-	temple_levy_size = 0.66
-	city_tax_modifier = 0.5
-	castle_tax_modifier = 0.5
-	temple_tax_modifier = 0.5
-	icon = 7
-}
+# densely_populated_by_elves = {
+	# castle_levy_size = 0.66
+	# city_levy_size = 0.66
+	# temple_levy_size = 0.66
+	# city_tax_modifier = 0.5
+	# castle_tax_modifier = 0.5
+	# temple_tax_modifier = 0.5
+	# icon = 7
+# }
 
-lightly_populated_by_dwarves = {
-	castle_levy_size = -0.66
-	city_levy_size = -0.66
-	temple_levy_size = -0.66
-	city_tax_modifier = -0.5
-	castle_tax_modifier = -0.5
-	temple_tax_modifier = -0.5
-	icon = 7
-}
+# lightly_populated_by_dwarves = {
+	# castle_levy_size = -0.66
+	# city_levy_size = -0.66
+	# temple_levy_size = -0.66
+	# city_tax_modifier = -0.5
+	# castle_tax_modifier = -0.5
+	# temple_tax_modifier = -0.5
+	# icon = 7
+# }
 
-populated_by_dwarves = {
-	icon = 7
-}
+# populated_by_dwarves = {
+	# icon = 7
+# }
 
-densely_populated_by_dwarves = {
-	castle_levy_size = 0.66
-	city_levy_size = 0.66
-	temple_levy_size = 0.66
-	city_tax_modifier = 0.5
-	castle_tax_modifier = 0.5
-	temple_tax_modifier = 0.5
-	icon = 7
-}
+# densely_populated_by_dwarves = {
+	# castle_levy_size = 0.66
+	# city_levy_size = 0.66
+	# temple_levy_size = 0.66
+	# city_tax_modifier = 0.5
+	# castle_tax_modifier = 0.5
+	# temple_tax_modifier = 0.5
+	# icon = 7
+# }
 
 sending_colonists = {
 	levy_size = -0.5
@@ -616,4 +616,77 @@ successfully_fought_dragon = {
 
 news_of_wealth = {
 	icon = 7
+}
+
+###Prosperity and Depopulation modifiers, moved from 00_event_modifiers.txt###
+###They are here now because they are adjusted for dynamic population.     ###
+
+prosperity_modifier_1 = {
+	local_tax_modifier = 0.05
+	levy_reinforce_rate = 0.05
+	local_revolt_risk = -0.01
+	disease_defence = -0.1
+	
+	major = yes
+	icon = 4
+}
+prosperity_modifier_2 = {
+	local_tax_modifier = 0.1
+	levy_reinforce_rate = 0.1
+	local_revolt_risk = -0.015
+	supply_limit = 1
+	local_build_cost_modifier = -0.025
+	local_build_time_modifier = -0.025
+	disease_defence = -0.15
+	
+	major = yes
+	icon = 5
+}
+prosperity_modifier_3 = {
+	local_tax_modifier = 0.15
+	levy_reinforce_rate = 0.15
+	local_revolt_risk = -0.02
+	supply_limit = 2
+	local_build_cost_modifier = -0.05
+	local_build_time_modifier = -0.05
+	disease_defence = -0.25
+	
+	major = yes
+	icon = 6
+}
+depopulated_1 = {
+	city_tax_modifier = -0.20
+	castle_tax_modifier = -0.20
+	temple_tax_modifier = -0.20
+	tribal_tax_modifier = -0.20
+	levy_size = -0.2
+	garrison_size = -0.2
+	supply_limit = -2
+	icon = 1
+	major = yes
+	disease_defence = 0.05
+}
+depopulated_2 = {
+	city_tax_modifier = -0.40
+	castle_tax_modifier = -0.40
+	temple_tax_modifier = -0.40
+	tribal_tax_modifier = -0.40
+	levy_size = -0.4
+	garrison_size = -0.4
+	supply_limit = -4
+	icon = 2
+	major = yes
+	disease_defence = 0.1
+}
+depopulated_3 = {
+	city_tax_modifier = -0.60
+	castle_tax_modifier = -0.60
+	temple_tax_modifier = -0.60
+	tribal_tax_modifier = -0.60
+	levy_size = -0.6
+	garrison_size = -0.6
+	supply_limit = -6
+	icon = 3
+	major = yes
+	disease_defence = 0.15
 }

@@ -226,7 +226,7 @@ action_colonize_province = {
 	attribute = stewardship
 
 	trigger = {
-		OR = {		
+		OR = {	
 			owner = { top_liege = { character = FROM } }
 			owner = { liege = { liege = { character = FROM } } }
 			owner = { liege = { character = FROM } }
@@ -240,9 +240,42 @@ action_colonize_province = {
 				owner = { top_liege = { has_character_flag = colonizationwilderness} }
 			}
 		}
-		OR = {	
+		OR = {
 			religion = religion_wilderness
 			culture = culture_wilderness
+		}
+		#Only allows hills, mountain, and arctic terrain to be colonized by dwarves
+		IF = {
+			owner = {
+				culture_group = culture_group_dwarves
+			}
+			NOR = {
+				terrain = farmlands
+				terrain = plains
+				terrain = steppe
+				terrain = forest
+				terrain = jungle
+				terrain = desert
+			}
+		}
+		# Restricts the listed culture groups from colonizing mountains and arctic regions.
+		IF = {
+			owner = {
+				OR = {
+					culture_group = culture_group_haldadian
+					culture_group = culture_group_southron
+					culture_group = culture_group_easterling
+					culture_group = culture_group_halfling
+					culture_group = culture_group_quendi
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_moriquendi
+				}
+			}
+			NOR = {
+				terrain = mountain
+				terrain = arctic
+			}
 		}
 	}
 	
