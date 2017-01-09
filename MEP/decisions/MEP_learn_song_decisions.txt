@@ -1,0 +1,35 @@
+decisions = {
+	## Learn song/poetic abilities ##
+	learn_song_abilities = {
+		is_high_prio = yes
+		potential = {
+			or = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+				culture_group = culture_group_numenorean
+				culture_group = culture_group_middlemen
+				culture_group = culture_group_halfling
+				culture_group = culture_group_dwarves
+			}
+			ai = no
+			age = 16
+			NOT = { has_character_flag = learn_song }
+			NOT = { trait = incapable }
+			NOT = { trait = legendary_musician }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 200
+			piety = 200
+			wealth = 250
+		}
+		effect = {
+			set_character_flag = learn_song
+			narrative_event = { id = learnsong.1 }
+			prestige = -200
+			piety = -200
+		}
+	}
+}

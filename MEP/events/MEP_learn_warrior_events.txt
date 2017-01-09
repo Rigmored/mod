@@ -22,11 +22,11 @@ narrative_event = {
 				trait = dwarven
 			}
 		}
-		character_event = { id = learnwarrior.2 days = 30 }
+		character_event = { id = learnwarrior.2 days = 365 }
 		wealth = -250
 	}
 	
-		option = {
+	option = {
 		name = "EVTOPTBlearnwarrior.1" # I'll learn how to become a true dwarf warrior!
 		trigger = {
 			NOT = {
@@ -38,7 +38,7 @@ narrative_event = {
 				trait = dragon_slayer
 			}
 		}
-		character_event = { id = learnwarrior.4 days = 30 }
+		character_event = { id = learnwarrior.4 days = 365 }
 		wealth = -250
 	}
 	
@@ -48,7 +48,7 @@ narrative_event = {
 	}
 }
 
-### Actual event to learn how to craft ###
+### Actual event to learn how to fight ###
 character_event = {
 	id = learnwarrior.2
 	title = "EVTTITlearnwarrior.2"
@@ -86,6 +86,7 @@ character_event = {
 				add_trait = legendary_warrior
 				remove_trait = great_elf
 			}
+			character_event = { id = learnwarrior.3 days = 90 } ## I can try again!
 		}
 		if = {
 			limit = {
@@ -121,7 +122,6 @@ character_event = {
 			}
 			character_event = { id = learnwarrior.3 days = 60 } ## I can try again!
 		}
-		character_event = { id = learnwarrior.3 days = 90 } ## I can try again!
 		if = {
 			limit = {
 				age = 1
@@ -247,5 +247,6 @@ character_event = {
 		}
 	}
 }
+
 
 

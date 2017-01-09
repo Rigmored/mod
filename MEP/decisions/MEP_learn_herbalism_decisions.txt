@@ -1,0 +1,32 @@
+decisions = {
+	## Learn herbal abilities ##
+	learn_herbal_abilities = {
+		is_high_prio = yes
+		potential = {
+			or = {
+				culture_group = culture_group_quendi
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_moriquendi
+				culture_group = culture_group_numenorean
+			}
+			ai = no
+			age = 16
+			NOT = { has_character_flag = learn_herbal }
+			NOT = { trait = incapable }
+			NOT = { trait = healer_master }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 200
+			piety = 200
+			wealth = 250
+		}
+		effect = {
+			set_character_flag = learn_herbal
+			narrative_event = { id = learnherbal.1 }
+			prestige = -200
+			piety = -200
+		}
+	}
+}
