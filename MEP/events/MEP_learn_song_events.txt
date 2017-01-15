@@ -1,0 +1,138 @@
+namespace = learnsong
+
+#
+#
+#
+
+### Learn and improve singing skills  ###
+character_event = {
+	id = learnsong.1
+	title = "EVTTITlearnsong.1" # I should learn to sing. 
+	desc = "EVTDESClearnsong.1" # I want to learn how to sing,
+	picture = GFX_evt_elven_story
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlearnsong.1" # I'll learn how to sing!
+		trigger = {
+			NOT = {
+				trait = legendary_musician
+			}
+		}
+		character_event = { id = learnsong.2 days = 365 }
+		wealth = -250
+	}
+	
+	option = {
+		name = "EVTOPTBlearnsong.1" # I can't pay that!
+		clr_character_flag = learn_song
+	}
+}
+
+### Actual event to learn how to sing ###
+character_event = {
+	id = learnsong.2
+	title = "EVTTITlearnsong.2"
+	desc = "EVTDESClearnsong.2"
+	picture = GFX_evt_elven_story
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnsong.2" ## Chance to learn
+		if = {
+			limit = {
+				trait = legendary_musician
+				age = 1
+				not = {
+					trait = skilled_composer
+					trait = composer
+					trait = poet_2
+				}
+			}
+			clr_character_flag = learn_song ## I am the best already!
+		}
+		if = {
+			limit = {
+				trait = skilled_composer
+				age = 1
+				not = {
+					trait = legendary_musician
+					trait = composer
+					trait = poet_2
+				}
+			}
+			random = {
+				chance = 25
+				add_trait = legendary_musician
+				remove_trait = skilled_composer
+			}
+			character_event = { id = learnsong.3 days = 90 } ## Lets try to improve!
+		}
+		if = {
+			limit = {
+				trait = composer
+				age = 1
+				not = {
+					trait = legendary_musician
+					trait = skilled_composer
+					trait = poet_2
+				}
+			}
+			random = {
+				chance = 55
+				add_trait = skilled_composer
+				remove_trait = composer
+			}
+			character_event = { id = learnsong.3 days = 70 } ##
+		}
+		if = {
+			limit = {
+				trait = poet_2
+				age = 1
+				not = {
+					trait = legendary_musician
+					trait = skilled_composer
+					trait = composer
+				}
+			}
+			random = {
+				chance = 40
+				add_trait = composer
+				remove_trait = poet_2
+			}
+			character_event = { id = learnsong.3 days = 60 } ##
+		}
+		if = {
+			limit = {
+				age = 1
+				not = {
+					trait = legendary_musician
+					trait = skilled_composer
+					trait = composer
+					trait = poet_2
+				}
+			}
+			random = {
+				chance = 35
+				add_trait = poet_2
+			}
+			character_event = { id = learnsong.3 days = 50 } ## I can try again!
+		}
+	}
+}
+
+character_event = {
+	id = learnsong.3
+	title = "EVTTITlearnsong.3"
+	desc = "EVTDESClearnsong.3"
+	picture = GFX_evt_elven_story
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnsong.3" ##
+		clr_character_flag = learn_song
+	}
+}
