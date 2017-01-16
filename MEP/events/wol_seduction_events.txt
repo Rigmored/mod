@@ -537,20 +537,6 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					religion_group = christian
-					OR = {
-						is_priest = yes
-						trait = monk
-						trait = nun
-					}
-				}
-			}
-			set_character_flag = scandal_temp_priest
-			break = yes
-		}
-		if = {
-			limit = {
-				FROM = {
 					age_diff = {
 						who = event_target:target_lover_1
 						years = 25
@@ -603,10 +589,6 @@ character_event = {
 		trigger = { has_character_flag = scandal_temp_f_homo }
 	}
 	desc = {
-		text = EVTDESC_WOL_55_PRIEST
-		trigger = { has_character_flag = scandal_temp_priest }
-	}
-	desc = {
 		text = EVTDESC_WOL_55_AGE_YOUNG
 		trigger = {
 			has_character_flag = scandal_temp_age 
@@ -646,7 +628,6 @@ character_event = {
 					has_character_flag = scandal_temp_incest
 					has_character_flag = scandal_temp_m_homo
 					has_character_flag = scandal_temp_f_homo
-					has_character_flag = scandal_temp_priest
 				}
 			}
 		}
@@ -682,7 +663,6 @@ character_event = {
 				has_character_flag = scandal_temp_incest
 				has_character_flag = scandal_temp_m_homo
 				has_character_flag = scandal_temp_f_homo
-				has_character_flag = scandal_temp_priest
 			}
 		}
 		ai_chance = {
@@ -707,7 +687,6 @@ character_event = {
 		clr_character_flag = scandal_temp_incest
 		clr_character_flag = scandal_temp_m_homo
 		clr_character_flag = scandal_temp_f_homo
-		clr_character_flag = scandal_temp_priest
 	}
 	
 	option = {
@@ -768,7 +747,6 @@ character_event = {
 		clr_character_flag = scandal_temp_incest
 		clr_character_flag = scandal_temp_m_homo
 		clr_character_flag = scandal_temp_f_homo
-		clr_character_flag = scandal_temp_priest
 		clr_character_flag = scandal_temp_age
 		clr_character_flag = scandal_temp_f_married
 		clr_character_flag = scandal_temp_ff_married
@@ -795,7 +773,6 @@ character_event = {
 				FROMFROM = { is_married = yes }
 				has_character_flag = scandal_temp_incest
 				has_character_flag = scandal_temp_m_homo
-				has_character_flag = scandal_temp_priest
 				has_character_flag = scandal_temp_f_married
 			}
 		}
@@ -900,7 +877,6 @@ letter_event = {
 		clr_character_flag = scandal_temp_incest
 		clr_character_flag = scandal_temp_m_homo
 		clr_character_flag = scandal_temp_f_homo
-		clr_character_flag = scandal_temp_priest
 		clr_character_flag = scandal_temp_age
 		clr_character_flag = scandal_temp_f_married
 		clr_character_flag = scandal_temp_ff_married
@@ -945,7 +921,6 @@ letter_event = {
 		clr_character_flag = scandal_temp_incest
 		clr_character_flag = scandal_temp_m_homo
 		clr_character_flag = scandal_temp_f_homo
-		clr_character_flag = scandal_temp_priest
 		clr_character_flag = scandal_temp_age
 		clr_character_flag = scandal_temp_f_married
 		clr_character_flag = scandal_temp_ff_married
@@ -961,7 +936,6 @@ letter_event = {
 		clr_character_flag = scandal_temp_incest
 		clr_character_flag = scandal_temp_m_homo
 		clr_character_flag = scandal_temp_f_homo
-		clr_character_flag = scandal_temp_priest
 		clr_character_flag = scandal_temp_age
 		clr_character_flag = scandal_temp_f_married
 		clr_character_flag = scandal_temp_ff_married
@@ -1046,62 +1020,6 @@ character_event = {
 					years = 5
 				}
 			}
-		}
-		
-		if = {
-			limit = {
-				religion_group = christian
-				OR = {
-					AND = {
-						is_ruler = yes
-						is_theocracy = yes
-					}
-					trait = monk
-					trait = nun
-				}
-			}
-			tooltip = {
-				add_character_modifier = {
-					name = adulterous_priest
-					years = 20
-				}
-			}
-			piety = -100
-		}
-		
-		if = {
-			limit = {
-				is_close_relative = FROMFROM
-				NOT = { religion = messalian }
-				NOT = { religion = zoroastrian }
-			}
-			if = {
-				limit = {
-					is_female = yes
-				}
-				tooltip = {
-					add_character_modifier = {
-						name = incestuous_adulteress
-						years = 20
-					}
-				}
-			}
-			if = {
-				limit = {
-					is_female = no
-				}
-				tooltip = {
-					add_character_modifier = {
-						name = incestuous_adulterer
-						years = 20
-					}
-				}
-			}
-			
-			piety = -100
-			prestige = -50
-			
-			break = yes
 		}
 		
 		if = {
@@ -1816,24 +1734,6 @@ character_event = {
 			NOT = { religion_group = muslim }
 			NOT = { religion_group = zoroastrian_group }
 			NOT = { religion_group = indian_group }
-		}
-		ai_chance = {
-			factor = 100
-		}
-		remove_character_modifier = wol_seducer_2
-		add_trait = seductress
-#		log = "WoL.99: [Root.GetTitledName] achieves the lifestyle Seductress!"
-	}
-	
-	option = {
-		name = EVTOPTA_WOL_99_PERS
-		trigger = {
-			is_female = yes
-			OR = {
-				religion_group = muslim
-				religion_group = zoroastrian_group
-				religion_group = indian_group
-			}
 		}
 		ai_chance = {
 			factor = 100
@@ -9667,7 +9567,6 @@ character_event = {
 	min_age = 16
 	max_age = 65
 	only_playable = yes
-	religion_group = christian
 	only_capable = yes
 	prisoner = no
 	
@@ -9676,7 +9575,6 @@ character_event = {
 		is_ill = no
 		has_regent = no
 		any_realm_character = {
-			is_priest = yes
 			religion = ROOT
 			ai = yes
 			prisoner = no
@@ -9761,7 +9659,6 @@ character_event = {
 	immediate = {
 		random_realm_character = {
 			limit = {
-				is_priest = yes
 				religion = ROOT
 				ai = yes
 				prisoner = no
