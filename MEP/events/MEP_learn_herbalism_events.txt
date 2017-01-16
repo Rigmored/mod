@@ -1,0 +1,138 @@
+namespace = learnherbal
+
+#
+#
+#
+
+### Learn and improve crafting skills  ###
+character_event = {
+	id = learnherbal.1
+	title = "EVTTITlearnherbal.1" # I should learn to craft. 
+	desc = "EVTDESClearnherbal.1" # I want to learn how to craft,
+	picture = GFX_evt_death2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlearnherbal.1" # I'll learn how to craft!
+		trigger = {
+			NOT = {
+				trait = healer_master
+			}
+		}
+		character_event = { id = learnherbal.2 days = 365 }
+		wealth = -250
+	}
+	
+	option = {
+		name = "EVTOPTBlearnherbal.1" # I can't pay that!
+		clr_character_flag = learn_herbal
+	}
+}
+
+### Actual event to learn how to craft ###
+character_event = {
+	id = learnherbal.2
+	title = "EVTTITlearnherbal.2"
+	desc = "EVTDESClearnherbal.2"
+	picture = GFX_evt_death2
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnherbal.2" ## Chance to learn
+		if = {
+			limit = {
+				trait = healer_master
+				age = 1
+				not = {
+					trait = great_healer
+					trait = apothecary
+					trait = herbalist
+				}
+			}
+			clr_character_flag = learn_herbal ## I am the best already!
+		}
+		if = {
+			limit = {
+				trait = great_healer
+				age = 1
+				not = {
+					trait = healer_master
+					trait = apothecary
+					trait = herbalist
+				}
+			}
+			random = {
+				chance = 30
+				add_trait = healer_master
+				remove_trait = great_healer
+			}
+			character_event = { id = learnherbal.3 days = 90 } ## Lets try to improve!
+		}
+		if = {
+			limit = {
+				trait = apothecary
+				age = 1
+				not = {
+					trait = healer_master
+					trait = great_healer
+					trait = herbalist
+				}
+			}
+			random = {
+				chance = 60
+				add_trait = great_healer
+				remove_trait = apothecary
+			}
+			character_event = { id = learnherbal.3 days = 70 } ##
+		}
+		if = {
+			limit = {
+				trait = herbalist
+				age = 1
+				not = {
+					trait = healer_master
+					trait = great_healer
+					trait = apothecary
+				}
+			}
+			random = {
+				chance = 40
+				add_trait = apothecary
+				remove_trait = herbalist
+			}
+			character_event = { id = learnherbal.3 days = 60 } ##
+		}
+		if = {
+			limit = {
+				age = 1
+				not = {
+					trait = healer_master
+					trait = great_healer
+					trait = apothecary
+					trait = herbalist
+				}
+			}
+			random = {
+				chance = 40
+				add_trait = herbalist
+			}
+			character_event = { id = learnherbal.3 days = 50 } ## I can try again!
+		}
+	}
+}
+
+character_event = {
+	id = learnherbal.3
+	title = "EVTTITlearnherbal.3"
+	desc = "EVTDESClearnherbal.3"
+	picture = GFX_evt_death2
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAlearnherbal.3" ##
+		clr_character_flag = learn_herbal
+	}
+}
