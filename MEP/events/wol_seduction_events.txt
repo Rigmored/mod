@@ -146,6 +146,49 @@ character_event = {
 	}
 }
 
+# Seduce Decision event start - Priest scandal risk
+character_event = {
+	id = WoL.103
+	title = EVTTITLE_WOL_100
+	desc = EVTDESC_WOL_103
+	picture = GFX_evt_lovers
+	border = GFX_event_normal_frame_intrigue
+	
+	capable_only = yes
+	prisoner = no
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		FROM = {
+			save_event_target_as = target_seduced
+		}
+		save_event_target_as = target_seducer
+		set_character_flag = seduction_confirmed
+	}
+	
+	option = {
+		name = EVTOPTA_WOL_103
+		ai_chance = {
+			factor = 100
+		}
+		character_event = { id = WoL.110 days = 20 random = 20 tooltip = EVTTOOLTIP_WoL_110 }
+#		log = "WoL.103: [Root.GetTitledName] begins seduction of [From.GetTitledName]"
+	}
+	option = {
+		name = EVTOPTB_WOL_103
+		ai_chance = {
+			factor = 0
+		}
+		hidden_tooltip = {
+			remove_opinion = {
+				who = FROM
+				modifier = opinion_seducing
+			}
+		}
+	}
+}
+
 # Seduce Decision event start - Homo scandal risk
 character_event = {
 	id = WoL.104
@@ -9512,6 +9555,205 @@ character_event = {
 ######################################################
 # RANDOM SEDUCTION EVENTS
 ######################################################
+
+# Flirting at confession - attraction vs priest
+character_event = {
+	id = WoL.500
+	
+	desc = EVTDESC_WOL_500
+	picture = GFX_evt_monk
+	border = GFX_event_normal_frame_intrigue
+	
+	min_age = 16
+	max_age = 65
+	only_playable = yes
+	only_capable = yes
+	prisoner = no
+	
+	trigger = {
+		has_focus = focus_seduction
+		is_ill = no
+		has_regent = no
+		any_realm_character = {
+			religion = ROOT
+			ai = yes
+			prisoner = no
+			has_regent = no
+			is_ill = no
+			NOT = { age = 65 }
+			NOT = {
+				OR = {
+					trait = incapable
+					trait = infirm
+					trait = eunuch
+					trait = celibate
+					trait = inbred
+					trait = imbecile
+				}
+			}
+			NOT = { is_lover = ROOT }
+			NOT = { character = ROOT }
+			OR = {
+				AND = {
+					trait = homosexual
+					ROOT = { trait = homosexual }
+					same_sex = ROOT
+				}
+				AND = {
+					NOT = { trait = homosexual }
+					NOT = { ROOT = { trait = homosexual } }
+					NOT = { same_sex = ROOT }
+				}
+			}
+			NOT = {
+				has_opinion_modifier = {
+					who = ROOT
+					modifier = opinion_seduced_lustful_worship
+				}
+			}
+			NOT = { is_close_relative = ROOT }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.25
+			OR = {
+				trait = arbitrary
+				trait = lustful
+				trait = cynical
+				trait = hedonist
+				trait = seducer
+				trait = seductress
+			}
+		}
+		modifier = {
+			factor = 4.0
+			trait = chaste
+		}
+		modifier = {
+			factor = 4.0
+			trait = zealous
+		}
+		modifier = {
+			factor = 4.0
+			OR = {
+				trait = ugly
+				trait = dwarf
+				trait = inbred
+				trait = imbecile
+				trait = clubfooted
+				trait = harelip
+				trait = hunchback
+				trait = gluttonous
+				trait = eunuch
+			}
+		}
+		modifier = {
+			factor = 0.5
+			trait = just
+		}
+	}
+	
+	immediate = {
+		random_realm_character = {
+			limit = {
+				religion = ROOT
+				ai = yes
+				prisoner = no
+				has_regent = no
+				is_ill = no
+				NOT = { age = 65 }
+				NOT = {
+					OR = {
+						trait = incapable
+						trait = infirm
+						trait = eunuch
+						trait = celibate
+						trait = inbred
+						trait = imbecile
+					}
+				}
+				NOT = { is_lover = ROOT }
+				NOT = { character = ROOT }
+				OR = {
+					AND = {
+						trait = homosexual
+						ROOT = { trait = homosexual }
+						same_sex = ROOT
+					}
+					AND = {
+						NOT = { trait = homosexual }
+						NOT = { ROOT = { trait = homosexual } }
+						NOT = { same_sex = ROOT }
+					}
+				}
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = opinion_seduced_lustful_worship
+					}
+				}
+				NOT = { is_close_relative = ROOT }
+			}
+			save_event_target_as = target_priest
+		}
+	}
+	
+	option = {
+		name = EVTOPTA_WOL_500 # Go for it
+		ai_chance = {
+			factor = 100
+		}
+		
+		event_target:target_priest = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_seduced_lustful_worship
+			}
+		}
+		
+		hidden_tooltip = {
+			# Chance of impregnation
+			if = {
+				limit = { is_female = yes }
+				event_target:target_priest = { character_event = { id = WoL.97 } }
+				break = yes
+			}
+			event_target:target_priest = { character_event = { id = WoL.98 } }
+		}
+		
+#		log = "WoL.500: [Root.GetTitledName] tumbles priest - [target_priest.GetTitledName]"
+	}
+	
+	option = {
+		name = EVTOPTB_WOL_500 # No
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 30 # More dangerous for fertile married women
+				is_female = yes
+				NOT = { age = 45 }
+				OR = {
+					is_consort = yes
+					is_married = yes
+				}
+				NOT = {
+					OR = {
+						trait = homosexual
+						trait = arbitrary
+						trait = lustful
+						trait = hedonist
+					}
+				}
+			}
+		}
+		
+		piety = 10
+	}
+}
+
 
 # Female: Seduce handsome guard. Can appear at court (chance of Syphilitic, Cruel, Pregnancy).
 character_event = {
