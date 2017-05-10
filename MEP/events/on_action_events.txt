@@ -1,6 +1,7 @@
 ####################################
 # Reserved IDs: 0-999, 40000 - 44999
 ####################################
+# Middle-Earth Project mod version
 
 namespace = diploresponse
 
@@ -312,8 +313,7 @@ character_event = {
 			}
 			give_nickname = nick_the_unchaste
 		}
-		
-		
+
 		event_target:target_adulterer = {
 			ROOT = {
 				if = {
@@ -470,9 +470,8 @@ character_event = {
 							limit = { is_friend = PREVPREV }
 							remove_friend = PREVPREV
 						}
-					}
+					}					
 					
-					}
 				}
 			}
 			
@@ -491,6 +490,7 @@ character_event = {
 		clear_event_target = target_adulterer
 		clr_character_flag = adultery_discovered
 	}
+}
 
 
 # On-action event: Avoided imprison, declared independence
@@ -2638,12 +2638,10 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		NOR = { 
+		NOT = {
 			has_character_flag = recieved_royal_marriage_aid_duty
 		}
-		OR = {
-			NOT = { new_character = { is_close_relative = FROM } }
-		}
+		NOT = { new_character = { is_close_relative = FROM } }
 		OR = {
 			FROM = { character = ROOT }
 			AND = {
@@ -2720,6 +2718,7 @@ character_event = {
 		}
 	}
 }
+
 
 # Approve or disapprove of de facto Law Change
 letter_event = {
@@ -3354,8 +3353,6 @@ character_event = {
 	}
 }
 
-
-
 ####################################################
 # Elective Gavelkind Succession:
 # Vassal Junior Heir Can Choose Independence
@@ -3887,8 +3884,8 @@ character_event = {
 ## Inheritance of Traits ##
 character_event = {
 	id = 45340
-	desc = "EVTDESC45340"
-	picture = "GFX_evt_death"
+	# desc = "EVTDESC45340"
+	# picture = "GFX_evt_death"
 	
 	is_triggered_only = yes 
 
@@ -8833,11 +8830,9 @@ character_event = {
 		}		
 		## Aragorn death ##
 		if = {
-			limit = { 
-				AND = {
-					has_character_flag = aragorn 
-					has_global_flag = saurondefeated
-				}
+			limit = {
+				has_character_flag = aragorn 
+				has_global_flag = saurondefeated
 			}
 			if = { 
 				limit = { 
@@ -8846,9 +8841,9 @@ character_event = {
 				spouse = { character_event = { id = valinor.12 days = 60 } } ## Arwen loose her elf trait and will die soon after
 				add_trait = dead_target
 			}
-			any_playable_ruler = { character_event = { id = valinor.13 } }	## Every rulers are informed of the death of Aragorn				
-			if = { 
-				any_playable_ruler = {  
+			any_playable_ruler = { character_event = { id = valinor.13 } }	## Every rulers are informed of the death of Aragorn
+			any_playable_ruler = {
+				if = {
 					limit = { has_character_flag = legolas }
 					character_event = { id = valinor.5 }  ## Legolas will begin his journey to Valinor
 					add_trait = dead_target
@@ -8859,5 +8854,60 @@ character_event = {
 	}	
 	option = {
 		name = "EVTOPTA45340"
+	}
+}
+
+# Coppied from Vanilla (JamesFox, 2017/04/21)
+# ASK_TO_JOIN_AMBITION_INTERACTION_ACCEPT_EVENT =
+diploresponse_event = {
+	id = 535
+
+	is_triggered_only = yes
+	major = no
+	is_friendly = yes
+
+	trigger = {
+		ai = no
+	}
+
+	desc = "EVTDESC535"
+
+	option = {
+		name = "OK"
+	}
+}
+
+# ASK_TO_JOIN_AMBITION_INTERACTION_DECLINE_EVENT =
+diploresponse_event = {
+	id = 536
+
+	is_triggered_only = yes
+	major = no
+
+	trigger = {
+		ai = no
+	}
+
+	desc = "EVTDESC536"
+
+	option = {
+		name = "OK"
+	}
+}
+
+# OFFER_CONSORT_INTERACTION_ACCEPT_EVENT =
+diploresponse_event = {
+	id = 537
+	desc = EVTDESC537
+
+	major = no
+	is_triggered_only = yes
+
+	trigger = {
+		ai = no
+	}
+
+	option = {
+		name = "OK"
 	}
 }

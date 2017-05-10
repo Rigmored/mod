@@ -2,31 +2,15 @@ decisions = {
 	## ##
 	increase_pop_other = {
 		potential = {
-			OR = {
-				culture_group = culture_group_edain
-				culture_group = culture_group_middlemen
-				culture_group = culture_group_forodwaith
-				culture_group = culture_group_haldadian
-				culture_group = culture_group_southron
-				culture_group = culture_group_easterling
-				culture_group = culture_group_halfling
-				culture_group = culture_group_melkor
-			}
+			mep_has_xhumans_culture = yes
 			any_realm_province = {
-				OR = {
-					has_province_modifier = one_population_human
-					has_province_modifier = two_population_human
-					has_province_modifier = three_population_human
-					has_province_modifier = four_population_human
-					has_province_modifier = five_population_human
-					has_province_modifier = six_population_human
-				}
+				mep_xhumans_popmod_increasable_trigger = yes
 			}
 			has_character_flag = special_decisions_open
 		}
 		
 		allow = { 
-			prestige = 125
+			prestige = 150
 			wealth = 250
 		}
 		
@@ -40,21 +24,14 @@ decisions = {
 		potential = {
 			culture_group = culture_group_numenorean
 			any_realm_province = {
-				OR = { 
-					has_province_modifier = one_population_dunedain
-					has_province_modifier = two_population_dunedain
-					has_province_modifier = three_population_dunedain
-					has_province_modifier = four_population_dunedain
-					has_province_modifier = five_population_dunedain
-					has_province_modifier = six_population_dunedain
-				}
+				mep_xhumans_popmod_increasable_trigger = yes
 			}
 			has_character_flag = special_decisions_open
 		}
 		
 		allow = { 
-			prestige = 125
-			wealth = 250
+			prestige = 150
+			wealth = 600
 		}
 		
 		effect = {
@@ -67,28 +44,16 @@ decisions = {
 	increase_pop_elves = {
 	
 		potential = {
-			OR = {
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_quendi
-				culture_group = culture_group_umanyar
-				culture_group = culture_group_moriquendi
-			}
+			mep_is_elf_culture = yes
 			any_realm_province = {
-				OR = { 
-					has_province_modifier = one_population_elves
-					has_province_modifier = two_population_elves
-					has_province_modifier = three_population_elves
-					has_province_modifier = four_population_elves
-					has_province_modifier = five_population_elves
-					has_province_modifier = six_population_elves
-				}
+				mep_elves_popmod_increasable_trigger = yes
 			}
 			has_character_flag = special_decisions_open
 		}
 		
 		allow = { 
-			prestige = 125
-			wealth = 250
+			prestige = 155
+			wealth = 900
 		}
 		
 		effect = {
@@ -103,14 +68,7 @@ decisions = {
 		potential = {
 			culture_group = culture_group_dwarves
 			any_realm_province = {
-				OR = { 
-					has_province_modifier = one_population_dwarves
-					has_province_modifier = two_population_dwarves
-					has_province_modifier = three_population_dwarves
-					has_province_modifier = four_population_dwarves
-					has_province_modifier = five_population_dwarves
-					has_province_modifier = six_population_dwarves
-				}
+				mep_dwarves_popmod_increasable_trigger = yes
 			}
 			has_character_flag = special_decisions_open
 		}
@@ -118,7 +76,7 @@ decisions = {
 
 		allow = { 
 			prestige = 125
-			wealth = 250
+			wealth = 600
 		}
 		
 		effect = {

@@ -1,0 +1,498 @@
+# Dwarven Reconquest events
+namespace = dwarfconq
+
+# Set one: attack or buy azanulbizar for Longbeard Kings/Emporer
+# To beseige Moria, this is almost an absolute necessity, so I make these a natural pre-req for attacking Moria
+
+# Launch a war to take Azanulbizar from Evil
+character_event = {
+    id = dwarfconq.11
+	title = EVTTITdwarfconq.11
+    desc = EVTDESCdwarfconq.11
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPAdwarfconq.11
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					reverse_war = {
+						target = ROOT
+						casus_belli = claim
+						thirdparty_title = PREV
+						infamy = 0
+					}
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						reverse_war = {
+							target = ROOT
+							casus_belli = claim
+							thirdparty_title = PREVPREV
+							infamy = 0
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later		
+	}
+	
+}
+
+# Launch a war to take Azanulbizar from someone who refused to sell
+character_event = {
+    id = dwarfconq.12
+	title = EVTTITdwarfconq.12
+    desc = EVTDESCdwarfconq.12
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPAdwarfconq.12
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					reverse_war = {
+						target = ROOT
+						casus_belli = claim
+						thirdparty_title = PREV
+						infamy = 0
+					}
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						reverse_war = {
+							target = ROOT
+							casus_belli = claim
+							thirdparty_title = PREVPREV
+							infamy = 0
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later		
+	}
+	
+}
+
+# Try to Buy Azanulbizar from non-dwarves
+character_event = {
+	id = dwarfconq.13
+	title = EVTTITdwarfconq.13
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.13a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.13b
+	}
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.13
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					character_event = { id = dwarfconq.14 }
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						character_event = { id = dwarfconq.14 }
+					}
+				}
+			}
+		}
+		
+	}
+	
+	option = {  # Just declare war (dishonorable)
+		name = EVTOPTBdwarfconq.13
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					reverse_war = {
+						target = ROOT
+						casus_belli = claim
+						thirdparty_title = PREV
+					}
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						reverse_war = {
+							target = ROOT
+							casus_belli = claim
+							thirdparty_title = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+	}
+}
+
+# Message event where the non-dwarven holder of Azanulbizar can choose whether to sell
+character_event = {
+	id = dwarfconq.14
+	title = EVTTITdwarfconq.14
+	desc = EVTDESCdwarfconq.14
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept dwarven purchase
+		name = EVTOPTAdwarfconq.14
+		FROM = {
+			character_event = { id = dwarfconq.20 }
+		}
+	}
+	
+	option = {  # reject dwarven purchase
+		name = EVTOPTBdwarfconq.14
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Try to Buy Azanulbizar from non-longbeard dwarves
+character_event = {
+	id = dwarfconq.15
+	title = EVTTITdwarfconq.15
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.15a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.15b
+	}
+	picture = "GFX_dwarves_hall"
+
+	is_triggered_only = yes
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.15
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					character_event = { id = dwarfconq.16 }
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						character_event = { id = dwarfconq.16 }
+					}
+				}
+			}
+		}
+		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.15
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					reverse_war = {
+						target = ROOT
+						casus_belli = claim
+						thirdparty_title = PREV
+					}
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						reverse_war = {
+							target = ROOT
+							casus_belli = claim
+							thirdparty_title = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+	}
+}
+
+# Message event where the Dwarven holder of Azanulbizar can choose whether to sell
+character_event = {
+	id = dwarfconq.16
+	title = EVTTITdwarfconq.16
+	desc = EVTDESCdwarfconq.16
+	picture = "GFX_dwarves_mines"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.16
+		FROM = {
+			character_event = { id = dwarfconq.20 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.16
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Azanulbizar is held by a one-province Longbeard ruler, but his overlord is not Longbeard...
+# the Longbeards try to get a vassal transfer
+character_event = {
+	id = dwarfconq.17
+	title = EVTTITdwarfconq.17
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.17a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.17b
+	}
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.17
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					character_event = { id = dwarfconq.18 }
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						character_event = { id = dwarfconq.18 }
+					}
+				}
+			}
+		}
+		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.17
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					reverse_war = {
+						target = ROOT
+						casus_belli = claim
+						thirdparty_title = PREV
+					}
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						reverse_war = {
+							target = ROOT
+							casus_belli = claim
+							thirdparty_title = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+	}
+}
+
+# Message event where the overlord of Azanulbizar can pick whether to transfer a vassal or not
+character_event = {
+	id = dwarfconq.18
+	title = EVTTITdwarfconq.18
+	desc = EVTDESCdwarfconq.18
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.18
+		FROM = {
+			character_event = { id = dwarfconq.24 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.18
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Response back : the seller has agreed to sell...
+character_event = {
+	id = dwarfconq.20
+	title = EVTTITdwarfconq.20
+	desc = EVTDESCdwarfconq.20
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.20
+		wealth = -400
+		c_azanulbizar = {
+			gain_title = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.22 } # Send thank you message
+		}
+	}
+}
+
+# Response back : the potential seller has refused to sell!
+character_event = {
+	id = dwarfconq.21
+	title = EVTTITdwarfconq.21
+	desc = EVTDESCdwarfconq.21
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # damn you
+		name = EVTOPTAdwarfconq.21
+		FROM = {
+			character_event = { id = dwarfconq.23 } # Send back threatening message
+		}
+	}
+}
+
+# Thank You after selling
+character_event = {
+	id = dwarfconq.22
+	title = EVTTITdwarfconq.22
+	desc = {
+		trigger = { religion_group = religion_group_khazad }
+		text = EVTDESCdwarfconq.22a
+	}
+	desc = {
+		trigger = { NOT = { religion_group = religion_group_khazad } }
+		text = EVTDESCdwarfconq.22b
+	}
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  
+		wealth = 400
+		name = EVTOPTAdwarfconq.22
+	}
+}
+
+# Damn You after refusing to sell
+character_event = {
+	id = dwarfconq.23
+	title = EVTTITdwarfconq.23
+	desc = {
+		trigger = { religion_group = religion_group_khazad }
+		text = EVTDESCdwarfconq.23a
+	}
+	desc = {
+		trigger = { NOT = { religion_group = religion_group_khazad } }
+		text = EVTDESCdwarfconq.23b
+	}
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # too bad, runt
+		name = EVTOPTAdwarfconq.23
+	}
+}
+
+
+# Response back : the seller has agreed the vassal transfer
+character_event = {
+	id = dwarfconq.24
+	title = EVTTITdwarfconq.24
+	desc = EVTDESCdwarfconq.24
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.24
+		wealth = -400
+		c_azanulbizar = {
+			set_defacto_liege  = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.22 } # Send thank you message
+		}
+	}
+}
+

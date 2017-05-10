@@ -1,0 +1,65 @@
+
+### Temple Buildings COPIED to NUMENOREANcity and DWARVENcity -should become obsolete-###
+temple = {	
+	
+	tp_temple_to_city = { # Building allowing conversion to cities
+		desc = tp_temple_to_city_desc
+		gold_cost = 1
+		build_time = 1	
+		ai_creation_factor = 200		
+        potential = {
+            NOT = {
+				FROMFROM = { title = b_tomb_of_elendil }
+				FROMFROM = { title = b_meneltarma }
+			}
+		}
+	}
+	
+	tp_elendil_tomb = { ### The Tomb of Elendil
+		desc = tp_elendil_tomb_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		liege_piety = 0.05
+		heavy_infantry = 150
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+            FROMFROM = { title = b_tomb_of_elendil }
+			culture_group = culture_group_numenorean
+        }
+	}	
+	
+	tp_oath_eorl = { ### The Oath of Eorl
+		desc = tp_elendil_tomb_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		liege_piety = 0.05
+		heavy_infantry = 100
+		heavy_cavalry = 100
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+			year = 10853
+            FROMFROM = { title = b_tomb_of_elendil }
+			OR = {
+				culture_group = culture_group_numenorean
+				culture = culture_rohirrim
+				culture = culture_eotheod
+			}
+        }
+	}	
+
+	tp_meneltarma = { ### The Meneltarma
+		desc = tp_meneltarma_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		garrison_size = -100.0 # No men in this mountain			
+		ai_creation_factor = 86	
+		liege_piety = 0.5	
+		liege_prestige = 0.5			
+        potential = {
+            FROMFROM = { title = b_meneltarma }
+        }
+	}	
+	
+}

@@ -1,37 +1,38 @@
 decisions = {
 	## If the line of Isildur failed, an option for the steward to claim the crown of Gondor ##
-	claim_king_gondor = {
-		is_high_prio = no
-		potential = {
-			ai = no
-			has_dlc = "Legacy of Rome"
-			age = 16
-			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_global_flag = steward_king_gondor }
-			has_landed_title = e_steward_gondor
-			religion = religion_dunedain
-			any_playable_ruler = {
-				trait = blood_of_isildur
-				NOT = { is_alive = yes }
-			}
-			has_character_flag = special_decisions_open
-		}
-		allow = {
-			prestige = 3000
-			completely_controls = k_anorien
-			completely_controls = k_lebennin
-			completely_controls = k_anfalas
-			completely_controls = k_belfalas
-			completely_controls = k_ithilien
-			completely_controls = k_pinnath_gelin
-			completely_controls = k_andrast
-		}
-		effect = {
-			set_global_flag = steward_king_gondor
-			narrative_event = { id = RoN.5 }
-		}
-	}
+	# Disabled because RoN.5 is missing
+	#claim_king_gondor = {
+	#	is_high_prio = no
+	#	potential = {
+	#		ai = no
+	#		has_dlc = "Legacy of Rome"
+	#		age = 16
+	#		prisoner = no
+	#		NOT = { trait = incapable }
+	#		NOT = { has_global_flag = steward_king_gondor }
+	#		has_landed_title = e_steward_gondor
+	#		religion = religion_dunedain
+	#		any_playable_ruler = {
+	#			trait = blood_of_isildur
+	#			NOT = { is_alive = yes }
+	#		}
+	#		has_character_flag = special_decisions_open
+	#	}
+	#	allow = {
+	#		prestige = 3000
+	#		completely_controls = k_anorien
+	#		completely_controls = k_lebennin
+	#		completely_controls = k_anfalas
+	#		completely_controls = k_belfalas
+	#		completely_controls = k_ithilien
+	#		completely_controls = k_pinnath_gelin
+	#		completely_controls = k_andrast
+	#	}
+	#	effect = {
+	#		set_global_flag = steward_king_gondor
+	#		narrative_event = { id = RoN.5 }
+	#	}
+	#}
 	## For the King of Mirkwood, to claim the High Kingship of the Silvan Elves ##
 	claim_king_silvan_elves = {
 		is_high_prio = no

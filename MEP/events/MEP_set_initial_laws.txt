@@ -1,0 +1,71 @@
+################################################################################
+# MEP : until custom laws are made, this event can be used to set laws on startup
+################################################################################
+namespace = meplawsetup
+
+character_event = {
+	id = meplawsetup.0
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = MEP_law_set } }
+			any_title = {
+				# Here, just making sure that most good guys get 'King's Peace' (internal)
+				if = {
+					limit = {
+						holder_scope = {
+							is_republic = no
+							is_tribal = no
+							is_nomadic = no						
+							OR = {
+								religion_group = religion_group_eldar
+								religion_group = religion_group_khazad
+								religion_group = religion_group_periannath
+								religion_group = religion_group_eruhini
+								religion = religion_dunedain
+								religion = religion_numenorean
+							}
+							NOT = { trait = evil_side }
+						}
+					}
+					# for 'non-Zeus' (no Conclave DLC)
+					if = {
+						limit = { NOT = { has_dlc = "Zeus" } }
+						if = {
+							limit = {
+								OR = { has_law = crown_authority_0
+									has_law = crown_authority_1 }
+							}
+							add_law = crown_authority_2
+						}
+					}
+					# if using 'Zeus' (Conclave DLC)
+					if = {
+						limit = { has_dlc = "Zeus" }
+						# ze_administration_laws_2 is a pre-requisite for internal king's peace
+						if = {
+							limit = {
+								OR = { has_law = ze_administration_laws_0
+									has_law = ze_administration_laws_1 }
+							}
+							add_law = ze_administration_laws_2
+						}
+						if = {
+							limit = { 
+								NOR = { has_law = vassal_wars_law_1
+									has_law = vassal_wars_law_2 }
+							}
+							add_law = vassal_wars_law_1				
+						}
+					}
+				}
+			}
+		set_global_flag = MEP_law_set
+		}
+	}
+
+
+}

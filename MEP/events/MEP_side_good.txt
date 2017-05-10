@@ -1,43 +1,27 @@
+# JamesFox (2017/05/01) moved good_side startup to goodside.10 and goodside.11 to have it see setup from on_chronicle_start
+# goodside.10 is kept as a notification event
+
 namespace = goodside
 
+# After startup notification message for good_side players
 character_event = {
 	id = goodside.1
 	title = "EVTNAMEgoodside.1"
 	desc = "EVTDESCgoodside.1"
 	picture = "GFX_good"
-	age = 16
 	only_rulers = yes
+	ai = no
 	only_independent = yes
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_numenorean
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_halfling
-			culture_group = culture_group_dwarves
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		NOT = {
-			culture = culture_dunlending
-			culture = culture_hillmen
-			culture = culture_black_numenorean 	
-			trait = evil_side 
-			trait = good_side
-			has_character_flag = goodsidestartup
-		}
-		NOT = { religion_group = religion_group_melkor }
+		trait = good_side
+		NOT = { has_character_flag = sidechosen_message }
 	}
 
-	immediate = { set_character_flag = goodsidestartup }
+	immediate = { set_character_flag = sidechosen_message }
 
 	option = {
 		name = "EVTOPTgoodside.1"
-		add_trait = good_side
 	}
 }
 
@@ -252,3 +236,122 @@ character_event = {
 		name = "EVTOPTAgoodside.9"#It is the only way.
 	}
 }
+
+character_event = {
+	id = goodside.10
+	age = 16
+	only_rulers = yes
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+
+	option = {
+		any_independent_ruler = {
+			limit = { mep_pick_good_side_trigger  = yes }
+			character_event = { id = goodside.11 }
+		}
+		ROOT = {
+			if = {
+				limit = { mep_pick_good_side_trigger  = yes
+							independent = yes }
+				character_event = { id = goodside.11 }
+			}
+		}
+		
+	}
+	
+	# done
+}
+
+character_event = {
+	id = goodside.11
+	age = 16
+	# only_rulers = yes
+	# only_independent = yes
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+
+	option = {
+		if = {
+			limit = { NOT = { trait = good_side } }
+			add_trait = good_side
+		}
+		set_character_flag = sidechosen
+		# adds good side to high-ranking vassals
+		any_vassal = {
+			limit = {
+				primary_title = { higher_tier_than = count } 
+				NOT = { trait = evil_side }
+				NOT = { has_character_flag = sidechosen }
+				NOT = { religion_group = religion_group_melkor }
+				# perhaps some additional limitations here
+			}
+			# vassal kings will always (after passing a test) get good_side
+			if = {
+				limit = {
+					real_tier = king
+					NOR = {
+						trait = evil_side 
+						has_character_flag = sidechosen
+					}
+					NOT = { religion_group = religion_group_melkor }
+				}
+				if = {
+					limit = { NOT = { trait = good_side } } 
+					add_trait = good_side
+				}
+				set_character_flag = sidechosen
+				# we now scope to the duke-level vassals
+				any_vassal = {
+					if = {
+						limit = {
+							real_tier = duke
+							mep_is_good_side_race = yes
+							NOR = {
+								trait = evil_side 
+								has_character_flag = sidechosen
+							}
+						}
+						if = {
+							limit = { NOT = { trait = good_side } } 
+							add_trait = good_side
+						}
+						set_character_flag = sidechosen
+					}
+				}
+			}
+			# vassal duke will get good_side under certain conditions
+			if = {
+				limit = {
+					real_tier = duke
+					mep_is_good_side_race = yes
+				}
+				if = {
+					limit = { NOT = { trait = good_side } } 
+					add_trait = good_side
+				}
+				set_character_flag = sidechosen
+			}
+		}
+		# marks the heir as good side
+		current_heir = {
+			if = {
+				limit = { NOR = {
+						trait = good_side
+						trait = evil_side
+				} }
+				add_trait = good_side
+				set_character_flag = sidechosen
+			}	
+		}
+		
+	}
+	
+	# done
+}
+

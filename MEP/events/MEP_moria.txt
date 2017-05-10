@@ -25,7 +25,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTCmoria.0" ## I won't search.	
-		clr_character_flag = mineinmoria	
+		clr_character_flag = mineinmoria		
 		wealth = 150
 		piety = 150
 	}	
@@ -321,7 +321,7 @@ character_event = {
 		}		
 	}
 	option = {
-		name = "EVTOPTBmoria.9" ## i'll try to flew ! 
+		name = "EVTOPTBmoria.9" ## i'll try to flee ! 
 		set_character_flag = balroginmoria
 		random_list = {
 			35 = {
@@ -405,8 +405,8 @@ character_event = {
 character_event = {
 	id = moria.13
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -414,7 +414,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -634,7 +634,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -1011,14 +1011,14 @@ character_event = {
 #### Victory ! ####
 character_event = {
 	id = moria.19
-	desc = "EVTDESCmoria.19"
-	picture = GFX_evt_dwarves_mines
+	# desc = "EVTDESCmoria.19"
+	# picture = GFX_evt_dwarves_mines
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAmoria.19"
+		# name = "EVTOPTAmoria.19"
 		duel_target = {
 			limit = { has_opinion_modifier = { who = ROOT modifier = opinion_duel_target } }
 			character_event = { id = moria.16 }
@@ -1116,12 +1116,12 @@ character_event = {
 ##### EVENT TO CLEAR THE CHARACTER FLAG ######
 
 
-# The Holder of Nenya can use once again nenya #
+# ??The Holder of Nenya can use once again nenya #
 character_event = {
 	id = moria.18
-	title = EVTTITmoria.18
-	desc = EVTDESCmoria.18
-	picture = "GFX_good"
+	# title = EVTTITmoria.18
+	# desc = EVTDESCmoria.18
+	# picture = "GFX_good"
 	hide_window = yes
 		
 	trigger = {
@@ -1135,7 +1135,7 @@ character_event = {
 	}	
 		
 	option={
-		name=EVTOPTAmoria.18
+		# name=EVTOPTAmoria.18
 		clr_character_flag = mineinmoria
 	}
 }
@@ -1176,6 +1176,8 @@ character_event = {
 	title = "EVTTITmoria.22"
 	desc = "EVTDESCmoria.22"
 	picture = GFX_evt_dwarves_mines
+	religion = religion_umaiar
+	culture = culture_balrog
 
 	trigger = {
 		has_landed_title = c_moria
@@ -1212,47 +1214,25 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAmoria.23" ## we'll install in Moria !	
+		name = "EVTOPTAmoria.23" ## we'll install in Moria !
+		# The balrog takes b_zirak_zigil first
+		FROM = {
+			b_zirak_zigil = { grant_title = PREV }			
+		}
 		c_moria = {
 			grant_title = ROOT
 		}
 		d_moria = {
 			grant_title = ROOT
 		}	
-		k_misty_mountains = {
-			grant_title = ROOT
-		}		
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = c_moria
-				age = 1
-				culture = culture_balrog
-			}
-			character_event = { id = moria.24 }
+		# I --think-- the Balrog is supposed to have an independent barony 		
+		FROM = {
+			set_defacto_liege = THIS
 		}
 	}
 	
 	option = {
 		name = "EVTOPTBmoria.23" ## we won't go to Moria.
 		trigger = { ai = no }
-	}	
-}	 
-
-
-#### The orcs will choose to come in Moria... or not ####
-character_event = {
-	id = moria.24
-	title = "EVTTITmoria.24"
-	desc = "EVTDESCmoria.24"
-	picture = GFX_evt_dwarves_mines
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAmoria.24" ## we'll install in Moria !	
-		b_zirak_zigil = {
-			grant_title = ROOT
-		}	
-		set_defacto_liege = ROOT
 	}	
 }	 

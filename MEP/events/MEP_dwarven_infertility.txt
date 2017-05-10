@@ -5,6 +5,8 @@ character_event = {
 	title = "EVTTITelveninfertility.0"
 	desc = "EVTDESCelveninfertility.0"
 	picture = GFX_evt_pregnancy
+	religion_group = religion_group_khazad
+	
 	is_triggered_only = yes	
 		
 	trigger = {
@@ -25,10 +27,11 @@ character_event = {
 #### Death of the Dwarves ####
 character_event = {
 	id = dwarveninfertility.1
-	title = "EVTTITdwarveninfertility.1"
-	desc = "EVTDESCdwarveninfertility.1"
-	picture = GFX_evt_death
-	hide_window = yes	
+	# title = "EVTTITdwarveninfertility.1"
+	# desc = "EVTDESCdwarveninfertility.1"
+	# picture = GFX_evt_death
+	hide_window = yes
+	religion_group = religion_group_khazad	
 		
 	trigger = {
 		trait = dwarven
@@ -102,7 +105,7 @@ character_event = {
 		modifier = {
 			factor = 2.0
 				trait = imposing
-		}
+		}		
 		modifier = {
 			factor = 4.0 # Adds 80 years, each increment of 1 = 20 years
 				trait = heir_of_durin
@@ -132,7 +135,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTAdwarveninfertility.1" #OK
+		# name = "EVTOPTAdwarveninfertility.1" #OK
 		death = {
 			death_reason = death_natural
 		}	

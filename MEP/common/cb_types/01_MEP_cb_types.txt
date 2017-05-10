@@ -1,0 +1,509 @@
+# religious1 Duchy level 'Holy War' for Good attacking Evil
+# religious2 Duchy level 'Holy War' for Evil attacking Good
+
+# Holy War CB for Middle Earth mod, using good attacking evil
+religious1 = {
+	name = CB_NAME_RELIGIOUS_GOOD
+	war_name = WAR_NAME_RELIGIOUS
+	sprite = 9
+	truce_days = 1000
+	is_permanent = yes
+	is_holy_war = yes
+	check_de_jure_tier = DUKE # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
+	battle_warscore_mult = 0.5 # In Good vs Evil, the sides should not give up easy
+	attacker_ai_defeat_worth = { factor = 75 } #But the attacker should give up more easily
+
+	allowed_to_target_tributaries = no
+	allowed_to_target_suzerains = no
+
+	can_use = {
+		ROOT = {
+			piety = 250
+			is_nomadic = no
+			NOT = { pacifist = yes }
+			NOT = { same_realm = FROM }
+			# Good attacker
+			mep_is_good_side_trigger = yes
+			# Evil defender
+			FROM = { mep_is_evil_side_trigger = yes }
+			# the top liege of the attacker must be good as well.
+			top_liege = { mep_is_good_side_trigger = yes }			
+			mercenary = no
+		}
+	}
+	
+	on_add = {
+		ROOT = { piety = -250 }
+	}
+	
+	can_use_title = {
+		# The attacker needs at least one county in the target duchy, or a border, or be only two sea zones away from one of your counties
+		# unaltered from base holy war.
+		any_direct_de_jure_vassal_title = {
+			OR = {
+				holder_scope = {
+					OR = {
+						character = ROOT
+						is_liege_or_above = ROOT
+					}
+				}
+				location = {
+					mep_borders_ROOTrealm_2seazones = yes
+				}
+			}
+		}
+	}
+	# war keeps ongoing as long as the same conditions which allowed it to be declared still apply.
+	is_valid = {
+		ROOT = {
+			NOT = { pacifist = yes }
+			NOT = { same_realm = FROM }
+			# Good attacker
+			mep_is_good_side_trigger = yes
+			# Evil defender
+			FROM = {
+				mep_is_evil_side_trigger = yes
+			}
+			# the top liege of the attacker must be good as well.
+			top_liege = {
+				mep_is_good_side_trigger = yes
+			}
+		}
+	}
+	# success results which do NOT involve territory
+	on_success = {
+		any_attacker = {
+			limit = { character = ROOT }
+			participation_scaled_piety = 100
+			participation_scaled_prestige = 50
+			if = {
+				limit = {
+					uses_decadence = yes
+				}
+				participation_scaled_decadence = -10
+			}
+		}
+		any_attacker = {
+			limit = { NOT = { character = ROOT } }
+			hidden_tooltip = { 
+				participation_scaled_piety = 100
+				participation_scaled_prestige = 50
+				if = {
+					limit = {
+						uses_decadence = yes
+					}
+					participation_scaled_decadence = -10
+				}
+			}
+		}
+		
+		ROOT = { 
+			religion_authority = {
+				modifier = won_holy_war
+				years = 20
+			}
+		}
+		FROM = { 
+			religion_authority = {
+				modifier = lost_holy_war
+				years = 20
+			}		
+		}
+		FROM = { piety = -100 }
+		FROM = { prestige = -50 }
+	}
+	# success which does involve territory
+	on_success_title = {
+		custom_tooltip = {
+			text = religious_cb_succ_tip
+			hidden_tooltip = {
+				#My attempt at 'take only territories with evil leaders, vassalize what remains'
+				# For all counties in the targeted duchy, scan them and usurp if the holder is evil
+				any_de_jure_vassal_title = {
+					limit = {
+						has_holder = yes
+						tier = count
+						#this is an attempt to limit the annexation to evil side only 
+						holder_scope = {
+							mep_is_evil_side_trigger = yes
+							OR = {
+								character = FROM
+								is_liege_or_above = FROM
+							}
+						}
+					}
+					hidden_tooltip = {
+						usurp_title_plus_barony_if_unlanded = { target = ROOT type = holy_war }
+						# for each county, after the usurpation, we do the same for baronies
+						any_de_jure_vassal_title = {
+							limit = {
+								has_holder = yes
+								#this is an attempt to limit the annexation 
+								holder_scope = {
+									mep_is_evil_side_trigger = yes
+									OR = {
+										character = FROM
+										is_liege_or_above = ROOT
+									}
+								}
+							}
+							usurp_title_plus_barony_if_unlanded = { target = ROOT type = holy_war }
+						}
+					}
+				}
+				#usurp the duchy title if the holder is in the right country (and is evil)
+				if = {
+					limit = {
+						owner = { is_vassal_or_below = FROM }
+						# owner_under_FROM = yes
+						holder_scope = {
+							mep_is_evil_side_trigger = yes
+						}
+					}
+					usurp_title = { target = ROOT type = holy_war }
+				}
+				# vassalize what's left
+				ROOT = {
+					hidden_tooltip = {
+						vassalize_or_take_under_title = {
+							title = PREV
+							enemy = FROM
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_fail = {
+		ROOT = { 
+			piety = -50 
+			prestige = -100
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			transfer_scaled_wealth = {
+				to = FROM
+				value = 4.0
+			}
+			piety = -75
+			prestige = -150
+		}
+		any_defender = {
+			limit = { character = FROM }
+			participation_scaled_piety = 200
+			participation_scaled_prestige = 100
+			if = {
+				limit = {
+					uses_decadence = yes
+				}
+				participation_scaled_decadence = -10
+			}
+		}
+		any_defender = {
+			limit = { NOT = { character = FROM } }
+			hidden_tooltip = { 
+				participation_scaled_piety = 200
+				participation_scaled_prestige = 100
+				if = {
+					limit = {
+						uses_decadence = yes
+					}
+					participation_scaled_decadence = -10
+				}
+			}
+		}
+		ROOT = { 
+			religion_authority = {
+				modifier = lost_holy_war
+				years = 20
+			}
+		}
+		FROM = { 
+			religion_authority = {
+				modifier = won_holy_war
+				years = 20
+			}		
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+	
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+	
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+	
+	ai_will_do = { 
+		factor = 1
+	}
+}
+
+# Holy War CB for Middle Earth mod, using evil attacking good
+religious2 = {
+	name = CB_NAME_RELIGIOUS_EVIL
+	war_name = WAR_NAME_RELIGIOUS
+	sprite = 9
+	truce_days = 1000
+	is_permanent = yes
+	is_holy_war = yes
+	check_de_jure_tier = DUKE # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
+	battle_warscore_mult = 0.5 # In Good vs Evil, the sides should not give up easy
+	attacker_ai_defeat_worth = { factor = 75 } #But the attacker should give up more easily
+
+	allowed_to_target_tributaries = no
+	allowed_to_target_suzerains = no
+
+	can_use = {
+		ROOT = {
+			piety = 250
+			is_nomadic = no
+			NOT = { pacifist = yes }
+			NOT = { same_realm = FROM }
+			# Evil attacker
+			mep_is_evil_side_trigger = yes
+			# Good defender
+			FROM = {
+				mep_is_good_side_trigger = yes
+			}
+			# the top liege of the attacker must be evil as well.
+			top_liege = {
+				mep_is_evil_side_trigger = yes
+			}			
+			mercenary = no
+		}
+	}
+	
+	on_add = {
+		ROOT = { piety = -250 }
+	}
+	
+	can_use_title = {
+		# The attacker needs at least one county in the target duchy, or a border, or be only two sea zones away from one of your counties
+		any_direct_de_jure_vassal_title = {
+			OR = {
+				holder_scope = {
+					OR = {
+						character = ROOT
+						is_liege_or_above = ROOT
+					}
+				}
+				location = {
+					mep_borders_ROOTrealm_2seazones = yes
+				}
+			}
+		}
+	}
+	# war keeps ongoing as long as the same conditions which allowed it to be declared still apply.
+	is_valid = {
+		ROOT = {
+			NOT = { pacifist = yes }
+			NOT = { same_realm = FROM }
+			# Evil attacker
+			mep_is_evil_side_trigger = yes
+			# Good defender
+			FROM = {
+				mep_is_good_side_trigger = yes
+			}
+			# the top liege of the attacker must be evil as well.
+			top_liege = {
+				mep_is_evil_side_trigger = yes
+			}	
+		}
+	}
+	# success results which do NOT involve territory
+	on_success = {
+		any_attacker = {
+			limit = { character = ROOT }
+			participation_scaled_piety = 100
+			participation_scaled_prestige = 50
+			if = {
+				limit = {
+					uses_decadence = yes
+				}
+				participation_scaled_decadence = -10
+			}
+		}
+		any_attacker = {
+			limit = { NOT = { character = ROOT } }
+			hidden_tooltip = { 
+				participation_scaled_piety = 100
+				participation_scaled_prestige = 50
+				if = {
+					limit = {
+						uses_decadence = yes
+					}
+					participation_scaled_decadence = -10
+				}
+			}
+		}
+		
+		ROOT = { 
+			religion_authority = {
+				modifier = won_holy_war
+				years = 20
+			}
+		}
+		FROM = { 
+			religion_authority = {
+				modifier = lost_holy_war
+				years = 20
+			}		
+		}
+		FROM = { piety = -100 }
+		FROM = { prestige = -50 }
+	}
+	# success which does involve territory
+	on_success_title = {
+		hidden_tooltip = {
+			if = {
+				limit = { 
+					owner = { is_vassal_or_below = FROM }
+					# owner_under_FROM = yes
+				}
+				set_title_flag = can_be_usurped_tmp
+			}
+		}
+		custom_tooltip = {
+			text = religious_cb_succ_tip
+			hidden_tooltip = {
+				#My attempt at 'take only territories with good leaders, vassalize what remains'
+				# next, for all counties in the targeted duchy, scan them and usurp if the holder is good
+				any_de_jure_vassal_title = {
+					limit = {
+						has_holder = yes
+						tier = count
+						#this is an attempt to limit the annexation to good side only 
+						holder_scope = {
+							mep_is_good_side_trigger = yes
+							OR = {
+								character = FROM
+								is_liege_or_above = FROM
+							}
+						}
+					}
+					hidden_tooltip = {
+						usurp_title_plus_barony_if_unlanded = { target = ROOT type = holy_war }
+						# for each county, after the usurpation, we do the same for baronies
+						any_de_jure_vassal_title = {
+							limit = {
+								has_holder = yes
+								#this is an attempt to limit the annexation 
+								holder_scope = {
+									mep_is_good_side_trigger = yes
+									OR = {
+										character = FROM
+										is_liege_or_above = ROOT
+									}
+								}
+							}
+							usurp_title_plus_barony_if_unlanded = { target = ROOT type = holy_war }
+						}
+					}
+				}
+				#usurp the duchy title if the holder is in the right country (and is good)
+				if = {
+					limit = {
+						owner = { is_vassal_or_below = FROM }
+						# owner_under_FROM = yes
+						holder_scope = {
+							mep_is_good_side_trigger = yes
+						}
+					}
+					usurp_title = { target = ROOT type = holy_war }
+				}
+				# vassalize what's left
+				ROOT = {
+					vassalize_or_take_under_title = {
+						title = PREV
+						enemy = FROM
+					}
+				}
+			}
+		}
+	}
+
+	on_fail = {
+		ROOT = { 
+			piety = -50 
+			prestige = -100
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			transfer_scaled_wealth = {
+				to = FROM
+				value = 4.0
+			}
+			piety = -75
+			prestige = -150
+		}
+		any_defender = {
+			limit = { character = FROM }
+			participation_scaled_piety = 200
+			participation_scaled_prestige = 100
+			if = {
+				limit = {
+					uses_decadence = yes
+				}
+				participation_scaled_decadence = -10
+			}
+		}
+		any_defender = {
+			limit = { NOT = { character = FROM } }
+			hidden_tooltip = { 
+				participation_scaled_piety = 200
+				participation_scaled_prestige = 100
+				if = {
+					limit = {
+						uses_decadence = yes
+					}
+					participation_scaled_decadence = -10
+				}
+			}
+		}
+		ROOT = { 
+			religion_authority = {
+				modifier = lost_holy_war
+				years = 20
+			}
+		}
+		FROM = { 
+			religion_authority = {
+				modifier = won_holy_war
+				years = 20
+			}		
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+	
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+	
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+	
+	ai_will_do = { 
+		factor = 1
+	}
+}
+
+
+
+
+

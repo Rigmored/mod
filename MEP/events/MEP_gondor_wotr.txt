@@ -39,6 +39,7 @@ narrative_event = {
 		}
 	}	
 }
+
 	
 ### Denethor is informed ###
 narrative_event = {
@@ -78,7 +79,8 @@ narrative_event = {
 			character_event = { id = gondorwotr.4 days = 5 }
 		}			
 	}
-}	
+}
+	
 
 ### Sauron is informed that both Boromir and Faramir will defende Osgiliath ###
 character_event = {
@@ -145,7 +147,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_easterling
+			religion = religion_easterlings
 			culture = culture_easterling
 			female = no
 			age = 33
@@ -161,7 +163,7 @@ character_event = {
 				}
 			}		
 		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
+		FROM = { narrative_event = { id = gondorwotr.5 } }
 	}	
 }
 
@@ -230,7 +232,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_easterling
+			religion = religion_easterlings
 			culture = culture_easterling
 			female = no
 			age = 33
@@ -246,7 +248,7 @@ character_event = {
 				}
 			}		
 		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
+		FROM = { narrative_event = { id = gondorwotr.5 } }
 	}	
 }
 
@@ -315,7 +317,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_easterling
+			religion = religion_easterlings
 			culture = culture_easterling
 			female = no
 			age = 33
@@ -331,7 +333,7 @@ character_event = {
 				}
 			}		
 		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
+		FROM = { narrative_event = { id = gondorwotr.5 } }
 	}	
 }
 
@@ -656,7 +658,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTAgondorwotr.11" ## Wait WHAT?
 		FROM = {
-			character_event = { id = gondorwotr.12 days = 40 }
+			narrative_event = { id = gondorwotr.12 days = 40 }
 		}
 	}	
 }
@@ -681,7 +683,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTAgondorwotr.12" ## Attack !
 		FROM = {
-			character_event = { id = gondorwotr.13 days = 40 }
+			narrative_event = { id = gondorwotr.13 days = 40 }
 		}
 		set_global_flag = corsairsintolfalas
 		d_tolfalas = {
@@ -729,7 +731,7 @@ narrative_event = {
 			}		
 		}			
 		spawn_unit = {
-			province = ROOT
+			province = 700 # Abarlonear, near Tolfalas
 			troops = {
 				galleys = { 300 300 }
 			}
@@ -909,7 +911,7 @@ narrative_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_easterling
+			religion = religion_easterlings
 			culture = culture_easterling
 			female = no
 			age = 33
@@ -925,7 +927,7 @@ narrative_event = {
 				}
 			}		
 		}	
-		FROM = { character_event = { id = gondorwotr.17 } }
+		FROM = { narrative_event = { id = gondorwotr.17 } }
 	}	
 }
 
@@ -1010,14 +1012,10 @@ character_event = {
 	    name = "EVTOPTAgondorwotr.19"
         trigger = {
 		    wealth = 250
-			ROOT = {
-			    AND = {
-			        has_landed_title = d_ithilien_rangers
-				    trait = ithilien_captain
-				    is_alive = yes
-					age = 16
-				}
-			}
+			has_landed_title = d_ithilien_rangers
+			trait = ithilien_captain
+			is_alive = yes
+			age = 16
 		}
 		wealth = -250
 		ROOT = {
@@ -1048,7 +1046,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_henneth_annun
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1060,7 +1058,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_emyn_arnen
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1072,7 +1070,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_west_osgiliath
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1083,7 +1081,7 @@ character_event = {
 			}
 		}
 		ROOT = {
-		    character_event = { gondorwotr.21 }
+		    character_event = { id = gondorwotr.21 }
 	    }
 	}
 }
@@ -1106,7 +1104,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_minas_ithil
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1118,7 +1116,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_east_osgiliath
 		ROOT ={
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1129,7 +1127,7 @@ character_event = {
 			}
 		}
 		ROOT = {
-		    character_event = { gondorwotr.20 }
+		    character_event = { id = gondorwotr.20 }
 		}
 	}
 }
@@ -1150,141 +1148,141 @@ character_event = {
 			    is_alive = yes
 			}
 		}
-		if = {
-		    any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_henneth_annun
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 51
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_henneth_annun
-			        clr_character_flag = flag_hiring_soldiers
-		    	}
-		    }
-		    any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_emyn_arnen
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 55
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_emyn_arnen
-			        clr_character_flag = flag_hiring_soldiers
+		any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_henneth_annun
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
 		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 51
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
+			    }
+			    clr_character_flag = flag_send_to_henneth_annun
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+		any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_emyn_arnen
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 55
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
+			    }
+			    clr_character_flag = flag_send_to_emyn_arnen
+			    clr_character_flag = flag_hiring_soldiers
 		    }
-            any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_west_osgiliath
+		}
+        any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_west_osgiliath
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 428
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 428
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_west_osgiliath
-			        clr_character_flag = flag_hiring_soldiers
+			    clr_character_flag = flag_send_to_west_osgiliath
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+        any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_minas_ithil
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 426
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-		    }
-            any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_minas_ithil
+			    clr_character_flag = flag_send_to_minas_ithil
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+        any_independent_ruler = {
+		    limit = {
+				has_character_flag = flag_send_to_east_osgiliath
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 427
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 426
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_minas_ithil
-			        clr_character_flag = flag_hiring_soldiers
-			    }
-		    }
-            any_independent_ruler = {
-		        limit = {
-				    has_character_flag = flag_send_to_east_osgiliath
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 427
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-		            clr_character_flag = flag_send_to_east_osgiliath
-		            clr_character_flag = flag_hiring_soldiers
-			    }
-		    }
-	    }
+		        clr_character_flag = flag_send_to_east_osgiliath
+		        clr_character_flag = flag_hiring_soldiers
+			}
+		}
+
 	}
+}

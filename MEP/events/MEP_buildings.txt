@@ -15,14 +15,14 @@ namespace = buildings
 ## Event that will unlock all the buildings after 10000 ##
 character_event = {
 	id = buildings.0
-	desc = OK
-	picture = GFX_good
+	# desc = OK
+	# picture = GFX_good
 	hide_window = yes	
 
 	is_triggered_only = yes 
 	
 	option = {
-		name = "OK"
+		# name = "OK"
 		set_global_flag = building
 	}	
 }
@@ -1784,16 +1784,15 @@ character_event = {
 		name = "EVTOPTAbuildings.139" ## Great !
 		add_trait = palantir_ithil
 		character_event = { id = buildings.137 days = 10 }	
-		hide_window = {
-		any_character = {
-			limit = {
-				trait = palantir_ithil
-				NOT = { ROOT }
+		hidden_tooltip = {
+			any_character = {
+				limit = {
+					trait = palantir_ithil
+					NOT = { character = ROOT }
+				}
+				remove_trait = palantir_ithil
 			}
-			remove_trait = palantir_ithil
 		}
-		}
-		
 			
 	}		
 }

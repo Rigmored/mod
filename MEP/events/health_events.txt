@@ -10,443 +10,38 @@
 # and Chris King
 # and Henrik Eklund
 
-#Syphilitic
-character_event = {
-	id = 6000
-	desc = EVTDESC6000
-	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	capable_only = yes
-	lacks_dlc = "Reapers"
-	
-	trigger = {
-		NOT = {
-			trait = syphilitic
-		}
-		NOT = {
-			trait = celibate
-		}
-		NOT = {
-			trait = infirm
-		}
-		OR = {
-			NOT = { trait = chaste }
-			spouse = { 
-				is_alive = yes
-				is_abroad = no
-				trait = syphilitic 
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 20000
-		
-		modifier = {
-			factor = 0.1
-			spouse = { 
-				trait = syphilitic 
-			}
-		}
-		modifier = {
-			factor = 0.5
-			in_command = yes
-		}		
-		modifier = {
-			factor = 0.5
-			trait = lustful
-		}
-		modifier = {
-			factor = 0.6
-			trait = hedonist
-		}
-		
-		modifier = {
-			factor = 5.0
-			trait = chaste
-		}
-		modifier = {
-			factor = 5.0
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 10.0
-			trait = dwarven
-		}
-		modifier = {
-			factor = 7.0
-			trait = hobbit
-		}
-	}
-	
-	option = {
-		name = EVTOPTA6000
-		add_trait = syphilitic
-		blessing_removes_disease_effect = yes
-		deaths_gift_removes_disease_effect = yes
-	}
-}
-
-#Remove Syphilitic
-character_event = {
-	id = 6001
-	desc = EVTDESC6001
-	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	is_sick = yes
-	only_capable = yes
-	lacks_dlc = "Reapers"
-	
-	trigger = {
-		health = 6
-		trait = syphilitic
-	}
-	
-	mean_time_to_happen = {
-		months = 25000
-		
-		modifier = {
-			factor = 0.5
-			health = 8
-		}
-		modifier = {
-			factor = 0.5
-			health = 9
-		}
-		modifier = {
-			factor = 0.001
-			trait = elf
-		}
-		modifier = {
-			factor = 0.01
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.005
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.007
-			trait = hobbit
-		}
-	}
-	
-	option = {
-		name = EVTOPTA6001
-		remove_trait = syphilitic
-	}
-}
-
-#Leper
-character_event = {
-	id = 6010
-	desc = EVTDESC6010
-	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 10
-	only_capable = yes
-	
-	trigger = {
-		NOT = {
-			trait = leper
-		}
-		NOT = { health = 5 }
-	}
-	
-	mean_time_to_happen = {
-		months = 25000
-		
-		modifier = {
-			factor = 0.5
-			NOT = { 
-				health = 4 
-			}
-		}
-		modifier = {
-			factor = 0.5
-			in_command = yes
-		}
-		modifier = {
-			factor = 0.5
-			any_courtier = {
-				trait = leper
-			}
-		}
-		modifier = {
-			factor = 0.5
-			is_weak_trigger = yes
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				trait = infection
-				trait = severely_injured
-				trait = wounded
-			}
-		}
-		modifier = {
-			factor = 0.5
-			trait = charitable
-		}
-		modifier = {
-			factor = 5.0
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 10.0
-			trait = dwarven
-		}
-		modifier = {
-			factor = 7.0
-			trait = hobbit
-		}
-	}
-	
-	option = {
-		name = EVTOPTA6010
-		add_trait = leper
-			if = {
-				limit = {
-					has_dlc = "Reapers"
-				}
-				set_character_flag = new_leper_character
-				host = {
-					random_courtier_or_vassal = {
-						limit = {
-							liege = { character = PREVPREV }
-							has_minor_title = title_court_physician
-						}
-						character_event = { id = RIP.11031 days = 1 }
-					}
-				}
-				character_event = { id = RIP.11063 days = 20 }
-			}
-			
-			hidden_tooltip = {
-				random_list ={
-					100 = {
-						character_event = { id = RIP.5041 days = 365 random = 50 }
-					}
-					75 = {
-						character_event = { id = RIP.5041 days = 1500 random = 300 }
-					}
-					30 = {
-						character_event = { id = RIP.5041 days = 3000 random = 600 }
-					}
-				}
-			}
-	}
-}
-
-#Remove Leper
-character_event = {
-	id = 6011
-	desc = EVTDESC6011
-	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	is_sick = yes
-	only_capable = yes
-	
-	trigger = {
-		OR = {
-			AND = {
-				trait = elf
-				trait = leper
-			}
-			AND = {
-				health = 4
-				treasury = 25
-				trait = leper
-				NOT = {
-					has_game_rule = {
-						name = supernatural_events
-						value = off
-					}
-				}
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 25000
-		modifier = {
-			factor = 0.00001
-			trait = elf
-		}
-		modifier = {
-			factor = 0.00005
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.00007
-			trait = hobbit
-		}
-	}
-	
-	option = {
-		name = EVTOPTA6011
-		remove_trait = leper
-		treasury = -25
-	}
-}
-
-# Become Lunatic
+#Lunatic
 character_event = {
 	id = 6020
-	picture = GFX_evt_lunatic
-	border = GFX_event_normal_frame_religion
-	
-	desc = {
-		text = EVTDESC6020
-		trigger = {
-			is_ill = no
-			NOT = { trait = paranoid }
-			NOT = { trait = zealous }
-			NOT = { trait = incapable }
-			prisoner = no
-		}
-	}
-	desc = {
-		text = EVTDESC6020_PARA
-		trigger = {
-			trait = paranoid
-			NOT = { trait = incapable }
-		}
-	}
-	desc = {
-		text = EVTDESC6020_FEVER
-		trigger = {
-			is_ill = yes
-			NOT = { trait = incapable }
-		}
-	}
-	desc = {
-		text = EVTDESC6020_ZEAL
-		trigger = {
-			trait = zealous
-			NOT = { trait = incapable }
-		}
-	}
-	desc = {
-		text = EVTDESC6020_PRISON
-		trigger = {
-			prisoner = yes
-			NOT = { trait = incapable }
-		}
-	}
-	desc = {
-		text = EVTDESC6020_COMA
-		trigger = { trait = incapable }
-	}
+	desc = EVTDESC6020
+	picture = GFX_evt_recovery
 	
 	min_age = 10
 	
 	trigger = {
-		NOT = {
-			OR = {
-				trait = lunatic
-				trait = elf
-			}
-		}
 		OR = {
-			#Senile/comatose due to old age do not gain lunatic, immortals get a pass though
-			NOT = { age = 65 }
-			immortal = yes
-			NOT = { trait = incapable }
+			trait = depressed
+			trait = stressed
+		}
+		NOT = {
+			trait = lunatic
+			trait = elf 
+			trait = dwarven 
+			culture = culture_maiar
+			culture = culture_istari
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 48000 # once in 4000 years on average
+		months = 12000
 		
-		modifier = {
-			factor = 0.03 # 120 years on average
-			OR = {
-				trait = syphilitic
-				trait = has_aztec_disease
-			}
-		}
-		modifier = {
-			factor = 0.06 # 240 years on average
-			prisoner = yes
-			has_character_modifier = the_oubliette
-		}
-		modifier = {
-			factor = 0.02 # 80 years on average
-			OR = {
-				trait = has_typhoid_fever
-				trait = has_typhus
-			}
-		}
-		modifier = {
-			factor = 0.1
-			prisoner = yes
-			NOT = { has_character_modifier = the_oubliette }
-			NOT = { has_character_modifier = house_arrest }
-		}
-		modifier = {
-			factor = 0.2 # 800 years on average
-			is_ill = yes
-			NOR = {
-				trait = has_typhoid_fever
-				trait = has_typhus
-				trait = syphilitic
-				trait = has_aztec_disease
-			}
-		}
-		modifier = {
-			factor = 0.025 # 10 year on average, rabies will also be ill
-			trait = rabies
-		}
-		modifier = {
-			factor = 0.1
-			trait = incapable # Coma due to brain damage. Wakes up a lunatic.
-		}
-		modifier = {
-			factor = 0.1
-			trait = incapable
-			immortal = yes # Incapable immortals more likely to wake up nuts
-		}
-		modifier = {
-			factor = 0.25
-			trait = paranoid
-		}
-		modifier = {
-			factor = 0.25
-			trait = stressed
-		}
-		modifier = {
-			factor = 0.5
-			trait = depressed
-		}
 		modifier = {
 			factor = 0.5
 			trait = zealous
+		}
+		modifier = {
+			factor = 0.5
+			trait = paranoid
 		}
 		modifier = {
 			factor = 0.5
@@ -454,94 +49,15 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.5
-			trait = imbecile
-		}
-		modifier = {
-			factor = 0.5
 			trait = genius
-		}
-		modifier = {
-			factor = 0.75
-			trait = drunkard
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of infection.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 10.0 #Reduces chance of infection.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 7.0
-			trait = hobbit
 		}
 	}
 	
 	option = {
-		name = {
-			text = EVTOPTA6020
-			trigger = {
-				is_ill = no
-				NOT = { trait = paranoid }
-				NOT = { trait = zealous }
-				NOT = { trait = incapable }
-				prisoner = no
-			}
-		}
-		name = {
-			text = EVTOPTA6020_PARA
-			trigger = {
-				trait = paranoid
-				NOT = { trait = incapable }
-			}
-		}
-		name = {
-			text = EVTOPTA6020_FEVER
-			trigger = {
-				is_ill = yes
-				NOT = { trait = incapable }
-			}
-		}
-		name = {
-			text = EVTOPTA6020_ZEAL
-			trigger = {
-				trait = zealous
-				NOT = { trait = incapable }
-			}
-		}
-		name = {
-			text = EVTOPTA6020_PRISON
-			trigger = {
-				prisoner = yes
-				NOT = { trait = incapable }
-			}
-		}
-		name = {
-			text = EVTOPTA6020_COMA
-			trigger = { trait = incapable }
-		}
-		
+		name = EVTOPTA6020
 		add_trait = lunatic
-		
-		if = {
-			limit = { trait = depressed }
-			remove_trait = depressed
-		}
-		if = {
-			limit = { trait = stressed }
-			remove_trait = stressed
-		}
-		if = {
-			limit = { trait = incapable }
-			remove_trait = incapable
-		}
+		remove_trait = depressed
+		remove_trait = stressed
 	}
 }
 
@@ -550,20 +66,12 @@ character_event = {
 	id = 6021
 	desc = EVTDESC6021
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
 	
-	min_age = 16
-	only_capable = yes
+	min_age = 10
 	
 	trigger = {
 		health = 4
 		trait = lunatic
-		NOT = {
-			OR = {
-				trait = syphilitic
-				trait = has_aztec_disease
-			}
-		}
 	}
 	
 	mean_time_to_happen = {
@@ -571,28 +79,6 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			health = 6
-		}
-		modifier = {
-			factor = 0.0001 #ORG 10
-			trait = elf
-		}
-		modifier = {
-			factor = 0.001 #Increases chance of trait being cured.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.0005 #Increases chance of trait being cured.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.0007
-			trait = hobbit
 		}
 	}
 	
@@ -602,15 +88,16 @@ character_event = {
 	}
 }
 
+
+
+
 #Stressed
 character_event = {
 	id = 6040
 	desc = EVTDESC6040
 	picture = GFX_evt_bad_news
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
-	only_capable = yes
 	
 	trigger = {
 		OR = {
@@ -619,17 +106,26 @@ character_event = {
 			has_minor_title = title_regent
 		}
 		NOT = { trait = stressed }
+		NOT = { trait = incapable }
 		NOT = { trait = infirm }
+		NOT = { trait = elf }
 	}
 	
 	mean_time_to_happen = {
-		months = 2000
+		months = 2400
 		
 		modifier = {
-			factor = 0.75
-			trait = diligent
+			factor = 0.8
+			is_ruler = yes
 		}
-		
+		modifier = {
+			factor = 0.8
+			is_councillor = yes
+		}
+		modifier = {
+			factor = 0.8
+			has_minor_title = title_regent
+		}
 		modifier = {
 			factor = 0.8
 			in_command = yes
@@ -639,31 +135,8 @@ character_event = {
 			factor = 10.0
 			trait = slothful
 		}
-		
-		modifier = {
-			factor = 10.0
-			trait = elf
-		}
-		
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
 	}
+	
 	option = {
 		name = EVTOPTA6040
 		add_trait = stressed
@@ -675,10 +148,8 @@ character_event = {
 	id = 6041
 	desc = EVTDESC6041
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
-	only_capable = yes
 	
 	trigger = {
 		trait = stressed
@@ -710,28 +181,6 @@ character_event = {
 			factor = 0.75
 			NOT = { has_minor_title = title_regent }
 		}
-		modifier = {
-			factor = 0.01 #Increases chance of trait being cured.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.005 #Increases chance of trait being cured.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #Increases chance of trait being cured.
-			trait = elf
-		}
-		modifier = {
-			factor = 0.007
-			trait = hobbit
-		}
 	}
 	
 	option = {
@@ -745,14 +194,13 @@ character_event = {
 	id = 6050
 	desc = EVTDESC6050
 	picture = GFX_evt_bad_news
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 10
-	only_capable = yes
 	
 	trigger = {
 		NOT = { trait = depressed }
 		NOT = { trait = zealous }
+		NOT = { trait = incapable }
 		NOT = { trait = content }
 	}
 	
@@ -762,12 +210,12 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			NOT = { age = 20 }
-			mother_even_if_dead = { is_alive = no } 
+			mother = { is_alive = no } 
 		}
 		modifier = {
 			factor = 0.75
 			NOT = { age = 20 }
-			father_even_if_dead = { is_alive = no } 
+			father = { is_alive = no } 
 		}
 		
 		modifier = {
@@ -802,28 +250,6 @@ character_event = {
 			factor = 2.0
 			trait = diligent
 		}
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 10.0 #Reduces chance of trait.
-			trait = elf
-		}
 	}
 	
 	option = {
@@ -837,10 +263,8 @@ character_event = {
 	id = 6051
 	desc = EVTDESC6051
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 10
-	only_capable = yes
 	
 	trigger = {
 		trait = depressed
@@ -889,28 +313,6 @@ character_event = {
 			factor = 1.3
 			in_command = yes
 		}
-		modifier = {
-			factor = 0.01 #Those of numenor bounce back from depression quickly.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.35
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.5 #Dwarves recover sooner from depression than elves but more slowly than humans.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 10.0 #Takes longer for elves to recover from depression.
-			trait = elf
-		}
 	}
 	
 	option = {
@@ -922,39 +324,23 @@ character_event = {
 #Ill
 character_event = {
 	id = 6060
-	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
 	desc = EVTDESC6060
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA6060
-		add_trait = ill
-		blessing_removes_disease_effect = yes
-		deaths_gift_removes_disease_effect = yes
-	}
-}
-
-#Meta ill
-character_event = {
-	id = 6063
-
-	hide_window = yes
+	picture = GFX_evt_illness
 	
 	trigger = {
 		health = 3.0
-		is_ill = no
-
-		NOT = {
-			OR = {
-				trait = elf
-				has_game_rule = {
-					name = non_epidemic_diseases
-					value = none
-				}
-			}
-		}
+		NOT = { is_ill = yes }
+		NOT = { trait = pneumonic }
+		NOT = { trait = has_tuberculosis }
+		NOT = { trait = has_typhoid_fever }
+		NOT = { trait = has_typhus }
+		NOT = { trait = has_bubonic_plague }
+		NOT = { trait = has_measles }
+		NOT = { trait = has_small_pox }
+		NOT = { trait = elf }
+		NOT = { religion_group = religion_group_eruhini }
+		NOT = { religion_group = religion_group_wilderness }
+		NOT = { religion_group = religion_group_melkor }
 	}
 	
 	mean_time_to_happen = {
@@ -967,10 +353,6 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			trait = stressed
-		}
-		modifier = {
-			factor = 0.5
-			is_weak_trigger = yes
 		}
 		modifier = {
 			factor = 0.75
@@ -987,10 +369,6 @@ character_event = {
 			base_health = 6
 		}
 		modifier = {
-			factor = 1.5
-			is_strong_trigger = yes
-		}
-		modifier = {
 			factor = 2.0
 			base_health = 7
 		}
@@ -998,66 +376,24 @@ character_event = {
 			factor = 2.0
 			base_health = 8
 		}
-		modifier = {
-			factor = 0.5
-			has_game_rule = {
-				name = non_epidemic_diseases
-				value = more
-			}
-		}
-		modifier = {
-			factor = 2
-			has_game_rule = {
-				name = non_epidemic_diseases
-				value = fewer
-			}
-		}
-		modifier = {
-			factor = 4
-			has_game_rule = {
-				name = non_epidemic_diseases
-				value = rare
-			}
-		}
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 100.0 #Reduces chance of trait.
-			trait = elf
+	}
+	
+	option = {
+		name = EVTOPTA6060
+	if = {
+	limit = {
+		NOT = {
+			has_dlc = "Reapers"
 		}
 	}
-
-	immediate = {
-		if = {
-			limit = {
-				NOT = {
-					has_dlc = "Reapers"
-				}
-			}
-			character_event = { id = 6060 }
-		}
-		if = {
-			limit = {
-				has_dlc = "Reapers"
-			}
-			add_symptom_effect = yes
-		}
+	add_trait = ill
+}
+if = {
+	limit = {
+		has_dlc = "Reapers"
+	}
+	add_symptom_effect = yes
+}
 	}
 }
 
@@ -1066,13 +402,10 @@ character_event = {
 	id = 6061
 	desc = EVTDESC6061
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
 	
 	trigger = {
 		base_health = 3
-		trait = ill
+		is_ill = yes
 	}
 	
 	mean_time_to_happen = {
@@ -1098,33 +431,24 @@ character_event = {
 			factor = 0.1
 			base_health = 7
 		}
-		modifier = {
-			factor = 0.01 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.005
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.001 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.0001 #Reduces chance of trait.
-			trait = elf
-		}
 	}
 	
 	option = {
 		name = EVTOPTA6061
-		remove_trait = ill
+		if = {
+	limit = {
+		NOT = {
+			has_dlc = "Reapers"
+		}
+	}
+	remove_trait = ill
+}
+if = {
+	limit = {
+		has_dlc = "Reapers"
+	}
+	remove_symptom_effect = yes
+}
 	}
 }
 
@@ -1133,10 +457,8 @@ character_event = {
 	id = 6062
 	desc = EVTDESC6062
 	picture = GFX_evt_child_play
-	border = GFX_event_normal_frame_religion
 	
 	max_age = 7
-	is_sick = yes
 	
 	trigger = {
 		trait = sickly
@@ -1171,17 +493,17 @@ character_event = {
 	id = 6070
 	desc = EVTDESC6070
 	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		OR = {
-			trait = ill
+			is_ill = yes
 			trait = has_measles
 		}
 		NOT = { trait = pneumonic }
+		NOT = { trait = elf }
+		NOT = { religion_group = religion_group_eruhini }
+		NOT = { religion_group = religion_group_wilderness }
+		NOT = { religion_group = religion_group_melkor }
 	}
 	
 	mean_time_to_happen = {
@@ -1219,35 +541,11 @@ character_event = {
 			NOT = { month = 2 }		#jan and feb
 			in_command = yes
 		}
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 100.0 #Reduces chance of trait.
-			trait = elf
-		}
 	}
 	
 	option = {
 		name = EVTOPTA6070
 		add_trait = pneumonic
-		blessing_removes_disease_effect = yes
-		deaths_gift_removes_disease_effect = yes
 	}
 }
 
@@ -1256,10 +554,6 @@ character_event = {
 	id = 6071
 	desc = EVTDESC6071
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		base_health = 4
@@ -1296,28 +590,6 @@ character_event = {
 			factor = 0.5
 			base_health = 8
 		}
-		modifier = {
-			factor = 0.1 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.05
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.01 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #Reduces chance of trait.
-			trait = elf
-		}
 	}
 	
 	option = {
@@ -1331,11 +603,6 @@ character_event = {
 	id = 6080
 	desc = EVTDESC6080
 	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	only_capable = yes
-	prisoner = no
 	
 	trigger = {
 		OR = {
@@ -1343,9 +610,9 @@ character_event = {
 			in_command = yes
 			trait = brave
 		}
-		NOR = {
+		NOT = {
 			trait = wounded
-			is_maimed_trigger = yes
+			trait = maimed
 		}		
 	}
 	
@@ -1376,28 +643,6 @@ character_event = {
 			factor = 1.1
 			trait = paranoid
 		}
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 10.0 #Reduces chance of trait.
-			trait = elf
-		}
 	}
 	
 	option = {
@@ -1411,12 +656,10 @@ character_event = {
 	id = 6081
 	desc = EVTDESC6081
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
 	
 	trigger = {
 		base_health = 4
 		trait = wounded
-		NOT = { trait = infection }
 	}
 	
 	mean_time_to_happen = {
@@ -1430,28 +673,6 @@ character_event = {
 		modifier = {
 			factor = 0.4
 			base_health = 6
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.4
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.3 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.1 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -1468,12 +689,11 @@ character_event = {
 	id = 6082
 	desc = EVTDESC6082
 	picture = GFX_evt_illness
-	border = GFX_event_normal_frame_religion
 	
 	trigger = {
 		trait = wounded
 		NOT = { base_health = 8 }
-		is_ill = no
+		NOT = { is_ill = yes }
 	}
 	
 	mean_time_to_happen = {
@@ -1485,48 +705,16 @@ character_event = {
 		}
 		
 		modifier = {
-			factor = 10
-			trait = elf
-		}
-		
-		modifier = {
-			factor = 0.8
-			trait = leper
-		}
-		
-		modifier = {
 			factor = 0.8
 			NOT = { base_health = 6 }
 		}
 		modifier = {
-			factor = 0.6
-			age = 100
+			factor = 0.8
+			age = 60
 		}
 		modifier = {
 			factor = 0.8
-			age = 120
-		}
-		modifier = {
-			factor = 2.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 3.5
-			trait = hobbit
-		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 10.0 #Reduces chance of trait.
-			trait = elf
+			age = 70
 		}
 	}
 	
@@ -1536,38 +724,421 @@ character_event = {
 			limit = {
 				NOT = {
 					has_dlc = "Reapers"
-				}
-			}
+						}
+					}
 			add_trait = ill
-			blessing_removes_disease_effect = yes
-			deaths_gift_removes_disease_effect = yes
-		}
+			}
 		if = {
-			limit = {
-				has_dlc = "Reapers"
+		limit = {
+			has_dlc = "Reapers"
+				}
+		add_symptom_effect = yes
 			}
-			add_trait = infection
-			hidden_tooltip = {
-				character_event = { id = RIP.11001 days = 365 random = 1095 }
-			}
-		}
 	}
 }
 
+
+#Infirm - FOR NORMAL MEN ONLY #
+character_event = {
+	id = 6100
+	desc = EVTDESC6100
+	picture = GFX_evt_illness
+	
+	min_age = 45
+	
+	trigger = {
+		NOT = { trait = infirm }
+		NOT = { trait = incapable }
+		NOT = { trait = elf }
+		NOT = { trait = dwarven }
+		NOT = { trait = spider }
+		NOT = { trait = uruloke }	
+		NOT = { trait = cold_drake }	
+		NOT = { trait = long_worms }	
+		NOT = { trait = balrog }			
+		NOT = { trait = orkish }
+		NOT = { trait = dwarven }
+		NOT = { culture_group = culture_group_wilderness }				
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = blood_of_numenor2 }			
+		NOT = { trait = half_elf }
+		NOT = { trait = elven_blood }			
+		NOT = { culture_group = culture_group_eru }
+		NOT = { trait = nazgul }
+		NOT = { trait = ent }
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+		
+		modifier = {
+			factor = 0.8
+			age = 60
+		}
+		modifier = {
+			factor = 0.7
+			age = 70
+		}
+		modifier = {
+			factor = 0.5
+			age = 80
+		}
+		modifier = {
+			factor = 0.5
+			age = 90
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 5.1
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 6.0
+		}
+	}
+	
+	option = {
+		name = EVTOPTA6100
+		add_trait = infirm
+	}
+}
+
+#Infirm - FOR LESSER DUNEDAIN MEN ONLY #
+character_event = {
+	id = 6499
+	desc = EVTDESC6100
+	picture = GFX_evt_illness
+	
+	min_age = 130
+	
+	trigger = {
+		trait=blood_of_numenor2
+		NOT = { trait = infirm }
+		NOT = { trait = incapable }
+		NOT = { trait = elf }
+		NOT = { trait = dwarven }
+		NOT = { trait = spider }
+		NOT = { trait = uruloke }	
+		NOT = { trait = cold_drake }	
+		NOT = { trait = long_worms }	
+		NOT = { culture_group = culture_group_wilderness }				
+		NOT = { trait = balrog }			
+		NOT = { trait = orkish }
+		NOT = { trait = dwarven }
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = half_elf }
+		NOT = { trait = elven_blood }			
+		NOT = { culture_group = culture_group_eru }
+		NOT = { trait = nazgul }
+		NOT = { trait = ent }
+	}
+	
+	mean_time_to_happen = {
+		days = 2400
+		
+
+		modifier = {
+			factor = 4
+			year = 8200
+		}		
+		modifier = {
+			factor = 3
+			year = 8500
+		}
+		modifier = {
+			factor = 2
+			year = 9000
+		}
+		modifier = {
+			factor = 1.5
+			year = 10000
+		}
+		modifier = {
+			factor = 0.9
+			age = 160
+		}
+		modifier = {
+			factor = 0.8
+			age = 180
+		}
+		modifier = {
+			factor = 0.65
+			age = 200
+		}
+		modifier = {
+			factor = 0.5
+			age = 220
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 5.1
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 6.0
+		}
+		modifier = {
+			factor = 25.0
+			trait = blood_of_isildur
+		}	
+		modifier = {
+			factor = 25.0
+			trait = blood_of_anarion
+		}			
+		modifier = {
+			factor = 15.0
+			has_landed_title = e_gondor
+		}	
+		modifier = {
+			factor = 13.0
+			has_landed_title = k_rhudaur
+		}	
+		modifier = {
+			factor = 15.0
+			has_landed_title = e_arnor
+		}	
+		modifier = {
+			factor = 4.0
+			OR = {
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}			
+	}
+	
+	option = {
+		name = EVTOPTA6100
+		add_trait = infirm
+	}
+}
+
+#Infirm - FOR GREATER DUNEDAIN MEN AND HALF-ELVES ONLY #
+character_event = {
+	id = 6498
+	desc = EVTDESC6100
+	picture = GFX_evt_illness
+	
+	min_age = 165
+	
+	trigger = {
+		OR = {
+			trait = blood_of_numenor
+			trait = elven_blood
+			trait = half_elf
+		}
+		NOT = { trait = infirm }
+		NOT = { trait = incapable }
+		NOT = { trait = elf }
+		NOT = { trait = dwarven }
+		NOT = { trait = spider }
+		NOT = { trait = uruloke }	
+		NOT = { trait = cold_drake }	
+		NOT = { trait = long_worms }	
+		NOT = { trait = balrog }			
+		NOT = { trait = orkish }
+		NOT = { trait = dwarven }
+		NOT = { culture_group = culture_group_wilderness }				
+		NOT = { trait = blood_of_numenor2 }
+		NOT = { culture_group = culture_group_eru }
+		NOT = { trait = nazgul }
+		NOT = { trait = ent }
+	}
+	
+	mean_time_to_happen = {
+		days = 4800
+
+		modifier = {
+			factor = 4
+			year = 8200
+		}		
+		modifier = {
+			factor = 3
+			year = 8500
+		}
+		modifier = {
+			factor = 2
+			year = 9000
+		}
+		modifier = {
+			factor = 1.5
+			year = 10000
+		}
+		modifier = {
+			factor = 0.9
+			age = 175
+		}
+		modifier = {
+			factor = 0.8
+			age = 185
+		}
+		modifier = {
+			factor = 0.7
+			age = 195
+		}
+		modifier = {
+			factor = 0.6
+			age = 210
+		}
+		modifier = {
+			factor = 0.5
+			age = 240
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			health = 15.0
+		}
+		modifier = {
+			factor = 3.0
+			health = 20.0
+		}
+		modifier = {
+			factor = 5.0
+			has_landed_title = e_gondor
+		}	
+		modifier = {
+			factor = 5.0
+			has_landed_title = k_rhudaur
+		}	
+		modifier = {
+			factor = 5.0
+			has_landed_title = e_arnor
+		}	
+		modifier = {
+			factor = 5.0
+			OR = {
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}			
+	}
+	
+	option = {
+		name = EVTOPTA6100
+		add_trait = infirm
+	}
+}
+
+#Infirm - FOR DWARVES ONLY #
+character_event = {
+	id = 6497
+	desc = EVTDESC6100
+	picture = GFX_evt_illness
+	
+	min_age = 265
+	
+	trigger = {
+		trait = dwarven
+		NOT = { trait = infirm }
+		NOT = { trait = incapable }
+		NOT = { trait = elf }
+		NOT = { trait = spider }
+		NOT = { trait = uruloke }	
+		NOT = { trait = cold_drake }	
+		NOT = { trait = long_worms }	
+		NOT = { trait = balrog }			
+		NOT = { trait = orkish }
+		NOT = { trait = dwarven }
+		NOT = { culture_group = culture_group_wilderness }				
+		NOT = { trait = blood_of_numenor2 }
+		NOT = { culture_group = culture_group_eru }
+		NOT = { trait = nazgul }
+		NOT = { trait = ent }
+	}
+	
+	mean_time_to_happen = {
+		days = 4800
+		
+		modifier = {
+			factor = 0.8
+			age = 270
+		}
+		modifier = {
+			factor = 0.7
+			age = 280
+		}
+		modifier = {
+			factor = 0.5
+			age = 290
+		}
+		modifier = {
+			factor = 0.2
+			age = 310
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 4.0 }
+		}
+	}
+	
+	option = {
+		name = EVTOPTA6100
+		add_trait = infirm
+	}
+}
 #Incapable
 character_event = {
 	id = 6110
 	desc = EVTDESC6110
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
 	
 	trigger = {
 		OR = {
 			trait = infirm
 			trait = inbred
 		}
-		NOT = { trait = incapable }
-		immortal = no
+		NOT = {
+			OR = {
+				trait = incapable
+				trait = ring
+				trait = ringbearer1
+				trait = ringbearer2
+				culture_group = culture_group_eru
+				culture_group = culture_group_wilderness
+				trait = maiar
+				trait = eagle
+				trait = balrog
+				trait = spider
+				trait = ent
+				trait = elf
+				trait = elf_childhood
+				trait = valar
+				trait = enigma
+				trait = wilderness
+				trait = nazgul
+				trait = wight
+				trait = uruloke
+				trait = cold_drake
+				trait = long_worms
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -1593,24 +1164,6 @@ character_event = {
 			factor = 2.0
 			base_health = 6.0
 		}
-		modifier = {
-			factor = 5.0 #Reduces chance of trait.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 7.0
-			trait = hobbit
-		}
-		modifier = {
-			factor = 10.0 #Reduces chance of trait.
-			trait = dwarven
-		}
 	}
 	
 	option = {
@@ -1625,22 +1178,14 @@ character_event = {
 	id = 6111
 	desc = EVTDESC6111
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_tuberculosis
 	}
 	
 	mean_time_to_happen = {
-		months = 24
+		months = 12
 		
-		modifier = {
-			factor = 0.2
-			trait = elf
-		}
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1692,28 +1237,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.05 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -1728,22 +1251,14 @@ character_event = {
 	id = 6112
 	desc = EVTDESC6112
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_typhoid_fever
 	}
 	
 	mean_time_to_happen = {
-		months = 4
+		months = 2
 		
-		modifier = {
-			factor = 0.2
-			trait = elf
-		}
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1795,28 +1310,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -1831,22 +1324,14 @@ character_event = {
 	id = 6113
 	desc = EVTDESC6113
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_typhus
 	}
 	
 	mean_time_to_happen = {
-		months = 12
+		months = 2
 		
-		modifier = {
-			factor = 0.4
-			trait = elf
-		}
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1898,28 +1383,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -1934,17 +1397,13 @@ character_event = {
 	id = 6114
 	desc = EVTDESC6114
 	picture = GFX_evt_plague_doctor
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_bubonic_plague
 	}
 	
 	mean_time_to_happen = {
-		months = 3
+		months = 2
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1996,28 +1455,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -2032,22 +1469,14 @@ character_event = {
 	id = 6115
 	desc = EVTDESC6115
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_measles
 	}
-	 
+	
 	mean_time_to_happen = {
-		months = 5
+		months = 2
 		
-		modifier = {
-			factor = 0.9
-			trait = elf
-		}
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -2099,28 +1528,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -2135,17 +1542,13 @@ character_event = {
 	id = 6116
 	desc = EVTDESC6116
 	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-	
-	is_sick = yes
-	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_small_pox
 	}
 	
 	mean_time_to_happen = {
-		months = 5
+		months = 2
 		
 		modifier = {
 			factor = 0.75
@@ -2198,28 +1601,6 @@ character_event = {
 		modifier = {
 			factor = 5.0
 			trait = incapable
-		}
-		modifier = {
-			factor = 0.5 #These heal swifter than most.
-			OR = {
-				trait = numenorean
-				trait = blood_of_numenor
-				trait = blood_of_numenor2
-				trait = blood_of_isildur
-				trait = blood_of_anarion
-			}
-		}
-		modifier = {
-			factor = 0.04
-			trait = hobbit
-		}
-		modifier = {
-			factor = 0.03 #These heal swifter than most.
-			trait = dwarven
-		}
-		modifier = {
-			factor = 0.001 #These heal swifter than most.
-			trait = elf
 		}
 	}
 	
@@ -2236,14 +1617,13 @@ character_event = {
 	id = 6300
 	desc = EVTDESC6300
 	picture = GFX_evt_lunatic
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
 	prisoner = no
-	only_playable = yes
-	only_independent = yes
+	only_rulers = yes
 	
 	trigger = {
+		independent = yes
 		trait = lunatic
 	}
 	
@@ -2365,21 +1745,15 @@ narrative_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = EVTOPTA6305 
-		custom_tooltip = {
-			text = ALL_VASSALS_INSANE_LAW
-			hidden_tooltip = {
-				any_vassal = {
-					opinion = {
-						modifier = opinion_insane_law
-						who = ROOT
-					}
-				}
+		name = EVTOPTA6305
+		any_vassal = {
+			opinion = {
+				modifier = opinion_insane_law
+				who = ROOT
 			}
 		}
 	}
 }
-
 
 # Pants Law (Liege)
 narrative_event = {
@@ -2394,15 +1768,10 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		custom_tooltip = {
-			text = ALL_VASSALS_INSANE_LAW
-			hidden_tooltip = {
-				any_vassal = {
-					opinion = {
-						modifier = opinion_insane_law
-						who = ROOT
-					}
-				}
+		any_vassal = {
+			opinion = {
+				modifier = opinion_insane_law
+				who = ROOT
 			}
 		}
 	}
@@ -2421,15 +1790,10 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		custom_tooltip = {
-			text = ALL_VASSALS_INSANE_LAW
-			hidden_tooltip = {
-				any_vassal = {
-					opinion = {
-						modifier = opinion_insane_law
-						who = ROOT
-					}
-				}
+		any_vassal = {
+			opinion = {
+				modifier = opinion_insane_law
+				who = ROOT
 			}
 		}
 	}
@@ -2448,15 +1812,10 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		custom_tooltip = {
-			text = ALL_VASSALS_INSANE_LAW
-			hidden_tooltip = {
-				any_vassal = {
-					opinion = {
-						modifier = opinion_insane_law
-						who = ROOT
-					}
-				}
+		any_vassal = {
+			opinion = {
+				modifier = opinion_insane_law
+				who = ROOT
 			}
 		}
 	}
@@ -2469,7 +1828,6 @@ character_event = {
 	id = 6315
 	desc = EVTDESC6315
 	picture = GFX_evt_lunatic
-	border = GFX_event_normal_frame_religion
 	
 	ai = no
 	min_age = 16
@@ -2495,7 +1853,6 @@ character_event = {
 	id = 6316
 	desc = EVTDESC6316
 	picture = GFX_evt_lunatic
-	border = GFX_event_normal_frame_religion
 	
 	ai = no
 	min_age = 16
@@ -2521,21 +1878,11 @@ character_event = {
 	id = 6317
 	desc = EVTDESC6317
 	picture = GFX_evt_courier
-	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
 	prisoner = no
-	only_capable = yes
-	only_playable = yes
-	lacks_dlc = "Zeus"
 	
 	trigger = {
-		NOT = {
-			has_game_rule = {
-				name = supernatural_events
-				value = off
-			}
-		}
 		trait = lunatic
 		any_courtier = {
 			has_job_title = job_chancellor
@@ -2568,7 +1915,6 @@ character_event = {
 	id = 6318
 	desc = EVTDESC6318
 	picture = GFX_evt_courier
-	border = GFX_event_normal_frame_religion
 	
 	is_triggered_only = yes
 	
@@ -2576,48 +1922,5 @@ character_event = {
 		name = EVTOPTA6318
 		prestige = -20
 		custom_tooltip = { text = horse_chancellor }
-	}
-}
-
-#Lover's pox adding and notification
-character_event = {
-	id = 6359
-	picture = GFX_evt_recovery
-	border = GFX_event_normal_frame_religion
-
-	desc = {
-		text = EVTDESC_WOL_40_NC
-		trigger = {
-			is_female = yes
-			has_DLC = "Sons of Abraham"
-		}
-		picture = GFX_evt_bad_news_female
-	}
-	desc = {
-		text = EVTDESC_WOL_40_NC
-		trigger = {
-			is_female = no
-			has_DLC = "Sons of Abraham"
-		}
-		picture = GFX_evt_bad_news
-	}
-	desc = {
-		trigger = { NOT = { has_DLC = "Sons of Abraham" } }
-		text = EVTDESC_WOL_40_NC
-		picture = GFX_evt_recovery
-	}
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		NOR = {
-			trait = lovers_pox
-			has_character_modifier = minor_disease_herpes
-		}
-	}
-	
-	option = {
-		name = CURSES
-		add_trait = lovers_pox
 	}
 }

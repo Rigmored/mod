@@ -3,7 +3,6 @@ temple = {
 		desc = ca_Nwalltower_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 			ROOT = {
 				culture_group = culture_group_numenorean
 			}
@@ -28,7 +27,7 @@ temple = {
 		}
 		prerequisites = { tp_Nwall_2 }
 		upgrades_from = tp_Nwalltower_1
-		gold_cost = 50
+		gold_cost = 100
 		build_time = 182
 		fort_level = 0.25
 		garrison_size = 0.05
@@ -46,7 +45,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwalltower_2
-		gold_cost = 50
+		gold_cost = 250
 		build_time = 182
 		fort_level = 0.25
 		garrison_size = 0.05
@@ -64,7 +63,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwalltower_3
-		gold_cost = 100
+		gold_cost = 350
 		build_time = 365
 		fort_level = 0.75
 		garrison_size = 0.15
@@ -82,7 +81,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwalltower_4
-		gold_cost = 100
+		gold_cost = 550
 		build_time = 365
 		fort_level = 0.75
 		garrison_size = 0.15
@@ -100,7 +99,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwalltower_5
-		gold_cost = 100
+		gold_cost = 900
 		build_time = 365
 		fort_level = 0.75
 		garrison_size = 0.15
@@ -113,7 +112,6 @@ temple = {
 		desc = ca_Nwall_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 			ROOT = {
 				culture_group = culture_group_numenorean
 			}
@@ -137,7 +135,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwall_1
-		gold_cost = 50
+		gold_cost = 100
 		build_time = 547
 		fort_level = 0.25
 		levy_size = 0.06
@@ -156,7 +154,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwall_2
-		gold_cost = 100
+		gold_cost = 250
 		build_time = 730
 		fort_level = 0.5
 		levy_size = 0.09
@@ -175,7 +173,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwall_3
-		gold_cost = 100
+		gold_cost = 350
 		build_time = 1095
 		fort_level = 0.5
 		levy_size = 0.12
@@ -194,7 +192,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwall_4
-		gold_cost = 150
+		gold_cost = 550
 		build_time = 1460
 		fort_level = 1
 		levy_size = 0.15
@@ -213,7 +211,7 @@ temple = {
 			}
 		}
 		upgrades_from = tp_Nwall_5
-		gold_cost = 150
+		gold_cost = 1000
 		build_time = 1460
 		fort_level = 1
 		levy_size = 0.15
@@ -227,7 +225,6 @@ temple = {
 		desc = tp_Nmonastery_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 			ROOT = {
 				culture_group = culture_group_numenorean
 			}
@@ -281,10 +278,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nmonastery_2
 		gold_cost = 300
@@ -312,10 +307,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nmonastery_3
 		gold_cost = 400
@@ -343,10 +336,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nmonastery_4
 		gold_cost = 500
@@ -374,13 +365,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nmonastery_5
-		gold_cost = 500
+		gold_cost = 700
 		build_time = 2190
 		levy_size = 0.3
 		garrison_size = 0.1
@@ -396,7 +385,6 @@ temple = {
 		desc = tp_Nbarracks_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOR = {
 				culture_group = culture_group_melkor
@@ -406,10 +394,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 100
 		build_time = 365
@@ -434,10 +420,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_1 }
 		upgrades_from = tp_Nbarracks_1
@@ -464,14 +448,12 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_2 }
 		upgrades_from = tp_Nbarracks_2
-		gold_cost = 200
+		gold_cost = 250
 		build_time = 730
 		heavy_infantry = 40
 		archers = 40
@@ -494,13 +476,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nbarracks_3
-		gold_cost = 300
+		gold_cost = 350
 		build_time = 1095
 		heavy_infantry = 45
 		archers = 45
@@ -523,13 +503,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nbarracks_4
-		gold_cost = 400
+		gold_cost = 500
 		build_time = 2190
 		heavy_infantry = 50
 		archers = 50
@@ -542,23 +520,21 @@ temple = {
 		desc = tp_Nbarracks_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 8 }
 		potential = {
-		has_global_flag = building
+			has_global_flag = building
 		    FROM = {
 				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
+					culture_group = culture_group_melkor
+					AND = {
+						culture = culture_maiar
+						trait = evil_side
+					}
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nbarracks_5
-		gold_cost = 500
+		gold_cost = 700
 		build_time = 2190
 		heavy_infantry = 55
 		archers = 55
@@ -572,7 +548,6 @@ temple = {
 		desc = tp_elite_Nbarracks_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOR = {
 				culture_group = culture_group_melkor
@@ -582,10 +557,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 100
 		build_time = 365
@@ -609,14 +582,12 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_1 }
 		upgrades_from = tp_elite_Nbarracks_1
-		gold_cost = 120
+		gold_cost = 150
 		build_time = 730
 		light_cavalry = 20
 		knights = 10
@@ -638,14 +609,12 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_2 }
 		upgrades_from = tp_elite_Nbarracks_2
-		gold_cost = 200
+		gold_cost = 250
 		build_time = 730
 		light_cavalry = 25
 		knights = 15
@@ -667,13 +636,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_elite_Nbarracks_3
-		gold_cost = 300
+		gold_cost = 350
 		build_time = 1095
 		light_cavalry = 30
 		knights = 20
@@ -695,13 +662,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_elite_Nbarracks_4
-		gold_cost = 400
+		gold_cost = 500
 		build_time = 2190
 		light_cavalry = 35
 		knights = 25
@@ -723,13 +688,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_elite_Nbarracks_5
-		gold_cost = 500
+		gold_cost = 800
 		build_time = 2190
 		light_cavalry = 40
 		knights = 30
@@ -742,7 +705,6 @@ temple = {
 		desc = tp_Ntown_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOR = {
 				culture_group = culture_group_melkor
@@ -752,10 +714,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 100
 		build_time = 365
@@ -778,10 +738,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_1 }
 		upgrades_from = tp_Ntown_1
@@ -806,10 +764,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_2 }
 		upgrades_from = tp_Ntown_2
@@ -834,10 +790,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Ntown_3
 		gold_cost = 300
@@ -861,13 +815,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Ntown_4
-		gold_cost = 400
+		gold_cost = 450
 		build_time = 2190
 		tax_income = 3
 		ai_creation_factor = 93
@@ -888,13 +840,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Ntown_5
-		gold_cost = 500
+		gold_cost = 700
 		build_time = 2190
 		tax_income = 3
 		ai_creation_factor = 92
@@ -917,10 +867,8 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 100
 		build_time = 365
@@ -946,13 +894,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nshipyard_1
-		gold_cost = 100
+		gold_cost = 150
 		build_time = 730
 		galleys = 11
 		tax_income = 2
@@ -976,13 +922,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nshipyard_2
-		gold_cost = 100
+		gold_cost = 250
 		build_time = 1095
 		galleys = 12
 		tax_income = 2
@@ -1006,13 +950,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nshipyard_3
-		gold_cost = 100
+		gold_cost = 350
 		build_time = 1460
 		galleys = 13
 		tax_income = 2
@@ -1035,13 +977,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nshipyard_4
-		gold_cost = 100
+		gold_cost = 500
 		build_time = 1460
 		galleys = 14
 		tax_income = 2
@@ -1064,13 +1004,11 @@ temple = {
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = tp_Nshipyard_5
-		gold_cost = 100
+		gold_cost = 800
 		build_time = 1460
 		galleys = 15
 		tax_income = 2
@@ -1083,20 +1021,17 @@ temple = {
 		desc = tp_altartoeru_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 3 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
+					culture_group = culture_group_melkor
+					AND = {
+						culture = culture_maiar
+						trait = evil_side
 				    }
 				}
 			}
-			ROOT = {
-				culture_group = culture_group_numenorean
-				NOT = { culture = culture_black_numenorean }
-			}
+			mep_is_good_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { tp_Nwall_1 }
 		gold_cost = 120

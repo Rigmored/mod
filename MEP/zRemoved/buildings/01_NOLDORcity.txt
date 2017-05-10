@@ -1,0 +1,703 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+
+###################### City buildings for Noldor culture - A code- ######################
+city = {
+
+################## Defense : fort level ###############################
+	ct_Awall_1 = {
+		desc = ct_Awall_1_desc
+		
+		gold_cost = 60
+		build_time = 215
+		fort_level = 0.6
+		ai_creation_factor = 60
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awall_2 = {
+		desc = ct_Awall_1_desc
+
+		upgrades_from = ct_Awall_1
+		gold_cost = 60
+		build_time = 220
+		fort_level = 0.6
+		ai_creation_factor = 59
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}	
+	ct_Awall_3 = {
+		desc = ca_Awall_1_desc
+		
+		upgrades_from = ct_Awall_2
+		gold_cost = 75
+		build_time = 270
+		fort_level = 0.75
+		ai_creation_factor = 58
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awall_4 = {
+		desc = ca_Awall_1_desc
+		
+		upgrades_from = ct_Awall_3
+		gold_cost = 190
+		build_time = 680
+		fort_level = 1.5
+		ai_creation_factor = 57
+       		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awall_5 = {
+		desc = ca_Awall_1_desc
+		
+		upgrades_from = ct_Awall_4
+		gold_cost = 190
+		build_time = 680
+		fort_level = 1.5
+		ai_creation_factor = 56
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+
+################## Defense : garrison size ###############################	
+	ct_Awatchtower_1 = {
+		desc = ct_Awatchtower_1_desc
+		prerequisites = { ct_Awall_1 }
+		gold_cost = 25
+		build_time = 90
+		garrison_size = 0.025
+		ai_creation_factor = 99	
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awatchtower_2 = {
+		desc = ct_Awatchtower_1_desc
+		prerequisites = { ct_Awall_2 }
+		upgrades_from = ct_Awatchtower_1
+		gold_cost = 50
+		build_time = 180
+		garrison_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awatchtower_3 = {
+		desc = ct_Awatchtower_1_desc
+		
+		upgrades_from = ct_Awatchtower_2
+		gold_cost = 75
+		build_time = 275
+		garrison_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awatchtower_4 = {
+		desc = ct_Awatchtower_1_desc
+		
+		upgrades_from = ct_Awatchtower_3
+		gold_cost = 100
+		build_time = 440
+		garrison_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awatchtower_5 = {
+		desc = ct_Awatchtower_1_desc
+		
+		upgrades_from = ct_Awatchtower_4
+		gold_cost = 125
+		build_time = 550
+		garrison_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Awatchtower_6 = {
+		desc = ct_Awatchtower_1_desc
+		
+		upgrades_from = ct_Awatchtower_5
+		gold_cost = 190
+		build_time = 675
+		garrison_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+
+################## Offense : Levy size ###############################
+	ct_Abarracks_1 = {
+		desc = ct_Abarracks_1_desc
+		
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+	ct_Abarracks_2 = {
+		desc = ct_Abarracks_1_desc
+		
+		prerequisites = { ct_Awall_1 }
+		upgrades_from = ct_Abarracks_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	} 
+	ct_Abarracks_3 = {
+		desc = ct_Abarracks_1_desc
+		
+		upgrades_from = ct_Abarracks_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	} 
+	ct_Abarracks_4 = {
+		desc = ct_Abarracks_1_desc
+		
+		upgrades_from = ct_Abarracks_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	} 
+	ct_Abarracks_5 = {
+		desc = ct_Abarracks_1_desc
+		
+		upgrades_from = ct_Abarracks_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Abarracks_6 = {
+		desc = ct_Abarracks_1_desc
+		upgrades_from = ct_Abarracks_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}
+	}
+
+################## Offense : Light infantry + archers ###############################
+	ct_Atownmilitia_1 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		potential = {
+	  		has_global_flag = building
+			culture_group = culture_group_amanyar
+            	}	
+	}
+	ct_Atownmilitia_2 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		prerequisites = { ct_Awall_1 }
+		upgrades_from = ct_Atownmilitia_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}	
+	}
+	ct_Atownmilitia_3 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		prerequisites = { ct_Awall_2 }
+		upgrades_from = ct_Atownmilitia_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}	
+	}
+	ct_Atownmilitia_4 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		upgrades_from = ct_Atownmilitia_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 60
+		archers = 90
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar	
+        	}	
+	}
+	ct_Atownmilitia_5 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		upgrades_from = ct_Atownmilitia_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 100
+		archers = 70
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}	
+	}
+	ct_Atownmilitia_6 = {
+		desc = ct_Atownmilitia_1_desc
+		
+		upgrades_from = ct_Atownmilitia_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 80
+		archers = 110
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}	
+	}
+	
+################## Troops : pikemen ###############################
+	ct_Aguard_1 = {
+		desc = ct_Aguard_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 96
+		potential = {	
+     			has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Aguard_2 = {
+		desc = ct_Aguard_1_desc
+		
+		prerequisites = { ct_Awall_1 }
+		upgrades_from = ct_Aguard_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	ct_Aguard_3 = {
+		desc = ct_Aguard_1_desc
+		
+		prerequisites = { ct_Awall_2 }
+		upgrades_from = ct_Aguard_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 94
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Aguard_4 = {
+		desc = ct_Aguard_1_desc
+		
+		upgrades_from = ct_Aguard_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar	
+        	}
+	}
+	ct_Aguard_5 = {
+		desc = ct_Aguard_1_desc
+		
+		upgrades_from = ct_Aguard_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	
+################## Economy : tax income ###############################
+	ct_Amarketplace_1 = {
+		desc = ct_Amarketplace_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	ct_Amarketplace_2 = {
+		desc = ct_Amarketplace_1_desc
+		prerequisites = { ct_Awall_1 }
+		
+		upgrades_from = ct_Amarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+			culture_group = culture_group_amanyar	
+		}
+	}
+	ct_Amarketplace_3 = {
+		desc = ct_Amarketplace_1_desc
+		
+		prerequisites = { ct_Awall_2 }
+		upgrades_from = ct_Amarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+        potential = {
+			has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	ct_Amarketplace_4 = {
+		desc = ct_Amarketplace_1_desc
+		
+		upgrades_from = ct_Amarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+        potential = {
+			has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Amarketplace_5 = {
+		desc = ct_Amarketplace_1_desc
+		
+		upgrades_from = ct_Amarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Amarketplace_6 = {
+		desc = ct_Amarketplace_1_desc
+		
+		upgrades_from = ct_Amarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	
+	ct_Aport_1 = {
+		desc = ct_Aport_1_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Aport_2 = {
+		desc = ct_Aport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Awall_1 }
+		upgrades_from = ct_Aport_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	ct_Aport_3 = {
+		desc = ct_Aport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Awall_2 }
+		upgrades_from = ct_Aport_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+	ct_Aport_4 = {
+		desc = ct_Aport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Aport_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	ct_Aport_5 = {
+		desc = ct_Aport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Aport_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+
+################## Shipyard : galleys ###############################
+	ct_Ashipyard_1 = {
+		desc = Ashipyard_desc
+		port = yes
+		gold_cost = 100
+		build_time = 485
+		galleys = 8
+		ai_creation_factor = 98
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	
+	ct_Ashipyard_2 = {
+		desc = Ashipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Ashipyard_1
+		gold_cost = 130
+		build_time = 1095
+		galleys = 9
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	
+	ct_Ashipyard_3 = {
+		desc = Ashipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Ashipyard_2
+		gold_cost = 185
+		build_time = 1720
+		galleys = 11
+		ai_creation_factor = 96
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+        	}
+	}
+	
+	ct_Ashipyard_4 = {
+		desc = Ashipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Ashipyard_3
+		gold_cost = 240
+		build_time = 2190
+		galleys = 12
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_amanyar
+		}
+	}
+
+#Elven Special Buildings#
+	ct_elven_artisans = {
+		desc = ct_elven_artisans
+		gold_cost = 150
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+	    		culture = culture_noldor
+            	}
+	}
+## Telain ##
+	ct_telain = {
+		desc = ct_telain_desc
+		gold_cost = 210
+		build_time = 770
+		tax_income = 3
+		archers = 100
+		ai_creation_factor = 50
+		add_number_to_name = no
+   		potential = {
+        			has_global_flag = building
+				OR = {
+				terrain = forest
+				terrain = woods
+				}
+				OR = {
+				culture_group = culture_group_moriquendi
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_amanyar
+				culture_group = culture_group_quendi
+				}
+			}
+		}
+# Elven Halls of Remembrance #
+	
+	tp_halls_remembrance = {
+		desc = tp_halls_remembrance_desc
+		gold_cost = 150
+		build_time = 547
+		liege_piety = 0.05
+		heavy_infantry = 20
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+				OR = {
+					culture_group = culture_group_moriquendi
+					culture_group = culture_group_umanyar
+					culture_group = culture_group_amanyar
+					culture_group = culture_group_quendi 
+				}
+        	}
+		}
+		
+##Noldor unique Buildings##
+	ct_imladris = { #Imladris#
+		desc = ca_imladris_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 5.0
+		garrison_size = 2.00
+		heavy_infantry = 30
+		archers = 30
+		horse_archers = 20
+		ai_creation_factor = 86
+        	potential = {
+            	province_id = 234 #Imladris
+				culture = culture_noldor
+            }
+	}
+	ct_gwaith_i_mirdain = { #Gwaith i Mirdain#
+		desc = ca_gwaith_i_mirdain_desc
+		gold_cost = 2050
+		build_time = 6460 #4y
+		fort_level = 5.0
+		tax_income = 10	
+		heavy_infantry = 200
+		ai_creation_factor = 86
+		garrison_size = 2.00
+        	potential = {
+				culture = culture_noldor
+				province_id = 290 #Ost-in-Edhil
+				has_global_flag = gwaith_mirdain_rebuilded
+        	}
+	}
+}

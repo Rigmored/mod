@@ -155,14 +155,11 @@ decisions = {
 				}
 			}
 			OR = {
-			culture = culture_urukhai 
-			culture = culture_half_orc 
-			culture = culture_goblin 
-			culture = culture_troll
-            AND = {
-            culture = culture_enigma
-			trait = evil_side
-			}
+				mep_orc_troll_culture = yes
+            	AND = {
+            		culture = culture_enigma
+					trait = evil_side
+				}
 			}
 		}
 		allow = {
@@ -183,7 +180,7 @@ decisions = {
 				dynasty = none
 				female = yes
 				age = 3000
-				add_trait = orkish
+				trait = orc
 			}
 			new_character = {
 				remove_trait = slow
@@ -192,7 +189,7 @@ decisions = {
 				set_character_flag = debutante
 				save_event_target_as = invited_character
 			}
-			character_event = { id = ork_baby_1 }
+			# character_event = { id = ork_baby_1 }  # event does not exist!
 			
 		}
 		ai_will_do = {

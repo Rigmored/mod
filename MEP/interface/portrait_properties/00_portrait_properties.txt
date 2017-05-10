@@ -574,8 +574,8 @@
 }
 
 # p2 base
-#2 = {
-#}
+2 = {
+}
 
 # p3 clothes
 3 = {
@@ -1796,30 +1796,34 @@
    	}
 }
 
-# p8 "elvish beards"
+# p8 "elvish beards" (aka red_dots)
 8 = {
-	0 = { # blank
-		factor = 1000
+
+	0 = { # beard
+		factor = 100
 		modifier = {
 			factor = 0
-			trait = elf
-			NOT = {
-				trait = beard_elf
+			AND = {
+				trait = elf
+				NOT = { trait = beard_elf }
 			}
 		}
  	}
 
-	1 = { # red dots
-		factor = 1
+	1 = { # red dots (no beard)
+		factor = 100
 		modifier = {
 			factor = 0
-			trait = elf
 			trait = beard_elf
 		}
   	}
+	
+
+
+
 }
 
-# p9 boils
+# p9 boils(elvish childhood as well)
 9 = {
 
 	0 = { # blank
@@ -1827,57 +1831,44 @@
 		modifier = {
 			factor = 0
 			OR = {
+				# exclude sauron if he does not have the ring
 				AND = {
-					trait = spiritform
 					has_character_flag = sauron
+					NOT = { trait = ring }
 				}
+				# exclude child elves
 				AND = {
 					trait = elf_childhood
 					trait = elf
-				}				
+				}	
+				# exclude the mouth of sauron
 				trait = mouthofsauron
 			}
-		}
-		modifier = {
-			factor = 200
-			trait = ring
-		}				
+		}			
  	}
 
-	1 = { # boils
+	1 = { # boils (and child elf)
 		factor = 100
 		modifier = {
 			factor = 0
-			AND = {
-				NOT = { trait = mouthofsauron }
-				culture = culture_black_numenorean
-			}
-		}		
-		modifier = {
-			factor = 200
 			OR = {
-				trait = mouthofsauron
-				trait = elf_childhood
+				# for elves, exclude non child elves
+				AND = {
+					trait = elf
+					NOT = { trait = elf_childhood }
+				}
+				# for Black Numenoreans, exclude anyone who isn't the mouth of sauron
+				AND = {
+					culture = culture_black_numenorean
+					NOT = { trait = mouthofsauron }
+				}
+				# exclude sauron if he has the ring
+				AND = {
+					has_character_flag = sauron
+					trait = ring
+				}
 			}
-		}	
-		modifier = {
-			factor = 0
-			AND = {
-				NOT = { trait = elf_childhood }
-				trait = elf
-			}
-		}		
-		modifier = {
-			factor = 200
-			trait = elf_childhood
-		}		
-		modifier = {
-			factor = 200
-			AND = {
-				has_character_flag = sauron
-				NOT = { trait = ring }
-			}
-		}			
+		}				
  	}	
 }
 

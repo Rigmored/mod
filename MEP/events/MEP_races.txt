@@ -16,10 +16,8 @@ character_event = {
 		}	
 		NOT = { trait = elf }
 		NOT = { trait = half_elf }
-		AND = {
-			NOT = { father = { always = yes } }
-			NOT = { mother = { always = yes } }
-		}
+		NOT = { father = { always = yes } }
+		NOT = { mother = { always = yes } }
 	}
 	
 	mean_time_to_happen = {
@@ -279,9 +277,9 @@ character_event = {
 ## The character is an Hobbit ##
 character_event = {
     id = racetrait.8
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_dwarves"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_dwarves"
 	hide_window = yes
 
 	is_triggered_only = yes
@@ -293,7 +291,7 @@ character_event = {
 
 
 	option = {
-		name = EVTOPTAracetrait.1
+		# name = EVTOPTAracetrait.1
 		add_trait = hobbit
 	}
 }
@@ -301,21 +299,21 @@ character_event = {
 ## The character is an Eagle ##
 character_event = {
     id = racetrait.9
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_dwarves"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_dwarves"
 	hide_window = yes
 
 	is_triggered_only = yes
 	
 	trigger = {
-		culture = culture_eagles
+		culture = culture_eagles	
 		NOT = { trait = eagle }
 	}
 
 
 	option = {
-		name = EVTOPTAracetrait.1
+		# name = EVTOPTAracetrait.1
 		add_trait = eagle
 	}
 }
@@ -323,9 +321,9 @@ character_event = {
 ## The characters is an Orc, but don't have any of the orcs warriors traits at beginning ##
 character_event = {
 	id = racetrait.10
-	title = EVTNAMEracetrait.10
-	desc = EVTDESCracetrait.10
-	picture = "GFX_evt_coronation"
+	# title = EVTNAMEracetrait.10
+	# desc = EVTDESCracetrait.10
+	# picture = "GFX_evt_coronation"
 	hide_window = yes 
 
 	is_triggered_only = yes
@@ -345,7 +343,7 @@ character_event = {
 
 
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_goblin
 		}
@@ -366,7 +364,7 @@ character_event = {
 	}
 	
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_orkish
 		}
@@ -387,7 +385,7 @@ character_event = {
 	}	
 	
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_urukhai
 		}

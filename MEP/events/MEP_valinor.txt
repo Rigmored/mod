@@ -259,15 +259,15 @@ character_event = {
 ##  Aragorn died, and Arwen will soon died too ##
 character_event = {
 	id = valinor.12
-	title = "EVTvalinor.12"
-	desc = "EVTDESCvalinor.12"
-	picture = GFX_evt_grey_havens
+	# title = "EVTvalinor.12"
+	# desc = "EVTDESCvalinor.12"
+	# picture = GFX_evt_grey_havens
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAvalinor.12" # I'll die...
+		# name = "EVTOPTAvalinor.12" # I'll die...
 		remove_trait = elf
 	}
 }
@@ -291,9 +291,10 @@ character_event = {
 ## Beginning of the ringbearers departure events ##
 character_event = {
 	id = valinor.14
-	title = "EVTvalinor.14"
-	desc = "EVTDESCvalinor.14"
-	picture = GFX_evt_grey_havens
+	# title = "EVTvalinor.14"
+	# desc = "EVTDESCvalinor.14"
+	# picture = GFX_evt_grey_havens
+	hide_window = yes
 
 	trigger = {
 		has_global_flag = saurondefeated
@@ -307,10 +308,9 @@ character_event = {
 		days = 365
 	}
 
-	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAvalinor.14"
+		# name = "EVTOPTAvalinor.14"
 		set_character_flag = endthirdage
 		any_playable_ruler  = {
 			limit = {

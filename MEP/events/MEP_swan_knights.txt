@@ -5,10 +5,11 @@ namespace = swan_knights
 
 narrative_event = {
 	id = swan_knights.0
-	title = "EVTNAMEswan_knights.0"
-	desc = "EVTDESCswan_knights.0"
-	picture = GFX_evt_ring_craft
-	hide_window=yes
+	# title = "EVTNAMEswan_knights.0"
+	# desc = "EVTDESCswan_knights.0"
+	# picture = GFX_evt_ring_craft
+	hide_window = yes
+	culture_group = culture_group_numenorean
 	
 	trigger = {
 		has_landed_title = d_swan_knights
@@ -35,44 +36,43 @@ narrative_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAswan_knights.0"
+		# name = "EVTOPTAswan_knights.0"
 	}		
 }
 
 ### Death of the Captain - Alert the Prince ###
 narrative_event = {
 	id = swan_knights.1
-	title = "EVTNAMEswan_knights.0"
-	desc = "EVTDESCswan_knights.0"
-	picture = GFX_evt_ring_craft
 	hide_window=yes
 	
 	is_triggered_only = yes
 	
 	immediate = {
 		liege = {
-			limit = {
-				OR = {
-					has_landed_title = k_belfalas
-					has_landed_title = e_gondor
-					has_landed_title = e_reunited_kingdom
-					has_landed_title = e_arnor
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_belfalas
+						has_landed_title = e_gondor
+						has_landed_title = e_reunited_kingdom
+						has_landed_title = e_arnor
+					}
 				}
+				narrative_event  = { id = swan_knights.2 }
 			}
-			character_event = { id = swan_knights.2 }
 		}
 	}
 	
 	option = {
-		name = "EVTOPTAswan_knights.0"
+		# name = EVTOPTAswan_knights.01
 	}		
 }
 
 ### Death of the Captain - Choose a new heir! ###
 narrative_event = {
 	id = swan_knights.2
-	title = "EVTNAMEswan_knights.2"
-	desc = "EVTDESCswan_knights.2"
+	title = EVTNAMEswan_knights.2
+	desc = EVTDESCswan_knights.2
 	picture = GFX_evt_gondor_kingdom
 	
 	is_triggered_only = yes
@@ -124,11 +124,11 @@ narrative_event = {
 	}	
 	
 	option = {
-		name = "EVTOPTAswan_knights.2" ## Keep the heir he choose
+		name = EVTOPTAswan_knights.2 ## Keep the heir he choose
 	}		
 	
 	option = {
-		name = "EVTOPTBswan_knights.2" ## I'll choose one of my lord's son
+		name = EVTOPTBswan_knights.2 ## I'll choose one of my lord's son
 		trigger = {
 			OR = {
 				has_character_flag = swansknight_son_prince
@@ -138,28 +138,30 @@ narrative_event = {
 		character_event = { id = swan_knights.3 }
 	}	
 	
-	option = {
-		name = "EVTOPTCswan_knights.2" ## I'll choose a great knight
-		character_event = { id = swan_knights.4 }
-	}
+	# need a brand new not-implemented event chain
+	#option = {
+	#	name = EVTOPTCswan_knights.2 ## I'll choose a great knight
+	#	character_event = { id = swan_knights.4 }
+	#}
 }
 
 ### Death of the Captain - Choose a new Captain - Son of Lords including prince ###
 character_event = {
 	id = swan_knights.3
-	title = "EVTNAMEswan_knights.3"
-	desc = "EVTDESCswan_knights.3"
+	title = EVTNAMEswan_knights.3
+	desc = EVTDESCswan_knights.3
 	picture = GFX_evt_gondor_kingdom
 	
 	is_triggered_only = yes
 	
-	option = {
-		name = "EVTOPTAswan_knights.3" ## I'll choose one of my sons
-		character_event = { id = swan_knights.5 }
-	}		
+	# Needs a brand new, not implemented event
+	#option = {
+	#	name = EVTOPTAswan_knights.3 ## I'll choose one of my sons
+	#	character_event = { id = swan_knights.5 }
+	#}		
 	
 	option = {
-		name = "EVTOPTBswan_knights.3" ## I'll choose one of my lord's son
+		name = EVTOPTBswan_knights.3 ## I'll choose one of my lord's son
 		character_event = { id = swan_knights.4 }
 	}	
 
@@ -168,83 +170,88 @@ character_event = {
 ### Death of the Captain - Choose a new Captain - Son of Lords ###
 character_event = {
 	id = swan_knights.4
-	title = "EVTNAMEswan_knights.4"
-	desc = "EVTDESCswan_knights.4"
+	title = EVTNAMEswan_knights.4
+	desc = EVTDESCswan_knights.4
 	picture = GFX_evt_gondor_kingdom
 	
 	is_triggered_only = yes
 	
 	immediate = {
+		# picking candidate 1
 		random_realm_character = {
 			limit = {
 				is_female = no
 				is_married = no
 				prisoner = no
-					age = 30
-					NOT = { character = ROOT }
-					is_ruler = no
-					is_priest = no
-					NOT = { is_rival = ROOT }
-					NOT = { has_character_flag = refused_swan_captain }	
-					father_even_if_dead = {
-						OR = {
-							higher_tier_than = COUNT
-							AND = { 
-								tier = COUNT
-								prestige = 500
-							}
-						}
-					}
-				}
-				save_event_target_as = SW_1
-				set_character_flag = SW_candidate
-			}
-			random_realm_character = {
-				limit = {
-					is_female = no
-					is_married = no
-					prisoner = no
-					age = 30
-					NOT = { character = ROOT }
-					is_ruler = no
-					is_priest = no
-					NOT = { is_rival = ROOT }
-					NOT = { has_character_flag = refused_swan_captain }	
-					father_even_if_dead = {
-						OR = {
-							higher_tier_than = COUNT
+				age = 30
+				NOT = { character = ROOT }
+				is_ruler = no
+				is_priest = no
+				NOT = { is_rival = ROOT }
+				NOT = { has_character_flag = refused_swan_captain }	
+				father_even_if_dead = {
+					OR = {
+						higher_tier_than = COUNT
+						AND = { 
 							tier = COUNT
+							prestige = 500
 						}
 					}
 				}
-				save_event_target_as = SW_2
-				set_character_flag = SW_candidate
 			}
-			random_realm_character = {
-				limit = {
-					is_female = no
-					is_married = no
-					prisoner = no
-					age = 30
-					NOT = { character = ROOT }
-					is_ruler = no
-					is_priest = no
-					NOT = { is_rival = ROOT }
-					NOT = { has_character_flag = refused_swan_captain }	
-					father_even_if_dead = {
-						OR = {
-							higher_tier_than = COUNT 
-							tier = COUNT
-						}
+			save_event_target_as = SW_1
+			set_character_flag = SW_candidate
+		}
+		# picking candidate 2
+		random_realm_character = {
+			limit = {
+				is_female = no
+				is_married = no
+				prisoner = no
+				age = 30
+				NOT = { character = ROOT }
+				is_ruler = no
+				is_priest = no
+				NOT = { is_rival = ROOT }
+				NOT = { has_character_flag = refused_swan_captain }	
+				NOT = { has_character_flag = SW_candidate }
+				father_even_if_dead = {
+					OR = {
+						higher_tier_than = COUNT
+						tier = COUNT
 					}
 				}
-				save_event_target_as = SW_3
-				set_character_flag = SW_candidate
 			}
+			save_event_target_as = SW_2
+			set_character_flag = SW_candidate
+		}
+		# picking candidate 3
+		random_realm_character = {
+			limit = {
+				is_female = no
+				is_married = no
+				prisoner = no
+				age = 30
+				NOT = { character = ROOT }
+				is_ruler = no
+				is_priest = no
+				NOT = { is_rival = ROOT }
+				NOT = { has_character_flag = SW_candidate }
+				NOT = { has_character_flag = refused_swan_captain }	
+				father_even_if_dead = {
+					OR = {
+						higher_tier_than = COUNT 
+						tier = COUNT
+					}
+				}
+			}
+			save_event_target_as = SW_3
+			set_character_flag = SW_candidate
+		}
 	}
 	
 	option = {
-		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		name = EVTOPTAswan_knights.4 ## Prince's Sons
 		trigger = { event_target:SW_1 = { always = yes }	}
 		event_target:SW_1 = {		
 			character_event = { id = swan_knights.5 }	
@@ -257,7 +264,7 @@ character_event = {
 	}		
 	
 	option = {
-		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		name = "EVTOPTBswan_knights.4" ## Prince's Sons
 		trigger = { event_target:SW_2 = { always = yes }	}
 		event_target:SW_2 = {		
 			character_event = { id = swan_knights.5 }	
@@ -270,7 +277,7 @@ character_event = {
 	}	
 
 	option = {
-		name = "EVTOPTAswan_knights.4" ## Prince's Sons
+		name = "EVTOPTCswan_knights.4" ## Prince's Sons
 		trigger = { event_target:SW_3 = { always = yes }	}
 		event_target:SW_3 = {		
 			character_event = { id = swan_knights.5 }	
@@ -283,22 +290,23 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTDkingsguard.3" #None
+		name = "EVTOPTDswan_knights.4" #None
 		trigger = { ai = no }
 		hidden_tooltip = {
 			event_target:SW_2 = { clr_character_flag = SW_candidate }	
 			event_target:SW_1 = { clr_character_flag = SW_candidate }
 			event_target:SW_3 = { clr_character_flag = SW_candidate }			
 		}
-		character_event = { id = swan_knights.2 }
+		narrative_event  = { id = swan_knights.2 }
 	}	
 
 }
 
-#kingsguard.8 - Drafted to the Kingsguard. [Ai only]
+## Drafted to the Swan Knights: Accept or Decline parental reaction
 character_event = {
 	id = swan_knights.5
-	# desc = "EVTDESCswan_knights.5"
+	title = "EVTTITswan_knights.5"
+	desc = "EVTDESCswan_knights.5"
 	picture = GFX_evt_gondor_kingdom
 	
 	is_triggered_only = yes
@@ -337,7 +345,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAkingsguard.8" #Accept	
+		name = "EVTOPTAswan_knights.5" #Accept	
 		ai_chance = {
 			factor = 25
 			
@@ -393,16 +401,6 @@ character_event = {
 				top_liege = { is_close_relative = ROOT }
 			}
 			modifier = {
-				factor = 2.5
-				trait = familyperson
-				top_liege = { 
-					OR = {
-						dynasty = ROOT
-						is_close_relative = ROOT
-					}	
-				}
-			}
-			modifier = {
 				factor = 2
 				top_liege = { is_friend = ROOT }
 			}
@@ -419,7 +417,6 @@ character_event = {
 					is_pretender = yes
 					has_ambition = obj_get_married
 					has_ambition = obj_marry_ruler
-					has_ambition = obj_find_lover
 					has_ambition = obj_wants_landed_title
 					has_ambition = obj_become_heir
 					any_claim = { always = yes }
@@ -527,7 +524,7 @@ character_event = {
 					limit = { current_heir = { character = ROOT } }
 					set_character_flag = SW_renounced_inheritance
 				}
-				character_event = { id = swan_knights.7 }
+				# character_event = { id = swan_knights.7 } # 7 is for notification to the overlord that his offer is accepted
 			}
 		}
 		mother = {
@@ -547,7 +544,7 @@ character_event = {
 					limit = { current_heir = { character = ROOT } }
 					set_character_flag = SW_renounced_inheritance
 				}
-				character_event = { id = swan_knights.7 }
+				# character_event = { id = swan_knights.7 }  # 7 is for notification to the overlord that his offer is accepted
 			}
 		}
 		any_dynasty_member = {
@@ -572,13 +569,13 @@ character_event = {
 					limit = { current_heir = { character = ROOT } }
 					set_character_flag = SW_renounced_inheritance
 				}
-				character_event = { id = swan_knights.7 }
+				# character_event = { id = swan_knights.7 }  # 7 is for notification to the overlord that his offer is accepted
 			}
 		}
 		clr_character_flag = father_reaction
 		clr_character_flag = mother_reaction
 		
-		add_trait = swan_knight
+		add_trait = amroth_knight
 		d_swan_knights = { grant_title = ROOT }
 		b_tower_of_the_swan = { grant_title = ROOT }
 		recalc_succession = yes
@@ -641,7 +638,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAswan_knights.5" #Refuse
+		name = "EVTOPTBswan_knights.5" #Refuse
 		
 		ai_chance = {
 			factor = 10		
@@ -714,7 +711,6 @@ character_event = {
 				OR = {
 					has_ambition = obj_get_married
 					has_ambition = obj_marry_ruler
-					has_ambition = obj_find_lover
 					has_ambition = obj_wants_landed_title
 					has_ambition = obj_become_heir
 				}
@@ -764,7 +760,6 @@ character_event = {
 					is_pretender = yes
 					has_ambition = obj_get_married
 					has_ambition = obj_marry_ruler
-					has_ambition = obj_find_lover
 					has_ambition = obj_wants_landed_title
 					has_ambition = obj_become_heir
 					any_claim = { always = yes }
@@ -838,7 +833,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAswan_knights.7" ## So sad.
-		character_event = { id = swan_knights.2 }
+		narrative_event = { id = swan_knights.2 }
 	}			
 
 }

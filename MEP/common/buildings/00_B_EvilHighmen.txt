@@ -4,7 +4,6 @@ castle = {
 		desc = ca_BNwalltower_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -22,12 +21,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		gold_cost = 50
 		build_time = 182
@@ -40,7 +35,7 @@ castle = {
 		desc = ca_BNwalltower_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 3 }
 		potential = {
-		has_global_flag = building
+			has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -58,17 +53,13 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwalltower_1
 		prerequisites = { ca_BNwall_1 }
-		gold_cost = 50
-		build_time = 182
+		gold_cost = 100
+		build_time = 365
 		fort_level = 0.25
 		ai_creation_factor = 79
 
@@ -96,16 +87,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwalltower_2
-		gold_cost = 50
-		build_time = 182
+		gold_cost = 250
+		build_time = 500
 		fort_level = 0.3
 		ai_creation_factor = 78
 		
@@ -133,17 +120,13 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwalltower_3
 		prerequisites = { ca_BNwall_2 }
-		gold_cost = 100
-		build_time = 365
+		gold_cost = 350
+		build_time = 1000
 		fort_level = 0.5
 		ai_creation_factor = 77
 		
@@ -171,16 +154,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwalltower_4
-		gold_cost = 100
-		build_time = 365
+		gold_cost = 500
+		build_time = 2190
 		fort_level = 0.5
 		ai_creation_factor = 76
 
@@ -209,16 +188,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwalltower_5
-		gold_cost = 100
-		build_time = 365
+		gold_cost = 1000
+		build_time = 3000
 		fort_level = 1.0
 		ai_creation_factor = 76
 
@@ -230,7 +205,6 @@ castle = {
 		desc = ca_BNwall_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -248,12 +222,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 50
 		build_time = 365
@@ -285,15 +255,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwall_1
-		gold_cost = 50
+		gold_cost = 100
 		build_time = 547 #1.5y
 		fort_level = 0.75
 		garrison_size = 0.1
@@ -323,15 +289,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwall_2
-		gold_cost = 100
+		gold_cost = 200
 		build_time = 730 #2y
 		fort_level = 1.0
 		garrison_size = 0.15
@@ -361,15 +323,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwall_3
-		gold_cost = 150
+		gold_cost = 300
 		build_time = 1095 #3y
 		fort_level = 1.25
 		garrison_size = 0.2
@@ -399,16 +357,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwall_4
-		gold_cost = 150
-		build_time = 1460 #4y
+		gold_cost = 500
+		build_time = 2190 #4y
 		fort_level = 1.75
 		garrison_size = 0.25
 		ai_creation_factor = 86
@@ -437,16 +391,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNwall_5
-		gold_cost = 150
-		build_time = 1460 #4y
+		gold_cost = 1000
+		build_time = 3000 #4y
 		fort_level = 1.75
 		garrison_size = 0.3
 		ai_creation_factor = 86
@@ -459,7 +409,6 @@ castle = {
 		desc = ca_BNkeep_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -477,12 +426,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		gold_cost = 150
 		build_time = 547 #1.5y
@@ -519,12 +464,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { ca_BNwall_1 }
 		upgrades_from = ca_BNkeep_1
@@ -560,12 +501,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		prerequisites = { ca_BNwall_2 }
 		upgrades_from = ca_BNkeep_2
@@ -601,12 +538,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNkeep_3
 		gold_cost = 400
@@ -641,12 +574,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNkeep_4
 		gold_cost = 500
@@ -681,15 +610,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			mep_is_black_numenorean_culture = yes
+			NOT = { has_province_modifier = being_purged }
 		}
 		upgrades_from = ca_BNkeep_5
-		gold_cost = 500
+		gold_cost = 800
 		build_time = 2190 #6y
 		levy_size = 0.36
 		garrison_size = 0.24
@@ -705,7 +630,6 @@ castle = {
 		desc = ca_Ntraining_grounds_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 1 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -723,12 +647,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_2 }
 		gold_cost = 200
@@ -762,12 +682,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtraining_grounds_1
 		gold_cost = 250
@@ -801,12 +717,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtraining_grounds_2
 		gold_cost = 300
@@ -840,12 +752,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtraining_grounds_3
 		gold_cost = 300
@@ -879,15 +787,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtraining_grounds_4
-		gold_cost = 300
+		gold_cost = 500
 		build_time = 2190
 		land_morale = 0.15
 		levy_reinforce_rate = 0.25
@@ -918,15 +822,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtraining_grounds_5
-		gold_cost = 300
+		gold_cost = 800
 		build_time = 2190
 		land_morale = 0.18
 		levy_reinforce_rate = 0.3
@@ -941,7 +841,6 @@ castle = {
 		desc = ca_BNtown_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -959,12 +858,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		gold_cost = 100
 		build_time = 365
@@ -996,16 +891,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_1 }
 		upgrades_from = ca_BNtown_1
-		gold_cost = 120
+		gold_cost = 150
 		build_time = 547
 		tax_income = 3.5
 		tech_growth_modifier = 0.02
@@ -1035,12 +926,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_2 }
 		upgrades_from = ca_BNtown_2
@@ -1074,12 +961,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtown_3
 		gold_cost = 300
@@ -1112,12 +995,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtown_4
 		gold_cost = 400
@@ -1150,15 +1029,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_BNtown_5
-		gold_cost = 500
+		gold_cost = 800
 		build_time = 2190
 		tax_income = 3.35
 		tech_growth_modifier = 0.02
@@ -1171,7 +1046,6 @@ castle = {
     ca_Bnumen_traditions = {
 		desc = ca_Bnumen_traditions_desc
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -1189,12 +1063,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		trigger = { 
 			TECH_CASTLE_CONSTRUCTION = 0 
@@ -1217,7 +1087,6 @@ castle = {
 		desc = ca_Bnumen_barracks_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -1235,12 +1104,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		gold_cost = 100
 		build_time = 365
@@ -1271,12 +1136,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_1 }
 		upgrades_from = ca_Bnumen_barracks_1
@@ -1309,12 +1170,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_Bnumen_barracks_2
 		gold_cost = 200
@@ -1325,7 +1182,7 @@ castle = {
 		extra_tech_building_start = 1.5
 	}
 	ca_Bnumen_barracks_4 = {
-		desc = ca_dunedain_Bnumen_1_desc
+		desc = ca_Bnumen_barracks_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 6 }
 		potential = {
 		has_global_flag = building
@@ -1346,12 +1203,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_Bnumen_barracks_3
 		gold_cost = 300
@@ -1383,16 +1236,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_dunedain_barracks_4
-		gold_cost = 300
-		build_time = 1095
+		gold_cost = 500
+		build_time = 2190
 		heavy_infantry = 70
 		ai_creation_factor = 98
 
@@ -1420,16 +1269,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_Bnumen_barracks_5
-		gold_cost = 300
-		build_time = 1095
+		gold_cost = 800
+		build_time = 3000
 		heavy_infantry = 90
 		ai_creation_factor = 98
 
@@ -1441,7 +1286,6 @@ castle = {
 		desc = ca_blackhand_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 3 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -1459,12 +1303,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		gold_cost = 100
 		build_time = 365
@@ -1496,16 +1336,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_1 }
 		upgrades_from = ca_blackhand_1
-		gold_cost = 120
+		gold_cost = 150
 		build_time = 547
 		pikemen = 55
 		heavy_infantry = 15
@@ -1535,12 +1371,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_2 }
 		upgrades_from = ca_blackhand_2
@@ -1574,12 +1406,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_blackhand_3
 		gold_cost = 300
@@ -1612,15 +1440,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_blackhand_4
-		gold_cost = 400
+		gold_cost = 500
 		build_time = 2190
 		pikemen = 70
 		heavy_infantry = 30
@@ -1650,15 +1474,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_blackhand_5
-		gold_cost = 500
+		gold_cost = 800
 		build_time = 2190
 		pikemen = 75
 		heavy_infantry = 35
@@ -1672,7 +1492,6 @@ castle = {
 		desc = ca_Bnumen_stable_1_desc
 		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
 		potential = {
-		has_global_flag = building
 		    FROM = {
 				NOT = {
 				    OR = {
@@ -1690,12 +1509,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		gold_cost = 100
 		build_time = 365
@@ -1727,16 +1542,12 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_1 }
 		upgrades_from = ca_Bnumen_stable_1
-		gold_cost = 120
+		gold_cost = 150
 		build_time = 547
 		light_cavalry = 20
 		knights = 40
@@ -1766,12 +1577,8 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		prerequisites = { ca_BNwall_2 }
 		upgrades_from = ca_Bnumen_stable_2
@@ -1805,15 +1612,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_Bnumen_stable_3
-		gold_cost = 300
+		gold_cost = 350
 		build_time = 1095
 		light_cavalry = 30
 		knights = 50
@@ -1843,15 +1646,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 		upgrades_from = ca_Bnumen_stable_4
-		gold_cost = 400
+		gold_cost = 500
 		build_time = 2190
 		light_cavalry = 35
 		knights = 55
@@ -1881,15 +1680,11 @@ castle = {
 				    }
 				}
 			}
-			ROOT = {
-			    OR = {
-				culture = culture_black_numenorean
-				culture = culture_adunaic
-				}
-			}
+			NOT = { has_province_modifier = being_purged }
+			mep_is_black_numenorean_culture = yes
 		}
 	    upgrades_from = ca_Bnumen_stable_5
-	    gold_cost = 500
+	    gold_cost = 800
 	    build_time = 2190
 	    light_cavalry = 40
 	    knights = 60
@@ -1908,7 +1703,6 @@ castle = {
 		galleys = 3
 		ai_creation_factor = 86
         potential = {
-			has_global_flag = building
 			year = 9770
 			ROOT = {
 			OR = {
@@ -1964,7 +1758,7 @@ castle = {
 		desc = ca_corsairs_desc
 		port = yes
 		upgrades_from = ca_corsairs_3
-		gold_cost = 370
+		gold_cost = 450
 		build_time = 1700
 		tax_income = 1
 		light_infantry = 50
@@ -1997,7 +1791,7 @@ castle = {
     		potential = {
        			has_global_flag = building
 				ROOT = {
-	    		culture = culture_black_numenorean
+					culture = culture_black_numenorean
 				}
     		}
 	}

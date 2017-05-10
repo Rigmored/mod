@@ -31,7 +31,7 @@ eagle = {
 		cold_drake
 		uruloke
        	} 
-	opposite_opinion = -100
+	opposite_opinion = -20
     	immortal = yes
 	customizer = yes	
 	cached = yes
@@ -73,7 +73,7 @@ spider = {
 		istari
 		valar
        	} 
-	opposite_opinion = -100
+	opposite_opinion = -30
     	immortal = yes
 	customizer = no
 	cannot_marry = yes
@@ -87,8 +87,7 @@ hobbit = {
   	same_opinion = 20
 	inherit_chance = 100
 	martial_penalty = -10
-	intrigue_penalty = -10
-	learning_penalty = -10
+	intrigue_penalty = -5
 	customizer = yes
 	opposites = { 		
 		eagle
@@ -118,19 +117,19 @@ hobbit = {
 }
 
 dwarven = {
-   	health = 15.0	
-	opposites = { elf }
-   	opposite_opinion = -15
+   	health = 15.0
   	same_opinion = 20	
 	martial = 2
     	stewardship = 3
 	customizer = yes
 	command_modifier = {
 		terrain = mountain
+		morale_offence = 0.1
+		morale_defence = 0.1	
 	}
 	ai_ambition = -15 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
-    	ai_rationality = 20 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
-    	ai_honor = 45 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    ai_rationality = 20 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = 45 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
 	cached = yes
 }
 
@@ -138,10 +137,10 @@ durin_reincarnation = {
 	health = 2.0	
   	vassal_opinion = 20	
 	martial = 3
-   stewardship = 2
+	stewardship = 2
 	customizer = no
 	monthly_character_piety = 2.0	
-   monthly_character_prestige = 1.0	
+	monthly_character_prestige = 1.0	
 	command_modifier = {
 		terrain = mountain
 		damage = 0.3		
@@ -152,8 +151,8 @@ durin_reincarnation = {
 }
 
 ent = {	
-    opposites = { orkish }
-    opposite_opinion = -50
+    opposites = { ork }
+    opposite_opinion = -40
     same_opinion = 20	
 	fertility_penalty = -5.0
     health = 100.0
@@ -183,7 +182,7 @@ elf = {
 		cold_drake
 		uruloke
 	}
-    opposite_opinion = -200
+    opposite_opinion = -100
     same_opinion = 20	
 	sex_appeal_opinion = 10
 	diplomacy = 2
@@ -195,7 +194,7 @@ elf = {
     command_modifier = {
 		terrain = forest
 	}
-    ai_ambition = -15 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_ambition = -25 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = 20 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
     ai_honor = 45 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
 	cached = yes
@@ -218,7 +217,7 @@ potential = {
 }
 elf_childhood = {
 	fertility_penalty = -5.0
-	health = 100.0 #Hope to see less Nazgul deaths of old age
+	health = 100.0
 	potential = {
 		religion_group = religion_group_eldar
 	}	
@@ -268,7 +267,7 @@ fea_weak = {
 	cached = yes
 }
 valar = {	
-	fertility_penalty = -5.0
+	fertility = -5.0
 	immortal = yes
     health = 100.0
 	diplomacy = 20
@@ -596,16 +595,16 @@ uruloke = {
 	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
 	cached = yes
 }
-## RinglÃ³kÃ«
+## Ringlókë
 cold_drake = {	
-       	opposites = {
-			eagle
-			elf
-			dwarven
-			blood_of_numenor
-			blood_of_numenor2
-			ent
-       	}
+    opposites = {
+		eagle
+		elf
+		dwarven
+		blood_of_numenor
+		blood_of_numenor2
+		ent
+    }
 	martial = 2
 	opposite_opinion = -200
    	health = 1000.0
@@ -617,23 +616,23 @@ cold_drake = {
 	cached = yes
 }
 
-## PenrÃ¡malÃ³kÃ«
+## Penrámalókë
 long_worms = {	
-       	opposites = {
+    opposites = {
 		eagle
 		elf
 		dwarven
 		blood_of_numenor
 		blood_of_numenor2
 		ent
-       	}
+    }
 	martial = 1
 	opposite_opinion = -200
    	health = 1000.0
     	immortal = yes
 	customizer = yes	
 	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
-    	ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
-    	ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
 	cached = yes
 }

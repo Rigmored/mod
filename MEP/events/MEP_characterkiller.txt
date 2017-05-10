@@ -330,8 +330,9 @@ character_event = {
     desc = "EVTDESCmaiarkiller.3"#Maiar characters are not supposed to be randomly spawned.
     picture = "GFX_good"
 	age = 16
+	culture = culture_maiar
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 30 }
 	
 	trigger = {
 		culture = culture_maiar
@@ -353,8 +354,9 @@ character_event = {
     desc = "EVTDESCmaiarkiller.31"#Maiar characters are not supposed to be randomly spawned.
     picture = "GFX_good"
 	age = 16
+	culture = culture_istari
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 30 }
 	
 	trigger = {
 		culture = culture_istari
@@ -382,8 +384,9 @@ character_event = {
     desc = "EVTDESCmaiarkiller.4"#Wight characters are not supposed to be randomly spawned.
     picture = "GFX_good"
 	age = 16
+	culture = culture_wight
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 30 }
 	
 	trigger = {
 		culture = culture_wight
@@ -407,16 +410,16 @@ character_event = {
     picture = "GFX_good"
 	age = 16
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 30 }
 	
 	trigger = {
 		OR = {
 			culture_group = culture_group_wilderness
 			culture_group = culture_group_melkor
 		}
-		liege = {
+		liege = { 
 			NOT = { culture_group = culture_group_wilderness }
-			NOT = { culture_group = culture_group_melkor }
+			NOT = { culture_group = culture_group_melkor } 
 			NOT = { culture = culture_umaiar }
 			NOT = { culture = culture_maiar }
 			NOT = { culture = culture_istari }

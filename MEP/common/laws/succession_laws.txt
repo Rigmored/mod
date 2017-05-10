@@ -18,7 +18,7 @@ succession_laws = {
 						}
 					}
 				}
-				NOT = { religion_group = muslim }
+				NOT = { mep_temp_muslim_standin_trigger = yes }
 				is_merchant_republic = no
 				is_patrician = no
 				OR = {
@@ -49,7 +49,22 @@ succession_laws = {
 			holder_scope = {
 				OR = {
 					is_tribal = no
-					NOT = { religion_group = pagan_group }
+					custom_tooltip = { 
+						text = TT_NOT_UNREFORMED_PAGAN
+						hidden_tooltip = {
+							NOR = { 
+								religion = norse_pagan
+								religion = slavic_pagan
+								religion = baltic_pagan
+								religion = finnish_pagan
+								religion = zun_pagan
+								religion = tengri_pagan
+								religion = west_african_pagan
+								religion = aztec
+								religion = pagan
+							}
+						}
+					}
 				}
 			}
 			NAND = { 
@@ -80,7 +95,7 @@ succession_laws = {
 						}
 					}
 				}
-				NOT = { religion_group = muslim }
+				NOT = { mep_temp_muslim_standin_trigger = yes }
 				is_merchant_republic = no
 				is_patrician = no
 				OR = {
@@ -142,8 +157,13 @@ succession_laws = {
 					}
 				}
 				
-				NOT = { religion_group = muslim }
-				NOT = { religion_group = indian_group }
+                OR = {
+                    NOR = {
+						mep_temp_muslim_standin_trigger = yes
+						religion_group = indian_group 
+					}
+                    is_patrician = yes
+                }
 				
 				OR = {
 					NOT = { religion_group = pagan_group }
@@ -238,7 +258,7 @@ succession_laws = {
 		dynasty_opinion = -5
 		potential = {
 			holder_scope = {
-				NOT = { religion_group = muslim }
+				NOT = { mep_temp_muslim_standin_trigger = yes }
 				is_merchant_republic = no
 				is_patrician = no
 			}
@@ -341,10 +361,11 @@ succession_laws = {
 				}
 				OR = {
 					NOR = { 
-						religion_group = muslim
+						mep_temp_muslim_standin_trigger = yes
 						religion_group = indian_group
 					}
 					has_law = succession_voting_power_1
+					has_law = succ_feudal_elective # Keep it even if you revoke Full Council Authority
 				}
 				is_merchant_republic = no
 				is_patrician = no
@@ -398,7 +419,7 @@ succession_laws = {
 						}
 					}
 				}
-				NOT = { religion_group = muslim }
+				NOT = { mep_temp_muslim_standin_trigger = yes }
 				is_merchant_republic = no
 				is_patrician = no
 				culture_group = celtic
@@ -477,7 +498,7 @@ succession_laws = {
 					}
 				}
 				
-				NOT = { religion_group = muslim }
+				NOT = { mep_temp_muslim_standin_trigger = yes }
 				is_merchant_republic = no
 				is_patrician = no
 				OR = {
@@ -566,7 +587,7 @@ succession_laws = {
 #		dynasty_opinion = 10
 		potential = {
 			holder_scope = {
-				religion_group = muslim
+				mep_temp_muslim_standin_trigger = yes
 				is_republic = no
 				is_merchant_republic = no
 				is_nomadic = no
@@ -654,7 +675,7 @@ succession_laws = {
 						is_republic = yes
 						AND = {
 							is_theocracy = yes
-							NOT = { holder_scope = { religion_group = muslim } }
+							NOT = { holder_scope = { mep_temp_muslim_standin_trigger = yes } }
 						}
 					}
 				}
@@ -663,7 +684,7 @@ succession_laws = {
 						is_republic = yes
 						AND = {
 							is_theocracy = yes
-							NOT = { religion_group = muslim }
+							NOT = { mep_temp_muslim_standin_trigger = yes }
 						}
 					}
 				}
@@ -797,7 +818,7 @@ gender_laws = {
 				}
 				OR = {
 					AND = {
-						NOT = { religion_group = muslim }
+						NOT = { mep_temp_muslim_standin_trigger = yes }
 						NOT = { religion = aztec }
 						NOT = { religion = aztec_reformed }
 						has_horde_culture = no
@@ -915,7 +936,7 @@ gender_laws = {
 				holder_scope = {
 					OR = {
 						AND = {
-							NOT = { religion_group = muslim }
+							NOT = { mep_temp_muslim_standin_trigger = yes }
 							NOT = { religion = aztec }
 							NOT = { religion = aztec_reformed }
 							has_horde_culture = no

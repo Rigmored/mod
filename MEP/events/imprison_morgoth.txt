@@ -1,0 +1,30 @@
+namespace = valinor
+
+character_event = {
+	id = valinor.20
+	# title = "Morgoth is Imprisoned"
+	# desc = "A reminder: Morgoth was imprisoned outside Arda at the end of the First Age."
+	# picture = "GFX_good"
+	hide_window = yes
+	only_rulers = yes
+	only_independent = yes
+	culture = culture_valar
+
+	trigger = {
+		has_character_flag = manwe_sulimo
+		NOT = { has_character_flag = morgoth_imprisoned }
+	}
+
+	immediate = {		
+		set_character_flag = morgoth_imprisoned
+	}
+
+	option = {
+		# name = "Indeed"
+		any_courtier = {
+			limit = { has_character_flag = morgoth_bauglir }
+			imprison = ROOT
+		}
+
+	}
+}

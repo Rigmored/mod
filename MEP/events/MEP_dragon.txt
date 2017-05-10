@@ -6,6 +6,8 @@ narrative_event = {
     title = "EVTTITdragon.0"
     desc = "EVTDESCdragon.0"
     picture = "GFX_good"
+		
+	is_triggered_only = yes
 
 	trigger = {
 		NOT = { has_character_flag = grey_dragon_event }
@@ -34,8 +36,7 @@ narrative_event = {
 		age = 100	
 		wealth = 1000
 	}
-	
-	in_triggered_only = yes
+
 
 	option = {
 		name = "EVTOPTAdragon.0"
@@ -192,8 +193,8 @@ character_event = {
 character_event = {
 	id = dragon.5
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -201,7 +202,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -425,7 +426,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -648,26 +649,26 @@ character_event = {
 #### Victory ! ####
 character_event = {
 	id = dragon.6
-	desc = "EVTDESCdragon.6"
-	picture = GFX_evt_dragon
+	# desc = "EVTDESCdragon.6"
+	# picture = GFX_evt_dragon
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAdragon.6"
+		# name = "EVTOPTAdragon.6"
 		duel_target = {
 			limit = { has_opinion_modifier = { who = ROOT modifier = opinion_duel_target } }
 			character_event = { id = dragon.7 }
 			remove_trait = duel_target
 		}
-		remove_trait = duel_target
+		remove_trait = duel_target	
 		clr_character_flag = grey_dragon_event
 		add_character_modifier = { name = successfully_fought_dragon duration = 3650 }
 		prestige = 500
 		piety = 250
-	}
-}
+	}	
+}	 
 
 #### Death of one of the character after the battle ####
 character_event = {
@@ -858,14 +859,14 @@ character_event = {
 #### Victory of first round ! ####
 character_event = {
 	id = dragon.14
-	desc = "EVTDESCdragon.14"
-	picture = GFX_evt_dragon
+	# desc = "EVTDESCdragon.14"
+	# picture = GFX_evt_dragon
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAdragon.14"
+		# name = "EVTOPTAdragon.14"
 		random_list = {
 			50 = {
 				duel_target = {
@@ -910,8 +911,8 @@ character_event = {
 character_event = {
 	id = dragon.16
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	#picture = GFX_evt_duel0
+	#desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -919,7 +920,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -1143,7 +1144,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			

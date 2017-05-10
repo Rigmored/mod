@@ -497,7 +497,7 @@ character_event = {
 
 ##### If Good is at war with Sauron #####
 
-### An AI good faction should ask the White Council to gather Free Peoples ###	
+### An AI good faction should ask the White Council to gather Free Peoples (only 15%) ###	
 narrative_event = {
     id = alliancesystem.20
     title = EVTTITalliancesystem.20
@@ -663,12 +663,12 @@ character_event = { ## The White Council will join you
 				has_character_flag = sauron
 				age = 16
 			}
-			narrative_event = { id = alliancesystem.27 days = 10 } ## Sauron is alerted
+			character_event = { id = alliancesystem.27 days = 10 } ## Sauron is alerted
 		}
 	}	
 }	
-
-
+ 
+# Non-AI starting the alliance event chain rolling. For some reason, this merely has a one in six of causing 
 character_event = {
     id = alliancesystem.25
     title = EVTTITalliancesystem.25
@@ -699,13 +699,13 @@ character_event = {
         name = EVTOPTAalliancesystem.25
 		random = {
 			chance = 18		
-			narrative_event = { id = alliancesystem.26 days = 30 }
+			character_event = { id = alliancesystem.26 days = 30 }
 		}
 	}	
 
 }	
 
-
+# Non-AI version of alliancesystem.20, calling the white council for help.
 character_event = { ## The White Council will join you
     id = alliancesystem.26
     title = EVTTITalliancesystem.26
@@ -764,7 +764,7 @@ character_event = { ## Sauron is alerted
 				trait = evil_side
 				independent = yes
 			}
-			narrative_event = { id = alliancesystem.28 days = 10 }
+			character_event = { id = alliancesystem.28 days = 10 }
 		}
 	}	
 	
@@ -807,4 +807,19 @@ character_event = { ## The Evil Forces don't have any choice.
 			join_attacker_wars = ROOT		
 		}
 	}	
+}
+
+# The targeted decision join_defend_against_evil_war should send this notification to the defender
+letter_event = {
+	id = alliancesystem.50
+	desc = EVTDESCalliancesystem.50
+	# picture = GFX_event_letter_frame_war
+	
+	is_triggered_only = yes
+	
+	is_friendly = yes
+	
+	option = {
+		name = EVTOPTAalliancesystem.50
+	}
 }

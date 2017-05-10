@@ -6,10 +6,18 @@ e_gondor = {
 	title_female = "QUEEN"
 	title_prefix = "KING_OF"
 	
-	culture_group_quendi = "Arthor na Challonnas"
-	culture_group_amanyar = "Hyaralondie"
-	culture_group_umanyar = "Arthor na Challonnas"
-	culture_group_moriquendi = "Arthor na Challonnas"
+	culture_minyar = "Arthor na Challonnas"
+	culture_tatyar = "Arthor na Challonnas"
+	culture_nelyar = "Arthor na Challonnas"
+	culture_teleri = "Arthor na Challonnas"
+	culture_noldor = "Hyaralondie"
+	culture_vanyar = "Hyaralondie"
+	culture_falmari = "Hyaralondie"
+# not going to bother with first age only umanyar
+	culture_sindar = "Arthor na Challonnas"
+	culture_silvan = "Arthor na Challonnas"
+	culture_falathrim = "Arthor na Challonnas"
+	culture_avari = "Arthor na Challonnas"
 	culture_rohirrim = "Stoningland"
 	culture_druedain = "Stoningland"
 	culture_orkish = "Gunduzg"
@@ -35,7 +43,7 @@ e_gondor = {
 		culture_ishmalogim = "Ishmalog"
 	
 		culture = culture_gondorian
-
+		religion = religion_dunedain
 	    religion_dunedain = 100
 		
 		d_royal_demesne = {
@@ -128,7 +136,7 @@ e_gondor = {
 				}
 				b_abad_atanatar = {
 				}
-			}
+			}	
 		}
 		d_danorien = {
 			color={ 226 220 173 }
@@ -419,7 +427,7 @@ e_gondor = {
 		capital = 18 # Pelargir
 	    
 		culture = culture_gondorian
-
+	    religion = religion_dunedain
 		religion_dunedain = 100 # Crusade target weight
 	
 		d_arnach = {
@@ -790,7 +798,7 @@ e_gondor = {
 		capital = 656 # Dol Amroth
 	
 		culture = culture_gondorian
-
+		religion = religion_dunedain
 	
 		religion_dunedain = 100 # Crusade target weight
 	
@@ -958,10 +966,18 @@ e_gondor = {
 				color2={ 255 255 255 }
 				
 				culture_eredrim = "Agar"   
-				culture_group_quendi = "Lond Ernil"
-				culture_group_amanyar = "Lond Ernil"
-				culture_group_umanyar = "Lond Ernil"
-				culture_group_moriquendi = "Lond Ernil"
+				culture_minyar = "Lond Ernil"
+				culture_tatyar = "Lond Ernil"
+				culture_nelyar = "Lond Ernil"
+				culture_teleri = "Lond Ernil"
+				culture_noldor = "Lond Ernil"
+				culture_vanyar = "Lond Ernil"
+				culture_falmari = "Lond Ernil"
+# not going to bother with first age only umanyar
+				culture_sindar = "Lond Ernil"
+				culture_silvan = "Lond Ernil"
+				culture_falathrim = "Lond Ernil"
+				culture_avari = "Lond Ernil"
 		
 				b_tower_of_the_swan = {
 				}
@@ -1092,7 +1108,7 @@ e_gondor = {
 		capital = 426 # Minas Ithil
 	
 		culture = culture_gondorian
-
+		religion = religion_dunedain
 	
 		religion_dunedain = 100 # Crusade target weight
 	
@@ -1482,6 +1498,39 @@ e_gondor = {
 				}
 			}
 		}
+		
+		d_ithilien_rangers = {
+			color = { 30 127 172 }
+			color2 = { 220 220 0 }
+        
+			allow = { 
+				trait = good_side
+				always = no
+			}		
+		
+			# mercenary = yes
+	
+			# # Hire Trigger
+			# allow = {
+			# is_nomadic = no
+			# NOT = { culture_group = culture_group_wilderness }
+			# NOT = { culture_group = culture_group_melkor }
+			# }
+		
+			capital = 51 # Henneth Annun
+		
+			dignity = 10 
+		
+			# Always_exists
+			landless = yes
+		
+			religion = religion_dunedain
+			culture = culture_gondorian
+	
+			
+		
+			#mercenary_type = d_merc_inf
+		}
 	}
 	
 	
@@ -1501,7 +1550,7 @@ e_gondor = {
 		capital = 131 #Gobel Mirlond
 		
 		culture = culture_harondorian
-
+		religion = religion_southron
 	
 		religion_southron = 100 # Crusade target weight
 	
@@ -1950,7 +1999,16 @@ e_gondor = {
 	k_andrast = {
 		color={ 134 33 73 }
 		color2={ 125 125 142 }
-		culture_group_melkor = "Sigûrzurbh"
+		culture_wight = "Sigûrzurbh"
+		culture_half_orc = "Sigûrzurbh"
+		culture_urukhai = "Sigûrzurbh"
+		culture_goblin = "Sigûrzurbh"
+		culture_orkish = "Sigûrzurbh"
+		culture_wargs = "Sigûrzurbh"
+		culture_troll = "Sigûrzurbh"
+		culture_balrog = "Sigûrzurbh"
+		culture_dragons = "Sigûrzurbh"
+		culture_spider = "Sigûrzurbh"
 		culture_maiar = "Sigûrzurbh"
 	
 		capital = 178 # Andrast
@@ -1966,7 +2024,6 @@ e_gondor = {
 		}
 		
 		culture = culture_andrasting
-
 	
 		religion_haldadian = 100
 	
@@ -2117,11 +2174,28 @@ e_gondor = {
 		color={ 22 68 94 }
 		color2={ 125 125 142 }
 	
-		culture_group_quendi = "Andafalasse"
-		culture_group_amanyar = "Andafalasse"
-		culture_group_umanyar = "Andafalasse"
-		culture_group_moriquendi = "Andafalasse"
-		culture_group_melkor = "Sigûrzfaal"
+		culture_minyar = "Andafalasse"
+		culture_tatyar = "Andafalasse"
+		culture_nelyar = "Andafalasse"
+		culture_teleri = "Andafalasse"
+		culture_noldor = "Andafalasse"
+		culture_vanyar = "Andafalasse"
+		culture_falmari = "Andafalasse"
+# not going to bother with first age only umanyar
+		culture_sindar = "Andafalasse"
+		culture_silvan = "Andafalasse"
+		culture_falathrim = "Andafalasse"
+		culture_avari = "Andafalasse"
+		culture_wight = "Sigûrzfaal"
+		culture_half_orc = "Sigûrzfaal"
+		culture_urukhai = "Sigûrzfaal"
+		culture_goblin = "Sigûrzfaal"
+		culture_orkish = "Sigûrzfaal"
+		culture_wargs = "Sigûrzfaal"
+		culture_troll = "Sigûrzfaal"
+		culture_balrog = "Sigûrzfaal"
+		culture_dragons = "Sigûrzfaal"
+		culture_spider = "Sigûrzfaal"
 		culture_maiar = "Sigûrzfaal"
 	
 		capital = 197 # Lond Galen
@@ -2137,7 +2211,6 @@ e_gondor = {
 		}
 		
 		culture = culture_gondorian_middlemen
-
 	
 		religion_dunedain = 100 # Crusade target weight
 	
@@ -2147,7 +2220,16 @@ e_gondor = {
 			
 			capital = 197 # Lond Galen
 			
-			culture_group_melkor = "Morfaal"
+			culture_wight = "Morfaal"
+			culture_half_orc = "Morfaal"
+			culture_urukhai = "Morfaal"
+			culture_goblin = "Morfaal"
+			culture_orkish = "Morfaal"
+			culture_wargs = "Morfaal"
+			culture_troll = "Morfaal"
+			culture_balrog = "Morfaal"
+			culture_dragons = "Morfaal"
+			culture_spider = "Morfaal"
 		    culture_maiar = "Morfaal"
 			c_lond_galen = {
 				color={ 21 73 102 }
@@ -2234,7 +2316,16 @@ e_gondor = {
 			
 			capital = 198 # Rondalph
 			
-			culture_group_melkor = "Golugfaal"
+			culture_wight = "Golugfaal"
+			culture_half_orc = "Golugfaal"
+			culture_urukhai = "Golugfaal"
+			culture_goblin = "Golugfaal"
+			culture_orkish = "Golugfaal"
+			culture_wargs = "Golugfaal"
+			culture_troll = "Golugfaal"
+			culture_balrog = "Golugfaal"
+			culture_dragons = "Golugfaal"
+			culture_spider = "Golugfaal"
 		    culture_maiar = "Golugfaal"
 			
 			c_morthond_vale = {
@@ -2275,13 +2366,22 @@ e_gondor = {
 		color={ 63 88 68 }
 		color2={ 125 125 142 }
 	
-		culture_group_melkor = "Morghaamul"
+		culture_wight = "Morghaamul"
+		culture_half_orc = "Morghaamul"
+		culture_urukhai = "Morghaamul"
+		culture_goblin = "Morghaamul"
+		culture_orkish = "Morghaamul"
+		culture_wargs = "Morghaamul"
+		culture_troll = "Morghaamul"
+		culture_balrog = "Morghaamul"
+		culture_dragons = "Morghaamul"
+		culture_spider = "Morghaamul"
 		culture_maiar = "Morghaamul"
 	
 		capital = 203 #Annon Wain
 	
 		culture = culture_gondorian
-
+	    religion = religion_dunedain
 		religion_dunedain = 100 # Crusade target weight	
 	
 		d_west_pinnath = {
@@ -2721,10 +2821,18 @@ e_gondor = {
 			
 		culture_orkish = "Isengundul"
 		culture_maiar = "Isengundul"
-		culture_group_quendi = "Angrenost"
-	    culture_group_amanyar = "Angrenost"
-	    culture_group_umanyar = "Angrenost"
-	    culture_group_moriquendi = "Angrenost"
+		culture_minyar = "Angrenost"
+		culture_tatyar = "Angrenost"
+		culture_nelyar = "Angrenost"
+		culture_teleri = "Angrenost"
+	    culture_noldor = "Angrenost"
+	    culture_vanyar = "Angrenost"
+	    culture_falmari = "Angrenost"
+# not going to bother with first age only umanyar
+	    culture_sindar = "Angrenost"
+	    culture_silvan = "Angrenost"
+	    culture_falathrim = "Angrenost"
+	    culture_avari = "Angrenost"
 		culture_gondorian = "Angrenost"
 		culture_dunedain = "Angrenost"
 		culture_entish = "Orthanc"
@@ -2738,10 +2846,18 @@ e_gondor = {
             
             culture_orkish = "Isengundul"
 			culture_maiar = "Isengundul"
-			culture_group_quendi = "Angrenost"
-	        culture_group_amanyar = "Angrenost"
-	        culture_group_umanyar = "Angrenost"
-	        culture_group_moriquendi = "Angrenost"
+			culture_minyar = "Angrenost"
+			culture_tatyar = "Angrenost"
+			culture_nelyar = "Angrenost"
+			culture_teleri = "Angrenost"
+	        culture_noldor = "Angrenost"
+	        culture_vanyar = "Angrenost"
+	        culture_falmari = "Angrenost"
+# not going to bother with first age only umanyar
+	        culture_sindar = "Angrenost"
+	        culture_silvan = "Angrenost"
+	        culture_falathrim = "Angrenost"
+	        culture_avari = "Angrenost"
 			culture_gondorian = "Angrenost"
 			culture_dunedain = "Angrenost"
 			culture_entish = "Orthanc"
@@ -2754,11 +2870,24 @@ e_gondor = {
             
 				culture_orkish = "Isengundul"
 				culture_maiar = "Isengundul"
-				culture_group_quendi = "Angrenost"
-				culture_group_amanyar = "Angrenost"
-				culture_group_umanyar = "Angrenost"
-				culture_group_moriquendi = "Angrenost"
-				culture_group_numenorean = "Angrenost"
+				culture_minyar = "Angrenost"
+				culture_tatyar = "Angrenost"
+				culture_nelyar = "Angrenost"
+				culture_teleri = "Angrenost"
+				culture_noldor = "Angrenost"
+				culture_vanyar = "Angrenost"
+				culture_falmari = "Angrenost"
+# not going to bother with first age only umanyar
+				culture_sindar = "Angrenost"
+				culture_silvan = "Angrenost"
+				culture_falathrim = "Angrenost"
+				culture_avari = "Angrenost"
+				culture_arnorian = "Angrenost"
+				culture_gondorian = "Angrenost"
+				culture_black_numenorean = "Angrenost"
+				culture_dunedain = "Angrenost"
+				culture_numenorean = "Angrenost"
+				culture_adunaic = "Angrenost"
 				culture_entish = "Orthanc"
 				
 				holy_site = religion_eruhini
@@ -2768,21 +2897,36 @@ e_gondor = {
 				}
 				b_ring_of_isengard = {
 					culture_sindar = "Ring of Angrenost"
-					culture_group_numenorean = "Ring of Angrenost"
+					culture_arnorian = "Ring of Angrenost"
+					culture_gondorian = "Ring of Angrenost"
+					culture_black_numenorean = "Ring of Angrenost"
+					culture_dunedain = "Ring of Angrenost"
+					culture_numenorean = "Ring of Angrenost"
+					culture_adunaic = "Ring of Angrenost"
 					culture_orkish = "Ring of Isengundul"
 					culture_maiar = "Ring of Isengundul"
 					culture_entish = "Ring of Isentaur"
 				}
 				b_great_gate_isengard = {
 					culture_sindar = "Gates of Angrenost"
-					culture_group_numenorean = "Gates of Angrenost"
+					culture_arnorian = "Gates of Angrenost"
+					culture_gondorian = "Gates of Angrenost"
+					culture_black_numenorean = "Gates of Angrenost"
+					culture_dunedain = "Gates of Angrenost"
+					culture_numenorean = "Gates of Angrenost"
+					culture_adunaic = "Gates of Angrenost"
 					culture_orkish = "Gates of Isengundul"
 					culture_maiar = "Gates of Isengundul"
 					culture_entish = "Gates of Isentaur"
 				}
 				b_isengard_fields = {
 					culture_sindar = "Fields of Angrenost"
-					culture_group_numenorean = "Fields of Angrenost"
+					culture_arnorian = "Fields of Angrenost"
+					culture_gondorian = "Fields of Angrenost"
+					culture_black_numenorean = "Fields of Angrenost"
+					culture_dunedain = "Fields of Angrenost"
+					culture_numenorean = "Fields of Angrenost"
+					culture_adunaic = "Fields of Angrenost"
 					culture_orkish = "Fields of Isengundul"
 					culture_maiar = "Fields of Isengundul"
 					culture_entish = "Woods of Isentaur"
@@ -2791,14 +2935,24 @@ e_gondor = {
 				}
 				b_isengard_forges = {
 					culture_sindar = "Forges of Angrenost"
-					culture_group_numenorean = "Forges of Angrenost"
+					culture_arnorian = "Forges of Angrenost"
+					culture_gondorian = "Forges of Angrenost"
+					culture_black_numenorean = "Forges of Angrenost"
+					culture_dunedain = "Forges of Angrenost"
+					culture_numenorean = "Forges of Angrenost"
+					culture_adunaic = "Forges of Angrenost"
 					culture_orkish = "Forges of Isengundul"
 					culture_maiar = "Forges of Isengundul"
 					culture_entish = "Lakes of Isentaur"
 				}
 				b_isengard_garrisons = {
 					culture_sindar = "Garrisons of Angrenost"
-					culture_group_numenorean = "Garrisons of Angrenost"
+					culture_arnorian = "Garrisons of Angrenost"
+					culture_gondorian = "Garrisons of Angrenost"
+					culture_black_numenorean = "Garrisons of Angrenost"
+					culture_dunedain = "Garrisons of Angrenost"
+					culture_numenorean = "Garrisons of Angrenost"
+					culture_adunaic = "Garrisons of Angrenost"
 					culture_orkish = "Garrisons of Isengundul"
 					culture_maiar = "Garrisons of Isengundul"
 					culture_entish = "Hills of Isentaur"
@@ -2806,35 +2960,7 @@ e_gondor = {
 			}
 		}
 	}
-	d_ithilien_rangers = {
-	    color = { 30 127 172 }
-	    color2 = { 220 220 0 }
-        
-        allow = { always = no }		
-		
-	    # mercenary = yes
-	
-	    # # Hire Trigger
-	    # allow = {
-		# is_nomadic = no
-		# NOT = { culture_group = culture_group_wilderness }
-		# NOT = { culture_group = culture_group_melkor }
-	    # }
-		
-	    capital = 51 # Henneth Annun
-		
-	    dignity = 10 
-		
-	    # Always_exists
-	    landless = yes
-		
-	    religion = religion_dunedain
-	    culture = culture_gondorian
-	
-	    trait = good_side
-		
-	    #mercenary_type = d_merc_inf
-	}
+
 }
 	
 k_angmar = {
@@ -2844,11 +2970,24 @@ k_angmar = {
 	capital = 624 #Carn Dum
 	religion_angmarim = 100 # Crusade target weight
 	
-	culture_group_numenorean = "Angarth"
-	culture_group_quendi = "Angarth"
-	culture_group_amanyar = "Angarth"
-	culture_group_umanyar = "Angarth"
-	culture_group_moriquendi = "Angarth"	
+	culture_arnorian = "Angarth"
+	culture_gondorian = "Angarth"
+	culture_black_numenorean = "Angarth"
+	culture_dunedain = "Angarth"
+	culture_numenorean = "Angarth"
+	culture_adunaic = "Angarth"
+	culture_minyar = "Angarth"
+	culture_tatyar = "Angarth"
+	culture_nelyar = "Angarth"
+	culture_teleri = "Angarth"
+	culture_noldor = "Angarth"
+	culture_vanyar = "Angarth"
+	culture_falmari = "Angarth"
+# not going to bother with first age only umanyar
+	culture_sindar = "Angarth"
+	culture_silvan = "Angarth"
+	culture_falathrim = "Angarth"
+	culture_avari = "Angarth"	
 	
 	d_nan_angmar = {
 		color={ 102 35 32 }
@@ -2962,22 +3101,48 @@ k_angmar = {
 		capital = 624 # Carn Dûm
 		
 		    culture_hillmen = "Blacbeorg"
-			culture_group_numenorean = "Caras Iphant"
-			culture_group_quendi = "Caras Iphant"
-		    culture_group_amanyar = "Caras Iphant"
-			culture_group_umanyar = "Caras Iphant"
-			culture_group_moriquendi = "Caras Iphant"
+			culture_arnorian = "Caras Iphant"
+			culture_gondorian = "Caras Iphant"
+			culture_black_numenorean = "Caras Iphant"
+			culture_dunedain = "Caras Iphant"
+			culture_numenorean = "Caras Iphant"
+			culture_adunaic = "Caras Iphant"
+			culture_minyar = "Caras Iphant"
+			culture_tatyar = "Caras Iphant"
+			culture_nelyar = "Caras Iphant"
+			culture_teleri = "Caras Iphant"
+		    culture_noldor = "Caras Iphant"
+		    culture_vanyar = "Caras Iphant"
+		    culture_falmari = "Caras Iphant"
+# not going to bother with first age only umanyar
+			culture_sindar = "Caras Iphant"
+			culture_silvan = "Caras Iphant"
+			culture_falathrim = "Caras Iphant"
+			culture_avari = "Caras Iphant"
 			
 		c_carn_dum = {
 			color={ 144 144 144 }
 			color2={ 125 125 142 }
 		
 		    culture_hillmen = "Blacbeorg"
-			culture_group_numenorean = "Caras Iphant"
-			culture_group_quendi = "Caras Iphant"
-		    culture_group_amanyar = "Caras Iphant"
-			culture_group_umanyar = "Caras Iphant"
-			culture_group_moriquendi = "Caras Iphant"
+			culture_arnorian = "Caras Iphant"
+			culture_gondorian = "Caras Iphant"
+			culture_black_numenorean = "Caras Iphant"
+			culture_dunedain = "Caras Iphant"
+			culture_numenorean = "Caras Iphant"
+			culture_adunaic = "Caras Iphant"
+			culture_minyar = "Caras Iphant"
+			culture_tatyar = "Caras Iphant"
+			culture_nelyar = "Caras Iphant"
+			culture_teleri = "Caras Iphant"
+		    culture_noldor = "Caras Iphant"
+		    culture_vanyar = "Caras Iphant"
+		    culture_falmari = "Caras Iphant"
+# not going to bother with first age only umanyar
+			culture_sindar = "Caras Iphant"
+			culture_silvan = "Caras Iphant"
+			culture_falathrim = "Caras Iphant"
+			culture_avari = "Caras Iphant"
 			
 			holy_site = religion_black_numenorean
 			holy_site = religion_wight
@@ -2986,11 +3151,24 @@ k_angmar = {
 			
 			b_carn_dum = {
 				culture_hillmen = "Blacbeorg"
-				culture_group_numenorean = "Caras Iphant"
-				culture_group_quendi = "Caras Iphant"
-				culture_group_amanyar = "Caras Iphant"
-				culture_group_umanyar = "Caras Iphant"
-				culture_group_moriquendi = "Caras Iphant"
+				culture_arnorian = "Caras Iphant"
+				culture_gondorian = "Caras Iphant"
+				culture_black_numenorean = "Caras Iphant"
+				culture_dunedain = "Caras Iphant"
+				culture_numenorean = "Caras Iphant"
+				culture_adunaic = "Caras Iphant"
+				culture_minyar = "Caras Iphant"
+				culture_tatyar = "Caras Iphant"
+				culture_nelyar = "Caras Iphant"
+				culture_teleri = "Caras Iphant"
+				culture_noldor = "Caras Iphant"
+				culture_vanyar = "Caras Iphant"
+				culture_falmari = "Caras Iphant"
+# not going to bother with first age only umanyar
+				culture_sindar = "Caras Iphant"
+				culture_silvan = "Caras Iphant"
+				culture_falathrim = "Caras Iphant"
+				culture_avari = "Caras Iphant"
 	
 			}
 			b_tarmunn_sursa = {
@@ -3338,8 +3516,16 @@ e_arnor = {
 			
 			capital = 105 # Barrow_downs
 			culture_wilderness = "Barrow-downs"
-			culture_group_melkor = "Barrow-downs"
 			culture_wight = "Barrow-downs"
+			culture_half_orc = "Barrow-downs"
+			culture_urukhai = "Barrow-downs"
+			culture_goblin = "Barrow-downs"
+			culture_orkish = "Barrow-downs"
+			culture_wargs = "Barrow-downs"
+			culture_troll = "Barrow-downs"
+			culture_balrog = "Barrow-downs"
+			culture_dragons = "Barrow-downs"
+			culture_spider = "Barrow-downs"
 			
 			c_buckland = {
 				color={ 65 69 120 }
@@ -3389,12 +3575,35 @@ e_arnor = {
 				color2={ 255 255 255 }
 			
 				culture_wilderness = "Barrow-downs"
-				culture_group_melkor = "Barrow-downs"
-				culture_group_numenorean = "Tyrn Gorthad"
+				culture_wight = "Barrow-downs"
+				culture_half_orc = "Barrow-downs"
+				culture_urukhai = "Barrow-downs"
+				culture_goblin = "Barrow-downs"
+				culture_orkish = "Barrow-downs"
+				culture_wargs = "Barrow-downs"
+				culture_troll = "Barrow-downs"
+				culture_balrog = "Barrow-downs"
+				culture_dragons = "Barrow-downs"
+				culture_spider = "Barrow-downs"
+				culture_arnorian = "Tyrn Gorthad"
+				culture_gondorian = "Tyrn Gorthad"
+				culture_black_numenorean = "Tyrn Gorthad"
+				culture_dunedain = "Tyrn Gorthad"
+				culture_numenorean = "Tyrn Gorthad"
+				culture_adunaic = "Tyrn Gorthad"
 		
 				b_tyrn_gorthad = {
 					culture_wilderness = "Haunted Barrows"
-					culture_group_melkor = "Haunted Barrows"
+					culture_wight = "Haunted Barrows"
+					culture_half_orc = "Haunted Barrows"
+					culture_urukhai = "Haunted Barrows"
+					culture_goblin = "Haunted Barrows"
+					culture_orkish = "Haunted Barrows"
+					culture_wargs = "Haunted Barrows"
+					culture_troll = "Haunted Barrows"
+					culture_balrog = "Haunted Barrows"
+					culture_dragons = "Haunted Barrows"
+					culture_spider = "Haunted Barrows"
 				}
 				b_bar_en_dindol = {
 				}
@@ -3894,17 +4103,27 @@ e_arnor = {
 			
 			capital = 687 #Tower Hills
 			
-			culture_group_edain = "Elostirion"
+			culture_maradin = "Elostirion"
+			culture_beodin = "Elostirion"
+			culture_boradin = "Elostirion"
 			culture_arnorian = "Elostirion"
 			culture_gondorian = "Elostirion"	
 			culture_dunedain = "Elostirion"		
 			culture_black_numenorean = "Elostirion"
 			culture_numenorean = "Elostirion"			
-			culture_group_quendi = "Elostirion"
-			culture_group_amanyar = "Elostirion"
-			culture_group_umanyar = "Elostirion"
-			culture_group_moriquendi = "Elostirion"
-			culture_group_eru = "Elostirion"
+			culture_minyar = "Elostirion"
+			culture_tatyar = "Elostirion"
+			culture_nelyar = "Elostirion"
+			culture_teleri = "Elostirion"
+			culture_noldor = "Elostirion"
+			culture_vanyar = "Elostirion"
+			culture_falmari = "Elostirion"
+			# not going to bother with first age only umanyar
+			culture_sindar = "Elostirion"
+			culture_silvan = "Elostirion"
+			culture_falathrim = "Elostirion"
+			culture_avari = "Elostirion"
+			# culture_group_eru = "Elostirion"
 			
 			c_undertowers = {
 				color={ 14 49 237 }
@@ -3935,18 +4154,28 @@ e_arnor = {
 				color={ 128 255 0 }
 				color2={ 255 255 255 }
 				
-				culture_group_quendi = "Emyn Beraid"
-				culture_group_amanyar = "Emyn Beraid"
-				culture_group_umanyar = "Emyn Beraid"
-				culture_group_moriquendi = "Emyn Beraid"
-				culture_group_edain = "Elostirion"
+				culture_minyar = "Emyn Beraid"
+				culture_tatyar = "Emyn Beraid"
+				culture_nelyar = "Emyn Beraid"
+				culture_teleri = "Emyn Beraid"
+				culture_noldor = "Emyn Beraid"
+				culture_vanyar = "Emyn Beraid"
+				culture_falmari = "Emyn Beraid"
+# not going to bother with first age only umanyar
+				culture_sindar = "Emyn Beraid"
+				culture_silvan = "Emyn Beraid"
+				culture_falathrim = "Emyn Beraid"
+				culture_avari = "Emyn Beraid"
+				culture_maradin = "Elostirion"
+				culture_beodin = "Elostirion"
+				culture_boradin = "Elostirion"
 				culture_arnorian = "Elostirion"
 				culture_gondorian = "Elostirion"	
 				culture_dunedain = "Elostirion"		
 				culture_black_numenorean = "Elostirion"
 				culture_numenorean = "Elostirion"	
 
-				holy_site = religion_calaquendi
+				holy_site = religion_moriquendi
 				holy_site = religion_dunedain				
 		
 				b_elostirion = {	
@@ -4369,17 +4598,44 @@ e_arnor = {
 				color={ 106 6 156 }
 				color2={ 255 255 255 }
 				culture_wilderness = "Deadmen's Dike"
-				culture_group_melkor = "Deadmen's Dike"
+				culture_wight = "Deadmen's Dike"
+				culture_half_orc = "Deadmen's Dike"
+				culture_urukhai = "Deadmen's Dike"
+				culture_goblin = "Deadmen's Dike"
+				culture_orkish = "Deadmen's Dike"
+				culture_wargs = "Deadmen's Dike"
+				culture_troll = "Deadmen's Dike"
+				culture_balrog = "Deadmen's Dike"
+				culture_dragons = "Deadmen's Dike"
+				culture_spider = "Deadmen's Dike"
 				
 				holy_site = religion_wilderness
 		
 				b_citadel_fornost = {
 					culture_wilderness = "Deadmen's Dike"
-				    culture_group_melkor = "Deadmen's Dike"
+				    culture_wight = "Deadmen's Dike"
+				    culture_half_orc = "Deadmen's Dike"
+				    culture_urukhai = "Deadmen's Dike"
+				    culture_goblin = "Deadmen's Dike"
+				    culture_orkish = "Deadmen's Dike"
+				    culture_wargs = "Deadmen's Dike"
+				    culture_troll = "Deadmen's Dike"
+				    culture_balrog = "Deadmen's Dike"
+				    culture_dragons = "Deadmen's Dike"
+				    culture_spider = "Deadmen's Dike"
 				}
 				b_gates_norbury = {
 				culture_wilderness = "Deadmen's Gate"
-				culture_group_melkor = "Deadmen's Gate"
+				culture_wight = "Deadmen's Gate"
+				culture_half_orc = "Deadmen's Gate"
+				culture_urukhai = "Deadmen's Gate"
+				culture_goblin = "Deadmen's Gate"
+				culture_orkish = "Deadmen's Gate"
+				culture_wargs = "Deadmen's Gate"
+				culture_troll = "Deadmen's Gate"
+				culture_balrog = "Deadmen's Gate"
+				culture_dragons = "Deadmen's Gate"
+				culture_spider = "Deadmen's Gate"
 				}
 				b_ost_nuaran = {
 				}
@@ -5260,8 +5516,16 @@ e_arnor = {
 				color={ 132 130 87 }
 				color2={ 255 255 255 }
 				
-			    culture_group_melkor = "Ettendales"
-				culture_troll = "Ettendales"
+			    culture_wight = "Ettendales"
+			    culture_half_orc = "Ettendales"
+			    culture_urukhai = "Ettendales"
+			    culture_goblin = "Ettendales"
+			    culture_orkish = "Ettendales"
+			    culture_wargs = "Ettendales"
+			    culture_troll = "Ettendales"
+			    culture_balrog = "Ettendales"
+			    culture_dragons = "Ettendales"
+			    culture_spider = "Ettendales"
 			    culture_wilderness = "Ettendales"
 			    culture_istari = "Ettendales"
 				
@@ -5440,12 +5704,18 @@ e_arnor = {
 				color={ 209 201 90 }
 				color2={ 255 255 255 }
 		    
-			    culture_group_melkor = "Coldfells"
+			    culture_wight = "Coldfells"
+			    culture_half_orc = "Coldfells"
+			    culture_urukhai = "Coldfells"
+			    culture_goblin = "Coldfells"
+			    culture_orkish = "Coldfells"
+			    culture_wargs = "Coldfells"
+			    culture_troll = "Coldfells"
+			    culture_balrog = "Coldfells"
+			    culture_dragons = "Coldfells"
+			    culture_spider = "Coldfells"
 			    culture_wilderness = "Coldfells"
 			    culture_istari = "Coldfells"
-				culture_orkish = "Coldfells"
-				culture_troll = "Coldfells"
-				culture_gobllin = "Coldfells"
 				
 				holy_site = religion_angmarim
 			
@@ -5501,9 +5771,26 @@ k_fangorn = {
 	color={ 161 229 183 }
 	color2={ 125 125 142 }
 	
-	culture_group_numenorean = "Entwood"
-	culture_group_rhovanion = "Entwood"
-	culture_group_melkor = "Morgaath"
+	culture_arnorian = "Entwood"
+	culture_gondorian = "Entwood"
+	culture_black_numenorean = "Entwood"
+	culture_dunedain = "Entwood"
+	culture_numenorean = "Entwood"
+	culture_adunaic = "Entwood"
+	culture_eotheod = "Entwood"
+	culture_rohirrim = "Entwood"
+	culture_beorning = "Entwood"
+	culture_woodsmen = "Entwood"
+	culture_wight = "Morgaath"
+	culture_half_orc = "Morgaath"
+	culture_urukhai = "Morgaath"
+	culture_goblin = "Morgaath"
+	culture_orkish = "Morgaath"
+	culture_wargs = "Morgaath"
+	culture_troll = "Morgaath"
+	culture_balrog = "Morgaath"
+	culture_dragons = "Morgaath"
+	culture_spider = "Morgaath"
 	culture_maiar = "Morgaath"
 	
 	capital = 65 #Derndingle
@@ -5519,9 +5806,26 @@ k_fangorn = {
 		color={ 67 129 52 }
 		color2={ 125 125 142 }
 			
-		culture_group_numenorean = "Entwood"
-		culture_group_rhovanion = "Entwood"
-		culture_group_melkor = "Morgaath"
+		culture_arnorian = "Entwood"
+		culture_gondorian = "Entwood"
+		culture_black_numenorean = "Entwood"
+		culture_dunedain = "Entwood"
+		culture_numenorean = "Entwood"
+		culture_adunaic = "Entwood"
+		culture_eotheod = "Entwood"
+		culture_rohirrim = "Entwood"
+		culture_beorning = "Entwood"
+		culture_woodsmen = "Entwood"
+		culture_wight = "Morgaath"
+		culture_half_orc = "Morgaath"
+		culture_urukhai = "Morgaath"
+		culture_goblin = "Morgaath"
+		culture_orkish = "Morgaath"
+		culture_wargs = "Morgaath"
+		culture_troll = "Morgaath"
+		culture_balrog = "Morgaath"
+		culture_dragons = "Morgaath"
+		culture_spider = "Morgaath"
 		culture_maiar = "Morgaath"
 			
 		capital = 65 #Derndingle
@@ -5532,9 +5836,26 @@ k_fangorn = {
 			color={ 92 166 101 }
 			color2={ 125 125 142 }
 		
-			culture_group_numenorean = "Entwood"
-			culture_group_rhovanion = "Entwood"
-			culture_group_melkor = "Morgaath"
+			culture_arnorian = "Entwood"
+			culture_gondorian = "Entwood"
+			culture_black_numenorean = "Entwood"
+			culture_dunedain = "Entwood"
+			culture_numenorean = "Entwood"
+			culture_adunaic = "Entwood"
+			culture_eotheod = "Entwood"
+			culture_rohirrim = "Entwood"
+			culture_beorning = "Entwood"
+			culture_woodsmen = "Entwood"
+			culture_wight = "Morgaath"
+			culture_half_orc = "Morgaath"
+			culture_urukhai = "Morgaath"
+			culture_goblin = "Morgaath"
+			culture_orkish = "Morgaath"
+			culture_wargs = "Morgaath"
+			culture_troll = "Morgaath"
+			culture_balrog = "Morgaath"
+			culture_dragons = "Morgaath"
+			culture_spider = "Morgaath"
 			culture_maiar = "Morgaath"
 			
 			title_prefix = "DEEPS_OF"
@@ -5552,7 +5873,16 @@ k_fangorn = {
 			color={ 156 176 148 }
 			color2={ 125 125 142 }
 			
-			culture_group_melkor = "Morgropor"
+			culture_wight = "Morgropor"
+			culture_half_orc = "Morgropor"
+			culture_urukhai = "Morgropor"
+			culture_goblin = "Morgropor"
+			culture_orkish = "Morgropor"
+			culture_wargs = "Morgropor"
+			culture_troll = "Morgropor"
+			culture_balrog = "Morgropor"
+			culture_dragons = "Morgropor"
+			culture_spider = "Morgropor"
 			culture_maiar = "Morgropor"
 		    
 			title_prefix = "VALE_OF"
@@ -5560,7 +5890,16 @@ k_fangorn = {
 			holy_site = religion_enyd
 			
 			b_derndingle = {
-				culture_group_melkor = "Morgropor"
+				culture_wight = "Morgropor"
+				culture_half_orc = "Morgropor"
+				culture_urukhai = "Morgropor"
+				culture_goblin = "Morgropor"
+				culture_orkish = "Morgropor"
+				culture_wargs = "Morgropor"
+				culture_troll = "Morgropor"
+				culture_balrog = "Morgropor"
+				culture_dragons = "Morgropor"
+				culture_spider = "Morgropor"
 				culture_maiar = "Morgropor"
 			}
             b_wellinghall = {
@@ -5581,18 +5920,28 @@ k_fangorn = {
 		capital = 235 # Lorien
 	
 		culture_rohirrim = "Dwimordene"
-		culture_group_numenorean = "Golden Wood"
+		culture_arnorian = "Golden Wood"
+		culture_gondorian = "Golden Wood"
+		culture_black_numenorean = "Golden Wood"
+		culture_dunedain = "Golden Wood"
+		culture_numenorean = "Golden Wood"
+		culture_adunaic = "Golden Wood"
 		culture_orkish = "Shatraug-tau"
 		culture_maiar = "Shatraug-tau"
 		culture_silvan = "Lórinand"
-		culture = culture_moriquendi
+		# culture = culture_moriquendi
 
 		d_lorien = {
 			color={ 193 193 42 }
 			color2={ 255 255 255 }
 			
 			culture_rohirrim = "Dwimordene"
-	        culture_group_numenorean = "Golden Wood"
+	        culture_arnorian = "Golden Wood"
+	        culture_gondorian = "Golden Wood"
+	        culture_black_numenorean = "Golden Wood"
+	        culture_dunedain = "Golden Wood"
+	        culture_numenorean = "Golden Wood"
+	        culture_adunaic = "Golden Wood"
 			culture_orkish = "Shatraug-tau"
 	        culture_maiar = "Shatraug-tau"
 			
@@ -5605,7 +5954,6 @@ k_fangorn = {
 				culture_maiar = "Ghàashugaath"
 				culture_orkish = "Ghàashugaath"
 				
-				holy_site = religion_calaquendi
 				holy_site = religion_moriquendi
 		
 				b_house_of_celeborn = {
@@ -5622,8 +5970,20 @@ k_fangorn = {
 				}          
 			}
 			c_wester_north_lorien = {			
-				culture_group_numenorean = "Dimrill Dale"
-				culture_group_dwarves = "Azanulbizar"
+				culture_arnorian = "Dimrill Dale"
+				culture_gondorian = "Dimrill Dale"
+				culture_black_numenorean = "Dimrill Dale"
+				culture_dunedain = "Dimrill Dale"
+				culture_numenorean = "Dimrill Dale"
+				culture_adunaic = "Dimrill Dale"
+				culture_longbeard = "Azanulbizar"
+				culture_broadbeam = "Azanulbizar"
+				culture_firebeard = "Azanulbizar"
+				culture_ironfist = "Azanulbizar"
+				culture_blacklock = "Azanulbizar"
+				culture_stiffbeard = "Azanulbizar"
+				culture_stonefoot = "Azanulbizar"
+				culture_petty_dwarves = "Azanulbizar"
 				culture_rohirrim = "Dimrill Dale"
 				culture_orkish = "Urbh-gropor"
 				culture_maiar = "Urbh-gropor"
@@ -5680,6 +6040,7 @@ k_fangorn = {
 				}
 				b_talan_tirith = {
 				}
+				b_talan_elmo = {}
 			}
 		}
 }
@@ -5688,7 +6049,9 @@ k_ered_luin = {
 	color={ 34 122 147 }
 	color2={ 125 125 142 }
 	
-	culture_group_amanyar = "Lhúndirien"
+	culture_noldor = "Lhúndirien"
+	culture_vanyar = "Lhúndirien"
+	culture_falmari = "Lhúndirien"
 	culture_longbeard = "Khagolabbad"
 	culture_firebeard = "Khagolabbad"
 	culture_broadbeam = "Khagolabbad"
@@ -5863,7 +6226,16 @@ k_ered_luin = {
 e_rhun = {
 	color={ 196 18 18 }
 	color2={ 125 125 142 }
-	culture_group_melkor = "Ghânsh"
+	culture_wight = "Ghânsh"
+	culture_half_orc = "Ghânsh"
+	culture_urukhai = "Ghânsh"
+	culture_goblin = "Ghânsh"
+	culture_orkish = "Ghânsh"
+	culture_wargs = "Ghânsh"
+	culture_troll = "Ghânsh"
+	culture_balrog = "Ghânsh"
+	culture_dragons = "Ghânsh"
+	culture_spider = "Ghânsh"
 	culture_maiar = "Ghânsh"
 	
 	capital = 614 # Kas Rhûn
@@ -5877,7 +6249,16 @@ e_rhun = {
 		color={ 196 18 18 }
 		color2={ 125 125 142 }
 	
-		culture_group_melkor = "Ghânsh"
+		culture_wight = "Ghânsh"
+		culture_half_orc = "Ghânsh"
+		culture_urukhai = "Ghânsh"
+		culture_goblin = "Ghânsh"
+		culture_orkish = "Ghânsh"
+		culture_wargs = "Ghânsh"
+		culture_troll = "Ghânsh"
+		culture_balrog = "Ghânsh"
+		culture_dragons = "Ghânsh"
+		culture_spider = "Ghânsh"
 		culture_maiar = "Ghânsh"
 	
 		capital = 614 # Kas Rhûn
@@ -6261,7 +6642,16 @@ e_rhun = {
 		color={ 213 72 26 }
 		color2={ 125 125 142 }
 
-		culture_group_melkor = "Thaguzg"
+		culture_wight = "Thaguzg"
+		culture_half_orc = "Thaguzg"
+		culture_urukhai = "Thaguzg"
+		culture_goblin = "Thaguzg"
+		culture_orkish = "Thaguzg"
+		culture_wargs = "Thaguzg"
+		culture_troll = "Thaguzg"
+		culture_balrog = "Thaguzg"
+		culture_dragons = "Thaguzg"
+		culture_spider = "Thaguzg"
 		culture_maiar = "Thaguzg"
 		
 		capital = 449 # Ammu Khand
@@ -6765,8 +7155,23 @@ k_nurunkhizdin = {
 	
 		religion_mahal = 100 
 		
-		culture_group_dwarves = "Nurunkizdin"
-		culture_group_easterling = "Éorstan"
+		culture_longbeard = "Nurunkizdin"
+		culture_broadbeam = "Nurunkizdin"
+		culture_firebeard = "Nurunkizdin"
+		culture_ironfist = "Nurunkizdin"
+		culture_blacklock = "Nurunkizdin"
+		culture_stiffbeard = "Nurunkizdin"
+		culture_stonefoot = "Nurunkizdin"
+		culture_petty_dwarves = "Nurunkizdin"
+		culture_baradhrim = "Éorstan"
+		culture_easterling = "Éorstan"
+		culture_balchoth = "Éorstan"
+		culture_wainriders = "Éorstan"
+		culture_nurnim = "Éorstan"
+		culture_variags = "Éorstan"
+		culture_nuriags = "Éorstan"
+		culture_khundolars = "Éorstan"
+		culture_jangovars = "Éorstan"
 	
 		d_nurunkhizdin = {
 			color={ 149 27 30 }
@@ -6774,15 +7179,45 @@ k_nurunkhizdin = {
 			
 			capital = 584 # Nurunkhizdin
 			
-			culture_group_dwarves = "Nurunkizdin"
-			culture_group_easterling = "Éorstan"
+			culture_longbeard = "Nurunkizdin"
+			culture_broadbeam = "Nurunkizdin"
+			culture_firebeard = "Nurunkizdin"
+			culture_ironfist = "Nurunkizdin"
+			culture_blacklock = "Nurunkizdin"
+			culture_stiffbeard = "Nurunkizdin"
+			culture_stonefoot = "Nurunkizdin"
+			culture_petty_dwarves = "Nurunkizdin"
+			culture_baradhrim = "Éorstan"
+			culture_easterling = "Éorstan"
+			culture_balchoth = "Éorstan"
+			culture_wainriders = "Éorstan"
+			culture_nurnim = "Éorstan"
+			culture_variags = "Éorstan"
+			culture_nuriags = "Éorstan"
+			culture_khundolars = "Éorstan"
+			culture_jangovars = "Éorstan"
 			
 			c_nurunkhizdin = {
 				color={ 252 0 255 }
 				color2={ 255 255 255 }
 		        
-				culture_group_dwarves = "Nurunkizdin"
-				culture_group_easterling = "Éorstan"
+				culture_longbeard = "Nurunkizdin"
+				culture_broadbeam = "Nurunkizdin"
+				culture_firebeard = "Nurunkizdin"
+				culture_ironfist = "Nurunkizdin"
+				culture_blacklock = "Nurunkizdin"
+				culture_stiffbeard = "Nurunkizdin"
+				culture_stonefoot = "Nurunkizdin"
+				culture_petty_dwarves = "Nurunkizdin"
+				culture_baradhrim = "Éorstan"
+				culture_easterling = "Éorstan"
+				culture_balchoth = "Éorstan"
+				culture_wainriders = "Éorstan"
+				culture_nurnim = "Éorstan"
+				culture_variags = "Éorstan"
+				culture_nuriags = "Éorstan"
+				culture_khundolars = "Éorstan"
+				culture_jangovars = "Éorstan"
 				
 				b_nurunkhizdin = {
 				}
@@ -6792,9 +7227,9 @@ k_nurunkhizdin = {
 				}
 				b_manrbul = {
 				}
-				b_tumûninh = {
+				b_tumuninh = {
 				}
-				b_khafushûn = {
+				b_khafushun = {
 			}
 		}
 	}
@@ -6870,7 +7305,7 @@ k_gundabad = {
 	d_nan_loke = {
 		color={ 99 146 151 }
 		color2={ 255 255 255 }		
-		capital = 642 # Gundabad
+		capital = 634 # Nan Lòke
 		
 		c_nan_loke = {
 			color={ 149 186 85 }
@@ -7825,9 +8260,15 @@ e_durins_folk = {
 		color={ 176 192 189 }
 		color2={ 125 125 142 }
 		
-		culture_group_quendi = "Ered Mithrin"
-		culture_group_umanyar = "Ered Mithrin"
-		culture_group_moriquendi = "Ered Mithrin"
+		culture_minyar = "Ered Mithrin"
+		culture_tatyar = "Ered Mithrin"
+		culture_nelyar = "Ered Mithrin"
+		culture_teleri = "Ered Mithrin"
+# not going to bother with first age only umanyar
+		culture_sindar = "Ered Mithrin"
+		culture_silvan = "Ered Mithrin"
+		culture_falathrim = "Ered Mithrin"
+		culture_avari = "Ered Mithrin"
 		culture_gondorian = "Ered Mithrin"
 		culture_arnorian = "Ered Mithrin"
 		culture_black_numenorean = "Ered Mithrin"
@@ -7850,9 +8291,15 @@ e_durins_folk = {
 			color2={ 255 255 255 }
 				
 			capital = 679 #Dain's Halls
-			culture_group_quendi = "Ered Mithrin"
-			culture_group_umanyar = "Ered Mithrin"
-			culture_group_moriquendi = "Ered Mithrin"
+			culture_minyar = "Ered Mithrin"
+			culture_tatyar = "Ered Mithrin"
+			culture_nelyar = "Ered Mithrin"
+			culture_teleri = "Ered Mithrin"
+# not going to bother with first age only umanyar
+			culture_sindar = "Ered Mithrin"
+			culture_silvan = "Ered Mithrin"
+			culture_falathrim = "Ered Mithrin"
+			culture_avari = "Ered Mithrin"
 			culture_gondorian = "Ered Mithrin"
 			culture_arnorian = "Ered Mithrin"
 			culture_black_numenorean = "Ered Mithrin"
@@ -7919,10 +8366,24 @@ e_durins_folk = {
 				color={ 105 65 44 }
 				color2={ 255 255 255 }
 				
-				culture_group_dwarves = "Dain-dûm"	
+				culture_longbeard = "Dain-dûm"
+				culture_broadbeam = "Dain-dûm"
+				culture_firebeard = "Dain-dûm"
+				culture_ironfist = "Dain-dûm"
+				culture_blacklock = "Dain-dûm"
+				culture_stiffbeard = "Dain-dûm"
+				culture_stonefoot = "Dain-dûm"
+				culture_petty_dwarves = "Dain-dûm"	
 			
 				b_dain_halls  = {
-				culture_group_dwarves = "Dain-dûm"	
+				culture_longbeard = "Dain-dûm"
+				culture_broadbeam = "Dain-dûm"
+				culture_firebeard = "Dain-dûm"
+				culture_ironfist = "Dain-dûm"
+				culture_blacklock = "Dain-dûm"
+				culture_stiffbeard = "Dain-dûm"
+				culture_stonefoot = "Dain-dûm"
+				culture_petty_dwarves = "Dain-dûm"	
 				}
 				b_cirith_himninond  = {
 				}
@@ -7957,12 +8418,34 @@ e_durins_folk = {
 		color={ 148 125 121 }
 		color2={ 125 125 142 }
 		
-		culture_group_melkor = "Urbh-bhraf"
+		culture_wight = "Urbh-bhraf"
+		culture_half_orc = "Urbh-bhraf"
+		culture_urukhai = "Urbh-bhraf"
+		culture_goblin = "Urbh-bhraf"
+		culture_orkish = "Urbh-bhraf"
+		culture_wargs = "Urbh-bhraf"
+		culture_troll = "Urbh-bhraf"
+		culture_balrog = "Urbh-bhraf"
+		culture_dragons = "Urbh-bhraf"
+		culture_spider = "Urbh-bhraf"
 		culture_maiar = "Urbh-bhraf"
-		culture_group_quendi = "Hithaeglir"
-		culture_group_umanyar = "Hithaeglir"
-		culture_group_moriquendi = "Hithaeglir"
-		culture_group_dwarves = "Khazad-dûm"
+		culture_minyar = "Hithaeglir"
+		culture_tatyar = "Hithaeglir"
+		culture_nelyar = "Hithaeglir"
+		culture_teleri = "Hithaeglir"
+# not going to bother with first age only umanyar
+		culture_sindar = "Hithaeglir"
+		culture_silvan = "Hithaeglir"
+		culture_falathrim = "Hithaeglir"
+		culture_avari = "Hithaeglir"
+		culture_longbeard = "Khazad-dûm"
+		culture_broadbeam = "Khazad-dûm"
+		culture_firebeard = "Khazad-dûm"
+		culture_ironfist = "Khazad-dûm"
+		culture_blacklock = "Khazad-dûm"
+		culture_stiffbeard = "Khazad-dûm"
+		culture_stonefoot = "Khazad-dûm"
+		culture_petty_dwarves = "Khazad-dûm"
 		
 		capital = 285 # Moria
 		
@@ -8001,23 +8484,63 @@ e_durins_folk = {
 			color2={ 255 255 255 }
 			capital = 285 # Moria
 				
-			culture_group_quendi = "Hadhodrond"
-			culture_group_amanyar = "Casarrondo"
-			culture_group_umanyar = "Hadhodrond"
-			culture_group_moriquendi = "Hadhodrond"
-			culture_group_dwarves = "Khazad-dûm"
-			culture_group_numenorean = "Dwarrowdelf"
+			culture_minyar = "Hadhodrond"
+			culture_tatyar = "Hadhodrond"
+			culture_nelyar = "Hadhodrond"
+			culture_teleri = "Hadhodrond"
+			culture_noldor = "Casarrondo"
+			culture_vanyar = "Casarrondo"
+			culture_falmari = "Casarrondo"
+# not going to bother with first age only umanyar
+			culture_sindar = "Hadhodrond"
+			culture_silvan = "Hadhodrond"
+			culture_falathrim = "Hadhodrond"
+			culture_avari = "Hadhodrond"
+			culture_longbeard = "Khazad-dûm"
+			culture_broadbeam = "Khazad-dûm"
+			culture_firebeard = "Khazad-dûm"
+			culture_ironfist = "Khazad-dûm"
+			culture_blacklock = "Khazad-dûm"
+			culture_stiffbeard = "Khazad-dûm"
+			culture_stonefoot = "Khazad-dûm"
+			culture_petty_dwarves = "Khazad-dûm"
+			culture_arnorian = "Dwarrowdelf"
+			culture_gondorian = "Dwarrowdelf"
+			culture_black_numenorean = "Dwarrowdelf"
+			culture_dunedain = "Dwarrowdelf"
+			culture_numenorean = "Dwarrowdelf"
+			culture_adunaic = "Dwarrowdelf"
 				
 			c_moria = {
 				color={ 177 170 97 }
 				color2={ 255 255 255 }
 			
-				culture_group_quendi = "Hadhodrond"
-				culture_group_amanyar = "Casarrondo"
-				culture_group_umanyar = "Hadhodrond"
-				culture_group_moriquendi = "Hadhodrond"
-				culture_group_dwarves = "Khazad-dûm"
-				culture_group_numenorean = "Dwarrowdelf"
+				culture_minyar = "Hadhodrond"
+				culture_tatyar = "Hadhodrond"
+				culture_nelyar = "Hadhodrond"
+				culture_teleri = "Hadhodrond"
+				culture_noldor = "Casarrondo"
+				culture_vanyar = "Casarrondo"
+				culture_falmari = "Casarrondo"
+# not going to bother with first age only umanyar
+				culture_sindar = "Hadhodrond"
+				culture_silvan = "Hadhodrond"
+				culture_falathrim = "Hadhodrond"
+				culture_avari = "Hadhodrond"
+				culture_longbeard = "Khazad-dûm"
+				culture_broadbeam = "Khazad-dûm"
+				culture_firebeard = "Khazad-dûm"
+				culture_ironfist = "Khazad-dûm"
+				culture_blacklock = "Khazad-dûm"
+				culture_stiffbeard = "Khazad-dûm"
+				culture_stonefoot = "Khazad-dûm"
+				culture_petty_dwarves = "Khazad-dûm"
+				culture_arnorian = "Dwarrowdelf"
+				culture_gondorian = "Dwarrowdelf"
+				culture_black_numenorean = "Dwarrowdelf"
+				culture_dunedain = "Dwarrowdelf"
+				culture_numenorean = "Dwarrowdelf"
+				culture_adunaic = "Dwarrowdelf"
 				
 				holy_site = religion_mahal
 				holy_site = religion_orkish
@@ -8044,10 +8567,24 @@ e_durins_folk = {
 				color2={ 255 255 255 }
 		        
 				culture_wilderness = "Redhorn Pass"
-				culture_group_dwarves = "Barazinbar"
+				culture_longbeard = "Barazinbar"
+				culture_broadbeam = "Barazinbar"
+				culture_firebeard = "Barazinbar"
+				culture_ironfist = "Barazinbar"
+				culture_blacklock = "Barazinbar"
+				culture_stiffbeard = "Barazinbar"
+				culture_stonefoot = "Barazinbar"
+				culture_petty_dwarves = "Barazinbar"
 				b_redhorn_ford = {
 				culture_wilderness = "Redhornford"
-				culture_group_dwarves = "Barazinbarmekhem"
+				culture_longbeard = "Barazinbarmekhem"
+				culture_broadbeam = "Barazinbarmekhem"
+				culture_firebeard = "Barazinbarmekhem"
+				culture_ironfist = "Barazinbarmekhem"
+				culture_blacklock = "Barazinbarmekhem"
+				culture_stiffbeard = "Barazinbarmekhem"
+				culture_stonefoot = "Barazinbarmekhem"
+				culture_petty_dwarves = "Barazinbarmekhem"
 				}
 				b_redhorn_west_gate = {
 				}
@@ -8061,6 +8598,11 @@ e_durins_folk = {
 				color2={ 255 255 255 }
 		        
 				culture_wilderness = "Dimrill Dale"
+				culture_silvan = "Nanduhirion"
+				culture_noldor = "Nanduhirion"
+				culture_sindar = "Nanduhirion"
+				culture_avari = "Nanduhirion"
+				culture_falathrim = "Nanduhirion"
 				
 				b_azanulbizar-dum = {
 					culture_wilderness = "Dimrill"
@@ -8084,6 +8626,10 @@ e_durins_folk = {
 				color2={ 255 255 255 }
 				
 				culture_goblin = "Goblin-town"
+				culture_longbeard = "Kîbilagil-dûm"
+				culture_noldor = "Annerchin"
+				
+				
 				
 				holy_site = religion_olog
 				holy_site = religion_orkish
@@ -8161,7 +8707,16 @@ e_durins_folk = {
 		color={ 236 190 52 }
 		color2={ 125 125 142 }
 		
-		culture_group_melkor = "Urbh-ashûk"
+		culture_wight = "Urbh-ashûk"
+		culture_half_orc = "Urbh-ashûk"
+		culture_urukhai = "Urbh-ashûk"
+		culture_goblin = "Urbh-ashûk"
+		culture_orkish = "Urbh-ashûk"
+		culture_wargs = "Urbh-ashûk"
+		culture_troll = "Urbh-ashûk"
+		culture_balrog = "Urbh-ashûk"
+		culture_dragons = "Urbh-ashûk"
+		culture_spider = "Urbh-ashûk"
 		culture_maiar = "Urbh-ashûk"
 		
 		capital = 292 # Erebor
@@ -8308,11 +8863,28 @@ k_mirkwood = {
 	color={ 121 172 40 }
 	color2={ 125 125 142 }
 	
-	culture_group_quendi = "Eryn Galen"
-	culture_group_amanyar = "Eryn Galen"
-	culture_group_umanyar = "Eryn Galen"
-	culture_group_moriquendi = "Eryn Galen"
-	culture_group_melkor = "Mirkwood"
+	culture_minyar = "Eryn Galen"
+	culture_tatyar = "Eryn Galen"
+	culture_nelyar = "Eryn Galen"
+	culture_teleri = "Eryn Galen"
+	culture_noldor = "Eryn Galen"
+	culture_vanyar = "Eryn Galen"
+	culture_falmari = "Eryn Galen"
+# not going to bother with first age only umanyar
+	culture_sindar = "Eryn Galen"
+	culture_silvan = "Eryn Galen"
+	culture_falathrim = "Eryn Galen"
+	culture_avari = "Eryn Galen"
+	culture_wight = "Mirkwood"
+	culture_half_orc = "Mirkwood"
+	culture_urukhai = "Mirkwood"
+	culture_goblin = "Mirkwood"
+	culture_orkish = "Mirkwood"
+	culture_wargs = "Mirkwood"
+	culture_troll = "Mirkwood"
+	culture_balrog = "Mirkwood"
+	culture_dragons = "Mirkwood"
+	culture_spider = "Mirkwood"
 	culture_maiar = "Mirkwood"
 	
 	capital = 323 #Thranduill's Halls
@@ -8397,9 +8969,9 @@ k_mirkwood = {
 			}
 			b_doll_gador = {
 			}
-			b_ôl_muil = {
+			b_ol_muil = {
 			}
-			b_ast_amrûn = {
+			b_ast_amrun = {
 			}
 		}
 		c_forestweb = {
@@ -8574,12 +9146,30 @@ k_dol_guldur = {
 	short_name = yes
 
 	
-	culture_group_quendi = "Amon Lanc"
-	culture_group_amanyar = "Amon Lanc"
-	culture_group_umanyar = "Amon Lanc"
-	culture_group_moriquendi = "Amon Lanc"	
-	culture_group_numenorean = "Amon Lanc"	
-	culture_group_middlemen = "Amon Lanc"		
+	culture_minyar = "Amon Lanc"
+	culture_tatyar = "Amon Lanc"
+	culture_nelyar = "Amon Lanc"
+	culture_teleri = "Amon Lanc"
+	culture_noldor = "Amon Lanc"
+	culture_vanyar = "Amon Lanc"
+	culture_falmari = "Amon Lanc"
+	# not going to bother with first age only umanyar
+	culture_sindar = "Amon Lanc"
+	culture_silvan = "Amon Lanc"
+	culture_falathrim = "Amon Lanc"
+	culture_avari = "Amon Lanc"	
+	culture_arnorian = "Amon Lanc"
+	culture_gondorian = "Amon Lanc"
+	culture_black_numenorean = "Amon Lanc"
+	culture_dunedain = "Amon Lanc"
+	culture_numenorean = "Amon Lanc"
+	culture_adunaic = "Amon Lanc"	
+	culture_eotheod = "Amon Lanc"
+	culture_rohirrim = "Amon Lanc"
+	culture_beorning = "Amon Lanc"
+	culture_woodsmen = "Amon Lanc"
+	culture_northmen = "Amon Lanc"	
+	culture_barding = "Amon Lanc"	
 	
 	d_emyn_guldur = {
 		color={ 145 145 106 }
@@ -8590,14 +9180,39 @@ k_dol_guldur = {
 		c_amon_lanc = {
 			color={ 23 94 174 }
 			color2={ 255 255 255 }
-			culture_group_melkor = "Dol Guldur"
+			
+			culture_wight = "Dol Guldur"
+			culture_half_orc = "Dol Guldur"
+			culture_urukhai = "Dol Guldur"
+			culture_goblin = "Dol Guldur"
+			culture_orkish = "Dol Guldur"
+			culture_wargs = "Dol Guldur"
+			culture_troll = "Dol Guldur"
+			culture_balrog = "Dol Guldur"
+			culture_dragons = "Dol Guldur"
+			culture_spider = "Dol Guldur"
 			culture_maiar = "Dol Guldur"
+			
+			culture_silvan = "Amon Lanc"
+			culture_sindar = "Amon Lanc"
+			culture_avari = "Amon Lanc"
+			culture_noldor = "Amon Lanc"
+			culture_falathrim = "Amon Lanc"
 			
 			holy_site = religion_moriquendi
 			holy_site = religion_wight			
 			
 			b_amon_lanc = {
-				culture_group_melkor = "Dol Guldur"
+				culture_wight = "Dol Guldur"
+				culture_half_orc = "Dol Guldur"
+				culture_urukhai = "Dol Guldur"
+				culture_goblin = "Dol Guldur"
+				culture_orkish = "Dol Guldur"
+				culture_wargs = "Dol Guldur"
+				culture_troll = "Dol Guldur"
+				culture_balrog = "Dol Guldur"
+				culture_dragons = "Dol Guldur"
+				culture_spider = "Dol Guldur"
 				culture_maiar = "Dol Guldur"
 			}
 			b_sammath_gul = {
@@ -8976,10 +9591,18 @@ e_rhovanion = {
 		color={ 212 128 29 }
 		color2={ 125 125 142 }
 		
-		culture_group_quendi = "Berennyn"
-		culture_group_amanyar = "Berennyn"
-		culture_group_umanyar = "Berennyn"
-		culture_group_moriquendi = "Berennyn"
+		culture_minyar = "Berennyn"
+		culture_tatyar = "Berennyn"
+		culture_nelyar = "Berennyn"
+		culture_teleri = "Berennyn"
+		culture_noldor = "Berennyn"
+		culture_vanyar = "Berennyn"
+		culture_falmari = "Berennyn"
+# not going to bother with first age only umanyar
+		culture_sindar = "Berennyn"
+		culture_silvan = "Berennyn"
+		culture_falathrim = "Berennyn"
+		culture_avari = "Berennyn"
 		culture_rohirrim = "Berennyn"
 		culture_dunedain = "Berennyn"
 		culture_gondorian = "Berennyn" 
@@ -9145,7 +9768,12 @@ e_rhovanion = {
 				color={ 11 154 115 }
 				color2={ 255 255 255 }
 				
-				culture_group_numenorean = "Tol Malbor"
+				culture_arnorian = "Tol Malbor"
+				culture_gondorian = "Tol Malbor"
+				culture_black_numenorean = "Tol Malbor"
+				culture_dunedain = "Tol Malbor"
+				culture_numenorean = "Tol Malbor"
+				culture_adunaic = "Tol Malbor"
 				culture_rohirrim = "Malborburgh"
 				
 				b_tol_malbor = {
@@ -9164,7 +9792,12 @@ e_rhovanion = {
 				color={ 11 87 66 }
 				color2={ 255 255 255 }
 				
-				culture_group_numenorean = "Caras Gwindor"
+				culture_arnorian = "Caras Gwindor"
+				culture_gondorian = "Caras Gwindor"
+				culture_black_numenorean = "Caras Gwindor"
+				culture_dunedain = "Caras Gwindor"
+				culture_numenorean = "Caras Gwindor"
+				culture_adunaic = "Caras Gwindor"
 			    culture_rohirrim = "Gwindorburgh"
 				
 				holy_site = religion_easterlings
@@ -9679,7 +10312,7 @@ e_lindon = {
 				color={ 252 0 255 }
 				color2={ 255 255 255 }
 				
-				holy_site = religion_calaquendi	
+				holy_site = religion_moriquendi	
 				
 				b_mithlond = {
 
@@ -10058,7 +10691,7 @@ e_lindon = {
 			color={ 68 100 148 }
 			color2={ 255 255 255 }
 			
-			capital = 357 # Forlond
+			capital = 784 # Tol Fuin
 			
 			c_himling = {
 				color={ 7 36 60 }
@@ -10214,11 +10847,24 @@ e_barad_dur = {
 				color={ 123 71 74 }
 				color2={ 125 125 142 }
 		        
-				culture_group_numenorean = "Caras Rhach"
-				culture_group_quendi = "Caras Rhach"
-				culture_group_amanyar = "Caras Rhach"
-				culture_group_umanyar = "Caras Rhach"
-				culture_group_moriquendi = "Caras Rhach"
+				culture_arnorian = "Caras Rhach"
+				culture_gondorian = "Caras Rhach"
+				culture_black_numenorean = "Caras Rhach"
+				culture_dunedain = "Caras Rhach"
+				culture_numenorean = "Caras Rhach"
+				culture_adunaic = "Caras Rhach"
+				culture_minyar = "Caras Rhach"
+				culture_tatyar = "Caras Rhach"
+				culture_nelyar = "Caras Rhach"
+				culture_teleri = "Caras Rhach"
+				culture_noldor = "Caras Rhach"
+				culture_vanyar = "Caras Rhach"
+				culture_falmari = "Caras Rhach"
+# not going to bother with first age only umanyar
+				culture_sindar = "Caras Rhach"
+				culture_silvan = "Caras Rhach"
+				culture_falathrim = "Caras Rhach"
+				culture_avari = "Caras Rhach"
 				culture_orkish = "Lugbúrz"
 				
 				holy_site = religion_black_numenorean
@@ -10227,11 +10873,24 @@ e_barad_dur = {
 				holy_site = religion_olog	
 				
 				b_barad_dur = {
-					culture_group_numenorean = "Caras Rhach"
-					culture_group_quendi = "Caras Rhach"
-					culture_group_amanyar = "Caras Rhach"
-					culture_group_umanyar = "Caras Rhach"
-					culture_group_moriquendi = "Caras Rhach"
+					culture_arnorian = "Caras Rhach"
+					culture_gondorian = "Caras Rhach"
+					culture_black_numenorean = "Caras Rhach"
+					culture_dunedain = "Caras Rhach"
+					culture_numenorean = "Caras Rhach"
+					culture_adunaic = "Caras Rhach"
+					culture_minyar = "Caras Rhach"
+					culture_tatyar = "Caras Rhach"
+					culture_nelyar = "Caras Rhach"
+					culture_teleri = "Caras Rhach"
+					culture_noldor = "Caras Rhach"
+					culture_vanyar = "Caras Rhach"
+					culture_falmari = "Caras Rhach"
+# not going to bother with first age only umanyar
+					culture_sindar = "Caras Rhach"
+					culture_silvan = "Caras Rhach"
+					culture_falathrim = "Caras Rhach"
+					culture_avari = "Caras Rhach"
 					culture_orkish = "Lugbúrz"
 				}
 				b_main_gate_barad = {
@@ -10250,12 +10909,29 @@ e_barad_dur = {
 			c_orodruin = {
 				color={ 145 79 63 }
 				color2={ 125 125 142 }
-				culture_group_melkor = "Mount Doom"
+				culture_wight = "Mount Doom"
+				culture_half_orc = "Mount Doom"
+				culture_urukhai = "Mount Doom"
+				culture_goblin = "Mount Doom"
+				culture_orkish = "Mount Doom"
+				culture_wargs = "Mount Doom"
+				culture_troll = "Mount Doom"
+				culture_balrog = "Mount Doom"
+				culture_dragons = "Mount Doom"
+				culture_spider = "Mount Doom"
 				culture_maiar = "Mount Doom"
-				culture_group_quendi = "Amon Amarth"
-				culture_group_amanyar = "Amon Amarth"
-				culture_group_umanyar = "Amon Amarth"
-				culture_group_moriquendi = "Amon Amarth"
+				culture_minyar = "Amon Amarth"
+				culture_tatyar = "Amon Amarth"
+				culture_nelyar = "Amon Amarth"
+				culture_teleri = "Amon Amarth"
+				culture_noldor = "Amon Amarth"
+				culture_vanyar = "Amon Amarth"
+				culture_falmari = "Amon Amarth"
+# not going to bother with first age only umanyar
+				culture_sindar = "Amon Amarth"
+				culture_silvan = "Amon Amarth"
+				culture_falathrim = "Amon Amarth"
+				culture_avari = "Amon Amarth"
 				
 				b_sammarth_naur = {
 				}
@@ -10352,11 +11028,24 @@ e_barad_dur = {
 				color2={ 255 255 255 }
 			
 				b_morannon = {
-					culture_group_numenorean = "Cirith Gorgor"
-					culture_group_quendi = "Cirith Gorgor"
-					culture_group_amanyar = "Cirith Gorgor"
-					culture_group_umanyar = "Cirith Gorgor"
-					culture_group_moriquendi = "Cirith Gorgor"	
+					culture_arnorian = "Cirith Gorgor"
+					culture_gondorian = "Cirith Gorgor"
+					culture_black_numenorean = "Cirith Gorgor"
+					culture_dunedain = "Cirith Gorgor"
+					culture_numenorean = "Cirith Gorgor"
+					culture_adunaic = "Cirith Gorgor"
+					culture_minyar = "Cirith Gorgor"
+					culture_tatyar = "Cirith Gorgor"
+					culture_nelyar = "Cirith Gorgor"
+					culture_teleri = "Cirith Gorgor"
+					culture_noldor = "Cirith Gorgor"
+					culture_vanyar = "Cirith Gorgor"
+					culture_falmari = "Cirith Gorgor"
+# not going to bother with first age only umanyar
+					culture_sindar = "Cirith Gorgor"
+					culture_silvan = "Cirith Gorgor"
+					culture_falathrim = "Cirith Gorgor"
+					culture_avari = "Cirith Gorgor"	
 					}
 				b_carchost = {
 				}
@@ -10472,6 +11161,10 @@ e_barad_dur = {
 				
 				b_lugskai = {
 				}
+				b_kolyuchiy = {}
+				b_pechalnayavoda = {}
+				b_yestdomov = {}
+				b_nepodvizhnost = {}
 			}
 			c_globdurb = {
 				color={ 129 100 91 }
@@ -10479,6 +11172,9 @@ e_barad_dur = {
 			
 				b_globdurb = {
 				}
+				b_rabskiygrad = {}
+				b_gorkayavoda = {}
+				b_temnykamen = {}
 			}
 			c_sturlurtsa_nurn = {
 				color={ 152 74 47 }
@@ -10486,6 +11182,9 @@ e_barad_dur = {
 			
 				b_sturlurtsa_nurn = {
 				}
+				b_upravlyayemy = {}
+				b_vzbitayaplot = {}
+				b_cherepnasyp = {}
 			}
 			c_burzdug = {
 				color={ 193 144 127 }
@@ -10493,6 +11192,7 @@ e_barad_dur = {
 			
 				b_burzdug = {
 				}
+				b_sharkun = {}
 			}
 			c_carn_telloth = {
 				color={ 238 133 98 }
@@ -10502,6 +11202,8 @@ e_barad_dur = {
 			
 				b_carn_telloth = {
 				}
+				b_spokoystviye = {}
+				b_vodovorogorod = {}
 			}
 			c_ogorsha = {
 				color={ 227 151 126 }
@@ -10509,6 +11211,7 @@ e_barad_dur = {
 			
 				b_ogorsha = {
 				}
+				b_guthnazghai = {}
 			}
 		}
 		d_nurn = {
@@ -10526,6 +11229,10 @@ e_barad_dur = {
 				
 				b_urlutsu_nurn = {
 				}
+				b_terentiygrad = {} # city
+				b_bashnya_ingvara = {} # castle
+				b_marin_lyub = {} # city
+				b_smert_urod = {} # whatever
 			}	
 			c_burzash = {
 				color={ 112 42 18 }
@@ -10533,6 +11240,8 @@ e_barad_dur = {
 			
 				b_burzash = {
 				}
+				b_bashnya_akula = {} # castle
+				b_bukra_goi = {} # city
 			}
 			c_krimp_hai = {
 				color={ 216 56 0 }
@@ -10540,6 +11249,8 @@ e_barad_dur = {
 			
 				b_krimp_hai = {
 				}
+				b_gauduhend = {} # casle
+				b_bagronk_x = {} # city
 			}
 			c_ronknurn = {
 				color={ 194 109 80 }
@@ -10547,6 +11258,10 @@ e_barad_dur = {
 			
 				b_ronknurn = {
 				}
+				b_glupygorod = {} # city
+				b_zhestokaya = {} # castle
+				b_morkovgrod = {} # city
+				
 			}
 		}
 		d_emyn_burzum = {
@@ -10561,8 +11276,12 @@ e_barad_dur = {
 			
 				b_emyn_burzum = {
 				}
+				b_rybnaybukhta = {}
+				b_ostryklyk = {}
+				b_krevetochnzhgut = {}
+				b_temnykholmy = {}
 			}
-		c_nurumurl = {
+			c_nurumurl = {
 				color={ 121 70 53 }
 				color2={ 255 255 255 }
 			
@@ -10575,6 +11294,9 @@ e_barad_dur = {
 			
 				b_ronkgul = {
 				}
+				b_khmurgorod = {}
+				b_shpagaderzhat = {}
+				b_tvoylozhka = {}
 			}
 			c_duath_hai = {
 				color={ 194 109 80 }
@@ -10582,6 +11304,9 @@ e_barad_dur = {
 			
 				b_duath_hai = {
 				}
+				b_makhagulshu = {}
+				b_bubhosh = {}
+				b_duath_varg = {}
 			}
 		}
 		d_neburkha = {
@@ -10706,6 +11431,8 @@ k_meneltarma = {
 	d_meneltarma = {
 		color={ 148 19 19 }
 		color2={ 255 255 255 }
+		
+		capital = 797 # Meneltarma
 					
 		c_meneltarma = {
 			color={ 83 63 10 }
@@ -10720,29 +11447,6 @@ k_meneltarma = {
 	}
 }
 
-k_sauron_shadow = {
-	color={ 157 121 114 }
-	color2={ 125 125 142 }
-		
-		capital = 654 # Barad-Dûr
-		
-	culture =  culture_maiar
-	religion = religion_maiar
-		
-	d_sauron_shadow = {
-		color={ 148 19 19 }
-		color2={ 255 255 255 }
-			
-			
-		c_sauron_shadow = {
-			color={ 83 63 10 }
-			color2={ 255 255 255 }
-			
-			b_sauron = {
-			}				
-		}
-	}
-}
 
 e_anduin = {
 	color={ 40 86 22 }
@@ -10754,10 +11458,18 @@ e_anduin = {
 		color={ 49 166 49 }
 		color2={ 125 125 142 }
 	
-		culture_group_quendi = "Rochand"
-		culture_group_amanyar = "Rochand"
-		culture_group_umanyar = "Rochand"
-		culture_group_moriquendi = "Rochand"
+		culture_minyar = "Rochand"
+		culture_tatyar = "Rochand"
+		culture_nelyar = "Rochand"
+		culture_teleri = "Rochand"
+		culture_noldor = "Rochand"
+		culture_vanyar = "Rochand"
+		culture_falmari = "Rochand"
+# not going to bother with first age only umanyar
+		culture_sindar = "Rochand"
+		culture_silvan = "Rochand"
+		culture_falathrim = "Rochand"
+		culture_avari = "Rochand"
 		culture_gondorian = "Calenardhon"
 		culture_dunedain = "Calenardhon"
 		culture_arnorian = "Calenardhon"
@@ -11394,7 +12106,7 @@ e_anduin = {
 		color2={ 125 125 142 }
 		
 		culture_rohirrim = "Langflood Vale"
-		culture_eothed = "Langflood Vale"
+		culture_eotheod = "Langflood Vale"
 		culture_maiar = "Anasigûrzuzg"
 		culture_goblin = "Anasigûrzuzg"
 		culture_orkish = "Anasigûrzuzg"
@@ -11752,7 +12464,16 @@ e_isenvale = {
 	color={ 244 220 126 }
 	color2={ 125 125 142 }
 	
-	culture_group_melkor = "Mosgûgrun"
+	culture_wight = "Mosgûgrun"
+	culture_half_orc = "Mosgûgrun"
+	culture_urukhai = "Mosgûgrun"
+	culture_goblin = "Mosgûgrun"
+	culture_orkish = "Mosgûgrun"
+	culture_wargs = "Mosgûgrun"
+	culture_troll = "Mosgûgrun"
+	culture_balrog = "Mosgûgrun"
+	culture_dragons = "Mosgûgrun"
+	culture_spider = "Mosgûgrun"
 	culture_maiar = "Mosgûgrun"
 	culture_noldor = "Angrenlad"
 	culture_sindar = "Angrenlad"
@@ -11761,7 +12482,7 @@ e_isenvale = {
 	culture_dunedain = "Dor 'Wathui"
 	culture_gondorian = "Dor 'Wathui"
 	
-	capital = 172 # Tharbad	
+	capital = 290 #Ost-in-edhil
 
 	k_eregion = {
 		color={ 206 224 224 }
@@ -11795,7 +12516,7 @@ e_isenvale = {
 				# culture_dunlending = "Rivendell"
 				# culture_arnorian = "Rivendell"
 				
-				# holy_site = religion_calaquendi
+				# holy_site = religion_moriquendi
 				# holy_site = religion_moriquendi	
 				
 				# b_last_homely_house = {
@@ -11889,7 +12610,7 @@ e_isenvale = {
 				color={ 85 121 75 }
 				color2={ 255 255 255 }
 				
-				holy_site = religion_calaquendi
+				holy_site = religion_moriquendi
 				holy_site = religion_wilderness	
 				
 				b_ostinedhil = {
@@ -11926,7 +12647,16 @@ e_isenvale = {
 		color={ 244 220 126 }
 		color2={ 125 125 142 }
 	
-		culture_group_melkor = "Mosgûgrun"
+		culture_wight = "Mosgûgrun"
+		culture_half_orc = "Mosgûgrun"
+		culture_urukhai = "Mosgûgrun"
+		culture_goblin = "Mosgûgrun"
+		culture_orkish = "Mosgûgrun"
+		culture_wargs = "Mosgûgrun"
+		culture_troll = "Mosgûgrun"
+		culture_balrog = "Mosgûgrun"
+		culture_dragons = "Mosgûgrun"
+		culture_spider = "Mosgûgrun"
 		culture_maiar = "Mosgûgrun"
 		culture_arnorian = "Dor 'Wathui"
 		culture_dunedain = "Dor 'Wathui"
@@ -12284,7 +13014,16 @@ e_isenvale = {
 		d_isenmarch = {
 			color={ 75 104 96 }
 			color2={ 125 125 142 }
-			culture_group_melkor = "Isenuzg"
+			culture_wight = "Isenuzg"
+			culture_half_orc = "Isenuzg"
+			culture_urukhai = "Isenuzg"
+			culture_goblin = "Isenuzg"
+			culture_orkish = "Isenuzg"
+			culture_wargs = "Isenuzg"
+			culture_troll = "Isenuzg"
+			culture_balrog = "Isenuzg"
+			culture_dragons = "Isenuzg"
+			culture_spider = "Isenuzg"
 			culture_maiar = "Isenuzg"
 			
 			capital = 226 # Isenvale/Isengard
@@ -12357,7 +13096,16 @@ e_isenvale = {
 
 		culture_druwaithing = "Old Púkel Land"
 		culture_druedain = "Old Púkel Land"
-		culture_group_melkor = "Gazogbrun"
+		culture_wight = "Gazogbrun"
+		culture_half_orc = "Gazogbrun"
+		culture_urukhai = "Gazogbrun"
+		culture_goblin = "Gazogbrun"
+		culture_orkish = "Gazogbrun"
+		culture_wargs = "Gazogbrun"
+		culture_troll = "Gazogbrun"
+		culture_balrog = "Gazogbrun"
+		culture_dragons = "Gazogbrun"
+		culture_spider = "Gazogbrun"
 		culture_maiar = "Gazogbrun"
 
 		capital = 231 # Druwaith Laden/Druwaith Iaur
@@ -12924,10 +13672,8 @@ k_black_serpent = {
 	landless = yes
 	
 	allow = {
-		AND = {
-			trait = black_serpent
-			culture_group = culture_group_southron
-		}
+		trait = black_serpent
+		culture_group = culture_group_southron
 	}
 }
 
@@ -13197,7 +13943,7 @@ k_balchoths = {
 	capital = 406 # Undeeps
 	short_name = yes
 	
-	allow = { culture = culture_balchoths}
+	allow = { culture = culture_balchoth}
 	
 }
 k_wainriders = {
@@ -13234,11 +13980,11 @@ k_eothed = {
 	color2={ 255 255 252 }
 
 	capital = 413 # South Opposite Lorien
-	allow = { culture = culture_eothed }
+	allow = { culture = culture_eotheod }
 	culture = culture_eotheod
 	religion = religion_rhovanion
 	
-	catholic = 100 # Crusade target weight	
+	religion_rhovanion = 100 # Crusade target weight	
 	
 }
 k_silvan_ithilien = {
@@ -13302,7 +14048,7 @@ k_eagles = {
 	allow= {
 		culture = culture_eagles
 		prestige = 250000
-		cash = 250000
+		wealth = 250000
 	}			
 	
 }
@@ -13346,7 +14092,7 @@ k_eredrim = { ## Realm of Lamedon before Gondor - Future Army of the Dead
 	allow= {
 		culture = culture_eredrim
 		prestige = 250000
-		cash = 2500000
+		wealth = 2500000
 	}			
 	
 }
@@ -13526,8 +14272,7 @@ d_rivendell = {
 		culture_dunlending = "Rivendell"
 		culture_arnorian = "Rivendell"
 		
-		holy_site = religion_calaquendi
-		holy_site = religion_moriquendi	
+		holy_site = religion_moriquendi
 		
 		b_last_homely_house = {
 		}
@@ -13553,6 +14298,9 @@ d_sindar_mariners = {
 	religion="religion_moriquendi"
     culture ="culture_sindar"
 	
+	color={ 25 59 94 }
+	color2={ 125 125 142 }
+	
 	allow = {
 		is_republic = yes
 	}	
@@ -13562,6 +14310,9 @@ d_sindar_mariners = {
 d_blackfleet_umbar = {
 	religion="religion_black_numenorean"
 	culture="culture_black_numenorean"
+	
+	color={ 20 20 20 }
+	color2={ 255 255 20 }
 	
 	allow = {
 		is_republic = yes
@@ -13576,9 +14327,8 @@ d_wild_tinereb = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13591,9 +14341,8 @@ d_wild_caladir = {
 	
 	capital = 163 # Argond
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13604,9 +14353,8 @@ d_wild_gorthad = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13617,9 +14365,8 @@ d_wild_girithlin = {
 	color={ 45 45 45 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13630,9 +14377,8 @@ d_wild_faerdor = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13643,9 +14389,8 @@ d_wild_siragale = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13656,9 +14401,8 @@ d_wild_brandyvale = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13669,9 +14413,8 @@ d_wild_laerglinn = {
 	color={ 70 70 70 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13682,9 +14425,8 @@ d_wild_noirinanyar = {
 	color={ 55 55 55 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13695,9 +14437,8 @@ d_wild_annuminas = {
 	color={ 45 45 45 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13708,9 +14449,8 @@ d_wild_fornost = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13721,9 +14461,8 @@ d_wild_brethyar = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13734,9 +14473,8 @@ d_wild_numeriador = {
 	color={ 55 55 55 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13747,9 +14485,8 @@ d_wild_celanoriand = {
 	color={ 65 65 65 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13760,9 +14497,8 @@ d_wild_harlond = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13773,9 +14509,8 @@ d_wild_formenyar = {
 	color={ 45 45 45 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13786,9 +14521,8 @@ d_wild_magillos = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13799,9 +14533,8 @@ d_wild_eredoriath = {
 	color={ 70 70 70 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13812,9 +14545,8 @@ d_wild_melosse = {
 	color={ 30 30 30 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13825,9 +14557,8 @@ d_wild_eldenaryar = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13838,9 +14569,8 @@ d_wild_celebrant = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13851,9 +14581,8 @@ d_wild_emyn_muil = {
 	color={ 30 30 30 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13864,9 +14593,8 @@ d_wild_weather_hills = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13877,9 +14605,8 @@ d_wild_tol_fuin = {
 	color={ 45 45 45 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13890,9 +14617,8 @@ d_wild_bruinen = {
 	color={ 70 70 70 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13903,9 +14629,8 @@ d_wild_ost_edhil = {
 	color={ 30 30 30 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13916,9 +14641,8 @@ d_wild_morbet = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13929,9 +14653,8 @@ d_wild_angren = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13942,9 +14665,8 @@ d_wild_gwathlo = {
 	color={ 80 80 80 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13955,9 +14677,8 @@ d_wild_cairill = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13968,9 +14689,8 @@ d_wild_nan_loke = {
 	color={ 70 70 70 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13981,9 +14701,8 @@ d_wild_gundabad = {
 	color={ 30 30 30 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -13994,9 +14713,8 @@ d_wild_carrock = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14007,9 +14725,8 @@ d_wild_ronen_anduin = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14020,9 +14737,8 @@ d_wild_dale = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14033,9 +14749,8 @@ d_wild_gladden_fields = {
 	color={ 50 50 50 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14046,9 +14761,8 @@ d_wild_meneltarma = {
 	color={ 60 60 60 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14059,9 +14773,8 @@ d_wild_west_march = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14072,9 +14785,8 @@ d_wild_east_emnet = {
 	color={ 40 40 40 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 
@@ -14085,9 +14797,8 @@ d_wild_redhorn = {
 	color={ 20 20 20 }
 	color2={ 255 255 20 }
 	
-	always = no
 	allow = {
-		religion = "religion_wilderness"
+		always = no		religion = "religion_wilderness"
 	}	
 }
 

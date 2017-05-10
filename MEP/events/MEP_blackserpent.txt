@@ -12,20 +12,21 @@ namespace = blackserpent
 ### Create the Legion of the Black Serpent ###
 narrative_event = {
 	id = blackserpent.0
-	desc = "EVTDESCblackserpent.0"
+	title = EVTTITblackserpent0
+	desc = EVTDESCblackserpent.0
 	picture = "GFX_harad_serpent_guards"
 	
 	is_triggered_only = yes
 	
 	option = { 
-		name = "EVTOPTAblackserpent.0" ## I'll create this Legion.
+		name = EVTOPTAblackserpent.0 ## I'll create this Legion.
 		wealth = -200
 		prestige = 100
-		character_event = { id = blackserpent.1 days = 3 } ## Choose the First Commander of the Black Serpent
+		narrative_event = { id = blackserpent.1 days = 3 } ## Choose the First Commander of the Black Serpent
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.0" ## No, i don't need it.
+		name = EVTOPTBblackserpent.0 ## No, i don't need it.
 		clr_global_flag = black_serpent_initialising
 	}
 }
@@ -33,7 +34,8 @@ narrative_event = {
 ## Choose the First Commander ##
 narrative_event = {
 	id = blackserpent.1
-	desc = "EVTDESCblackserpent.1"
+	title = EVTTITblackserpent1
+	desc = EVTDESCblackserpent.1
 	picture = "GFX_harad_serpent_guards"
 	
 	is_triggered_only = yes
@@ -147,7 +149,7 @@ narrative_event = {
 
 	
 	option = { 
-		name = "EVTOPTAblackserpent.1" #Choose from among the strongest fighters in the realm.		
+		name = EVTOPTAblackserpent.1 #Choose from among the strongest fighters in the realm.		
 		trigger = {
 			has_character_flag = great_candidate_bs
 		}		
@@ -177,7 +179,7 @@ narrative_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.1" #Choose someone i can trust.	
+		name = EVTOPTBblackserpent.1 #Choose someone i can trust.	
 		trigger = {
 			has_character_flag = good_candidate_bs
 		}		
@@ -208,7 +210,7 @@ narrative_event = {
 	}
 	
 	option = {
-		name = "EVTOPTCblackserpent.1" #Choose a prominent son of a prominent family.	
+		name = EVTOPTCblackserpent.1 #Choose a prominent son of a prominent family.	
 		trigger = {
 			has_character_flag = prominent_son_bs
 		}	
@@ -239,7 +241,7 @@ narrative_event = {
 	
 	#No suitable candidates
 	option = {
-		name = "EVTOPTDblackserpent.1" #Choose any bozo
+		name = EVTOPTDblackserpent.1 #Choose any bozo
 		trigger = {
 			NOT = { has_character_flag = great_candidate_bs }
 			NOT = { has_character_flag = good_candidate_bs }
@@ -253,6 +255,7 @@ narrative_event = {
 
 character_event = {
 	id = blackserpent.2
+	title = EVTTITblackserpent2
 	desc = "EVTDESCblackserpent.2"
 	picture = "GFX_harad_serpent_guards"
 	
@@ -336,7 +339,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAblackserpent.2" #Choose him!	
+		name = EVTOPTAblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_1 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -412,7 +415,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.2" #Choose him!	
+		name = EVTOPTBblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_2 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -488,7 +491,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTCblackserpent.2" #Choose him!	
+		name = EVTOPTCblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_3 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -570,13 +573,14 @@ character_event = {
 			event_target:BS_2 = { clr_character_flag = BS_candidate }
 			event_target:BS_1 = { clr_character_flag = BS_candidate }	
 		}
-		character_event = { id = blackserpent.1 }
+		narrative_event = { id = blackserpent.1 }
 	}
 }
 
 #blackserpent.3 - Choose someone i can trust.
 character_event = {
 	id = blackserpent.3
+	title = EVTTITblackserpent3
 	desc = "EVTDESCblackserpent.3"
 	picture = "GFX_harad_serpent_guards"
 	
@@ -666,7 +670,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAblackserpent.2" #Choose him!	
+		name = EVTOPTAblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_1 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -734,7 +738,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.2" #Choose him!	
+		name = EVTOPTBblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_2 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -802,7 +806,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTCblackserpent.2" #Choose him!	
+		name = EVTOPTCblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_3 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -870,19 +874,20 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTDblackserpent.2" #None
+		name = EVTOPTDblackserpent.2 #None
 		trigger = { ai = no }
 		hidden_tooltip = {
 			event_target:BS_2 = { clr_character_flag = BS_candidate }
 			event_target:BS_1 = { clr_character_flag = BS_candidate }	
 		}
-		character_event = { id = blackserpent.1 }
+		narrative_event = { id = blackserpent.1 }
 	}
 }
 
 #blackserpent.4 - Choose a prominent son of a prominent family.
 character_event = {
 	id = blackserpent.4
+	title = EVTTITblackserpent4
 	desc = "EVTDESCblackserpent.4"
 	picture = "GFX_harad_serpent_guards"
 	
@@ -965,7 +970,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAblackserpent.2" #Choose him!	
+		name = EVTOPTAblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_1 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -1033,7 +1038,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.2" #Choose him!	
+		name = EVTOPTBblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_2 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -1101,7 +1106,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTCblackserpent.2" #Choose him!	
+		name = EVTOPTCblackserpent.2 #Choose him!	
 		trigger = { event_target:BS_3 = { always = yes }	}
 		ai_chance = {
 			factor = 10
@@ -1175,7 +1180,7 @@ character_event = {
 			event_target:BS_2 = { clr_character_flag = BS_candidate }
 			event_target:BS_1 = { clr_character_flag = BS_candidate }	
 		}
-		character_event = { id = blackserpent.1 }
+		narrative_event = { id = blackserpent.1 }
 	}
 }
 
@@ -1184,13 +1189,14 @@ character_event = {
 ### The character can become the new Commandant of the Legion of the Black Serpent ##
 character_event = {
 	id = blackserpent.5
+	title = EVTTITblackserpent5
 	desc = "EVTDESCblackserpent.5"
 	picture = "GFX_harad_serpent_guards"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAblackserpent.5" #Accept	
+		name = EVTOPTAblackserpent.5 #Accept	
 		ai_chance = {
 			factor = 2
 			
@@ -1280,7 +1286,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBblackserpent.5" #Refuse
+		name = EVTOPTBblackserpent.5 #Refuse
 		
 		ai_chance = {
 			factor = 1		
@@ -1387,6 +1393,7 @@ character_event = {
 # the character accepted to be the Commandant
 character_event = {
 	id = blackserpent.6
+	title = EVTTITblackserpent6
 	desc = "EVTDESCblackserpent.6"
 	picture = "GFX_harad_serpent_guards"
 	
@@ -1450,6 +1457,7 @@ character_event = {
 # The character refused
 character_event = {
 	id = blackserpent.7
+	title = EVTTITblackserpent7
 	desc = "EVTDESCblackserpent.7"
 	picture = "GFX_harad_serpent_guards"
 	
@@ -1460,7 +1468,7 @@ character_event = {
 		FROM = {
 			set_character_flag = refused_black_serpent
 		}
-		character_event = { id = blackserpent.1 }
+		narrative_event = { id = blackserpent.1 }
 	}
 }
 
@@ -1469,8 +1477,8 @@ character_event = {
 #BS is open elective
 character_event = {
 	id = blackserpent.10
-	desc = "EVTDESCblackserpent.10"
-	picture = GFX_harad_serpent_guards
+	# desc = "EVTDESCblackserpent.10"
+	# picture = GFX_harad_serpent_guards
 	
 	only_rulers = yes
 	hide_window = yes
@@ -1499,7 +1507,7 @@ character_event = {
 	}
 		
 	option = {
-		name = "EVTOPTAblackserpent.10" 
+		# name = "EVTOPTAblackserpent.10" 
 		any_demesne_title = { 
 			limit = { NOT = { title = k_black_serpent } }
 			succession = appointment
@@ -1698,7 +1706,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTCblackserpent.23"
 		trigger = {
-			NOT = { religion_group = religion_southron }
+			NOT = { religion = religion_southron }
 			NOT = { religion_group = religion_group_melkor }
 		}
 	}
@@ -1735,7 +1743,7 @@ character_event = {
 	trigger = { FROM = { trait = black_serpent } }
 	
 	option = { 
-		name = "Ok" 
+		name = GENERIC_OK 
 		random_independent_ruler = {
 			limit = { 
 					has_landed_title = d_black_serpent

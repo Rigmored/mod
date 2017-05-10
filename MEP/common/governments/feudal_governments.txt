@@ -13,13 +13,19 @@ feudal_governments = {
 		accepts_liege_governments = { # Gets the wrong religion modifier instead
 			muslim_government
 		}
+		free_revoke_on_governments_religion = { # Tribal vassals of other religions can have their titles revoked for free
+			tribal_government
+		}
 		potential = {
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion = norse_pagan_reformed }
+			#NAND = {
+			#	controls_religion = yes
+			#	NOT = { religion_group = muslim }
+			#	NOT = { religion = norse_pagan_reformed }
+			#}
+			NOR = {
+				religion = religion_southron
+				religion_group = religion_group_melkor 
 			}
-			NOT = {	religion_group = muslim	}
 			is_patrician = no
 		}
 		
@@ -33,6 +39,7 @@ feudal_governments = {
 		ignore_in_vassal_limit_calculation = {
 			tribal_government
 		}
+		capital_move_delay = 600
 	}
 	
 	muslim_government = {
@@ -57,12 +64,15 @@ feudal_governments = {
 		}
 		frame_suffix = "_iqta"
 		potential = {
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion = norse_pagan_reformed }
+			#NAND = {
+			#	controls_religion = yes
+			#	NOT = { religion_group = muslim }
+			#	NOT = { religion = norse_pagan_reformed }
+			#}
+			OR = {
+				religion = religion_southron
+				religion_group = religion_group_melkor 
 			}
-			religion_group = muslim
 			is_patrician = no
 		}
 		
@@ -84,6 +94,7 @@ feudal_governments = {
 		ignore_in_vassal_limit_calculation = {
 			tribal_government
 		}
+		capital_move_delay = 600
 	}
 	
 }

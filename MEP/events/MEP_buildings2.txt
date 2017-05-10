@@ -1,16 +1,17 @@
 namespace = buildings
 
-############### buildings.200 - buildings.203 = Add default buildings
+############### buildings.200 - buildings.201 = Add default buildings
+# subevents : 202 Elves, 203 Dwarves, 204 Ad鹡鈏m (Black N鷐en髍eans), 205 Good-D鷑edain, 206 Orcs/Trolls, 207 Hobbits,
+# 208 Humans (Terrain-specific), 209 Main+Rohan Humans, 210 Specific Humans
 
 #--------------------------------------------------------------------------------------------------------------------------
 # Custom add buildings at startup
 
-# attempt 2 at custom added buildings
-# 'any ruler, but only covers non-human culture provinces'
+# 'any ruler'
 character_event = {
 	id = buildings.200
-	desc = "OK"
-	picture = GFX_evt_rebuilding
+	#desc = "OK"
+	#picture = GFX_evt_rebuilding
 	hide_window = yes
 
 	is_triggered_only = yes
@@ -20,624 +21,65 @@ character_event = {
 			# name = "OK" ## Great !
 			any_independent_ruler = {
 				any_realm_province = {
-
-					# Wood Elves (elves in woods can get flets/telain)
+					limit = { NOT = { has_province_flag = buildings_added} }
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								terrain = woods
-								terrain = forest
-							}
-							OR = {
-								culture_group = culture_group_moriquendi
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_quendi
-							}							
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_telain								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_telain								
-							}
-						}
+						limit = { mep_is_province_elven_trigger = yes }
+						province_event = {	id = buildings.202 }
 					}
-					# Morquendi/Avari
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_moriquendi
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Mwall_1
-								add_building = ca_Mwatchtower_1	
-								add_building = ca_Melven_barracks_1	
-								add_building = ca_Melven_town_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Mwall_1
-								add_building = ct_Mwatchtower_1
-								add_building = ct_Mtownmilitia_1
-								add_building = ct_Mmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { culture_group = culture_group_dwarves }
+						province_event = {	id = buildings.203 }
 					}
-					# Amanyar (Noldor, others do not show up in Middle-Earth)
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_amanyar
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Awall_1
-								add_building = ca_Awatchtower_1	
-								add_building = ca_Amilitia_barracks_1	
-								add_building = ca_Atown_1
-								add_building = ca_Akeep_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Awall_1
-								add_building = ct_Awatchtower_1
-								add_building = ct_Atownmilitia_1
-								add_building = ct_Amarketplace_1	
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_is_black_numenorean_culture = yes }
+						province_event = {	id = buildings.204 }
 					}
-					# Wood-Elves (culturally)
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_silvan
-								culture = culture_nandor
-								culture = culture_laegrim
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Swall_1
-								add_building = ca_Swatchtower_1	
-								add_building = ca_elven_barracks_1	
-								add_building = ca_elven_town_1							
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Swall_1
-								add_building = ct_Swatchtower_1
-								add_building = ct_Stownmilitia_1
-								add_building = ct_Smarketplace_1							
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_is_good_numenorean_culture = yes }
+						province_event = {	id = buildings.205 }
 					}
-					# Sindar
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_sindar
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Vwall_1
-								add_building = ca_Vwatchtower_1	
-								add_building = ca_Vmilitia_barracks_1	
-								add_building = ca_Vtown_1							
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Vwall_1
-								add_building = ct_Vwatchtower_1
-								add_building = ct_Vtownmilitia_1
-								add_building = ct_Vmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_orc_troll_culture = yes }
+						province_event = {	id = buildings.206 }
 					}
-					
-					# Dwarven Buildings
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_dwarves
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Dwater_system_0
-								add_building = ca_Dstatue_0
-								add_building = ca_dwarvenforges_1
-								add_building = ca_Dmilitia_barracks_1
-								add_building = ca_DInnerFortification_1	
-								add_building = ca_Dtown_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Dwater_system_0
-								add_building = ct_dwarfmines_1
-								add_building = ct_Dtownmilitia_1
-								add_building = ct_DInnerFortification_1
-								add_building = ct_Dmarketplace_1								
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { culture_group = culture_group_halfling }
+						province_event = {	id = buildings.207 }
 					}
-					#Hobbits
 					if = {
 						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_halfling
+							OR = { mep_horsey_people_culture = yes
+									mep_general_buildings_human = yes }
 						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_militia_barracks_1halfling
-								add_building = ca_town_1halfling
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_barracks_1halfling
-								add_building = ct_inn1
-							}
-						}
-						set_province_flag = buildings_added
+						province_event = {	id = buildings.209 }
 					}
-					# Goblins and Half Orcs
 					if = {
 						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_goblin
-								culture = culture_half_orc
-							}
+							OR = { mep_prim_humans_culture = yes
+								culture = culture_druedain }
 						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MGwall_1
-								add_building = ca_MGwatchtower_1
-								add_building = ca_MGmilitia_barracks_1
-								add_building = ca_MGtown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MGwall_1
-								add_building = ct_MGwatchtower_1
-								add_building = ct_MGtownmilitia_1
-								add_building = ct_MGmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# Orcs and Uruk-Hai
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_orkish
-								culture = culture_urukhai
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MOwall_1
-								add_building = ca_MOwatchtower_1
-								add_building = ca_MOorcbarracks_1
-								add_building = ca_MOorctown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MOwall_1
-								add_building = ct_MOwatchtower_1
-								add_building = ct_MOorctraining_grounds_1
-								add_building = ct_MOorcmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# trolls
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_troll
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MT_lair_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MT_lair_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# Wainriders
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added }
-							OR = {
-								culture = culture_balchoth
-								culture = culture_wainriders
-							}
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_wainriders_1
-						}
-					}
-					# Woodmen Hunters
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_woodsmen
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_woodsmenhunters_1
-						}
-					}
-					# Far Harad (men like trolls)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_far_haradrim
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_trollmen_1
-						}
-					}
-					# Desert Raiders
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_bellakaze
-								culture = culture_harondorian
-							}
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_desertraiders_1
-						}
-					}
-					# Shapechanger
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_beorning
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_shapechangers_1
-						}
-					}	
-
-					# Terrain-specific buildings for Humans
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_numenorean
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian	
-							}						
-						}
-						# Woodcutters
-						if = {
-							limit = {
-								OR = {
-									terrain = forest
-									terrain = woods
-								}							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_woodcutters_1
-							}
-						}
-						# Farms
-						if = {
-							limit = {
-								OR = {
-									terrain = farmlands
-									terrain = plains
-								}							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_Hfarm_1
-							}
-						}
-						# Fisherman
-						if = {
-							limit = {
-								borders_major_river = yes							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_fishermen_1
-							}
-						}
-					}
-					
-					# sheepfarms
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_haldadian	
-								culture = culture_hillmen
-							}
-							terrain = hills
-						}
-						any_province_holding = {
-							limit = { holding_type = city}
-							add_building = ct_sheepfarms_1
-						}
-					}
-					# growing dates
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_numenorean
-							}
-							terrain = desert
-						}
-						any_province_holding = {
-							limit = { holding_type = city}
-							add_building = ct_date_palms_1
-						}
+						province_event = {	id = buildings.210 }
 					}
 
-					# General Human
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-							}
-							NOT = {
-								OR = {
-									culture = culture_rohirrim
-									culture = culture_eotheod
-									culture = culture_druedain
-								}
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle }
-								add_building = ca_Hwall_1
-								add_building = ca_Hwatchtower_1
-								add_building = ca_Hmilitia_barracks_1
-								add_building = ca_Htown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Hwall_1
-								add_building = ct_Hwatchtower_1
-								add_building = ct_Htownmilitia_1
-								add_building = ct_Hmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal }
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-										# N煤men贸reans
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_numenorean
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Nwall_1
-								add_building = ca_Nwatchtower_1
-								add_building = ca_Nmilitia_barracks_1
-								add_building = ca_Ntown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Nwall_1
-								add_building = ct_Nwatchtower_1
-								add_building = ct_Ntownmilitia_1
-								add_building = ct_Nmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# Haladians Non-Edain humans of the west, esp south-west. Also, the Hillmen (of Rhudaur)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_haldadian
-								culture = culture_hillmen
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Pwall_1
-								add_building = tb_Pwatchtower_1
-								add_building = tb_Pmilitia_barracks_1
-								add_building = tb_Ptown_1
-								add_building = tb_Phillsmen_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Pwall_1
-								add_building = ca_Pwatchtower_1
-								add_building = ca_Pmilitia_barracks_1
-								add_building = ca_Ptown_1
-								add_building = tb_Phillsmen_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Pwall_1
-								add_building = ct_Pwatchtower_1
-								add_building = ct_Ptownmilitia_1
-								add_building = ct_Pmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-										# Lossoth. Less buildings (they live in the arctic) and a special building
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_lossoth
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Psnowmen_1
-								add_building = tb_Ptown_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = tb_Pwall_1
-								add_building = ca_Psnowmen_1
-								add_building = ca_Ptown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Pwall_1
-								add_building = ct_Pmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					# Dr煤edian (aka Woses) have special buildings
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_druedain
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Iwall_1
-								add_building = tb_pukel_men
-								add_building = tb_Imilitia_barracks_1
-								add_building = tb_Itown_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Iwall_1
-								add_building = ca_pukel_men
-								add_building = ca_Imilitia_barracks_1
-								add_building = ca_Itown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Iwall_1
-								add_building = ct_pukel_men
-								add_building = ct_Imilitia_barracks_1
-								add_building = ct_Itown_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					# The Horsy People (E贸theod and Rohhirrim)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_rohirrim
-								culture = culture_eotheod
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Rwall_1
-								add_building = ca_Rwatchtower_1
-								add_building = ca_Rmilitia_barracks_1
-								add_building = ca_Rtown_1
-								add_building = ca_Rstable_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Rwall_1
-								add_building = ct_Rwatchtower_1
-								add_building = ct_Rtownmilitia_1
-								add_building = ct_Rmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					
+					# finally, set the flag, in case this event gets run again ( it does when a player changes character)
+					set_province_flag = buildings_added				
 
 				}
 			}
 	
 		}
 	}	
+	
+	option = {
+		# name = "OK"
+	}
 }
 
-# this event is because the previous event does not work for independent player nations (I have no idea why)
+# this event is because the previous event does not work for independent player nations
 character_event = {
 	id = buildings.201
-	desc = "OK"
-	picture = GFX_evt_rebuilding
+	# desc = "OK"
+	# picture = GFX_evt_rebuilding
 	hide_window = yes
 	ai = no
 	only_independent = yes
@@ -646,624 +88,2661 @@ character_event = {
 	
 	immediate = {
 		hidden_tooltip = {
-			limit = {
-				ai = no
-				independent = yes
-			}
-			# name = "OK" ## Great !
-			any_realm_province = {
-
-					# Dwarven Buildings
+			if = {
+				limit = {
+					ai = no
+					independent = yes
+				}
+				any_realm_province = {
+					limit = { NOT = { has_province_flag = buildings_added} }
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_dwarves
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Dwater_system_0
-								add_building = ca_Dstatue_0
-								add_building = ca_dwarvenforges_1
-								add_building = ca_Dmilitia_barracks_1
-								add_building = ca_DInnerFortification_1	
-								add_building = ca_Dtown_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Dwater_system_0
-								add_building = ct_dwarfmines_1
-								add_building = ct_Dtownmilitia_1
-								add_building = ct_DInnerFortification_1
-								add_building = ct_Dmarketplace_1								
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_is_province_elven_trigger = yes }
+						province_event = {	id = buildings.202 }
 					}
-					# Wood Elves (elves in woods can get flets/telain)
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								terrain = woods
-								terrain = forest
-							}
-							OR = {
-								culture_group = culture_group_moriquendi
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_quendi
-							}							
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_telain								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_telain								
-							}
-						}
+						limit = { culture_group = culture_group_dwarves }
+						province_event = {	id = buildings.203 }
 					}
-					# Morquendi/Avari
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_moriquendi
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Mwall_1
-								add_building = ca_Mwatchtower_1	
-								add_building = ca_Melven_barracks_1	
-								add_building = ca_Melven_town_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Mwall_1
-								add_building = ct_Mwatchtower_1
-								add_building = ct_Mtownmilitia_1
-								add_building = ct_Mmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_is_black_numenorean_culture = yes }
+						province_event = {	id = buildings.204 }
 					}
-					# Amanyar (Noldor, others do not show up in Middle-Earth)
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_amanyar
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Awall_1
-								add_building = ca_Awatchtower_1	
-								add_building = ca_Amilitia_barracks_1	
-								add_building = ca_Atown_1
-								add_building = ca_Akeep_1								
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Awall_1
-								add_building = ct_Awatchtower_1
-								add_building = ct_Atownmilitia_1
-								add_building = ct_Amarketplace_1	
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_is_good_numenorean_culture = yes }
+						province_event = {	id = buildings.205 }
 					}
-					# Wood-Elves (culturally)
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_silvan
-								culture = culture_nandor
-								culture = culture_laegrim
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Swall_1
-								add_building = ca_Swatchtower_1	
-								add_building = ca_elven_barracks_1	
-								add_building = ca_elven_town_1							
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Swall_1
-								add_building = ct_Swatchtower_1
-								add_building = ct_Stownmilitia_1
-								add_building = ct_Smarketplace_1							
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { mep_orc_troll_culture = yes }
+						province_event = {	id = buildings.206 }
 					}
-					# Sindar
 					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_sindar
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Vwall_1
-								add_building = ca_Vwatchtower_1	
-								add_building = ca_Vmilitia_barracks_1	
-								add_building = ca_Vtown_1							
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Vwall_1
-								add_building = ct_Vwatchtower_1
-								add_building = ct_Vtownmilitia_1
-								add_building = ct_Vmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}	
-					#Hobbits
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_halfling
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_militia_barracks_1halfling
-								add_building = ca_town_1halfling
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_barracks_1halfling
-								add_building = ct_inn1
-							}
-						}
-						set_province_flag = buildings_added
+						limit = { culture_group = culture_group_halfling }
+						province_event = {	id = buildings.207 }
 					}
-					# Goblins and Half Orcs
 					if = {
 						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_goblin
-								culture = culture_half_orc
-							}
+							OR = { mep_horsey_people_culture = yes
+								mep_general_buildings_human = yes }
 						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MGwall_1
-								add_building = ca_MGwatchtower_1
-								add_building = ca_MGmilitia_barracks_1
-								add_building = ca_MGtown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MGwall_1
-								add_building = ct_MGwatchtower_1
-								add_building = ct_MGtownmilitia_1
-								add_building = ct_MGmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
+						province_event = {	id = buildings.209 }
 					}
+					if = {
+						limit = {
+							OR = { mep_prim_humans_culture = yes
+								culture = culture_druedain }
+						}
+						province_event = {	id = buildings.210 }
+					}
+					# finally, set the flag, in case this event gets run again ( it does when a player changes character)
+					set_province_flag = buildings_added		
 					
-					# Orcs and Uruk-Hai
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_orkish
-								culture = culture_urukhai
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MOwall_1
-								add_building = ca_MOwatchtower_1
-								add_building = ca_MOorcbarracks_1
-								add_building = ca_MOorctown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MOwall_1
-								add_building = ct_MOwatchtower_1
-								add_building = ct_MOorctraining_grounds_1
-								add_building = ct_MOorcmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
-					}
-
-					# trolls
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_troll
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_MT_lair_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_MT_lair_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-
-					# Wainriders
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added }
-							OR = {
-								culture = culture_balchoth
-								culture = culture_wainriders
-							}
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_wainriders_1
-						}
-					}
-					# Woodmen Hunters
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_woodsmen
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_woodsmenhunters_1
-						}
-					}
-					# Far Harad (men like trolls)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_far_haradrim
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_trollmen_1
-						}
-					}
-					# Desert Raiders
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_bellakaze
-								culture = culture_harondorian
-							}
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_desertraiders_1
-						}
-					}
-					# Shapechanger
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_beorning
-						}
-						any_province_holding = {
-							limit = { holding_type = castle}
-							add_building = ca_shapechangers_1
-						}
-					}	
-
-					# Terrain-specific buildings for Humans
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_numenorean
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian	
-							}						
-						}
-						# Woodcutters
-						if = {
-							limit = {
-								OR = {
-									terrain = forest
-									terrain = woods
-								}							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_woodcutters_1
-							}
-						}
-						# Farms
-						if = {
-							limit = {
-								OR = {
-									terrain = farmlands
-									terrain = plains
-								}							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_Hfarm_1
-							}
-						}
-						# Fisherman
-						if = {
-							limit = {
-								borders_major_river = yes							
-							}
-							any_province_holding = {
-								limit = { holding_type = city}
-								add_building = ct_fishermen_1
-							}
-						}
-					}
-
-					# sheepfarms
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_haldadian	
-								culture = culture_hillmen
-							}
-							terrain = hills
-						}
-						any_province_holding = {
-							limit = { holding_type = city}
-							add_building = ct_sheepfarms_1
-						}
-					}
-					# growing dates
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_numenorean
-							}
-							terrain = desert
-						}
-						any_province_holding = {
-							limit = { holding_type = city}
-							add_building = ct_date_palms_1
-						}
-					}					
-					
-					# General Human
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_middlemen
-							}
-							NOT = {
-								OR = {
-									culture = culture_rohirrim
-									culture = culture_eotheod
-									culture = culture_druedain
-								}
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle }
-								add_building = ca_Hwall_1
-								add_building = ca_Hwatchtower_1
-								add_building = ca_Hmilitia_barracks_1
-								add_building = ca_Htown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Hwall_1
-								add_building = ct_Hwatchtower_1
-								add_building = ct_Htownmilitia_1
-								add_building = ct_Hmarketplace_1
-							}
-							if = {
-								limit = { holding_type = tribal }
-								add_building = tb_hillfort_1
-								add_building = tb_market_town_1
-								add_building = tb_practice_range_1
-								add_building = tb_training_grounds_1								
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# N煤men贸reans
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture_group = culture_group_numenorean
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Nwall_1
-								add_building = ca_Nwatchtower_1
-								add_building = ca_Nmilitia_barracks_1
-								add_building = ca_Ntown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Nwall_1
-								add_building = ct_Nwatchtower_1
-								add_building = ct_Ntownmilitia_1
-								add_building = ct_Nmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-					# Haladians Non-Edain humans of the west, esp south-west. Also, the Hillmen (of Rhudaur)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture_group = culture_group_haldadian
-								culture = culture_hillmen
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Pwall_1
-								add_building = tb_Pwatchtower_1
-								add_building = tb_Pmilitia_barracks_1
-								add_building = tb_Ptown_1
-								add_building = tb_Phillsmen_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Pwall_1
-								add_building = ca_Pwatchtower_1
-								add_building = ca_Pmilitia_barracks_1
-								add_building = ca_Ptown_1
-								add_building = tb_Phillsmen_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Pwall_1
-								add_building = ct_Pwatchtower_1
-								add_building = ct_Ptownmilitia_1
-								add_building = ct_Pmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-										# Lossoth. Less buildings (they live in the arctic) and a special building
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_lossoth
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Psnowmen_1
-								add_building = tb_Ptown_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = tb_Pwall_1
-								add_building = ca_Psnowmen_1
-								add_building = ca_Ptown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Pwall_1
-								add_building = ct_Pmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					# Dr煤edian (aka Woses) have special buildings
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							culture = culture_druedain
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = tribal}
-								add_building = tb_Iwall_1
-								add_building = tb_pukel_men
-								add_building = tb_Imilitia_barracks_1
-								add_building = tb_Itown_1
-							}
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Iwall_1
-								add_building = ca_pukel_men
-								add_building = ca_Imilitia_barracks_1
-								add_building = ca_Itown_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Iwall_1
-								add_building = ct_pukel_men
-								add_building = ct_Imilitia_barracks_1
-								add_building = ct_Itown_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					# The Horsy People (E贸theod and Rohhirrim)
-					if = {
-						limit = {
-							NOT = { has_province_flag = buildings_added}
-							OR = {
-								culture = culture_rohirrim
-								culture = culture_eotheod
-							}
-						}
-						any_province_holding = {
-							if = {
-								limit = { holding_type = castle}
-								add_building = ca_Rwall_1
-								add_building = ca_Rwatchtower_1
-								add_building = ca_Rmilitia_barracks_1
-								add_building = ca_Rtown_1
-								add_building = ca_Rstable_1
-							}
-							if = {
-								limit = { holding_type = city }
-								add_building = ct_Rwall_1
-								add_building = ct_Rwatchtower_1
-								add_building = ct_Rtownmilitia_1
-								add_building = ct_Rmarketplace_1
-							}
-						}
-						set_province_flag = buildings_added
-					}
-					
-				#finally, setting the flag in case this event somehow gets run again
-				set_province_flag = buildings_added	
-					
-			}
+				}
 	
+			}
 		}
 	}	
 	
 	option = {
-		name = "OK"
+		# name = "OK"
+	}
+}
+
+# Building setup for Elves. Most Level-1 buildings are auto build... 
+province_event = {
+	id = buildings.202
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining an elven province where buildings_added is false
+			# first, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_elves
+						has_province_modifier = two_population_elves
+					}
+				}
+				# Generic Elven Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Ewalltower_2
+						add_building = ca_Ewall_2
+						add_building = ca_Ekeep_2
+						add_building = ca_Etraining_grounds_2
+						add_building = ca_Etown_2
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Ewalltower_2
+						add_building = ct_Ewall_2
+						add_building = ct_elfcity_center_2
+						add_building = ct_Emarketplace_2
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Ewalltower_2
+						add_building = tp_Ewall_2
+						add_building = tp_Emonastery_2
+						add_building = tp_Ebarracks_2
+						add_building = tp_elite_Ebarracks_2
+						add_building = tp_Etown_2
+					}
+					refill_holding_levy = yes
+				}
+				# Adding level 2 flets (forests/woods only)
+				if = { limit = {
+						OR = {
+							terrain = forest
+							terrain = woods
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_telain2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_telain2
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Adding level 2 ports/shipyards
+				if = { limit = {
+						port = yes 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Eshipyard_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Eshipyard_2
+							add_building = ct_Eport_2
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Eshipyard_1
+						
+						}
+					}
+				}
+				# Avari buildings
+				if = { limit = {
+						culture = culture_avari 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_avari_warriors_2
+							add_building = ca_avariwindwalkers_2
+							add_building = ca_avari_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_avari_warriors_2
+							add_building = ct_avariwindwalkers_2
+							add_building = ct_avari_stable_2
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Silvan
+				if = { limit = {
+						OR = {
+							culture = culture_silvan
+							culture = culture_nandor
+							culture = culture_laegrim
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_silvan_archers_2
+							add_building = ca_silvanelite_2
+							add_building = ca_silvan_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_silvan_archers_2
+							add_building = ct_silvanelite_2
+							add_building = ct_silvan_stable_2
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Noldor
+				if = { limit = {
+						OR = {
+							culture_group = culture_group_amanyar
+							culture_group = culture_group_quendi
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_noldor_warriors_2
+							add_building = ca_noldor_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_noldor_warriors_2
+							add_building = ct_noldor_stable_2
+						}
+					}
+				}
+				# Sindar / Falathrim
+				if = { limit = {
+						OR = {
+							culture = culture_sindar
+							culture = culture_doriathrim
+							culture = culture_eglath
+							culture = culture_falathrim
+							culture = culture_mithrim
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_sindar_militia_2
+							add_building = ca_sindarlongspears_2
+							add_building = ca_sindar_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_sindar_militia_2
+							add_building = ct_sindarlongspears_2
+							add_building = ct_sindar_stable_2
+						}
+						refill_holding_levy = yes
+					}
+				}
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_elves
+						has_province_modifier = six_population_elves
+						has_province_modifier = seven_population_elves
+					}
+				}
+				# Generic Elven Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Ewalltower_3
+						add_building = ca_Ewall_3
+						add_building = ca_Ekeep_3
+						add_building = ca_elven_forge2
+						add_building = ca_Etraining_grounds_3
+						add_building = ca_Etown_3
+						add_building = ca_paved_road_3
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Ewalltower_3
+						add_building = ct_Ewall_3
+						add_building = ct_elfcity_center_3
+						add_building = ct_Emarketplace_3
+						add_building = ct_paved_road_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Ewalltower_3
+						add_building = tp_Ewall_3
+						add_building = tp_Emonastery_3
+						add_building = tp_Ebarracks_3
+						add_building = tp_elite_Ebarracks_3
+						add_building = tp_Etown_3
+					}
+					refill_holding_levy = yes
+				}
+				# Adding level 3 flets (forests/woods only)
+				if = { limit = {
+						OR = {
+							terrain = forest
+							terrain = woods
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_telain3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_telain3
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Adding level 3 ports/shipyards
+				if = { limit = {
+						port = yes 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Eshipyard_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Eshipyard_3
+							add_building = ct_Eport_3
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Eshipyard_2
+						
+						}
+					}
+				}
+				# Avari buildings
+				if = { limit = {
+						culture = culture_avari 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_avari_warriors_3
+							add_building = ca_avariwindwalkers_3
+							add_building = ca_avari_stable_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_avari_warriors_3
+							add_building = ct_avariwindwalkers_3
+							add_building = ct_avari_stable_3
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Silvan
+				if = { limit = {
+						OR = {
+							culture = culture_silvan
+							culture = culture_nandor
+							culture = culture_laegrim
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_silvan_archers_3
+							add_building = ca_silvanelite_3
+							add_building = ca_silvan_stable_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_silvan_archers_3
+							add_building = ct_silvanelite_3
+							add_building = ct_silvan_stable_3
+						}
+						refill_holding_levy = yes
+					}
+				}
+				# Noldor
+				if = { limit = {
+						OR = {
+							culture_group = culture_group_amanyar
+							culture_group = culture_group_quendi
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_noldor_warriors_3
+							add_building = ca_noldor_stable_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_noldor_warriors_3
+							add_building = ct_noldor_stable_3
+						}
+					}
+				}
+				# Sindar / Falathrim
+				if = { limit = {
+						OR = {
+							culture = culture_sindar
+							culture = culture_doriathrim
+							culture = culture_eglath
+							culture = culture_falathrim
+							culture = culture_mithrim
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_sindar_militia_3
+							add_building = ca_sindarlongspears_3
+							add_building = ca_sindar_stable_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_sindar_militia_3
+							add_building = ct_sindarlongspears_3
+							add_building = ct_sindar_stable_3
+						}
+					}
+				}
+					
+			}	
+			# The end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Dwarves. Most Level-1 buildings are auto build... 
+province_event = {
+	id = buildings.203
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining an dwarven province where buildings_added is false
+			# some buildings are not autobuild
+			any_province_holding = {
+				if = {
+					limit = { holding_type = castle}
+					add_building = ca_Dwater_system_0
+				}
+				if = {
+					limit = { holding_type = city }
+					add_building = ct_Dwater_system_0
+					add_building = ct_dwarfmines_1				
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_dwarves
+						has_province_modifier = two_population_dwarves
+					}
+				}
+				# Generic Dwarven Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_dwarvenfortifications_2
+						add_building = ca_dwarfkeep_2
+						add_building = ca_Dtrainging_grounds_2
+						add_building = ca_Dtown_2
+						add_building = ca_Dstatue_2
+						add_building = ca_dwarvenforges_2
+						add_building = ca_Dwater_system_1
+						add_building = ca_paved_road_3
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_dwarvenfortifications_2
+						add_building = ct_dwarfkeep_2
+						add_building = ct_Dtown_2
+						add_building = ct_Dwater_system_1
+						add_building = ct_dwarfmines_2
+						add_building = ca_paved_road_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Dwalltower_2
+						add_building = tp_Dwall_2
+						add_building = tp_Dmonastery_2
+						add_building = tp_Dbarracks_2
+						add_building = tp_elite_Dbarracks_2
+						add_building = tp_Dtown_2
+					}
+				}
+				# Adding level 2 ports/shipyards
+				if = { limit = {
+						port = yes 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Dshipyard_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Dshipyard_1
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Dshipyard_1
+						
+						}
+					}
+				}
+				# Longbeard buildings
+				if = { limit = {
+						culture = culture_longbeard 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_lidwarf_barracks_2
+							add_building = ca_longbeardveterans_2
+							add_building = ca_dwarf_stable_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_lidwarf_barracks_2
+							add_building = ct_longbeardveterans_2
+							add_building = ct_dwarf_stable_1
+						}
+					}
+				}
+				# Ironfist buildings
+				if = { limit = {
+						culture = culture_longbeard 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_lidwarf_barracks_2
+							add_building = ca_ironfistveterans_2
+							add_building = ca_dwarf_stable_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_lidwarf_barracks_2
+							add_building = ct_ironfistveterans_2
+							add_building = ct_dwarf_stable_1
+						}
+					}
+				}
+				# Broadbeams, Firebeards, and petty dwarves
+				if = { limit = {
+						OR = {
+							culture = culture_firebeard
+							culture = culture_broadbeam
+							culture = culture_petty_dwarves
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_bfdwarf_barracks_2
+							add_building = ca_eriadorrangers_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_bfdwarf_barracks_2
+							add_building = ct_eriadorrangers_2
+						}
+					}
+				}
+				##Stonefoots, Blacklocks, Stiffbeards##
+				if = { limit = {
+						OR = {
+							culture = culture_stonefoot
+							culture = culture_blacklock
+							culture = culture_stiffbeard
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_sbsdwarf_barracks_2
+							add_building = ca_sbsdwarf_stable_2
+							add_building = ca_sbselites_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_sbsdwarf_barracks_2
+							add_building = ct_sbsdwarf_stable_2
+							add_building = ct_sbselites_1
+						}
+					}
+				}
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_dwarves
+						has_province_modifier = six_population_dwarves
+						has_province_modifier = seven_population_dwarves
+					}
+				}
+				# Generic Dwarven Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_dwarvenfortifications_3
+						add_building = ca_dwarfkeep_3
+						add_building = ca_Dtrainging_grounds_3
+						add_building = ca_Dtown_3
+						add_building = ca_Dstatue_3
+						add_building = ca_dwarvenforges_3
+						add_building = ca_Dwater_system_2
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_dwarvenfortifications_3
+						add_building = ct_dwarfkeep_3
+						add_building = ct_Dtown_3
+						add_building = ct_Dwater_system_2
+						add_building = ct_dwarfmines_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Dwalltower_3
+						add_building = tp_Dwall_3
+						add_building = tp_Dmonastery_3
+						add_building = tp_Dbarracks_3
+						add_building = tp_elite_Dbarracks_3
+						add_building = tp_Dtown_3
+					}
+				}
+				# Adding level 2 ports/shipyards
+				if = { limit = {
+						port = yes 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Dshipyard_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Dshipyard_2
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Dshipyard_2
+						
+						}
+					}
+				}
+				# Longbeard buildings
+				if = { limit = {
+						culture = culture_longbeard 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_lidwarf_barracks_3
+							add_building = ca_longbeardveterans_3
+							add_building = ca_dwarf_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_lidwarf_barracks_3
+							add_building = ct_longbeardveterans_3
+							add_building = ct_dwarf_stable_2
+						}
+					}
+				}
+				# Ironfist buildings
+				if = { limit = {
+						culture = culture_longbeard 
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_lidwarf_barracks_3
+							add_building = ca_ironfistveterans_3
+							add_building = ca_dwarf_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_lidwarf_barracks_3
+							add_building = ct_ironfistveterans_3
+							add_building = ct_dwarf_stable_2
+						}
+					}
+				}
+				# Broadbeams, Firebeards, and petty dwarves
+				if = { limit = {
+						OR = {
+							culture = culture_firebeard
+							culture = culture_broadbeam
+							culture = culture_petty_dwarves
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_bfdwarf_barracks_3
+							add_building = ca_eriadorrangers_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_bfdwarf_barracks_3
+							add_building = ct_eriadorrangers_3
+						}
+					}
+				}
+				##Stonefoots, Blacklocks, Stiffbeards##
+				if = { limit = {
+						OR = {
+							culture = culture_stonefoot
+							culture = culture_blacklock
+							culture = culture_stiffbeard
+						}
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_sbsdwarf_barracks_3
+							add_building = ca_sbsdwarf_stable_3
+							add_building = ca_sbselites_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_sbsdwarf_barracks_3
+							add_building = ct_sbsdwarf_stable_3
+							add_building = ct_sbselites_2
+						}
+					}
+				}
+					
+			}
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Ad鹡鈏m (Black N鷐en髍eans). Most Level-1 buildings are auto build... 
+province_event = {
+	id = buildings.204
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining an Ad鹡鈏m (Black N鷐en髍eans) province where buildings_added is false
+			# some terrain specific buildings are NOT autobuild
+			# Level 1 terrain specific buildings
+			# Woodcutters
+			if = { limit = {
+					OR = { terrain = forest
+						   terrain = woods }							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_woodcutters_1
+				}
+			}
+			# Farms
+			if = { limit = {
+					OR = { terrain = farmlands
+							terrain = plains }							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_Hfarm_1
+				}
+			}
+			# Fisherman
+			if = { limit = {
+					borders_major_river = yes							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_fishermen_1
+				}
+			}
+			# growing dates
+			if = { limit = {
+					terrain = desert
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_date_palms_1
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_dunedain
+						has_province_modifier = two_population_dunedain
+					}
+				}
+				# Generic BN Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_BNwalltower_2
+						add_building = ca_BNwall_2
+						add_building = ca_BNkeep_2
+						add_building = ca_BNtraining_grounds_2
+						add_building = ca_BNtown_2
+						add_building = ca_Bnumen_barracks_2
+						add_building = ca_blackhand_2
+						add_building = ca_Bnumen_stable_2
+						add_building = ca_paved_road_3
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_BNwalltower_2
+						add_building = ct_BNwall_2
+						add_building = ct_BNkeep_2
+						add_building = ct_BNtraining_grounds_2
+						add_building = ct_BNtown_2
+						add_building = ct_Bnumen_barracks_2
+						add_building = ct_blackhand_2
+						add_building = ct_Bnumen_stable_2
+						add_building = ct_paved_road_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Nwalltower_2
+						add_building = tp_Nwall_2					
+					}
+				}
+				# Level 2 terrain specific buildings
+				# Windmill
+				if = { limit = {  terrain = hills }							
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_windmills_1
+					}
+				}
+				# Farms
+				if = { limit = {
+						OR = { terrain = farmlands
+							terrain = plains }							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_Hfarm_2
+					}	
+				}
+				# Ferry and Watermill
+				if = { limit = {
+						borders_major_river = yes							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_ferry_boat_1
+						add_building = ct_watermill_1
+					}
+				}
+				# Adding level 2 ports/shipyards
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_corsairs_2
+							add_building = ca_Nshipyard_2
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Nshipyard_2
+						}
+
+					}
+				}				
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_dunedain
+						has_province_modifier = six_population_dunedain
+						has_province_modifier = seven_population_dunedain
+					}
+				}
+				# Generic BN Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_BNwalltower_3
+						add_building = ca_BNwall_3
+						add_building = ca_BNkeep_3
+						add_building = ca_BNtraining_grounds_3
+						add_building = ca_BNtown_3
+						add_building = ca_Bnumen_barracks_3
+						add_building = ca_blackhand_3
+						add_building = ca_Bnumen_stable_3
+						add_building = ca_Nforge_2
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_BNwalltower_3
+						add_building = ct_BNwall_3
+						add_building = ct_BNkeep_3
+						add_building = ct_BNtraining_grounds_3
+						add_building = ct_BNtown_3
+						add_building = ct_Bnumen_barracks_3
+						add_building = ct_blackhand_3
+						add_building = ct_Bnumen_stable_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Nwalltower_3
+						add_building = tp_Nwall_3					
+					}
+				}
+				# Level 3 terrain specific buildings
+				# Windmill
+				if = { limit = { terrain = hills }
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_windmills_2
+					}
+				}
+				# Farms
+				if = { limit = {
+						OR = { terrain = farmlands
+							terrain = plains }							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_Hfarm_3
+					}	
+				}
+				# Ferry and Watermill
+				if = { limit = {
+						borders_major_river = yes							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_watermill_2
+					}
+				}
+				# Adding level 3 ports/shipyards
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_corsairs_3
+							add_building = ca_Nshipyard_3
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Nshipyard_3
+						}
+					}
+				}
+					
+			}	
+			# terrain specific buildings
+			province_event = { id = buildings.208 }
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for D鷑edain (N鷐en髍eans/Arnorians/Gondorians/D鷑edain). Most Level-1 buildings are auto build... 
+province_event = {
+	id = buildings.205
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a D鷑edain province where buildings_added is false
+			# first adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_dunedain
+						has_province_modifier = two_population_dunedain
+					}
+				}
+				# Generic D鷑edain Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Nwalltower_2
+						add_building = ca_Nwall_2
+						add_building = ca_Nkeep_2
+						add_building = ca_Ntraining_grounds_2
+						add_building = ca_Ntown_2
+						add_building = ca_paved_road_3
+						add_building = ca_dunedain_barracks_2
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Nwalltower_2
+						add_building = ct_Nwall_2
+						add_building = ct_Ncommunitycenter_2
+						add_building = ct_Ntown_2
+						add_building = ct_Nport_2
+						add_building = ct_paved_road_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Nwalltower_2
+						add_building = tp_Nwall_2
+						add_building = tp_Nmonastery_2
+						add_building = tp_Nbarracks_2
+						add_building = tp_elite_Nbarracks_2
+						add_building = tp_Ntown_2						
+					}
+				}
+				# Culture-specific
+				# N鷐en髍ean or D鷑edain culture
+				if = { limit = {
+						OR = { culture = culture_dunedain
+								culture = culture_numenorean }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_dunedainrangers_2
+							add_building = ca_dunedain_stable_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_dunedain_barracks_2
+							add_building = ct_dunedainrangers_2
+							add_building = ct_dunedain_stable_2
+						}
+					}
+				}
+				# Gondorian or Arnorian culture
+				if = { limit = {
+						OR = { culture = culture_arnorian
+								culture = culture_gondorian }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_gondorian_trainingyard_2
+							add_building = ca_gondorian_stable_2
+							add_building = ca_gondorianpikemen_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_gondorian_trainingyard_2
+							add_building = ct_gondorianpikemen_2
+							add_building = ct_gondorian_stable_2
+						}
+					}
+				}
+				# Arnorian Only...
+				if = { limit = { culture = culture_arnorian }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_knightsarnor_2
+						}
+					}
+				}
+				# Adding level 2 ports/shipyards
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Nshipyard_2
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Nshipyard_2
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Nshipyard_1
+						}
+					}
+				}				
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_dunedain
+						has_province_modifier = six_population_dunedain
+						has_province_modifier = seven_population_dunedain
+					}
+				}
+				# Generic D鷑edain Buildings
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Nwalltower_3
+						add_building = ca_Nwall_3
+						add_building = ca_Nkeep_3
+						add_building = ca_Ntraining_grounds_3
+						add_building = ca_Ntown_3
+						add_building = ca_Nforge_2
+						add_building = ca_dunedain_barracks_3
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Nwalltower_3
+						add_building = ct_Nwall_3
+						add_building = ct_Ncommunitycenter_3
+						add_building = ct_Ntown_3
+						add_building = ct_Nport_3
+					}
+					if = {
+						limit = { holding_type = temple}
+						add_building = tp_Nwalltower_3
+						add_building = tp_Nwall_3
+						add_building = tp_Nmonastery_3
+						add_building = tp_Nbarracks_3
+						add_building = tp_elite_Nbarracks_3
+						add_building = tp_Ntown_3						
+					}
+				}
+				# Culture-specific
+				# N鷐en髍ean or D鷑edain culture
+				if = { limit = {
+						OR = { culture = culture_dunedain
+								culture = culture_numenorean }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_dunedainrangers_3
+							add_building = ca_dunedain_stable_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_dunedain_barracks_3
+							add_building = ct_dunedainrangers_3
+							add_building = ct_dunedain_stable_3
+						}
+					}
+				}
+				# Gondorian or Arnorian culture
+				if = { limit = {
+						OR = { culture = culture_arnorian
+								culture = culture_gondorian }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_gondorian_trainingyard_3
+							add_building = ca_gondorian_stable_3
+							add_building = ca_healing2
+							add_building = ca_gondorianpikemen_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_gondorian_trainingyard_3
+							add_building = ct_gondorianpikemen_3
+							add_building = ct_gondorian_stable_3
+						}
+					}
+				}
+				# Arnorian Only...
+				if = { limit = { culture = culture_arnorian }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_knightsarnor_3
+						}
+					}
+				}
+				# Adding level 3 ports/shipyards
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Nshipyard_3
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Nshipyard_3
+						}
+						if = {
+							limit = { holding_type = temple}
+							add_building = tp_Nshipyard_2
+						}
+					}
+				}
+					
+			}	
+			# terrain specific buildings
+			province_event = { id = buildings.208 }
+
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Orcs/Goblins/Trolls
+province_event = {
+	id = buildings.206
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a Orc/Goblin/Troll province where buildings_added is false
+			# No autobuild here! Level 1
+			# Goblins and Half Orcs
+			if = { limit = {
+					OR = { culture = culture_goblin
+						culture = culture_half_orc }
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_MGwall_1
+						add_building = ca_MGwatchtower_1
+						add_building = ca_MGmilitia_barracks_1
+						add_building = ca_MGtown_1
+						add_building = ca_MGkeep_1
+						add_building = ca_MGtraining_grounds_1
+						add_building = ca_MGstable_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_MGwall_1
+						add_building = ct_MGwatchtower_1
+						add_building = ct_MGbarracks_1
+						add_building = ct_MGtownmilitia_1
+						add_building = ct_MGguard_1
+						add_building = ct_MGmarketplace_1
+					}
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_hillfort_1
+						add_building = tb_market_town_1
+						add_building = tb_practice_range_1
+						add_building = tb_training_grounds_1
+						add_building = tb_war_camp_1						
+					}
+				}
+			}
+			# Orcs and Uruk-Hai
+			if = { limit = {
+					OR = { culture = culture_orkish
+							culture = culture_urukhai }
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_MOwall_1
+						add_building = ca_MOwatchtower_1
+						add_building = ca_MOkeep_1
+						add_building = ca_MOorcbarracks_1
+						add_building = ca_MOorc_militiabarracks_1
+						add_building = ca_MOorctown_1
+						add_building = ca_MOorctraining_grounds_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_MOwall_1
+						add_building = ct_MOwatchtower_1
+						add_building = ct_MOorctraining_grounds_1
+						add_building = ct_MOorcmarketplace_1
+						add_building = ct_MOorcbarracks_1
+						add_building = ct_MOorcguard_1
+					}
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_hillfort_1
+						add_building = tb_market_town_1
+						add_building = tb_practice_range_1
+						add_building = tb_training_grounds_1
+						add_building = tb_war_camp_1						
+					}
+				}
+			}
+			# trolls
+			if = { limit = { culture = culture_troll }
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_MT_lair_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_MT_lair_1
+					}
+				}
+			}
+
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_human
+						has_province_modifier = two_population_human
+					}
+				}
+				# Goblins and Half Orcs
+				if = { limit = {
+						OR = { culture = culture_goblin
+							culture = culture_half_orc }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MGwall_2
+							add_building = ca_MGwatchtower_2
+							add_building = ca_MGmilitia_barracks_2
+							add_building = ca_MGtown_2
+							add_building = ca_MGkeep_2
+							add_building = ca_MGtraining_grounds_2
+							add_building = ca_MGcastleguards_1
+							add_building = ca_MGstable_2
+							add_building = ca_MGraiders_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MGwall_2
+							add_building = ct_MGwatchtower_2
+							add_building = ct_MGbarracks_2
+							add_building = ct_MGtownmilitia_2
+							add_building = ct_MGguard_2
+							add_building = ct_MGmarketplace_2
+						}
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_hillfort_2
+							add_building = tb_market_town_2
+							add_building = tb_practice_range_2
+							add_building = tb_training_grounds_2
+							add_building = tb_war_camp_2
+							add_building = tb_arsenal_1
+							
+						}
+					}
+				}
+				# Orcs and Uruk-Hai
+				if = { limit = {
+						OR = { culture = culture_orkish
+								culture = culture_urukhai }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MOwall_2
+							add_building = ca_MOwatchtower_2
+							add_building = ca_MOkeep_2
+							add_building = ca_MOorcbarracks_2
+							add_building = ca_MOorc_militiabarracks_2
+							add_building = ca_MOorctown_2
+							add_building = ca_MOorctraining_grounds_2
+							add_building = ca_MOstable_1
+							add_building = ca_MO_elite_1
+							add_building = ca_shrine_melkor
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MOwall_2
+							add_building = ct_MOwatchtower_2
+							add_building = ct_MOorctraining_grounds_2
+							add_building = ct_MOorcmarketplace_2
+							add_building = ct_MOorcbarracks_2
+							add_building = ct_MOorcguard_2
+							add_building = tp_shrine_melkor
+						}
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_hillfort_2
+							add_building = tb_market_town_2
+							add_building = tb_practice_range_2
+							add_building = tb_training_grounds_2
+							add_building = tb_war_camp_2
+							add_building = tb_arsenal_1							
+						}
+					}
+				}
+				# trolls
+				if = { limit = { culture = culture_troll }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MT_lair_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MT_lair_2
+						}
+					}
+				}				
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_human
+						has_province_modifier = six_population_human
+						has_province_modifier = seven_population_human
+					}
+				}
+				# Goblins and Half Orcs
+				if = { limit = {
+						OR = { culture = culture_goblin
+							culture = culture_half_orc }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MGwall_3
+							add_building = ca_MGwatchtower_3
+							add_building = ca_MGmilitia_barracks_3
+							add_building = ca_MGtown_3
+							add_building = ca_MGkeep_3
+							add_building = ca_MGtraining_grounds_3
+							add_building = ca_MGcastleguards_2
+							add_building = ca_MGstable_3
+							add_building = ca_MGraiders_2
+							add_building = ca_paved_road_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MGwall_3
+							add_building = ct_MGwatchtower_3
+							add_building = ct_MGbarracks_3
+							add_building = ct_MGtownmilitia_3
+							add_building = ct_MGguard_3
+							add_building = ct_MGmarketplace_3
+							add_building = ct_paved_road_3
+						}
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_hillfort_3
+							add_building = tb_market_town_3
+							add_building = tb_practice_range_3
+							add_building = tb_training_grounds_3
+							add_building = tb_war_camp_3
+							add_building = tb_arsenal_2
+							
+						}
+					}
+				}
+				# Orcs and Uruk-Hai
+				if = { limit = {
+						OR = { culture = culture_orkish
+								culture = culture_urukhai }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MOwall_3
+							add_building = ca_MOwatchtower_3
+							add_building = ca_MOkeep_3
+							add_building = ca_MOorcbarracks_3
+							add_building = ca_MOorc_militiabarracks_3
+							add_building = ca_MOorctown_3
+							add_building = ca_MOorctraining_grounds_3
+							add_building = ca_MOstable_2
+							add_building = ca_MO_elite_2
+							add_building = ca_paved_road_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MOwall_3
+							add_building = ct_MOwatchtower_3
+							add_building = ct_MOorctraining_grounds_3
+							add_building = ct_MOorcmarketplace_3
+							add_building = ct_MOorcbarracks_3
+							add_building = ct_MOorcguard_3
+							add_building = ct_paved_road_3
+						}
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_hillfort_3
+							add_building = tb_market_town_3
+							add_building = tb_practice_range_3
+							add_building = tb_training_grounds_3
+							add_building = tb_war_camp_3
+							add_building = tb_arsenal_2							
+						}
+					}
+				}
+				# trolls
+				if = { limit = { culture = culture_troll }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_MT_lair_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_MT_lair_3
+						}
+					}
+				}
+					
+			}	
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Hobbits
+province_event = {
+	id = buildings.207
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a Hobbit province where buildings_added is false
+			# No autobuild here! Level 1
+			any_province_holding = {
+				if = {
+					limit = { holding_type = castle}
+					add_building = ca_militia_barracks_1halfling
+					add_building = ca_town_1halfling
+				}
+				if = {
+					limit = { holding_type = city }
+					add_building = ct_barracks_1halfling
+					add_building = ct_inn1
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_human
+						has_province_modifier = two_population_human
+					}
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_militia_barracks_2halfling
+						add_building = ca_town_2halfling
+						add_building = ca_halflinginn
+						add_building = ca_paved_road_3
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_barracks_2halfling
+						add_building = ct_inn2
+						add_building = ct_mushroom
+						add_building = ct_tobacco
+						add_building = ct_paved_road_3
+					}
+				}
+				if = { limit = { 
+						OR = { terrain = farmlands
+							terrain = plains }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Hobfarm_2
+
+						}
+					}
+				}
+
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_human
+						has_province_modifier = six_population_human
+						has_province_modifier = seven_population_human
+					}
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_town_3halfling
+						add_building = ca_mushroom
+						add_building = ca_tobacco
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_barracks_3halfling
+						add_building = ct_inn3
+					}
+				}
+				if = { limit = { 
+						OR = { terrain = farmlands
+							terrain = plains }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Hobfarm_3
+
+						}
+					}
+				}
+					
+			}	
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Terrain-specific Building setup for Humans (a sub-sub event)
+province_event = {
+	id = buildings.208
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a human province where buildings_added is false
+			# No autobuild here! Level 1
+			# Woodcutters
+			if = {
+				limit = {
+					OR = {
+						terrain = forest
+						terrain = woods
+					}							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_woodcutters_1
+				}
+			}
+			# Farms
+			if = {
+				limit = {
+					OR = {
+						terrain = farmlands
+						terrain = plains
+					}							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_Hfarm_1
+				}
+			}
+			# Fisherman
+			if = {
+				limit = {
+					borders_major_river = yes							
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_fishermen_1
+				}
+			}
+			# sheepfarms
+			if = {
+				limit = {
+					OR = {
+						culture_group = culture_group_haldadian	
+						culture = culture_hillmen
+					}
+					terrain = hills
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_sheepfarms_1
+				}
+			}
+			# growing dates
+			if = {
+				limit = {
+					OR = {
+						culture_group = culture_group_southron
+						culture_group = culture_group_easterling
+						culture_group = culture_group_middlemen
+						culture_group = culture_group_numenorean
+					}
+					terrain = desert
+				}
+				any_province_holding = {
+					limit = { holding_type = city}
+					add_building = ct_date_palms_1
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_human
+						has_province_modifier = two_population_human
+					}
+				}
+				# Windmill
+				if = { limit = { terrain = hills }
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_windmills_1
+					}
+				}
+				# Farms
+				if = { limit = {
+						OR = { terrain = farmlands
+							terrain = plains }							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_Hfarm_2
+					}	
+				}
+				# Ferry and Watermill
+				if = { limit = {
+						borders_major_river = yes							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_ferry_boat_1
+						add_building = ct_watermill_1
+					}
+				}
+
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_human
+						has_province_modifier = six_population_human
+						has_province_modifier = seven_population_human
+					}
+				}
+				# Level 3 terrain specific buildings
+				# Windmill
+				if = { limit = { terrain = hills }
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_windmills_2
+					}
+				}
+				# Farms
+				if = { limit = {
+						OR = { terrain = farmlands
+							terrain = plains }							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_Hfarm_3
+					}	
+				}
+				# Watermill
+				if = { limit = {
+						borders_major_river = yes							
+					}
+					any_province_holding = {
+						limit = { holding_type = city}
+						add_building = ct_watermill_2
+					}
+				}
+					
+			}
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Most Humans, including Rohan-like people
+# Non-N鷐en髍ean humans are split up just to reduce the size of the events
+province_event = {
+	id = buildings.209
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a Human province (of the right culture groups) where buildings_added is false
+			
+			# General Human, Level 1
+			if = {
+				limit = { mep_general_buildings_human = yes }
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle }
+						add_building = ca_Hwall_1
+						add_building = ca_Hwatchtower_1
+						add_building = ca_Hmilitia_barracks_1
+						add_building = ca_Htown_1
+						add_building = ca_Hcastleguards_1
+						add_building = ca_Hstable_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Hwall_1
+						add_building = ct_Hwatchtower_1
+						add_building = ct_Htownmilitia_1
+						add_building = ct_Hmarketplace_1
+						add_building = ct_Hbarracks_1
+						add_building = ct_Hguard_1
+					}
+					if = {
+						limit = { holding_type = tribal }
+						add_building = tb_hillfort_1
+						add_building = tb_market_town_1
+						add_building = tb_practice_range_1
+						add_building = tb_training_grounds_1
+						add_building = tb_war_camp_1						
+					}
+				}
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Hshipyard_1
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Hshipyard_1
+							add_building = ct_Hport_1
+						}
+					}
+				}
+			}
+			# The Horsy People (蒾th閛d and Rohhirrim) Level 1
+			if = {
+				limit = {
+					OR = {
+						culture = culture_rohirrim
+						culture = culture_eotheod
+					}
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Rwall_1
+						add_building = ca_Rwatchtower_1
+						add_building = ca_Rmilitia_barracks_1
+						add_building = ca_Rtown_1
+						add_building = ca_Rstable_1
+						add_building = ca_Rkeep_1
+						add_building = ca_Rcastleguards_1
+						
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Rwall_1
+						add_building = ct_Rwatchtower_1
+						add_building = ct_Rtownmilitia_1
+						add_building = ct_Rmarketplace_1
+						add_building = ct_Rbarracks_1
+						add_building = ct_Rguard_1
+					}
+				}
+				if = { limit = { port = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Rshipyard_1
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_Rport_1
+							add_building = ct_Rshipyard_1
+						}
+					}
+				}
+			}
+			# No autobuild here! Level 1 Culture specific buildings
+			# Wainriders
+			if = { limit = {
+					OR = { culture = culture_balchoth
+						culture = culture_wainriders }
+				}
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_wainriders_1
+				}
+			}
+			# Woodmen Hunters
+			if = {
+				limit = { culture = culture_woodsmen }
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_woodsmenhunters_1
+				}
+			}
+			# Dale Elite
+			if = { limit = {
+					OR = { culture = culture_barding
+						culture = culture_northmen }
+				}
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_daleelite_1
+				}
+			}
+			# Haradrim
+			if = {
+				limit = { culture = culture_haradrim }
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_serpentg_1
+					add_building = ca_mumakil1
+				}
+			}
+			# Far Harad (men like trolls)
+			if = {
+				limit = { culture = culture_far_haradrim }
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_trollmen_1
+				}
+			}
+			# Shapechanger
+			if = {
+				limit = { culture = culture_beorning }
+				any_province_holding = {
+					limit = { holding_type = castle}
+					add_building = ca_shapechangers_1
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_human
+						has_province_modifier = two_population_human
+					}
+				}
+				# General Human, Level 2
+				if = {
+					limit = { mep_general_buildings_human = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_Hwall_2
+							add_building = ca_Hwatchtower_2
+							add_building = ca_Hmilitia_barracks_2
+							add_building = ca_Htown_2
+							add_building = ca_Htraining_grounds_1
+							add_building = ca_Hcastleguards_2
+							add_building = ca_Hstable_2
+							add_building = ca_Hkeep_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Hwall_2
+							add_building = ct_Hwatchtower_2
+							add_building = ct_Htownmilitia_2
+							add_building = ct_Hmarketplace_2
+							add_building = ct_Hbarracks_2
+							add_building = ct_Hguard_2
+						}
+						if = {
+							limit = { holding_type = tribal }
+							add_building = tb_hillfort_2
+							add_building = tb_market_town_2
+							add_building = tb_practice_range_2
+							add_building = tb_training_grounds_2
+							add_building = tb_war_camp_2
+							add_building = tb_arsenal_1							
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Hshipyard_2
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Hshipyard_2
+								add_building = ct_Hport_2
+							}
+						}
+					}
+				}
+				# The Horsy People (蒾th閛d and Rohhirrim) Level 2
+				if = {
+					limit = {
+						OR = { culture = culture_rohirrim
+						culture = culture_eotheod }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Rwall_2
+							add_building = ca_Rwatchtower_2
+							add_building = ca_Rmilitia_barracks_2
+							add_building = ca_Rtown_2
+							add_building = ca_Rstable_2
+							add_building = ca_Rkeep_2
+							add_building = ca_Rcastleguards_2
+							add_building = ca_Rtraining_grounds_1						
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Rwall_2
+							add_building = ct_Rwatchtower_2
+							add_building = ct_Rtownmilitia_2
+							add_building = ct_Rmarketplace_2
+							add_building = ct_Rbarracks_2
+							add_building = ct_Rguard_2
+							add_building = ct_barracks_1rohan
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Rshipyard_2
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Rport_2
+								add_building = ct_Rshipyard_2
+							}
+						}
+					}
+				}
+				# No autobuild here! Level 2 Culture specific buildings
+				# Wainriders
+				if = { limit = {
+						OR = { culture = culture_balchoth
+							culture = culture_wainriders }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_wainriders_2
+					}
+				}
+				# Easterlings
+				if = { limit = {
+						culture_group = culture_group_easterling
+						NOR = { culture = culture_balchoth
+							culture = culture_wainriders }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_slavers_1
+					}
+				}
+				# Woodmen Hunters
+				if = {
+					limit = { culture = culture_woodsmen }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_woodsmenhunters_2
+					}
+				}
+				# Dale Elite
+				if = { limit = {
+						OR = { culture = culture_barding
+							culture = culture_northmen }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_daleelite_2
+					}
+				}
+				# Haradrim
+				if = {
+					limit = { culture = culture_haradrim }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_serpentg_2
+						add_building = ca_mumakil2
+					}
+				}
+				# Far Harad (men like trolls)
+				if = {
+					limit = { culture = culture_far_haradrim }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_trollmen_2
+					}
+				}
+				# Desert Raiders
+				if = { limit = {
+						OR = { culture = culture_bellakaze
+							culture = culture_harondorian }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_desertraiders_1
+					}
+				}
+				# Shapechanger (and Bakery)
+				if = {
+					limit = { culture = culture_beorning }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_shapechangers_2
+						}
+						if = {
+							limit = { holding_type = city}
+							add_building = ct_beorningbakery_1
+						}
+					}
+				}			
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_human
+						has_province_modifier = six_population_human
+						has_province_modifier = seven_population_human
+					}
+				}
+				# General Human, Level 3
+				if = {
+					limit = { mep_general_buildings_human = yes }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_Hwall_3
+							add_building = ca_Hwatchtower_3
+							add_building = ca_Hmilitia_barracks_3
+							add_building = ca_Htown_3
+							add_building = ca_Htraining_grounds_2
+							add_building = ca_Hcastleguards_3
+							add_building = ca_Hstable_3
+							add_building = ca_paved_road_3
+							add_building = ca_Hkeep_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Hwall_3
+							add_building = ct_Hwatchtower_3
+							add_building = ct_Htownmilitia_3
+							add_building = ct_Hmarketplace_3
+							add_building = ct_Hbarracks_3
+							add_building = ct_Hguard_3
+							add_building = ct_paved_road_3
+						}
+						if = {
+							limit = { holding_type = tribal }
+							add_building = tb_hillfort_3
+							add_building = tb_market_town_3
+							add_building = tb_practice_range_3
+							add_building = tb_training_grounds_3
+							add_building = tb_war_camp_3
+							add_building = tb_arsenal_2							
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Hshipyard_3
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Hshipyard_3
+								add_building = ct_Hport_3
+							}
+						}
+					}
+				}
+				# The Horsy People (蒾th閛d and Rohhirrim) Level 3
+				if = {
+					limit = {
+						OR = { culture = culture_rohirrim
+						culture = culture_eotheod }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Rwall_3
+							add_building = ca_Rwatchtower_3
+							add_building = ca_Rmilitia_barracks_3
+							add_building = ca_Rtown_3
+							add_building = ca_Rstable_3
+							add_building = ca_Rkeep_3
+							add_building = ca_Rcastleguards_3
+							add_building = ca_Rtraining_grounds_2
+							add_building = ca_paved_road_3
+						
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Rwall_3
+							add_building = ct_Rwatchtower_3
+							add_building = ct_Rtownmilitia_3
+							add_building = ct_Rmarketplace_3
+							add_building = ct_Rbarracks_3
+							add_building = ct_Rguard_3
+							add_building = ct_barracks_2rohan
+							add_building = ct_paved_road_3
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Rshipyard_3
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Rport_3
+								add_building = ct_Rshipyard_3
+							}
+						}
+					}
+				}
+				# No autobuild here! Level 2 Culture specific buildings
+				# Wainriders
+				if = { limit = {
+						OR = { culture = culture_balchoth
+							culture = culture_wainriders }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_wainriders_3
+					}
+				}
+				# Easterlings
+				if = { limit = {
+						culture_group = culture_group_easterling
+						NOR = { culture = culture_balchoth
+							culture = culture_wainriders }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_slavers_2
+					}
+				}
+				# Woodmen Hunters
+				if = {
+					limit = { culture = culture_woodsmen }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_woodsmenhunters_3
+					}
+				}
+				# Dale Elite
+				if = { limit = {
+						OR = { culture = culture_barding
+							culture = culture_northmen }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_daleelite_3
+					}
+				}
+				# Haradrim
+				if = {
+					limit = { culture = culture_haradrim }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_serpentg_3
+						add_building = ca_mumakil3
+					}
+				}
+				# Far Harad (men like trolls)
+				if = {
+					limit = { culture = culture_far_haradrim }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_trollmen_3
+					}
+				}
+				# Desert Raiders
+				if = { limit = {
+						OR = { culture = culture_bellakaze
+							culture = culture_harondorian }
+					}
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_desertraiders_2
+					}
+				}
+				# Shapechanger (and Bakery)
+				if = {
+					limit = { culture = culture_beorning }
+					any_province_holding = {
+						limit = { holding_type = castle}
+						add_building = ca_shapechangers_3
+					}
+				}
+					
+			}
+			# terrain specific buildings
+			province_event = { id = buildings.208 }			
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
+	}
+}
+
+# Building setup for Most Humans, including Rohan-like people
+# Non-N鷐en髍ean humans are split up just to reduce the size of the events
+province_event = {
+	id = buildings.210
+	hide_window = yes	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a Human province (of the right culture groups) where buildings_added is false
+			# Haladians and Forodwaith 
+			if = {
+				limit = { 
+					mep_prim_humans_culture = yes
+					NOT = { culture = culture_lossoth }
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_Pwall_1
+						add_building = tb_Pwatchtower_1
+						add_building = tb_Pmilitia_barracks_1
+						add_building = tb_Ptown_1
+						add_building = tb_Pkeep_1
+					}
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Pwall_1
+						add_building = ca_Pwatchtower_1
+						add_building = ca_Pmilitia_barracks_1
+						add_building = ca_Ptown_1
+						add_building = ca_Pkeep_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Pwall_1
+						add_building = ct_Pwatchtower_1
+						add_building = ct_Ptownmilitia_1
+						add_building = ct_Pmarketplace_1
+						add_building = ct_Pbarracks_1
+					}
+				}				
+			}	
+			# A special blend for hillmen improvements
+			if = {
+				limit = {
+					OR = { culture_group = culture_group_haldadian
+							culture = culture_hillmen }
+					NOT = { culture = culture_breelander }
+				}
+				any_province_holding = {
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_Phillsmen_1
+					}
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Phillsmen_1
+					}
+				}
+			}			
+			# Lossoth. Less buildings (they live in the arctic) and a special building
+			if = {
+				limit = { culture = culture_lossoth }
+				any_province_holding = {
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_Pwall_1
+						add_building = tb_Psnowmen_1
+						add_building = tb_Ptown_1
+					}
+					if = {
+						limit = { holding_type = castle}						
+						add_building = ca_Pwall_1
+						add_building = ca_Psnowmen_1
+						add_building = ca_Ptown_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Pwall_1
+						add_building = ct_Pmarketplace_1
+						add_building = ct_Ptownmilitia_1
+					}
+				}
+			}
+			# Dr鷈dian (aka Woses) have special buildings
+			if = {
+				limit = { culture = culture_druedain }
+				any_province_holding = {
+					if = {
+						limit = { holding_type = tribal}
+						add_building = tb_Iwall_1
+						add_building = tb_pukel_men
+						add_building = tb_Imilitia_barracks_1
+						add_building = tb_Itown_1
+						
+					}
+					if = {
+						limit = { holding_type = castle}
+						add_building = ca_Iwall_1
+						add_building = ca_pukel_men
+						add_building = ca_Imilitia_barracks_1
+						add_building = ca_Itown_1
+					}
+					if = {
+						limit = { holding_type = city }
+						add_building = ct_Iwall_1
+						add_building = ct_pukel_men
+						add_building = ct_Imilitia_barracks_1
+						add_building = ct_Itown_1
+					}
+				}
+			}
+			# second, adding level 2 buildings for poplevel 3+
+			if = {
+				limit = {
+					NOR = {
+						has_province_modifier = one_population_human
+						has_province_modifier = two_population_human
+					}
+				}
+				# Haladians and Forodwaith 
+				if = {
+					limit = { 
+						mep_prim_humans_culture = yes
+						NOT = { culture = culture_lossoth }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Pwall_2
+							add_building = tb_Pwatchtower_2
+							add_building = tb_Pmilitia_barracks_2
+							add_building = tb_Ptown_2
+							add_building = tb_Pkeep_2
+							add_building = tb_Ptraining_grounds_1
+							add_building = tb_Pcastleguards_1
+							add_building = tb_Pstable_1
+						}
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Pwall_2
+							add_building = ca_Pwatchtower_2
+							add_building = ca_Pmilitia_barracks_2
+							add_building = ca_Ptown_2
+							add_building = ca_Pkeep_2
+							add_building = ca_Ptraining_grounds_1
+							add_building = ca_Pcastleguards_1
+							add_building = ca_Pstable_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Pwall_2
+							add_building = ct_Pwatchtower_2
+							add_building = ct_Ptownmilitia_2
+							add_building = ct_Pmarketplace_2
+							add_building = ct_Pbarracks_2
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = tribal}
+								add_building = tb_Pshipyard_1
+							}
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Pshipyard_1
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Pshipyard_1
+								add_building = ct_Pport_1
+							}
+						}
+					}					
+				}	
+				# A special blend for hillmen improvements
+				if = {
+					limit = {
+						OR = { culture_group = culture_group_haldadian
+								culture = culture_hillmen }
+						NOT = { culture = culture_breelander }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Phillsmen_2
+						}
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Phillsmen_2
+						}
+					}
+				}			
+				# Lossoth. Less buildings (they live in the arctic) and a special building
+				if = {
+					limit = { culture = culture_lossoth }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Pwall_2
+							add_building = tb_Psnowmen_2
+							add_building = tb_Ptown_2
+							add_building = tb_Pmilitia_barracks_1
+						}
+						if = {
+							limit = { holding_type = castle}						
+							add_building = ca_Pwall_2
+							add_building = ca_Psnowmen_2
+							add_building = ca_Ptown_2
+							add_building = ca_Pmilitia_barracks_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Pwall_2
+							add_building = ct_Pmarketplace_2
+							add_building = ct_Ptownmilitia_2
+						}
+					}
+				}
+				# Dr鷈dian (aka Woses) have special buildings, but only level 1
+				if = {
+					limit = { culture = culture_druedain }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Ikeep_1
+							add_building = tb_Icastleguards_1
+						}
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Ikeep_1
+							add_building = ca_Icastleguards_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Ikeep_1
+							add_building = ct_Icastleguards_1
+						}
+					}
+				}			
+					
+			}
+			# Adding level 3 buildings for poplevel 5+
+			if = {
+				limit = {
+					OR = {
+						has_province_modifier = five_population_human
+						has_province_modifier = six_population_human
+						has_province_modifier = seven_population_human
+					}
+				}
+				# Haladians and Forodwaith, Level 3
+				if = {
+					limit = { 
+						mep_prim_humans_culture = yes
+						NOT = { culture = culture_lossoth }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Pwall_3
+							add_building = tb_Pwatchtower_3
+							add_building = tb_Pmilitia_barracks_3
+							add_building = tb_Ptown_3
+							add_building = tb_Pkeep_3
+							add_building = tb_Ptraining_grounds_2
+							add_building = tb_Pcastleguards_2
+							add_building = tb_Pstable_2
+						}
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Pwall_3
+							add_building = ca_Pwatchtower_3
+							add_building = ca_Pmilitia_barracks_3
+							add_building = ca_Ptown_3
+							add_building = ca_Pkeep_3
+							add_building = ca_Ptraining_grounds_2
+							add_building = ca_Pcastleguards_2
+							add_building = ca_Pstable_2
+							add_building = ca_paved_road_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Pwall_3
+							add_building = ct_Pwatchtower_3
+							add_building = ct_Ptownmilitia_3
+							add_building = ct_Pmarketplace_3
+							add_building = ct_Pbarracks_3
+							add_building = ct_paved_road_3
+						}
+					}
+					if = { limit = { port = yes }
+						any_province_holding = {
+							if = {
+								limit = { holding_type = tribal}
+								add_building = tb_Pshipyard_2
+							}
+							if = {
+								limit = { holding_type = castle}
+								add_building = ca_Pshipyard_2
+							}
+							if = {
+								limit = { holding_type = city}
+								add_building = ct_Pshipyard_2
+								add_building = ct_Pport_2
+							}
+						}
+					}					
+				}	
+				# A special blend for hillmen improvements
+				if = {
+					limit = {
+						OR = { culture_group = culture_group_haldadian
+								culture = culture_hillmen }
+						NOT = { culture = culture_breelander }
+					}
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Phillsmen_3
+						}
+						if = {
+							limit = { holding_type = castle}
+							add_building = ca_Phillsmen_3
+						}
+					}
+				}			
+				# Lossoth. Less buildings (they live in the arctic) and a special building
+				if = {
+					limit = { culture = culture_lossoth }
+					any_province_holding = {
+						if = {
+							limit = { holding_type = tribal}
+							add_building = tb_Pwall_3
+							add_building = tb_Psnowmen_3
+							add_building = tb_Ptown_3
+							add_building = tb_Pmilitia_barracks_2
+						}
+						if = {
+							limit = { holding_type = castle}						
+							add_building = ca_Pwall_3
+							add_building = ca_Psnowmen_3
+							add_building = ca_Ptown_3
+							add_building = ca_Pmilitia_barracks_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_Pwall_3
+							add_building = ct_Pmarketplace_3
+							add_building = ct_Ptownmilitia_3
+						}
+					}
+				}
+			
+			}
+			# terrain specific buildings
+			province_event = { id = buildings.208 }			
+			# the end
+		}
+	}
+	
+	option = { 	# name = "OK"
 	}
 }

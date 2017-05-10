@@ -3,19 +3,14 @@ namespace = elfchild
 ####### An Elf is still a child #######
 narrative_event = {
     id = elfchild.0
-    title = "EVTTITelfchild.0"
-    desc = "EVTDESCelfchild.0"
-    picture = "GFX_evt_elven_story"
+    #title = "EVTTITelfchild.0"
+    #desc = "EVTDESCelfchild.0"
+    #picture = "GFX_evt_elven_story"
 	age = 16
 	hide_window = yes
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
+		mep_is_elf_culture = yes
 		age = 16
 		NOT = { age = 60 }
 	}
@@ -23,7 +18,7 @@ narrative_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAelfchild.0" ## Ok.
+		# name = "EVTOPTAelfchild.0" ## Ok.
 		add_trait = elf_childhood
 	}	
 }
@@ -37,12 +32,7 @@ narrative_event = {
 	age = 16
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
+		mep_is_elf_culture = yes
 		age = 60
 		trait = elf_childhood
 	}
@@ -117,7 +107,7 @@ narrative_event = {
 			trait = perceptive
 			trait = kind
 		}
-		set_name = "AmdÃ­r"
+		set_name = "Amdír"
 	}	
 	option = {
 		name = "EVTOPTCelfchild.3" ## I want to be called "Bladorthin"
@@ -157,7 +147,7 @@ narrative_event = {
 		set_name = "Beleg"
 	}	
 	option = {
-		name = "EVTOPTFelfchild.3" ## I want to be called "CÃ­rdan"
+		name = "EVTOPTFelfchild.3" ## I want to be called "Círdan"
 		trigger = {
 			OR = {
 				culture = culture_silvan
@@ -168,7 +158,7 @@ narrative_event = {
 			trait = brave
 			trait = fea_strong
 		}
-		set_name = "CÃ­rdan"
+		set_name = "Círdan"
 	}		
 	option = {
 		name = "EVTOPTGelfchild.3" ## I want to be called "Daeron"
@@ -217,7 +207,7 @@ narrative_event = {
 		set_name = "Galdor"
 	}		
 	option = {
-		name = "EVTOPTKelfchild.3" ## I want to be called "VoronwÃ«"
+		name = "EVTOPTKelfchild.3" ## I want to be called "Voronwë"
 		trigger = {
 			OR = {
 				culture = culture_silvan
@@ -225,7 +215,7 @@ narrative_event = {
 			}
 			trait = fair
 		}
-		set_name = "VoronwÃ«"
+		set_name = "Voronwë"
 	}			
 	option = {
 		name = "EVTOPTLelfchild.3" ## I want to be called "Arminas"
@@ -320,7 +310,7 @@ narrative_event = {
 		set_name = "Gelion"
 	}		
 	option = {
-		name = "EVTOPTVelfchild.3" ## I want to be called "ElemmÃ­rÃ«"
+		name = "EVTOPTVelfchild.3" ## I want to be called "Elemmírë"
 		trigger = {
 			OR = {
 				trait = composer
@@ -328,15 +318,15 @@ narrative_event = {
 				trait = legendary_musician
 			}
 		}
-		set_name = "ElemmÃ­rÃ«"
+		set_name = "Elemmírë"
 	}	
 	option = {
-		name = "EVTOPTWelfchild.3" ## I want to be called "LenwÃ«"
+		name = "EVTOPTWelfchild.3" ## I want to be called "Lenwë"
 		trigger = {
 			trait = tall
 			trait = perceptive
 		}
-		set_name = "LenwÃ«"
+		set_name = "Lenwë"
 	}	
 	option = {
 		name = "EVTOPTXelfchild.3" ## I want to be called "Denethor"

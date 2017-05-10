@@ -1,36 +1,112 @@
-#BR NOTE - Sorry Lon, I decided to re-do colonization from the ground up. I got too annoyed trying to colonize Annunimas in vain, and it's always easier building a new event than fixing someone else's
+#BR NOTE - Sorry Lon, I decided to re-do colonization from the ground up. I got too annoyed trying to
+# colonize Annunimas in vain, and it's always easier building a new event than fixing someone else's
 
 decisions = {
 
-colonisation_wilderness = { #for players only
-		ai = no
+	# General colonization : Immortals, Wilderness or Dwarves cannot do this
+	colonisation_wilderness = { #for players only
 		is_high_prio = no
+		
 		potential = {
+			ai = no
 			job_treasurer = { is_alive = yes }
 			
 			job_treasurer = {
-			location = {
-				OR = {
-					religion = religion_wilderness
-					culture = culture_wilderness
-					culture = culture_mountains
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
 				}
-				NOT = { has_province_modifier = being_colonised }
-			}
 			}
 			
-			NOT = { culture = culture_maiar }
-			NOT = { culture = culture_istari }
+			# The following groups do not colonize, or have special events
+			NOR = {
+				mep_is_immortal_race_trigger = yes
+				culture_group = culture_group_dwarves
+				religion_group = religion_group_khazad
+				religion_group = religion_group_wilderness
+			}
 			demesne_size = 1
+			#NOT = { has_character_flag = colonizationwilderness }
 			has_character_flag = special_decisions_open
+			any_demesne_province = {
+				NOT = { mep_wilderness_province_trigger = yes }
+				NOT = { has_province_modifier = sending_colonists }
+			}
 		}
 		
 		allow = {
 			war = no
 			prisoner = no
 			age = 16
-			prestige = 300
-			wealth = 200
+			prestige = 500
+			wealth = 300
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+				}
+			}
+		}
+		
+		effect = {
+			if = {
+				limit = { 
+					NOT = { culture_group = culture_group_numenorean }
+				}
+				character_event = { id = "colonisation.0" }
+			}
+			if = {
+				limit = { 
+					culture_group = culture_group_numenorean 
+				}
+				character_event = { id = "colonisation.8" } #They can choose whether to settle with middle men instead, for a cheaper price
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+	
+	colonisation_wilderness_with_dwarves = { #for players only
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+		
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+					OR = {
+						terrain = hills
+						terrain = mountain
+					}
+				}
+			}
+			has_character_flag = special_decisions_open
+			NOT = { culture = culture_maiar }
+			NOT = { culture = culture_istari }
+			# This option is meant for humans (or non-dwarves) inviting dwarves to colonize, not for dwarves.
+			NOT = {
+				religion_group = religion_group_khazad
+				culture_group = culture_group_dwarves
+			}
+			demesne_size = 1
+			#NOT = { has_character_flag = colonizationwilderness }
+			any_demesne_province = {
+				NOT = { culture_group = culture_group_wilderness }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 500
+			wealth = 1300
+			any_courtier = {
+				culture_group = culture_group_dwarves
+				religion = religion_mahal
+			}
 			job_treasurer = {
 				location = {
 					OR = {
@@ -39,185 +115,422 @@ colonisation_wilderness = { #for players only
 						culture = culture_mountains
 					}
 				}
-				has_job_action = action_colonize_province
+			}
+			NOR = {
+				religion_group = religion_group_khazad
+				culture_group = culture_group_dwarves
+			}
+		}
+		
+		effect = {
+			character_event = { id = "colonisation.2" }
+		}
+		
+		ai_will_do = { factor = 0 }
+	}
+	
+	colonisation_wilderness_with_elves = { #for players only
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+			
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+				}
+			}
+			has_character_flag = special_decisions_open
+			NOT = { culture = culture_maiar }
+			NOT = { culture = culture_istari }
+			# This option is meant for humans inviting elves to colonize, not for elves.
+			NOT = { mep_has_elf_stuff = yes }
+			NOT = { mep_is_evil_side_trigger = yes }
+			demesne_size = 1
+			#NOT = { has_character_flag = colonizationwilderness }
+			any_demesne_province = {
+				NOT = { culture_group = culture_group_wilderness }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 500
+			wealth = 1700
+			any_courtier = { mep_is_genuine_elf = yes }
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+				}
+			}
+		}
+		
+		effect = {
+			character_event = { id = "colonisation.4" }
+		}
+		
+		ai_will_do = { factor = 0 }
+	}
+	
+	colonisation_wilderness_with_halflings = { #for players only
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+			
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+				}
+			}
+			has_character_flag = special_decisions_open
+			NOT = { culture = culture_maiar }
+			NOT = { culture = culture_istari }
+			# This option is meant for humans inviting hobbits to colonize, not for hobbits.
+			NOT = { religion = religion_perian }
+			# I don't think evil would ever colonize with hobbits
+			NOT = { mep_is_evil_side_trigger = yes }
+			demesne_size = 1
+			#NOT = { has_character_flag = colonizationwilderness }
+			any_demesne_province = {
+				NOT = { culture_group = culture_group_wilderness }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 500
+			wealth = 500
+			any_courtier = {
+				culture_group = culture_group_halfling
+				religion = religion_perian
+			}
+			job_treasurer = {
+				location = {
+					OR = {
+						religion = religion_wilderness
+						culture = culture_wilderness
+						culture = culture_mountains
+					}
+				}
 			}
 		}
 		effect = {
-			if = {
-			limit = { 
-			NOT = { culture_group = culture_group_numenorean }
+			character_event = { id = "colonisation.6" }
+		}
+		
+		ai_will_do = { factor = 0 }
+	}
+#------------------------------------------------------------------------------------------------------
+	# Special Dwarven colonization 1 (from and by dwarves)
+	colonisation_mountains_for_dwarves = {
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+			# your treasurer must be in a wilderness, which is mountainous or hilly
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+					OR = {
+						terrain = mountain
+						terrain = hills
+					}
+				}
 			}
-			character_event = { id = "colonisation.0" }
-			}
-			if = {
-			limit = { 
-			culture_group = culture_group_numenorean 
-			}
-			character_event = { id = "colonisation.8" } #They can choose whether to settle with middle men instead, for a cheaper price
+			# you must be a proper dwarf
+			religion_group = religion_group_khazad
+			culture_group = culture_group_dwarves
+
+			demesne_size = 1
+			has_character_flag = special_decisions_open
+			# you must have a Dwarven province which is not already sending colonists
+			any_demesne_province = {
+				religion_group = religion_group_khazad
+				culture_group = culture_group_dwarves
+				NOT = { has_province_modifier = sending_colonists }
 			}
 		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 500
+			wealth = 400
+			job_treasurer = {
+				# again, your treasurer must be in a wilderness, which is mountainous or hilly
+				location = {
+					mep_wilderness_province_trigger = yes
+					OR = {
+						terrain = mountain
+						terrain = hills
+					}
+				}
+			}
 		}
-	
-	# colonisation_wilderness_with_dwarves = { #for players only
-		# ai = no
-		# is_high_prio = no
-		# potential = {
-			# job_treasurer = { is_alive = yes }
-			
-			# job_treasurer = {
-			# location = {
-				# OR = {
-					# religion = religion_wilderness
-					# culture = culture_wilderness
-					# culture = culture_mountains
-				# }
-				# NOT = { has_province_modifier = being_colonised }
-			# }
-			# }
-			# has_character_flag = special_decisions_open
-			# NOT = { culture = culture_maiar }
-			# NOT = { culture = culture_istari }
-			# demesne_size = 1
-			# #NOT = { has_character_flag = colonizationwilderness }
-			# any_demesne_province = {
-			# NOT = { culture = culture_wilderness }
-			# NOT = { has_province_modifier = sending_colonists }
-		# }
-		# }
 		
-		# allow = {
-			# war = no
-			# prisoner = no
-			# age = 16
-			# prestige = 500
-			# wealth = 1000
-			# any_courtier = {
-			# culture_group = culture_group_dwarves
-			# religion = religion_mahal
-			# }
-			# job_treasurer = {
-				# location = {
-					# OR = {
-						# religion = religion_wilderness
-						# culture = culture_wilderness
-						# culture = culture_mountains
-					# }
-				# }
-				# has_job_action = action_colonize_province
-			# }
-		# }
-		# effect = {
-			# character_event = { id = "colonisation.2" }
-		# }
-	# }
-	
-	# colonisation_wilderness_with_elves = { #for players only
-		# ai = no
-		# is_high_prio = no
-		# potential = {
-			# job_treasurer = { is_alive = yes }
-			
-			# job_treasurer = {
-			# location = {
-				# OR = {
-					# religion = religion_wilderness
-					# culture = culture_wilderness
-					# culture = culture_mountains
-				# }
-				# NOT = { has_province_modifier = being_colonised }
-			# }
-			# }
-			# has_character_flag = special_decisions_open
-			# NOT = { culture = culture_maiar }
-			# NOT = { culture = culture_istari }
-			# demesne_size = 1
-			# #NOT = { has_character_flag = colonizationwilderness }
-			# any_demesne_province = {
-			# NOT = { culture = culture_wilderness }
-			# NOT = { has_province_modifier = sending_colonists }
-		# }
-		# }
-		
-		# allow = {
-			# war = no
-			# prisoner = no
-			# age = 16
-			# prestige = 500
-			# wealth = 1000
-			# any_courtier = {
-			# OR = {
-			# culture_group = culture_group_amanyar
-			# culture_group = culture_group_umanyar
-			# culture_group = culture_group_moriquendi
-			# }
-			# religion_group = religion_group_eldar
-			# }
-			# job_treasurer = {
-				# location = {
-					# OR = {
-						# religion = religion_wilderness
-						# culture = culture_wilderness
-						# culture = culture_mountains
-					# }
-				# }
-				# has_job_action = action_colonize_province
-			# }
-		# }
-		# effect = {
-			# character_event = { id = "colonisation.4" }
-		# }
+		# Triggering the correct colonization event
+		effect = {
+			character_event = { id = "colonisation.20" }
+		}
 	}
 	
-	# colonisation_wilderness_with_halflings = { #for players only
-		# ai = no
-		# is_high_prio = no
-		# potential = {
-			# job_treasurer = { is_alive = yes }
-			
-			# job_treasurer = {
-			# location = {
-				# OR = {
-					# religion = religion_wilderness
-					# culture = culture_wilderness
-					# culture = culture_mountains
-				# }
-				# NOT = { has_province_modifier = being_colonised }
-			# }
-			# }
-			# has_character_flag = special_decisions_open
-			# NOT = { culture = culture_maiar }
-			# NOT = { culture = culture_istari }
-			# demesne_size = 1
-			# #NOT = { has_character_flag = colonizationwilderness }
-			# any_demesne_province = {
-			# NOT = { culture = culture_wilderness }
-			# NOT = { has_province_modifier = sending_colonists }
-		# }
-		# }
+	# Special Dwarven colonization 2 (from and by dwarves)
+	colonisation_nonmountains_for_dwarves = {
+		is_high_prio = no
 		
-		# allow = {
-			# war = no
-			# prisoner = no
-			# age = 16
-			# prestige = 500
-			# wealth = 500
-			# any_courtier = {
-			# culture_group = culture_group_halfling
-			# religion = religion_perian
-			# }
-			# job_treasurer = {
-				# location = {
-					# OR = {
-						# religion = religion_wilderness
-						# culture = culture_wilderness
-						# culture = culture_mountains
-					# }
-				# }
-				# has_job_action = action_colonize_province
-			# }
-		# }
-		# effect = {
-			# character_event = { id = "colonisation.6" }
-		# }
-	# }
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+			# your treasurer must be in a wilderness, which is NOT mountainous or hilly (excludes some really marginal terrain types)
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+					NOT = {
+						OR = {
+							terrain = mountain
+							terrain = hills
+							terrain = arctic
+							terrain = jungle
+							terrain = marsh
+							terrain = steppe							
+						}
+					}
+				}
+			}
+			# you must be a proper dwarf
+			religion_group = religion_group_khazad
+			culture_group = culture_group_dwarves
+
+			demesne_size = 1
+			has_character_flag = special_decisions_open
+			# you must have a Dwarven province which is not already sending colonists
+			any_demesne_province = {
+				religion_group = religion_group_khazad
+				culture_group = culture_group_dwarves
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 700
+			wealth = 800
+			job_treasurer = {
+				# again, your treasurer must be in a wilderness, which is NOT mountainous or hilly
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = {
+						OR = {
+							terrain = mountain
+							terrain = hills
+							terrain = arctic
+							terrain = jungle
+							terrain = marsh
+							terrain = steppe							
+						}
+					}
+				}
+			}
+		}
+		
+		# Triggering the correct colonization event
+		effect = {
+			character_event = { id = "colonisation.22" }
+		}
+	}
+	
+	# Special Elven colonisation (by and for elves)
+	colonisation_general_for_elves = {
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+			# your treasurer must be in a wilderness (no terrain restrictions for now)
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+					# no terrain restriction for now
+				}
+			}
+			# you must be a genuine elf
+			mep_is_genuine_elf = yes
+
+			demesne_size = 1
+			has_character_flag = special_decisions_open
+			# you must have a Elven province which is not already sending colonists
+			any_demesne_province = {
+				mep_is_province_elven_trigger = yes
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 500
+			wealth = 600
+			job_treasurer = {
+				# again, your treasurer must be in a wilderness (no terrain restrictions for now)
+				location = {
+					mep_wilderness_province_trigger = yes
+				}
+			}
+		}
+		
+		# Triggering the correct colonization event
+		effect = {
+			if = {
+				limit = { 
+					NOT = { culture_group = culture_group_amanyar }
+				}
+				character_event = { id = "colonisation.30" }
+			}
+			if = {
+				limit = { 
+					culture_group = culture_group_amanyar 
+				}
+				character_event = { id = "colonisation.31" } #They can choose whether to settle with lesser elves instead, for a cheaper price
+			}
+		}
+	}
+#---------------------------------------------------------------------------------------------------------------	
+	
+	# Colonize wilderness with Humans (non-evil, non-human)
+	colonisation_wilderness_human = { #for players only
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			demesne_size = 1
+			# only to be used by non-human non-evil
+			OR = {
+				religion_group = religion_group_khazad
+				religion_group = religion_group_eldar
+				religion_group = religion_group_periannath
+				culture = culture_eagles
+				culture = culture_entish  # Huorns seem unfriendly to Humans, despite not being evil
+				culture = culture_valar
+				AND = {
+					culture = culture_istari
+					trait = good_side
+				}
+			}
+			has_character_flag = special_decisions_open
+			# The treasurer must be in a wilderness province			
+			job_treasurer = { is_alive = yes }			
+			job_treasurer = {
+				location = {
+					# target is wilderness
+					mep_wilderness_province_trigger = yes
+					# target must not be in colonization already
+					NOT = { mep_province_being_colonized_trigger = yes }
+					# the terrain must be 'medium'
+					NOT = {
+						terrain = mountain
+						terrain = arctic
+						terrain = desert
+						terrain = marsh					
+					}
+				}
+			}
+			# you must have a populated province to support this
+			any_demesne_province = {
+				NOT = { mep_wilderness_province_trigger = yes }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 400
+			wealth = 500
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+				}
+			}
+			# you must be able to support a colonization
+			demesne_size = 1	
+		}
+		
+		effect = {
+			character_event = { id = "colonisation.40" }
+		}
+		
+		ai_will_do = { factor = 0 }
+	}
+
+	# this decision is for terrain-specific colonization with people who know the arctic	
+	colonisation_wilderness_with_forodwaith = {
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			job_treasurer = { is_alive = yes }
+		
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					terrain = arctic
+					NOT = { mep_province_being_colonized_trigger = yes }
+				}
+			}
+			has_character_flag = special_decisions_open
+			NOR = {
+				culture_group = culture_group_forodwaith
+				culture = culture_maiar
+				culture = culture_istari
+			}
+			demesne_size = 1
+			#NOT = { has_character_flag = colonizationwilderness }
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 450
+			wealth = 1000
+			any_courtier = {
+				culture_group = culture_group_forodwaith
+			}
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					terrain = arctic
+				}
+			}
+			NOT = {
+				culture_group = culture_group_forodwaith
+			}
+		}
+		
+		effect = {
+			character_event = { id = "colonisation.42" }
+		}
+	}	
+	
+	
 }

@@ -7,6 +7,7 @@ character_event = {
 	title = "EVTTITconflict.7"	
 	desc = "EVTDESCconflict.7"	
 	picture = "GFX_shadows_coming"	
+	only_playable = yes
 	
 	trigger = {		
 		trait = evil_side	
@@ -32,7 +33,6 @@ character_event = {
 		name = "EVTOPTAconflict.7"	
 		any_realm_character = { 	
 			limit = {
-				AND = {
 				OR = {		
 					religion = religion_dunedain		
 					religion_group = religion_group_eldar	
@@ -42,7 +42,6 @@ character_event = {
 				NOT = { trait = evil_side }
 				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
 				any_close_relative = { is_patrician = no } 
-				}
 			}
 			character_event = { id = conflict.8 }	
 		}	
@@ -113,6 +112,7 @@ character_event = {
 	title = "EVTTITconflict.9"	
 	desc = "EVTDESCconflict.9"	
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 	
 	trigger = {	
 		OR = {	
@@ -144,7 +144,6 @@ character_event = {
 		name = "EVTOPTAconflict.9"
 		any_realm_character = { 
 			limit = {
-				AND = {
 				OR = {		
 					religion = religion_dunedain		
 					religion_group = religion_group_eldar		
@@ -154,7 +153,6 @@ character_event = {
 				NOT = { trait = evil_side }	
 				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
 				any_close_relative = { is_patrician = no } 
-				}
 				}			
 			character_event = { id = conflict.10 }	
 		}	
@@ -226,6 +224,7 @@ character_event = {
 	title = "EVTTITconflict.11"	
 	desc = "EVTDESCconflict.11"		
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 		
 	trigger = {		
 		OR = {		
@@ -253,34 +252,30 @@ character_event = {
 	}
 
 	mean_time_to_happen = {		
-		days = 1
+		days = 7	
 	}	
 
 	option = {
 		name = "EVTOPTAconflict.11"
 		any_realm_character = { 
 			limit = {
-			is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
-			any_close_relative = { is_patrician = no }
-			OR = {
-			religion_group = religion_group_melkor
-			religion = religion_wilderness		
-			culture = culture_wight		
-			culture = culture_orkish		
-			culture = culture_goblin		
-			culture = culture_urukhai		
-			culture = culture_spider
-			culture = culture_troll	
+				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+				any_close_relative = { is_patrician = no }
+				OR = {
+					religion_group = religion_group_melkor
+					religion = religion_wilderness		
+					culture = culture_wight		
+					culture = culture_orkish		
+					culture = culture_goblin		
+					culture = culture_urukhai		
+					culture = culture_spider
+					culture = culture_troll	
+				}
 			}
-							
-			}			
 			character_event = { id = conflict.12 }		
 		}	
 	}	
 }
-
-	
-	
 
 ##evil characters are informed##
 character_event = {	
@@ -318,10 +313,11 @@ character_event = {
 ##wilderness flee from all##		
 character_event = {
 	id = conflict.13
-	title = OK
-	desc = OK	
-	picture = "GFX_shadows_coming"
+	# title = OK
+	# desc = OK	
+	# picture = "GFX_shadows_coming"
 	hide_window = yes
+	only_playable = yes
 		
 	trigger = {		
 		NOT = { religion = religion_wilderness }
@@ -336,7 +332,7 @@ character_event = {
 	}	
 
 	option = {
-		name = OK
+		# name = OK
 		any_realm_character = { 
 			limit = {			
 				religion = religion_wilderness					
@@ -349,17 +345,17 @@ character_event = {
 	
 	
 
-##evil characters are informed##
+## auto-usurping wilderness vassals##
 character_event = {	
 	id = conflict.14
-	title = OK
-	desc = OK		
-	picture = "GFX_shadows_coming"		
+	# title = OK
+	# desc = OK		
+	# picture = "GFX_shadows_coming"		
 	is_triggered_only = yes
 	hide_window=yes
 	
 	option = {	
-		name = OK		
+		# name = OK		
 		trigger = { is_ruler = yes }	
 		any_demesne_title = {		
 			usurp_title = FROM		

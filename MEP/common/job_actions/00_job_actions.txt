@@ -26,6 +26,37 @@ action_improve_relations = {
 	events = { 910 911 }
 }
 
+action_clan_sentiment = {
+	attribute = diplomacy
+	
+	potential = {
+		FROM = {
+			is_nomadic = yes
+		}
+	}
+	
+	trigger = {
+		owner = {
+			is_nomadic = yes
+			NOT = { character = FROM }
+
+			FROM = {
+				job_chancellor = {
+					NOT = { character = PREVPREV } # Can't be sent to improve relations with himself...
+				}
+			}
+			
+			OR = {
+				vassal_of = FROM
+				same_liege = FROM
+				overlord_of = FROM
+			}
+		}
+	}
+	
+	events = { 20235 }
+}
+
 action_fabricate_claims = {
 	attribute = diplomacy
 	
@@ -222,61 +253,76 @@ action_build_legend = {
 	events = { 20208 }
 }
 
+# Used to target wilderness provinces for colonization
 action_colonize_province = {
 	attribute = stewardship
+	
+	potential = {
+
+	}	
 
 	trigger = {
-		OR = {	
-			owner = { top_liege = { character = FROM } }
-			owner = { liege = { liege = { character = FROM } } }
-			owner = { liege = { character = FROM } }
-			owner = { character = FROM }
-		}
-		NOT = {
-			OR = {
-				owner = { has_character_flag = colonizationwilderness}
-				owner = { liege = { has_character_flag = colonizationwilderness} }
-				owner = { liege = { liege = { has_character_flag = colonizationwilderness} } }
-				owner = { top_liege = { has_character_flag = colonizationwilderness} }
-			}
-		}
-		OR = {
-			religion = religion_wilderness
-			culture = culture_wilderness
-		}
-		#Only allows hills, mountain, and arctic terrain to be colonized by dwarves
-		IF = {
-			owner = {
-				culture_group = culture_group_dwarves
+		any_province_lord = {
+			OR = {		
+				top_liege = { character = FROM } 
+				liege = { liege = { character = FROM } } 
+				liege = { character = FROM }
+				character = FROM
 			}
 			NOR = {
-				terrain = farmlands
-				terrain = plains
-				terrain = steppe
-				terrain = forest
-				terrain = jungle
-				terrain = desert
+				has_character_flag = colonizationwilderness
+				liege = { has_character_flag = colonizationwilderness} 
+				liege = { liege = { has_character_flag = colonizationwilderness} } 
+				top_liege = { has_character_flag = colonizationwilderness}
 			}
 		}
-		# Restricts the listed culture groups from colonizing mountains and arctic regions.
-		IF = {
-			owner = {
-				OR = {
-					culture_group = culture_group_haldadian
-					culture_group = culture_group_southron
-					culture_group = culture_group_easterling
-					culture_group = culture_group_halfling
-					culture_group = culture_group_quendi
-					culture_group = culture_group_amanyar
-					culture_group = culture_group_umanyar
-					culture_group = culture_group_moriquendi
-				}
+		mep_wilderness_province_trigger = yes
+		NOT = { mep_province_being_colonized_trigger = yes }
+		
+	}
+	
+	events = { }
+}
+
+# MEP custom, used to target the provinces where the population level modifier is 1 to 6
+# making it a valid target for the 'increase population' decision
+action_increase_population = {
+	attribute = stewardship
+	
+	potential = {
+
+	}	
+
+	trigger = {
+		any_province_lord = {
+			OR = {		
+				top_liege = { character = FROM } 
+				liege = { liege = { character = FROM } } 
+				liege = { character = FROM }
+				character = FROM
+				
 			}
 			NOR = {
-				terrain = mountain
-				terrain = arctic
+				has_character_flag = colonizationwilderness
+				liege = { has_character_flag = colonizationwilderness} 
+				liege = { liege = { has_character_flag = colonizationwilderness} } 
+				top_liege = { has_character_flag = colonizationwilderness}
 			}
 		}
+		owner = {
+			PREV = {
+			  controlled_by = PREV
+			}
+		}
+		mep_has_increasable_popmod_trigger = yes
+		NOT = { has_province_modifier = population_increasing }
+		NOT = { has_province_modifier = being_purged }
+		
+		
+		
+		mep_wilderness_province_trigger = yes
+		NOT = { mep_province_being_colonized_trigger = yes }
+		
 	}
 	
 	events = { }
@@ -430,100 +476,7 @@ action_assist_arrest = {
 	events = {  }
 }
 
-
-#### Court Chaplain
-
-action_inquisition = {
-	attribute = learning
-	
-	trigger = {
-		num_of_settlements = 1
-		NAND = {
-			FROM = { job_spiritual = { has_character_modifier = spiritual_refused_pagans } }  # See Event ZE.5040
-			owner = { religion_group = pagan_group }
-		}
-		OR = {
-			owner = {
-				FROM = { NOT = { religion_group = pagan_group } }
-				independent = yes
-				NOT = { religion = FROM }
-				religion_group = pagan_group
-				OR = {
-					NOT = { religion = aztec }
-					year = 1350
-				}
-				is_reformed_religion = no
-				capital_scope = {
-					province = ROOT
-				}
-				controls_religion = no
-				FROM = {
-					higher_tier_than = COUNT
-					OR = {
-						independent = yes
-						higher_tier_than = DUKE
-					}
-				}
-				NOT = {
-					has_opinion_modifier = { who = FROM modifier = opinion_sent_preacher }
-				}
-				is_within_diplo_range = FROM
-			}
-			any_province_lord = {
-				OR = {
-					character = FROM
-					is_liege_or_above = FROM
-				}
-			}
-		}
-	}
-	
-	events = { 900 901 902 903 }
-}
-
-action_advance_cul_tech = {
-	attribute = learning
-	
-	potential = {
-		FROM = {
-			is_tribal = no
-		}
-	}
-	
-	trigger = {
-		any_province_lord = {
-			OR = {
-				character = FROM
-				is_liege_or_above = FROM
-			}
-		}
-		technology_can_spread = yes
-	}
-	
-	tech_growth_modifier_culture = 0.05
-	
-	events = { 926 927 }
-}
-
-action_build_zeal = {
-	attribute = learning
-
-	potential = {
-		FROM = {
-			is_tribal = yes
-		}
-	}
-
-	trigger = {
-		FROM = {
-			is_capital = PREV
-		}
-	}
-	
-	monthly_character_piety = 0.05
-	
-	events = { 20218 }
-}
+# Court Chaplain
 
 action_heal_troops = {
 	attribute = learning
@@ -546,4 +499,60 @@ action_heal_troops = {
 	events = { }
 	
 	levy_reinforce_rate = 0.15
+}
+
+action_search_artefacts = {
+	attribute = learning
+
+	potential = {
+		FROM = { 
+			NOT = { has_character_flag = searched_for_artefact }
+		}
+	}
+	
+	trigger = {
+		any_province_lord = {
+			character = FROM
+		}
+	}
+	
+	events = { }
+}
+
+action_claim_artefacts = {
+	attribute = learning
+
+	potential = {
+		FROM = { 
+			NOT = { has_character_flag = searched_for_artefact }
+		}
+	}
+	
+	trigger = {
+		any_province_lord = {
+			character = FROM
+		}
+	}
+	
+	events = { }
+}
+
+action_build_zeal = {
+	attribute = learning
+
+	potential = {
+		FROM = {
+			is_tribal = yes
+		}
+	}
+
+	trigger = {
+		FROM = {
+			is_capital = PREV
+		}
+	}
+	
+	monthly_character_piety = 0.05
+	
+	events = { 20218 }
 }

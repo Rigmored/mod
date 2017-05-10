@@ -1,0 +1,450 @@
+# Buildings that I've decided to keep for post 0.7
+
+city = {
+# Dwarf Buildings
+####################### Water system : levy reinforce rate and land organisation #######################
+	ct_Dwater_system_0 = { #no water system
+		desc = ca_Dwater_system_0_desc
+		gold_cost = 0
+		build_time = 0
+		levy_reinforce_rate = -0.1
+		fertility = -0.2
+		ai_creation_factor = 102
+		potential = {
+			culture_group = culture_group_dwarves 
+            	}
+	}
+	ct_Dwater_system_1 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ct_Dwater_system_0
+		gold_cost = 85
+		build_time = 365
+		levy_reinforce_rate =  0.1
+		fertility = 0.2
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+            	}
+	}
+	ct_Dwater_system_2 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ca_dwarvenfortifications_3 }
+		upgrades_from = ct_Dwater_system_1
+		gold_cost = 100
+		build_time = 550
+		levy_reinforce_rate = 0.1
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+            	}
+	}
+	
+	### Mines and other Dwarfy stuff
+	ct_dwarfmines_1 = {
+		desc = ct_dwarfmines_1_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		start = { always = no }
+		gold_cost = 35
+		build_time = 120
+		tax_income = 1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+	    	culture_group = culture_group_dwarves
+        }
+	}
+	ct_dwarfmines_2 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ct_dwarfmines_1
+		gold_cost = 80
+		build_time = 360
+		tax_income = 2
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+        }
+	}
+	ct_dwarfmines_3 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ca_dwarvenfortifications_2 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+        }
+	}
+	ct_dwarfmines_4 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ca_dwarvenfortifications_3 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_3
+		gold_cost = 400
+		build_time = 1460
+		tax_income = 4
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			terrain = mountain
+       	}
+	}
+	ct_dwarfmines_5 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ca_dwarvenfortifications_5 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_4
+		gold_cost = 670
+		build_time = 3650
+		tax_income = 5
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			terrain = mountain
+        }
+	}
+	ct_dwarfmines_6 = {
+		desc = ct_dwarfmines_6_desc
+		prerequisites = { ca_dwarvenfortifications_6 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_5
+		gold_cost = 1500
+		build_time = 6570
+		tax_income = 9
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			province_id = 285 # Moria
+        }
+	}
+	ct_mithrilmines_1 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		start = { always = no }
+		gold_cost = 20
+		build_time = 73
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+				
+	    		ruler = { trait = mithril_found }
+				province_id = 285 # Moria
+            }
+	}
+	ct_mithrilmines_2 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		upgrades_from = ct_mithrilmines_1
+		start = { always = no }
+		gold_cost = 24
+		build_time = 109
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+				has_global_flag = building
+	    		ruler = { trait = mithril_found }
+				province_id = 285 # Moria
+            }
+	}
+	ct_mithrilmines_3 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		upgrades_from = ct_mithrilmines_2
+		start = { always = no }
+		gold_cost = 40
+		build_time = 146
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+				has_global_flag = building
+	    		ruler = { trait = mithril_found }
+				province_id = 285 # Moria
+            }
+	}
+	
+	ct_jeweler_1 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		start = { always = no }
+		gold_cost = 20
+		build_time = 73
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+	    		ruler = { trait = erebor_gem_mine }
+				province_id = 292 #Erebor
+            }
+	}
+	ct_jeweler_2 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		upgrades_from = ct_jeweler_1
+		start = { always = no }
+		gold_cost = 24
+		build_time = 109
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+				has_global_flag = building
+	    		ruler = { trait = erebor_gem_mine }
+				province_id = 292 #Erebor
+            }
+	}
+	ct_jeweler_3 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		upgrades_from = ct_jeweler_2
+		start = { always = no }
+		gold_cost = 40
+		build_time = 146
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+				has_global_flag = building
+	    		ruler = { trait = erebor_gem_mine }
+				province_id = 292 #Erebor
+            }
+	}
+	
+	tp_dwarven_ancestors = {
+		desc = tp_dwarven_ancestors_desc
+		gold_cost = 150
+		build_time = 547
+		liege_piety = 0.05
+		heavy_infantry = 40
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            
+			culture_group = culture_group_dwarves
+        }
+	}
+	
+	# Human
+	
+	ct_lond_daer = { #Great port of Lond Daer#
+		desc = ca_lond_daer_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2.0
+		galleys = 10
+		heavy_infantry = 50
+		light_infantry = 50
+		archers = 200
+		tax_income = 1
+		ai_creation_factor = 86
+        	potential = {
+            	province_id = 155 #Pelargir
+            }
+	}
+	
+	ct_fornost_erain = { ### Fornost Erain
+		desc = ca_fornost_erain_desc
+		not_if_x_exists = { ct_fornost_ruins }
+		gold_cost = 850
+		build_time = 1460 #4y
+		fort_level = 5.0
+		ai_creation_factor = 86
+		tax_income = 2.0
+        	potential = {
+				
+            	province_id = 270 # Fornost Erain
+				culture_group = culture_group_numenorean
+				NOT = { has_building = ct_fornost_ruins }
+        	}
+	}
+	
+	ct_fornost_ruins = { ### Fornost Ruins
+		desc = ca_fornost_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.5			
+		ai_creation_factor = 86		
+        potential = {
+            province_id = 270 # Fornost Erain
+			year = 10318
+			NOT = { has_building = ct_fornost_erain }	
+			NOT = { has_global_flag = fornost_rebuilded_finally }
+       	}
+	}
+	
+	ct_osgiliath_ruins = { ### Osgiliath Ruins
+		desc = ct_osgiliath_ruins_desc;
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.5		
+		ai_creation_factor = 00
+		not_if_x_exists = { ca_dome_of_the_stars ca_great_hall_osgiliath }
+       	 	potential = {
+				
+           		OR = {
+					AND = {
+						province_id=427
+						NOT = { has_global_flag = east_osgiliath_rebuilded_finally }
+					}
+					AND = {
+						province_id=428
+						NOT = { has_global_flag = west_osgiliath_rebuilded_finally }
+					}
+				}
+				year = 9900
+				NOT = { has_global_flag = osgiliath_rebuilded_finally }
+			}
+
+	}
+	
+	ct_annuminas_ruins = { ### Annuminas Ruins
+		desc = ct_annuminas_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.5		
+		ai_creation_factor = 86		
+        potential = {
+            province_id = 659 # Annuminas
+			
+			year = 10317
+			#NOT = { has_building = ct_hall_of_kings }	
+			NOT = { has_global_flag = annuminas_rebuilded_finally }
+       		}
+	}
+	
+	ct_minas_ithil_ruins = { # Minas Ithil ruins
+		desc = ca_minas_ithil_ruins_desc
+		gold_cost = 100
+		build_time = 100
+		not_if_x_exists = { ca_tower_of_moon}
+		ai_creation_factor = 80	
+        	potential = {
+            	
+				province_id=426 
+				NOT = { has_global_flag = minas_ithil_rebuilded_finally }
+				year=9980
+				
+		}
+	}
+	
+	ct_amon_sul_ruins = { ### Amon Sûl Ruins
+		desc = ct_amon_sul_ruins_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -4
+		garrison_size = -0.5			
+		ai_creation_factor = 86		
+      		potential = {
+            	province_id =  269 # Amon Sul
+				year = 9752
+				NOT = { has_building = ca_amon_sul }	
+				NOT = { has_global_flag = amon_sul_rebuilded_finally }
+       		}
+	}	
+	
+	ct_barrow_downs = {
+		desc = ca_barrow_downs_desc
+		gold_cost = 1
+		build_time = 1
+		tax_income = -3	
+		garrison_size = -0.2
+		ai_creation_factor = 86
+    		potential = {
+				province_id = 105
+       			
+	    		culture = culture_wight
+				NOT = { has_global_flag = barrows_cleansed }
+    		}
+	}
+	
+	ct_stone_hapless = { ### The Stone of the Hapless
+		desc = ct_stone_hapless_desc
+		gold_cost = 250
+		build_time = 360
+		tax_income = 2				
+		ai_creation_factor = 86		
+        potential = {
+            FROMFROM = { title = b_stone_hapless }
+        }
+	}
+	
+	# === ELVEN ===
+	
+	ct_edhellond_ruins = { ### Edhellond Ruins
+		desc = ca_edhellond_ruins_desc
+		not_if_x_exists = { ct_edhellond }
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -3	
+		garrison_size = -0.2		
+		ai_creation_factor = 86		
+        	potential = {
+           		province_id = 429 # Edhellond
+			year = 10324
+			NOT = { has_global_flag = edhellond_rebuilded_finally }
+       		}
+	}
+	
+	ct_gwaith_i_mirdain = { #Gwaith i Mirdain#
+		desc = ca_gwaith_i_mirdain_desc
+		gold_cost = 2050
+		build_time = 6460 #4y
+		fort_level = 5.0
+		tax_income = 10	
+		heavy_infantry = 200
+		ai_creation_factor = 86
+		garrison_size = 2.00
+        	potential = {
+				culture = culture_noldor
+				province_id = 290 #Ost-in-Edhil
+				has_global_flag = gwaith_mirdain_rebuilded
+        	}
+	}
+	
+	ct_edhellond = { #Great port of Edhellond#
+		desc = ca_edhellond_desc
+		not_if_x_exists = { ct_edhellond_ruins }
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 4.0
+		galleys = 25
+		heavy_infantry = 250
+		light_infantry = 250
+		archers = 500
+		tax_income = 3
+		ai_creation_factor = 86
+		
+        potential = {
+            province_id = 429 #Edhellond
+			NOT = { has_building = ct_edhellond_ruins }
+		}
+	}
+
+}

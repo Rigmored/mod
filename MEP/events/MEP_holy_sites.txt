@@ -146,16 +146,16 @@ narrative_event = {
 ## The Forces of the Dwarves join the War ##
 character_event = {
     id = holywars.6
-    title = EVTTITholywars.6
-    desc = EVTDESCholywars.6
-    picture = "GFX_evt_dwarves"
+    # title = EVTTITholywars.6
+    # desc = EVTDESCholywars.6
+    # picture = "GFX_evt_dwarves"
 	
 	hide_window = yes
 	is_triggered_only = yes
 	
 			  
 	option = {
-		name = EVTOPTAholywars.6 ### Time to Fight Now!
+		# name = EVTOPTAholywars.6 ### Time to Fight Now!
 		any_playable_ruler = {
 			limit = { 
 				has_character_flag = join_reconquest_moria
@@ -163,14 +163,24 @@ character_event = {
 				age = 1
 			}
 			join_attacker_wars = ROOT
-			spawn_unit = {
-				province = ROOT
-				disband_on_peace = yes
-				troops = {
-					heavy_infantry = { 350 350 }
-					archers = { 200 200 }
-				}
-			}			
+			# I'll assume the troop show up in the capitol of ROOT (the dwarf trying to conquer moria)
+			ROOT = {
+				capital_scope = {
+					PREVPREV = {
+						spawn_unit = {
+							province = PREV
+							disband_on_peace = yes
+							troops = {
+								heavy_infantry = { 350 350 }
+								archers = { 200 200 }
+							}
+						}
+					}
+				}			
+			}
+			
+			
+						
 		}
 	}
 }
@@ -187,14 +197,16 @@ narrative_event = {
 			  
 	option = {
 		name = EVTOPTAholywars.7 ### Thanks my friends!
-		ROOT = {
-			spawn_unit = {
-				province = ROOT
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 1500 1500 }				
-					heavy_infantry = { 2200 2200 }
-					archers = { 1200 1200 }
+		capital_scope = {
+			PREV = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 1500 1500 }				
+						heavy_infantry = { 2200 2200 }
+						archers = { 1200 1200 }
+					}
 				}
 			}			
 		}
@@ -280,16 +292,20 @@ narrative_event = {
 				target = ROOT
 				casus_belli = claim_all
 			}
-		}			
-		spawn_unit = {
-			province = ROOT
-			disband_on_peace = yes
-			troops = {
-				light_infantry = { 2000 2000 }
-				heavy_infantry = { 1350 1350 }
-				archers = { 1200 1200 }
+		}
+		capital_scope = {
+			PREV = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 2000 2000 }
+						heavy_infantry = { 1350 1350 }
+						archers = { 1200 1200 }
+					}
+				}	
 			}
-		}			
+		}		
 		any_playable_ruler = {
 			limit = { 
 				OR = {
@@ -316,16 +332,19 @@ narrative_event = {
 			  
 	option = {
 		name = EVTOPTAholywars.11 ### Thanks my friends!
-		ROOT = {
-			spawn_unit = {
-				province = ROOT
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2500 2500 }				
-					heavy_infantry = { 2200 2200 }
-					archers = { 1200 1200 }
-				}
-			}			
+		capital_scope = {
+			PREV = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 2500 2500 }				
+						heavy_infantry = { 2200 2200 }
+						archers = { 1200 1200 }
+					}
+				}			
+
+			}
 		}
 	}
 }
@@ -478,15 +497,15 @@ narrative_event = {
 ## The Forces of the Dwarves join the War ##
 character_event = {
     id = holywars.17
-    title = EVTTITholywars.17
-    desc = EVTDESCholywars.17
-    picture = "GFX_evt_dwarves"
+    # title = EVTTITholywars.17
+    # desc = EVTDESCholywars.17
+    # picture = "GFX_evt_dwarves"
 	
 	hide_window = yes
 	is_triggered_only = yes
 			  
 	option = {
-		name = EVTOPTAholywars.17 ### Time to Fight Now!
+		# name = EVTOPTAholywars.17 ### Time to Fight Now!
 		any_playable_ruler = {
 			limit = { 
 				has_character_flag = join_reconquest_gundabad
@@ -494,14 +513,20 @@ character_event = {
 				age = 1
 			}
 			join_attacker_wars = ROOT
-			spawn_unit = {
-				province = ROOT
-				disband_on_peace = yes
-				troops = {
-					heavy_infantry = { 550 550 }
-					archers = { 250 250 }
+			ROOT = {
+				capital_scope = {
+					PREV = {
+						spawn_unit = {
+							province = PREV
+							disband_on_peace = yes
+							troops = {
+								heavy_infantry = { 550 550 }
+								archers = { 250 250 }
+							}
+						}
+					}
 				}
-			}			
+			}
 		}
 	}
 }
@@ -518,16 +543,18 @@ narrative_event = {
 			  
 	option = {
 		name = EVTOPTAholywars.18 ### Thanks my friends!
-		ROOT = {
-			spawn_unit = {
-				province = ROOT
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 3500 3500 }				
-					heavy_infantry = { 4000 4000 }
-					archers = { 3000 3000 }
-				}
-			}			
+		capital_scope = {
+			ROOT = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 3500 3500 }				
+						heavy_infantry = { 4000 4000 }
+						archers = { 3000 3000 }
+					}
+				}			
+			}
 		}
 	}
 }

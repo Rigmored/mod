@@ -1,0 +1,202 @@
+# Scripted Effects for MEP
+# Note: I assume all effects are called from and AND block (if not, wrap call in AND)
+
+# mep_colonize_opinion_effect
+# pick_20yr_sending_colonists_effect
+# pick_40yr_sending_colonists_effect
+# pick_60yr_sending_colonists_effect
+# mep_stop_colonisation_effect
+
+# population modifier stuff
+# mep_dunedain_popmod_remove_effect
+# mep_elven_popmod_remove_effect
+# mep_dwarven_popmod_remove_effect
+# mep_human_popmod_remove_effect
+# mep_popmod_remove_effect
+
+# mep_dwarf_colonize_pick_culture
+
+mep_colonize_opinion_effect = {
+	if = {
+		limit = {
+			job_treasurer = {
+				location = {
+					owner = {
+						is_liege_or_above = ROOT
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+			}
+		}
+		job_treasurer = {
+			location = {
+				owner = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_colonizes_my_province
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			job_treasurer = {
+				location = {
+					owner = {
+						is_liege_or_above = ROOT
+						OR = {
+							NOT = { culture = ROOT }
+							NOT = { religion = ROOT }
+						}
+					}
+				}
+			}
+		}
+		job_treasurer = {
+			location = {
+				owner = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_colonizes_my_province_wrong
+					}
+				}
+			}
+		}
+	}
+}
+
+pick_20yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 7200 }
+	}
+}
+
+pick_40yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 14600 }
+	}
+}
+
+pick_60yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 21915 }
+	}
+}
+
+mep_stop_colonisation_effect = {
+	remove_province_modifier = being_colonised
+	remove_province_modifier = being_colonised_with_dwarves
+	remove_province_modifier = being_colonised_with_elves
+	remove_province_modifier = being_colonised_with_halflings
+	remove_province_modifier = being_colonised_with_gondorian_middlemen
+	remove_province_modifier = being_colonised_with_arnorian_middlemen
+	remove_province_modifier = being_colonised_with_southrons
+	remove_province_modifier = being_colonised_by_dwarves
+	remove_province_modifier = being_colonised_by_elves
+	remove_province_modifier = being_colonised_by_high_elves
+	remove_province_modifier = being_colonised_with_wood_elves
+	remove_province_modifier = being_colonised_with_humans_good
+	remove_province_modifier = being_colonised_with_forodwaith
+	set_variable = { which = mepvar_colonizingculture value = 0 }	
+}
+#----------------------------------------------------------------------
+mep_dunedain_popmod_remove_effect = {
+	remove_province_modifier = one_population_dunedain
+	remove_province_modifier = two_population_dunedain
+	remove_province_modifier = three_population_dunedain
+	remove_province_modifier = four_population_dunedain
+	remove_province_modifier = five_population_dunedain
+	remove_province_modifier = six_population_dunedain
+	remove_province_modifier = seven_population_dunedain
+}
+
+mep_elven_popmod_remove_effect = {
+	remove_province_modifier = one_population_elves
+	remove_province_modifier = two_population_elves
+	remove_province_modifier = three_population_elves
+	remove_province_modifier = four_population_elves
+	remove_province_modifier = five_population_elves
+	remove_province_modifier = six_population_elves
+	remove_province_modifier = seven_population_elves
+}
+
+mep_dwarven_popmod_remove_effect = {
+	remove_province_modifier = one_population_dwarves
+	remove_province_modifier = two_population_dwarves
+	remove_province_modifier = three_population_dwarves
+	remove_province_modifier = four_population_dwarves
+	remove_province_modifier = five_population_dwarves
+	remove_province_modifier = six_population_dwarves
+	remove_province_modifier = seven_population_dwarves
+}
+
+mep_human_popmod_remove_effect = {
+	remove_province_modifier = one_population_human
+	remove_province_modifier = two_population_human
+	remove_province_modifier = three_population_human
+	remove_province_modifier = four_population_human
+	remove_province_modifier = five_population_human
+	remove_province_modifier = six_population_human
+	remove_province_modifier = seven_population_human
+}
+
+mep_popmod_remove_effect = {
+	mep_dunedain_popmod_remove_effect = yes
+	mep_elven_popmod_remove_effect = yes
+	mep_dwarven_popmod_remove_effect = yes
+	mep_human_popmod_remove_effect = yes
+}
+
+# province scope, ROOT would be ruler who launches event
+# culture codes : 0 longbeard, 1 ironfist, 2 broadbeam, 3 firebeard, 4 blacklock, 5 stonefoot, 6 stiffbeard, 7 petty
+mep_dwarf_colonize_pick_culture = {
+	set_variable = { which = mepvar_colonizingculture value = 0 }	# Default Longbeard
+	if = { limit = { ROOT = { culture = culture_ironfist} }
+		set_variable = { which = mepvar_colonizingculture value = 1 }							
+	}
+	if = { limit = { ROOT = { culture = culture_broadbeam} }
+		set_variable = { which = mepvar_colonizingculture value = 2 }							
+	}
+	if = { limit = { ROOT = { culture = culture_firebeard} }
+		set_variable = { which = mepvar_colonizingculture value = 3 }							
+	}
+	if = { limit = { ROOT = { culture = culture_blacklock} }
+		set_variable = { which = mepvar_colonizingculture value = 4 }							
+	}
+	if = { limit = { ROOT = { culture = culture_stonefoot} }
+		set_variable = { which = mepvar_colonizingculture value = 5 }							
+	}
+	if = { limit = { ROOT = { culture = culture_stiffbeard} }
+		set_variable = { which = mepvar_colonizingculture value = 6 }							
+	}
+	if = { limit = { ROOT = { culture = culture_petty_dwarves} }
+		set_variable = { which = mepvar_colonizingculture value = 7 }							
+	}
+
+}

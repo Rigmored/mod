@@ -8,6 +8,7 @@ character_event = {
 	id = hobbits.0
 	title = "EVTTIThobbits.0"
 	desc = "EVTDESChobbits.0"
+	picture = "GFX_evt_hobbitsmial"
 	
 	age = 16
 	capable_only = yes
@@ -54,8 +55,8 @@ character_event = {
 ## Visit a Neighbour ##
 character_event = {
 	id = hobbits.1
-	title = "EVTTIThobbits.1"
-	desc = "EVTDESChobbits.1"
+	# title = "EVTTIThobbits.1"
+	# desc = "EVTDESChobbits.1"
 	hide_window = yes
 	
 	is_triggered_only = yes
@@ -63,7 +64,7 @@ character_event = {
 	immediate = { FROM = { character_event = { id = hobbits.2 } } }
 	
 	option = {	
-		name = "EVTOPThobbits.1"
+		#name = "EVTOPThobbits.1"
 	}
 }
 
@@ -560,6 +561,8 @@ character_event = {
 	title = "EVTTIThobbits.8"
 	desc = "EVTDESChobbits.8"
 	picture = "GFX_evt_hobbitsmial"
+	only_rulers = yes
+	religion_group = religion_group_periannath
 	
 	capable_only = yes
 	prisoner = no

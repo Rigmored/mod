@@ -358,65 +358,68 @@ character_event = {
 }
 
 ## The Other Orc is imprisoned after the duel ##
-character_event = {
-	id = orcfights.5
-	desc = EVTDESCorcfights.5
-    picture = "GFX_war_at_north"
-	border = "GFX_event_normal_frame_war"
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTAorcfights.5
-		prestige = 20
-		hidden_tooltip = {
-			FROMFROM = { character_event = { id = orcfights.6 } }		
-		}
-		any_claim = {
-			limit = {
-				holder_scope = { is_liege_of = ROOT }
-			}
-			grant_title = ROOT
-		}			
-	}
-}
+# Called feom the removed DUEL engine
+#character_event = {
+#	id = orcfights.5
+#	desc = EVTDESCorcfights.5
+#    picture = "GFX_war_at_north"
+#	border = "GFX_event_normal_frame_war"
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTAorcfights.5
+#		prestige = 20
+#		hidden_tooltip = {
+#			FROMFROM = { character_event = { id = orcfights.6 } }		
+#		}
+#		any_claim = {
+#			limit = {
+#				holder_scope = { is_liege_of = ROOT }
+#			}
+#			grant_title = ROOT
+#		}			
+#	}
+#}
 
 ## The Orc is informed that he go into jail ##
-character_event = {
-	id = orcfights.6
-	desc = EVTDESCorcfights.6
-    picture = "GFX_war_at_north"
-	border = "GFX_event_normal_frame_war"
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTAorcfights.6
-		imprison = FROM
-		set_character_flag = in_orc_prison
-	}
-}
+# called from orfights.5
+#character_event = {
+#	id = orcfights.6
+#	desc = EVTDESCorcfights.6
+#    picture = "GFX_war_at_north"
+#	border = "GFX_event_normal_frame_war"
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTAorcfights.6
+#		imprison = FROM
+#		set_character_flag = in_orc_prison
+#	}
+#}
 
 
 ## Small event to let a new fight begins ##
 character_event = {
 	id = orcfights.7
-	desc = OK
-    picture = "GFX_war_at_north"
-	border = "GFX_event_normal_frame_war"
-		hide_window = yes
+	# desc = OK
+    # picture = "GFX_war_at_north"
+	# border = "GFX_event_normal_frame_war"
+	hide_window = yes
+	religion_group = religion_group_melkor
 		
-		trigger = {
-			has_character_flag = orcfight1
-			age = 1
-		}
+	trigger = {
+		has_character_flag = orcfight1
+		age = 1
+	}
 	
-		mean_time_to_happen = {
-			days = 250
-		}	
+	mean_time_to_happen = {
+		days = 250
+	}	
 		
-		option={
-			name=OK
-			clr_character_flag = orcfight1
-		}
+	option={
+		# name=OK
+		clr_character_flag = orcfight1
+	}
 }
 
 ## The Orc refuse the duel - gain a trait ##

@@ -1,0 +1,1334 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+# City
+city = {
+
+####################### Inner fortification (Watchtowers and walls merged), give garrison size and fort level ###################### 
+	ct_DInnerFortification_1 = {
+		desc = ct_DInnerFortification_1_desc
+		prerequisites = { ct_Dwater_system_0 }
+		not_if_x_exists = { ct_lonely_mountain }
+		gold_cost = 150
+		build_time = 545
+		garrison_size = 0.05
+		fort_level = 1
+		ai_creation_factor = 90
+        	potential = {
+      			has_global_flag = building
+			culture_group = culture_group_dwarves		 
+		}
+	}
+	ct_DInnerFortification_2 = {
+		desc = ct_DInnerFortification_1_desc
+		upgrades_from = ct_DInnerFortification_1
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.1
+		fort_level = 1
+		ai_creation_factor = 89
+        	potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves		 
+		}
+	}
+	ct_DInnerFortification_3 = {
+		desc = ct_DInnerFortification_1_desc
+		upgrades_from = ct_DInnerFortification_2
+		gold_cost = 250
+		build_time = 920
+		garrison_size = 0.15
+		fort_level = 1
+		ai_creation_factor = 88
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_dwarves			 
+		}
+	}
+	ct_DInnerFortification_4 = {
+		desc = ct_DInnerFortification_1_desc
+		upgrades_from = ct_DInnerFortification_3
+		gold_cost = 325
+		build_time = 1335
+		garrison_size = 0.2
+		fort_level = 1
+		ai_creation_factor = 87
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_dwarves		 
+		}
+	}
+	ct_DInnerFortification_5 = {
+		desc = ct_DInnerFortification_1_desc
+		upgrades_from = ct_DInnerFortification_4
+		gold_cost = 390
+		build_time = 1565
+		garrison_size = 0.2
+		fort_level = 1.5
+		ai_creation_factor = 87
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_dwarves
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+		}
+	}
+	ct_DInnerFortification_6 = {
+		desc = ct_DInnerFortification_1_desc
+		upgrades_from = ct_DInnerFortification_5
+		gold_cost = 490
+		build_time = 1760
+		garrison_size = 0.2
+		fort_level = 1.5
+		ai_creation_factor = 87
+        	potential = {
+        	   	has_global_flag = building
+			culture_group = culture_group_dwarves
+			terrain = mountain
+		}
+	}
+################## Offense : Dwarves focus on defense: watchtowers must be built first ###############################
+	ct_Dbarracks_1 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_1 }
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves
+		}
+	}
+	ct_Dbarracks_2 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_2 }
+		upgrades_from = ct_Dbarracks_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+           		has_global_flag = building
+	    		culture_group = culture_group_dwarves
+            	}
+	} 
+	ct_Dbarracks_3 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_3 }
+		upgrades_from = ct_Dbarracks_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+	    		culture_group = culture_group_dwarves
+            	}
+	} 
+	ct_Dbarracks_4 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_4 }
+		upgrades_from = ct_Dbarracks_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+	   		culture_group = culture_group_dwarves
+            	}
+	} 
+	ct_Dbarracks_5 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_5 }
+		upgrades_from = ct_Dbarracks_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+	        }
+	}
+	ct_Dbarracks_6 = {
+		desc = ct_Dbarracks_1_desc
+		prerequisites = { ct_DInnerFortification_6 }
+		upgrades_from = ct_Dbarracks_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+	  		culture_group = culture_group_dwarves
+            	}
+	}
+
+################## Offense : Light infantry + archers - Values Unchanged - Walls must be built first ###############################
+	ct_Dtownmilitia_1 = {
+		desc = ct_Dtownmilitia_1_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves
+		}	
+	}
+	ct_Dtownmilitia_2 = {
+		desc = ct_Dtownmilitia_1_desc
+		prerequisites = { ct_DInnerFortification_1 }
+		upgrades_from = ct_Dtownmilitia_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}	
+	}
+	ct_Dtownmilitia_3 = {
+		desc = ct_Dtownmilitia_1_desc
+		prerequisites = { ct_DInnerFortification_2 }
+		upgrades_from = ct_Dtownmilitia_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}	
+	}
+	ct_Dtownmilitia_4 = {
+		desc = ct_Dtownmilitia_1_desc
+		prerequisites = { ct_DInnerFortification_3 }
+		upgrades_from = ct_Dtownmilitia_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 60
+		archers = 90
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}	
+	}
+	ct_Dtownmilitia_5 = {
+		desc = ct_Dtownmilitia_1_desc
+		prerequisites = { ct_DInnerFortification_4 }
+		upgrades_from = ct_Dtownmilitia_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 100
+		archers = 70
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}	
+	}
+	ct_Dtownmilitia_6 = {
+		desc = ct_Dtownmilitia_1_desc
+		prerequisites = { ct_DInnerFortification_5 }
+		upgrades_from = ct_Dtownmilitia_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 80
+		archers = 110
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}	
+	}
+	
+################## Troops : pikemen  - walls must be built first ###############################
+	ct_Dguard_1 = {
+		desc = ct_Dguard_1_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 96
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves
+		}
+	}
+	ct_Dguard_2 = {
+		desc = ct_Dguard_1_desc
+		prerequisites = { ct_DInnerFortification_1 }
+		upgrades_from = ct_Dguard_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 95
+        	potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}
+	}
+	ct_Dguard_3 = {
+		desc = ct_Dguard_1_desc
+		prerequisites = { ct_DInnerFortification_2 }
+		upgrades_from = ct_Dguard_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 94
+		potential = {
+           		has_global_flag = building
+			culture_group = culture_group_dwarves
+		}
+	}
+	ct_Dguard_4 = {
+		desc = ct_Dguard_1_desc
+		prerequisites = { ct_DInnerFortification_3 }
+		upgrades_from = ct_Dguard_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}
+	}
+	ct_Dguard_5 = {
+		desc = ct_Dguard_1_desc
+		prerequisites = { ct_DInnerFortification_4 }
+		upgrades_from = ct_Dguard_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves	
+		}
+	}
+
+####################### Water system : levy reinforce rate and land organisation #######################
+	ct_Dwater_system_0 = { #no water system
+		desc = ca_Dwater_system_0_desc
+		gold_cost = 0
+		build_time = 0
+		levy_reinforce_rate = -0.1
+		fertility = -0.2
+		ai_creation_factor = 102
+		potential = {
+			culture_group = culture_group_dwarves 
+            	}
+	}
+	ct_Dwater_system_1 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ct_DInnerFortification_1 }
+		upgrades_from = ct_Dwater_system_0
+		gold_cost = 85
+		build_time = 365
+		levy_reinforce_rate =  0.1
+		fertility = 0.2
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+            	}
+	}
+	ct_Dwater_system_2 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ct_DInnerFortification_3 }
+		upgrades_from = ct_Dwater_system_1
+		gold_cost = 100
+		build_time = 550
+		levy_reinforce_rate = 0.1
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+            	}
+	}
+
+################## Economy : tax income - values unchanged, no port, mines added -mountain dependant ###############################
+	ct_Dmarketplace_1 = {
+		desc = ct_Dmarketplace_1_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves
+		}
+	}
+	ct_Dmarketplace_2 = {
+		desc = ct_Dmarketplace_1_desc
+		prerequisites = { ct_dwarfmines_1 }
+		upgrades_from = ct_Dmarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+		}
+	}
+	ct_Dmarketplace_3 = {
+		desc = ct_Dmarketplace_1_desc
+		prerequisites = { ct_DInnerFortification_2 }
+		upgrades_from = ct_Dmarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}
+	}
+	ct_Dmarketplace_4 = {
+		desc = ct_Dmarketplace_1_desc
+		upgrades_from = ct_Dmarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves	
+		}
+	}
+	ct_Dmarketplace_5 = {
+		desc = ct_Dmarketplace_1_desc
+		upgrades_from = ct_Dmarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves	
+		}
+	}
+	ct_Dmarketplace_6 = {
+		desc = ct_Dmarketplace_1_desc
+		upgrades_from = ct_Dmarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_dwarves
+        	}
+	}
+	
+	ct_dwarfmines_1 = {
+		desc = ct_dwarfmines_1_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		start = { always = no }
+		gold_cost = 35
+		build_time = 120
+		tax_income = 1
+		ai_creation_factor = 110
+		add_number_to_name = yes
+		potential = {
+			has_global_flag = building
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+	    	culture_group = culture_group_dwarves
+        }
+	}
+	ct_dwarfmines_2 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ct_DInnerFortification_1 }
+		upgrades_from = ct_dwarfmines_1
+		gold_cost = 80
+		build_time = 360
+		tax_income = 2
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+        }
+	}
+	ct_dwarfmines_3 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ct_DInnerFortification_2 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			OR = {
+				terrain = hills
+				terrain = mountain
+			}
+        }
+	}
+	ct_dwarfmines_4 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ct_DInnerFortification_3 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_3
+		gold_cost = 400
+		build_time = 1460
+		tax_income = 4
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			terrain = mountain
+       	}
+	}
+	ct_dwarfmines_5 = {
+		desc = ct_dwarfmines_1_desc
+		prerequisites = { ct_DInnerFortification_4 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_4
+		gold_cost = 670
+		build_time = 3650
+		tax_income = 5
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			terrain = mountain
+        }
+	}
+	ct_dwarfmines_6 = {
+		desc = ct_dwarfmines_6_desc
+		prerequisites = { ct_DInnerFortification_5 }
+		start = { always = no }
+		upgrades_from = ct_dwarfmines_5
+		gold_cost = 1500
+		build_time = 6570
+		tax_income = 9
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        potential = {
+           	has_global_flag = building
+	    	culture_group = culture_group_dwarves
+			province_id = 285 # Moria
+        }
+	}
+	ct_mithrilmines_1 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		start = { always = no }
+		gold_cost = 20
+		build_time = 73
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = mithril_found }
+			province_id = 285 # Moria
+            	}
+	}
+	ct_mithrilmines_2 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		upgrades_from = ct_mithrilmines_1
+		start = { always = no }
+		gold_cost = 24
+		build_time = 109
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = mithril_found }
+			province_id = 285 # Moria
+            	}
+	}
+	ct_mithrilmines_3 = { # hidden if mithril has not been found by the character #
+		desc = ct_mithrilmines_desc
+		upgrades_from = ct_mithrilmines_2
+		start = { always = no }
+		gold_cost = 40
+		build_time = 146
+		tax_income = 6
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = mithril_found }
+			province_id = 285 # Moria
+            	}
+	}
+	
+	ct_jeweler_1 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		start = { always = no }
+		gold_cost = 20
+		build_time = 73
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = erebor_gem_mine }
+			province_id = 292 #Erebor
+            	}
+	}
+	ct_jeweler_2 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		upgrades_from = ct_jeweler_1
+		start = { always = no }
+		gold_cost = 24
+		build_time = 109
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = erebor_gem_mine }
+			province_id = 292 #Erebor
+            	}
+	}
+	ct_jeweler_3 = { # hidden if gem formation has not been found by the character #
+		desc = ct_jeweler_desc
+		upgrades_from = ct_jeweler_2
+		start = { always = no }
+		gold_cost = 40
+		build_time = 146
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = yes
+        	potential = {
+			has_global_flag = building
+	    		ruler = { trait = erebor_gem_mine }
+			province_id = 292 #Erebor
+            	}
+	}
+	
+################## Shipyard : NONE ###############################
+###################### Special buildings : dwarven fotresses ###################### 
+
+ct_khazad = { #Moria for dwarves
+		desc = ct_khazad_desc
+		gold_cost = 1475
+		build_time = 5225
+		fort_level = 3
+		garrison_size = 1
+		heavy_infantry = 75
+		tax_income = 3		
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+        		province_id = 285 # Moria
+            	}
+	}	
+
+	ct_khazad1 = { ##moria for dwarves
+		desc = ct_khazad_desc
+		start = { always = no }
+		upgrades_from = ct_khazad
+		gold_cost = 550
+		build_time = 2165
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 75
+		tax_income = 1		
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 285 # Moria
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_khazad2 = { ##moria for dwarves
+		desc = ct_khazad_desc
+		upgrades_from = ct_khazad1
+		gold_cost = 640
+		build_time = 2290
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 75
+		tax_income = 1		
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 285 # Moria
+			culture_group = culture_group_dwarves
+            }
+	} 
+
+	ct_khazad3 = { ##moria for dwarves
+		desc = ct_khazad_desc
+		upgrades_from = ct_khazad2
+		gold_cost = 820
+		build_time = 3310
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 75
+		tax_income = 1	
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 285 # Moria
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_khazad4 = { ##moria for dwarves
+		desc = ct_khazad_desc
+		upgrades_from = ct_khazad3
+		gold_cost = 880
+		build_time = 4270
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 75
+		tax_income = 1		
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 285 # Moria
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_khazad5 = { ##moria for dwarves
+		desc = ct_khazad_desc
+		upgrades_from = ct_khazad4
+		gold_cost = 1060
+		build_time = 4415
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 75
+		tax_income = 1		
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 285 # Moria
+			culture_group = culture_group_dwarves
+            }
+	}
+	
+	ct_lonely_mountain = { #Erebor wilderness#
+		desc = ct_lonely_mountain_desc
+		gold_cost = 10
+		build_time = 10
+		garrison_size = -2
+		tax_income = -3
+		ai_creation_factor = 110
+		add_number_to_name = no
+        	potential = {
+            		province_id = 292 #Erebor
+			NOT = { has_global_flag = erebor_built }
+			NOT = { year = 10000 }
+            }
+	}
+	ct_erebor = { #Erebor#
+		desc = ct_erebor_desc
+		not_if_x_exists = { ct_lonely_mountain }
+		gold_cost = 835
+		build_time = 3320
+		fort_level = 3
+		garrison_size = 0.5
+		heavy_infantry = 50
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+            		province_id = 292 #Erebor
+			NOT = { culture_group = culture_group_wilderness }
+            }
+	}
+
+	ct_erebor1 = { #Erebor#
+		desc = ct_erebor_desc
+		start = { always = no }
+		upgrades_from = ct_erebor
+		gold_cost = 510
+		build_time = 1980
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            	has_global_flag = building
+		province_id = 292 #Erebor
+			culture_group = culture_group_dwarves
+            }
+	}
+	
+	ct_erebor2 = { #Erebor#
+		desc = ct_erebor_desc
+		upgrades_from = ct_erebor1
+		gold_cost = 580
+		build_time = 2105
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 292 #Erebor
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_erebor3 = { #Erebor#
+		desc = ct_erebor_desc
+		upgrades_from = ct_erebor2
+		gold_cost = 745
+		build_time = 3020
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 292 #Erebor
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_erebor4 = { #Erebor#
+		desc = ct_erebor_desc
+		upgrades_from = ct_erebor3
+		gold_cost = 800
+		build_time = 3845
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+		province_id = 292 #Erebor
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_erebor5 = { #Erebor#
+		desc = ct_erebor_desc
+		upgrades_from = ct_erebor4
+		gold_cost = 965
+		build_time = 3940
+		fort_level = 1
+		garrison_size = 0.3
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            	has_global_flag = building
+		province_id = 292 #Erebor
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_azanulimbardum = { #Azanulimbar-dûm#
+		desc = ct_azanulimbardum_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            province_id = 572 #Azanulimbar-dûm#
+            }
+	}
+	
+	ct_azanulimbardum1 = { #Azanulimbar-dûm#
+		desc = ct_azanulimbardum_desc
+		upgrades_from = ct_azanulimbardum
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 572 #Azanulimbar-dûm#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_azanulimbardum2 = { #Azanulimbar-dûm#
+		desc = ct_azanulimbardum_desc
+		upgrades_from = ct_azanulimbardum1
+		gold_cost = 530
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 572 #Azanulimbar-dûm#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_azanulimbardum3 = { #Azanulimbar-dûm#
+		desc = ct_azanulimbardum_desc
+		upgrades_from = ct_azanulimbardum2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 572 #Azanulimbar-dûm#
+			culture_group = culture_group_dwarves
+            }
+	}	
+	
+	ct_nurunkhizdin = { #Nurunkhizdin#
+		desc = ct_nurunkhizdin_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+            province_id = 584 #Nurunkhizdin#
+            }
+	}
+	
+	ct_nurunkhizdin1 = { #Nurunkhizdin#
+		desc = ct_nurunkhizdin_desc
+		upgrades_from = ct_nurunkhizdin
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 584 #Nurunkhizdin#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_nurunkhizdin2 = { #Nurunkhizdin#
+		desc = ct_nurunkhizdin_desc
+		upgrades_from = ct_nurunkhizdin1
+		gold_cost = 530
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 584 #Nurunkhizdin#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_nurunkhizdin3 = { #Nurunkhizdin#
+		desc = ct_nurunkhizdin_desc
+		upgrades_from = ct_nurunkhizdin2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 584 #Nurunkhizdin#
+			culture_group = culture_group_dwarves
+            }
+	}
+	
+	ct_tamnogoth = { #Tamnogoth#
+		desc = ct_tamnogoth_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	province_id = 672 #Tamnogoth#
+            }
+	}
+	
+	ct_tamnogoth1 = { #Tamnogoth#
+		desc = ct_tamnogoth_desc
+		upgrades_from = ct_tamnogoth
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 672 #Tamnogoth#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_tamnogoth2 = { #Tamnogoth#
+		desc = ct_tamnogoth_desc
+		upgrades_from = ct_tamnogoth1
+		gold_cost = 530
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 672 #Tamnogoth#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_tamnogoth3 = { #Tamnogoth#
+		desc = ct_tamnogoth_desc
+		upgrades_from = ct_tamnogoth2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 672 #Tamnogoth#
+			culture_group = culture_group_dwarves
+            }
+	}	
+	
+	ct_zirakdum = { #Zirakdum#
+		desc = ct_zirakdum_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	province_id = 644 #Zirakdum#
+            }
+	}
+	
+	ct_zirakdum1 = { #Zirakdum#
+		desc = ct_zirakdum_desc
+		upgrades_from = ct_zirakdum
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 644 #Zirakdum#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_zirakdum2 = { #Zirakdum#
+		desc = ct_zirakdum_desc
+		upgrades_from = ct_zirakdum1
+		gold_cost = 530
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 644 #Zirakdum#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_zirakdum3 = { #Zirakdum#
+		desc = ct_zirakdum_desc
+		upgrades_from = ct_zirakdum2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 644 #Zirakdum#
+			culture_group = culture_group_dwarves
+            }
+	}	
+	
+	ct_thorinsgate = { #Thorin's Gatem#
+		desc = ct_thorinsgate_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	province_id = 239 #Thorin's Gate#
+            }
+	}
+	
+	ct_thorinsgate1 = { #Thorin's Gatem#
+		desc = ct_thorinsgate_desc
+		upgrades_from = ct_thorinsgate
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 239 #Thorin's Gate#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_thorinsgate2 = { #Thorin's Gatem#
+		desc = ct_thorinsgate_desc
+		upgrades_from = ct_thorinsgate1
+		gold_cost = 520
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 239 #Thorin's Gate#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_thorinsgate3 = { #Thorin's Gatem#
+		desc = ct_thorinsgate_desc
+		upgrades_from = ct_thorinsgate2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 239 #Thorin's Gate#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+# Dwarven halls of the Ancestors #
+	
+	tp_dwarven_ancestors = {
+		desc = tp_dwarven_ancestors_desc
+		gold_cost = 150
+		build_time = 547
+		liege_piety = 0.05
+		heavy_infantry = 40
+		ai_creation_factor = 109
+		add_number_to_name = no
+        potential = {
+            has_global_flag = building
+			culture_group = culture_group_dwarves
+        }
+	}
+	tp_balin_tomb = { ### The Tomb of Balin
+		desc = tp_balin_tomb_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		liege_piety = 0.05
+		heavy_infantry = 100
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+			year = 11337
+            FROMFROM = { title = b_chamber_of_mazarbul }
+			culture_group = culture_group_dwarves
+		}
+	}	
+	tp_durin_tomb = { ### The Tomb of Durin
+		desc = tp_durin_tomb_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		liege_piety = 0.05
+		heavy_infantry = 100
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+            FROMFROM = { title = b_tomb_of_durin }
+			culture_group = culture_group_dwarves
+        }
+	}			
+	#Stonefoot
+	ct_stonefoot = { #Stonefoot#
+		desc = ct_stonefoot_desc
+		gold_cost = 450
+		build_time = 1600
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	province_id = 811 #Stonefoot#
+            }
+	}
+	
+	ct_stonefoot1 = { #Stonefoot#
+		desc = ct_stonefoot_desc
+		upgrades_from = ct_stonefoot
+		gold_cost = 460
+		build_time = 1800
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 811 #Stonefoot#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_stonefoot2 = { #Stonefoot#
+		desc = ct_stonefoot_desc
+		upgrades_from = ct_stonefoot1
+		gold_cost = 530
+		build_time = 1920
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 811 #Stonefoot#
+			culture_group = culture_group_dwarves
+            }
+	}
+
+	ct_stonefoot3 = { #Stonefoot#
+		desc = ct_stonefoot_desc
+		upgrades_from = ct_stonefoot2
+		gold_cost = 670
+		build_time = 2745
+		fort_level = 1
+		garrison_size = 0.25
+		heavy_infantry = 50
+		tax_income = 1
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+		has_global_flag = building
+            	province_id = 811 #Stonefoot#
+			culture_group = culture_group_dwarves
+            }
+	}
+}	
