@@ -302,12 +302,6 @@ action_increase_population = {
 				character = FROM
 				
 			}
-			NOR = {
-				has_character_flag = colonizationwilderness
-				liege = { has_character_flag = colonizationwilderness} 
-				liege = { liege = { has_character_flag = colonizationwilderness} } 
-				top_liege = { has_character_flag = colonizationwilderness}
-			}
 		}
 		owner = {
 			PREV = {
@@ -317,11 +311,6 @@ action_increase_population = {
 		mep_has_increasable_popmod_trigger = yes
 		NOT = { has_province_modifier = population_increasing }
 		NOT = { has_province_modifier = being_purged }
-		
-		
-		
-		mep_wilderness_province_trigger = yes
-		NOT = { mep_province_being_colonized_trigger = yes }
 		
 	}
 	

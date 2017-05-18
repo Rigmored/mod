@@ -5,216 +5,216 @@ namespace = holywars
 ######################################################################
 
 ## The character who used the decision can gather his forces ##
-narrative_event = {
-    id = holywars.1
-    title = EVTTITholywars.1
-    desc = EVTDESCholywars.1
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.1 ### I'll call all the Dwarves !
-		any_playable_ruler = {
-			limit = { 
-				culture_group = culture_group_dwarves
-				age = 60
-			}
-			narrative_event = { id = holywars.2 days = 50 } ## All the Dwarves will be called to War.
-		}
-		narrative_event = { id = holywars.5 days = 90 }
-		add_claim = c_moria
-		add_claim = d_moria
-		any_playable_ruler = {
-			limit = { 
-				has_landed_title = c_moria
-				age = 1
-			}
-			narrative_event = { id = holywars.4 days = 50 } ## The Holder of Moria is informed
-		}	
-	}
-	
-	option = {
-		name = EVTOPTBholywars.1 ### My strength will be enough !
-		trigger = {
-			OR = {
-				trait = proud
-				trait = envious
-				trait = brave
-			}
-		}
-		narrative_event = { id = holywars.5 days = 30 }
-		add_claim = c_moria
-		add_claim = d_moria
-		any_playable_ruler = {
-			limit = { 
-				has_landed_title = c_moria
-				age = 1
-			}
-			narrative_event = { id = holywars.4 days = 20 } ## The Holder of Moria is informed
-		}	
-	}	
-	
-	option = {
-        name = EVTOPTCholywars.1 ### I'll
-	}
-}
-
-
-## All the Dwarves will receive a call to war ##
-narrative_event = {
-    id = holywars.2
-    title = EVTTITholywars.2
-    desc = EVTDESCholywars.2
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.2 ### I'll join this War for the Halls of our Ancestrors!
-		set_character_flag = join_reconquest_moria
-		FROM = {
-			character_event = { id = holywars.3 days = 25 }
-		}
-	}
-	option = {
-        name = EVTOPTBholywars.2 ### I won't join him.
-	}
-}
-
-## The Leader is informed that another clan will join him ##
-character_event = {
-    id = holywars.3
-    title = EVTTITholywars.3
-    desc = EVTDESCholywars.3
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.3 ### Perfect.
-	}
-}
-
-## The Holder of Moria is informed that the Dwarves gather their forces ##
-narrative_event = {
-    id = holywars.4
-    title = EVTTITholywars.4
-    desc = EVTDESCholywars.4
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.4 ### I'll crush them.
-	}
-}
-
-## Begin of the War ##
-narrative_event = {
-    id = holywars.5
-    title = EVTTITholywars.5
-    desc = EVTDESCholywars.5
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.5 ### Time to Fight Now!
-		c_moria = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim_all
-			}
-		}	
-		character_event = { id = holywars.6 }
-		any_playable_ruler = {
-			limit = { 
-				has_landed_title = c_moria
-				age = 1
-			}
-			narrative_event = { id = holywars.7 } ## The Holder of Moria will have some help
-		}		
-	}
-}
-
-## The Forces of the Dwarves join the War ##
-character_event = {
-    id = holywars.6
-    # title = EVTTITholywars.6
-    # desc = EVTDESCholywars.6
-    # picture = "GFX_evt_dwarves"
-	
-	hide_window = yes
-	is_triggered_only = yes
-	
-			  
-	option = {
-		# name = EVTOPTAholywars.6 ### Time to Fight Now!
-		any_playable_ruler = {
-			limit = { 
-				has_character_flag = join_reconquest_moria
-				culture_group = culture_group_dwarves
-				age = 1
-			}
-			join_attacker_wars = ROOT
-			# I'll assume the troop show up in the capitol of ROOT (the dwarf trying to conquer moria)
-			ROOT = {
-				capital_scope = {
-					PREVPREV = {
-						spawn_unit = {
-							province = PREV
-							disband_on_peace = yes
-							troops = {
-								heavy_infantry = { 350 350 }
-								archers = { 200 200 }
-							}
-						}
-					}
-				}			
-			}
-			
-			
-						
-		}
-	}
-}
-
-## The Holder of Moria get some reinforcements ##
-narrative_event = {
-    id = holywars.7
-    title = EVTTITholywars.7
-    desc = EVTDESCholywars.7
-    picture = "GFX_evt_dwarves"
-	
-	is_triggered_only = yes
-	
-			  
-	option = {
-		name = EVTOPTAholywars.7 ### Thanks my friends!
-		capital_scope = {
-			PREV = {
-				spawn_unit = {
-					province = PREV
-					disband_on_peace = yes
-					troops = {
-						light_infantry = { 1500 1500 }				
-						heavy_infantry = { 2200 2200 }
-						archers = { 1200 1200 }
-					}
-				}
-			}			
-		}
-	}
-}
-
-
-
+#narrative_event = {
+#    id = holywars.1
+#    title = EVTTITholywars.1
+#    desc = EVTDESCholywars.1
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.1 ### I'll call all the Dwarves !
+#		any_playable_ruler = {
+#			limit = { 
+#				culture_group = culture_group_dwarves
+#				age = 60
+#			}
+#			narrative_event = { id = holywars.2 days = 50 } ## All the Dwarves will be called to War.
+#		}
+#		narrative_event = { id = holywars.5 days = 90 }
+#		add_claim = c_moria
+#		add_claim = d_moria
+#		any_playable_ruler = {
+#			limit = { 
+#				has_landed_title = c_moria
+#				age = 1
+#			}
+#			narrative_event = { id = holywars.4 days = 50 } ## The Holder of Moria is informed
+#		}	
+#	}
+#	
+#	option = {
+#		name = EVTOPTBholywars.1 ### My strength will be enough !
+#		trigger = {
+#			OR = {
+#				trait = proud
+#				trait = envious
+#				trait = brave
+#			}
+#		}
+#		narrative_event = { id = holywars.5 days = 30 }
+#		add_claim = c_moria
+#		add_claim = d_moria
+#		any_playable_ruler = {
+#			limit = { 
+#				has_landed_title = c_moria
+#				age = 1
+#			}
+#			narrative_event = { id = holywars.4 days = 20 } ## The Holder of Moria is informed
+#		}	
+#	}	
+#	
+#	option = {
+#        name = EVTOPTCholywars.1 ### I'll
+#	}
+#}
+#
+#
+### All the Dwarves will receive a call to war ##
+#narrative_event = {
+#    id = holywars.2
+#    title = EVTTITholywars.2
+#    desc = EVTDESCholywars.2
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.2 ### I'll join this War for the Halls of our Ancestrors!
+#		set_character_flag = join_reconquest_moria
+#		FROM = {
+#			character_event = { id = holywars.3 days = 25 }
+#		}
+#	}
+#	option = {
+#        name = EVTOPTBholywars.2 ### I won't join him.
+#	}
+#}
+#
+### The Leader is informed that another clan will join him ##
+#character_event = {
+#    id = holywars.3
+#    title = EVTTITholywars.3
+#    desc = EVTDESCholywars.3
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.3 ### Perfect.
+#	}
+#}
+#
+### The Holder of Moria is informed that the Dwarves gather their forces ##
+#narrative_event = {
+#    id = holywars.4
+#    title = EVTTITholywars.4
+#    desc = EVTDESCholywars.4
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.4 ### I'll crush them.
+#	}
+#}
+#
+### Begin of the War ##
+#narrative_event = {
+#    id = holywars.5
+#    title = EVTTITholywars.5
+#    desc = EVTDESCholywars.5
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.5 ### Time to Fight Now!
+#		c_moria = {
+#			reverse_war = {
+#				target = ROOT
+#				casus_belli = claim_all
+#			}
+#		}	
+#		character_event = { id = holywars.6 }
+#		any_playable_ruler = {
+#			limit = { 
+#				has_landed_title = c_moria
+#				age = 1
+#			}
+#			narrative_event = { id = holywars.7 } ## The Holder of Moria will have some help
+#		}		
+#	}
+#}
+#
+### The Forces of the Dwarves join the War ##
+#character_event = {
+#    id = holywars.6
+#    # title = EVTTITholywars.6
+#    # desc = EVTDESCholywars.6
+#    # picture = "GFX_evt_dwarves"
+#	
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		# name = EVTOPTAholywars.6 ### Time to Fight Now!
+#		any_playable_ruler = {
+#			limit = { 
+#				has_character_flag = join_reconquest_moria
+#				culture_group = culture_group_dwarves
+#				age = 1
+#			}
+#			join_attacker_wars = ROOT
+#			# I'll assume the troop show up in the capitol of ROOT (the dwarf trying to conquer moria)
+#			ROOT = {
+#				capital_scope = {
+#					PREVPREV = {
+#						spawn_unit = {
+#							province = PREV
+#							disband_on_peace = yes
+#							troops = {
+#								heavy_infantry = { 350 350 }
+#								archers = { 200 200 }
+#							}
+#						}
+#					}
+#				}			
+#			}
+#			
+#			
+#						
+#		}
+#	}
+#}
+#
+### The Holder of Moria get some reinforcements ##
+#narrative_event = {
+#    id = holywars.7
+#    title = EVTTITholywars.7
+#    desc = EVTDESCholywars.7
+#    picture = "GFX_evt_dwarves"
+#	
+#	is_triggered_only = yes
+#	
+#			  
+#	option = {
+#		name = EVTOPTAholywars.7 ### Thanks my friends!
+#		capital_scope = {
+#			PREV = {
+#				spawn_unit = {
+#					province = PREV
+#					disband_on_peace = yes
+#					troops = {
+#						light_infantry = { 1500 1500 }				
+#						heavy_infantry = { 2200 2200 }
+#						archers = { 1200 1200 }
+#					}
+#				}
+#			}			
+#		}
+#	}
+#}
+#
+#
+#
 
 ######################################################################
 ###################### RECONQUEST OF OSGILIATH #######################

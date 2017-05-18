@@ -405,5 +405,51 @@ character_event = {
 		}
 	}	
 }
+
+
+# some species/races or more or less unkillable by normal means
+character_event = {
+	id = racetrait.20
+	title = EVTTITracetrait.20
+	desc = EVTDESCracetrait.20
+	picture = GFX_evt_whispers
+	border = GFX_event_normal_frame_intrigue
+	is_part_of_plot = yes
+	
+	trigger = {
+		OR = {
+			has_plot = plot_kill_character
+			has_plot = plot_kill_spouse
+		}
+		
+		plot_target_char = {
+			mep_should_be_unkillable_trigger = yes
+		}
+		NOT = { has_character_flag = murder_in_motion }
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		plot_target_char = {
+			save_event_target_as = mep_immortal_victim_target
+		}
+	}
+	
+	option = {
+		name = EVTOPTAracetrait.20
+		if = {
+			limit = { has_plot = plot_kill_character }
+			cancel_plot = plot_kill_character
+		}
+		if = {
+			limit = { has_plot = plot_kill_spouse }
+			cancel_plot = plot_kill_spouse
+		}
+	}
+}
+
 	
 	

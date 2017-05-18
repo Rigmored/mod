@@ -35,6 +35,14 @@ character_event = {
 		}
 		any_realm_province = {
 			culture_group = culture_group_melkor
+			NOT = { has_province_modifier = being_purged }
+			# because otherwise just holding a single barony is enough...
+			holder_scope = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+			}
 		}
 	}
 	
@@ -46,9 +54,19 @@ character_event = {
 		any_realm_province = {
 			limit = {
 				religion_group = religion_group_melkor
+				# because otherwise just holding a single barony is enough...
+				holder_scope = {
+					OR = {
+						character = ROOT
+						top_liege = { character = ROOT }
+					}
+				}
+				NOT = { has_province_modifier = being_purged }
 			}
-			remove_province_modifier = population_increasing
-			mep_stop_colonisation_effect = yes
+			hidden_tooltip = {
+				remove_province_modifier = population_increasing
+				mep_stop_colonisation_effect = yes
+			}
 			add_province_modifier = { name = being_purged duration = 3650 }
 		}
 	}
@@ -74,17 +92,38 @@ character_event = {
 					PREV = { controlled_by = PREV }
 				}
 			}
+			# special case #1 for 
 			if = {
-				limit = { terrain = mountain }
-				culture = culture_mountains
+				limit = {
+					is_variable_equal = { which = mep_provincepurge_special  value = 1 }
+				}
+				culture = culture_longbeard
+				religion = religion_mahal
+				hidden_tooltip = {
+					mep_human_popmod_remove_effect = yes
+					add_province_modifier = { name = two_population_dwarves duration = -1 }
+					set_variable = { which = mep_provincepurge_special  value = 0 }
+				}
+				province_event = { id = dwarfconq.26 }
 			}
 			if = {
-				limit = { NOT = {terrain = mountain } }
-				culture = culture_wilderness
+				limit = {
+					NOT = { is_variable_equal = { which = mep_provincepurge_special  value = 1 } }
+				}			
+				if = {
+					limit = { terrain = mountain }
+					culture = culture_mountains
+				}
+				if = {
+					limit = { NOT = {terrain = mountain } }
+					culture = culture_wilderness
+				}
+				religion = religion_wilderness
 			}
-			religion = religion_wilderness
-			remove_province_modifier = being_purged
-			remove_province_modifier = sending_colonists
+			hidden_tooltip = {
+				remove_province_modifier = being_purged
+				remove_province_modifier = sending_colonists
+			}
 		}
 	}
 	
@@ -121,13 +160,23 @@ character_event = {
 		NOT = { has_character_flag = purge_in_progress } 
 		NOT = { has_character_flag = very_tolerant_of_good } 
 		religion_group = religion_group_melkor
-		OR = {
-			any_realm_province = { 	religion_group = religion_group_edain 	}
-			any_realm_province = { 	religion_group = religion_group_enyd }
-			any_realm_province = { 	religion_group = religion_group_khazad }
-			any_realm_province = { 	religion_group = religion_group_eldar }
-			any_realm_province = { 	religion_group = religion_group_periannath }
-			any_realm_province = { 	religion_group = religion_group_eruhini }
+		any_realm_province = {
+			# because otherwise just holding a single barony is enough...
+			holder_scope = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+			}
+			OR = {
+				religion_group = religion_group_edain
+				religion_group = religion_group_enyd
+				religion_group = religion_group_khazad
+				religion_group = religion_group_eldar
+				religion_group = religion_group_periannath
+				religion_group = religion_group_eruhini
+			}
+			NOT = { has_province_modifier = being_purged }
 		}
 	}
 	
@@ -146,9 +195,19 @@ character_event = {
 					religion_group = religion_group_periannath
 					religion_group = religion_group_eruhini
 				}
+				# because otherwise just holding a single barony is enough...
+				holder_scope = {
+					OR = {
+						character = ROOT
+						top_liege = { character = ROOT }
+					}
+				}
+				NOT = { has_province_modifier = being_purged }
 			}
-			remove_province_modifier = population_increasing
-			mep_stop_colonisation_effect = yes
+			hidden_tooltip = {
+				remove_province_modifier = population_increasing
+				mep_stop_colonisation_effect = yes
+			}
 			add_province_modifier = { name = being_purged duration = 3650 }
 		}
 	}

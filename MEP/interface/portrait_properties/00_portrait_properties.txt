@@ -1264,7 +1264,7 @@
 			factor = 0
 			culture = culture_wight
 			NOT = {
-				trait = ring_dwar
+				trait = ring_dwarf
 			}
 		}		
 		modifier = {
@@ -1564,12 +1564,7 @@
 			NOT = { martial = 12 }
 			NOT = {
 				primary_title = {
-					OR = {
-						mercenary = yes
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order
-					}
+					mercenary = yes
 				}
 			}
 		}
@@ -1608,12 +1603,7 @@
 					}
 					NOT = {
 						primary_title = {
-							OR = {
-								mercenary = yes
-								title = d_knights_hospitaler
-								title = d_knights_templar
-								title = d_teutonic_order
-							}
+							mercenary = yes
 						}
 					}
 				}
@@ -1830,44 +1820,36 @@
 		factor = 100
 		modifier = {
 			factor = 0
-			OR = {
-				# exclude sauron if he does not have the ring
-				AND = {
-					has_character_flag = sauron
-					NOT = { trait = ring }
-				}
-				# exclude child elves
-				AND = {
-					trait = elf_childhood
-					trait = elf
-				}	
-				# exclude the mouth of sauron
-				trait = mouthofsauron
-			}
-		}			
+			# exclude sauron if he does not have the ring
+			has_character_flag = sauron
+			NOT = { trait = ring }
+		}
+		modifier = {
+			factor = 0
+			trait = elf_childhood
+		}
+		modifier = {
+			factor = 0
+			trait = mouthofsauron
+		}		
  	}
 
 	1 = { # boils (and child elf)
 		factor = 100
 		modifier = {
 			factor = 0
-			OR = {
-				# for elves, exclude non child elves
-				AND = {
-					trait = elf
-					NOT = { trait = elf_childhood }
-				}
-				# for Black Numenoreans, exclude anyone who isn't the mouth of sauron
-				AND = {
-					culture = culture_black_numenorean
-					NOT = { trait = mouthofsauron }
-				}
-				# exclude sauron if he has the ring
-				AND = {
-					has_character_flag = sauron
-					trait = ring
-				}
-			}
+			NOT = { trait = elf_childhood }
+			religion_group = religion_group_eldar
+		}
+		modifier = {
+			factor = 0
+			culture = culture_black_numenorean
+			NOT = { trait = mouthofsauron }
+		}
+		modifier = {
+			factor = 0
+			has_character_flag = sauron
+			trait = ring
 		}				
  	}	
 }

@@ -19,6 +19,7 @@
 # mep_never_councillor_trigger
 # mep_pick_good_side_trigger
 # mep_temp_muslim_standin_trigger
+# mep_should_be_unkillable_trigger
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -35,6 +36,7 @@
 # mep_horsey_people_culture
 # mep_general_buildings_human
 # mep_prim_humans_culture
+# mep_prim_humans_culture_notbree
 # mep_orc_troll_culture
 
 ## provinces for dynamic population stuff
@@ -271,6 +273,28 @@ mep_temp_muslim_standin_trigger = {
 		religion_group = religion_group_melkor
 	}
 }
+
+mep_should_be_unkillable_trigger = {
+	OR = {
+		AND = {
+			culture_group = culture_group_eru
+			NOT = { culture = culture_eagles }
+		}
+		culture = culture_balrog
+		culture = culture_wight
+		culture = culture_dragons
+		culture_group = culture_group_wilderness
+		trait = maiar
+		trait = balrog
+		AND = {
+			culture_group = culture_group_onodrim
+			age = 2000
+		}
+		trait = fea_strong
+		trait = enigma
+		trait = nazgul
+	}
+}
 #--------------------------------------------------------------------
 # titles
 mep_gondor_arnor_emp_trigger = {
@@ -406,6 +430,17 @@ mep_prim_humans_culture = {
 		culture_group = culture_group_haldadian
 	}
 	NOT = { culture = culture_druedain }
+}
+
+mep_prim_humans_culture_notbree = {
+	OR = {
+		culture_group = culture_group_forodwaith
+		culture = culture_druedain
+		AND = {
+			culture_group = culture_group_haldadian
+			NOT = { culture = culture_breelander }
+		}
+	}
 }
 
 mep_orc_troll_culture = {
@@ -705,6 +740,8 @@ mep_might_sell_moria = {
 				mep_is_evil_side_trigger = yes
 				has_character_flag = refused_to_sell_moria
 				culture = culture_longbeard
+				religion_group = religion_group_wilderness
+				culture_group = culture_group_wilderness
 			}
 		}				
 		top_liege = {
@@ -713,6 +750,8 @@ mep_might_sell_moria = {
 				mep_is_evil_side_trigger = yes
 				has_character_flag = refused_to_sell_moria
 				culture = culture_longbeard
+				religion_group = religion_group_wilderness
+				culture_group = culture_group_wilderness
 			}				
 		}
 	}

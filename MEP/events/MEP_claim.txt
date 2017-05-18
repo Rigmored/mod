@@ -113,41 +113,41 @@ character_event = {
 	
 
 ### If Sauron is defeated, Dwarves get a claim on Khazad-Dum ##
-character_event = {
-	id = mepclaims.4
-	desc = "DESCmepclaims.4"
-	picture = "GFX_evt_dwarves"
-
-	trigger = {
-		has_landed_title = e_durins_folk
-		culture = culture_longbeard
-		age = 200
-		NOT = { has_global_flag = moriaclaim }
-		NOT = { has_character_flag = declinemoriaclaim }
-		NOT = { has_landed_title = c_moria }
-		NOT = { has_landed_title = d_moria }
-		has_global_flag = saurondefeated
-		is_female = no	
-	}
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "mepclaims4a"
-		set_global_flag = moriaclaim
-		c_moria = { add_claim = ROOT }
-		d_moria = { add_claim = ROOT }
-		any_playable_ruler = {
-			character_event = { id = mepclaims.5 days = 30 }
-		}
-	}
-	
-	option = {
-		name = "mepclaims4b" 
-		trigger = { ai = no }
-		set_character_flag = declinemoriaclaim		
-	}
-}	
+#character_event = {
+#	id = mepclaims.4
+#	desc = "DESCmepclaims.4"
+#	picture = "GFX_evt_dwarves"
+#
+#	trigger = {
+#		has_landed_title = e_durins_folk
+#		culture = culture_longbeard
+#		age = 200
+#		NOT = { has_global_flag = moriaclaim }
+#		NOT = { has_character_flag = declinemoriaclaim }
+#		NOT = { has_landed_title = c_moria }
+#		NOT = { has_landed_title = d_moria }
+#		has_global_flag = saurondefeated
+#		is_female = no	
+#	}
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = "mepclaims4a"
+#		set_global_flag = moriaclaim
+#		c_moria = { add_claim = ROOT }
+#		d_moria = { add_claim = ROOT }
+#		any_playable_ruler = {
+#			character_event = { id = mepclaims.5 days = 30 }
+#		}
+#	}
+#	
+#	option = {
+#		name = "mepclaims4b" 
+#		trigger = { ai = no }
+#		set_character_flag = declinemoriaclaim		
+#	}
+#}	
 
 ##Other rulers are informed of this venture to reclaim Moria##
 character_event = {

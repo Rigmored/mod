@@ -466,12 +466,31 @@ character_event = {
 			}
 			character_event = { id = frodo.17 }
 		}
+		# Getting rid of the Nazgul
 		any_realm_character  = {
 			limit = {
 				trait = nazgul	
 			}
 			character_event = { id = frodo.18 }
 		}
+		# auto-killing the Balrog
+		if = {
+			limit = { NOT = { has_global_flag = durins_bane_is_dead } }
+			any_playable_ruler = {
+				if = {
+					limit = { has_character_flag = moriabalrog}
+					death = { death_reason = death_suicide }
+					break = yes
+				}
+				any_vassal = {
+					if = {
+						limit = { has_character_flag = moriabalrog}
+						death = { death_reason = death_suicide }
+					}
+				}
+			}
+			set_global_flag = durins_bane_is_dead
+		}		
 		any_playable_ruler  = {
 			character_event = { id = frodo.19 }
 		}
@@ -567,6 +586,47 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAfrodo.18"
+		# to avoid weird inheritances... destroy the realm of the nazgul
+		# eliminate duke or king level titles
+		any_demesne_title  = {
+			if = {
+				limit = {
+					OR = { tier = king
+						tier = duke }
+				}
+				destroy_landed_title = THIS
+			}
+		}
+		# counties must become independent, generate new rulers for them
+		any_demesne_title = {
+			if = {
+				limit = { tier = count }
+				location = {
+					create_character = {
+						culture = THIS
+						religion = THIS
+					}
+				}
+				new_character = {
+					# tries to 'finish off' the character via race traits
+					character_event = { id = racetrait.1 }
+					character_event = { id = racetrait.2 }
+					character_event = { id = racetrait.3 }
+					character_event = { id = racetrait.4 }
+					character_event = { id = racetrait.6 }
+					character_event = { id = racetrait.5 }
+					character_event = { id = racetrait.7 }
+					character_event = { id = racetrait.8 }
+					character_event = { id = racetrait.9 }
+					character_event = { id = racetrait.10 }
+					PREV = {
+						grant_title = PREV
+					}
+					
+				}
+			}
+		}
+		
 		death = {
 			death_reason = death_battle
 		}
