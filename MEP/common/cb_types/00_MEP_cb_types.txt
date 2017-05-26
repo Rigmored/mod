@@ -129,7 +129,7 @@ elven_reconquest = {
 	sprite = 9
 	truce_days = 3650
 	is_permanent = yes
-	check_de_jure_tier = COUNT # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
+	check_all_titles = yes	
 
 	can_use = {
 		ROOT = {
@@ -138,6 +138,7 @@ elven_reconquest = {
 			NOT = { same_realm = FROM }
 		}
 		FROM = {
+			NOT = { same_realm = ROOT }
 			NOT = {
 				religion_group = religion_group_periannath
 				culture_group = culture_group_wilderness
@@ -145,74 +146,25 @@ elven_reconquest = {
 		}
 	}
 	can_use_title = {
-		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
-		any_direct_de_jure_vassal_title = {
-			OR = {
-			holder_scope = {
-					OR = {
-						character = ROOT
-						is_liege_or_above = ROOT
-					}
-				}
-				location = {
-					OR = {
-					de_jure_liege_or_above = e_lindon
-					de_jure_liege_or_above = k_eregion
-					de_jure_liege_or_above = k_mirkwood
-					}
-					any_neighbor_province = {
-						OR = {
-							AND = {
-								has_owner = yes
-								owner = {
-									OR = {
-										character = ROOT
-										is_liege_or_above = ROOT
-									}
-								}
-							}
-							AND = {
-								is_land = no
-								OR = {
-									year = 1100
-									ROOT = { OR = {
-													religion_group = religion_group_wilderness 
-													religion_group = religion_group_melkor}
-													}
-									FROM = { OR = {
-													religion_group = religion_group_wilderness 
-													religion_group = religion_group_melkor}
-													}
-								}
-								any_neighbor_province = {
-									OR = {
-										AND = {
-											has_owner = yes
-											owner = {
-												OR = {
-													character = ROOT
-													is_liege_or_above = ROOT
-												}
-											}
-										}
-										AND = {
-											is_land = no
-											any_neighbor_province = {
-												owner = {
-													OR = {
-														character = ROOT
-														is_liege_or_above = ROOT
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+		tier = count
+		OR = {
+			AND = {
+				ROOT = { has_landed_title = e_lindon }
+				de_jure_liege_or_above = e_lindon
 			}
+			AND = {
+				ROOT = { has_landed_title = k_mirkwood }
+				de_jure_liege_or_above = k_mirkwood
+			}
+			AND = {
+				ROOT = { has_landed_title = k_eregion }
+				de_jure_liege_or_above = k_eregion
+			}
+		}
+		# The original had some rather odd restrictions that made no sense...
+		# replacing it with the usual 'bordering with 2 seazones' check for neighboring provinces...
+		location = {
+			mep_borders_ROOTrealm_2seazones
 		}
 	}
 
