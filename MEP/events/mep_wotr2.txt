@@ -899,6 +899,7 @@ character_event = {
 		name = "EVTOPTAwotr.27"
 		set_character_flag = wotr27
 		set_character_flag = towardsfangorn
+		add_friend = 27
 	}
 	
 }
@@ -2466,63 +2467,64 @@ character_event = {
 	}
 	
 ##If the year is past 11369, and Gondor is at peace, then either the war is won or lost. If won, the Steward still has c_minas tirith, so we'll do this first#
-	character_event = {
+character_event = {
     id = wotr.73
     title = "EVTTITwotr.73"
     desc = "EVTDESCwotr.73"
     picture = "GFX_good"
 	age = 16
+	religion = religion_dunedain
 	
 	trigger = {
-	has_landed_title = c_minas_tirith
-	has_landed_title = e_steward_gondor
-	religion = religion_dunedain
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { has_global_flag = wotr73 }
-	year = 11368
-	war = no
+		has_landed_title = c_minas_tirith
+		has_landed_title = e_steward_gondor
+		religion = religion_dunedain
+		has_global_flag = greatwar1
+		has_global_flag = aragornwar
+		NOT = { has_global_flag = wotr73 }
+		year = 11368
+		war = no
 	}
 	
 	mean_time_to_happen = {
-	days = 14
+		days = 14
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.73"
-	clr_global_flag = gondor_threatened
-	set_global_flag = wotr73
+		name = "EVTOPTAwotr.73"
+		clr_global_flag = gondor_threatened
+		set_global_flag = wotr73
 		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
+			limit = {
+				trait = blood_of_isildur
+				age = 30
 			}
 			character_event = { id = wotr.74 }
 		}
 	}
 	
 	option = {
-	name = "EVTOPTBwotr.73"
-	trigger = {
-		dynasty = 100
-		ai = no
-	}
-	set_global_flag = wotr73
-	clr_global_flag = gondor_threatened
-	character_event = { id = wotr.81 days = 30 }
-	any_independent_ruler = {
-		limit = {
-			trait = blood_of_isildur
-			age = 30
+		name = "EVTOPTBwotr.73"
+		trigger = {
+			dynasty = 100
+			ai = no
 		}
+		set_global_flag = wotr73
+		clr_global_flag = gondor_threatened
+		character_event = { id = wotr.81 days = 30 }
+		any_independent_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				age = 30
+			}
 			character_event = { id = wotr.74 }
 		}
 	}
 	
-	}
+}
 	
 	##Aragorn is informed that he will be crowned King##
-	character_event = {
+character_event = {
     id = wotr.74
     title = "EVTTITwotr.74"
     desc = "EVTDESCwotr.74"
@@ -2530,9 +2532,10 @@ character_event = {
 	age = 16
 	
 	is_triggered_only = yes
+	
 	option = {
-	name = "EVTOPTAwotr.74"
-	add_trait = palantir
+		name = "EVTOPTAwotr.74"
+		add_trait = palantir
 		e_steward_gondor =	{
 			usurp_title = ROOT	
 		}
@@ -2542,7 +2545,7 @@ character_event = {
 		}				
 		character_event = { id = wotr.75 }
 	}	
-	}
+}
 	
 	
 	
@@ -2555,9 +2558,10 @@ character_event = {
 	age = 16
 	
 	is_triggered_only = yes
+	
 	option = {
-	name = "EVTOPTAwotr.75"
-	set_global_flag = gondor_restored
+		name = "EVTOPTAwotr.75"
+		set_global_flag = gondor_restored
 		remove_trait = on_fellowshipquest
 		character_event = { id = wotr.91 }	
 		e_gondor = {
@@ -2614,8 +2618,8 @@ character_event = {
 }
 	
 	
-	##Rulers are informed that the Re-United Kingdom has arisen again##
-		character_event = {
+##Rulers are informed that the Re-United Kingdom has arisen again##
+character_event = {
     id = wotr.76
     title = "EVTTITwotr.76"
     desc = "EVTDESCwotr.76"
@@ -2625,75 +2629,76 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.76"
-	trigger = {
-	religion=religion_dunedain
-	}
-	}
-	
-		option = {
-	name = "EVTOPTBwotr.76"
-	trigger = {
-	trait=evil_side
-	}
-	}
-	
-			option = {
-	name = "EVTOPTCwotr.76"
-	}
-	}
-	
-	##If the year is past 11369, and Gondor is at peace, then either the war is won or lost. This is for when the war is lost.#
-	character_event = {
-    id = wotr.77
-    title = "EVTTITwotr.77"
-    desc = "EVTDESCwotr.77"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = e_steward_gondor
-	NOT = { has_landed_title = c_minas_tirith }
-	religion = religion_dunedain
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { has_global_flag = wotr77 }
-	year = 11368
-	war = no
-	}
-	
-	mean_time_to_happen = {
-	days = 14
+		name = "EVTOPTAwotr.76"
+		trigger = {
+			religion=religion_dunedain
+		}
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.77"
-	set_global_flag = wotr77
-		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
+		name = "EVTOPTBwotr.76"
+		trigger = {
+			trait=evil_side
+		}
 	}
-	character_event = { id = wotr.78 }
-			}
-			}
-			
-		option = {
-	name = "EVTOPTBwotr.77"
-	set_global_flag = wotr77
-		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
+	
+	option = {
+		name = "EVTOPTCwotr.76"
 	}
-	character_event = { id = wotr.79 }
+}
+	
+##If the year is past 11369, and Gondor is at peace, then either the war is won or lost. This is for when the war is lost.#
+character_event = {
+	id = wotr.77
+	title = "EVTTITwotr.77"
+    desc = "EVTDESCwotr.77"
+    picture = "GFX_war_gondor"
+	age = 16
+	religion = religion_dunedain
+	
+	trigger = {
+		has_landed_title = e_steward_gondor
+		NOT = { has_landed_title = c_minas_tirith }
+		religion = religion_dunedain
+		has_global_flag = greatwar1
+		has_global_flag = aragornwar
+		NOT = { has_global_flag = wotr77 }
+		year = 11368
+		war = no
+	}
+	
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	option = {
+		name = "EVTOPTAwotr.77"
+		set_global_flag = wotr77
+		any_independent_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				age = 30
 			}
-			}
+			character_event = { id = wotr.78 }
+		}
+	}
 			
+	option = {
+		name = "EVTOPTBwotr.77"
+		set_global_flag = wotr77
+		any_independent_ruler = {
+			limit = {
+				trait = blood_of_isildur
+				age = 30
 			}
+			character_event = { id = wotr.79 }
+		}
+	}
 			
-	##Aragorn is informed that the stewards reject him##
-	character_event = {
+}
+			
+##Aragorn is informed that the stewards reject him##
+character_event = {
     id = wotr.78
     title = "EVTTITwotr.78"
     desc = "EVTDESCwotr.78"
@@ -2703,33 +2708,33 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.78"
-	remove_trait = on_fellowshipquest
-	clr_global_flag = gondor_threatened
+		name = "EVTOPTAwotr.78"
+		remove_trait = on_fellowshipquest
+		clr_global_flag = gondor_threatened
 	}
 	
-	}
+}
 	
-		##Aragorn is informed that the stewards accept him even though gondor lost##
-	character_event = {
-    id = wotr.79
-    title = "EVTTITwotr.79"
-    desc = "EVTDESCwotr.79"
+##Aragorn is informed that the stewards accept him even though gondor lost##
+character_event = {
+	id = wotr.79
+	title = "EVTTITwotr.79"
+	desc = "EVTDESCwotr.79"
     picture = "GFX_kinstrife"
 	age = 16
 	
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.79"
-	remove_trait = on_fellowshipquest
-			e_steward_gondor =	{
+		name = "EVTOPTAwotr.79"
+		remove_trait = on_fellowshipquest
+		e_steward_gondor =	{
 			usurp_title = ROOT	
 		}				
 		character_event = { id = wotr.80 }
 	}
 	
-	}
+}
 	
 ##Aragorn gets his king titles even though gondor lost##
 character_event = {
@@ -2771,8 +2776,8 @@ character_event = {
 	}
 }
 		
-	##The steward chose to not welcome Aragorn, and instead bide his time to plot against him##
-	character_event = {
+##The steward chose to not welcome Aragorn, and instead bide his time to plot against him##
+character_event = {
     id = wotr.81
     title = "EVTTITwotr.81"
     desc = "EVTDESCwotr.81"
@@ -2782,45 +2787,45 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.81"
-	add_claim = e_gondor
-	add_claim = c_minas_tirith
+		name = "EVTOPTAwotr.81"
+		add_claim = e_gondor
+		add_claim = c_minas_tirith
 	}
 	
-	}
+}
 	
-	##If Boromir has the ring, Aragorn reacts##
-	character_event = {
+##If Boromir has the ring, Aragorn reacts##
+character_event = {
     id = wotr.82
     title = "EVTTITwotr.82"
     desc = "EVTDESCwotr.82"
     picture = "GFX_evil_king"
 	age = 16
 	
-		trigger = {
-	has_landed_title = e_gondor
-	has_global_flag = boromirhasring
-	has_global_flag = aragornwar
-	dynasty = 2001
-	NOT = { has_global_flag = wotr82 }
+	trigger = {
+		has_landed_title = e_gondor
+		has_global_flag = boromirhasring
+		has_global_flag = aragornwar
+		dynasty = 2001
+		NOT = { has_global_flag = wotr82 }
 	}
 	
 	mean_time_to_happen = {
-	days = 7
+		days = 7
 	}
 	
 	option = { 
-	name = "EVTOPTAwotr.82"
-	set_global_flag = wotr82
-	any_realm_character = {
-	limit = { trait = ring 	}
-	character_event = { id = wotr.83 }
+		name = "EVTOPTAwotr.82"
+		set_global_flag = wotr82
+		any_realm_character = {
+			limit = { trait = ring 	}
+			character_event = { id = wotr.83 }
+		}
 	}
-			}
-			}
+}
 	
-	##Boromir is informed##
-	character_event = {
+##Boromir is informed##
+character_event = {
     id = wotr.83
     title = "EVTTITwotr.83"
     desc = "EVTDESCwotr.83"
@@ -2830,34 +2835,35 @@ character_event = {
     is_triggered_only = yes
 	
 	option = { 
-	name = "EVTOPTAwotr.83"
+		name = "EVTOPTAwotr.83"
 		imprison = FROM
-	any_independent_ruler = {
+		any_independent_ruler = {
 			limit = {
 				trait = blood_of_isildur
 				age = 25
 			}
 			character_event = { id = wotr.84 }
 		}
-			}
+	}
 	
 	option = {
-	name = "EVTOPTBwotr.83"
-	add_trait = evil_side
-	ROOT = { religion = religion_black_numenorean }
-		 random_list = {
-                  75 = { 
-					character_event = { id = wotr.85 }
-                          }
-                25  = {
-                    character_event = { id = wotr.86 }
-                }
-				}
-			}
-			}
+		name = "EVTOPTBwotr.83"
+		add_trait = evil_side
+		ROOT = { religion = religion_black_numenorean }
+		random_list = {
+			75 = { 
+				character_event = { id = wotr.85 }
+            }
+            25  = {
+				character_event = { id = wotr.86 }
+            }
+		}
+	}
+
+}
 	
-	##Aragorn is told Boromir has been imprisoned##
-	character_event = {
+##Aragorn is told Boromir has been imprisoned##
+character_event = {
     id = wotr.84
     title = "EVTTITwotr.84"
     desc = "EVTDESCwotr.84"
@@ -2867,13 +2873,13 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.84"
+		name = "EVTOPTAwotr.84"
 	}
 	
-	}
+}
 	
-	##Boromir runs to Umbar##
-	character_event = {
+##Boromir runs to Umbar##
+character_event = {
     id = wotr.85
     title = "EVTTITwotr.85"
     desc = "EVTDESCwotr.85"
@@ -2891,7 +2897,7 @@ character_event = {
 			}
 			character_event = { id = wotr.87 }
 		}
-				any_independent_ruler = {
+		any_independent_ruler = {
 			limit = {
 				has_landed_title = e_gondor
 			}
@@ -2899,10 +2905,10 @@ character_event = {
 		}
 	}
 	
-	}
+}
 	
-	##Boromir is caught ##
-	character_event = {
+##Boromir is caught ##
+character_event = {
     id = wotr.86
     title = "EVTTITwotr.86"
     desc = "EVTDESCwotr.86"
@@ -2912,14 +2918,14 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.86"
-	imprison = yes
+		name = "EVTOPTAwotr.86"
+		imprison = yes
 	}
 	
-	}
+}
 	
-	##Boromir runs to Umbar##
-	character_event = {
+##Boromir runs to Umbar##
+character_event = {
     id = wotr.87
     title = "EVTTITwotr.87"
     desc = "EVTDESCwotr.87"
@@ -2929,13 +2935,13 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.87"
-	FROM = { character_event = { id = wotr.88 days = 30 } }
-		}
+		name = "EVTOPTAwotr.87"
+		FROM = { character_event = { id = wotr.88 days = 30 } }
 	}
+}
 	
-	##Boromir runs to Umbar##
-	character_event = {
+##Boromir runs to Umbar##
+character_event = {
     id = wotr.88
     title = "EVTTITwotr.88"
     desc = "EVTDESCwotr.88"
@@ -2946,11 +2952,11 @@ character_event = {
 	
 	option = {
 	name = "EVTOPTAwotr.88"
-	FROM = { reverse_banish = ROOT }
-		}
+		FROM = { reverse_banish = ROOT }
 	}
+}
 	
-		##Aragorn is told Boromir has escaped##
+##Aragorn is told Boromir has escaped##
 	character_event = {
     id = wotr.89
     title = "EVTTITwotr.89"
@@ -2961,38 +2967,39 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.89"
-		}
+		name = "EVTOPTAwotr.89"
 	}
+}
 	
 	########################################################################
 	##make further boromir evil_side events in new doc######################
 	########################################################################
 	
 	
-	##Gondor seems a to lose too often, I'll give them 6500 troops when the war starts at Minas Tirith##
-	character_event = {
+##Gondor seems a to lose too often, I'll give them 6500 troops when the war starts at Minas Tirith##
+character_event = {
     id = wotr.90
     title = "EVTTITwotr.90"
     desc = "EVTDESCwotr.90"
     picture = "GFX_war_gondor"
 	age = 16
+	only_playable = yes
 	
 	trigger = {
-	has_landed_title = c_minas_tirith
-	NOT = { has_global_flag = wotr90 }
-	has_global_flag = greatwar1
-	age = 1
+		has_landed_title = c_minas_tirith
+		NOT = { has_global_flag = wotr90 }
+		has_global_flag = greatwar1
+		age = 1
 	}
 	
 	mean_time_to_happen = {
-	days = 7
+		days = 7
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.90"
-	set_global_flag = wotr90
-			create_random_soldier = {
+		name = "EVTOPTAwotr.90"
+		set_global_flag = wotr90
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
 			religion = ROOT
@@ -3000,12 +3007,11 @@ character_event = {
 			female = no
 			age = 33
 		}
-			new_character = {
-		spawn_unit = {
+		new_character = {
+			spawn_unit = {
 				province = 422 # Minas Tirith
 				disband_on_peace = no
-				troops =
-				{
+				troops = {
 					light_infantry = { 1000 1000 }
 					archers = { 1000 1000 }
 					heavy_infantry = { 3000 3000 }
@@ -3013,10 +3019,10 @@ character_event = {
 					pikemen = { 1500 1500 }
 				}
 			}		
-			}
-			}
+		}
+	}
 			
-			}
+}
 			
 ########################################################################
 ######################Aragorn crown events##############################
@@ -3035,10 +3041,10 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.91"
+		name = "EVTOPTAwotr.91"
 		add_trait = annunimas	
 		character_event = { id = wotr.92 days = 1 }
-		}
+	}
 }
 
 ## After Aragorn is crowned, he can change his name to Elessar ##
@@ -3167,8 +3173,8 @@ character_event = {
 			limit = {
 				has_character_flag = arwen
 			}
-		add_trait=sailed_west
-		remove_trait = vow_of_cerin_amroth
+			add_trait=sailed_west
+			remove_trait = vow_of_cerin_amroth
 		}			
 	}
 }
@@ -3195,7 +3201,8 @@ character_event = {
 				limit = {
 					has_character_flag = arwen
 				}
-			add_spouse=ROOT
+				add_spouse = ROOT
+				add_lover = ROOT
 			}	
 		}
 	}

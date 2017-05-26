@@ -3125,11 +3125,15 @@
 	culture="culture_hobbit"
 	father =8023
 	add_trait = hobbit
+	add_trait = strong # try to keep him alive until the ring-war is over)
 	11276.1.1={
 		birth="11276.1.1"
 	}
 	11318.1.1={
 		add_spouse = 8266
+		effect = {
+			add_friend = 8177 # Will Whitfoot (this is to prevent the usual shire civil war)
+		}
 	}
 	11377.1.1={
 		death="11377.1.1"
@@ -3311,6 +3315,11 @@
 	give_nickname = nick_flourdumpling
 	11280.1.1={
 		birth="11280.1.1"
+	}
+	11318.1.1={
+		effect = {
+			add_friend = 8024 # Thain Paladin II (this is to prevent the usual shire civil war)
+		}
 	}
 	11386.1.1={
 		death="11386.1.1"

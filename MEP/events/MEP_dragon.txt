@@ -6,13 +6,8 @@ narrative_event = {
     title = "EVTTITdragon.0"
     desc = "EVTDESCdragon.0"
     picture = "GFX_good"
-		
-	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_character_flag = grey_dragon_event }
-		NOT = { has_character_modifier = successfully_fought_dragon }
-		NOT = { has_character_modifier = news_of_wealth }
 		OR = {
 			has_landed_title = c_cirith_auris
 			has_landed_title = c_withered_heath
@@ -36,17 +31,16 @@ narrative_event = {
 		age = 100	
 		wealth = 1000
 	}
-
+	
+	in_triggered_only = yes
 
 	option = {
 		name = "EVTOPTAdragon.0"
 		random_list = {
 			55 = {
 				narrative_event = { id = dragon.1 days = 150 }
-				set_character_flag = grey_dragon_event
 			}
 			45 = {
-				add_character_modifier = { name = news_of_wealth duration = 365 }
 			}		
 		}
 	}	
@@ -94,7 +88,7 @@ narrative_event = {
 }
 
 
-## The Dwarf will defend his fortress - the Dragon is coming ##
+## The Dwarf will defende his fortress - the Dragon is coming ##
 character_event = {
     id = dragon.2
     title = "EVTTITdragon.2"
@@ -355,7 +349,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -580,7 +574,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROMFROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -663,10 +657,6 @@ character_event = {
 			remove_trait = duel_target
 		}
 		remove_trait = duel_target	
-		clr_character_flag = grey_dragon_event
-		add_character_modifier = { name = successfully_fought_dragon duration = 3650 }
-		prestige = 500
-		piety = 250
 	}	
 }	 
 
@@ -698,7 +688,7 @@ character_event = {
 				age = 1
 				culture_group = culture_group_dwarves
 				OR = {
-					NOT = { has_landed_title = k_grey_mountains }
+					NOT = { has_landed_title = d_grey_mountains }
 					NOT = { has_landed_title = c_cirith_auris }
 					NOT = { has_landed_title = c_withered_heath }
 					NOT = { has_landed_title = c_cirith_himmimond }
@@ -895,7 +885,7 @@ character_event = {
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	
 	}	
 	option = {
-		name = "EVTOPTBdragon.15" ## I'll try to flee away !
+		name = "EVTOPTBdragon.15" ## I'll try to flew away !
 		random_list = {
 			45 = {
 				hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	## You failed to escape, second duel
@@ -911,8 +901,8 @@ character_event = {
 character_event = {
 	id = dragon.16
 	is_triggered_only = yes
-	#picture = GFX_evt_duel0
-	#desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -1073,7 +1063,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -1298,7 +1288,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROMFROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2

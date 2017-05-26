@@ -8,8 +8,9 @@
 # mep_allows_shield_maidens_trigger
 # mep_dont_do_nice_trigger
 # mep_cant_get_disease_trigger
-# mep_disease_resistant_trigger
 # mep_numenorean_traits_trigger
+# mep_elven_blood_tigger
+# mep_disease_resistant_trigger
 # mep_has_disease_trigger
 # mep_is_genuine_elf
 # mep_has_elf_stuff
@@ -20,6 +21,7 @@
 # mep_pick_good_side_trigger
 # mep_temp_muslim_standin_trigger
 # mep_should_be_unkillable_trigger
+# mep_is_human_trigger
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -56,6 +58,7 @@
 # mep_has_properity_modifier
 
 ## province CB shorteners
+# mep_province_owned_by_root
 # mep_borders_ROOTrealm_2seazones
 # mep_borders_ROOTrealm_1seazone
 
@@ -146,17 +149,7 @@ mep_cant_get_disease_trigger = {
 		trait = valar
 		trait = enigma
 		trait = nazgul
-	}
-}
-
-mep_disease_resistant_trigger = {
-	OR = {
-		religion_group = religion_group_khazad
-		trait = numenorean
-		trait = blood_of_numenor
-		trait = blood_of_numenor2
-		trait = blood_of_isildur
-		trait = blood_of_anarion
+		trait = elf_childhood
 	}
 }
 
@@ -167,6 +160,22 @@ mep_numenorean_traits_trigger = {
 		trait = blood_of_numenor2
 		trait = blood_of_isildur
 		trait = blood_of_anarion
+	}
+}
+
+mep_elven_blood_tigger = {
+	OR = {
+		trait = elven_blood
+		trait = half_elf
+	}
+}
+
+mep_disease_resistant_trigger = {
+	OR = {
+		religion_group = religion_group_khazad
+		religion_group = religion_group_periannath
+		mep_numenorean_traits_trigger = yes
+		mep_elven_blood_tigger = yes
 	}
 }
 
@@ -295,6 +304,14 @@ mep_should_be_unkillable_trigger = {
 		trait = nazgul
 	}
 }
+
+mep_is_human_trigger = {
+	OR = {
+		religion_group = religion_group_edain
+		religion_group = religion_group_hildor
+	}
+}
+
 #--------------------------------------------------------------------
 # titles
 mep_gondor_arnor_emp_trigger = {
@@ -608,6 +625,28 @@ mep_has_properity_modifier = {
 }
 #-----------------------------------------------------------
 # province CB shorteners
+mep_province_owned_by_root = {
+	AND = {
+		has_owner = yes
+		owner = {
+			OR = {
+				character = ROOT
+				is_liege_or_above = ROOT
+			}
+		}
+	}
+}
+
+mep_province_not_owned_by_root = {
+	OR = {
+		has_owner = no
+		owner = {
+			NOT = { character = ROOT }
+			NOT = { is_liege_or_above = ROOT }
+		}
+	}
+}
+
 
 # Used to test if a province borders, or is 2 or less seazones away, from the realm of ROOT
 mep_borders_ROOTrealm_2seazones = {
@@ -621,7 +660,7 @@ mep_borders_ROOTrealm_2seazones = {
 						character = ROOT
 						is_liege_or_above = ROOT
 					}
-				}
+				}		
 			}
 			#  The neighbour provice is a seazone -> more checks needed
 			AND = {
@@ -644,12 +683,14 @@ mep_borders_ROOTrealm_2seazones = {
 						AND = {
 							is_land = no
 							any_neighbor_province = {
+								has_owner = yes
 								owner = {
 									OR = {
 										character = ROOT
 										is_liege_or_above = ROOT
 									}
 								}
+
 							}
 						}
 						# end of second seazone neighbour scan

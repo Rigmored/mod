@@ -138,6 +138,30 @@ castle = {
         }
 	}
 	
+	ca_gondamon = { #Gondamon (Broadbeam capitol, in province 238)
+		desc = ca_gondamon_desc
+		gold_cost = 510
+		build_time = 1825
+		fort_level = 3
+		garrison_size = 0.5
+		tech_growth_modifier = 0.5
+		heavy_infantry = 75
+		archers = 125
+		tax_income = 5
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+           	FROMFROM = { title = b_gondamon }
+			FROM = {
+				NOT = { culture_group = culture_group_melkor }
+			}
+			ROOT = {
+			    NOT = { culture_group = culture_group_wilderness}
+			    culture_group = culture_group_dwarves
+			}
+        }
+	}
+	
 	ca_zirakdum = { #Zirakdum#
 		desc = ca_zirakdum_desc
 		gold_cost = 510
@@ -165,18 +189,44 @@ castle = {
 	
 	ca_thorinsgate = { #Thorin's Gate#
 		desc = ca_thorinsgate_desc
-		gold_cost = 510
+		gold_cost = 400
 		build_time = 1825
-		fort_level = 3
-		garrison_size = 0.5
+		fort_level = 2.5
+		garrison_size = 0.3
 		tech_growth_modifier = 0.5
-		heavy_infantry = 150
-		archers = 95
-		tax_income = 5
+		heavy_infantry = 100
+		archers = 75
+		tax_income = 3
 		ai_creation_factor = 106
 		add_number_to_name = no
         potential = {
+			year = 11145
            	FROMFROM = { title = b_thorin_hall }
+            FROM = {
+			NOT = { culture_group = culture_group_melkor }
+			}
+			ROOT = {
+			    NOT = { culture_group = culture_group_wilderness}
+			    culture_group = culture_group_dwarves
+			}
+        }
+	}
+	
+	ca_dainshalls = { #Dain's Halls#
+		desc = ca_dainshalls_desc
+		gold_cost = 400
+		build_time = 1825
+		fort_level = 2.5
+		garrison_size = 0.3
+		tech_growth_modifier = 0.5
+		heavy_infantry = 100
+		archers = 75
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        potential = {
+			year = 10533
+           	FROMFROM = { title = b_dain_halls }
             FROM = {
 			NOT = { culture_group = culture_group_melkor }
 			}

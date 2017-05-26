@@ -872,7 +872,7 @@ narrative_event = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
 		}
-		k_grey_mountains = {
+		d_grey_mountains = {
 			grant_title = ROOT
 		}
 		any_courtier = {
@@ -897,14 +897,11 @@ narrative_event = {
 	}
 	option = {
 		name = "EVTOPTBmoria.14" ## We'll go to Ered Luin
-		c_vale_of_thrain = {
+		c_northern_ranges = {
 			grant_title = ROOT
 			location = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
-		}
-		k_ered_luin = {
-			grant_title = ROOT
 		}
 		any_courtier = {
 			limit = { 
@@ -925,7 +922,7 @@ narrative_event = {
 		any_playable_ruler = {
 			narrative_event = { id = moria.21 }
 		}		
-	}	
+	}
 	option = {
 		name = "EVTOPTCmoria.14" ## We'll go to Iron Hills
 		c_azanulimbar_dum = {
@@ -934,7 +931,7 @@ narrative_event = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
 		}
-		k_iron_mountains = {
+		d_iron_mountains = {
 			grant_title = ROOT
 		}
 		any_courtier = {
@@ -956,7 +953,7 @@ narrative_event = {
 		any_playable_ruler = {
 			narrative_event = { id = moria.21 }
 		}		
-	}		
+	}
 }
 
 #### The balrog become the new ruler of Moria ####
@@ -1214,7 +1211,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAmoria.23" ## we'll install in Moria !
+		name = "EVTOPTAmoria.23" ## we'll install in Moria !	
 		# The balrog takes b_zirak_zigil first
 		FROM = {
 			b_zirak_zigil = { grant_title = PREV }			

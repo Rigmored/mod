@@ -285,15 +285,16 @@ character_event = {
 		if = {
 			limit = { trait = morgul_blade }
 			custom_tooltip = { text = CURRENTMORGULBLADE }
-		}	
-		daggerwesternesse = {
-			limit = { 
+		}
+		any_character = {
+			limit = {
+				has_artifact = daggerwesternesse
 				is_alive = yes
 			}
 			custom_tooltip = { text = CURRENTDAGGERWESTERNESSE }
 		}
 		if = {
-			limit = { trait = daggerwesternesse }
+			limit = { has_artifact = daggerwesternesse }
 			custom_tooltip = { text = CURRENTDAGGERWESTERNESSE }
 		}		
 	}

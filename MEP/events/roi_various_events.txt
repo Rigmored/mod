@@ -1,0 +1,225 @@
+###########################################
+#                                         #
+# RoI India various events                #
+#                                         #
+###########################################
+
+# Written by Tobias Bodlund & Henrik Fåhraeus
+# (and deleted, mostly)
+
+###########################################
+# Elephants                               #
+###########################################
+# Note: these events can perhaps be converted to MEP Mûmak events
+
+# Peasants need elephants for clearing forest
+#character_event = {
+#	id = RoI.157
+#	desc = EVTDESC_RoI_157
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	ai = no
+#	only_capable = yes
+#	prisoner = no
+#	
+#	trigger = {
+#		has_dlc = "Rajas of India"
+#		capital_scope = {
+#			region = world_india
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA_RoI_157
+#		scaled_wealth = -0.2
+#		prestige = 50
+#	}
+#	option = {
+#		name = EVTOPTB_RoI_157
+#		scaled_wealth = -0.1
+#		prestige = 25
+#	}
+#	option = {
+#		name = EVTOPTC_RoI_157
+#		random_demesne_province = {
+#			add_province_modifier = {
+#				name = neglected_development
+#				duration = 1085
+#			}
+#		}
+#	}
+#}
+#
+## Crazed elephant runs amuck
+#character_event = {
+#	id = RoI.158
+#	desc = EVTDESC_RoI_158
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	ai = no
+#	only_capable = yes
+#	prisoner = no
+#	
+#	trigger = {
+#		has_dlc = "Rajas of India"
+#		NOT = { has_character_flag = crazed_elephant }
+#		capital_scope = {
+#			OR = {
+#				region = world_india
+#				duchy = { title = d_sistan }
+#				duchy = { title = d_baluchistan }
+#				duchy = { title = d_kerman }
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		set_character_flag = crazed_elephant
+#	}
+#	
+#	option = {
+#		name = EVTOPTA_RoI_158
+#		hidden_tooltip = {
+#			random_list = {
+#				50 = { character_event = { id = RoI.159 } }
+#				50 = { character_event = { id = RoI.160 } }
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB_RoI_158
+#		hidden_tooltip = {
+#			random_list = {
+#				50 = { character_event = { id = RoI.161 } }
+#				50 = { character_event = { id = RoI.162 } }
+#			}
+#		}
+#	}
+#}
+#
+## Crazed elephant is killed by soldiers in a messy way
+#character_event = {
+#	id = RoI.159
+#	desc = EVTDESC_RoI_159
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA_RoI_159
+#		capital_scope = {
+#			add_province_modifier = {
+#				name = peasants_upset
+#				duration = 1460
+#			}
+#		}
+#	}
+#}
+#
+## Crazed elephant is killed by soldiers in a discrete way
+#character_event = {
+#	id = RoI.160
+#	desc = EVTDESC_RoI_160
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA_RoI_160
+#		capital_scope = {
+#			add_province_modifier = {
+#				name = peasants_protected
+#				duration = 1460
+#			}
+#		}
+#	}
+#}
+#
+## Crazed elephant kills people, then escapes
+#character_event = {
+#	id = RoI.161
+#	desc = EVTDESC_RoI_161
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA_RoI_161
+#		scaled_wealth = -0.1
+#		prestige = -20
+#		capital_scope = {
+#			add_province_modifier = {
+#				name = peasants_upset
+#				duration = 1460
+#			}
+#		}
+#	}
+#}
+#
+## Crazed elephant is captured
+#character_event = {
+#	id = RoI.162
+#	desc = EVTDESC_RoI_162
+#	picture = GFX_evt_india_rural_scene
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA_RoI_162
+#		capital_scope = {
+#			add_province_modifier = {
+#				name = peasants_protected
+#				duration = 1460
+#			}
+#		}
+#	}
+#}
+#
+## Temple elephants are dying
+#character_event = {
+#	id = RoI.163
+#	desc = EVTDESC_RoI_163
+#	picture = GFX_evt_india_temple
+#	border = GFX_event_normal_frame_religion
+#
+#	is_triggered_only = yes
+#	
+#	ai = no
+#	only_capable = yes
+#	prisoner = no
+#	religion_group = indian_group
+#	
+#	trigger = {
+#		has_dlc = "Rajas of India"
+#		capital_scope = {
+#			region = world_india
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA_RoI_163
+#		add_character_modifier = {
+#			name = annoyed_religious
+#			duration = 1460
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB_RoI_163
+#		scaled_wealth = -0.2
+#		add_character_modifier = {
+#			name = religious_appreciate
+#			duration = 1460
+#		}
+#		capital_scope = {
+#			add_province_modifier = {
+#				name = peasants_protected
+#				duration = 1460
+#			}
+#		}
+#	}
+#}
+

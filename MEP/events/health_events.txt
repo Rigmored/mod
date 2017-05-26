@@ -337,14 +337,28 @@ character_event = {
 		NOT = { trait = has_bubonic_plague }
 		NOT = { trait = has_measles }
 		NOT = { trait = has_small_pox }
-		NOT = { trait = elf }
-		NOT = { religion_group = religion_group_eruhini }
-		NOT = { religion_group = religion_group_wilderness }
-		NOT = { religion_group = religion_group_melkor }
+		NOT = { mep_cant_get_disease_trigger = yes }
 	}
 	
 	mean_time_to_happen = {
 		months = 360
+		
+		modifier = {
+			factor = 10
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 5
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3.3
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 5
+			mep_elven_blood_tigger = yes
+		}
 		
 		modifier = {
 			factor = 0.5
@@ -402,10 +416,13 @@ character_event = {
 	id = 6061
 	desc = EVTDESC6061
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
 	
 	trigger = {
 		base_health = 3
-		is_ill = yes
+		trait = ill
 	}
 	
 	mean_time_to_happen = {
@@ -435,20 +452,7 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA6061
-		if = {
-	limit = {
-		NOT = {
-			has_dlc = "Reapers"
-		}
-	}
-	remove_trait = ill
-}
-if = {
-	limit = {
-		has_dlc = "Reapers"
-	}
-	remove_symptom_effect = yes
-}
+		remove_trait = ill
 	}
 }
 
@@ -500,10 +504,7 @@ character_event = {
 			trait = has_measles
 		}
 		NOT = { trait = pneumonic }
-		NOT = { trait = elf }
-		NOT = { religion_group = religion_group_eruhini }
-		NOT = { religion_group = religion_group_wilderness }
-		NOT = { religion_group = religion_group_melkor }
+		NOT = { mep_cant_get_disease_trigger = yes }
 	}
 	
 	mean_time_to_happen = {
@@ -694,10 +695,28 @@ character_event = {
 		trait = wounded
 		NOT = { base_health = 8 }
 		NOT = { is_ill = yes }
+		NOT = { mep_cant_get_disease_trigger = yes }
 	}
 	
 	mean_time_to_happen = {
 		months = 240
+		
+		modifier = {
+			factor = 10
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 5
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3.3
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 5
+			mep_elven_blood_tigger = yes
+		}
 		
 		modifier = {
 			factor = 0.9
@@ -749,23 +768,11 @@ character_event = {
 	trigger = {
 		NOT = { trait = infirm }
 		NOT = { trait = incapable }
-		NOT = { trait = elf }
-		NOT = { trait = dwarven }
-		NOT = { trait = spider }
-		NOT = { trait = uruloke }	
-		NOT = { trait = cold_drake }	
-		NOT = { trait = long_worms }	
-		NOT = { trait = balrog }			
-		NOT = { trait = orkish }
-		NOT = { trait = dwarven }
-		NOT = { culture_group = culture_group_wilderness }				
-		NOT = { trait = blood_of_numenor }
-		NOT = { trait = blood_of_numenor2 }			
-		NOT = { trait = half_elf }
-		NOT = { trait = elven_blood }			
-		NOT = { culture_group = culture_group_eru }
+		mep_is_human_trigger = yes # uses religion_group			
+		NOT = { mep_numenorean_traits_trigger = yes }			
+		NOT = { mep_elven_blood_tigger = yes }			
 		NOT = { trait = nazgul }
-		NOT = { trait = ent }
+		NOT = { trait = ring }
 	}
 	
 	mean_time_to_happen = {
@@ -816,29 +823,17 @@ character_event = {
 	id = 6499
 	desc = EVTDESC6100
 	picture = GFX_evt_illness
+	religion_group = religion_group_edain
 	
 	min_age = 130
 	
 	trigger = {
-		trait=blood_of_numenor2
+		trait = blood_of_numenor2
 		NOT = { trait = infirm }
 		NOT = { trait = incapable }
-		NOT = { trait = elf }
-		NOT = { trait = dwarven }
-		NOT = { trait = spider }
-		NOT = { trait = uruloke }	
-		NOT = { trait = cold_drake }	
-		NOT = { trait = long_worms }	
-		NOT = { culture_group = culture_group_wilderness }				
-		NOT = { trait = balrog }			
-		NOT = { trait = orkish }
-		NOT = { trait = dwarven }
 		NOT = { trait = blood_of_numenor }
 		NOT = { trait = half_elf }
-		NOT = { trait = elven_blood }			
-		NOT = { culture_group = culture_group_eru }
-		NOT = { trait = nazgul }
-		NOT = { trait = ent }
+		NOT = { trait = elven_blood }
 	}
 	
 	mean_time_to_happen = {
@@ -943,21 +938,8 @@ character_event = {
 			trait = half_elf
 		}
 		NOT = { trait = infirm }
-		NOT = { trait = incapable }
-		NOT = { trait = elf }
-		NOT = { trait = dwarven }
-		NOT = { trait = spider }
-		NOT = { trait = uruloke }	
-		NOT = { trait = cold_drake }	
-		NOT = { trait = long_worms }	
-		NOT = { trait = balrog }			
-		NOT = { trait = orkish }
-		NOT = { trait = dwarven }
-		NOT = { culture_group = culture_group_wilderness }				
+		NOT = { trait = incapable }		
 		NOT = { trait = blood_of_numenor2 }
-		NOT = { culture_group = culture_group_eru }
-		NOT = { trait = nazgul }
-		NOT = { trait = ent }
 	}
 	
 	mean_time_to_happen = {
@@ -1047,6 +1029,7 @@ character_event = {
 	id = 6497
 	desc = EVTDESC6100
 	picture = GFX_evt_illness
+	religion_group = religion_group_khazad
 	
 	min_age = 265
 	
@@ -1054,19 +1037,6 @@ character_event = {
 		trait = dwarven
 		NOT = { trait = infirm }
 		NOT = { trait = incapable }
-		NOT = { trait = elf }
-		NOT = { trait = spider }
-		NOT = { trait = uruloke }	
-		NOT = { trait = cold_drake }	
-		NOT = { trait = long_worms }	
-		NOT = { trait = balrog }			
-		NOT = { trait = orkish }
-		NOT = { trait = dwarven }
-		NOT = { culture_group = culture_group_wilderness }				
-		NOT = { trait = blood_of_numenor2 }
-		NOT = { culture_group = culture_group_eru }
-		NOT = { trait = nazgul }
-		NOT = { trait = ent }
 	}
 	
 	mean_time_to_happen = {
@@ -1120,30 +1090,17 @@ character_event = {
 				trait = ring
 				trait = ringbearer1
 				trait = ringbearer2
-				culture_group = culture_group_eru
-				culture_group = culture_group_wilderness
-				trait = maiar
-				trait = eagle
-				trait = balrog
-				trait = spider
-				trait = ent
-				trait = elf
-				trait = elf_childhood
-				trait = valar
-				trait = enigma
-				trait = wilderness
-				trait = nazgul
-				trait = wight
-				trait = uruloke
-				trait = cold_drake
-				trait = long_worms
+				mep_cant_get_disease_trigger = yes
 			}
 		}
 	}
 	
 	mean_time_to_happen = {
 		months = 120
-		
+		modifier = {
+			factor = 2
+			religion_group = religion_group_khazad
+		}
 		modifier = {
 			factor = 0.5
 			NOT = { health = 3.0 }

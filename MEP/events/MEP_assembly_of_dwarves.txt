@@ -24,8 +24,8 @@ narrative_event = {
 				culture_group = culture_group_dwarves
 				NOT = { character = FROM }
 				NOT = { trait = incapable }
-				NOT = { 
-					has_character_flag = councillor9
+				NOT = {
+					has_character_flag = councillor9				
 					has_character_flag = councillor8
 					has_character_flag = councillor7
 					has_character_flag = councillor6
@@ -38,26 +38,6 @@ narrative_event = {
 			}
 			set_character_flag = councillor1
 		}
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_grey_mountains
-				culture_group = culture_group_dwarves
-				NOT = { trait = incapable }
-				NOT = { character = FROM }
-				NOT = { 
-					has_character_flag = councillor9
-					has_character_flag = councillor8
-					has_character_flag = councillor7
-					has_character_flag = councillor6
-					has_character_flag = councillor5
-					has_character_flag = councillor4
-					has_character_flag = councillor3
-					has_character_flag = councillor2
-					has_character_flag = councillor1
-				}
-			}
-			set_character_flag = councillor2
-		}	
 		any_playable_ruler = {
 			limit = {
 				has_landed_title = k_misty_mountains
@@ -76,15 +56,15 @@ narrative_event = {
 					has_character_flag = councillor1
 				}
 			}
-			set_character_flag = councillor3			
+			set_character_flag = councillor2			
 		}	
 		any_playable_ruler = {
 			limit = {
-				has_landed_title = k_erebor
+				has_landed_title = k_northeast_mountains
 				culture_group = culture_group_dwarves
 				NOT = { trait = incapable }
 				NOT = { character = FROM }
-				NOT = { 
+				NOT = {
 					has_character_flag = councillor9
 					has_character_flag = councillor8
 					has_character_flag = councillor7
@@ -96,27 +76,7 @@ narrative_event = {
 					has_character_flag = councillor1
 				}
 			}
-			set_character_flag = councillor4				
-		}	
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_iron_mountains
-				culture_group = culture_group_dwarves
-				NOT = { trait = incapable }
-				NOT = { character = FROM }
-				NOT = { 
-					has_character_flag = councillor9
-					has_character_flag = councillor8
-					has_character_flag = councillor7
-					has_character_flag = councillor6
-					has_character_flag = councillor5
-					has_character_flag = councillor4
-					has_character_flag = councillor3
-					has_character_flag = councillor2
-					has_character_flag = councillor1
-				}
-			}
-			set_character_flag = councillor5		
+			set_character_flag = councillor3				
 		}	
 		any_playable_ruler = {
 			limit = {
@@ -136,7 +96,7 @@ narrative_event = {
 					has_character_flag = councillor1
 				}
 			}
-			set_character_flag = councillor6				
+			set_character_flag = councillor4				
 		}
 		any_playable_ruler = {
 			limit = {
@@ -156,7 +116,7 @@ narrative_event = {
 					has_character_flag = councillor1
 				}
 			}
-			set_character_flag = councillor7
+			set_character_flag = councillor5
 		}	
 		any_playable_ruler = {
 			limit = {
@@ -176,11 +136,51 @@ narrative_event = {
 					has_character_flag = councillor1
 				}
 			}
-			set_character_flag = councillor8
+			set_character_flag = councillor6
 		}	
 		any_playable_ruler = {
 			limit = {
-				has_landed_title = k_ered_luin
+				has_landed_title = k_broadbeams
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor7
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_firebeards
+				culture_group = culture_group_dwarves
+				NOT = { trait = incapable }
+				NOT = { character = FROM }
+				NOT = { 
+					has_character_flag = councillor9
+					has_character_flag = councillor8
+					has_character_flag = councillor7
+					has_character_flag = councillor6
+					has_character_flag = councillor5
+					has_character_flag = councillor4
+					has_character_flag = councillor3
+					has_character_flag = councillor2
+					has_character_flag = councillor1
+				}
+			}
+			set_character_flag = councillor8
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = k_stonefoot
 				culture_group = culture_group_dwarves
 				NOT = { trait = incapable }
 				NOT = { character = FROM }
@@ -274,8 +274,8 @@ narrative_event = {
 				age = 1
 				culture_group = culture_group_dwarves
 			}
-			narrative_event = { id = unificatedwarves.1 days = 39 }
-		}	
+			narrative_event = { id = unificatedwarves.1 days = 37 }
+		}
 		narrative_event = { id = unificatedwarves.3 days = 80 }
 	}	
 	
@@ -569,7 +569,7 @@ narrative_event = {
 				has_character_flag = join_assembly_dwarves
 			}
 			narrative_event = { id = unificatedwarves.4 days = 8 }
-		}		
+		}	
 		FROM = { narrative_event = { id = unificatedwarves.5 days = 12 } } ## The Result is known		
 	}
 	
@@ -847,7 +847,7 @@ narrative_event = {
 ### A King voted against
 narrative_event = {
 	id = unificatedwarves.4002
-	title = EVTTITunificatedwarves.4002 
+	title = EVTTITunificatedwarves.4002
 	desc = EVTDESCunificatedwarves.4002
 	picture = "GFX_evt_dwarves"
 	
@@ -942,7 +942,8 @@ narrative_event = {
 				}
 			}
 			FROM = { narrative_event = { id = unificatedwarves.7 } } ## The Vote is lost
-		}		
+		}	
+
 
 		### The Vote is Won ###
 		if = {
@@ -959,6 +960,7 @@ narrative_event = {
 						has_character_flag = 7assemblymember
 						has_character_flag = 8assemblymember
 						has_character_flag = 9assemblymember
+						
 					}
 					OR = {
 						has_character_flag = vote9 
@@ -1041,6 +1043,7 @@ narrative_event = {
 						has_character_flag = 6assemblymember
 						has_character_flag = 7assemblymember
 						has_character_flag = 8assemblymember
+						
 					}
 					has_character_flag = vote4
 				}
@@ -1271,7 +1274,7 @@ narrative_event = {
 				has_character_flag = agree_to_unificate
 			}
 			narrative_event = { id = unificatedwarves.9 days = 8 }
-		}		
+		}	
 		narrative_event = { id = unificatedwarves.11 days = 10 } ## The Result is known		
 		set_character_flag = 1candidate
 		set_character_flag = candidate1
@@ -1650,7 +1653,7 @@ narrative_event = {
 			# Health Effects
 			modifier = {
 				factor = 0.2
-				is_ill = yes
+				trait = ill
 			}
 			modifier = {
 				factor = 0.01
@@ -1889,7 +1892,7 @@ narrative_event = {
 				set_character_flag = 9candidate
 				clr_character_flag = 8candidate
 			}
-		}			
+		}	
 	}
 	
 	option = {
@@ -2254,7 +2257,7 @@ narrative_event = {
 			# Health Effects
 			modifier = {
 				factor = 10
-				is_ill = yes
+				trait = ill
 			}
 			modifier = {
 				factor = 100
@@ -2457,7 +2460,8 @@ narrative_event = {
 			set_character_flag = 0votecandidate7
 			set_character_flag = 0votecandidate8
 			set_character_flag = 0votecandidate9
-		}		
+		}	
+	
 		any_playable_ruler = {
 			limit = {
 				has_character_flag = councillor1
@@ -2547,7 +2551,8 @@ narrative_event = {
 				has_character_flag = agree_to_unificate
 			}
 			narrative_event = { id = unificatedwarves.12 days = 8 }
-		}				
+		}	
+			
 	}
 }
 
@@ -2662,7 +2667,8 @@ narrative_event = {
 				set_character_flag = 9voteforking
 				clr_character_flag = 8voteforking
 			}
-		}		
+		}	
+	
 	}
 
 	option = {
@@ -2717,6 +2723,10 @@ narrative_event = {
 			modifier = {
 				factor = 1.04
 				FROM = { has_character_flag = 8candidate }
+			}	
+			modifier = {
+				factor = 0.97
+				FROM = { has_character_flag = 9candidate }
 			}	
 
 			### Dwarves Skills ###
@@ -2931,6 +2941,10 @@ narrative_event = {
 				factor = 1.04
 				FROM = { has_character_flag = 8candidate }
 			}	
+			modifier = {
+				factor = 1.04
+				FROM = { has_character_flag = 9candidate }
+			}
 
 			### Dwarves Skills ###
 			modifier = {
@@ -5973,14 +5987,14 @@ narrative_event = {
 			limit = {
 				OR = {
 					has_landed_title = e_durins_folk
-					has_landed_title = k_grey_mountains
 					has_landed_title = k_misty_mountains
-					has_landed_title = k_erebor
-					has_landed_title = k_iron_mountains
+					has_landed_title = k_northeast_mountains
+					has_landed_title = k_stonefoot
 					has_landed_title = k_aglarond
 					has_landed_title = k_nurunkhizdin
 					has_landed_title = k_zirakdum
-					has_landed_title = k_ered_luin
+					has_landed_title = k_broadbeams
+					has_landed_title = k_firebeards
 				}
 				culture_group = culture_group_dwarves
 				has_character_flag = agree_to_unificate

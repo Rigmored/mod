@@ -566,7 +566,8 @@ succession_laws = {
 	
 	succ_papal_succession = {
 		potential = {
-			title = k_papal_state
+			always = no
+			# title = k_papal_state
 		}
 		
 		effect = {
@@ -599,7 +600,6 @@ succession_laws = {
 	
 	succ_open_elective = {
 		potential = {
-			NOT = { title = k_papal_state }
 			temporary = no
 			OR = {
 				is_primary_type_title = yes
@@ -622,14 +622,6 @@ succession_laws = {
 							NOT = { mep_temp_muslim_standin_trigger = yes }
 						}
 					}
-				}
-			}
-			OR = {
-				is_landless_type_title = yes
-				holder_scope = { is_theocracy = no }
-				holder_scope = { 
-					NOT = { religion = catholic }
-					NOT = { religion = fraticelli }
 				}
 			}
 			holder_scope = { 
@@ -661,6 +653,7 @@ succession_laws = {
 	
 	succ_catholic_bishopric = {
 		potential = {
+			always = no
 			is_landless_type_title = no
 			OR = {
 				AND = {
@@ -671,10 +664,10 @@ succession_laws = {
 			}
 			
 			holder_scope = {
-				OR = {
-					religion = catholic
-					religion = fraticelli
-				}
+				#OR = {
+				#	religion = catholic
+				#	religion = fraticelli
+				#}
 				is_merchant_republic = no
 				OR = {
 					independent = yes

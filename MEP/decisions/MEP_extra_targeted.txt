@@ -52,11 +52,14 @@ targetted_decisions = {
 			}
 			# the target must be loosing the defensive war against evil
 			ROOT = {
-				any_war = {
-					war_score = 20
-					attacker = {
-						mep_is_evil_side_trigger = yes
-						war_with = PREVPREV
+				custom_tooltip = {
+					text = TT_MEP_AIDWAR1
+					any_war = {
+						war_score = 20
+						attacker = {
+							mep_is_evil_side_trigger = yes
+							war_with = PREVPREV
+						}
 					}
 				}
 				# Also, the distance between the two should be small enough (unless it's the player)
@@ -123,24 +126,36 @@ targetted_decisions = {
   
 		allow = {
 			opinion = { who = FROM value = 20 } 
-			is_councillor = no
-			is_married = no
-			NOT = { num_of_lovers = 1 }
+			custom_tooltip = {
+				text = TT_MEP_INVITE_S1
+				is_councillor = no
+				is_married = no
+				NOT = { num_of_lovers = 1 }
+			}
 			# don't allow evil characters to go to good, and vice versa
 			OR = {
-				AND = {
-					FROM = { mep_is_good_side_trigger = yes }
-					NOT = { mep_is_evil_side_trigger = yes }
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S2
+					AND = {
+						FROM = { mep_is_good_side_trigger = yes }
+						NOT = { mep_is_evil_side_trigger = yes }
+					}
 				}
-				AND = {
-					FROM = { mep_is_evil_side_trigger = yes	}
-					NOT = { mep_is_good_side_trigger = yes }					
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S3
+					AND = {
+						FROM = { mep_is_evil_side_trigger = yes	}
+						NOT = { mep_is_good_side_trigger = yes }					
+					}
 				}
 				# but do allow 'neutrals' to have no such restriction
-				FROM = {
-					NOT = { 
-						mep_is_good_side_trigger = yes
-						mep_is_evil_side_trigger = yes
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S4
+					FROM = {
+						NOT = { 
+							mep_is_good_side_trigger = yes
+							mep_is_evil_side_trigger = yes
+						}
 					}
 				}
 			}

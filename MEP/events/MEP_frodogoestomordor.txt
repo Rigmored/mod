@@ -454,9 +454,6 @@ character_event = {
 	option = {
 		name = "EVTOPTAfrodo.16"
 		set_global_flag = saurondefeated
-		death = {
-			death_reason = death_battle
-		}
 		any_realm_lord  = {
 			limit = {
 				OR = {
@@ -472,6 +469,10 @@ character_event = {
 				trait = nazgul	
 			}
 			character_event = { id = frodo.18 }
+		}
+		# Killing Sauron
+		death = {
+			death_reason = death_battle
 		}
 		# auto-killing the Balrog
 		if = {
@@ -490,7 +491,13 @@ character_event = {
 				}
 			}
 			set_global_flag = durins_bane_is_dead
-		}		
+		}	
+		# smashing barad-dur
+		c_barad_dur = {
+			location = {
+				province_event = { id = frodo.44 }
+			}
+		}
 		any_playable_ruler  = {
 			character_event = { id = frodo.19 }
 		}
@@ -591,8 +598,7 @@ character_event = {
 		any_demesne_title  = {
 			if = {
 				limit = {
-					OR = { tier = king
-						tier = duke }
+					higher_tier_than = count
 				}
 				destroy_landed_title = THIS
 			}
@@ -619,10 +625,7 @@ character_event = {
 					character_event = { id = racetrait.8 }
 					character_event = { id = racetrait.9 }
 					character_event = { id = racetrait.10 }
-					PREV = {
-						grant_title = PREV
-					}
-					
+					grant_title = PREV					
 				}
 			}
 		}
@@ -817,27 +820,28 @@ character_event = {
 
 	
 ###nazgul lose nazgul trait after sauron is defeated###
-character_event = {
-    id = frodo.28
-    title = "EVTTITfrodo.28"
-    desc = "EVTDESCfrodo.28"
-    picture = "GFX_good"
-	age = 16
-	
-	trigger = {
-		culture = culture_wight
-		trait = nazgul
-		has_global_flag = saurondefeated
-	}
-	
-	mean_time_to_happen = { days = 3 }	
-	
-	option = {
-		name = "EVTOPTAfrodo.28"
-		remove_trait = nazgul
-	}
-	
-}
+# blanked out because there is a nazgul killing event that should kill them instead
+#character_event = {
+#    id = frodo.28
+#    title = "EVTTITfrodo.28"
+#    desc = "EVTDESCfrodo.28"
+#    picture = "GFX_good"
+#	age = 16
+#	
+#	trigger = {
+#		culture = culture_wight
+#		trait = nazgul
+#		has_global_flag = saurondefeated
+#	}
+#	
+#	mean_time_to_happen = { days = 3 }	
+#	
+#	option = {
+#		name = "EVTOPTAfrodo.28"
+#		remove_trait = nazgul
+#	}
+#	
+#}
 
 ### Aragorn is asking about Ithilien ###
 character_event = {
@@ -1386,4 +1390,63 @@ character_event = {
 			copy_title_laws = k_rohan
 		}
 	}
+}
+
+# a special 'wreck barad-dur' event
+province_event = {
+	id = frodo.44
+	title = "EVTTITfrodo.44"
+	desc = "EVTDESCfrodo.44"
+	picture = "GFX_event_sauron_commands"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.44"
+		# destroying buildings above level 2
+		custom_tooltip = {
+			text = TT_MEP_WRECK_BARADDUR
+			any_province_holding = {
+				remove_building = ca_baraddur
+				remove_building = ca_MOwall_5
+				remove_building = ca_MOwall_4
+				remove_building = ca_MOwall_3
+				remove_building = ca_MOwatchtower_6
+				remove_building = ca_MOwatchtower_5
+				remove_building = ca_MOwatchtower_4
+				remove_building = ca_MOwatchtower_3
+				remove_building = ca_MOkeep_6
+				remove_building = ca_MOkeep_5
+				remove_building = ca_MOkeep_4
+				remove_building = ca_MOkeep_3
+				remove_building = ca_MOorc_militiabarracks_4
+				remove_building = ca_MOorc_militiabarracks_3
+				remove_building = ca_MOorctraining_grounds_3
+				remove_building = ca_MOorctraining_grounds_2
+				remove_building = ca_MOorcbarracks_6
+				remove_building = ca_MOorcbarracks_5
+				remove_building = ca_MOorcbarracks_4
+				remove_building = ca_MOorcbarracks_3
+				remove_building = ca_MOstable_6
+				remove_building = ca_MOstable_5
+				remove_building = ca_MOstable_4
+				remove_building = ca_MOstable_3
+				remove_building = ca_MOorctown_6
+				remove_building = ca_MOorctown_5
+				remove_building = ca_MOorctown_4
+				remove_building = ca_MOorctown_3
+				remove_building = ca_MO_elite_5
+				remove_building = ca_MO_elite_4
+				remove_building = ca_MO_elite_3
+			}
+		}
+		# changing the popmod level
+		custom_tooltip = {
+			text = TT_MEP_DEPOPULATE_TO3
+			mep_human_popmod_remove_effect = yes
+			add_province_modifier = { name = three_population_human  duration = -1 }
+		}
+
+	}
+
 }

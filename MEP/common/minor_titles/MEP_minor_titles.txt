@@ -1,0 +1,2261 @@
+#NOTE: the salary and prestige are multiplied by 4 in the game (eg. monthly_prestige = 1 translates to 4 prestige in the game)
+#
+
+####SHIRE MINOR TITLE#####
+
+title_shirrifs = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    grant_limit = 12
+    opinion_effect = 15
+    
+    monthly_salary = 0.5
+    monthly_prestige = 0.3
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = no
+	religion_group = religion_group_periannath
+	}
+	
+    allowed_to_grant = {
+        is_feudal = yes
+        primary_title = {
+        	OR = {
+                	tier = king
+                	tier = emperor
+        		}
+		}
+		religion_group = religion_group_periannath
+    	}
+                
+                
+                
+    
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+
+    message = no
+}
+
+title_postmaster = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    grant_limit = 1
+    opinion_effect = 15
+    
+    monthly_salary = 1.5
+    monthly_prestige = 0.3
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = no
+		religion_group = religion_group_periannath
+	}
+   allowed_to_grant = {
+            is_feudal = yes
+            primary_title = {
+                OR = {
+                    tier = king
+                    tier = emperor
+                }
+            }
+                religion_group = religion_group_periannath
+	}
+      
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+
+    message = no
+}
+
+title_matriarch = {
+    dignity = 1.0
+    show_as_title = yes
+    realm_in_name = yes
+    revoke_allowed = no
+    opinion_effect = 25
+    
+    monthly_salary = 1.0
+    monthly_prestige = 0.9
+    
+    allowed_to_hold = {
+        is_adult = yes
+        is_female = yes
+	religion_group = religion_group_periannath
+        ROOT = { is_close_relative = FROM }
+	}
+   allowed_to_grant = {
+            is_feudal = yes
+            primary_title = {
+                OR = {
+                    tier = king
+                    tier = emperor
+                }
+            }
+                religion_group = religion_group_periannath
+        }
+    
+    gain_effect = {
+    }
+    lose_effect = {
+    }
+    
+    message = no
+}
+
+######GONDOR MINOR TITLES#####
+
+title_co_ruler = {
+	dignity = 1
+	grant_limit = 2
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 1.0
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_ruler_gondor }
+		is_close_relative = FROM
+	}
+		
+	allowed_to_grant = {
+		has_character_flag = coruler
+		is_feudal = yes
+		OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}
+		
+	
+	
+	gain_effect = { 
+		prestige = 20
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+title_ruler_gondor = {
+	dignity = 3
+	grant_limit = 1
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 3.0
+	monthly_prestige = 3.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_co_ruler }
+		NOT = { has_minor_title = title_ruler_arnor }
+		has_character_flag = ruler_gondor
+		is_close_relative = FROM
+	}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = {
+			AND = {
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+			}
+			has_landed_title = e_reunited_kingdom
+		}
+	}
+		
+	
+	
+	gain_effect = { 
+		prestige = 200
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+title_ruler_arnor = {
+	dignity = 3
+	grant_limit = 1
+	show_as_title = yes
+	realm_in_name = no
+	revoke_allowed = no
+	
+	monthly_salary = 3.0
+	monthly_prestige = 3.0
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_co_ruler }
+		NOT = { has_minor_title = title_ruler_gondor }
+		has_character_flag = ruler_gondor
+		is_close_relative = FROM
+	}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = {
+			AND = {
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+			}
+			has_landed_title = e_reunited_kingdom
+		}
+	}
+		
+	
+	
+	gain_effect = { 
+		prestige = 200
+	}
+	lose_effect = { }
+
+	message = no
+}
+
+## Gondor Minor Titles ##
+
+title_captaingeneral = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.5
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		}
+		
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = {
+			has_landed_title = e_steward_gondor
+			has_landed_title = e_gondor
+			has_landed_title = e_arnor
+			has_landed_title = k_arthedain
+			has_landed_title = k_cardolan
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_wardenofthekeys = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_captainoffountain }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}
+
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_captainoffountain = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_captaincitadel = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenofwhitetree = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.5
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_admiralofpelargir = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_honorarycitadelguard }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_honorarycitadelguard = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_lieutenantgeneral = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_keeperofswans }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = e_steward_gondor
+				has_landed_title = e_gondor
+				has_landed_title = e_arnor
+				has_landed_title = k_arthedain
+				has_landed_title = k_cardolan
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_keeperofswans = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_belfalas
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_admiral = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 2
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		NOT = { has_minor_title = title_wardenoferech }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = k_belfalas
+				has_landed_title = k_anfalas
+				has_landed_title = k_lebennin
+				has_landed_title = k_harondor
+				has_landed_title = k_cardolan
+				has_landed_title = e_arnor
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenofbeacons = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 3
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenoferech }		
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_anorien
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenoferech = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = d_mornan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_masterbow = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+}		
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = d_mornan
+				has_landed_title = k_lamedon
+				has_landed_title = k_pinnath_gelin
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_captainaxebearers = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }		
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = d_mornan
+				has_landed_title = k_lamedon
+				has_landed_title = k_pinnath_gelin
+				has_landed_title = k_northeast_mountains
+				has_landed_title = k_broadbeams
+				has_landed_title = k_firebeards
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_wardenrammasechor = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_astrologer }
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+            has_landed_title = d_royal_demesne
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_astrologer = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {
+		NOT = { has_minor_title = title_captaingeneral }
+		NOT = { has_minor_title = title_wardenofthekeys }
+		NOT = { has_minor_title = title_captainoffountain}
+		NOT = { has_minor_title = title_captaincitadel }
+		NOT = { has_minor_title = title_wardenofwhitetree }
+		NOT = { has_minor_title = title_admiralofpelargir }
+		NOT = { has_minor_title = title_honorarycitadelguard}
+		NOT = { has_minor_title = title_lieutenantgeneral }
+		NOT = { has_minor_title = title_wardenrammasechor }
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterbow }	
+		NOT = { has_minor_title = title_wardenoferech }	
+		NOT = { has_minor_title = title_keeperofswans }	
+		NOT = { has_minor_title = title_admiral }	
+		NOT = { has_minor_title = title_wardenofbeacons }	
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				culture_group = culture_group_numenorean
+				religion_group = religion_group_eldar
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+####ROHAN MINOR TITLES######
+
+title_firstmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = { }
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_secondmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.3
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_thirdmarshal = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.3
+	monthly_prestige = 0.3
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_rohan
+			}
+		
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_kingcouncillor = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			tier = king
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_master_of_the_horse = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.2
+	monthly_prestige = 0.2
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				has_landed_title = k_rohan
+				culture_group = culture_group_middlemen
+				culture_group = culture_group_haldadian
+				culture_group = culture_group_easterling
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+####MORDOR MINOR TITLES####
+
+
+title_LieutenantofDolGuldur = {
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.4
+	monthly_prestige = 0.4
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+				has_landed_title = e_barad_dur
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+title_masterofslaves = {
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.6
+	monthly_prestige = 0.1
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = {
+				culture_group = culture_group_melkor
+				culture_group = culture_group_easterling
+				culture_group = culture_group_southron
+				trait = evil_side
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_lieutenantofbaraddur = {
+    dignity = 1.0
+	show_as_title = yes
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 30
+	
+	monthly_salary = 0.8
+	monthly_prestige = 0.9
+	
+	allowed_to_hold = {}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = e_barad_dur
+			ROOT = {
+			is_feudal = yes
+			has_landed_title = c_amon_lanc
+		}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+### DWARVES MINOR TITLES ###
+
+title_masterofguardsofkhazad_dum = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_misty_mountains
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofnortheast = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_northeast_mountains
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofaglarond = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_aglarond
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofbroadbeams = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_broadbeams
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsoffirebeads = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_firebeards
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofnurunkhizdin = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_nurunkhizdin
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofstonefoot = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_stonefoot
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofzirakdum = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.0
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofgundabad }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_zirakdum
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_masterofguardsofgundabad = {
+	dignity = 2.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 20
+	
+	monthly_salary = 0.25
+	monthly_prestige = 1.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			has_landed_title = k_gundabad
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakubarkkhazad = { #Master of (the) Axe Dwarves
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		NOT = { has_minor_title = title_azrakuukab }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = { ##Can be granted in any dwarven kingdom
+				has_landed_title = e_durins_folk
+				has_landed_title = k_northeast_mountains
+				has_landed_title = k_broadbeams
+				has_landed_title = k_firebeards
+				has_landed_title = k_aglarond
+				has_landed_title = k_zirakdum
+				has_landed_title = k_stonefoot
+				has_landed_title = k_nurunkhizdin
+				has_landed_title = k_gundabad
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakuukab = { #Master of (the) Quarrelers
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakutherakaidag }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = { ##Can be granted in any dwarven kingdom
+				has_landed_title = k_northeast_mountains
+				has_landed_title = k_broadbeams
+				has_landed_title = k_firebeards
+				has_landed_title = k_aglarond
+				has_landed_title = k_zirakdum
+				has_landed_title = k_stonefoot
+				has_landed_title = k_nurunkhizdin
+				has_landed_title = k_gundabad
+			}
+		}
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakutherakaidag = { #Master of (the) Pikes
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_masterofguardsofzirakdum }
+		NOT = { has_minor_title = title_azrakubarkkhazad }
+		NOT = { has_minor_title = title_azrakuukab }
+		}
+		allowed_to_grant = {
+			is_feudal = yes
+			OR = { ##Can be granted in any dwarven kingdom
+				has_landed_title = e_durins_folk
+				has_landed_title = k_northeast_mountains
+				has_landed_title = k_broadbeams
+				has_landed_title = k_firebeards
+				has_landed_title = k_aglarond
+				has_landed_title = k_zirakdum
+				has_landed_title = k_stonefoot
+				has_landed_title = k_nurunkhizdin
+				has_landed_title = k_gundabad
+			}
+		}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakutalakh = { #Master of (the) Smiths
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_azrakuutrab }
+		NOT = { has_minor_title = title_umrazugabsh }
+		NOT = { has_minor_title = title_umrazuathak }
+		
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakuutrab = { #Master of (the) Crafters
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_umrazugabsh }
+		NOT = { has_minor_title = title_umrazuathak }
+		NOT = { has_minor_title = title_azrakutalakh }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_umrazugabsh = { #Keeper of (the) Treasure
+	dignity = 1.0
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.5
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_azrakuutrab }
+		NOT = { has_minor_title = title_umrazuathak }
+		NOT = { has_minor_title = title_azrakutalakh }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_umrazuathak = { #Keeper of (the) Mines
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_azrakuutrab }
+		NOT = { has_minor_title = title_umrazugabsh }
+		NOT = { has_minor_title = title_azrakutalakh }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakusabaj = { #Master of Spies/Scouts
+	dignity = 0.7
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.03
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_uryat = { #A minor Advisor
+	dignity = 0.6
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 3
+	opinion_effect = 5
+	
+	monthly_salary = 0
+	monthly_prestige = 0.125
+	
+	allowed_to_hold = {
+		is_adult = yes
+        #is_female = yes
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakuafhan = { #Master of Lore
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_umrazudarag }
+		NOT = { has_minor_title = title_azrakuatarubkarath }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_azrakuatarubkarath = { #Master of (the) Crafters of Runes
+	dignity = 0.9
+	show_as_title = yes
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.25
+	
+	allowed_to_hold = {
+		is_adult = yes
+        is_female = no
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_azrakuafhan }
+		NOT = { has_minor_title = title_umrazudarag }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_misty_mountains
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+title_umrazudarag = { #Keeper of (the) Tombs
+	dignity = 0.9
+	show_as_title = no
+	realm_in_name = no
+	grant_limit = 1
+	opinion_effect = 15
+	
+	monthly_salary = 0.05
+	monthly_prestige = 0.5
+	
+	allowed_to_hold = {
+		is_adult = yes
+        #is_female = yes
+		religion_group = religion_group_khazad #Only Dwarves can hold the title 
+		
+		NOT = { has_minor_title = title_captainaxebearers }
+		NOT = { has_minor_title = title_masterofguardsofkhazad_dum }
+		NOT = { has_minor_title = title_masterofguardsofnortheast }
+		NOT = { has_minor_title = title_masterofguardsofaglarond }
+		NOT = { has_minor_title = title_masterofguardsofbroadbeams }
+		NOT = { has_minor_title = title_masterofguardsoffirebeads }
+		NOT = { has_minor_title = title_masterofguardsofnurunkhizdin }
+		NOT = { has_minor_title = title_masterofguardsofstonefoot }
+		NOT = { has_minor_title = title_azrakuafhan }
+		NOT = { has_minor_title = title_azrakuatarubkarath }
+	}
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = { ##Can be granted in any dwarven kingdom
+			has_landed_title = e_durins_folk
+			has_landed_title = k_misty_mountains
+			has_landed_title = k_northeast_mountains
+			has_landed_title = k_broadbeams
+			has_landed_title = k_firebeards
+			has_landed_title = k_aglarond
+			has_landed_title = k_zirakdum
+			has_landed_title = k_stonefoot
+			has_landed_title = k_nurunkhizdin
+			has_landed_title = k_gundabad
+		}
+	}
+	
+	
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+	
+	message = no
+}
+
+# ## NEED TO ADD EVENTS THAT INCREASE THE HEALER TRAIT
+# ## Court Physician
+# title_court_physician = {
+	# is_high_prio = yes
+	# attribute = learning
+    # dignity = 5
+    # realm_in_name = yes
+	# grant_limit = 1
+	# opinion_effect = 10
+	# monthly_salary = 0.2
+	# monthly_prestige = 0.5
+	
+	# allowed_to_grant = {
+		# OR = {
+			# higher_tier_than = BARON
+			# is_patrician = yes
+		# }
+		# has_dlc = "Reapers"
+	# }
+	
+	# allowed_to_hold = {
+		# custom_tooltip = {
+			# text = court_physician_tooltip_1
+			# OR = {
+				# primary_title = { temporary = no }
+				# NOT = {
+					# primary_title = {
+						# always = yes
+					# }
+				# }
+			# }
+		# }
+		# custom_tooltip = {
+			# text = court_physician_tooltip_2
+			# OR = {
+				# is_female = no
+				# AND = {
+					# OR = {
+						# religion = messalian
+						# religion = cathar
+					# }
+					# liege = { religion = ROOT }
+				# }
+				# liege = {
+					# OR = {
+						# primary_title = {
+							# has_law = status_of_women_4
+						# }
+						# has_game_rule = {
+							# name = gender
+							# value = all
+						# }
+					# }
+				# }
+			# }
+		# }
+		# OR = {
+			# AND = { #Limits position in courts with the following cultures.
+				# OR = {
+					# culture_group = culture_group_moriquendi
+					# culture_group = culture_group_umanyar
+					# culture_group = culture_group_amanyar
+					# culture_group = culture_group_quendi
+					# culture = culture_gondorian	
+					# culture = culture_dunedain
+					# culture = culture_arnorian
+					# culture = culture_numenorean
+				# }
+				# OR = { #Limits position to those with the healer traits.
+					# trait = herbalist
+					# trait = apothecary
+					# trait = great_healer
+					# trait = healer_master
+				# }
+			# }
+			# AND = {
+				# NOR = {
+					# culture_group = culture_group_moriquendi
+					# culture_group = culture_group_umanyar
+					# culture_group = culture_group_amanyar
+					# culture_group = culture_group_quendi
+					# culture = culture_gondorian	
+					# culture = culture_dunedain
+					# culture = culture_arnorian
+					# culture = culture_numenorean
+				# }
+				# learning = 15
+			# }
+			# AND = {
+				# NOR = {
+					# culture_group = culture_group_moriquendi
+					# culture_group = culture_group_umanyar
+					# culture_group = culture_group_amanyar
+					# culture_group = culture_group_quendi
+					# culture = culture_gondorian	
+					# culture = culture_dunedain
+					# culture = culture_arnorian
+					# culture = culture_numenorean
+				# }
+				# learning = 10
+				# OR = {
+					# trait = physician
+					# trait = scholar
+					# trait = mystic
+					# trait = mutazilite
+				# }
+			# }
+			# custom_tooltip = {
+				# text = educated_court_physician
+				# hidden_tooltip = {
+					# has_character_flag = is_court_physician
+				# }
+			# }
+			# # OR = {
+				# # NOT = { religion = hindu }
+				# # trait = brahmin
+			# # }
+		# }
+		# is_adult = yes
+
+		# prisoner = no
+		# NOT = { trait = in_hiding }
+		# NOT = { trait = incapable }
+	# }
+
+	# revoke_trigger = {
+	# }
+	
+	# gain_effect = {
+	# }
+	# lose_effect = {
+	# }
+	# retire_effect = {
+	# }
+
+	# message = yes
+# }
