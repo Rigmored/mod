@@ -11,7 +11,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTAcraft_upgrade.0"
 		trigger = {
-			trait = elvish_sword
+			has_artifact = elvish_sword
 		}
 		hidden_tooltip = {
 			set_character_flag = imbues_elvish_sword
@@ -21,7 +21,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTBcraft_upgrade.0"
 		trigger = {
-			trait = ancient_elvish_sword
+			has_artifact = ancient_elvish_sword
 		}
 		hidden_tooltip = {
 			set_character_flag = imbues_ancient_elvish_sword
@@ -254,12 +254,19 @@ character_event = {
 					has_character_flag = imbues_ancient_elvish_sword
 				}
 			}
-			add_trait = elvish_sword_magic_exceptional
+			add_artifact = elvish_sword_magic_exceptional
 			change_martial = -2
-			#change_combat_rating = -2
 			hidden_tooltip = {
-				remove_trait = elvish_sword
-				remove_trait = ancient_elvish_sword
+				if = {
+					limit = { has_character_flag = imbues_elvish_sword }
+					destroy_artifact = elvish_sword
+					
+				}
+				if = {
+					limit = { has_character_flag = imbues_ancient_elvish_sword }
+					destroy_artifact = ancient_elvish_sword
+					
+				}
 				character_event = { id = craft_upgrade.8 }
 			}
 			break = yes
@@ -315,19 +322,32 @@ character_event = {
 				limit = {
 					has_character_flag = imbue_choose_martial
 				}
-				add_trait = elvish_sword_magic_martial
 				change_martial = -2
+				add_artifact = elvish_sword_magic_martial
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
 			}
 			if = {
 				limit = {
 					has_character_flag = imbue_choose_combat
 				}
-				add_trait = elvish_sword_magic_combat
-				#change_combat_rating = -2 
+				add_artifact = elvish_sword_magic_combat
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
 			}
 			hidden_tooltip = {
-				remove_trait = elvish_sword
-				remove_trait = ancient_elvish_sword
+				if = {
+					limit = { has_character_flag = imbues_elvish_sword }
+					destroy_artifact = elvish_sword
+					
+				}
+				if = {
+					limit = { has_character_flag = imbues_ancient_elvish_sword }
+					destroy_artifact = ancient_elvish_sword
+					
+				}
 				character_event = { id = craft_upgrade.8 }
 			}
 			break = yes

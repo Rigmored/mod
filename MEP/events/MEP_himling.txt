@@ -63,7 +63,12 @@ character_event = {
 					if = {
 						limit = { 
 							NOT = { has_character_flag = explorer_of_himling }
-							NOT = { himling_sword = { is_alive = yes } }
+							NOT = {
+								any_character = {
+									limit = { has_artifact = himling_sword }
+									is_alive = yes
+								}
+							}
 						}
 						character_event = { id = himling.7 days = 2 } # A sword of First Age!
 					}
@@ -89,7 +94,7 @@ character_event = {
 	}	
 }
 
-## You found an antic sword !
+## You found an antique sword !
 character_event = {
 	id = himling.7
 	title = "EVThimling.7"
@@ -100,13 +105,13 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAhimling.7" # It'll be the treasure of my kin.
-		add_trait = himling_sword
+		add_artifact = himling_sword
 		prestige = 200
 		set_character_flag = explorer_of_himling
 	}	
 }
 
-## You found an antic armour !
+## You found an antique armour !
 character_event = {
 	id = himling.8
 	title = "EVThimling.8"
@@ -123,7 +128,7 @@ character_event = {
 	}
 }
 
-## You found some antic documents
+## You found some antique documents
 character_event = {
 	id = himling.9
 	title = "EVThimling.9"

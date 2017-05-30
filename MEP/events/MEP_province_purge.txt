@@ -291,29 +291,37 @@ character_event = {
 			FROM = {
 				location = { culture_group = culture_group_melkor }
 			}
-			ROOT = {
-				OR = {
-					culture_group = culture_group_melkor
-					culture = culture_umaiar
-					trait = evil_side
-					any_suzerain = {  # My boss wants this stopped
-						OR = {
-							culture_group = culture_group_melkor
-							culture = culture_umaiar
-							trait = evil_side
+		}
+		if = {
+			limit = {
+				ROOT = {
+					OR = {
+						culture_group = culture_group_melkor
+						culture = culture_umaiar
+						trait = evil_side
+						any_suzerain = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
 						}
-					}
-					any_liege = {  # My boss wants this stopped
-						OR = {
-							culture_group = culture_group_melkor
-							culture = culture_umaiar
-							trait = evil_side
+						any_liege = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
 						}
 					}
 				}
 			}
+			FROM = {
+				location = {
+					remove_province_modifier = being_purged
+				}	
+			}
 		}
-		remove_province_modifier = being_purged		
 	}
 	
 	# Option 2 : Good province and new ruler or overlord is not evil. ROOT is the new holder
@@ -322,29 +330,38 @@ character_event = {
 			FROM = {
 				location = { NOT = { culture_group = culture_group_melkor } }
 			}
-			ROOT = {
-				NOR = {
-					culture_group = culture_group_melkor
-					culture = culture_umaiar
-					trait = evil_side
-					any_suzerain = {  # My boss wants this stopped
-						OR = {
-							culture_group = culture_group_melkor
-							culture = culture_umaiar
-							trait = evil_side
+		}
+		if = {
+			limit = {
+				ROOT = {
+					NOR = {
+						culture_group = culture_group_melkor
+						culture = culture_umaiar
+						trait = evil_side
+						any_suzerain = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
 						}
-					}
-					any_liege = {  # My boss wants this stopped
-						OR = {
-							culture_group = culture_group_melkor
-							culture = culture_umaiar
-							trait = evil_side
+						any_liege = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
 						}
 					}
 				}
 			}
+			FROM = {
+				location = {
+					remove_province_modifier = being_purged
+				}
+			}
 		}
-		remove_province_modifier = being_purged		
+		
 	}
 	
 }

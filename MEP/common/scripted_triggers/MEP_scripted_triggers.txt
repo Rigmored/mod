@@ -8,6 +8,7 @@
 # mep_allows_shield_maidens_trigger
 # mep_dont_do_nice_trigger
 # mep_cant_get_disease_trigger
+# mep_wont_hire_physician_trigger
 # mep_numenorean_traits_trigger
 # mep_elven_blood_tigger
 # mep_disease_resistant_trigger
@@ -150,6 +151,27 @@ mep_cant_get_disease_trigger = {
 		trait = enigma
 		trait = nazgul
 		trait = elf_childhood
+	}
+}
+# most immortals, and evil races, don't hire physicians/doctors
+# I assume elves and non-evil istari will, because elves are renowned healers and they could have non-immortal courtiers
+# valar don't, because they forbid mortals from the land where they live, the cowards
+mep_wont_hire_physician_trigger = {
+	OR = {
+		religion_group = religion_group_melkor
+		religion_group = religion_group_wilderness
+		AND = {
+			religion_group = religion_group_eruhini
+			NAND = { 
+				culture = culture_istari
+				NOT = { trait = evil_side }
+			}
+		}
+		religion_group = religion_group_enyd
+		trait = balrog
+		trait = valar
+		trait = enigma
+		trait = nazgul
 	}
 }
 

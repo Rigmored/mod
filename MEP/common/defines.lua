@@ -896,8 +896,8 @@ NCharacter = {
 	CHILDHOOD_AUTO_EDUCATION_FOCUS_AGE = 15,		-- Children automatically get education focus at this age.
 	MERCHANT_REPUBLIC_MAX_PATRICIANS = 5,			-- The amount of merchant republic patrician families that the game will keep active.
 	
-	TREASURY_CHANCE_TO_DISAPPEAR_STANDARD = 0.05,	-- Chances that artifacts disappear on inheritance
-	TREASURY_CHANCE_TO_DISAPPEAR_NO_HEIR = 0.5,		-- Chances that artifacts disappear on inheritance when the dying character doesn't have an heir
+	TREASURY_CHANCE_TO_DISAPPEAR_STANDARD = 0.01,	-- Chances that artifacts disappear on inheritance
+	TREASURY_CHANCE_TO_DISAPPEAR_NO_HEIR = 0.2,		-- Chances that artifacts disappear on inheritance when the dying character doesn't have an heir
 },
 
 NTitle = {

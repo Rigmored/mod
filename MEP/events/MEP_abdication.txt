@@ -18,6 +18,12 @@ character_event = {
 	}
 }
 
+# The following artifact weapons are not currently abdicate passable:
+# daggerwesternesse, morgul_blade, ringil, dagmor, ancient_elvish_sword, elvish_sword_magic_martial,
+# elvish_sword_magic_combat, elvish_sword_magic_exceptional, elvish_sword, dwarvish_sword, dramborleg,
+# aeglos
+
+
 character_event = {
 	id = ABDICATE.2
 	desc = "ABD.002.DESC"
@@ -231,23 +237,29 @@ character_event = {
 			}	
 		## Anduril ##
 		if = {
-				limit = { trait = anduril }
+				limit = { has_artifact = anduril }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = anduril } 
+							NOT = { has_artifact = anduril } 
 						}
 					}
 					current_heir = {
-						add_trait = anduril 
-						character_event = { id = 250288 }
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = aflag_anduril} 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
 					}
-					remove_trait = anduril
 				}
 			}
-		## Narsil ##
+		## Narsil (Shards)##
 		if = {
 				limit = { trait = narsil }
 				if = { 
@@ -267,94 +279,127 @@ character_event = {
 			}	
 		## Glamdring ##
 		if = {
-				limit = { trait = glamdring }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = glamdring } 
-						}
+			limit = { has_artifact = glamdring }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = glamdring } 
 					}
-					current_heir = {
-						add_trait = glamdring
-						character_event = { id = 250290 }		
-					}
-					remove_trait = glamdring
 				}
-			}	
-		## Sting ##	
-		if = {
-				limit = { trait = sting }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = sting } 
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_glamdring} 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						character_event = { id = 250291 }
-						add_trait = sting 
-					}
-					remove_trait = sting
 				}
 			}
-		## Herugrim ##	
+		}	
+		# Sting ##	
 		if = {
-				limit = { trait = herugrim }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = herugrim } 
+			limit = { has_artifact = sting }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = sting } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_sting } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = herugrim 
-						character_event = { id = 250292 }	
-					}
-					remove_trait = herugrim
 				}
-			}	
+			}
+		}
+		# Herugrim ##	
+		if = {
+			limit = { has_artifact = herugrim }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = herugrim } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_herugrim } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
+						}
+					}
+					character_event = { id = 250292 }
+				}
+			}
+		}	
 		## Orcrist ##	
 		if = {
-				limit = { trait = orcrist }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = {  
-							is_alive = yes  
-							NOT = { trait = orcrist } 
+			limit = { has_artifact = orcrist }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = {  
+						is_alive = yes  
+						NOT = { has_artifact = orcrist } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_orcrist} 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						character_event = { id = 250293 }
-						add_trait = orcrist 
-					}
-					remove_trait = orcrist
+					character_event = { id = 250293 }
 				}
 			}
-		## Gutwhine ##		
+		}
+		## Gúthwinë ##		
 		if = {
-				limit = { trait = gutwhine }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = gutwhine } 
+			limit = { has_artifact = guthwine }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = guthwine } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_guthwine } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = gutwhine 
-						character_event = { id = 250294 }
-					}
-					remove_trait = gutwhine
+					character_event = { id = 250294 }
 				}
-			}	
+			}
+		}	
 		## Mithril Chest ##	
 		if = {
 				limit = { trait = mithril }
@@ -411,22 +456,29 @@ character_event = {
 			}
 		## The Sword founded in the ruins of Himling ##	
 		if = {
-				limit = { trait = himling_sword }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = himling_sword } 
+			limit = { has_artifact = himling_sword }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = himling_sword } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_himling_sword } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						character_event = { id = 250297 }
-						add_trait = himling_sword 
-					}
-					remove_trait = himling_sword
+					character_event = { id = 250297 }
 				}
-			}	
+			}
+		}	
 		## The Palantir of Annuminas ##	
 		if = {
 				limit = { trait = palantir_annuminas }
@@ -548,19 +600,23 @@ character_event = {
 			}	
 		## A Spear forged in Erebor ##	
 		if = {
-			limit = { trait = erebor_spear }
+			limit = { has_artifact = erebor_spear }
 				if = { 
 					limit = { 
 						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = erebor_spear } 
-						}
+						current_heir = { is_alive = yes }
 					}
 					current_heir = {
-						add_trait = erebor_spear 
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = aflag_erebor_spear } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
 					}
-					remove_trait = erebor_spear
 				}
 			}
 		## An Armor forged in Erebor ##	
@@ -769,72 +825,100 @@ character_event = {
 			}	
 		## the Axe of Durin ##	
 		if = {
-				limit = { trait = durins_axe }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = durins_axe } 
+			limit = { has_artifact = durins_axe }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = durins_axe } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_durins_axe } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = durins_axe 
-					}
-					remove_trait = durins_axe
 				}
-			}		
+			}
+		}		
 		## the Sword of Amroth ##	
 		if = {
-			limit = { trait = amroth_sword }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = amroth_sword } 
+			limit = { has_artifact = amroth_sword }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = amroth_sword } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_amroth_sword } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = amroth_sword 
-					}
-					remove_trait = amroth_sword
 				}
-			}	
+			}
+		}	
 		## Narsil - not broken ##	
 		if = {
-			limit = { trait = narsil_elendil }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = narsil_elendil } 
+			limit = { has_artifact = narsil_elendil }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = narsil_elendil } 
+					}
+				}				
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_narsil_sword } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = narsil_elendil 
-					}
-					remove_trait = narsil_elendil
 				}
-			}	
+			}
+		}	
 		## A Morgul's Blade ##	
-		if = {
-				limit = { trait = morgul_blade }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = morgul_blade } 
-						}
-					}
-					current_heir = {
-						add_trait = morgul_blade 
-					}
-					remove_trait = morgul_blade
-				}
-			}	
+		#if = {
+		#	limit = { has_artifact = morgul_blade }
+		#	if = { 
+		#		limit = { 
+		#			is_ruler = yes
+		#			current_heir = { 
+		#				is_alive = yes  
+		#				NOT = { has_artifact = morgul_blade } 
+		#			}
+		#		}
+		#		current_heir = {
+		#			PREV = {
+		#				any_artifact = {
+		#					limit = { has_artifact_flag = aflag_morgulblade } 
+		#					transfer_artifact = {
+		#						from = PREV
+		#						to = PREVPREV
+		#					}
+		#				}
+		#			}
+		#		}
+		#	}
+		#}	
 		## Gurthang ##	
 		if = {
 				limit = { trait = gurthang }
@@ -871,21 +955,28 @@ character_event = {
 			}	
 		## Anguirel ##	
 		if = {
-				limit = { trait = anguirel }
-				if = { 
-					limit = { 
-						is_ruler = yes
-						current_heir = { 
-							is_alive = yes  
-							NOT = { trait = anguirel } 
+			limit = { has_artifact = anguirel }
+			if = { 
+				limit = { 
+					is_ruler = yes
+					current_heir = { 
+						is_alive = yes  
+						NOT = { has_artifact = anguirel } 
+					}
+				}
+				current_heir = {
+					PREV = {
+						any_artifact = {
+							limit = { has_artifact_flag = aflag_anguirel } 
+							transfer_artifact = {
+								from = PREV
+								to = PREVPREV
+							}
 						}
 					}
-					current_heir = {
-						add_trait = anguirel 
-					}
-					remove_trait = anguirel
 				}
-			}	
+			}
+		}	
 		## Anglachel ##	
 		if = {
 				limit = { trait = anglachel }

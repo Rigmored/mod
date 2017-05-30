@@ -11,7 +11,7 @@ character_event = {
 	only_independent = yes
 	
 	trigger = {
-		has_landed_title = k_erebor
+		has_landed_title = d_erebor
 		year = 11363
 		NOT = { year = 11364 }
 		NOT = { has_character_flag = wotr1 }
@@ -84,7 +84,10 @@ character_event = {
 	option = {
 		name = "EVTOPTAwotr.4"
 		remove_trait = narsil
-		add_trait = anduril
+		add_artifact = anduril
+		new_artifact = {
+			set_creation_date = 1.1.1
+		}
 		prestige = 100
 	}	
 }
