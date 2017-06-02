@@ -394,20 +394,116 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA6060
-	if = {
-	limit = {
-		NOT = {
-			has_dlc = "Reapers"
+		if = {
+			limit = {
+				NOT = { has_dlc = "Reapers" }
+			}
+			add_trait = ill
+		}
+		if = {
+			limit = { has_dlc = "Reapers" }
+			add_symptom_effect = yes
 		}
 	}
-	add_trait = ill
 }
-if = {
-	limit = {
-		has_dlc = "Reapers"
+
+#Meta ill
+character_event = {
+	id = 6063
+
+	hide_window = yes
+	
+	trigger = {
+		health = 3.0
+		is_ill = no
+
+		NOT = {
+			has_game_rule = {
+				name = non_epidemic_diseases
+				value = none
+			}
+		}
 	}
-	add_symptom_effect = yes
-}
+	
+	mean_time_to_happen = {
+		months = 360
+		
+		modifier = {
+			factor = 0.5
+			trait = depressed
+		}
+		modifier = {
+			factor = 0.5
+			trait = stressed
+		}
+		modifier = {
+			factor = 0.5
+			is_weak_trigger = yes
+		}
+		modifier = {
+			factor = 0.75
+			prisoner = yes
+			has_character_modifier = the_oubliette
+		}
+		modifier = {
+			factor = 0.9
+			prisoner = yes
+			has_character_modifier = the_dungeon
+		}
+		modifier = {
+			factor = 1.5
+			base_health = 6
+		}
+		modifier = {
+			factor = 1.5
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 7
+		}
+		modifier = {
+			factor = 2.0
+			base_health = 8
+		}
+		modifier = {
+			factor = 0.5
+			has_game_rule = {
+				name = non_epidemic_diseases
+				value = more
+			}
+		}
+		modifier = {
+			factor = 2
+			has_game_rule = {
+				name = non_epidemic_diseases
+				value = fewer
+			}
+		}
+		modifier = {
+			factor = 4
+			has_game_rule = {
+				name = non_epidemic_diseases
+				value = rare
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_dlc = "Reapers"
+				}
+			}
+			character_event = { id = 6060 }
+		}
+		if = {
+			limit = {
+				has_dlc = "Reapers"
+			}
+			add_symptom_effect = yes
+		}
 	}
 }
 

@@ -23,6 +23,7 @@
 # mep_temp_muslim_standin_trigger
 # mep_should_be_unkillable_trigger
 # mep_is_human_trigger
+# mep_dont_seduce_trigger
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -331,6 +332,16 @@ mep_is_human_trigger = {
 	OR = {
 		religion_group = religion_group_edain
 		religion_group = religion_group_hildor
+	}
+}
+
+mep_dont_seduce_trigger = {
+	OR = {
+		religion_group = religion_group_eldar  # too Catholic
+		religion_group = religion_group_wilderness  # not actual character
+		# religion_group = religion_group_enyd
+		religion_group = religion_group_melkor  # probably too evil and chaotic to seduce
+		religion_group = religion_group_eruhini # Eagles, Valar, Tom Bombadil, etc		
 	}
 }
 

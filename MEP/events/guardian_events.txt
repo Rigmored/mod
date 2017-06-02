@@ -3707,80 +3707,80 @@ character_event = {
 ###################################
 
 # Child is influenced by the culture of his or her guardian
-character_event = {
-	id = 38110
-	desc = EVTDESC38110
-	picture = GFX_evt_guardian
-	
-	min_age = 6
-	max_age = 15
-	only_capable = yes
-	lacks_dlc = "Zeus"
-	
-	trigger = {
-	    NOT = {
-	        has_game_rule = {
-		        name = culture_conversion
-			    value = off
-		    }
-	    }
-		has_guardian = yes
-		father = {
-			NOT = { is_nomadic = yes }
-		}
-		guardian = {
-			NOT = { culture = ROOT }
-			employer = {
-				culture = PREV
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 120
-		modifier = {
-			factor = 0.5
-			guardian = {
-				trait = diligent
-			}
-		}
-		modifier = {
-			factor = 0.5
-			guardian = {
-				trait = gregarious
-			}
-		}
-		modifier = {
-			factor = 2.0
-			guardian = {
-				trait = shy
-			}
-		}
-		modifier = {
-			factor = 2.0
-			guardian = {
-				trait = slothful
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTA38110
-		ai_chance = { factor = 100}
-		guardian = {
-			reverse_culture = ROOT
-			hidden_tooltip = {
-				character_event = {
-					id = 38111
-				}
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB38100 # Go play with my friends
-		ai_chance = { factor = 0 }
-	}
-}
+#character_event = {
+#	id = 38110
+#	desc = EVTDESC38110
+#	picture = GFX_evt_guardian
+#	
+#	min_age = 6
+#	max_age = 15
+#	only_capable = yes
+#	lacks_dlc = "Zeus"
+#	
+#	trigger = {
+#	    NOT = {
+#	        has_game_rule = {
+#		        name = culture_conversion
+#			    value = off
+#		    }
+#	    }
+#		has_guardian = yes
+#		father = {
+#			NOT = { is_nomadic = yes }
+#		}
+#		guardian = {
+#			NOT = { culture = ROOT }
+#			employer = {
+#				culture = PREV
+#			}
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 120
+#		modifier = {
+#			factor = 0.5
+#			guardian = {
+#				trait = diligent
+#			}
+#		}
+#		modifier = {
+#			factor = 0.5
+#			guardian = {
+#				trait = gregarious
+#			}
+#		}
+#		modifier = {
+#			factor = 2.0
+#			guardian = {
+#				trait = shy
+#			}
+#		}
+#		modifier = {
+#			factor = 2.0
+#			guardian = {
+#				trait = slothful
+#			}
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA38110
+#		ai_chance = { factor = 100}
+#		guardian = {
+#			reverse_culture = ROOT
+#			hidden_tooltip = {
+#				character_event = {
+#					id = 38111
+#				}
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB38100 # Go play with my friends
+#		ai_chance = { factor = 0 }
+#	}
+#}
 
 character_event = {
 	id = 38111

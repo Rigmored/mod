@@ -1,6 +1,8 @@
 name = "MEP"
 path = "mod/MEP"
 user_dir = "MEP"
+replace_path = "common/artifact_spawns"
+# replace_path = "common/artifacts"
 replace_path = "common/buildings"
 replace_path = "common/bookmarks"
 replace_path = "common/cb_types"

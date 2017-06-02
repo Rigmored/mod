@@ -28,7 +28,7 @@ sting = {  # used by Bilbo, then Frodo, then Samwise
 	monthly_character_prestige = 0.1
 	combat_rating = 1
 	quality = 4
-	picture = "GFX_simple_dagger"
+	picture = "GFX_inscriped_dagger"
 	slot = weapon
 	flags = { aflag_sting dagger} 
 	stacking = no
@@ -173,7 +173,7 @@ anguirel = {  # Eöl's sword of Meteoric Iron, stolen by Maeglin (and taken to G
 #-----------------------------------------------
 # generic swords
 
-himling_sword = {  # presumably Noldor, only found in ruins on Himling Isle
+himling_sword = {  # presumably Noldor, only found in ruins on Himling Isle. Might be sword of Maedhros
 	martial = 3
 	monthly_character_prestige = 0.3
 	combat_rating = 1
@@ -192,6 +192,7 @@ ancient_elvish_sword = {
 	quality = 4
 	picture = "GFX_sword_engraved"
 	slot = weapon
+	flags = { aflag_elvish_sword sword}
 	stacking = yes
 }
 
@@ -202,6 +203,7 @@ elvish_sword_magic_martial = {
 	quality = 4
 	picture = "GFX_sword_T3_glow_red"
 	slot = weapon
+	flags = { aflag_elvish_sword_magic_martial sword}
 	stacking = no
 }
 elvish_sword_magic_combat = {
@@ -211,6 +213,7 @@ elvish_sword_magic_combat = {
 	quality = 4
 	picture = "GFX_sword_T3_glow_green"
 	slot = weapon
+	flags = { aflag_elvish_sword_magic_combat sword}
 	stacking = no
 }
 elvish_sword_magic_exceptional = {
@@ -220,6 +223,7 @@ elvish_sword_magic_exceptional = {
 	quality = 4
 	picture = "GFX_sword_T3_glow_purple"
 	slot = weapon
+	flags = { aflag_elvish_sword_magic_exceptional sword}
 	stacking = no
 }
 
@@ -230,6 +234,7 @@ elvish_sword = {
 	quality = 3
 	picture = "GFX_sword_engraved"
 	slot = weapon
+	flags = { aflag_elvish_sword sword}
 	stacking = yes
 }
 
@@ -240,6 +245,7 @@ dwarvish_sword = {
 	quality = 3
 	picture = "GFX_sword_fancy"
 	slot = weapon
+	flags = { aflag_dwarvish_sword sword}
 	stacking = yes
 }
 
@@ -289,4 +295,14 @@ erebor_spear = {
 	slot = weapon
 	flags = { aflag_erebor_spear spear}
 	stacking = yes
+}
+
+belthronding = {	# The Bow of Beleg, buried with him in Tol Fuin (probably rotted away within a few hundred years)
+    martial = 3
+	vassal_opinion = 10
+	monthly_character_prestige = 1.0
+	picture = "GFX_silent_wind"
+	slot = weapon
+	flags = { aflag_belthronding bow}
+	stacking = no
 }

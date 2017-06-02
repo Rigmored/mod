@@ -20,6 +20,32 @@ daggerwesternesse = {
 			is_landed = yes
 			higher_tier_than = baron
 		}
+		# handling the hobbit dagger aquisition post wotr
+		additive_modifier = {
+			value = 100
+			character = 8041  # Merry
+			date = 11362
+		}
+		additive_modifier = {
+			value = 100
+			has_landed_title = d_master_buckland # Heir of Merry
+			date = 11428
+		}
+		additive_modifier = {
+			value = 100
+			character = 8028  # Pippin
+			date = 11362
+		}
+		additive_modifier = {
+			value = 100
+			has_landed_title = k_shire # Heir of Pippin
+			date = 11447
+		}
+		additive_modifier = {
+			value = 100
+			character = 8140  # Sam
+			date = 11362
+		}
 	}
 
 	artifacts = {
@@ -730,6 +756,24 @@ erebor_spear = {
 
 	artifacts = {
 		dwarvish_sword = { value = 1 }
+	}
+}
+
+# The Bow of Beleg, buried with him in Tol Fuin (probably rotted away within a few hundred years)
+belthronding = {
+	max_amount = 1
+	spawn_date = 4600.1.1 # ??
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		belthronding = { value = 1 }
 	}
 }
 

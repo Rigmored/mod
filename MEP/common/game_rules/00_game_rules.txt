@@ -13,11 +13,6 @@
 #	}
 # }
 
-# Modified for Middle-Earth mod
-# JamesFox (2017/04/19) Deleted Mongol/Aztec/Turkic invasions, culture and religious conversion, interfaith marriages, charlemage, and pagan_reformation
-# JamesFox (2017/04/21) Added 2.7 related stuff
-# JamesFox (2017/04/29) Made reduced minor epidemics the default.
-
 epidemics = {
 	name = "RULE_EPIDEMICS"
 	dlc = "The Reaper's Due"
@@ -49,11 +44,6 @@ minor_epidemics = {
 	dlc = "The Reaper's Due"
 	group = "RULE_GROUP_RIP"
 	option = {
-		name = fewer
-		text = "RULE_OPTION_FEWER"
-		desc = "RULE_EPIDEMICS_FEWER_DESC"
-	}
-	option = {
 		name = default
 		text = "RULE_OPTION_DEFAULT"
 		desc = "RULE_EPIDEMICS_DEFAULT_DESC"
@@ -63,23 +53,14 @@ minor_epidemics = {
 		text = "RULE_OPTION_MORE"
 		desc = "RULE_EPIDEMICS_MORE_DESC"
 	}
+	option = {
+		name = fewer
+		text = "RULE_OPTION_FEWER"
+		desc = "RULE_EPIDEMICS_FEWER_DESC"
+	}
 }
 
-devil_worshipers = {
-	name = "RULE_DEVIL_WORSHIPERS"
-	dlc = "Monks And Mystics"
-	group = "RULE_GROUP_VARIOUS"
-	option = {
-		name = none
-		text = "RULE_OPTION_NONE"
-		desc = "RULE_DEVIL_WORSHIPERS_NONE_DESC"
-	}
-	option = {
-		name = default
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_DEVIL_WORSHIPERS_DEFAULT_DESC"
-	}
-}
+
 
 non_epidemic_diseases = {
 	name = "RULE_NON_EPIDEMIC_DISEASES"
@@ -133,11 +114,6 @@ shattered_retreat = {
 defensive_pacts = {
 	name = "RULE_DEFENSIVE_PACTS"
 	group = "RULE_GROUP_WARFARE"
-	option = {
-	    name = alliance
-		text = "RULE_OPTION_ALLIANCES"
-		desc = "RULE_DEFENSIVE_PACTS_ALLIANCES_DESC"
-	}
 	option = {
 		name = on
 		text = "RULE_OPTION_ON"
@@ -269,7 +245,6 @@ nomad_stability = {
 	}
 }
 
-
 raiding = {
 	name = "RULE_RAIDING"
 	group = "RULE_GROUP_WARFARE"
@@ -314,6 +289,22 @@ adventurers = {
 	}
 }
 
+interfaith_marriages = {
+	name = "RULE_INTERFAITH_MARRIAGES"
+	group = "RULE_GROUP_RELIGION"
+	group = "RULE_GROUP_DIPLOMACY"
+	option = {
+		name = restricted
+		text = "RULE_OPTION_RESTRICTED"
+		desc = "RULE_IFM_RESTRICTED_DESC"
+	}
+	option = {
+		name = open
+		achievements = no
+		text = "RULE_OPTION_OPEN"
+		desc = "RULE_IFM_OPEN_DESC"
+	}
+}
 
 matrilineal_marriages = {
 	name = "RULE_MATRILINEAL_MARRIAGES"
@@ -345,6 +336,7 @@ dynamic_realms = {
 		desc = "RULE_DYNAMIC_REALMS_OFF_DESC"
 	}
 }
+
 
 
 vassal_republics = {
@@ -525,11 +517,6 @@ ai_seduction = {
 	dlc = "Way of Life"
 	group = "RULE_GROUP_WOL"
 	option = {
-	    name = canon
-		text = "RULE_OPTION_CANON"
-		desc = "RULE_AI_SEDUCTION_CANON_DESC"
-	}
-	option = {
 		name = on
 		text = "RULE_OPTION_ON"
 		desc = "RULE_AI_SEDUCTION_ON_DESC"
@@ -545,11 +532,6 @@ ai_intrigue = {
 	name = "RULE_AI_INTRIGUE"
 	dlc = "Way of Life"
 	group = "RULE_GROUP_WOL"
-	option = {
-	    name = canon
-		text = "RULE_OPTION_CANON"
-		desc = "RULE_AI_INTRIGUE_CANON_DESC"
-	}
 	option = {
 		name = on
 		text = "RULE_OPTION_ON"
@@ -632,29 +614,6 @@ cultural_title_names = {
 	}
 }
 
-#multiplayer_assassinations = {
-#	name = "RULE_MULTIPLAYER_ASSASSINATIONS"
-#	option = {
-#		name = default
-#		text = "RULE_OPTION_DEFAULT"
-#		desc = "RULE_MULTIPLAYER_ASSASSINATIONS_DEFAULT_DESC"
-#	}
-#	option = {
-#		name = no_players
-#		text = "RULE_OPTION_NO_PLAYERS"
-#		desc = "RULE_MULTIPLAYER_ASSASSINATIONS_NO_PLAYERS_DESC"
-#	}
-#	option = {
-#		name = no_players_or_heirs
-#		text = "RULE_OPTION_NO_PLAYERS_OR_HEIRS"
-#		desc = "RULE_MULTIPLAYER_ASSASSINATIONS_NO_PLAYERS_OR_HEIRS_DESC"
-#	}
-#	option = {
-#		name = no_player_dynasties
-#		text = "RULE_OPTION_NO_PLAYER_DYNASTIES"
-#		desc = "RULE_MULTIPLAYER_ASSASSINATIONS_NO_PLAYER_DYNASTIES_DESC"
-#	}
-#}
 
 demesne_size = {
 	name = "RULE_DEMESNE_SIZE"
@@ -722,4 +681,196 @@ grant_independence = {
 		desc = "RULE_GRANT_INDEPENDENCE_UNRESTRICTED_DESC"
 		achievements = no
 	}
+}
+	
+	
+mongol_invasion = {
+	name = "RULE_MONGOL_INVASION"
+	group = "RULE_GROUP_RAILROADING"
+	option = {
+		name = off
+		text = "RULE_OPTION_OFF"
+		desc = "RULE_MONGOL_INVASION_OFF_DESC"
+	}
+	option = {
+		name = historical
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_MONGOL_INVASION_HISTORICAL_DESC"
+	}
+	option = {
+		name = random
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_MONGOL_INVASION_RANDOM_DESC"
+	}
+	option = {
+		name = delayed_random
+		text = "RULE_OPTION_DELAYED_RANDOM"
+		desc = "RULE_MONGOL_INVASION_DELAYED_RANDOM_DESC"
+	}
+
+}
+
+aztec_invasion = {
+	name = "RULE_AZTEC_INVASION"
+	dlc = "Sunset Invasion"
+	group = "RULE_GROUP_RAILROADING"
+	option = {
+		name = off
+		text = "RULE_OPTION_OFF"
+		desc = "RULE_AZTEC_INVASION_OFF_DESC"
+	}
+	option = {
+		name = historical
+		text = "RULE_AZTEC_13TH"
+		desc = "RULE_AZTEC_INVASION_HISTORICAL_DESC"
+	}
+	option = {
+		name = random
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_AZTEC_INVASION_RANDOM_DESC"
+	}
+	option = {
+		name = delayed_random
+		text = "RULE_OPTION_DELAYED_RANDOM"
+		desc = "RULE_AZTEC_INVASION_DELAYED_RANDOM_DESC"
+	}
+}
+
+devil_worshipers = {
+	name = "RULE_DEVIL_WORSHIPERS"
+	dlc = "Monks And Mystics"
+	group = "RULE_GROUP_VARIOUS"
+	option = {
+		name = none
+		text = "RULE_OPTION_NONE"
+		desc = "RULE_DEVIL_WORSHIPERS_NONE_DESC"
+	}
+	option = {
+		name = default
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_DEVIL_WORSHIPERS_DEFAULT_DESC"
+	}
+}
+
+secret_cults = {
+	name = "RULE_SECRET_CULTS"
+	group = "RULE_GROUP_VARIOUS"
+	option = {
+		name = none
+		text = "RULE_OPTION_NONE"
+		desc = "RULE_SECRET_CULTS_NONE_DESC"
+	}
+	option = {
+		name = default
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_SECRET_CULTS_DEFAULT_DESC"
+	}
+}
+
+turkic_invasions = {
+	name = "RULE_TURKIC_INVASIONS"
+	group = "RULE_GROUP_RAILROADING"
+	option = {
+		name = off
+		achievements = no
+		text = "RULE_OPTION_OFF"
+		desc = "RULE_TURKIC_INVASIONS_OFF_DESC"
+	}
+	option = {
+		name = historical
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_TURKIC_INVASIONS_HISTORICAL_DESC"
+	}
+	option = {
+		name = random
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_TURKIC_INVASIONS_RANDOM_DESC"
+	}
+}
+
+pagan_reformation = {
+	option = {
+		name = disallowed
+		text = "RULE_PAGAN_REFORMATION_DISALLOWED"
+		desc = "RULE_PAGAN_REFORMATION_DISALLOWED_DESC"
+	}
+	name = "RULE_PAGAN_REFORMATION"
+	group = "RULE_GROUP_RELIGION"
+	option = {
+		name = allowed
+		text = "RULE_PAGAN_REFORMATION_ALLOWED"
+		desc = "RULE_PAGAN_REFORMATION_ALLOWED_DESC"
+	}
+
+	option = {
+		name = players
+		achievements = no
+		text = "RULE_PAGAN_REFORMATION_PLAYERS"
+		desc = "RULE_PAGAN_REFORMATION_PLAYERS_DESC"
+	}
+}
+
+charlemagne_story = {
+	name = "RULE_CHARLEMAGNE_STORY"
+	dlc = "Charlemagne"
+	group = "RULE_GROUP_RAILROADING"
+	option = {
+		name = off
+		text = "RULE_OPTION_OFF"
+		desc = "RULE_CHARLEMAGNE_STORY_OFF_DESC"
+	}
+	option = {
+		name = on
+		text = "RULE_OPTION_ON"
+		desc = "RULE_CHARLEMAGNE_STORY_ON_DESC"
+	}
+
+}
+
+culture_conversion = {
+	name = "RULE_CULTURE_CONVERSION"
+	group = "RULE_GROUP_DIPLOMACY"
+	option = {
+		name = restricted
+		text = "RULE_OPTION_RESTRICTED"
+		desc = "RULE_CULTURE_CONVERSION_RESTRICTED_DESC"
+	}
+	option = {
+		name = default
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_CULTURE_CONVERSION_DEFAULT_DESC"
+	}
+
+	option = {
+		name = faster_melting_pots
+		text = "RULE_CULTURE_CONVERSION_FASTER_MELTING_POTS"
+		desc = "RULE_CULTURE_CONVERSION_FASTER_MELTING_POTS_DESC"
+	}
+	option = {
+		name = slower_normal
+		text = "RULE_CULTURE_CONVERSION_SLOWER_NORMAL"
+		desc = "RULE_CULTURE_CONVERSION_SLOWER_NORMAL_DESC"
+	}
+	option = {
+		name = faster_melting_pots_and_slower_normal
+		text = "RULE_CULTURE_CONVERSION_FASTER_MELTING_POTS_AND_SLOWER_NORMAL"
+		desc = "RULE_CULTURE_CONVERSION_FASTER_MELTING_POTS_AND_SLOWER_NORMAL_DESC"
+	}
+}
+
+religious_conversion = {
+	name = "RULE_RELIGIOUS_CONVERSION"
+	group = "RULE_GROUP_RELIGION"
+	group = "RULE_GROUP_DIPLOMACY"
+	option = {
+		name = slower
+		text = "RULE_RELIGIOUS_CONVERSION_SLOWER"
+		desc = "RULE_RELIGIOUS_CONVERSION_SLOWER_DESC"
+	}
+	option = {
+		name = default
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_RELIGIOUS_CONVERSION_DEFAULT_DESC"
+	}
+
 }

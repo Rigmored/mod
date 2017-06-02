@@ -835,7 +835,7 @@ character_event = {
 #===================================================================
 # Longbeard-specific purge event for Azanulbizar and Khazad-Dûm
 # called from on_new_holder
-province_event = {
+character_event = {
 	id = dwarfconq.25
 	title = EVTTITdwarfconq.25
 	desc = EVTDESCdwarfconq.25
@@ -844,11 +844,18 @@ province_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			province_id = 2 # Azanulbizar
-			province_id = 285 # Khazad-Dûm
+		FROM = {
+			tier = count
+			location = {
+				OR = {
+					province_id = 2 # Azanulbizar
+					province_id = 285 # Khazad-Dûm
+				}
+				religion_group = religion_group_melkor
+				NOT = { has_province_modifier = being_purged }
+			}
 		}
-		holder_scope = {
+		ROOT = {
 			OR = {
 				AND = {
 					culture = culture_longbeard
@@ -860,16 +867,18 @@ province_event = {
 				}
 			}
 		}
-		religion_group = religion_group_melkor
-		NOT = { has_province_modifier = being_purged }
 	}
 	
 	option = {
 		name = EVTOPTAdwarfconq.25
 		ai_chance = { factor = 1 }
-		holder_scope = { wealth = -50 }
-		set_variable = { which = mep_provincepurge_special   value = 1}
-		add_province_modifier = { name = being_purged duration = 3650 }
+		ROOT = { wealth = -50 }
+		FROM = {
+			location = {
+				set_variable = { which = mep_provincepurge_special   value = 1}
+				add_province_modifier = { name = being_purged duration = 3650 }
+			}
+		}
 	}
 	
 	option = {

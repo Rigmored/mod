@@ -302,6 +302,10 @@ character_event = {
 				limit = { has_artifact = aeglos }  # Spear of Gil-Galad, destroyed when he died
 				custom_tooltip = { text = CURRENTAEGLOS  }
 			}
+			if = {
+				limit = { has_artifact = belthronding }  # Bow of Beleg, buried with him during the first age. Since Tol Fuin exists, I suppose it could be dug up...
+				custom_tooltip = { text = CURRENTBELTHRONDING  }
+			}
 		}
 		if = {
 			limit = { has_artifact = durins_axe } # The most legendary artifact weapon of the Dwarves
@@ -314,6 +318,10 @@ character_event = {
 		if = {
 			limit = { has_artifact = aeglos }  # Spear of Gil-Galad, destroyed when he died
 			custom_tooltip = { text = CURRENTAEGLOS  }
+		}
+		if = {
+			limit = { has_artifact = belthronding } # Bow of Beleg, buried with him during the first age. Since Tol Fuin exists, I suppose it could be dug up...
+			custom_tooltip = { text = CURRENTBELTHRONDING  }
 		}
 		
 		# stuff not yet converted to artifacts
@@ -367,17 +375,7 @@ character_event = {
 			limit = { trait = staff_of_alatar }
 			custom_tooltip = { text = CURRENTSTAFFALATAR }
 		}
-	
-		belthronding = {  # Bow of Beleg, buried with him during the first age. Since Tol Fuin exists, I suppose it could be dug up...
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTBELTHRONDING }
-		}
-		if = {
-			limit = { trait = belthronding }
-			custom_tooltip = { text = CURRENTBELTHRONDING }
-		}			
+		
 	}	
 	
 	option = {
