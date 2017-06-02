@@ -40,7 +40,6 @@ decisions = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -65,7 +64,6 @@ decisions = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -94,7 +92,6 @@ decisions = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -122,13 +119,12 @@ decisions = {
 		}
 	}
 	
-	### NOT USED FOR NOW ###	
-## For the King of Arnor or Gondor to claim the Reunited Kingdom ##
+	
+## For the King of Arnor and Gondor to claim the Reunited Kingdom ##
 	claim_reunited_kingdom = {
 		is_high_prio = yes
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -143,6 +139,13 @@ decisions = {
 			OR = {
 				completely_controls = k_arthedain
 				completely_controls = k_cardolan
+				# or, Elessar after the War of the Ring
+				AND = {
+					character = 2038
+					has_global_flag = saurondefeated
+					war = no
+					wealth = 50 # must not be bankrupt...
+				}
 			}
 			completely_controls = k_anorien
 			completely_controls = k_ithilien

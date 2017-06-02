@@ -468,7 +468,7 @@ character_event = {
 			limit = {
 				trait = nazgul	
 			}
-			character_event = { id = frodo.18 }
+			character_event = { id = frodo.18 days = 7}
 		}
 		# Killing Sauron
 		death = {
@@ -604,31 +604,33 @@ character_event = {
 			}
 		}
 		# counties must become independent, generate new rulers for them
-		any_demesne_title = {
-			if = {
-				limit = { tier = count }
-				location = {
-					create_character = {
-						culture = THIS
-						religion = THIS
-					}
-				}
-				new_character = {
-					# tries to 'finish off' the character via race traits
-					character_event = { id = racetrait.1 }
-					character_event = { id = racetrait.2 }
-					character_event = { id = racetrait.3 }
-					character_event = { id = racetrait.4 }
-					character_event = { id = racetrait.6 }
-					character_event = { id = racetrait.5 }
-					character_event = { id = racetrait.7 }
-					character_event = { id = racetrait.8 }
-					character_event = { id = racetrait.9 }
-					character_event = { id = racetrait.10 }
-					grant_title = PREV					
-				}
-			}
-		}
+		# cultures are orc,uruk,nurnen,spider,wilderness
+		# conquered cultures: woodsmen (certain), gondor, rohan, etc
+		#any_demesne_title = {
+		#	if = {
+		#		limit = { tier = count }
+		#		location = {
+		#			create_character = {
+		#				culture = THIS
+		#				religion = THIS
+		#			}
+		#		}
+		#		new_character = {
+		#			# tries to 'finish off' the character via race traits
+		#			character_event = { id = racetrait.1 }
+		#			character_event = { id = racetrait.2 }
+		#			character_event = { id = racetrait.3 }
+		#			character_event = { id = racetrait.4 }
+		#			character_event = { id = racetrait.6 }
+		#			character_event = { id = racetrait.5 }
+		#			character_event = { id = racetrait.7 }
+		#			character_event = { id = racetrait.8 }
+		#			character_event = { id = racetrait.9 }
+		#			character_event = { id = racetrait.10 }
+		#			grant_title = PREV					
+		#		}
+		#	}
+		#}
 		
 		death = {
 			death_reason = death_battle
@@ -887,10 +889,11 @@ character_event = {
 			}
 			character_event = { id = frodo.35 days = 15 }
 		}	
-		k_ithilien = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
+		# with simply granting titles, gondor picks up large sections of mordor proper because
+		# the Nazgûl king of Ithilien grabs large parts of Nurnen and sometimes even gorogoth
+		# so...
+		k_ithilien = { destroy_landed_title = THIS }
+
 		d_nindalf = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -987,6 +990,11 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
+		# re-creating Ithilien
+		k_ithilien = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
 		set_defacto_liege = e_gondor		
 	}
 }
