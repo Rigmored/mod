@@ -561,7 +561,10 @@ character_event = {
 		}	
 		k_mordor = {
 			destroy_landed_title = THIS
-		}			
+		}
+		k_dol_guldur = {
+			destroy_landed_title = THIS
+		}
 	}
 }
 		
@@ -893,11 +896,11 @@ character_event = {
 		# the Nazgûl king of Ithilien grabs large parts of Nurnen and sometimes even gorogoth
 		# so...
 		k_ithilien = { destroy_landed_title = THIS }
-
-		d_nindalf = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}		
+		d_nindalf = { destroy_landed_title = THIS }
+		d_north_ithilduin = { destroy_landed_title = THIS }	
+		d_emyn_arnen = { destroy_landed_title = THIS }	
+		d_south_ithilduin = { destroy_landed_title = THIS }		
+		# county titles are fixed in positiom
 		c_arandal = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -910,10 +913,6 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
-		d_north_ithilduin = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
 		c_morgul = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -942,10 +941,7 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
-		d_emyn_arnen = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
+
 		c_usuluni = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -953,11 +949,7 @@ character_event = {
 		c_elemir = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
-		}	
-		d_south_ithilduin = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}	
+		}		
 		c_alagdor = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -992,6 +984,22 @@ character_event = {
 		}	
 		# re-creating Ithilien
 		k_ithilien = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_emyn_arnen = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_nindalf = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		d_north_ithilduin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_south_ithilduin = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}
@@ -1232,6 +1240,20 @@ character_event = {
 			c_rian = {
 				grant_title = ROOT
 				copy_title_laws = e_gondor
+				location = {
+					if = {
+						limit = {
+							OR = {
+								culture_group = culture_group_wilderness
+								religion_group = religion_group_wilderness 
+							}
+						}
+						add_province_modifier = {
+							name = being_colonised_with_wood_elves
+							duration = -1
+						}
+					}
+				}
 			}	
 			c_glorel = {
 				grant_title = ROOT

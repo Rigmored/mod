@@ -48,13 +48,15 @@ religious1 = {
 	
 	can_use_title = {
 		# The attacker needs at least one county in the target duchy, or a border, or be only two sea zones away from one of your counties
-		# unaltered from base holy war.
 		any_direct_de_jure_vassal_title = {
 			OR = {
-				holder_scope = {
-					OR = {
-						character = ROOT
-						is_liege_or_above = ROOT
+				AND = {
+					has_holder = yes
+					holder_scope = {
+						OR = {
+							character = ROOT
+							is_liege_or_above = ROOT
+						}
 					}
 				}
 				location = {
@@ -306,10 +308,13 @@ religious2 = {
 		# The attacker needs at least one county in the target duchy, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
-				holder_scope = {
-					OR = {
-						character = ROOT
-						is_liege_or_above = ROOT
+				AND = {
+					has_holder = yes
+					holder_scope = {
+						OR = {
+							character = ROOT
+							is_liege_or_above = ROOT
+						}
 					}
 				}
 				location = {
@@ -880,8 +885,8 @@ wilderness_arnorean = {
 }
 
 # "In Gondor the King Elessar now ruled, and in Arnor also. In all the lands of those realms of old he was king, save in Rohan only"
-# Gondor at it's height conquered all the way to the Sea of RhÃ»n, and also conquered Harad. Since Eomer's calvary battled with Elessar
-# "beyond the Sea of RhÃ»n and on the far fields of the south", It can be inferred that Elessar (the conqueror) repeated Gondorian
+# Gondor at it's height conquered all the way to the Sea of Rhûn, and also conquered Harad. Since Eomer's calvary battled with Elessar
+# "beyond the Sea of Rhûn and on the far fields of the south", It can be inferred that Elessar (the conqueror) repeated Gondorian
 # conquests... and some people want a CB to make this possible.
 elessar_destiny_conquest = {
 	name = CB_NAME_ELESSAR_DESTINY_CONQUEST
@@ -893,7 +898,7 @@ elessar_destiny_conquest = {
 	can_call_allies = yes
 	allowed_to_target_tributaries = no
 	allowed_to_target_suzerains = no
-	battle_warscore_mult = 0.7 # Ideological differences between DÃºnedain and Men of Darkness make giving up harder
+	battle_warscore_mult = 0.7 # Ideological differences between Dúnedain and Men of Darkness make giving up harder
 	attacker_ai_defeat_worth = { factor = 75 } # The attacker should give up more easily
 
 	can_use = {
@@ -949,7 +954,7 @@ elessar_destiny_conquest = {
 			de_jure_liege_or_above = k_haradwaith
 			de_jure_liege_or_above = k_haruzan
 			de_jure_liege_or_above = k_chelkar
-			# East (RhÃ»n)
+			# East (Rhûn)
 			de_jure_liege_or_above = k_brownlands
 			title = d_dor_rhunen
 			title = d_sagathavuld

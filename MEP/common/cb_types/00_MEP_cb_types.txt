@@ -762,7 +762,7 @@ mountains_invasion = {
 				independent = yes
 				higher_tier_than  = count
 			}
-			# culture/species restrictions (the player is exempt)
+			# culture/species restrictions (the player is not exempt)
 			OR = {
 				culture_group = culture_group_dwarves
 				culture = culture_urukhai
@@ -805,44 +805,47 @@ mountains_invasion = {
 	can_use_title = {
 		# county
 		tier = count
-		location = {
-			# must be mountainous and have wilderness group culture
-			terrain = mountain
-			culture_group = culture_group_wilderness
-			# must be close enough
-			any_neighbor_province = {
+		OR = {
+			# claim province
+			AND = {
+				location = {
+					# must be mountainous and have wilderness group culture
+					terrain = mountain
+					culture_group = culture_group_wilderness
+				}
+				# claim
 				OR = {
-					# The province directly borders realm of ROOT
-					AND = {
-						has_owner = yes
-						owner = {
-							OR = {
-								character = ROOT
-								is_liege_or_above = ROOT
+					de_jure_liege_or_above = ROOT
+					ROOT = { has_strong_claim = PREV }
+				}
+			}		
+			# neighbor province
+			location = {
+				# must be mountainous and have wilderness group culture
+				terrain = mountain
+				culture_group = culture_group_wilderness
+
+				# must be close enough
+				any_neighbor_province = {
+					OR = {
+						# The province directly borders realm of ROOT
+						AND = {
+							has_owner = yes
+							owner = {
+								OR = {
+									character = ROOT
+									is_liege_or_above = ROOT
+								}
 							}
 						}
-					}
-					# checking the neighbor
-					AND = {
-						mep_province_not_owned_by_root = yes
-						# province bordering this seazone to be tested
-						any_neighbor_province = {
-							OR = {
-								# This province (bordering the seazone) is part of ROOT's realm
-								AND = {
-									has_owner = yes
-									owner = {
-										OR = {
-											character = ROOT
-											is_liege_or_above = ROOT
-										}
-									}
-								}
-								# We scan
-								# *it's* neighbours to see if any of *them* belong to the realm of ROOT
-								AND = {
-									mep_province_not_owned_by_root = yes 
-									any_neighbor_province = {
+						# checking the neighbor
+						AND = {
+							mep_province_not_owned_by_root = yes
+							# province bordering this seazone to be tested
+							any_neighbor_province = {
+								OR = {
+									# This province (bordering the seazone) is part of ROOT's realm
+									AND = {
 										has_owner = yes
 										owner = {
 											OR = {
@@ -851,14 +854,28 @@ mountains_invasion = {
 											}
 										}
 									}
+									# We scan
+									# *it's* neighbours to see if any of *them* belong to the realm of ROOT
+									AND = {
+										mep_province_not_owned_by_root = yes 
+										any_neighbor_province = {
+											has_owner = yes
+											owner = {
+												OR = {
+													character = ROOT
+													is_liege_or_above = ROOT
+												}
+											}
+										}
+									}
 								}
 							}
 						}
 					}
+					# end of top level OR block
 				}
-				# end of top level OR block
-			}
 
+			}
 		}
 	}
 

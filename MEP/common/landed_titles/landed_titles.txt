@@ -8243,6 +8243,26 @@ e_durins_folk = {
 		
 		culture = culture_longbeard
 		religion = religion_mahal
+		assimilate = no
+		
+		allow = {
+			religion = religion_mahal
+			OR = {
+				AND = {
+					has_landed_title = d_iron_mountains
+					has_landed_title = d_grey_mountains
+				}
+				AND = {
+					has_landed_title = d_iron_mountains
+					has_landed_title = d_erebor
+				}
+				AND = {
+					has_landed_title = d_grey_mountains
+					has_landed_title = d_erebor
+				}
+			}
+			
+		}
 		
 		culture_longbeard = "Northeastern Longbeards"
 		
