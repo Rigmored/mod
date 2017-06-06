@@ -209,6 +209,18 @@ character_event = {
 				mep_stop_colonisation_effect = yes
 			}
 			add_province_modifier = { name = being_purged duration = 3650 }
+			set_variable = { which = mepvar_evilpurge_culture value =  1 } # stands for orc culture, which is the default
+			ROOT = {
+				trigger_switch = {
+					on_trigger = culture
+					culture_half_orc = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  2 } } }
+					culture_urukhai  = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  3 } } }
+					culture_goblin   = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  4 } } }
+					culture_wargs    = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  5 } } }
+					culture_troll    = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  6 } } }
+					culture_spider   = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  7 } } }
+				}
+			}
 		}
 	}
 	
@@ -242,8 +254,38 @@ character_event = {
 					PREV = { controlled_by = PREV }
 				}
 			}
-			culture = culture_orkish
 			religion = religion_orkish
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 1 } }
+				culture = culture_orkish
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 2 } }
+				culture = culture_half_orc
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 3 } }
+				culture = culture_urukhai
+				religion = religion_uruk
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 4 } }
+				culture = culture_goblin
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 5 } }
+				culture = culture_wargs
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 6 } }
+				culture = culture_troll
+				religion = religion_olog
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 7 } }
+				culture = culture_spider
+				religion = religion_spider
+			}
 			remove_province_modifier = sending_colonists
 			remove_province_modifier = being_purged
 		}

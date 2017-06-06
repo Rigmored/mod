@@ -678,20 +678,22 @@ character_event = {
 				}
 				# Picking the culture (Launched by Non-High Elves)
 				set_variable = { which = mepvar_colonizingculture value = 0 }	# Default Silvan
-				trigger_switch = {
-					on_trigger = culture
-					culture_sindar		= { set_variable = { which = mepvar_colonizingculture value =  1 }}
-					culture_falathrim	= { set_variable = { which = mepvar_colonizingculture value =  2 }}
-					culture_avari 		= { set_variable = { which = mepvar_colonizingculture value =  3 }}
-					culture_minyar		= { set_variable = { which = mepvar_colonizingculture value =  4 }}
-					culture_tatyar		= { set_variable = { which = mepvar_colonizingculture value =  5 }}
-					culture_nelyar		= { set_variable = { which = mepvar_colonizingculture value =  6 }}
-					culture_teleri		= { set_variable = { which = mepvar_colonizingculture value =  7 }}
-					culture_doriathrim	= { set_variable = { which = mepvar_colonizingculture value =  8 }}
-					culture_eglath		= { set_variable = { which = mepvar_colonizingculture value =  9 }}
-					culture_mithrim		= { set_variable = { which = mepvar_colonizingculture value = 10 }}
-					culture_nandor		= { set_variable = { which = mepvar_colonizingculture value = 11 }}
-					culture_laegrim		= { set_variable = { which = mepvar_colonizingculture value = 12 }}
+				ROOT = {
+					trigger_switch = {
+						on_trigger = culture
+						culture_sindar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  1 } } }
+						culture_falathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  2 } } }
+						culture_avari 		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  3 } } }
+						culture_minyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  4 } } }
+						culture_tatyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  5 } } }
+						culture_nelyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  6 } } }
+						culture_teleri		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  7 } } }
+						culture_doriathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  8 } } }
+						culture_eglath		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  9 } } }
+						culture_mithrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
+						culture_nandor		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 11 } } }
+						culture_laegrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 12 } } }
+					}
 				}				
 			}
 		}
@@ -927,21 +929,22 @@ character_event = {
 			}
 			# Picking the culture (Launched by Non-High Elves)
 			set_variable = { which = mepvar_colonizingculture value = 0 }	# Default Silvan
-			trigger_switch = {
-				on_trigger = culture
-				culture_sindar		= { set_variable = { which = mepvar_colonizingculture value =  1 }}
-				culture_falathrim	= { set_variable = { which = mepvar_colonizingculture value =  2 }}
-				culture_avari 		= { set_variable = { which = mepvar_colonizingculture value =  3 }}
-				culture_minyar		= { set_variable = { which = mepvar_colonizingculture value =  4 }}
-				culture_tatyar		= { set_variable = { which = mepvar_colonizingculture value =  5 }}
-				culture_nelyar		= { set_variable = { which = mepvar_colonizingculture value =  6 }}
-				culture_teleri		= { set_variable = { which = mepvar_colonizingculture value =  7 }}
-				culture_doriathrim	= { set_variable = { which = mepvar_colonizingculture value =  8 }}
-				culture_eglath		= { set_variable = { which = mepvar_colonizingculture value =  9 }}
-				culture_mithrim		= { set_variable = { which = mepvar_colonizingculture value = 10 }}
-				culture_nandor		= { set_variable = { which = mepvar_colonizingculture value = 11 }}
-				culture_laegrim		= { set_variable = { which = mepvar_colonizingculture value = 12 }}
-			
+			ROOT = {
+				trigger_switch = {
+					on_trigger = culture
+					culture_sindar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  1 } } }
+					culture_falathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  2 } } }
+					culture_avari 		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  3 } } }
+					culture_minyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  4 } } }
+					culture_tatyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  5 } } }
+					culture_nelyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  6 } } }
+					culture_teleri		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  7 } } }
+					culture_doriathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  8 } } }
+					culture_eglath		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  9 } } }
+					culture_mithrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
+					culture_nandor		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 11 } } }
+					culture_laegrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 12 } } }
+				}
 			}
 		}	
 		wealth = -500

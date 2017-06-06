@@ -160,6 +160,12 @@
 	dynasty=3003
 	religion="religion_moriquendi"
 	culture="culture_sindar"
+	
+	diplomacy=8
+	martial=11
+	stewardship=8
+	intrigue=6
+	learning=12
 
 	add_trait=elf
 	add_trait=fair
@@ -170,6 +176,7 @@
 	add_trait=humble
 	add_trait=great_elf
 	add_trait = good_side
+	add_trait = unyielding_leader
 
 	father=3119
 	mother=3121
@@ -197,13 +204,14 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
-	add_trait=elf
-	add_trait=fair
-	add_trait=humble
-	add_trait=gardener
-	add_trait=fortune_builder
-	add_trait=perceptive
-	add_trait=healer_master
+	disallow_random_traits = yes
+	add_trait = elf
+	add_trait = fair
+	add_trait = gardener
+	add_trait = fortune_builder
+	add_trait = perceptive
+	add_trait = fea_strong
+	
 
 	father=3145
 	mother=3143
@@ -221,6 +229,8 @@
 		name="Galadriel"
 		remove_trait=sailed_west
 		add_trait=light_valinor
+		add_trait = healer_master
+		add_trait = ambitious
 	}
 	4364.1.1 = {
 		add_trait=elessar
@@ -232,7 +242,7 @@
 		add_trait=nenya
 		add_trait=mirror_of_galadriel
 		effect = {
-		set_character_flag=ringbearer
+			set_character_flag=ringbearer
 		}
 	} #Celebrimbor delivers the Ring Nenya to Galadriel
 	8443.1.1 = {
@@ -253,6 +263,8 @@
 	} #The White Council is formed
 	11361.2.16 = {
 		remove_trait=elessar
+		remove_trait=ambitious
+		add_trait=humble
 	} #Galadriel delivers the Elessar of Eärendil to Aragorn
 	11364.1.1 = {
 		remove_trait=white_council
@@ -1104,8 +1116,11 @@
 		add_spouse=3128
 	}
 	4266.1.1 = {
-		death="4266.1.1"
-	} #Slain by Morgoth
+		death = {
+			death_reason = death_murder
+			killer = 10015
+		} #Slain by Morgoth
+	} 
 }
 
 3056 = {
@@ -1144,7 +1159,7 @@
 		add_spouse=10017
 	} #Elwë marries Melian and establishes Doriath
 	4814.1.1 = {
-		death="4814.1.1"
+		death = { death_reason = death_murder }
 	} #Slain by the Dwarves of Nogrod
 }
 
@@ -1169,7 +1184,7 @@
 		add_spouse=3076
 	}
 	5902.1.1 = {
-		death="5902.1.1"
+		death = { death_reason = death_murder }
 	} #Sauron makes Mordor his home and slays the Elves living in Nurn
 }
 
@@ -1194,7 +1209,7 @@
 		add_spouse=3095
 	}
 	5902.1.1 = {
-		death="5902.1.1"
+		death = { death_reason = death_murder }
 	} #Sauron makes Mordor his home and slays the Elves living in Nurn
 }
 
@@ -1245,7 +1260,7 @@
 		add_spouse=3074
 	}
 	4662.1.1 = {
-		death="4662.1.1"
+		death = { death_reason = death_battle }
 	} #Slain by the Armies of Morgoth attacking the Council of the East in the Dagor Iármael
 }
 
@@ -1271,7 +1286,7 @@
 		add_spouse=3090
 	}
 	4662.1.1 = {
-		death="4662.1.1"
+		death = { death_reason = death_battle }
 	} #Slain by the Armies of Morgoth attacking the Council of the East in the Dagor Iármael
 }
 
@@ -1298,7 +1313,6 @@
 		add_spouse=3214
 	}
 	1725.1.1 = {
-		religion="religion_moriquendi"
 		add_trait=sailed_west
 		remove_trait=at_east
 		add_trait=light_valinor
@@ -1334,7 +1348,7 @@
 		add_spouse=3092
 	}
 	4785.1.1 = {
-		death="4785.1.1"
+		death = { death_reason = death_battle }
 	} #Slain on Caras Galadhon by Balrogs in pursuit of the Host of Súlwë
 }
 
@@ -1402,7 +1416,7 @@
 		name="Círdan"
 	}
 	977.1.1 = {
-		culture="culture_sindar"
+		culture="culture_falathrim"
 	}
 	1456.1.1 = {
 		add_spouse=3086
@@ -1454,7 +1468,7 @@
 		add_spouse=3077
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -1484,7 +1498,7 @@
 		add_spouse=3083
 	}
 	4270.1.1 = {
-		death="4270.1.1"
+		death = { death_reason = death_battle }
 	} #First Kin-slaying
 }
 
@@ -1541,7 +1555,7 @@
 		add_spouse=3088
 	}
 	4283.1.1 = {
-		death="4283.1.1"
+		death = { death_reason = death_battle }
 	} #Slain by Orcs on Amon Ereb in the First Battle of Beleriand
 }
 
@@ -1709,7 +1723,7 @@
 		dynasty=3006
 	}
 	5902.1.1 = {
-		death="5902.1.1"
+		death = { death_reason = death_murder }
 	} #Sauron makes Mordor his home and slays the Elves living in Nurn
 }
 
@@ -1734,7 +1748,7 @@
 		culture="culture_sindar"
 	}
 	4784.1.1 = {
-		death="4784.1.1"
+		death = { death_reason = death_murder }
 	} #Mithrim is taken by the Easterlings
 }
 
@@ -1762,7 +1776,7 @@
 		add_spouse=3084
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -1837,7 +1851,7 @@
 		add_spouse=3084
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -1866,7 +1880,7 @@
 		add_spouse=3089
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -1913,7 +1927,7 @@
 		culture="culture_sindar"
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -1959,7 +1973,7 @@
 		culture="culture_sindar"
 	}
 	4785.1.1 = {
-		death="4785.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the sack of Brithombar
 }
 
@@ -2008,7 +2022,7 @@
 		culture="culture_sindar"
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -2033,7 +2047,7 @@
 		culture="culture_sindar"
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -2112,7 +2126,7 @@
 		culture="culture_nandor"
 	}
 	4785.1.1 = {
-		death="4785.1.1"
+		death = { death_reason = death_murder }
 	} #Slain on Caras Galadhon by Balrogs in pursuit of the Host of Súlwë
 }
 
@@ -2187,7 +2201,7 @@
 		dynasty=3025
 	}
 	5902.1.1 = {
-		death="5902.1.1"
+		death = { death_reason = death_murder }
 	} #Sauron makes Mordor his home and slays the Elves living in Nurn
 }
 
@@ -2215,7 +2229,7 @@
 		add_spouse=3233
 	}
 	4270.1.1 = {
-		death="4270.1.1"
+		death = { death_reason = death_battle }
 	} #First Kin-slaying
 }
 
@@ -2277,7 +2291,10 @@
 		add_spouse=3133
 	}
 	4712.1.1 = {
-		death="4712.1.1"
+		death = {
+			death_reason = death_execution
+			killer = 3132 # Turgon
+		}
 	} #Cast over the  Caragdûr in Gondolin for killing Aredhel
 }
 
@@ -2324,7 +2341,7 @@
 		add_spouse=3099
 	}
 	4662.1.1 = {
-		death="4662.1.1"
+		death = { death_reason = death_battle }
 	} #Slain by the Armies of Morgoth attacking the Council of the East in the Dagor Iármael
 }
 
@@ -2370,7 +2387,7 @@
 		add_spouse=3109
 	}
 	5902.1.1 = {
-		death="5902.1.1"
+		death = { death_reason = death_murder }
 	} #Sauron makes Mordor his home and slays the Elves living in Nurn
 }
 
@@ -2544,7 +2561,7 @@
 		add_spouse=3113
 	}
 	8336.1.1 = {
-		death="8336.1.1"
+		death = { death_reason = death_battle }
 	} # died at Dagorlad
 }
 3250 = {
@@ -2570,7 +2587,7 @@
 		remove_trait=love_amroth
 	}
 	10325.1.1 = {
-		death="10325.1.1"
+		death = { death_reason = death_accident_drowning }
 	} # drowned at sea
 }
 
@@ -2596,7 +2613,7 @@
 		add_spouse=3111
 	}
 	4283.1.1 = {
-		death="4283.1.1"
+		death = { death_reason = death_battle }
 	} # slain in the First Battle at Amon Ereb
 }
 
@@ -2614,7 +2631,7 @@
 		birth="2012.1.1"
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -2633,6 +2650,10 @@
 	}
 	4796.1.1 = {
 		death="4796.1.1"
+		death = {
+			death_reason = death_murder
+			killer = 15203
+		}
 	} # killed by Túrin out of anger
 }
 
@@ -2668,7 +2689,7 @@
 		birth="3880.1.1"
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -2724,7 +2745,7 @@
 		add_spouse=3125
 	}
 	4819.1.1={
-		death="4819.1.1"
+		death = { death_reason = death_battle }
 	} #slain in the Sack of Doriath
 }
 
@@ -2821,7 +2842,7 @@
 		remove_trait=sailed_west
 	}
 	4815.1.1 = {
-		death="4815.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Sack of Menegroth
 }
 
@@ -2878,7 +2899,7 @@
 		add_spouse=3176
 	}
 	8336.1.1 = {
-		death="8336.1.1"
+		death = { death_reason = death_battle }
 	} # died at Dagorlad
 }
 
@@ -3043,7 +3064,10 @@
 		remove_trait=sailed_west
 	}
 	4768.1.1 = {
-		death="4768.1.1"
+		death = {
+			death_reason = death_duel
+			killer = 10015
+		}
 	} #Slain by Morgoth
 }
 
@@ -3107,7 +3131,7 @@
 		remove_trait=sailed_west
 	}
 	4784.1.1 = {
-		death="4784.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Nirnaeth Arnoediad
 }
 
@@ -3154,7 +3178,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -3188,7 +3212,10 @@
 		remove_trait=sailed_west
 	}
 	4712.1.1 = {
-		death="4712.1.1"
+		death = {
+			death_reason = death_murder
+			killer = 3098
+		}
 	} #killed by her husband Eöl
 }
 
@@ -3214,7 +3241,7 @@
 	4312.1.1 = {
 		name="Argon"
 		remove_trait=sailed_west
-		death="4312.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Battle of the Lammoth
 }
 
@@ -3290,7 +3317,7 @@
 		remove_trait=sailed_west
 	}
 	4784.1.1 = {
-		death="4784.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Nirnaeth Arnoediad
 }
 
@@ -3329,7 +3356,10 @@
 		name="Ereinion Gil-Galad"
 	}
 	8343.1.1 = {
-		death="8343.1.1"
+		death = {
+			death_reason = death_battle
+			killer = 10016
+		}
 	} #Slain in the Last Alliance
 }
 
@@ -3365,7 +3395,10 @@
 		culture="culture_noldor"
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = {
+			death_reason = death_duel
+			killer = 15206
+		}
 	} #Fall of Gondolin
 }
 
@@ -3387,7 +3420,7 @@
 		birth="1629.1.1"
 	}
 	4270.1.1 = {
-		death="4270.1.1"
+		death = { death_reason = death_battle }
 	} #First Kin-slaying
 }
 
@@ -3407,7 +3440,7 @@
 		birth="1820.1.1"
 	}
 	4270.1.1 = {
-		death="4270.1.1"
+		death = { death_reason = death_battle }
 	} #First Kin-slaying
 }
 
@@ -3559,7 +3592,7 @@
 		remove_trait=sailed_west
 	}
 	4807.1.1 = {
-		death="4807.1.1"
+		death = { death_reason = death_battle }
 	} #Battle of Tumhalad
 }
 
@@ -3616,7 +3649,7 @@
 		remove_trait=sailed_west
 	}
 	4808.1.1 = {
-		death="4808.1.1"
+		death = { death_reason = death_murder }
 	} #Slain by Orcs in the Eaves of Brethil
 }
 
@@ -3654,7 +3687,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -3677,7 +3710,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -3704,7 +3737,7 @@
 		add_spouse=3159
 	}
 	6595.1.1 = {
-		death="6595.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -3725,7 +3758,7 @@
 		add_spouse=3169
 	}
 	8342.1.1 = {
-		death="8342.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Siege of Barad-dûr
 }
 
@@ -3762,7 +3795,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -3790,7 +3823,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -3837,7 +3870,7 @@
 		remove_trait=sailed_west
 	}
 	4784.1.1 = {
-		death="4784.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Nirnaeth Arnoediad
 }
 
@@ -3860,7 +3893,7 @@
 		remove_trait=sailed_west
 	}
 	6595.1.1 = {
-		death="6595.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -3883,7 +3916,7 @@
 		remove_trait=sailed_west
 	}
 	4807.1.1 = {
-		death="4807.1.1"
+		death = { death_reason = death_battle }
 	} #Battle of Tumhalad
 }
 
@@ -3895,6 +3928,7 @@
 	culture="culture_noldor"
 	add_trait=elf
 	add_trait=fair
+	add_trait = mastermind_theologian
 	father=3156
 	mother=3157
 	4366.1.1 = {
@@ -3902,6 +3936,9 @@
 	}
 	4787.1.1 = {
 		add_trait=at_east
+	}
+	9106.1.1 = {
+		remove_trait = at_east
 	}
 }
 
@@ -3996,7 +4033,7 @@
 		birth="4800.1.1"
 	}
 	6595.1.1 = {
-		death="6595.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -4020,7 +4057,7 @@
 		culture="culture_laegrim"
 	}
 	4283.1.1 = {
-		death="4283.1.1"
+		death = { death_reason = death_battle }
 	} # slain in the First Battle at Amon Ereb
 }
 
@@ -4044,8 +4081,8 @@
 	5952.1.1 = {
 		add_spouse=3166
 	}
-	6595.1.1 = {
-		death="6595.1.1"
+	6596.1.1 = {
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -4063,7 +4100,7 @@
 		birth="6002.1.1"
 	}
 	8838.1.1 = {
-		death="8838.1.1"
+		death = { death_reason = death_childbirth }
 	} #Died in Childbirth
 }
 
@@ -4193,8 +4230,11 @@
 		birth="1677.1.1"
 	}
 	4801.1.1 = {
-		death="4801.1.1"
-	} #Slain on accident by Túrin
+		death = {
+			death_reason = death_accident
+			killer = 15203
+		}
+	} #Slain by accident by Túrin
 }
 
 3175 = {
@@ -4214,7 +4254,7 @@
 		add_spouse=3114
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -4232,7 +4272,7 @@
 		birth="2166.1.1"
 	}
 	6595.1.1 = {
-		death="6595.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -4251,6 +4291,10 @@
 	}
 	8322.1.1 = {
 		add_spouse=3179
+	}
+	9106.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
 	}
 }
 
@@ -4575,7 +4619,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -4595,7 +4639,7 @@
 		birth="2180.1.1"
 	}
 	4270.1.1 = {
-		death="4270.1.1"
+		death = { death_reason = death_battle }
 	} #First Kin-slaying
 }
 
@@ -4619,7 +4663,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -4643,7 +4687,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -4666,7 +4710,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -4688,7 +4732,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -4710,7 +4754,7 @@
 		remove_trait=sailed_west
 	}
 	4822.1.1 = {
-		death="4822.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Fall of Gondolin
 }
 
@@ -4847,7 +4891,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -4872,7 +4916,7 @@
 		remove_trait=sailed_west
 	}
 	4767.1.1 = {
-		death="4767.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Dagor Bragollach
 }
 
@@ -4917,6 +4961,7 @@
 	4312.1.1 = {
 		name="Glorfindel"
 		remove_trait=sailed_west
+		add_trait = fea_strong
 	}
 	8343.1.1={
 		employer=3003
@@ -5209,6 +5254,10 @@
 	5012.1.1 = {
 		add_spouse=3161
 	}
+	
+	9106.1.1 = {
+		remove_trait = at_east
+	}
 }
 
 3331 = {
@@ -5327,7 +5376,7 @@
         remove_trait=sailed_west
     }
     4767.1.1 = {
-        death="4767.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Dagor Bragollach
 }
 
@@ -5372,7 +5421,7 @@
         remove_trait=sailed_west
     }
     4767.1.1 = {
-        death="4767.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Dagor Bragollach
 }
 
@@ -5395,7 +5444,7 @@
         remove_trait=sailed_west
     }
     4767.1.1 = {
-        death="4767.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Dagor Bragollach
 }
 
@@ -5419,7 +5468,7 @@
         remove_trait=sailed_west
     }
     4822.1.1 = {
-        death="4822.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Fall of Gondolin
 }
 
@@ -5443,7 +5492,7 @@
         remove_trait=sailed_west
     }
     4850.1.1={
-            death="4850.1.1"
+		death = { death_reason = death_battle }
     } #Slain in the Kinslaying of Sirion
 }
 
@@ -5465,7 +5514,7 @@
         remove_trait=sailed_west
     }
     4822.1.1 = {
-        death="4822.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Fall of Gondolin
 }
 
@@ -5488,7 +5537,7 @@
         remove_trait=sailed_west
     }
     4822.1.1 = {
-        death="4822.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Fall of Gondolin
 }
 
@@ -5510,7 +5559,7 @@
         remove_trait=sailed_west
     }
     4822.1.1 = {
-        death="4822.1.1"
+        death = { death_reason = death_battle }
     } #Slain in the Fall of Gondolin
 }
 
@@ -5779,7 +5828,7 @@
 		add_trait=at_east
 	}
 	4902.1.1 = {
-		death="4902.1.1"
+		death = { death_reason = death_suicide }
 	}
 }
 
@@ -5871,7 +5920,7 @@
 		add_trait=oath_of_feanor		
 	}
 	4818.1.1={
-		death="4818.1.1"
+		death = { death_reason = death_battle }
 	} #slain in the Sack of Doriath
 }
 
@@ -5914,7 +5963,7 @@
 		add_trait=oath_of_feanor		
 	}
 	4818.1.1={
-		death="4818.1.1"
+		death = { death_reason = death_battle }
 	} #slain in the Sack of Doriath
 }
 
@@ -5960,7 +6009,7 @@
 		add_trait=angrist		
 	}
 	4818.1.1={
-		death="4818.1.1"
+		death = { death_reason = death_battle }
 	} #slain in the Sack of Doriath
 }
 
@@ -6003,7 +6052,7 @@
 		add_trait=oath_of_feanor		
 	}
 	4850.1.1={
-			death="4850.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Kinslaying of Sirion
 }
 
@@ -6045,7 +6094,7 @@
 		add_trait=oath_of_feanor		
 	}
 	4850.1.1={
-			death="4850.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the Kinslaying of Sirion
 }
 
@@ -6085,9 +6134,6 @@
 	father=3198
 	2587.1.1 = {
 		birth="2587.1.1"
-	}
-	4312.1.1 = {
-		remove_trait=sailed_west
 	}
 	4312.1.1 = {
 		add_trait=sailed_west
@@ -6139,7 +6185,7 @@
 		add_spouse=3409
 	}
 	6599.1.1 = {
-		death="6599.1.1"
+		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
 }
 
@@ -7178,7 +7224,7 @@
 }
 3401 = {
 	name="Ithilbor"
-	dynasty=3060
+	dynasty=3067
 	religion="religion_moriquendi"
 	culture="culture_sindar"
 	add_trait=elf	
@@ -7192,7 +7238,7 @@
 }
 3402 = {
 	name="Elmagil"
-	dynasty=3060
+	dynasty=3067
 	religion="religion_moriquendi"
 	culture="culture_sindar"
 	add_trait=elf	
@@ -7471,3 +7517,657 @@
 		birth=yes
 	}
 }
+
+# Additional Rulers for Lindórinand / Lothlórien
+# first count of c_wester_north_lorien
+3500 = {
+	name="Teneroth"
+	dynasty=3072
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	add_trait=elf
+	add_trait=diligent
+	2472.1.1 = {
+		birth = yes
+	}
+	3266.1.1 = {
+		add_spouse=3501
+	}
+	6596.1.1 = {
+		death = { death_reason = death_battle }
+	} # killed in the War of the Elves and Sauron
+}
+# wife of the above
+3501 = {
+	name="Maëriel"
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_avari"
+	add_trait=elf
+	2733.1.1 = {
+		birth = yes
+	}
+	6601.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} # Left after her husband was killed
+}
+# second count of c_wester_north_lorien
+3502 = {
+	name="Ithilbor"
+	dynasty=3072
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3500
+	mother = 3501
+	add_trait=elf
+	add_trait=fair
+	add_trait=strong
+	4176.1.1 = {
+		birth = yes
+	}
+	5812.1.1 = {
+		add_spouse=3503
+	}
+	8341.1.1 = {
+		death = { death_reason = death_battle }
+	} # killed during the seige or Mordor
+}
+# afterwards, c_wester_north_lorien went to Galadriel (her base to gain the support she needed to replace Amroth when he died).
+# wife of the above
+3503 = {
+	name="Lothriel"
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	add_trait=elf
+	add_trait=quick
+	4012.1.1 = {
+		birth = yes
+	}
+}
+3504 = {
+	name="Telpellesë"
+	dynasty=3072
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3500
+	mother = 3501
+	add_trait = elf
+	add_trait = great_healer
+	add_trait = skilled_composer
+	add_trait = gregarious
+
+	3992.1.1 = {
+		birth = yes
+	}
+	6600.1.1 = {
+		culture = culture_silvan
+	} 
+}
+# The one and only Holder of the city holding of b_celurlin
+3510 = {
+	name="Olonwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	add_trait = elf
+	add_trait = patient
+	add_trait = defensive_leader
+	add_trait = kind
+	add_trait = tall
+	add_trait = humble
+	add_trait = midas_touched
+	add_trait = stubborn
+	
+	diplomacy=6
+	martial=7
+	stewardship=11
+	intrigue=6
+	learning=5
+	
+	1142.1.1 = {
+		birth = yes
+	}
+	5318.1.1 = {
+		add_spouse=3504
+	}
+	8500.1.1 = {
+		culture = culture_silvan
+	}
+}
+# b_telain_neduil
+3515 = {
+	name="Ulwenlas"
+	dynasty=3073
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	add_trait = elf
+	add_trait = diligent
+	add_trait = erudite
+	add_trait = imposing
+	
+	1876.1.1 = {
+		birth = yes
+	}
+	3313.1.1 = {
+		add_matrilineal_spouse = 3516
+	}
+	6300.1.1 = {
+		culture = culture_silvan
+	}
+	7206.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} # Left after her husband was killed
+}
+3516 = {  # Husband to the above...
+	name="Migwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	add_trait = elf
+	add_trait = strong
+	add_trait = fea_weak
+	add_trait = calm_voice
+	add_trait = intricate_webweaver
+	
+	1742.1.1 = {
+		birth = yes
+	}
+
+	7201.1.1 = {
+		death = { death_reason = death_missing }
+	} 
+}
+# '2nd Generation'
+3517 = {
+	name="Penedoth"
+	dynasty=3073
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3515
+	mother = 3516
+	
+	add_trait = elf
+	add_trait = genius
+	
+	4162.1.1 = {
+		birth = yes
+	}
+	
+	5960.1.1 = {
+		add_spouse = 3504
+	}
+
+	6300.1.1 = {
+		culture = culture_silvan
+	}
+	8336.1.1 = {
+		death = { death_reason = death_battle }
+	} # Died at Dagorlad
+}
+
+3518 = {
+	name="Tauriel"
+	dynasty=3073
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3515
+	mother = 3516
+	
+	add_trait = elf
+	add_trait = lustful
+	add_trait = charitable
+	
+	4420.1 = {
+		birth = yes
+	}
+	6300.1.1 = {
+		culture = culture_silvan
+	}
+}
+
+3519 = {
+	name="Denethor"
+	dynasty=3073
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3515
+	mother = 3516
+	
+	add_trait = elf
+	add_trait = quick
+	
+	5161.1.1 = {
+		birth = yes
+	}
+
+	6300.1.1 = {
+		culture = culture_silvan
+	}
+	7206.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} # Left with his Mother
+}
+# '3rd Generation' (Silvan)
+3522 = {
+	name="Míressiel"
+	dynasty=3073
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_silvan"
+	father = 3517
+	mother = 3504
+	
+	add_trait = elf
+	add_trait = kind
+	
+	6719.1.1 = {
+		birth = yes
+	}
+}
+3523 = {
+	name="Fingon"
+	dynasty=3073
+	religion="religion_moriquendi"
+	culture="culture_silvan"
+	father = 3517
+	mother = 3504
+	
+	diplomacy=3
+	martial=3
+	stewardship=2
+	intrigue=7
+	learning=4
+	
+	add_trait = elf
+	add_trait = deceitful
+	add_trait = elusive_shadow
+	add_trait = poet_2
+	add_trait = content
+	
+	7110.1.1 = {
+		birth = yes
+	}
+}
+
+# b_cerin_amroth  3530 3177 3161
+3530 = {
+	name="Denwë"
+	dynasty=3074
+	religion="religion_moriquendi"
+	culture="culture_teleri"
+	
+	diplomacy=6
+	martial=7
+	stewardship=11
+	intrigue=6
+	learning=5
+	
+	add_trait = elf
+	add_trait = just
+	add_trait = fea_strong
+	
+	437.1.1 = {
+		birth = yes
+	}
+	622.1.1 = {
+		culture = culture_nandor
+	}
+	6596.1.1 = {
+		death = { death_reason = death_battle }
+	} # killed in the War of the Elves and Sauron
+}
+
+# b_athmadhul (city)
+3535 = {
+	name="Calardan"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	add_trait = elf
+	add_trait = pacifist_elf
+	
+	2494.1.1 = {
+		birth = yes
+	}
+	5132.1.1 = {
+		add_spouse = 3536
+	}
+	8329.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} # unhappy about war
+}
+3536 = {  # wife for the above
+	name="Galriel"
+
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_laegrim"  # refugee from Ossiriland
+
+	add_trait = elf
+	
+	3176.1.1 = {
+		birth = yes
+	}
+	5045.1.1 = {
+		culture = culture_nandor
+	}	
+	8329.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	}
+} 
+3537 = {
+	name="Melian"
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3535
+	mother = 3536
+	
+	add_trait = elf
+	add_trait = temperate
+	add_trait = pacifist_elf
+	add_trait = nature_lover
+	
+	5843.1.1 = {
+		birth = yes
+	}
+	8329.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} # unhappy about war
+}
+3538 = {
+	name="Calarthir"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3535
+	mother = 3536
+	
+	add_trait = elf
+
+	6420.1.1 = {
+		birth = yes
+	}
+
+	8336.1.1 = {
+		death = { death_reason = death_battle }
+	} # died at Dagorlad
+}
+
+3539 = {
+	name="Calengil"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3535
+	mother = 3536
+	
+	add_trait = elf
+	add_trait = slow
+	add_trait = herbalist
+
+	7348.1.1 = {
+		birth = yes
+	}
+	8400.1.1 = {
+		culture = culture_silvan
+	}
+	9251.1.1 = {
+		add_spouse = 3180 # Líanna (Sindar)
+	}
+	11370.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	}
+}
+3540 = {
+	name="Celebgil"
+	religion="religion_moriquendi"
+	culture="culture_silvan"
+	father = 3539
+	mother = 3180
+	
+	add_trait = elf
+	add_trait = slow
+	add_trait = herbalist
+
+	9997.1.1 = {
+		birth = yes
+	}
+}
+
+# b_talan_atharchen (city)
+3545 = {
+	name="Zagwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	add_trait = elf
+	
+	2745.1.1 = {
+		birth = yes
+	}
+	4450.1.1 = {
+		add_spouse = 3553
+	}
+	6596.1.1 = {
+		death = { death_reason = death_battle }
+	} # killed in the War of the Elves and Sauron
+}
+3546 = {
+	name="Beren"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3545
+	mother = 3553
+	
+	add_trait = elf
+	
+	5964.1.1 = {
+		birth = yes
+	}
+	6800.1.1 = {
+		culture = culture_silvan
+	}
+
+}
+# b_talan_dolinhen (castle)
+3550 = {  # Mighty and somewhat crazy warrior
+	name="Sadwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	diplomacy=4
+	martial=12
+	stewardship=2
+	intrigue=1
+	learning=1
+	
+	add_trait = elf
+	add_trait = fea_strong
+	add_trait = hedonist
+	add_trait = proud
+
+	
+	1571.1.1 = {
+		birth = yes
+	}
+	2361.1.1 = {
+		add_trait = brilliant_strategist
+		add_trait = great_elf
+		add_trait = inspiring_leader
+	}
+	2964.1.1 = {
+		add_spouse = 3547
+	}
+	8336.1.1 = {
+		death = { death_reason = death_battle }
+	} # died at Dagorlad
+
+}
+3551 = {
+	name="Yuncariel"
+	female = yes
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	
+	add_trait = elf
+	
+	1760.1.1 = {
+		birth = yes
+	}
+	6618.1.1 = {
+		death = { death_reason = death_suicide }
+	}
+
+}
+3552 = {
+	name="Calemwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3550
+	mother = 3551
+	
+	add_trait = elf
+	add_trait = stubborn
+
+	3264.1.1 = {
+		birth = yes
+	}
+	3960.1.1 = {
+		culture = culture_laegrim
+		employer = 3167		
+	}  # leaves home and moves to Ossiriland
+	4283.1.1 = {
+		death = { death_reason = death_battle }
+	} # slain in the First Battle at Amon Ereb
+}
+3553 = {
+	name="Alariel"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	female = yes
+	father = 3550
+	mother = 3551
+	
+	add_trait = elf
+
+	3659.1.1 = {
+		birth = yes
+	}
+	6610.1.1 = {
+		add_trait=sailed_west
+		employer = 10001
+	} 
+
+}
+
+3554 = {
+	name="Lotsoyë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3550
+	mother = 3551
+	
+	add_trait = elf
+
+	4003.1.1 = {
+		birth = yes
+	}
+	6596.1.1 = {
+		death = { death_reason = death_battle }
+	} # killed in the War of the Elves and Sauron
+
+}
+
+3555 = {
+	name="Aranwë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	father = 3550
+	mother = 3551
+	
+	add_trait = elf
+
+	4593.1.1 = {
+		birth = yes
+	}
+	5996.1.1 = {
+		add_spouse = 3557
+	}	
+	6750.1.1 = {
+		culture = culture_silvan
+	}
+	8336.1.1 = {
+		death = { death_reason = death_battle }
+	} # died at Dagorlad
+
+}
+
+3556 = {
+	name="Itarillë"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	female = yes
+	father = 3550
+	mother = 3551
+	
+	add_trait = elf
+	add_trait = fair
+	add_trait = homosexual
+
+	5103.1.1 = {
+		birth = yes
+	}
+	6750.1.1 = {
+		culture = culture_silvan
+	}
+
+}
+3557 = {
+	name="Síriellas"
+	religion="religion_moriquendi"
+	culture="culture_nandor"
+	female = yes
+	
+	add_trait = elf
+
+	4610.1.1 = {
+		birth = yes
+	}
+	6750.1.1 = {
+		culture = culture_silvan
+	}
+	8345.1.1 = {
+		death = { death_reason = death_missing }
+	} 
+
+}
+
+3558 = {
+	name="Galadmir"
+	religion="religion_moriquendi"
+	culture="culture_silvan"
+	father = 3555
+	mother = 3557
+	
+	add_trait = elf
+
+	7103.1.1 = {
+		birth = yes
+	}
+
+}
+
+# b_echad_andestel
+# b_nimrodeliant
+
+
