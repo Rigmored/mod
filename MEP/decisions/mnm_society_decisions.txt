@@ -1,0 +1,693 @@
+###########################################
+#
+# Society decisions for Monks and Mystics
+#
+# Hermetic/mystic
+# Secret religious cults
+# Monastic orders
+# Assassins
+# Devil worshipers
+#
+###########################################
+
+
+# General
+society_decisions = { # Society decisions are only evaluated by members of societies	
+	request_to_rank_up_within_society = {
+		only_playable = yes
+
+		hide_in_decisions_list = yes # This is shown in the Society View
+		
+		potential = {
+			hidden_tooltip = {
+				OR = { #In some societies, there can only be 1 member at rank 4
+					society_rank < 3
+					NOR = {
+						society_member_of = the_assassins
+						is_devil_worshiper_trigger = yes
+					}
+				}
+				society_rank < 4
+				days_in_society > 365
+				#has_dlc = "Mystics"
+				is_in_society = yes
+				OR = { #Players can always rank up (if they have the power)
+					ai = no
+					AND = {
+						ai = yes
+						society_can_rank_up = yes
+					}
+				}
+			}
+		}
+
+		allow = {
+			#Rank requirements. IMPORTANT!!! If you change the requirements, the customizable loc keys "GetSocietyRankUpTooltip" 1, 2, 3, and 4 must be updated, as it displays these requirements.
+			custom_tooltip = { # Sufficient currency
+				text = request_to_rank_up_within_society_currency_tt
+				OR = {
+					AND = {
+						society_rank == 1
+						society_currency >= 750
+					}
+					AND = {
+						society_rank == 2
+						society_currency >= 1000
+					}
+					society_currency >= 2000 # rank 3
+				}
+			}
+			custom_tooltip = { # No vices for Buddhist/Jain
+				text = request_to_rank_up_within_society_vices_tt
+				OR = {
+					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+					NOR = {
+						trait = greedy
+						trait = gluttonous
+						trait = slothful
+						trait = envious
+						trait = wroth
+						trait = cruel
+						trait = proud
+					}
+				}
+			}
+			custom_tooltip = {
+				text = request_to_rank_up_within_society_cynical_tt
+				OR = {
+					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+					AND = {
+						society_rank == 1
+						NOR = {
+							trait = cynical
+							trait = deceitful
+							trait = cruel
+						}
+					}
+					AND = {
+						society_rank >= 2
+						NOT = {
+							trait = cynical
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = request_to_rank_up_within_society_virtues_tt
+				OR = {
+					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+					AND = {
+						society_rank == 1
+						trait = humble
+						trait = charitable
+					}
+					AND = {
+						society_rank == 2
+						trait = humble
+						trait = charitable
+						trait = chaste
+						trait = kind
+						trait = temperate
+						trait = honest
+					}
+					AND = {
+						society_rank == 3
+						trait = humble
+						trait = charitable
+						trait = chaste
+						trait = kind
+						trait = temperate
+						trait = honest
+						trait = patient
+						trait = diligent
+						trait = content
+					}
+				}
+			}
+
+			custom_tooltip = {
+				text = must_not_have_sent_request_already_tooltip 
+				NOT = { has_character_flag = has_sent_request_to_rank_up }
+			}
+
+			custom_tooltip = {
+				text = must_be_allowed_to_rank_up_tooltip 
+				days_at_current_society_rank >= 1095 #IMPORTANT! Update tooltip.
+			}
+
+			custom_tooltip = {
+				text = must_have_grandmaster_tooltip #You must have a grand master
+				any_society_member = {
+					is_society_grandmaster = yes
+					same_society_as = ROOT
+				}
+			}
+
+			custom_tooltip = {
+				text = must_have_multiple_rank_4 #Society must allow multiple characters at Rank 4
+				NAND = {
+					society_rank == 3
+					OR = {
+						society_member_of = the_assassins
+						is_devil_worshiper_trigger = yes
+					}
+				}
+			}
+		}
+
+		effect = {
+			#Rank up cost
+			if = {
+				limit = { society_rank == 1 }
+				change_society_currency = -750
+			}
+			if = {
+				limit = { society_rank == 2 }
+				change_society_currency = -1000
+			}
+			if = {
+				limit = { society_rank == 3 }
+				change_society_currency = -2000
+			}
+
+			#Perform rank up
+			hidden_tooltip = {
+				save_event_target_as = rank_up_target
+				set_character_flag = has_sent_request_to_rank_up
+				character_event = { id = MNM.10002 days = 20 random = 10 } # sends hidden delayed event to self, which then sends request to Leader of the society
+				
+				#Conversus power for benedictines
+				if = {
+					limit = {
+						society_member_of = monastic_order_benedictine
+						society_rank == 3
+					}
+					character_event = { id = MNM.4600 days = 10 random = 350 }
+				}
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0.05 #Slow down
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 2 
+				trait = ambitious
+			}
+		}
+	}
+}
+
+	#Hermetic/mystic
+	
+society_decisions = {
+	
+	# Build a Laboratory
+	build_laboratory = {
+		only_playable = yes
+		is_high_prio = yes
+		
+		potential = {
+			has_dlc = "Mystics"
+			society_member_of = hermetics
+			has_quest = quest_hermetics_build_laboratory
+			is_playable = yes
+			block_general_event_trigger = no
+			NOT = { has_character_flag = building_laboratory }
+			NOT = { has_character_flag = built_laboratory }
+		}
+		allow = {
+			wealth = 50
+		}
+		effect = {
+			wealth = -50
+			set_character_flag = building_laboratory
+			custom_tooltip = { text = start_constructing_laboratory_tooltip }
+			hidden_tooltip = { character_event = { id = MNM.1100 } }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 0
+				NOT = { wealth = 75 }
+			}
+			
+			modifier = {
+				factor = 0.1
+				NOT = { age = 30 }
+			}
+		}
+	}
+}
+
+	#Secret religious cults
+
+#Monastic orders
+society_decisions = {
+	monastic_order_penance = {
+		
+		potential = {
+			has_dlc = "Mystics"
+			is_christian_monastic_member_trigger = yes
+			has_quest = quest_monastic_order_penance
+		}
+
+		allow = {
+			has_quest = quest_monastic_order_penance
+			custom_tooltip = {
+				text = monastic_order_penance_allow_tt
+				OR = {
+					NOT = { has_character_flag = holy_seclusion_timer }
+					had_character_flag = { flag = holy_seclusion_timer days = 1000 }
+				}
+			}
+		}
+
+		effect = {
+			add_character_modifier = {
+				name = doing_penance
+				duration = -1
+			}
+			hidden_effect = { character_event = { id = MNM.4403 } }
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		
+		ai_will_do = {
+			factor = 0.1
+
+			modifier = {
+				factor = 0.01
+				war = yes
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					trait = gregarious
+					trait = socializer
+				}
+			}
+			modifier = {
+				factor = 5
+				is_virtous = yes
+			}
+		}
+	}
+
+	monastic_order_meditation = {
+		
+		potential = {
+			has_dlc = "Mystics"
+			is_dharmic_monastic_member_trigger = yes
+			has_quest = quest_monastic_order_meditation
+		}
+
+		allow = {
+			has_quest = quest_monastic_order_meditation
+			custom_tooltip = {
+				text = monastic_order_meditation_allow_tt
+				OR = {
+					NOT = { has_character_flag = holy_seclusion_timer }
+					had_character_flag = { flag = holy_seclusion_timer days = 1000 }
+				}
+			}
+		}
+
+		effect = {
+			add_character_modifier = {
+				name = in_meditation
+				duration = -1
+			}
+			hidden_effect = { character_event = { id = MNM.4403 } }
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		
+		ai_will_do = {
+			factor = 0.1
+
+			modifier = {
+				factor = 0.01
+				war = yes
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					trait = gregarious
+					trait = socializer
+				}
+			}
+			modifier = {
+				factor = 5
+				is_virtous = yes
+			}
+		}
+	}
+
+	monastic_order_rejoin_world = {
+
+		potential = {
+			has_dlc = "Mystics"
+			OR = {
+				has_character_modifier = doing_penance
+				has_character_modifier = in_meditation
+			}
+		}
+
+		allow = {
+			OR = {
+				has_character_modifier = doing_penance
+				has_character_modifier = in_meditation
+			}
+			piety = 100
+		}
+
+		effect = {
+			remove_character_modifier = doing_penance
+			remove_character_modifier = in_meditation
+			hidden_effect = {
+				clr_character_flag = success_seculison_desc_A #Flags from 4426
+				clr_character_flag = success_seculison_desc_B
+				clr_character_flag = success_seculison_desc_C
+			}
+			piety = -100
+		}
+
+		revoke_allowed = { always = no }
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}	
+
+
+
+society_decisions = {
+
+	#Monastic Orders
+
+	#Switch Celibate
+	monastic_orders_go_celibate = {
+		
+		potential = {
+			OR = {
+				is_dharmic_monastic_member_trigger = yes
+				is_christian_monastic_member_trigger = yes
+			}
+			society_rank >= 2
+			NOT = { has_character_modifier = promise_of_celibacy }
+			NOT = { trait = celibate }
+		}
+
+		allow = {
+			NOT = {
+				trait = celibate
+				trait = hedonist
+				trait = seducer
+				trait = seductress
+			}
+		}
+
+		effect = {
+			tooltip = {
+				add_trait = celibate
+			}
+			character_event = {
+				id = MNM.4090
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	monastic_orders_stop_celibate = {
+		
+		potential = {
+			OR = {
+				is_christian_monastic_member_trigger = yes
+				is_dharmic_monastic_member_trigger = yes
+			}
+			society_rank >= 2
+			trait = celibate
+		}
+
+		allow = {
+			trait = celibate
+		}
+
+		effect = {
+			tooltip = {
+				remove_trait = celibate
+			}
+			character_event = {
+				id = MNM.4091
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	monastic_orders_donate_to_charity = {
+		only_playable = yes
+		
+		potential = {
+			is_monastic_member_trigger = yes
+			OR = {
+				has_quest = quest_monastic_order_donate_to_charity
+				NOT = { has_character_modifier = recently_donated_to_charity}
+			}
+			NOT = { has_character_flag = donate_to_charity_cooldown }
+		}
+
+		allow = {
+			wealth = 100
+		}
+
+		effect = {
+			set_character_flag = donate_to_charity_cooldown
+			tooltip = {
+				wealth = -100
+				if = {
+					limit = { has_quest = quest_monastic_order_donate_to_charity }
+					add_society_currency_medium_effect = yes
+				}
+				if = {
+					limit = { NOT = { has_quest = quest_monastic_order_donate_to_charity } }
+					add_society_currency_minor_effect = yes
+				}
+				add_character_modifier = {
+					modifier = recently_donated_to_charity
+					days = 360
+				}
+				if = {
+					limit = { 
+						NOR = {
+							trait = charitable
+							trait = greedy 
+						} 
+					}
+					random = {
+						chance = 30
+						add_trait = charitable
+					}
+				}
+				if = {
+					limit = { trait = greedy }
+					random = {
+						chance = 40
+						remove_trait = greedy
+					}
+				}
+			}
+			hidden_effect = {
+				random_society_member = {
+					limit = {
+						same_society_as = ROOT
+						is_society_grandmaster = yes
+					}
+					character_event = {
+						id = MNM.4013
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+targeted_decisions = {
+
+
+	search_for_artifact = {
+		only_playable = yes
+		
+		ai_target_filter = court
+
+		from_potential = {
+			is_ruler = yes
+			prisoner = no
+			is_inaccessible_trigger = no
+			OR = {
+				has_character_modifier = relic_rumor_major
+				has_character_modifier = relic_rumor_medium
+				has_character_modifier = relic_rumor_minor
+			}
+			OR = {
+				ai = no
+				NOT = { any_courtier_or_vassal = { has_character_flag = relic_hunter } }
+			}
+		}
+
+		potential = {
+			is_councillor = yes
+			liege = { character = FROM }
+			NOT = { trait = incapable }
+			prisoner = no
+			is_inaccessible_trigger = no
+			NOT = { has_character_flag = relic_hunter }
+		}
+
+		allow = {
+			custom_tooltip = {
+				text = search_for_artifact_allow_tt
+				is_councillor = yes
+				liege = { character = FROM }
+			}
+		}
+
+		effect = {
+			if = {
+				limit = { FROM = { any_courtier_or_vassal = { has_character_flag = relic_hunter } } }
+				custom_tooltip = {
+					text = search_for_artifact_effect_replace_tt
+					FROM = {
+						random_courtier_or_vassal = { 
+							limit = { has_character_flag = relic_hunter } 
+							clr_character_flag = relic_hunter
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = search_for_artifact_effect_tt
+				set_character_flag = relic_hunter
+				save_event_target_as = relic_hunter
+				FROM = { save_event_target_as = relic_ruler }
+				character_event = { id = MNM.9007 days = 30 }
+			}
+			if = {
+				limit = { FROM = { check_variable = { which = relic_score value = 1 } } }
+				custom_tooltip = {
+					text = search_for_artifact_effect_progress_tt
+					hidden_effect = { FROM = { multiply_variable = { which = relic_score value = 0.75 } } }
+				}
+			}
+			FROM = { add_artifact_search_payment_effect = yes }
+		}
+
+		revoke_allowed = { always = no }
+
+		ai_will_do = {
+			factor = 0.001
+			modifier = {
+				OR = {
+					diplomacy = 14
+					martial = 14
+					stewardship = 14
+					intrigue = 14
+					learning = 14
+				}
+				factor = 10
+			}
+			modifier = {
+				OR = {
+					is_friend = FROM
+					reverse_opinion = { who = FROM value = 30 }
+				}
+				factor = 10
+			}
+			modifier = {
+				FROM = { NOT = { wealth = 50 } }
+				factor = 0
+			}
+			modifier = {
+				ai = no
+				factor = 0
+			}
+		}
+	}
+
+	stop_artifact_search = {
+		only_playable = yes
+		
+		ai_target_filter = court
+
+		from_potential = {
+			is_ruler = yes
+			has_council = yes
+			prisoner = no
+			OR = {
+				has_character_modifier = relic_rumor_major
+				has_character_modifier = relic_rumor_medium
+				has_character_modifier = relic_rumor_minor
+			}
+			is_inaccessible_trigger = no
+			OR = {
+				#todo is paying for search
+			}
+		}
+
+		potential = {
+			has_character_flag = relic_hunter
+		}
+
+		effect = {
+			custom_tooltip = {
+				text = stop_artifact_search_effect_tt
+				clr_artifact_searcher_effect = yes
+			}
+		}
+
+		revoke_allowed = { always = no }
+
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				wealth = -100
+			}
+			modifier = {
+				factor = 0
+				check_variable = { which = relic_score value = -2 }
+			}
+		}
+	}
+	
+
+	
+}

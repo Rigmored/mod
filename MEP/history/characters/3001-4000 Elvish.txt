@@ -5,7 +5,8 @@
 	culture="culture_noldor"
 
 	add_trait=half_elf
-	add_trait=fair
+	add_trait=tall
+	add_trait=attractive
 	add_trait=strong
 	add_trait=charismatic_negotiator
 	add_trait=legendary_warrior
@@ -60,7 +61,7 @@
 	
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+	disallow_random_traits = yes
 	add_trait=grey_eminence
 	add_trait=elf
 	add_trait=fair
@@ -85,6 +86,14 @@
 		effect = { set_character_flag=elrond }
 		give_nickname="nick_halfelven"
 	}
+	4894.1.1 = { 
+		effect = {
+			add_friend= 3006 #Galadriel
+			add_friend= 3065 #Cirdan
+			add_friend= 3005 #Celeborn
+			add_friend= 3139 #Gil-Galad
+			}
+		}	
 	8343.1.1 = {
 		add_trait = vilya
 		effect = { set_character_flag=ringbearer }
@@ -95,9 +104,6 @@
 	10806.1.1 = {
 		add_trait=white_council
 		effect= {
-			add_friend= 3006 #Galadriel
-			add_friend= 3065 #Cirdan
-			add_friend= 3005 #Celeborn
 			add_friend= 10033 #Gandalf
 		}
 	} #The White Council is formed
@@ -113,7 +119,7 @@
 	dynasty=3002
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -167,6 +173,7 @@
 	intrigue=6
 	learning=12
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -211,7 +218,12 @@
 	add_trait = fortune_builder
 	add_trait = perceptive
 	add_trait = fea_strong
-	
+	add_trait = tall
+	add_trait = attractive
+	add_trait = strong
+	add_trait = poet
+	add_trait = scholar
+	add_trait = light_valinor
 
 	father=3145
 	mother=3143
@@ -228,9 +240,9 @@
 	4364.1.1 = {
 		name="Galadriel"
 		remove_trait=sailed_west
-		add_trait=light_valinor
 		add_trait = healer_master
 		add_trait = ambitious
+		add_trait = master_craftsman # made Phile of Galadriel using light of Silmaril
 	}
 	4364.1.1 = {
 		add_trait=elessar
@@ -380,6 +392,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=honest
@@ -1078,6 +1091,7 @@
 	religion="religion_moriquendi"
 	culture="culture_tatyar"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -1383,6 +1397,7 @@
 	religion="religion_moriquendi"
 	culture="culture_nelyar"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -2511,6 +2526,7 @@
 	religion="religion_moriquendi"
 	culture="culture_sindar"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -2702,6 +2718,7 @@
 	religion="religion_moriquendi"
 	culture="culture_sindar"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3027,6 +3044,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3096,6 +3114,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3141,6 +3160,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3189,6 +3209,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=sailed_west
@@ -3224,6 +3245,8 @@
 	dynasty=3005
 	religion="religion_moriquendi"
 	culture="culture_noldor"
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3233,6 +3256,7 @@
 	add_trait=inspiring_leader
 	add_trait=great_elf
 	add_trait=light_valinor
+
 	father=3129
 	mother=3130
 	3200.1.1 = {
@@ -3270,14 +3294,14 @@
 	female=yes
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
 	add_trait=sailed_west
 	add_trait=fashionable
 	add_trait=kind
-	add_trait=chaste
+	add_trait=honorable
 	add_trait=light_valinor
 
 	father=3132
@@ -3326,7 +3350,8 @@
 	dynasty=3005
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3369,6 +3394,7 @@
 	religion="religion_moriquendi"
 	culture="culture_avari"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3471,6 +3497,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3507,7 +3534,8 @@
 	dynasty=3004
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=sailed_west
@@ -3564,7 +3592,8 @@
 	dynasty=3004
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3626,7 +3655,8 @@
 	dynasty=3004
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=sailed_west
@@ -3658,7 +3688,8 @@
 	dynasty=3004
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3767,7 +3798,8 @@
 	dynasty=3004
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -3779,7 +3811,7 @@
 	add_trait=inspiring_leader
 	add_trait=duelist
 	add_trait=legendary_warrior
-		add_trait=light_valinor
+	add_trait=light_valinor
 	
 	father=3145
 	mother=3143
@@ -4208,6 +4240,7 @@
 	religion="religion_moriquendi"
 	culture="culture_sindar"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -4925,7 +4958,8 @@
 	dynasty=3023
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -4974,7 +5008,8 @@
 	dynasty=3023
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=sailed_west
@@ -5569,6 +5604,7 @@
     religion="religion_moriquendi"
     culture="culture_noldor"
 
+	disallow_random_traits = yes
     add_trait=elf
     add_trait=fair
     add_trait=intricate_webweaver
@@ -5612,6 +5648,7 @@
     religion="religion_moriquendi"
     culture="culture_noldor"
 
+	disallow_random_traits = yes
     add_trait=elf
     add_trait=fair
     add_trait=charismatic_negotiator
@@ -5743,7 +5780,8 @@
 	dynasty=3006
 	religion="religion_moriquendi"
 	culture="culture_noldor"
-	
+
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=proud
 	add_trait=strong
@@ -5838,6 +5876,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -5889,6 +5928,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -5930,6 +5970,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -5973,6 +6014,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=proud
 	add_trait=strong
@@ -6019,6 +6061,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=sailed_west
@@ -6062,6 +6105,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=sailed_west
 	add_trait=charismatic_negotiator
@@ -6147,6 +6191,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=kind
 	add_trait=quick
@@ -6195,6 +6240,7 @@
 	religion="religion_moriquendi"
 	culture="culture_noldor"
 	
+	disallow_random_traits = yes
 	add_trait=elf
 	add_trait=fair
 	add_trait=strong
@@ -7258,6 +7304,7 @@
 	female=yes
 	religion="religion_moriquendi"
 	culture="culture_silvan"
+
 	add_trait=elf	
 	add_trait=fair
 	add_trait=agile
@@ -7265,15 +7312,16 @@
 	add_trait=skilled_tactician
 	father=3406
 	mother=3407
+
 	9497.6.5 = {
-		birth=yes
+		birth="9497.6.5"
 	}
 	9500.1.1 = {
 		add_trait=trained_elf
 		employer = 3104
 		effect= {
-		add_friend = 3106
-		add_rival = 3104
+			add_friend = 3106
+			add_rival = 3104
 		}
 	}
 	11284.10.1={

@@ -1,29 +1,30 @@
 decisions = {
-	## Learn crafting abilities ##
-	# learn_craft_abilities = {
-		# is_high_prio = yes
-		# potential = {
-			# or = {
-				# culture = culture_noldor
-				# culture_group = culture_group_dwarves
-			# }
-			# ai = no
-			# age = 16
-			# NOT = { has_character_flag = learn_craft }
-			# NOT = { trait = incapable }
-			# NOT = { trait = legendary_craftman }
-			# has_character_flag = special_decisions_open
-		# }
-		# allow = {
-			# prestige = 200
-			# piety = 200
-			# wealth = 250
-		# }
-		# effect = {
-			# set_character_flag = learn_craft
-			# narrative_event = { id = learncraft.1 }
-			# prestige = -200
-			# piety = -200
-		# }
-	# }
+	# Learn crafting abilities ##
+	learn_craft_abilities = {
+		is_high_prio = yes
+		potential = {
+			OR = {
+				culture = culture_noldor
+				culture_group = culture_group_dwarves
+			}
+			NOT = { trait = elf_childhood }
+			ai = no
+			age = 50
+			NOT = { has_character_flag = learn_craft }
+			NOT = { trait = incapable }
+			NOT = { trait = legendary_craftman }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			prestige = 200
+			piety = 200
+			wealth = 250
+		}
+		effect = {
+			set_character_flag = learn_craft
+			narrative_event = { id = learncraft.1 }
+			prestige = -200
+			piety = -200
+		}
+	}
 }

@@ -232,23 +232,23 @@ character_event = {
 			if = {
 				limit = {
 					
-					father = { trait = orkish } # father is
-					mother = { trait = orkish } # mother is
+					father = { trait = orc } # father is
+					mother = { trait = orc } # mother is
 					
 				}
-				add_trait = orkish
+				add_trait = orc
 			}
 			# Half orc creation...
 			if = {
 				limit = {
 					OR = {
 						AND = {
-							father = { trait = orkish } # father is
-							NOT = { mother = { trait = orkish } } # mother is not
+							father = { trait = orc } # father is
+							NOT = { mother = { trait = orc } } # mother is not
 						}
 						AND = {
-							NOT = { father = { trait = orkish } } # father is not
-							mother = { trait = orkish } # mother is
+							NOT = { father = { trait = orc } } # father is not
+							mother = { trait = orc } # mother is
 						}
 					}
 				}
@@ -517,22 +517,22 @@ character_event = {
 		if = {
 			limit = {
 				
-				real_father = { trait = orkish } # real_father is
-				mother = { trait = orkish } # mother is
+				real_father = { trait = orc } # real_father is
+				mother = { trait = orc } # mother is
 				
 			}
-			add_trait = orkish
+			add_trait = orc
 		}
 		if = {
 			limit = {
 				OR = {
 					AND = {
-						real_father = { trait = orkish } # real_father is
-						NOT = { mother = { trait = orkish } } # mother is not
+						real_father = { trait = orc } # real_father is
+						NOT = { mother = { trait = orc } } # mother is not
 					}
 					AND = {
-						NOT = { real_father = { trait = orkish } } # real_father is not
-						mother = { trait = orkish } # mother is
+						NOT = { real_father = { trait = orc } } # real_father is not
+						mother = { trait = orc } # mother is
 					}
 				}
 			}
