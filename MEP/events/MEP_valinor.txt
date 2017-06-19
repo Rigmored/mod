@@ -17,6 +17,13 @@ character_event = {
 		name = "EVTOPTAvalinor.1" # I'll sail to West!
 		character_event = { id = valinor.2 days = 20 }
 		set_character_flag = sailed_west
+		e_valinor = {
+			holder_scope = {
+				PREVPREV = {
+					move_character = PREV
+				}
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTBvalinor.1" # I'll live and die in Middle-Earth.
@@ -349,6 +356,35 @@ character_event = {
 				imprison = PREV
 			}
 			set_character_flag = morgoth_imprisoned
+		}
+	}
+
+	option = {
+		# name = "Indeed"
+	}
+}
+
+# meant to re-imprison Morgoth if Manwë banishes or frees him
+character_event = {
+	id = valinor.21
+	# title = "Morgoth is Imprisoned"
+	# desc = "A reminder: Morgoth was imprisoned outside Arda at the end of the First Age."
+	# picture = "GFX_good"
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	immediate = {	
+		if = {
+			limit = { has_character_flag = morgoth_bauglir }
+			e_valinor = {
+				holder_scope = {
+					PREVPREV = {
+						move_character = PREV
+						imprison = PREV
+					}
+				}
+			}
 		}
 	}
 

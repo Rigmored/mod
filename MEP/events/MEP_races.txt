@@ -451,5 +451,124 @@ character_event = {
 	}
 }
 
+# To avoid creating yet another file, I've decided to place the 'Huorn Defence Force' event here
+character_event = {
+	id = racetrait.21
+	title = EVTTITracetrait.21
+	desc = EVTDESCracetrait.21
+	picture = GFX_evt_oldmanwillow
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	war = yes
+	
+	trigger = {
+		# is Ent, Huorn, or Tom Bombadil
+		OR = {
+			religion_group = religion_group_enyd
+			culture = culture_enigma
+		}
+		# ruling Fangorn, or the old forest
+		OR = {
+			has_landed_title = c_fangorn
+			has_landed_title = c_derndingle
+			has_landed_title = d_fangorn
+			has_landed_title = c_the_old_forest
+		}
+		# is under attack (I think this is all that is necessary)
+		is_primary_war_defender = yes
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	option = {
+		name = EVTOPTAracetrait.21
+		# Creates defensive Huorn Army
+		custom_tooltip = {
+			text = TT_MAKE_HUORN_ARMY
+			
+			create_random_soldier = {
+				random_traits = yes
+				employer = PREV
+				dynasty = none
+				religion = religion_enyd
+				culture = culture_huorn
+				trait = ent
+				trait = zealous
+				trait = unyielding_leader
+				trait = rough_terrain_leader
+				trait = brilliant_strategist
+				female = no
+				age = 3333
+				immortal_age = 50
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit = {
+						province = PREV
+						owner = PREVPREV
+						disband_on_peace = yes
+						attrition = 0
+						maintenance_multiplier = 0.1
+						troops = {
+							heavy_infantry = { 700 700}
+							light_infantry = {1000 1000}
+							pikemen = { 700 700}
+							archers = {1000 1000}
+						}
+						reinforces = yes
+						reinforce_rate_multiplier = 0.1						
+					}
+				}
+			}
+		}
+		# the attacked ruler is k_fangorn, create ANOTHER defensive army
+		if = {
+			limit = { has_landed_title = k_fangorn }
+			custom_tooltip = {
+				text = TT_MAKE_HUORN_ARMY
+				
+				create_random_soldier = {
+					random_traits = yes
+					employer = PREV
+					dynasty = none
+					religion = religion_enyd
+					culture = culture_huorn
+					trait = ent
+					trait = unyielding_leader
+					trait = rough_terrain_leader
+					trait = brilliant_strategist
+					female = no
+					age = 4171
+					immortal_age = 55
+				}
+				capital_scope = {
+					new_character = {
+						spawn_unit = {
+							province = PREV
+							owner = PREVPREV
+							disband_on_peace = yes
+							attrition = 0
+							maintenance_multiplier = 0.1
+							troops = {
+								heavy_infantry = { 700 700}
+								light_infantry = {1000 1000}
+								pikemen = { 700 700}
+								archers = {1000 1000}
+							}
+							reinforces = yes
+							reinforce_rate_multiplier = 0.1						
+						}
+					}
+				}
+			}
+		}
+		# just in case, we also boot morale
+		any_army = { morale = +1 }
+		
+	}
+}
+
 	
 	

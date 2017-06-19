@@ -208,6 +208,28 @@ claim = {
 	defender_ai_defeat_worth = {
 		factor = 100
 	}
+	
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			ROOT = {
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = 0 }
+			}
+		}		
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = -25 }
+			}
+		}
+	}
 }
 
 other_claim = {
@@ -1624,6 +1646,28 @@ claim_all = {
 	
 	defender_ai_defeat_worth = {
 		factor = 100
+	}
+	
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			ROOT = {
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = 0 }
+			}
+		}		
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = -25 }
+			}
+		}
 	}
 }
 
@@ -6585,6 +6629,28 @@ dejure_county_claim = {
 	defender_ai_defeat_worth = {
 		factor = 100
 	}	
+	
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			ROOT = {
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = 0 }
+			}
+		}		
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = -25 }
+			}
+		}
+	}
 }
 
 # 44
@@ -6724,6 +6790,28 @@ dejure_barony_claim = {
 	
 	defender_ai_defeat_worth = {
 		factor = 75
+	}
+	
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			ROOT = {
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = 0 }
+			}
+		}		
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = -25 }
+			}
+		}
 	}
 }
 
@@ -7362,6 +7450,7 @@ tributary_cb = {
 				religion = ROOT
 			}
 			independent = yes
+			NOT = { culture_group = culture_group_wilderness }
 		}
 		
 		# The attacker needs a border, or be at most two sea zones away from one of the target's counties
@@ -7679,6 +7768,25 @@ tributary_cb = {
 
 	ai_will_do = {
 		factor = 1
+		
+		modifier = {
+			factor = 0
+			ROOT = {
+				opinion = { who = FROM value = 25 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = 0 }
+			}
+		}		
+		modifier = {
+			factor = 0.5
+			ROOT = {
+				opinion = { who = FROM value = -25 }
+			}
+		}
 		
 		modifier = {
 			factor = 0.1 # Low prio CB

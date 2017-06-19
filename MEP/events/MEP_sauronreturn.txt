@@ -30,6 +30,10 @@ character_event = {
 		k_dol_guldur = {
 			grant_title = ROOT
 		}	
+		if = {
+			limit = { has_landed_title = d_sauron_exile }
+			activate_title = { title = d_sauron_exile status = no }
+		}
 		any_playable_ruler = {
 			limit = {
 				trait = good_side
@@ -49,7 +53,7 @@ character_event = {
 				has_landed_title = k_mirkwood
 			}
 			character_event = { id = sauronreturn.4 }	
-		}		
+		}
 	}
 }
 		

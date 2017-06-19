@@ -3,6 +3,7 @@
 
 ## characters
 # mep_is_good_side_trigger
+# mep_is_very_nice_trigger
 # mep_is_evil_side_trigger
 # mep_is_immortal_race_trigger
 # mep_allows_shield_maidens_trigger
@@ -90,6 +91,21 @@ mep_is_good_side_trigger = {
 				religion = religion_edain
 				religion = religion_druedain
 				religion = religion_rhovanion								
+			}
+			NOT = { trait = evil_side}
+		}
+	}
+}
+
+mep_is_very_nice_trigger = {
+	OR = {
+		trait = good_side
+		AND = {
+			OR = {
+				religion_group = religion_group_eruhini # Ainur (like Eagles)
+				religion_group = religion_group_periannath
+				culture = culture_entish
+				religion_group = religion_group_eldar   # Elves								
 			}
 			NOT = { trait = evil_side}
 		}

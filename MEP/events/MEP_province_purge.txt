@@ -66,6 +66,7 @@ character_event = {
 			hidden_tooltip = {
 				remove_province_modifier = population_increasing
 				mep_stop_colonisation_effect = yes
+				set_variable = { which = mep_provincepurge_special   value = 0 }
 			}
 			add_province_modifier = { name = being_purged duration = 3650 }
 		}
@@ -102,9 +103,11 @@ character_event = {
 				hidden_tooltip = {
 					mep_human_popmod_remove_effect = yes
 					add_province_modifier = { name = two_population_dwarves duration = -1 }
-					set_variable = { which = mep_provincepurge_special  value = 0 }
+					# set_variable = { which = mep_provincepurge_special  value = 0 }
+					holder_scope = {
+						character_event = { id = dwarfconq.26 days = 1 }
+					}
 				}
-				province_event = { id = dwarfconq.26 }
 			}
 			if = {
 				limit = {

@@ -1,182 +1,22 @@
-• CBs (redo some)
+
+• Reduce wars between good_side (important)
+• Find a way to prevent good rulers from enabling title revocation and then immediatly grabbing land without reason.
 • If galadriel gets the ring, she never expands or conqers despite events saying otherwise
-• Reduce wars between good_side
-• Gondor?,Dale too strong
-• Rohan not coming to aid of Gondor (sometimes)
+• Red Arrow fires even if Rohan has already joined Gondor in a War.
 • Fix elven portraits (but how?)
 • Purging more selective (Evil Overlords should not purge all humans)
-• The ambition to become a dwarf craftsman seems to be unfullfillable
 • Missionaries to sway characters to good_side / evil_side ?
 • Reduce chance of elven/ent/wight/huorn peasant revolts
 • reduced triple taxation
 • Figure of how to block secret religions (Races)
 • Fix terrain types (and some other things) having question mark afterwards
-• Trolls and Orcs not marrying?
-• When Gondor gets Ithilien via event, prevent it from picking up bits of Mordor
-• Sauron is always in hiding (built into spiritform trait)
 • Eagles still too weak
-• Sicknesses too aggresive, get repeated false 'illness has passed' msg
 • Isengard does not defend tributary Dunland
 • Auto-generated barony holders too young for many races
 • Siege outbreak of disease events (some races are immune/resistant)
 • Prince Burin's claim
 • Are Orc adventure hordes still a thing? (if not, re-enable them, at a lesser rate than what used to be)
+• Re-examine duchy level 'Holy Wars'
+• 
 
 
-
-• Blood of Numenor inheritance?
-
-• Colonization : Evil overlord colonization, store and use culture to colonize with, kill colonization if province chnages hands
-• kill sending colonists / colonization if there is a mismatch (due to provice changing hands)
-• Defend vs orcs targetted decision for hildor/non evil (but not defenders) 
-//--------------------------------------------------------------------------------------
-You have to modify a file called mep_employement_decisions or something like that inside the decisions folder. You have to switch all the "ai=yes" to "ai=no". Or you can just delete the file itself. Then start a new game and it should not lag anymore. 
-I'm pretty sure it has to do with the elven childhood event, or any event applying infertility to young women chars. If there are no female courtiers in a court that have positive fertility (or if there's not enough) the AI will keep spamming them until they do. 
-You have to modify a file called mep_employement_decisions or something like that inside the decisions folder. You have to switch all the "ai=yes" to "ai=no". Or you can just delete the file itself. Then start a new game and it should not lag anymore.
-If I'm right, then editing common/traits and finding the elven traits that give infertility and removing the infertility (I think it's the elven_childhood ones) would fix it. It's worth a test at least.
-Those infertility events from on_actions should stay - it's what prevents elves and dwarves from having 20 kids, and it prevents human women from having kids at the age of menopause (in defines.lua we set the menopause age to 10,000 or some such to represent a 3000 year old Arwen still being fertile and such). What you need to edit is the event assigning the elven childhood trait, I think that is what is causing the massive courtier span since there are typically very few if any fertile elf females in a court with that event active.
-
-Removed the celibate trait from Boromir. It was just bugging me, honestly. 
-in the version .7 the race traits blood of numenor 1 n 2 and elf are not being inherited any way to fix this? 
-I also think we should just remove the Swan Knights mercenary title from the Princes of Dol Amroth.
-Yeah honestly should just be a vassal of Dol Amroth or not exist at all.
-Maybe some special buildings or a retinue that only Dol Amroth can create.
-What for? I propose a Game Rule that allows one to play without having the War of the Ring fire up.
-I included the inherit chance thing for Blood of Isildur and Blood of Anarion. So I hope you enjoy it.
-Why does Pukel land have de jure claims to counties south from it, if they are not de jure part of Pukel land when switching to de jure map ? A bug ? 
-So how do I stop every landed character from presenting debutants? No one besides the player ever builds anything because they are addicted to 16 year old girls and end up blowing all their money on them
-
-    So I have been playing a lot since monday, and I have a question. Going by the description on the Blood of Anarion trait that the royal family of Gondor has, is it possible to marry a woman from that dynasty and get it for my offspring? It seems that it should be possible to have it be inherited by any Anarion decendant. I am playing as king Malvegil in the fall of Anor start.
-
-    Never mind it is agnatic.
-
-I edit it to be agnatic and also have a chance of being inherited if the mother holds the trait.
-
-30 percent chance, with the Isildur trait being 10 percent. 
-
-    My characters didn't inherit race traits, help.
-
-The fix for that was posted a few pages back. Its a fairly easy fix. 
-
-I suppose diseases are part of the reason vanilla stay usable for a lot of time, here there are a lot of characters that are either immortal or have an health and fertility so high and live so long that they have many children and that those children have the same problem so there are like a ton of characters around.
-
-I'd either lower fertility or decrease health for humans that don't have the true blood of numenor trait. Another issue it's with the black numenoreans and the south-eastern kingdoms that tends to end with gavelkind, increasing the number of courts filled with characters.
-
-I'd say that this mod could use a method of keeping population in check with a elven/dwarven/numenorean blood culling like the agot does with High Valyrian culture and ethnicity.
-I would also completely remove gavelkind from the inheritance laws available(if that's possible) because, as said before, tends to give titles to more people that in return raise the number of people around by creating filled with around 8-20 characters. 
-
-The AI is pretty retarded running around from South Gondor to Cair Andros back and back again. Maybe the crossing at the mouth of anduin should be removed so gondor doesn't get distracted by Harad occupying things and Denethor trying to take everything back and losing without fighting a single battle.
-Working on balancing
-You get every 10 years a event to purge something and if it is still going on you can't purge other provinces one at a time. You can colonize if you put your steward on a province. You get a decision to do so.
-
-Bug report: after Saruman conquers Rohan, Gondor lights the Beacons and Saruman rides to their defense, joining the war against Sauron.
-
-You get every 10 years a event to purge something and if it is still going on you can't purge other provinces one at a time. You can colonize if you put your steward on a province. You get a decision to do so. 
-
-I downloaded the most recent version of this mod from this thread, and I noticed that (contrary to the dev diaries) there seem to be very few if any non-claim, non-nomad CBs available to most human rulers. I think that you mentioned switching back to the vanilla CBs for the most part, but in the files a lot of those CBs refer to vanilla culture/religion groups (which, of course, are not present in the mod). Maybe these should be changed to appropriate cultures/religions in the mod (e.g. giving Men of Darkness access to the vanilla Pagan CBs).
-
-1. This game is very static, even after Sauron got the ring (he never fails) Mordor was not noticeable larger after 8 hours of letting the game run. If Sauron acquires the ring perhaps he should receive a high number of event troops and several wars be triggered?
-
-2. Many places aren't suitable for play. The Shire is a good example. The skills of halfling's are so low that you could never use your council and pull off any intrigue. This is without taking in the weakness of hobbits in general.
-
-3. Gollum needs to be different, somehow. Every game I play has Gollum earning a high position in some hobbit's court. Perhaps he should be given his own religion or culture that makes him not as well liked or able to fit in?
-
-4. Potraits for halflings need to age slower, if possible, if not this is no big deal. A custom portrait would be nice for Gollum. 
-
-I started a new game as Aragorn. He got cancer 1 year into the game.
-
-Can custom pictures be used for some provinces maybe for Minas Tirith or Isengard? 
-The elvish childhood event prevents births until 55 years, but there is also a line the defines.lua that sets menopauze to 45 years, so you might want to change that.
-
-And Azanulbizar shows up as b_azanulbizar-dum in the demesne view.
-
-A quick fix for the spamming of population in the late game is to set COURTIERS_MTTTH_EVENTS in defines.lua to 0. This will stop courtier events from firing and actually stops the spamming of characters.
-
-*EDIT*
-I believe the permanent fix to this is to remove banish = yes from wrongmarriage.2 in the events file. There is already an event to killed orcs in an unfriendly court, Banishing them concentrates them in several locations for some reason whereas the event will just continue to kill them instead of creating thousands upon thousands of orcs.
-Actually, that is a nice idea. A 'Rebuild the Tower of the Moon' chain. Also, if Herumo
-
-I am unsure if this will achieve anything but its better than having hundreds of orcs in some courts.
-
-Also we seem to be missing MEP_Gondor_wotr which is the war for osgiliath
-
-Also Tom Bombadil usually ends up assassinating Goldberry.
-
-The map isn't going to be altered anymore, or will it be? If yes Tharbad could be split into two provinces, North and South Tharbad, like Osgiliath. And if possible new Provinces in the Misty Mountains could be added, making it allowed to walk within the Mountains, instead of walking around to get to another place, like in the Warhammer mod. 
-
-How i make a feudal realm like Gondor be able to call his vassals, like Reikland in the warhammer mod? This would actually fix Gondor running the whole time down to Linhir and South Gondor and back to north Ithilien and Anorien the whole time, without doing anything. 
-
-Arthedain in its final years is a challenge by default. Not talking 'Fall of Arnor' start. I'm talking 'your son is going to take over in a decade' and Arthedain is effectively a rump state compared to what it had been. Might also add something for where if you have enough support among the nobility in Gondor, you can claim the Throne for your heir. The Fall of Arthedain is quite interesting.
-//--------------------------------------------------------------------------
-ll scenarios:
-1. Good characters should not be able to create the king dom shadows of Kirkwood.
-Celeborn trade his kingdom of lorient to dol guldur lordship in forth age.
-
-also, shadow of mirkwood should become east lorient de jure kingdom like the sylvan kingdom in ithilien. A decision should be create to allow it when elfs take dol gul dur from shadow.
-
-2. Just elfs characters should be able to create the Ajouter au dictionnaire titular empire. ( the rohirims and the ents create this title in forth age)
-
-3. one more dynastie need to be saved in dunland at forth age scenario, the third with beautiful armories in the south.
-
-4. I dont know if it canon, but dunlendings lord is fort age is rohirim.
-
-5. I think is more canon to transfert parth celebrant duchy to lorient. It was never a gondorian and rohiric territory.
-
-6. Samething with the south gondor. I think the duchy in the far south need to be transferred to kingdom of anthor. According to lore, south gondor is between paurus and harnen river.
-
-7. I dont fond my screenshots, but the break up of dunedain kingdom should be more proper.
-Currently new king of gondor have exclave in arnor and vice versa.
-
-8. Weird the candaith house dont have title in the forth age scenario. ( He was one of the leader of grey company).
-
-9. I dont know if exist already, but sauron need a decision to get back in mordor during third age. Since 2000 ta, I think nazgul occupy baradur and they should be able to cede it to sauron. It will be praticable if we want begin at a random date in the third age. (play sauron ron or earnur)
-
-11. Akthor kingdom should be transfered to adune empire. ( more balance and lore) because they were founded by black numenoreans.
-12. commercial road shoul be extended to umbar , annuminas and east (maybe dorwinion and khamul palace country).
-//--------------------------------------------------------------------------------------------------------------
-Royal Fief: Annuminas* Equivalent to a Grand Duchy. Originally from late First Age following fall of Mithrim, a Northern Sindarin elf petty kingdom until peaceful Numenorean settlement early-mid Second Age. Capital of Elendil's Realm and of Arnor, and of Aragorn's Reunited Kingdoms. There can still be tribal Sindarin elves as well as the shapeshifing tribal wolf-men "Gaurhoth" and tribal giants north and west of Lake Evendim. City abandoned TA 861, ruined TA 1409. Rebuilding option. Rebuilt by Aragorn in Fourth Age.
-
-Royal Fief: Fornost* Equivalent to a Duchy. Numenorean city founded late SA, capital of Arthedain TA 861. City ruined TA 1974, rebuilding option.
-
-Republic: Breeland* Edain settlement dates back to the First Age. Breeland gets some rural nomadic hobbit vassal population, Fallowhide (rare), Stoor, or Harfoot (most common), starting c. TA 1100, nomadic Hobbits then settle and join Breeland Republic TA 1300
-
-Grand Republic: The Shire. Former lords Eketta lose claim, once Shire is established TA 1600.
-Starting TA 1300, Shire lands-to-be which will be still under Eketta rule should turn pops to vassal hobbit nomadics of Fallowhide (northern hills and Green Hills, capital the Green Hills), Stoor (Brandywine valley, capital The Marish), and Harfoot (the rest of the Shire, capital: Michel Delving), which should turn into the Shire via a Royal Decree event TA 1600. Whereupon the hobbits in the Shire, which doesn't include Buckland or Breeland, all join into one happy united Grand Republic under their Thain, subordinate to Arthedain, Arnor and the United/Reunited Kingdoms of the Dunedain.
-
-Within south-west Arthedain, the former high elf petty Kingdom of Sirigale, in the Third Age mostly inhabited by Men but still ruled by the Noldorin elf Lady Elindiel (vassal).
-
-Within Arthedain, west of the Shire, elven lordship of the Tower Hills (vassal).
-
-And for Cardolan:
-Grand Duchy/Petty Kingdom: Ethir Gwathlo aka Kingdom of Saralainn* when independent, a human "middleman" kingdom
-
-Principalities (equivalent to Duchies): Calantir, Tinare
-
-Lordships: Girithlin, Tyrn Gorthad* (royal fief)
-
-Republic: Cantons of Feotar* Numenorean-era formerly independent Edain republic
-
-Republic: City of Tharbad* Early-mid SA Numenorean colony, ruined TA 2050, abandoned TA 2912, could be a rebuilding option.
-
-Republic: City of Vinyalonde* SA 600's to fall of Numenor, ruined due to tidal waves from Numenor, could be a rebuilding option.
-
-Tribal: Eryn Vorn* Beffraen Wild Men, vassal
-
-The Old Forest* independent wilderness not a part of the Dunedain Kingdoms, and with no claims on it. Also, Tom Bombadil needs to be made the most powerful creature in Middle-Earth aside from Sauron with the One Ring.
-
-Republic: Buckland. Old Forest Wilderness originally, then nomadic Stoor hobbit but still under Old Forest TA 1300, turns to Stoor tribal TA 1600. Vassal of Old Forest until turns to hobbit Republic TA 2340, Old Forest then loses jurisdiction but gets a claim.
-
-Rhudaur is mostly tribes of Hillmen*, with tribes of Dunlendings in the lowlands of the south and nomadic Trolls in the Trollfells* and Ettinmoores*. Angmarim in the north. Maybe between TA 1000 and 1300, some nomadic Stoor hobbits in the river valleys. Dunedain in Duchy of Cameth Brin* (originally until Elendil, a petty-dwarf realm).
-
-Amon Sul* Originally in my campaign, a former petty dwarf realm ceded to Elendil, thus Aragorn says "Men never dwelt there". Amon Sul should belong to Elendil's and Aragorn's united realms and to Arnor but not to any of the three daughter Kingdoms of Arthedain, Cardolan and Rhudaur, although all three should have a claim on it.
-
-Elendil's Realm and Arnor should have claims extending east to the upper Anduin vale bordered by the Grey Mountains*, Mirkwood*, and Lorien* and Dol Guldur*. These claims should not include Rivendell*, Eregion*, Khazad-Dum*, The Carrock*, or Gundabad*. These claims east of the Misty Mountains do not descend to the daughter Kingdoms of Arthedain, Cardolan, Rhudaur.
-
-In Early-mid SA prior to Numenorean influence and settlement, these lands of Vales of Anduin are ruled by dwarven-vassaled men ruled from dwarf realm of Gundabad* until it falls to the Orcs (during The War of the Elves and Sauron?). Tribal giants in Misty Mountains* and Gundalok* plateau and nomadic dragons in the Grey Mountains* and Withered Heath* from beginning of SA. Feudal Orcs in Goblin-Town* and the High Pass*.
-
-I have starred* above the realms pre-existing the Realm of Elendil. 
-//--------------------------------------------------------------------------------
-CK2 Version: 2.6.3
-MEP Version: 0.7
-I was king Malvegil of Arthedain and had conquered cardolan and restored Arnor. Then, at 190 something years old i died. . The kingdom of arnor vanished and i became king of arthedain again with argeleb, and my other son, who was Viceroy of cardolan, became independent.
-Is this a bug or is the kingdom of arnor supposed to be lost every time until the witch king is defeated? 

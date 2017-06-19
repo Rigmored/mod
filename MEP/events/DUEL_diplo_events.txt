@@ -1,0 +1,229 @@
+#Remake of the battlefield duels for diplomatic action
+
+namespace = duel_diplo
+
+
+character_event = { # Diplomatic Duel Start
+    id = duel_diplo.1000
+    desc = "EVTDESCduel_diplo.1000"
+    border = "GFX_event_normal_frame_war"
+    picture = GFX_battle_duel
+    
+    is_triggered_only = yes
+    #triggered by decision
+    
+    trigger = {
+        # Avoid crossing targets
+        FROM = {
+			NOT = { has_character_modifier = diplo_fight }
+        }
+        NOT = { has_character_modifier = diplo_fight }
+    }
+    
+    immediate = {
+        # Target lock
+        add_character_modifier = {
+            name = diplo_fight
+            duration = 20
+        }
+        FROM = {
+			opinion = { who = ROOT modifier = opinion_diplo_duel_target }
+			reverse_opinion = { who = ROOT modifier = opinion_diplo_duel_target }
+			add_character_modifier = {
+				name = diplo_fight
+				duration = 20
+			}
+		}
+		ROOT = { set_character_flag = duel_engaged }
+        clr_character_flag = duel_engaged
+    }
+    
+    option = {
+		#Charge!
+        name = "EVTOPTAduel_diplo.1000"
+        FROM = {
+			hidden_tooltip = { character_event = { id = duel_diplo.1002 } }
+        }
+    }
+}
+
+character_event = {
+	id = duel_diplo.1002
+	desc = "EVTDESCduel_diplo.1002"
+	picture = GFX_evt_battle
+	border = "GFX_event_normal_frame_war"
+	
+	is_triggered_only = yes
+	
+	option = {
+		#Prepare to die, [From.GetOnlyDynastyName] scum!
+		name = "EVTOPTAduel_diplo.1002"
+		
+		# Set context flags for duel
+		set_character_flag = flag_diplo_duel
+		FROM = { set_character_flag = flag_diplo_duel }
+		
+		# Begin duel
+		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.1 } } } }
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 10
+				trait = brave
+			}
+			modifier = {
+				factor = 5
+				trait = proud
+			}
+			modifier = {
+				factor = 1.5
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = strong
+			}
+		}
+	}
+	
+	option = {
+		#I need to get out of here!
+		name = "EVTOPTBduel_diplo.1002"
+		hidden_tooltip = { FROM = { character_event = { id = duel_diplo.1003 } } }
+		if = {
+			limit = {
+				NOT = { trait = craven }
+			}
+			random = {
+				chance = 55
+				add_trait = craven
+			}
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 3
+				FROM = { trait = duelist }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = strong }
+			}
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = paranoid
+			}
+			modifier = {
+				factor = 2
+				trait = weak
+			}
+			modifier = {
+				factor = 2
+				trait = dwarf
+			}
+			modifier = {
+				factor = 2
+				trait = hunchback
+			}
+			modifier = {
+				factor = 2
+				trait = wounded
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+			modifier = {
+				factor = 4
+				trait = maimed
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+			modifier = {
+				factor = 10
+				trait = blinded
+				NOT = { trait = lunatic }
+				NOT = { trait = brave }
+				NOT = { trait = proud }
+				NOT = { trait = wroth }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = duel_diplo.1003
+	desc = "EVTDESCduel_diplo.1003"
+	picture = GFX_evt_battle
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		#That's right, coward, run back to [From.Capital.GetName]!
+		name = "EVTOPTAduel_diplo.1003"
+	}
+}
+
+# Diplo duel end
+character_event = {
+	id = duel_diplo.1100
+	desc = "EVTDESCduel_diplo.1100"
+	picture = GFX_evt_battle
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAduel_diplo.1100"
+	}
+}
+
+#[FromFrom.GetBestName] lies helpless at your feet, [FromFrom.GetHerHis] weapon discarded and yours at [FromFrom.GetHerHis] throat.
+character_event = {
+	id = duel_diplo.1101
+	desc = "EVTDESCduel_diplo.1101"
+	picture = GFX_evt_battle
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		#Come with me, and walk fast. It's a long way to [Root.Capital.GetName].
+		name = "EVTOPTAduel_diplo.1101"
+		hidden_tooltip = {
+			#You are defeated. [From.GetBestName] takes you prisoner.
+			FROMFROM = { character_event = { id = duel_diplo.1102 } }
+		}
+	}
+}
+
+#You are defeated. [From.GetBestName] takes you prisoner.
+character_event = {
+	id = duel_diplo.1102
+	desc = "EVTDESCduel_diplo.1102"
+	picture = GFX_evt_battle
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		#I'll remember this, [From.GetOnlyDynastyName].
+		name = "EVTOPTAduel_diplo.1102"
+		imprison = FROM
+		set_character_flag = captured_in_battle
+		hidden_tooltip = {
+			FROM = {
+				character_event = { 
+					id = 50020 # "imprisoned_events.txt"
+				}
+			}
+		}
+	}
+}

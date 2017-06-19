@@ -1166,6 +1166,7 @@ e_gondor = {
 				}
 			}
 		}
+		
 		d_north_ithilduin = {
 			color={ 19 63 93 }
 			color2={ 255 255 255 }
@@ -1334,6 +1335,7 @@ e_gondor = {
 				}
 			}
 		}
+		
 		d_emyn_arnen = {
 			color={ 110 79 60 }
 			color2={ 255 255 255 }
@@ -1371,6 +1373,7 @@ e_gondor = {
 				}
 			}
 		}
+		
 		d_south_ithilduin = {
 			color={ 174 189 65 }
 			color2={ 255 255 255 }
@@ -1499,38 +1502,7 @@ e_gondor = {
 			}
 		}
 		
-		d_ithilien_rangers = {
-			color = { 30 127 172 }
-			color2 = { 220 220 0 }
-        
-			allow = { 
-				trait = good_side
-				always = no
-			}		
 		
-			# mercenary = yes
-	
-			# # Hire Trigger
-			# allow = {
-			# is_nomadic = no
-			# NOT = { culture_group = culture_group_wilderness }
-			# NOT = { culture_group = culture_group_melkor }
-			# }
-		
-			capital = 51 # Henneth Annun
-		
-			dignity = 10 
-		
-			# Always_exists
-			landless = yes
-		
-			religion = religion_dunedain
-			culture = culture_gondorian
-	
-			
-		
-			#mercenary_type = d_merc_inf
-		}
 	}
 	
 	
@@ -3554,22 +3526,6 @@ e_arnor = {
 				}
 			}
 			
-			c_the_old_forest = {
-				color={ 228 233 100 }
-				color2={ 255 255 255 }
-		
-				holy_site = religion_enyd
-				holy_site = religion_eruhini
-		
-				b_tombombadil = {
-				}
-				b_angerwood = {
-				}
-				b_bald_hill = {
-				}
-				b_old_forest_tunnel = {
-				}
-			}
 			c_barrow_downs = {
 				color={ 92 95 13 }
 				color2={ 255 255 255 }
@@ -13544,6 +13500,44 @@ e_anadune = {
 	}
 
 }
+## NOTHING (a place to put misc territories) ##
+k_nothing = {
+	color = { 102 90 90 }
+	color2 = {  0 0 0 }
+	
+    capital = 104 # The old forest, just because
+	
+	# Where Tom is Master
+	d_old_forest = {
+	
+		color={ 228 233 100 }
+		color2={ 255 255 255 }
+	
+		capital = 104 # The old forest, of course
+		
+		title = "Master"	
+	
+		c_the_old_forest = {
+			color={ 228 233 100 }
+			color2={ 255 255 255 }
+		
+			holy_site = religion_enyd
+			holy_site = religion_eruhini
+		
+			b_tombombadil = { }
+			b_angerwood = { }
+			b_bald_hill = { }
+			b_old_forest_tunnel = { }
+		}
+	}
+	
+	
+	allow = {
+		always = no  # Should never be declared: k_nothing only exists because every province must be in a kingdom
+	}
+}
+
+
 ## TITULAR TITLES ##
 
 k_black_serpent = {
@@ -14001,6 +13995,24 @@ d_ringbearer = {
 		trait = ring
 		NOT = { has_character_flag = ringbearer_forfait }
 	}	
+}
+
+# where sauron goes to when he is 'off the map'
+d_sauron_exile = {
+	color = { 50 50 50 }
+	color2 = {  0 0 0 }
+	
+	
+	title = "DARK LORD"
+	
+	culture = culture_wight
+	religion = religion_umaiar
+	
+	landless = yes
+	
+	allow = {
+		always = no  # assigned by history file or by event		
+	}
 }
 
 ## Lords of Arda - Valar Realms ##

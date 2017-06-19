@@ -870,3 +870,45 @@ nick_the_great = {
 		}
 	}
 }
+
+nick_the_dragon = {
+	allow = {
+		ruled_years = 10
+		OR = {
+			has_character_modifier = cannibal
+			trait = cannibal_trait
+			AND = {
+				trait = wroth
+				OR = {
+					trait = kinslayer
+					trait = excommunicated
+					trait = impaler
+				}
+			}
+		}
+	}
+	chance = {
+		factor = 3
+		modifier = {
+			factor = 2
+			trait = kinslayer
+		}
+		modifier = {
+			factor = 5
+			OR = {
+				trait = cannibal_trait
+				has_character_modifier = cannibal
+			}
+		}
+	}
+}
+
+nick_the_cannibal = {
+	allow = {
+		age = 16
+		has_character_modifier = crazy_cannibal
+	}
+	chance = {
+		factor = 10
+	}
+}

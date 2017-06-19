@@ -358,44 +358,44 @@ character_event = {
 }
 
 ## The Other Orc is imprisoned after the duel ##
-# Called feom the removed DUEL engine
-#character_event = {
-#	id = orcfights.5
-#	desc = EVTDESCorcfights.5
-#    picture = "GFX_war_at_north"
-#	border = "GFX_event_normal_frame_war"
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = EVTOPTAorcfights.5
-#		prestige = 20
-#		hidden_tooltip = {
-#			FROMFROM = { character_event = { id = orcfights.6 } }		
-#		}
-#		any_claim = {
-#			limit = {
-#				holder_scope = { is_liege_of = ROOT }
-#			}
-#			grant_title = ROOT
-#		}			
-#	}
-#}
+# Called from the (no longer ) removed DUEL engine
+character_event = {
+	id = orcfights.5
+	desc = EVTDESCorcfights.5
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.5
+		prestige = 20
+		hidden_tooltip = {
+			FROMFROM = { character_event = { id = orcfights.6 } }		
+		}
+		any_claim = {
+			limit = {
+				holder_scope = { is_liege_of = ROOT }
+			}
+			grant_title = ROOT
+		}			
+	}
+}
 
-## The Orc is informed that he go into jail ##
+# The Orc is informed that he go into jail ##
 # called from orfights.5
-#character_event = {
-#	id = orcfights.6
-#	desc = EVTDESCorcfights.6
-#    picture = "GFX_war_at_north"
-#	border = "GFX_event_normal_frame_war"
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = EVTOPTAorcfights.6
-#		imprison = FROM
-#		set_character_flag = in_orc_prison
-#	}
-#}
+character_event = {
+	id = orcfights.6
+	desc = EVTDESCorcfights.6
+    picture = "GFX_war_at_north"
+	border = "GFX_event_normal_frame_war"
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAorcfights.6
+		imprison = FROM
+		set_character_flag = in_orc_prison
+	}
+}
 
 
 ## Small event to let a new fight begins ##

@@ -62,6 +62,7 @@ d_ruffians = {
 }
 
 #DWARVES
+# Iron Guard are vassal mercenaries of the Longbeard Ruler of Moria...
 d_iron_guard = {
 	color={ 230 230 230 }
 	color2={ 255 255 255 }
@@ -71,6 +72,7 @@ d_iron_guard = {
 	
 	allow = {
 		religion_group = religion_group_khazad
+		NOT = { evil_side }
 	}	
 	
 	title = CAPTAIN
@@ -814,6 +816,7 @@ d_silvan_tribes = {
 
 #GONDOR MERCENARIES
 
+# Knights of Dol-Amroth
 d_swan_knights = {
 	color={ 230 230 230 }
 	color2={ 255 255 255 }
@@ -855,6 +858,7 @@ d_swan_knights = {
 	monthly_income = 3 # (Must be an integer between 1 and 512)
 }
 
+# actually, Dúnedian, not Gondorian. Somewhat problematic
 d_grey_company = {
 	color={ 230 230 230 }
 	color2={ 255 255 255 }
@@ -870,10 +874,8 @@ d_grey_company = {
 			any_realm_title = { title = e_steward_gondor }
 		}
 		OR = {
-			culture = culture_gondorian
 			culture = culture_arnorian
 			culture = culture_dunedain
-			culture = culture_numenorean
 		}
 	}	
 	
@@ -896,7 +898,7 @@ d_grey_company = {
 	monthly_income = 3 # (Must be an integer between 1 and 512)
 }
 
-d_rangers_ithilien = {
+d_ithilien_rangers = {
 	color={ 230 230 230 }
 	color2={ 255 255 255 }
 	
@@ -906,7 +908,7 @@ d_rangers_ithilien = {
 	
 	allow = {
 		OR = {
-			any_realm_title = { title = k_belfalas }
+			any_realm_title = { title = k_ithilien }
 			any_realm_title = { title = e_gondor }
 			any_realm_title = { title = e_steward_gondor }
 		}
@@ -914,7 +916,6 @@ d_rangers_ithilien = {
 			culture = culture_gondorian
 			culture = culture_arnorian
 			culture = culture_dunedain
-			culture = culture_numenorean
 		}
 	}	
 	

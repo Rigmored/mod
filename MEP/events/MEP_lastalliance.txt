@@ -8,12 +8,13 @@
 # mep_lastalliance_leader, mep_lastalliance_joined
 #------------------------------------------------------------
 # Events 0 to 8 : Setting up the alliance (with notifications)
-# 
+# Events 10 to x : Declare war and send notifications
+# Events 40 to y : Duel with Sauron/Mordor Leader, and aftermath
 
 namespace = lastalliance
 #------------------------------------------------------------
 # Event 0: launched by Elendil (or the equivalent) via decision, present info and a choice to go ahead or not.
-character_event = {
+long_character_event = {
 	id = lastalliance.0
 	title = EVTTITlastalliance.0
 	desc = EVTDESClastalliance.0
@@ -448,11 +449,12 @@ character_event = {
 					target = PREVPREV 
 					casus_belli = kingdom_good_attack_evil
 					thirdparty_title = k_mordor
+					infamy = 0
 				}
 			}
 		}
 		hidden_tooltip = {
-			add_global_flag = mep_lastalliance_offensive
+			set_global_flag = mep_lastalliance_offensive
 			clr_global_flag = mep_lastalliance_done2
 		}
 		
@@ -465,4 +467,740 @@ character_event = {
 	}
 	
 }
+#===========================================================================
+# The End of Mordor ?
+#-----------------------------------
+# Event 40 : Near defeat, the Dark Lord decides whether to run, or attack the Enemy leaders personally
+character_event = {
+	id = lastalliance.40
+	title = EVTTITlastalliance.40
+	desc = EVTDESClastalliance.40
+	picture = GFX_evt_sauronreturns
+	only_playable = yes
+	war = yes
+	has_global_flag = mep_lastalliance_offensive
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	trigger = {
+		always = no  # disables this for now
+		has_landed_title = e_barad_dur
+		# The following should ensure that loosing at 90% or more against the last alliance triggers the event
+		is_primary_war_defender = yes
+		any_war = {
+			war_score = 90
+			attacker = {
+				OR = {
+					has_character_flag = mep_lastalliance_leader
+					has_landed_title = e_reunited_kingdom
+					has_landed_title = e_gondor
+				}
+				war_with = PREVPREV
+			}
+		}
+	}
+	
+	# I shall fight myself
+	option = {
+		name = EVTOPTAlastalliance.40
+		trigger = {
+			OR = { 
+				character = 10016
+				culture = culture_balrog
+			}
+		}
+		ai_chance = { factor = 9 }
+		character_event = { id = lastalliance.41 }
+		log = "@@ LastAlliance.40 A"
+		
+	}
+	
+	# Time to run...
+	option = {
+		name = EVTOPTBlastalliance.40
+		ai_chance = { factor = 1 }
+		character_event = { id = lastalliance.42 }
+		log = "@@ LastAlliance.40 B"
+	}
+	
+}
+
+# Event 41: a hidden event that sets up things for the combat 
+character_event = {
+	id = lastalliance.41
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		# mark the evil combatant
+		save_event_target_as = mep_lastalliance_evil_combatant
+		# mark good combatants
+		any_war = {
+			any_attacker = {
+				# figure out who is going to be good combatant 1 (Human)
+				# this assumes someone holding both an elven and a human kingdom is not going to happen
+				if = {
+					limit = { has_landed_title = e_reunited_kingdom }
+					save_event_target_as = mep_lastalliance_good_combatant1
+					set_character_flag = mep_lastalliance_combatant
+				}
+				if = {
+					limit = {
+						e_reunited_kingdom = { has_holder = no }
+						has_landed_title = e_gondor
+					}
+					save_event_target_as = mep_lastalliance_good_combatant1
+					set_character_flag = mep_lastalliance_combatant
+				}
+				if = {
+					limit = {
+						e_reunited_kingdom = { has_holder = no }
+						e_gondor = { has_holder = no }
+						has_landed_title = e_arnor
+					}
+					save_event_target_as = mep_lastalliance_good_combatant1
+					set_character_flag = mep_lastalliance_combatant
+				}
+	
+				# figure out who is going to be good combatant 2
+				if = {
+					# Gil-Galad or his successor
+					limit = { has_landed_title = e_noldor }
+					save_event_target_as = mep_lastalliance_good_combatant2
+					set_character_flag = mep_lastalliance_combatant
+					break = yes
+				}
+				if = {  # Durin IV or his successor
+					limit = { has_landed_title = e_durins_folk }
+					save_event_target_as = mep_lastalliance_good_combatant2
+					set_character_flag = mep_lastalliance_combatant
+					break = yes
+				}
+				if = {  # Amdír or Amroth or ??
+					limit = { has_landed_title = k_elves }
+					save_event_target_as = mep_lastalliance_good_combatant2
+					set_character_flag = mep_lastalliance_combatant
+					break = yes
+				}
+			}
+		}
+	}
+	
+	# Event dispatching
+	option = {
+		log = "@@ LastAlliance.41 A, [mep_lastalliance_good_combatant1.GetTitledName]"
+		log = "@@ LastAlliance.41 B, [mep_lastalliance_good_combatant2.GetTitledName]"
+		any_independent_ruler = {
+			limit = {
+				has_character_flag = mep_lastalliance_joined
+				NOT = { has_character_flag = mep_lastalliance_combatant }
+			}
+			narrative_event = { id = lastalliance.44  days = 1 }
+		}
+
+		event_target:mep_lastalliance_good_combatant1 = {
+			character_event = { id = lastalliance.46  days = 1 }
+		}
+		event_target:mep_lastalliance_good_combatant2 = {
+			character_event = { id = lastalliance.46  days = 1 }
+		}
+	
+		event_target:mep_lastalliance_evil_combatant = {
+			character_event = { id = lastalliance.45  days = 2 }
+		}
+		log = "@@ LastAlliance.41 C"
+		
+	}
+	
+}
+
+# Event 42 : hidden event when the ruler runs, dispatches the notification Event 43, and launches the destroy Mordor event
+character_event = {
+	id = lastalliance.42
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		log = "@@ LastAlliance.42 A"
+		any_independent_ruler = {
+			narrative_event = { id = lastalliance.43  days = 1 }
+		}
+		set_character_flag = mep_lastalliance_evilrun
+		character_event = { id = lastalliance.62 }
+		log = "@@ LastAlliance.42 B"
+	}
+}
+
+# Event 43, notification event that the Evil Overlord of Mordor has abandoned Mordor and made a run for it.
+narrative_event = {
+	id = lastalliance.43
+	title = EVTTITlastalliance.43
+	desc = EVTDESClastalliance.43
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTlastalliance.43
+	}
+}
+#-----------------------------------
+# Event 44, Event to last alliance leaders that The Dark Overlord (Sauron or a Balrog) is attacking personally
+narrative_event = {
+	id = lastalliance.44
+	title = EVTTITlastalliance.44
+	desc = {
+		trigger = { FROM = { has_trait = balrog } }
+		text = EVTDESClastalliance.44a
+	}
+	desc = {
+		trigger = { FROM = { character = 10016 } }
+		text = EVTDESClastalliance.44b
+	}
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTlastalliance.44
+	}
+}
+#-----------------------------------
+# Event 45, Event to ruler of e_barad_dur that he (she?) is attacking
+character_event = {
+	id = lastalliance.45
+	title = EVTTITlastalliance.45
+	desc = {
+		trigger = { FROM = { has_trait = balrog } }
+		text = EVTDESClastalliance.45a
+	}
+	desc = {
+		trigger = { FROM = { character = 10016 } }
+		text = EVTDESClastalliance.45b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTlastalliance.45
+		character_event = { id = lastalliance.47 days = 2}
+	}
+}
+#-----------------------------------
+# Event 46, You will be fighting Sauron/the Balrog, how nice!
+character_event = {
+	id = lastalliance.46
+	title = EVTTITlastalliance.46
+	desc = {
+		trigger = { FROM = { has_trait = balrog } }
+		text = EVTDESClastalliance.46a
+	}
+	desc = {
+		trigger = { FROM = { character = 10016 } }
+		text = EVTDESClastalliance.46b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTlastalliance.46
+	}
+}
+#-----------------------------------
+# Event 47, hidden event to decide the outcome
+character_event = {
+	id = lastalliance.47
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	# Event dispatching
+	option = {
+		# no complicated checking here!
+		random_list = {
+			# Outcome 1, Evil wins complete victory!
+			20 = {
+				event_target:mep_lastalliance_evil_combatant = {
+					character_event = { id = lastalliance.48 }
+				}
+				event_target:mep_lastalliance_good_combatant1 = {
+					character_event = { id = lastalliance.49 }
+				}
+				event_target:mep_lastalliance_good_combatant2 = {
+					character_event = { id = lastalliance.49 }
+				}
+				any_independent_ruler = {
+					limit = {
+						has_character_flag = mep_lastalliance_joined
+						NOT = { has_character_flag = mep_lastalliance_combatant }
+					}
+					narrative_event = { id = lastalliance.44  days = 1 }
+				}
+			}
+			# Outcome 2 'Historical' (Evil Guy loses, both Good Guys die)
+			50 = {
+				event_target:mep_lastalliance_good_combatant1 = {
+					character_event = { id = lastalliance.51 }
+				}
+				event_target:mep_lastalliance_good_combatant2 = {
+					character_event = { id = lastalliance.51 }
+				}
+				any_independent_ruler = {
+					limit = {
+						has_character_flag = mep_lastalliance_joined
+						NOT = { has_character_flag = mep_lastalliance_combatant }
+					}
+					narrative_event = { id = lastalliance.55  days = 1 }
+				}
+				event_target:mep_lastalliance_evil_combatant = {
+					if = {
+						limit = { has_trait = balrog }
+						character_event = { id = lastalliance.54 }
+					}
+					if = {
+						limit = { character = 10016 }
+						character_event = { id = lastalliance.53 }
+					}
+					
+				}
+			}
+			# Outcome 3, Bad Guy Looses, Good Guy 1 killed
+			10 = {
+				event_target:mep_lastalliance_good_combatant2 = {
+					character_event = { id = lastalliance.52 }
+				}
+				any_independent_ruler = {
+					limit = {
+						has_character_flag = mep_lastalliance_joined
+						NOT = { has_character_flag = mep_lastalliance_combatant }
+					}
+					narrative_event = { id = lastalliance.56  days = 1 }
+				}
+				event_target:mep_lastalliance_evil_combatant = {
+					if = {
+						limit = { has_trait = balrog }
+						character_event = { id = lastalliance.54 }
+					}
+					if = {
+						limit = { character = 10016 }
+						character_event = { id = lastalliance.53 }
+					}
+				}
+				event_target:mep_lastalliance_good_combatant1 = {
+					character_event = { id = lastalliance.51 }
+				}
+			}
+			# Outcome 4, Bad Guy Looses, Good Guy 2 killed
+			10 = {
+				event_target:mep_lastalliance_good_combatant1 = {
+					character_event = { id = lastalliance.52 }
+				}
+				any_independent_ruler = {
+					limit = {
+						has_character_flag = mep_lastalliance_joined
+						NOT = { has_character_flag = mep_lastalliance_combatant }
+					}
+					narrative_event = { id = lastalliance.57  days = 1 }
+				}
+				event_target:mep_lastalliance_evil_combatant = {
+					if = {
+						limit = { has_trait = balrog }
+						character_event = { id = lastalliance.54 }
+					}
+					if = {
+						limit = { character = 10016 }
+						character_event = { id = lastalliance.53 }
+					}
+				}
+				event_target:mep_lastalliance_good_combatant2 = {
+					character_event = { id = lastalliance.51 }
+				}
+			}
+			# Outcome 5, Evil Dies, Good Guys win
+			10 = {
+				event_target:mep_lastalliance_evil_combatant = {
+					if = {
+						limit = { has_trait = balrog }
+						character_event = { id = lastalliance.60 }
+					}
+					if = {
+						limit = { character = 10016 }
+						character_event = { id = lastalliance.59 }
+					}
+				}
+				event_target:mep_lastalliance_good_combatant1 = {
+					character_event = { id = lastalliance.58 }
+				}
+				event_target:mep_lastalliance_good_combatant2 = {
+					character_event = { id = lastalliance.58 }
+				}
+				any_independent_ruler = {
+					limit = {
+						has_character_flag = mep_lastalliance_joined
+						NOT = { has_character_flag = mep_lastalliance_combatant }
+					}
+					narrative_event = { id = lastalliance.61  days = 1 }
+				}
+			}
+		}
+
+	}
+	
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Outcome 1 Bad Guy Wins
+#------------------------------------
+# Event 48 Event for the bad guy that he has won!
+character_event = {
+	id = lastalliance.48
+	title = EVTTITlastalliance.48
+	desc = {
+		trigger = { trait = balrog }
+		text = EVTDESClastalliance.48a
+	}
+	desc = {
+		trigger = { character = 10016 }
+		text = EVTDESClastalliance.48b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		# find a province to spawn troops
+		any_realm_province = {
+			limit = {
+				NOT = {
+					any_province_holding = { has_siege = yes }
+				}
+				
+			}
+			
+		}
+	}
+	
+	option = {
+		name = EVTOPTlastalliance.48
+		# insert commands here to:
+		# generate event troops (incl troll heavy infantry army)
+		# boost morale of all evil troops
+		# top up garrisons and levies
+		# set flags
+	}
+}
+#------------------------------------
+# Event 49 : Event to good guy participants that they have lost (and kill them)
+character_event = {
+	id = lastalliance.49
+	title = EVTTITlastalliance.49
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { trait = balrog } }
+		text = EVTDESClastalliance.49a
+	}
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
+		text = EVTDESClastalliance.49b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTlastalliance.49
+		event_target:mep_lastalliance_evil_combatant = {
+			PREV = {
+				any_army = {
+					morale = -0.5
+				}
+				death = {
+					death_reason = death_duel
+					killer = PREV
+				}
+			}
+		}
+		
+	}
+}
+#------------------------------------
+# Event 50 : Notification to Good-Guy leaders (not participating) of the defeat.
+narrative_event = {
+	id = lastalliance.50
+	title = EVTTITlastalliance.50
+	desc = EVTDESClastalliance.50
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Oh No!
+	option = {
+		name = EVTOPTlastalliance.50
+		any_army = {
+			morale = -0.5
+		}
+		random = {
+			chance = 50
+			add_trait = depressed
+		}
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Shared events
+#------------------------------------
+# Event 51 : You have won, but you will not survive
+character_event = {
+	id = lastalliance.51
+	title = EVTTITlastalliance.51
+	desc = {
+		trigger = { Fevent_target:mep_lastalliance_evil_combatant = { trait = balrog } }
+		text = EVTDESClastalliance.51a
+	}
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
+		text = EVTDESClastalliance.51b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Could be worse
+	option = {
+		name = EVTOPTlastalliance.51
+		event_target:mep_lastalliance_evil_combatant = {
+			PREV = {
+				clr_character_flag = mep_lastalliance_combatant
+				death = {
+					death_reason = death_duel
+					killer = PREV
+				}
+			}
+		}
+		
+	}
+}
+#------------------------------------
+# Event 52 : You have won, but your partner will not survive
+character_event = {
+	id = lastalliance.52
+	title = EVTTITlastalliance.52
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { trait = balrog } }
+		text = EVTDESClastalliance.52a
+	}
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
+		text = EVTDESClastalliance.52b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Could be worse
+	option = {
+		name = EVTOPTlastalliance.52
+		add_trait = wounded
+		clr_character_flag = mep_lastalliance_combatant
+		
+	}
+}
+#------------------------------------
+# Event 53 : Sauron Loses
+character_event = {
+	id = lastalliance.53
+	title = EVTTITlastalliance.53
+	desc = EVTDESClastalliance.53
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Damn
+	option = {
+		name = EVTOPTlastalliance.53
+		character_event = { id = lastalliance.62 }
+	}
+}
+#------------------------------------
+# Event 54 : Balrog Loses
+character_event = {
+	id = lastalliance.54
+	title = EVTTITlastalliance.54
+	desc = EVTDESClastalliance.54
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Damn
+	option = {
+		name = EVTOPTlastalliance.54
+		character_event = { id = lastalliance.62 }
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Outcome 2 : Bad Guy Loses, both Good guys killed
+#------------------------------------
+# Event 55 : Notification to Good-Guy leaders (not participating) of the victory.
+narrative_event = {
+	id = lastalliance.55
+	title = EVTTITlastalliance.55
+	desc = EVTDESClastalliance.55
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Good!
+	option = {
+		name = EVTOPTlastalliance.55
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Outcome 3 : Bad Guy Loses, Good Guy 1 Killed
+#------------------------------------
+# Event 56 : Notification to Good-Guy leaders (not participating) of the victory.
+narrative_event = {
+	id = lastalliance.56
+	title = EVTTITlastalliance.56
+	desc = EVTDESClastalliance.56
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Good!
+	option = {
+		name = EVTOPTlastalliance.56
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Outcome 4 : Bad Guy Loses, Good Guy 2 Killed
+#------------------------------------
+# Event 57 : Notification to Good-Guy leaders (not participating) of the victory.
+narrative_event = {
+	id = lastalliance.57
+	title = EVTTITlastalliance.57
+	desc = EVTDESClastalliance.57
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Good!
+	option = {
+		name = EVTOPTlastalliance.57
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+## Outcome 5 : Bad Guy Loses, Good Guys survive
+#------------------------------------
+# Event 58 : You have won the fight
+character_event = {
+	id = lastalliance.58
+	title = EVTTITlastalliance.58
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { has_trait = balrog } }
+		text = EVTDESClastalliance.58a
+	}
+	desc = {
+		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
+		text = EVTDESClastalliance.58b
+	}
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Wow
+	option = {
+		name = EVTOPTlastalliance.58
+		add_trait = wounded
+		clr_character_flag = mep_lastalliance_combatant
+	}
+}
+#------------------------------------
+# Event 59 : Sauron Loses
+character_event = {
+	id = lastalliance.59
+	title = EVTTITlastalliance.59
+	desc = EVTDESClastalliance.59
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Damn
+	option = {
+		name = EVTOPTlastalliance.59
+		character_event = { id = lastalliance.62 }
+	}
+}
+#------------------------------------
+# Event 60 : Balrog Loses
+character_event = {
+	id = lastalliance.60
+	title = EVTTITlastalliance.60
+	desc = EVTDESClastalliance.60
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	# Damn
+	option = {
+		name = EVTOPTlastalliance.60
+		character_event = { id = lastalliance.62 }
+	}
+}
+#------------------------------------
+# Event 61 : Notification to Good-Guy leaders (not participating) of the victory.
+narrative_event = {
+	id = lastalliance.61
+	title = EVTTITlastalliance.61
+	desc = EVTDESClastalliance.61
+	picture = GFX_evt_sauronreturns
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Good!
+	option = {
+		name = EVTOPTlastalliance.61
+	}
+}
+#+++++++++++++++++++++++++++++++++++++++++++
+# Post Outcome
+#------------------------------------
+# Event 62 : Massive Destroy-Mordor Event
+character_event = {
+	id = lastalliance.62	
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {}
+	
+	# Wow
+	option = {
+		# wreck barad-dur and morranon
+		# cede occupied lands to occupiers
+		# destroy vassal kingdoms
+		# any remaining vassals go independent
+		# destroy e_barad_dur
+		# destroy duchies
+		# find a courtier and dispose any remaining counties
+		# decide fate of sauron/balrog/whatever		
+		
+	}
+}
+#------------------------------------
+# Event 63 : What to do with the ring?
+#------------------------------------
+# Event 64 : What to do with Sauron if the ring is not destroyed
+
+
+
 
