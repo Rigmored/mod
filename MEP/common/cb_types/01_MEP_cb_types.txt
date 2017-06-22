@@ -1,14 +1,14 @@
-# religious1 Duchy level 'Holy War' for Good attacking Evil
-# religious2 Duchy level 'Holy War' for Evil attacking Good
+# good_attack_evil_duchy Duchy level 'Holy War' for Good attacking Evil
+# evil_attack_good_duchy Duchy level 'Holy War' for Evil attacking Good
 # reunited_kingdom_reconquest 
 # wilderness_arnorean
 # elessar_destiny_conquest
 # kingdom_good_attack_evil  Intended for scripted major attack evil wars
 
 # Holy War CB for Middle Earth mod, using good attacking evil
-religious1 = {
-	name = CB_NAME_RELIGIOUS_GOOD
-	war_name = WAR_NAME_RELIGIOUS
+good_attack_evil_duchy = {
+	name = CB_NAME_DUCHY_GOOD_ATTACK_EVIL
+	war_name = WAR_NAME_DUCHY_GOOD_ATTACK_EVIL
 	sprite = 9
 	truce_days = 1000
 	is_permanent = yes
@@ -263,9 +263,9 @@ religious1 = {
 }
 
 # Holy War CB for Middle Earth mod, using evil attacking good
-religious2 = {
-	name = CB_NAME_RELIGIOUS_EVIL
-	war_name = WAR_NAME_RELIGIOUS
+evil_attack_good_duchy = {
+	name = CB_NAME_DUCHY_EVIL_ATTACK_GOOD
+	war_name = WAR_NAME_DUCHY_EVIL_ATTACK_GOOD
 	sprite = 9
 	truce_days = 1000
 	is_permanent = yes
@@ -292,10 +292,16 @@ religious2 = {
 					mep_is_evil_side_trigger = yes
 				}
 			}
-			# Good defender
+			# Good (or at least 'nice') defender
 			custom_tooltip = {
 				text = TT_MEP_GOOD_DEFENDER
-				FROM = { mep_is_good_side_trigger = yes }
+				FROM = {
+					OR = {
+						mep_is_good_side_trigger = yes
+						religion_group = religion_group_periannath
+						culture = culture_breelander
+					}
+				}
 			}			
 			mercenary = no
 		}
@@ -341,7 +347,13 @@ religious2 = {
 			custom_tooltip = {
 				text = TT_MEP_GOOD_DEFENDER
 				# Good defender
-				FROM = { mep_is_good_side_trigger = yes }
+				FROM = {
+					OR = {
+						mep_is_good_side_trigger = yes
+						religion_group = religion_group_periannath
+						culture = culture_breelander
+					}
+				}
 			}
 				
 		}
@@ -410,7 +422,11 @@ religious2 = {
 						tier = count
 						#this is an attempt to limit the annexation to good side only 
 						holder_scope = {
-							mep_is_good_side_trigger = yes
+							OR = {
+								mep_is_good_side_trigger = yes
+								religion_group = religion_group_periannath
+								culture = culture_breelander
+							}
 							OR = {
 								character = FROM
 								is_liege_or_above = FROM
@@ -425,7 +441,11 @@ religious2 = {
 								has_holder = yes
 								#this is an attempt to limit the annexation 
 								holder_scope = {
-									mep_is_good_side_trigger = yes
+									OR = {
+										mep_is_good_side_trigger = yes
+										religion_group = religion_group_periannath
+										culture = culture_breelander
+									}
 									OR = {
 										character = FROM
 										is_liege_or_above = ROOT
@@ -442,7 +462,11 @@ religious2 = {
 						owner = { is_vassal_or_below = FROM }
 						# owner_under_FROM = yes
 						holder_scope = {
-							mep_is_good_side_trigger = yes
+							OR = {
+								mep_is_good_side_trigger = yes
+								religion_group = religion_group_periannath
+								culture = culture_breelander
+							}
 						}
 					}
 					usurp_title = { target = ROOT type = holy_war }
@@ -566,7 +590,7 @@ reunited_kingdom_reconquest = {
 			text = TT_MEP_RKRC_DEFENDER
 			FROM = {
 				NOR = {
-					mep_is_evil_side_trigger = yes  # use religious1 instead
+					mep_is_evil_side_trigger = yes  # use good_attack_evil_duchy instead
 					religion_group = religion_group_periannath  # too cute to die 
 					religion_group = religion_group_eldar  # too good to die
 				}
@@ -579,10 +603,19 @@ reunited_kingdom_reconquest = {
 		OR = {
 			de_jure_liege_or_above = e_gondor
 			de_jure_liege_or_above = e_arnor
-			de_jure_liege_or_above = k_enedwaith
-			de_jure_liege_or_above = k_angren
-			de_jure_liege_or_above = k_druwaith_iaur
-			de_jure_liege_or_above = k_dunland
+			AND = {
+				year = 8800
+				OR = {
+					de_jure_liege_or_above = k_enedwaith
+					de_jure_liege_or_above = k_angren
+					de_jure_liege_or_above = k_druwaith_iaur
+					de_jure_liege_or_above = k_dunland
+				}
+			}
+		}
+		NAND = {
+			de_jure_liege_or_above = k_harondor
+			NOT = { year = 8800 }
 		}
 		# conquest should proceed from existing borders, no skipping!
 		any_direct_de_jure_vassal_title = {
@@ -933,7 +966,7 @@ elessar_destiny_conquest = {
 		FROM = {
 			custom_tooltip = {
 				text = TT_MEP_NOT_EVIL_SIDE
-				NOT = { mep_is_evil_side_trigger = yes } # use religious1 instead
+				NOT = { mep_is_evil_side_trigger = yes } # use good_attack_evil_duchy instead
 			}
 			custom_tooltip = {
 				text = TT_MEP_NOT_GOOD_SIDE_HOB

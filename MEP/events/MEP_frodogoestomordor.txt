@@ -268,7 +268,7 @@ character_event = {
     title = "EVTTITfrodo.9"
     desc = "EVTDESCfrodo.9"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
 	
 	trigger = {
 		has_global_flag = ringleaveslorien
@@ -280,6 +280,10 @@ character_event = {
 		NOT = { has_global_flag = boromirhasring }
 		dynasty = 803
 		trait = ring
+	}
+	
+	immediate = {
+		save_event_target_as = mep_frodo_target
 	}
 	
 	mean_time_to_happen = { days = 30 }
@@ -464,15 +468,21 @@ character_event = {
 			character_event = { id = frodo.17 }
 		}
 		# Getting rid of the Nazgul
-		any_character  = {
-			limit = {
-				trait = nazgul	
-			}
+		nazgul = {
 			character_event = { id = frodo.18 days = 3}
 		}
+		any_independent_ruler = {
+			limit = { pays_tribute_to = ROOT }
+			suzerain = { remove_tributary = ROOT }
+        }
 		# Killing Sauron
-		death = {
-			death_reason = death_battle
+		event_target:mep_frodo_target = {
+			PREV = {
+				death = {
+					death_reason = death_destroyed_alongside_one_ring
+					killer = PREV
+				}
+			}
 		}
 		# auto-killing the Balrog
 		if = {
@@ -494,6 +504,12 @@ character_event = {
 		}	
 		# smashing barad-dur
 		c_barad_dur = {
+			location = {
+				province_event = { id = frodo.44 }
+			}
+		}
+		# smash the black gate
+		c_morannon = {
 			location = {
 				province_event = { id = frodo.44 }
 			}
@@ -612,8 +628,23 @@ character_event = {
 		}
 		recalc_succession = yes
 		remove_trait = nazgul
-		death = {
-			death_reason = death_battle
+		if = {
+			limit = { has_global_flag = saurondefeated }
+			event_target:mep_frodo_target = {
+				PREV = {
+					death = {
+						death_reason = death_destroyed_alongside_one_ring
+						killer = 8079
+					}
+				}
+			}
+		}
+		if = {
+			limit = { has_global_flag = mep_lastalliance_saurondefeated }
+			death = {
+				death_reason = death_destroyed_alongside_one_ring
+				killer = FROM
+			}
 		}
 	}
 }
@@ -1399,7 +1430,7 @@ character_event = {
 	}
 }
 
-# a special 'wreck barad-dur' event
+# a special 'wreck barad-dur' (and also morranon) event
 province_event = {
 	id = frodo.44
 	title = "EVTTITfrodo.44"
@@ -1414,6 +1445,7 @@ province_event = {
 		custom_tooltip = {
 			text = TT_MEP_WRECK_BARADDUR
 			any_province_holding = {
+				remove_building = ca_blackgate
 				remove_building = ca_baraddur
 				remove_building = ca_MOwall_5
 				remove_building = ca_MOwall_4

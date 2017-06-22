@@ -20,13 +20,16 @@ form_last_alliance = {
 			has_landed_title = e_gondor
 		}
 		mep_is_good_numenorean_culture = yes		
-		# not already in progress
+		# not already in progress or finished
 		NOR = {
 			has_global_flag = mep_start_lastalliance
 			has_global_flag = mep_lastalliance_done1
 			has_global_flag = mep_lastalliance_done2
 			has_global_flag = mep_lastalliance_offensive
+			has_global_flag = mep_lastalliance_counterstrike1
+			has_global_flag = mep_lastalliance_counterstrike2
 			has_global_flag = mep_lastalliance_saurondefeated
+			has_global_flag = mep_lastalliance_sauronwon
 		}
 		# Sauron (or an equivalent) must be in charge of his empire
 		e_barad_dur = {
@@ -44,7 +47,7 @@ form_last_alliance = {
 	
 	allow = {
 		NOT = { trait = evil_side }
-		# failed perviosu attempt has a timeout
+		# failed previous attempt has a timeout
 		NOT = { has_character_modifier = mep_lastalliance_failed }
 		# e_noldor must exist and have a non-evil ruler
 		e_noldor = {
@@ -93,6 +96,7 @@ last_alliance_attack = {
 	allow = {
 		NOT = { trait = evil_side }
 		war = no
+		has_raised_levies = no
 		wealth = 50
 	}
 	

@@ -103,10 +103,9 @@ character_event = {
 				hidden_tooltip = {
 					mep_human_popmod_remove_effect = yes
 					add_province_modifier = { name = two_population_dwarves duration = -1 }
-					# set_variable = { which = mep_provincepurge_special  value = 0 }
-					holder_scope = {
-						character_event = { id = dwarfconq.26 days = 1 }
-					}
+					set_variable = { which = mep_provincepurge_special  value = 0 }
+					# unfortunatly, I get 'Undefined event!' crashes for below, despite the fact that dwarfconq.26 *is* defined!
+					# province_event = { id = dwarfconq.26 days = 1 }
 				}
 			}
 			if = {

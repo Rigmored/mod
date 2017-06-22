@@ -16,6 +16,9 @@
 
 # mep_dwarf_colonize_pick_culture
 
+## 'killer' effects for evil races that are not supposed to proliferate
+# mep_young_fevil_change_effect
+
 mep_colonize_opinion_effect = {
 	if = {
 		limit = {
@@ -200,3 +203,142 @@ mep_dwarf_colonize_pick_culture = {
 	}
 
 }
+#----------------------------------------------------------------------------------------
+## 'killer' effects for races that are not supposed to proliferate
+# changes characters to orcs/trolls/black numenoreans
+mep_young_fevil_change_effect = {
+	# this is for evil characters only, so we might as well make sure they are evil
+	if = {
+		limit = {  NOT = { trait = evil_side }  }
+		add_trait = evil_side
+	}
+	# removing things that are going to go away
+	if = {
+		limit = { is_married = yes }
+		any_spouse = {
+			remove_spouse = PREV
+		}
+	}
+	if = {
+		limit = { trait = wight }
+		remove_trait = wight
+	}
+	if = {
+		limit = { trait = balrog }
+		remove_trait = balrog
+	}
+	if = {
+		limit = { trait = maiar }
+		remove_trait = maiar
+	}
+	# picking the target race
+	random_list = {
+		# Black Numenorean
+		10 = {
+			# Much more likely to be Black Númenórean in a Black Númenórean province
+			modifier = {
+				factor = 9
+				location = {
+					culture = culture_black_numenorean
+				}
+			}
+			modifier = {
+				factor = 9
+				employer = {
+					culture = culture_black_numenorean
+				}
+			}
+			# setting culture and religion...
+			culture = culture_black_numenorean
+			religion = religion_black_numenorean
+			set_graphical_culture = culture_black_numenorean
+			# numenorean blood traits
+			random_list = {
+				30 = { add_trait = blood_of_numenor }
+				70 = { add_trait = blood_of_numenor2 }
+			}
+			
+		}
+		# Orc/Uruk/Goblin
+		80 = {
+			if = { 
+				limit = {  NOT = { trait = orc }  }
+				add_trait = orc
+			}
+			# picking Goblin, Orc, or Uruk/Goblin
+			random_list = {
+				# Goblin
+				10 = {
+					modifier = {
+						factor = 9
+						location = { culture = culture_goblin }
+					}
+					modifier = {
+						factor = 9
+						employer = { culture = culture_goblin }
+					}
+					# setting culture and religion...
+					culture = culture_goblin
+					religion = religion_orkish
+					set_graphical_culture = culture_goblin
+				}
+				# Generic Orc
+				80 = {
+					# setting culture and religion...
+					culture = culture_orkish
+					religion = religion_orkish
+					set_graphical_culture = culture_orkish
+				}
+				# Uruk-hai
+				10 = {
+					modifier = {
+						factor = 9
+						location = { culture = culture_urukhai }
+					}
+					modifier = {
+						factor = 9
+						employer = { culture = culture_urukhai }
+					}
+					modifier = {
+						factor = 0
+						NOT = { year = 10800 }  # Uruk-Hai are first known to have appeared TA 2475)
+					}
+					# setting culture and religion...
+					culture = culture_urukhai
+					religion = religion_uruk
+					set_graphical_culture = culture_urukhai
+				}
+			}
+			# we now add orcish warrior traits
+			random_list = {
+				20 = { add_trait = weak_orc }
+				50 = { add_trait = orc_warrior }
+				20 = { add_trait = strong_orc }
+				10 = { add_trait = great_orc }
+			}
+		}
+		# Troll
+		10 = {
+			modifier = {
+				factor = 9
+				location = { culture = culture_troll }
+			}
+			modifier = {
+				factor = 9
+				employer = { culture = culture_troll }
+			}
+			if = {   # Trolls get the Orc 'Creature of Melkor') trait as well.
+				limit = {  NOT = { trait = orc }  }
+				add_trait = orc
+			}
+			# setting culture and religion...
+			culture = culture_troll
+			religion = religion_olog
+			set_graphical_culture = culture_troll
+			
+		}
+	}
+	# dynasty = random
+	recalc_succession = yes
+}
+

@@ -1676,7 +1676,10 @@ province_event = {
 						province_id = 17  # Minas Arnach
 						province_id = 18  # Pelargir
 						province_id = 270 # Fornost
-						province_id = 659 # Annunimas
+						AND = {
+							NOT = { year = 9400 }
+							province_id = 659 # Annunimas
+						}
 						province_id = 105 # Barrow Downs/Tyrn Gorthad capital of cardolan
 						province_id = 430 # Umbar						
 					}
@@ -1706,7 +1709,11 @@ province_event = {
 						# Other capitals
 						province_id = 26 # Linhir
 						province_id = 517 # Ûrêzâyan
-						province_id = 431 # Maros						
+						province_id = 431 # Maros	
+						AND = {
+							year = 9400
+							province_id = 659 # Annunimas
+						}						
 						
 					}
 				}
@@ -1750,6 +1757,11 @@ province_event = {
 						province_id = 234  # Imladris 
 						province_id = 657  # Mithlond	
 						province_id = 323  # #Thranduill's Halls
+						AND = { 
+							province_id = 429 # Edhellond
+							year = 6600
+							NOT = { year = 8330 }
+						}
 					}
 				}
 				add_province_modifier = { name = six_population_elves duration = -1 }	
@@ -1764,6 +1776,19 @@ province_event = {
 						province_id = 284  # Nan Celebrant
 						province_id = 327  # Taeg Din
 						province_id = 583  # Ulumuir (by the Sea of Rhûn)
+						AND = { 
+							province_id = 429 # Edhellond
+							OR = {
+								AND = {
+									year = 5900
+									NOT = { year = 6600 }
+								}
+								AND = {
+									year = 8330
+									NOT = { year = 9100 }
+								}
+							}
+						}
 					}
 				}
 				add_province_modifier = { name = four_population_elves duration = -1 }

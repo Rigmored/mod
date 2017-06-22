@@ -196,7 +196,7 @@ character_event = {
 			limit = { has_character_modifier = retaking_khazaddum }
 			remove_character_modifier = retaking_khazaddum
 		}
-		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650 }
 		if = {
 			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
 			set_global_flag = retaking_khazad_dum
@@ -833,7 +833,7 @@ character_event = {
 	}
 }
 #===================================================================
-# Longbeard-specific purge event for Azanulbizar and Khazad-D没m
+# Longbeard-specific purge event for Azanulbizar and Khazad-D鹠
 # called from on_new_holder
 character_event = {
 	id = dwarfconq.25
@@ -849,7 +849,7 @@ character_event = {
 			location = {
 				OR = {
 					province_id = 2 # Azanulbizar
-					province_id = 285 # Khazad-D没m
+					province_id = 285 # Khazad-D鹠
 				}
 				religion_group = religion_group_melkor
 				NOT = { has_province_modifier = being_purged }
@@ -875,8 +875,8 @@ character_event = {
 		ROOT = { wealth = -50 }
 		FROM = {
 			location = {
-				set_variable = { which = mep_provincepurge_special   value = 1}
-				add_province_modifier = { name = being_purged duration = 3650 }
+				set_variable = { which = mep_provincepurge_special  value = 1}
+				add_province_modifier = { name = being_purged  duration = 3650 }
 			}
 		}
 	}
@@ -887,7 +887,7 @@ character_event = {
 	}
 }
 
-character_event = {
+province_event = {
 	id = dwarfconq.26
 	title = EVTTITdwarfconq.26
 	desc = EVTDESCdwarfconq.26
@@ -938,7 +938,7 @@ character_event = {
 
 
 #=============================================================================================================
-# Re-conquering Khazad-D没m
+# Re-conquering Khazad-D鹠
 # Disambiguation event
 character_event = {
 	id = dwarfconq.30
@@ -956,7 +956,7 @@ character_event = {
 	
 } 
 
-# Launch a war to reconquer Khazad-D没m (Melkor/Dwarven Version, has enough money)
+# Launch a war to reconquer Khazad-D鹠 (Melkor/Dwarven Version, has enough money)
 character_event = {
     id = dwarfconq.31
 	title = EVTTITdwarfconq.31
@@ -1133,7 +1133,7 @@ character_event = {
 	
 }
 
-# Launch a war to reconquer Khazad-D没m (Melkor/Dwarven Version, does not have enough money)
+# Launch a war to reconquer Khazad-D鹠 (Melkor/Dwarven Version, does not have enough money)
 character_event = {
     id = dwarfconq.32
 	title = EVTTITdwarfconq.32
@@ -1683,7 +1683,7 @@ character_event = {
 	
 }
 
-# Launch a war to reconquer Khazad-D没m (NON Melkor/Dwarven Version, has enough money)
+# Launch a war to reconquer Khazad-D鹠 (NON Melkor/Dwarven Version, has enough money)
 # Massive event troops not needed because if moria's population is neither dwarves
 # nor creatures of melkor, the special levy/garrison boosting buildings cannot exist.
 character_event = {
@@ -1821,7 +1821,7 @@ character_event = {
 	
 }
 
-# Launch a war to reconquer Khazad-D没m (NON Melkor/Dwarven Version, does NOT have enough money)
+# Launch a war to reconquer Khazad-D鹠 (NON Melkor/Dwarven Version, does NOT have enough money)
 # Massive event troops not needed because if moria's population is neither dwarves
 # nor creatures of melkor, the special levy/garrison boosting buildings cannot exist.
 character_event = {
@@ -2097,7 +2097,7 @@ character_event = {
 }
 
 #-------------------------------------------------------------------------------------------------------
-# Buying Khazad-D没m
+# Buying Khazad-D鹠
 # Try to Buy Moria from non-dwarves
 character_event = {
 	id = dwarfconq.50
@@ -2237,7 +2237,7 @@ character_event = {
 	}
 }
 
-# Try to Buy Khazad-d没m from non-longbeard dwarves
+# Try to Buy Khazad-d鹠 from non-longbeard dwarves
 character_event = {
 	id = dwarfconq.52
 	title = EVTTITdwarfconq.52
@@ -2351,7 +2351,7 @@ character_event = {
 	}
 }
 
-# Message event where the Dwarven holder of Khazad-d没m can choose whether to sell
+# Message event where the Dwarven holder of Khazad-d鹠 can choose whether to sell
 character_event = {
 	id = dwarfconq.53
 	title = EVTTITdwarfconq.53
@@ -2388,7 +2388,7 @@ character_event = {
 	}
 }
 
-# Khazad-d没m is held by a one-province Longbeard ruler, but his overlord is not Longbeard...
+# Khazad-d鹠 is held by a one-province Longbeard ruler, but his overlord is not Longbeard...
 # the Longbeards try to get a vassal transfer
 character_event = {
 	id = dwarfconq.54

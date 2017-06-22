@@ -3,13 +3,15 @@
 #-----------------------------------------------------
 # Global Flags:
 # mep_start_lastalliance, mep_lastalliance_done1, mep_lastalliance_done2
-# mep_lastalliance_offensive, mep_lastalliance_saurondefeated
+# mep_lastalliance_offensive, mep_lastalliance_counterstrike1, mep_lastalliance_counterstrike2,
+# mep_lastalliance_saurondefeated, mep_lastalliance_sauronwon
 # Character Flgas:
 # mep_lastalliance_leader, mep_lastalliance_joined
 #------------------------------------------------------------
 # Events 0 to 8 : Setting up the alliance (with notifications)
 # Events 10 to x : Declare war and send notifications
-# Events 40 to y : Duel with Sauron/Mordor Leader, and aftermath
+# Events 20 to 25 : Inherit Alliance
+# Events 40 to 67 : Duel with Sauron/Mordor Leader, and aftermath
 
 namespace = lastalliance
 #------------------------------------------------------------
@@ -47,7 +49,7 @@ long_character_event = {
 		wealth = -50
 		# schedule event that will check the results of the messages
 		hidden_tooltip = {
-			character_event = { id = lastalliance.4  days = 30 }
+			character_event = { id = lastalliance.4  days = 20 }
 		}
 		
 	}
@@ -130,7 +132,7 @@ character_event = {
 	id = lastalliance.2
 	title = EVTTITlastalliance.2
 	desc = EVTDESClastalliance.2
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_oath_of_eorl
 	
 	is_triggered_only = yes
 	
@@ -180,7 +182,7 @@ character_event = {
 	id = lastalliance.3
 	title = EVTTITlastalliance.3
 	desc = EVTDESClastalliance.3
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil_king
 	
 	is_triggered_only = yes
 	
@@ -270,7 +272,7 @@ character_event = {
 	id = lastalliance.5
 	title = EVTTITlastalliance.5
 	desc = EVTDESClastalliance.5
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_elf_meeting
 	
 	is_triggered_only = yes
 	
@@ -334,16 +336,16 @@ character_event = {
 			
 		}
 		# final preps...
+		wealth = 1000  # From donations
 		hidden_tooltip = {
 			clr_global_flag = mep_lastalliance_done1
 			set_global_flag = mep_lastalliance_done2
 			set_character_flag = mep_lastalliance_leader
 		}
 		
-
 	}
 	
-	# just in case the propoer of the alliance, or gil-galad dies at just the wrong moment...
+	# just in case the proposer of the alliance, or Gil-Galad dies at just the wrong moment...
 	option = {
 		name = EVTOPTBlastalliance.5
 		trigger = {
@@ -377,7 +379,7 @@ character_event = {
 	id = lastalliance.6
 	title = EVTTITlastalliance.6
 	desc = EVTDESClastalliance.6
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil_king
 	
 	is_triggered_only = yes
 	
@@ -402,7 +404,7 @@ character_event = {
 		trigger = { FROM = { is_alive = no } }
 		text = EVTDESClastalliance.7b
 	}
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil_king
 	
 	is_triggered_only = yes
 	
@@ -418,7 +420,7 @@ character_event = {
 	id = lastalliance.8
 	title = EVTTITlastalliance.8
 	desc = EVTDESClastalliance.8
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_elf_meeting
 	
 	is_triggered_only = yes
 	
@@ -436,7 +438,7 @@ character_event = {
 	id = lastalliance.10
 	title = EVTTITlastalliance.10
 	desc = EVTDESClastalliance.10
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_battle_scene
 	
 	is_triggered_only = yes
 	
@@ -468,6 +470,269 @@ character_event = {
 	
 }
 #===========================================================================
+# making certain character flags inheritable...
+character_event = {
+	id = lastalliance.20
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	# passing on some last alliance character flags (with events) on_death
+	option = {
+		trigger = {
+			OR = {
+				has_global_flag = mep_lastalliance_done2
+				has_global_flag = mep_lastalliance_offensive
+				has_global_flag = mep_lastalliance_counterstrike1
+				has_global_flag = mep_lastalliance_counterstrike2
+				NOT = { has_global_flag = mep_lastalliance_saurondefeated }
+			}
+			is_ruler = yes
+			OR = {
+				has_character_flag = mep_lastalliance_leader
+				has_character_flag = mep_lastalliance_joined
+			}
+		}
+		# Note: the following code should be replaced to reflect non-single-line inheritance...
+		# the leader of the last alliance has died, you, current_heir, are now in command
+		if = {
+			limit = { has_character_flag = mep_lastalliance_leader }
+			current_heir = {
+				set_character_flag = mep_lastalliance_leader
+				character_event = { id = lastalliance.21  days = 1}
+			}
+		}
+		# you joined the last alliance, death breaks this alliance. Your heir is sent an invite to join...
+		if = {
+			limit = { has_character_flag = mep_lastalliance_joined }
+			current_heir = {
+				if = {
+					limit = {  NOT = { has_character_flag = mep_lastalliance_joined }  }
+					character_event = { id = lastalliance.22  days = 2 }
+				}
+			}	
+		}
+	}
+	
+	# I think you always need a possible option
+	option = {
+		trigger = {
+			OR = {
+				is_ruler = no
+				has_global_flag = mep_lastalliance_saurondefeated
+				NOR = {
+					has_global_flag = mep_lastalliance_done2
+					has_global_flag = mep_lastalliance_offensive
+					has_global_flag = mep_lastalliance_counterstrike1
+					has_global_flag = mep_lastalliance_counterstrike2
+				}
+				NOR = {
+					has_character_flag = mep_lastalliance_leader
+					has_character_flag = mep_lastalliance_joined
+				}
+			}
+		}
+		# Do nothing
+	}
+}
+#------------------------------------------------
+# you are leader of the last alliance now!
+character_event = {
+	id = lastalliance.21
+	title = EVTTITlastalliance.21
+	desc = EVTDESClastalliance.21
+	picture = GFX_evt_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	# Go ahead
+	option = {
+		name = EVTOPTAlastalliance.21
+		# in CK2, alliances are personal, so to keep the alliance going, we need to re-make the alliance
+		any_independent_ruler = {
+			limit = { has_character_flag = mep_lastalliance_joined }
+			opinion = {
+				modifier = in_non_aggression_pact
+				who = ROOT
+				years = 15
+			}
+			reverse_opinion = {
+				modifier = in_non_aggression_pact
+				who = ROOT
+				years = 15
+			}
+			add_alliance = { who = ROOT years = 15 }
+		}
+		# also, the leader is not supposed to have the joined flag, so we remove it, if it is there
+		if = {
+			limit = { has_character_flag = mep_lastalliance_joined }
+			clr_character_flag = mep_lastalliance_joined
+		}
+	}
+}
+#-----------------------------------------------------------
+# You are the successor of someone who joined the last alliance (still ongoing)
+# will you carry on this alliance?
+character_event = {
+	id = lastalliance.22
+	title = EVTTITlastalliance.22
+	desc = EVTDESClastalliance.22
+	picture = GFX_evt_sauronreturns
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		# does this successor meet the requirements?
+		if = {
+			limit = {
+				independent = yes
+				higher_real_tier_than  = count
+				mercenary = no
+				mep_is_good_side_trigger = yes
+				NOT = { religion_group = religion_group_enyd }
+				NOT = { culture = culture_valar }
+				NOT = { culture = culture_enigma }
+			}
+			set_character_flag = mep_lastalliance_rejoin_allowed
+		}
+		# marking the alliance leader for use
+		any_independent_ruler = {
+			limit = { has_character_flag = mep_lastalliance_leader }
+			save_event_target_as = mep_lastalliance_leader_target
+		}
+	}
+	
+	# Yes
+	option = {
+		name = EVTOPTAlastalliance.22
+		trigger = {
+			has_character_flag = mep_lastalliance_rejoin_allowed
+			event_target:mep_lastalliance_leader_target = {
+				NOT = { war_with = PREV }
+			}
+		}
+		# AI never joins if their opinion of the caller is less than -20
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { opinion = { who = FROM value = -20 } }
+			}
+		}
+		# re-doing the alliance (hopefully no vassal wars between them underway...)
+		event_target:mep_lastalliance_leader_target = {
+			PREV = {
+				opinion = {
+					modifier = in_non_aggression_pact
+					who = PREV
+					years = 15
+				}
+				reverse_opinion = {
+					modifier = in_non_aggression_pact
+					who = PREV
+					years = 15
+				}
+				add_alliance = { who = PREV years = 15 } 
+			}
+			# notifying the alliance leader of this
+			character_event = { id = lastalliance.23  days = 6 }
+		}
+		clr_character_flag = mep_lastalliance_rejoin_allowed
+
+	}
+	# No
+	option = {
+		name = EVTOPTBlastalliance.22
+		trigger = {
+			has_character_flag = mep_lastalliance_rejoin_allowed
+			event_target:mep_lastalliance_leader_target = {
+				NOT = { war_with = PREV }
+			}
+		}
+		# AI always joins if their opinion of the caller is better than 30
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				opinion = { who = FROM value = 30 }
+			}
+		}
+		# notifying the alliance leader of this
+		event_target:mep_lastalliance_leader_target = {
+			character_event = { id = lastalliance.24  days = 6 }
+		}
+		clr_character_flag = mep_lastalliance_rejoin_allowed
+	}
+	
+	# I don't meet the requirements
+	option = {
+		name = EVTOPTClastalliance.22
+		trigger = { NOT = { has_character_flag = mep_lastalliance_rejoin_allowed } }
+		# notifying the alliance leader of this
+		event_target:mep_lastalliance_leader_target = {
+			character_event = { id = lastalliance.25  days = 5 }
+		}
+	}
+	
+}
+#------------------------------------------------
+# Notification, Successor x will 'rejoin' last alliance
+character_event = {
+	id = lastalliance.23
+	title = EVTTITlastalliance.23
+	desc = EVTDESClastalliance.23
+	picture = GFX_evt_oath_of_eorl
+	
+	is_triggered_only = yes
+	
+	# Good!
+	option = {
+		trigger = {  NOT = { has_global_flag = mep_lastalliance_saurondefeated } }
+		name = EVTOPTAlastalliance.23
+	}
+	# It's over now, but thanks!
+	option = {
+		trigger = {  has_global_flag = mep_lastalliance_saurondefeated }
+		name = EVTOPTBlastalliance.23
+	}
+}
+#------------------------------------------------
+# Notification, Successor x will NOT 'rejoin' last alliance
+character_event = {
+	id = lastalliance.24
+	title = EVTTITlastalliance.24
+	desc = EVTDESClastalliance.24
+	picture = GFX_evt_evil_king
+	
+	is_triggered_only = yes
+	
+	# Bad!
+	option = {
+		trigger = { NOT = { has_global_flag = mep_lastalliance_saurondefeated } }
+		name = EVTOPTAlastalliance.24
+	}
+	# It does not matter, now
+	option = {
+		trigger = { has_global_flag = mep_lastalliance_saurondefeated }
+		name = EVTOPTBlastalliance.24
+	}
+}
+#------------------------------------------------
+# Notification, Successor x CANNOT 'rejoin' last alliance
+character_event = {
+	id = lastalliance.25
+	title = EVTTITlastalliance.25
+	desc = EVTDESClastalliance.25
+	picture = GFX_evt_evil_king
+	
+	is_triggered_only = yes
+	
+	# Sad!
+	option = {
+		name = EVTOPTAlastalliance.25
+	}
+}
+#===========================================================================
 # The End of Mordor ?
 #-----------------------------------
 # Event 40 : Near defeat, the Dark Lord decides whether to run, or attack the Enemy leaders personally
@@ -475,7 +740,7 @@ character_event = {
 	id = lastalliance.40
 	title = EVTTITlastalliance.40
 	desc = EVTDESClastalliance.40
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil
 	only_playable = yes
 	war = yes
 	has_global_flag = mep_lastalliance_offensive
@@ -485,11 +750,12 @@ character_event = {
 	}
 	
 	trigger = {
-		always = no  # disables this for now
+		# always = no  # disables this for now
 		has_landed_title = e_barad_dur
 		# The following should ensure that loosing at 90% or more against the last alliance triggers the event
 		is_primary_war_defender = yes
 		any_war = {
+			using_cb = kingdom_good_attack_evil
 			war_score = 90
 			attacker = {
 				OR = {
@@ -508,7 +774,7 @@ character_event = {
 		trigger = {
 			OR = { 
 				character = 10016
-				culture = culture_balrog
+				trait = balrog
 			}
 		}
 		ai_chance = { factor = 9 }
@@ -526,7 +792,7 @@ character_event = {
 	}
 	
 }
-
+#-------------------------------------------------------------
 # Event 41: a hidden event that sets up things for the combat 
 character_event = {
 	id = lastalliance.41
@@ -616,7 +882,7 @@ character_event = {
 	}
 	
 }
-
+#---------------------------------------------------------------
 # Event 42 : hidden event when the ruler runs, dispatches the notification Event 43, and launches the destroy Mordor event
 character_event = {
 	id = lastalliance.42
@@ -634,13 +900,13 @@ character_event = {
 		log = "@@ LastAlliance.42 B"
 	}
 }
-
+#-----------------------------------------
 # Event 43, notification event that the Evil Overlord of Mordor has abandoned Mordor and made a run for it.
 narrative_event = {
 	id = lastalliance.43
 	title = EVTTITlastalliance.43
 	desc = EVTDESClastalliance.43
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_battle_duel
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -655,7 +921,7 @@ narrative_event = {
 	id = lastalliance.44
 	title = EVTTITlastalliance.44
 	desc = {
-		trigger = { FROM = { has_trait = balrog } }
+		trigger = { FROM = { trait = balrog } }
 		text = EVTDESClastalliance.44a
 	}
 	desc = {
@@ -677,7 +943,7 @@ character_event = {
 	id = lastalliance.45
 	title = EVTTITlastalliance.45
 	desc = {
-		trigger = { FROM = { has_trait = balrog } }
+		trigger = { FROM = { trait = balrog } }
 		text = EVTDESClastalliance.45a
 	}
 	desc = {
@@ -699,7 +965,7 @@ character_event = {
 	id = lastalliance.46
 	title = EVTTITlastalliance.46
 	desc = {
-		trigger = { FROM = { has_trait = balrog } }
+		trigger = { FROM = { trait = balrog } }
 		text = EVTDESClastalliance.46a
 	}
 	desc = {
@@ -742,7 +1008,7 @@ character_event = {
 						has_character_flag = mep_lastalliance_joined
 						NOT = { has_character_flag = mep_lastalliance_combatant }
 					}
-					narrative_event = { id = lastalliance.44  days = 1 }
+					narrative_event = { id = lastalliance.50  days = 1 }
 				}
 			}
 			# Outcome 2 'Historical' (Evil Guy loses, both Good Guys die)
@@ -762,7 +1028,7 @@ character_event = {
 				}
 				event_target:mep_lastalliance_evil_combatant = {
 					if = {
-						limit = { has_trait = balrog }
+						limit = { trait = balrog }
 						character_event = { id = lastalliance.54 }
 					}
 					if = {
@@ -786,7 +1052,7 @@ character_event = {
 				}
 				event_target:mep_lastalliance_evil_combatant = {
 					if = {
-						limit = { has_trait = balrog }
+						limit = { trait = balrog }
 						character_event = { id = lastalliance.54 }
 					}
 					if = {
@@ -812,7 +1078,7 @@ character_event = {
 				}
 				event_target:mep_lastalliance_evil_combatant = {
 					if = {
-						limit = { has_trait = balrog }
+						limit = { trait = balrog }
 						character_event = { id = lastalliance.54 }
 					}
 					if = {
@@ -828,7 +1094,7 @@ character_event = {
 			10 = {
 				event_target:mep_lastalliance_evil_combatant = {
 					if = {
-						limit = { has_trait = balrog }
+						limit = { trait = balrog }
 						character_event = { id = lastalliance.60 }
 					}
 					if = {
@@ -876,24 +1142,237 @@ character_event = {
 	
 	immediate = {
 		# find a province to spawn troops
-		any_realm_province = {
+		# Barad-dûr (if not under siege)
+		if = {
 			limit = {
-				NOT = {
-					any_province_holding = { has_siege = yes }
+				c_barad_dur = {
+					location = {
+						NOT = { any_province_holding = { has_siege = yes } }
+					}
 				}
-				
 			}
-			
+			c_barad_dur = {
+				location = {
+					save_event_target_as = mep_lastalliance_evilspawnprov
+				}
+			}
+			break = yes
 		}
+		# a neighboring province (if not under siege)
+		if = {
+			limit = {
+				c_barad_dur = {
+					location = {
+						any_province_holding = { has_siege = yes }
+						any_neighbor_province = {
+							NOT = { any_province_holding = { has_siege = yes } }
+						}
+					}
+				}
+			}
+			c_barad_dur = {
+				location = {
+					random_neighbor_province = {
+						limit = { NOT = { any_province_holding = { has_siege = yes } } }
+						save_event_target_as = mep_lastalliance_evilspawnprov
+					}
+				}
+			}
+			break = yes
+		}
+		# Barad-dûr (if all is under siege)
+		c_barad_dur = {
+			location = {
+				save_event_target_as = mep_lastalliance_evilspawnprov
+			}
+		}
+
 	}
 	
 	option = {
 		name = EVTOPTlastalliance.48
-		# insert commands here to:
-		# generate event troops (incl troll heavy infantry army)
+		# make troll heavy infantry army
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = religion_olog
+			culture = culture_troll
+			trait = orc # for trolls as well
+			trait = evil_side
+			trait = heavy_infantry_leader
+			trait = brilliant_strategist
+			female = no
+			age = 42
+		}
+		event_target:mep_lastalliance_evilspawnprov = {
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = PREVPREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 10000 10000 }
+					}
+					reinforces = yes
+					reinforce_rate_multiplier = 0.1						
+				}
+				give_minor_title = title_commander
+			}
+		}
+		# orc forces. note that the Uruk-Hai did not appear until late 3rd age.
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			trait = orc
+			trait = great_orc
+			trait = evil_side
+			trait = mountain_terrain_leader
+			trait = brilliant_strategist
+			female = no
+			age = 39
+		}
+		event_target:mep_lastalliance_evilspawnprov = {
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = PREVPREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes
+					reinforce_rate_multiplier = 0.1						
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			trait = orc
+			trait = great_orc
+			trait = evil_side
+			trait = organizer
+			trait = brilliant_strategist
+			female = no
+			age = 41
+		}
+		event_target:mep_lastalliance_evilspawnprov = {
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = PREVPREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes
+					reinforce_rate_multiplier = 0.1						
+				}
+			}
+		}
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			trait = orc
+			trait = great_orc
+			trait = evil_side
+			trait = aggressive_leader
+			trait = brilliant_strategist
+			female = no
+			age = 36
+		}
+		event_target:mep_lastalliance_evilspawnprov = {
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = PREVPREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes
+					reinforce_rate_multiplier = 0.1						
+				}
+			}
+		}
+		# this orc army will not be disbanded on peace, for that reason it does not reinforce
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = religion_orkish
+			culture = culture_orkish
+			trait = orc
+			trait = great_orc
+			trait = evil_side
+			trait = siege_leader
+			trait = brilliant_strategist
+			female = no
+			age = 48
+		}
+		event_target:mep_lastalliance_evilspawnprov = {
+			new_character = {
+				spawn_unit = {
+					province = PREV
+					owner = PREVPREV
+					disband_on_peace = no
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}			
+				}
+			}
+		}
 		# boost morale of all evil troops
+		any_army = { morale = +1 }
+		any_vassal  = {
+			any_army = { morale = +1 }
+		}
 		# top up garrisons and levies
+		any_realm_province = {
+			any_province_holding = {
+				limit = { is_occupied = no}
+				refill_holding_levy = yes
+			}
+		}
+		# get money
+		wealth = 2000
 		# set flags
+		hidden_tooltip = {
+			clr_global_flag = mep_lastalliance_offensive
+			set_global_flag = mep_lastalliance_counterstrike1
+			character_event = { id = lastalliance.75  days = 75 }  # give 75 days to improve things before unlocking possibly surrender
+		}
 	}
 }
 #------------------------------------
@@ -909,13 +1388,28 @@ character_event = {
 		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
 		text = EVTDESClastalliance.49b
 	}
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	
 	is_triggered_only = yes
 	
 	option = {
 		name = EVTOPTlastalliance.49
 		event_target:mep_lastalliance_evil_combatant = {
+			# bad guy takes artifact weapons
+			any_artifact = {
+				limit = {
+					OR = {
+						has_artifact_flag = sword
+						has_artifact_flag = spear
+						has_artifact_flag = axe
+					}
+				}
+				transfer_artifact = {
+					from = PREVPREV
+					to = PREV
+				}
+			}
+			# good guys: demoralize thier armies, then kill them
 			PREV = {
 				any_army = {
 					morale = -0.5
@@ -935,7 +1429,7 @@ narrative_event = {
 	id = lastalliance.50
 	title = EVTTITlastalliance.50
 	desc = EVTDESClastalliance.50
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -960,20 +1454,31 @@ character_event = {
 	id = lastalliance.51
 	title = EVTTITlastalliance.51
 	desc = {
-		trigger = { Fevent_target:mep_lastalliance_evil_combatant = { trait = balrog } }
+		trigger = { event_target:mep_lastalliance_evil_combatant = { trait = balrog } }
 		text = EVTDESClastalliance.51a
 	}
 	desc = {
 		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
 		text = EVTDESClastalliance.51b
 	}
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	
 	is_triggered_only = yes
 	
 	# Could be worse
 	option = {
 		name = EVTOPTlastalliance.51
+		# handling artifact destruction
+		if = {
+			limit = { has_artifact = aeglos }
+			destroy_artifact = aeglos
+		}
+		if = {
+			limit = { has_artifact = narsil_elendil }
+			destroy_artifact = narsil_elendil
+			current_heir = { add_trait = narsil }
+		}
+		# be killed!
 		event_target:mep_lastalliance_evil_combatant = {
 			PREV = {
 				clr_character_flag = mep_lastalliance_combatant
@@ -999,7 +1504,7 @@ character_event = {
 		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
 		text = EVTDESClastalliance.52b
 	}
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	
 	is_triggered_only = yes
 	
@@ -1017,7 +1522,7 @@ character_event = {
 	id = lastalliance.53
 	title = EVTTITlastalliance.53
 	desc = EVTDESClastalliance.53
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil
 	
 	is_triggered_only = yes
 	
@@ -1033,7 +1538,7 @@ character_event = {
 	id = lastalliance.54
 	title = EVTTITlastalliance.54
 	desc = EVTDESClastalliance.54
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_worship_balrog
 	
 	is_triggered_only = yes
 	
@@ -1051,7 +1556,7 @@ narrative_event = {
 	id = lastalliance.55
 	title = EVTTITlastalliance.55
 	desc = EVTDESClastalliance.55
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -1069,7 +1574,7 @@ narrative_event = {
 	id = lastalliance.56
 	title = EVTTITlastalliance.56
 	desc = EVTDESClastalliance.56
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -1087,7 +1592,7 @@ narrative_event = {
 	id = lastalliance.57
 	title = EVTTITlastalliance.57
 	desc = EVTDESClastalliance.57
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_death
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -1105,14 +1610,14 @@ character_event = {
 	id = lastalliance.58
 	title = EVTTITlastalliance.58
 	desc = {
-		trigger = { event_target:mep_lastalliance_evil_combatant = { has_trait = balrog } }
+		trigger = { event_target:mep_lastalliance_evil_combatant = { trait = balrog } }
 		text = EVTDESClastalliance.58a
 	}
 	desc = {
 		trigger = { event_target:mep_lastalliance_evil_combatant = { character = 10016 } }
 		text = EVTDESClastalliance.58b
 	}
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_battle_duel
 	
 	is_triggered_only = yes
 	
@@ -1129,7 +1634,7 @@ character_event = {
 	id = lastalliance.59
 	title = EVTTITlastalliance.59
 	desc = EVTDESClastalliance.59
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_evil
 	
 	is_triggered_only = yes
 	
@@ -1145,7 +1650,7 @@ character_event = {
 	id = lastalliance.60
 	title = EVTTITlastalliance.60
 	desc = EVTDESClastalliance.60
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_worship_balrog
 	
 	is_triggered_only = yes
 	
@@ -1161,7 +1666,7 @@ narrative_event = {
 	id = lastalliance.61
 	title = EVTTITlastalliance.61
 	desc = EVTDESClastalliance.61
-	picture = GFX_evt_sauronreturns
+	picture = GFX_evt_elf_meeting
 	border = GFX_event_narrative_frame_war
 	
 	is_triggered_only = yes
@@ -1183,23 +1688,400 @@ character_event = {
 	
 	immediate = {}
 	
-	# Wow
+	# Whoa...
 	option = {
-		# wreck barad-dur and morranon
-		# cede occupied lands to occupiers
+		# set some flags
+		hidden_tooltip = {
+			clr_global_flag = mep_lastalliance_offensive
+			clr_global_flag = mep_lastalliance_counterstrike1
+			clr_global_flag = mep_lastalliance_counterstrike2
+			set_global_flag = mep_lastalliance_saurondefeated
+		}
+		# end war? (it seems you can't save a war scope as an event_target)
+		#any_war = {
+		#	limit = {
+		#		using_cb = kingdom_good_attack_evil
+		#		attacker = {
+		#			OR = {
+		#				has_character_flag = mep_lastalliance_leader
+		#				has_landed_title = e_reunited_kingdom
+		#				has_landed_title = e_gondor
+		#			}
+		#		}
+		#	}
+		#	end_war = success
+		#}
+		# cede occupied holdings to occupiers (not sure if this is the best option)
+		any_realm_province = {
+			any_province_holding = {
+				controller = {
+					if = {
+						limit = {
+							NOR = {
+								character = ROOT
+								is_liege_or_above  = ROOT
+							}
+						}
+						gain_title = PREV
+					}
+				}
+			}
+		}
 		# destroy vassal kingdoms
+		any_vassal = {
+			limit = { tier = king }
+			any_demesne_title = {
+				if = {
+					limit = { tier = king }
+					destroy_landed_title = THIS
+				}
+			}
+		}
+		# get rid of tributaries
+		any_independent_ruler = {
+			limit = { pays_tribute_to = ROOT }
+			suzerain = { remove_tributary = ROOT }
+        }
 		# any remaining vassals go independent
+		any_vassal = {
+			limit = { higher_tier_than = baron }
+			set_defacto_liege = THIS
+		}
 		# destroy e_barad_dur
+		e_barad_dur = {
+			destroy_landed_title = THIS
+		}
+		# end war? (it seems you can't save a war scope as an event_target)
+		any_war = {
+			limit = {
+				using_cb = kingdom_good_attack_evil
+				attacker = {
+					OR = {
+						has_character_flag = mep_lastalliance_leader
+						has_landed_title = e_reunited_kingdom
+						has_landed_title = e_gondor
+					}
+				}
+			}
+			end_war = invalid
+		}
+		# just incase
+		if = {
+			limit = { has_landed_title = k_mordor }
+			k_mordor = { destroy_landed_title = THIS }
+		}
 		# destroy duchies
-		# find a courtier and dispose any remaining counties
-		# decide fate of sauron/balrog/whatever		
+		any_demesne_title = {
+			limit = { tier = duke }
+			destroy_landed_title = THIS
+		}
+		# abdicate. I'm hopeful that the heir is logical, instead of needing cripted disposal of remining territories
+		recalc_succession = yes
+		abdicate = yes
+		# decide fate of sauron/balrog/whatever	
+		# the leader is running, go to the exile place!
+		if = {
+			limit = { has_character_flag = mep_lastalliance_evilrun }
+			activate_title = { title = d_sauron_exile status = yes }
+			d_sauron_exile = { gain_title = PREV }
+			clr_character_flag = mep_lastalliance_evilrun
+		}
+		# otherwise...
+		# Case Balrog. I will for now ignore the possibility that the Balrog has the ring
+		if = {
+			limit = {
+				NOT = { has_character_flag = mep_lastalliance_evilrun }
+				trait = balrog
+			}
+			death = { death_reason = death_duel }
+		}
+		# Case Sauron
+		if = {
+			limit = {
+				NOT = { has_character_flag = mep_lastalliance_evilrun }
+				character = 10016
+			}
+			# The alliance leader will decide the fate of the ring
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_leader }
+				character_event = { id = lastalliance.63 }
+			}
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_joined }
+				narrative_event = {	id = lastalliance.65 }
+			}
+		}
 		
 	}
 }
 #------------------------------------
 # Event 63 : What to do with the ring?
+character_event = {
+	id = lastalliance.63
+	title = EVTTITlastalliance.63
+	desc = EVTDESClastalliance.63
+	picture = GFX_evt_ring_craft
+	
+	is_triggered_only = yes
+	
+	# Keep the Ring (Elendil)
+	option = {
+		name = EVTOPTAlastalliance.63
+		trigger = { character = 12135 }
+		ai_chance = { factor = 0.3 }
+		event_target:mep_lastalliance_evil_combatant = {
+			character_event = { id = lastalliance.64 }
+		}
+		add_trait = ring
+		
+	}
+	
+	# Keep the Ring (Not-Elendil)
+	option = {
+		name = EVTOPTBlastalliance.63
+		trigger = { NOT = {character = 12135 } }
+		ai_chance = { factor = 2 }
+		event_target:mep_lastalliance_evil_combatant = {
+			character_event = { id = lastalliance.64 }
+		}
+		add_trait = ring
+		
+	}
+	
+	# Destroy the Ring
+	option = {
+		name = EVTOPTClastalliance.63
+		ai_chance = { factor = 1 }
+		event_target:mep_lastalliance_evil_combatant = {
+			death = { death_reason = death_destroyed_alongside_one_ring  killer = PREV }
+		}
+		hidden_tooltip = {
+			nazgul = {
+				character_event = { id = frodo.18 }
+			}
+		}
+		any_independent_ruler = {
+			narrative_event = { id = lastalliance.67  days = 7 }
+		}
+		
+	}
+}
 #------------------------------------
 # Event 64 : What to do with Sauron if the ring is not destroyed
+character_event = {
+	id = lastalliance.64
+	title = EVTTITlastalliance.64
+	desc = EVTDESClastalliance.64
+	picture = GFX_evt_sauron_commands
+	
+	is_triggered_only = yes
+	
+	# Could be worse..!
+	option = {
+		name = EVTOPTlastalliance.64
+		remove_trait = ring
+		add_trait = ringbearer2
+		add_trait = spiritform
+		activate_title = { title = d_sauron_exile status = yes }
+		d_sauron_exile = { gain_title = PREV }
+	}
+}
+#-------------------------------------
+# Event 65 : Notify about ring
+narrative_event = {
+	id = lastalliance.65
+	title = EVTTITlastalliance.65
+	desc = EVTDESClastalliance.65
+	picture = GFX_evt_ring_craft
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# It should be destroyed!
+	option = {
+		name = EVTOPTlastalliance.65
+	}
+}
+#------------------------------------
+# Event 66 : Notify x will keep the ring
+narrative_event = {
+	id = lastalliance.66
+	title = EVTTITlastalliance.66
+	desc = EVTDESClastalliance.66
+	picture = GFX_evt_ring_craft
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# I've got a bad feeling about this
+	option = {
+		name = EVTOPTlastalliance.66
+	}
+}
+#------------------------------------
+# Event 67 : Notify that the ring is destroyed
+narrative_event = {
+	id = lastalliance.67
+	title = EVTTITlastalliance.67
+	desc = EVTDESClastalliance.67
+	picture = GFX_evt_evil
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	
+	# Good
+	option = {
+		name = EVTOPTlastalliance.67
+	}
+}
+#===============================================================================================
+# Event 70. Called from on_war_ended_defeat , meant to mark the end of the war and the last alliance if sauron wins
+# for now, just sets some flags
+character_event = {
+	id = lastalliance.70
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			# The war is the one launched by lastalliance.10
+			limit = {
+				OR = {
+					has_global_flag = mep_lastalliance_offensive
+					has_global_flag = mep_lastalliance_counterstrike1
+					has_global_flag = mep_lastalliance_counterstrike2
+				}
+				ROOT = { has_landed_title = e_barad_dur }
+				FROM = {
+					has_character_flag = mep_lastalliance_leader
+				}
+				using_cb = kingdom_good_attack_evil			
+			}
+			# what gets done...
+			set_global_flag = mep_lastalliance_sauronwon
+			clr_global_flag = mep_lastalliance_offensive
+			clr_global_flag = mep_lastalliance_counterstrike1
+			clr_global_flag = mep_lastalliance_counterstrike2
+			FROM = {
+				clr_character_flag = mep_lastalliance_leader
+			}
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_joined }
+				clr_character_flag = mep_lastalliance_joined
+			}
+			
+		}
+	}
+}
+#-------------------------------------------------------------
+# Event 74. Called from on_war_ended_defeat, meant to clean up some flags
+character_event = {
+	id = lastalliance.74
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			# The war is the one launched by lastalliance.10
+			limit = {
+				ROOT = { has_landed_title = e_barad_dur }
+				FROM = {
+					has_character_flag = mep_lastalliance_leader
+				}
+				using_cb = kingdom_good_attack_evil
+			}
+			# cleaning up global flags. only really happens if Mordor is defeated before the proper events kick in
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = mep_lastalliance_offensive
+						has_global_flag = mep_lastalliance_counterstrike1
+						has_global_flag = mep_lastalliance_counterstrike2
+					}
+				}
+				clr_global_flag = mep_lastalliance_offensive
+				clr_global_flag = mep_lastalliance_counterstrike1
+				clr_global_flag = mep_lastalliance_counterstrike2
+				# I should probably make and insert a call to a special destroy-mordor event that is 'post-defeat'
+				set_global_flag = mep_sauron_defeated
+			}
+			# cleaing flags from alliance leaders
+			FROM = {
+				clr_character_flag = mep_lastalliance_leader
+			}
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_joined }
+				clr_character_flag = mep_lastalliance_joined
+			}
+			
+		}
+	}
+	
+}
+#=====================================================================================
+# Event 75 (really just a timer)
+character_event = {
+	id = lastalliance.75
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	# the war is still ongoing
+	option = {
+		if = {
+			limit = {
+				has_global_flag = mep_lastalliance_counterstrike1
+			}
+			clr_global_flag = mep_lastalliance_counterstrike1
+			set_global_flag = mep_lastalliance_counterstrike2
+		}
+	}
+}
+#---------------------------------------------
+# Event.76, for e_barad_dur: you have won the duel and launched your great counterstrike, but you are still loosing!
+character_event = {
+	id = lastalliance.76
+	title = EVTTITlastalliance.76
+	desc = EVTDESClastalliance.76
+	picture = GFX_evt_battle_scene
+	only_playable = yes
+	war = yes
+	has_global_flag = mep_lastalliance_counterstrike2
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	trigger = {
+		# always = no  # disables this for now
+		has_landed_title = e_barad_dur
+		# The following should ensure that loosing at 90% or more against the last alliance triggers the event
+		is_primary_war_defender = yes
+		any_war = {
+			using_cb = kingdom_good_attack_evil
+			war_score = 90
+			attacker = {
+				OR = {
+					has_character_flag = mep_lastalliance_leader
+					has_landed_title = e_reunited_kingdom
+					has_landed_title = e_gondor
+				}
+				war_with = PREVPREV
+			}
+		}
+	}
+	
+	# Time to run...
+	option = {
+		name = EVTOPTBlastalliance.76
+		ai_chance = { factor = 1 }
+		character_event = { id = lastalliance.42 }
+		log = "@@ LastAlliance.76 A"
+	}
+	
+}
 
 
 

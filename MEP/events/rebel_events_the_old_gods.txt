@@ -771,6 +771,370 @@ character_event = {
 }
 
 
+
+# Religious Rebels rise up (temporary rebel title created, with a leader and a war)
+# Triggered from "on_rebel_revolt"
+province_event = {
+	id = TOG.1060
+	desc = EVTDESC_TOG_1060
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_dlc = "The Old Gods"
+		
+		is_heretic = no
+
+		any_province_holding = {
+			NOT = { holding_type = nomad }
+		}
+		
+		owner = {
+			top_liege = {
+				NOT = { religion_group = ROOT }
+			}
+		}
+		
+		# Nationalist revolts have prio
+		OR = {
+			owner = {
+				top_liege = {
+					culture = ROOT
+				}
+			}
+			kingdom = {
+				OR = {
+					has_holder = yes
+					NOT = { culture = ROOT }
+				}
+			}
+		}
+		
+		NOT = { # Not if there is already an ongoing revolt
+			owner = {
+				top_liege = {
+					war = yes
+					any_war = {
+						defender = { character = PREV }
+						OR = {
+							AND = {
+								using_cb = peasant_revolt
+								war_title = ROOT # The county
+							}
+							AND = {
+								using_cb = heretic_revolt
+								attacker = { religion = ROOT }
+							}
+							AND = {
+								using_cb = religious_revolt
+								attacker = { religion = ROOT }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			religion = ROOT
+			culture = ROOT
+			female = no
+			age = 32
+			attributes = {
+				martial = 7
+				learning = 7
+			}
+			trait = zealous
+			trait = scholar
+			trait = skilled_tactician
+		}
+		
+		new_character = {
+			set_character_flag = religious_revolter
+			
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "HERETIC_REVOLT"
+				holder = THIS
+			}
+			
+			wealth = 100
+			
+			spawn_religious_army_effect = yes
+			
+			if = {
+				limit = {
+					has_game_rule = {
+						name = provincial_revolt_strength
+						value = powerful
+					}
+				}
+				spawn_religious_army_effect = yes
+				wealth = 150
+			}
+			
+			if = {
+				limit = {
+					has_game_rule = {
+						name = provincial_revolt_strength
+						value = very_powerful
+					}
+				}
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				wealth = 250
+			}
+			
+			if = {
+				limit = {
+					has_game_rule = {
+						name = provincial_revolt_strength
+						value = extremely_powerful
+					}
+				}
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				spawn_religious_army_effect = yes
+				wealth = 350
+			}
+			
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = religious_revolt
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+		
+		owner = {
+			any_liege = { # Inform the lieges
+				character_event = {
+					id = TOG.1061
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTA_TOG_1060
+		trigger = {
+			owner = { religion_group = ROOT }
+		}
+	}
+	option = {
+		name = EVTOPTB_TOG_1060
+		trigger = {
+			owner = { NOT = { religion_group = ROOT	} }
+		}
+	}
+}
+
+character_event = {
+	id = TOG.1061
+	desc = EVTDESC_TOG_1061
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA_TOG_1060
+		trigger = {
+			religion_group = FROM
+		}
+	}
+	option = {
+		name = EVTOPTB_TOG_1060
+		trigger = {
+			NOT = { religion_group = FROM	}
+		}
+	}
+}
+
+# Religious Rebels seize a holding. Fired from 'on_siege_over_winner'. Owner of the winning unit is ROOT. The taken Holding title is in FROM.
+character_event = {
+	id = TOG.1065
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_character_flag = religious_revolter
+		rebel = yes
+		FROM = { 
+			is_capital = yes # The capital holding
+		}
+	}
+	
+	immediate = {
+		FROM = {
+			location = {
+				if = {
+					limit = {
+						NOT = { religion = ROOT }
+					}
+					random = {
+						chance = 5
+						religion = ROOT
+					}
+				}
+				if = {
+					limit = {
+						NOT = { has_province_modifier = religious_unrest }
+					}
+					add_province_modifier = {
+						name = religious_unrest
+						duration = 730
+					}
+				}
+			}
+		}
+	}
+}
+
+# Religious Rebels rise up to reinforce an ongoing religious uprising
+# Triggered from "on_rebel_revolt"
+province_event = {
+	id = TOG.1070
+	desc = EVTDESC_TOG_1070
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_dlc = "The Old Gods"
+		
+		is_heretic = no
+
+		any_province_holding = {
+			NOT = { holding_type = nomad }
+		}
+		
+		owner = {
+			top_liege = {
+				NOT = { religion_group = ROOT }
+			}
+		}
+		
+		owner = {
+			top_liege = {
+				war = yes
+				any_war = {
+					defender = { character = PREV }
+					using_cb = religious_revolt
+					attacker = { religion = ROOT }
+				}
+			}
+		}
+	}
+	
+	immediate = {
+	
+		add_province_modifier = {
+			name = recent_county_uprising
+			duration = 1825 # Five years of -100% revolt risk in this county
+		}
+	
+		owner = {
+			top_liege = {
+				any_war = {
+					limit = {
+						defender = { character = PREV }
+						using_cb = religious_revolt
+						attacker = { religion = ROOT }
+					}
+					attacker = {
+						spawn_religious_reinforcements_effect = yes
+						
+						if = {
+							limit = {
+								has_game_rule = {
+									name = provincial_revolt_strength
+									value = powerful
+								}
+							}
+							spawn_religious_reinforcements_effect = yes
+						}
+						
+						if = {
+							limit = {
+								has_game_rule = {
+									name = provincial_revolt_strength
+									value = very_powerful
+								}
+							}
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+						}
+						
+						if = {
+							limit = {
+								has_game_rule = {
+									name = provincial_revolt_strength
+									value = extremely_powerful
+								}
+							}
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+							spawn_religious_reinforcements_effect = yes
+						}
+					}
+				}
+			}
+		}
+		
+		owner = {
+			any_liege = { # Inform the lieges
+				character_event = {
+					id = TOG.1071
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA_TOG_1070"
+	}
+}
+
+character_event = {
+	id = TOG.1071
+	desc = EVTDESC_TOG_1071
+	picture = GFX_evt_heretic
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA_TOG_1070"
+	}
+}
+
 # Rebels kill a local character. Fired from 'on_siege_over_loc_chars'.
 # Siege winner unit owner in the 'new_character' scope, lost holding title in FROM, local character in ROOT.
 character_event = {

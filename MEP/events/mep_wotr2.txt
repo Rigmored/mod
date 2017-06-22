@@ -1732,50 +1732,50 @@ character_event = {
 ##################Now the fun begins##############
 ##################################################
 	
-	##Sauron starts his great war##
-	character_event = {
+##Sauron starts his great war##
+character_event = {
     id = wotr.51
     title = "EVTTITwotr.51"
     desc = "EVTDESCwotr.51"
     picture = "GFX_war_gondor"
 	age = 16
+	religion = religion_umaiar
+	only_independent = yes
 	
 	trigger = {
-	has_landed_title = c_barad_dur
-	NOT = { has_character_flag = wotr51 }
-	year = 11367
-	NOT = { year = 11370 }
+		has_landed_title = c_barad_dur
+		NOT = { has_character_flag = wotr51 }
+		year = 11367
+		NOT = { year = 11370 }
 	}
 	
 	mean_time_to_happen = {
-	days = 30
+		days = 30
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.51"
-	set_global_flag = greatwar1
-	add_claim = k_anorien
-	add_claim = k_lebennin
-	add_claim = d_lossarnach
-	add_claim = d_royal_demesne
-	add_claim = c_minas_tirith
-	add_claim = c_pelennor
-	add_claim = c_west_osgiliath
-	add_claim = c_imloth_melui
-	set_character_flag = wotr51
+		name = "EVTOPTAwotr.51"
+		set_global_flag = greatwar1
+		add_claim = k_anorien
+		add_claim = k_lebennin
+		add_claim = d_lossarnach
+		add_claim = d_royal_demesne
+		add_claim = c_minas_tirith
+		add_claim = c_pelennor
+		add_claim = c_west_osgiliath
+		add_claim = c_imloth_melui
+		set_character_flag = wotr51
 		any_independent_ruler = {
-			limit = {
-			has_landed_title = e_steward_gondor
-			}
+			limit = { has_landed_title = e_steward_gondor }
 			character_event = { id = wotr.52 }
 		}
 	}
 	
 	
-	}
+}
 	
-	##Sauron starts his great war, Gondor is informed##
-	character_event = {
+##Sauron starts his great war, Gondor is informed##
+character_event = {
     id = wotr.52
     title = "EVTTITwotr.52"
     desc = "EVTDESCwotr.52"
@@ -1784,36 +1784,36 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.52"
+		name = "EVTOPTAwotr.52"
 	}
-	}
+}
 	
-	##A few days later, the war starts##
-		character_event = {
+##A few days later, the war starts##
+character_event = {
     id = wotr.53
     title = "EVTTITwotr.53"
     desc = "EVTDESCwotr.53"
     picture = "GFX_war_gondor"
-	age = 16
+	religion = religion_umaiar
+	only_independent = yes
 	
 	trigger = {
-	has_landed_title = c_barad_dur
-	has_global_flag = greatwar1
-	NOT = { has_global_flag = wotr53 }
-	year = 11367
-	age = 1
-	##war = no
+		has_landed_title = c_barad_dur
+		has_global_flag = greatwar1
+		NOT = { has_global_flag = wotr53 }
+		year = 11367
+		##war = no
 	}
 	
 	mean_time_to_happen = {
-	days = 7
+		days = 7
 	}
 
 			
 	option = {
-	name = "EVTOPTAwotr.53"
-	set_global_flag = wotr53
-	any_independent_ruler = {
+		name = "EVTOPTAwotr.53"
+		set_global_flag = wotr53
+		any_independent_ruler = {
 			limit = {
 				OR = {
 					culture_group = culture_group_easterling
@@ -1824,13 +1824,16 @@ character_event = {
 			}
 			character_event = { id = warofthering.10 days = 90 }
 		}
-				e_steward_gondor = {
+		nazgul = {
+			remove_trait = huntforring
+		}
+		e_steward_gondor = {
 			reverse_war = {
 				target = ROOT
 				casus_belli = claim_all
 			}
-			}
-							create_random_soldier = {
+		}
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
 			religion = religion_southron
@@ -1838,78 +1841,77 @@ character_event = {
 			female = no
 			age = 33
 		}
-	new_character = {
-		spawn_unit = {
+		new_character = {
+			spawn_unit = {
 				province = 462 ##harad
 				disband_on_peace = no
-				troops =
-				{
+				troops = {
 					light_cavalry = { 10000 10000 }
 					heavy_infantry = { 5000 5000 }
 					light_infantry = { 10000 10000 }
 					archers = { 2000 2000 }
 				}
 			}		
-			}
 		}
-		}
+	}
+}
 	
 	
 	##Umbar attacks Belfalas and Anfalas##
 	##DELETED - Umbar now joins the main mordorian assault##	
 	
-	##Aragorn is informed Minas Tirith is under attack##
-	character_event = {
+##Aragorn is informed Minas Tirith is under attack##
+character_event = {
     id = wotr.55
     title = "EVTTITwotr.55"
     desc = "EVTDESCwotr.55"
     picture = "GFX_war_gondor"
-	age = 16
+	only_playable = yes
 	
 	trigger = {
-	trait = blood_of_isildur
-	age = 30
-	NOT = { has_character_flag = wotr55 }
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { year = 11370 }
+		trait = blood_of_isildur
+		age = 30
+		NOT = { has_character_flag = wotr55 }
+		has_global_flag = greatwar1
+		has_global_flag = aragornwar
+		NOT = { year = 11370 }
 	}
 	
 	mean_time_to_happen = {
-	days = 14 
+		days = 14 
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.55"
-	set_global_flag = pathofthedead
-	set_character_flag = wotr55
+		name = "EVTOPTAwotr.55"
+		set_global_flag = pathofthedead
+		set_character_flag = wotr55
 	}
-	}
+}
 	
-	##Gondor is informed Aragorn is on his way##
+##Gondor is informed Aragorn is on his way##
 	character_event = {
     id = wotr.56
     title = "EVTTITwotr.56"
     desc = "EVTDESCwotr.56"
     picture = "GFX_travel_gondor"
-	age = 16
+	only_playable = yes
+	only_independent = yes
 	
 	trigger = {
-	has_landed_title = e_steward_gondor
-	age = 30
-	NOT = { has_global_flag = wotr56 }
-	has_global_flag = pathofthedead
-	NOT = { year = 11370 }
+		has_landed_title = e_steward_gondor
+		NOT = { has_global_flag = wotr56 }
+		has_global_flag = pathofthedead
+		NOT = { year = 11370 }
 	}
 	
 	mean_time_to_happen = {
-	days = 40
+		days = 40
 	}
 	
 	option = {
-	name = "EVTOPTAwotr.56"
-	set_global_flag = wotr56
-	any_independent_ruler = {
+		name = "EVTOPTAwotr.56"
+		set_global_flag = wotr56
+		any_independent_ruler = {
 			limit = {
 				trait = blood_of_isildur
 				age = 30
@@ -1919,8 +1921,8 @@ character_event = {
 	}
 	
 	option = {
-	name = "EVTOPTBwotr.56"
-	set_global_flag = wotr56
+		name = "EVTOPTBwotr.56"
+		set_global_flag = wotr56
 		any_independent_ruler = {
 			limit = {
 				trait = blood_of_isildur
@@ -1929,23 +1931,23 @@ character_event = {
 			character_event = { id = wotr.57 days = 45 }
 		}
 	}	
-	}
+}
 	
-	##Round-about way of making Aragorn join the Gondorian War##
-	character_event = {
+##Round-about way of making Aragorn join the Gondorian War##
+character_event = {
     id = wotr.57
     title = "EVTTITwotr.57"
     desc = "EVTDESCwotr.57"
     picture = "GFX_dead_army"
-	age = 16
+	
 	is_triggered_only = yes
 	
 	option = {
-	name = "EVTOPTAwotr.57"
-	ROOT = {
-	join_defender_wars = FROM
-				}
-	create_character = {
+		name = "EVTOPTAwotr.57"
+		ROOT = {
+			join_defender_wars = FROM
+		}
+		create_character = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_dunedain
@@ -1957,28 +1959,27 @@ character_event = {
 			}
 			trait = brilliant_strategist
 		}
-			new_character = {
+		new_character = {
 			spawn_unit = {
 				province = 215 #Tarlang
 				disband_on_peace = no
-				troops =
-				{
+				troops = {
 					light_infantry = { 4000 4000 }
 					archers = { 4000 4000 }
 				}
 			}
 		}
 		set_character_flag = ingondor
-		}
-		}
+	}
+}
 	
-	##Aragorn rounds up more men in the South##
-	character_event = {
+##Aragorn rounds up more men in the South##
+character_event = {
     id = wotr.58
     title = "EVTTITwotr.58"
     desc = "EVTDESCwotr.58"
     picture = "GFX_gondor_army"
-	age = 16
+	only_playable = yes
 	
 	trigger = {
 	NOT = { year = 11370 }
