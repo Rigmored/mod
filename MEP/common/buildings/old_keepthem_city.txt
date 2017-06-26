@@ -12,11 +12,11 @@ city = {
 		ai_creation_factor = 102
 		potential = {
 			culture_group = culture_group_dwarves 
-            	}
+        }
 	}
 	ct_Dwater_system_1 = {
 		desc = ca_Dwater_system_1_desc
-		prerequisites = { ca_dwarvenfortifications_1 }
+		prerequisites = { ct_dwarvenfortifications_1 }
 		upgrades_from = ct_Dwater_system_0
 		gold_cost = 85
 		build_time = 365
@@ -26,11 +26,11 @@ city = {
 		potential = {
 			has_global_flag = building
 			culture_group = culture_group_dwarves 
-            	}
+        }
 	}
 	ct_Dwater_system_2 = {
 		desc = ca_Dwater_system_1_desc
-		prerequisites = { ca_dwarvenfortifications_3 }
+		prerequisites = { ct_dwarvenfortifications_3 }
 		upgrades_from = ct_Dwater_system_1
 		gold_cost = 100
 		build_time = 550
@@ -39,7 +39,7 @@ city = {
 		potential = {
 			has_global_flag = building
 			culture_group = culture_group_dwarves 
-            	}
+        }
 	}
 	
 	### Mines and other Dwarfy stuff
@@ -62,7 +62,7 @@ city = {
 	}
 	ct_dwarfmines_2 = {
 		desc = ct_dwarfmines_1_desc
-		prerequisites = { ca_dwarvenfortifications_1 }
+		prerequisites = { ct_dwarvenfortifications_1 }
 		upgrades_from = ct_dwarfmines_1
 		gold_cost = 80
 		build_time = 360
@@ -80,7 +80,7 @@ city = {
 	}
 	ct_dwarfmines_3 = {
 		desc = ct_dwarfmines_1_desc
-		prerequisites = { ca_dwarvenfortifications_2 }
+		prerequisites = { ct_dwarvenfortifications_2 }
 		start = { always = no }
 		upgrades_from = ct_dwarfmines_2
 		gold_cost = 200
@@ -99,7 +99,7 @@ city = {
 	}
 	ct_dwarfmines_4 = {
 		desc = ct_dwarfmines_1_desc
-		prerequisites = { ca_dwarvenfortifications_3 }
+		prerequisites = { ct_dwarvenfortifications_3 }
 		start = { always = no }
 		upgrades_from = ct_dwarfmines_3
 		gold_cost = 400
@@ -115,7 +115,7 @@ city = {
 	}
 	ct_dwarfmines_5 = {
 		desc = ct_dwarfmines_1_desc
-		prerequisites = { ca_dwarvenfortifications_5 }
+		prerequisites = { ct_dwarvenfortifications_5 }
 		start = { always = no }
 		upgrades_from = ct_dwarfmines_4
 		gold_cost = 670
@@ -131,7 +131,7 @@ city = {
 	}
 	ct_dwarfmines_6 = {
 		desc = ct_dwarfmines_6_desc
-		prerequisites = { ca_dwarvenfortifications_6 }
+		prerequisites = { ct_dwarvenfortifications_6 }
 		start = { always = no }
 		upgrades_from = ct_dwarfmines_5
 		gold_cost = 1500
@@ -378,7 +378,6 @@ city = {
 		ai_creation_factor = 86
     		potential = {
 				province_id = 105
-       			
 	    		culture = culture_wight
 				NOT = { has_global_flag = barrows_cleansed }
     		}

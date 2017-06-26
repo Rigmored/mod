@@ -1,6 +1,32 @@
 #BR NOTE - Sorry Lon, I decided to re-do colonization from the ground up. I got too annoyed trying to
 # colonize Annunimas in vain, and it's always easier building a new event than fixing someone else's
 
+# JamesFox has made major changes and additions to these
+
+# colonisation_wilderness  : generic, not available for immortals, wilderness, or Dwarves. A special event for Númenórean/Dúnedain cultures.
+# colonisation_wilderness_with_dwarves : non Dwarves/Maiar/Istari can colonize hills or mountains with longbeard Dwarves if they have a Dwarven courtier
+# colonisation_wilderness_with_elves : non Elves/Maiar/Istari can colonize with silvan Elves if they have an Elven courtier
+# colonisation_wilderness_with_halflings :  non Hobbits/Maiar/Istari can colonize with Hobbits if they have a Hobbit courtier
+
+# colonisation_mountains_for_dwarves  : colonizing mountains/hills with Dwarves, by Dwarves
+# colonisation_nonmountains_for_dwarves  : colonizing some NON-mountains/hills with Dwarves, by Dwarves (costlier)
+# colonisation_general_for_elves : Colonization for and by Elves. A special event for High Elves.
+# colonisation_wilderness_human : Allows 'Good Side' non-human races to colonize using Humans. Human culture used depends on colonizer and year.
+# colonisation_wilderness_with_forodwaith: Colonize arctic province with Forodwaith. Coastal provinces get lossoth, non-coastal get Hillmen.
+# colonisation_wilderness_for_evil_overlords_orc : Orc/Troll colonization by Sauron/Evil Istari/Dragons/Nazgul/Balrog/Evil Maiar
+
+# TODO :
+# colonisation_wilderness_for_evil_overlords_human
+# ~ split up colonisation_wilderness into multiple decisions/events so the proper species-culture can be picked
+# ~ make colonisation_wilderness_human multiple-choice
+# allow istari to colonize using hobbits
+# allow Bombadil to colonize with hobbits, breelanders, or even Huorns.
+# special colonization for those who only own wilderness
+# there is provision for Valar colonizing using humans, but not maiar.
+# colonization_for_eagles ?
+# colonization for ents ?
+# wights?  spiders ?
+
 decisions = {
 
 	# General colonization : Immortals, Wilderness or Dwarves cannot do this
@@ -530,7 +556,48 @@ decisions = {
 		effect = {
 			character_event = { id = "colonisation.42" }
 		}
-	}	
+	}
+	
+	# Evil Overlord colonization ...
+	colonisation_wilderness_for_evil_overlords_orc = {
+		is_high_prio = no
+		
+		potential = {
+			ai = no
+			mep_is_evil_overlord = yes
+			job_treasurer = { is_alive = yes }
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+					NOT = { mep_province_being_colonized_trigger = yes }
+				}
+			}
+			has_character_flag = special_decisions_open
+			demesne_size = 1
+			any_demesne_province = {
+				mep_orc_troll_culture = yes
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 250
+			wealth = 350
+			job_treasurer = {
+				location = {
+					mep_wilderness_province_trigger = yes
+				}
+			}
+		}
+		
+		effect = {
+			character_event = { id = "colonisation.50" }
+		}
+	}
+	
 	
 	
 }

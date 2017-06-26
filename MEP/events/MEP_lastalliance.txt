@@ -12,6 +12,7 @@
 # Events 10 to x : Declare war and send notifications
 # Events 20 to 25 : Inherit Alliance
 # Events 40 to 67 : Duel with Sauron/Mordor Leader, and aftermath
+# Events 70 + : End of the war and cleanup
 
 namespace = lastalliance
 #------------------------------------------------------------
@@ -1371,7 +1372,7 @@ character_event = {
 		hidden_tooltip = {
 			clr_global_flag = mep_lastalliance_offensive
 			set_global_flag = mep_lastalliance_counterstrike1
-			character_event = { id = lastalliance.75  days = 75 }  # give 75 days to improve things before unlocking possibly surrender
+			character_event = { id = lastalliance.76  days = 75 }  # give 75 days to improve things before unlocking possibly surrender
 		}
 	}
 }
@@ -1775,7 +1776,7 @@ character_event = {
 			limit = { tier = duke }
 			destroy_landed_title = THIS
 		}
-		# abdicate. I'm hopeful that the heir is logical, instead of needing cripted disposal of remining territories
+		# abdicate. I'm hopeful that the heir is logical, instead of needing scripted disposal of remining territories
 		recalc_succession = yes
 		abdicate = yes
 		# decide fate of sauron/balrog/whatever	
@@ -1785,6 +1786,7 @@ character_event = {
 			activate_title = { title = d_sauron_exile status = yes }
 			d_sauron_exile = { gain_title = PREV }
 			clr_character_flag = mep_lastalliance_evilrun
+			
 		}
 		# otherwise...
 		# Case Balrog. I will for now ignore the possibility that the Balrog has the ring
@@ -1804,12 +1806,15 @@ character_event = {
 			# The alliance leader will decide the fate of the ring
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_leader }
-				character_event = { id = lastalliance.63 }
 			}
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_joined }
 				narrative_event = {	id = lastalliance.65 }
 			}
+		}
+		any_independent_ruler = {
+			limit = { has_character_flag = mep_lastalliance_leader }
+			character_event = { id = lastalliance.73  days = 5 }
 		}
 		
 	}
@@ -1936,7 +1941,7 @@ narrative_event = {
 }
 #===============================================================================================
 # Event 70. Called from on_war_ended_defeat , meant to mark the end of the war and the last alliance if sauron wins
-# for now, just sets some flags
+# for now, just sets some flags and calls an Alliance-destroying event...
 character_event = {
 	id = lastalliance.70
 	hide_window = yes
@@ -1964,20 +1969,195 @@ character_event = {
 			clr_global_flag = mep_lastalliance_counterstrike1
 			clr_global_flag = mep_lastalliance_counterstrike2
 			FROM = {
-				clr_character_flag = mep_lastalliance_leader
+				character_event = { id = lastalliance.71 }
 			}
-			any_independent_ruler = {
-				limit = { has_character_flag = mep_lastalliance_joined }
-				clr_character_flag = mep_lastalliance_joined
-			}
+			
 			
 		}
 	}
 }
 #-------------------------------------------------------------
-# Event 74. Called from on_war_ended_defeat, meant to clean up some flags
+# Event 71 : The last alliance has failed. It falls apart
 character_event = {
+	id = lastalliance.71
+	title = EVTTITlastalliance.71
+	desc = EVTDESClastalliance.71
+	picture = GFX_evt_evil
+	
+	is_triggered_only = yes
+	trigger = { is_alive = yes }
+	
+	option = {
+		name = EVTOPTlastalliance.71
+		# send notification that the alliance is over
+		custom_tooltip = {
+			text = TT_lastalliance71a
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_joined }
+				narrative_event = { id = lastalliance.72 days = 2}
+			}
+		}
+		# Remove the leader of the last allance flag
+		custom_tooltip = {
+			text = TT_lastalliance71b
+			clr_character_flag = mep_lastalliance_leader
+		}
+	}
+
+}
+# Event 72 : notification event that last alliance falls apart.
+narrative_event = {
+	id = lastalliance.72
+	title = EVTTITlastalliance.72
+	desc = {
+		trigger = {
+			NOT = { is_close_relative = FROM }
+		}
+		text = EVTDESClastalliance.72a
+	}
+	desc = {
+		trigger = {
+			NOT = { is_close_relative = FROM }
+		}
+		text = EVTDESClastalliance.72b
+	}
+	picture = GFX_evt_evil
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	trigger = { is_alive = yes }
+	
+	immediate = {
+		clr_character_flag = mep_lastalliance_joined
+	}
+	
+	# Just in case the ex-leader died in between him sending and the receiver receiving this event...
+	option = {
+		name = EVTOPTAlastalliance.72
+		trigger = { FROM = { is_alive = no } }
+	}
+	
+	# Break the Alliance (AI will always do unless he/she is a close relative of FROM (the former Alliance leader))
+	option = {
+		name = EVTOPTBlastalliance.72
+		trigger = { FROM = { is_alive = yes } }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_close_relative = FROM
+			}
+		}
+		break_alliance = FROM
+	}
+	
+	# Keep the alliance (AI will always do IF he/she is a close relative of FROM (the former Alliance leader))
+	option = {
+		name = EVTOPTClastalliance.72
+		trigger = { FROM = { is_alive = yes } }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { is_close_relative = FROM }
+			}
+		}
+	}
+
+}
+#-------------------------------------------------------------
+# Event 73 : The last alliance has won, destroy it
+character_event = {
+	id = lastalliance.73
+	title = EVTTITlastalliance.73
+	desc = EVTDESClastalliance.73
+	picture = GFX_evt_prancingpony
+	
+	is_triggered_only = yes
+	trigger = { is_alive = yes }
+	
+	option = {
+		name = EVTOPTlastalliance.73
+		# send notification that the alliance is over
+		custom_tooltip = {
+			text = TT_lastalliance73a
+			any_independent_ruler = {
+				limit = { has_character_flag = mep_lastalliance_joined }
+				narrative_event = { id = lastalliance.74 days = 2 }
+			}
+		}
+		# Remove the leader of the last allance flag
+		custom_tooltip = {
+			text = TT_lastalliance71b
+			clr_character_flag = mep_lastalliance_leader
+		}
+	}
+
+}
+# Event 74 : notification event that the last alliance is no longer necessary
+narrative_event = {
 	id = lastalliance.74
+	title = EVTTITlastalliance.74
+	desc = {
+		trigger = {
+			NOT = { is_close_relative = FROM }
+		}
+		text = EVTDESClastalliance.74a
+	}
+	desc = {
+		trigger = {
+			NOT = { is_close_relative = FROM }
+		}
+		text = EVTDESClastalliance.74b
+	}
+	picture = GFX_evt_evil
+	border = GFX_event_narrative_frame_war
+	
+	is_triggered_only = yes
+	trigger = { is_alive = yes }
+	
+	immediate = {
+		clr_character_flag = mep_lastalliance_joined
+	}
+	
+	# Just in case the ex-leader died in between him sending and the receiver receiving this event...
+	option = {
+		name = EVTOPTAlastalliance.74
+		trigger = { FROM = { is_alive = no } }
+	}
+	
+	# Break the Alliance (AI will always do unless he/she is a close relative of FROM (the former Alliance leader))
+	option = {
+		name = EVTOPTBlastalliance.74
+		trigger = { FROM = { is_alive = yes } }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_close_relative = FROM
+			}
+		}
+		break_alliance = FROM
+	}
+	
+	# Keep the alliance (AI will always do IF he/she is a close relative of FROM (the former Alliance leader))
+	option = {
+		name = EVTOPTClastalliance.74
+		trigger = { FROM = { is_alive = yes } }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { is_close_relative = FROM }
+			}
+		}
+	}
+
+}
+#-------------------------------------------------------------
+# Event 75. Called from on_war_ended_victory, meant to clean up some flags
+character_event = {
+	id = lastalliance.75
 	hide_window = yes
 	
 	is_triggered_only = yes
@@ -2006,15 +2186,10 @@ character_event = {
 				clr_global_flag = mep_lastalliance_counterstrike2
 				# I should probably make and insert a call to a special destroy-mordor event that is 'post-defeat'
 				set_global_flag = mep_sauron_defeated
-			}
-			# cleaing flags from alliance leaders
-			FROM = {
-				clr_character_flag = mep_lastalliance_leader
-			}
-			any_independent_ruler = {
-				limit = { has_character_flag = mep_lastalliance_joined }
-				clr_character_flag = mep_lastalliance_joined
-			}
+				FROM = {
+					character_event = { id = lastalliance.73  days = 2}
+				}
+			}			
 			
 		}
 	}
@@ -2023,7 +2198,7 @@ character_event = {
 #=====================================================================================
 # Event 75 (really just a timer)
 character_event = {
-	id = lastalliance.75
+	id = lastalliance.76
 	hide_window = yes
 	
 	is_triggered_only = yes
@@ -2042,9 +2217,9 @@ character_event = {
 #---------------------------------------------
 # Event.76, for e_barad_dur: you have won the duel and launched your great counterstrike, but you are still loosing!
 character_event = {
-	id = lastalliance.76
-	title = EVTTITlastalliance.76
-	desc = EVTDESClastalliance.76
+	id = lastalliance.77
+	title = EVTTITlastalliance.77
+	desc = EVTDESClastalliance.77
 	picture = GFX_evt_battle_scene
 	only_playable = yes
 	war = yes
@@ -2075,10 +2250,10 @@ character_event = {
 	
 	# Time to run...
 	option = {
-		name = EVTOPTBlastalliance.76
+		name = EVTOPTBlastalliance.77
 		ai_chance = { factor = 1 }
 		character_event = { id = lastalliance.42 }
-		log = "@@ LastAlliance.76 A"
+		log = "@@ lastalliance.77 A"
 	}
 	
 }

@@ -1076,7 +1076,7 @@ character_event = {
 								 } }
 					set_variable = { which = mepvar_colonizingculture value = 5 }							
 				}
-				# 'Western Noldor' (Lindon, anython not Eastern)
+				# 'Western Noldor' (Lindon, anything not Eastern)
 				if = { limit = { ROOT = { 
 									culture = culture_noldor
 									NOT = {capital_scope = { culture = culture_silvan } }
@@ -1309,6 +1309,239 @@ province_event = {
 	}	
 }
 
+#------------------------------------------------------------------------------------------------------
+# Colonization for Evil Overlords whose race does not spread. Pick from evil races or humans
+# The following event is for picking orc-kind
+character_event = {
+	id = colonisation.50
+	title = colonisation50title
+	desc = "colonisation50desc" 
+	picture = GFX_shadows_coming
+	is_triggered_only = yes
+	
+	# 4 Options max...
+	
+	# Orcs (usually available)
+	option = {
+		name = colonization50optA
+		trigger = {
+			any_demesne_province = {
+				mep_orc_troll_culture = yes
+				NOT = { culture = culture_troll }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		random_demesne_province = {
+			limit = {
+				mep_orc_troll_culture = yes
+				NOT = { culture = culture_troll }
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			add_province_modifier = { name = sending_colonists duration = 7200 }
+		}
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_orctrollkind
+					duration = -1
+				}
+				set_variable = { which = mepvar_colonizingculture value =  1 }
+			}
+		}
+		wealth = -250
+		mep_colonize_opinion_effect = yes
+	}
+	
+	# Goblins (Cannot appear if Uruk-hai is available )
+	option = {
+		name = colonization50optB
+		trigger = {
+			any_demesne_province = {
+				culture = culture_goblin
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			NOT = {
+				year = 10800
+				any_demesne_province = {
+					culture = culture_urukhai
+					NOT = { has_province_modifier = sending_colonists }
+				}
+				wealth = 500
+			}
+		}
+		random_demesne_province = {
+			limit = {
+				culture = culture_goblin
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			add_province_modifier = { name = sending_colonists duration = 7200 }
+		}
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_orctrollkind
+					duration = -1
+				}
+				set_variable = { which = mepvar_colonizingculture value =  4 }
+			}
+		}
+		wealth = -180
+		mep_colonize_opinion_effect = yes
+		
+	}
+	
+	# Uruk
+	option = {
+		name = colonization50optC
+		trigger = {
+			year = 10800
+			any_demesne_province = {
+				culture = culture_urukhai
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			wealth = 500
+		}
+		random_demesne_province = {
+			limit = {
+				culture = culture_urukhai
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			add_province_modifier = { name = sending_colonists duration = 7200 }
+		}
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_orctrollkind
+					duration = -1
+				}
+				set_variable = { which = mepvar_colonizingculture value =  3 }
+			}
+		}
+		wealth = -500
+		mep_colonize_opinion_effect = yes
+		
+	}
+	
+	# Trolls
+	option = {
+		name = colonization50optD
+		trigger = {
+			any_demesne_province = {
+				culture = culture_troll
+				NOT = { has_province_modifier = sending_colonists }
+			}
+		}
+		random_demesne_province = {
+			limit = {
+				culture = culture_troll
+				NOT = { has_province_modifier = sending_colonists }
+			}
+			add_province_modifier = { name = sending_colonists duration = 7200 }
+		}
+		job_treasurer = {
+			location = {
+				add_province_modifier = {
+					name = being_colonised_with_orctrollkind
+					duration = -1
+				}
+				set_variable = { which = mepvar_colonizingculture value =  6 }
+			}
+		}
+		wealth = -350
+		mep_colonize_opinion_effect = yes
+		
+	}
+	
+	option = {
+		name = "colonisation0opt2" #No, not now.
+		trigger = { ai = no }
+	}
+	
+}
+
+
+#Now the province has the modifier, MTTH of 20 years for it to be colonized
+province_event = {
+	id = colonisation.52
+	title = colonisation52title
+	desc = {
+		trigger = { 
+			NOT = {
+				check_variable = { which = mepvar_colonizingculture value = 5 }
+			}
+		}
+		text = colonisation52descA
+	}
+	desc = {
+		trigger = { 
+			is_variable_equal = { which = mepvar_evilpurge_culture value = 5 }
+		}
+		text = colonisation52descB
+	}
+	desc = {
+		trigger = { 
+			is_variable_equal = { which = mepvar_evilpurge_culture value = 6 }
+		}
+		text = colonisation52descC
+	}
+	desc = {
+		trigger = { 
+			is_variable_equal = { which = mepvar_evilpurge_culture value = 7 }
+		}
+		text = colonisation52descD
+	}
+	
+	picture = GFX_evt_feed_wargs
+	
+	trigger = {
+		has_province_modifier = being_colonised_with_orctrollkind
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	option = {
+		name = OK
+		remove_province_modifier = being_colonised_with_orctrollkind
+		# default race and religion...
+		religion = religion_orkish
+		culture = culture_orkish
+		# possible alternatives...
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 2 } }
+			culture = culture_half_orc
+		}
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 3 } }
+			culture = culture_urukhai
+			religion = religion_uruk
+		}
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 4 } }
+			culture = culture_goblin
+		}
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 5 } }
+			culture = culture_wargs
+		}
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 6 } }
+			culture = culture_troll
+			religion = religion_olog
+		}
+		# spiders should perhaps be separated out...
+		if = {
+			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 7 } }
+			culture = culture_spider
+			religion = religion_spider
+		}
+	}	
+}
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 # Meant to be called from 'on_new_holder' to kill colonization when province changes hands - selectivly
 #character_event = {
 #	id = colonisation.100

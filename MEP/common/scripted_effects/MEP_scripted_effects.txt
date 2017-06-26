@@ -19,6 +19,12 @@
 ## 'killer' effects for evil races that are not supposed to proliferate
 # mep_young_fevil_change_effect
 
+# Adding default race traits
+# mep_char_is_elf_effect
+# mep_char_is_dwarf_effect
+
+#===============================================================================================================
+# Colonization stuff
 mep_colonize_opinion_effect = {
 	if = {
 		limit = {
@@ -126,9 +132,11 @@ mep_stop_colonisation_effect = {
 	remove_province_modifier = being_colonised_with_wood_elves
 	remove_province_modifier = being_colonised_with_humans_good
 	remove_province_modifier = being_colonised_with_forodwaith
+	remove_province_modifier = being_colonised_with_orctrollkind
 	set_variable = { which = mepvar_colonizingculture value = 0 }	
 }
 #----------------------------------------------------------------------
+# population modifier stuff
 mep_dunedain_popmod_remove_effect = {
 	remove_province_modifier = one_population_dunedain
 	remove_province_modifier = two_population_dunedain
@@ -175,7 +183,7 @@ mep_popmod_remove_effect = {
 	mep_dwarven_popmod_remove_effect = yes
 	mep_human_popmod_remove_effect = yes
 }
-
+#-------------------------------------------------------------------------------
 # province scope, ROOT would be ruler who launches event
 # culture codes : 0 longbeard, 1 ironfist, 2 broadbeam, 3 firebeard, 4 blacklock, 5 stonefoot, 6 stiffbeard, 7 petty
 mep_dwarf_colonize_pick_culture = {
@@ -340,5 +348,37 @@ mep_young_fevil_change_effect = {
 	}
 	# dynasty = random
 	recalc_succession = yes
+}
+#----------------------------------------------------------------------
+# Adding default race traits for generated characters
+# the character already has elf religion...
+mep_char_is_elf_effect = {
+	if = {
+		limit = {
+			NOT = { trait = elf }
+			NOT = { trait = half_elf }			
+		}
+		add_trait = elf
+	}
+	if = {
+		limit = {
+			NOT = { age = 60 }
+			NOT = { trait = elf_childhood }
+		}
+		if = {
+			limit = { is_married = yes }
+			any_spouse = { remove_spouse = PREV }
+		}
+		add_trait = elf_childhood
+	}
+}
+
+mep_char_is_dwarf_effect = {
+	if = {
+		limit = {
+			NOT = { trait = dwarven } 
+		}
+		add_trait = dwarven
+	}
 }
 

@@ -1,4 +1,7 @@
 ##### EVENT OF ISENGARD/ROHAN #####
+# Note : This old set of events has been somewhat refactored (JamesFox 2017)
+# It only includes a (over-) detailed set of events for the Battles of the Fords of Isen.
+# see mep_wotr2.txt for Subsequent Rohan-Isengard-Fangorn events
 
 namespace = rohanisengard
 
@@ -9,34 +12,31 @@ narrative_event = {
     title = "EVTTITrohanisengard.0"
     desc = "EVTDESCrohanisengard.0"
     picture = "GFX_oath_of_eorl"
-	age = 16
+	religion = religion_umaiar
 
 	trigger = {
 		year = 11355
 		NOT = { year = 11363 }
+		event_target:mep_chartarget_saruman = { character = PREV } 
+		is_alive = yes
 		has_landed_title = k_isengard
-		NOT = { has_character_flag = intro_rohanisengardwars }
-		culture = culture_istari
+		NOT = { has_character_flag = evilsaruman }
+		NOT = { has_character_flag = goodsaruman }
 	}
 	
 	mean_time_to_happen = {
-		days = 1
+		days = 7
 	}
 	
-	immediate = {
-		set_character_flag = intro_rohanisengardwars
-	}
-	
+	# Evil Saruman. The only option allowed for the AI 
 	option = {
 		name = "EVTOPTArohanisengard.0" ## I can be the Lord of Middle-Earth.
-		add_trait = evil_side
-		narrative_event = { id = rohanisengard.1 days = 30 } ## Coming of Gandalf
-		set_character_flag = evilsaruman
+		hidden_tooltip = {
+			narrative_event = { id = rohanisengard.1 days = 30 } ## Coming of Gandalf
+			set_character_flag = evilsaruman
+		}
 		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_rohan
-				age = 1
-			}
+			limit = { has_landed_title = k_rohan }
 			narrative_event = { id = rohanisengard.6 days = 80 }
 		}
 		any_realm_province = {
@@ -45,15 +45,25 @@ narrative_event = {
 		}
 	}
 	
+	# Good Saruman
 	option = {
 		name = "EVTOPTBrohanisengard.0" ## I'm a servant of the Valar.
 		trigger = { ai = no }
+		remove_trait = evil_side
 		add_trait = good_side
-		narrative_event = { id = rohanisengard.1 days = 30 }
-		set_character_flag = goodsaruman
+		remove_trait = cruel
+		religion = religion_eruhini
+		if = {
+			limit = { has_landed_title = e_isengard }
+			e_isengard = { destroy_landed_title = THIS }
+		}
+		hidden_tooltip = {
+			narrative_event = { id = rohanisengard.1 days = 30 }
+			set_character_flag = goodsaruman
+		}
 		any_realm_province = {
-			culture = culture_rohirrim
-			religion = religion_rhovanion
+			culture = culture_dunlending
+			religion = religion_haldadian
 		}		
 	}
 }
@@ -64,58 +74,84 @@ narrative_event = {
     title = "EVTTITrohanisengard.1"
     desc = "EVTDESCrohanisengard.1"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
+	
+	trigger = {
+		is_alive = yes
+		event_target:mep_chartarget_gandalf = {
+			is_alive = yes
+		}
+	}
 	
 	option = {
 		name = "EVTOPTArohanisengard.1" ## Gandalf, join me !
 		trigger = {
+			has_landed_title = c_isengard
 			has_character_flag = evilsaruman
 		}
-		any_playable_ruler = {
-			any_courtier = {
-				limit = {
-					has_character_flag = gandalf
-					age = 1
-				}
-				move_character = FROM
-				narrative_event = { id = rohanisengard.2 days = 10 }
-			}
+		event_target:mep_chartarget_gandalf = {
+			move_character = ROOT
+			narrative_event = { id = rohanisengard.2 days = 10 }
 		}
 	}
 	
 	option = {
 		name = "EVTOPTBrohanisengard.1" ## We shall protect the Ringbearer
+		trigger = { has_character_flag = goodsaruman }
+	}
+	
+	option = {
+		name = EVTOPTCrohanisengard.1  ## I am in no position to do anything!
 		trigger = {
-			has_character_flag = goodsaruman
+			OR = {
+				NOT = { has_character_flag = goodsaruman }
+				NOT = { has_landed_title = c_isengard }
+			}
 		}
 	}
 }
 
 ##### Gandalf will choose to follow Saruman, or not #####
+# Gandalf is unplayable for now, I'l still use a regular non-hidden event
 narrative_event = {
     id = rohanisengard.2
     title = "EVTTITrohanisengard.2"
     desc = "EVTDESCrohanisengard.2"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
+	trigger = {
+		event_target:mep_chartarget_saruman = {  is_alive = yes  }
+	}
+	
 	option = {
 		name = "EVTOPTArohanisengard.2" ## You're an idiot, Saruman !
-		random_list = {
-			99 = {
-				FROM = { character_event = { id = rohanisengard.3 days = 1 } }
-			}
-			1 = {
-				FROM = { character_event = { id = rohanisengard.4 days = 1 } }
-			}	
+		trigger = { is_alive = yes }
+		ai_chance = { factor = 99 }
+		event_target:mep_chartarget_saruman = {
+			character_event = { id = rohanisengard.3 days = 1 }
 		}
 	}
+	
+	option = {
+		name = "EVTOPTBrohanisengard.2" ## Alas, you might be correct.
+		trigger = { is_alive = yes }
+		ai_chance = { factor = 1 }
+		event_target:mep_chartarget_saruman = {
+			character_event = { id = rohanisengard.4 days = 1 }
+		}
+	}
+	
+	option = {  # Send the 'Gandalf is dead' event to saruman
+		name = EVTrohanisengardOPTdead
+		trigger = { is_alive = no }
+		event_target:mep_chartarget_saruman = {
+			character_event = { id = rohanisengard.40 days = 1 }
+		}
+	}
+	
 }
 
 ##### Gandalf won't follow Saruman #####
@@ -124,20 +160,26 @@ character_event = {
     title = "EVTTITrohanisengard.3"
     desc = "EVTDESCrohanisengard.3"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
-	option = {
+	trigger = { is_alive = yes }
+	
+	option = {  # Imprison Gandalf
 		name = "EVTOPTArohanisengard.3" ## So you choose to suffer...
-		any_courtier = {
-			limit = {
-				has_character_flag = gandalf
-				age = 1			
-			}
+		trigger = {
+			event_target:mep_chartarget_gandalf = { is_alive = yes }
+		}
+		event_target:mep_chartarget_gandalf = {
 			set_character_flag = imprisoned_in_isengard
-			imprison = FROM
+			imprison = PREV
+		}
+	}
+	
+	option = {  # Gandalf has died!
+		name = "EVTOPTBrohanisengard.3"
+		trigger = {
+			event_target:mep_chartarget_gandalf = { is_alive = no }
 		}
 	}
 }
@@ -148,18 +190,12 @@ character_event = {
     title = "EVTTITrohanisengard.4"
     desc = "EVTDESCrohanisengard.4"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.4" ## Perfect.
-		any_courtier = {
-			limit = {
-				has_character_flag = gandalf
-				age = 1			
-			}
+		event_target:mep_chartarget_gandalf = {
 			set_character_flag = badgandalf
 			remove_trait = good_side
 			add_trait = evil_side
@@ -173,14 +209,12 @@ character_event = {
     title = "EVTTITrohanisengard.5"
     desc = "EVTDESCrohanisengard.5"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
+	religion = religion_umaiar
 
 	trigger = {
 		has_landed_title = k_isengard
 		any_courtier = {
 			has_character_flag = gandalf
-			culture = culture_istari
 			has_character_flag = imprisoned_in_isengard
 			prisoner = yes
 		}
@@ -192,17 +226,9 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTArohanisengard.5" ## How could it be...?
-		any_courtier = {
-			limit = {
-				has_character_flag = gandalf
-				culture = culture_istari
-				has_character_flag = imprisoned_in_isengard
-				prisoner = yes
-			}
-			prisoner = no
+		event_target:mep_chartarget_gandalf = {
+			imprison = no
 			banish = yes
-			break = yes
-		
 		}
 	}
 }
@@ -214,8 +240,6 @@ narrative_event = {
     title = "EVTTITrohanisengard.6"
     desc = "EVTDESCrohanisengard.6"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -238,14 +262,14 @@ character_event = {
     title = "EVTTITrohanisengard.7"
     desc = "EVTDESCrohanisengard.7"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
+	religion = religion_umaiar
+	has_global_flag = battlesofisen
 
 	trigger = {
-		has_global_flag = battlesofisen
+		event_target:mep_chartarget_saruman = { character = PREV }
 		has_landed_title = k_isengard
 		year = 11362
-		NOT = { year = 11363 }
+		NOT = { year = 11364 }
 		NOT = { has_character_flag = battlesofisen }
 		NOT = { has_character_flag = notbattlesofisen }
 	}
@@ -259,12 +283,10 @@ character_event = {
 		add_claim = d_westmarch
 		add_claim = c_gap_of_rohan
 		set_character_flag = battlesofisen
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_rohan
-				age = 1
+		k_rohan = {
+			holder_scope = {
+				character_event = { id = rohanisengard.8 days = 2 }
 			}
-			character_event = { id = rohanisengard.8 days = 2 }
 		}
 	}
 	
@@ -281,37 +303,25 @@ character_event = {
     title = "EVTTITrohanisengard.8"
     desc = "EVTDESCrohanisengard.8"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.8" ## I'll send Theodred to the Fords of Isen
-		ai_chance = {
-			factor = 80
-		}
+		ai_chance = { factor = 80 }
 		set_global_flag = theodredatisen
 		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_isengard
-				age = 1
-			}
+			limit = { has_landed_title = k_isengard }
 			character_event = { id = rohanisengard.9 days = 10 }
 		}
 	}
 	
 	option = {
 		name = "EVTOPTBrohanisengard.8" ## I'll send Eomer to the Fords of Isen
-		ai_chance = {
-			factor = 20
-		}		
+		ai_chance = { factor = 20 }		
 		set_global_flag = eomeratisen
 		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_isengard
-				age = 1
-			}
+			limit = { has_landed_title = k_isengard }
 			character_event = { id = rohanisengard.21 days = 10 }
 		}		
 	}	
@@ -325,20 +335,18 @@ character_event = {
     title = "EVTTITrohanisengard.9"
     desc = "EVTDESCrohanisengard.9"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.9" ## Time to attack then !
-		character_event = { id = rohanisengard.11 }
 		d_westmarch = {
 			reverse_war = {
 				target = ROOT
 				casus_belli = claim_all
 			}
 		}
+		character_event = { id = rohanisengard.11 }
 		any_independent_ruler = {
 			limit = {
 				OR = {
@@ -349,19 +357,17 @@ character_event = {
 					has_landed_title = d_rivendell
 				}
 			}
-			character_event = { id = rohanisengard.10 }
+			narrative_event = { id = rohanisengard.10 }
 		}
 	}
 }
 
-##### Gondor is alerted of a battle in the Fords of Isen #####
-character_event = {
+##### Gondor, Lorien, and Rivendell are alerted of a battle in the Fords of Isen #####
+narrative_event = {
     id = rohanisengard.10
     title = "EVTTITrohanisengard.10"
     desc = "EVTDESCrohanisengard.10"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -373,66 +379,54 @@ character_event = {
 ##### More troops for Saruman #####
 character_event = {
     id = rohanisengard.11
-    # title = "EVTTITrohanisengard.11"
-    # desc = "EVTDESCrohanisengard.11"
-    # picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
-	hide_window=yes
+	hide_window = yes
 	
 	option = {
 		# name = "EVTOPTArohanisengard.11" ## Ok.
 		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_rohan
-				age = 1
-			}
+			limit = { has_landed_title = k_rohan }
 			character_event = { id = rohanisengard.12 }
 		}
-		create_character = {
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
-			age = 50
-			attributes = {
-				martial = 12
-			}
+			age = 45
 			trait = brilliant_strategist
+			trait = orc
+			trait = strong_orc
 		}
 		new_character = {
 			spawn_unit = {
+				owner = PREV
 				province = 120 # Gap of Rohan
 				disband_on_peace = yes
-				troops =
-				{
+				troops = {
 					pikemen = { 1300 1300 }
 					heavy_infantry = { 500 500 }
 					archers = { 700 700 }
 				}
 			}
 		}	
-		create_character = {
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_haldadian
 			culture = culture_dunlending
 			female = no
 			age = 30
-			attributes = {
-				martial = 12
-			}
 			trait = brilliant_strategist
 		}
 		new_character = {
 			spawn_unit = {
+				owner = PREV
 				province = 120 # Gap of Rohan
 				disband_on_peace = yes
-				troops =
-				{
+				troops = {
 					light_infantry = { 500 500 }
 					pikemen = { 1200 1200 }
 					archers = { 1300 1300 }
@@ -448,8 +442,6 @@ character_event = {
     title = "EVTTITrohanisengard.12"
     desc = "EVTDESCrohanisengard.12"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -457,16 +449,11 @@ character_event = {
 		name = "EVTOPTArohanisengard.12" ## Ok.
 		
 		if = {
-			limit = {
-				has_global_flag = theodredatisen
-			}
-			character_event = { id = rohanisengard.13 days = 2 } ## It's a Trap !		
-			any_child = {
-				limit = {
-					has_character_flag = theodred
-					age = 1
-				}
+			limit = { has_global_flag = theodredatisen }
+			character_event = { id = rohanisengard.13 days = 2 } ## It's a Trap !	
+			event_target:mep_chartarget_theodred = {			
 				spawn_unit = {
+					owner = PREV
 					province = 120 # Gap of Rohan
 					disband_on_peace = yes
 					troops = {
@@ -479,16 +466,11 @@ character_event = {
 		}	
 
 		if = {
-			limit = {
-				has_global_flag = eomeratisen
-			}
+			limit = { has_global_flag = eomeratisen }
 			character_event = { id = rohanisengard.22 days = 2 } ## It's a Trap !
-			any_playable_ruler = {
-				limit = {
-					has_character_flag = eomer
-					age = 1
-				}
+			event_target:mep_chartarget_eomer = {
 				spawn_unit = {
+					owner = PREV
 					province = 120 # Gap of Rohan
 					disband_on_peace = yes
 					troops = {
@@ -509,8 +491,6 @@ character_event = {
     title = "EVTTITrohanisengard.13"
     desc = "EVTDESCrohanisengard.13"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -518,22 +498,14 @@ character_event = {
 		name = "EVTOPTArohanisengard.13" ## We should send Eomer !
 		trigger = { ai = no }
 		set_global_flag = eomerfortheodred
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
+		event_target:mep_chartarget_eomer = {
 			character_event = { id = rohanisengard.28 }
 		}		
 	}
 	
 	option = {
 		name = "EVTOPTBrohanisengard.13" ## Theodred should flee !
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
+		event_target:mep_chartarget_theodred = {
 			character_event = { id = rohanisengard.14 }
 		}
 	}	
@@ -545,8 +517,6 @@ character_event = {
     title = "EVTTITrohanisengard.14"
     desc = "EVTDESCrohanisengard.14"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -557,7 +527,7 @@ character_event = {
 				FROM = { character_event = { id = rohanisengard.15 days = 1 } } ## I am not strong enough !
 			}
 			20 = {
-				FROM = { character_event = { id = rohanisengard.16 days = 1 } } ## I'll slain all of them !
+				FROM = { character_event = { id = rohanisengard.16 days = 1 } } ## I'll kill all of them !
 			}			
 		}	
 	}
@@ -583,29 +553,17 @@ character_event = {
     title = "EVTTITrohanisengard.15"
     desc = "EVTDESCrohanisengard.15"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.15" ## Where's my son?
 		set_global_flag = preparewarisengard
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = c_kings_land
-				age = 1
-			}
+		event_target:mep_chartarget_saruman = {
 			character_event = { id = rohanisengard.17 days = 10 }
 		}
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_theodred = {
+			death = { death_reason = death_battle }
 		}
 	}
 }
@@ -616,34 +574,18 @@ character_event = {
     title = "EVTTITrohanisengard.16"
     desc = "EVTDESCrohanisengard.16"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.16" ## I'm so happy!
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = c_kings_land
-				age = 1
-			}
+		event_target:mep_chartarget_saruman = {
 			character_event = { id = rohanisengard.18 days = 10 }
-		}		
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
+		}
+		event_target:mep_chartarget_theodred = {		
 			random_list = {
-				60 = {
-				}
-				35 = {
-					add_trait = wounded
-				}
-				5 = {
-					add_trait = infirm
-				}
+				60 = { }
+				40 = { add_trait = wounded }
 			}
 		}
 	}
@@ -656,20 +598,12 @@ character_event = {
     title = "EVTTITrohanisengard.17"
     desc = "EVTDESCrohanisengard.17"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTArohanisengard.17" ## Time to send more men.
-		any_playable_ruler = {
-		    limit = {
-			    has_landed_title = k_isengard
-				age = 1					
-			}     
-		    character_event = { id = rohanisengard.19 days = 15 }
-		}
+		name = "EVTOPTArohanisengard.17" ## Time to send more men.   
+		character_event = { id = rohanisengard.19 days = 15 }
 	}
 }
 
@@ -679,20 +613,12 @@ character_event = {
     title = "EVTTITrohanisengard.18"
     desc = "EVTDESCrohanisengard.18"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.18" ## Time to send more men.
-		any_playable_ruler = {
-		    limit = {
-			    has_landed_title = k_isengard
-				age = 1
-			}
-		    character_event = { id = rohanisengard.19 days = 15 }
-		}
+		character_event = { id = rohanisengard.19 days = 15 }
 	}
 }
 
@@ -703,62 +629,54 @@ character_event = {
     title = "EVTTITrohanisengard.19"
     desc = "EVTDESCrohanisengard.19"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.19" ## Time to send more men.
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_rohan
-				age = 1
+		k_rohan = {
+			holder_scope = {
+				character_event = { id = rohanisengard.20 }
 			}
-			character_event = { id = rohanisengard.20 }
 		}
-		create_character = {
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
-			age = 50
-			attributes = {
-				martial = 12
-			}
+			age = 44
 			trait = brilliant_strategist
+			trait = orc
+			trait = strong_orc
 		}
 		new_character = {
 			spawn_unit = {
+				owner = PREV
 				province = 120 # Gap of Rohan
 				disband_on_peace = yes
-				troops =
-				{
+				troops = {
 					pikemen = { 4000 4000 }
 					heavy_infantry = { 1500 1500 }
 					archers = { 1000 1000 }
 				}
 			}
 		}	
-		create_character = {
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_haldadian
 			culture = culture_dunlending
 			female = no
-			age = 30
-			attributes = {
-				martial = 12
-			}
+			age = 33
 			trait = brilliant_strategist
 		}
 		new_character = {
 			spawn_unit = {
+				owner = PREV
 				province = 120 # Gap of Rohan
 				disband_on_peace = yes
-				troops =
-				{
+				troops = {
 					light_infantry = { 1500 1500 }
 					pikemen = { 1000 1000 }
 					archers = { 1000 1000 }
@@ -774,27 +692,23 @@ character_event = {
     title = "EVTTITrohanisengard.20"
     desc = "EVTDESCrohanisengard.20"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.20" ## Ok.
-		create_character = {
+		create_random_soldier = {
 			random_traits = yes
 			dynasty = random
 			religion = religion_rhovanion
 			culture = culture_rohirrim
 			female = no
-			age = 50
-			attributes = {
-				martial = 12
-			}
+			age = 45
 			trait = brilliant_strategist
 		}
 		new_character = {
 			spawn_unit = {
+			owner = PREV
 				province = 120 # Gap of Rohan
 				disband_on_peace = yes
 				troops = {
@@ -815,8 +729,6 @@ character_event = {
     title = "EVTTITrohanisengard.21"
     desc = "EVTDESCrohanisengard.21"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -839,7 +751,7 @@ character_event = {
 					has_landed_title = d_rivendell
 				}
 			}
-			character_event = { id = rohanisengard.10 }
+			narrative_event = { id = rohanisengard.10 }
 		}
 	}
 }
@@ -850,8 +762,6 @@ character_event = {
     title = "EVTTITrohanisengard.22"
     desc = "EVTDESCrohanisengard.22"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -859,22 +769,14 @@ character_event = {
 		name = "EVTOPTArohanisengard.22" ## We should send Theodred !
 		trigger = { ai = no }
 		set_global_flag = theodredforeomer
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
+		event_target:mep_chartarget_theodred = {
 			character_event = { id = rohanisengard.28 }
 		}		
 	}
 	
 	option = {
-		name = "EVTOPTBrohanisengard.22" ## Theodred should flee !
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
+		name = "EVTOPTBrohanisengard.22" ## Eomer should flee !
+		event_target:mep_chartarget_eomer = {
 			character_event = { id = rohanisengard.23 }
 		}
 	}	
@@ -886,8 +788,6 @@ character_event = {
     title = "EVTTITrohanisengard.23"
     desc = "EVTDESCrohanisengard.23"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -898,7 +798,7 @@ character_event = {
 				FROM = { character_event = { id = rohanisengard.24 days = 1 } } ## I am not strong enough !
 			}
 			20 = {
-				FROM = { character_event = { id = rohanisengard.25 days = 1 } } ## I'll slain all of them !
+				FROM = { character_event = { id = rohanisengard.25 days = 1 } } ## I'll slay all of them !
 			}			
 		}	
 	}
@@ -924,13 +824,11 @@ character_event = {
     title = "EVTTITrohanisengard.24"
     desc = "EVTDESCrohanisengard.24"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTArohanisengard.24" ## Where's my son?
+		name = "EVTOPTArohanisengard.24"
 		set_global_flag = preparewarisengard
 		any_playable_ruler = {
 			limit = {
@@ -939,14 +837,8 @@ character_event = {
 			}
 			character_event = { id = rohanisengard.26 days = 10 }
 		}
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_eomer = {
+			death = { death_reason = death_battle }
 		}
 	}
 }
@@ -957,34 +849,18 @@ character_event = {
     title = "EVTTITrohanisengard.25"
     desc = "EVTDESCrohanisengard.25"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTArohanisengard.25" ## I'm so happy!
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = k_isengard
-				age = 1
-			}
+		event_target:mep_chartarget_saruman = {
 			character_event = { id = rohanisengard.27 days = 10 }
 		}		
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
+		event_target:mep_chartarget_eomer = {
 			random_list = {
-				60 = {
-				}
-				35 = {
-					add_trait = wounded
-				}
-				5 = {
-					add_trait = infirm
-				}
+				60 = { }
+				40 = { add_trait = wounded }
 			}
 		}
 	}
@@ -997,8 +873,6 @@ character_event = {
     title = "EVTTITrohanisengard.26"
     desc = "EVTDESCrohanisengard.26"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -1015,8 +889,6 @@ character_event = {
     title = "EVTTITrohanisengard.27"
     desc = "EVTDESCrohanisengard.27"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -1036,8 +908,6 @@ character_event = {
     title = "EVTTITrohanisengard.28"
     desc = "EVTDESCrohanisengard.28"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -1045,6 +915,7 @@ character_event = {
 		name = "EVTOPTArohanisengard.28" ## I'll help him !
 		FROM = { character_event = { id = rohanisengard.29 } }
 		spawn_unit = {
+			owner = FROM
 			province = 120 # Gap of Rohan
 			disband_on_peace = yes
 			troops = {
@@ -1059,26 +930,14 @@ character_event = {
 		name = "EVTOPTBrohanisengard.28" ## I won't help him
 		trigger = { ai = no }
 		if  = {
-			limit = {
-				has_global_flag = eomerfortheodred
-			}
-			any_child = {
-				limit = {
-					has_character_flag = theodred
-					age = 1
-				}
+			limit = { has_global_flag = eomerfortheodred }
+			event_target:mep_chartarget_theodred = {
 				character_event = { id = rohanisengard.14 }
 			}	
 		}
 		if  = {
-			limit = {
-				has_global_flag = theodredforeomer
-			}
-			any_dynasty_member = {
-				limit = {
-					has_character_flag = eomer
-					age = 1
-				}
+			limit = { has_global_flag = theodredforeomer }
+			event_target:mep_chartarget_eomer = {
 				character_event = { id = rohanisengard.23 }
 			}	
 		}		
@@ -1091,8 +950,6 @@ character_event = {
     title = "EVTTITrohanisengard.29"
     desc = "EVTDESCrohanisengard.29"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -1108,8 +965,6 @@ character_event = {
     # title = "OK"
     # desc = "OK"
     # picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	hide_window = yes
@@ -1159,8 +1014,6 @@ character_event = {
     title = "EVTTITrohanisengard.31"
     desc = "EVTDESCrohanisengard.31"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -1174,14 +1027,8 @@ character_event = {
 			}
 			character_event = { id = rohanisengard.17 days = 10 }
 		}
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_theodred = {
+			death = { death_reason = death_battle }
 		}
 	}
 }
@@ -1192,8 +1039,6 @@ character_event = {
     title = "EVTTITrohanisengard.32"
     desc = "EVTDESCrohanisengard.32"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -1207,23 +1052,11 @@ character_event = {
 			}
 			character_event = { id = rohanisengard.35 days = 10 }
 		}
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_theodred = {
+			death = { death_reason = death_battle }
 		}
-		any_dynasty_member = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_eomer = {
+			death = { death_reason = death_battle }
 		}		
 	}
 }
@@ -1234,8 +1067,6 @@ character_event = {
     title = "EVTTITrohanisengard.33"
     desc = "EVTDESCrohanisengard.33"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -1248,42 +1079,26 @@ character_event = {
 			}
 			character_event = { id = rohanisengard.36 days = 10 }
 		}
-		any_child = {
-			limit = {
-				has_character_flag = theodred
-				age = 1
-			}
+		event_target:mep_chartarget_theodred = {
 			random_list = {
-				40 = {
-					add_trait = wounded
-				}
+				40 = { add_trait = wounded }
+				20 = { add_trait = maimed }				
 				20 = {
 					add_trait = maimed
-				}				
-				20 = {
 					add_trait = infirm
 				}
-				20 = {
-				}
+				20 = { }
 			}
 		}
-		any_dynasty_member = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
+		event_target:mep_chartarget_eomer = {
 			random_list = {
-				40 = {
-					add_trait = wounded
-				}
+				40 = { add_trait = wounded }
+				20 = { add_trait = maimed }				
 				20 = {
 					add_trait = maimed
-				}				
-				20 = {
 					add_trait = infirm
 				}
-				20 = {
-				}
+				20 = { }
 			}
 		}		
 	}
@@ -1296,8 +1111,6 @@ character_event = {
     title = "EVTTITrohanisengard.34"
     desc = "EVTDESCrohanisengard.34"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = no
 
 	is_triggered_only = yes
 	
@@ -1310,14 +1123,8 @@ character_event = {
 			}
 			character_event = { id = rohanisengard.26 days = 10 }
 		}
-		any_playable_ruler = {
-			limit = {
-				has_character_flag = eomer
-				age = 1
-			}
-			death = {
-				death_reason = death_battle
-			}
+		event_target:mep_chartarget_eomer = {
+			death = { death_reason = death_battle }
 		}
 	}
 }
@@ -1328,8 +1135,6 @@ character_event = {
     title = "EVTTITrohanisengard.35"
     desc = "EVTDESCrohanisengard.35"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -1350,8 +1155,6 @@ character_event = {
     title = "EVTTITrohanisengard.36"
     desc = "EVTDESCrohanisengard.36"
     picture = "GFX_event_palantir"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -1365,7 +1168,12 @@ character_event = {
 		}
 	}
 }
-
+# Additional 'Tying up loose ends' events
+# Gandalf is dead in Saruman's court before Saruman has a change to 'convert him'
+character_event = {
+	id = rohanisengard.40
+	is_triggered_only = yes
+}
 
 ##### AFTER THE WAR AT THE FORDS OF ISEN #####
 

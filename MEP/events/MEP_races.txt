@@ -6,14 +6,9 @@ character_event = {
 	title = EVTNAMEracetrait.1
 	desc = EVTDESCracetrait.1
 	picture = "GFX_evt_elves"
+	religion_group = religion_group_eldar
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi	
-		}	
 		NOT = { trait = elf }
 		NOT = { trait = half_elf }
 		NOT = { father = { always = yes } }
@@ -21,12 +16,12 @@ character_event = {
 	}
 	
 	mean_time_to_happen = {
-		days = 1
+		days = 60
 	}
 
 	option = {
 		name = EVTOPTAracetrait.1
-		add_trait = elf
+		mep_char_is_elf_effect = yes
 	}
 }
 
@@ -36,17 +31,19 @@ character_event = {
 	title = EVTNAMEracetrait.1
 	desc = EVTDESCracetrait.1
 	picture = "GFX_evt_dwarves"
-	is_triggered_only = yes
+	religion_group = religion_group_khazad
 	
 	trigger = {
-		culture_group = culture_group_dwarves		
 		NOT = { trait = dwarven }
 	}
-
+	
+	mean_time_to_happen = {
+		days = 31
+	}
 
 	option = {
 		name = EVTOPTAracetrait.1
-		add_trait = dwarven
+		mep_char_is_dwarf_effect = yes
 	}
 }
 
@@ -351,15 +348,12 @@ character_event = {
 			70 = {
 				add_trait = weak_orc
 			}
-			15 = {
+			20 = {
 				add_trait = orc_warrior
 			}	
 			10 = {
 				add_trait = strong_orc
 			}
-			5 = {
-				add_trait = great_orc
-			}	
 		}
 	}
 	

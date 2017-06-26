@@ -26,6 +26,9 @@
 # mep_is_human_trigger
 # mep_dont_seduce_trigger
 # mep_horse_people_culture
+# mep_will_purge_evil
+# mep_will_purge_good
+# mep_is_evil_overlord
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -44,6 +47,7 @@
 # mep_prim_humans_culture
 # mep_prim_humans_culture_notbree
 # mep_orc_troll_culture
+# mep_pop_always_evil_purge_culture
 
 ## provinces for dynamic population stuff
 # mep_has_dunedain_popmod_trigger
@@ -178,14 +182,19 @@ mep_cant_get_disease_trigger = {
 # valar don't, because they forbid mortals from the land where they live, the cowards
 mep_wont_hire_physician_trigger = {
 	OR = {
-		religion_group = religion_group_melkor
+		AND = {
+			NOT = { trait = good_side }
+			OR = {
+				religion = religion_umaiar
+				religion = religion_wight
+				religion = religion_dragons
+				religion = religion_spider
+			}
+		}
 		religion_group = religion_group_wilderness
 		AND = {
 			religion_group = religion_group_eruhini
-			NAND = { 
-				culture = culture_istari
-				NOT = { trait = evil_side }
-			}
+			NOT = { culture = culture_istari }
 		}
 		religion_group = religion_group_enyd
 		trait = balrog
@@ -358,7 +367,12 @@ mep_is_human_trigger = {
 
 mep_dont_seduce_trigger = {
 	OR = {
-		religion_group = religion_group_eldar  # too Catholic
+		AND = {
+			religion_group = religion_group_eldar  # too Catholic
+			NOT = {  trait = lustful  }
+			NOT = {  trait = seducer  }
+			NOT = {  trait = seductress  }
+		}
 		religion_group = religion_group_wilderness  # not actual character
 		# religion_group = religion_group_enyd
 		religion_group = religion_group_melkor  # probably too evil and chaotic to seduce
@@ -375,6 +389,55 @@ mep_horse_people_culture = {
 		culture = culture_wainriders
 		culture = culture_khundolars
 		culture = culture_jangovars
+	}
+}
+
+mep_will_purge_evil = {
+	NOT = { has_character_flag = very_tolerant_of_evil } 
+	# anyone who is not a monster-kind, except evil overlords, will purge monster-kind ...
+	NOR = {
+		culture_group = culture_group_melkor
+		culture = culture_umaiar
+		trait = evil_side
+		any_suzerain = {  # My boss won't let me...
+			OR = {
+				culture_group = culture_group_melkor
+				culture = culture_umaiar
+				trait = evil_side
+			}
+		}
+	}
+}
+
+mep_will_purge_good = {
+	NOT = { has_character_flag = very_tolerant_of_good }
+	religion_group = religion_group_melkor
+	NOT = { trait = good_side }
+	OR = {
+		is_tributary = no
+		any_suzerain = {
+			NOR = {  # My boss won't let me...
+				trait = good_side
+				AND = {
+					NOT = { religion_group = religion_group_melkor }
+					NOT = { religion_group = religion_group_hildor }
+				}
+				
+			}
+		}
+	}
+}
+
+mep_is_evil_overlord = {
+	trait = evil_side
+	OR = {
+		religion = religion_umaiar
+		culture = culture_istari
+		trait = maiar
+		trait = balrog
+		trait = nazgul
+		religion = religion_dragons
+		
 	}
 }
 
@@ -441,7 +504,8 @@ mep_province_being_colonized_trigger = {
 		has_province_modifier = being_colonised_by_high_elves
 		has_province_modifier = being_colonised_with_wood_elves
 		has_province_modifier = being_colonised_with_humans_good
-		has_province_modifier = being_colonised_with_forodwaith		
+		has_province_modifier = being_colonised_with_forodwaith
+		has_province_modifier = being_colonised_with_orctrollkind		
 	}
 }
 
@@ -469,7 +533,11 @@ mep_good_side_province = {
 		religion_group = religion_group_enyd    # Ents
 		religion_group = religion_group_eldar   # Elves
 		religion_group = religion_group_khazad  # Dwarves
-		religion = religion_numenorean
+		AND = {
+			religion = religion_numenorean
+			NOT = { culture = culture_adunaic }
+			NOT = { culture = culture_black_numenorean }
+		}
 		religion = religion_dunedain
 		religion = religion_edain
 		religion = religion_druedain
@@ -535,6 +603,33 @@ mep_orc_troll_culture = {
 		culture = culture_troll
 	}
 }
+
+mep_pop_always_evil_purge_culture = {
+	OR = {
+		religion_group = religion_group_eruhini # Ainur (like Eagles)
+		religion_group = religion_group_enyd    # Ents
+		religion_group = religion_group_eldar   # Elves
+		religion_group = religion_group_khazad  # Dwarves
+		religion_group = religion_group_periannath  # Hobbits
+		AND = {
+			religion = religion_numenorean
+			NOT = { culture = culture_adunaic }
+			NOT = { culture = culture_black_numenorean }
+		}
+		religion = religion_dunedain
+		religion = religion_edain
+		religion = religion_druedain							
+	}
+}
+
+#mep_pop_always_evil_purge_culture = yes
+#holder_scope = {
+#	NAND = {
+#		trait = evil_side
+#		religion = PREV
+#	}
+#}
+
 
 #--------------------------------------------------------------------------------------------
 ## provinces for dynamic population stuff
