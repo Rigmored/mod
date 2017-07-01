@@ -212,85 +212,108 @@ character_event = {
 	hide_window = yes
 	
 	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = mepstartup10_done }
+	}
 	
 	immediate = {
 		# for elves and some others who have been around the whole time
-		if = {
-			limit = { NOT = { year = 11362 }  }
-			any_character = {
-				limit = {
-					OR = {
-						religion_group = religion_group_eldar
-						religion_group = religion_group_eruhini
-						religion = religion_umaiar
-						religion_group = religion_group_enyd
-						religion_group = religion_group_khazad
-					}
+		any_character = {
+			limit = {
+				OR = {
+					religion_group = religion_group_eldar
+					religion_group = religion_group_eruhini
+					religion = religion_umaiar
+					religion_group = religion_group_enyd
+					religion_group = religion_group_khazad
 				}
-				# Important Elves
-				if = { limit = { character = 3003 }
-					save_event_target_as = mep_chartarget_elrond
-				}
-				if = { limit = { character = 3065 }
-					save_event_target_as = mep_chartarget_cirdan
-				}
-				if = { limit = { character = 3006 }
-					save_event_target_as = mep_chartarget_galadriel
-				}
-				if = { limit = { character = 3005 }
-					save_event_target_as = mep_chartarget_celeborn
-				}
-				if = { limit = { character = 3104 }
-					save_event_target_as = mep_chartarget_thranduil
-				}
-				# Semi-Important Elves
-				if = { limit = { character = 3209 }
-					save_event_target_as = mep_chartarget_gildoringlorion
-				}
-				if = { limit = { character = 3230 }
-					save_event_target_as = mep_chartarget_erestor
-				}
-				# Critical Wizards
-				if = { limit = { character = 10033 }
-					save_event_target_as = mep_chartarget_gandalf
-				}
-				if = {
-					limit = { character = 10032
-							is_alive = yes }
-					save_event_target_as = mep_chartarget_saruman
-				}
-				if = { limit = { character = 10031 }
-					save_event_target_as = mep_chartarget_radagast
-				}
-				# Sauron and Morgoth
-				if = { limit = { character = 10015 }
-					save_event_target_as = mep_chartarget_morgoth
-				}
-				if = {
-					limit = { character = 10016
-							is_alive = yes }
-					save_event_target_as = mep_chartarget_sauron
-				}
-				# Others
-				if = { limit = { character = 10048 }
-					save_event_target_as = mep_chartarget_treebeard
-				}
-				if = { limit = { character = 10045 }
-					save_event_target_as = mep_chartarget_bombadil
-				}
-				# adding some race traits for generated characters
-				if = {
-					limit = { religion_group = religion_group_eldar }
-					mep_char_is_elf_effect = yes
-				}
-				if = {
-					limit = { religion_group = religion_group_khazad }
-					mep_char_is_dwarf_effect = yes
-				}
-					
-				
+			}
+			# Important Elves
+			if = { limit = { character = 3003 }
+				save_global_event_target_as = mep_chartarget_elrond
+			}
+			if = { limit = { character = 3065 }
+				save_global_event_target_as = mep_chartarget_cirdan
+			}
+			if = { limit = { character = 3006 }
+				save_global_event_target_as = mep_chartarget_galadriel
+			}
+			if = { limit = { character = 3005 }
+				save_global_event_target_as = mep_chartarget_celeborn
+			}
+			if = { limit = { character = 3104 }
+				save_global_event_target_as = mep_chartarget_thranduil
+			}
+			# Semi-Important Elves
+			if = { limit = { character = 3209 }
+				save_global_event_target_as = mep_chartarget_gildoringlorion
+			}
+			if = { limit = { character = 3230 }
+				save_global_event_target_as = mep_chartarget_erestor
+			}
+			# Critical Wizards
+			if = { limit = { character = 10033 }
+				save_global_event_target_as = mep_chartarget_gandalf
+			}
+			if = {
+				limit = { character = 10032
+						is_alive = yes }
+				save_global_event_target_as = mep_chartarget_saruman
+			}
+			if = { limit = { character = 10031 }
+				save_global_event_target_as = mep_chartarget_radagast
+			}
+			if = { limit = { character = 10029 }
+				save_global_event_target_as = mep_chartarget_pallando
+			}
+			if = { limit = { character = 10030 }
+				save_global_event_target_as = mep_chartarget_alatar
+			}
+			# Sauron and Morgoth
+			if = { limit = { character = 10015 }
+				save_global_event_target_as = mep_chartarget_morgoth
+			}
+			if = {
+				limit = { character = 10016
+						is_alive = yes }
+				save_global_event_target_as = mep_chartarget_sauron
+			}
+			# Others
+			if = { limit = { character = 10048 }
+				save_global_event_target_as = mep_chartarget_treebeard
+			}
+			if = { limit = { character = 10045 }
+				save_global_event_target_as = mep_chartarget_bombadil
+			}
+			# adding some race traits for generated characters
+			if = {
+				limit = { religion_group = religion_group_eldar }
+				mep_char_is_elf_effect = yes
+			}
+			if = {
+				limit = { religion_group = religion_group_khazad }
+				mep_char_is_dwarf_effect = yes
 			}
 		}
+		# moving characters at_east to the court of a special landless_title
+		d_eastern_wilds = {
+			holder_scope = {
+				any_character = {
+					if = {
+						limit = {
+							trait = at_east
+							is_landed = no
+							OR = {
+								is_married = no
+								any_spouse = { trait = at_east }
+							}
+						}
+						move_character = PREV
+					}
+				}
+			}
+		}
+		set_global_flag = mepstartup10_done
 	}
 	
 
@@ -303,32 +326,32 @@ character_event = {
 		any_character = {
 			# Critical Númenóreans
 			if = { limit = { character = 12135 }
-				save_event_target_as = mep_chartarget_elendil
+				save_global_event_target_as = mep_chartarget_elendil
 			}
 			if = { limit = { character = 12136 }
-				save_event_target_as = mep_chartarget_isildur
+				save_global_event_target_as = mep_chartarget_isildur
 			}
 			if = { limit = { character = 12137 }
-				save_event_target_as = mep_chartarget_anarion
+				save_global_event_target_as = mep_chartarget_anarion
 			}
 			if = { limit = { character = 12138 }
-				save_event_target_as = mep_chartarget_elendur
+				save_global_event_target_as = mep_chartarget_elendur
 			}
 			if = { limit = { character = 12139 }
-				save_event_target_as = mep_chartarget_aratan
+				save_global_event_target_as = mep_chartarget_aratan
 			}
 			# Major Elves
 			if = { limit = { character = 3139 }
-				save_event_target_as = mep_chartarget_gilgalad
+				save_global_event_target_as = mep_chartarget_gilgalad
 			}
 			if = { limit = { character = 3107 }
-				save_event_target_as = mep_chartarget_amdir
+				save_global_event_target_as = mep_chartarget_amdir
 			}
 			if = { limit = { character = 3250 }
-				save_event_target_as = mep_chartarget_amroth
+				save_global_event_target_as = mep_chartarget_amroth
 			}
 			if = { limit = { character = 3029 }
-				save_event_target_as = mep_chartarget_oropher
+				save_global_event_target_as = mep_chartarget_oropher
 			}
 		}
 
@@ -343,91 +366,104 @@ character_event = {
 		any_character = {
 			# Critical Hobbits
 			if = { limit = { character = 8079 }
-				save_event_target_as = mep_chartarget_frodo
+				save_global_event_target_as = mep_chartarget_frodo
 			}
 			if = { limit = { character = 8065 }
-				save_event_target_as = mep_chartarget_bilbo
+				save_global_event_target_as = mep_chartarget_bilbo
 			}
 			if = { limit = { character = 8140 }
-				save_event_target_as = mep_chartarget_samwise
+				save_global_event_target_as = mep_chartarget_samwise
 			}
 			if = { limit = { character = 8041 }
-				save_event_target_as = mep_chartarget_merry
+				save_global_event_target_as = mep_chartarget_merry
 			}
 			if = { limit = { character = 8028 }
-				save_event_target_as = mep_chartarget_pippin
+				save_global_event_target_as = mep_chartarget_pippin
 			}
 			# Critical Men of Gondor
 			if = { limit = { character = 1943 }
-				save_event_target_as = mep_chartarget_denethor
+				save_global_event_target_as = mep_chartarget_denethor
 			}
 			if = { limit = { character = 1944 }
-				save_event_target_as = mep_chartarget_boromir
+				save_global_event_target_as = mep_chartarget_boromir
 			}
 			if = { limit = { character = 1945 }
-				save_event_target_as = mep_chartarget_faramir
+				save_global_event_target_as = mep_chartarget_faramir
 			}
 			if = { limit = { character = 1108 }
-				save_event_target_as = mep_chartarget_beregond
+				save_global_event_target_as = mep_chartarget_beregond
 			}
 			if = { limit = { character = 1906 }
-				save_event_target_as = mep_chartarget_princeimrahil
+				save_global_event_target_as = mep_chartarget_princeimrahil
 			}
 			if = { limit = { character = 1003 }
-				save_event_target_as = mep_chartarget_ioreth
+				save_global_event_target_as = mep_chartarget_ioreth
 			}
 			# Critical Men of the North
 			if = { limit = { character = 2038 }
-				save_event_target_as = mep_chartarget_aragorn
+				save_global_event_target_as = mep_chartarget_aragorn
 			}
 			if = { limit = { character = 7002 }
-				save_event_target_as = mep_chartarget_butterbur
+				save_global_event_target_as = mep_chartarget_butterbur
 			}
 			if = { limit = { character = 7353 }
-				save_event_target_as = mep_chartarget_billferny
+				save_global_event_target_as = mep_chartarget_billferny
 			}
 			# Critical Rohirrim
 			if = { limit = { character = 24 }
-				save_event_target_as = mep_chartarget_theoden
+				save_global_event_target_as = mep_chartarget_theoden
 			}
 			if = { limit = { character = 25 }
-				save_event_target_as = mep_chartarget_theodred
+				save_global_event_target_as = mep_chartarget_theodred
 			}
 			if = { limit = { character = 27 }
-				save_event_target_as = mep_chartarget_eomer
+				save_global_event_target_as = mep_chartarget_eomer
 			}
 			if = { limit = { character = 28 }
-				save_event_target_as = mep_chartarget_eowyn
+				save_global_event_target_as = mep_chartarget_eowyn
 			}
 			if = { limit = { character = 154 }
-				save_event_target_as = mep_chartarget_wormtongue
+				save_global_event_target_as = mep_chartarget_wormtongue
 			}
 			# Critical Dwarves
 			if = { limit = { character = 4058 }
-				save_event_target_as = mep_chartarget_gimli
+				save_global_event_target_as = mep_chartarget_gimli
 			}
 			if = { limit = { character = 4047 }
-				save_event_target_as = mep_chartarget_gloin
+				save_global_event_target_as = mep_chartarget_gloin
 			}
 			if = { limit = { character = 4057 }
-				save_event_target_as = mep_chartarget_burin  # has a claim to Khazad-dûm that needs dealing with
+				save_global_event_target_as = mep_chartarget_burin  # has a claim to Khazad-dûm that needs dealing with
 			}
 			if = { limit = { character = 4043 }
-				save_event_target_as = mep_chartarget_dainironfoot
+				save_global_event_target_as = mep_chartarget_dainironfoot
 			}
 			if = { limit = { character = 4056 }
-				save_event_target_as = mep_chartarget_thorinIIIstonehelm
+				save_global_event_target_as = mep_chartarget_thorinIIIstonehelm
 			}
 			# Critical Elves
 			if = { limit = { character = 3106 }
-				save_event_target_as = mep_chartarget_legolas
+				save_global_event_target_as = mep_chartarget_legolas
 			}
 			if = { limit = { character = 3010 }
-				save_event_target_as = mep_chartarget_arwen
+				save_global_event_target_as = mep_chartarget_arwen
 			}
 			
-			
 		}
+		# dispatching some startup events
+		event_target:mep_chartarget_saruman = {
+			narrative_event = { id = rohanisengard.0  days = 7 }
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				demesne_size  = 1
+				NOT = { mep_is_evil_side_trigger = yes }				
+			}
+			narrative_event = { id = warofthering.1  days = 6 }
+		}
+		
+		
 	}
 	
 	# Other start sates

@@ -417,7 +417,7 @@
 	dynasty = 10011
 
 	religion = "religion_eruhini"
-	culture = "culture_maiar"
+	culture = "culture_umaiar"
 
 	disallow_random_traits = yes
 	add_trait = maiar
@@ -442,7 +442,6 @@
 		dynasty = 10012
         add_trait =  evil_side
 		religion = "religion_umaiar"
-		culture = "culture_umaiar"
 	} #Mairon is corrupted by Melkor
 	4120.1.1 = {
 		name = "Gorthaur"
@@ -727,7 +726,7 @@
 
 	6.1.1 = {
 		birth = "6.1.1"
-		# employer = 10001
+		employer = 10001
 	}
 	9343.1.1 = {
 		name = "Pallando"
@@ -741,6 +740,7 @@
 		add_trait = falconer
 		give_nickname = "nick_the_blue"
 		effect = {
+			set_graphical_culture = culture_istari
 			set_character_flag = pallando
 			add_friend = 10030 #Alatar
 		}
@@ -757,7 +757,7 @@
 
 	6.1.1 = {
 		birth = "6.1.1"
-		# employer = 10001
+		employer = 10001
 	}
 	9343.1.1 = {
 		name = "Alatar"
@@ -771,6 +771,7 @@
 		add_trait = hunter
 		give_nickname = "nick_the_blue"
 		effect = {
+			set_graphical_culture = culture_istari
 			set_character_flag = alatar
 			add_friend = 10029 #Pallando
 		}
@@ -789,6 +790,7 @@
   	properties = "ii0nefbebbb"
 	6.1.1 = {
 		birth = "6.1.1"
+		employer = 10001
 	}
 	9343.1.1 = {
 		name = "Radagast"
@@ -804,8 +806,10 @@
 		add_trait = gregarious
 		add_trait = celibate
 		effect = {
+			set_graphical_culture = culture_istari
 			add_friend = 10033
         }
+		employer = 3003 # He does not get Rosgobel until 10818, so I'll stick him with Elrond
 	} #The Five Istari arrive in Middle-earth
 	10806.1.1 = {
 		add_trait = white_council
@@ -824,6 +828,7 @@
  	properties = "hg0ncfbebbb"
 	6.1.1 = {
 		birth = "6.1.1"
+		employer = 10001
 	}
 	9343.1.1 = {
 		name = "Saruman"
@@ -833,10 +838,14 @@
 		add_trait = mastermind_theologian
 		add_trait = staff_of_saruman
 		add_trait = at_east
+		effect = {
+			set_graphical_culture = culture_istari
+		}
 	} #The Five Istari arrive in Middle-earth
 	10806.1.1 = {
 		add_trait =  leader_whitecouncil
 		remove_trait = at_east
+		employer = 3003 # He does not get Isengard until 11102, so I'll stick him with Elrond
 	} #The White Council is formed
 	11102.1.1 = {
 	    add_trait = ambitious
@@ -882,6 +891,7 @@
 		effect = {
 			set_character_flag = gandalf
 		}
+		employer = 10001
 	}
 	
 	9343.1.1 = {
@@ -893,7 +903,9 @@
 		name = "Gandalf"
 		effect = {
 			set_character_flag = gandalf
-		}		
+			set_graphical_culture = culture_istari
+		}
+		employer = 3003 # Needed to move him out of Valinor so I'll stick him with Elrond		
 	} #The Five Istari arrive in Middle-earth
 	
 	10806.1.1 = {

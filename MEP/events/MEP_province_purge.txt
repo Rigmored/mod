@@ -67,7 +67,7 @@ character_event = {
 			}
 			add_province_modifier = { name = being_purged duration = 10950 }
 			hidden_tooltip = {
-				add_province_modifier = { name = mep_purge_delay duration = 3612 }
+				set_province_flag = mep_purge_delay
 			}
 			
 		}
@@ -91,7 +91,7 @@ character_event = {
 		any_realm_province = {
 			culture_group = culture_group_melkor
 			has_province_modifier = being_purged
-			NOT = { has_province_modifier = mep_purge_delay }
+			NOT = { had_province_flag = { flag = mep_purge_delay days = 3616 } }
 			# If the province is occupied, it prevents the purge from completing
 			county = { is_occupied = no }
 		}
@@ -104,7 +104,7 @@ character_event = {
 			limit = {
 				culture_group = culture_group_melkor
 				has_province_modifier = being_purged
-				NOT = { has_province_modifier = mep_purge_delay }
+				had_province_flag = { flag = mep_purge_delay days = 3616 }
 				# If the province is occupied, it prevents the purge form completing
 				county = { is_occupied = no }
 			}
@@ -143,6 +143,7 @@ character_event = {
 			hidden_tooltip = {
 				remove_province_modifier = being_purged
 				remove_province_modifier = sending_colonists
+				clr_province_flag = mep_purge_delay
 			}
 		}
 	}
@@ -206,9 +207,9 @@ character_event = {
 			hidden_tooltip = {
 				remove_province_modifier = population_increasing
 				mep_stop_colonisation_effect = yes
-				add_province_modifier = { name = mep_purge_delay duration = 3612 }
+				set_province_flag = mep_purge_delay
 			}
-			add_province_modifier = { name = being_purged duration = 3650 }
+			add_province_modifier = { name = being_purged duration = 10950 }
 			hidden_tooltip = {
 				set_variable = { which = mepvar_evilpurge_culture value =  1 } # stands for orc culture, which is the default
 				ROOT = {
@@ -250,7 +251,7 @@ character_event = {
 				religion = religion_lossoth
 			}
 			has_province_modifier = being_purged
-			NOT = { has_province_modifier = mep_purge_delay }
+			had_province_flag = { flag = mep_purge_delay days = 3616 }
 			# If the province is occupied, it prevents the purge from completing
 			county = { is_occupied = no }
 		}
@@ -262,7 +263,7 @@ character_event = {
 		any_realm_province = {
 			limit = {
 				has_province_modifier = being_purged
-				NOT = { has_province_modifier = mep_purge_delay }
+				had_province_flag = { flag = mep_purge_delay days = 3616 }
 				OR = {
 					mep_good_side_province = yes
 					religion_group = religion_group_periannath
@@ -308,8 +309,11 @@ character_event = {
 				culture = culture_spider
 				religion = religion_spider
 			}
-			remove_province_modifier = sending_colonists
-			remove_province_modifier = being_purged
+			hidden_tooltip = {
+				remove_province_modifier = sending_colonists
+				remove_province_modifier = being_purged
+				clr_province_flag = mep_purge_delay
+			}
 		}
 	}
 	

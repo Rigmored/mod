@@ -13,19 +13,16 @@ narrative_event = {
     desc = "EVTDESCrohanisengard.0"
     picture = "GFX_oath_of_eorl"
 	religion = religion_umaiar
+	
+	is_triggered_only = yes
 
-	trigger = {
-		year = 11355
-		NOT = { year = 11363 }
-		event_target:mep_chartarget_saruman = { character = PREV } 
+	trigger = {  # This event *could* run more than once...
+		character = 10032
 		is_alive = yes
 		has_landed_title = k_isengard
 		NOT = { has_character_flag = evilsaruman }
 		NOT = { has_character_flag = goodsaruman }
-	}
-	
-	mean_time_to_happen = {
-		days = 7
+		year = 11296
 	}
 	
 	# Evil Saruman. The only option allowed for the AI 
@@ -34,10 +31,6 @@ narrative_event = {
 		hidden_tooltip = {
 			narrative_event = { id = rohanisengard.1 days = 30 } ## Coming of Gandalf
 			set_character_flag = evilsaruman
-		}
-		any_playable_ruler = {
-			limit = { has_landed_title = k_rohan }
-			narrative_event = { id = rohanisengard.6 days = 80 }
 		}
 		any_realm_province = {
 			culture = culture_urukhai
@@ -90,9 +83,12 @@ narrative_event = {
 			has_landed_title = c_isengard
 			has_character_flag = evilsaruman
 		}
-		event_target:mep_chartarget_gandalf = {
-			move_character = ROOT
-			narrative_event = { id = rohanisengard.2 days = 10 }
+		custom_tooltip = {
+			text = TT_rohanisegard1A
+			event_target:mep_chartarget_gandalf = {
+				move_character = ROOT
+				narrative_event = { id = rohanisengard.2 days = 10 }
+			}
 		}
 	}
 	
@@ -129,18 +125,18 @@ narrative_event = {
 	option = {
 		name = "EVTOPTArohanisengard.2" ## You're an idiot, Saruman !
 		trigger = { is_alive = yes }
-		ai_chance = { factor = 99 }
+		ai_chance = { factor = 98 }
 		event_target:mep_chartarget_saruman = {
-			character_event = { id = rohanisengard.3 days = 1 }
+			character_event = { id = rohanisengard.3  days = 1}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTBrohanisengard.2" ## Alas, you might be correct.
 		trigger = { is_alive = yes }
-		ai_chance = { factor = 1 }
+		ai_chance = { factor = 2 }
 		event_target:mep_chartarget_saruman = {
-			character_event = { id = rohanisengard.4 days = 1 }
+			character_event = { id = rohanisengard.4  days = 1}
 		}
 	}
 	
@@ -148,7 +144,7 @@ narrative_event = {
 		name = EVTrohanisengardOPTdead
 		trigger = { is_alive = no }
 		event_target:mep_chartarget_saruman = {
-			character_event = { id = rohanisengard.40 days = 1 }
+			character_event = { id = rohanisengard.40  days = 1 }
 		}
 	}
 	
@@ -199,6 +195,7 @@ character_event = {
 			set_character_flag = badgandalf
 			remove_trait = good_side
 			add_trait = evil_side
+			religion = religion_umaiar
 		}
 	}
 }
@@ -266,12 +263,22 @@ character_event = {
 	has_global_flag = battlesofisen
 
 	trigger = {
+		# it's Saruman, he has power!
 		event_target:mep_chartarget_saruman = { character = PREV }
 		has_landed_title = k_isengard
+		has_landed_title = c_orthanc
+		NOT = { has_character_flag = goodsaruman }
+		# Right year and conditions
 		year = 11362
 		NOT = { year = 11364 }
 		NOT = { has_character_flag = battlesofisen }
 		NOT = { has_character_flag = notbattlesofisen }
+		is_primary_war_defender = no
+		# Rohan exists and is independent
+		k_rohan = {
+			has_holder = yes
+			independent = yes
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -285,7 +292,7 @@ character_event = {
 		set_character_flag = battlesofisen
 		k_rohan = {
 			holder_scope = {
-				character_event = { id = rohanisengard.8 days = 2 }
+				character_event = { id = rohanisengard.8 }
 			}
 		}
 	}
@@ -1168,11 +1175,142 @@ character_event = {
 		}
 	}
 }
+#=====================================================================================
 # Additional 'Tying up loose ends' events
+#---------------------------------------------
 # Gandalf is dead in Saruman's court before Saruman has a change to 'convert him'
 character_event = {
 	id = rohanisengard.40
+	title = "EVTTITrohanisengard.40"
+    desc = "EVTDESCrohanisengard.40"
+	picture = "GFX_event_palantir"
+	
 	is_triggered_only = yes
+	trigger = { is_alive = yes }
+	
+	option = {
+		name = "EVTOPTrohanisengard.40"
+	}
+	
+}
+#-----------------------------------------------------------------
+# The original rohanisengard.6 event assumes Saruman is still threatning, Théoden is king, Grima is advisor, and both
+# Théodred and Éomer are alive. This is most likely, but in CKII, almost anyone can die. Some contingency events are good
+character_event = {
+	id = rohanisengard.41
+	hide_window = yes
+	only_playable = yes
+	
+	
+	# rohanisengard.6 assumes the king of rohan does not die during the 80 day delay between schedule and completion
+	# so this hidden event triggers for the non-evil independent ruler of Rohan, whomever he or she might be
+	trigger = {
+		year = 11355
+		NOT = { year = 11363 }
+		has_landed_title = k_rohan
+		independent = yes
+		NOT = { trait = evil_side }
+		NOT = { has_global_flag = battlesofisen }
+		NOT = { has_global_flag = rohan_threatened }
+		NOT = { has_global_flag = rohan_notthreatened }
+		has_game_rule = { name = wotr_lore  value = canon }
+	}
+	
+	mean_time_to_happen = { days = 80 }
+	
+	# option 1 : As normal
+	option = {
+		trigger = {
+			# Saruman is threatning
+			mep_threatning_saruman = yes
+			# Théoden is King, Théodred and Éomer are okay
+			AND = {
+				event_target:mep_chartarget_theoden = {
+					character = PREV
+				}
+				mep_theodred_and_eomer_are_okay = yes
+			}
+		}
+		narrative_event = { id = rohanisengard.6 }
+	}
+	
+	# option 2 : Threatning, alternate message...
+	option = {
+		trigger = {
+			# Saruman is threatning
+			mep_threatning_saruman = yes
+			# NOT (completely) TRUE : Théoden is King, Théodred and Éomer are okay
+			NAND = {
+				event_target:mep_chartarget_theoden = {
+					character = PREV
+				}
+				mep_theodred_and_eomer_are_okay = yes
+			}
+		}
+		narrative_event = { id = rohanisengard.42 }
+	}
+	
+	# option 3 : Saruman is not a threat
+	option = {
+		trigger = {
+			event_target:mep_chartarget_saruman = {
+				OR = {
+					has_character_flag = goodsaruman
+					is_alive = no
+					NOT = { has_landed_title = c_orthanc }
+				}
+			}
+		}
+		narrative_event = { id = rohanisengard.43 }
+	}	
+}
+#--------------------------------------------------------------
+##### The King of Rohan is alerted of the evil choice of Saruman #####
+narrative_event = {
+    id = rohanisengard.42
+    title = "EVTTITrohanisengard.42"
+	desc = {
+		trigger = {
+			any_courtier = {
+				event_target:mep_chartarget_wormtongue = { character = PREV }
+			}
+		}
+		text = EVTDESCrohanisengard.42a
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				any_courtier = {
+					event_target:mep_chartarget_wormtongue = { character = PREV }
+				}
+			}
+		}
+		text = EVTDESCrohanisengard.42b
+	}
+    picture = "GFX_event_palantir"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTArohanisengard.42" 
+		set_global_flag = battlesofisen
+		set_global_flag = rohan_threatened
+	}
+}
+#--------------------------------------------------------------------
+##### The ruler of Rohan is informed that no threat comes from Orthanc
+narrative_event = {
+    id = rohanisengard.43
+    title = "EVTTITrohanisengard.43"
+	desc = EVTDESCrohanisengard.43
+    picture = "GFX_event_palantir"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTrohanisengard.43" 
+		set_global_flag = rohan_notthreatened
+	}
 }
 
 ##### AFTER THE WAR AT THE FORDS OF ISEN #####

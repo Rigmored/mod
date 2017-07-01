@@ -6,9 +6,13 @@ narrative_event = {
 	title = EVTTITgandalf.1
 	desc = EVTDESCgandalf.1
 	picture = GFX_evt_elven_story
+	only_playable = yes
+	only_independent = yes
+	war = yes
 	
 	
 	trigger = {
+		year = 9344
 		is_primary_war_defender = yes
 		trait = good_side
 		independent = yes
@@ -18,12 +22,11 @@ narrative_event = {
 			tier = DUKE
 		}
 		NOT = { has_character_flag = gandalfinrealm }
-		any_playable_ruler = {
-			any_courtier = {
-				has_character_flag = gandalf
-				age = 1
-				prisoner = no
-			}
+		event_target:mep_chartarget_gandalf = {
+			NOT = { trait = on_fellowshipquest }
+			NOT = { trait = sailed_west }
+			NOT = { has_character_flag = badgandalf }
+			prisoner = no
 		}
 	}
 	
@@ -83,15 +86,8 @@ narrative_event = {
 				trait = perceptive
 			}			
 		}
-		any_playable_ruler = {
-			any_courtier = {
-				limit = {
-					has_character_flag = gandalf
-					age = 1
-					prisoner = no
-				}
-				move_character = ROOT
-			}
+		event_target:mep_chartarget_gandalf = {
+			move_character = ROOT
 		}
 		set_character_flag = gandalfinrealm
 	}
@@ -170,11 +166,7 @@ character_event = {
 	
 	trigger = {
 		any_courtier = {
-			culture = culture_istari
-			trait = narya
-			trait = maiar
 			has_character_flag = gandalf
-			age = 1
 			prisoner = no
 		}
 		NOT = { has_character_flag = coming_of_gandalf }
@@ -250,31 +242,5 @@ character_event = {
 	option = {
 		name = EVTOPTAgandalf.4 ## Good.
 		clr_character_flag = coming_of_gandalf 
-	}
-}
-
-
-## Gandalf character flag ##
-character_event = {
-	id = gandalf.5
-	title = EVTTITgandalf.5
-	desc = EVTDESCgandalf.5
-	picture = GFX_evt_elven_story
-	
-	trigger = {
-		trait = narya
-		trait = maiar
-		trait = staff_of_gandalf
-		NOT = { has_character_flag = gandalf }
-		culture = culture_istari
-	}
-	
-	mean_time_to_happen = {
-		days = 1
-	}
-	
-	option = {
-		name = EVTOPTAgandalf.5
-		set_character_flag = gandalf
 	}
 }

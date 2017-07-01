@@ -468,7 +468,8 @@ character_event = {
 			character_event = { id = frodo.17 }
 		}
 		# Getting rid of the Nazgul
-		nazgul = {
+		any_realm_character = {
+			limit = { trait = nazgul }
 			character_event = { id = frodo.18 days = 3}
 		}
 		any_independent_ruler = {
@@ -476,7 +477,7 @@ character_event = {
 			suzerain = { remove_tributary = ROOT }
         }
 		# Killing Sauron
-		event_target:mep_frodo_target = {
+		event_target:mep_fellowship_ringbearer = {
 			PREV = {
 				death = {
 					death_reason = death_destroyed_alongside_one_ring

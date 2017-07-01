@@ -2514,18 +2514,20 @@ on_chronicle_start = {
 	events = {
 		CM.10000
 		buildings.0 ## Will allow the buildings
-		valinor.20
-		population.100
-		population.101
-		buildings.200
-		buildings.201
-		maiarkiller.2
-		maiarkiller.1
-		mepstartup.10
-		goodside.10
-		evilside.4
-		meplawsetup.0
+		valinor.20  # For imprisoning Morgoth
+		population.100  # Sets up moplevel modifiers for non-player provinces
+		population.101  # Sets up poplevel modifiers for player-nation provinces
+		buildings.200	# generates holding builings (as per culture+poplevel) for non-player provinces
+		buildings.201   # generates holding builings (as per culture+poplevel) for player provinces
+		maiarkiller.2	# generates courtiers for evil Saruman
+		maiarkiller.1	# generates courtiers for Sauron
+		mepstartup.10	# sets some event targets and racial traits
+		goodside.10		# allocates good_side trait
+		evilside.4		# allocates evil_side trit
+		meplawsetup.0	# some law setup, mostly to try and get king's peace for some groups
 		# mepstartup.1 ## ??
+		racetrait.25  # Generates courtiers for elven rulters of count-level or above.
+		mepstartup.11  # Sets up individual startup events
 
 	}
 }

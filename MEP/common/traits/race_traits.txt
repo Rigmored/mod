@@ -62,6 +62,7 @@ elf_childhood = {
 	cannot_marry = yes
 	cached = yes
 	incapacitating = yes
+	
 }
 
 fea_strong = {
@@ -387,23 +388,26 @@ eagle = {
 }
 
 hobbit = {
-	potential = { religion_group = religion_group_periannath } 
-	# okay relations
-	tolerates_religion_group_khazad = yes
-	tolerates_religion_group_eldar = yes
-	# Those who hate hobbits
-	religion_group_melkor_opinion = -50
-	
-	# other modifers
-   	health = 6.5
-  	same_opinion = 20
-	inherit_chance = 100
-	martial_penalty = -8
-	intrigue_penalty = -5
-	customizer = yes
-	ai_ambition = -60 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    potential = { religion_group = religion_group_periannath } 
+    # okay relations
+    tolerates_religion_group_eruhini = yes
+    tolerates_religion_group_khazad = yes
+    tolerates_religion_group_eldar = yes
+    # Those who hate hobbits
+    religion_group_melkor_opinion = -50
+   
+    # other modifers
+      health = 6.5
+      same_opinion = 20
+    inherit_chance = 100
+    martial_penalty = -1
+    intrigue = 3
+    stewardship = 3
+    learning = -5
+    customizer = yes
+    ai_ambition = -60 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = 50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
-	cached = yes
+    cached = yes
 }
 
 # Not for hobbits, but for hobbit-fanciers
@@ -575,35 +579,35 @@ worship_balrog = {
 	cached = yes
 }
 
-spider = {	
-	potential = {
-		religion = religion_spider
-		culture = culture_spider
-	}
-	# those who hate spiders (most everybody not evil)
-	religion_group_eldar_opinion = -100
-	religion_group_khazad_opinion = -100
-	religion_group_eruhini_opinion = -100
-	religion_group_periannath_opinion = -80
-	religion_group_enyd_opinion = -80
-	religion_group_edain_opinion = -80
-	religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Huge Spiders unsettling at best...
-	
-	# other modifers
-	fertility_penalty = -5.0
+spider = {   
+    potential = {
+        religion = religion_spider
+        culture = culture_spider
+    }
+    # those who hate spiders (most everybody not evil)
+    religion_group_eldar_opinion = -100
+    religion_group_khazad_opinion = -100
+    religion_group_eruhini_opinion = -100
+    religion_group_periannath_opinion = -80
+    religion_group_enyd_opinion = -80
+    religion_group_edain_opinion = -80
+    religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Huge Spiders unsettling at best...
+   
+    # other modifers
+    fertility_penalty = -5.0
     health = 1000.0
-    diplomacy_penalty = -20
-	stewardship_penalty = -20
-	martial_penalty = -20
-	intrigue_penalty = -20
-	learning_penalty = -20
+    diplomacy_penalty = -10
+    stewardship_penalty = -20
+    martial = 1
+    intrigue = 4
+    learning_penalty = -5
     immortal = yes
-	customizer = no
-	cannot_marry = yes
-	ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    customizer = yes
+    cannot_marry = yes
+    ai_ambition = -100 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = -50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
     ai_honor = -100 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
-	cached = yes
+    cached = yes
 }
 
 wight = {
@@ -620,7 +624,7 @@ wight = {
 	religion_group_edain_opinion = -70
 	religion_group_hildor_opinion = -15  # Even Men of Darkness surely find Wights unsettling at best...
 	# other modifers
-	fertility_penalty = -5.0
+	fertility_penalty = -4.0
 	health = 1000.0
 	immortal = yes
 	intrigue = 4
@@ -708,6 +712,19 @@ half_orc = {
     same_opinion = 5
 	cached = yes
 }
+
+# Used for Sauron when he does not have the ring
+spiritform = {
+    customizer = no
+	cached = yes
+	random = no
+	diplomacy_penalty = -5
+	stewardship_penalty = -10
+	martial_penalty = -15
+	intrigue_penalty = -10
+	demesne_size = -2
+}
+
 #-------------------------------------------------------------
 # Dragon Race Traits
 

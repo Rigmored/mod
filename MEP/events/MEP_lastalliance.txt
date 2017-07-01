@@ -44,7 +44,7 @@ long_character_event = {
 					higher_real_tier_than  = count
 					mercenary = no
 				}
-				character_event = { id = lastalliance.1  days = 7 }
+				character_event = { id = lastalliance.1  days = 6 random = 4} 
 			}
 		}
 		wealth = -50
@@ -88,7 +88,7 @@ character_event = {
 			}
 		}
 		FROM = {
-			character_event = { id = lastalliance.2 days = 7 }
+			character_event = { id = lastalliance.2 days = 6  random = 3}
 		}
 
 		
@@ -110,7 +110,7 @@ character_event = {
 			}
 		}
 		FROM = {
-			character_event = { id = lastalliance.3 days = 7 }
+			character_event = { id = lastalliance.3 days = 6 random = 3 }
 		}
 	}
 	
@@ -247,7 +247,7 @@ character_event = {
 		any_independent_ruler = {
 			limit = { has_character_flag = mep_lastalliance_joined }
 			clr_character_flag = mep_lastalliance_joined
-			character_event = { id = lastalliance.7  days = 7 }
+			character_event = { id = lastalliance.7  days =  6 random = 3 }
 		}
 		character_event = { id = lastalliance.6 }
 	}
@@ -261,7 +261,7 @@ character_event = {
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_joined }
 				clr_character_flag = mep_lastalliance_joined
-				character_event = { id = lastalliance.7  days = 7 }
+				character_event = { id = lastalliance.7  days = 6 random = 3 }
 			}
 		}
 	}
@@ -368,7 +368,7 @@ character_event = {
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_joined }
 				clr_character_flag = mep_lastalliance_joined
-				character_event = { id = lastalliance.7  days = 7 }
+				character_event = { id = lastalliance.7  days = 7 random = 3 }
 			}
 		}
 	}
@@ -1216,8 +1216,7 @@ character_event = {
 					troops = {
 						heavy_infantry = { 10000 10000 }
 					}
-					reinforces = yes
-					reinforce_rate_multiplier = 0.1						
+					reinforces = yes				
 				}
 				give_minor_title = title_commander
 			}
@@ -1251,8 +1250,7 @@ character_event = {
 						archers = { 5700 5700 }
 						light_cavalry = { 2800 2800 } 
 					}
-					reinforces = yes
-					reinforce_rate_multiplier = 0.1						
+					reinforces = yes				
 				}
 			}
 		}
@@ -1284,8 +1282,7 @@ character_event = {
 						archers = { 5700 5700 }
 						light_cavalry = { 2800 2800 } 
 					}
-					reinforces = yes
-					reinforce_rate_multiplier = 0.1						
+					reinforces = yes				
 				}
 			}
 		}
@@ -1317,8 +1314,7 @@ character_event = {
 						archers = { 5700 5700 }
 						light_cavalry = { 2800 2800 } 
 					}
-					reinforces = yes
-					reinforce_rate_multiplier = 0.1						
+					reinforces = yes					
 				}
 			}
 		}
@@ -1861,8 +1857,9 @@ character_event = {
 			death = { death_reason = death_destroyed_alongside_one_ring  killer = PREV }
 		}
 		hidden_tooltip = {
-			nazgul = {
-				character_event = { id = frodo.18 }
+			any_realm_character = {
+				limit = { trait = nazgul }
+				character_event = { id = frodo.18  days = 2}
 			}
 		}
 		any_independent_ruler = {

@@ -10,7 +10,6 @@ form_last_alliance = {
 	
 	potential = {
 		# Right time period
-		year = 8331
 		NOT = { year = 8400 }
 		# must be the Númenórean Ruler of e_reunited_kingdom (or it's successors, just in case)
 		independent = yes
@@ -18,8 +17,7 @@ form_last_alliance = {
 			has_landed_title = e_reunited_kingdom
 			has_landed_title = e_arnor
 			has_landed_title = e_gondor
-		}
-		mep_is_good_numenorean_culture = yes		
+		}	
 		# not already in progress or finished
 		NOR = {
 			has_global_flag = mep_start_lastalliance
@@ -46,6 +44,8 @@ form_last_alliance = {
 	}
 	
 	allow = {
+		year = 8331
+		mep_is_good_numenorean_culture = yes	
 		NOT = { trait = evil_side }
 		# failed previous attempt has a timeout
 		NOT = { has_character_modifier = mep_lastalliance_failed }

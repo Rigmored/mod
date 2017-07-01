@@ -1,3 +1,10 @@
+# includes some misc events
+# racetrait.1 to racetrait.10 : applies vital species-specific traits to those who are supposed to have them
+# racetrait.20 : If you are plotting to kill unkillable characters, this event pops up and cancels the plot_kill_character
+# racetrait.21 : Huorn Defence force for Fangorn and The Old Forest
+# racetrait.24 to racetrait.26 : Generates courtiers for Elven Rulers
+
+
 namespace = racetrait
 
 ## The characters is an Elf ##
@@ -470,6 +477,7 @@ character_event = {
 		}
 		# is under attack (I think this is all that is necessary)
 		is_primary_war_defender = yes
+		# I'm not sure If I should put in some flag to block repeats or not.
 	}
 	
 	mean_time_to_happen = {
@@ -558,6 +566,176 @@ character_event = {
 		}
 		# just in case, we also boot morale
 		any_army = { morale = +1 }
+		
+	}
+}
+
+#----------------------------------------------------------------
+# Generates courtiers for elven rulers - The random version
+character_event = {
+	id = racetrait.24
+	religion_group = religion_group_eldar
+	
+	hide_window = yes
+	
+	trigger = {
+		# is_patrician = no
+		higher_real_tier_than = baron
+		capital_scope = {
+			OR = {
+				culture = culture_nandor
+				culture = culture_silvan
+				culture = culture_avari
+				culture = culture_sindar
+				culture = culture_noldor
+				culture = culture_falathrim
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	option = {
+		set_variable = { which = mep_courtiers_tomake value = 11 }
+		mep_generate_eleven_courtiers_effect = yes
+	}
+}
+
+# Generates courtiers for elven rulers - The random version for baron-level characters
+character_event = {
+	id = racetrait.26
+	only_rulers  = yes
+	religion_group = religion_group_eldar
+	
+	hide_window = yes
+	
+	trigger = {
+		religion_group = religion_group_eldar
+		OR = {
+			is_patrician = yes
+			AND = {
+				is_landed = yes
+				tier = baron
+			}
+		}
+		capital_scope = {
+			OR = {
+				culture = culture_nandor
+				culture = culture_silvan
+				culture = culture_avari
+				culture = culture_sindar
+				culture = culture_noldor
+				culture = culture_falathrim
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	option = {
+		set_variable = { which = mep_courtiers_tomake value = 2 }
+		mep_generate_eleven_courtiers_effect = yes
+	}
+}
+# Meant to be launched on_chronicle_start to provide random elf courtiers for all elven rules
+# of count level or above
+character_event = {
+	id = racetrait.25
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		any_independent_ruler = {
+			# generating ruler courtiers
+			if = {
+				limit = {
+					higher_real_tier_than = baron
+					religion_group = religion_group_eldar
+					capital_scope = {
+						OR = {
+							culture = culture_nandor
+							culture = culture_silvan
+							culture = culture_avari
+							culture = culture_sindar
+							culture = culture_noldor
+							culture = culture_falathrim
+						}
+					}
+				}
+				set_variable = { which = mep_courtiers_tomake value = 11 }
+				mep_generate_eleven_courtiers_effect = yes
+			}
+			# generating vassal courtiers
+			any_realm_lord = {
+				if = {
+					limit = {
+						higher_real_tier_than = baron
+						religion_group = religion_group_eldar
+						capital_scope = {
+							OR = {
+								culture = culture_nandor
+								culture = culture_silvan
+								culture = culture_avari
+								culture = culture_sindar
+								culture = culture_noldor
+								culture = culture_falathrim
+							}
+						}
+					}
+					set_variable = { which = mep_courtiers_tomake value = 11 }
+					mep_generate_eleven_courtiers_effect = yes
+				}
+			}
+		}
+		# also, we have to do this again for the player...
+		ROOT = {
+			# generating ruler courtiers
+			if = {
+				limit = {
+					higher_real_tier_than = baron
+					religion_group = religion_group_eldar
+					capital_scope = {
+						OR = {
+							culture = culture_nandor
+							culture = culture_silvan
+							culture = culture_avari
+							culture = culture_sindar
+							culture = culture_noldor
+							culture = culture_falathrim
+						}
+					}
+				}
+				set_variable = { which = mep_courtiers_tomake value = 11 }
+				mep_generate_eleven_courtiers_effect = yes
+			}
+			# generating vassal courtiers
+			any_realm_lord = {
+				if = {
+					limit = {
+						higher_real_tier_than = baron
+						religion_group = religion_group_eldar
+						capital_scope = {
+							OR = {
+								culture = culture_nandor
+								culture = culture_silvan
+								culture = culture_avari
+								culture = culture_sindar
+								culture = culture_noldor
+								culture = culture_falathrim
+							}
+						}
+					}
+					set_variable = { which = mep_courtiers_tomake value = 11 }
+					mep_generate_eleven_courtiers_effect = yes
+				}
+			}
+		}
 		
 	}
 }

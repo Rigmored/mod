@@ -77,6 +77,10 @@
 # special groups
 # mep_evil_or_wont_sell_moria
 # mep_might_sell_moria
+# mep_char_leader_usable
+# mep_theodred_and_eomer_are_okay
+# mep_threatning_saruman
+# mep_galadriel_in_lorien
 
 
 #---------------------------------------------------------------------------------------
@@ -399,11 +403,14 @@ mep_will_purge_evil = {
 		culture_group = culture_group_melkor
 		culture = culture_umaiar
 		trait = evil_side
-		any_suzerain = {  # My boss won't let me...
-			OR = {
-				culture_group = culture_group_melkor
-				culture = culture_umaiar
-				trait = evil_side
+		AND = {
+			is_tributary = yes
+			any_suzerain = {  # My boss won't let me...
+				OR = {
+					culture_group = culture_group_melkor
+					culture = culture_umaiar
+					trait = evil_side
+				}
 			}
 		}
 	}
@@ -955,6 +962,56 @@ mep_might_sell_moria = {
 				religion_group = religion_group_wilderness
 				culture_group = culture_group_wilderness
 			}				
+		}
+	}
+}
+
+mep_char_leader_usable = {
+	AND = {
+		is_alive = yes
+		prisoner = no
+		# top_liege = PREV
+		is_incapable = no
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+		NOT = { trait = on_fellowshipquest }
+	}
+}
+
+mep_theodred_and_eomer_are_okay = {
+	event_target:mep_chartarget_theodred = {
+		is_alive = yes
+		prisoner = no
+		top_liege = PREV
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+	}
+	event_target:mep_chartarget_eomer = {
+		is_alive = yes
+		prisoner = no
+		top_liege = PREV
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+	}
+}
+
+mep_threatning_saruman = {
+	event_target:mep_chartarget_saruman = {
+		is_alive = yes
+		has_landed_title = c_orthanc
+		has_character_flag = evilsaruman
+	}
+}
+
+mep_galadriel_in_lorien = {
+	k_elves = {
+		OR = {
+			holder_scope = {
+				event_target:mep_chartarget_galadriel = { character = PREV }
+			}
+			any_realm_lord = {
+				event_target:mep_chartarget_galadriel = { character = PREV }
+			}
 		}
 	}
 }
