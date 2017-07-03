@@ -43,6 +43,7 @@ character_event = {
 		has_global_flag = mep_torivendell_gondor
 		has_global_flag = mep_torivendell_mirkwood
 		has_global_flag = mep_torivendell_erebor
+		NOT = { has_global_flag = galadrielhasring }
 	}
 	
 	mean_time_to_happen = { days = 14 }
@@ -420,6 +421,7 @@ character_event = {
 		has_landed_title = d_rivendell
 		year = 11365
 		NOT = { has_character_flag = wotr10 }
+		NOT = { has_global_flag = galadrielhasring }
 	}
 	
 	mean_time_to_happen = { days = 30 }
@@ -559,6 +561,7 @@ character_event = {
 	trigger = {
 		event_target:mep_chartarget_morgoth = { character = PREV }
 		NOT = { has_global_flag = questformtdoom_moria1 } 
+		NOT = { has_global_flag = galadrielhasring }
 	}
 	
 	mean_time_to_happen = { days = 14 }
@@ -624,7 +627,8 @@ character_event = {
 	trigger = {
 		event_target:mep_chartarget_morgoth = { character = PREV }
 		has_global_flag = questformtdoom
-		NOT = { has_global_flag = questformtdoom_moria2 } 
+		NOT = { has_global_flag = questformtdoom_moria2 }
+		NOT = { has_global_flag = galadrielhasring }		
 	}
 	
 	mean_time_to_happen = { days = 14 }
@@ -824,6 +828,7 @@ character_event = {
 			if = { limit = { ai = no }
 				character_event = { id = wotr.506 } }
 		}
+		set_global_flag = questformtdoom_moria2
 	}
  }
 
@@ -943,6 +948,7 @@ character_event = {
 		event_target:mep_chartarget_morgoth = { character = PREV }
 		has_global_flag = questformtdoom
 		NOT = { has_global_flag = lorienarrival }
+		NOT = { has_global_flag = galadrielhasring }
 	}
 	
 	mean_time_to_happen = { days = 14 }
@@ -1086,6 +1092,7 @@ character_event = {
 	hide_window = yes
 	
 	trigger = {
+		NOT = { has_global_flag = galadrielhasring }
 		NOT = { has_global_flag = questformtdoom_ringinlorien }
 		event_target:mep_chartarget_morgoth = { character = PREV }
 		has_global_flag = questformtdoom
@@ -1113,8 +1120,6 @@ character_event = {
 		
 		# flags
 		set_global_flag = questformtdoom_ringinlorien
-		clr_global_flag = questformtdoom_moria2
-		clr_global_flag = questformtdoom_moria1
 	}
  }
 			
@@ -1149,7 +1154,6 @@ character_event = {
 		hidden_tooltip = {
 			set_character_flag = wotr17
 			set_global_flag = questformtdoom_ringleaveslorien
-			clr_global_flag = questformtdoom_ringinlorien
 		}
 		piety = 200
 	}
@@ -1169,6 +1173,7 @@ character_event = {
 			clr_global_flag = fellowshipquest
 			set_global_flag = galadrielhasring
 			clr_global_flag = questformtdoom_ringinlorien
+			clr_global_flag = questformtdoom
 			set_character_flag = wotr17
 		}
 		# Arargorn heads south still
@@ -1333,6 +1338,7 @@ character_event = {
 		}
 		
 		# flags
+		set_global_flag = questformtdoom_fellowshipbreak
 		set_global_flag = anduinfight
 		clr_global_flag = questformtdoom_ringleaveslorien
 	}

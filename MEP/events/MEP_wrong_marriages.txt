@@ -6,36 +6,35 @@ character_event = {
     title = "EVTTITwrongmarriage.0"
     desc = "EVTDESCwrongmarriage.0"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_khazad
+	is_married = yes
 	
 	trigger = {
-		spouse = {
+		culture_group = culture_group_dwarves
+		any_spouse  = {
 			NOT = { culture_group = culture_group_dwarves }
-		}
-		ROOT = {
-			culture_group = culture_group_dwarves
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 	}
 	
-	mean_time_to_happen = { days = 1 }
+	mean_time_to_happen = { days = 30 }
 	
 	option = {
-		name = "EVTOPTAwrongmarriage.0" ### Revoke it and banish it!
-			any_spouse = {
-				limit = {
-					is_landed = no
-					NOT = { culture_group = culture_group_dwarves }
-				}
+		name = "EVTOPTAwrongmarriage.0" ### Revoke it
+		any_spouse = {
+			limit = {
+				is_landed = no
+				NOT = { culture_group = culture_group_dwarves }
+			}
 			remove_spouse = ROOT
-			banish = yes
+			# banish = yes
 		}
 	}	
 	
 	option = {
 		name = "EVTOPTBwrongmarriage.0"#Actually, I kind of like her...
 		trigger = { ai = no }
-		set_character_flag = wrongmarriage
+		set_character_flag = wrongmarriage1
 	}	
 }
 
@@ -45,37 +44,36 @@ character_event = {
     title = "EVTTITwrongmarriage.1"
     desc = "EVTDESCwrongmarriage.1"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_eldar
+	is_married = yes
 	
 	trigger = {
-		spouse = {
+		trait = elf
+		any_spouse = {
 			NOT = { trait = elf }
-		}
-		ROOT = {
-			trait = elf
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = elfhumanmarriage }
 	}
 	
-	mean_time_to_happen = { days = 1 }
+	mean_time_to_happen = { days = 30 }
 	
 	option = {
-		name = "EVTOPTAwrongmarriage.1" ### Revoke it and banish it!
-			any_spouse = {
-				limit = {
-					is_landed = no
-					NOT = { trait = elf }
-				}
+		name = "EVTOPTAwrongmarriage.1" ### Revoke it
+		any_spouse = {
+			limit = {
+				is_landed = no
+				NOT = { trait = elf }
+			}
 			remove_spouse = ROOT
-			banish = yes
+			# banish = yes
 		}
 	}	
 	
 	option = {
 		name = "EVTOPTBwrongmarriage.1"#Actually, I kind of like her..."
 		trigger = { ai = no }
-		set_character_flag = wrongmarriage
+		set_character_flag = wrongmarriage1
 	}	
 }
 
@@ -86,37 +84,36 @@ character_event = {
     title = "EVTTITwrongmarriage.2"
     desc = "EVTDESCwrongmarriage.2"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_melkor
+	is_married = yes
 	
 	trigger = {
+		trait = orc
 		spouse = {
 			NOT = { trait = orc }
-		}
-		ROOT = {
-			trait = orc
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = orchumanmarriage }
 	}
 	
-	mean_time_to_happen = { days = 1 }
+	mean_time_to_happen = { days = 30 }
 	
 	option = {
-		name = "EVTOPTAwrongmarriage.2" ### Revoke it and banish it!
-			any_spouse = {
-				limit = {
-					is_landed = no
-					NOT = { trait = orc }
-				}
+		name = "EVTOPTAwrongmarriage.2" ### Revoke it!
+		any_spouse = {
+			limit = {
+				is_landed = no
+				NOT = { trait = orc }
+			}
 			remove_spouse = ROOT
-			banish = yes
+			# banish = yes
 		}
 	}	
 	
 	option = {
 		name = "EVTOPTBwrongmarriage.2"#Actually, I kind of like her...
 		trigger = { ai = no }
-		set_character_flag = wrongmarriage
+		set_character_flag = wrongmarriage1
 	}	
 }
 
@@ -127,14 +124,13 @@ character_event = {
     title = "EVTTITwrongmarriage.3"
     desc = "EVTDESCwrongmarriage.3"
     picture = "GFX_good"
-	age = 16
+	religion = religion_wight
+	is_married = yes
 	
 	trigger = {
+		trait = wight
 		spouse = {
 			NOT = { trait = wight }
-		}
-		ROOT = {
-			trait = wight
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = orchumanmarriage }
@@ -143,20 +139,20 @@ character_event = {
 	mean_time_to_happen = { days = 1 }
 	
 	option = {
-		name = "EVTOPTAwrongmarriage.3" ### Revoke it and banish it!
-			any_spouse = {
-				limit = {
-					is_landed = no
-					NOT = { trait = wight }
-				}
+		name = "EVTOPTAwrongmarriage.3" ### Revoke it
+		any_spouse = {
+			limit = {
+				is_landed = no
+				NOT = { trait = wight }
+			}
 			remove_spouse = ROOT
-			banish = yes
+			# banish = yes
 		}
 	}	
 	
 	option = {
 		name = "EVTOPTBwrongmarriage.3"#Actually, I kind of like her...
 		trigger = { ai = no }
-		set_character_flag = wrongmarriage
+		set_character_flag = wrongmarriage1
 	}	
 }

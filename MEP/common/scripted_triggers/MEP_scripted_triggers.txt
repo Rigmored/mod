@@ -21,7 +21,6 @@
 # mep_is_good_side_race
 # mep_never_councillor_trigger
 # mep_pick_good_side_trigger
-# mep_temp_muslim_standin_trigger
 # mep_should_be_unkillable_trigger
 # mep_is_human_trigger
 # mep_dont_seduce_trigger
@@ -33,7 +32,7 @@
 # titles
 # mep_gondor_arnor_emp_trigger
 
-## provinces
+### provinces
 # mep_has_immortal_population_trigger
 # mep_population_immune_trigger
 # mep_population_resistant_trigger
@@ -49,7 +48,7 @@
 # mep_orc_troll_culture
 # mep_pop_always_evil_purge_culture
 
-## provinces for dynamic population stuff
+### provinces for dynamic population stuff
 # mep_has_dunedain_popmod_trigger
 # mep_dunedian_popmod_increasable_trigger
 # mep_has_elves_popmod_trigger
@@ -65,16 +64,16 @@
 # mep_has_depopulated_modifier
 # mep_has_properity_modifier
 
-## province CB shorteners
+### province CB shorteners
 # mep_province_owned_by_root
 # mep_borders_ROOTrealm_2seazones
 # mep_borders_ROOTrealm_1seazone
 
-## Cultural greoups
+### Cultural groups
 # mep_is_black_numenorean_culture
 # mep_is_good_numenorean_culture
 
-# special groups
+### special groups
 # mep_evil_or_wont_sell_moria
 # mep_might_sell_moria
 # mep_char_leader_usable
@@ -82,6 +81,8 @@
 # mep_threatning_saruman
 # mep_galadriel_in_lorien
 
+### government type related stuff
+# mep_temp_muslim_standin_trigger
 
 #---------------------------------------------------------------------------------------
 # Character Triggers
@@ -333,12 +334,6 @@ mep_pick_good_side_trigger = {
 	NOT = { religion_group = religion_group_melkor }
 }
 
-mep_temp_muslim_standin_trigger = {
-	OR = {
-		religion = religion_southron
-		religion_group = religion_group_melkor
-	}
-}
 
 mep_should_be_unkillable_trigger = {
 	OR = {
@@ -440,11 +435,11 @@ mep_is_evil_overlord = {
 	OR = {
 		religion = religion_umaiar
 		culture = culture_istari
+		trait = valar
 		trait = maiar
 		trait = balrog
 		trait = nazgul
 		religion = religion_dragons
-		
 	}
 }
 
@@ -1013,6 +1008,30 @@ mep_galadriel_in_lorien = {
 				event_target:mep_chartarget_galadriel = { character = PREV }
 			}
 		}
+	}
+}
+
+#--------------------------------------------------------------------------------
+# government type related stuff
+
+mep_temp_muslim_standin_trigger = {
+	OR = {
+		religion = religion_southron
+		religion_group = religion_group_melkor
+	}
+}
+
+# those who can get 'nice' feudalism (reducing conflict). 
+mep_canhave_nice_feudalism = {
+	NOT = { trait = evil_side }
+	OR = {
+		religion_group = religion_group_eldar
+		religion_group = religion_group_enyd
+		religion_group = religion_group_khazad
+		religion_group = religion_group_eruhini
+		religion_group = religion_group_periannath
+		religion = religion_dunedain
+		religion = religion_numenorean
 	}
 }
 

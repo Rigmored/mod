@@ -11,13 +11,8 @@ decisions = {
 			prisoner = no
 			has_character_flag = festivity_decisions_open
 			OR = {
-				religion = religion_dunedain
-				religion = religion_rhovanion
-				religion = religion_haldadian
-				religion = religion_black_numenorean
-				religion = religion_ishmalogim
-				religion = religion_easterlings
-				religion = religion_southron
+				religion_group = religion_group_edain
+				religion_group = religion_group_hildor
 			}
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
@@ -32,13 +27,8 @@ decisions = {
 		allow = {
 			war = no
 			OR = {
-				religion = religion_dunedain
-				religion = religion_rhovanion
-				religion = religion_haldadian
-				religion = religion_black_numenorean
-				religion = religion_ishmalogim
-				religion = religion_easterlings
-				religion = religion_southron
+				religion_group = religion_group_edain
+				religion_group = religion_group_hildor
 			}
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
@@ -125,6 +115,7 @@ decisions = {
 			OR = {
 				culture = culture_sindar
 				culture = culture_silvan
+				culture = culture_nandor
 			}
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
@@ -140,6 +131,7 @@ decisions = {
 			OR = {
 				culture = culture_sindar
 				culture = culture_silvan
+				culture = culture_nandor
 			}
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
@@ -181,13 +173,7 @@ decisions = {
 			prisoner = no
 			has_character_flag = festivity_decisions_open
 			OR = {
-				culture = culture_longbeard
-				culture = culture_firebeard
-				culture = culture_broadbeam
-				culture = culture_ironfist
-				culture = culture_stiffbeard
-				culture = culture_blacklock
-				culture = culture_stonefoot
+				culture_group = culture_group_dwarves
 			}
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
@@ -201,13 +187,7 @@ decisions = {
 		allow = {
 			war = no
 			OR = {
-				culture = culture_longbeard
-				culture = culture_firebeard
-				culture = culture_broadbeam
-				culture = culture_ironfist
-				culture = culture_stiffbeard
-				culture = culture_blacklock
-				culture = culture_stonefoot
+				culture_group = culture_group_dwarves
 			}
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
@@ -352,6 +332,7 @@ decisions = {
 				religion = religion_ishmalogim
 				culture = culture_noldor
 				culture = culture_silvan
+				culture = culture_nandor
 				culture = culture_sindar
 			}
 			NOT = { has_character_modifier = holding_grand_hunt }
@@ -370,6 +351,7 @@ decisions = {
 				culture = culture_noldor
 				culture = culture_silvan
 				culture = culture_sindar
+				culture = culture_nandor
 			}
 			war = no
 			any_demesne_title = { is_occupied = no }

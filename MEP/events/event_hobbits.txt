@@ -399,11 +399,13 @@ character_event = {
 	
 	trigger = {
 		NOT = { has_global_flag = hobbit_party }
+		NOT = { has_character_flag = mep_had_hobbit_majority_party }
 		culture_group = culture_group_halfling
 		is_ruler = yes
 		age = 33
 		NOT = { age = 34 }
 		wealth = 100
+		pilgrimage = no
 	}
 	
 	mean_time_to_happen = {
@@ -445,6 +447,7 @@ character_event = {
 	
 	immediate = {
 		set_global_flag = hobbit_party
+		set_character_flag = mep_had_hobbit_majority_party
 	}
 	
 	option = {

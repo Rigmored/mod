@@ -7,23 +7,28 @@ character_event = {
 	title = "EVTNAMEevilside.1"
 	desc = "EVTDESCevilside.1"
 	picture = "GFX_evil"
-	age = 16
-	only_rulers = yes
+	only_playable = yes
 	only_independent = yes
 
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture = culture_black_numenorean
-		}
-		NOT = { culture = culture_ishmalogim }	
+		religion_group = religion_group_hildor	
 		NOT = { culture = culture_nurnim }
 		NOT = { trait = evil_side }
 		NOT = { trait = good_side }
 		NOT = { has_character_flag = evilsidestartup }
 		NOT = { has_global_flag = saurondefeated }
+		# also, Sauron should be ruling over mordor (tweak...)
+		OR = {
+			e_barad_dur = {
+				has_holder = yes
+				holder_scope = { character = 10016 }
+			}
+			k_mordor = {
+				has_holder = yes
+				holder_scope = { character = 10016 }
+			}
+		}
 	}
 
 	immediate = { set_character_flag = evilsidestartup }
@@ -38,17 +43,14 @@ character_event = {
 	}
 }
 
-##Event to switch to the Good side for players only##
+## Decision-triggered Event to switch to the Good side for players only##
 character_event = {
 	id = evilside.2
 	title = "EVTNAMEevilside.2"
 	desc = "EVTDESCevilside.2"#Perhaps you were wrong, perhaps Sauron is not a God. Maybe your people deserve hope, and not fear. If you dare, you could forsake the darkness, and try to help the enemies of the Dark Lord.
 	picture = "GFX_evil"
+	
 	is_triggered_only = yes
-
-	trigger = {
-		trait = evil_side 
-	}
 
 	immediate = { set_character_flag = switched_side }
 
@@ -84,6 +86,8 @@ character_event = {
 				culture = culture_gondorian
 				culture = culture_gondorian_middlemen
 				culture = culture_dunedain
+				culture = culture_arnorean
+				culture = culture_arnorean_middlemen
 			}
 		}
 		name = "EVTOPTAevilside.2"				  

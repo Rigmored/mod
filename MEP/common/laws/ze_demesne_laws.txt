@@ -512,7 +512,8 @@ laws = {
 		group = revoke_title_law
 		default = yes
 		allow = { 
-			NOT = { has_law = revoke_title_law_2 } }
+			NOT = { has_law = revoke_title_law_2 }
+		}
 		potential = {
 			has_dlc = "Zeus"
 			NOT = { holder_scope = { is_nomadic = yes } }
@@ -532,7 +533,12 @@ laws = {
 	}
 	revoke_title_law_1 = {
 		group = revoke_title_law
-		allow = { }
+		allow = {
+			OR = {
+				has_law = ze_administration_laws_1
+				has_law = ze_administration_laws_2
+			}
+		}
 		potential = {
 			has_dlc = "Zeus"
 			NOT = { holder_scope = { is_nomadic = yes } }
@@ -564,6 +570,10 @@ laws = {
 		group = revoke_title_law
 		allow = {
 			NOT = { has_law = revoke_title_law_0 }
+			OR = {
+				has_law = ze_administration_laws_1
+				has_law = ze_administration_laws_2
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
@@ -573,7 +583,19 @@ laws = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0.01
+				factor = 0.001
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					mep_canhave_nice_feudalism = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					mep_is_evil_overlord = yes
+				}
 			}
 		}
 		ai_will_revoke = { factor = 0 }
@@ -682,7 +704,10 @@ laws = {
 			has_law = grant_title_voting_power_0
 			has_law = banish_voting_power_0
 			has_law = execution_voting_power_0
-			has_law = revoke_title_law_2
+			OR = {
+				has_law = revoke_title_law_1
+				has_law = revoke_title_law_2
+			}
 			has_law = out_of_realm_inheritance_law_1
 		}
 		potential = {
@@ -690,7 +715,13 @@ laws = {
 			NOT = { holder_scope = { is_nomadic = yes } }
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0.1
+			modifier = {
+				factor = 0
+				holder_scope = {
+					mep_canhave_nice_feudalism = yes
+				}
+			}
 		}
 		ai_will_revoke = { factor = 0 }
 		pass_effect = { }
