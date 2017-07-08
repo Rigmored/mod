@@ -1,14 +1,17 @@
-
+nomad wilderness occupy CB
+elf_childhood
+orc duel
+MEP_Portrait_Stabilizer (silmarilien)
+MEP_province_init and associated modifiers
+MEP_racetraits (silmarillion)
+randomtrait
+ HandicapdHippo: couple of issues I have found, using the latest James fox branch, the event where a county embraces your culture and religion can happen to wilderness, essentially bypassing colonisation, also if it is being settled already the modifier for being settled never goes away. And the descion to increase dunedain population says it should just increase it to the next level but it instead puts it to the greatly populated level. 
 • Reduce wars between good_side (important) CB conditions
-• Find a way to prevent good rulers from enabling title revocation and then immediatly grabbing land without reason.
+• Apparently, seeking marriage is hardcoded to only happen below 45. Make events to get around that.
 • If galadriel gets the ring, she never expands or conqers despite events saying otherwise
-• Red Arrow fires even if Rohan has already joined Gondor in a War.
 • Fix elven portraits (but how?)
-• Purging more selective (Evil Overlords should not purge all humans)
 • Missionaries to sway characters to good_side / evil_side ?
 • Reduce chance of elven/ent/wight/huorn peasant revolts
-• reduced triple taxation
-• Figure of how to block secret religions (Races)
 • Fix terrain types (and some other things) having question mark afterwards
 • Eagles still too weak
 • Isengard does not defend tributary Dunland
@@ -27,15 +30,12 @@
 • Import and de-vanilla ze_adolescence_events.txt
 • Maintaining Mercenary Band tooltip on the holdings says it's a 30% penalty on Levy.  Mousing over a troop type in the build stuff menu says it's 60%.  Which is it?[
 • Create revised laws for good, making revocation and intra-realm wars forbidden
-• Targeted decision to revoke based on conditions.
-• create a landless title specifically to hold all the missing 'at_east' characters
 • check concubinage and inter-species concubine conditions. any_lover, any_consort, has_lover, has_consort
 • block good-side vs evil side friendships?
 • However, the Prosperity modifiers('Population rising slowly', etc) lower disease resist in the province by flat 10/15/25%. Take it into account
 • Isildur and Anarion both became possesed. But remained good. (get rid of posession?)
 • Add more tolerance into traits (good side, white council)
 • restrict start date to 4902 or later
-• I can't upgrade the tribes to Cities for what seems to be a similar reason.(One of the conditions is: 'Have Race' and it has an X. A vaguer term I've not seen. Even looking in the files isn't helpful here.)
 • write routine to convert province (incl buildings, rulers, and courtiers) from Numenorean to newer culture groups
 • Better culture changes in province
 • look at probability of numenorian blood passing (people want it to stay strong for longer)
@@ -67,7 +67,6 @@ Restrain good rulers from revoking or attacking other good rulers.
 
 Under Amdir and Amroth, Edhellond should be a vassal.
 
-Change name of Iqta government to Haradrim government. Its a bit like having 'catholic government' in Middle-Earth in that its specific to Islam. The feature set fits pretty well, just like to change name.
 
 Change scenario start from 3320 to 3330 so folks only have to wait one year to start the last alliance instead of 11. 
 -------------------------------------------------------------

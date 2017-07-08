@@ -86,8 +86,8 @@ character_event = {
 				culture = culture_gondorian
 				culture = culture_gondorian_middlemen
 				culture = culture_dunedain
-				culture = culture_arnorean
-				culture = culture_arnorean_middlemen
+				culture = culture_arnorian
+				culture = culture_arnorian_middlemen
 			}
 		}
 		name = "EVTOPTAevilside.2"				  
@@ -317,4 +317,91 @@ character_event = {
 		}
 	}
 	
+}
+
+# random event for evil side rulers, intended to mark good_side vassals or courtiers as criminal
+character_event = {
+	id = evilside.7
+	title = EVTTITevilside.7
+	desc = EVTDESCevilside.7
+	picture = "GFX_good"
+	only_playable = yes
+
+	trigger = {
+		trait = evil_side
+		NOT = { has_character_flag = very_tolerant_of_good }
+		OR = {
+			# has an evil_side vassal not already marked as a criminal
+			any_vassal = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# has an evil_side courtier not already marked as a criminal
+			any_courtier = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 90 }
+
+	# once marked with the opinion modifier, they are criminals who can be banished, imprisoned, revoked, or executed
+	option = {
+		name = EVTOPTAevilside.7
+		any_vassal = {
+			limit = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_good_from_corrupted
+				who = ROOT
+				duration = -1
+			}
+		}
+		any_courtier = {
+			limit = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_good_from_corrupted
+				who = ROOT
+				duration = -1
+			}
+		}
+	}
+	# player only option to get the flag 'very_tolerant_of_good'
+	option = {
+		name = EVTOPTBevilside.7
+		trigger = { ai = no }
+		set_character_flag = very_tolerant_of_good
+	}
 }

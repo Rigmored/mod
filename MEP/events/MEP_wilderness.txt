@@ -50,6 +50,14 @@ province_event = {
 				religion = PREV
 			}
 		}
+		if = {
+			limit = { culture_group = culture_group_numenorean }
+			add_province_modifier = { name = two_population_dunedian  duration = -1 }
+		}
+		if = {
+			limit = { NOT = { culture_group = culture_group_numenorean } }
+			add_province_modifier = { name = two_population_human  duration = -1 }
+		}
 	}
 	
 }
@@ -98,15 +106,16 @@ province_event = {
 	option = {
 		name = OK
 		remove_province_modifier = being_colonised_with_dwarves
-			owner = {
-				ROOT = {
-					culture = culture_longbeard
-					religion = religion_mahal
-				}
+		owner = {
+			ROOT = {
+				culture = culture_longbeard
+				religion = religion_mahal
 			}
 		}
-	
+		add_province_modifier = { name = two_population_dwarves  duration = -1 }
 	}
+	
+}
 	
 character_event = {
 	id = colonisation.4
@@ -158,6 +167,7 @@ province_event = {
 				religion = religion_moriquendi
 			}
 		}
+		add_province_modifier = { name = two_population_elves  duration = -1 }
 	}
 	
 }
@@ -212,6 +222,7 @@ province_event = {
 				religion = religion_perian
 			}
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}
 	
 }
@@ -315,6 +326,7 @@ province_event = {
 				religion = religion_dunedain
 			}
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}
 	
 }	
@@ -342,6 +354,7 @@ province_event = {
 				religion = religion_dunedain
 			}
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}
 	
 }	
@@ -369,6 +382,7 @@ province_event = {
 				religion = religion_southron
 			}
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}
 	
 }
@@ -571,6 +585,7 @@ province_event = {
 		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 7 } }
 			culture =  culture_petty_dwarves }
+		add_province_modifier = { name = two_population_dwarves  duration = -1 }
 	}	
 }
 
@@ -822,6 +837,7 @@ province_event = {
 		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 12 } }
 			culture =  culture_laegrim }
+		add_province_modifier = { name = two_population_elves  duration = -1 }
 	}	
 }
 
@@ -859,6 +875,7 @@ province_event = {
 			limit = { check_variable = { which = mepvar_colonizingculture value = 3 } }
 			culture = culture_noldor
 		}
+		add_province_modifier = { name = two_population_elves  duration = -1 }
 	}	
 }
 
@@ -885,6 +902,7 @@ province_event = {
 				religion = religion_moriquendi
 			}
 		}
+		add_province_modifier = { name = two_population_elves  duration = -1 }
 	}	
 }
 
@@ -1247,6 +1265,7 @@ province_event = {
 			culture = culture_northmen
 			religion = religion_rhovanion
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}	
 }
 
@@ -1306,6 +1325,7 @@ province_event = {
 			culture = culture_hillmen
 			religion = religion_haldadian
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}	
 }
 
@@ -1536,6 +1556,7 @@ province_event = {
 			culture = culture_spider
 			religion = religion_spider
 		}
+		add_province_modifier = { name = two_population_human  duration = -1 }
 	}	
 }
 

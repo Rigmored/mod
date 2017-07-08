@@ -121,3 +121,37 @@ opinion_gave_money = {
 opinion_refused_help = {
 	opinion = -30
 }
+
+### More Opinions
+
+# to be applied to 'evil_side' when the ruler or overlord is 'good_side'
+mep_is_corrupted_from_good = {
+	opinion = -10
+	crime = yes
+
+	prison_reason = yes
+	banish_reason = yes
+	execute_reason = yes
+}
+
+# to be applied to 'evil_side' when the ruler or overlord is a good race (like elves), but lacks 'good_side' 
+mep_is_corrupted_from_good_race = {
+	opinion = -70
+	crime = yes
+
+	prison_reason = yes
+	banish_reason = yes
+	execute_reason = yes
+}
+
+# to be applied to 'good_side' when the ruler or overlord is 'evil_side'
+mep_is_good_from_corrupted = {
+	opinion = -10
+	crime = yes
+
+	prison_reason = yes
+	banish_reason = yes
+	execute_reason = yes
+}
+
+

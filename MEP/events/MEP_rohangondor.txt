@@ -50,14 +50,7 @@ character_event = {
 		ROOT = {
 			join_defender_wars = FROM
 		}
-		any_independent_ruler  = {
-			limit = {
-				OR = {
-					has_landed_title = e_gondor
-					has_landed_title = e_steward_gondor
-					has_landed_title = c_minas_tirith
-				}
-			}
+		FROM = {
 			character_event = { id = redarrow.3 days = 7 }
 		}				
 	}
@@ -132,7 +125,7 @@ character_event = {
 				OR = {
 					has_landed_title = e_gondor
 					has_landed_title = e_steward_gondor
-					has_landed_title = c_minas_tirith
+					has_landed_title = e_reuinted_kingdom
 				}
 			}
 			character_event = { id = redarrow.4 }
@@ -152,11 +145,13 @@ character_event = {
 	title = "EVTTITredarrow.7"#The Red Arrow
 	desc = "EVTDESCredarrow.7"#Enough time has passed, that you can now use the Red Arrow again if needed.
 	picture = "GFX_good"
-	mean_time_to_happen = { months = 50 }
+	only_playable = yes
+	war = no
+	
+	mean_time_to_happen = { months = 3 }
 
 	trigger = {
 		has_character_flag = oath_of_eorl
-		NOT = { has_raised_levies = ROOT }
 	}
 
 	option = {
@@ -172,22 +167,40 @@ character_event = {
 	title = "EVTTITredarrow.8"#The Red Arrow
 	desc = "EVTDESCredarrow.8"#The ancient friendship between the House of Eorl and Gondor allows you to send a Red Arrow in times of need, signifying your situation is dire and that your ally should send forces with all haste. Is it time to send the Red Arrow?
 	picture = "GFX_good"
+	only_playable = yes
 	only_independent = yes
-	only_rulers = yes
 	ai = yes
 
 	trigger = {
 		OR = {
 			has_landed_title = e_gondor
 			has_landed_title = e_steward_gondor
+			has_landed_title = e_reunited_kingdom
 		}
-		OR = {	
-			dynasty = 100
-			dynasty = 2001
-		}
+		NOT = { has_landed_title = k_rohan }
+		year = 10853
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = oath_of_eorl }
 		NOT = { has_global_flag = rohan_threatened }
+		# and also must not already be participating in a gondor war
+		k_rohan = {
+			has_holder = yes
+			independent = yes
+			holder_scope = {
+				culture = culture_rohirrim
+				NOT = { trait = evil_side }
+			}
+		}
+		NOT = { has_global_flag = gondorreclaimrohan }
+		prestige = 50
+		any_war = {
+			defender = { character = PREV }
+			NOT = {
+				any_defender = {
+					has_landed_title = k_rohan
+				}
+			}
+		}
 	}
 
 	mean_time_to_happen = {
@@ -218,16 +231,51 @@ character_event = {
 	title = "EVTTITredarrow.9"#The Red Arrow
 	desc = "EVTDESCredarrow.9"#The ancient friendship between the House of Eorl and Gondor allows you to send a Red Arrow in times of need, signifying your situation is dire and that your ally should send forces with all haste. Is it time to send the Red Arrow?
 	picture = "GFX_good"
+	only_playable = yes
 	only_independent = yes
-	only_rulers = yes
 	ai = yes
 
 	trigger = {
+		# For the Ruler of Rohan
 		has_landed_title = k_rohan
-		dynasty = 5
+		year = 10853
+		culture = culture_rohirrim
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = oath_of_eorl }
 		NOT = { has_global_flag = gondor_threatened }
+		OR = {
+			e_gondor = {
+				has_holder = yes
+				independent = yes
+				holder_scope = { NOT = { trait = evil_side } } 
+			}
+			e_steward_gondor = {
+				has_holder = yes
+				independent = yes
+				holder_scope = { NOT = { trait = evil_side } }
+			}
+			e_reunited_kingdom = {
+				has_holder = yes
+				independent = yes
+				holder_scope = { NOT = { trait = evil_side } }
+			}
+		}
+		NOT = { has_global_flag = gondorreclaimrohan }
+
+		prestige = 50
+		any_war = {
+			defender = { character = PREV }
+			NOT = {
+				any_defender = {
+					OR = {
+						has_landed_title = e_gondor
+						has_landed_title = e_steward_gondor
+						has_landed_title = e_reunited_kingdom
+					}
+				}
+			}
+		}
+		
 	}
 
 	mean_time_to_happen = {

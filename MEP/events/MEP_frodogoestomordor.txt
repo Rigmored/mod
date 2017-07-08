@@ -9,7 +9,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		age = 30
 		NOT = { age = 60 }
@@ -39,7 +39,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		has_character_flag = frodo1
 		age = 30
@@ -68,7 +68,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		has_character_flag = frodo2
 		age = 30
@@ -98,7 +98,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
@@ -198,7 +198,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
@@ -271,7 +271,7 @@ character_event = {
 	religion_group = religion_group_periannath
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		has_global_flag = invademordor
 		age = 30
@@ -788,7 +788,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = questformtdoom_ringleaveslorien
 		has_global_flag = frodogoestomordor
 		has_global_flag = gondor_restoreddefeat
 		age = 30
@@ -1113,7 +1113,6 @@ character_event = {
     title = "EVTTITfrodo.34"
     desc = "EVTDESCfrodo.34"
     picture = "GFX_evt_dwarves_hall"
-	age = 16
 	
 	is_triggered_only = yes
 	
@@ -1126,15 +1125,12 @@ character_event = {
 			c_glittering_caves = {
 				grant_title = ROOT
 				copy_title_laws = e_durins_folk
-			}	
+			}
+			activate_title = { title = d_aglarond status = yes }			
 			d_aglarond = {
 				grant_title = ROOT
 				copy_title_laws = e_durins_folk
 			}
-			k_aglarond = {
-				grant_title = ROOT
-				copy_title_laws = e_durins_folk
-			}	
 			set_defacto_liege = FROM			
 		}		
 	}

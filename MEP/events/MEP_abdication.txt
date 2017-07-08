@@ -894,31 +894,7 @@ character_event = {
 					}
 				}
 			}
-		}	
-		## A Morgul's Blade ##	
-		#if = {
-		#	limit = { has_artifact = morgul_blade }
-		#	if = { 
-		#		limit = { 
-		#			is_ruler = yes
-		#			current_heir = { 
-		#				is_alive = yes  
-		#				NOT = { has_artifact = morgul_blade } 
-		#			}
-		#		}
-		#		current_heir = {
-		#			PREV = {
-		#				any_artifact = {
-		#					limit = { has_artifact_flag = aflag_morgulblade } 
-		#					transfer_artifact = {
-		#						from = PREV
-		#						to = PREVPREV
-		#					}
-		#				}
-		#			}
-		#		}
-		#	}
-		#}	
+		}		
 		## Gurthang ##	
 		if = {
 				limit = { trait = gurthang }

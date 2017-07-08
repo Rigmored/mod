@@ -22,10 +22,10 @@ society_decisions = { # Society decisions are only evaluated by members of socie
 			hidden_tooltip = {
 				OR = { #In some societies, there can only be 1 member at rank 4
 					society_rank < 3
-					NOR = {
-						society_member_of = the_assassins
-						is_devil_worshiper_trigger = yes
-					}
+					#NOR = {
+					#	society_member_of = the_assassins
+					#	is_devil_worshiper_trigger = yes
+					#}
 				}
 				society_rank < 4
 				days_in_society > 365
@@ -57,73 +57,73 @@ society_decisions = { # Society decisions are only evaluated by members of socie
 					society_currency >= 2000 # rank 3
 				}
 			}
-			custom_tooltip = { # No vices for Buddhist/Jain
-				text = request_to_rank_up_within_society_vices_tt
-				OR = {
-					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
-					NOR = {
-						trait = greedy
-						trait = gluttonous
-						trait = slothful
-						trait = envious
-						trait = wroth
-						trait = cruel
-						trait = proud
-					}
-				}
-			}
-			custom_tooltip = {
-				text = request_to_rank_up_within_society_cynical_tt
-				OR = {
-					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
-					AND = {
-						society_rank == 1
-						NOR = {
-							trait = cynical
-							trait = deceitful
-							trait = cruel
-						}
-					}
-					AND = {
-						society_rank >= 2
-						NOT = {
-							trait = cynical
-						}
-					}
-				}
-			}
-			custom_tooltip = {
-				text = request_to_rank_up_within_society_virtues_tt
-				OR = {
-					NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
-					AND = {
-						society_rank == 1
-						trait = humble
-						trait = charitable
-					}
-					AND = {
-						society_rank == 2
-						trait = humble
-						trait = charitable
-						trait = chaste
-						trait = kind
-						trait = temperate
-						trait = honest
-					}
-					AND = {
-						society_rank == 3
-						trait = humble
-						trait = charitable
-						trait = chaste
-						trait = kind
-						trait = temperate
-						trait = honest
-						trait = patient
-						trait = diligent
-						trait = content
-					}
-				}
-			}
+			#custom_tooltip = { # No vices for Buddhist/Jain
+			#	text = request_to_rank_up_within_society_vices_tt
+			#	OR = {
+			#		NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+			#		NOR = {
+			#			trait = greedy
+			#			trait = gluttonous
+			#			trait = slothful
+			#			trait = envious
+			#			trait = wroth
+			#			trait = cruel
+			#			trait = proud
+			#		}
+			#	}
+			#}
+			#custom_tooltip = {
+			#	text = request_to_rank_up_within_society_cynical_tt
+			#	OR = {
+			#		NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+			#		AND = {
+			#			society_rank == 1
+			#			NOR = {
+			#				trait = cynical
+			#				trait = deceitful
+			#				trait = cruel
+			#			}
+			#		}
+			#		AND = {
+			#			society_rank >= 2
+			#			NOT = {
+			#				trait = cynical
+			#			}
+			#		}
+			#	}
+			#}
+			#custom_tooltip = {
+			#	text = request_to_rank_up_within_society_virtues_tt
+			#	OR = {
+			#		NOR = { society_member_of = monastic_order_jain society_member_of = monastic_order_buddhist }
+			#		AND = {
+			#			society_rank == 1
+			#			trait = humble
+			#			trait = charitable
+			#		}
+			#		AND = {
+			#			society_rank == 2
+			#			trait = humble
+			#			trait = charitable
+			#			trait = chaste
+			#			trait = kind
+			#			trait = temperate
+			#			trait = honest
+			#		}
+			#		AND = {
+			#			society_rank == 3
+			#			trait = humble
+			#			trait = charitable
+			#			trait = chaste
+			#			trait = kind
+			#			trait = temperate
+			#			trait = honest
+			#			trait = patient
+			#			trait = diligent
+			#			trait = content
+			#		}
+			#	}
+			#}
 
 			custom_tooltip = {
 				text = must_not_have_sent_request_already_tooltip 
@@ -147,10 +147,10 @@ society_decisions = { # Society decisions are only evaluated by members of socie
 				text = must_have_multiple_rank_4 #Society must allow multiple characters at Rank 4
 				NAND = {
 					society_rank == 3
-					OR = {
-						society_member_of = the_assassins
-						is_devil_worshiper_trigger = yes
-					}
+					#OR = {
+					#	society_member_of = the_assassins
+					#	is_devil_worshiper_trigger = yes
+					#}
 				}
 			}
 		}
@@ -177,13 +177,13 @@ society_decisions = { # Society decisions are only evaluated by members of socie
 				character_event = { id = MNM.10002 days = 20 random = 10 } # sends hidden delayed event to self, which then sends request to Leader of the society
 				
 				#Conversus power for benedictines
-				if = {
-					limit = {
-						society_member_of = monastic_order_benedictine
-						society_rank == 3
-					}
-					character_event = { id = MNM.4600 days = 10 random = 350 }
-				}
+				#if = {
+				#	limit = {
+				#		society_member_of = monastic_order_benedictine
+				#		society_rank == 3
+				#	}
+				#	character_event = { id = MNM.4600 days = 10 random = 350 }
+				#}
 			}
 		}
 
@@ -220,7 +220,7 @@ society_decisions = {
 		
 		potential = {
 			has_dlc = "Mystics"
-			society_member_of = hermetics
+			society_member_of = heren_isseon
 			has_quest = quest_hermetics_build_laboratory
 			is_playable = yes
 			block_general_event_trigger = no

@@ -2185,14 +2185,14 @@ title_hermetics_apprentice = {
 	
 	gain_effect = {
 		if = {
-			limit = { NOT = { society_member_of = hermetics } }
-			join_society = hermetics
+			limit = { NOT = { society_member_of = mirdain } }
+			join_society = mirdain
 		}
 		character_event = { id = MNM.1413 days = 4500 random = 1000 }  #Some years later, the apprenticeship ends
 
 		FROM = {
 			if = {
-				limit = { has_quest = quest_hermetics_find_apprentice }
+				limit = { has_quest = quest_mirdain_find_apprentice }
 				character_event = { id = MNM.1409 }
 			}
 		}

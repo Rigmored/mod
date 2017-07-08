@@ -169,12 +169,8 @@ decisions = {
 		potential = {
 			ai = no
 			is_ruler = yes
-			is_feudal = yes
-			prisoner = no
 			has_character_flag = festivity_decisions_open
-			OR = {
-				culture_group = culture_group_dwarves
-			}
+			culture_group = culture_group_dwarves
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
 			NOT = { has_character_modifier = fabulous_feast }
@@ -186,9 +182,7 @@ decisions = {
 		}
 		allow = {
 			war = no
-			OR = {
-				culture_group = culture_group_dwarves
-			}
+			culture_group = culture_group_dwarves
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
 			wealth = 25

@@ -10,6 +10,9 @@ character_event = {
 	title = EVTTITalliancesystem.1
     desc = EVTDESCalliancesystem.1
     picture = "GFX_good"
+	only_playable = yes
+	only_independent = yes
+	prisoner = no
 	
 	trigger = {		
 		OR = {
@@ -20,11 +23,9 @@ character_event = {
 			has_landed_title = d_ost_in_edhil
 		}
 		religion_group = religion_group_eldar
-		independent = yes
-		is_ruler = yes
-		prisoner = no
 		d_dunedain_of_north = {
 			has_holder = yes
+			NOT = { trait = evil_side }
 		}
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = called_for_aid }
@@ -33,7 +34,7 @@ character_event = {
 	}
 			
 	mean_time_to_happen = {
-		days = 5
+		days = 15
 	}
 			  
 	option = {
@@ -158,6 +159,10 @@ character_event = {
     title = EVTTITalliancesystem.5
     desc = EVTDESCalliancesystem.5
     picture = "GFX_good"
+	only_playable = yes
+	only_independent = yes
+	prisoner = no
+	war = yes
 	
 	trigger = {			
 		OR = {
@@ -166,10 +171,7 @@ character_event = {
 			has_landed_title = c_dale
 		}
 		culture = culture_barding
-		independent = yes
-		is_ruler = yes
 		is_primary_war_defender = yes
-		prisoner = no
 		NOT = { has_character_flag = called_for_aid }
 		NOT = { has_character_flag = refused_for_aid }
 		NOT = { trait = evil_side }
@@ -222,7 +224,7 @@ character_event = {
 			is_adult = yes
 			prisoner = no
 			is_abroad = no
-			}
+		}
 		ROOT = {
 			join_defender_wars = FROM
 		}
@@ -273,14 +275,14 @@ character_event = {
     title = EVTTITalliancesystem.8 
     desc = EVTDESCalliancesystem.8
     picture = "GFX_good"
+	only_playable = yes
 	only_independent = yes
+	war = yes
 	ai = yes
 	
 	trigger = {			
 		culture_group = culture_group_dwarves
 		has_landed_title = c_erebor
-		independent = yes
-		is_ruler = yes
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = called_for_aid }
 		NOT = { has_character_flag = refused_for_aid }
@@ -383,13 +385,14 @@ character_event = {
 	title = EVTTITalliancesystem.10
     desc = EVTDESCalliancesystem.10
     picture = "GFX_good"
+	only_playable = yes
+	prisoner = no
+	only_independent = yes
+	war = yes
 	
 	trigger = {		
 		has_landed_title = k_shire
 		religion_group = religion_group_periannath
-		independent = yes
-		is_ruler = yes
-		prisoner = no
 		d_dunedain_of_north = {
 			has_holder = yes
 		}
@@ -502,10 +505,11 @@ narrative_event = {
     title = EVTTITalliancesystem.20
     desc = EVTDESCalliancesystem.20
 	picture = "GFX_good"
+	only_playable = yes
+	war = yes
 
 	trigger = {
 		ai = yes
-		war = yes
 		any_current_enemy = {
 			has_character_flag = sauron
 			age = 16
@@ -674,13 +678,12 @@ character_event = {
     desc = EVTDESCalliancesystem.25
 	picture = "GFX_good"
 	#hide_window = yes
+	war = yes
+	ai = no
 
 	trigger = {
-		ai = no
-		war = yes
 		any_current_enemy = {
 			has_character_flag = sauron
-			age = 16
 		}
 		trait = good_side
 		NOT = { has_global_flag = alliancevssauron }

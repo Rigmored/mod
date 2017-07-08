@@ -10,38 +10,451 @@
 # and Chris King
 # and Henrik Eklund
 
-#Lunatic
+# Re-modified for MEP mod, July 5, 2017
+
+#Syphilitic
 character_event = {
-	id = 6020
-	desc = EVTDESC6020
-	picture = GFX_evt_recovery
+	id = 6000
+	desc = EVTDESC6000
+	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
 	
-	min_age = 10
+	min_age = 16
+	capable_only = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
-		OR = {
-			trait = depressed
-			trait = stressed
+		NOT = { mep_cant_get_disease_trigger = yes }
+		NOT = {
+			trait = syphilitic
 		}
 		NOT = {
-			trait = lunatic
-			trait = elf 
-			trait = dwarven 
-			culture = culture_maiar
-			culture = culture_istari
+			trait = celibate
+		}
+		NOT = {
+			trait = infirm
+		}
+		OR = {
+			NOT = { trait = chaste }
+			spouse = { 
+				is_alive = yes
+				is_abroad = no
+				trait = syphilitic 
+			}
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 12000
-		
+		months = 20000
 		modifier = {
-			factor = 0.5
-			trait = zealous
+			factor = 10
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 5
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3.3
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 5
+			mep_elven_blood_tigger = yes
+		}
+		modifier = {
+			factor = 0.1
+			spouse = { 
+				trait = syphilitic 
+			}
 		}
 		modifier = {
 			factor = 0.5
+			in_command = yes
+		}		
+		modifier = {
+			factor = 0.5
+			trait = lustful
+		}
+		modifier = {
+			factor = 0.6
+			trait = hedonist
+		}
+		
+		modifier = {
+			factor = 5.0
+			trait = chaste
+		}
+	}
+	
+	option = {
+		name = EVTOPTA6000
+		add_trait = syphilitic
+		blessing_removes_disease_effect = yes
+		deaths_gift_removes_disease_effect = yes
+	}
+}
+
+#Remove Syphilitic
+character_event = {
+	id = 6001
+	desc = EVTDESC6001
+	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	min_age = 16
+	is_sick = yes
+	only_capable = yes
+	lacks_dlc = "Reapers"
+	
+	trigger = {
+		health = 6
+		trait = syphilitic
+	}
+	
+	mean_time_to_happen = {
+		months = 25000
+		
+		modifier = {
+			factor = 0.5
+			health = 8
+		}
+		modifier = {
+			factor = 0.5
+			health = 9
+		}
+		# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+		# I'll copy that here, but I think they overdo it
+		modifier = {
+			factor = 0.2
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 0.4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 0.6
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.4
+			mep_elven_blood_tigger = yes
+		}
+	}
+	
+	option = {
+		name = EVTOPTA6001
+		remove_trait = syphilitic
+	}
+}
+
+#Leper
+character_event = {
+	id = 6010
+	desc = EVTDESC6010
+	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
+	
+	min_age = 10
+	only_capable = yes
+	
+	trigger = {
+		NOT = { mep_cant_get_disease_trigger = yes }
+		NOT = {
+			trait = leper
+		}
+		NOT = { health = 5 }
+	}
+	
+	mean_time_to_happen = {
+		months = 25000
+		modifier = {
+			factor = 10
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 5
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3.3
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 5
+			mep_elven_blood_tigger = yes
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { 
+				health = 4 
+			}
+		}
+		modifier = {
+			factor = 0.5
+			in_command = yes
+		}
+		modifier = {
+			factor = 0.5
+			any_courtier = {
+				trait = leper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_weak_trigger = yes
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				trait = infection
+				trait = severely_injured
+				trait = wounded
+			}
+		}
+		modifier = {
+			factor = 0.5
+			trait = charitable
+		}
+		
+	}
+	
+	option = {
+		name = EVTOPTA6010
+		add_trait = leper
+			if = {
+				limit = {
+					has_dlc = "Reapers"
+				}
+				set_character_flag = new_leper_character
+				host = {
+					random_courtier_or_vassal = {
+						limit = {
+							liege = { character = PREVPREV }
+							has_minor_title = title_court_physician
+						}
+						character_event = { id = RIP.11031 days = 1 }
+					}
+				}
+				character_event = { id = RIP.11063 days = 20 }
+			}
+			
+			hidden_tooltip = {
+				random_list ={
+					100 = {
+						character_event = { id = RIP.5041 days = 365 random = 50 }
+					}
+					75 = {
+						character_event = { id = RIP.5041 days = 1500 random = 300 }
+					}
+					30 = {
+						character_event = { id = RIP.5041 days = 3000 random = 600 }
+					}
+				}
+			}
+	}
+}
+
+#Remove Leper
+character_event = {
+	id = 6011
+	desc = EVTDESC6011
+	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	min_age = 16
+	is_sick = yes
+	only_capable = yes
+	
+	trigger = {
+		health = 4
+		treasury = 25
+		trait = leper
+		NOT = {
+			has_game_rule = {
+				name = supernatural_events
+				value = off
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 25000
+		# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+		# I'll copy that here, but I think they overdo it
+		modifier = {
+			factor = 0.2
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 0.4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 0.6
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.4
+			mep_elven_blood_tigger = yes
+		}
+	}
+	
+	option = {
+		name = EVTOPTA6011
+		remove_trait = leper
+		treasury = -25
+	}
+}
+
+# Become Lunatic
+character_event = {
+	id = 6020
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
+	
+	desc = {
+		text = EVTDESC6020
+		trigger = {
+			is_ill = no
+			NOT = { trait = paranoid }
+			NOT = { trait = zealous }
+			NOT = { trait = incapable }
+			prisoner = no
+		}
+	}
+	desc = {
+		text = EVTDESC6020_PARA
+		trigger = {
 			trait = paranoid
+			NOT = { trait = incapable }
+		}
+	}
+	desc = {
+		text = EVTDESC6020_FEVER
+		trigger = {
+			is_ill = yes
+			NOT = { trait = incapable }
+		}
+	}
+	desc = {
+		text = EVTDESC6020_ZEAL
+		trigger = {
+			trait = zealous
+			NOT = { trait = incapable }
+		}
+	}
+	desc = {
+		text = EVTDESC6020_PRISON
+		trigger = {
+			prisoner = yes
+			NOT = { trait = incapable }
+		}
+	}
+	desc = {
+		text = EVTDESC6020_COMA
+		trigger = { trait = incapable }
+	}
+	
+	min_age = 10
+	
+	trigger = {
+		NOR = {
+			trait = lunatic
+			trait = elf 
+			trait = dwarven 
+			culture_group = culture_group_eru
+			culture = culture_balrog
+			culture = culture_dragons
+		}
+		OR = {
+			#Senile/comatose due to old age do not gain lunatic, immortals get a pass though
+			NOT = { age = 65 }
+			immortal = yes
+			NOT = { trait = incapable }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 48000 # once in 4000 years on average
+		modifier = {  # Dúnedain become lunatic less often
+			factor = 4
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 2
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 6
+			mep_elven_blood_tigger = yes
+		}
+		modifier = {
+			factor = 0.003 # 12 years on average
+			OR = {
+				trait = syphilitic
+				trait = has_aztec_disease
+			}
+		}
+		modifier = {
+			factor = 0.006 # 24 years on average
+			prisoner = yes
+			has_character_modifier = the_oubliette
+		}
+		modifier = {
+			factor = 0.02 # 80 years on average
+			OR = {
+				trait = has_typhoid_fever
+				trait = has_typhus
+			}
+		}
+		modifier = {
+			factor = 0.1
+			prisoner = yes
+			NOT = { has_character_modifier = the_oubliette }
+			NOT = { has_character_modifier = house_arrest }
+		}
+		modifier = {
+			factor = 0.2 # 800 years on average
+			is_ill = yes
+			NOR = {
+				trait = has_typhoid_fever
+				trait = has_typhus
+				trait = syphilitic
+				trait = has_aztec_disease
+			}
+		}
+		modifier = {
+			factor = 0.0025 # 1 year on average, rabies will also be ill
+			trait = rabies
+		}
+		modifier = {
+			factor = 0.1
+			trait = incapable # Coma due to brain damage. Wakes up a lunatic.
+		}
+		modifier = {
+			factor = 0.1
+			AND = {
+				trait = incapable
+				immortal = yes # Incapable immortals more likely to wake up nuts
+			}
+		}
+		modifier = {
+			factor = 0.25
+			trait = paranoid
+		}
+		modifier = {
+			factor = 0.25
+			trait = stressed
+		}
+		modifier = {
+			factor = 0.5
+			trait = depressed
+		}
+		modifier = {
+			factor = 0.5
+			trait = zealous
 		}
 		modifier = {
 			factor = 0.5
@@ -49,15 +462,76 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.5
+			trait = imbecile
+		}
+		modifier = {
+			factor = 0.5
 			trait = genius
+		}
+		modifier = {
+			factor = 0.75
+			trait = drunkard
 		}
 	}
 	
 	option = {
-		name = EVTOPTA6020
+		name = {
+			text = EVTOPTA6020
+			trigger = {
+				is_ill = no
+				NOT = { trait = paranoid }
+				NOT = { trait = zealous }
+				NOT = { trait = incapable }
+				prisoner = no
+			}
+		}
+		name = {
+			text = EVTOPTA6020_PARA
+			trigger = {
+				trait = paranoid
+				NOT = { trait = incapable }
+			}
+		}
+		name = {
+			text = EVTOPTA6020_FEVER
+			trigger = {
+				is_ill = yes
+				NOT = { trait = incapable }
+			}
+		}
+		name = {
+			text = EVTOPTA6020_ZEAL
+			trigger = {
+				trait = zealous
+				NOT = { trait = incapable }
+			}
+		}
+		name = {
+			text = EVTOPTA6020_PRISON
+			trigger = {
+				prisoner = yes
+				NOT = { trait = incapable }
+			}
+		}
+		name = {
+			text = EVTOPTA6020_COMA
+			trigger = { trait = incapable }
+		}
+		
 		add_trait = lunatic
-		remove_trait = depressed
-		remove_trait = stressed
+		
+		if = {
+			limit = { trait = depressed }
+			remove_trait = depressed
+		}
+		if = {
+			limit = { trait = stressed }
+			remove_trait = stressed
+		}
+		if = {
+			limit = { trait = incapable }
+			remove_trait = incapable
+		}
 	}
 }
 
@@ -66,12 +540,20 @@ character_event = {
 	id = 6021
 	desc = EVTDESC6021
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
 	
-	min_age = 10
+	min_age = 16
+	only_capable = yes
 	
 	trigger = {
 		health = 4
 		trait = lunatic
+		NOT = {
+			OR = {
+				trait = syphilitic
+				trait = has_aztec_disease
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -79,6 +561,14 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			health = 6
+		}
+		modifier = {  # Dúnedain recover from lunacy quicker
+			factor = 0.33
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.6
+			religion_group = religion_group_periannath
 		}
 	}
 	
@@ -89,15 +579,15 @@ character_event = {
 }
 
 
-
-
 #Stressed
 character_event = {
 	id = 6040
 	desc = EVTDESC6040
 	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
+	only_capable = yes
 	
 	trigger = {
 		OR = {
@@ -106,26 +596,34 @@ character_event = {
 			has_minor_title = title_regent
 		}
 		NOT = { trait = stressed }
-		NOT = { trait = incapable }
 		NOT = { trait = infirm }
-		NOT = { trait = elf }
+		NOT = { trait = elf }  # Elves are just awesome like this, Ha!
+		NOT = { culture_group = culture_group_eru }
 	}
 	
 	mean_time_to_happen = {
-		months = 2400
+		months = 2000
+		modifier = { 
+			factor = 2
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 2
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 3
+			mep_elven_blood_tigger = yes
+		}
+		modifier = {
+			factor = 0.75
+			trait = diligent
+		}
 		
-		modifier = {
-			factor = 0.8
-			is_ruler = yes
-		}
-		modifier = {
-			factor = 0.8
-			is_councillor = yes
-		}
-		modifier = {
-			factor = 0.8
-			has_minor_title = title_regent
-		}
 		modifier = {
 			factor = 0.8
 			in_command = yes
@@ -148,8 +646,10 @@ character_event = {
 	id = 6041
 	desc = EVTDESC6041
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
+	only_capable = yes
 	
 	trigger = {
 		trait = stressed
@@ -164,6 +664,10 @@ character_event = {
 			is_councillor = no
 			in_command = no
 			NOT = { has_minor_title = title_regent }
+		}
+		modifier = {
+			factor = 0.5
+			religion_group = religion_group_periannath
 		}
 		modifier = {
 			factor = 0.75
@@ -194,28 +698,43 @@ character_event = {
 	id = 6050
 	desc = EVTDESC6050
 	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 10
+	only_capable = yes
 	
 	trigger = {
 		NOT = { trait = depressed }
 		NOT = { trait = zealous }
-		NOT = { trait = incapable }
 		NOT = { trait = content }
 	}
 	
 	mean_time_to_happen = {
 		months = 12000
-		
+		modifier = {
+			factor = 4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 6
+			mep_is_immortal_race_trigger = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				mep_numenorean_traits_trigger = yes
+				mep_elven_blood_tigger = yes
+			}
+		}
 		modifier = {
 			factor = 0.5
 			NOT = { age = 20 }
-			mother = { is_alive = no } 
+			mother_even_if_dead = { is_alive = no } 
 		}
 		modifier = {
 			factor = 0.75
 			NOT = { age = 20 }
-			father = { is_alive = no } 
+			father_even_if_dead = { is_alive = no } 
 		}
 		
 		modifier = {
@@ -263,8 +782,10 @@ character_event = {
 	id = 6051
 	desc = EVTDESC6051
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 10
+	only_capable = yes
 	
 	trigger = {
 		trait = depressed
@@ -272,7 +793,18 @@ character_event = {
 	
 	mean_time_to_happen = {
 		months = 1200
-		
+		modifier = {
+			factor = 0.35
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3 #Dwarves recover sooner from depression than elves but more slowly than humans.
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 10.0 #Takes longer for elves and immortals to recover from depression.
+			mep_is_immortal_race_trigger = yes
+		}
 		modifier = {
 			factor = 0.1
 			trait = content
@@ -324,25 +856,47 @@ character_event = {
 #Ill
 character_event = {
 	id = 6060
-	desc = EVTDESC6060
 	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
+	desc = EVTDESC6060
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA6060
+		trigger = { NOT = { mep_cant_get_disease_trigger = yes } }
+		add_trait = ill
+		blessing_removes_disease_effect = yes
+		deaths_gift_removes_disease_effect = yes
+	}
+	
+	option = {
+		name = "Nothing"
+		trigger = { mep_cant_get_disease_trigger = yes }
+	}
+}
+
+#Meta ill
+character_event = {
+	id = 6063
+
+	hide_window = yes
 	
 	trigger = {
-		health = 3.0
-		NOT = { is_ill = yes }
-		NOT = { trait = pneumonic }
-		NOT = { trait = has_tuberculosis }
-		NOT = { trait = has_typhoid_fever }
-		NOT = { trait = has_typhus }
-		NOT = { trait = has_bubonic_plague }
-		NOT = { trait = has_measles }
-		NOT = { trait = has_small_pox }
 		NOT = { mep_cant_get_disease_trigger = yes }
+		health = 3.0
+		is_ill = no
+
+		NOT = {
+			has_game_rule = {
+				name = non_epidemic_diseases
+				value = none
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
 		months = 360
-		
 		modifier = {
 			factor = 10
 			religion_group = religion_group_khazad
@@ -359,75 +913,6 @@ character_event = {
 			factor = 5
 			mep_elven_blood_tigger = yes
 		}
-		
-		modifier = {
-			factor = 0.5
-			trait = depressed
-		}
-		modifier = {
-			factor = 0.5
-			trait = stressed
-		}
-		modifier = {
-			factor = 0.75
-			prisoner = yes
-			has_character_modifier = the_oubliette
-		}
-		modifier = {
-			factor = 0.9
-			prisoner = yes
-			has_character_modifier = the_dungeon
-		}
-		modifier = {
-			factor = 1.5
-			base_health = 6
-		}
-		modifier = {
-			factor = 2.0
-			base_health = 7
-		}
-		modifier = {
-			factor = 2.0
-			base_health = 8
-		}
-	}
-	
-	option = {
-		name = EVTOPTA6060
-		if = {
-			limit = {
-				NOT = { has_dlc = "Reapers" }
-			}
-			add_trait = ill
-		}
-		if = {
-			limit = { has_dlc = "Reapers" }
-			add_symptom_effect = yes
-		}
-	}
-}
-
-#Meta ill
-character_event = {
-	id = 6063
-
-	hide_window = yes
-	
-	trigger = {
-		health = 3.0
-		is_ill = no
-
-		NOT = {
-			has_game_rule = {
-				name = non_epidemic_diseases
-				value = none
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 360
-		
 		modifier = {
 			factor = 0.5
 			trait = depressed
@@ -523,7 +1008,24 @@ character_event = {
 	
 	mean_time_to_happen = {
 		months = 12
-		
+		# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+		# I'll copy that here, but I think they overdo it
+		modifier = {
+			factor = 0.2
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 0.4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 0.6
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.4
+			mep_elven_blood_tigger = yes
+		}
 		modifier = {
 			factor = 2.0
 			trait = depressed
@@ -557,8 +1059,10 @@ character_event = {
 	id = 6062
 	desc = EVTDESC6062
 	picture = GFX_evt_child_play
+	border = GFX_event_normal_frame_religion
 	
 	max_age = 7
+	is_sick = yes
 	
 	trigger = {
 		trait = sickly
@@ -593,10 +1097,14 @@ character_event = {
 	id = 6070
 	desc = EVTDESC6070
 	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		OR = {
-			is_ill = yes
+			trait = ill
 			trait = has_measles
 		}
 		NOT = { trait = pneumonic }
@@ -605,6 +1113,22 @@ character_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 10
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 5
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 3.3
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 5
+			mep_elven_blood_tigger = yes
+		}
 		modifier = {
 			factor = 0.5
 			NOT = { base_health = 5 }
@@ -643,6 +1167,8 @@ character_event = {
 	option = {
 		name = EVTOPTA6070
 		add_trait = pneumonic
+		blessing_removes_disease_effect = yes
+		deaths_gift_removes_disease_effect = yes
 	}
 }
 
@@ -651,6 +1177,10 @@ character_event = {
 	id = 6071
 	desc = EVTDESC6071
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		base_health = 4
@@ -659,6 +1189,24 @@ character_event = {
 	
 	mean_time_to_happen = {
 		months = 4
+		# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+		# I'll copy that here, but I think they overdo it
+		modifier = {
+			factor = 0.2
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 0.4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 0.6
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.4
+			mep_elven_blood_tigger = yes
+		}
 		modifier = {
 			factor = 2.0
 			NOT = { base_health = 5 }
@@ -700,6 +1248,11 @@ character_event = {
 	id = 6080
 	desc = EVTDESC6080
 	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
+	
+	min_age = 16
+	only_capable = yes
+	prisoner = no
 	
 	trigger = {
 		OR = {
@@ -707,9 +1260,9 @@ character_event = {
 			in_command = yes
 			trait = brave
 		}
-		NOT = {
+		NOR = {
 			trait = wounded
-			trait = maimed
+			is_maimed_trigger = yes
 		}		
 	}
 	
@@ -753,10 +1306,12 @@ character_event = {
 	id = 6081
 	desc = EVTDESC6081
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
 	
 	trigger = {
 		base_health = 4
 		trait = wounded
+		NOT = { trait = infection }
 	}
 	
 	mean_time_to_happen = {
@@ -766,10 +1321,29 @@ character_event = {
 			factor = 0.5
 			base_health = 5.1
 		}
-		
 		modifier = {
 			factor = 0.4
 			base_health = 6
+		}
+		modifier = {
+			factor = 0.1
+			mep_is_immortal_race_trigger = yes
+		}
+		modifier = {
+			factor = 0.3
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 0.4
+			religion_group = religion_group_periannath
+		}
+		modifier = {
+			factor = 0.7
+			mep_numenorean_traits_trigger = yes
+		}
+		modifier = {
+			factor = 0.4
+			mep_elven_blood_tigger = yes
 		}
 	}
 	
@@ -786,17 +1360,17 @@ character_event = {
 	id = 6082
 	desc = EVTDESC6082
 	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
 	
 	trigger = {
+		NOT = { mep_cant_get_disease_trigger = yes }
 		trait = wounded
 		NOT = { base_health = 8 }
-		NOT = { is_ill = yes }
-		NOT = { mep_cant_get_disease_trigger = yes }
+		is_ill = no
 	}
 	
 	mean_time_to_happen = {
 		months = 240
-		
 		modifier = {
 			factor = 10
 			religion_group = religion_group_khazad
@@ -813,10 +1387,14 @@ character_event = {
 			factor = 5
 			mep_elven_blood_tigger = yes
 		}
-		
 		modifier = {
 			factor = 0.9
 			in_command = yes
+		}
+		
+		modifier = {
+			factor = 0.8
+			trait = leper
 		}
 		
 		modifier = {
@@ -839,19 +1417,23 @@ character_event = {
 			limit = {
 				NOT = {
 					has_dlc = "Reapers"
-						}
-					}
-			add_trait = ill
-			}
-		if = {
-		limit = {
-			has_dlc = "Reapers"
 				}
-		add_symptom_effect = yes
 			}
+			add_trait = ill
+			blessing_removes_disease_effect = yes
+			deaths_gift_removes_disease_effect = yes
+		}
+		if = {
+			limit = {
+				has_dlc = "Reapers"
+			}
+			add_trait = infection
+			hidden_tooltip = {
+				character_event = { id = RIP.11001 days = 365 random = 1095 }
+			}
+		}
 	}
 }
-
 
 #Infirm - FOR NORMAL MEN ONLY #
 character_event = {
@@ -919,7 +1501,6 @@ character_event = {
 	id = 6499
 	desc = EVTDESC6100
 	picture = GFX_evt_illness
-	religion_group = religion_group_edain
 	
 	min_age = 130
 	
@@ -1169,34 +1750,26 @@ character_event = {
 		add_trait = infirm
 	}
 }
+
 #Incapable
 character_event = {
 	id = 6110
 	desc = EVTDESC6110
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
 	
 	trigger = {
 		OR = {
 			trait = infirm
 			trait = inbred
 		}
-		NOT = {
-			OR = {
-				trait = incapable
-				trait = ring
-				trait = ringbearer1
-				trait = ringbearer2
-				mep_cant_get_disease_trigger = yes
-			}
-		}
+		NOT = { trait = incapable }
+		immortal = no
 	}
 	
 	mean_time_to_happen = {
 		months = 120
-		modifier = {
-			factor = 2
-			religion_group = religion_group_khazad
-		}
+		
 		modifier = {
 			factor = 0.5
 			NOT = { health = 3.0 }
@@ -1231,13 +1804,17 @@ character_event = {
 	id = 6111
 	desc = EVTDESC6111
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_tuberculosis
 	}
 	
 	mean_time_to_happen = {
-		months = 12
+		months = 24
 		
 		modifier = {
 			factor = 0.75
@@ -1304,13 +1881,17 @@ character_event = {
 	id = 6112
 	desc = EVTDESC6112
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_typhoid_fever
 	}
 	
 	mean_time_to_happen = {
-		months = 2
+		months = 4
 		
 		modifier = {
 			factor = 0.75
@@ -1377,13 +1958,17 @@ character_event = {
 	id = 6113
 	desc = EVTDESC6113
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_typhus
 	}
 	
 	mean_time_to_happen = {
-		months = 2
+		months = 12
 		
 		modifier = {
 			factor = 0.75
@@ -1450,13 +2035,17 @@ character_event = {
 	id = 6114
 	desc = EVTDESC6114
 	picture = GFX_evt_plague_doctor
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_bubonic_plague
 	}
 	
 	mean_time_to_happen = {
-		months = 2
+		months = 3
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1522,13 +2111,17 @@ character_event = {
 	id = 6115
 	desc = EVTDESC6115
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_measles
 	}
-	
+	 
 	mean_time_to_happen = {
-		months = 2
+		months = 5
 		
 		modifier = {
 			factor = 0.75
@@ -1595,13 +2188,17 @@ character_event = {
 	id = 6116
 	desc = EVTDESC6116
 	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+	
+	is_sick = yes
+	lacks_dlc = "Reapers"
 	
 	trigger = {
 		trait = has_small_pox
 	}
 	
 	mean_time_to_happen = {
-		months = 2
+		months = 5
 		
 		modifier = {
 			factor = 0.75
@@ -1663,6 +2260,8 @@ character_event = {
 	}
 }
 
+
+
 ### Lunacy Events
 
 # Ruler Implements New Law
@@ -1670,13 +2269,14 @@ character_event = {
 	id = 6300
 	desc = EVTDESC6300
 	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
 	prisoner = no
-	only_rulers = yes
+	only_playable = yes
+	only_independent = yes
 	
 	trigger = {
-		independent = yes
 		trait = lunatic
 	}
 	
@@ -1798,15 +2398,21 @@ narrative_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = EVTOPTA6305
-		any_vassal = {
-			opinion = {
-				modifier = opinion_insane_law
-				who = ROOT
+		name = EVTOPTA6305 
+		custom_tooltip = {
+			text = ALL_VASSALS_INSANE_LAW
+			hidden_tooltip = {
+				any_vassal = {
+					opinion = {
+						modifier = opinion_insane_law
+						who = ROOT
+					}
+				}
 			}
 		}
 	}
 }
+
 
 # Pants Law (Liege)
 narrative_event = {
@@ -1821,10 +2427,15 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		any_vassal = {
-			opinion = {
-				modifier = opinion_insane_law
-				who = ROOT
+		custom_tooltip = {
+			text = ALL_VASSALS_INSANE_LAW
+			hidden_tooltip = {
+				any_vassal = {
+					opinion = {
+						modifier = opinion_insane_law
+						who = ROOT
+					}
+				}
 			}
 		}
 	}
@@ -1843,10 +2454,15 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		any_vassal = {
-			opinion = {
-				modifier = opinion_insane_law
-				who = ROOT
+		custom_tooltip = {
+			text = ALL_VASSALS_INSANE_LAW
+			hidden_tooltip = {
+				any_vassal = {
+					opinion = {
+						modifier = opinion_insane_law
+						who = ROOT
+					}
+				}
 			}
 		}
 	}
@@ -1865,10 +2481,15 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTA6305
-		any_vassal = {
-			opinion = {
-				modifier = opinion_insane_law
-				who = ROOT
+		custom_tooltip = {
+			text = ALL_VASSALS_INSANE_LAW
+			hidden_tooltip = {
+				any_vassal = {
+					opinion = {
+						modifier = opinion_insane_law
+						who = ROOT
+					}
+				}
 			}
 		}
 	}
@@ -1881,6 +2502,7 @@ character_event = {
 	id = 6315
 	desc = EVTDESC6315
 	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
 	
 	ai = no
 	min_age = 16
@@ -1906,6 +2528,7 @@ character_event = {
 	id = 6316
 	desc = EVTDESC6316
 	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
 	
 	ai = no
 	min_age = 16
@@ -1931,11 +2554,21 @@ character_event = {
 	id = 6317
 	desc = EVTDESC6317
 	picture = GFX_evt_courier
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 16
 	prisoner = no
+	only_capable = yes
+	only_playable = yes
+	lacks_dlc = "Zeus"
 	
 	trigger = {
+		NOT = {
+			has_game_rule = {
+				name = supernatural_events
+				value = off
+			}
+		}
 		trait = lunatic
 		any_courtier = {
 			has_job_title = job_chancellor
@@ -1968,6 +2601,7 @@ character_event = {
 	id = 6318
 	desc = EVTDESC6318
 	picture = GFX_evt_courier
+	border = GFX_event_normal_frame_religion
 	
 	is_triggered_only = yes
 	
@@ -1975,5 +2609,399 @@ character_event = {
 		name = EVTOPTA6318
 		prestige = -20
 		custom_tooltip = { text = horse_chancellor }
+	}
+}
+
+### Lunatic Pagan series
+
+# Rats in the walls
+#character_event = {
+#	id = 6350
+#	desc = EVTDESC6350
+#	picture = GFX_evt_recovery
+#	border = GFX_event_normal_frame_religion
+#	
+#	ai = no
+#	min_age = 16
+#	prisoner = no
+#	only_playable = yes
+#	religion_group = pagan_group
+#	
+#	trigger = {
+#		NOT = {
+#			has_game_rule = {
+#				name = supernatural_events
+#				value = off
+#			}
+#		}
+#		OR = {
+#			religion = norse_pagan
+#			religion = norse_pagan_reformed
+#			religion = slavic_pagan
+#			religion = slavic_pagan_reformed
+#			religion = baltic_pagan
+#			religion = baltic_pagan_reformed
+#			religion = finnish_pagan
+#			religion = finnish_pagan_reformed
+#		}
+#		NOT = { has_character_flag = the_old_ones_are_waking }
+#		NOT = { is_inaccessible_trigger = yes }
+#	}
+#	
+#	immediate = {
+#		set_character_flag = the_old_ones_are_waking
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 1000
+#		modifier = {
+#			factor = 100
+#			NOT = { trait = lunatic }
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA6350
+#		if = {
+#			limit = { NOT = { trait = lunatic } }
+#			add_trait = lunatic
+#		}
+#		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+#	}
+#	option = {
+#		name = EVTOPTB6350
+#		trigger = {
+#			NOT = { trait = lunatic }
+#		}
+#	}
+#}
+#
+## Something in the well
+#character_event = {
+#	id = 6351
+#	desc = EVTDESC6351
+#	picture = GFX_evt_garden
+#	border = GFX_event_normal_frame_religion
+#	
+#	ai = no
+#	min_age = 16
+#	prisoner = no
+#	only_playable = yes
+#	religion_group = pagan_group
+#	
+#	trigger = {
+#		NOT = {
+#			has_game_rule = {
+#				name = supernatural_events
+#				value = off
+#			}
+#		}
+#		OR = {
+#			religion = norse_pagan
+#			religion = norse_pagan_reformed
+#			religion = slavic_pagan
+#			religion = slavic_pagan_reformed
+#			religion = baltic_pagan
+#			religion = baltic_pagan_reformed
+#			religion = finnish_pagan
+#			religion = finnish_pagan_reformed
+#		}
+#		NOT = { has_character_flag = the_old_ones_are_waking }
+#		NOT = { is_inaccessible_trigger = yes }
+#	}
+#	
+#	immediate = {
+#		set_character_flag = the_old_ones_are_waking
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 1000
+#		modifier = {
+#			factor = 100
+#			NOT = { trait = lunatic }
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA6351
+#		if = {
+#			limit = { NOT = { trait = lunatic } }
+#			add_trait = lunatic
+#		}
+#		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+#	}
+#	option = {
+#		name = EVTOPTB6351
+#		trigger = {
+#			NOT = { trait = lunatic }
+#		}
+#	}	
+#}
+#
+## Tomb raiding
+#character_event = {
+#	id = 6352
+#	desc = EVTDESC6352
+#	picture = GFX_evt_death
+#	border = GFX_event_normal_frame_religion
+#	
+#	ai = no
+#	min_age = 16
+#	prisoner = no
+#	only_playable = yes
+#	religion_group = pagan_group
+#	
+#	trigger = {
+#		NOT = {
+#			has_game_rule = {
+#				name = supernatural_events
+#				value = off
+#			}
+#		}
+#		OR = {
+#			religion = norse_pagan
+#			religion = norse_pagan_reformed
+#			religion = slavic_pagan
+#			religion = slavic_pagan_reformed
+#			religion = baltic_pagan
+#			religion = baltic_pagan_reformed
+#			religion = finnish_pagan
+#			religion = finnish_pagan_reformed
+#		}
+#		NOT = { has_character_flag = the_old_ones_are_waking }
+#		NOT = { is_inaccessible_trigger = yes }
+#	}
+#	
+#	immediate = {
+#		set_character_flag = the_old_ones_are_waking
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 1000
+#		modifier = {
+#			factor = 100
+#			NOT = { trait = lunatic }
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA6352
+#		if = {
+#			limit = { NOT = { trait = lunatic } }
+#			add_trait = lunatic
+#		}
+#		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+#	}
+#	option = {
+#		name = EVTOPTB6352
+#		trigger = {
+#			NOT = { trait = lunatic }
+#		}
+#	}	
+#}
+#
+## A law against the killing of cats
+#character_event = {
+#	id = 6353
+#	desc = EVTDESC6353
+#	picture = GFX_evt_burning_house
+#	border = GFX_event_normal_frame_religion
+#	
+#	ai = no
+#	min_age = 16
+#	prisoner = no
+#	only_playable = yes
+#	religion_group = pagan_group
+#	
+#	trigger = {
+#		NOT = {
+#			has_game_rule = {
+#				name = supernatural_events
+#				value = off
+#			}
+#		}
+#		OR = {
+#			religion = norse_pagan
+#			religion = norse_pagan_reformed
+#			religion = slavic_pagan
+#			religion = slavic_pagan_reformed
+#			religion = baltic_pagan
+#			religion = baltic_pagan_reformed
+#			religion = finnish_pagan
+#			religion = finnish_pagan_reformed
+#		}
+#		NOT = { has_character_flag = the_old_ones_are_waking }
+#		NOT = { is_inaccessible_trigger = yes }
+#	}
+#	
+#	immediate = {
+#		set_character_flag = the_old_ones_are_waking
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 1000
+#		modifier = {
+#			factor = 100
+#			NOT = { trait = lunatic }
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA6353
+#		if = {
+#			limit = { NOT = { trait = lunatic } }
+#			add_trait = lunatic
+#		}
+#		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+#	}
+#	option = {
+#		name = EVTOPTB6353
+#		trigger = {
+#			NOT = { trait = lunatic }
+#		}
+#	}	
+#}
+#
+## Visiting a quaint village
+#character_event = {
+#	id = 6354
+#	desc = EVTDESC6354
+#	picture = GFX_evt_shadowy_cabal
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA6354
+#		character_event = { id = 6355 days = 7 tooltip = EVTTOOLTIP6355 }
+#	}
+#}
+#
+## A seaside ritual
+#character_event = {
+#	id = 6355
+#	desc = EVTDESC6355
+#	picture = GFX_evt_shadowy_cabal
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA6355
+#		change_learning = 1
+#		character_event = { id = 6356 days = 1 tooltip = EVTTOOLTIP6356 }
+#	}
+#}
+#
+## Something rises from the sea...
+#character_event = {
+#	id = 6356
+#	desc = EVTDESC6356
+#	picture = GFX_evt_shadowy_cabal
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA6356
+#		piety = 100
+#		death = { death_reason = death_sacrificed }
+#	}
+#	option = {
+#		name = EVTOPTB6356
+#		character_event = { id = 6357 days = 1 tooltip = EVTTOOLTIP6357 }
+#	}
+#}
+#
+## Commendeer a longship
+#character_event = {
+#	id = 6357
+#	desc = EVTDESC6357
+#	picture = GFX_evt_kraken
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA6357
+#		character_event = { id = 6358 days = 1 tooltip = EVTTOOLTIP6358 }
+#	}
+#}
+#
+## Waking up
+#character_event = {
+#	id = 6358
+#	desc = EVTDESC6358
+#	picture = GFX_evt_recovery
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA6358
+#		prestige = 100
+#		if = {
+#			limit = { lifestyle_traits = 1 }
+#			change_learning = 1
+#		}		
+#		if = {
+#			limit = {
+#				NOT = { lifestyle_traits = 1 }
+#				NOT = { has_dlc = "Way of Life" }
+#			}
+#			add_trait = scholar
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB6358
+#		add_character_modifier = { name = "killed_an_old_one" duration = -1 }
+#	}	
+#}
+
+#Lover's pox adding and notification
+character_event = {
+	id = 6359
+	picture = GFX_evt_recovery
+	border = GFX_event_normal_frame_religion
+
+	desc = {
+		text = EVTDESC_WOL_40_NC
+		trigger = {
+			is_female = yes
+			has_DLC = "Sons of Abraham"
+		}
+		picture = GFX_evt_bad_news_female
+	}
+	desc = {
+		text = EVTDESC_WOL_40_NC
+		trigger = {
+			is_female = no
+			has_DLC = "Sons of Abraham"
+		}
+		picture = GFX_evt_bad_news
+	}
+	desc = {
+		trigger = { NOT = { has_DLC = "Sons of Abraham" } }
+		text = EVTDESC_WOL_40_NC
+		picture = GFX_evt_recovery
+	}
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOR = {
+			trait = lovers_pox
+			has_character_modifier = minor_disease_herpes
+		}
+	}
+	
+	option = {
+		name = CURSES
+		add_trait = lovers_pox
 	}
 }

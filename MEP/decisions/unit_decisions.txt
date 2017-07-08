@@ -158,13 +158,7 @@ decisions = {
 							is_primary_war_defender = yes
 						}
 						# The old requirement was defending against any religion except yours, I'll make it different religion group
-						ROOT = {
-							PREV = {
-								NOT = {
-									attacker = { religion_group = PREVPREV }
-								}
-							}
-						}
+						NOT = { attacker = { religion_group = ROOT } }
 					}
 				}
 			}

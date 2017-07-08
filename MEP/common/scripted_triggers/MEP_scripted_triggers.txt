@@ -28,6 +28,10 @@
 # mep_will_purge_evil
 # mep_will_purge_good
 # mep_is_evil_overlord
+# mep_eligible_for_heren_isseon
+# mep_base_marriage_compatible
+# mep_eligible_elf_marriage
+# mep_eligible_dwarf_marriage
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -83,6 +87,7 @@
 
 ### government type related stuff
 # mep_temp_muslim_standin_trigger
+# mep_canhave_nice_feudalism
 
 #---------------------------------------------------------------------------------------
 # Character Triggers
@@ -351,6 +356,10 @@ mep_should_be_unkillable_trigger = {
 			culture_group = culture_group_onodrim
 			age = 2000
 		}
+		AND = {
+			trait = elf
+			age = 8000
+		}
 		trait = fea_strong
 		trait = enigma
 		trait = nazgul
@@ -441,6 +450,61 @@ mep_is_evil_overlord = {
 		trait = nazgul
 		religion = religion_dragons
 	}
+}
+
+mep_eligible_for_heren_isseon = {
+	NOT = { evil_side }
+	OR = {
+		religion_group = religion_group_periannath
+		religion_group = religion_group_khazad
+		culture_group = culture_group_middlemen
+		AND = {
+			culture_group = culture_group_haldadian
+			NOT = { culture = culture_druedain }
+		}
+		culture_group = culture_group_southron
+		culture_group = culture_group_easterling
+	}
+}
+
+mep_base_marriage_compatible = {
+	OR = {
+		has_lover = no
+		is_lover = ROOT
+	}
+	NOT = { is_close_relative = ROOT }
+	OR = {
+		AND = {
+			trait = homosexual
+			ROOT = { trait = homosexual }
+			same_sex = ROOT
+		}
+		AND = {
+		NOT = { trait = homosexual }
+			ROOT = { NOT = { trait = homosexual } }
+			is_opposite_sex = ROOT
+		}
+	}
+}
+
+mep_eligible_elf_marriage = {
+	can_marry  = yes
+	has_concubinage = no
+	age = 300
+	NOT = { trait = elven_infertility }
+	prisoner = no
+} 
+mep_eligible_dwarf_marriage = {
+	can_marry  = yes
+	has_concubinage = no
+	age = 45
+	NOT = { age = 260 }
+	if = {
+		limit = { is_female = yes }
+		NOT = { age = 140 }
+	}
+	NOT = { trait = dwarven_infertility }
+	prisoner = no
 }
 
 #--------------------------------------------------------------------
@@ -977,14 +1041,14 @@ mep_theodred_and_eomer_are_okay = {
 	event_target:mep_chartarget_theodred = {
 		is_alive = yes
 		prisoner = no
-		top_liege = PREV
+		# top_liege = PREV
 		NOT = { trait = ringsearch }
 		NOT = { trait = huntforring }
 	}
 	event_target:mep_chartarget_eomer = {
 		is_alive = yes
 		prisoner = no
-		top_liege = PREV
+		# top_liege = PREV
 		NOT = { trait = ringsearch }
 		NOT = { trait = huntforring }
 	}

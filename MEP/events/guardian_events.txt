@@ -4373,7 +4373,7 @@ character_event = {
 	}
 }
 
-# Where do heathens come from?
+# Where do orcs come from?
 character_event = {
 	id = 38208
 	desc = EVTDESC38208
@@ -4381,8 +4381,12 @@ character_event = {
 	
 	is_triggered_only = yes
 	
+	trigger = {
+		NOT = { religion_group = religion_group_melkor }
+	}
+	
 	option = {
-		name = EVTOPTA38208 # Heathens are people just like us 
+		name = EVTOPTA38208 # Orcs are people just like us 
 		ai_chance = { 
 			factor = 10
 			modifier = {
@@ -4426,7 +4430,7 @@ character_event = {
 		}
 	}
 	option = {
-		name = EVTOPTC38208 # They are men like us, but unbeliever enemies
+		name = EVTOPTC38208 # They are beasts that walk like people.
 		ai_chance = { 
 			factor = 10
 			modifier = {

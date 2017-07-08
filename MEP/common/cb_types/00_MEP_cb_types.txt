@@ -439,13 +439,7 @@ wilderness = {
 				text = TT_WILDERNESS_ATTACKER_SEIZED_FLAG
 				NOT = { has_character_modifier = mod_mep_seized_wilderness }
 			}
-			prestige = 250
-			OR = {
-				ai = no
-				trait = ambitious
-				trait = diligent
-				trait = greedy
-			}		
+			prestige = 250	
 		}
 	}
 	
@@ -459,7 +453,11 @@ wilderness = {
 		tier = count
 		# bordering non-mountain provinces
 		location = {
-			NOT = { terrain = mountain }
+			OR = {
+				province_id = 682 # Himling, allowed because the land is on-top of a mountain, not Inside the mountain
+				province_id = 804 # Imlad Thoron, where I think the High Pass should be
+				NOT = { terrain = mountain }
+			}
 			mep_borders_ROOTrealm_2seazones = yes
 		}
 		# exlude if the war can be better handled via wilderness_arnorean
@@ -608,6 +606,24 @@ wilderness = {
 					religion_group = religion_group_periannath
 					religion_group = religion_group_khazad
 				}
+			}
+		}
+		modifier = {
+			factor = 0.01
+			ROOT = {
+				NOR = {
+					trait = ambitious
+					trait = diligent
+					trait = greedy
+				}
+			}			
+		}
+		# The default scope, according to richvh, is the targeted title scope
+		modifier = {
+			factor = 10
+			OR = {
+				claimed_by = ROOT
+				de_jure_liege_or_above = ROOT
 			}
 		}
 	}

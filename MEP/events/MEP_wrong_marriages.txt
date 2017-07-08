@@ -49,8 +49,14 @@ character_event = {
 	
 	trigger = {
 		trait = elf
-		any_spouse = {
+		spouse = {
 			NOT = { trait = elf }
+			NOT = { 
+				AND = {
+					has_character_flag = elfhumanmarriage
+					religion_group = religion_group_edain
+					}
+				}
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = elfhumanmarriage }

@@ -376,6 +376,7 @@ mep_char_is_elf_effect = {
 	if = {
 		limit = {
 			NOT = { age = 60 }
+			age = 16
 			NOT = { trait = elf_childhood }
 		}
 		if = {
@@ -410,13 +411,13 @@ mep_prep_fellowship_wizard = {
 	remove_trait = infirm
 	remove_trait = wounded
 	# finishing
-	add_trait = fellowshipquest
+	add_trait = on_fellowshipquest
 	save_event_target_as = mep_fellowship_wizard
 }
 #====================================================================================================
 mep_make_random_noldorelf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_noldor
@@ -425,9 +426,10 @@ mep_make_random_noldorelf_character = {
 				female = no
 				age = 5640
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_noldor
@@ -436,13 +438,24 @@ mep_make_random_noldorelf_character = {
 				female = yes
 				age = 5832
 				trait = elf
+				immortal_age = 25
 			}
+		}
+		
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
 mep_make_random_sindarelf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_sindar
@@ -451,9 +464,10 @@ mep_make_random_sindarelf_character = {
 				female = no
 				age = 4520
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_sindar
@@ -462,13 +476,23 @@ mep_make_random_sindarelf_character = {
 				female = yes
 				age = 4410
 				trait = elf
+				immortal_age = 25
 			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
 mep_make_random_falathrimelf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_falathrim
@@ -477,9 +501,10 @@ mep_make_random_falathrimelf_character = {
 				female = no
 				age = 6120
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_falathrim
@@ -488,13 +513,23 @@ mep_make_random_falathrimelf_character = {
 				female = yes
 				age = 5840
 				trait = elf
+				immortal_age = 25
 			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
 mep_make_random_silvanelf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_silvan
@@ -503,9 +538,10 @@ mep_make_random_silvanelf_character = {
 				female = no
 				age = 2915
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_silvan
@@ -514,13 +550,23 @@ mep_make_random_silvanelf_character = {
 				female = yes
 				age = 2740
 				trait = elf
+				immortal_age = 25
 			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
 mep_make_random_avarielf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_avari
@@ -529,9 +575,10 @@ mep_make_random_avarielf_character = {
 				female = no
 				age = 3310
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_avari
@@ -540,13 +587,23 @@ mep_make_random_avarielf_character = {
 				female = yes
 				age = 3640
 				trait = elf
+				immortal_age = 25
 			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
 mep_make_random_nandorelf_character = {
 	random_list = {
-		50 = {
+		67 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_nandor
@@ -555,9 +612,10 @@ mep_make_random_nandorelf_character = {
 				female = no
 				age = 2810
 				trait = elf
+				immortal_age = 25
 			}
 		}
-		50 = {
+		33 = {
 			create_character = {
 				religion = religion_moriquendi
 				culture = culture_nandor
@@ -566,7 +624,17 @@ mep_make_random_nandorelf_character = {
 				female = yes
 				age = 2960
 				trait = elf
+				immortal_age = 25
 			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
 		}
 	}
 }
@@ -742,33 +810,47 @@ mep_fellowship_ends_at_rivendell_effect = {
 	if = {
 		limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
 		event_target:mep_fellowship_wizard = {
-			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2}
+			if = {
+				limit = { ai = no}
+				character_event = { id = wotr.8  days = 2 }
+			}
 		}
 	}
 	event_target:mep_fellowship_gondorian = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 	event_target:mep_fellowship_dwarf = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 	event_target:mep_fellowship_elf = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 	event_target:mep_fellowship_hobbit1 = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 	event_target:mep_fellowship_hobbit2 = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 	event_target:mep_fellowship_hobbit3 = {
-		limit = { ai = no}
-		character_event = { id = wotr.8  days = 2}
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
 	}
 }
 
