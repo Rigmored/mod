@@ -607,7 +607,6 @@ character_event = {
     title = "EVTTITfrodo.18"
     desc = "EVTDESCfrodo.18"
     picture = "GFX_good"
-	age = 16
 	
 	is_triggered_only = yes	
 	
@@ -632,10 +631,10 @@ character_event = {
 		if = {
 			limit = { has_global_flag = saurondefeated }
 			event_target:mep_frodo_target = {
-				PREV = {
+				ROOT = {
 					death = {
 						death_reason = death_destroyed_alongside_one_ring
-						killer = 8079
+						killer = PREV
 					}
 				}
 			}

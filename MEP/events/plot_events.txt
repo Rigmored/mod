@@ -126,7 +126,7 @@ character_event = {
 letter_event = {
 	id = 7255
 	desc = "EVTDESC7255"
-	picture = GFX_evt_whispers
+	# picture = GFX_evt_whispers
 	
 	hide_from = yes
 	
@@ -256,7 +256,7 @@ character_event = {
 			}
 			is_plot_active = no
 			OR = {
-				NOT = { religion_group = muslim }
+				NOT = { mep_cant_get_drunk_trigger = yes }
 				trait = hedonist
 				trait = drunkard
 			}
@@ -10889,7 +10889,7 @@ character_event = {
 				}
 			}
 		}
-		scaled_wealth = -plot_leader.5
+		scaled_wealth = -0.5
 		event_target:plotter = {
 			character_event = { id = 7790 days = 3 tooltip = "EVTTOOLTIP8160" }
 			set_character_flag = murder_in_motion

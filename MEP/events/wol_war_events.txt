@@ -74,15 +74,11 @@ character_event = {
 				factor = 0.05
 				trait = craven
 			}
-			modifier = {
-				factor = 0.3
-				religion = jain
-			}
-			modifier = {
-				religion_group = christian
-				is_priest = yes
-				factor = 0
-			}
+			#modifier = {
+			#	religion_group = christian
+			#	is_priest = yes
+			#	factor = 0
+			#}
 			modifier = {
 				is_female = no
 				FROM = { is_female = yes }
@@ -98,11 +94,6 @@ character_event = {
 				chance = 20
 				remove_trait = craven
 			}
-		}
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
 		}
 		if = {
 			limit = { 
@@ -3547,8 +3538,8 @@ character_event = {
 			AND = {
 				NOT = { trait = war_elephant_leader }
 				OR = {
-					culture_group = indo_aryan_group
-					culture_group = dravidian_group
+					culture = culture_haradrim
+					culture = culture_far_haradrim
 					any_demesne_province = {
 						terrain = jungle
 					}
@@ -3647,8 +3638,8 @@ character_event = {
 		trigger = {
 			NOT = { trait = war_elephant_leader }
 			OR = {
-				culture_group = indo_aryan_group
-				culture_group = dravidian_group
+				culture = culture_haradrim
+				culture = culture_far_haradrim
 				any_demesne_province = {
 					terrain = jungle
 				}
@@ -3691,13 +3682,7 @@ character_event = {
 			}
 			AND = {
 				NOT = { trait = winter_soldier }
-				OR = {
-					culture_group = north_germanic
-					culture_group = baltic
-					culture_group = east_slavic
-					culture_group = west_slavic
-					culture_group = finno_ugric
-				}
+				mep_winter_culture = yes
 			}
 		}
 	}
@@ -3766,14 +3751,7 @@ character_event = {
 			factor = 100
 			modifier = {
 				factor = 2
-				OR = {
-					culture_group = north_germanic
-					culture_group = baltic
-					culture_group = east_slavic
-					culture_group = west_slavic
-					culture_group = finno_ugric
-					is_tribal = yes
-				}
+				is_tribal = yes
 			}
 		}
 		trigger = {
@@ -3811,13 +3789,7 @@ character_event = {
 		}
 		trigger = {
 			NOT = { trait = winter_soldier }
-			OR = {
-				culture_group = north_germanic
-				culture_group = baltic
-				culture_group = east_slavic
-				culture_group = west_slavic
-				culture_group = finno_ugric
-			}
+			mep_winter_culture = yes
 		}
 		add_trait = winter_soldier
 	}
@@ -3963,10 +3935,10 @@ character_event = {
 			NOT = { trait = inspiring_leader }
 			NOT = { trait = siege_leader }
 			NOT = { trait = organizer }
-			AND = {
-				NOT = { trait = holy_warrior }
-				trait = zealous
-			}
+			#AND = {
+			#	NOT = { trait = holy_warrior }
+			#	trait = zealous
+			#}
 		}
 	}
 	
@@ -4044,30 +4016,30 @@ character_event = {
 		}
 		add_trait = organizer
 	}
-	option = { # Holy Warrior
-		name = { 
-			text = EVTOPTD_WOL_11304
-			trigger = {
-				NOT = { religion_group = muslim }
-			}
-		}
-		name = {
-			text = EVTOPTD_WOL_11304_MUSLIM
-			trigger = {
-				religion_group = muslim
-			}
-		}
-		ai_chance = {
-			factor = 1000
-		}
-		trigger = {
-			trait = zealous
-		}
-		trigger = {
-			NOT = { trait = holy_warrior }
-		}
-		add_trait = holy_warrior
-	}
+	#option = { # Holy Warrior
+	#	name = { 
+	#		text = EVTOPTD_WOL_11304
+	#		trigger = {
+	#			NOT = { religion_group = muslim }
+	#		}
+	#	}
+	#	name = {
+	#		text = EVTOPTD_WOL_11304_MUSLIM
+	#		trigger = {
+	#			religion_group = muslim
+	#		}
+	#	}
+	#	ai_chance = {
+	#		factor = 1000
+	#	}
+	#	trigger = {
+	#		trait = zealous
+	#	}
+	#	trigger = {
+	#		NOT = { trait = holy_warrior }
+	#	}
+	#	add_trait = holy_warrior
+	#}
 	
 	option = {
 		name = EVTOPTE_WOL_11301 # Bad choices all...
@@ -4212,7 +4184,7 @@ character_event = {
 			trait = rough_terrain_leader
 			trait = mountain_terrain_leader
 			trait = desert_terrain_leader
-			trait = holy_warrior
+			# trait = holy_warrior
 			trait = winter_soldier
 			trait = war_elephant_leader
 			trait = jungle_terrain_leader
@@ -4451,18 +4423,18 @@ character_event = {
 			character_event = { id = WoL.11327 days = 7 }
 		}
 	}
-	option = {
-		name = EVTOPT_WOL_11310_HW
-		trigger = {
-			trait = holy_warrior
-		}
-		event_target:my_student = {
-			tooltip = {
-				add_trait = holy_warrior
-			}
-			character_event = { id = WoL.11328 days = 7 }
-		}
-	}
+	#option = {
+	#	name = EVTOPT_WOL_11310_HW
+	#	trigger = {
+	#		trait = holy_warrior
+	#	}
+	#	event_target:my_student = {
+	#		tooltip = {
+	#			add_trait = holy_warrior
+	#		}
+	#		character_event = { id = WoL.11328 days = 7 }
+	#	}
+	#}
 	option = {
 		name = EVTOPT_WOL_11310_WINTER
 		trigger = {
@@ -5070,41 +5042,41 @@ character_event = {
 }
 
 # Holy Warrior
-character_event = {
-	id = WoL.11328
-	
-	is_triggered_only = yes
-	
-	picture = GFX_evt_war_planning
-	border = GFX_event_normal_frame_war
-	
-	desc = EVTDESC_WOL_11328
-	
-	option = {
-		name = EVTOPTA_WOL_11311 # Accept
-		ai_chance = {
-			factor = 100
-			modifier = {
-				factor = 0
-				trait = cynical
-			}
-		}
-		add_trait = holy_warrior
-		FROM = {
-			character_event = { id = WoL.11340 }
-		}
-	}
-	
-	option = {
-		name = EVTOPTB_WOL_11311 # Decline
-		ai_chance = {
-			factor = 1
-		}
-		FROM = {
-			character_event = { id = WoL.11341 }
-		}
-	}
-}
+#character_event = {
+#	id = WoL.11328
+#	
+#	is_triggered_only = yes
+#	
+#	picture = GFX_evt_war_planning
+#	border = GFX_event_normal_frame_war
+#	
+#	desc = EVTDESC_WOL_11328
+#	
+#	option = {
+#		name = EVTOPTA_WOL_11311 # Accept
+#		ai_chance = {
+#			factor = 100
+#			modifier = {
+#				factor = 0
+#				trait = cynical
+#			}
+#		}
+#		add_trait = holy_warrior
+#		FROM = {
+#			character_event = { id = WoL.11340 }
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTB_WOL_11311 # Decline
+#		ai_chance = {
+#			factor = 1
+#		}
+#		FROM = {
+#			character_event = { id = WoL.11341 }
+#		}
+#	}
+#}
 
 # Winter Soldier
 character_event = {

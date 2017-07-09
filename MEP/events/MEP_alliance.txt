@@ -25,7 +25,9 @@ character_event = {
 		religion_group = religion_group_eldar
 		d_dunedain_of_north = {
 			has_holder = yes
-			NOT = { trait = evil_side }
+			holder_scope = {
+				NOT = { trait = evil_side }
+			}
 		}
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = called_for_aid }

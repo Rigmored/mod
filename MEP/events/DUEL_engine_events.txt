@@ -100,7 +100,7 @@ character_event = {
 	trigger = { has_landed_title = e_rebels }
 	
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		# Try to cancel if something broke in the setup/selection
 		if = { #FROMFROM is dead
 			limit = {
@@ -204,9 +204,9 @@ character_event = {
 # Duelist Two Round (flavour text 1)
 character_event = {
 	id = duel.3
-	desc = "EVTDESCDUEL3"
-	picture = GFX_evt_duel0
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL3"
+	# picture = GFX_evt_duel0
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes	
 	
@@ -245,14 +245,14 @@ character_event = {
 # Duelist Two Round (flavour text 2)
 character_event = {
 	id = duel.12
-	desc = "EVTDESCDUEL12"
-	picture = GFX_evt_duel0
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL12"
+	# picture = GFX_evt_duel0
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL3"
+		# name = "EVTOPTADUEL3"
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.4 } } } }
 	}
 }
@@ -286,14 +286,14 @@ character_event = {
 # Duelist Two Round (flavour text 3)
 character_event = {
 	id = duel.13
-	desc = "EVTDESCDUEL13"
-	picture = GFX_evt_duel0
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL13"
+	# picture = GFX_evt_duel0
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL3"
+		# name = "EVTOPTADUEL3"
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.4 } } } }
 	}
 }
@@ -303,8 +303,8 @@ character_event = {
 character_event = {
 	id = duel.4
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -317,7 +317,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -741,7 +741,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -1181,9 +1181,9 @@ character_event = {
 # Loser is attacked!
 character_event = {
 	id = duel.6
-	desc = "EVTDESCDUEL6"
-	picture = GFX_evt_duel2
-	border = "GFX_event_normal_frame_war"	
+	# desc = "EVTDESCDUEL6"
+	# picture = GFX_evt_duel2
+	# border = "GFX_event_normal_frame_war"	
 	is_triggered_only = yes
 	hide_window = yes		
 	
@@ -1195,7 +1195,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTADUEL6"
+		# name = "EVTOPTADUEL6"
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.7 } } } }
 	}
 }
@@ -1204,15 +1204,15 @@ character_event = {
 character_event = {
 	id = duel.7
 	is_triggered_only = yes
-	picture = GFX_evt_duel1
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel1
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
 	trigger = { has_landed_title = e_rebels }
 	
 	option = { # Wounding Blow
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		FROMFROM = { character_event = { id = duel.111 } }
 		ai_chance = {
 			factor = 33
@@ -1244,7 +1244,7 @@ character_event = {
 	}
 	
 	option = { # Subdued Opponent
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		FROMFROM = { character_event = { id = duel.105 } }
 		ai_chance = {
 			factor = 34
@@ -1370,7 +1370,7 @@ character_event = {
 	}
 	
 	option = { # Killing Blow
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		FROMFROM = { character_event = { id = duel.201 } }
 		ai_chance = {
 			factor = 33
@@ -1417,9 +1417,9 @@ character_event = {
 
 character_event = {
 	id = duel.106
-	desc = "EVTDESCDUEL106"
-	picture = GFX_evt_duel4
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL106"
+	# picture = GFX_evt_duel4
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
@@ -1430,7 +1430,7 @@ character_event = {
 				NOT = { has_character_flag = flag_duel_to_the_death }
 			}
 		}
-		name = "EVTOPTADUEL106"
+		# name = "EVTOPTADUEL106"
 		FROM = { character_event = { id = duel.107 tooltip = "EVTTOOLTIPDUEL107" } }
 		ai_chance = {
 			factor = 50
@@ -1486,7 +1486,7 @@ character_event = {
 	
 	option = { #fight on
 		trigger = { NOT = { has_character_flag = flag_duel_friendly } }
-		name = "EVTOPTBDUEL106"
+		# name = "EVTOPTBDUEL106"
 		FROM = { character_event = { id = duel.112 tooltip = "EVTTOOLTIPDUEL112" } }
 		ai_chance = { factor = 50 }
 	}
@@ -1494,14 +1494,14 @@ character_event = {
 
 character_event = {
 	id = duel.107
-	desc = "EVTDESCDUEL107"
-	picture = GFX_evt_duel4
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL107"
+	# picture = GFX_evt_duel4
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL107"
+		# name = "EVTOPTADUEL107"
 		prestige = 15 #win
 		set_character_flag = flag_spared_opponent
 		hidden_tooltip = {
@@ -1703,7 +1703,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBDUEL107"
+		# name = "EVTOPTBDUEL107"
 		set_character_flag = flag_killed_opponent
 		hidden_tooltip = {
 			set_variable = { which = duel_rounds value = 0 }
@@ -1746,14 +1746,14 @@ character_event = {
 
 character_event = {
 	id = duel.108
-	desc = "EVTDESCDUEL108"
-	picture = GFX_evt_duel4
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL108"
+	# picture = GFX_evt_duel4
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL108"
+		# name = "EVTOPTADUEL108"
 		prestige = -10
 		FROM = { character_event = { id = duel_output.1 tooltip = "EVTTOOLTIPDUELOUTPUT1" } }
 	}
@@ -1761,13 +1761,13 @@ character_event = {
 
 character_event = {
 	id = duel.109
-	desc = "EVTDESCDUEL109"
-	picture = GFX_evt_duel5
+	# desc = "EVTDESCDUEL109"
+	# picture = GFX_evt_duel5
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL109"
+		# name = "EVTOPTADUEL109"
 		if = {
 			limit = { FROM = { is_close_relative = yes } }
 			FROM = { add_trait = kinslayer }
@@ -1787,9 +1787,9 @@ character_event = {
 ### WOUND OUTCOMES
 character_event = {
 	id = duel.110
-	desc = "EVTDESCDUEL110"
-	picture = GFX_evt_duel3
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL110"
+	# picture = GFX_evt_duel3
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
@@ -1807,14 +1807,14 @@ character_event = {
 	}
 	
 	option = { #fight on
-		name = "EVTOPTADUEL110"
+		# name = "EVTOPTADUEL110"
 		trigger = { NOT = { has_character_flag = flag_duel_friendly } }
 		#FROMFROM = { character_event = { id = duel.111 tooltip = "EVTTOOLTIPDUEL111" } }
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.1 } } } }
 		ai_chance = { factor = 70 }
 	}
 	option = { #yield!
-		name = "EVTOPTADUEL106"
+		# name = "EVTOPTADUEL106"
 		trigger = {
 			OR = {
 				has_character_flag = flag_duel_friendly
@@ -1878,14 +1878,14 @@ character_event = {
 
 character_event = {
 	id = duel.111
-	desc = "EVTDESCDUEL111"
-	picture = GFX_evt_duel3
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL111"
+	# picture = GFX_evt_duel3
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL111"
+		# name = "EVTOPTADUEL111"
 		FROMFROM = { character_event = { id = duel.110 tooltip = "EVTTOOLTIPDUEL111" } }
 		#hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.1 } } } }
 	}
@@ -1893,14 +1893,14 @@ character_event = {
 
 character_event = {
 	id = duel.112
-	desc = "EVTDESCDUEL112"
-	picture = GFX_evt_duel3
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL112"
+	# picture = GFX_evt_duel3
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL112"
+		# name = "EVTOPTADUEL112"
 		FROM = { character_event = { id = duel.110 tooltip = "EVTTOOLTIPDUEL111" } }
 	}
 }
@@ -1924,13 +1924,13 @@ character_event = {
 
 character_event = {
 	id = duel.202
-	desc = "EVTDESCDUEL202"
-	picture = GFX_evt_duel3
+	# desc = "EVTDESCDUEL202"
+	# picture = GFX_evt_duel3
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL202"
+		# name = "EVTOPTADUEL202"
 		if = {
 			limit = { FROM = { is_close_relative = yes } }
 			FROM = { add_trait = kinslayer }
@@ -1950,14 +1950,14 @@ character_event = {
 
 character_event = {
 	id = duel.203
-	desc = "EVTDESCDUEL203"
-	picture = GFX_evt_duel5
-	border = "GFX_event_normal_frame_war"
+	# desc = "EVTDESCDUEL203"
+	# picture = GFX_evt_duel5
+	# border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
 	hide_window = yes		
 	
 	option = {
-		name = "EVTOPTADUEL203"
+		# name = "EVTOPTADUEL203"
 		prestige = 25 #killed opponent
 	}
 }

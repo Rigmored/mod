@@ -147,47 +147,47 @@ character_event = {
 }
 
 # Seduce Decision event start - Priest scandal risk
-character_event = {
-	id = WoL.103
-	title = EVTTITLE_WOL_100
-	desc = EVTDESC_WOL_103
-	picture = GFX_evt_lovers
-	border = GFX_event_normal_frame_intrigue
-	
-	capable_only = yes
-	prisoner = no
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		FROM = {
-			save_event_target_as = target_seduced
-		}
-		save_event_target_as = target_seducer
-		set_character_flag = seduction_confirmed
-	}
-	
-	option = {
-		name = EVTOPTA_WOL_103
-		ai_chance = {
-			factor = 100
-		}
-		character_event = { id = WoL.110 days = 20 random = 20 tooltip = EVTTOOLTIP_WoL_110 }
-#		log = "WoL.103: [Root.GetTitledName] begins seduction of [From.GetTitledName]"
-	}
-	option = {
-		name = EVTOPTB_WOL_103
-		ai_chance = {
-			factor = 0
-		}
-		hidden_tooltip = {
-			remove_opinion = {
-				who = FROM
-				modifier = opinion_seducing
-			}
-		}
-	}
-}
+#character_event = {
+#	id = WoL.103
+#	title = EVTTITLE_WOL_100
+#	desc = EVTDESC_WOL_103
+#	picture = GFX_evt_lovers
+#	border = GFX_event_normal_frame_intrigue
+#	
+#	capable_only = yes
+#	prisoner = no
+#	
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		FROM = {
+#			save_event_target_as = target_seduced
+#		}
+#		save_event_target_as = target_seducer
+#		set_character_flag = seduction_confirmed
+#	}
+#	
+#	option = {
+#		name = EVTOPTA_WOL_103
+#		ai_chance = {
+#			factor = 100
+#		}
+#		character_event = { id = WoL.110 days = 20 random = 20 tooltip = EVTTOOLTIP_WoL_110 }
+##		log = "WoL.103: [Root.GetTitledName] begins seduction of [From.GetTitledName]"
+#	}
+#	option = {
+#		name = EVTOPTB_WOL_103
+#		ai_chance = {
+#			factor = 0
+#		}
+#		hidden_tooltip = {
+#			remove_opinion = {
+#				who = FROM
+#				modifier = opinion_seducing
+#			}
+#		}
+#	}
+#}
 
 # Seduce Decision event start - Homo scandal risk
 character_event = {
@@ -6241,7 +6241,7 @@ character_event = {
 	option = { # Ask about star sign
 		name = EVTOPTE_WOL_351
 		trigger = {
-			society_member_of = hermetics
+			society_member_of = heren_isseon
 		}
 
 		custom_tooltip = { text = because_member_of_society_tt }
@@ -6775,7 +6775,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				society_member_of = hermetics
+				society_member_of = heren_isseon
 			}
 			modifier = {
 				factor = 1.5
@@ -7352,7 +7352,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = OK # Assist
+		# name = OK # Assist
 		ai_chance = {
 			factor = 200
 		}
@@ -7361,7 +7361,7 @@ character_event = {
 	}
 	
 	option = {
-		name = OK # Refuse and become watchful
+		# name = OK # Refuse and become watchful
 		ai_chance = {
 			factor = 100
 		}
@@ -7387,7 +7387,7 @@ character_event = {
 	}
 	
 	option = {
-		name = OK # Tip off spouse/consort
+		# name = OK # Tip off spouse/consort
 		trigger = {
 			FROMFROM = {
 				OR = {
@@ -7489,7 +7489,7 @@ character_event = {
 	option = { # Ask about star sign
 		name = EVTOPTE_WOL_351
 		trigger = {
-			society_member_of = hermetics
+			society_member_of = heren_isseon
 		}
 
 		custom_tooltip = { text = because_member_of_society_tt }
@@ -7590,7 +7590,7 @@ character_event = {
 	option = { # Ask about star sign
 		name = EVTOPTE_WOL_351
 		trigger = {
-			society_member_of = hermetics
+			society_member_of = heren_isseon
 		}
 
 		custom_tooltip = { text = because_member_of_society_tt }
@@ -8148,7 +8148,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				society_member_of = hermetics
+				society_member_of = heren_isseon
 			}
 			modifier = {
 				factor = 1.5
@@ -9226,7 +9226,7 @@ character_event = {
 	option = { # Ask about star sign
 		name = EVTOPTE_WOL_351
 		trigger = {
-			society_member_of = hermetics
+			society_member_of = heren_isseon
 		}
 
 		custom_tooltip = { text = because_member_of_society_tt }
@@ -10390,133 +10390,134 @@ character_event = {
 			}
 		}
 		
-		hidden_tooltip = {
-			if = {
-				limit = { is_female = no }
-				random = {
-					chance = 50
-					character_event = { id = WoL.562 days = 240 random = 20 } # A baby is found in the garden!
-				}
-			}
-		}
+		#hidden_tooltip = {
+		#	if = {
+		#		limit = { is_female = no }
+		#		random = {
+		#			chance = 50
+		#			character_event = { id = WoL.562 days = 240 random = 20 } # A baby is found in the garden!
+		#		}
+		#	}
+		#}
 	}
 }
 
-character_event = {
-	id = WoL.562
-	desc = EVTDESC_WOL_562
-	picture = GFX_evt_birth
-	border = GFX_event_normal_frame_intrigue
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		hidden_tooltip = { # Hidden so the Pope does not appear as a portrait for affected characters
-			k_papal_state = {
-				holder_scope = {
-					create_character = {
-						dynasty = none
-						religion = hellenic_pagan
-						culture = irish
-						female = yes
-						dna="gppniiosfag"
-						age = 20
-					}
-					new_character = {
-						ROOT = {
-							random_list = {
-								50 = {
-									create_character = {
-										dynasty = none
-										religion = ROOT
-										culture = ROOT
-										race = PREV
-										genetic_mother = PREV
-										genetic_father = ROOT
-										female = no
-										age = 0
-										trait = bastard
-										trait = fair
-									}
-									new_character = {
-										save_event_target_as = target_baby
-									}
-								}
-								50 = {
-									create_character = {
-										dynasty = none
-										religion = ROOT
-										culture = ROOT
-										race = PREV
-										genetic_mother = PREV
-										genetic_father = ROOT
-										female = yes
-										age = 0
-										trait = bastard
-										trait = fair
-									}
-									new_character = {
-										save_event_target_as = target_baby
-									}
-								}
-							}
-						}
-						death = { death_reason = death_natural }
-					}
-				}
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTA_WOL_562
-		ai_chance = {
-			factor = 100
-		}
-		event_target:target_baby = {
-			set_father = ROOT
-		}
-		
-		if = {
-			limit = { is_married = yes }
-			spouse = {
-				opinion = {
-					who = ROOT
-					modifier = opinion_unfaithful_private
-					years = 10
-				}
-				hidden_tooltip = {
-					event_target:target_baby = {
-						reverse_opinion = {
-							who = PREV
-							modifier = opinion_whorespawn
-							years = 100
-						}
-					}
-				}
-			}
-		}
-		
-		if = {
-			limit = { trait = zealous }
-			random = {
-				chance = 50
-				remove_trait = zealous
-				hidden_tooltip = {
-					character_event = { id = 38310 days = 1 } # Notify zealous lost
-				}
-			}
-		}
-#		log = "WoL.562: [Root.GetTitledName] has rose bush baby [target_baby.GetFirstName] (lunatic)"
-	}
-	
-	option = {
-		name = EVTOPTB_WOL_562
-		ai_chance = {
-			factor = 1
-		}
-	}
-}
+# The 'Rose Bush Baby' event, which makes zero sense for MEP (or vanilla)
+#character_event = {
+#	id = WoL.562
+#	desc = EVTDESC_WOL_562
+#	picture = GFX_evt_birth
+#	border = GFX_event_normal_frame_intrigue
+#	
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		hidden_tooltip = { # Hidden so the Pope does not appear as a portrait for affected characters
+#			k_papal_state = {
+#				holder_scope = {
+#					create_character = {
+#						dynasty = none
+#						religion = hellenic_pagan
+#						culture = irish
+#						female = yes
+#						dna="gppniiosfag"
+#						age = 20
+#					}
+#					new_character = {
+#						ROOT = {
+#							random_list = {
+#								50 = {
+#									create_character = {
+#										dynasty = none
+#										religion = ROOT
+#										culture = ROOT
+#										race = PREV
+#										genetic_mother = PREV
+#										genetic_father = ROOT
+#										female = no
+#										age = 0
+#										trait = bastard
+#										trait = fair
+#									}
+#									new_character = {
+#										save_event_target_as = target_baby
+#									}
+#								}
+#								50 = {
+#									create_character = {
+#										dynasty = none
+#										religion = ROOT
+#										culture = ROOT
+#										race = PREV
+#										genetic_mother = PREV
+#										genetic_father = ROOT
+#										female = yes
+#										age = 0
+#										trait = bastard
+#										trait = fair
+#									}
+#									new_character = {
+#										save_event_target_as = target_baby
+#									}
+#								}
+#							}
+#						}
+#						death = { death_reason = death_natural }
+#					}
+#				}
+#			}
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA_WOL_562
+#		ai_chance = {
+#			factor = 100
+#		}
+#		event_target:target_baby = {
+#			set_father = ROOT
+#		}
+#		
+#		if = {
+#			limit = { is_married = yes }
+#			spouse = {
+#				opinion = {
+#					who = ROOT
+#					modifier = opinion_unfaithful_private
+#					years = 10
+#				}
+#				hidden_tooltip = {
+#					event_target:target_baby = {
+#						reverse_opinion = {
+#							who = PREV
+#							modifier = opinion_whorespawn
+#							years = 100
+#						}
+#					}
+#				}
+#			}
+#		}
+#		
+#		if = {
+#			limit = { trait = zealous }
+#			random = {
+#				chance = 50
+#				remove_trait = zealous
+#				hidden_tooltip = {
+#					character_event = { id = 38310 days = 1 } # Notify zealous lost
+#				}
+#			}
+#		}
+##		log = "WoL.562: [Root.GetTitledName] has rose bush baby [target_baby.GetFirstName] (lunatic)"
+#	}
+#	
+#	option = {
+#		name = EVTOPTB_WOL_562
+#		ai_chance = {
+#			factor = 1
+#		}
+#	}
+#}
 
 # Lunatics: Seduction of a centaur.
 character_event = {
@@ -11285,7 +11286,7 @@ character_event = {
 	}
 	
 	option = {
-		name = OK # Opinion decreases.
+		# name = OK # Opinion decreases.
 		ai_chance = {
 			factor = 100
 		}

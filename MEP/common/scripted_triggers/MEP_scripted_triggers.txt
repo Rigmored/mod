@@ -22,6 +22,7 @@
 # mep_never_councillor_trigger
 # mep_pick_good_side_trigger
 # mep_should_be_unkillable_trigger
+# mep_cant_get_drunk_trigger
 # mep_is_human_trigger
 # mep_dont_seduce_trigger
 # mep_horse_people_culture
@@ -32,6 +33,7 @@
 # mep_base_marriage_compatible
 # mep_eligible_elf_marriage
 # mep_eligible_dwarf_marriage
+# mep_winter_culture
 
 # titles
 # mep_gondor_arnor_emp_trigger
@@ -366,6 +368,24 @@ mep_should_be_unkillable_trigger = {
 	}
 }
 
+mep_cant_get_drunk_trigger = {
+	OR = {
+		AND = {
+			culture_group = culture_group_eru
+			NOT = { culture = culture_eagles }
+		}
+		culture = culture_balrog
+		culture = culture_wight
+		culture = culture_dragons
+		culture_group = culture_group_wilderness
+		trait = maiar
+		trait = balrog
+		trait = enigma
+		religion = religion_spider
+		culture_group = culture_group_onodrim
+	}
+}
+
 mep_is_human_trigger = {
 	OR = {
 		religion_group = religion_group_edain
@@ -506,7 +526,28 @@ mep_eligible_dwarf_marriage = {
 	NOT = { trait = dwarven_infertility }
 	prisoner = no
 }
-
+mep_winter_culture = {
+	OR = {
+		culture_group = culture_group_forodwaith
+		culture = culture_broadbeam
+		culture = culture_firebeard
+		culture = culture_longbeard
+		culture = culture_ironfist
+		culture = culture_orkish
+		culture = culture_goblin
+		culture = culture_troll
+		culture = culture_wight
+		culture = culture_arnorian
+		culture = culture_arnorian_middlemen
+		culture = culture_dunedain
+		culture = culture_breelander
+		culture = culture_barding
+		culture = culture_northmen
+		culture = culture_eotheod
+		culture = culture_beorning
+		culture = culture_noldor	
+	}
+}
 #--------------------------------------------------------------------
 # titles
 mep_gondor_arnor_emp_trigger = {

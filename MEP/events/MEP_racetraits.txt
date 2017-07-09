@@ -14,6 +14,23 @@ character_event = {
 	}
 
 	immediate = {
+		# dispatching infertility after pregnancy events
+		mother_even_if_dead = {
+			if = {
+				limit = {
+					is_alive = yes
+					trait = elf
+				}
+				character_event = { id = mepmarriage.10  days = 1 }
+			}
+			if = {
+				limit = {
+					is_alive = yes
+					trait = dwarven
+				}
+				character_event = { id = mepmarriage.12  days = 1 }
+			}
+		}
 		if = {
 			limit = {
 				is_father_real_father = yes 

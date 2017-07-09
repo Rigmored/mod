@@ -87,7 +87,6 @@ character_event = {
 	id = mepclaims.3
 	desc = "DESCmepclaims.3"
 	picture = "GFX_evt_coronation"
-	age = 16
 	only_rulers = yes
 	
 	trigger = {
@@ -110,67 +109,7 @@ character_event = {
 		}
 		
 }
-	
 
-### If Sauron is defeated, Dwarves get a claim on Khazad-Dum ##
-#character_event = {
-#	id = mepclaims.4
-#	desc = "DESCmepclaims.4"
-#	picture = "GFX_evt_dwarves"
-#
-#	trigger = {
-#		has_landed_title = e_durins_folk
-#		culture = culture_longbeard
-#		age = 200
-#		NOT = { has_global_flag = moriaclaim }
-#		NOT = { has_character_flag = declinemoriaclaim }
-#		NOT = { has_landed_title = c_moria }
-#		NOT = { has_landed_title = d_moria }
-#		has_global_flag = saurondefeated
-#		is_female = no	
-#	}
-#	
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = "mepclaims4a"
-#		set_global_flag = moriaclaim
-#		c_moria = { add_claim = ROOT }
-#		d_moria = { add_claim = ROOT }
-#		any_playable_ruler = {
-#			character_event = { id = mepclaims.5 days = 30 }
-#		}
-#	}
-#	
-#	option = {
-#		name = "mepclaims4b" 
-#		trigger = { ai = no }
-#		set_character_flag = declinemoriaclaim		
-#	}
-#}	
-
-##Other rulers are informed of this venture to reclaim Moria##
-character_event = {
-	id = mepclaims.5
-	desc = "DESCmepclaims.5"
-	picture = "GFX_evt_dwarves"
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "mepclaims5a"
-		trigger = { 
-			NOT = { culture_group = culture_group_melkor }
-		}			
-	}
-	
-	option = {
-		name = "mepclaims5b"
-	}	
-	option = {
-		name = "mepclaims5c"
-	}	
-}
 
 ### If Khazad-Dum is reconquered and Sauron defeated, Dwarves get a claim on Gundabad, ten years after ##
 
@@ -183,7 +122,7 @@ character_event = {
 		has_landed_title = e_durins_folk
 		has_landed_title = c_moria
 		culture = culture_longbeard
-		age = 200
+		age = 120
 		NOT = { has_global_flag = gundabadclaim }
 		NOT = { has_character_flag = declinegundabadclaim }
 		NOT = { has_landed_title = c_gundabad }
@@ -193,7 +132,7 @@ character_event = {
 		is_female = no	
 	}
 
-	is_triggered_only = yes
+	mean_time_to_happen = { months = 240 }
 	
 	option = {
 		name = "mepclaims6a"
@@ -213,7 +152,7 @@ character_event = {
 	}
 }	
 
-##Other rulers are informed of this venture to reclaim Moria##
+##Other rulers are informed of this venture to reclaim Gundabad ##
 character_event = {
 	id = mepclaims.7
 	desc = "DESCmepclaims.7"

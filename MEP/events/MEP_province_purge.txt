@@ -122,8 +122,7 @@ character_event = {
 					mep_human_popmod_remove_effect = yes
 					add_province_modifier = { name = two_population_dwarves duration = -1 }
 					set_variable = { which = mep_provincepurge_special  value = 0 }
-					# unfortunatly, I get 'Undefined event!' crashes for below, despite the fact that dwarfconq.26 *is* defined!
-					# province_event = { id = dwarfconq.26 days = 1 }
+					province_event = { id = dwarfconq.26 days = 1 }
 				}
 			}
 			# otherwise, the province becomes (occupied) wilderness
@@ -539,10 +538,10 @@ character_event = {
 			FROM = {
 				location = {
 					remove_province_modifier = being_purged_ofgood
+					remove_province_modifier = being_purged_ofgoodeo
 					clr_province_flag = mep_purge_delay
 					# just in case..
-					remove_province_modifier = being_purged_ofgood
-					remove_province_modifier = being_purged_ofgoodeo
+					remove_province_modifier = being_purged_ofevil
 				}
 			}
 		}

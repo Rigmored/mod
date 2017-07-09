@@ -86,9 +86,7 @@ letter_event = {
 
 	#Yes
 	option = {
-		name = {
-			text = EVTOPTA_10001
-		}
+		text = EVTOPTA_10001
 		if = { limit = { society_rank < 4 } #todo: Remember you can rankup to 4 in some societies
 			society_rank_up = 1
 		}
@@ -185,16 +183,10 @@ letter_event = {
 	id = MNM.10023
 	border = GFX_event_letter_frame_religion
 
-	is_triggered_only = yes
-
 	#desc = {
 	#	trigger = { is_devil_worshiper_trigger = yes }
 	#	text = EVTDESC_MNM_10023_DW #Not written because currently there is no potential
 	#}
-	desc = {
-		trigger = { society_member_of = the_assassins }
-		text = EVTDESC_MNM_10023_ASSASSINS
-	}
 	desc = {
 		trigger = { is_monastic_member_trigger = yes }
 		text = EVTDESC_MNM_10023_MO
@@ -315,7 +307,7 @@ character_event = {
 
 					150 = {
 						trigger = {
-							can_join_society = hermetics
+							can_join_society = heren_isseon
 						}
 						modifier = {
 							factor = 5
@@ -332,7 +324,7 @@ character_event = {
 							factor = 0
 							is_landed = no
 						}
-						join_society = hermetics
+						join_society = heren_isseon
 						random_list = { # Artificially increase society influence for balance purposes
 							75 = {
 								modifier = {
@@ -357,45 +349,45 @@ character_event = {
 							set_society_grandmaster = yes
 						}
 					}
-					50 = {
-						trigger = {
-							can_join_society = the_plaguebringers
-						}
-						modifier = {
-							factor = 5
-							OR = {
-								has_impious_trait_trigger = yes
-								has_vice_trigger = yes
-								trait = drunkard
-								trait = possessed
-								trait = lunatic
-							}
-						}
-						join_society = the_plaguebringers
-						random_list = { # Artificially increase society influence for balance purposes
-							75 = {
-								modifier = {
-									factor = 0
-									society_influence >= 30
-								}
-								add_mission_succeed_influence_effect = yes
-							}
-							25 = {
-							}
-						}
-						if = {
-							limit = {
-								NOT = {
-									society = {
-										any_society_member = {
-											is_society_grandmaster = yes
-										}
-									}
-								}
-							}
-							set_society_grandmaster = yes
-						}
-					}
+					#50 = {
+					#	trigger = {
+					#		can_join_society = the_plaguebringers
+					#	}
+					#	modifier = {
+					#		factor = 5
+					#		OR = {
+					#			has_impious_trait_trigger = yes
+					#			has_vice_trigger = yes
+					#			trait = drunkard
+					#			trait = possessed
+					#			trait = lunatic
+					#		}
+					#	}
+					#	join_society = the_plaguebringers
+					#	random_list = { # Artificially increase society influence for balance purposes
+					#		75 = {
+					#			modifier = {
+					#				factor = 0
+					#				society_influence >= 30
+					#			}
+					#			add_mission_succeed_influence_effect = yes
+					#		}
+					#		25 = {
+					#		}
+					#	}
+					#	if = {
+					#		limit = {
+					#			NOT = {
+					#				society = {
+					#					any_society_member = {
+					#						is_society_grandmaster = yes
+					#					}
+					#				}
+					#			}
+					#		}
+					#		set_society_grandmaster = yes
+					#	}
+					#}
 				}
 			}
 		}
@@ -454,7 +446,7 @@ character_event = {
     	trigger = { 
     		NOR = {
     			is_devil_worshiper_trigger = yes
-    			society_member_of = hermetics
+    			society_member_of = heren_isseon
     		}
     	}
     	text = EVTDESC_MNM_10042
@@ -466,7 +458,7 @@ character_event = {
     	picture = GFX_evt_shadowy_cabal
     }
     desc = {
-    	trigger = { society_member_of = hermetics }
+    	trigger = { society_member_of = heren_isseon }
     	text = EVTDESC_MNM_10042
     	picture = GFX_evt_gathering_of_minds
     }
@@ -567,10 +559,8 @@ character_event = {
     	trigger = { 
     		NOR = {
     			is_devil_worshiper_trigger = yes
-    			society_member_of = hermetics
+    			society_member_of = heren_isseon
     			society_member_of = secret_religious_cult
-    			society_member_of = the_assassins
-    			is_dharmic_monastic_member_trigger = yes
     			is_christian_monastic_member_trigger = yes
     		}
     	}
@@ -583,7 +573,7 @@ character_event = {
     	picture = GFX_evt_magic_ritual
     }
     desc = {
-    	trigger = { society_member_of = hermetics }
+    	trigger = { society_member_of = heren_isseon }
     	text = EVTDESC_MNM_10045
     	picture = GFX_evt_experiment
     }
@@ -591,16 +581,6 @@ character_event = {
     	trigger = { society_member_of = secret_religious_cult }
     	text = EVTDESC_MNM_10045
     	picture = GFX_evt_secret_ceremony
-    }
-    desc = {
-    	trigger = { society_member_of = the_assassins }
-    	text = EVTDESC_MNM_10045
-    	picture = GFX_evt_council_arabic
-    }
-    desc = {
-    	trigger = { is_dharmic_monastic_member_trigger = yes }
-    	text = EVTDESC_MNM_10045
-    	picture = GFX_evt_bishop_hindu
     }
     desc = {
     	trigger = { is_christian_monastic_member_trigger = yes }
@@ -727,7 +707,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = EXCELLENT
+		# name = EXCELLENT
 		add_mission_succeed_influence_effect = yes
 	}
 }
@@ -744,7 +724,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = ALAS
+		# name = ALAS
 		add_mission_fail_influence_effect = yes
 	}
 }

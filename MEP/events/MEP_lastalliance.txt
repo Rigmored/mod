@@ -1802,6 +1802,7 @@ character_event = {
 			# The alliance leader will decide the fate of the ring
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_leader }
+				character_event = { id = lastalliance.63 }
 			}
 			any_independent_ruler = {
 				limit = { has_character_flag = mep_lastalliance_joined }
@@ -1857,7 +1858,7 @@ character_event = {
 			death = { death_reason = death_destroyed_alongside_one_ring  killer = PREV }
 		}
 		hidden_tooltip = {
-			any_realm_character = {
+			any_character = {
 				limit = { trait = nazgul }
 				character_event = { id = frodo.18  days = 2}
 			}
@@ -1905,7 +1906,8 @@ narrative_event = {
 	}
 }
 #------------------------------------
-# Event 66 : Notify x will keep the ring
+# Event 66 : Notify x will keep the ring (currently unused: after all Boromir hadn't known 
+# that Isildur kept the ring...)
 narrative_event = {
 	id = lastalliance.66
 	title = EVTTITlastalliance.66

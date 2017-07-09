@@ -912,3 +912,49 @@ nick_the_cannibal = {
 		factor = 10
 	}
 }
+
+nick_the_wicked = {
+	allow = {
+		age = 20
+		OR = {
+			NOT = { piety = -50 }
+			trait = possessed
+			trait = kinslayer
+		}
+	}
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 2.0
+			NOT = { piety = -100 }
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { piety = -200 }
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { piety = -300 }
+		}
+		modifier = {
+			factor = 2.0
+			trait = hedonist
+		}
+		modifier = {
+			factor = 2.0
+			trait = gluttonous
+		}
+		modifier = {
+			factor = 2.0
+			trait = greedy
+		}
+		modifier = {
+			factor = 2.0
+			trait = envious
+		}
+		modifier = {
+			factor = 2.0
+			trait = cynical
+		}
+	}
+}

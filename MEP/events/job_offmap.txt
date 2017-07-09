@@ -1845,7 +1845,7 @@ character_event = {
 letter_event = {
 	id = MNM.70021
 	desc = MNM.70021.d
-	picture = GFX_evt_council
+	# picture = GFX_evt_council
 	border = GFX_event_letter_frame_intrigue
 	
 	is_triggered_only = yes
@@ -1855,7 +1855,343 @@ letter_event = {
 	}
 }
 
+# Generic Plot Uncovering event
+character_event = {
+	id = MNM.70022
+	title = "EVTNAME929"
+	desc = MNM.70022.d
+	picture = GFX_evt_council
+	border = GFX_event_normal_frame_intrigue
+	
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_job_action = action_uncover_plots_offmap
+		NOT = { has_character_modifier = in_seclusion }
+		liege = {
+			any_realm_lord = {
+				NOT = { is_liege_of = ROOT }
+				NOT = { character = ROOT }
+				OR = {
+					has_plot = plot_gain_title
+					has_plot = plot_kill_character
+					has_plot = plot_kill_spouse
+					has_plot = plot_weaken_fellow_vassal
+					has_plot = plot_gain_liege_title
+					has_plot = plot_gain_fellow_vassal_title
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 280
+		
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 2 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 3 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 4 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 5 }
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 10
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 11
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 12
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 13
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 16
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA929"
+		hidden_tooltip = {
+			liege = {
+				random_realm_lord = {
+					limit = {
+						NOT = { is_liege_of = ROOT }
+						NOT = { character = ROOT }
+						OR = {
+							has_plot = plot_gain_title
+							has_plot = plot_kill_character
+							has_plot = plot_kill_spouse
+							has_plot = plot_weaken_fellow_vassal
+							has_plot = plot_gain_liege_title
+							has_plot = plot_gain_fellow_vassal_title
+						}
+					}
+					character_event = { id = 20290 days = 7 }
+				}
+			}
+		}
+	}
+}
 
+# The Spymaster is attacked by a Noble's thugs (Gets away, Is wounded, Is maimed, Is killed)
+character_event = {
+	id = MNM.70023
+	title = "EVTNAME931"
+	desc = MNM.70023.d
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_intrigue
+
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_job_action = action_uncover_plots_offmap
+		NOT = { has_character_modifier = in_seclusion }
+		liege = {
+			any_realm_lord = {
+				NOT = { is_liege_of = ROOT }
+				NOT = { character = ROOT }
+				OR = {
+					has_plot = plot_gain_title
+					has_plot = plot_kill_character
+					has_plot = plot_kill_spouse
+					has_plot = plot_weaken_fellow_vassal
+					has_plot = plot_gain_liege_title
+					has_plot = plot_gain_fellow_vassal_title
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		liege = {
+			random_realm_lord = {
+				limit = {
+					NOT = { is_liege_of = ROOT }
+					NOT = { character = ROOT }
+					OR = {
+						has_plot = plot_gain_title
+						has_plot = plot_kill_character
+						has_plot = plot_kill_spouse
+						has_plot = plot_weaken_fellow_vassal
+						has_plot = plot_gain_liege_title
+						has_plot = plot_gain_fellow_vassal_title
+					}
+				}
+				save_event_target_as = killer_target
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+		
+		modifier = {
+			factor = 0.75
+			NOT = { intrigue = 2 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { intrigue = 3 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { intrigue = 4 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { intrigue = 5 }
+		}
+		modifier = {
+			factor = 1.25
+			intrigue = 10
+		}
+		modifier = {
+			factor = 1.25
+			intrigue = 11
+		}
+		modifier = {
+			factor = 1.25
+			intrigue = 12
+		}
+		modifier = {
+			factor = 1.25
+			intrigue = 13
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA902"
+		trigger = {
+			NOT = { martial = 5 }
+		}
+		random_list = {
+			25 = { character_event = { id = 20310 tooltip = "EVTTOOLTIP20310" } }
+			50 = { character_event = { id = 20311 tooltip = "EVTTOOLTIP20311" } }
+			25 = {
+				hidden_tooltip = {
+					liege = { character_event = { id = 20313 } }
+				}
+				death = {
+					death_reason = death_murder_unknown
+					killer = event_target:killer_target
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTA902"
+		tooltip_info = martial
+		trigger = {
+			martial = 5
+			NOT = { martial = 10 }
+		}
+		random_list = {
+			35 = { character_event = { id = 20310 tooltip = "EVTTOOLTIP20310" } }
+			50 = { character_event = { id = 20311 tooltip = "EVTTOOLTIP20311" } }
+			15 = {
+				hidden_tooltip = {
+					liege = { character_event = { id = 20313 } }
+				}
+				death = {
+					death_reason = death_murder_unknown
+					killer = event_target:killer_target
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTA902"
+		tooltip_info = martial
+		trigger = {
+			martial = 10
+		}
+		random_list = {
+			50 = { character_event = { id = 20310 tooltip = "EVTTOOLTIP20310" } }
+			40 = { character_event = { id = 20311 tooltip = "EVTTOOLTIP20311" } }
+			10 = {
+				hidden_tooltip = {
+					liege = { character_event = { id = 20313 } }
+				}
+				death = {
+					death_reason = death_murder_unknown
+					killer = event_target:killer_target
+				}
+			}
+		}
+	}
+}
+
+# Faction Prevention - Spymaster finds Faction Member
+character_event = {
+	id = MNM.70024
+	title = "EVTNAME9000"
+	desc = MNM.70024.d
+	picture = GFX_evt_council
+	border = GFX_event_normal_frame_intrigue
+	
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	
+	trigger = {
+		has_job_action = action_uncover_plots_offmap
+		NOT = { has_character_modifier = in_seclusion }
+		liege = {
+			any_vassal = {
+				NOT = { character = ROOT }
+				NOT = { trait = incapable }
+				NOT = { has_opinion_modifier = { who = liege modifier = opinion_coerced_into_leaving_faction } }
+				NOT = { has_character_flag = faction_member }
+				age = 16
+				prisoner = no
+				primary_title = { higher_tier_than = BARON }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 2 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 3 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 4 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { intrigue = 5 }
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 10
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 11
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 12
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 13
+		}
+		modifier = {
+			factor = 0.75
+			intrigue = 16
+		}
+	}
+	
+	immediate = {
+		liege = {
+			random_vassal = {
+				limit = {
+					NOT = { character = ROOT }
+					NOT = { trait = incapable }
+					NOT = { has_opinion_modifier = { who = liege modifier = opinion_coerced_into_leaving_faction } }
+					NOT = { has_character_flag = faction_member }
+					age = 16
+					prisoner = no
+					primary_title = { higher_tier_than = BARON }
+				}
+				set_character_flag = faction_member
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA9000"
+		liege = { letter_event = { id = 9001 tooltip = EVTTOOLTIP9001 } }
+	}
+}
 
 # Suspectometer
 character_event = { # Yearly decrease
@@ -1874,81 +2210,1581 @@ character_event = { # Yearly decrease
 # Court Chaplain 
 # Hunt Apostates
 
-
-
-
-
-character_event = { # Player society members are informed that a fellow member has been caught
-	id = MNM.70400
-	picture = GFX_evt_catching_heretic
-	border = GFX_event_normal_frame_religion
-	
-	desc = {
-		trigger = { 
-			FROM = {
-				is_alive = no
-			}
-		}
-		text = MNM.70400.d.executed
-		picture = GFX_evt_witch_burning
-	}
-	desc = {
-		trigger = { 
-			FROM = {
-				is_alive = yes
-				prisoner = yes
-			}
-		}
-		text = MNM.70400.d.imprisoned
-	}
-	desc = {
-		trigger = { 
-			FROM = {
-				is_alive = yes
-				prisoner = no
-			}
-		}
-		text = MNM.70400.d.caught
-	}
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = MNM.70400.a
-		tooltip_info = paranoid
-		
-		trigger = {
-			trait = paranoid
-		}
-		
-		event_target:my_liege = {
-			set_character_flag = portrait_flag
-			clr_character_flag = portrait_flag
-		}
-		
-		event_target:my_liege = {
-			job_spiritual = {
-				set_character_flag = portrait_flag
-				clr_character_flag = portrait_flag
-			}
-		}
-		
-		decrease_visibility_effect = yes
-	}
-	
-	option = {
-		name = CURSES
-		
-		event_target:my_liege = {
-			set_character_flag = portrait_flag
-			clr_character_flag = portrait_flag
-		}
-		
-		event_target:my_liege = {
-			job_spiritual = {
-				set_character_flag = portrait_flag
-				clr_character_flag = portrait_flag
-			}
-		}
-	}
-}
+#character_event = { # Hunt Apostates meta event
+#	id = MNM.70100
+#	title = MNM.70031.t
+#	hide_window = yes
+#	
+#	min_age = 16
+#	capable_only = yes
+#	prisoner = no
+#	
+#	trigger = {
+#		has_job_action = action_hunt_heretics
+#		NOT = { has_character_modifier = in_seclusion }
+#		liege = {
+#			OR = {
+#				# There is someone who is highly suspect
+#				any_realm_character = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = PREV } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = PREV } # Nor liege's brethren
+#					NAND = { # If you share the same secret religion, dont catch them
+#						has_roots_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no
+#					}
+#					NAND = { # If they share secret religion with the liege, dont catch them
+#						has_prevs_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no 
+#					}
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = PREV
+#						}
+#					}
+#					is_in_society = yes
+#					society_is_criminal = yes
+#					has_character_modifier = highly_suspect
+#				}
+#				
+#				# There is someone moderately suspect
+#				any_realm_character = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = PREV } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = PREV } # Nor liege's brethren
+#					NAND = { # If you share the same secret religion, dont catch them
+#						has_roots_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no
+#					}
+#					NAND = { # If they share secret religion with the liege, dont catch them
+#						has_prevs_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no 
+#					}
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = PREV
+#						}
+#					}
+#					is_in_society = yes
+#					society_is_criminal = yes
+#					has_character_modifier = under_suspicion
+#				}
+#				
+#				# Someone with a secret religion
+#				any_realm_character = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = PREV } # Don't catch your liege
+#					OR = { # Nor your brethren
+#						NOT = { same_society_as = ROOT }
+#						is_in_society = no
+#					}
+#					OR = { # Nor liege's brethren
+#						NOT = { same_society_as = PREV }
+#						is_in_society = no
+#					}
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_prevs_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = PREV
+#						}
+#					}
+#					religion = PREV
+#					age = 16
+#					has_secret_religion_trait_trigger = yes
+#				}
+#				
+#				# A devil worshiper, and I'm amazingly good at my job
+#				any_realm_character = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = PREV } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = PREV } # Nor liege's brethren
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_prevs_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = PREV
+#						}
+#					}
+#					age = 16
+#					is_devil_worshiper_trigger = yes
+#					ai = yes
+#					NOR = {
+#						has_character_modifier = highly_suspect
+#						has_character_modifier = under_suspicion
+#					}
+#					ROOT = {
+#						OR = {
+#							learning = 16
+#							AND = {
+#								learning = 12
+#								is_in_society = monastic_order_dominican
+#							}
+#						}
+#					}
+#				}
+#				
+#				# Someone random, and I'm incompetent
+#				any_realm_character = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = PREV } # Don't catch your liege
+#					OR = { # Nor your brethren
+#						NOT = { same_society_as = ROOT }
+#						is_in_society = no
+#					}
+#					OR = { # Nor liege's brethren
+#						NOT = { same_society_as = PREV }
+#						is_in_society = no
+#					}
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_prevs_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = PREV
+#						}
+#					}
+#					NOT = {
+#						higher_tier_than = BARON
+#					}
+#					age = 16
+#					NOR = {
+#						has_character_modifier = highly_suspect
+#						has_character_modifier = under_suspicion
+#						has_secret_religion_trait_trigger = yes
+#					}
+#					ROOT = {
+#						OR = {
+#							NOT = {
+#								learning = 8
+#							}
+#							is_dumb_trigger = yes
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		# Mark targets
+#		liege = {
+#			save_event_target_as = my_liege
+#			# Extremely suspect people
+#			random_realm_character = {
+#				limit = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = event_target:my_liege } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = event_target:my_liege } # Nor liege's brethren
+#					NAND = { # If you share the same secret religion, dont catch them
+#						has_my_liege_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no
+#					}
+#					NAND = { # If they share secret religion with the liege, dont catch them
+#						has_prevs_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no 
+#					}
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = event_target:my_liege
+#						}
+#					}
+#					is_in_society = yes
+#					society_is_criminal = yes
+#					has_character_modifier = highly_suspect
+#				}
+#				save_event_target_as = highly_suspected_society_member
+#				set_character_flag = apostate_extremely_suspect
+#			}
+#			
+#			# Moderatley suspect people
+#			random_realm_character = {
+#				limit = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = event_target:my_liege } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = event_target:my_liege } # Nor liege's brethren
+#					NAND = { # If you share the same secret religion, dont catch them
+#						has_my_liege_secret_religion_truly_trigger = yes  
+#						is_devil_worshiper_trigger = no
+#					}
+#					NAND = { # If they share secret religion with the liege, dont catch them
+#						has_prevs_secret_religion_truly_trigger = yes 
+#						is_devil_worshiper_trigger = no 
+#					}
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = event_target:my_liege
+#						}
+#					}
+#					is_in_society = yes
+#					society_is_criminal = yes
+#					has_character_modifier = under_suspicion
+#				}
+#				save_event_target_as = suspected_society_member
+#				set_character_flag = apostate_moderate_suspect
+#			}
+#			
+#			# Characters with a secret religion
+#			random_realm_character = {
+#				limit = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = event_target:my_liege } # Don't catch your liege
+#					OR = { # Nor your brethren
+#						NOT = { same_society_as = ROOT }
+#						is_in_society = no
+#					}
+#					OR = { # Nor liege's brethren
+#						NOT = { same_society_as = event_target:my_liege }
+#						is_in_society = no
+#					}
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_my_liege_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = event_target:my_liege
+#						}
+#					}
+#					religion = event_target:my_liege
+#					age = 16
+#					has_secret_religion_trait_trigger = yes
+#				}
+#				save_event_target_as = suspected_apostate
+#				set_character_flag = apostate_secret_religion
+#			}
+#			
+#			# Devil worshipers without any suspicion
+#			random_realm_character = {
+#				limit = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = event_target:my_liege } # Don't catch your liege
+#					NOT = { same_society_as = ROOT } # Nor your brethren 
+#					NOT = { same_society_as = event_target:my_liege } # Nor liege's brethren
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_prevs_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = event_target:my_liege
+#						}
+#					}
+#					age = 16
+#					is_devil_worshiper_trigger = yes
+#					ai = yes
+#					NOR = {
+#						has_character_modifier = highly_suspect
+#						has_character_modifier = under_suspicion
+#					}
+#					ROOT = {
+#						OR = {
+#							learning = 16
+#							AND = {
+#								learning = 12
+#								is_in_society = monastic_order_dominican
+#							}
+#						}
+#					}
+#				}
+#				save_event_target_as = no_suspicion
+#				set_character_flag = apostate_no_suspicion
+#			}
+#			
+#			# Innocent person!
+#			random_realm_character = {
+#				limit = {
+#					prisoner = no
+#					NOT = { character = ROOT } # Don't catch yourself
+#					NOT = { character = event_target:my_liege } # Don't catch your liege
+#					OR = { # Nor your brethren
+#						NOT = { same_society_as = ROOT }
+#						is_in_society = no
+#					}
+#					OR = { # Nor liege's brethren
+#						NOT = { same_society_as = event_target:my_liege }
+#						is_in_society = no
+#					}
+#					NOT = { has_roots_secret_religion_truly_trigger = yes } # If you share the same secret religion, dont catch them
+#					NOT = { has_prevs_secret_religion_truly_trigger = yes } # If they share secret religion with the liege, dont catch them
+#					NOT = {
+#						reverse_has_opinion_modifier = {
+#							modifier = opinion_accused_apostate
+#							who = event_target:my_liege
+#						}
+#					}
+#					NOT = {
+#						higher_tier_than = BARON
+#					}
+#					age = 16
+#					NOR = {
+#						is_devil_worshiper_trigger = yes
+#						has_character_modifier = highly_suspect
+#						has_character_modifier = under_suspicion
+#						has_secret_religion_trait_trigger = yes
+#					}
+#				}
+#				save_event_target_as = innocent_victim
+#				set_character_flag = apostate_innocent
+#			}
+#		}
+#		
+#		if = { # If you're incompetent its more usual to accuse someone innocent
+#			limit = {
+#				OR = {
+#					NOT = {
+#						learning = 8
+#					}
+#					is_dumb_trigger = yes
+#				}
+#				event_target:innocent_victim = {
+#					is_alive = yes
+#				}
+#			}
+#			random_list = {
+#				20 = {
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 2 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 4 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 6 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 8 }
+#					}
+#					event_target:innocent_victim = {
+#						save_event_target_as = accused_apostate
+#					}
+#					character_event = { id = MNM.70110 }
+#					break = yes
+#				}
+#				80 = {
+#					
+#				}
+#			}
+#		}
+#		
+#		if = { # If there is someone who is highly suspicious, always succeed
+#			limit = {
+#				event_target:highly_suspected_society_member = {
+#					is_alive = yes
+#				}
+#			}
+#			event_target:highly_suspected_society_member = {
+#				save_event_target_as = accused_apostate
+#			}
+#			character_event = { id = MNM.70110 }
+#			break = yes
+#		}
+#		
+#		if = { # If there is someone semi-suspicious, succeed a bit less often
+#			limit = {
+#				event_target:suspected_society_member = {
+#					is_alive = yes
+#				}
+#			}
+#			random_list = {
+#				30 = {
+#					modifier = {
+#						factor = 0
+#						event_target:suspected_society_member = {
+#							ai = no
+#							NOT = { check_variable = { which = visibility_value value = 19 } }
+#						}
+#					}
+#					modifier = {
+#						factor = 0.25
+#						event_target:suspected_society_member = {
+#							ai = no
+#						}
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 10
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 12
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 14
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 16
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 18
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 20
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 22
+#					}
+#					modifier = {
+#						factor = 1.25
+#						society_member_of = monastic_order_dominican
+#					}
+#					event_target:suspected_society_member = {
+#						save_event_target_as = accused_apostate
+#					}
+#					character_event = { id = MNM.70110 }
+#					break = yes
+#				}
+#				70 = {
+#					
+#				}
+#			}
+#		}
+#		
+#		if = { # If there is someone with a secret religion, only succeed if you're really good
+#			limit = {
+#				event_target:suspected_apostate = {
+#					is_alive = yes
+#				}
+#			}
+#			random_list = {
+#				25 = {
+#					modifier = {
+#						factor = 0
+#						event_target:suspected_apostate = {
+#							ai = no
+#						}
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 10
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 12
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 14
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 16
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 18
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 20
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 22
+#					}
+#					modifier = {
+#						factor = 1.25
+#						society_member_of = monastic_order_dominican
+#					}
+#					event_target:suspected_apostate = {
+#						save_event_target_as = accused_apostate
+#					}
+#					character_event = { id = MNM.70110 }
+#					break = yes
+#				}
+#				75 = {
+#					
+#				}
+#			}
+#		}
+#		
+#		if = { # If there is a devil worshiper without any level of suspicion, only succeed if you're amazingly good
+#			limit = {
+#				event_target:no_suspicion = {
+#					is_alive = yes
+#				}
+#			}
+#			random_list = {
+#				25 = {
+#					modifier = {
+#						factor = 1.25
+#						learning = 18
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 20
+#					}
+#					modifier = {
+#						factor = 1.25
+#						learning = 22
+#					}
+#					modifier = {
+#						factor = 1.25
+#						society_member_of = monastic_order_dominican
+#					}
+#					event_target:no_suspicion = {
+#						save_event_target_as = accused_apostate
+#					}
+#					character_event = { id = MNM.70110 }
+#					break = yes
+#				}
+#				75 = {
+#					
+#				}
+#			}
+#		}
+#		
+#		if = { # Accidently accuse someone innocent!
+#			limit = {
+#				event_target:innocent_victim = {
+#					is_alive = yes
+#				}
+#			}
+#			random_list = {
+#				5 = {
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 2 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 4 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 6 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						NOT = { learning = 8 }
+#					}
+#					modifier = {
+#						factor = 1.25
+#						is_dumb_trigger = yes
+#					}
+#					event_target:innocent_victim = {
+#						save_event_target_as = accused_apostate
+#					}
+#					character_event = { id = MNM.70110 }
+#					break = yes
+#				}
+#				95 = {
+#					
+#				}
+#			}
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 100
+#
+#		modifier = {
+#			factor = 1.25
+#			NOT = { learning = 2 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { learning = 4 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { learning = 6 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { learning = 8 }
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 10
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 12
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 14
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 16
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 18
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 20
+#		}
+#		modifier = {
+#			factor = 0.75
+#			learning = 22
+#		}
+#		modifier = {
+#			factor = 0.75
+#			society_member_of = monastic_order_dominican
+#		}
+#		modifier = {
+#			factor = 2
+#			NOT = { religion_authority = 0.1 }
+#		}
+#		modifier = {
+#			factor = 1.5
+#			NOT = { religion_authority = 0.2 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { religion_authority = 0.3 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { religion_authority = 0.4 }
+#		}
+#		modifier = {
+#			factor = 1.25
+#			NOT = { religion_authority = 0.5 }
+#		}
+#		modifier = {
+#			factor = 0.9
+#			religion_authority = 0.6
+#		}
+#		modifier = {
+#			factor = 0.9
+#			religion_authority = 0.7
+#		}
+#		modifier = {
+#			factor = 0.9
+#			religion_authority = 0.8
+#		}
+#		modifier = {
+#			factor = 0.9
+#			religion_authority = 0.9
+#		}
+#	}
+#}
+#
+#character_event = { # Outcome event
+#	id = MNM.70110
+#	title = MNM.70031.t
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:innocent_victim }
+#		}
+#		text = MNM.70110.d.innocent_victim
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:highly_suspected_society_member }
+#		}
+#		text = MNM.70110.d.highly_suspected_society_member
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:suspected_society_member }
+#		}
+#		text = MNM.70110.d.suspected_society_member
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:suspected_apostate }
+#		}
+#		text = MNM.70110.d.suspected_apostate
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:no_suspicion }
+#		}
+#		text = MNM.70110.d.no_suspicion
+#	}
+#	
+#	is_triggered_only = yes
+#	
+#	min_age = 16
+#	capable_only = yes
+#	prisoner = no
+#	
+#	trigger = {
+#		
+#	}
+#	
+#	immediate = {
+#		event_target:my_liege = {
+#			random_realm_character = {
+#				limit = {
+#					age = 16
+#					ai = yes
+#					is_rival = ROOT
+#					NOT = {
+#						character = event_target:my_liege
+#					}
+#					NOT = {
+#						character = event_target:accused_apostate
+#					}
+#				}
+#				save_event_target_as = rival_target
+#			}
+#		}
+#
+#	}
+#	
+#	option = {
+#		name = MNM.70110.a
+#		
+#		ai_chance = {
+#			factor = 90
+#			
+#			modifier = {
+#				factor = 2
+#				trait = zealous
+#			}
+#		}
+#		
+#		event_target:accused_apostate = {
+#			opinion = {
+#				modifier = opinion_hate
+#				who = ROOT
+#				years = 100
+#			}
+#		}
+#		
+#		custom_tooltip = {
+#			text = apostate_found_tooltip
+#		}
+#		
+#		hidden_tooltip = {
+#			if = {
+#				limit = {
+#					has_nickname = no
+#					NOT = {
+#						event_target:accused_apostate = { character = event_target:innocent_victim }
+#					}
+#				}
+#				random_list = {
+#					500 = {
+#						# No Nickname
+#					}
+#					50 = {
+#						give_nickname = nick_the_cleansing_flame
+#					}
+#					50 = {
+#						give_nickname = nick_the_witch_hunter
+#					}
+#					50 = {
+#						give_nickname = nick_the_inquisitor
+#					}
+#					50 = {
+#						give_nickname = nick_the_purifier
+#					}
+#				}
+#			}
+#		}
+#		
+#		liege = {
+#			character_event = { id = MNM.70200 }
+#		}
+#	}
+#	
+#	option = {
+#		name = MNM.70110.b
+#		tooltip_info = deceitful
+#		
+#		trigger = {
+#			trait = deceitful
+#			event_target:rival_target = {
+#				is_alive = yes
+#			}
+#		}
+#		
+#		ai_chance = {
+#			factor = 1000
+#			
+#			modifier = {
+#				factor = 2
+#				trait = lunatic
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = possessed
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = cruel
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = paranoid
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = arbitrary
+#			}
+#		}
+#		
+#		custom_tooltip = {
+#			text = accuse_rival_tooltip
+#		}
+#		
+#		event_target:rival_target = {
+#			save_event_target_as = accused_apostate
+#			set_character_flag = apostate_rival_accused
+#		}
+#		liege = {
+#			character_event = { id = MNM.70200 }
+#		}
+#	}
+#}
+#
+#character_event = { # What does the liege wish to do with the apostate?
+#	id = MNM.70200
+#	title = MNM.70031.t
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	trigger = {
+#		event_target:accused_apostate = {
+#			is_alive = yes
+#		}
+#	}
+#	
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:innocent_victim }
+#		}
+#		text = MNM.70200.d.innocent_victim
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:highly_suspected_society_member }
+#		}
+#		text = MNM.70200.d.highly_suspected_society_member
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:suspected_society_member }
+#		}
+#		text = MNM.70200.d.suspected_society_member
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:suspected_apostate }
+#		}
+#		text = MNM.70200.d.suspected_apostate
+#	}
+#	desc = {
+#		trigger = { 
+#			event_target:accused_apostate = { character = event_target:no_suspicion }
+#		}
+#		text = MNM.70200.d.no_suspicion
+#	}
+#	
+#	is_triggered_only = yes
+#	
+#	option = { # Execute them!
+#		name = MNM.70200.a
+#		
+#		ai_chance = {
+#			factor = 50
+#			
+#			modifier = {
+#				factor = 2
+#				trait = lunatic
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = possessed
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = cruel
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = paranoid
+#			}
+#			modifier = {
+#				factor = 2
+#				trait = arbitrary
+#			}
+#			modifier = {
+#				factor = 100
+#				trait = zealous
+#			}
+#		}
+#		
+#		piety = 10
+#		
+#		tooltip = {
+#			event_target:accused_apostate = {
+#				death = {
+#					death_reason = death_execution_burning
+#					killer = ROOT
+#				}
+#			}
+#		}
+#		if = {
+#			limit = {
+#				NOT = { trait = kinslayer }
+#				NOT = { religion_group = muslim }
+#				event_target:accused_apostate = {
+#					dynasty = ROOT
+#				}
+#			}
+#			add_trait = kinslayer
+#		}
+#		hidden_tooltip = {
+#			event_target:accused_apostate = {
+#				if = {
+#					limit = {
+#						is_devil_worshiper_trigger = yes
+#						OR = {
+#							has_character_modifier = under_suspicion
+#							has_character_modifier = highly_suspect
+#						}
+#					}
+#					add_character_modifier = {
+#						name = known_satanist
+#						duration = -1
+#					}
+#				}
+#				if = {
+#					limit = {
+#						OR = {
+#							is_devil_worshiper_trigger = no
+#							AND = {
+#								is_devil_worshiper_trigger = yes
+#								NOR = {
+#									has_character_modifier = under_suspicion
+#									has_character_modifier = highly_suspect
+#								}
+#							}
+#						}
+#					}
+#					add_character_modifier = {
+#						name = accused_apostate
+#						duration = -1
+#					}
+#				}
+#				if = {
+#					limit = {
+#						religion = ROOT
+#						controls_religion = no
+#						OR = {
+#							religion = catholic
+#							religion = fraticelli
+#							religion = orthodox
+#							religion = miaphysite
+#							religion = monophysite
+#							religion = monothelite
+#							religion = paulician
+#							religion = nestorian
+#							religion = yazidi
+#						}
+#					}
+#					add_trait = excommunicated
+#				}
+#			}
+#			opinion = {
+#				modifier = opinion_accused_apostate 
+#				who = event_target:accused_apostate 
+#				years = 100
+#			}
+#			event_target:accused_apostate = {
+#				character_event = { id = MNM.70300 }
+#			}
+#			if = {
+#				limit = {
+#					has_nickname = no
+#					NOT = {
+#						event_target:accused_apostate = { character = event_target:innocent_victim }
+#					}
+#				}
+#				random_list = {
+#					500 = {
+#						# No Nickname
+#					}
+#					5 = {
+#						give_nickname = nick_the_cleansing_flame
+#					}
+#					5 = {
+#						give_nickname = nick_the_witch_hunter
+#					}
+#					5 = {
+#						give_nickname = nick_the_inquisitor
+#					}
+#					5 = {
+#						give_nickname = nick_the_purifier
+#					}
+#				}
+#			}
+#		}
+#	}
+#	
+#	option = { # Imprison them
+#		name = MNM.70200.b
+#		
+#		ai_chance = {
+#			factor = 40
+#			
+#			modifier = {
+#				factor = 2
+#				trait = kind
+#			}
+#			modifier = {
+#				factor = 3
+#				event_target:accused_apostate = {
+#					ai = no
+#				}
+#			}
+#			modifier = {
+#				factor = 5
+#				event_target:accused_apostate = {
+#					dynasty = ROOT
+#				}
+#			}
+#		}
+#		
+#		event_target:accused_apostate = {
+#			imprison = ROOT
+#		}
+#		opinion = {
+#			modifier = opinion_accused_apostate 
+#			who = event_target:accused_apostate 
+#			years = 100
+#		}
+#		event_target:accused_apostate = {
+#			if = {
+#				limit = {
+#					is_devil_worshiper_trigger = yes
+#					OR = {
+#						has_character_modifier = under_suspicion
+#						has_character_modifier = highly_suspect
+#					}
+#				}
+#				add_character_modifier = {
+#					name = known_satanist
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					OR = {
+#						is_devil_worshiper_trigger = no
+#						AND = {
+#							is_devil_worshiper_trigger = yes
+#							NOR = {
+#								has_character_modifier = under_suspicion
+#								has_character_modifier = highly_suspect
+#							}
+#						}
+#					}
+#				}
+#				add_character_modifier = {
+#					name = accused_apostate
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					religion = ROOT
+#					controls_religion = no
+#					OR = {
+#						religion = catholic
+#						religion = fraticelli
+#						religion = orthodox
+#						religion = miaphysite
+#						religion = monophysite
+#						religion = monothelite
+#						religion = paulician
+#						religion = nestorian
+#						religion = yazidi
+#					}
+#				}
+#				add_trait = excommunicated
+#			}
+#		}
+#		hidden_tooltip = {
+#			event_target:accused_apostate = {
+#				character_event = { id = MNM.70310 }
+#			}
+#		}
+#	}
+#	
+#	option = { # Brand them
+#		name = MNM.70200.c
+#		
+#		ai_chance = {
+#			factor = 100
+#			
+#			modifier = {
+#				factor = 0
+#				NOT = {
+#					trait = trusting
+#				}
+#			}
+#		}
+#		
+#		hidden_tooltip = {
+#			event_target:accused_apostate = {
+#				character_event = { id = MNM.70320 }
+#			}
+#		}
+#		opinion = {
+#			modifier = opinion_accused_apostate 
+#			who = event_target:accused_apostate 
+#			years = 100
+#		}
+#		event_target:accused_apostate = {
+#			if = {
+#				limit = {
+#					is_devil_worshiper_trigger = yes
+#					OR = {
+#						has_character_modifier = under_suspicion
+#						has_character_modifier = highly_suspect
+#					}
+#				}
+#				add_character_modifier = {
+#					name = known_satanist
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					OR = {
+#						is_devil_worshiper_trigger = no
+#						AND = {
+#							is_devil_worshiper_trigger = yes
+#							NOR = {
+#								has_character_modifier = under_suspicion
+#								has_character_modifier = highly_suspect
+#							}
+#						}
+#					}
+#				}
+#				add_character_modifier = {
+#					name = accused_apostate
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					religion = ROOT
+#					controls_religion = no
+#					OR = {
+#						religion = catholic
+#						religion = fraticelli
+#						religion = orthodox
+#						religion = miaphysite
+#						religion = monophysite
+#						religion = monothelite
+#						religion = paulician
+#						religion = nestorian
+#						religion = yazidi
+#					}
+#				}
+#				add_trait = excommunicated
+#			}
+#		}
+#	}
+#	
+#	option = { # Let them go
+#		name = MNM.70200.d
+#		
+#		ai_chance = {
+#			factor = 10
+#			
+#			modifier = {
+#				factor = 0
+#				NOT = {
+#					trait = trusting
+#				}
+#			}
+#		}
+#		
+#		piety = -10
+#		
+#		hidden_tooltip = {
+#			event_target:accused_apostate = {
+#				character_event = { id = MNM.70330 }
+#			}
+#		}
+#		opinion = {
+#			modifier = opinion_accused_apostate 
+#			who = event_target:accused_apostate 
+#			years = 10
+#		}
+#		reverse_opinion = {
+#			modifier = opinion_outraged 
+#			who = FROM
+#			years = 10
+#		}
+#	}
+#}
+#
+#character_event = { # The Apostate reacts to Execution
+#	id = MNM.70300
+#	desc = MNM.70300.d
+#	picture = GFX_evt_witch_burning
+#	border = GFX_event_normal_frame_religion
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = MNM.70300.a
+#		trigger = {
+#			is_devil_worshiper_trigger = yes
+#		}
+#		death = {
+#			death_reason = death_execution_burning
+#			killer = FROM
+#		}
+#		hidden_tooltip = { # Inform players that fellow society member has been executed
+#			any_player = {
+#				limit = {
+#					OR = {
+#						same_realm = ROOT
+#						is_close_relative = ROOT
+#						is_friend = ROOT
+#					}
+#					same_society_as = ROOT
+#					NOT = {
+#						character = ROOT
+#					}
+#				}
+#				character_event = { id = MNM.70400 }
+#			}
+#		}
+#	}
+#	option = {
+#		name = MNM.70300.b
+#		trigger = {
+#			is_devil_worshiper_trigger = no
+#		}
+#		death = {
+#			death_reason = death_execution_burning
+#			killer = FROM
+#		}
+#		hidden_tooltip = { # Inform players that fellow society member has been executed
+#			any_player = {
+#				limit = {
+#					OR = {
+#						same_realm = ROOT
+#						is_close_relative = ROOT
+#						is_friend = ROOT
+#					}
+#					same_society_as = ROOT
+#					NOT = {
+#						character = ROOT
+#					}
+#				}
+#				character_event = { id = MNM.70400 }
+#			}
+#		}
+#	}
+#}
+#
+#character_event = { # The Apostate reacts to Imprisonment
+#	id = MNM.70310
+#	desc = MNM.70310.d
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = MNM.70310.a
+#		tooltip = {
+#			imprison = FROM
+#			event_target:my_liege = {
+#				opinion = {
+#					modifier = opinion_accused_apostate 
+#					who = event_target:accused_apostate 
+#					years = 100
+#				}
+#			}
+#			if = {
+#				limit = {
+#					is_devil_worshiper_trigger = yes
+#					OR = {
+#						has_character_modifier = under_suspicion
+#						has_character_modifier = highly_suspect
+#					}
+#				}
+#				add_character_modifier = {
+#					name = known_satanist
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					OR = {
+#						is_devil_worshiper_trigger = no
+#						AND = {
+#							is_devil_worshiper_trigger = yes
+#							NOR = {
+#								has_character_modifier = under_suspicion
+#								has_character_modifier = highly_suspect
+#							}
+#						}
+#					}
+#				}
+#				add_character_modifier = {
+#					name = accused_apostate
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					religion = FROM
+#					controls_religion = no
+#					OR = {
+#						religion = catholic
+#						religion = fraticelli
+#						religion = orthodox
+#						religion = miaphysite
+#						religion = monophysite
+#						religion = monothelite
+#						religion = paulician
+#						religion = nestorian
+#						religion = yazidi
+#					}
+#				}
+#				add_trait = excommunicated
+#			}
+#		}
+#		hidden_tooltip = { # Inform players that fellow society member has been imprisoned
+#			any_player = {
+#				limit = {
+#					primary_title = { always = yes }
+#					OR = {
+#						same_realm = ROOT
+#						is_close_relative = ROOT
+#						is_friend = ROOT
+#					}
+#					same_society_as = ROOT
+#					NOT = {
+#						character = ROOT
+#					}
+#				}
+#				character_event = { id = MNM.70400 }
+#			}
+#		}
+#	}
+#}
+#
+#character_event = { # The Apostate reacts to Branding
+#	id = MNM.70320
+#	desc = MNM.70320.d
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = MNM.70320.a
+#		
+#		tooltip = {
+#			event_target:my_liege = {
+#				opinion = {
+#					modifier = opinion_accused_apostate 
+#					who = event_target:accused_apostate 
+#					years = 100
+#				}
+#			}
+#			if = {
+#				limit = {
+#					is_devil_worshiper_trigger = yes
+#					OR = {
+#						has_character_modifier = under_suspicion
+#						has_character_modifier = highly_suspect
+#					}
+#				}
+#				add_character_modifier = {
+#					name = known_satanist
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					OR = {
+#						is_devil_worshiper_trigger = no
+#						AND = {
+#							is_devil_worshiper_trigger = yes
+#							NOR = {
+#								has_character_modifier = under_suspicion
+#								has_character_modifier = highly_suspect
+#							}
+#						}
+#					}
+#				}
+#				add_character_modifier = {
+#					name = accused_apostate
+#					duration = -1
+#				}
+#			}
+#			if = {
+#				limit = {
+#					religion = FROM
+#					controls_religion = no
+#					OR = {
+#						religion = catholic
+#						religion = fraticelli
+#						religion = orthodox
+#						religion = miaphysite
+#						religion = monophysite
+#						religion = monothelite
+#						religion = paulician
+#						religion = nestorian
+#						religion = yazidi
+#					}
+#				}
+#				add_trait = excommunicated
+#			}
+#		}
+#		hidden_tooltip = { # Inform players that fellow society member has been branded
+#			any_player = {
+#				limit = {
+#					OR = {
+#						same_realm = ROOT
+#						is_close_relative = ROOT
+#						is_friend = ROOT
+#					}
+#					same_society_as = ROOT
+#					NOT = {
+#						character = ROOT
+#					}
+#				}
+#				character_event = { id = MNM.70400 }
+#			}
+#		}
+#	}
+#}
+#
+#character_event = { # The Apostate reacts to Mercy
+#	id = MNM.70330
+#	desc = MNM.70330.d
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = MNM.70320.a
+#		
+#		tooltip = {
+#			event_target:my_liege = {
+#				opinion = {
+#					modifier = opinion_accused_apostate 
+#					who = event_target:accused_apostate 
+#					years = 10
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#character_event = { # Player society members are informed that a fellow member has been caught
+#	id = MNM.70400
+#	picture = GFX_evt_catching_heretic
+#	border = GFX_event_normal_frame_religion
+#	
+#	desc = {
+#		trigger = { 
+#			FROM = {
+#				is_alive = no
+#			}
+#		}
+#		text = MNM.70400.d.executed
+#		picture = GFX_evt_witch_burning
+#	}
+#	desc = {
+#		trigger = { 
+#			FROM = {
+#				is_alive = yes
+#				prisoner = yes
+#			}
+#		}
+#		text = MNM.70400.d.imprisoned
+#	}
+#	desc = {
+#		trigger = { 
+#			FROM = {
+#				is_alive = yes
+#				prisoner = no
+#			}
+#		}
+#		text = MNM.70400.d.caught
+#	}
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = MNM.70400.a
+#		tooltip_info = paranoid
+#		
+#		trigger = {
+#			trait = paranoid
+#		}
+#		
+#		event_target:my_liege = {
+#			set_character_flag = portrait_flag
+#			clr_character_flag = portrait_flag
+#		}
+#		
+#		event_target:my_liege = {
+#			job_spiritual = {
+#				set_character_flag = portrait_flag
+#				clr_character_flag = portrait_flag
+#			}
+#		}
+#		
+#		decrease_visibility_effect = yes
+#	}
+#	
+#	option = {
+#		name = CURSES
+#		
+#		event_target:my_liege = {
+#			set_character_flag = portrait_flag
+#			clr_character_flag = portrait_flag
+#		}
+#		
+#		event_target:my_liege = {
+#			job_spiritual = {
+#				set_character_flag = portrait_flag
+#				clr_character_flag = portrait_flag
+#			}
+#		}
+#	}
+#}

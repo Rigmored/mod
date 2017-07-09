@@ -62,6 +62,8 @@ on_yearly_pulse = {
 		# population.3
 		purge.3
 		purge.4
+		purge.6
+		purge.7
 		ABDICATE.3
 		elfchild.0
 		elfchild.1
@@ -215,7 +217,7 @@ on_yearly_pulse = {
 		#Court Events
 		100 = 73000
 		100 = 73001
-		#100 = 73002
+		100 = 73002
 		100 = 73003
 		100 = 73004
 		100 = 73005
@@ -223,7 +225,7 @@ on_yearly_pulse = {
 		100 = 73007
 		100 = 73008
 		100 = 73009
-		#100 = 73010
+		100 = 73010
 		
 		#Religious Events
 		# 100 = 39230
@@ -526,6 +528,7 @@ on_yearly_pulse = {
 		100 = RIP.4530 # Court physician seek learning at hospital
 
 		#Hobbit Party
+		10 = hobbits.0
 		5 = hobbits.5
 		100 = hobbits.6
 		200 = hobbits.7
@@ -1125,7 +1128,7 @@ on_combat_pulse = {
 		15 = 96502 # Gain Combat Trait 3
 		15 = 96503 # Gain Combat Trait 4
 		
-		# 50 = TOG.3000 # Becomes Berserker
+		50 = TOG.3000 # Becomes Berserker
 		15 = TOG.3001 # Berserker Maimed
 		20 = TOG.3002 # Berserker Wounded
 		15 = TOG.3003 # Berserker Killed
@@ -1278,7 +1281,7 @@ on_siege_over_winner = {
 		TOG.1005 # Peasants take county capital
 		# TOG.1025 # Heretics take county capital
 		TOG.1045 # Nationalists take county capital
-		# TOG.1065 # Religious rebels take county capital
+		TOG.1065 # Religious rebels take county capital (for religious, read 'racial')
 		# CM.1101 # Destruction of Irminsul
 		# CM.10035 # Chronicle for certain major locations
 		HL.2005 # Minor Nomad Clan rebels take county capital
@@ -1428,9 +1431,6 @@ on_pregnancy = {
  		402 # Pregnancy in matrimony, with another father!
  		410 # Pregnancy as consort
  		412 # Pregnancy as consort, with another father!
-		elveninfertility.0   #Elven Pregnancy, infertility starts
-		dwarveninfertility.0 #Dwarven Pregnancy, infertility starts
- 	    humaninfertility.0   #Human Pregnancy, infertility starts
  	}
 }
 
@@ -1594,6 +1594,7 @@ on_death = {
 		# swan_knights.1 # New Captain event
 		45340  # the large 'inheritance of traits'
 		lastalliance.20 #inherit some Last Alliance stuff.
+		mepdeath.0  # intended as a general MEP death dispatch event.
 	}
 	random_events = {
 		1 = RIP.29800 #reincarnation investigation
@@ -1651,11 +1652,11 @@ on_character_event_message = {
 
 on_loot_settlement = {
 	random_events = {
-		# 5 = TOG.3300
+		5 = TOG.3300
 		5 = TOG.3301
 		5 = TOG.3302
 		5 = TOG.3303
-		# 35 = TOG.3320
+		35 = TOG.3320
 		250 = 0
 	}
 	events = {
@@ -2525,9 +2526,8 @@ on_chronicle_start = {
 		goodside.10		# allocates good_side trait
 		evilside.4		# allocates evil_side trit
 		meplawsetup.0	# some law setup, mostly to try and get king's peace for some groups
-		# mepstartup.1 ## ??
 		racetrait.25  # Generates courtiers for elven rulters of count-level or above.
-		mepstartup.11  # Sets up individual startup events
+		mepstartup.1 # Intro event
 
 	}
 }

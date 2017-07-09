@@ -435,10 +435,8 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.1
-			AND = {
-				trait = incapable
-				immortal = yes # Incapable immortals more likely to wake up nuts
-			}
+			trait = incapable
+			immortal = yes # Incapable immortals more likely to wake up nuts
 		}
 		modifier = {
 			factor = 0.25
@@ -871,7 +869,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "Nothing"
+		name = "Nothing Happens"
 		trigger = { mep_cant_get_disease_trigger = yes }
 	}
 }
@@ -2973,7 +2971,7 @@ character_event = {
 		text = EVTDESC_WOL_40_NC
 		trigger = {
 			is_female = yes
-			has_DLC = "Sons of Abraham"
+			has_dlc = "Sons of Abraham"
 		}
 		picture = GFX_evt_bad_news_female
 	}
@@ -2981,12 +2979,12 @@ character_event = {
 		text = EVTDESC_WOL_40_NC
 		trigger = {
 			is_female = no
-			has_DLC = "Sons of Abraham"
+			has_dlc = "Sons of Abraham"
 		}
 		picture = GFX_evt_bad_news
 	}
 	desc = {
-		trigger = { NOT = { has_DLC = "Sons of Abraham" } }
+		trigger = { NOT = { has_dlc = "Sons of Abraham" } }
 		text = EVTDESC_WOL_40_NC
 		picture = GFX_evt_recovery
 	}

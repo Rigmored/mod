@@ -328,125 +328,125 @@ character_event = {
 }
 
 # Religious authorities wants extra taxes from hospital
-character_event = {
-	id = RIP.4512
-	desc = EVTDESC_RIP_4512
-	picture = GFX_evt_bloody_tools
-	border = GFX_event_normal_frame_religion
-	
-	religion_group = christian
-	min_age = 16
-	capable_only = yes
-	only_playable = yes
-	prisoner = no
-	has_dlc = "Reapers"
-	war = no
-
-	is_triggered_only = yes
-	
-	trigger = {
-		higher_tier_than = BARON
-		any_demesne_province = {
-			AND = {
-				OR = {
-					hospital_level = 1
-					hospital_level = 2
-					hospital_level = 3
-					hospital_level = 4
-					hospital_level = 5
-					hospital_level = 6
-				}
-				religion = ROOT
-			}
-		}
-		rightful_religious_head_scope = {
-			always = yes
-			NOT = { character = ROOT }
-		}
-	}
-	
-	immediate = {
-		any_demesne_province = {
-			limit = {
-				AND = {
-					OR = {
-						hospital_level = 1
-						hospital_level = 2
-						hospital_level = 3
-						hospital_level = 4
-						hospital_level = 5
-						hospital_level = 6
-					}
-					religion = ROOT
-				}
-			}
-			save_event_target_as = hospital_location
-		}
-		rightful_religious_head_scope = {
-			save_event_target_as = religious_head_fee
-		}
-	}
-	
-	option = { # Accept demand
-		name = EVTOPTA_RIP_4512
-		transfer_scaled_wealth = {
-			to = event_target:religious_head_fee
-			value = 0.40
-		}
-		piety = 20
-		event_target:religious_head_fee = {
-			opinion = {
-				who = ROOT
-				modifier = opinion_fulfilled_demands
-				months = 60
-			}
-		}
-		
-		ai_chance = {
-			factor = 50
-			
-			modifier = {
-				factor = 2
-				trait = zealous
-			}
-			modifier = {
-				factor = 1.5
-				trait = humble
-			}
-			modifier = {
-				factor = 1.5
-				trait = theologian
-			}
-			modifier = {
-				factor = 0
-				NOT = { scaled_wealth = 1 }
-			}
-		}
-	}
-	option = { # Refuse demand
-		name = EVTOPTB_RIP_4512
-		event_target:religious_head_fee = {
-			opinion = {
-				who = ROOT
-				modifier = opinion_ignored_demands
-				months = 60
-			}
-		}
-		
-		ai_chance = {
-			factor = 50
-			
-			modifier = {
-				factor = 2
-				trait = cynical
-			}
-			modifier = {
-				factor = 1.5
-				trait = paranoid
-			}
-		}
-	}
-}
+#character_event = {
+#	id = RIP.4512
+#	desc = EVTDESC_RIP_4512
+#	picture = GFX_evt_bloody_tools
+#	border = GFX_event_normal_frame_religion
+#	
+#	religion_group = christian
+#	min_age = 16
+#	capable_only = yes
+#	only_playable = yes
+#	prisoner = no
+#	has_dlc = "Reapers"
+#	war = no
+#
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		higher_tier_than = BARON
+#		any_demesne_province = {
+#			AND = {
+#				OR = {
+#					hospital_level = 1
+#					hospital_level = 2
+#					hospital_level = 3
+#					hospital_level = 4
+#					hospital_level = 5
+#					hospital_level = 6
+#				}
+#				religion = ROOT
+#			}
+#		}
+#		rightful_religious_head_scope = {
+#			always = yes
+#			NOT = { character = ROOT }
+#		}
+#	}
+#	
+#	immediate = {
+#		any_demesne_province = {
+#			limit = {
+#				AND = {
+#					OR = {
+#						hospital_level = 1
+#						hospital_level = 2
+#						hospital_level = 3
+#						hospital_level = 4
+#						hospital_level = 5
+#						hospital_level = 6
+#					}
+#					religion = ROOT
+#				}
+#			}
+#			save_event_target_as = hospital_location
+#		}
+#		rightful_religious_head_scope = {
+#			save_event_target_as = religious_head_fee
+#		}
+#	}
+#	
+#	option = { # Accept demand
+#		name = EVTOPTA_RIP_4512
+#		transfer_scaled_wealth = {
+#			to = event_target:religious_head_fee
+#			value = 0.40
+#		}
+#		piety = 20
+#		event_target:religious_head_fee = {
+#			opinion = {
+#				who = ROOT
+#				modifier = opinion_fulfilled_demands
+#				months = 60
+#			}
+#		}
+#		
+#		ai_chance = {
+#			factor = 50
+#			
+#			modifier = {
+#				factor = 2
+#				trait = zealous
+#			}
+#			modifier = {
+#				factor = 1.5
+#				trait = humble
+#			}
+#			modifier = {
+#				factor = 1.5
+#				trait = theologian
+#			}
+#			modifier = {
+#				factor = 0
+#				NOT = { scaled_wealth = 1 }
+#			}
+#		}
+#	}
+#	option = { # Refuse demand
+#		name = EVTOPTB_RIP_4512
+#		event_target:religious_head_fee = {
+#			opinion = {
+#				who = ROOT
+#				modifier = opinion_ignored_demands
+#				months = 60
+#			}
+#		}
+#		
+#		ai_chance = {
+#			factor = 50
+#			
+#			modifier = {
+#				factor = 2
+#				trait = cynical
+#			}
+#			modifier = {
+#				factor = 1.5
+#				trait = paranoid
+#			}
+#		}
+#	}
+#}
 
 # Leper arrives
 character_event = {

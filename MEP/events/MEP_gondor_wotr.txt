@@ -682,11 +682,11 @@ character_event = {
 			NOR = {   # no wars primarily between Mordor and Gondor
 				any_war = {
 					defender = { has_landed_title = e_steward_gondor }
-					attacker = PREV
+					attacker = ROOT
 				}
 				any_war = {
 					attacker = { has_landed_title = e_steward_gondor }
-					defender = PREV
+					defender = ROOT
 				}
 			}
 		}
@@ -706,7 +706,7 @@ character_event = {
 			war = yes
 			any_war = {
 				defender = { has_landed_title = e_steward_gondor }
-				attacker = PREV
+				attacker = ROOT
 			}
 		}
 		character_event = { id = gondorwotr.15 }
@@ -717,7 +717,7 @@ character_event = {
 			war = yes
 			any_war = {
 				attacker = { has_landed_title = e_steward_gondor }
-				defender = PREV
+				defender = ROOT
 			}
 		}
 		set_global_flag = gondormordor_p1won
@@ -729,11 +729,11 @@ character_event = {
 			NOR = {   # no wars primarily between Mordor and Gondor
 				any_war = {
 					defender = { has_landed_title = e_steward_gondor }
-					attacker = PREV
+					attacker = ROOT
 				}
 				any_war = {
 					attacker = { has_landed_title = e_steward_gondor }
-					defender = PREV
+					defender = ROOT
 				}
 			}
 		}
@@ -760,7 +760,7 @@ character_event = {
 				if = {
 					limit = {
 						defender = { has_landed_title = e_steward_gondor }
-						attacker = PREV
+						attacker = ROOT
 					}
 					if = {
 						limit = {
