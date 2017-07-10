@@ -319,60 +319,53 @@ character_event = {
 	
 #Event where you are told the efforts have succeeded, and population is growing#
 province_event = {
-	id = population.6
-	desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
-	picture = GFX_good
-	
-	trigger = {
-		has_province_modifier = population_increasing
-		OR = {
-			has_province_modifier = one_population_dunedain
-			has_province_modifier = two_population_dunedain
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-		}
-	}
-	
-	mean_time_to_happen = {
-	months = 240
-	}
-	
-	option = {
-		name = population6A #Good tidings!
-		remove_province_modifier = population_increasing
-		if = { 
-			limit = { has_province_modifier = one_population_dunedain }
-			remove_province_modifier = one_population_dunedain
-			add_province_modifier = { name = two_population_dunedain duration = -1 }
-		}
-		if = { 
-			limit = { has_province_modifier = two_population_dunedain }
-			remove_province_modifier = two_population_dunedain
-			add_province_modifier = { name = three_population_dunedain duration = -1 }
-		}
-		if = { 
-			limit = { has_province_modifier = three_population_dunedain }
-			remove_province_modifier = three_population_dunedain
-			add_province_modifier = { name = four_population_dunedain duration = -1 }
-		}
-		if = { 
-			limit = { has_province_modifier = four_population_dunedain }
-			remove_province_modifier = four_population_dunedain
-			add_province_modifier = { name = five_population_dunedain duration = -1 }
-		}
-		if = { 
-			limit = { has_province_modifier = five_population_dunedain }
-			remove_province_modifier = five_population_dunedain
-			add_province_modifier = { name = six_population_dunedain duration = -1 }
-		}
-		if = { 
-			limit = { has_province_modifier = six_population_dunedain }
-			remove_province_modifier = six_population_dunedain
-			add_province_modifier = { name = seven_population_dunedain duration = -1 }
-		}
-	}
+    id = population.6
+    desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
+    picture = GFX_good
+  
+    trigger = {
+        has_province_modifier = population_increasing
+        mep_dunedian_popmod_increasable_trigger = yes
+    }
+  
+    mean_time_to_happen = {
+        months = 240
+    }
+  
+    option = {
+        name = population6A #Good tidings!
+        remove_province_modifier = population_increasing
+        if = {
+            limit = { has_province_modifier = six_population_dunedain }
+            remove_province_modifier = six_population_dunedain
+            add_province_modifier = { name = seven_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = five_population_dunedain }
+            remove_province_modifier = five_population_dunedain
+            add_province_modifier = { name = six_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = four_population_dunedain }
+            remove_province_modifier = four_population_dunedain
+            add_province_modifier = { name = five_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = three_population_dunedain }
+            remove_province_modifier = three_population_dunedain
+            add_province_modifier = { name = four_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = two_population_dunedain }
+            remove_province_modifier = two_population_dunedain
+            add_province_modifier = { name = three_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = one_population_dunedain }
+            remove_province_modifier = one_population_dunedain
+            add_province_modifier = { name = two_population_dunedain duration = -1 }
+        }             
+    }
 
 }
 
@@ -1780,21 +1773,13 @@ character_event = {
 					limit = {
 					NOT = { controlled_by = ROOT }
 					}
-	#goes from urban to densely populated
+	#goes from normal to lightly populated
 				if = {
 					limit = {
-						has_province_modifier = seven_population_human
+						has_province_modifier = four_population_human
 					}
-				add_province_modifier = { name = six_population_human duration = -1 }
-				remove_province_modifier = seven_population_human
-				}
-	#goes from densely to more populated
-				if = {
-					limit = {
-						has_province_modifier = six_population_human
-					}
-				add_province_modifier = { name = five_population_human duration = -1 }
-				remove_province_modifier = six_population_human
+				add_province_modifier = { name = three_population_human duration = -1 }
+				remove_province_modifier = four_population_human
 				}
 	#goes from more to normally populated
 				if = {
@@ -1804,13 +1789,21 @@ character_event = {
 				add_province_modifier = { name = four_population_human duration = -1 }
 				remove_province_modifier = five_population_human
 				}
-	#goes from normal to lightly populated
+	#goes from densely to more populated
 				if = {
 					limit = {
-						has_province_modifier = four_population_human
+						has_province_modifier = six_population_human
 					}
-				add_province_modifier = { name = three_population_human duration = -1 }
-				remove_province_modifier = four_population_human
+				add_province_modifier = { name = five_population_human duration = -1 }
+				remove_province_modifier = six_population_human
+				}
+	#goes from urban to densely populated
+				if = {
+					limit = {
+						has_province_modifier = seven_population_human
+					}
+				add_province_modifier = { name = six_population_human duration = -1 }
+				remove_province_modifier = seven_population_human
 				}
 			}
 		}
