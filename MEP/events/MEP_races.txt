@@ -235,9 +235,11 @@ character_event = {
 ## The characters is an Orc ##
 character_event = {
    id = racetrait.5
-   title = EVTNAMEracetrait.1
-   desc = EVTDESCracetrait.1
-   picture = "GFX_evt_coronation"
+   # title = EVTNAMEracetrait.1
+   # desc = EVTDESCracetrait.1
+   # picture = "GFX_evt_coronation"
+   
+   hide_window = yes
 
    is_triggered_only = yes
    
@@ -249,6 +251,7 @@ character_event = {
 			culture = culture_troll
 		}	
 		NOT = { trait = half_orc }
+		NOT = { trait = orc }
 	}
 
 
@@ -261,14 +264,16 @@ character_event = {
 ## The characters is a spider ##
 character_event = {
 	id = racetrait.7
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_coronation"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_coronation"
+	
+	hide_window = yes
 
 	is_triggered_only = yes
 	
 	trigger = {
-		culture = culture_spider
+		religion_group = religion_group_ungoliant
 		NOT = { trait = spider }
 	}
 

@@ -3,6 +3,8 @@ namespace = mepmarriage
 
 # events 0 to 9 - merger of wrongmarriage and orcmarriage. These should normally not happen, but I'll keep them in case
 # event 10 to 14 - elf, dwarf, and human infertility
+# TODO : revised dwarven and numenorean 'menopause'
+# Pregnancy generate events for dwarves and numenoreans older than 45.
 
 #--------------------------------------------------------------------------------------------------
 ### Marriage between different races - Dwarves side
@@ -95,7 +97,7 @@ character_event = {
     title = "EVTTITmepmarriage.2"
     desc = "EVTDESCmepmarriage.2"
     picture = "GFX_good"
-	religion_group = religion_group_melkor
+	religion_group = religion_group_melkorx
 	is_married = yes
 	
 	trigger = {
@@ -414,7 +416,6 @@ character_event = {
 	
 	trigger = {
 		trait = elf
-	    NOT = { has_character_flag = elven_infertility }	
 	}
 		  
 	option = {

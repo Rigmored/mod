@@ -1707,15 +1707,18 @@ narrative_event = {
 		name = "EVTOPTCblackserpent.23"
 		trigger = {
 			NOT = { religion = religion_southron }
-			NOT = { religion_group = religion_group_melkor }
+			NOT = { religion_group = religion_group_melkorx }
+			NOT = { religion_group = religion_group_ungoliant }
 		}
 	}
 	option = {
 		name = "EVTOPTDblackserpent.23"
 		trigger = {
 			OR = {
-			religion_group = religion_group_hildor
-			religion_group = religion_group_melkor
+				religion_group = religion_group_hildor
+				religion_group = religion_group_melkorx
+				religion_group = religion_group_ungoliant
+				
 			}
 			NOT = { religion = religion_southron }
 		}

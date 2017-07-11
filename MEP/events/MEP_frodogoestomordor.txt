@@ -6,17 +6,15 @@ character_event = {
     title = "EVTTITfrodo.1"
     desc = "EVTDESCfrodo.1"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
-		has_global_flag = frodogoestomordor
-		age = 30
-		NOT = { age = 60 }
+		has_global_flag = fellowship_broken2
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		NOT = { year = 11368 }
 		NOT = { has_character_flag = frodo1 }
 		NOT = { has_global_flag = boromirhasring }
-		dynasty = 803
 	}
 	
 	mean_time_to_happen = {
@@ -36,16 +34,14 @@ character_event = {
     title = "EVTTITfrodo.2"
     desc = "EVTDESCfrodo.2"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		has_character_flag = frodo1
-		age = 30
-		NOT = { age = 60 }
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		NOT = { has_character_flag = frodo2 }
-		dynasty = 803
 	}
 	
 	mean_time_to_happen = {
@@ -65,17 +61,17 @@ character_event = {
     title = "EVTTITfrodo.3"
     desc = "EVTDESCfrodo.3"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
+		has_global_flag = fellowship_broken2
 		has_global_flag = frodogoestomordor
 		has_character_flag = frodo2
-		age = 30
-		NOT = { age = 60 }
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		year = 11367
 		NOT = { has_character_flag = frodo3 }
-		dynasty = 803
+
 	}
 	
 	mean_time_to_happen = {
@@ -95,11 +91,11 @@ character_event = {
     title = "EVTTITfrodo.4"
     desc = "EVTDESCfrodo.4"
     picture = "GFX_good"
-	age = 16
+	only_playable = yes
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
 		NOT = { has_global_flag = frodo4 }
@@ -125,7 +121,6 @@ character_event = {
     title = "EVTTITfrodo.5"
     desc = "EVTDESCfrodo.5"
     picture = "GFX_good"
-	age = 16
 	
 	is_triggered_only = yes
 	
@@ -140,12 +135,14 @@ character_event = {
 	option = {
 		name = "EVTOPTBfrodo.5"
 		trigger = { ai = no }
-		any_playable_ruler = {
-			limit = {
-				is_alive=yes
-				trait = ring
+		event_target:mep_fellowship_ringbearer = {
+			if = {
+				limit = {
+					is_alive = yes
+					trait = ring
+				}
+				character_event = { id = frodo.6 days = 30 }
 			}
-			character_event = { id = frodo.6 days = 30}
 		}
 	}
 }
@@ -195,18 +192,18 @@ character_event = {
     title = "EVTTITfrodo.7"
     desc = "EVTDESCfrodo.7"
     picture = "GFX_good"
-	age = 16
+	only_playable = yes
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
 		has_global_flag = gondor_restored
+		has_landed_title = e_gondor
 		has_global_flag = invademordor
 		NOT = { has_global_flag = frodo7 }
 		year = 11367
-		has_landed_title = e_gondor
 	}
 	
 	mean_time_to_happen = {
@@ -269,16 +266,14 @@ character_event = {
     desc = "EVTDESCfrodo.9"
     picture = "GFX_good"
 	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
-		has_global_flag = frodogoestomordor
+		event_target:mep_fellowship_ringbearer = { character = PREV }
+		has_global_flag = fellowship_broken2
 		has_global_flag = invademordor
-		age = 30
-		NOT = { age = 80 }
 		NOT = { has_global_flag = frodo9 }
 		NOT = { has_global_flag = boromirhasring }
-		dynasty = 803
 		trait = ring
 	}
 	
@@ -787,7 +782,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = questformtdoom_ringleaveslorien
+		has_global_flag = fellowship_broken2
 		has_global_flag = frodogoestomordor
 		has_global_flag = gondor_restoreddefeat
 		age = 30

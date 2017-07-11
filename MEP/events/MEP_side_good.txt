@@ -272,7 +272,7 @@ character_event = {
 				primary_title = { higher_tier_than = count } 
 				NOT = { trait = evil_side }
 				NOT = { has_character_flag = sidechosen }
-				NOT = { religion_group = religion_group_melkor }
+				NOT = { mep_evil_religion = yes }
 				# perhaps some additional limitations here
 			}
 			# vassal kings will always (after passing a test) get good_side
@@ -283,7 +283,7 @@ character_event = {
 						trait = evil_side 
 						has_character_flag = sidechosen
 					}
-					NOT = { religion_group = religion_group_melkor }
+					NOT = { mep_evil_religion = yes }
 				}
 				if = {
 					limit = { NOT = { trait = good_side } } 

@@ -12,7 +12,8 @@ elf = {
 	religion_group_eruhini_opinion = 25
 	religion_group_enyd_opinion = 25	
 	# Those who hate elves
-	religion_group_melkor_opinion = -90
+	religion_group_melkorx_opinion = -90
+	religion_group_ungoliant_opinion = -80
 	
 	# other modifers
     same_opinion = 20	
@@ -52,7 +53,7 @@ elf_childhood = {
 	potential = {
 		religion_group = religion_group_eldar
 		age = 16
-		NOT = { age = 60 }
+		NOT = { age = 45 }
 	}
 	fertility_penalty = -5.0
 	health = 100.0
@@ -103,7 +104,10 @@ elf_friend = {
 		NOT = { religion_group = religion_group_eldar }
 		NOT = { trait = evil_side }
 		OR = {
-			NOT = { religion_group = religion_group_melkor }
+			NOR = {
+				religion_group = religion_group_melkorx
+				religion_group = religion_group_ungoliant
+			}
 			trait = good_side
 		}
 	}
@@ -121,7 +125,8 @@ dwarven = {
 	tolerates_religion_group_periannath = yes
 	tolerates_religion_group_edain = yes
 	# Those who hate dwarves
-	religion_group_melkor_opinion = -100
+	religion_group_melkorx_opinion = -100
+	religion_group_ungoliant_opinion = -50
 	# Those who mildly dislike dwarves more than usual
 	religion_group_eldar_opinion = -10
 	religion_group_enyd_opinion = -10
@@ -191,7 +196,10 @@ dwarf_friend = {
 		NOT = { religion_group = religion_group_khazad }
 		NOT = { trait = evil_side }
 		OR = {
-			NOT = { religion_group = religion_group_melkor }
+			NOR = {
+				religion_group = religion_group_melkorx
+				religion_group = religion_group_ungoliant
+			}
 			trait = good_side
 		}
 	}
@@ -387,7 +395,8 @@ eagle = {
 	# okay relations
 	tolerates_religion_group_eldar = yes
 	# Those who hate eagles
-	religion_group_melkor_opinion = -100
+	religion_group_melkorx_opinion = -100
+	religion_group_ungoliant_opinion = -90
 	# Those who like eagles
 	religion_numenorean_opinion = 30
 	religion_group_eldar_opinion = 25
@@ -414,10 +423,11 @@ hobbit = {
     tolerates_religion_group_eldar = yes
     # Those who hate hobbits
     religion_group_melkor_opinion = -50
+	religion_group_ungoliant_opinion = -40
    
     # other modifers
-      health = 6.5
-      same_opinion = 20
+    health = 6.5
+    same_opinion = 20
     inherit_chance = 100
     martial_penalty = -1
     intrigue = 3
@@ -435,7 +445,10 @@ hobbit_friend = {
 		NOT = { religion_group = religion_group_periannath }
 		NOT = { trait = evil_side }
 		OR = {
-			NOT = { religion_group = religion_group_melkor }
+			NOR = {
+				religion_group = religion_group_melkor
+				religion_group = religion_group_ungoliant
+			}
 			trait = good_side
 		}
 	}
@@ -454,6 +467,7 @@ ent = {
 	tolerates_religion_group_eldar = yes
 	# Those who hate ents
 	religion_group_melkor_opinion = -50  # Normally they would hate them More, but ents have been isolated for a very long time
+	religion_group_ungoliant_opinion = -60
 	# Those who like ents
 	religion_group_eldar_opinion = 20
 	
@@ -483,6 +497,7 @@ valar = {
 	tolerates_religion_group_eldar = yes
 	# Those who hate the Valar
 	religion_group_melkor_opinion = -100
+	religion_group_ungoliant_opinion = -100
 	religion_group_hildor_opinion = -30	
 	culture_flex = 0.7
 	# other modifers
@@ -510,6 +525,7 @@ enigma = {
 	culture_flex = 0.9
 	# Those who hate Tom
 	religion_group_melkor_opinion = -60 # Although they probably Don't know he exists.
+	religion_group_ungoliant_opinion = -50
 	
 	# other modifers
 	fertility_penalty = -5.0
@@ -599,7 +615,10 @@ worship_balrog = {
 		OR = {
 			trait = evil_side
 			AND = {
-				religion_group = religion_group_melkor
+				OR = {
+					religion_group = religion_group_melkorx
+					religion_group = religion_group_ungoliant
+				}
 				NOT = { trait = good_side } 
 			}
 		}
@@ -621,8 +640,7 @@ worship_balrog = {
 
 spider = {   
     potential = {
-        religion = religion_spider
-        culture = culture_spider
+        religion_group = religion_group_ungoliant
     }
     # those who hate spiders (most everybody not evil)
     religion_group_eldar_opinion = -100
@@ -632,6 +650,7 @@ spider = {
     religion_group_enyd_opinion = -80
     religion_group_edain_opinion = -80
     religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Huge Spiders unsettling at best...
+	religion_group_melkorx_opinion = -10
    
     # other modifers
     fertility_penalty = -5.0
@@ -796,6 +815,7 @@ uruloke = {
 	religion_group_enyd_opinion = -100
 	religion_group_edain_opinion = -80
 	religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Dragons unsettling at best...
+	religion_group_ungoliant_opinion = -30
 
 	# other modifers
 	martial = 3
@@ -821,6 +841,7 @@ cold_drake = {
 	religion_group_enyd_opinion = -80
 	religion_group_edain_opinion = -80
 	religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Dragons unsettling at best...
+	religion_group_ungoliant_opinion = -30
 	# other modifers	
 	martial = 2
    	health = 1000.0
@@ -846,6 +867,7 @@ long_worms = {
 	religion_group_enyd_opinion = -80
 	religion_group_edain_opinion = -80
 	religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Dragons unsettling at best...
+	religion_group_ungoliant_opinion = -30
 	# other modifers	
 	martial = 1
    	health = 1000.0

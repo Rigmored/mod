@@ -40,6 +40,69 @@ character_event = {
 		clr_character_flag = looking_for_court_physician
 		set_character_flag = found_court_physician
 		random_list = {
+			40 = { # Elven Herbalist 
+				modifier = {
+					factor = 0
+					AND = {
+						has_character_flag = got_physician_erudite_herbalist
+						NOT = { had_character_flag = { flag = got_physician_erudite_herbalist days = 3650 } }
+					}
+				}
+				modifier = {
+					factor = 0
+					mep_is_evil_side_trigger = yes
+				}
+				modifer = {
+					factor = 50
+					religion_group = religion_group_eldar
+				}
+				random_list = {
+					25 = {
+						create_character = {
+							religion = religion_moriquendi
+							culture = culture_noldor
+							dynasty = none
+							age = 4320
+							random_traits = yes
+							female = no
+							attributes = {
+								learning = 12
+							}
+							immortal_age = 25
+							trait = martial_cleric 
+							trait = erudite
+							trait = gardener
+							trait = elf
+							flag = is_court_physician
+							flag = physician_erudite_herbalist
+						}
+						new_character = {
+							remove_trait = mystic
+							remove_trait = scholar
+							remove_trait = socializer
+							remove_trait = gamer
+							remove_trait = hedonist
+							remove_trait = duelist
+							remove_trait = hunter
+							remove_trait = strategist
+							remove_trait = administrator
+							remove_trait = architect
+							remove_trait = schemer
+							remove_trait = impaler
+							remove_trait = seducer
+							remove_trait = seductress
+							remove_trait = theologian
+							save_event_target_as = recruited_physician_target
+							random_list = {
+								70 = { add_trait = great_healer }
+								30 = { add_trait = healer_master }
+							}
+							save_event_target_as = recruited_physician_target
+							character_event = { id = RIP.11052 }
+						}
+					}
+				}
+			}
 			4 = { # Drunk Village Physician (Unschooled, 18+ Learning)
 				modifier = {
 					factor = 0
