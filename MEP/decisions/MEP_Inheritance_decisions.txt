@@ -1,0 +1,831 @@
+dynasty_decisions = {
+
+	give_narya_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = narya
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = narya }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = narya }
+		}			
+		effect = {
+			FROM = { remove_trait = narya }
+			add_trait = narya
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_nenya_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = nenya
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = nenya }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = nenya }
+		}			
+		effect = {
+			FROM = { remove_trait = nenya }
+			add_trait = nenya
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_vilya_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = vilya
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = vilya }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = vilya }
+		}			
+		effect = {
+			FROM = { remove_trait = vilya }
+			add_trait = vilya
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_barahir_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = barahir
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = barahir }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = barahir }
+		}			
+		effect = {
+			FROM = { remove_trait = barahir }
+			add_trait = barahir
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_arkenstone_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = arkenstone
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = arkenstone }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = arkenstone }
+		}			
+		effect = {
+			FROM = { remove_trait = arkenstone }
+			add_trait = arkenstone
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	give_annunimas_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = annunimas
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = annunimas }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = annunimas }
+		}			
+		effect = {
+			FROM = { remove_trait = annunimas }
+			add_trait = annunimas
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_horngondor_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = horngondor
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = horngondor }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = horngondor }
+		}			
+		effect = {
+			FROM = { remove_trait = horngondor }
+			add_trait = horngondor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_stewardscept_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = stewardscept
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = stewardscept }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = stewardscept }
+		}			
+		effect = {
+			FROM = { remove_trait = stewardscept }
+			add_trait = stewardscept
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+# COMMENT THIS ONCE THE PALANTIR TO ARTIFACT MIGRATION IS COMPLETE
+#--------------------------------------------------------#
+	
+	give_palantir_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir }
+			add_trait = palantir
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_ithil_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir_ithil
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir_ithil }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_ithil }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_ithil }
+			add_trait = palantir_ithil
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_osgiliath_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir_osgiliath
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir_osgiliath }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_osgiliath }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_osgiliath }
+			add_trait = palantir_osgiliath
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_elostirion_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir_elostirion
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir_elostirion }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_elostirion }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_elostirion }
+			add_trait = palantir_elostirion
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_sul_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir_sul
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir_sul }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_sul }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_sul }
+			add_trait = palantir_sul
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_annuminas_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			is_playable = yes
+			trait = palantir_annuminas
+		}
+		potential = {
+			is_liege_or_above = FROM
+			is_child_of = FROM
+			NOT = { trait = palantir_annuminas }
+		}
+		allow = {
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_annuminas }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_annuminas }
+			FROM = { wealth = -50 }
+			add_trait = palantir_annuminas
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_palantir_orthanc_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = palantir_orthanc
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = palantir_orthanc }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = palantir_orthanc }
+		}			
+		effect = {
+			FROM = { remove_trait = palantir_orthanc }
+			add_trait = palantir_orthanc
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+#--------------------------------------------------------#	
+	
+	give_durin_ring_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = durin_ring
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = durin_ring }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = durin_ring }
+		}			
+		effect = {
+			FROM = { remove_trait = durin_ring }
+			add_trait = durin_ring
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_dwarf_ring_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = dwarf_ring
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = dwarf_ring }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = dwarf_ring }
+		}			
+		effect = {
+			FROM = { remove_trait = dwarf_ring }
+			add_trait = dwarf_ring
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_lesser_ring_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = lesser_ring
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = lesser_ring }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = lesser_ring }
+		}			
+		effect = {
+			FROM = { remove_trait = lesser_ring }
+			add_trait = lesser_ring
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_anduril_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = anduril
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = anduril }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = anduril }
+		}			
+		effect = {
+			FROM = { remove_trait = anduril }
+			add_trait = anduril
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_narsil_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = narsil
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = narsil }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = narsil }
+		}			
+		effect = {
+			FROM = { remove_trait = narsil }
+			add_trait = narsil
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_glamdring_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = glamdring
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = glamdring }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = glamdring }
+		}			
+		effect = {
+			FROM = { remove_trait = glamdring }
+			add_trait = glamdring
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_sting_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = sting
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = sting }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = sting }
+		}			
+		effect = {
+			FROM = { remove_trait = sting }
+			add_trait = sting
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_herugrim_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = herugrim
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = herugrim }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = herugrim }
+		}			
+		effect = {
+			FROM = { remove_trait = herugrim }
+			add_trait = herugrim
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_orcrist_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = orcrist
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = orcrist }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = orcrist }
+		}			
+		effect = {
+			FROM = { remove_trait = orcrist }
+			add_trait = orcrist
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_gutwhine_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = gutwhine
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = gutwhine }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = gutwhine }
+		}			
+		effect = {
+			FROM = { remove_trait = gutwhine }
+			add_trait = gutwhine
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_mithril_armor_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = mithril_armor
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = mithril_armor }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = mithril_armor }
+		}			
+		effect = {
+			FROM = { remove_trait = mithril_armor }
+			add_trait = mithril_armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_himling_armour_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = himling_armour
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = himling_armour }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = himling_armour }
+		}			
+		effect = {
+			FROM = { remove_trait = himling_armour }
+			add_trait = himling_armour
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_himling_sword_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = himling_sword
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = himling_sword }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = himling_sword }
+		}			
+		effect = {
+			FROM = { remove_trait = himling_sword }
+			add_trait = himling_sword
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_arvedui_armor_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = arvedui_armor
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = arvedui_armor }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = arvedui_armor }
+		}			
+		effect = {
+			FROM = { remove_trait = arvedui_armor }
+			add_trait = arvedui_armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_durins_axe_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = durins_axe
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = durins_axe }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = durins_axe }
+		}			
+		effect = {
+			FROM = { remove_trait = durins_axe }
+			add_trait = durins_axe
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_amroth_sword_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = amroth_sword
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = amroth_sword }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = amroth_sword }
+		}			
+		effect = {
+			FROM = { remove_trait = amroth_sword }
+			add_trait = amroth_sword
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_erebor_spear_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = erebor_spear
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = erebor_spear }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = erebor_spear }
+		}			
+		effect = {
+			FROM = { remove_trait = erebor_spear }
+			add_trait = erebor_spear
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	give_erebor_armor_to_heir = {
+		is_high_prio = yes
+		from_potential = {
+			ai = no
+			is_ruler = yes
+			trait = erebor_armor
+		}
+		potential = {
+			is_child_of = FROM
+			NOT = { trait = erebor_armor }
+		}
+		allow = {
+			FROM = { war = no }
+			FROM = { NOT = { trait = incapable } }
+			FROM = { trait = erebor_armor }
+		}			
+		effect = {
+			FROM = { remove_trait = erebor_armor }
+			add_trait = erebor_armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
