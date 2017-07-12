@@ -28,15 +28,7 @@ job_chancellor = {
 			}
 			has_character_flag = special_chancellor
 		}
-				prisoner = no
-		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
-		NOT = { trait = on_fellowshipquest }
-		NOT = { trait = saruman_spell }
-		NOT = { trait = huntforring }
-		NOT = { trait = journey_to_valinor }
-		NOT = { trait = sailed_west }
-		NOT = { trait = at_east }
+		mep_never_councillor_trigger = yes
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -87,8 +79,6 @@ job_marshal = {
 			has_character_flag = special_marshal
 		}
 		
-		prisoner = no
-		NOT = { trait = incapable }
 		OR = {
 			AND = {
 				has_character_flag = sauron
@@ -103,13 +93,7 @@ job_marshal = {
 		}
 		NOT = { trait = staff_of_saruman }
 		NOT = { trait = staff_of_radagast }
-		NOT = { trait = elf_childhood }
-		NOT = { trait = on_fellowshipquest }
-		NOT = { trait = saruman_spell }
-		NOT = { trait = huntforring }
-		NOT = { trait = journey_to_valinor }
-		NOT = { trait = sailed_west }		
-		NOT = { trait = at_east }
+		mep_never_councillor_trigger = yes
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -195,6 +179,7 @@ job_treasurer = {
 	action = action_advance_eco_tech
 	action = action_build_legend # Replaces action_advance_eco_tech for Tribes
 	action = action_colonize_province
+	action = action_increase_population
 
 	lift_fow = yes
 }
@@ -225,17 +210,7 @@ job_spymaster = {
 			}
 			has_character_flag = special_spymaster
 		}
-		
-		prisoner = no
-		NOT = { trait = incapable }
-		NOT = { has_character_flag = guru }
-		NOT = { trait = elf_childhood }
-		NOT = { trait = on_fellowshipquest }
-		NOT = { trait = saruman_spell }
-		NOT = { trait = huntforring }
-		NOT = { trait = journey_to_valinor }
-		NOT = { trait = sailed_west }		
-		NOT = { trait = at_east }
+		mep_never_councillor_trigger = yes
 	}
 	dismiss_trigger = {
 		FROM = {
@@ -275,7 +250,6 @@ job_spiritual = {
 	
 	allow = {
 		can_be_spiritual_trigger = yes
-		prisoner = no
 		liege = {
 			religion = ROOT
 		}
@@ -286,15 +260,7 @@ job_spiritual = {
 			}
 			has_character_flag = special_spiritual
 		}
-		
-		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
-		NOT = { trait = on_fellowshipquest }
-		NOT = { trait = saruman_spell }
-		NOT = { trait = huntforring }
-		NOT = { trait = journey_to_valinor }
-		NOT = { trait = sailed_west }		
-		NOT = { trait = at_east }
+		mep_never_councillor_trigger = yes
 	}
 	gain_effect = {
 	}
@@ -306,10 +272,10 @@ job_spiritual = {
 	}
 	dismiss_trigger = {
 		FROM = {
-			OR = {
-				NOT = { religion_group = muslim }
-				NOT = { religion = ROOT }
-			}
+			# OR = {
+			#	NOT = { religion_group = muslim }
+			#	NOT = { religion = ROOT }
+			#}
 			NOT = { 
 				AND = {
 					has_law = succession_voting_power_1
@@ -319,12 +285,11 @@ job_spiritual = {
 		}
 	}
 	
-	action = action_inquisition
-	action = action_advance_cul_tech
-	action = action_improve_rel_relations
+	action = action_heal_troops
+	action = action_search_artefacts
+	action = action_claim_artefacts
 	action = action_charity
 	action = action_build_zeal # Tribal replacement for 'action_advance_cul_tech'
-	action = action_heal_troops
 
 	lift_fow = yes
 }

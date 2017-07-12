@@ -7,6 +7,14 @@
 # 5 - Archers
 # 6 - Special troops
 
+# currently missing special retinues :
+# haladians other than breelanders and dunlendings
+# any forodwaith
+# silvan/nandor elves
+# easterlings other than variags or balchoth
+# many types of southrons
+# ents, eagles, tom bonbadil, spiders, dragons, etc
+
 #Gondorian Retinues#
 
 #400 Pikemen, 100 Archers#
@@ -19,7 +27,17 @@ towerguardcompany =
     culture = culture_gondorian
 	
 	potential = {		
-		culture = culture_gondorian
+		OR = {
+			has_landed_title = e_gondor
+			has_landed_title = e_reunited_kingdom
+			has_landed_title = e_steward_gondor
+			has_landed_title = e_gondor_kinstrife
+		}
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+		}
 		is_nomadic = no		
 	}
     modifier = {
@@ -38,7 +56,7 @@ gondorianheavycavalry =
     first_amount = 250
     culture = culture_gondorian
 	potential = {
-		culture = culture_gondorian
+		num_culture_realm_provs = { value = 8 culture = culture_gondorian }
 		is_nomadic = no
 	}
     modifier = {
@@ -56,7 +74,12 @@ swanknights =
     first_amount = 250
     culture = culture_gondorian
 	potential = {
-		culture = culture_gondorian
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+			culture = culture_arnorian
+			culture = culture_gondorian_middlemen
+		}
 		is_nomadic = no
 		has_landed_title = c_dol_amroth
 	}
@@ -72,9 +95,23 @@ blackvalearchers =
 {
     first_type = 5
     first_amount = 500
-    culture = culture_gondorian
+    culture = culture_gondorian_middlemen
 	potential = {
-		culture = culture_gondorian
+		OR = {
+			has_landed_title = d_mornan
+			has_landed_title = c_mornan
+			has_landed_title = c_corgonin
+			has_landed_title = c_rond_rhandir
+			has_landed_title = c_rendal
+			has_landed_title = c_tarlang
+			has_landed_title = c_tarlangs_neck
+			has_landed_title = c_morthond_cradle
+		}
+		OR = {
+			culture = culture_gondorian_middlemen
+			culture = culture_gondorian
+			culture = culture_dunedain
+		}
 		is_nomadic = no
 	}
     modifier = {
@@ -113,6 +150,7 @@ knightsofannuminas =
     first_amount = 50
     culture = culture_dunedain
 	potential = {
+		has_landed_title = c_annuminas
 		OR = {
 			culture = culture_dunedain
 			culture = culture_arnorian
@@ -130,9 +168,12 @@ knightsofdolamroth =
 {
     first_type = 4
     first_amount = 50
-    culture = culture_dunedain
+    culture = culture_gondorian
 	potential = {
-		culture = culture_dunedain
+		OR = {
+			culture = culture_gondorian
+			culture = culture_dunedain
+		}
 		is_nomadic = no
 		has_landed_title = c_dol_amroth
 	}
@@ -176,7 +217,10 @@ sindarroyalguard =
     second_amount = 50
     culture = culture_sindar
 	potential = {
-		culture = culture_sindar
+		OR = {
+			culture = culture_sindar
+			culture = culture_falathrim
+		}
 		is_nomadic = no
 	}
     modifier = {
@@ -247,9 +291,8 @@ gatewardens =
 {
     first_type = 1
     first_amount = 100
-    culture = culture_broadbeam
 	potential = {
-		culture = culture_broadbeam
+		culture_group = culture_group_dwarves
 		is_nomadic = no
 	}
     modifier = {
@@ -328,9 +371,12 @@ haradrimmumakil =
 	
 	special_troops = war_elephants
 	
-    culture = culture_black_numenorean
+    culture = culture_haradrim
 	potential = {
-		culture = culture_black_numenorean
+		OR = {
+			culture = culture_black_numenorean
+			culture_group = culture_group_southron
+		}
 		is_nomadic = no
 	}
     modifier = {
@@ -348,9 +394,9 @@ tookarchers =
 {
     first_type = 5
     first_amount = 250
-    culture = culture_fallohide
+    culture = culture_hobbit
 	potential = {
-		culture = culture_fallohide
+		culture_group = culture_group_halfling
 		is_nomadic = no
 	}
     modifier = {
@@ -363,11 +409,11 @@ tookarchers =
 #250 Light Infantry#
 halflingsheriffs =
 {
-    first_type = 5
+    first_type = 0
     first_amount = 250
-    culture = culture_harfoot
+    culture = culture_hobbit
 	potential = {
-		culture = culture_harfoot
+		culture_group = culture_group_halfling
 		is_nomadic = no
 	}
     modifier = {
@@ -385,7 +431,14 @@ knightsofdale =
     first_amount = 100
     culture = culture_barding
 	potential = {
-		culture = culture_barding
+		has_landed_title = c_dale
+		OR = {
+			culture = culture_barding
+			culture = culture_woodsmen
+			culture = culture_northmen
+			culture = culture_dorwinrim
+			culture = culture_beorning
+		}
 		is_nomadic = no
 	}
     modifier = {
@@ -427,14 +480,14 @@ greenwaysentinels =
     second_amount = 150
     culture = culture_breelander
 	potential = {
-    culture = culture_breelander
-	is_nomadic = no
-}
+		culture = culture_breelander
+		is_nomadic = no
+	}
     modifier = {
         knights_offensive = 1.0
         knights_defensive = 1.0
         light_cavalry_offensive = 1.0
-	light_cavalry_defensive = 1.0
+		light_cavalry_defensive = 1.0
     }
 }
 #125 Archers, 125 Heavy Infantry#
@@ -539,6 +592,29 @@ forestwardens =
     }
 }
 
+#Dorwinion Retinues
+
+#125 Archers, 125 Heavy Infantry#
+dorwinionguards =
+{
+    first_type = 5
+    first_amount = 125
+    second_type = 1
+    second_amount = 125
+    culture = culture_dorwinrim
+	potential = {
+		culture = culture_dorwinrim
+		is_nomadic = no
+	}
+    modifier = {
+        archers_offensive = 1.0
+        archers_defensive = 1.0
+        heavy_infantry_defensive = 1.0
+        heavy_infantry_offensive = 1.0
+       
+    }
+}
+
 #Beorning Retinues
 
 #125 heavy infantry, 125 archers#
@@ -627,7 +703,7 @@ eoredofeotheod =
 {
     first_type = 3
     first_amount = 120
-    culture = culture_eotheodculture_eotheod
+    culture = culture_eotheod
 	potential = {
 		culture = culture_eotheod
 		is_nomadic = no
@@ -646,9 +722,9 @@ eotheodguard =
     first_amount = 125
     second_type = 0
     second_amount = 125
-    culture = culture_eotheodculture_eotheod
+    culture = culture_eotheod
 	potential = {
-		culture = culture_eotheodculture_eotheod
+		culture = culture_eotheod
 		is_nomadic = no
 	}
     modifier = {
@@ -710,8 +786,8 @@ morgulguards =
     second_amount = 125
     culture = culture_orkish
 	potential = {
-		culture = culture_maiar
 		owner = { trait = evil_side }
+		culture = culture_umaiar
 		is_nomadic = no
 	}
     modifier = {
@@ -728,16 +804,16 @@ ologhaielite =
 {
     first_type = 4
     first_amount = 75
-    culture = culture_orkish
+    culture = culture_troll
 	potential = {
-		culture = culture_maiar
+		culture = culture_umaiar
 		owner = { trait = evil_side }
 		is_nomadic = no
 	}
     modifier = {
-        knights_offensive = 2.0
-        knights_defensive = 2.0
-        knights_morale = 0.6
+        knights_offensive = 3.0
+        knights_defensive = 3.0
+        knights_morale = 1.2
         
     }
 }
@@ -812,8 +888,8 @@ annuminasroyalguard =
 {
     first_type = 4
     first_amount = 25
-    culture = culture_arnorian
 	potential = {
+		has_landed_title = c_annuminas
 		OR = {
 			culture = culture_dunedain
 			culture = culture_arnorian
@@ -879,6 +955,7 @@ orcspikes =
 		OR = {
 			culture = culture_orkish
 			culture = culture_goblin
+			culture = culture_umaiar
 		}
 		is_nomadic = no
 	}
@@ -898,6 +975,7 @@ orcsarchers =
 		OR = {
 			culture = culture_orkish
 			culture = culture_goblin
+			culture = culture_umaiar
 		}
 		is_nomadic = no
 	}
@@ -918,6 +996,7 @@ wargriders =
 		OR = {
 			culture = culture_orkish
 			culture = culture_goblin
+			culture = culture_umaiar
 		}
 		is_nomadic = no
 	}
@@ -936,7 +1015,10 @@ urukpikes =
     first_amount = 150
     culture =  culture_urukhai
 	potential = {
-		culture = culture_urukhai
+		OR = {
+			culture = culture_urukhai
+			culture = culture_umaiar
+		}
 		is_nomadic = no
 	}
     modifier = {
@@ -952,7 +1034,10 @@ urukarchers =
     first_amount = 150
     culture =  culture_urukhai
 	potential = {
-		culture = culture_urukhai
+		OR = {
+			culture = culture_urukhai
+			culture = culture_umaiar
+		}
 		is_nomadic = no
 	}
     modifier = {

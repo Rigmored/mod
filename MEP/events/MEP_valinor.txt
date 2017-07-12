@@ -17,6 +17,13 @@ character_event = {
 		name = "EVTOPTAvalinor.1" # I'll sail to West!
 		character_event = { id = valinor.2 days = 20 }
 		set_character_flag = sailed_west
+		e_valinor = {
+			holder_scope = {
+				PREVPREV = {
+					move_character = PREV
+				}
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTBvalinor.1" # I'll live and die in Middle-Earth.
@@ -259,15 +266,15 @@ character_event = {
 ##  Aragorn died, and Arwen will soon died too ##
 character_event = {
 	id = valinor.12
-	title = "EVTvalinor.12"
-	desc = "EVTDESCvalinor.12"
-	picture = GFX_evt_grey_havens
+	# title = "EVTvalinor.12"
+	# desc = "EVTDESCvalinor.12"
+	# picture = GFX_evt_grey_havens
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAvalinor.12" # I'll die...
+		# name = "EVTOPTAvalinor.12" # I'll die...
 		remove_trait = elf
 	}
 }
@@ -291,9 +298,10 @@ character_event = {
 ## Beginning of the ringbearers departure events ##
 character_event = {
 	id = valinor.14
-	title = "EVTvalinor.14"
-	desc = "EVTDESCvalinor.14"
-	picture = GFX_evt_grey_havens
+	# title = "EVTvalinor.14"
+	# desc = "EVTDESCvalinor.14"
+	# picture = GFX_evt_grey_havens
+	hide_window = yes
 
 	trigger = {
 		has_global_flag = saurondefeated
@@ -307,10 +315,9 @@ character_event = {
 		days = 365
 	}
 
-	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAvalinor.14"
+		# name = "EVTOPTAvalinor.14"
 		set_character_flag = endthirdage
 		any_playable_ruler  = {
 			limit = {
@@ -325,5 +332,63 @@ character_event = {
 		ringbearer1 =	{	character_event = { id = valinor.1 } }
 		ringbearer2 =	{	character_event = { id = valinor.1 } }	
 		character_event = { id = valinor.1 }
+	}
+}
+
+character_event = {
+	id = valinor.20
+	# title = "Morgoth is Imprisoned"
+	# desc = "A reminder: Morgoth was imprisoned outside Arda at the end of the First Age."
+	# picture = "GFX_good"
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	immediate = {		
+		any_independent_ruler = {
+			limit = { 
+				has_character_flag = manwe_sulimo
+				NOT = { has_character_flag = morgoth_imprisoned }
+			
+			}
+			any_courtier = {
+				limit = { has_character_flag = morgoth_bauglir }
+				imprison = PREV
+			}
+			set_character_flag = morgoth_imprisoned
+		}
+	}
+
+	option = {
+		# name = "Indeed"
+	}
+}
+
+# meant to re-imprison Morgoth if Manwë banishes or frees him
+character_event = {
+	id = valinor.21
+	# title = "Morgoth is Imprisoned"
+	# desc = "A reminder: Morgoth was imprisoned outside Arda at the end of the First Age."
+	# picture = "GFX_good"
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	immediate = {	
+		if = {
+			limit = { has_character_flag = morgoth_bauglir }
+			e_valinor = {
+				holder_scope = {
+					PREVPREV = {
+						move_character = PREV
+						imprison = PREV
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		# name = "Indeed"
 	}
 }

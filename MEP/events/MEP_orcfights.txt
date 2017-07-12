@@ -358,6 +358,7 @@ character_event = {
 }
 
 ## The Other Orc is imprisoned after the duel ##
+# Called from the (no longer ) removed DUEL engine
 character_event = {
 	id = orcfights.5
 	desc = EVTDESCorcfights.5
@@ -380,7 +381,8 @@ character_event = {
 	}
 }
 
-## The Orc is informed that he go into jail ##
+# The Orc is informed that he go into jail ##
+# called from orfights.5
 character_event = {
 	id = orcfights.6
 	desc = EVTDESCorcfights.6
@@ -399,24 +401,25 @@ character_event = {
 ## Small event to let a new fight begins ##
 character_event = {
 	id = orcfights.7
-	desc = OK
-    picture = "GFX_war_at_north"
-	border = "GFX_event_normal_frame_war"
-		hide_window = yes
+	# desc = OK
+    # picture = "GFX_war_at_north"
+	# border = "GFX_event_normal_frame_war"
+	hide_window = yes
+	religion_group = religion_group_melkorx
 		
-		trigger = {
-			has_character_flag = orcfight1
-			age = 1
-		}
+	trigger = {
+		has_character_flag = orcfight1
+		age = 1
+	}
 	
-		mean_time_to_happen = {
-			days = 250
-		}	
+	mean_time_to_happen = {
+		days = 250
+	}	
 		
-		option={
-			name=OK
-			clr_character_flag = orcfight1
-		}
+	option={
+		# name=OK
+		clr_character_flag = orcfight1
+	}
 }
 
 ## The Orc refuse the duel - gain a trait ##

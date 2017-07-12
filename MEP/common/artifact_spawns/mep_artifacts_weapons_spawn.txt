@@ -1,0 +1,779 @@
+# daggers
+
+daggerwesternesse = {
+	max_amount = 10
+	spawn_date = 6800.1.1
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6800 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 50
+			culture_group = culture_group_numenorean
+			is_landed = yes
+			higher_tier_than = baron
+		}
+		# handling the hobbit dagger aquisition post wotr
+		additive_modifier = {
+			value = 100
+			character = 8041  # Merry
+			year = 11362
+		}
+		additive_modifier = {
+			value = 100
+			has_landed_title = d_master_buckland # Heir of Merry
+			year = 11428
+		}
+		additive_modifier = {
+			value = 100
+			character = 8028  # Pippin
+			year = 11362
+		}
+		additive_modifier = {
+			value = 100
+			has_landed_title = k_shire # Heir of Pippin
+			year = 11447
+		}
+		additive_modifier = {
+			value = 100
+			character = 8140  # Sam
+			year = 11362
+		}
+	}
+
+	artifacts = {
+		daggerwesternesse = {
+			value = 1
+		}
+	}
+}
+
+morgul_blade = {
+	max_amount = 9
+	spawn_date = 6742.1.1
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6742 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			trait = nazgul
+		}
+	}
+
+	artifacts = {
+		morgul_blade = {
+			value = 1
+		}
+	}
+}
+
+sting = {
+	max_amount = 1
+	spawn_date = 11284.1.1 # originally much older, but I don't know where else to put it.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 11284 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 8065 # Bilbo
+			NOT = { year = 11367 }
+		}
+		# Frodo had String for about a year, starting in 11361.3. However, the game events are stretched out, so it is best to ignore this
+		additive_modifier = {
+			value = 100
+			character = 8140 # Samwise
+			year = 11367
+		}
+	}
+
+	artifacts = {
+		sting = {
+			value = 1
+		}
+	}
+}
+#---------------------------------------------------------------------------------------------------
+# Specific Swords
+
+narsil_elendil = {  # Sword of Elendil
+	max_amount = 1
+	spawn_date = 4650.1.1 # Made by the Dwarf Telchar in the first age
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			year = 8343  # Elendil dies and Narsil is broken while battling Sauron
+		}
+	}
+
+	weight = {
+		value = 0
+		# I'll assume no game starts before Númenor exists
+		# first held by rulers of Númenor
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_numenor
+			}
+			NOT = { year = 5532 }
+		}
+		# then by the Lords of Andúnië
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = k_andunie
+			}
+			year = 5532
+			NOT = { year = 8212 }
+		}
+		# Then Elendil gets the sword
+		additive_modifier = {
+			value = 100
+			year = 8212
+			character = 12135 # Elendil
+		}
+	}
+
+	artifacts = {
+		narsil_elendil = { value = 1 }
+	}
+}
+
+# Sword of Aragorn, made after the start of Fellowship of the Ring in Rivendell from the broken shards of Narsil.
+anduril = {
+	max_amount = 1
+	spawn_date = 11362.1.1 # Made from the shards of Narsil in Rivendell, please note that would be during a game
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 11362 }  # the game ignores spawn_date!
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 2038 # Aragorn
+			NOT = { year = 11484 }
+		}
+		additive_modifier = {
+			value = 100
+			character = 2039 # Eldarion
+			year = 11484
+			NOT = { year = 11580}
+		}
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_reunited_kingdom
+			}
+			year = 11580
+		}
+	}
+
+	artifacts = {
+		anduril = { value = 1 }
+	}
+}
+
+glamdring = {
+	max_amount = 1
+	spawn_date = 11284.1.1 # originally much older, but I don't know where else to put it.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 11284 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 10033 # Gandalf
+		}
+	}
+
+	artifacts = {
+		glamdring = { value = 1 }
+	}
+}
+
+orcrist = {
+	max_amount = 1
+	spawn_date = 11284.1.1 # originally much older, but I don't know where else to put it.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { year = 11284 }
+				year = 11285  # when Thorin II dies, the sword is interred with him
+			}
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 4040 # Thorin II
+		}
+	}
+
+	artifacts = {
+		orcrist = { value = 1 }
+	}
+}
+
+# Theoden's 'ancient sword'
+herugrim = {
+	max_amount = 1
+	spawn_date = 10870.1.1 # No idea how old this sword is... But I'll assume it has been around for most of K Rohan
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 10870 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = k_rohan
+			}
+		}
+	}
+
+	artifacts = {
+		herugrim = { value = 1 }
+	}
+}
+
+# Eomer's sword, described in the localization as 'the sword of the house of Eofor'
+guthwine = {
+	max_amount = 1
+	spawn_date = 10950.1.1
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 10950 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			has_landed_title = c_eastfolde
+			NOT = { year = 11345 }
+		}
+		additive_modifier = {
+			value = 100
+			character = 27 # Eomer
+			year = 11345
+			NOT = { year = 11427 }
+		}
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = k_rohan
+			}
+			year = 11427
+		}
+	}
+
+	artifacts = {
+		guthwine = { value = 1 }
+	}
+}
+
+amroth_sword = {  # the Sword of Amroth
+	max_amount = 1
+	spawn_date = 4783.1.1 # I'll assume the sword is hereditary from the first age
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			year = 10325 # presumably lost when Amroth drowned after jumping in the ocean and swimming after a ship, the idiot.
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3107 # Amdír
+			NOT = { year = 8336 }
+		}
+		additive_modifier = {
+			value = 100
+			character = 3250 # Amroth
+			year = 8336
+		}
+	}
+
+	artifacts = {
+		amroth_sword = { value = 1 }
+	}
+}
+
+aranruth = {  # Sword of Thingol, later picked up by the Kings of Númenor
+	max_amount = 1
+	spawn_date = 2000.1.1 # Very old, presumably...
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			year = 8221  # lost in the downfall 
+		}
+	}
+
+	weight = {
+		value = 0
+		# I'll assume no game starts before Númenor exists
+		# Held by rulers of Númenor
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_numenor
+			}
+		}
+	}
+
+	artifacts = {
+		aranruth  = { value = 1 }
+	}
+}
+
+# Ringil, Sword of Fingolfin (does not spawn, could perhaps be generated by event)
+ringil = {
+	max_amount = 1
+	spawn_date = 3000.1.1 # made in Valinor!
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		himling_sword = { value = 1 }
+	}
+}
+
+# Dagmor, Sword of Beren (does not spawn, could perhaps be generated by event)
+dagmor = {
+	max_amount = 1
+	spawn_date = 4700.1.1 # ??
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		dagmor = { value = 1 }
+	}
+}
+
+# Anguirel, sword of Eöl, later stolen by Maeglin
+anguirel = {
+	max_amount = 1
+	spawn_date = 1485.1.1
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		anguirel = { value = 1 }
+	}
+}
+
+#-----------------------------------------------------------------------------------
+# 'Generic' Swords
+
+# Himling sword (does not spawn, uncovered by event)
+himling_sword = {
+	max_amount = 1
+	spawn_date = 4650.1.1
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		himling_sword = { value = 1 }
+	}
+}
+
+# ancient_elvish_sword was originally just raw material for crafting and was not in the game before I converted it to an artifact...
+ancient_elvish_sword = {
+	max_amount = 6
+	spawn_date = 4600.1.1 # 'ancient' for elves presumably means first age
+	
+	spawn_chance = {
+		value = 100
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 50
+			religion_group = religion_group_eldar
+			is_landed = yes
+			NOT = { culture_group = culture_group_moriquendi }
+			higher_tier_than = baron
+		}
+	}
+
+	artifacts = {
+		ancient_elvish_sword = { value = 1 }
+	}
+}
+
+# craft produced elvish swords
+elvish_sword_magic_martial = {
+	max_amount = 1
+	spawn_date = 4650.1.1
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		elvish_sword_magic_martial = { value = 1 }
+	}
+}
+elvish_sword_magic_combat = {
+	max_amount = 1
+	spawn_date = 4650.1.1
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		elvish_sword_magic_combat = { value = 1 }
+	}
+}
+elvish_sword_magic_exceptional = {
+	max_amount = 1
+	spawn_date = 4650.1.1
+	
+	spawn_chance = {
+		value = 100
+	}
+
+	weight = {
+	value = 0
+		additive_modifier = {
+			value = 50
+			religion_group = religion_group_eldar
+			is_landed = yes
+			culture_group = culture_group_amanyar
+			higher_tier_than = count
+		}
+	}
+
+	artifacts = {
+		elvish_sword_magic_exceptional = { value = 1 }
+	}
+}
+
+# elvish_sword was originally just raw material for crafting and was not in the game.
+# I don't know why there is a distinction between elvish and ancient elvish
+elvish_sword = {
+	max_amount = 12
+	spawn_date = 7000.1.1 # no idea how old these should be, except newer than the ancient ones.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 7000 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 50
+			religion_group = religion_group_eldar
+			is_landed = yes
+			age = 300
+		}
+	}
+
+	artifacts = {
+		elvish_sword = { value = 1 }
+	}
+}
+
+# dwarvish_sword was originally just produced by crafting, but I feel that some should have them already
+# Dwarf-allies, and Dwarves
+dwarvish_sword = {
+	max_amount = 10
+	spawn_date = 4900.1.1 # 'age??'
+	
+	spawn_chance = {
+		value = 100
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 60
+			culture = culture_barding
+			is_landed = yes
+			higher_tier_than = baron
+		}
+		additive_modifier = {
+			value = 60
+			culture = culture_dorwinrim
+			is_landed = yes
+			higher_tier_than = baron
+		}
+		additive_modifier = {
+			value = 30
+			religion_group = religion_group_khazad
+			is_landed = yes
+			age = 45
+		}
+	}
+
+	artifacts = {
+		dwarvish_sword = { value = 1 }
+	}
+}
+
+#-------------------------------------------------------------------------------
+# Other Weapons
+
+durins_axe = {  # Axe of Durin, made up for the game
+	max_amount = 1
+	spawn_date = 1500.1.1 # Very old, presumably...
+	
+	spawn_chance = {
+		value = 100
+	}
+
+	weight = {
+		value = 0
+		# I'll assume no game starts before Númenor exists
+		# Held by Longbeard line of Durin
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_durins_folk
+			}
+		}
+		additive_modifier = {
+			value = 100
+			e_durins_folk = {
+				has_holder = no
+			}
+			tier = king
+			trait = heir_of_durin
+		}
+		additive_modifier = {
+			value = 100
+			e_durins_folk = {
+				has_holder = no
+			}
+			NOT = {
+				any_playable_ruler = {
+					tier = king
+					trait = heir_of_durin
+				}
+			}
+			trait = heir_of_durin
+		}
+		# no fallback if the heir_of_durin does not exist or holds no title of count or above.
+	}
+
+	artifacts = {
+		durins_axe  = { value = 1 }
+	}
+}
+
+dramborleg = {  # Axe of Tuor, later picked up by the Kings of Númenor
+	max_amount = 1
+	spawn_date = 4800.1.1 # Old enough to be used by Tuor, at least
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			year = 8221  # lost in the downfall 
+		}
+	}
+
+	weight = {
+		value = 0
+		# I'll assume no game starts before Númenor exists
+		# Held by rulers of Númenor
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_numenor
+			}
+		}
+	}
+
+	artifacts = {
+		dramborleg  = { value = 1 }
+	}
+}
+
+aeglos = {  # The spear of Gil-Galad
+	max_amount = 1
+	spawn_date = 6342.1.1  # The age of Aeglos is unknown, so I decided to go with MERP, which states the spear was Dwarven made and given to Gil-Galad in SA 1440
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { year = 6342 }
+				year = 8343  # Gil-Galad dies and Aeglos is broken while battling Sauron
+			}
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3139
+		}
+	}
+
+	artifacts = {
+		aeglos = { value = 1 }
+	}
+}
+
+# erebor_spear was originally just produced by crafting, but I feel that some should have them already
+# Erebor Dwarf-allies, and Erebor Dwarves
+erebor_spear = {
+	max_amount = 10
+	spawn_date = 10350.1.1
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 10350 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 60
+			culture = culture_barding
+			is_landed = yes
+			higher_tier_than = baron
+		}
+		additive_modifier = {
+			value = 60
+			culture = culture_dorwinrim
+			is_landed = yes
+			higher_tier_than = baron
+		}
+		additive_modifier = {
+			value = 30
+			is_landed = yes
+			religion_group = religion_group_khazad
+			OR = {
+				culture = culture_longbeard
+				culture = culture_ironfist
+			}
+			age = 45
+		}
+	}
+
+	artifacts = {
+		dwarvish_sword = { value = 1 }
+	}
+}
+
+# The Bow of Beleg, buried with him in Tol Fuin (probably rotted away within a few hundred years)
+belthronding = {
+	max_amount = 1
+	spawn_date = 4600.1.1 # ??
+	
+	spawn_chance = {
+		value = 0
+	}
+
+	weight = {
+		value = 0
+	}
+
+	artifacts = {
+		belthronding = { value = 1 }
+	}
+}
+

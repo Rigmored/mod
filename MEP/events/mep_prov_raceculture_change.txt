@@ -1,0 +1,698 @@
+# This file and namespace is for gathering events related to change of province race or culture
+# (except for deliberate wilderness colonization)
+#
+# meppracechange.10 Spontanious Wilderness Settlement
+# meppracechange.11 Spontanious Race/Culture change : the old population left, new minimal population in.
+# meppracechange.12 Culture change to Arnorian Middlemen if ruler is Arnorian or Dúnedain
+# meppracechange.13 Culture change to Gondorian Middlemen if ruler is 'Men of Gondor'
+# meppracechange.14 Culture change to Umbarean if ruler is Black Numenorian
+
+
+
+namespace = meppracechange
+
+#----------------------------------------------------------------------------------------------
+# spontanious wilderness settlement
+province_event = {
+	id = meppracechange.10
+	title = EVTTITmeppracechange10
+	desc = EVTDESCmeppracechange10
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		# The right province...
+		mep_wilderness_province_trigger = yes
+		NOT = { mep_province_being_colonized_trigger = yes }
+		# owner stuff...
+		owner = {
+			top_liege = {
+				culture = PREV
+			}
+			NOT = { culture = ROOT }
+			# Cultures that should not spontaniously spread, ever
+			NOT = { mep_never_spread_culture = yes }
+		}
+		# settlement spreads from nearby provinces...
+		any_neighbor_province = {
+			has_owner = yes
+			NOT = { mep_low_pop_trigger = yes }
+			NOT = { mep_being_purged_trigger = yes }
+			ROOT = {
+				owner = {
+					culture = PREVPREV
+				}
+			}
+			owner = {
+				ROOT = {
+					owner = {
+						culture = PREVPREV
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 3600  # Should always be slower than colonization
+		# less fecund species should spread more slowly
+		modifier = {
+			factor = 2
+			OR = {
+				terrain = mountain
+				terrain = hills
+			}
+			owner = {
+				religion_group = religion_group_khazad
+			}
+		}
+		modifier = {
+			factor = 5
+			NOR = {
+				terrain = mountain
+				terrain = hills
+			}
+			owner = {
+				religion_group = religion_group_khazad
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				terrain = forest
+				terrain = woods
+			}
+			owner = {
+				religion_group = religion_group_eldar
+			}
+		}
+		modifier = {
+			factor = 6
+			NOR = {
+				terrain = forest
+				terrain = woods
+			}
+			owner = {
+				religion_group = religion_group_eldar
+			}
+		}
+		modifier = {
+			factor = 3
+			owner = {
+				culture_group = culture_group_numenorean
+			}
+		}
+		# poplevel encouragement
+		modifier = {
+			factor = 0.5
+			any_neighbor_province = {
+				mep_high_pop_trigger = yes
+				ROOT = {
+					owner = { culture = PREVPREV }
+				}
+				owner = {
+					ROOT = {
+						owner = { culture = PREVPREV }
+					}
+				}
+			}
+		}
+		# Modifiers that are just like the ones for provice culture change...
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { conquest_culture_trigger = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTAmeppracechange10
+		owner = {
+			ROOT = {
+				culture = PREV
+				religion = PREV
+			}
+		}
+	}
+}
+
+# Change of province population, like culture change, but can also change species. Very very rare.
+province_event = {
+	id = meppracechange.11
+	title = EVTTITmeppracechange11
+	desc = EVTDESCmeppracechange11
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		# The right province...
+		NOT = { mep_wilderness_province_trigger = yes }
+		NOT = { has_province_modifier = population_increasing }
+		NOT = { has_province_modifier = sending_colonists }
+		mep_low_pop_trigger = yes  # only level 1 or 2 pop...
+		# owner stuff...
+		owner = {
+			top_liege = {
+				culture = PREV
+			}
+			NOT = { culture = ROOT }
+			# Cultures that should not spontaniously spread, ever
+			NOT = { mep_never_spread_culture = yes }
+			NOT = { culture_group = culture_group_amanyar }
+		}
+		# settlement spreads from nearby provinces...
+		any_neighbor_province = {
+			has_owner = yes
+			NOT = { mep_low_pop_trigger = yes }
+			NOT = { mep_being_purged_trigger = yes }
+			ROOT = {
+				owner = {
+					culture = PREVPREV
+				}
+			}
+			owner = {
+				ROOT = {
+					owner = {
+						culture = PREVPREV
+					}
+				}
+			}
+		}
+		
+	}
+	
+	mean_time_to_happen = {
+		months = 24000  # Very low chance...
+		# less fecund species should spread more slowly
+		modifier = {
+			factor = 2
+			OR = {
+				terrain = mountain
+				terrain = hills
+			}
+			owner = {
+				religion_group = religion_group_khazad
+			}
+		}
+		modifier = {
+			factor = 5
+			NOR = {
+				terrain = mountain
+				terrain = hills
+			}
+			owner = {
+				religion_group = religion_group_khazad
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				terrain = forest
+				terrain = woods
+			}
+			owner = {
+				religion_group = religion_group_eldar
+			}
+		}
+		modifier = {
+			factor = 6
+			NOR = {
+				terrain = forest
+				terrain = woods
+			}
+			owner = {
+				religion_group = religion_group_eldar
+			}
+		}
+		modifier = {
+			factor = 3
+			owner = {
+				culture_group = culture_group_numenorean
+			}
+		}
+		# poplevel encouragement
+		modifier = {
+			factor = 0.5
+			any_neighbor_province = {
+				mep_high_pop_trigger = yes
+				ROOT = {
+					owner = { culture = PREVPREV }
+				}
+				owner = {
+					ROOT = {
+						owner = { culture = PREVPREV }
+					}
+				}
+			}
+		}
+		# Modifiers that are just like the ones for provice culture change...
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { conquest_culture_trigger = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTAmeppracechange11
+		owner = {
+			ROOT = {
+				culture = PREV
+				religion = PREV
+			}
+		}
+		mep_popmod_remove_effect = yes
+	}
+}
+
+# Changing to culture_arnorian_middlemen if the ruler is culture_arnorian or culture_dunedain
+province_event = {
+	id = meppracechange.12
+	title = EVTTITmeppracechange12
+	desc = EVTDESCmeppracechange12
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		NOT = {
+			has_game_rule = { name = culture_conversion  value = off }
+		}
+		# owner stuff...
+		owner = {
+			OR = {
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+			top_liege = {
+				OR = {
+					culture = culture_arnorian
+					culture = culture_arnorian_middlemen
+					culture = culture_dunedain
+					culture = culture_gondorian
+				}
+			}
+		}
+		# province culture must be human, but not Númenórean or Arnorian Middlemen
+		mep_has_nondunedain_human_culture = yes
+		NOT = { culture = culture_arnorian_middlemen }
+		# culture influenced by neighboring province...
+		any_neighbor_province = {
+			has_owner = yes
+			NOT = { mep_low_pop_trigger = yes }
+			NOT = { mep_being_purged_trigger = yes }
+			OR = {
+				culture = culture_arnorian_middlemen
+				culture = culture_arnorian
+				culture = culture_dunedain
+			}
+			owner = {
+				OR = {
+					culture = culture_arnorian_middlemen
+					culture = culture_arnorian
+					culture = culture_dunedain
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 2400  # Culture shifting should be slower in general, originally months = 1200
+		# poplevel encouragement
+		modifier = {
+			factor = 0.5
+			any_neighbor_province = {
+				mep_high_pop_trigger = yes
+				NOT = { mep_being_purged_trigger = yes }
+				OR = {
+					culture = culture_arnorian_middlemen
+					culture = culture_arnorian
+					culture = culture_dunedain
+				}
+				owner = {
+					OR = {
+						culture = culture_arnorian_middlemen
+						culture = culture_arnorian
+						culture = culture_dunedain
+					}
+				}
+			}
+		}
+		# poplevel discouragement
+		modifier = {
+			factor = 2
+			mep_high_pop_trigger = yes
+		}
+		# The vanilla modifiers follow
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { conquest_culture_trigger = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTAmeppracechange12
+		owner = {
+			ROOT = {
+				culture = culture_arnorian_middlemen
+				religion = PREV
+			}
+		}
+	}
+}
+
+
+# Changing to culture_gondorian_middlemen if the ruler is culture_gondorian
+province_event = {
+	id = meppracechange.13
+	title = EVTTITmeppracechange13
+	desc = EVTDESCmeppracechange13
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		NOT = {
+			has_game_rule = { name = culture_conversion  value = off }
+		}
+		# owner stuff...
+		owner = {
+			culture = culture_gondorian
+			top_liege = {
+				OR = {
+					culture = culture_arnorian
+					culture = culture_gondorian_middlemen
+					culture = culture_dunedain
+					culture = culture_gondorian
+				}
+			}
+		}
+		# province culture must be human, but not Númenórean or Gondorian Middlemen
+		mep_has_nondunedain_human_culture = yes
+		NOT = { culture = culture_gondorian_middlemen }
+		# culture influenced by neighboring province...
+		any_neighbor_province = {
+			has_owner = yes
+			NOT = { mep_low_pop_trigger = yes }
+			NOT = { mep_being_purged_trigger = yes }
+			OR = {
+				culture = culture_gondorian_middlemen
+				culture = culture_gondorian
+			}
+			owner = {
+				OR = {
+					culture = culture_gondorian_middlemen
+					culture = culture_gondorian
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 2400  # Culture shifting should be slower in general, originally months = 1200
+		# poplevel encouragement
+		modifier = {
+			factor = 0.5
+			any_neighbor_province = {
+				mep_high_pop_trigger = yes
+				NOT = { mep_being_purged_trigger = yes }
+				OR = {
+					culture = culture_gondorian_middlemen
+					culture = culture_gondorian
+				}
+				owner = {
+					OR = {
+						culture = culture_gondorian_middlemen
+						culture = culture_gondorian
+					}
+				}
+			}
+		}
+		# poplevel discouragement
+		modifier = {
+			factor = 2
+			mep_high_pop_trigger = yes
+		}
+		# The vanilla modifiers follow
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { conquest_culture_trigger = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTAmeppracechange13
+		owner = {
+			ROOT = {
+				culture = culture_gondorian_middlemen
+				religion = PREV
+			}
+		}
+	}
+}
+
+
+# Changing to culture_umbareans if the ruler is culture_adunaic or culture_black_numenorean
+province_event = {
+	id = meppracechange.14
+	title = EVTTITmeppracechange14
+	desc = EVTDESCmeppracechange14
+	picture = GFX_evt_stone_church
+	
+	trigger = {
+		NOT = {
+			has_game_rule = { name = culture_conversion  value = off }
+		}
+		# owner stuff...
+		owner = {
+			OR = {
+				culture = culture_adunaic
+				culture = culture_black_numenorean
+			}
+			top_liege = {
+				OR = {
+					culture = culture_black_numenorean
+					culture = culture_umbareans
+					culture = culture_adunaic
+				}
+			}
+		}
+		# province culture must be human, but not Númenórean or Umbarean
+		mep_has_nondunedain_human_culture = yes
+		NOT = { culture = culture_umbareans }
+		# culture influenced by neighboring province...
+		any_neighbor_province = {
+			has_owner = yes
+			NOT = { mep_low_pop_trigger = yes }
+			NOT = { mep_being_purged_trigger = yes }
+			OR = {
+				culture = culture_umbareans
+				culture = culture_black_numenorean
+				culture = culture_adunaic
+			}
+			owner = {
+				OR = {
+					culture = culture_umbareans
+					culture = culture_black_numenorean
+					culture = culture_adunaic
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 2400  # Culture shifting should be slower in general, originally months = 1200
+		# poplevel encouragement
+		modifier = {
+			factor = 0.5
+			any_neighbor_province = {
+				mep_high_pop_trigger = yes
+				NOT = { mep_being_purged_trigger = yes }
+				OR = {
+					culture = culture_umbareans
+					culture = culture_black_numenorean
+					culture = culture_adunaic
+				}
+				owner = {
+					OR = {
+						culture = culture_umbareans
+						culture = culture_black_numenorean
+						culture = culture_adunaic
+					}
+				}
+			}
+		}
+		# poplevel discouragement
+		modifier = {
+			factor = 2
+			mep_high_pop_trigger = yes
+		}
+		# The vanilla modifiers follow
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 2 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 3 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 4 } }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { NOT = { stewardship = 5 } }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 9 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 13 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { stewardship = 15 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { conquest_culture_trigger = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTAmeppracechange14
+		owner = {
+			ROOT = {
+				culture = culture_umbareans
+				religion = PREV
+			}
+		}
+	}
+}

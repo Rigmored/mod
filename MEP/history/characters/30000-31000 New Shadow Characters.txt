@@ -311,7 +311,7 @@
 		birth=yes
 	}
 	11449.1.1={
-		add_friend=30015
+		effect = { add_friend=30015 }
 	}
 	11510.2.10={
 		death=yes
@@ -336,7 +336,7 @@
 		birth=yes
 	}
 	11449.1.1={
-		add_friend=30015
+		effect = { add_friend=30015 }
 	}
 	11500.1.10={
 		death=yes
@@ -1334,7 +1334,7 @@
 	religion="religion_southron"
 	culture="culture_haradrim"
 	add_trait=mumakil_raiser
-	father=30072
+	father=30071
 	mother=30074
 	add_trait="mastermind_theologian"
 	add_trait="quick"
@@ -1357,7 +1357,7 @@
 	religion="religion_southron"
 	culture="culture_haradrim"
 	add_trait=mumakil_rider
-	father=30072
+	father=30071
 	mother=30074
 	add_trait="skilled_tactician"
 	add_trait="brave"
@@ -1576,7 +1576,7 @@
 		birth=yes
 	}
 	11447.2.1={
-		add_friend=30085
+		effect = { add_friend=30085 }
 	}
 	11495.1.1={
 		death=yes
@@ -1602,7 +1602,7 @@
 		birth=yes
 	}
 	11447.2.1={
-		add_friend=30084
+		effect = { add_friend=30084 }
 	}
 	11495.1.1={
 		death=yes
@@ -3727,5 +3727,48 @@
 	}
 	11514.1.1={
 		death=yes
+	}
+}
+
+# DUNLAND (to prevent Dunland from being part of Dorwinion)
+30700 = {
+	name="Dúnchad"
+	dynasty=7007
+	religion="religion_haldadian"
+	culture="culture_dunlending"
+	father=7327
+	11387.1.1={
+			birth="11387.1.1"
+	}	
+	11449.1.1={
+			death="11449.1.1"
+	}
+}
+
+30701 = {
+	name="Bran"
+	dynasty=7007
+	religion="religion_haldadian"
+	culture="culture_dunlending"
+	father=30700
+	11406.1.1={
+			birth="11406.1.1"
+	}	
+	11483.1.1={
+			death="11483.1.1"
+	}
+}
+
+30702 = {
+	name="Ólchobar"
+	dynasty=7007
+	religion="religion_haldadian"
+	culture="culture_dunlending"
+	father=30701
+	11427.1.1={
+			birth="11427.1.1"
+	}	
+	11488.1.1={
+			death="11488.1.1"
 	}
 }

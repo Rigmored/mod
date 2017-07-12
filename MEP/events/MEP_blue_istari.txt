@@ -31,6 +31,11 @@ narrative_event = {
 		NOT = { culture_group = culture_group_melkor }
 		NOT = { culture_group = culture_group_eru }
 		NOT = { culture_group = culture_group_onodrim }
+		event_target:mep_chartarget_pallando = {
+			NOT = { trait = on_fellowshipquest }
+			NOT = { trait = sailed_west }
+			prisoner = no
+		}
 	}
 	
 	is_triggered_only = yes
@@ -89,15 +94,8 @@ narrative_event = {
 				trait = perceptive
 			}			
 		}
-		any_playable_ruler = {
-			any_courtier = {
-				limit = {
-					has_character_flag = pallando
-					age = 1
-					prisoner = no
-				}
-				move_character = ROOT
-			}
+		event_target:mep_chartarget_pallando = {
+			move_character = ROOT
 		}
 		set_character_flag = blueistariatcourt
 		set_global_flag = pallandofoundacourt

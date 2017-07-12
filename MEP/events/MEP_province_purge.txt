@@ -1,157 +1,601 @@
+# JamesFox (2017/04/27) changes:
+# - made purging get rid of other population/colonization modifiers
+# - altered who purge what a bit
+# - commented out purge.2 and purge.5 (which are not currenty used)
+
 namespace = purge
 
 #First for the goodies, purging the baddies
 character_event = {
 	id = purge.0
+	title = purge0title
 	desc = purge0desc #There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...
 	picture = GFX_abandoned_lands
+	only_playable = yes
+	only_independent = yes
 	
 	is_triggered_only = yes #annual pulse
 	
 	trigger = {
 		independent = yes
-		age = 1
-		NOT = { has_character_flag = very_tolerant_of_evil } 
-		OR = {
-			religion_group = religion_group_eruhini
-			religion_group = religion_group_enyd
-			religion_group = religion_group_khazad
-			religion_group = religion_group_eldar
-			religion_group = religion_group_periannath
-			religion_group = religion_group_edain
-		}
+		mep_will_purge_evil = yes
 		any_realm_province = {
-			religion_group = religion_group_melkor
-			NOT = { has_province_modifier = being_purged }
+			culture_group = culture_group_melkor
+			NOT = { has_province_modifier = being_purged_ofevil }
+			# because otherwise just holding a single barony is enough...
+			holder_scope = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+				# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
+				# like some sort of 'good orc'
+				OR = {
+					NOT = { mep_evil_religion = yes }
+					AND = {
+						mep_evil_religion = yes
+						NOT = { trait = good_side }
+					}
+				}
+			}
 		}
 	}
 	
 	option = {
 		name = purge0A #Yes, send them at once!
-		ROOT = { character_event = { id = purge.1 days = 3650 } }
+		set_character_flag = purge_in_progress
+
 		any_realm_province = {
 			limit = {
-				religion_group = religion_group_melkor
-				NOT = { has_province_modifier = being_purged }
+				OR = {
+					religion_group = religion_group_melkorx
+					religion_group = religion_group_ungoliant
 				}
-			add_province_modifier = { name = being_purged duration = 3650 }
+				# because otherwise just holding a single barony is enough...
+				holder_scope = {
+					OR = {
+						character = ROOT
+						top_liege = { character = ROOT }
+					}
+					# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
+					# like some sort of 'good orc'
+					OR = {
+						NOT = { mep_evil_religion = yes }
+						AND = {
+							mep_evil_religion = yes
+							NOT = { trait = good_side }
+						}
+					}
+				}
+				NOT = { has_province_modifier = being_purged_ofevil }
+			}
+			hidden_tooltip = {
+				remove_province_modifier = population_increasing
+				mep_stop_colonisation_effect = yes
+				set_variable = { which = mep_provincepurge_special   value = 0 }
+			}
+			add_province_modifier = { name = being_purged_ofevil duration = 10950 }
+			hidden_tooltip = {
+				set_province_flag = mep_purge_delay
+			}
+			
 		}
 	}
 	
 }
-	
+
+# Annual event to complete the purging of evil
 character_event = {
 	id = purge.1
+	title = purge1title
 	desc = purge1desc #Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
 	picture = GFX_abandoned_lands	
+	only_playable = yes
+	only_independent = yes
 	
-	is_triggered_only = yes
+	is_triggered_only = yes  # annual pulse
+	
+	trigger = {  # extra requirements
+		independent = yes
+		any_realm_province = {
+			culture_group = culture_group_melkor
+			has_province_modifier = being_purged_ofevil
+			NOT = { had_province_flag = { flag = mep_purge_delay days = 3616 } }
+			# If the province is occupied, it prevents the purge from completing
+			county = { is_occupied = no }
+		}
+		mep_will_purge_evil = yes
+	}
 	
 	option = {
-		name = OK
+		name = purge1opt
 		any_realm_province = {
 			limit = {
-				AND = {
-					religion_group = religion_group_melkor
-					has_province_modifier = being_purged
+				culture_group = culture_group_melkor
+				has_province_modifier = being_purged_ofevil
+				had_province_flag = { flag = mep_purge_delay days = 3616 }
+				# If the province is occupied, it prevents the purge form completing
+				county = { is_occupied = no }
+			}
+			# special case #1 for Dwarves purging special provinces
+			if = {
+				limit = {
+					is_variable_equal = { which = mep_provincepurge_special  value = 1 }
+				}
+				culture = culture_longbeard
+				religion = religion_mahal
+				hidden_tooltip = {
+					mep_human_popmod_remove_effect = yes
+					add_province_modifier = { name = two_population_dwarves duration = -1 }
+					set_variable = { which = mep_provincepurge_special  value = 0 }
+					province_event = { id = dwarfconq.26 days = 1 }
 				}
 			}
-			culture = culture_wilderness
-			religion = religion_wilderness
+			# otherwise, the province becomes (occupied) wilderness
+			if = {
+				limit = {
+					NOT = { is_variable_equal = { which = mep_provincepurge_special  value = 1 } }
+				}
+				mep_human_popmod_remove_effect = yes				
+				if = {
+					limit = { terrain = mountain }
+					culture = culture_mountains
+				}
+				if = {
+					limit = { NOT = {terrain = mountain } }
+					culture = culture_wilderness
+				}
+				religion = religion_wilderness
+			}
+			# getting rid of certain flags
+			hidden_tooltip = {
+				remove_province_modifier = being_purged_ofevil
+				remove_province_modifier = sending_colonists
+				clr_province_flag = mep_purge_delay
+			}
 		}
 	}
 	
 }
-	
 	
 #Now for the baddies
 character_event = {
 	id = purge.3
+	title = purge3title
 	desc = purge3desc #There are enemies living in your demesne who will never submit to you. It's time to send in the troops and get rid of them once and for all.
 	picture = GFX_abandoned_lands
+	only_playable = yes
+	only_independent = yes
 	
 	is_triggered_only = yes #annual pulse
 	
 	trigger = {
-		independent = yes
-		age = 1
-		NOT = { has_character_flag = very_tolerant_of_good } 
-		religion_group = religion_group_melkor
-		OR = {
-			any_realm_province = { 	religion_group = religion_group_edain
-									NOT = {has_province_modifier = being_purged}
-									}
-			any_realm_province = { 	religion_group = religion_group_enyd
-									NOT = {has_province_modifier = being_purged}
-									}
-			any_realm_province = { 	religion_group = religion_group_khazad
-									NOT = {has_province_modifier = being_purged}			
-									}
-			any_realm_province = { 	religion_group = religion_group_eldar
-									NOT = {has_province_modifier = being_purged}
-									}
-			any_realm_province = { 	religion_group = religion_group_periannath
-									NOT = {has_province_modifier = being_purged}
-									}
-			any_realm_province = { 	religion_group = religion_group_eruhini
-									NOT = {has_province_modifier = being_purged}
-									}
+		mep_will_purge_good = yes
+		NOT = { mep_is_evil_overlord = yes }
+	
+		any_realm_province = {
+			# because otherwise just holding a single barony is enough...
+			holder_scope = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+			}
+			OR = {
+				mep_good_side_province = yes
+				religion_group = religion_group_periannath
+				religion = religion_haldadian
+				religion = religion_ishmalogim
+				religion = religion_lossoth
+			}
+			NOT = { has_province_modifier = being_purged_ofgood }
 		}
 	}
 	
 	option = {
 		name = purge0A #Yes, send them at once!
-		ROOT = { character_event = { id = purge.4 days = 3650 } }
+
 		any_realm_province = {
 			limit = {
-				NOT = {has_province_modifier = being_purged}
 				OR = {
-					religion_group = religion_group_edain 
-					religion_group = religion_group_enyd
-					religion_group = religion_group_khazad
-					religion_group = religion_group_eldar
+					mep_good_side_province = yes
 					religion_group = religion_group_periannath
-					religion_group = religion_group_eruhini
+					religion = religion_haldadian
+					religion = religion_ishmalogim
+					religion = religion_lossoth
+				}
+				# because otherwise just holding a single barony is enough...
+				holder_scope = {
+					OR = {
+						character = ROOT
+						top_liege = { character = ROOT }
+					}
+				}
+				NOT = { has_province_modifier = being_purged_ofgood }
+			}
+			hidden_tooltip = {
+				remove_province_modifier = population_increasing
+				mep_stop_colonisation_effect = yes
+				set_province_flag = mep_purge_delay
+			}
+			add_province_modifier = { name = being_purged_ofgood duration = 10950 }
+			hidden_tooltip = {
+				set_variable = { which = mepvar_evilpurge_culture value =  1 } # stands for orc culture, which is the default
+				ROOT = {
+					trigger_switch = {
+						on_trigger = culture
+						culture_half_orc = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  2 } } }
+						culture_urukhai  = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  3 } } }
+						culture_goblin   = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  4 } } }
+						culture_wargs    = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  5 } } }
+						culture_troll    = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  6 } } }
+						culture_spider   = { PREV = { set_variable = { which = mepvar_evilpurge_culture value =  7 } } }
+					}
 				}
 			}
-			add_province_modifier = { name = being_purged duration = 3650 }
 		}
 	}
 	
 }
-	
+
+# Annual event to complete the purging of good
 character_event = {
 	id = purge.4
+	title = purge4title
 	desc = purge4desc #Your land has been purged of enemies, and now orcs are swarming in to settle the abandoned places.
 	picture = GFX_abandoned_lands	
+	only_playable = yes
+	only_independent = yes
 	
-	is_triggered_only = yes
+	is_triggered_only = yes  # annual event pulse
+	
+	trigger = {  # extra requirements
+		independent = yes
+		any_realm_province = {
+			OR = {
+				mep_good_side_province = yes
+				religion_group = religion_group_periannath
+				religion = religion_haldadian
+				religion = religion_ishmalogim
+				religion = religion_lossoth
+			}
+			has_province_modifier = being_purged_ofgood
+			had_province_flag = { flag = mep_purge_delay days = 3616 }
+			# If the province is occupied, it prevents the purge from completing
+			county = { is_occupied = no }
+			# also, evil overlord purging...
+			NOT = { check_variable = { which = mepvar_evilpurge_culture value = 8 } }
+		}
+		mep_will_purge_good = yes
+	}
 	
 	option = {
 		name = OK
 		any_realm_province = {
 			limit = {
-				AND = {
-					has_province_modifier = being_purged
-				}
+				has_province_modifier = being_purged_ofgood
+				had_province_flag = { flag = mep_purge_delay days = 3616 }
 				OR = {
-					religion_group = religion_group_eruhini
-					religion_group = religion_group_enyd
-					religion_group = religion_group_khazad
-					religion_group = religion_group_eldar
+					mep_good_side_province = yes
 					religion_group = religion_group_periannath
-					AND = { 
-						religion_group = religion_group_edain 
-						NOT = { culture = culture_nurnim }
-						NOT = { culture = culture_hillmen }
-						
-					}
+					religion = religion_haldadian
+					religion = religion_ishmalogim
+					religion = religion_lossoth
 				}
+				# If the province is occupied, it prevents the purge form completing
+				county = { is_occupied = no }
 			}
-			culture = culture_orkish
+			hidden_tooltip = {
+				mep_popmod_remove_effect = yes
+			}
 			religion = religion_orkish
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 1 } }
+				culture = culture_orkish
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 2 } }
+				culture = culture_half_orc
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 3 } }
+				culture = culture_urukhai
+				religion = religion_uruk
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 4 } }
+				culture = culture_goblin
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 5 } }
+				culture = culture_wargs
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 6 } }
+				culture = culture_troll
+				religion = religion_olog
+			}
+			if = {
+				limit = { is_variable_equal = { which = mepvar_evilpurge_culture value = 7 } }
+				culture = culture_spider
+				religion = religion_spider
+			}
+			hidden_tooltip = {
+				remove_province_modifier = sending_colonists
+				remove_province_modifier = being_purged_ofgood
+				clr_province_flag = mep_purge_delay
+			}
 		}
 	}
 	
 }
 	
+# Evil overlord purging (purges less than Orcs, since some kinds of men could be used)
+character_event = {
+	id = purge.6
+	title = purge6title
+	desc = purge6desc #There are enemies living in your demesne who will never submit to you. It's time to send in the troops and get rid of them once and for all.
+	picture = GFX_abandoned_lands
+	only_playable = yes
+	only_independent = yes
+	
+	is_triggered_only = yes #annual pulse
+	
+	trigger = {
+		NOT = { has_character_flag = very_tolerant_of_good }
+		mep_is_evil_overlord = yes
+	
+		any_realm_province = {
+			# because otherwise just holding a single barony is enough...
+			holder_scope = {
+				OR = {
+					character = ROOT
+					top_liege = { character = ROOT }
+				}
+			}
+			mep_good_side_province = yes
+			NOT = { religion = religion_edain }
+			NOT = { religion = religion_rhovanion }
+			NOR = {
+				has_province_modifier = being_purged_ofgoodeo
+				has_province_modifier = being_purged_ofgood
+			}
+		}
+	}
+	
+	option = {
+		name = OPTpurge6A #Yes, send them at once!
+
+		any_realm_province = {
+			limit = {
+				mep_good_side_province = yes
+				NOT = { religion = religion_edain }
+				NOT = { religion = religion_rhovanion }
+				# because otherwise just holding a single barony is enough...
+				holder_scope = {
+					OR = {
+						character = ROOT
+						top_liege = { character = ROOT }
+					}
+				}
+				NOR = {
+					has_province_modifier = being_purged_ofgoodeo
+					has_province_modifier = being_purged_ofgood
+				}
+			}
+			hidden_tooltip = {
+				remove_province_modifier = population_increasing
+				mep_stop_colonisation_effect = yes
+				set_province_flag = mep_purge_delay
+			}
+			add_province_modifier = { name = being_purged_ofgoodeo duration = 10950 }
+			set_variable = { which = mepvar_evilpurge_culture value =  1 } # stands for orc culture, which is the default
+		}
+	}
+}
+
+# Annual event to complete the purging of good (evil overlord version)
+character_event = {
+	id = purge.7
+	title = purge7title
+	desc = purge7desc
+
+	picture = GFX_abandoned_lands	
+	only_playable = yes
+	only_independent = yes
+	
+	is_triggered_only = yes  # annual event pulse
+	
+	trigger = {  # extra requirements
+		independent = yes
+		mep_is_evil_overlord = yes
+		any_realm_province = {
+			mep_good_side_province = yes
+			has_province_modifier = being_purged_ofgoodeo
+			had_province_flag = { flag = mep_purge_delay days = 3616 }
+			# If the province is occupied, it prevents the purge from completing
+			county = { is_occupied = no }
+			# orcs will replace the old population
+			NOT = { check_variable = { which = mepvar_evilpurge_culture value = 2 } }
+		}
+	}
+	
+	option = {
+		name = OK
+		any_realm_province = {
+			limit = {
+				has_province_modifier = being_purged_ofgoodeo
+				had_province_flag = { flag = mep_purge_delay days = 3616 }
+				is_variable_equal = { which = mepvar_evilpurge_culture value = 8 }
+				mep_good_side_province = yes
+				# If the province is occupied, it prevents the purge form completing
+				county = { is_occupied = no }
+				NOT = { check_variable = { which = mepvar_evilpurge_culture value = 2 } }
+			}
+			hidden_tooltip = {
+				mep_popmod_remove_effect = yes
+			}
+			religion = religion_orkish
+			culture = culture_orkish
+			hidden_tooltip = {
+				remove_province_modifier = sending_colonists
+				remove_province_modifier = being_purged_ofgoodeo
+				clr_province_flag = mep_purge_delay
+			}
+		}
+	}
+	
+}
+
+# Meant to be called from 'on_new_holder' to kill purging when province changes hands - selectivly
+character_event = {
+	id = purge.10
+	only_playable = yes
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	# FROM is the title. The associated province (if count level), must be checked
+	trigger = {
+		FROM = {
+			real_tier = count
+			location  = {
+				mep_being_purged_trigger = yes
+			}
+		}
+	}
+	
+	# Option 1 : Evil province and new ruler or overlord is evil. ROOT is the new holder
+	option = {
+		trigger = {
+			FROM = {
+				location = { culture_group = culture_group_melkor }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					OR = {
+						culture_group = culture_group_melkor
+						culture = culture_umaiar
+						trait = evil_side
+						any_suzerain = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
+						}
+						any_liege = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
+						}
+					}
+				}
+			}
+			FROM = {
+				location = {
+					remove_province_modifier = being_purged_ofevil
+					clr_province_flag = mep_purge_delay
+					# just in case..
+					remove_province_modifier = being_purged_ofgood
+					remove_province_modifier = being_purged_ofgoodeo
+				}	
+			}
+		}
+	}
+	
+	# Option 2 : Good province and new ruler or overlord is not evil. ROOT is the new holder
+	option = {
+		trigger = {
+			FROM = {
+				location = { NOT = { culture_group = culture_group_melkor } }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					NOR = {
+						culture_group = culture_group_melkor
+						culture = culture_umaiar
+						trait = evil_side
+						any_suzerain = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
+						}
+						any_liege = {  # My boss wants this stopped
+							OR = {
+								culture_group = culture_group_melkor
+								culture = culture_umaiar
+								trait = evil_side
+							}
+						}
+					}
+				}
+			}
+			FROM = {
+				location = {
+					remove_province_modifier = being_purged_ofgood
+					remove_province_modifier = being_purged_ofgoodeo
+					clr_province_flag = mep_purge_delay
+					# just in case..
+					remove_province_modifier = being_purged_ofevil
+				}
+			}
+		}
+	}
+	
+}
+
+# intermittent province event, to remove purging in case the province culture shifts
+province_event = {
+	id = purge.11
+	hide_window = yes
+	
+	trigger = {
+		OR = {
+			AND = {
+				has_province_modifier = being_purged_ofevil
+				NOT = { mep_evil_religion = yes }
+			}
+			AND = {
+				mep_evil_religion = yes
+				OR = {
+					has_province_modifier = being_purged_ofgood
+					has_province_modifier = being_purged_ofgoodeo
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 180 }
+	
+	option = {
+		trigger = {
+			has_province_modifier = being_purged_ofevil
+			NOT = { mep_evil_religion = yes }
+		}
+		remove_province_modifier = being_purged_ofevil
+		clr_province_flag = mep_purge_delay
+	}
+	
+	option = {
+		trigger = {
+			mep_evil_religion = yes
+			OR = {
+				has_province_modifier = being_purged_ofgood
+				has_province_modifier = being_purged_ofgoodeo
+			}
+		}
+		remove_province_modifier = being_purged_ofgood
+		remove_province_modifier = being_purged_ofgoodeo
+		clr_province_flag = mep_purge_delay
+	}
+	
+}

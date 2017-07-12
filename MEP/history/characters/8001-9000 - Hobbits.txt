@@ -203,7 +203,7 @@
 		
 	}
 	11284.1.1={
-		add_trait = sting
+		# add_trait = sting
 		add_trait = brave
 		add_trait = ring
 		add_trait = mithril
@@ -237,7 +237,7 @@
 		employer="3003"
 	}
 	11361.3.1={
-	    remove_trait = sting
+	    # remove_trait = sting
 		remove_trait = mithril
 	}
 	11362.9.25 ={
@@ -504,21 +504,18 @@
 		add_trait = wounded
 	} #Nazgul Assault
 	11361.3.1 ={
-		add_trait = sting
+		# add_trait = sting
 		add_trait = mithril
 	} #Bilbo gives Sting and his Mithril Shirt to Frodo
 	11362.9.25 ={
 		remove_trait = ring
 		add_trait = ringbearer1
-		remove_trait = sting
+		# remove_trait = sting
 	} #Ring destruction
 	11364.9.29={
 		add_trait = sailed_west
 		employer="10001"
 	} #Leaves for Valinor
-	11425.1.1={
-		add_trait = sting
-	}
 }
 8080 = {
 	name="Pansy" ##Married to Fastolph Bolger
@@ -1576,18 +1573,22 @@
 	}
 	11344.1.1 ={
 		effect = {
-		add_friend=8079
-		add_friend=8028
-		add_friend=8140
-		add_friend=10033
+			add_friend=8079
+			add_friend=8028
+			add_friend=8140
+			add_friend=10033
 		}
 	}
-		11362.1.1={
+	11361.2.1 ={
+		effect = {
+			add_artifact = daggerwesternesse
+			new_artifact = { set_creation_date = 1.1.1 }
+		}
+	}
+	11362.1.1={
 		employer="8079"
 	}
-	11361.2.1 ={
-		add_trait = daggerwesternesse
-	}
+
 	11362.3.10={
 		remove_trait = misguided_warrior
 		add_trait = tough_soldier
@@ -2043,17 +2044,20 @@
 		employer=8079
 	}
 	11361.2.1 ={
-		add_trait = daggerwesternesse
+		effect = {
+			add_artifact = daggerwesternesse
+			new_artifact = { set_creation_date = 1.1.1 }
+		}
 	}
 	11362.3.25 ={
-		add_trait = sting
+		# add_trait = sting
 		add_trait = ringbearer2
 		add_spouse = 8158
 	} #Ring destruction
 	
 	11425.1.1={
 	    add_trait = sailed_west
-		remove_trait = sting
+		# remove_trait = sting
 		employer="10001"
 	} #Sailed to West
 	
@@ -3124,11 +3128,15 @@
 	culture="culture_hobbit"
 	father =8023
 	add_trait = hobbit
+	add_trait = strong # try to keep him alive until the ring-war is over)
 	11276.1.1={
 		birth="11276.1.1"
 	}
 	11318.1.1={
 		add_spouse = 8266
+		effect = {
+			add_friend = 8177 # Will Whitfoot (this is to prevent the usual shire civil war)
+		}
 	}
 	11377.1.1={
 		death="11377.1.1"
@@ -3208,11 +3216,14 @@
 		add_friend=10033
 		}
 	}
-			11362.1.1={
-		employer="8079"
-	}
 	11361.2.1 ={
-		add_trait = daggerwesternesse
+		effect = {
+			add_artifact = daggerwesternesse
+			new_artifact = { set_creation_date = 1.1.1 }
+		}
+	}
+	11362.1.1={
+		employer="8079"
 	}
 	11362.3.10={
 		remove_trait = misguided_warrior
@@ -3310,6 +3321,11 @@
 	give_nickname = nick_flourdumpling
 	11280.1.1={
 		birth="11280.1.1"
+	}
+	11318.1.1={
+		effect = {
+			add_friend = 8024 # Thain Paladin II (this is to prevent the usual shire civil war)
+		}
 	}
 	11386.1.1={
 		death="11386.1.1"

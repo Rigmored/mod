@@ -3025,13 +3025,17 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTApalantir.59" # Great !
-		spawn_unit = {
-			province = ROOT
-			disband_on_peace = yes
-			troops = {
-				heavy_infantry = { 200 200 }
-				archers = { 300 300 }
-				heavy_cavalry = { 100 100 }				
+		capital_scope = {
+			ROOT = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = yes
+					troops = {
+						heavy_infantry = { 200 200 }
+						archers = { 300 300 }
+						heavy_cavalry = { 100 100 }				
+					}
+				}
 			}
 		}
 	}
@@ -3080,9 +3084,9 @@ character_event = {
 ## Event to see if the character is strong enough to use the palantir ##
 character_event = {
 	id = palantir.62
-	title = "EVTTITpalantir.62"
-	desc = "EVTDESCpalantir.62"
-	picture = GFX_evt_palantir
+	# title = "EVTTITpalantir.62"
+	# desc = "EVTDESCpalantir.62"
+	# picture = GFX_evt_palantir
 	
 	hide_window = yes		
 	is_triggered_only = yes
@@ -3093,7 +3097,7 @@ character_event = {
 
 	# FROM can use the palantir without damages
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 33
 			
@@ -3137,21 +3141,9 @@ character_event = {
 
 			
 			### Weapons Modifier ###
-			modifier = {
-				factor = 10
-				FROM = { trait = anduril }
-			}
-			modifier = {
+						modifier = {
 				factor = 10
 				FROM = { trait = narsil }
-			}			
-			modifier = {
-				factor = 3
-				FROM = { trait = glamdring }
-			}
-			modifier = {
-				factor = 3
-				FROM = { trait = orcrist }
 			}
 			modifier = {
 				factor = 4
@@ -3336,7 +3328,7 @@ character_event = {
 		FROM = { character_event = { id = palantir.54 } }
 	}
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 33
 			
@@ -3515,7 +3507,7 @@ character_event = {
 		FROM = { character_event = { id = palantir.63 } }
 	}	
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 33
 			

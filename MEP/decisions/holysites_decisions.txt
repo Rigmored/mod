@@ -1,42 +1,43 @@
 decisions = {
 	################## DWARVES ##################
-## Dwarves Decision to Reconquer the Moria ##
-	reconquer_moria = {
-		is_high_prio = yes
-		potential = {
-			ai = no
-			culture = culture_longbeard
-			NOT = { has_landed_title = c_moria }
-			any_playable_ruler = {
-				has_landed_title = c_moria
-				NOT = { culture = culture_longbeard }
-				NOT = { de_jure_liege_or_above = ROOT }
-			}
-			independent = yes
-			is_ruler = yes
-			dynasty = 4001
-			OR = {
-				trait = brilliant_strategist
-				trait = dragon_slayer
-				trait = skilled_tactician
-				trait = great_axeman
-			}
-			NOT = { has_character_flag = reconquers_moria }
-		}
-		allow = {
-			prestige = 1000
-			wealth = 1000
-			piety = 1000
-		}
-		effect = {
-			ROOT = {
-				narrative_event = { id = holywars.1 }
-			}
-			prestige = -1000
-			wealth = -1000
-			piety = -1000
-		}
-	}
+### Dwarves Decision to Reconquer the Moria ##
+#	reconquer_moria = {
+#		is_high_prio = yes
+#		potential = {
+#			ai = no
+#			culture = culture_longbeard
+#			NOT = { has_landed_title = c_moria }
+#			any_playable_ruler = {
+#				has_landed_title = c_moria
+#				NOT = { culture = culture_longbeard }
+#				NOT = { de_jure_liege_or_above = ROOT }
+#			}
+#			independent = yes
+#			is_ruler = yes
+#			dynasty = 4001
+#			OR = {
+#				trait = brilliant_strategist
+#				trait = dragon_slayer
+#				trait = skilled_tactician
+#				trait = great_axeman
+#			}
+#			NOT = { has_character_flag = reconquers_moria }
+#		}
+#		allow = {
+#			prestige = 1000
+#			wealth = 1000
+#			piety = 1000
+#		}
+#		effect = {
+#			ROOT = {
+#				narrative_event = { id = holywars.1 }
+#			}
+#			prestige = -1000
+#			wealth = -1000
+#			piety = -1000
+#		}
+#	}
+
 	## Dwarves Decision to Reconquer Gundabad ##
 	reconquer_gundabad = {
 		is_high_prio = yes

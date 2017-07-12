@@ -1,3 +1,4 @@
+
 ###For Gondorians/Dunedain###
 
 namespace = dunedaincourtier
@@ -165,6 +166,7 @@ character_event = {
 			religion = religion_dunedain
 			culture = culture_gondorian
 			culture = culture_dunedain
+			culture = culture_arnorian
 		}
 		is_ruler = yes
 		is_female = no
@@ -845,13 +847,15 @@ character_event = {
 	title = "EVTTITsindarcourtier.3"#Trespassers
 	desc = "EVTDESCsindarcourtier.3"#A man was caught felling trees and clearing land for a farm inside your realm's borders. What shall be done with him and his family?
 	picture = "GFX_shadows_coming"
-	age = 16
 	only_rulers = yes
 
 	trigger = {
 		OR = {
 			culture = culture_sindar
 			culture = culture_silvan
+			culture = culture_entish
+			culture = culture_nandor
+			culture = culture_avari
 		}
 	}
 
@@ -932,13 +936,13 @@ character_event = {
 	title = "EVTTITsindarcourtier.4"#A new song
 	desc = "EVTDESCsindarcourtier.4"#This courtier has composed a stunning new epic, which brings tears to the eyes of anyone who hears it. It will be played at the annual Feast of Starlight this year.
 	picture = "GFX_shadows_coming"
-	age = 16
 	only_rulers = yes
 
 	trigger = {
 		OR = {
 			culture = culture_sindar
 			culture = culture_silvan
+			culture = culture_nandor
 		}
 	}
 

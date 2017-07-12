@@ -4,88 +4,80 @@ namespace = waning
 
 character_event = {	
 	id = waning.0
-	desc = waning0desc	
-	picture = "GFX_shadows_coming"	
+	# desc = waning0desc	
+	# picture = "GFX_shadows_coming"	
 	hide_window = yes
+	culture_group = culture_group_numenorean
 	
 	trigger = {
-	AND = {
-	culture_group = culture_group_numenorean
-	NOT = { trait = blood_of_numenor }
-	NOT = { trait = blood_of_numenor2 }
-	}
+		culture_group = culture_group_numenorean
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = blood_of_numenor2 }
 	}
 	
 	is_triggered_only = yes #from on_actions start_up
 	
 	option = {
-	name = OK
-	if = {
-	limit = {
-	NOT = { year = 9772 }
+		# name = OK
+		if = {
+			limit = {
+				NOT = { year = 9772 }
+			}
+			add_trait = blood_of_numenor2
+		}	
+		if = {
+			limit = {
+				year = 9772 #after the kinstrife the blood of numenor wanes faster, not everyone gets it
+				NOT = { culture = culture_dunedain }
+				#even in late 3rd age, all dunedain of the north have at least hte lesser version
+			}
+			random_list = {
+				30 = { }
+				70 = { add_trait = blood_of_numenor2 }
+			}
+		}	
+		if = {
+			limit = {
+				year = 9772 #after the kinstrife the blood of numenor wanes faster, not everyone gets it
+				culture = culture_dunedain #even in late 3rd age, all dunedain of the north have at least the lesser version
+			}
+			add_trait = blood_of_numenor2
+		}		
 	}
-	add_trait = blood_of_numenor2
-	}
-	
-	if = {
-	limit = {
-	year = 9772 #after the kinstrife the blood of numenor wanes faster, not everyone gets it
-	NOT = { culture = culture_dunedain }
-	#even in late 3rd age, all dunedain of the north have at least hte lesser version
-	}
-	random_list = {
-	30 = { }
-	70 = { add_trait = blood_of_numenor2 }
-	}
-	}
-	
-	if = {
-	limit = {
-	year = 9772 #after the kinstrife the blood of numenor wanes faster, not everyone gets it
-	culture = culture_dunedain #even in late 3rd age, all dunedain of the north have at least the lesser version
-	}
-	add_trait = blood_of_numenor2
-	}	
-	
-	}
-	}
+
+}
 	
 character_event = {	
 	id = waning.1
+	title = waning1title
 	desc = waning1desc #The Blood of Numenor is waning, and though your family once counted itself among the high men of the West, you no longer have any real connection to that heritage.
 	picture = "GFX_evt_barrowdowns"	
-	hide_window = yes
+	# hide_window = yes
+	culture_group = culture_group_numenorean
 	
 	trigger = {
-	AND = {
-	culture_group = culture_group_numenorean
-	NOT = { culture = culture_black_numenorean }
-	NOT = { trait = blood_of_numenor }
-	NOT = { trait = blood_of_numenor2 }
-	}
+		mep_is_good_numenorean_culture = yes
+		NOT = { trait = blood_of_numenor }
+		NOT = { trait = blood_of_numenor2 }
 	}
 	
 	is_triggered_only = yes #from on_actions yearly pulse
 	
 	option = {
-	name = waning1A #Alas, for the lost glory of Numenor
-	if = {
-	limit = {
-	culture = culture_dunedain
+		name = waning1A #Alas, for the lost glory of Numenor
+		if = {
+			limit = {
+				OR = { culture = culture_dunedain
+					culture = culture_arnorian }
+			}
+			culture = culture_arnorian_middlemen
+		}	
+		if = {
+			limit = {
+				OR = { culture = culture_gondorian
+					culture = culture_numenorean }
+			}
+			culture = culture_gondorian_middlemen
+		}	
 	}
-	culture = culture_arnorian_middlemen
-	}
-	if = {
-	limit = {
-	culture = culture_arnorian
-	}
-	culture = culture_arnorian_middlemen
-	}		
-	if = {
-	limit = {
-	culture = culture_gondorian
-	}
-	culture = culture_gondorian_middlemen
-	}	
-	}
-	}
+}

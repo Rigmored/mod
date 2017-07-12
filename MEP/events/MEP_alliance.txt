@@ -10,6 +10,9 @@ character_event = {
 	title = EVTTITalliancesystem.1
     desc = EVTDESCalliancesystem.1
     picture = "GFX_good"
+	only_playable = yes
+	only_independent = yes
+	prisoner = no
 	
 	trigger = {		
 		OR = {
@@ -20,11 +23,11 @@ character_event = {
 			has_landed_title = d_ost_in_edhil
 		}
 		religion_group = religion_group_eldar
-		independent = yes
-		is_ruler = yes
-		prisoner = no
 		d_dunedain_of_north = {
 			has_holder = yes
+			holder_scope = {
+				NOT = { trait = evil_side }
+			}
 		}
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = called_for_aid }
@@ -33,7 +36,7 @@ character_event = {
 	}
 			
 	mean_time_to_happen = {
-		days = 5
+		days = 15
 	}
 			  
 	option = {
@@ -158,6 +161,10 @@ character_event = {
     title = EVTTITalliancesystem.5
     desc = EVTDESCalliancesystem.5
     picture = "GFX_good"
+	only_playable = yes
+	only_independent = yes
+	prisoner = no
+	war = yes
 	
 	trigger = {			
 		OR = {
@@ -166,10 +173,7 @@ character_event = {
 			has_landed_title = c_dale
 		}
 		culture = culture_barding
-		independent = yes
-		is_ruler = yes
 		is_primary_war_defender = yes
-		prisoner = no
 		NOT = { has_character_flag = called_for_aid }
 		NOT = { has_character_flag = refused_for_aid }
 		NOT = { trait = evil_side }
@@ -222,7 +226,7 @@ character_event = {
 			is_adult = yes
 			prisoner = no
 			is_abroad = no
-			}
+		}
 		ROOT = {
 			join_defender_wars = FROM
 		}
@@ -273,14 +277,14 @@ character_event = {
     title = EVTTITalliancesystem.8 
     desc = EVTDESCalliancesystem.8
     picture = "GFX_good"
+	only_playable = yes
 	only_independent = yes
+	war = yes
 	ai = yes
 	
 	trigger = {			
 		culture_group = culture_group_dwarves
 		has_landed_title = c_erebor
-		independent = yes
-		is_ruler = yes
 		is_primary_war_defender = yes
 		NOT = { has_character_flag = called_for_aid }
 		NOT = { has_character_flag = refused_for_aid }
@@ -344,7 +348,6 @@ character_event = {
 		any_independent_ruler  = {
 			limit = {
 				OR = {
-					has_landed_title = k_erebor
 					has_landed_title = d_erebor
 					has_landed_title = c_erebor
 				}
@@ -384,13 +387,14 @@ character_event = {
 	title = EVTTITalliancesystem.10
     desc = EVTDESCalliancesystem.10
     picture = "GFX_good"
+	only_playable = yes
+	prisoner = no
+	only_independent = yes
+	war = yes
 	
 	trigger = {		
 		has_landed_title = k_shire
 		religion_group = religion_group_periannath
-		independent = yes
-		is_ruler = yes
-		prisoner = no
 		d_dunedain_of_north = {
 			has_holder = yes
 		}
@@ -497,16 +501,17 @@ character_event = {
 
 ##### If Good is at war with Sauron #####
 
-### An AI good faction should ask the White Council to gather Free Peoples ###	
+### An AI good faction should ask the White Council to gather Free Peoples (only 15%) ###	
 narrative_event = {
     id = alliancesystem.20
     title = EVTTITalliancesystem.20
     desc = EVTDESCalliancesystem.20
 	picture = "GFX_good"
+	only_playable = yes
+	war = yes
 
 	trigger = {
 		ai = yes
-		war = yes
 		any_current_enemy = {
 			has_character_flag = sauron
 			age = 16
@@ -663,25 +668,24 @@ character_event = { ## The White Council will join you
 				has_character_flag = sauron
 				age = 16
 			}
-			narrative_event = { id = alliancesystem.27 days = 10 } ## Sauron is alerted
+			character_event = { id = alliancesystem.27 days = 10 } ## Sauron is alerted
 		}
 	}	
 }	
-
-
+ 
+# Non-AI starting the alliance event chain rolling. For some reason, this merely has a one in six of causing 
 character_event = {
     id = alliancesystem.25
     title = EVTTITalliancesystem.25
     desc = EVTDESCalliancesystem.25
 	picture = "GFX_good"
 	#hide_window = yes
+	war = yes
+	ai = no
 
 	trigger = {
-		ai = no
-		war = yes
 		any_current_enemy = {
 			has_character_flag = sauron
-			age = 16
 		}
 		trait = good_side
 		NOT = { has_global_flag = alliancevssauron }
@@ -699,13 +703,13 @@ character_event = {
         name = EVTOPTAalliancesystem.25
 		random = {
 			chance = 18		
-			narrative_event = { id = alliancesystem.26 days = 30 }
+			character_event = { id = alliancesystem.26 days = 30 }
 		}
 	}	
 
 }	
 
-
+# Non-AI version of alliancesystem.20, calling the white council for help.
 character_event = { ## The White Council will join you
     id = alliancesystem.26
     title = EVTTITalliancesystem.26
@@ -764,7 +768,7 @@ character_event = { ## Sauron is alerted
 				trait = evil_side
 				independent = yes
 			}
-			narrative_event = { id = alliancesystem.28 days = 10 }
+			character_event = { id = alliancesystem.28 days = 10 }
 		}
 	}	
 	
@@ -807,4 +811,19 @@ character_event = { ## The Evil Forces don't have any choice.
 			join_attacker_wars = ROOT		
 		}
 	}	
+}
+
+# The targeted decision join_defend_against_evil_war should send this notification to the defender
+letter_event = {
+	id = alliancesystem.50
+	desc = EVTDESCalliancesystem.50
+	# picture = GFX_event_letter_frame_war
+	
+	is_triggered_only = yes
+	
+	is_friendly = yes
+	
+	option = {
+		name = EVTOPTAalliancesystem.50
+	}
 }

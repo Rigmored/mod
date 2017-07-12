@@ -3960,17 +3960,20 @@ character_event = {
 		}	
 		capital_scope = {
 			add_province_modifier = { name = capital_defenses duration = 730 }
-		}
-		spawn_unit = {
-			province = ROOT
-			disband_on_peace = no
-			troops = {
-				light_infantry = { 1000 1000 }
-				heavy_infantry = { 700 700 }
-				archers = { 1200 1200 }
-				knights = { 100 100 }
+			PREV = {
+				spawn_unit = {
+					province = PREV
+					disband_on_peace = no
+					troops = {
+						light_infantry = { 1000 1000 }
+						heavy_infantry = { 700 700 }
+						archers = { 1200 1200 }
+						knights = { 100 100 }
+					}
+				}
 			}
-		}		
+		}
+		
 	}
 }
 

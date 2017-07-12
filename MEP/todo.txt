@@ -1,0 +1,95 @@
+nomad wilderness occupy CB
+elf_childhood
+orc duel
+MEP_Portrait_Stabilizer (silmarilien)
+MEP_province_init and associated modifiers
+MEP_racetraits (silmarillion)
+randomtrait
+ HandicapdHippo: couple of issues I have found, using the latest James fox branch, the event where a county embraces your culture and religion can happen to wilderness, essentially bypassing colonisation, also if it is being settled already the modifier for being settled never goes away. And the descion to increase dunedain population says it should just increase it to the next level but it instead puts it to the greatly populated level. 
+• Reduce wars between good_side (important) CB conditions
+• Apparently, seeking marriage is hardcoded to only happen below 45. Make events to get around that.
+• If galadriel gets the ring, she never expands or conqers despite events saying otherwise
+• Fix elven portraits (but how?)
+• Missionaries to sway characters to good_side / evil_side ?
+• Reduce chance of elven/ent/wight/huorn peasant revolts
+• Fix terrain types (and some other things) having question mark afterwards
+• Eagles still too weak
+• Isengard does not defend tributary Dunland
+• Auto-generated barony holders too young for many races
+• Siege outbreak of disease events (some races are immune/resistant)
+• Prince Burin's claim
+• Are Orc adventure hordes still a thing? (if not, re-enable them, at a lesser rate than what used to be)
+• Master of Horse is still ungrantable, and afaik Search for Artifacts still does nothing, unless of course I'm somehow using it wrong. 
+• More buildings for Eagles, Spiders, and Ents
+
+• Generate Elven Courtiers to prevent the game from repeatedly generating more (because apparently incapable elf-children do not count)
+• prevent rulers from converting to their province religions
+• make sure no-one can be kidnapped from Valinor
+• Morgoth can still leave/escape prison
+• Check disease related stuff some more to prevent elves from getting disease.
+• Import and de-vanilla ze_adolescence_events.txt
+• Maintaining Mercenary Band tooltip on the holdings says it's a 30% penalty on Levy.  Mousing over a troop type in the build stuff menu says it's 60%.  Which is it?[
+• Create revised laws for good, making revocation and intra-realm wars forbidden
+• check concubinage and inter-species concubine conditions. any_lover, any_consort, has_lover, has_consort
+• block good-side vs evil side friendships?
+• However, the Prosperity modifiers('Population rising slowly', etc) lower disease resist in the province by flat 10/15/25%. Take it into account
+• Isildur and Anarion both became possesed. But remained good. (get rid of posession?)
+• Add more tolerance into traits (good side, white council)
+• restrict start date to 4902 or later
+• write routine to convert province (incl buildings, rulers, and courtiers) from Numenorean to newer culture groups
+• Better culture changes in province
+• look at probability of numenorian blood passing (people want it to stay strong for longer)
+• Early game was abusive-The decision Summon Maiden gives you gold and influence. Settle Tribe(Because of where we initially are) is Important to actually have your super-troops.
+-------------------------------------------------
+Here's my other notes from my test session.
+
+Numenoreans end up incapable for decades. They should not go incapable 50 or 100 years before they die of old age. If they do go incapable, they should get the die now in good honor or die miserably event.
+
+Had elves die of disease. Tolkien says they are immune to disease. Halflings and Dwarves should have high resistance to disease, and numenoreans and dunedain have beetter than average resistance to disease, as should orcs. Ainur should be completely immune to disease of course.
+
+Add the historical plagues. And make plague rules more Tolkienish. Allow Morgoth/Sauron, and the W-K a decision to launch a plague.
+
+Hard set rules to disallow vanilla defensive pacts. Though maybe the Istari could create special pacts since that's what they are their to do.
+
+Do not have Istari appear before 3A 1000. Although if you go by one of Tolkien's late writings, Glorfindel, and the Blue Wizards Alatar and Pallando can appear c. 2A 1600, coming over via Numenor. Alatar and Pallando were called Morinhetar and Romenosto then I think. Morinhetar went to the South and Romenosto to the East.
+
+It would be good to have a permanent mutually binding oath of alliance which binds all subsequent heirs of both houses, like the Ring of Barahir, The Oath of the Eredrim to Isildur, which they disobeyed, and the Oath of Cirion and Eorl. And obviously possible to break but only voluntarily and with severe consequences. Like the Dead in LotR.
+
+Gil-galad does not weild the best weapon available to him, Narsil. He weilds a blade of westerness and a +1 sword.
+
+Add Windbeam, the Horn of Elendil. (from HoME). And Boromirs magic horn, from the Kine of Araw (mannish name for Orome) which was an heirloom of the stewards coming down from Mardil the Good Steward.
+
+Set up more republics where there were mayors and/or merchants. Esgaroth, Dale, Shire, Bree, Framsburg, in the bight in Rhovanion, possibly Dorwinion, Umbar, Pelargir, Bellakar, Edhellond. I'm dubious about the default Lindon Republic. The ancient Edain operated more or less as a tribal or republic government, and even Aragorn was 'elected' by acclamation of the people and Tolkien says that was the ancient numenorean tradition. But high elves seem to me to be straight feudal.
+
+Do Edhellond and Druedain forest like was done for the Old Forest. So the Dunedain don't crush them.
+
+Restrain good rulers from revoking or attacking other good rulers.
+
+Under Amdir and Amroth, Edhellond should be a vassal.
+
+
+Change scenario start from 3320 to 3330 so folks only have to wait one year to start the last alliance instead of 11. 
+-------------------------------------------------------------
+MAP:
+check the missing provinces : 153,252,302,390,495,505, 611, 618, 663, 775, 785, 808, and 813 to 831
+Create a separate mountain-home for the Ironfists
+Split Coldfells
+Create new mountain passage south of Goblin-Town.
+------------------------------------------------
+In the Fall Of Arnor start date:
+
+I'd argue that Annuminas should have its population nerfed. The city is implied to already be in decline when the capitol was moved to Fornost. Right now both provinces are 6/7, substantially populated. I'd argue for 5/7 or 4/7. Now we don't have a firm grounding on when Annuminas was abandoned, so this is debatable. Culturally, I think the map is almost exactly backwards in distributing Dunedain and Arnorians. Tolkien states that the Dunedain preferred the shores of Lake Evendim and the Baranduin. So I'd argue for the Annuminas duchy to be culturally Dunedain, along with Fornost itself. Emyn Sul should be Arnorian (Strider specifically says that the men of the west didn't live there, it was a fortress not a city). The rest of the duchy of Fornost can go either way
+
+I'd argue that Annuminas shouldn't have the Numenorian Walls, but Fornost should. Annuminas is the northern equivalent of Osgiliath, Fornost of Minas Anor/Ithil. Annuminas was far from the front lines and Elendil would have relied on a ring of fortresses like Fornost, Amon Sul, and presumably lesser ones along side them. An enemy attacking Annuminas itself wouldn't have been concievable until later, when the Dunedain wouldn't have been quite so skilled. Fornost on the other hand was from the beginning a military center, and geographically placed to be the lynchpin of the northern defenses, so it should absolutely have the superior walls.
+
+I'd argue for some of the Arnorian population of Cardolan and Rhudaur to be downgraded to Arnorian middle-men. Rhudaur especially seems to have mixed and declined fastest. I'd say Eridoriath and Melosse being shifted to middle men, with maybe Saralainn and Dol Caladir in Cardolan as well, seeing as those are areas that border mainly Haladians and you'd have to imagine some mixing.
+
+In the Kin Strife Start:
+
+Again, I'd argue for a population nerf for Annuminas, at least one level lower than the previous one. I'd argue for the other three provinces bordering lake Evendim to have Arnorian or Dunedain populations at the lowest level. Annuminas and Fornost should be switched to Dunedain, Esteldin and Oronyar to either Arnorian or even Arnorian Middle-men.
+
+In Cardolan, I'd take both the Dunedain counties and nock them down to Arnorian middle-men. It's clearly stated that the people in the Barrow Downs represent the last gasp of the Cardolanian Dunedain. These areas aren't under the power of the Prince of Cardolan, which suggests to me they've become a seperate people.
+
+In WotR and Fourth Age
+
+There should be a little enclave of Dunedain in The Angle, I'd suggest Inath Methad. This is where Aragorn's mother lived and it's said others of the Dunedain did as well. Tharbad and Thaendor should be Arnorian Middle Men, if populated at all. 

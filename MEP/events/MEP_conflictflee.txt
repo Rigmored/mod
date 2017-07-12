@@ -1,0 +1,377 @@
+namespace = conflict
+
+#####Now vassals and courtiers also need to flee###
+##They flee from Sauron##
+character_event = {
+	id = conflict.7	
+	title = "EVTTITconflict.7"	
+	desc = "EVTDESCconflict.7"	
+	picture = "GFX_shadows_coming"	
+	only_playable = yes
+	
+	trigger = {		
+		trait = evil_side	
+		has_landed_title = c_barad_dur		
+		culture = culture_maiar		
+		any_realm_lord  = { 	
+			OR = {		
+				religion = religion_dunedain		
+				religion_group = religion_group_eldar
+				religion = religion_mahal		
+				religion = religion_rhovanion		
+			}		
+			NOT = { trait = evil_side }	
+			is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+			any_close_relative = { is_patrician = no } }			
+		}				
+
+	mean_time_to_happen = {
+		days = 7	
+	}
+	
+	option = {
+		name = "EVTOPTAconflict.7"	
+		any_realm_character = { 	
+			limit = {
+				OR = {		
+					religion = religion_dunedain		
+					religion_group = religion_group_eldar	
+					religion = religion_mahal		
+					religion = religion_rhovanion		
+				}		
+				NOT = { trait = evil_side }
+				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+				any_close_relative = { is_patrician = no } 
+			}
+			character_event = { id = conflict.8 }	
+		}	
+	}
+
+}	
+	
+##good side characters are informed##
+character_event = {
+	id = conflict.8	
+	title = "EVTTITconflict.8"	
+	desc = "EVTDESCconflict.8"	
+	picture = "GFX_shadows_coming"	
+	is_triggered_only = yes
+		
+	option = {	
+		name = "EVTOPTAconflict.8"	
+		trigger = { is_ruler = yes }	
+		any_demesne_title = {		
+			usurp_title = FROM		
+		}
+		random_list = {                
+			25 = { 	
+				death = {	
+					death_reason = death_battle				
+				}                          
+			}              
+			75 = {                    
+			}                       
+		}		
+	}
+	
+	option = {	
+		name = "EVTOPTBconflict.8"
+		trigger = { 	
+			is_ruler = yes	
+			age = 16	
+		}	
+		prestige = 250	
+		add_trait = brave	
+		any_demesne_title = {	
+			usurp_title = FROM		
+		}	
+		death = {	
+			death_reason = death_battle				
+		}		
+	}	
+
+	option = {	
+		name = "EVTOPTCconflict.8"	
+		trigger = { has_landed_title = no }		
+		random_list = {                 
+			25 = { 	
+				death = {	
+					death_reason = death_battle				
+				}                         
+			}              
+			75 = {
+				banish = yes                    
+			}                        
+		}		
+	}				
+}
+
+##They flee from orcs##
+character_event = {	
+	id = conflict.9	
+	title = "EVTTITconflict.9"	
+	desc = "EVTDESCconflict.9"	
+	picture = "GFX_shadows_coming"
+	only_playable = yes
+	
+	trigger = {	
+		OR = {
+			religion_group = religion_group_ungoliant
+			religion = religion_orkish		
+			religion = religion_uruk		
+			culture = culture_orkish		
+			culture = culture_urukhai		
+			culture = culture_goblin	
+			culture = culture_troll	
+		}	
+		any_realm_lord  = { 	
+			OR = {		
+				religion = religion_dunedain		
+				religion_group = religion_group_eldar		
+				religion = religion_mahal		
+				religion = religion_rhovanion
+			}		
+			NOT = { trait = evil_side }	
+			is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+			any_close_relative = { is_patrician = no } 
+			}			
+		}		
+	
+	mean_time_to_happen = {		
+		days = 7	
+	}
+	
+	option = {	
+		name = "EVTOPTAconflict.9"
+		any_realm_character = { 
+			limit = {
+				OR = {		
+					religion = religion_dunedain		
+					religion_group = religion_group_eldar		
+					religion = religion_mahal		
+					religion = religion_rhovanion		
+				}		
+				NOT = { trait = evil_side }	
+				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+				any_close_relative = { is_patrician = no } 
+				}			
+			character_event = { id = conflict.10 }	
+		}	
+	}
+
+}	
+	
+##good side characters are informed##
+character_event = {	
+	id = conflict.10	
+	title = "EVTTITconflict.10"	
+	desc = "EVTDESCconflict.10"		
+	picture = "GFX_shadows_coming"		
+	is_triggered_only = yes
+	
+	option = {	
+		name = "EVTOPTAconflict.10"	
+		trigger = { is_ruler = yes }	
+		any_demesne_title = {		
+			usurp_title = FROM		
+		}	
+		random_list = {                 
+			25 = { 	
+				death = {	
+					death_reason = death_battle				
+				}                          
+			}               
+			75 = {                     
+			}                       
+		}		
+	}	
+	
+	option = {	
+		name = "EVTOPTBconflict.10"	
+		trigger = { 	
+			is_ruler = yes	
+			age = 16	
+		}	
+		prestige = 250	
+		add_trait = brave
+		any_demesne_title = {		
+			usurp_title = FROM		
+		}	
+		death = {	
+			death_reason = death_battle
+		}
+	}	
+
+	option = {
+		name = "EVTOPTCconflict.10"	
+		trigger = { has_landed_title = no }		
+		random_list = {
+			25 = { 
+				death = {	
+					death_reason = death_battle				
+				}                         
+			}               
+			75 = {					
+				banish = yes                    
+			}                       
+		}		
+	}				
+}
+
+
+##orcs flee from goodies##		
+character_event = {
+	id = conflict.11	
+	title = "EVTTITconflict.11"	
+	desc = "EVTDESCconflict.11"		
+	picture = "GFX_shadows_coming"
+	only_playable = yes
+		
+	trigger = {		
+		OR = {		
+			religion_group = religion_group_edain		
+			religion_group = religion_group_eldar		
+			religion_group = religion_group_khazad		
+			religion_group = religion_group_hildor		
+			religion_group = religion_group_periannath
+			religion_group = religion_group_enyd			
+		}		
+		NOT = { trait = evil_side }		
+		any_realm_lord  = {
+			is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+			any_close_relative = { is_patrician = no }	
+			OR = {
+			religion_group = religion_group_melkorx
+			religion_group = religion_group_ungoliant
+			culture = culture_wight		
+			culture = culture_orkish		
+			culture = culture_goblin		
+			culture = culture_urukhai		
+			culture = culture_spider
+			culture = culture_troll	
+			}
+		}		
+	}
+
+	mean_time_to_happen = {		
+		days = 7	
+	}	
+
+	option = {
+		name = "EVTOPTAconflict.11"
+		any_realm_character = { 
+			limit = {
+				is_patrician = no #to prevent you from becoming a republic if you gain a republic title from a banished ruler#
+				any_close_relative = { is_patrician = no }
+				OR = {
+					religion_group = religion_group_melkorx
+					religion_group = religion_group_ungoliant
+					religion = religion_wilderness		
+					culture = culture_wight		
+					culture = culture_orkish		
+					culture = culture_goblin		
+					culture = culture_urukhai		
+					culture = culture_spider
+					culture = culture_troll	
+				}
+			}
+			character_event = { id = conflict.12 }		
+		}	
+	}	
+}
+
+##evil characters are informed##
+character_event = {	
+	id = conflict.12	
+	title = "EVTTITconflict.12"	
+	desc = "EVTDESCconflict.12"		
+	picture = "GFX_shadows_coming"		
+	is_triggered_only = yes
+		
+	option = {	
+		name = "EVTOPTBconflict.12"	
+		trigger = { 	
+			is_ruler = yes		
+		}
+		prestige = 250	
+		any_demesne_title = {	
+			usurp_title = FROM		
+		}	
+		death = {	
+			death_reason = death_battle				
+		}		
+	}			
+
+	option = {	
+		name = "EVTOPTCconflict.12"	
+		trigger = { has_landed_title = no }		                 	
+		death = {	
+				death_reason = death_battle				
+		}
+	}
+}
+
+
+
+##wilderness flee from all##		
+character_event = {
+	id = conflict.13
+	# title = OK
+	# desc = OK	
+	# picture = "GFX_shadows_coming"
+	hide_window = yes
+	only_playable = yes
+		
+	trigger = {		
+		NOT = { religion = religion_wilderness }
+		NOT = { culture = culture_wilderness }
+		any_realm_lord  = {				
+			religion = religion_wilderness		
+		}		
+	}
+
+	mean_time_to_happen = {		
+		days = 1	
+	}	
+
+	option = {
+		# name = OK
+		any_realm_character = { 
+			limit = {			
+				religion = religion_wilderness					
+			}			
+			character_event = { id = conflict.14 }		
+		}	
+	}	
+}
+
+	
+	
+
+## auto-usurping wilderness vassals##
+character_event = {	
+	id = conflict.14
+	# title = OK
+	# desc = OK		
+	# picture = "GFX_shadows_coming"		
+	is_triggered_only = yes
+	hide_window=yes
+	
+	option = {	
+		# name = OK		
+		trigger = { is_ruler = yes }	
+		any_demesne_title = {		
+			usurp_title = FROM		
+		}	
+		random_list = {                  
+			75 = { 	
+				death = {	
+					death_reason = death_battle				
+				}                         
+			}                
+			25 = {				
+				banish = yes                    
+			}                        
+		}		
+	}						
+}

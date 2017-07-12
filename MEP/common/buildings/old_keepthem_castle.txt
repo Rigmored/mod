@@ -1,0 +1,236 @@
+# Buildings that I've decided to keep for post 0.7
+castle = {
+
+	ca_Dwater_system_0 = { #no water system
+		desc = ca_Dwater_system_0_desc
+		gold_cost = 0
+		build_time = 0
+		levy_reinforce_rate = -0.1
+		fertility = -0.2
+		ai_creation_factor = 102
+		potential = {
+			culture_group = culture_group_dwarves 
+        }
+	}
+	
+	ca_Dwater_system_1 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ca_dwarvenfortifications_1 }
+		upgrades_from = ca_Dwater_system_0
+		gold_cost = 85
+		build_time = 365
+		levy_reinforce_rate =  0.1
+		fertility = 0.2
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+        }
+	}
+	
+	ca_Dwater_system_2 = {
+		desc = ca_Dwater_system_1_desc
+		prerequisites = { ca_dwarvenfortifications_3 }
+		upgrades_from = ca_Dwater_system_1
+		gold_cost = 100
+		build_time = 550
+		levy_reinforce_rate = 0.1
+		ai_creation_factor = 102
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_dwarves 
+        }
+	}
+	
+	tp_durin_tomb = { ### The Tomb of Durin
+		desc = tp_durin_tomb_desc
+		gold_cost = 850
+		build_time = 1460 #4y
+		liege_piety = 0.05
+		heavy_infantry = 100
+		garrison_size = 1.2			
+		ai_creation_factor = 86		
+        potential = {
+            FROMFROM = { title = b_tomb_of_durin }
+			culture_group = culture_group_dwarves
+        }
+	}
+	
+	# Human
+	
+	ca_lond_daer = { #Great port of Lond Daer#
+		desc = ca_lond_daer_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 2.0
+		galleys = 10
+		heavy_infantry = 50
+		light_infantry = 50
+		archers = 200
+		tax_income = 1
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 155 #Pelargir
+            	}
+	}
+	
+	ca_tower_of_moon = { # Minas ithil
+		desc = ca_tower_of_moon_desc
+		gold_cost = 1500
+		build_time = 2190
+		ai_creation_factor = 80
+		tax_income = 6
+		heavy_infantry = 500
+		pikemen = 500
+		archers = 500
+        	potential = {
+			province_id = 426 #minas_morgul
+			culture_group = culture_group_numenorean
+			not_if_x_exists	= { ca_minas_ithil_ruins }
+            	}
+	}
+	
+	ca_barrow_downs = {
+		desc = ca_barrow_downs_desc
+		gold_cost = 1
+		build_time = 1
+		tax_income = -3	
+		garrison_size = -0.2
+		ai_creation_factor = 86
+    		potential = {
+				province_id = 105
+       			
+	    		culture = culture_wight
+				NOT = { has_global_flag = barrows_cleansed }
+    		}
+	}
+	ca_royal_burial_mounds = {
+		desc = ca_royal_burial_mounds_desc
+		gold_cost = 300
+		build_time = 547
+		tax_income = 3
+		liege_piety = 0.10
+		ai_creation_factor = 109
+		add_number_to_name = no
+    		potential = {
+				province_id = 105
+       			
+				NOT = { has_building = ca_barrow_downs }
+				NOT = {culture = culture_wight }
+				NOT = {culture = culture_wilderness }
+    		}
+	}
+	
+	ca_pelargir = { #Great port of Pelargir#
+		desc = ca_pelargir_desc
+		gold_cost = 150
+		build_time = 1460 #4y
+		fort_level = 4.0
+		galleys = 25
+		heavy_infantry = 250
+		light_infantry = 250
+		archers = 500
+		tax_income = 3
+		ai_creation_factor = 86
+        	potential = {
+            		province_id = 18 #Pelargir
+            	}
+	}
+	
+	
+	ca_dol_amroth1 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights_desc
+		gold_cost = 300
+		build_time = 365
+		garrison_size = 1.1
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth2 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights_desc
+		prerequisites = { ca_Nkeep_2 }
+		upgrades_from = ca_dol_amroth1		
+		gold_cost = 250
+		build_time = 480
+		garrison_size = 1.2
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth3 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights2_desc
+		prerequisites = { ca_Nkeep_3 }
+		upgrades_from = ca_dol_amroth2	
+		gold_cost = 300
+		build_time = 730
+		fort_level = 1.5
+		garrison_size = 1.3
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	ca_dol_amroth4 = { ### Stables of the Knights of Dol Amroth
+		desc = ca_dolamrothknights2_desc
+		prerequisites = { ca_Nkeep_4 }
+		upgrades_from = ca_dol_amroth3
+		gold_cost = 450
+		build_time = 850
+		fort_level = 2.0
+		garrison_size = 1.4
+		#knights_dol_amroth = 100
+		knights = 100
+		ai_creation_factor = 86
+		potential = {
+			province_id = 656 #Dol Amroth
+			has_global_flag = building
+			OR = {
+				culture = culture_dunedain
+				culture = culture_gondorian
+			}
+		}
+	}
+	
+	# Ruins
+	ca_minas_ithil_ruins = { # Minas Ithil ruins
+		desc = ca_minas_ithil_ruins_desc
+		gold_cost = 1
+		build_time = 1
+		not_if_x_exists = { ca_tower_of_moon }
+		ai_creation_factor = 80	
+        	potential = {
+            	
+				province_id=426 
+				NOT = { has_global_flag = minas_ithil_rebuilded_finally }
+				year=9980
+				
+		}
+	}
+	
+	
+}
+

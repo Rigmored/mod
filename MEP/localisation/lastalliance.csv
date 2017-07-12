@@ -1,0 +1,177 @@
+#Code;English;;;;;;x
+form_last_alliance;Create an Anti-Mordor Alliance;;;;;;x
+form_last_alliance_desc;Decide whether to try and form an Anti-Mordor alliance of Free Peoples.;;;;;;x
+EVTTITlastalliance.0;Forming an Alliance;;;;;;x
+EVTDESClastalliance.0;The evil that corrupted Númenor and led it to it's destruction is not gone, for the Evil Empire of Mordor has been rebuilt, and menaces the Free Peoples of Middle_earth. You feel that perhaps now is the proper time to form a grand alliance of the Free Peoples, to take down Mordor once and for all!\nDo you send messengers to the other leaders of the Free Peoples of Middle-Earth asking them to join?;;;;;;x
+EVTOPTAlastalliance.0;Yes, send the messengers at once!;;;;;;x
+TT_MEP_LASTALLIANCE0_SENDMESSAGE;You send messages to the leaders of the Free Peoples asking them to join your alliance.;;;;;;x
+EVTOPTBlastalliance.0;No, perhaps later.;;;;;;x
+EVTTITlastalliance.1;An Anti-Mordor Alliance;;;;;;x
+EVTDESClastalliance.1;You have received a messenger from [From.GetTitledFirstName], proposing a Grand Alliance against the forces of Mordor. This seems worthwhile, but you would have to abandon any wars against fellow Alliance members.;;;;;;x
+EVTOPTAlastalliance.1;Yes, I will join! Mordor must be dealth with!;;;;;;x
+EVTOPTBlastalliance.1;No, I don't like [From.GetTitledFirstName] enough.;;;;;;x
+EVTOPTClastalliance.1;Too bad [From.GetTitledFirstName] has died.;;;;;;x
+EVTTITlastalliance.2;A new Alliance Member;;;;;;x
+EVTDESClastalliance.2;[Root.GetTitledFirstName], your cause is my cause, and down with Mordor! I, [From.GetTitledFirstName] will gladly join your Alliance!;;;;;;x
+EVTOPTAlastalliance.2;Wonderful!;;;;;;x
+EVTOPTBlastalliance.2;Too Bad I'm DEAD!;;;;;;x
+EVTTITlastalliance.3;A Rejection of the Alliance;;;;;;x
+EVTDESClastalliance.3;[Root.GetTitledFirstName], I am afraid that I, [From.GetTitledFirstName], will not be joining your proposed Alliance.;;;;;;x
+EVTOPTAlastalliance.3;[From.Get] is a Fool;;;;;;x
+EVTOPTBlastalliance.3;I'm DEAD, so what!;;;;;;x
+EVTTITlastalliance.5;Finalizing the Alliance;;;;;;x
+EVTDESClastalliance.5;Your attempts to found an Anti-Mordor alliance have been a success, with the ruler of the Noldor, as well as other Leaders, joining you. It is time to bring an end to any wars among members of the new alliance, and afterwards, the Alliance can launch an attack!;;;;;;x
+EVTOPTAlastalliance.5;Yes, do so.;;;;;;x
+TT_MEP_LASTALLIANCE5_MAKEPEACE;All members of the Alliance stop any existing wars between them and declare non-aggresion pacts.;;;;;;x
+EVTOPTBlastalliance.5;A major alliance leader has died, stopping things.;;;;;;x
+EVTTITlastalliance.6;The Alliance Has Failed;;;;;;x
+EVTDESClastalliance.6;Your request to other leaders have failed to produce enough supporters. The Anti-Mordor alliance is stillborn, although those few who have joined will still be allied with you for a while.;;;;;;x
+EVTOPTAlastalliance.6;How dissapointing;;;;;;x
+EVTTITlastalliance.7;The Alliance is aborted.;;;;;;x
+EVTDESClastalliance.7a;You have agreed to join the Anti-Mordor Allaince of [From.GetTitledFirstName], but unfortunatly, [From.GetHeShe] has not gotten anough participants to make the Grand Alliance viable. You are still with [From.GetHerHim] in a lesser alliance, though.;;;;;;x
+EVTDESClastalliance.7b;You have agreed to join the Anti-Mordor Allaince of [From.GetTitledFirstName], but unfortunatly, [Root.GetName] has died, aborting the project.;;;;;;x
+EVTOPTAlastalliance.7;This is bad;;;;;;x
+EVTTITlastalliance.8;The Grand Alliance;;;;;;x
+EVTDESClastalliance.8;The Grand Alliance has now been formed, and will likely soon attack Mordor. As a participant, any wars you might have had with other Alliane members have now been halted.;;;;;;x
+EVTOPTAlastalliance.8;So be it.;;;;;;x
+last_alliance_attack;Attack Mordor;;;;;;x
+last_alliance_attack_desc;With the Anti-Mordor Alliance in place, you can use this event to launch the attack!;;;;;;x
+EVTTITlastalliance.10;Attack Mordor?;;;;;;x
+EVTDESClastalliance.10;With the Anti-Mordor Alliance formed, do you think now is the time to declare war?;;;;;;x
+EVTOPTAlastalliance.10;Yes, declare war!;;;;;;x
+EVTOPTBlastalliance.10;Mayhaps later.;;;;;;x
+#-------------------------------------------------------------------------------------------------------------------;;;;;;;x
+# In between-events;;;;;;;x
+EVTTITlastalliance.21;You are in Command Now;;;;;;x
+EVTDESClastalliance.21;As the succesor to [From.GetTitledFirstName], you are now the leader of the Anti-Mordor Alliance, and must shoulder it's heavy burdens.;;;;;;x
+EVTOPTAlastalliance.21;I will try.;;;;;;x
+EVTTITlastalliance.22;The Anti-Mordor Alliance;;;;;;x
+EVTDESClastalliance.22;You are the successor to [From.GetTitledFirstName], a member of the Ant-Mordor Alliance. Now that [From.GetSheHe] has passed, ending the participation of [From.PrimaryTitle.GetFullName];, there arises the question of whether or not you will rejoin the anti-Mordor Alliance.;;;;;x
+EVTOPTAlastalliance.22;I will join the Alliance;;;;;;x
+EVTOPTBlastalliance.22;I will NOT join the Alliance;;;;;;x
+EVTOPTClastalliance.22;I'm afraid I CANNOT join.;;;;;;x
+EVTTITlastalliance.23;An Alliance Renewed;;;;;;x
+EVTDESClastalliance.23;You have recieved good news: [From.GetTitledFirstName], a successor to a previous Alliance member, is joining the Alliance.;;;;;;x
+EVTOPTAlastalliance.23;Excellent;;;;;;x
+EVTOPTBlastalliance.23;The war is over, but thanks!;;;;;;x
+EVTTITlastalliance.24;An Alliance Dropped;;;;;;x
+EVTDESClastalliance.24;You have unfortune news: [From.GetTitledFirstName], a successor to a previous Alliance member, will NOT join the Alliance.;;;;;;x
+EVTOPTAlastalliance.24;[From.GetSheHe] is a fool.;;;;;;x
+EVTOPTBlastalliance.24;It does not matter, now.;;;;;;x
+EVTTITlastalliance.25;An Alliance Failed;;;;;;x
+EVTDESClastalliance.25;You have unfortune news: [From.GetTitledFirstName], a successor to a previous Alliance member, does not qualify for joining the Alliance.;;;;;;x
+EVTOPTAlastalliance.25;[From.GetSheHe] is evil or weak or something.;;;;;;x
+#-------------------------------------------------------------------------------------------------------------------;;;;;;;x
+# Combat Between Sauron (or a Balrog) ruler of Mordor, and the picked opponents (Elendil and Gil-Galad?)
+EVTTITlastalliance.40;A Final Gamble;;;;;;x
+EVTDESClastalliance.40;Your war against the Faithful and their Elven friends is going badly. Very badly, for you stand on the brink of utter defeat. It now occurs to you that you could use your personal might to attack and strike down the enemy leaders, turning the tide.;;;;;;x
+EVTOPTAlastalliance.40;Yes, they will be crushed!;;;;;;x
+EVTOPTBlastalliance.40;No, I will run away, to return one day.;;;;;;x
+EVTTITlastalliance.43;The End of Mordor;;;;;;x
+EVTDESClastalliance.43;Momentous Tidings! [FROM.GetTitledName] has fled, abandoning [FROM.GetHisHer] realm and causing it to collapse!;;;;;;x
+EVTOPTlastalliance.43;The Coward!;;;;;;x
+EVTTITlastalliance.44;The Evil Ruler Attacks!;;;;;;x
+EVTDESClastalliance.44a;Momentous News has reached you! The Balrog [FROM.GetTitledName] has emerged to personally combat your leaders. Ordinary troops cannot face [FROM.GetHimHer]. [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant2.GetTitledName] will be facing the Spirit of Flame and Shadow. May Eru grant them victory!;;;;;;x
+EVTDESClastalliance.44b;Momentous News has reached you! The Dark Lord Sauron has emerged to personally combat your leaders. Ordinary troops cannot face Him. [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant2.GetTitledName] will do battle with the decitful destroyer. May Eru grant them victory!;;;;;;x
+EVTOPTlastalliance.44;Victory will be ours, I Hope!;;;;;;x
+EVTTITlastalliance.45;Time to strike!;;;;;;x
+EVTDESClastalliance.45a;With sword and whip, wreathed in flames, you pass with winged speed towards the enemy centre, lesser enemies withering. As you approach, you spy the enemy leaders: [mep_lastalliance_good_combatant2.GetTitledName] and [mep_lastalliance_good_combatant1.GetTitledName], dangerous foes, but perfect for your intent. They will die soon.;;;;;;x
+EVTDESClastalliance.45b;Clad in black spiky armor, you hurtle towards the enemy centre, scattering minor troops like leaves in a tempest. As you approach, you spy the enemy leaders: [mep_lastalliance_good_combatant2.GetTitledName] and [mep_lastalliance_good_combatant1.GetTitledName]. Time to defeat them and rescue your domain.;;;;;;x
+EVTOPTlastalliance.45;Battle is joined!;;;;;;x
+EVTTITlastalliance.46;The Enemy Comes;;;;;;x
+EVTDESClastalliance.46a;This is the moment upon which victory or defeat rests. Wreathed in Shadows and Flames, the Balrog [FROM.GetFirstNameWithNick] approaches as you and your companion ready yourself for a dangerous battle.;;;;;;x
+EVTDESClastalliance.46b;This is the moment upon which victory or defeat rests. Clad in armor both menacing and silly, and armed with a brutal mace, the Dark Lord Sauron approaches as you and your companion ready yourself for desperate battle.;;;;;;x
+EVTOPTlastalliance.46;Eru grant me strength!;;;;;;x
+EVTTITlastalliance.48;Victory is yours!;;;;;;x
+EVTDESClastalliance.48a;You have triumphed. The burnt bodies of [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant1.GetTitledName] lie at your feet, and those of the west quail in fear. Your troops are heartened, and many who had already fled are now taking up arms sgain!;;;;;;x
+EVTDESClastalliance.48b;You have triumphed. The crushed bodies of [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant1.GetTitledName] lie at your feet. Your revenge against the idiot Faithful and the Elves is once again possible. Your troops are heartened, and many who had already fled are now taking up arms sgain!;;;;;;x
+EVTOPTlastalliance.48;Time to finish this!;;;;;;x
+EVTTITlastalliance.49;You are defeated;;;;;;x
+EVTDESClastalliance.49a;You and your companion fought with valor and skill, and great spirit - but it was all for naught. You and your companion have lost against the Balrog, [mep_lastalliance_evil_combatant.GetTitledName], burnt and broken. As darkness overcomes you, you despair for the future.;;;;;;x
+EVTDESClastalliance.49b;You and your companion fought with valor and skill, and great spirit - but it was all for naught. Sauron has defeated you and your companion, battering the two of you with his deadly mace. As darkness overcomes you, you despair for the future.;;;;;;x
+EVTOPTlastalliance.49;Curse it all!;;;;;;x
+EVTTITlastalliance.50;Dreadful News!;;;;;;x
+EVTDESClastalliance.50;The duel with [mep_lastalliance_evil_combatant.GetTitledName] has resulted in utter defeat, with both [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant2.GetTitledName] being slain. Your troops loose hope, while the enemy is filled with new vigor.;;;;;;x
+EVTOPTlastalliance.50;No!;;;;;;x
+EVTTITlastalliance.51;Victory, and Loss;;;;;;x
+EVTDESClastalliance.51a;The battle against the Balrog was long and hard, but in the end, the Victory goes to you and your companion. [mep_lastalliance_evil_combatant.GetTitledName] is vanquished, and Mordor with [mep_lastalliance_evil_combatant.GetHimHer]. You are badly burnt however, and you will die from your injuries.;;;;;;x
+EVTDESClastalliance.51b;The battle against the Dark Lord Sauron was long and hard, but in the end, the Victory goes to you and your companion, and Númenor is avenged. Sauron is defeated, and Mordor with Him. Your vision grows dim however, for you are mortally wounded.;;;;;;x
+EVTOPTlastalliance.51;It was worth it.;;;;;;x
+EVTTITlastalliance.52;Victory, and Loss;;;;;;x
+EVTDESClastalliance.52a;The battle against the Balrog was long and hard, but in the end, the Victory goes to you and your companion. [mep_lastalliance_evil_combatant.GetTitledName] is vanquished, and Mordor with [mep_lastalliance_evil_combatant.GetHimHer]. You are badly injured though, and your ally will not survive.;;;;;;x
+EVTDESClastalliance.52b;The battle against the Dark Lord Sauron was long and hard, but in the end, the Victory goes to you and your companion, and Númenor is avenged. Sauron is defeated, and Mordor with Him. You are badly injured though, and your ally will not survive.\nAlso, what will become of his ring?;;;;;;x
+EVTOPTlastalliance.52;A battle well fought.;;;;;;x
+EVTTITlastalliance.53;Defeat;;;;;;x
+EVTDESClastalliance.53;You have lost, you fought with vigor and strength, but the unthinkable has happened, you have lost, the Melkor-damned Faithful and the Elves have won! Their spirits were too strong, but at least you killed one of them, or was it both? As conciousness fades, your thoughts turn desperatly to your ring.\nIf it is not destroyed, you might have a chance...;;;;;;x
+EVTOPTlastalliance.53;I can only hope.;;;;;;x
+EVTTITlastalliance.54;Defeat;;;;;;x
+EVTDESClastalliance.54;You have lost, you tried to fight like a true heir of Gothmog, but your opponents fought like the Lords of Gondolin! Their spirits were too strong, but at least you killed one of them, or was it both? Your spirit goes to Melkor.;;;;;;x
+EVTOPTlastalliance.54;Aaargh!;;;;;;x
+EVTTITlastalliance.55;Victory!;;;;;;x
+EVTDESClastalliance.55;The battle with [mep_lastalliance_evil_combatant.GetTitledName] has resulted in Victory, and the Empire of Mordor is collapsing. The victory was not without cost, however, as both [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant2.GetTitledName] have died.;;;;;;x
+EVTOPTlastalliance.55;They died for our freedom.;;;;;;x
+EVTTITlastalliance.56;Victory!;;;;;;x
+EVTDESClastalliance.56;The battle with [mep_lastalliance_evil_combatant.GetTitledName] has resulted in Victory, and the Empire of Mordor is collapsing. The victory was not without cost, however, as [mep_lastalliance_good_combatant1.GetTitledName] was killed during the duel.;;;;;;x
+EVTOPTlastalliance.56;[mep_lastalliance_good_combatant1.GetHeShe] died for our freedom.;;;;;;x
+EVTTITlastalliance.57;Victory!;;;;;;x
+EVTDESClastalliance.57;The battle with [mep_lastalliance_evil_combatant.GetTitledName] has resulted in Victory, and the Empire of Mordor is collapsing. The victory was not without cost, however, as [mep_lastalliance_good_combatant2.GetTitledName] was killed during the duel.;;;;;;x
+EVTOPTlastalliance.57;[mep_lastalliance_good_combatant2.GetHeShe] died for our freedom.;;;;;;x
+EVTTITlastalliance.58;An Unmatched Victory;;;;;;x
+EVTDESClastalliance.58a;The battle against the Balrog was long and hard, but in the end, the Victory goes to you and your companion. [mep_lastalliance_evil_combatant.GetTitledName] is vanquished, and Mordor with [mep_lastalliance_evil_combatant.GetHimHer]. You and your companion are injured and burnt, but you will likely both survive!;;;;;;x
+EVTDESClastalliance.58b;The battle against the Dark Lord Sauron was long and hard, but in the end, the Victory goes to you and your companion, and Númenor is avenged. Sauron is defeated, and Mordor with Him. You both injured, but will likely survive.\nAlso, what will become of his ring?;;;;;;x
+EVTOPTlastalliance.58;Wonderful;;;;;;x
+EVTTITlastalliance.59;Defeat;;;;;;x
+EVTDESClastalliance.59;You have lost, you felt you could defeat them both, but the unthinkable has happened. The Melkor-damned Faithful and the Elves have won! Their spirits were too strong, and you did not even kill one of them! As conciousness fades, your thoughts turn desperatly to your ring.\nIf it is not destroyed, you might have a chance...;;;;;;x
+EVTOPTlastalliance.59;I can only hope.;;;;;;x
+EVTTITlastalliance.60;Utter Defeat;;;;;;x
+EVTDESClastalliance.60;You have lost, you tried to fight like a true heir of Gothmog, but your opponents fought like the Lords of Gondolin! Their spirits were too strong, and you did not even kill one of them! Your spirit goes to Melkor.;;;;;;x
+EVTOPTlastalliance.60;Aaargh!;;;;;;x
+EVTTITlastalliance.61;Glorious Victory!;;;;;;x
+EVTDESClastalliance.61;The battle with [mep_lastalliance_evil_combatant.GetTitledName] has resulted in Victory, and the Empire of Mordor is collapsing. Both [mep_lastalliance_good_combatant1.GetTitledName] and [mep_lastalliance_good_combatant2.GetTitledName] were injured, but they are likely to live. The warcamp is fillws with jubilation!;;;;;;x
+EVTOPTlastalliance.61;Thank Eru!;;;;;;x
+#-------------------------------------------------------------------------------------------------------------------;;;;;;;x
+# Combat aftermath;;;;;;;x
+EVTTITlastalliance.63;The Ring!;;;;;;x
+EVTDESClastalliance.63;Sauron lies defeated, at the cost of many lives. As you look at his body, you notice something on his hand, a glittering band of Gold. The Ring! Proudly displayed for all to see. With a knife, you slice off his ring-finger and bring the Treasure before you. Next to you, others state their concern and interest. Most among the Elves are in favor of destroying it in the fires of Oroduin, nearby, saying it is a cursed and Evil Artifact.\n\nHowever, it seems a shame to destroy something so precious...;;;;;;x
+EVTOPTAlastalliance.63;I shall keep it;;;;;;x
+EVTOPTBlastalliance.63;A wereguild for the loss of Elendil;;;;;;x
+EVTOPTClastalliance.63;Yes, I shall destroy it.;;;;;;x
+EVTTITlastalliance.64;You will survive;;;;;;x
+EVTDESClastalliance.64;You have lost the War, you have lost the ring, you have even lost your life. However, the ring has not been destroyed, so you will recover, in time.;;;;;;x
+EVTOPTlastalliance.64;Ouch;;;;;;x
+EVTTITlastalliance.65;The One Ring?;;;;;;x
+EVTDESClastalliance.65;With the defeat and death of Sauron, there is some concern about the fate of the One Ring. Rumour is that the leader of the alliance will determine it's fate.;;;;;;x
+EVTOPTlastalliance.65;It should probably be destroyed.;;;;;;x
+EVTTITlastalliance.66;The One Ring is continuing.;;;;;;x
+EVTDESClastalliance.66;Word has reached you that [FROM.GetTitledFirstName] has decided to keep the ring, deeming it to be a compensation for th loss of so many lives.;;;;;;x
+EVTOPTlastalliance.66;I have a bad feeling about this.;;;;;;x
+EVTTITlastalliance.67;The One Ring, Destroyed!;;;;;;x
+EVTDESClastalliance.67;You have found out that [FROM.GetTitledFirstName] has has the One Ring destroyed!;;;;;;x
+EVTOPTlastalliance.67;Good Riddance;;;;;;x
+#-------------------------------------------------------------------------------------------------------------------;;;;;;;x
+# Post War and Additional war scenarios
+EVTTITlastalliance.71;Things Fall Apart;;;;;;x
+EVTDESClastalliance.71;Can the centre hold?\n\nWith the faliure of the War against Mordor, the Alliance has ended. The Elves are looking to abandon Middle-Earth, the Dwarves are looking to defend only themselves, and the Lesser Men feel surrender might be their best option. Only your relatives might remain allied to you.;;;;;;x
+EVTOPTlastalliance.71;The ceremony of Innocence is Drowned;;;;;;x
+TT_lastalliance71a;Alliance members are informed of the end of the Alliance.;;;;;;x
+TT_lastalliance71b;You are no longer leader of the Alliance.;;;;;;x
+EVTTITlastalliance.72;The End of the Last Alliance;;;;;;x
+EVTDESClastalliance.72a;The War against Mordor is over, and the Free Peoples have lost. It all seems so foolish now, and you are informed that this last Alliance is already falling apart. You will probably need to look out for yourself now. However, there is still a possibility of remaining allied with [From.GetTitledFirstName].;;;;;;x
+EVTDESClastalliance.72b;The War against Mordor is over, and the Free Peoples have lost. Those who are not Dúnedain have already lost conviction. Surely, however, you will remain allied with [From.GetTitledFirstName]?;;;;;;x
+EVTOPTAlastalliance.72;Actually, [From.GetTitledFirstName] has died. It's over.;;;;;;x
+EVTOPTBlastalliance.72;It's all over;;;;;;x
+EVTOPTClastalliance.72;I'll remain allied with [From.GetHerHim];;;;;;x
+EVTTITlastalliance.73;The Alliance's Job is Over;;;;;;x
+EVTDESClastalliance.73;With the defeat and destruction of Mordor, the task of Alliance has ended. The participants do not feel the to join in each other's petty wars. Your relatives will likely remain allied to you, however.;;;;;;x
+EVTOPTlastalliance.73;I'm free of your minor wars!;;;;;;x
+TT_lastalliance73a;Alliance members are informed that the Alliance is done.;;;;;;x
+EVTTITlastalliance.74;The Last Alliance is Completed.;;;;;;x
+EVTDESClastalliance.74a;The War against Mordor is over, and the Free Peoples have won. The necessity for the Alliance is gone, and you probably need to look out for yourself now. However, there is still a possibility of remaining allied with [From.GetTitledFirstName].;;;;;;x
+EVTDESClastalliance.74b;The War against Mordor is over, and the Free Peoples have won. As a relative, will you remain allied with [From.GetTitledFirstName]?;;;;;;x
+EVTOPTAlastalliance.74;Actually, [From.GetTitledFirstName] has died. It's over.;;;;;;x
+EVTOPTBlastalliance.74;The Alliance need not continue.;;;;;;x
+EVTOPTClastalliance.74;I'll remain allied with [From.GetHerHim];;;;;;x
+EVTTITlastalliance.77;You Won, then Lost.;;;;;;x
+EVTDESClastalliance.77;You were on the brink on defeat once before, but you managed a recovery by killing enemy leaders and rallying your troops. Despite that, it was for nothing, you have lost once again. It is clear now that the Elves and thier Faithful lackeys are too mighty for you. The East probably holds opportunities to rebuild.;;;;;;x
+EVTOPTBlastalliance.77;Time to go!;;;;;;x
+

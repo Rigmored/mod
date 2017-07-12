@@ -34,9 +34,9 @@ narrative_event = {
 #### Split of the Reunited Kingdom ####
 character_event = {
 	id = rulegondor.1
-	title = EVTNAMErulegondor.1
-	desc = EVTDESCrulegondor.1
-	picture = "GFX_good"
+	# title = EVTNAMErulegondor.1
+	# desc = EVTDESCrulegondor.1
+	# picture = "GFX_good"
 	
 	hide_window = yes
 	
@@ -62,12 +62,12 @@ character_event = {
 			e_reunited_kingdom = { destroy_landed_title = THIS }
 			e_arnor = {
 				current_heir = {
-					character_event = { id = rulegondor.2 days = 2}
+					narrative_event = { id = rulegondor.2 days = 2}
 				}	
 			}
 			e_gondor = {
 				current_heir = {
-					character_event = { id = rulegondor.3 days = 2}
+					narrative_event = { id = rulegondor.3 days = 2}
 				}	
 			}				
 		}
@@ -76,7 +76,7 @@ character_event = {
 	is_triggered_only = yes	
 	
 	option = {
-		name = "EVTOPTArulegondor.1" ## The current heir will have the rule of Arnor		
+		# name = "EVTOPTArulegondor.1" ## The current heir will have the rule of Arnor		
 	}
 }
 
@@ -146,13 +146,13 @@ narrative_event = {
 			limit = {
 				has_character_flag = isildur
 			}
-			character_event = { id = rulegondor.4 days = 10 }
+			narrative_event = { id = rulegondor.4 days = 10 }
 		}
 		if = {
 			limit = {
 				has_character_flag = anarion
 			}
-			character_event = { id = rulegondor.5 days = 10 }
+			narrative_event = { id = rulegondor.5 days = 10 }
 		}		
 	}
 }
@@ -169,7 +169,7 @@ narrative_event = {
 	is_triggered_only = yes	
 	
 	option = {
-		name = "EVTOPTArulegondor.1" ## The current heir will have the rule of Arnor
+		name = "EVTOPTArulegondor.3" ## The current heir will have the rule of Arnor
 		if = {
 			limit = {
 				has_landed_title = k_arthedain
@@ -192,13 +192,13 @@ narrative_event = {
 			limit = {
 				has_character_flag = isildur
 			}
-			character_event = { id = rulegondor.4 days = 10 }
+			narrative_event = { id = rulegondor.4 days = 10 }
 		}
 		if = {
 			limit = {
 				has_character_flag = anarion
 			}
-			character_event = { id = rulegondor.5 days = 10 }
+			narrative_event = { id = rulegondor.5 days = 10 }
 		}		
 	}
 }
@@ -278,7 +278,7 @@ narrative_event = {
 				dynasty = 102
 			}
 		}
-		any_child={
+		any_child = {
 			any_child = {
 				any_child = {
 					dynasty = 102

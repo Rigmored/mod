@@ -1,5 +1,80 @@
+# Modified for Middle-Earth modifier
+# JamesFox (2017/04/19)
+
 decisions = {
 
+#	hold_a_epic_tournament  = {
+#		only_independent = yes
+#		is_high_prio = yes
+#		
+#		potential = {
+#			is_playable = yes
+#			NOR = {
+#				has_character_modifier = epic_tournament
+#				has_character_flag = epic_tournament
+#			}
+#			OR = {
+#				religion_group = christian
+#				religion_group = jewish_group
+#				religion_group = zoroastrian_group
+#			}
+#			independent = yes
+#			NOT = { is_nomadic = yes }
+#			OR = {
+#				gender_equality_trigger = yes
+#				NOT = { is_female = yes	}
+#			}
+#			OR = {
+#				tier = king
+#				tier = emperor 
+#			}
+#			location = {
+#				owner = { character = ROOT }
+#			}
+#		}
+#		allow = {
+#			war = no
+#			prisoner = no
+#			in_command = no
+#			NOT = { is_inaccessible_trigger = yes }
+#			age = 16
+#			prestige = 500
+#			wealth = 200
+#			custom_tooltip = {
+#				text = is_not_busy_trigger_tooltip
+#				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+#			}
+#		}
+#		effect = {
+#			add_character_modifier = {
+#				name = epic_tournament
+#				years = 100
+#				hidden = yes
+#			}
+#			set_character_flag = do_not_disturb
+#			clr_character_flag = tournament_has_ended
+#			hidden_tooltip = { character_event = { id = 70999 days = 300 } } # Safety catch flag clearing
+#			wealth = -200
+#			prestige = 100
+#			character_event = { id = 70033 tooltip = "tournament_invite" }
+#			hidden_tooltip = {
+#				clr_character_flag = tournament_has_ended
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 1
+#			modifier = {
+#				factor = 0
+#				NOT = {
+#					OR = {
+#						wealth = 1000
+#						scaled_wealth = 3.0
+#					}
+#				}
+#			}
+#		}
+#	}
+	
 	
 	demand_liege_title = {
 		only_playable = yes
@@ -179,7 +254,8 @@ decisions = {
 			factor = 1
 		}
 	}
-
+	
+	
 	form_new_kingdom = {
 		only_independent = yes
 		is_high_prio = yes
@@ -526,7 +602,10 @@ decisions = {
 				OR = {
 					AND = {
 						holding_type = tribal
-						has_building = tb_Pwall_3
+						OR = {
+							has_building = tb_Pwall_3
+							has_building = tb_hillfort_4
+						}
 					}
 					holding_type = castle
 				}
@@ -538,22 +617,16 @@ decisions = {
 				limit = { ai = no }
 				set_character_flag = achievement_not_a_tribe
 			}
-			
 			if = {
-				
-				if = {
-					limit = {
-						ai = no
-					}
-					chronicle = {
-						entry = CHRONICLE_ADOPTED_FEUDALISM
-						picture = GFX_evt_castle_construction
-					}
+				limit = {
+					ai = no
 				}
-				set_government_type = feudal_government
+				chronicle = {
+					entry = CHRONICLE_ADOPTED_FEUDALISM
+					picture = GFX_evt_castle_construction
+				}
 			}
-			
-			
+			set_government_type = feudal_government		
 			if = {
 				limit = {
 					higher_tier_than = king
@@ -643,7 +716,10 @@ decisions = {
 				OR = {
 					AND = {
 						holding_type = tribal
-						has_building = tb_Pwall_3
+						OR = {
+							has_building = tb_Pwall_3
+							has_building = tb_hillfort_4
+						}
 					}
 					holding_type = castle
 				}
@@ -654,19 +730,15 @@ decisions = {
 			set_character_flag = achievement_not_a_tribe
 			
 			if = {
-				
-				if = {
-					limit = {
-						ai = no
-					}
-					chronicle = {
-						entry = CHRONICLE_ADOPTED_FEUDALISM
-						picture = GFX_evt_castle_construction
-					}
+				limit = {
+					ai = no
 				}
-				set_government_type = feudal_government
+				chronicle = {
+					entry = CHRONICLE_ADOPTED_FEUDALISM
+					picture = GFX_evt_castle_construction
+				}
 			}
-			
+			set_government_type = feudal_government
 			
 			hidden_tooltip = {
 				any_demesne_title = {
@@ -733,7 +805,7 @@ decisions = {
 					OR = {
 						NOT = { religion_group = ROOT }
 						NOT = { religion = ROOT }
-						}
+					}
 				}
 			}
 			modifier = {
@@ -782,7 +854,10 @@ decisions = {
 				OR = {
 					AND = {
 						holding_type = tribal
-						has_building = tb_Ptown_3
+						OR = {
+							has_building = tb_Ptown_3
+							has_building = tb_market_town_4
+						}
 					}
 					holding_type = city
 				}

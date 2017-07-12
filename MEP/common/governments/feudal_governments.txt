@@ -1,5 +1,6 @@
 feudal_governments = {
 
+	# General fallback feudal government
 	feudal_government = {
 		preferred_holdings = { CASTLE }
 		allowed_holdings = { 
@@ -11,15 +12,27 @@ feudal_governments = {
 			TRIBAL
 		}
 		accepts_liege_governments = { # Gets the wrong religion modifier instead
-			muslim_government
+			muslim_government  # Aka Haradrim Governemnt
+			just_feudal_government
+			darklord_government
 		}
+		free_revoke_on_governments = {
+			orc_government
+			wilderness_nongovernment
+		}
+		vassal_call_to_arms = {
+			tribal_government
+		}
+		
 		potential = {
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion = norse_pagan_reformed }
-			}
-			NOT = {	religion_group = muslim	}
+			NOT = { is_government_potential = muslim_government }
+			NOT = { is_government_potential = just_feudal_government }
+			NOT = { is_government_potential = hobbit_thaindom }
+			NOT = { is_government_potential = darklord_government }
+			NOT = { is_government_potential = orc_government }
+			NOT = { is_government_potential = wilderness_nongovernment }
+			# government type restrictions
+			NOT = { controls_religion = yes }
 			is_patrician = no
 		}
 		
@@ -33,8 +46,199 @@ feudal_governments = {
 		ignore_in_vassal_limit_calculation = {
 			tribal_government
 		}
+		capital_move_delay = 600
 	}
 	
+	# Feudal Goverment for 'Good Guys', primarily to get the can_revoke_without_reason = no and a few tweaks
+	just_feudal_government = {
+		preferred_holdings = { CASTLE }
+		allowed_holdings = { 
+			CASTLE
+			TEMPLE
+			FORT
+			HOSPITAL
+		}
+		allowed_holdings_culture = { # Will not get the wrong government type penalty for tribes of the same culture
+			TRIBAL
+		}
+		accepts_liege_governments = { # Not sure if this is good or not
+			feudal_government
+			muslim_government # aka Haradrim Government
+		}
+		free_revoke_on_governments = {
+			darklord_government
+			orc_government
+		}
+		vassal_call_to_arms = {
+			tribal_government
+		}
+		frame_suffix = "_just"
+		potential = {
+			NOT = { controls_religion = yes }
+			mep_canhave_nice_feudalism = yes
+			NOT = { religion_group = religion_group_periannath }
+			is_patrician = no
+		}
+		
+		color = { 201 133 207 }
+		
+		dukes_called_kings = yes
+		barons_need_dynasty = yes
+		can_revoke_without_reason = no
+		can_imprison_without_reason = no
+
+		can_build_tribal = no
+		
+		ignore_in_vassal_limit_calculation = {
+			tribal_government
+		}
+		capital_move_delay = 600
+	}
+	
+	# Hobbit Feudalism. Given a separate government type mostly so that vassal republics will
+	# like them better.
+	hobbit_thaindom = {
+		preferred_holdings = { CASTLE }
+		allowed_holdings = { 
+			CASTLE
+			TEMPLE
+			FAMILY_PALACE
+			# CITY
+			HOSPITAL
+		}
+		allowed_holdings_culture = { # Will not get the wrong government type penalty for tribes of the same culture
+			TRIBAL
+		}
+		accepts_liege_governments = { # Gets the wrong religion modifier instead
+			hobbit_thaindom
+			feudal_government
+			just_feudal_government
+			republic_government
+		}
+		free_revoke_on_governments = {
+			darklord_government  # if they can get away with it!
+			orc_government
+		}
+		frame_suffix = "_hobbit"
+		potential = {
+			NOT = { controls_religion = yes }
+			religion_group = religion_group_periannath
+			is_patrician = no
+		}
+		
+		color = {183 176 207 }
+		
+		dukes_called_kings = yes
+		barons_need_dynasty = no
+		can_revoke_without_reason = no
+		can_imprison_without_reason = no
+		can_be_granted_kingdoms_and_empires_by_other_government = yes
+
+		can_build_tribal = no
+		
+		ignore_in_vassal_limit_calculation = {
+			tribal_government
+		}
+		capital_move_delay = 600
+	}
+	
+	# Evil Overlord Government. The top has massive power
+	darklord_government = {
+	    preferred_holdings = { CASTLE }
+		allowed_holdings = {
+		    CASTLE
+			TEMPLE
+			CITY
+			FORT
+			HOSPITAL
+		}
+		accepts_liege_governments = {
+		    darklord_government
+		}
+		free_revoke_on_governments = {
+			just_feudal_government
+			hobbit_thaindom
+		}
+		free_revoke_on_tiers = { baron count }
+		forced_contract = {
+			orc_government
+		}
+
+		frame_suffix = "_darklord"
+		potential = {
+			mep_is_evil_overlord = yes
+			is_patrician = no
+		}
+		color = { 20 20 20 }
+		
+		allow_title_revokation = yes
+		#allow_free_infidel_revokation = yes
+		dukes_called_kings = yes
+		can_imprison_without_reason = yes
+		can_revoke_without_reason = yes
+		can_grant_kingdoms_and_empires_to_other_government = yes
+		ignores_de_jure_laws = yes
+		can_build_tribal = no
+		builds_with_prestige  = { TEMPLE FORT }
+		
+		ignore_in_vassal_limit_calculation = {
+		    tribal_government
+		}
+		demesne_size = 20
+		vassal_limit = 100
+		commander_limit = 10
+		free_levies_in_offensive_war = yes
+		capital_move_delay = 4500
+	}
+	
+	# Governemnt for Orcs, Trolls, ordinary Wights, and spiders
+	orc_government = {
+	    preferred_holdings = { CASTLE }
+		allowed_holdings = {
+		    CASTLE
+			TEMPLE
+			CITY
+			FORT
+			HOSPITAL
+		}
+		accepts_liege_governments = {
+			orc_government
+		    darklord_government
+		}
+		free_revoke_on_governments = {
+			just_feudal_government
+			hobbit_thaindom		
+		}
+		free_revoke_on_tiers = { baron }
+
+		frame_suffix = "_orc"
+		potential = {
+			OR = {
+				religion_group = religion_group_melkorx
+				religion_group = religion_group_ungoliant
+			}
+			NOT = { trait = good_side }
+			NOT = { mep_is_evil_overlord = yes }
+			is_patrician = no
+		}
+		color = { 70 40 40 }
+		
+		allow_title_revokation = yes
+		dukes_called_kings = yes
+		can_imprison_without_reason = yes
+		can_revoke_without_reason = yes
+		ignores_de_jure_laws = yes
+		can_build_tribal = no
+		builds_with_prestige  = { FORT }
+		allow_looting = yes
+		
+		ignore_in_vassal_limit_calculation = {
+		    tribal_government
+		}
+		capital_move_delay = 600
+	}
+	
+	# Aka 'Haradrim Government'
 	muslim_government = {
 		preferred_holdings = { CASTLE }
 		allowed_holdings = { 
@@ -48,6 +252,8 @@ feudal_governments = {
 		}
 		accepts_liege_governments = { # Gets the wrong religion modifier instead
 			feudal_government
+			just_feudal_government
+			darklord_government
 		}
 		free_revoke_on_tiers = {
 			duke
@@ -57,12 +263,7 @@ feudal_governments = {
 		}
 		frame_suffix = "_iqta"
 		potential = {
-			NAND = {
-				controls_religion = yes
-				NOT = { religion_group = muslim }
-				NOT = { religion = norse_pagan_reformed }
-			}
-			religion_group = muslim
+			religion = religion_southron
 			is_patrician = no
 		}
 		
@@ -84,6 +285,41 @@ feudal_governments = {
 		ignore_in_vassal_limit_calculation = {
 			tribal_government
 		}
+		capital_move_delay = 600
+	}
+	
+	# Wilderness does not really have government, but a custom type is better than feudal
+	wilderness_nongovernment = {
+		preferred_holdings = { CASTLE }
+		allowed_holdings = { 
+			CASTLE
+			CITY
+			TEMPLE
+			FORT
+		}
+		allowed_holdings_culture = { # Will not get the wrong government type penalty for tribes of the same culture
+			TRIBAL
+		}
+		frame_suffix = "_wilds"
+		potential = {
+			religion_group = religion_group_wilderness
+			# government type restrictions
+			NOT = { controls_religion = yes }
+			is_patrician = no
+		}
+		
+		color = { 60 60 60 }
+		
+		dukes_called_kings = no
+		barons_need_dynasty = no
+		can_build_holdings = no
+		can_build_forts = no
+		allow_title_revokation = no
+		can_imprison_without_reason = no
+		can_create_kingdoms = no
+		can_usurp_kingdoms_and_empires = no
+		
+		capital_move_delay = 600
 	}
 	
 }

@@ -99,7 +99,7 @@ narrative_event = {
 }
 
 
-# Informed about the High kingship of the Silvan Elves
+# Informed about the High kingship of Anadûnê
 narrative_event = {
 	id = claimtitles.4
 	title = EVTNAMEclaimtitles.4
@@ -184,19 +184,22 @@ narrative_event = {
 	
 	option = {
 		name = EVTOPTAclaimtitles.7
+		# changing the dejure setup is a bad idea, I think
+		#hidden_tooltip = {
+		#	primary_title = {
+		#		any_direct_de_jure_vassal_title = {
+		#			de_jure_liege = e_reunited_kingdom
+		#		}
+		#	}
+		#}
 		hidden_tooltip = {
-			primary_title = {
-				any_direct_de_jure_vassal_title = {
-					de_jure_liege = e_reunited_kingdom
-				}
-			}
+			activate_title = { title = e_reunited_kingdom status = no }
 		}
 		e_reunited_kingdom = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}
 		hidden_tooltip = {
-			activate_title = { title = e_reunited_kingdom status = no }
 			any_playable_ruler = {
 				limit = {
 					NOT = { has_landed_title = e_reunited_kingdom }

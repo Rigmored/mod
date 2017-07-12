@@ -18,12 +18,12 @@ narrative_event = {
 		name = "EVTOPTAcraft.100" ## I'll forge a sword !
 		trigger = {
 			NOT = {
-				trait = elvish_sword
-				trait = ancient_elvish_sword
-				trait = dwarvish_sword
-				trait = elvish_sword_magic_exceptional
-				trait = elvish_sword_magic_combat
-				trait = elvish_sword_magic_martial
+				has_artifact = elvish_sword
+				has_artifact = ancient_elvish_sword
+				has_artifact = dwarvish_sword
+				has_artifact = elvish_sword_magic_exceptional
+				has_artifact = elvish_sword_magic_combat
+				has_artifact = elvish_sword_magic_martial
 			}
 		}
 		character_event = { id = craft.0 days = 10 }
@@ -213,7 +213,10 @@ character_event = {
 	option = {
 		name = "EVTOPTAcraft.3" ## Great !
 		clr_character_flag = crafts_object
-		add_trait = ancient_elvish_sword
+		add_artifact = ancient_elvish_sword
+		new_artifact = {
+			set_creation_date = 1.1.1
+		}
 		if = {
 			limit = {
 				trait = craftsman
@@ -358,7 +361,10 @@ character_event = {
 	option = {
 		name = "EVTOPTAcraft.6" ## Great !
 		clr_character_flag = crafts_object
-		add_trait = elvish_sword
+		add_artifact = elvish_sword
+		new_artifact = {
+			set_creation_date = 1.1.1
+		}
 		if = {
 			limit = {
 				trait = craftsman
@@ -527,7 +533,10 @@ character_event = {
 	option = {
 		name = "EVTOPTAcraft.10" ## Great !
 		clr_character_flag = crafts_object
-		add_trait = dwarvish_sword
+		add_artifact = dwarvish_sword
+		new_artifact = {
+			set_creation_date = 1.1.1
+		}
 		if = {
 			limit = {
 				trait = craftsman

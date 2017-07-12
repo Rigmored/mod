@@ -1,0 +1,113 @@
+# 2 decisions for the last alliance
+# form_last_alliance is intended for the first bookmark, used by elendil for a successor to form an alliance to counter Sauron
+# launch_last_alliance is to start the war with Sauron once the alliance is formed
+
+decisions = {
+#------------------------------------------------------------
+# presumably used by Elendil or his successors to form the 'Last Alliance' against Mordor (presumably under Sauron)
+form_last_alliance = {
+	is_high_prio = yes
+	
+	potential = {
+		# Right time period
+		NOT = { year = 8400 }
+		# must be the Númenórean Ruler of e_reunited_kingdom (or it's successors, just in case)
+		independent = yes
+		OR = {
+			has_landed_title = e_reunited_kingdom
+			has_landed_title = e_arnor
+			has_landed_title = e_gondor
+		}	
+		# not already in progress or finished
+		NOR = {
+			has_global_flag = mep_start_lastalliance
+			has_global_flag = mep_lastalliance_done1
+			has_global_flag = mep_lastalliance_done2
+			has_global_flag = mep_lastalliance_offensive
+			has_global_flag = mep_lastalliance_counterstrike1
+			has_global_flag = mep_lastalliance_counterstrike2
+			has_global_flag = mep_lastalliance_saurondefeated
+			has_global_flag = mep_lastalliance_sauronwon
+		}
+		# Sauron (or an equivalent) must be in charge of his empire
+		e_barad_dur = {
+			has_holder = yes
+			holder_scope = {
+				OR = {
+					character = 10016
+					trait = nazgul
+					culture = culture_balrog
+					culture = culture_umaiar
+				}
+			}
+		}
+	}
+	
+	allow = {
+		year = 8331
+		mep_is_good_numenorean_culture = yes	
+		NOT = { trait = evil_side }
+		# failed previous attempt has a timeout
+		NOT = { has_character_modifier = mep_lastalliance_failed }
+		# e_noldor must exist and have a non-evil ruler
+		e_noldor = {
+			has_holder = yes
+			holder_scope = { NOT = { trait = evil_side }  }
+		}
+		wealth = 50
+	}
+	
+	effect = {
+		long_character_event = { id = lastalliance.0 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+
+}
+#------------------------------------------------------------
+# Once the Alliance is made, this Decision launches an event which starts the Anti-Mordor war.
+last_alliance_attack = {
+	is_high_prio = yes
+	
+	potential = {
+		# Right time period
+		year = 8331
+		NOT = { year = 8400 }
+		# The alliance is properly setup
+		has_global_flag = mep_lastalliance_done2
+		# you are the leader of the last alliance
+		has_character_flag = mep_lastalliance_leader
+		# Evil Mordor must still be around (very likely)
+		e_barad_dur = {
+			has_holder = yes
+			holder_scope = {
+				OR = {
+					character = 10016  # Sauron
+					trait = nazgul
+					culture = culture_balrog
+					culture = culture_umaiar
+				}
+			}
+		}
+	}
+	
+	allow = {
+		NOT = { trait = evil_side }
+		war = no
+		wealth = 50
+	}
+	
+	effect = {
+		character_event = { id = lastalliance.10 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+
+#------------------------------------------------------------
+}

@@ -1,3 +1,10 @@
+# includes some misc events
+# racetrait.1 to racetrait.10 : applies vital species-specific traits to those who are supposed to have them
+# racetrait.20 : If you are plotting to kill unkillable characters, this event pops up and cancels the plot_kill_character
+# racetrait.21 : Huorn Defence force for Fangorn and The Old Forest
+# racetrait.24 to racetrait.26 : Generates courtiers for Elven Rulers
+
+
 namespace = racetrait
 
 ## The characters is an Elf ##
@@ -6,29 +13,22 @@ character_event = {
 	title = EVTNAMEracetrait.1
 	desc = EVTDESCracetrait.1
 	picture = "GFX_evt_elves"
+	religion_group = religion_group_eldar
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi	
-		}	
 		NOT = { trait = elf }
 		NOT = { trait = half_elf }
-		AND = {
-			NOT = { father = { always = yes } }
-			NOT = { mother = { always = yes } }
-		}
+		NOT = { father = { always = yes } }
+		NOT = { mother = { always = yes } }
 	}
 	
 	mean_time_to_happen = {
-		days = 1
+		days = 60
 	}
 
 	option = {
 		name = EVTOPTAracetrait.1
-		add_trait = elf
+		mep_char_is_elf_effect = yes
 	}
 }
 
@@ -38,17 +38,19 @@ character_event = {
 	title = EVTNAMEracetrait.1
 	desc = EVTDESCracetrait.1
 	picture = "GFX_evt_dwarves"
-	is_triggered_only = yes
+	religion_group = religion_group_khazad
 	
 	trigger = {
-		culture_group = culture_group_dwarves		
 		NOT = { trait = dwarven }
 	}
-
+	
+	mean_time_to_happen = {
+		days = 31
+	}
 
 	option = {
 		name = EVTOPTAracetrait.1
-		add_trait = dwarven
+		mep_char_is_dwarf_effect = yes
 	}
 }
 
@@ -233,9 +235,11 @@ character_event = {
 ## The characters is an Orc ##
 character_event = {
    id = racetrait.5
-   title = EVTNAMEracetrait.1
-   desc = EVTDESCracetrait.1
-   picture = "GFX_evt_coronation"
+   # title = EVTNAMEracetrait.1
+   # desc = EVTDESCracetrait.1
+   # picture = "GFX_evt_coronation"
+   
+   hide_window = yes
 
    is_triggered_only = yes
    
@@ -247,6 +251,7 @@ character_event = {
 			culture = culture_troll
 		}	
 		NOT = { trait = half_orc }
+		NOT = { trait = orc }
 	}
 
 
@@ -259,14 +264,16 @@ character_event = {
 ## The characters is a spider ##
 character_event = {
 	id = racetrait.7
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_coronation"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_coronation"
+	
+	hide_window = yes
 
 	is_triggered_only = yes
 	
 	trigger = {
-		culture = culture_spider
+		religion_group = religion_group_ungoliant
 		NOT = { trait = spider }
 	}
 
@@ -279,9 +286,9 @@ character_event = {
 ## The character is an Hobbit ##
 character_event = {
     id = racetrait.8
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_dwarves"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_dwarves"
 	hide_window = yes
 
 	is_triggered_only = yes
@@ -293,7 +300,7 @@ character_event = {
 
 
 	option = {
-		name = EVTOPTAracetrait.1
+		# name = EVTOPTAracetrait.1
 		add_trait = hobbit
 	}
 }
@@ -301,21 +308,21 @@ character_event = {
 ## The character is an Eagle ##
 character_event = {
     id = racetrait.9
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_dwarves"
+	# title = EVTNAMEracetrait.1
+	# desc = EVTDESCracetrait.1
+	# picture = "GFX_evt_dwarves"
 	hide_window = yes
 
 	is_triggered_only = yes
 	
 	trigger = {
-		culture = culture_eagles
+		culture = culture_eagles	
 		NOT = { trait = eagle }
 	}
 
 
 	option = {
-		name = EVTOPTAracetrait.1
+		# name = EVTOPTAracetrait.1
 		add_trait = eagle
 	}
 }
@@ -323,9 +330,9 @@ character_event = {
 ## The characters is an Orc, but don't have any of the orcs warriors traits at beginning ##
 character_event = {
 	id = racetrait.10
-	title = EVTNAMEracetrait.10
-	desc = EVTDESCracetrait.10
-	picture = "GFX_evt_coronation"
+	# title = EVTNAMEracetrait.10
+	# desc = EVTDESCracetrait.10
+	# picture = "GFX_evt_coronation"
 	hide_window = yes 
 
 	is_triggered_only = yes
@@ -345,7 +352,7 @@ character_event = {
 
 
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_goblin
 		}
@@ -353,20 +360,17 @@ character_event = {
 			70 = {
 				add_trait = weak_orc
 			}
-			15 = {
+			20 = {
 				add_trait = orc_warrior
 			}	
 			10 = {
 				add_trait = strong_orc
 			}
-			5 = {
-				add_trait = great_orc
-			}	
 		}
 	}
 	
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_orkish
 		}
@@ -387,7 +391,7 @@ character_event = {
 	}	
 	
 	option = {
-	    name = EVTOPTAracetrait.1
+	    # name = EVTOPTAracetrait.1
 		trigger = {
 			culture = culture_urukhai
 		}
@@ -407,5 +411,339 @@ character_event = {
 		}
 	}	
 }
+
+
+# some species/races or more or less unkillable by normal means
+character_event = {
+	id = racetrait.20
+	title = EVTTITracetrait.20
+	desc = EVTDESCracetrait.20
+	picture = GFX_evt_whispers
+	border = GFX_event_normal_frame_intrigue
+	is_part_of_plot = yes
+	
+	trigger = {
+		OR = {
+			has_plot = plot_kill_character
+			has_plot = plot_kill_spouse
+		}
+		
+		plot_target_char = {
+			mep_should_be_unkillable_trigger = yes
+		}
+		NOT = { has_character_flag = murder_in_motion }
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		plot_target_char = {
+			save_event_target_as = mep_immortal_victim_target
+		}
+	}
+	
+	option = {
+		name = EVTOPTAracetrait.20
+		if = {
+			limit = { has_plot = plot_kill_character }
+			cancel_plot = plot_kill_character
+		}
+		if = {
+			limit = { has_plot = plot_kill_spouse }
+			cancel_plot = plot_kill_spouse
+		}
+	}
+}
+
+# To avoid creating yet another file, I've decided to place the 'Huorn Defence Force' event here
+character_event = {
+	id = racetrait.21
+	title = EVTTITracetrait.21
+	desc = EVTDESCracetrait.21
+	picture = GFX_evt_oldmanwillow
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	war = yes
+	
+	trigger = {
+		# is Ent, Huorn, or Tom Bombadil
+		OR = {
+			religion_group = religion_group_enyd
+			culture = culture_enigma
+		}
+		# ruling Fangorn, or the old forest
+		OR = {
+			has_landed_title = c_fangorn
+			has_landed_title = c_derndingle
+			has_landed_title = d_fangorn
+			has_landed_title = c_the_old_forest
+		}
+		# is under attack (I think this is all that is necessary)
+		is_primary_war_defender = yes
+		# I'm not sure If I should put in some flag to block repeats or not.
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	option = {
+		name = EVTOPTAracetrait.21
+		# Creates defensive Huorn Army
+		custom_tooltip = {
+			text = TT_MAKE_HUORN_ARMY
+			
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_enyd
+				culture = culture_huorn
+				trait = ent
+				trait = zealous
+				trait = unyielding_leader
+				trait = rough_terrain_leader
+				trait = brilliant_strategist
+				female = no
+				age = 3333
+				immortal_age = 50
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit = {
+						province = PREV
+						owner = PREVPREV
+						disband_on_peace = yes
+						attrition = 0
+						maintenance_multiplier = 0.1
+						troops = {
+							heavy_infantry = { 700 700}
+							light_infantry = {1000 1000}
+							pikemen = { 700 700}
+							archers = {1000 1000}
+						}
+						reinforces = yes
+						reinforce_rate_multiplier = 0.1						
+					}
+				}
+			}
+		}
+		# the attacked ruler is k_fangorn, create ANOTHER defensive army
+		if = {
+			limit = { has_landed_title = k_fangorn }
+			custom_tooltip = {
+				text = TT_MAKE_HUORN_ARMY
+				
+				create_random_soldier = {
+					random_traits = yes
+					dynasty = none
+					religion = religion_enyd
+					culture = culture_huorn
+					trait = ent
+					trait = unyielding_leader
+					trait = rough_terrain_leader
+					trait = brilliant_strategist
+					female = no
+					age = 4171
+					immortal_age = 55
+				}
+				capital_scope = {
+					new_character = {
+						spawn_unit = {
+							province = PREV
+							owner = PREVPREV
+							disband_on_peace = yes
+							attrition = 0
+							maintenance_multiplier = 0.1
+							troops = {
+								heavy_infantry = { 700 700}
+								light_infantry = {1000 1000}
+								pikemen = { 700 700}
+								archers = {1000 1000}
+							}
+							reinforces = yes
+							reinforce_rate_multiplier = 0.1						
+						}
+					}
+				}
+			}
+		}
+		# just in case, we also boot morale
+		any_army = { morale = +1 }
+		
+	}
+}
+
+#----------------------------------------------------------------
+# Generates courtiers for elven rulers - The random version
+character_event = {
+	id = racetrait.24
+	religion_group = religion_group_eldar
+	
+	hide_window = yes
+	
+	trigger = {
+		# is_patrician = no
+		higher_real_tier_than = baron
+		capital_scope = {
+			OR = {
+				culture = culture_nandor
+				culture = culture_silvan
+				culture = culture_avari
+				culture = culture_sindar
+				culture = culture_noldor
+				culture = culture_falathrim
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	option = {
+		set_variable = { which = mep_courtiers_tomake value = 11 }
+		mep_generate_eleven_courtiers_effect = yes
+	}
+}
+
+# Generates courtiers for elven rulers - The random version for baron-level characters
+character_event = {
+	id = racetrait.26
+	only_rulers  = yes
+	religion_group = religion_group_eldar
+	
+	hide_window = yes
+	
+	trigger = {
+		religion_group = religion_group_eldar
+		OR = {
+			is_patrician = yes
+			AND = {
+				is_landed = yes
+				tier = baron
+			}
+		}
+		capital_scope = {
+			OR = {
+				culture = culture_nandor
+				culture = culture_silvan
+				culture = culture_avari
+				culture = culture_sindar
+				culture = culture_noldor
+				culture = culture_falathrim
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	option = {
+		set_variable = { which = mep_courtiers_tomake value = 2 }
+		mep_generate_eleven_courtiers_effect = yes
+	}
+}
+# Meant to be launched on_chronicle_start to provide random elf courtiers for all elven rules
+# of count level or above
+character_event = {
+	id = racetrait.25
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		any_independent_ruler = {
+			# generating ruler courtiers
+			if = {
+				limit = {
+					higher_real_tier_than = baron
+					religion_group = religion_group_eldar
+					capital_scope = {
+						OR = {
+							culture = culture_nandor
+							culture = culture_silvan
+							culture = culture_avari
+							culture = culture_sindar
+							culture = culture_noldor
+							culture = culture_falathrim
+						}
+					}
+				}
+				set_variable = { which = mep_courtiers_tomake value = 11 }
+				mep_generate_eleven_courtiers_effect = yes
+			}
+			# generating vassal courtiers
+			any_realm_lord = {
+				if = {
+					limit = {
+						higher_real_tier_than = baron
+						religion_group = religion_group_eldar
+						capital_scope = {
+							OR = {
+								culture = culture_nandor
+								culture = culture_silvan
+								culture = culture_avari
+								culture = culture_sindar
+								culture = culture_noldor
+								culture = culture_falathrim
+							}
+						}
+					}
+					set_variable = { which = mep_courtiers_tomake value = 11 }
+					mep_generate_eleven_courtiers_effect = yes
+				}
+			}
+		}
+		# also, we have to do this again for the player...
+		ROOT = {
+			# generating ruler courtiers
+			if = {
+				limit = {
+					higher_real_tier_than = baron
+					religion_group = religion_group_eldar
+					capital_scope = {
+						OR = {
+							culture = culture_nandor
+							culture = culture_silvan
+							culture = culture_avari
+							culture = culture_sindar
+							culture = culture_noldor
+							culture = culture_falathrim
+						}
+					}
+				}
+				set_variable = { which = mep_courtiers_tomake value = 11 }
+				mep_generate_eleven_courtiers_effect = yes
+			}
+			# generating vassal courtiers
+			any_realm_lord = {
+				if = {
+					limit = {
+						higher_real_tier_than = baron
+						religion_group = religion_group_eldar
+						capital_scope = {
+							OR = {
+								culture = culture_nandor
+								culture = culture_silvan
+								culture = culture_avari
+								culture = culture_sindar
+								culture = culture_noldor
+								culture = culture_falathrim
+							}
+						}
+					}
+					set_variable = { which = mep_courtiers_tomake value = 11 }
+					mep_generate_eleven_courtiers_effect = yes
+				}
+			}
+		}
+		
+	}
+}
+
 	
 	

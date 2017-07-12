@@ -1,43 +1,27 @@
+# JamesFox (2017/05/01) moved good_side startup to goodside.10 and goodside.11 to have it see setup from on_chronicle_start
+# goodside.10 is kept as a notification event
+
 namespace = goodside
 
+# After startup notification message for good_side players
 character_event = {
 	id = goodside.1
 	title = "EVTNAMEgoodside.1"
 	desc = "EVTDESCgoodside.1"
 	picture = "GFX_good"
-	age = 16
 	only_rulers = yes
+	ai = no
 	only_independent = yes
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_numenorean
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_halfling
-			culture_group = culture_group_dwarves
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		NOT = {
-			culture = culture_dunlending
-			culture = culture_hillmen
-			culture = culture_black_numenorean 	
-			trait = evil_side 
-			trait = good_side
-			has_character_flag = goodsidestartup
-		}
-		NOT = { religion_group = religion_group_melkor }
+		trait = good_side
+		NOT = { has_character_flag = sidechosen_message }
 	}
 
-	immediate = { set_character_flag = goodsidestartup }
+	immediate = { set_character_flag = sidechosen_message }
 
 	option = {
 		name = "EVTOPTgoodside.1"
-		add_trait = good_side
 	}
 }
 
@@ -75,26 +59,22 @@ character_event = {
 	only_rulers = yes
 
 	trigger = {
+		liege = { trait = evil_side }
 		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_numenorean
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_halfling
-			culture_group = culture_group_dwarves
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
+			AND = { mep_is_good_side_trigger = yes }
+			religion_group = religion_group_periannath
+			culture = culture_breelander
 		}
-		NOT = { culture = culture_black_numenorean }
 		NOT = { has_character_flag = evil_liege }
-		NOT = { religion_group = religion_group_melkor }
 		NOT = { trait = evil_side }
-		liege = { trait = evil_side } 
-		NOT = { liege = { culture = culture_maiar } }
-		NOT = { liege = { culture = culture_istari } }
-		NOT = { liege = { culture_group = culture_group_melkor } }
+		liege = {  # Apparently, this event is only if the ruler turns evil, not for the conquered
+			NOR = {
+				culture = culture_maiar
+				culture = culture_umaiar
+				culture = culture_istari
+				culture_group = culture_group_melkor
+			}
+		}
 	}
 
 	mean_time_to_happen = { days = 180 }
@@ -154,23 +134,14 @@ character_event = {
 	picture = "GFX_evil"
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_numenorean
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_halfling
-			culture_group = culture_group_dwarves
-			culture_group = culture_group_quendi
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		NOT = { culture = culture_black_numenorean }
-		NOT = { has_character_flag = evil_liege }
-		NOT = { religion_group = religion_group_melkor }
-		NOT = { trait = evil_side }
 		liege = { trait = evil_side }
+		OR = {
+			AND = { mep_is_good_side_trigger = yes }
+			religion_group = religion_group_periannath
+			culture = culture_breelander
+		}
+		NOT = { has_character_flag = evil_liege }
+		NOT = { trait = evil_side }
 		lower_tier_than = baron	   
 	}
 
@@ -250,5 +221,207 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAgoodside.9"#It is the only way.
+	}
+}
+
+# fired from on_chronicle_start. ROOT is the player. Relays an event to any independent ruler,
+# player or not, who meets the 'pick good side' requirements
+character_event = {
+	id = goodside.10
+	only_rulers = yes
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		any_independent_ruler = {
+			limit = { mep_pick_good_side_trigger  = yes }
+			character_event = { id = goodside.11 }
+		}
+		ROOT = {
+			if = {
+				limit = { mep_pick_good_side_trigger  = yes
+							independent = yes }
+				character_event = { id = goodside.11 }
+			}
+		}
+	}
+	# done
+}
+
+character_event = {
+	id = goodside.11
+	# only_rulers = yes
+	# only_independent = yes
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+
+	option = {
+		if = {
+			limit = { NOT = { trait = good_side } }
+			add_trait = good_side
+		}
+		set_character_flag = sidechosen
+		# adds good side to high-ranking vassals
+		any_vassal = {
+			limit = {
+				primary_title = { higher_tier_than = count } 
+				NOT = { trait = evil_side }
+				NOT = { has_character_flag = sidechosen }
+				NOT = { mep_evil_religion = yes }
+				# perhaps some additional limitations here
+			}
+			# vassal kings will always (after passing a test) get good_side
+			if = {
+				limit = {
+					real_tier = king
+					NOR = {
+						trait = evil_side 
+						has_character_flag = sidechosen
+					}
+					NOT = { mep_evil_religion = yes }
+				}
+				if = {
+					limit = { NOT = { trait = good_side } } 
+					add_trait = good_side
+				}
+				set_character_flag = sidechosen
+				# we now scope to the duke-level vassals
+				any_vassal = {
+					if = {
+						limit = {
+							real_tier = duke
+							mep_is_good_side_race = yes
+							NOR = {
+								trait = evil_side 
+								has_character_flag = sidechosen
+							}
+						}
+						if = {
+							limit = { NOT = { trait = good_side } } 
+							add_trait = good_side
+						}
+						set_character_flag = sidechosen
+					}
+				}
+			}
+			# vassal duke will get good_side under certain conditions
+			if = {
+				limit = {
+					real_tier = duke
+					mep_is_good_side_race = yes
+				}
+				if = {
+					limit = { NOT = { trait = good_side } } 
+					add_trait = good_side
+				}
+				set_character_flag = sidechosen
+			}
+		}
+		# marks the heir as good side
+		current_heir = {
+			if = {
+				limit = { NOR = {
+						trait = good_side
+						trait = evil_side
+				} }
+				add_trait = good_side
+				set_character_flag = sidechosen
+			}	
+		}
+		
+	}
+	
+	# done
+}
+
+# random event for good side rulers, intended to mark evil_side vassals or courtiers as criminal
+character_event = {
+	id = goodside.12
+	title = EVTTITgoodside.12
+	desc = EVTDESCgoodside.12
+	picture = "GFX_evil"
+	only_playable = yes
+
+	trigger = {
+		trait = good_side
+		NOT = { has_character_flag = very_tolerant_of_evil }
+		OR = {
+			# has an evil_side vassal not already marked as a criminal
+			any_vassal = {
+				trait = evil_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_corrupted_from_good
+					}
+				}
+			}
+			# has an evil_side courtier not already marked as a criminal
+			any_courtier = {
+				trait = evil_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_corrupted_from_good
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 90 }
+
+	# once marked with the opinion modifier, they are criminals who can be banished, imprisoned, revoked, or executed
+	option = {
+		name = EVTOPTAgoodside.12
+		any_vassal = {
+			limit = {
+				trait = evil_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_corrupted_from_good
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_corrupted_from_good
+				who = ROOT
+				duration = -1
+			}
+		}
+		any_courtier = {
+			limit = {
+				trait = evil_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_corrupted_from_good
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_corrupted_from_good
+				who = ROOT
+				duration = -1
+			}
+		}
+	}
+	# player only option to get the flag 'very_tolerant_of_evil'
+	option = {
+		name = EVTOPTBgoodside.12
+		trigger = { ai = no }
+		set_character_flag = very_tolerant_of_evil
 	}
 }

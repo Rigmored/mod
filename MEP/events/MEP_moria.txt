@@ -25,7 +25,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTCmoria.0" ## I won't search.	
-		clr_character_flag = mineinmoria	
+		clr_character_flag = mineinmoria		
 		wealth = 150
 		piety = 150
 	}	
@@ -386,7 +386,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAmoria.12" ## We'll leave the city of Khazad-dûm !
+		name = "EVTOPTAmoria.12" ## We'll leave the city of Khazad-dÃ»m !
 		narrative_event =  { id = moria.14 }
 	}
 	option = {
@@ -405,8 +405,8 @@ character_event = {
 character_event = {
 	id = moria.13
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -414,7 +414,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -455,16 +455,20 @@ character_event = {
 			
 			### Weapons Modifier ###
 			modifier = {
+				factor = 3
+				FROM = { has_artifact = glamdring }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
 				factor = 4
-				FROMFROM = { trait = anduril }
+				FROM = { has_artifact = durins_axe }
 			}
 			modifier = {
-				factor = 3
-				FROMFROM = { trait = glamdring }
-			}
-			modifier = {
-				factor = 3
-				FROMFROM = { trait = orcrist }
+				factor = 2
+				FROM = { has_artifact = dwarvish_sword }
 			}
 			modifier = {
 				factor = 5
@@ -634,7 +638,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -676,16 +680,20 @@ character_event = {
 			
 			### Weapons Modifier ###
 			modifier = {
+				factor = 3
+				FROM = { has_artifact = glamdring }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
 				factor = 4
-				FROM = { trait = anduril }
+				FROM = { has_artifact = durins_axe }
 			}
 			modifier = {
-				factor = 3
-				FROM = { trait = glamdring }
-			}
-			modifier = {
-				factor = 3
-				FROM = { trait = orcrist }
+				factor = 2
+				FROM = { has_artifact = dwarvish_sword }
 			}
 			modifier = {
 				factor = 2
@@ -851,7 +859,7 @@ character_event = {
 }
 
 
-#### The King decides to abandon the city of Khazad-Dûm ####
+#### The King decides to abandon the city of Khazad-DÃ»m ####
 narrative_event = {
 	id = moria.14
 	title = "EVTTITmoria.14"
@@ -872,7 +880,7 @@ narrative_event = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
 		}
-		k_grey_mountains = {
+		d_grey_mountains = {
 			grant_title = ROOT
 		}
 		any_courtier = {
@@ -897,14 +905,11 @@ narrative_event = {
 	}
 	option = {
 		name = "EVTOPTBmoria.14" ## We'll go to Ered Luin
-		c_vale_of_thrain = {
+		c_northern_ranges = {
 			grant_title = ROOT
 			location = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
-		}
-		k_ered_luin = {
-			grant_title = ROOT
 		}
 		any_courtier = {
 			limit = { 
@@ -925,7 +930,7 @@ narrative_event = {
 		any_playable_ruler = {
 			narrative_event = { id = moria.21 }
 		}		
-	}	
+	}
 	option = {
 		name = "EVTOPTCmoria.14" ## We'll go to Iron Hills
 		c_azanulimbar_dum = {
@@ -934,7 +939,7 @@ narrative_event = {
 				add_province_modifier = { name = population_increasing duration = -1 }
 			}
 		}
-		k_iron_mountains = {
+		d_iron_mountains = {
 			grant_title = ROOT
 		}
 		any_courtier = {
@@ -956,7 +961,7 @@ narrative_event = {
 		any_playable_ruler = {
 			narrative_event = { id = moria.21 }
 		}		
-	}		
+	}
 }
 
 #### The balrog become the new ruler of Moria ####
@@ -1011,14 +1016,14 @@ character_event = {
 #### Victory ! ####
 character_event = {
 	id = moria.19
-	desc = "EVTDESCmoria.19"
-	picture = GFX_evt_dwarves_mines
+	# desc = "EVTDESCmoria.19"
+	# picture = GFX_evt_dwarves_mines
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAmoria.19"
+		# name = "EVTOPTAmoria.19"
 		duel_target = {
 			limit = { has_opinion_modifier = { who = ROOT modifier = opinion_duel_target } }
 			character_event = { id = moria.16 }
@@ -1116,12 +1121,12 @@ character_event = {
 ##### EVENT TO CLEAR THE CHARACTER FLAG ######
 
 
-# The Holder of Nenya can use once again nenya #
+# ??The Holder of Nenya can use once again nenya #
 character_event = {
 	id = moria.18
-	title = EVTTITmoria.18
-	desc = EVTDESCmoria.18
-	picture = "GFX_good"
+	# title = EVTTITmoria.18
+	# desc =Â EVTDESCmoria.18
+	# picture = "GFX_good"
 	hide_window = yes
 		
 	trigger = {
@@ -1135,7 +1140,7 @@ character_event = {
 	}	
 		
 	option={
-		name=EVTOPTAmoria.18
+		# name=EVTOPTAmoria.18
 		clr_character_flag = mineinmoria
 	}
 }
@@ -1176,6 +1181,8 @@ character_event = {
 	title = "EVTTITmoria.22"
 	desc = "EVTDESCmoria.22"
 	picture = GFX_evt_dwarves_mines
+	religion = religion_umaiar
+	culture = culture_balrog
 
 	trigger = {
 		has_landed_title = c_moria
@@ -1213,46 +1220,24 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAmoria.23" ## we'll install in Moria !	
+		# The balrog takes b_zirak_zigil first
+		FROM = {
+			b_zirak_zigil = { grant_title = PREV }			
+		}
 		c_moria = {
 			grant_title = ROOT
 		}
 		d_moria = {
 			grant_title = ROOT
 		}	
-		k_misty_mountains = {
-			grant_title = ROOT
-		}		
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = c_moria
-				age = 1
-				culture = culture_balrog
-			}
-			character_event = { id = moria.24 }
+		# I --think-- the Balrog is supposed to have an independent barony 		
+		FROM = {
+			set_defacto_liege = THIS
 		}
 	}
 	
 	option = {
 		name = "EVTOPTBmoria.23" ## we won't go to Moria.
 		trigger = { ai = no }
-	}	
-}	 
-
-
-#### The orcs will choose to come in Moria... or not ####
-character_event = {
-	id = moria.24
-	title = "EVTTITmoria.24"
-	desc = "EVTDESCmoria.24"
-	picture = GFX_evt_dwarves_mines
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAmoria.24" ## we'll install in Moria !	
-		b_zirak_zigil = {
-			grant_title = ROOT
-		}	
-		set_defacto_liege = ROOT
 	}	
 }	 

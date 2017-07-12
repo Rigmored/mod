@@ -1,0 +1,70 @@
+################################################################################
+# MEP : This event can be used to set laws on startup
+################################################################################
+namespace = meplawsetup
+
+character_event = {
+	id = meplawsetup.0
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = MEP_law_set } }
+			any_title = {
+				# Here, just making sure that most good guys get 'King's Peace' (internal)
+				if = {
+					limit = {
+						holder_scope = {
+							is_republic = no
+							is_tribal = no
+							is_nomadic = no						
+							mep_canhave_nice_feudalism = yes
+						}
+					}
+					# for 'non-Zeus' (no Conclave DLC)
+					if = {
+						limit = { NOT = { has_dlc = "Zeus" } }
+						# using the custom 'Lordly Authority' (replaces Crown Authority for selected 'Nice' groups)
+						if = {
+							limit = { has_law = jcrown_authority_0 }
+							add_law = jcrown_authority_1
+						}
+					}
+					# if using 'Zeus' (Conclave DLC)
+					if = {
+						limit = { has_dlc = "Zeus" }
+						# I've modded it so that ze_administration_laws_1 (instead of ze_administration_laws_2)
+						# is a pre-requisite for king's peace for mep_canhave_nice_feudalism = yes
+						if = {
+							limit = { has_law = ze_administration_laws_0 }
+							add_law = ze_administration_laws_1
+						}
+						if = {
+							limit = { 
+								NOR = { has_law = vassal_wars_law_1
+									has_law = vassal_wars_law_2 }
+							}
+							add_law = vassal_wars_law_1				
+						}
+						# Also, instead of being unrestricted, revoke laws now require ze_administration_laws_2
+						# for mep_canhave_nice_feudalism, ze_administration_laws_1 for others
+						if = {
+							limit = {
+								OR = {
+									has_law = revoke_title_law_1
+									has_law = revoke_title_law_2
+								}
+							}
+							add_law = revoke_title_law_0
+						}
+					}
+				}
+			}
+			set_global_flag = MEP_law_set
+		}
+	}
+
+
+}

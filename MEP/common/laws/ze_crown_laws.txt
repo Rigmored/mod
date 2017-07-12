@@ -88,6 +88,8 @@ de_jure_laws = {
 	}
 	
 	# VASSAL WAR DECLARATION LAWS
+	# Edited for MEP to reflect the less turbulent feudalism of Toklien's 'Good Guys'
+	# (namely, internal king's peace should be allowed at low administration).
 	vassal_wars_law_0 = {
 		group = vassal_wars_law
 		default = yes
@@ -152,8 +154,20 @@ de_jure_laws = {
 				has_law = vassal_wars_law_2
 			}
 			holder_scope = {
-				primary_title = {
-					has_law = ze_administration_laws_2
+				OR = {
+					AND = {
+						NOT = { mep_canhave_nice_feudalism = yes }
+						primary_title = { 
+							OR = {
+								has_law = ze_administration_laws_1
+								has_law = ze_administration_laws_2
+							}
+						}
+					}
+					AND = {
+						mep_canhave_nice_feudalism = yes
+						primary_title = { has_law = ze_administration_laws_2 }
+					}
 				}
 			}
 		}
@@ -163,10 +177,13 @@ de_jure_laws = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0.05
 			modifier = {
-				factor = 0.05
+				factor = 3
 				always = yes
+				holder_scope = {
+					mep_canhave_nice_feudalism = yes
+				}
 			}
 		}
 		

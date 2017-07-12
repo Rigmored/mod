@@ -1,5 +1,7 @@
 decisions = {
 	##The ancient friendship between the House of Eorl and the Lords of Gondor##
+	## Note that my revision assumes this will continue for any Rohirrim King
+	## I am Ignoring the possibilities of multiple Gondor's at the same time.
 
 ##Gondor sends the Red Arrow to Rohan##
 	red_arrow_rohan = {
@@ -9,18 +11,49 @@ decisions = {
 			OR = {
 				has_landed_title = e_gondor
 				has_landed_title = e_steward_gondor
+				has_landed_title = e_reunited_kingdom
 			}
-			OR = {
-				dynasty = 100
-				dynasty = 2001
-			}
+			NOT = { has_landed_title = k_rohan }
 			independent = yes
-			is_ruler = yes
-			is_primary_war_defender = yes
-			NOT = { has_character_flag = oath_of_eorl }
-			NOT = { has_global_flag = rohan_threatened }
+			# additional rules: Rohan must exit, must be independent, not evil, 
+			# and also must not already be participating in a gondor war
+			k_rohan = {
+				has_holder = yes
+				independent = yes
+				holder_scope = {
+					culture = culture_rohirrim
+					NOT = { trait = evil_side }
+				}
+			}
+			year = 10853
+			# there is a set of events in events_independance_arnor_gondor.txt, which if Gondor
+			# becomes e_gondor, a human player can claim Rohan. No Red Arrow then!
+			NOT = { has_global_flag = gondorreclaimrohan }
+			
 		}
-		allow = { prestige = 100 }
+		allow = {
+			prestige = 50
+			custom_tooltip = {
+				text = TT_REDARROW_TT1
+				NOT = { has_character_flag = oath_of_eorl }
+			}
+			custom_tooltip = {
+				text = TT_REDARROW_TT2
+				NOT = { has_global_flag = rohan_threatened }
+			}
+			is_primary_war_defender = yes
+			custom_tooltip = {
+				text = TT_REDARROW_TT3
+				any_war = {
+					defender = { character = PREV }
+					NOT = {
+						any_defender = {
+							has_landed_title = k_rohan
+						}
+					}
+				}
+			}
+		}
 		effect = {
 			ROOT = {
 				character_event = { id = redarrow.1 }
@@ -30,17 +63,61 @@ decisions = {
 	##Rohan sends the Red Arrow to Gondor##
 	red_arrow_gondor = {
 		is_high_prio = yes
+		
 		potential = {
 			ai = no
+			# For the Ruler of Rohan
 			has_landed_title = k_rohan
-			dynasty = 5
+			NOT = { trait = evil_side }
+			culture = culture_rohirrim
 			independent = yes
-			is_ruler = yes
-			is_primary_war_defender = yes
-			NOT = { has_character_flag = oath_of_eorl }
-			NOT = { has_global_flag = gondor_threatened }
+			year = 10853
+			OR = {
+				e_gondor = {
+					has_holder = yes
+					independent = yes
+					holder_scope = { NOT = { trait = evil_side } } 
+				}
+				e_steward_gondor = {
+					has_holder = yes
+					independent = yes
+					holder_scope = { NOT = { trait = evil_side } }
+				}
+				e_reunited_kingdom = {
+					has_holder = yes
+					independent = yes
+					holder_scope = { NOT = { trait = evil_side } }
+				}
+			}
+			NOT = { has_global_flag = gondorreclaimrohan }
 		}
-		allow = { prestige = 100 }
+		allow = {
+			prestige = 50
+			custom_tooltip = {
+				text = TT_REDARROW_TT1
+				NOT = { has_character_flag = oath_of_eorl }
+			}
+			custom_tooltip = {
+				text = TT_REDARROW_TT4
+				NOT = { has_global_flag = gondor_threatened }
+			}
+			is_primary_war_defender = yes
+			custom_tooltip = {
+				text = TT_REDARROW_TT5
+				any_war = {
+					defender = { character = PREV }
+					NOT = {
+						any_defender = {
+							OR = {
+								has_landed_title = e_gondor
+								has_landed_title = e_steward_gondor
+								has_landed_title = e_reunited_kingdom
+							}
+						}
+					}
+				}
+			}
+		}
 		effect = {
 			ROOT = {
 				character_event = { id = redarrow.6 }

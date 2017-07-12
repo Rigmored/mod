@@ -1,6 +1,181 @@
--------MIDDLE-EARTH PROJECT----------
+﻿-------MIDDLE-EARTH PROJECT----------
+### 0.7x16c
+- Revised the random culture change events, restricting it to same species, and adding 5 other events to handle other scenarios
+- Split spiders into a separate religion group, to prevent inter-marriage
+- Added wilderness courtier culling event.
+- Added a basic elven physiciann to the physician-generating events
+- Various bugfixes
 
-#### 0.7 ####
+## 0.7x16b
+- Bugfixes
+- Merged some marriage and inferility events into a single file/namespace (MEP_marriage.txt)
+- Set up MEP_death.txt (with 3 events so far)
+- implemented event to add the 'marriedforever' trait which prevents Elves from re-marrying.
+
+### 0.7x16
+- Imported a large amount of localization files for vanilla events from the Silmarilien mod. Thanks to Porkenstein and the other Silmarilien mod members.
+- Tweaked my elf-courtier generator to produce 2/3rds males, to give them an extra 5 score in a random slot, and to set their immortal_age so they
+never look like children (there seems to be no way to do that for existing characters).
+- Defensive pacts are now turned off by deafult in the game rules.
+- Feudal and Just Feudal now call tribal vassal to arms.
+- As per hhardy01's request, moved Edhellond and the Drúadan Forest outside Gondor (to 'Nothing'). The Drúadan Forest is still a vassal of Gondor most of the time. Also moved Aglarond there (getting rid of k_aglarond).
+- Added some modifers and events to mark being evil in a good_side court, and vice versa, as criminal.
+- Tweaked/Restricted the triggers for the Red Arrow decisions/events.
+- Made some edits some old events to give them pre-triggers (and get rid of the invalid age=16).
+- revised health_events (using a never source heath_events.txt), and boosted cultural resistance to diseases for immortal races to 125% (this only applies to provinces).
+- Wilderness CB now works against Himling, the AI will also occupy wilderness more if they have a claim.
+- Added separate purging for Evil Overlords (who could enslave or make use of some types).
+- 'Unkillable' characters now have a grealty reduced chance of dying in battle.
+- Fixed some errors with population level change (thanks to HandicapdHippo).
+- Colonization now gives population level 2 when done.
+
+### 0.7x15
+- To get rid of ooc revokations, I found out that they can be blocked via government type. So, new feudal government type: 'Just Feudalism' for Elves, Dwarves, Dúnedian, and some other 'Good Guys' (not all). One started, I decided to also create 'Hobbit Thaindom', 'Dark Despotism', 'Orc Despotism' and 'Wilderness' Feudal types. Iqta is renamed to to Haradrim Government.
+- Also did some law editing, to make king's peace easier for 'Good Guys'
+- Made some fixes to traits as per as cal97
+- Fixed some errors involving flags in my wotr events (as per cal_97)
+- edited MEP_wrong_marriage.txt to get rid of banishment (as per cal_97). Also added pre-triggers.
+- The 'Emissary from Mordor' event (which makes easterling and sourthron leaders go evil_side) no longer happens unless Sauron rules in Mordor.
+- Hobbit rulers can only have one majority party now.
+
+
+### 0.7x14
+- Made some revisions to the War of the Ring events, only going as far as the breaking of the fellowship. Only partly tested.
+- Added a 'Wilderness of beyond Rhûn' tituar title, those who have trait 'at_east' are moved here at game start.
+- Revised the cultures allowed for the already-defined retinues (problem noted by Bloodly).
+- Added events to spawn elf-courtiers who are several thousand years old. This is partly an attempt to stop the buildup of incapable 'elf-children', (as noted by Bloodly) but the additional courtiers seem to have no effect on that issue.
+- Includes hhardy01's version of the Hobbit trait.
+- Added 'religious' tolerance to the white council trait.
+- Bombadil is now immune to ring corruption effects.
+- Altered culture maiar to no longer be a clone of culture umaiar
+- The Wizards now start in Valinor, and are moved to Elronds court when they show up in Middle-Earth
+
+
+### 0.7x13
+- Fixed some bad prerequisites for dwarven 'city' water-systems and mines.
+- Last Alliance bugfixes, added some events to disband the Last Allice once the Anti-Mordor war is over.
+- Altered purge events so that rather than the completion being scheduled 10 years in-advance for the same leader only, purging-provinces are checked annually and completed if they are unoccupied and it has been 9.9 years or more since the purging started.
+- Added player-only Wilderness-Colonization with Orcs/Trolls for Evil Overlords.
+- Fiddled around with some race trait events, so elven childhood is applied at game start, and checks are done more frequently. 
+- Event targets for many important characters set at game start.
+- Made some edits to the 'Rohan-Isengard Wars' (covering Gandalf-Saruman and the Battles of the ford of Isen), that should fix some errors.
+- Incorporated hhardy01's Númenórean character changes.
+- The Weather Hills remain part of Arthedian until 9900 (thanks to Deaghaidh)
+- Map Edits: Added the missing province Kor Mumak (thanks to Esdf20), and passages Rivendell-to-Coldfells, and Adligwold-to-Thakalgund.
+- Validated holy sites (the Elves had 8, Umaiar, Spiders, and Dragons had None). All 'religions' now have 5 holy sites.
+- Orcs and Trolls can now have consorts.
+- Various bugfixes
+
+
+### 0.7x12
+- Added additional Last Alliance Events to handle the climactic duel and it's aftermath.
+- Altered MEP soldier traits to make the cultural restrictions more logical.
+- The Nazgûl-killing event when the ring is destroyed seem to partly work now.
+- Fixed the flags and added gfx for _friend traits.
+- Those of Númenórean religion no longer get good_side if they are culture_adunaic or culture_black_numenorean
+- Renamed the 'Holy War' CB's
+- The 'Reunited Kingdom Reconquest' CB now excludes certain territories if the date is before 8800
+- Made alterations to the events in MEP_characterkiller, the most important being an event that turns young umaiar into other evil races.
+- included hhardy01's latest MEP_human_infertility.txt
+- Edhellond is now Sindar (there was a typo in the previous version of the file) until 10325
+- Annuminas has poplevel 4 after 9400.
+- Various internal fixes/clarifications
+
+### 0.7x11
+- Altered purge for evil so that orcs are not the only culture that the province can switch to
+- Fixed some colonization bugs (culture picking for elves was broken)
+- Added death reasons for many elves
+- Added some Elf-Characters and edited history so that Loríen has more adult barony-holders.
+- Rewrote race traits so that religions instead of opposites are used for race relations.
+- Added elf, hobbit, and dwarf friend traits
+- Incorporated changes made by hhardy01 to characters, as well as humaninfertility.1 
+- Prompted by hhardy01, wrote a set of events and decisions to launch the 'Last Alliance'
+- Succession for Wights (including the Nazgûl) is now 'Open Elective'.
+- Added an event to re-imprison Morgoth if Manwë banishes or frees him.
+- The Swan Knights, the Rangers of Ithilien, and the Iron Guard are now vassalized and do not exist when they should not. (Also, removed the other Rangers of Ithilien). However, they have not been fully checked for consistency (also, the Grey Company has not been touched yet).
+- Imported and de-vanillified some decision and event files (often deleting all events) to try and reduce CTD/Asserts. Decisions are now MEP only.
+- Added d_sauron_exile to give Sauron a landless title when he is not otherwise in power.
+- Moved the old forest into a separate duchy and kingdom
+- Created a 'Huorn Defence Force' event for the Old Forest and Fangorn.
+- misc bugfixes
+
+
+### 0.7x10
+- Converted most weapon traits into artifacts (no staffs or shards).
+- Various bugfixes on stuff I've done previously (including CBs).
+- Imported and de-vanillified some event files (often deleting all events) to try and reduce CTD/Asserts
+- Elessar can now claim the Reunited Kingdon.
+- Cannot jaibreak anyone from Valinor. Also, Seduction is now restricted based on species.
+- Part of Dunland is no longer in Dorwinion during the 'New Shadow' start.
+- Made an attempt to fix female-orc hair
+- Cleaned up annexation of Ithilien after ring is destroyed (to make sure *only* Ithilien is taken)
+
+
+### 0.7x09
+- Changed Dwarven Political setup in the north, so there are now independent Broadbeam and Firebeard kingdoms, and the 3 tiny Dwarf-Kingdoms of the northeast have been merged into one.
+- Various barony changes in the Ered Luin to support the above.
+- Removed e_anduin and e_isenvale (which probably only existed because at one point, CKII required a dejure empire for every province).
+- Rewrote the mountain invasion CB
+- Animal tongue trait no longer causes -200 relations with elves.
+- Paladin II and Wil Whitfoot become friends now (try to reduce Hobbit civil war).
+- Arwen and Aragorn become lovers when they get married.
+- Added a 'wreck Barad-dûr' event to be triggered when Frodo destroys the ring.
+- Imported a few vanilla files and stripped/modified them (to reduce the number of errors, in an attempt to reduce CTD).
+- Disease resistant types now less likely to catch generic illness (which can then get worse).
+- Added 3 CBs inteded for use by the Reunited Kingdom (reunited_kingdom_reconquest,wilderness_arnorean,elessar_destiny_conquest)
+- Various bugfixes (with a few custom_tooltips)
+
+
+
+### 0.7x08
+- Most Succession laws are now usable.
+- 'Good Guys' now mostly start of with King's peace.
+- Most issues with some of my earlier changes are fixed.
+- Rewrite wilderness CB (still works the same, mostly, except I used a timed modifier and ai_will_do to prevent rampages).
+- A new set of decisions and events for Longbeard reconquest of Khazad-dûm.
+- Untested additions to the event which kills Nazgûl when Sauron is defeated, intnded to get rid of weird inheritances.
+- Various changes intended to make 'immortals' unkillable by plot.
+- Other bugfixes (for example, Gandalf is now celibate, which prevents the AI from granting him title).
+
+
+### 0.7x07 
+- Went through the titles with the Validator and fixed many things (creating a lot of localizations)
+- Iqta laws should now be restricted to Iqta government type.
+- Immortals should now never go into seclusion.
+
+### 0.7x06
+- Went through events and decisions with the Validator and fixed many things (creating a lot of localizations)
+- Minor change to government types means most governments are now feudal instead of iqta.
+
+### 0.7x05
+- Redid my auto-build events to build level 2 and 3 buildings based on higher population modifiers.
+- Added some more medium-pop provinces
+- Added gondorian/arnorian castle infantry buildings (a castle version of the pikemen, and the already existing Dúnedian Barracks)
+- Added Hobbit farms
+- Removed Elven beards
+- Henneth Annûn is now gondorain (and has rangers)  
+- fixes some bad terrain, mostly around dale
+- Misc fixes that I've forgotten.
+
+### 0.7x04
+- Incorporated the '0.7' stuff, except for the colonization.
+- Added localizations to new buildings and stripped old buildings from autobuild.
+- Altered the new population events so that setup is done before start, and modifer-changes-if-culture-changes are atomic.
+- various minor fixes for localization, syntax, and stuff that I've forgotten.
+
+#### 0.7x03
+- Incorporated many changes in Disfunctionz' unofficial MEP 0.7c (But not the CBs)
+- Two extra targeted decisions (for getting a courtier and good-side joining defensive-war-vs-evil)  
+
+#### 0.7x02 
+- Patches 0.7 (No changelog available) for 2.7
+- Fixes Building setup launch
+- Syntax fixes for events and decisions
+- Additional colonisation decisions and events (for non-humans)
+- CB modifications
+- Added disease resistance to cultures (for provinces), and in the Diseases ('immortal'/spider/wilderness characters) 
+
+#### 0.7 #### (not the same as 0.7 on first post)
 -Added Orc adoption system
 -Removed Orc females and made Orcs infertile
 -Added Arnorian culture to Arnorian held counties in 4th age bookmark
@@ -35,6 +210,7 @@
 -Added events to clean up provinces with two population modifiers, if the event sees two pop mods in a province, it deletes them both and adds the pop 4 mod.
 -Fixed culture conversion (disallowed dwarves/elves/numenorian blood folks from getting the random culture conversion events.  They will have use their stewards to colonize new lands.
 -Added 22 minor titles for the dwarves, 10 are kingdom specific which is why so many.
+
 
 #### 0.6b HOTFIX #2 ####
 - Fixed a bug where the steward can't be send to a wilderness province to colonize it.

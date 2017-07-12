@@ -2,16 +2,8 @@
 on_startup = {
 	events = {
 		toggle_startup.0
-		population.0 
+		# population.0 
 		waning.0
-		maiarkiller.5
-		maiarkiller.4
-		maiarkiller.31
-		maiarkiller.3
-		maiarkiller.2
-		maiarkiller.1
-		racetrait.1
-		racetrait.2
 		racetrait.3
 		racetrait.4
 		racetrait.6
@@ -20,22 +12,31 @@ on_startup = {
 		racetrait.8
 		racetrait.9
 		racetrait.10
+		GR.13 #True cognatic for rule gender = all
+		maiarkiller.10
 	}
 }
 
 #character
 on_yearly_pulse = {
 	events = {
+		# CM.5000 # Ragnar Lodbrok
+		# CM.503 # Start of Viking Age
+		# CM.1011 # Lombard Queen
+		# HL.1030 # Wolf Child growing older, rumors of real mother being a wolf
 		63106 # (Safety flag clearance check event)
 		ZE.1100 # Disobedient daughter is unhappy
 		ZE.9000 # Ally not contributing in war
 		ZE.10000 # Mercenary event tombula
-		RIP.10012 # Check for plague notifications
+		# RIP.10012 # Check for plague notifications
 		RIP.11700 # Prosperity system
 		RIP.5050 # Scurvy event
-	#MEP events
-		racetrait.1
-		racetrait.2
+		# RIP.30316 # clean up immortal crisis 
+		# RIP.30317 # immortal crisis spreads
+		# MNM.4430 # Passive nice trait gain for buddhist/jain monastic societies
+		# MNM.9815 # Seal of Solomon artifact makes you immune to possession
+		MNM.70030 # Secret society visibility reduction
+		# MEP events
 		racetrait.3
 		racetrait.4
 		racetrait.6
@@ -57,9 +58,13 @@ on_yearly_pulse = {
 		ring.0
 		ring.1
 		purge.0
-		population.3
+		purge.1
+		# population.3
 		purge.3
-		ABDICATE.003
+		purge.4
+		purge.6
+		purge.7
+		ABDICATE.3
 		elfchild.0
 		elfchild.1
 		elfchild.4
@@ -77,7 +82,7 @@ on_yearly_pulse = {
 		mepclaims.1
 		mepclaims.2
 		mepclaims.3
-		mepclaims.4
+		# mepclaims.4
 		fallofarnor.1
 		galadrielring.0
 		galadrielring.1
@@ -88,8 +93,7 @@ on_yearly_pulse = {
 		gandalf.2
 		opinionmodifier.0
 		waning.1
-		# dynamic_pop.101 # dynamic population events (Moved to 5-year pulse)
-		# dynamic_pop.104 # dynamic population events (Moved to bi-yearly pulse)
+		hobbits.8
 	}
 
 	
@@ -103,11 +107,11 @@ on_yearly_pulse = {
 		100 = 4020
 		100 = 4035
 		100 = 4036
-		100 = 4040
-		100 = 4041
+		#100 = 4040
+		#100 = 4041
 		100 = 4045
 		100 = 4050
-		100 = 4055
+		#100 = 4055
 		100 = 4060
 		100 = 4085
 		100 = 4110
@@ -117,9 +121,9 @@ on_yearly_pulse = {
 		100 = 4130
 		100 = 4135
 		100 = 4145
-		100 = 4150
+		#100 = 4150
 		100 = 4155
-		100 = 4175
+		#100 = 4175
 		
 		# Married Life Events
 		100 = 30000
@@ -180,9 +184,8 @@ on_yearly_pulse = {
 		100 = 75120
 
 		#Dynasty requests
-		250 = 66000
-		250 = 66050
-		250 = 66100
+		# 250 = 66000
+		250 = 66099 # Landless claimant asks dynasty head to press the claim in a war
 		
 		#Hedge Knights Events
 		100 = 71000 
@@ -225,7 +228,7 @@ on_yearly_pulse = {
 		100 = 73010
 		
 		#Religious Events
-		100 = 39230
+		# 100 = 39230
 		
 		#Bastard Events
 		100 = 76000
@@ -243,39 +246,89 @@ on_yearly_pulse = {
 		100 = 78005
 		100 = 78010
 		100 = 78015
-		100 = 78020
+		100 = 78018 # Vanilla change, previosly called 78020 directly (problem found by Deaghaidh)
 		100 = 78025
 		100 = 78030
 		100 = HL.10610
 		
 		#Various Events
-		100 = TOG.3403
-		100 = TOG.3401
-		100 = TOG.3402
+		# 100 = TOG.3403
+		# 100 = TOG.3401
+		# 100 = TOG.3402
 		100 = 100019
-		100 = 100024 
+		100 = 100024
+		50 = 79007 # Shieldmaiden training event
+		150 = 37250 #Wife of same education offers to help
 		
 		# Reincarnation: Memories of the previous life
+		# 1000 = RoI.10020
+		# 1000 = RoI.10021
+		# 1000 = RoI.10022
 		
 		# Indian guru events
-
-		
-		# Indian ascetics and yogis
-
-		
-		# Indian story events
-
-		
-		# Indian minor events
-
-		
-		# Indian low religious authority events
-
+		#100 = RoI.3100
+		#100 = RoI.3101
+		#100 = RoI.3102
+		#100 = RoI.3103
+		#100 = RoI.3104
+		#100 = RoI.3105
+		#100 = RoI.3106
+		#100 = RoI.3107
+		#100 = RoI.3108
+		#100 = RoI.3109
+		#100 = RoI.3110
+		#100 = RoI.3111
+		#100 = RoI.3112
+		#100 = RoI.3113
+		#100 = RoI.3114
+		#500 = RoI.3200
+		#500 = RoI.3300
+		#100 = RoI.3400
+		#
+		## Indian ascetics and yogis
+		#20 = RoI.203
+		#20 = RoI.206
+		#20 = RoI.209
+		#20 = RoI.193
+		#
+		## Indian story events
+		#20 = RoI.215
+		#20 = RoI.20147
+		#20 = RoI.20164
+		#
+		## Indian minor events
+		#100 = RoI.157
+		#100 = RoI.158
+		#100 = RoI.163
+		#100 = RoI.180
+		#100 = RoI.190
+		#50 = RoI.401
+		#100 = RoI.403
+		#100 = RoI.410
+		#100 = RoI.411
+		#200 = RoI.412
+		#500 = RoI.500
+		#
+		## Indian low religious authority events
+		#50 = RoI.3500
+		#50 = RoI.3506
+		#50 = RoI.3510
+		#50 = RoI.3516
+		#10 = RoI.3520
+		#50 = RoI.3530
+		#50 = RoI.3536
 		
 		# Religious tolerance events
+		# 100 = RoI.400
+		
+		# Way of Life events
+		100 = WoL.12506 # Legendary Wisdom
+		100 = WoL.12507 # Respected Ruler
 
 		# Hero knight adventure events
-
+		# 200 = CM.2010
+		# 200 = CM.2020
+		# 200 = CM.2100
 		
 		# Effects of being in hiding
 		100 = CM.6100
@@ -297,14 +350,14 @@ on_yearly_pulse = {
 		100 = CM.6132
 		
 		# Meddling mother events
-		100 = CM.1150
-		100 = CM.1160
-		100 = CM.1170
-		100 = CM.1180
-		100 = CM.1190
+		# 100 = CM.1150
+		# 100 = CM.1160
+		# 100 = CM.1170
+		# 100 = CM.1180
+		# 100 = CM.1190
 		
 		# Other Charlemagne/Carloman
-		100 = CM.1130
+		# 100 = CM.1130
 		
 		# Way of Life Theology focus
 		1000 = WoL.7000
@@ -381,11 +434,11 @@ on_yearly_pulse = {
 		200 = ZE.4100 # Marshal on mission turns against liege
 		100 = ZE.4120 # Marshal - abuse of office, runs protection racket in province
 		
-		100 = ZE.5000 # Zealous Lord Spiritual asks to go and proselytize among heathens
-		200 = ZE.5010 # Zealous Lord Spiritual insists in building more temple holdings, willing to donate own money
-		300 = ZE.5020 # Lord Spiritual on mission turns disloyal
-		100 = ZE.5030 # Lord Spiritual - abuse of office - charges money from populace for godly favor
-		500 = ZE.5040 # Craven or Cynical Lord Spiritual complains about dangerous mission to convert heathens
+		#100 = ZE.5000 # Zealous Lord Spiritual asks to go and proselytize among heathens
+		#200 = ZE.5010 # Zealous Lord Spiritual insists in building more temple holdings, willing to donate own money
+		#300 = ZE.5020 # Lord Spiritual on mission turns disloyal
+		#100 = ZE.5030 # Lord Spiritual - abuse of office - charges money from populace for godly favor
+		#500 = ZE.5040 # Craven or Cynical Lord Spiritual complains about dangerous mission to convert heathens
 		
 		
 		100 = ZE.3000 # Steward takes loan to cover up incompetence
@@ -419,9 +472,24 @@ on_yearly_pulse = {
 		200 = ZE.22800 # Offer to train your Liege's commanders
 		
 		#Dynamic mercenary events
-		40 = ZE.23150 # Band Leader Speaks Highly of Employer
+		50 = ZE.23150 # Band Leader Speaks Highly of Employer
+
+		#Female councillors
+		100 = 77777 # Visit from talented woman
+		100 = 77790 # Female relative wants to get on council
+		150 = 77760 # Female vassal wants to get on council
+
 		#End of days events
 		50 = RIP.14000
+
+		#Chess with death
+		25 = RIP.30220
+		
+		#Immortal vassal crisis
+		25 = RIP.30315
+		50 = RIP.30318
+		#Immortal rival
+		25 = RIP.30300
 
 		#Gamebook
 		100 = GBC.1 # Making a friend in mourning
@@ -460,6 +528,7 @@ on_yearly_pulse = {
 		100 = RIP.4530 # Court physician seek learning at hospital
 
 		#Hobbit Party
+		10 = hobbits.0
 		5 = hobbits.5
 		100 = hobbits.6
 		200 = hobbits.7
@@ -480,7 +549,37 @@ on_yearly_pulse = {
 		25 = sindarcourtier.3
 		25 = sindarcourtier.4
 		
+		#Pet events
+		100 = 77850 # Cat event tombula
+		150 = 77860 # Cat makes you happy
+
+		#Monks and Mystics events
+		100 = MNM.9000 # Artifact rumor
+		100 = MNM.9100 # Crown jewels
+		100 = MNM.9115 # Weaponsmith
+		# 100 = MNM.3910 # Commission painting
+		# 30 = MNM.7829 # AI-only disciple recruitment
+
+		#Artifact events
+		# 500 = MNM.9816 # Blessed Mantle allows you to make Water of the Blessed Mantle (-> logic)
+		
+		# Former MTTH Events
+		#100 = TOG.3109 # Son wants to join the Varangians (Son) - Formerly 200 month MTTH
+		#100 = TOG.3111 # Son stays in Greece with wife (Son) - Formerly 200 month MTTH
+		#120 = TOG.3114 # Son returns scarred but seasoned (Son) - Formerly 160 month MTTH
+		#110 = TOG.3116 # Son returns with notions of Greek love (Son) - Formerly 180 month MTTH
+		#75 = TOG.3118 # Son returns castrated and blinded (Son) - Formerly 250 month MTTH
+		#120 = TOG.3120 # Son returns as excellent strategist (Son) - Formerly 160 month MTTH
+		#110 = TOG.3122 # Son returns with PTSD (Son) - Formerly 180 month MTTH
+		#110 = TOG.3124 # Son returns home with Greek wife (Son) - Formerly 180 month MTTH
+		#120 = TOG.3126 # Son returns home as a Christian zealot (Son) - Formerly 160 month MTTH
+		#140 = TOG.3128 # Son returns home as a seasoned warrior (Son) - Formerly 120 month MTTH
+		#100 = TOG.3130 # Son dies in battle (Son) - Formerly 200 month MTTH
+		#120 = TOG.3132 # Son returns with loot (Son) - Formerly 160 month MTTH
+		#50 = SoA.5219 # Donate to local monastery - Formerly 2000 month MTTH
+
 		5000 = 0 # Chance of no yearly event
+
 	}
 }
 
@@ -489,7 +588,16 @@ on_yearly_pulse = {
 on_bi_yearly_pulse = {
 	events = {
 		dynamic_pop.104 # dynamic population events
+		TOG.3005 # Lose Berserker Trait when too old
+		#SoA.5300 # Christian becoming a wicked priest
+		#SoA.5301 # Muslim becoming a wicked caliph
+		#SoA.5302 # Norse becoming an unworthy priest
+		#SoA.5303 # Tengri becoming an unworthy priest
+		#SoA.5304 # Zoroastrian becoming an immoral priest
+		#SoA.5305 # Aztec becoming an unworthy priest
 	}
+	
+	
 	random_events = {
 
 		#Various Traits Events
@@ -696,6 +804,8 @@ on_bi_yearly_pulse = {
 		10 = 3690
 		10 = 3700
 		
+		20 = TOG.3009
+		
 		2000 = 0 # Chance of no bi-yearly event
 	}
 }
@@ -703,8 +813,11 @@ on_bi_yearly_pulse = {
 #character
 on_five_year_pulse = {
 	events = {
-		dynamic_pop.101 # dynamic population events
+	dynamic_pop.101 # dynamic population events
+		GR.1
+		MNM.10030 # Have AI characters join societies
 	}
+	
 	random_events = {
 		#----  misc traits needing revision below...
 
@@ -824,9 +937,12 @@ on_five_year_pulse = {
 		10 = 1058
 		10 = 1060
 		10 = 1070
-		10 = 3264
+		#10 = 3264 this was moved into 3260
 		10 = 3730
 		10 = 3735
+
+		#Zoroastrian pets
+		# 1 = ZP.1
 		
 		40 = 0
 	}
@@ -836,6 +952,11 @@ on_five_year_pulse = {
 on_decade_pulse = {
 	events = {
 		RIP.10031 # clear global flags from bubonic plague
+	}
+	
+	random_events = {
+		100 = 63050 #former MTTH event
+		100 = 0
 	}
 }
 
@@ -849,7 +970,7 @@ on_yearly_childhood_pulse = {
 		100 = 1510
 		100 = 1520
 		100 = 1530
-		100 = 1540
+		#100 = 1540
 		100 = 1550
 		100 = 1560
 		100 = 1570
@@ -870,8 +991,9 @@ on_yearly_childhood_pulse = {
 		100 = 1720
 		100 = 1730
 		100 = 1965
-		100 = 1632
-		100 = 1732
+		# 100 = 1632
+		# 100 = 1732
+		# 5000 = RoI.10010 # Acknowledged reincarnated child acquires trait from previous personality
 		
 		#Toddler flavour events (age 2-5), not very common, but some will get them.
 		10 = 1900 
@@ -881,10 +1003,10 @@ on_yearly_childhood_pulse = {
 		10 = 1904
 		
 		#Young children flavour events, (age 6-10), not very common, but some will get then..
-		20 = 1905
+		# 20 = 1905
 		20 = 1906
 		20 = 1907
-		20 = 1908
+		#20 = 1908
 		20 = 1909
 		20 = 1910
 		20 = 1911
@@ -892,13 +1014,13 @@ on_yearly_childhood_pulse = {
 		
 		#Youngsters flavour events (age 11-15), not very common, but some will get then..
 		50 = 1913
-		50 = 1914
-		50 = 1915
+		#50 = 1914
+		#50 = 1915
 		50 = 1916
 		50 = 1917
 		50 = 1918
 		50 = 1919
-		50 = 1920
+		#50 = 1920
 		50 = 1921
 		50 = 1922
 		50 = 1923
@@ -924,15 +1046,67 @@ on_yearly_childhood_pulse = {
 }
 
 # Yearly pulse (six months from on_yearly_pulse) intended for Focus events (only fires for characters with a Focus)
-# DISABLED FOR NOW
 on_focus_pulse = {
+	
+	random_events = {
+		1000 = 0
+		
+		# Family Focus
+		300 = WoL.3010 # Relations with spouse improve
+		200 = WoL.3020 # Relations with sibling improve
+		400 = WoL.3030 # Relations with parent improve
+		400 = WoL.3040 # Relations with child improve
+		200 = WoL.3048 # Relations between two close relatives improve
+		200 = WoL.3059 # Relations between two non-adult children improve
+		
+		# Theology Focus
+		500 = WoL.7000 # Study religious myths?
+		200 = WoL.7010 # Befriend priest through your religious interest
+		200 = WoL.7020 # Visit holy site and speak with priests there (not Muslims, Christians, Jews or Indians)
+		200 = WoL.7030 # Reflect on own life and how it relates to the gods.
+		200 = WoL.7040 # Theologian's view of other religions - can gain Sympathy for other faiths
+		200 = WoL.7050 # Question own faith - can gain Cynical or Zealous
+		50 = WoL.7060 # Embrace heresy? Zealous characters only. Can lose the trait or become heretic.
+		400 = WoL.7070 # Embrace theologian lifestyle?
+		200 = WoL.7080 # Mystical experience - lose Depressed and Stressed
+		200 = WoL.7090 # Meditation/Prayer in Seclusion - Go into hiding for a week. Lose Drunkard, Gluttonous and Lustful and possible gain Temperate and Chaste (depending on religion). Tiny Chance of restored eyesight or cured illness.
+	
+		# Hunting focus
+		200 = WoL.5000 # Epic Hunt chain start
+		200 = WoL.5200 # Receive hunting dog
+		200 = WoL.5210 # Dog makes you happy
+		200 = WoL.5211 # Dog makes you popular
+		200 = WoL.5220 # Train your dog?
+		200 = WoL.5230 # Bad dog kills other dog
+		200 = WoL.5231 # Bad dog kills or wounds courtier
+		
+		# War Focus
+		120 = WoL.11300 # Improved martial education
+		120 = WoL.11301 # Leader Trait gained: Troop type specialist
+		120 = WoL.11302 # Leader Trait gained: Terrain/climate specialist
+		120 = WoL.11303 # Leader Trait gained: Battle tactics
+		120 = WoL.11304 # Leader Trait gained: Inspiration, logistics and sieges
+		120 = WoL.11305 # Leader Trait gained: Offense vs Defense
+		120 = WoL.11310 # Teach a commander one of my leader traits
+		
+		# Rulership Focus
+		50 = WoL.12000 # The Architect
+		50 = WoL.12010 # Depressed
+		25 = WoL.12011 # Stressed
+		50 = WoL.12027 # Farm Fire
+		50 = WoL.12015 # The Murders
+		50 = WoL.12028 # Witch!
+		50 = WoL.12029 # Drunkard
+		50 = WoL.12025 # Noble Feud
+		25 = WoL.12030 # City brigands
+	}
 }
 
 #on combat pulse
 on_combat_pulse = {
 	random_events = {
 		2750 = 0
-		40 = duel_battle.1000 # Battlefield duel
+		# 40 = duel_battle.1000 # Battlefield duel
 		10 = 242 # Killed
 		20 = 243 # Wounded
 		10 = 244 # Maimed
@@ -959,6 +1133,12 @@ on_combat_pulse = {
 		20 = TOG.3002 # Berserker Wounded
 		15 = TOG.3003 # Berserker Killed
 		25 = TOG.3004 # Berserker Kills Many
+		15 = 79009 # Shieldmaiden can save liege on battlefield
+		15 = 79001 # Shieldmaiden saves liege, but she is injured (small chain)
+
+		50 = MNM.1202 # Scrying vision inspires greatness
+		50 = MNM.1203 # Scrying vision injury
+
 	}
 }
 
@@ -990,8 +1170,8 @@ on_battle_won = {
 		800 = 0
 		10 = 260 # Heroism shown
 		10 = 261 # Soldier Distinguish himself.
-		100 = 8310 # Crusader becomes zealous
-		50 = CM.1054 # Death of Roland
+		#100 = 8310 # Crusader becomes zealous
+		#50 = CM.1054 # Death of Roland
 	}
 }
 
@@ -999,13 +1179,6 @@ on_battle_won = {
 on_major_battle_won = {
 	events = {
 		CM.10029 # Chronicle
-	}
-}
-
-# Winning army owner is ROOT - opponent army owner is FROM
-on_battle_won_owner = {
-	events = {
-		RIP.15115 #EoD prophet loses
 	}
 }
 
@@ -1018,6 +1191,9 @@ on_major_battle_won_leader = {
 
 # Winning army owner is ROOT - opponent army owner is FROM
 on_battle_won_owner = {
+	events = {
+		RIP.15115 #EoD prophet loses
+	}
 }
 
 # Any leader in battle on losing side is ROOT - opponent army leader is FROM
@@ -1025,8 +1201,8 @@ on_battle_lost = {
 	random_events = {
 		700 = 0
 		50 = 250 # Imprisoned by the enemy
-		50 = 8320 # Crusader becomes cynical
-		200 = CM.1056 # Death of Roland
+		#50 = 8320 # Crusader becomes cynical
+		#200 = CM.1056 # Death of Roland
 	}
 }
 
@@ -1058,16 +1234,44 @@ on_battle_lost_owner = {
 # The taken Holding title is in FROM.
 on_siege_won_leader = {
 	events = {
-		8330 # Conquers the crusade target
+		#8330 # Conquers the crusade target
+		#60100 # Mongols sack Kiev
+		#60101 # Mongols sack Novgorod
+		#60102 # Mongols sack Krakow
+		#60103 # Mongols sack Aachen
+		#60104 # Mongols sack Paris
+		#60105 # Mongols sack London
+		#60106 # Mongols sack Rome
+		#60107 # Mongols sack Venice
+		#60108 # Mongols sack Constantinople
+		#60109 # Mongols sack Lisbon
+		#60110 # Mongols sack Smolensk
+		#60111 # Mongols sack Prague
+		#60112 # Mongols sack Vienna
+		#60113 # Mongols sack Esztergom
+		#60114 # Mongols sack Athens
+		#60115 # Mongols sack Belgrade
+		#60116 # Mongols sack Baghdad
+		#60117 # Mongols sack Damascus
+		#60118 # Mongols sack Jerusalem
+		#60119 # Mongols sack Alexandria
+		#60120 # Mongols sack Cairo
+		#60121 # Mongols sack Mecca
+		#88005 # Mongols sack city near the Hashshashin
+		# CM.10033 # Chronicle for certain major locations
+		# CM.10034 # Chronicle for certain major locations
 	}
 	random_events = {
 		300 = 0
+		#100 = 8340 # Finds the Spear of Destiny / Holy Lance
+		#100 = 8342 # Finds the Holy Grail
+		#500 = 8345 # Sack of Jerusalem
 	}
 }
 
 on_siege_lost_leader = {
 	events = {
-		8350 # Loses the crusade target's capital
+		# 8350 # Loses the crusade target's capital
 	}
 }
 
@@ -1075,29 +1279,33 @@ on_siege_lost_leader = {
 on_siege_over_winner = {
 	events = {
 		TOG.1005 # Peasants take county capital
-		TOG.1025 # Heretics take county capital
+		# TOG.1025 # Heretics take county capital
 		TOG.1045 # Nationalists take county capital
-		TOG.1065 # Religious rebels take county capital
-		CM.1101 # Destruction of Irminsul
-		CM.10035 # Chronicle for certain major locations
+		TOG.1065 # Religious rebels take county capital (for religious, read 'racial')
+		# CM.1101 # Destruction of Irminsul
+		# CM.10035 # Chronicle for certain major locations
 		HL.2005 # Minor Nomad Clan rebels take county capital
 		RIP.11702 # Prosperity lost when sieged
 		RIP.11713 # Monument to Glory teardown
+		HL.4813 # Nomads may pillage holdings on siege
+		# MNM.6222 # Assassins occupy holding
+		# MNM.7111 # Devil Worshipers desecrate holding
+		MNM.9900 # Chance to steal artifact from capital holdings
 	}
 	random_events = {
 		400 = 0 # Nothing happens
-		100 = SoA.5400 # Massacre at Beziers-type event
+		# 100 = SoA.5400 # Massacre at Beziers-type event
 	}
 }
 
 # Fires for all characters presumed to be in the Holding at the time. Siege winner unit owner in the 'new_character' scope, lost holding title in FROM, local character in ROOT.
 on_siege_over_loc_chars = {
 	events = {
-		SoA.5406 # Shepherds' Crusade kills Jews and priests
+		# SoA.5406 # Shepherds' Crusade kills Jews and priests
 	}
 	random_events = {
  		1000 = 0 # Nothing happens
- 		400 = SSI.61 # Aztec sacrifice
+ 		# 400 = SSI.61 # Aztec sacrifice
  		100 = 62100 # Character imprisoned
  		200 = TOG.1190 # Rebels kill character
  	}
@@ -1141,21 +1349,23 @@ on_birth = {
 		300 # A Bastard is born
 		312 # The child of a consort is born		
 		318 # A Bastard is born, but is not recognized as such by the mother's spouse (cuckoo!)
-		TOG.3206 # Child Perceived to be Demon Born
+		# 335 # Hidden utility event for all children born
+		# TOG.3206 # Child Perceived to be Demon Born
 		706 # Full House achievement
 		707 # Keeping it in the Family achievement
 		CM.10011 # Chronicle entry
 		HL.1000 # Child born with Wolf's Blood
 		HL.1700 # Wolf's Blood inheritance
-		birthevent.0 # Racetraits for Numenoreans, Elves and Orcs
-		
 		RIP.11064 # Babies born in seclusion get seclusion modifier
-	}
+		# MNM.7508 # DW Demon child
 
+		birthevent.0 # Racetraits for Numenoreans, Elves and Orcs
+	}
 	random_events = {
 		200 = 0
+		100000 = MNM.1206 # A Child is born, Hermetic Scrying vision fulfilled
 		50 = RIP.29600 # Firstborn/first son reaction 
-		5 = RoI.10000 # Reincarnation?
+		# 5 = RoI.10000 # Reincarnation?
 		1 = RIP.29805 # Reincarnation for non west_african
 	}
 }
@@ -1163,7 +1373,6 @@ on_birth = {
 # character
 on_adulthood = {
 	events = {
-		SoA.3020 # Demon child's true nature asserts itself
 		HL.1040 # Wolf Child reaches maturity
 		ZE.13998 # Clear adolescence trait event chain flags on adulthood
 		
@@ -1191,12 +1400,17 @@ on_adulthood = {
 		ZE.14400 # Intrigue
 		ZE.14500 # Learning
 		ZE.14700 # Lack of focus
+		
+		# SoA.3020 # Demon child's true nature asserts itself
+
+		MNM.1269 # Horoscoped child gets new modifiers
 	}
 }
 
 on_adolescence = { # Checked on 12th birthday.
 	events = {
 		ZE.12998 # Clear childhood event chain flags
+		# MNM.3429 # Educator/guardian/parent with secret religion get a chance to convince child to convert secretly
 	}
 }
 
@@ -1217,26 +1431,23 @@ on_pregnancy = {
  		402 # Pregnancy in matrimony, with another father!
  		410 # Pregnancy as consort
  		412 # Pregnancy as consort, with another father!
-  		elveninfertility.0 #Elven Pregnancy, infertility starts
-		dwarveninfertility.0 #Dwarven Pregnancy, infertility starts
- 	    humaninfertility.0 #Human Pregnancy, infertility starts
  	}
 }
 
 #character
 on_crusade_creation = {
 	events = {
- 		200 # Christian Crusade against Muslims
- 		201 # Christian Crusade against Pagans
- 		321 # Christian Crusade against Heretics
- 		320 # Jihad against Christians
- 		322 # Jihad against Pagans
- 		323 # Jihad against Heretics
- 		324 # Pagan Holy War against Christians
- 		325 # Pagan Holy War against Muslims
- 		326 # Pagan Holy War against other Pagans
-		327 # Zoroastrian Great Holy War
-		328 # Jewish Great Holy War
+ 		#200 # Christian Crusade against Muslims
+ 		#201 # Christian Crusade against Pagans
+ 		#321 # Christian Crusade against Heretics
+ 		#320 # Jihad against Christians
+ 		#322 # Jihad against Pagans
+ 		#323 # Jihad against Heretics
+ 		#324 # Pagan Holy War against Christians
+ 		#325 # Pagan Holy War against Muslims
+ 		#326 # Pagan Holy War against other Pagans
+		#327 # Zoroastrian Great Holy War
+		#328 # Jewish Great Holy War
 		CM.10015  # Chronicle entry
  	}
 }
@@ -1245,12 +1456,13 @@ on_crusade_creation = {
 on_marriage = {
 	events = {
  		500 # Royal Marriage Aid Duty
- 		501 # Zoroastrian "Xwedodah" marriage
- 		502 # Messalian close kin marriage
+ 		#501 # Zoroastrian "Xwedodah" marriage
+ 		#502 # Messalian close kin marriage
 		708 # Marriage Game achievement
 		CM.10023  # Chronicle entry
 		CM.10036 # Chronicle entry - primary heir
 		ZE.1015 # Disobedient daughter is unhappy with marriage
+		GBC.199 # Game book event, falling in love with someone else at marriage feast
  	}
 	random_events = {
 		10 = ZE.1010 # Daughter becomes disobedient - undesired marriage
@@ -1294,12 +1506,13 @@ on_released_from_prison = {
 	events = {
  		153
 		CM.10025  # Chronicle entry
-		CM.15002  # Free anyone thrown into the desert
+		# CM.15002  # Free anyone thrown into the desert
 		ZE.12219  # Released from dungeon must choose whether to leave pet rat behind
+		valinor.21 # Re-Imprison Morgoth
  	}
 }
 
-#character. Triggers if someone is executed
+#character. Triggers if someone is executed, character not dead yet
 on_executed = {
 	events = {
  		154
@@ -1310,6 +1523,7 @@ on_executed = {
 on_exiled = {
 	events = {
  		155
+		valinor.21 # Re-Imprison Morgoth
  	}
 }
 
@@ -1345,28 +1559,49 @@ on_death = {
 		24502
 		70041
 		88291
-		SoA.5306
-		705
-		
-		CM.1068 # Carloman dies
-		CM.1069 # Charlemagne dies
+		# SoA.5306
+		# 705
+		# CM.1068 # Carloman dies
+		# CM.1069 # Charlemagne dies
 		CM.10010 # Chronicle entry
 		CM.6185 # Dies of other causes while assassination is in progress - clear flags
-		WoL.6335 # Owner of Necronomicon dies...
+		# WoL.6335 # Owner of Necronomicon dies...
 		722 # Until Death Do Us Part achievement check
 		HL.8001 # Sky Burial
 		HL.12
+		HL.4998
 		ZE.1030 # Daughter becomes disobedient - killed lover
 		ZE.1040 # Daughter becomes disobedient - killed friend
-		rulegondor.1 # Split of Reunited Kingdom
-		
+		731 #Achievement Eternity Denied
+		# 732 #Achievement Papal Mache
+		# 734 #Achievement Aptly Named	
+		532 #Clears regents if heir has one already
 		RIP.4400 #Nicknames for executions
+		GR.10
+		# MNM.6844 #Removes mark of death block for Assassins GM
+		# MNM.6991 #Clears any quests targeting this character
+		# MNM.6012 #Transfers assassins debt to heir
+		MNM.1415 #Announces hermetics apprentice death
+		# SoA.3091 # The Death of the Demon Child?
+		# RoI.248 # clearing inventory of cursed diamond
+		740 # Achievement Unwelcome Visitors
+
+		# Clean up traits as we don't keep zoroastrian pets in death
+		#ZP.5
+
+		# Middle-Earth stuff
+		rulegondor.1 # Split of Reunited Kingdom
+		# swan_knights.1 # New Captain event
+		45340  # the large 'inheritance of traits'
+		lastalliance.20 #inherit some Last Alliance stuff.
+		mepdeath.0  # intended as a general MEP death dispatch event.
 	}
 	random_events = {
 		1 = RIP.29800 #reincarnation investigation
 		10 = 24505
 		10 = 24510
-		25 = RIP.29000 #Lovers/rivals/friends react
+		# 25 = RIP.29000 #Lovers/rivals/friends react 
+		100 = MNM.1207 # Hermetic Scrying vision fulfilled
 		100 = 0
 	}
 }
@@ -1424,9 +1659,12 @@ on_loot_settlement = {
 		35 = TOG.3320
 		250 = 0
 	}
-	
 	events = {
+		# TOG.3321
+		# TOG.3322
+		# TOG.3323
 		RIP.11720
+		MNM.9899 # Chance to steal artifact from capital holdings
 	}
 }
 
@@ -1445,13 +1683,13 @@ on_loot_province = {
 
 DEMAND_RELIGIOUS_CONVERSION_INTERACTION_ACCEPT_EVENT = {
 	events = {
-		202
+		# 202
 	}
 }
 
 DEMAND_RELIGIOUS_CONVERSION_INTERACTION_DECLINE_EVENT = {
 	events = {
-		203
+		# 203
 	}
 }
 
@@ -1471,7 +1709,7 @@ REVOKE_TITLE_INTERACTION_DECLINE_EVENT = {
 OFFER_PEACE_INTERACTION_ACCEPT_EVENT = {
 	events = {
 		206
-		CM.1407 # Charlemagne in Spain
+		# CM.1407 # Charlemagne in Spain
 	}
 }
 
@@ -1495,37 +1733,37 @@ SEND_GIFT_INTERACTION_DECLINE_EVENT = {
 
 ASK_FOR_MONEY_INTERACTION_ACCEPT_EVENT = {
 	events = {
-		SoA.3100
+		# SoA.3100
 	}
 }
 
 ASK_FOR_MONEY_INTERACTION_DECLINE_EVENT = {
 	events = {
-		SoA.3101
+		# SoA.3101
 	}
 }
 
 ASK_FOR_CLAIM_INTERACTION_ACCEPT_EVENT = {
 	events = {
-		SoA.3104
+		# SoA.3104
 	}
 }
 
 ASK_FOR_CLAIM_INTERACTION_DECLINE_EVENT = {
 	events = {
-		SoA.3105
+		# SoA.3105
 	}
 }
 
 NOMINATE_BISHOP_TO_POPE_INTERACTION_ACCEPT_EVENT = {
 	events = {
-		SoA.3102
+		# SoA.3102
 	}
 }
 
 NOMINATE_BISHOP_TO_POPE_INTERACTION_DECLINE_EVENT = {
 	events = {
-		SoA.3103
+		# SoA.3103
 	}
 }
 
@@ -1652,6 +1890,7 @@ JOIN_AMBITION_INTERACTION_DECLINE_EVENT = {
 
 GRANT_LANDED_TITLE_INTERACTION_ACCEPT_EVENT = {
 	events = {
+		MNM.1217
 		228
 	}
 }
@@ -1701,13 +1940,13 @@ ASK_FOR_DIVORCE_INTERACTION_DECLINE_EVENT = {
 
 ASK_FOR_EXCOMMUNICATION_INTERACTION_ACCEPT_EVENT = {
 	events = {
-		236
+		# 236
 	}
 }
 
 ASK_FOR_EXCOMMUNICATION_INTERACTION_DECLINE_EVENT = {
 	events = {
-		237
+		# 237
 	}
 }
 
@@ -1979,6 +2218,23 @@ FORCE_JOIN_FACTION_INTERACTION_DECLINE_EVENT = {
 	}
 }
 
+ASK_TO_JOIN_AMBITION_INTERACTION_ACCEPT_EVENT = {
+	events = {
+		535
+	}
+}
+ASK_TO_JOIN_AMBITION_INTERACTION_DECLINE_EVENT = {
+	events = {
+		536
+	}
+}
+
+OFFER_CONSORT_INTERACTION_ACCEPT_EVENT = {
+	events = {
+		537
+	}
+}
+
 # never triggered, but reserved for CB use
 on_warleader_death = {
 	events = {
@@ -2016,8 +2272,8 @@ on_approve_de_jure_law = {
 on_rebel_revolt = {
 	events = {
 		600 		# Only valid without "The Old Gods" DLC
-		TOG.1030 	# Heretic rebels reinforced
-		TOG.1020	# Heretic rebels rise up
+		# TOG.1030 	# Heretic rebels reinforced
+		# TOG.1020	# Heretic rebels rise up
 		TOG.1050 	# Nationalist rebels reinforced
 		TOG.1040	# Nationalist rebels rise up
 		TOG.1070 	# Religious rebels reinforced
@@ -2059,6 +2315,13 @@ on_crusade_failure = {
 	}
 }
 
+# When a mission invalidates
+on_crusade_invalid = {
+	events = {
+		# 534
+	}
+}
+
 # When a pagan ruler forces a prisoner to be his consort
 on_forced_consort = {
 	events = {
@@ -2069,29 +2332,30 @@ on_forced_consort = {
 # When a pagan religion is reformed
 on_reform_religion = {
 	events = {
-		670
+		# 670
 	}
 }
 
-# When the religion changes in a county
+# When the religion changes in a county, ROOT is province
 on_county_religion_change = {
 	events = {
-		SoA.4121
+		# SoA.4121
+		# MNM.6206 #Convert province assassin quest
 	}
 }
 
 # When a character accepts religious conversion (the diplomatic action)
 # FROMFROM is the demander. FROM is the vassal. ROOT is the character. Fires for the vassal and each of his courtiers and vassals.
 on_vassal_accepts_religious_conversion = {
-	events = {
-		39700 # Hidden event actually changing the religion
+	events = { 
+		# 39700 # Hidden event actually changing the religion, should never happen
 	}
 }
 
 # A heresy has become the new norm, replacing the old orthodoxy
 on_heresy_takeover = {
 	events = {
-		SoA.4200
+		# SoA.4200
 	}
 }
 
@@ -2111,7 +2375,7 @@ on_elective_gavelkind_succession = {
 # Fires when a navy moves into a port. Starts in unit scope, FROM is the owner.
 on_entering_port = {
 	events = {
-		700
+		# 700
 	}
 }
 
@@ -2122,7 +2386,7 @@ on_rel_elector_chosen = {
 # Fires when a Pope is elected. SoA only! FROM is the previous Religious Head
 on_rel_head_chosen = {
 	events = {
-		704
+		# 704
 	}
 }
 
@@ -2132,45 +2396,81 @@ on_settlement_looted = {
 
 # ROOT is the navy's owner, FROM is the province
 on_navy_returns_with_loot = {
+	events = {
+		TOG.3404 #Prosperity gain from loot
+	}
 }
 
 # ROOT is the creating character, FROM is the title
 on_create_title = {
 	events = {
 		CM.10021
-		CM.1501
+		# CM.1501
+		739 # Got Land achievement
 	}
 }
 
 # ROOT is the character, FROM is the title, FROMFROM is the old holder
 on_new_holder = {
 	events = {
+		HL.4999 #Preserve Nomad Culture
+		HL.4996 #Clear Nomad Agitation when conquered by a non-nomad
+		HL.4812 #Clear nomadic pillage holding modifiers upon succession/conquest
+		HL.4811 #Clear the 'Rampaging Nomads'-Modifier when conquered by a non-nomad
 		HL.140 #Landless nomad gains a title.
-		60504 #Landless status clean-up for e_mongol_empire.
-		ZE.7000 # Check for Gain Any Title ambition.
+		# 60504 #Landless status clean-up for e_mongol_empire.
+		ZE.7000 #Check for Gain Any Title ambition.
 		ZE.6010 #ambition event for unlanded son.
 		RIP.12098 #check if we need to remove in_seclusion.
 		RIP.11715 #Removes crown focus on new holder
+		533
+		# MNM.6990 #Makes sure d_hashshashin owner is always shiite & member of the_assassins
+		738 # Black Pope achievement
+		MNM.1215 # The Hermetics Scrying Power result (for new holder)
+		MNM.1216 # The Hermetics Scrying Power result (for old holder)
+
+		# Clean up zoroastrian pets on province modifiers in case capital lost
+		# ZP.6 
+		purge.10  # MEP : cancels purge if conditions are met
+		# colonisation.100 # MEP : cancels colonisation if conditions are met
+		dwarfconq.25  # launch special purge for Moria / Dimrill Dale
 	}
 }
 
 # ROOT is the character, FROM is the title, FROMFROM is the old holder
 on_new_holder_inheritance = {
 	events = {
-		CM.10039 # Chronicle entry
+		HL.4812 #Clear nomadic pillage holding modifiers upon succession/conquest
+		CM.10039 #Chronicle entry
 		HL.140 #Landless nomad gains a title.
-		60504 #Landless status clean-up for e_mongol_empire.
+		# 60504 #Landless status clean-up for e_mongol_empire.
 		RIP.11715 #Removes crown focus on new holder
+		533
+		# MNM.6990 #Makes sure d_hashshashin owner is always shiite & member of the_assassins
+		738 # Black Pope achievement
+		MNM.1215 # The Hermetics Scrying Power result (for new holder)
+		MNM.1216 # The Hermetics Scrying Power result (for old holder)
 	}
 }
 
 # ROOT is the character, FROM is the title, FROMFROM is the old holder
 on_new_holder_usurpation = {
 	events = {
+		HL.4999 #Preserve Nomad Culture
+		HL.4996 #Clear Nomad Agitation when conquered by a non-nomad
+		HL.4812 #Clear nomadic pillage holding modifiers upon succession/conquest
+		HL.4811 #Clear the 'Rampaging Nomads'-Modifier when conquered by a non-nomad
 		HL.140 #Landless nomad gains a title.
 		CM.10022
-		60504 #Landless status clean-up for e_mongol_empire.
+		# 60504 #Landless status clean-up for e_mongol_empire.
 		RIP.11715 #Removes crown focus on new holder
+		533
+		# MNM.6990 #Makes sure d_hashshashin owner is always shiite & member of the_assassins
+		738 # Black Pope achievement
+		MNM.1215 # The Hermetics Scrying Power result (for new holder)
+		MNM.1216 # The Hermetics Scrying Power result (for old holder)
+#		MNM.6230 # Clearing covert province quest if new owner
+
 	}
 }
 
@@ -2215,7 +2515,20 @@ on_chronicle_start = {
 	events = {
 		CM.10000
 		buildings.0 ## Will allow the buildings
-		mepstart.0 ## will give some titles to the correct characters		
+		valinor.20  # For imprisoning Morgoth
+		population.100  # Sets up moplevel modifiers for non-player provinces
+		population.101  # Sets up poplevel modifiers for player-nation provinces
+		buildings.200	# generates holding builings (as per culture+poplevel) for non-player provinces
+		buildings.201   # generates holding builings (as per culture+poplevel) for player provinces
+		maiarkiller.2	# generates courtiers for evil Saruman
+		maiarkiller.1	# generates courtiers for Sauron
+		mepstartup.10	# sets some event targets and racial traits
+		goodside.10		# allocates good_side trait
+		evilside.4		# allocates evil_side trit
+		meplawsetup.0	# some law setup, mostly to try and get king's peace for some groups
+		racetrait.25  # Generates courtiers for elven rulters of count-level or above.
+		mepstartup.1 # Intro event
+
 	}
 }
 
@@ -2223,8 +2536,12 @@ on_chronicle_start = {
 on_character_convert_religion = {
 	events = {
 		CM.10026
-		671 #set rival conversion flag if eligible
-		63105
+		# 671 #set rival conversion flag if eligible
+		# 63105
+		# TOG.7101 #Removes main deity for defensive pagans
+
+		# If switched religion then trait is gone and we need to clean up modifiers for zoroastrian pets
+		# ZP.6
 	}
 }
 
@@ -2260,6 +2577,7 @@ on_war_ended_victory = {
 	events = {
 		CM.10038
 		729
+		lastalliance.75
 	}
 }
 
@@ -2275,23 +2593,44 @@ on_war_ended_defeat = {
 	events = {
 		CM.10041
 		730
+		lastalliance.70
+	}
+}
+
+# From = Attacker, Root = Defender
+on_war_ended_invalid = {
+	events = {
 	}
 }
 
 # From = Divorcer, Root = Spouse, New = Religious head if applicable
 on_divorce = {
 	events = {
-		717 # Achievement
+		# 717 # Achievement
 		CM.10037
 	}
 }
 
 # ROOT = Builder, FROM = Title
 on_settlement_construction_start = {
+	events = {
+	}
 }
 
-# ROOT = Builder, FROM = The Holding Title
-on_holding_building_start = {
+# ROOT = Builder, FROM = Province
+on_trade_post_construction_start = {
+	events = {
+	}
+}
+
+# ROOT = Builder, FROM = Province
+on_fort_construction_start = {
+	events = {
+	}
+}
+
+# ROOT = Builder, FROM = Province
+on_hospital_construction_start = {
 	events = {
 		RIP.30100
 	}
@@ -2302,6 +2641,33 @@ on_settlement_construction_completed = {
 	events = {
 		44482
 		HL.4
+		MNM.4024
+	}
+}
+
+# ROOT = Builder, FROM = Province
+on_trade_post_construction_completed = {
+	events = {
+	}
+}
+
+# ROOT = Builder, FROM = Province
+on_fort_construction_completed = {
+	events = {
+	}
+}
+
+# ROOT = Builder, FROM = Province
+on_hospital_construction_completed = {
+	events = {
+		733 # Achievement Hospitable
+	}
+}
+
+# ROOT = Builder, FROM = The Holding Title
+on_holding_building_start = {
+	events = {
+		RIP.30100
 	}
 }
 
@@ -2384,5 +2750,149 @@ on_outbreak = {
 on_province_major_modifier = {
 	events = {
 		RIP.10030
+	}
+}
+
+# Fires every two years for characters who are members of any society
+on_society_bi_yearly_pulse = {
+	events = {
+		# MNM.6199 # Assassins quest tombola
+		# MNM.7200 # Devil Worshipers quest tombola
+		MNM.4000 # Monastic order quest tombola
+		# MNM.3000 # Secret religious society quest tombola
+		MNM.1000 # Hermetics quest tombola
+		# MNM.7000 # Devil Worshipers: soul corruption chance
+	}
+	
+	random_events = {
+		50 = MNM.10020 # Criminal societies: stressed
+		#100 = MNM.20000 # Devil Worshippers: Orgy
+		#100 = MNM.20010 # Devil Worshippers: Night on the Town
+		#75 = MNM.20030 # Devil Worshippers: Grand Summoning
+		#100 = MNM.20040 # Devil Worshippers: Impersonating Priests
+		#300 = MNM.20060 # Devil Worshippers: Infernal Choir (only with Rivals)
+		#100 = MNM.6899 # Assassins: friend or foe?
+		#100 = MNM.6910 # Assassins: assisting a murder plot
+		# 50 = MNM.6920 # Assassins: blackmailing superior
+		100 = MNM.3260 # Monastic Orders: Advising a Poet
+		100 = MNM.4200 # Monastic Orders: Learning about Roses
+		100 = MNM.4210 # Monastic Orders: Fellow member drowsing off
+		100 = MNM.4435 # Monastic Orders: Friendship & Love
+		50 = MNM.4610 # Monastic Orders: Monastery has Artifact
+		# 100 = MNM.3920 # Secret Religious societies: Worried member
+		# 100 = MNM.3930 # Secret Religious societies: Fellow society member goes for a round
+		# 100 = MNM.3505 # Secret Religious societies: Get help from another member with problematic trait
+		# 100 = MNM.3500 # Secret Religious societies: I am so stressed
+		50 = MNM.1620 # Hermetic Society: Divine Summoning
+		50 = MNM.1460 # Hermetic Society: Gathering of the Minds
+		50 = MNM.10040 # Every society: Gain rival
+		50 = MNM.10043 # Every society: Gain friend (or possibly lover...?)
+		150 = 0 # Nothing
+	}
+}
+
+# A character has switched their society interest
+# Root = Character
+# From = Society
+on_character_switch_society_interest = {
+	events = {
+		# MNM.10010
+		MNM.10024 # Backup for refounding societies
+	}
+}
+
+# A character ranks up in their society, or becomes grandmaster
+# Root = Character
+# From = Society
+on_character_society_rank_up = {
+	events = {
+		735 # Dark Lord achievement
+		736 # Birthright achievement
+		737 # Jihad Sultan achievement
+		MNM.1750 # Grandmaster notification event
+	}
+}
+
+# A character ranks down in their society
+# Root = Character
+# From = Society
+on_character_society_rank_down = {
+	events = {
+	}
+}
+
+# A character joins a society. The has_game_started trigger can be useful to avoid firing events from auto-assignment of characters at game start
+# Root = Character
+# From = Society
+on_character_join_society = {
+	events = {
+	}
+}
+
+# A character leaves or is forced to leave a society
+# Root = Character
+# From = Society
+on_character_leave_society = {
+	events = {
+		MNM.10018 #clears on-going event flags and effects
+	}
+}
+# A character asks to join a society. Only works on player
+# Root = Character
+# From = Society
+on_character_ask_to_join_society = {
+	events = {
+		MNM.4450 #Join Monastic Order
+		MNM.100 #Join Hermetics
+		MNM.10024 # Backup for refounding societies
+	}
+}
+
+# A character is removed from society for failing the potential trigger.
+# Root = Character
+# From = Society
+on_character_kicked_from_society = {
+	events = {
+		MNM.10021
+	}
+}
+
+# A character stops showing interest in a society for failing the CanJoin trigger.
+# Root = Character
+# From = Society
+on_character_stop_showing_interest = {
+	events = {
+		MNM.10019
+	}
+}
+
+# A character selects a focus
+# Root = Character
+on_focus_selected = {
+	events = {
+	}
+}
+
+# A character succeeds in a quest. This happens just before the quest disappears, so you can access the quest itself. Only invoked when a quest is cleared via script. E.G., does not happen on death
+# Root = Character
+on_quest_success = {
+	events = {
+		MNM.6666
+	}
+}
+
+# A character fails a quest. This happens just before the quest disappears, so you can access the quest itself. Only invoked when a quest is cleared via script. E.G., does not happen on death
+# Root = Character
+on_quest_failure = {
+	events = {
+		MNM.6667
+	}
+}
+
+# An indestructible society failed to find a new leader from existing characters
+# Root = Society
+# From = Previous leader
+on_society_failed_to_find_new_leader = {
+	events = {
 	}
 }

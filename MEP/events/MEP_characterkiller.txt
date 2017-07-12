@@ -104,7 +104,7 @@ namespace = maiarkiller
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 24
@@ -136,7 +136,7 @@ namespace = maiarkiller
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 54
@@ -144,7 +144,7 @@ namespace = maiarkiller
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 23
@@ -152,7 +152,7 @@ namespace = maiarkiller
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 34
@@ -160,7 +160,7 @@ namespace = maiarkiller
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 23
@@ -259,7 +259,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 33
@@ -291,7 +291,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 19
@@ -299,7 +299,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 56
@@ -307,7 +307,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 54
@@ -315,7 +315,7 @@ character_event = {
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
-			religion = religion_orkish
+			religion = religion_uruk
 			culture = culture_urukhai
 			female = no
 			age = 27
@@ -323,42 +323,54 @@ character_event = {
 	}
 }
 		
-##Now to kill any Maiar that is below the age of 100 - killing was buggy, change culture instead##
+##Now to eliminate game-generated Maiar under 100
 character_event = {
     id = maiarkiller.3
     title = "EVTTITmaiarkiller.3"
-    desc = "EVTDESCmaiarkiller.3"#Maiar characters are not supposed to be randomly spawned.
+    desc = "EVTDESCmaiarkiller.3" #Maiar characters are not supposed to be randomly spawned.
     picture = "GFX_good"
-	age = 16
+	max_age = 100
+	culture = culture_maiar
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 30 }
 	
 	trigger = {
-		culture = culture_maiar
-		NOT = { age = 100 }
+		OR = {
+			religion = religion_umaiar
+			trait = maiar
+			religion_group = religion_group_eruhini
+		}
+		any_liege = {
+			NOT = { has_landed_title = e_valinor }
+		}
 	}
 	
 	option = {
-		name = "EVTOPTAmaiarkiller.3"#Goodbye, cruel world!
+		name = "EVTOPTAmaiarkiller.3"
+		if = {
+			limit = { trait = maiar }
+			remove_trait = maiar
+		}
 		ROOT = { culture = culture_orkish }
 		ROOT = { religion = religion_orkish }
 		set_graphical_culture = culture_orkish
+		add_trait = orc
 	}
 }		
 
-##Now to kill any Istari that is below the age of 100##
+##Now to eliminate game-generated Istari under 100
 character_event = {
-    id = maiarkiller.31
-    title = "EVTTITmaiarkiller.31"#You are dunlending
-    desc = "EVTDESCmaiarkiller.31"#Maiar characters are not supposed to be randomly spawned.
+    id = maiarkiller.4
+    title = "EVTTITmaiarkiller.4"#You are dunlending
+    desc = "EVTDESCmaiarkiller.4"#Maiar characters are not supposed to be randomly spawned.
     picture = "GFX_good"
-	age = 16
+	max_age = 100
+	culture = culture_istari
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 60 }
 	
 	trigger = {
 		culture = culture_istari
-		NOT = { age = 100 }
 		NOT = { character = 10032 } # Not for Saruman
 		NOT = { character = 10033 } # Not for gandalf
 		NOT = { character = 10031 } # Not for Radagast
@@ -368,22 +380,32 @@ character_event = {
 	
 	
 	option = {
-		name = "EVTOPTAmaiarkiller.31"#Goodbye, cruel world!
+		name = "EVTOPTAmaiarkiller.4"
+		if = { limit = { trait = maiar }
+			remove_trait = maiar
+		}
 		ROOT = { culture = culture_dunlending }
 		ROOT = { religion = religion_haldadian }
 		set_graphical_culture = culture_dunlending
+		if = {
+			limit = {
+				any_liege = { has_landed_title = e_valinor }
+			}
+			banish = yes
+		}
 	}
 }		
 
 ##Now to kill any Wight that is below the age of 100 - killing was buggy, change culture instead##
 character_event = {
-    id = maiarkiller.4
-    title = "EVTTITmaiarkiller.4"#You are orcish
-    desc = "EVTDESCmaiarkiller.4"#Wight characters are not supposed to be randomly spawned.
+    id = maiarkiller.5
+    title = "EVTTITmaiarkiller.5"
+    desc = "EVTDESCmaiarkiller.5"#Wight characters are not supposed to be randomly spawned.
     picture = "GFX_good"
-	age = 16
+	max_age = 100
+	religion = religion_wight
 	
-	mean_time_to_happen = { 30 days }
+	mean_time_to_happen = { days = 60 }
 	
 	trigger = {
 		culture = culture_wight
@@ -392,44 +414,215 @@ character_event = {
 	
 	
 	option = {
-		name = "EVTOPTAmaiarkiller.4"#Goodbye, cruel world!
+		name = "EVTOPTAmaiarkiller.5"
 		ROOT = { culture = culture_orkish }
 		ROOT = { religion = religion_orkish }
 		set_graphical_culture = culture_orkish
+		add_trait = orc
 	}
 }
 
-##Now to kill any Orc/Goblin in a Good Court ##
+##Now to kill any Creature of Melkor in a non-evil Court ##
 character_event = {
-    id = maiarkiller.5
-    title = "EVTTITmaiarkiller.5"#You are orcish
-    desc = "EVTDESCmaiarkiller.5"#Wight characters are not supposed to be randomly spawned.
-    picture = "GFX_good"
-	age = 16
+    id = maiarkiller.6
+	only_rulers = no
+	religion_group = religion_group_melkorx
 	
-	mean_time_to_happen = { 30 days }
+	hide_window = yes
+	
+	mean_time_to_happen = { days = 45 }
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_wilderness
-			culture_group = culture_group_melkor
-		}
-		liege = {
-			NOT = { culture_group = culture_group_wilderness }
-			NOT = { culture_group = culture_group_melkor }
-			NOT = { culture = culture_umaiar }
-			NOT = { culture = culture_maiar }
-			NOT = { culture = culture_istari }
+		culture_group = culture_group_melkor
+		NOT = { trait = good_side }
+		top_liege = { 
+			NOT = { religion_group = religion_group_wilderness }
+			NOT = { religion_group = religion_group_melkorx }
+			NOT = { religion_group = religion_group_ungoliant }
+			NOT = { trait = evil_side }
+			NOT = { has_character_flag = very_tolerant_of_evil }
 		}
 	}
 	
 	immediate = {
-        death = {
-		    death_reason = death_murder
-		}
+        death = { death_reason = death_murder }
     }
 	
 	option = {
-        name = "EVTOPTAmaiarkiller.5"#Goodbye, cruel world!
+        # die!
     }
+}
+
+## Killing stray wilderness courtiers
+character_event = {
+    id = maiarkiller.7
+
+	only_rulers = no
+	religion_group = religion_group_wilderness
+	
+	hide_window = yes
+	
+	mean_time_to_happen = { days = 30 }
+	
+	trigger = {
+		culture_group = culture_group_wilderness
+		liege = { 
+			NOT = { culture_group = culture_group_wilderness }
+
+		}
+	}
+	
+	immediate = {
+        death = { death_reason = death_missing }
+    }
+	
+	option = {
+       # make character dissapear
+    }
+}
+
+# Converting Umaiar to other types of evil characters...
+character_event = {
+    id = maiarkiller.8
+    title = "EVTTITmaiarkiller.8"
+    desc = "EVTDESCmaiarkiller.8" #Umaiar characters are not supposed to be randomly spawned.
+    picture = "GFX_good"
+	max_age = 100
+	religion = religion_umaiar
+	
+	mean_time_to_happen = { days = 60 }
+	
+	trigger = {
+		religion = religion_umaiar
+		NOT = { age = 100 }
+	}
+	
+	
+	option = {
+		name = "EVTOPTAmaiarkiller.8"
+		# A complicated set of possible changes
+		mep_young_fevil_change_effect = yes
+	}
+}
+
+## Killing stray Spiders in non-evil Courts
+character_event = {
+    id = maiarkiller.9
+	only_rulers = no
+	religion_group = religion_group_ungoliant
+	
+	hide_window = yes
+	
+	mean_time_to_happen = { days = 45 }
+	
+	trigger = {
+		culture = culture_spider
+		NOT = { trait = good_side }
+		top_liege = { 
+			NOT = { religion_group = religion_group_wilderness }
+			NOT = { religion_group = religion_group_melkorx }
+			NOT = { religion_group = religion_group_ungoliant }
+			NOT = { trait = evil_side }
+			NOT = { has_character_flag = very_tolerant_of_evil }
+		}
+	}
+	
+	immediate = {
+        death = { death_reason = death_murder }
+    }
+	
+	option = {
+        # die!
+    }
+}
+
+# great big called from game start 'killer' to convert game-spawned barons and courtiers
+character_event = {
+	id = maiarkiller.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	option = {
+		any_character = {
+			# only checking young umaiar, maiar (incl balrogs), wights, 
+			limit = {
+				NOT = { age = 100 }
+				OR = {
+					religion = religion_umaiar
+					religion = religion_wight
+					culture = culture_istari
+					culture = culture_maiar
+				}
+			}
+			# more fine grained checking
+			if = {
+				limit = { religion = religion_umaiar }
+				mep_young_fevil_change_effect = yes				
+			}
+			if = {
+				limit = {  NOT = { religion = religion_umaiar }  }
+				character_event = { id = maiarkiller.3 }
+				character_event = { id = maiarkiller.4 }
+				character_event = { id = maiarkiller.5 }			
+			}
+		}
+	}
+}
+
+# Killing NON-stray Wilderness courtiers (because the game keeps generating them)...
+character_event = {
+	id = maiarkiller.11
+	hide_window = yes
+	only_playable = yes
+	
+	mean_time_to_happen = { days = 365 }
+	
+	trigger = {
+		religion_group = religion_group_wilderness
+		higher_real_tier_than  = baron
+	}
+	
+	immediate = {
+		set_variable = { which = mep_courtier_counter  value = 1 }
+		# counting unattached wilderness courtiers
+		any_courtier = {
+			limit = {
+				religion_group = religion_group_wilderness
+				is_ruler = no
+			}
+			PREV = { change_variable = { which = mep_courtier_counter value = 1 }}
+		}
+	}
+	
+	option = {
+		trigger = {
+			check_variable = { which = mep_courtier_counter  value = 8 }
+		}
+		# Calculating courtiers to kill...
+		set_variable = { which = mep_courtiers_tokill  which = mep_courtier_counter }
+		subtract_variable = { which = mep_courtiers_tokill  value = 5 }
+		# The loop of MURDER
+		while = {
+			limit = {
+				check_variable = { which = mep_courtiers_tokill  value = 1 }
+			}    
+			subtract_variable = { which = mep_courtiers_tokill value = 1 }
+			random_courtier = {
+				limit = {
+					religion_group = religion_group_wilderness
+					is_ruler = no
+				}
+				death = { death_reason = death_missing }
+			}
+		}
+	}
+	
+	option = {
+		trigger = {
+			NOT = { check_variable = { which = mep_courtier_counter  value = 8 } }
+		}
+		# Do Nothing...
+	}
+	
+	
 }

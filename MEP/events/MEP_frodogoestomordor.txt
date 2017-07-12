@@ -6,17 +6,15 @@ character_event = {
     title = "EVTTITfrodo.1"
     desc = "EVTDESCfrodo.1"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = frodogoestomordor
-		age = 30
-		NOT = { age = 60 }
+		has_global_flag = fellowship_broken2
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		NOT = { year = 11368 }
 		NOT = { has_character_flag = frodo1 }
 		NOT = { has_global_flag = boromirhasring }
-		dynasty = 803
 	}
 	
 	mean_time_to_happen = {
@@ -36,16 +34,14 @@ character_event = {
     title = "EVTTITfrodo.2"
     desc = "EVTDESCfrodo.2"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		has_character_flag = frodo1
-		age = 30
-		NOT = { age = 60 }
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		NOT = { has_character_flag = frodo2 }
-		dynasty = 803
 	}
 	
 	mean_time_to_happen = {
@@ -65,17 +61,17 @@ character_event = {
     title = "EVTTITfrodo.3"
     desc = "EVTDESCfrodo.3"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = fellowship_broken2
 		has_global_flag = frodogoestomordor
 		has_character_flag = frodo2
-		age = 30
-		NOT = { age = 60 }
+		event_target:mep_fellowship_ringbearer = { character = PREV }
 		year = 11367
 		NOT = { has_character_flag = frodo3 }
-		dynasty = 803
+
 	}
 	
 	mean_time_to_happen = {
@@ -95,11 +91,11 @@ character_event = {
     title = "EVTTITfrodo.4"
     desc = "EVTDESCfrodo.4"
     picture = "GFX_good"
-	age = 16
+	only_playable = yes
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
 		NOT = { has_global_flag = frodo4 }
@@ -125,7 +121,6 @@ character_event = {
     title = "EVTTITfrodo.5"
     desc = "EVTDESCfrodo.5"
     picture = "GFX_good"
-	age = 16
 	
 	is_triggered_only = yes
 	
@@ -140,12 +135,14 @@ character_event = {
 	option = {
 		name = "EVTOPTBfrodo.5"
 		trigger = { ai = no }
-		any_playable_ruler = {
-			limit = {
-				is_alive=yes
-				trait = ring
+		event_target:mep_fellowship_ringbearer = {
+			if = {
+				limit = {
+					is_alive = yes
+					trait = ring
+				}
+				character_event = { id = frodo.6 days = 30 }
 			}
-			character_event = { id = frodo.6 days = 30}
 		}
 	}
 }
@@ -195,18 +192,18 @@ character_event = {
     title = "EVTTITfrodo.7"
     desc = "EVTDESCfrodo.7"
     picture = "GFX_good"
-	age = 16
+	only_playable = yes
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = frodogoestomordor
+		has_global_flag = fellowship_broken2
 		NOT = { has_global_flag = gondor_restoreddefeat }
 		NOT = { has_global_flag = boromirhasring }
 		has_global_flag = gondor_restored
+		has_landed_title = e_gondor
 		has_global_flag = invademordor
 		NOT = { has_global_flag = frodo7 }
 		year = 11367
-		has_landed_title = e_gondor
 	}
 	
 	mean_time_to_happen = {
@@ -268,18 +265,20 @@ character_event = {
     title = "EVTTITfrodo.9"
     desc = "EVTDESCfrodo.9"
     picture = "GFX_good"
-	age = 16
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = frodogoestomordor
+		event_target:mep_fellowship_ringbearer = { character = PREV }
+		has_global_flag = fellowship_broken2
 		has_global_flag = invademordor
-		age = 30
-		NOT = { age = 80 }
 		NOT = { has_global_flag = frodo9 }
 		NOT = { has_global_flag = boromirhasring }
-		dynasty = 803
 		trait = ring
+	}
+	
+	immediate = {
+		save_event_target_as = mep_frodo_target
 	}
 	
 	mean_time_to_happen = { days = 30 }
@@ -454,9 +453,6 @@ character_event = {
 	option = {
 		name = "EVTOPTAfrodo.16"
 		set_global_flag = saurondefeated
-		death = {
-			death_reason = death_battle
-		}
 		any_realm_lord  = {
 			limit = {
 				OR = {
@@ -466,11 +462,53 @@ character_event = {
 			}
 			character_event = { id = frodo.17 }
 		}
-		any_realm_character  = {
-			limit = {
-				trait = nazgul	
+		# Getting rid of the Nazgul
+		any_realm_character = {
+			limit = { trait = nazgul }
+			character_event = { id = frodo.18 days = 3}
+		}
+		any_independent_ruler = {
+			limit = { pays_tribute_to = ROOT }
+			suzerain = { remove_tributary = ROOT }
+        }
+		# Killing Sauron
+		event_target:mep_fellowship_ringbearer = {
+			PREV = {
+				death = {
+					death_reason = death_destroyed_alongside_one_ring
+					killer = PREV
+				}
 			}
-			character_event = { id = frodo.18 }
+		}
+		# auto-killing the Balrog
+		if = {
+			limit = { NOT = { has_global_flag = durins_bane_is_dead } }
+			any_playable_ruler = {
+				if = {
+					limit = { has_character_flag = moriabalrog}
+					death = { death_reason = death_suicide }
+					break = yes
+				}
+				any_vassal = {
+					if = {
+						limit = { has_character_flag = moriabalrog}
+						death = { death_reason = death_suicide }
+					}
+				}
+			}
+			set_global_flag = durins_bane_is_dead
+		}	
+		# smashing barad-dur
+		c_barad_dur = {
+			location = {
+				province_event = { id = frodo.44 }
+			}
+		}
+		# smash the black gate
+		c_morannon = {
+			location = {
+				province_event = { id = frodo.44 }
+			}
 		}
 		any_playable_ruler  = {
 			character_event = { id = frodo.19 }
@@ -535,7 +573,10 @@ character_event = {
 		}	
 		k_mordor = {
 			destroy_landed_title = THIS
-		}			
+		}
+		k_dol_guldur = {
+			destroy_landed_title = THIS
+		}
 	}
 }
 		
@@ -561,14 +602,44 @@ character_event = {
     title = "EVTTITfrodo.18"
     desc = "EVTDESCfrodo.18"
     picture = "GFX_good"
-	age = 16
 	
 	is_triggered_only = yes	
 	
 	option = {
 		name = "EVTOPTAfrodo.18"
-		death = {
-			death_reason = death_battle
+		# to avoid weird inheritances... destroy the realm of the nazgul
+		any_vassal = {
+			limit = { higher_tier_than = baron }
+			set_defacto_liege = THIS
+		}
+		# eliminate duke or king level titles
+		any_demesne_title = {
+			if = {
+				limit = {
+					higher_tier_than = count
+				}
+				destroy_landed_title = THIS
+			}
+		}
+		recalc_succession = yes
+		remove_trait = nazgul
+		if = {
+			limit = { has_global_flag = saurondefeated }
+			event_target:mep_frodo_target = {
+				ROOT = {
+					death = {
+						death_reason = death_destroyed_alongside_one_ring
+						killer = PREV
+					}
+				}
+			}
+		}
+		if = {
+			limit = { has_global_flag = mep_lastalliance_saurondefeated }
+			death = {
+				death_reason = death_destroyed_alongside_one_ring
+				killer = FROM
+			}
 		}
 	}
 }
@@ -711,7 +782,7 @@ character_event = {
 	age = 16
 	
 	trigger = {
-		has_global_flag = ringleaveslorien
+		has_global_flag = fellowship_broken2
 		has_global_flag = frodogoestomordor
 		has_global_flag = gondor_restoreddefeat
 		age = 30
@@ -757,27 +828,28 @@ character_event = {
 
 	
 ###nazgul lose nazgul trait after sauron is defeated###
-character_event = {
-    id = frodo.28
-    title = "EVTTITfrodo.28"
-    desc = "EVTDESCfrodo.28"
-    picture = "GFX_good"
-	age = 16
-	
-	trigger = {
-		culture = culture_wight
-		trait = nazgul
-		has_global_flag = saurondefeated
-	}
-	
-	mean_time_to_happen = { days = 3 }	
-	
-	option = {
-		name = "EVTOPTAfrodo.28"
-		remove_trait = nazgul
-	}
-	
-}
+# blanked out because there is a nazgul killing event that should kill them instead
+#character_event = {
+#    id = frodo.28
+#    title = "EVTTITfrodo.28"
+#    desc = "EVTDESCfrodo.28"
+#    picture = "GFX_good"
+#	age = 16
+#	
+#	trigger = {
+#		culture = culture_wight
+#		trait = nazgul
+#		has_global_flag = saurondefeated
+#	}
+#	
+#	mean_time_to_happen = { days = 3 }	
+#	
+#	option = {
+#		name = "EVTOPTAfrodo.28"
+#		remove_trait = nazgul
+#	}
+#	
+#}
 
 ### Aragorn is asking about Ithilien ###
 character_event = {
@@ -823,14 +895,15 @@ character_event = {
 			}
 			character_event = { id = frodo.35 days = 15 }
 		}	
-		k_ithilien = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
-		d_nindalf = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}		
+		# with simply granting titles, gondor picks up large sections of mordor proper because
+		# the Nazgûl king of Ithilien grabs large parts of Nurnen and sometimes even gorogoth
+		# so...
+		k_ithilien = { destroy_landed_title = THIS }
+		d_nindalf = { destroy_landed_title = THIS }
+		d_north_ithilduin = { destroy_landed_title = THIS }	
+		d_emyn_arnen = { destroy_landed_title = THIS }	
+		d_south_ithilduin = { destroy_landed_title = THIS }		
+		# county titles are fixed in positiom
 		c_arandal = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -843,10 +916,6 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
-		d_north_ithilduin = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
 		c_morgul = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -875,10 +944,7 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
-		d_emyn_arnen = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}
+
 		c_usuluni = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -886,11 +952,7 @@ character_event = {
 		c_elemir = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
-		}	
-		d_south_ithilduin = {
-			grant_title = ROOT
-			copy_title_laws = e_gondor
-		}	
+		}		
 		c_alagdor = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
@@ -923,6 +985,27 @@ character_event = {
 			grant_title = ROOT
 			copy_title_laws = e_gondor
 		}	
+		# re-creating Ithilien
+		k_ithilien = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_emyn_arnen = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_nindalf = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}	
+		d_north_ithilduin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
+		d_south_ithilduin = {
+			grant_title = ROOT
+			copy_title_laws = e_gondor
+		}
 		set_defacto_liege = e_gondor		
 	}
 }
@@ -1024,7 +1107,6 @@ character_event = {
     title = "EVTTITfrodo.34"
     desc = "EVTDESCfrodo.34"
     picture = "GFX_evt_dwarves_hall"
-	age = 16
 	
 	is_triggered_only = yes
 	
@@ -1037,15 +1119,12 @@ character_event = {
 			c_glittering_caves = {
 				grant_title = ROOT
 				copy_title_laws = e_durins_folk
-			}	
+			}
+			activate_title = { title = d_aglarond status = yes }			
 			d_aglarond = {
 				grant_title = ROOT
 				copy_title_laws = e_durins_folk
 			}
-			k_aglarond = {
-				grant_title = ROOT
-				copy_title_laws = e_durins_folk
-			}	
 			set_defacto_liege = FROM			
 		}		
 	}
@@ -1072,7 +1151,7 @@ character_event = {
 		}		
 	}
 	option = {
-		name = "EVTOPTBfrodo.35" ## No, i need him in Erebor.		
+		name = "EVTOPTBfrodo.35" ## No, i need him in Mirkwood.		
 		trigger = { ai = no }
 	}	
 }
@@ -1160,6 +1239,20 @@ character_event = {
 			c_rian = {
 				grant_title = ROOT
 				copy_title_laws = e_gondor
+				location = {
+					if = {
+						limit = {
+							OR = {
+								culture_group = culture_group_wilderness
+								religion_group = religion_group_wilderness 
+							}
+						}
+						add_province_modifier = {
+							name = being_colonised_with_wood_elves
+							duration = -1
+						}
+					}
+				}
 			}	
 			c_glorel = {
 				grant_title = ROOT
@@ -1200,15 +1293,15 @@ character_event = {
 ##  All the vassals of Aragorn get a better opinion during some years ##
 character_event = {
 	id = frodo.39
-	title = "EVTfrodo.39"
-	desc = "EVTDESCfrodo.39"
-	picture = GFX_evt_grey_havens
+	# title = "EVTfrodo.39"
+	# desc = "EVTDESCfrodo.39"
+	# picture = GFX_evt_grey_havens
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAfrodo.39" # I'll die..
+		# name = "EVTOPTAfrodo.39" # I'll die..
 		any_vassal = {
 		opinion = { modifier = king_restored who = ROOT years = 30 }
 		}
@@ -1326,4 +1419,64 @@ character_event = {
 			copy_title_laws = k_rohan
 		}
 	}
+}
+
+# a special 'wreck barad-dur' (and also morranon) event
+province_event = {
+	id = frodo.44
+	title = "EVTTITfrodo.44"
+	desc = "EVTDESCfrodo.44"
+	picture = "GFX_event_sauron_commands"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAfrodo.44"
+		# destroying buildings above level 2
+		custom_tooltip = {
+			text = TT_MEP_WRECK_BARADDUR
+			any_province_holding = {
+				remove_building = ca_blackgate
+				remove_building = ca_baraddur
+				remove_building = ca_MOwall_5
+				remove_building = ca_MOwall_4
+				remove_building = ca_MOwall_3
+				remove_building = ca_MOwatchtower_6
+				remove_building = ca_MOwatchtower_5
+				remove_building = ca_MOwatchtower_4
+				remove_building = ca_MOwatchtower_3
+				remove_building = ca_MOkeep_6
+				remove_building = ca_MOkeep_5
+				remove_building = ca_MOkeep_4
+				remove_building = ca_MOkeep_3
+				remove_building = ca_MOorc_militiabarracks_4
+				remove_building = ca_MOorc_militiabarracks_3
+				remove_building = ca_MOorctraining_grounds_3
+				remove_building = ca_MOorctraining_grounds_2
+				remove_building = ca_MOorcbarracks_6
+				remove_building = ca_MOorcbarracks_5
+				remove_building = ca_MOorcbarracks_4
+				remove_building = ca_MOorcbarracks_3
+				remove_building = ca_MOstable_6
+				remove_building = ca_MOstable_5
+				remove_building = ca_MOstable_4
+				remove_building = ca_MOstable_3
+				remove_building = ca_MOorctown_6
+				remove_building = ca_MOorctown_5
+				remove_building = ca_MOorctown_4
+				remove_building = ca_MOorctown_3
+				remove_building = ca_MO_elite_5
+				remove_building = ca_MO_elite_4
+				remove_building = ca_MO_elite_3
+			}
+		}
+		# changing the popmod level
+		custom_tooltip = {
+			text = TT_MEP_DEPOPULATE_TO3
+			mep_human_popmod_remove_effect = yes
+			add_province_modifier = { name = three_population_human  duration = -1 }
+		}
+
+	}
+
 }

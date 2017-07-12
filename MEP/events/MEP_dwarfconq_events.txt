@@ -1,0 +1,2634 @@
+# Dwarven Reconquest events
+namespace = dwarfconq
+#================================================================================
+# Set one: attack or buy azanulbizar for Longbeard Kings/Emporer
+# To beseige Moria, this is almost an absolute necessity, so I make these a natural pre-req for attacking Moria
+#-------------------------------------------------------------------
+# Azanulbizar is Wilderness, launch a 'seize wilderness' war
+character_event = {
+    id = dwarfconq.10
+	title = EVTTITdwarfconq.10
+    desc = EVTDESCdwarfconq.10
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.10
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 0.1
+				NOT = { wealth = 105 }
+			}
+		}
+		wealth = -100
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}		
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = wilderness
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = { factor = 1 }
+		name = dwarfconq_later		
+	}
+	
+}
+
+# Launch a war to take Azanulbizar from Evil
+character_event = {
+    id = dwarfconq.11
+	title = EVTTITdwarfconq.11
+    desc = EVTDESCdwarfconq.11
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.11
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				NOT = { wealth = 105 }
+			}
+		}
+		wealth = -100
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later	
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -500} }
+					}
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -1500} }
+					}
+				}				
+			}
+		}
+	}
+	
+}
+
+# Launch a war to take Azanulbizar from someone who refused to sell
+character_event = {
+    id = dwarfconq.12
+	title = EVTTITdwarfconq.12
+    desc = EVTDESCdwarfconq.12
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.12
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650 }
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 20
+				event_target:mep_moria_overlord_target = {
+					OR = {
+						religion_group = religion_group_khazad
+						religion_group = religion_group_eldar
+					}
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = 1000} }
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -500} }
+					}
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -1500} }
+					}
+				}				
+			}
+		}		
+	}
+	
+}
+#-------------------------------------------------------------------
+# Try to Buy Azanulbizar from non-dwarves
+character_event = {
+	id = dwarfconq.13
+	title = EVTTITdwarfconq.13
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.13a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.13b
+	}
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.13
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.14 }
+		}
+	}
+	
+	option = {  # Just declare war (dishonorable)
+		name = EVTOPTBdwarfconq.13
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 450
+			}
+		}
+	}
+}
+
+# Message event where the non-dwarven holder of Azanulbizar can choose whether to sell
+character_event = {
+	id = dwarfconq.14
+	title = EVTTITdwarfconq.14
+	desc = EVTDESCdwarfconq.14
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept dwarven purchase
+		name = EVTOPTAdwarfconq.14
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.20 }
+		}
+	}
+	
+	option = {  # reject dwarven purchase
+		name = EVTOPTBdwarfconq.14
+		ai_chance = {
+			factor = 1
+		}
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Try to Buy Azanulbizar from non-longbeard dwarves
+character_event = {
+	id = dwarfconq.15
+	title = EVTTITdwarfconq.15
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.15a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.15b
+	}
+	picture = "GFX_dwarves_hall"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.15
+		ai_chance = { factor = 1 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.16 }
+		}
+		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.15
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_playable_ruler = {
+			limit = {
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { same_realm = ROOT }
+			}
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_very_strong
+				months = 360
+			}
+		}		
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 360
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 450
+			}
+		}
+		name = dwarfconq_later
+	}
+}
+
+# Message event where the Dwarven holder of Azanulbizar can choose whether to sell
+character_event = {
+	id = dwarfconq.16
+	title = EVTTITdwarfconq.16
+	desc = EVTDESCdwarfconq.16
+	picture = "GFX_dwarves_mines"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.16
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.20 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.16
+		ai_chance = {
+			factor = 1
+		}
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Azanulbizar is held by a one-province Longbeard ruler, but his overlord is not Longbeard...
+# the Longbeards try to get a vassal transfer
+character_event = {
+	id = dwarfconq.17
+	title = EVTTITdwarfconq.17
+	desc = {
+		trigger = {  # moria might have to be beseiged, the text mentions using Azanulbizar as a base
+			c_moria = {
+				holder_scope = { NOT = { same_realm = ROOT } }
+			}
+		}
+		text = EVTDESCdwarfconq.17a
+	}
+	desc = {  # moria is already in our hands
+		trigger = {
+			c_moria = {
+				holder_scope = { same_realm = ROOT }
+			}		
+		}
+		text = EVTDESCdwarfconq.17b
+	}
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_azanulbizar = {
+			holder_scope = {
+				save_event_target_as = mep_moria_holder_target
+				top_liege = { save_event_target_as = mep_moria_overlord_target }
+			}
+		}
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.17
+		ai_chance = { factor = 1 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.18 }
+		}		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.17
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_azanulbizar
+		c_azanulbizar = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_playable_ruler = {
+			limit = {
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { same_realm = ROOT }
+			}
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_very_strong
+				months = 360
+			}
+		}		
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 360
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 450
+			}
+		}
+	}
+}
+
+# Message event where the overlord of Azanulbizar can pick whether to transfer a vassal or not
+character_event = {
+	id = dwarfconq.18
+	title = EVTTITdwarfconq.18
+	desc = EVTDESCdwarfconq.18
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.18
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.24 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.18
+		ai_chance = { factor = 1 }
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Response back : the seller has agreed to sell...
+character_event = {
+	id = dwarfconq.20
+	title = EVTTITdwarfconq.20
+	desc = EVTDESCdwarfconq.20
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.20
+		wealth = -400
+		c_azanulbizar = {
+			gain_title = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.22 } # Send thank you message
+		}
+	}
+}
+
+# Response back : the potential seller has refused to sell!
+character_event = {
+	id = dwarfconq.21
+	title = EVTTITdwarfconq.21
+	desc = EVTDESCdwarfconq.21
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # damn you
+		name = EVTOPTAdwarfconq.21
+		FROM = {
+			character_event = { id = dwarfconq.23 } # Send back threatening message
+		}
+	}
+}
+
+# Thank You after selling
+character_event = {
+	id = dwarfconq.22
+	title = EVTTITdwarfconq.22
+	desc = {
+		trigger = { religion_group = religion_group_khazad }
+		text = EVTDESCdwarfconq.22a
+	}
+	desc = {
+		trigger = { NOT = { religion_group = religion_group_khazad } }
+		text = EVTDESCdwarfconq.22b
+	}
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  
+		wealth = 400
+		name = EVTOPTAdwarfconq.22
+	}
+}
+
+# Damn You after refusing to sell
+character_event = {
+	id = dwarfconq.23
+	title = EVTTITdwarfconq.23
+	desc = {
+		trigger = { religion_group = religion_group_khazad }
+		text = EVTDESCdwarfconq.23a
+	}
+	desc = {
+		trigger = { NOT = { religion_group = religion_group_khazad } }
+		text = EVTDESCdwarfconq.23b
+	}
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # too bad, runt
+		name = EVTOPTAdwarfconq.23
+	}
+}
+
+
+# Response back : the seller has agreed the vassal transfer
+character_event = {
+	id = dwarfconq.24
+	title = EVTTITdwarfconq.24
+	desc = EVTDESCdwarfconq.24
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.24
+		wealth = -400
+		c_azanulbizar = {
+			set_defacto_liege  = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.22 } # Send thank you message
+		}
+	}
+}
+#===================================================================
+# Longbeard-specific purge event for Azanulbizar and Khazad-Dûm
+# called from on_new_holder
+character_event = {
+	id = dwarfconq.25
+	title = EVTTITdwarfconq.25
+	desc = EVTDESCdwarfconq.25
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = {
+			tier = count
+			location = {
+				OR = {
+					province_id = 2 # Azanulbizar
+					province_id = 285 # Khazad-Dûm
+				}
+				OR = {
+					religion_group = religion_group_ungoliant
+					religion_group = religion_group_melkorx
+				}
+				NOT = { has_province_modifier = being_purged_ofevil }
+			}
+		}
+		ROOT = {
+			OR = {
+				AND = {
+					culture = culture_longbeard
+					not = evil_side
+				}
+				top_liege = {
+					culture = culture_longbeard
+					not = evil_side
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTAdwarfconq.25
+		ai_chance = { factor = 1 }
+		ROOT = { wealth = -50 }
+		FROM = {
+			location = {
+				set_variable = { which = mep_provincepurge_special  value = 1}
+				add_province_modifier = { name = being_purged_ofevil  duration = 3650 }
+			}
+		}
+	}
+	
+	option = {
+		name = EVTOPTBdwarfconq.25
+		ai_chance = { factor = 0 }
+	}
+}
+
+province_event = {
+	id = dwarfconq.26
+	title = EVTTITdwarfconq.26
+	desc = EVTDESCdwarfconq.26
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAdwarfconq.26
+	}
+}
+
+#===================================================================
+# Random hidden event to remove the global flag if the character modifier is missing
+character_event = {
+	id = dwarfconq.27
+	hide_window = yes
+	only_playable = yes
+	has_global_flag = retaking_khazad_dum
+	ai = no
+	
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOR = {
+					any_playable_ruler = {
+						culture = culture_longbeard
+						has_character_modifier = retaking_khazaddum
+					}
+					AND = {
+						culture = culture_longbeard
+						has_character_modifier = retaking_khazaddum
+					}					
+				}
+			}
+			clr_global_flag = retaking_khazad_dum
+			clear_event_target = mep_moria_overlord_target
+			clear_event_target = mep_moria_holder_target
+		}
+	}
+	
+	option = { }	
+}
+
+
+#=============================================================================================================
+# Re-conquering Khazad-Dûm
+# Disambiguation event
+character_event = {
+	id = dwarfconq.30
+	hide_window = yes
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { wealth = 1000 }
+		character_event = { id = dwarfconq.31 }
+	}
+	option = {
+		trigger = { NOT = { wealth = 1000 } }
+		character_event = { id = dwarfconq.32 }
+	}
+	
+} 
+
+# Launch a war to reconquer Khazad-Dûm (Melkor/Dwarven Version, has enough money)
+character_event = {
+    id = dwarfconq.31
+	title = EVTTITdwarfconq.31
+    desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_melkor
+			}	
+		}
+		text = EVTDESCdwarfconq.31a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad 
+			}
+		}
+		text = EVTDESCdwarfconq.31b
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOR = {
+					religion_group = religion_group_khazad
+					religion_group = religion_group_melkor				
+				}
+			}
+		}
+		text = EVTDESCdwarfconq.31c
+	}
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.31
+		ai_chance = { factor = 2 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		wealth = -1000
+		# launch the war
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+		# ask for help (volunteer troops)
+		any_independent_ruler = {
+			limit = {
+				tier = king
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { character = event_target:mep_moria_overlord_target }				
+			}
+			character_event = { id = dwarfconq.33  days = 7  random = 7 }
+		}
+		# create the (supposedly non-dwarven) event troops
+		capital_scope = {
+			PREV = {
+				create_character = {
+					random_traits = yes
+					dynasty = random
+					religion = religion_rhovanion
+					culture = culture_barding
+					female = no
+					age = 29
+					attributes = {
+						martial = 6
+					}
+					trait = skilled_tactician
+				}
+				new_character = {
+					spawn_unit  = {
+						province = PREVPREV
+						troops = {
+							heavy_infantry = { 350 350 }
+							light_infantry = { 1000 1000 }
+							archers = { 650 650}
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						owner = PREV
+					}
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = random
+					religion = religion_rhovanion
+					culture = culture_barding
+					female = no
+					age = 38
+					attributes = {
+						martial = 9
+					}
+					trait = skilled_tactician
+				}
+				new_character = {
+					spawn_unit  = {
+						province = PREVPREV
+						troops = {
+							heavy_infantry = { 350 350 }
+							light_infantry = { 1000 1000 }
+							archers = { 650 650}
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						owner = PREV
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later	
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 2
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -3000} }
+					}	
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -3500} }
+					}
+				}				
+			}
+		}		
+	}
+	
+}
+
+# Launch a war to reconquer Khazad-Dûm (Melkor/Dwarven Version, does not have enough money)
+character_event = {
+    id = dwarfconq.32
+	title = EVTTITdwarfconq.32
+    desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_melkor
+			}	
+		}
+		text = EVTDESCdwarfconq.32a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad 
+			}
+		}
+		text = EVTDESCdwarfconq.32b
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOR = {
+					religion_group = religion_group_khazad
+					religion_group = religion_group_melkor				
+				}
+			}
+		}
+		text = EVTDESCdwarfconq.32c
+	}
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.32
+		ai_chance = { factor = 2 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		wealth = -1000
+		# launch the war
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+		# ask for help (money)
+		prestige = -300
+		any_independent_ruler = {
+			limit = {
+				tier = king
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { character = event_target:mep_moria_overlord_target }				
+			}
+			character_event = { id = dwarfconq.36  days = 7  random = 7 }
+		}
+		# create the (supposedly non-dwarven) event troops
+		capital_scope = {
+			PREV = {
+				create_character = {
+					random_traits = yes
+					dynasty = random
+					religion = religion_rhovanion
+					culture = culture_barding
+					female = no
+					age = 29
+					attributes = {
+						martial = 6
+					}
+					trait = skilled_tactician
+				}
+				new_character = {
+					spawn_unit  = {
+						province = PREVPREV
+						troops = {
+							heavy_infantry = { 350 350 }
+							light_infantry = { 1000 1000 }
+							archers = { 650 650}
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						owner = PREV
+					}
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = random
+					religion = religion_rhovanion
+					culture = culture_barding
+					female = no
+					age = 38
+					attributes = {
+						martial = 9
+					}
+					trait = skilled_tactician
+				}
+				new_character = {
+					spawn_unit  = {
+						province = PREVPREV
+						troops = {
+							heavy_infantry = { 350 350 }
+							light_infantry = { 1000 1000 }
+							archers = { 650 650}
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						owner = PREV
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later	
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 2
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -3000} }
+					}
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -3500} }
+					}
+				}				
+			}
+		}		
+	}
+	
+}
+
+# Message event where a Dwarven ruler can decide whether to supply troops
+character_event = {
+	id = dwarfconq.33
+	title = EVTTITdwarfconq.33
+	   desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOT = { religion_group = religion_group_khazad }
+			}	
+		}
+		text = EVTDESCdwarfconq.33a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad 
+			}
+		}
+		text = EVTDESCdwarfconq.33b
+	}	
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # supply full troops (player only)
+		trigger = { ai = no }
+		name = EVTOPTAdwarfconq.33
+		set_character_flag = mep_moria_req_troops
+		FROM = {
+			character_event = { id = dwarfconq.34 }
+		}
+	}
+	
+	option = {  # supply troops (in tiers, based on ROOT's opinion of FROM)
+		name = EVTOPTBdwarfconq.33
+		ai_chance = {
+			factor = 1
+			modifier = {		# no troops cause I don't like you
+				factor = 0
+				NOT = { opinion = { who = FROM value = 0 }}
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.34 }
+		}
+	}
+	
+	option = {  # don't supply troops
+		name = EVTOPTCdwarfconq.33
+		ai_chance = {
+			factor = 1
+			modifier = { # If I like you enough, you will always get troops
+				factor = 0
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = { # if the enemy is non-dwarven, you will get troops (unless opinion is negative)
+				factor = 0
+				event_target:mep_moria_overlord_target = {
+					NOT = { religion_group = religion_group_khazad }
+				}
+				opinion = { who = FROM value = 0 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.35 }
+		}
+	}
+}
+
+# Response back : you are getting some troops
+character_event = {
+	id = dwarfconq.34
+	title = EVTTITdwarfconq.34
+	desc = EVTDESCdwarfconq.34
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.34
+		# makes the dwarven leader of the unit
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			religion = religion_mahal
+			culture = FROM
+			female = no
+			age = 132
+			attributes = {
+				martial = 6
+			}
+			trait = skilled_tactician
+		}
+		opinion = { modifier = opinion_gave_troops  who = FROM  years = 20 }
+		# The unit comes in 5 different sizes
+		if = {
+			limit = {
+				FROM = { has_character_flag =  mep_moria_req_troops} 
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit  = {
+						province = PREV
+						troops = {
+							heavy_infantry = { 200 200 }
+							pikemen = { 100 100 }
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						maintenance_multiplier = 0.3
+						owner = PREVPREV
+					}
+				}
+			}
+			FROM = { clr_character_flag = mep_moria_req_troops }
+			break = yes
+		}
+		# 300
+		if = {
+			limit = {
+				FROM = { opinion = { who = ROOT  value = 75 } }
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit  = {
+						province = PREV
+						troops = {
+							heavy_infantry = { 200 200 }
+							pikemen = { 100 100 }
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						maintenance_multiplier = 0.3
+						owner = PREVPREV
+					}
+				}
+			}
+			break = yes
+		}
+		# 225
+		if = {
+			limit = {
+				FROM = { opinion = { who = ROOT  value = 50 } }
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit  = {
+						province = PREV
+						troops = {
+							heavy_infantry = { 150 150 }
+							pikemen = { 75 75 }
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						maintenance_multiplier = 0.3
+						owner = PREVPREV
+					}
+				}
+			}
+			break = yes
+		}
+		#150
+		if = {
+			limit = {
+				FROM = { opinion = { who = ROOT  value = 25 } }
+			}
+			capital_scope = {
+				new_character = {
+					spawn_unit  = {
+						province = PREV
+						troops = {
+							heavy_infantry = { 100 100 }
+							pikemen = { 50 50 }
+						}
+						disband_on_peace = yes
+						attrition = 0.5
+						maintenance_multiplier = 0.3
+						owner = PREVPREV
+					}
+				}
+			}
+			break = yes
+		}
+		# 75
+		capital_scope = {
+			new_character = {
+				spawn_unit  = {
+					province = PREV
+					troops = {
+						heavy_infantry = { 50 50 }
+						pikemen = { 25 25 }
+					}
+					disband_on_peace = yes
+					attrition = 0.5
+					maintenance_multiplier = 0.3
+					owner = PREVPREV
+				}
+			}
+		}
+		
+	}
+}
+
+# Response for refusing aid
+character_event = {
+	id = dwarfconq.35
+	title = EVTTITdwarfconq.35
+	desc =  EVTDESCdwarfconq.35
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAdwarfconq.35
+		opinion = { modifier = opinion_refused_help  who = FROM  years = 20 }
+	}
+}
+
+# Message event where a Dwarven ruler can decide whether to supply money (for the reconquest of Moria)
+character_event = {
+	id = dwarfconq.36
+	title = EVTTITdwarfconq.36
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOT = { religion_group = religion_group_khazad }
+			}
+		}
+		text = EVTDESCdwarfconq.36a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad
+			}
+		}
+		text = EVTDESCdwarfconq.36b
+	}	
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # supply 500 gold (player only)
+		trigger = { ai = no }
+		name = EVTOPTAdwarfconq.36
+		set_variable = { which = mep_wealth_transfer_amount  value = 1 }
+		wealth = -500
+		FROM = {
+			character_event = { id = dwarfconq.37 }
+		}
+	}
+	
+	option = {  # supply tiered wealth, based on ROOT's opinion of FROM
+		name = EVTOPTBdwarfconq.36
+		ai_chance = {
+			factor = 1
+			modifier = {		# no money cause I don't like you
+				factor = 0
+				NOT = { opinion = { who = FROM value = 0 }}
+			}
+		}
+		if = {
+			limit = { opinion = { who = FROM value = 75 } }
+			set_variable = { which = mep_wealth_transfer_amount  value = 2 }
+			wealth = -300
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 75 } }
+				opinion = { who = FROM value = 50 }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 3 }
+			wealth = -225
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 50 } }
+				opinion = { who = FROM value = 25 }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 4 }
+			wealth = -150
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 25 } }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 5 }
+			wealth = -75
+		}
+		FROM = {
+			character_event = { id = dwarfconq.37 }
+		}
+	}
+	
+	option = {  # don't supply money
+		name = EVTOPTCdwarfconq.36
+		ai_chance = {
+			factor = 1
+			modifier = { # If I like you enough, you will always get money
+				factor = 0
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = { # if the enemy is non-dwarven, you will get money (unless opinion is negative)
+				factor = 0
+				event_target:mep_moria_overlord_target = {
+					NOT = { religion_group = religion_group_khazad }
+				}
+				opinion = { who = FROM value = 0 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.35 }
+		}
+	}
+}
+
+# Response back : you are getting some Money
+character_event = {
+	id = dwarfconq.37
+	title = EVTTITdwarfconq.37
+	desc = EVTDESCdwarfconq.37
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.37
+		FROM = {
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 1}  }
+				ROOT = { wealth = 500 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 2}  }
+				ROOT = { wealth = 300 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 3}  }
+				ROOT = { wealth = 225 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 4}  }
+				ROOT = { wealth = 150 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 5}  }
+				ROOT = { wealth = 75 }
+			}
+			
+		}
+		opinion = { modifier = opinion_gave_money who = FROM  years = 20 }
+	}
+	
+}
+
+# Disambiguation event
+character_event = {
+	id = dwarfconq.40
+	hide_window = yes
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { wealth = 300 }
+		character_event = { id = dwarfconq.41 }
+	}
+	option = {
+		trigger = { NOT = { wealth = 300 } }
+		character_event = { id = dwarfconq.42 }
+	}
+	
+}
+
+# Launch a war to reconquer Khazad-Dûm (NON Melkor/Dwarven Version, has enough money)
+# Massive event troops not needed because if moria's population is neither dwarves
+# nor creatures of melkor, the special levy/garrison boosting buildings cannot exist.
+character_event = {
+    id = dwarfconq.41
+	title = EVTTITdwarfconq.41
+    desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_melkor
+			}	
+		}
+		text = EVTDESCdwarfconq.41a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad 
+			}
+		}
+		text = EVTDESCdwarfconq.41b
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOR = {
+					religion_group = religion_group_khazad
+					religion_group = religion_group_melkor				
+				}
+			}
+		}
+		text = EVTDESCdwarfconq.41c
+	}
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.41
+		ai_chance = {
+			factor = 2
+		}
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		wealth = -300
+		# launch the war
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+		# ask for help (volunteer troops)
+		any_independent_ruler = {
+			limit = {
+				tier = king
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { character = event_target:mep_moria_overlord_target }				
+			}
+			character_event = { id = dwarfconq.33  days = 7  random = 7 }
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later	
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 20
+				event_target:mep_moria_overlord_target = {
+					OR = {
+						religion_group = religion_group_khazad
+						religion_group = religion_group_eldar
+					}
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = 1000} }
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -500} }
+					}	
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -1500} }
+					}
+				}				
+			}
+		}		
+	}
+	
+}
+
+# Launch a war to reconquer Khazad-Dûm (NON Melkor/Dwarven Version, does NOT have enough money)
+# Massive event troops not needed because if moria's population is neither dwarves
+# nor creatures of melkor, the special levy/garrison boosting buildings cannot exist.
+character_event = {
+    id = dwarfconq.42
+	title = EVTTITdwarfconq.42
+    desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_melkor
+			}	
+		}
+		text = EVTDESCdwarfconq.42a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad 
+			}
+		}
+		text = EVTDESCdwarfconq.42b
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOR = {
+					religion_group = religion_group_khazad
+					religion_group = religion_group_melkor				
+				}
+			}
+		}
+		text = EVTDESCdwarfconq.42c
+	}
+    picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = EVTOPAdwarfconq.42
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		wealth = -300
+		# launch the war
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+					infamy = 0
+				}
+			}
+		}
+		# ask for help money
+		any_independent_ruler = {
+			limit = {
+				tier = king
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { character = event_target:mep_moria_overlord_target }				
+			}
+			character_event = { id = dwarfconq.43  days = 7  random = 7 }
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later	
+		ai_chance = {
+			factor = 1
+			# some attempts to discourage the AI from attacking over-strong enemies
+			modifier = {
+				factor = 20
+				event_target:mep_moria_overlord_target = {
+					OR = {
+						religion_group = religion_group_khazad
+						religion_group = religion_group_eldar
+					}
+					PREV = {
+						NOT = {realm_levy_diff = { who = PREV value = 1000} }
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 1000 }				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 2000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -500} }
+					}
+				}				
+			}
+			modifier = {
+				factor = 5
+				NOT = { realm_levies = 4000 }
+				event_target:mep_moria_overlord_target = {
+					ROOT = {
+						NOT = {realm_levy_diff = { who = PREV value = -1500} }
+					}
+				}				
+			}
+		}		
+	}
+	
+}
+
+# Message event where a Dwarven ruler can decide whether to supply money (for the reconquest of Moria)
+character_event = {
+	id = dwarfconq.43
+	title = EVTTITdwarfconq.43
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				NOT = { religion_group = religion_group_khazad }
+			}
+		}
+		text = EVTDESCdwarfconq.43a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_moria_overlord_target = {
+				religion_group = religion_group_khazad
+			}
+		}
+		text = EVTDESCdwarfconq.43b
+	}	
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # supply 250 gold (player only)
+		trigger = { ai = no }
+		name = EVTOPTAdwarfconq.43
+		set_variable = { which = mep_wealth_transfer_amount  value = 1 }
+		wealth = -250
+		FROM = {
+			character_event = { id = dwarfconq.44 }
+		}
+	}
+	
+	option = {  # supply tiered wealth, based on ROOT's opinion of FROM
+		name = EVTOPTBdwarfconq.43
+		ai_chance = {
+			factor = 1
+			modifier = {		# no money cause I don't like you
+				factor = 0
+				NOT = { opinion = { who = FROM value = 0 }}
+			}
+		}
+		if = {
+			limit = { opinion = { who = FROM value = 75 } }
+			set_variable = { which = mep_wealth_transfer_amount  value = 2 }
+			wealth = -150
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 75 } }
+				opinion = { who = FROM value = 50 }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 3 }
+			wealth = -125
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 50 } }
+				opinion = { who = FROM value = 25 }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 4 }
+			wealth = -75
+		}
+		if = {
+			limit = {
+				NOT = { opinion = { who = FROM value = 25 } }
+			}
+			set_variable = { which = mep_wealth_transfer_amount  value = 5 }
+			wealth = -40
+		}
+		FROM = {
+			character_event = { id = dwarfconq.44 }
+		}
+	}
+	
+	option = {  # don't supply money
+		name = EVTOPTCdwarfconq.43
+		ai_chance = {
+			factor = 1
+			modifier = { # If I like you enough, you will always get money
+				factor = 0
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = { # if the enemy is non-dwarven, you will get money (unless opinion is negative)
+				factor = 0
+				event_target:mep_moria_overlord_target = {
+					NOT = { religion_group = religion_group_khazad }
+				}
+				opinion = { who = FROM value = 0 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.35 }
+		}
+	}
+}
+
+# Response back : you are getting some Money
+character_event = {
+	id = dwarfconq.44
+	title = EVTTITdwarfconq.37
+	desc = EVTDESCdwarfconq.37
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.37
+		FROM = {
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 1}  }
+				ROOT = { wealth = 250 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 2}  }
+				ROOT = { wealth = 150 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 3}  }
+				ROOT = { wealth = 125 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 4}  }
+				ROOT = { wealth = 75 }
+			}
+			if = {
+				limit = { is_variable_equal = { which = mep_wealth_transfer_amount  value = 5}  }
+				ROOT = { wealth = 40 }
+			}
+			
+		}
+		opinion = { modifier = opinion_gave_money who = FROM  years = 20 }
+	}
+	
+}
+
+#-------------------------------------------------------------------------------------------------------
+# Buying Khazad-Dûm
+# Try to Buy Moria from non-dwarves
+character_event = {
+	id = dwarfconq.50
+	title = EVTTITdwarfconq.50
+	desc = EVTDESCdwarfconq.50
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.50
+		ai_chance = { factor = 1 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.51 }
+		}
+	}
+	
+	option = {  # Just declare war (dishonorable)
+		name = EVTOPTBdwarfconq.13
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 2100
+			}
+			modifier = {
+				factor = 0.3
+				wealth = 1000
+			}
+		}
+	}
+}
+
+# Message event where the non-dwarven holder of Moria can choose whether to sell
+character_event = {
+	id = dwarfconq.51
+	title = EVTTITdwarfconq.51
+	desc = EVTDESCdwarfconq.51
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept dwarven purchase
+		name = EVTOPTAdwarfconq.51
+		ai_chance = { factor = 1 }
+		FROM = {
+			character_event = { id = dwarfconq.60 }
+		}
+	}
+	
+	option = {  # reject dwarven purchase
+		name = EVTOPTBdwarfconq.51
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.61 }
+		}
+	}
+}
+
+# Try to Buy Khazad-dûm from non-longbeard dwarves
+character_event = {
+	id = dwarfconq.52
+	title = EVTTITdwarfconq.52
+	desc = EVTDESCdwarfconq.52
+	picture = "GFX_dwarves_hall"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				if = {
+					limit = { independent = yes }
+					save_event_target_as = mep_moria_overlord_target
+				}
+				if = {
+					limit = { independent = no }
+					top_liege = {
+						save_event_target_as = mep_moria_overlord_target
+					}
+				}
+			}
+		}
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.52
+		ai_chance = { factor = 1 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.53 }
+		}
+		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.52
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_playable_ruler = {
+			limit = {
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { same_realm = ROOT }
+			}
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_very_strong
+				months = 360
+			}
+		}		
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 360
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 2100
+			}
+			modifier = {
+				factor = 0.3
+				wealth = 1000
+			}
+		}
+	}
+}
+
+# Message event where the Dwarven holder of Khazad-dûm can choose whether to sell
+character_event = {
+	id = dwarfconq.53
+	title = EVTTITdwarfconq.53
+	desc = EVTDESCdwarfconq.53
+	picture = "GFX_dwarves_mines"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.53
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.60 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.53
+		ai_chance = { factor = 1 }
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.61 }
+		}
+	}
+}
+
+# Khazad-dûm is held by a one-province Longbeard ruler, but his overlord is not Longbeard...
+# the Longbeards try to get a vassal transfer
+character_event = {
+	id = dwarfconq.54
+	title = EVTTITdwarfconq.54
+	desc = EVTDESCdwarfconq.54
+	picture = "GFX_dwarves"
+
+	is_triggered_only = yes
+	
+	immediate = {
+		c_moria = {
+			holder_scope = {
+				save_event_target_as = mep_moria_holder_target
+				top_liege = { save_event_target_as = mep_moria_overlord_target }
+			}
+		}
+	}
+	
+	option = {  # Make the Purchase offer
+		name = EVTOPTAdwarfconq.54
+		ai_chance = { factor = 1 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		event_target:mep_moria_overlord_target = {
+			character_event = { id = dwarfconq.55 }
+		}		
+	}
+	
+	option = {  # Just declare war (very very dishonorable)
+		name = EVTOPTBdwarfconq.54
+		ai_chance = { factor = 0 }
+		if = {
+			limit = { has_character_modifier = retaking_khazaddum }
+			remove_character_modifier = retaking_khazaddum
+		}
+		add_character_modifier = { name = retaking_khazaddum duration = 3650}
+		if = {
+			limit = { NOT = { has_global_flag = retaking_khazad_dum } }
+			set_global_flag = retaking_khazad_dum
+		}
+		add_claim = c_moria
+		c_moria = {
+			event_target:mep_moria_overlord_target = {
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+					thirdparty_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { trait = good_side }
+			remove_trait = good_side
+		}
+		any_playable_ruler = {
+			limit = {
+				religion_group = religion_group_khazad
+				NOT = { trait = evil_side }
+				NOT = { same_realm = ROOT }
+			}
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_very_strong
+				months = 360
+			}
+		}		
+		any_vassal = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 360
+			}
+		}
+		any_courtier = {
+			opinion = {
+				who = ROOT
+				modifier = opinion_dishonorable_strong
+				months = 240
+			}
+		}
+	}
+	
+	option = {
+		name = dwarfconq_later
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				wealth = 2100
+			}
+			modifier = {
+				factor = 0.3
+				wealth = 1000
+			}
+		}
+	}
+}
+
+# Message event where the overlord of Moria can pick whether to transfer a vassal or not
+character_event = {
+	id = dwarfconq.55
+	title = EVTTITdwarfconq.55
+	desc = EVTDESCdwarfconq.55
+	picture = "GFX_dwarves"
+	
+	is_triggered_only = yes
+	
+	option = {  # accept Longbeard purchase
+		name = EVTOPTAdwarfconq.55
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 10
+				trait = good_side
+			}
+			modifier = {
+				factor = 10
+				NOT = { wealth = 100 }
+			}
+		}
+		FROM = {
+			character_event = { id = dwarfconq.64 }
+		}
+	}
+	
+	option = {  # reject Longbeard purchase
+		name = EVTOPTBdwarfconq.55
+		ai_chance = { factor = 1 }
+		set_character_flag = refused_to_sell_moria
+		FROM = {
+			character_event = { id = dwarfconq.21 }
+		}
+	}
+}
+
+# Response back : the seller has agreed to sell...
+character_event = {
+	id = dwarfconq.60
+	title = EVTTITdwarfconq.60
+	desc = EVTDESCdwarfconq.60
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.60
+		wealth = -2000
+		c_moria = {
+			gain_title = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.62 } # Send thank you message
+		}
+	}
+}
+
+# Response back : the potential seller has refused to sell!
+character_event = {
+	id = dwarfconq.61
+	title = EVTTITdwarfconq.61
+	desc = EVTDESCdwarfconq.61
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # damn you
+		name = EVTOPTAdwarfconq.61
+		FROM = {
+			character_event = { id = dwarfconq.23 } # Send back threatening message
+		}
+	}
+}
+
+# Thank You after selling
+character_event = {
+	id = dwarfconq.62
+	title = EVTTITdwarfconq.62
+	desc = {
+		trigger = { religion_group = religion_group_khazad }
+		text = EVTDESCdwarfconq.62a
+	}
+	desc = {
+		trigger = { NOT = { religion_group = religion_group_khazad } }
+		text = EVTDESCdwarfconq.62b
+	}
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = EVTOPTAdwarfconq.62
+		wealth = 2000
+	}
+}
+
+
+# Response back : the seller has agreed the vassal transfer
+character_event = {
+	id = dwarfconq.64
+	title = EVTTITdwarfconq.64
+	desc = EVTDESCdwarfconq.64
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  # rejoice
+		name = EVTOPTAdwarfconq.64
+		wealth = -2000
+		c_moria = {
+			set_defacto_liege  = ROOT
+		}
+		FROM = {
+			character_event = { id = dwarfconq.65 } # Send thank you message
+		}
+	}
+}
+
+# Thank You after selling
+character_event = {
+	id = dwarfconq.65
+	title = EVTTITdwarfconq.65
+	desc = EVTDESCdwarfconq.65
+	picture = "GFX_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = EVTOPTAdwarfconq.65
+		wealth = 2000
+	}
+}
+
+

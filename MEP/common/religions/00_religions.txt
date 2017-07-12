@@ -7,6 +7,8 @@ religion_group_eruhini = {
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
 	
+	color = { 0.70 0.82 0.81 }
+	
 	religion_eruhini = {
 		graphical_culture = westerngfx
 
@@ -24,6 +26,7 @@ religion_group_eruhini = {
 		}
 
 		female_temple_holders = yes
+		defensive_attrition = yes
 		
 	}
 
@@ -37,6 +40,8 @@ religion_group_enyd = {
 	
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
+	
+	color = { 0.51 0.17 0.68 }
 
 	religion_enyd = {
 		graphical_culture = westerngfx
@@ -55,6 +60,7 @@ religion_group_enyd = {
 		}
 
 		female_temple_holders = yes
+		defensive_attrition = yes
 		
 	}
 
@@ -68,6 +74,8 @@ religion_group_khazad = {
 		
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
+	
+	color = { 0.57 0.72 0.96 }
 	
 	religion_mahal = {
 		graphical_culture = norsegfx
@@ -100,6 +108,8 @@ religion_group_eldar = {
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
 	
+	color = { 0.81 0.63 0.90 }
+	
 	religion_moriquendi = {
 		graphical_culture = westerngfx
 
@@ -120,7 +130,6 @@ religion_group_eldar = {
 		priests_can_marry = yes
 		female_temple_holders = yes
 		allow_rivermovement = yes
-
 	}
 	
 }
@@ -133,6 +142,8 @@ religion_group_periannath = {
 	
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
+	
+	color = { 0.69 1 0.39 }
 	
 	religion_perian = {
 		graphical_culture = westerngfx
@@ -163,6 +174,8 @@ religion_group_edain = {
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
 	
+	color = { 0.69 0.1 0.39 }
+	
 	religion_druedain = {
 		graphical_culture = westerngfx
 
@@ -181,7 +194,7 @@ religion_group_edain = {
 		
 		priests_can_marry = yes
 		female_temple_holders = yes
-
+		defensive_attrition = yes
 		aggression = 0.2 # AI aggression factor
 
 		intermarry = religion_edain
@@ -345,6 +358,7 @@ religion_group_edain = {
 		intermarry = religion_angmarim
 	}
 
+
 	religion_ishmalogim = {
 		graphical_culture = persiangfx
 
@@ -425,6 +439,8 @@ religion_group_hildor = {  #Men of Darkness
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
 	
+	color = { 0.29 0.1 0.32 }
+	
 	religion_nurning = {
 		graphical_culture = norsegfx
 
@@ -443,7 +459,6 @@ religion_group_hildor = {  #Men of Darkness
 		
 		priests_can_marry = yes
 		allow_looting = yes
-		allow_rivermovement = yes
 		pc_marriage = yes
 		bs_marriage = yes
 
@@ -456,7 +471,6 @@ religion_group_hildor = {  #Men of Darkness
 		intermarry = religion_ishmalogim
 		intermarry = religion_angmarim
 	}
-	
 	religion_angmarim = {
 		graphical_culture = norsegfx
 
@@ -604,6 +618,7 @@ religion_group_hildor = {  #Men of Darkness
 		priests_can_marry = yes
 		allow_looting = yes
 		allow_rivermovement = yes
+		seafarer = yes
 		raised_vassal_opinion_loss = no
 		max_consorts = 2 # Can take concubines
 		max_wives = 2
@@ -623,11 +638,14 @@ religion_group_hildor = {  #Men of Darkness
 	}
 }
 
-religion_group_melkor = {
+religion_group_melkorx = {
 	has_coa_on_barony_only = yes
 	graphical_culture = westerngfx
 	playable = yes
 	hostile_within_group = yes
+	
+	color = { 0.71 0.82 0.81 }
+
 	
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
@@ -649,6 +667,7 @@ religion_group_melkor = {
 		}
 
 		female_temple_holders = yes
+		max_wives = 0
 		
 	}
 	
@@ -672,6 +691,7 @@ religion_group_melkor = {
 		raised_vassal_opinion_loss = no
 		short_reign_opinion_year_mult = 5 # The default is 2
 		aggression = 6.0 # AI aggression factor
+		max_wives = 0
 	}
 	
 	religion_olog = {
@@ -698,6 +718,7 @@ religion_group_melkor = {
 		defensive_attrition = yes
 		peace_prestige_loss = yes
 		max_wives = 0
+		max_consorts = 1
 		pc_marriage = no
 		bs_marriage = no
 	}
@@ -727,6 +748,7 @@ religion_group_melkor = {
 		defensive_attrition = yes
 		peace_prestige_loss = yes
 		max_wives = 0
+		max_consorts  = 1
 		pc_marriage = no
 		bs_marriage = no
 	}
@@ -756,6 +778,7 @@ religion_group_melkor = {
 		defensive_attrition = yes
 		peace_prestige_loss = yes
 		max_wives = 0
+		max_consorts  = 1
 		pc_marriage = no
 		bs_marriage = no
 	}
@@ -778,32 +801,47 @@ religion_group_melkor = {
 		short_reign_opinion_year_mult = 5 # The default is 2
 		aggression = 5.0 # AI aggression factor
 		female_temple_holders = no
+		max_wives = 1
 		defensive_attrition = yes
 	}
+	
+}
+
+# Spiders should not be able to intermmarry
+religion_group_ungoliant = {
+
+	has_coa_on_barony_only = yes
+	graphical_culture = easterngfx
+	playable = yes
+	
+	color = { 0.83 0.10 0.5 }
+	
+	ai_convert_same_group = 0 # never try to convert
+	ai_convert_other_group = 0	# never try to convert
+	ai_fabricate_claims = no
+
 	religion_spider = {
-		graphical_culture = westerngfx
+		graphical_culture = easterngfx
 		icon = 4
 		color = { 0.83 0.10 0.5 }
 		
-		high_god_name = GOD_MORGOTH
+		high_god_name = GOD_UNGOLIANT
 		
 		god_names = {
-			GOD_MORGOTH PROPHET_SAURON
+			GOD_UNGOLIANT GOD_MELKOR PROPHET_SAURON
 		}
 	
-		evil_god_names = {
-			GOD_ERU
-		}
+		evil_god_names = { GOD_ERU }
 
-		feminist=yes
+		feminist = yes
 		raised_vassal_opinion_loss = no
 		short_reign_opinion_year_mult = 5 # The default is 2
 		aggression = 5.0 # AI aggression factor
 		female_temple_holders = no
 		defensive_attrition = yes
+		max_consorts = 1
 	}
-	
-		
+
 }
 
 #Wilderness
@@ -811,6 +849,8 @@ religion_group_wilderness = {
 	has_coa_on_barony_only = yes
 	graphical_culture = westerngfx
 	playable = no
+	
+	color = { 0.59 0.48 0.46 }
 	
 	ai_convert_same_group = 0 # never try to convert
 	ai_convert_other_group = 0	# never try to convert
@@ -833,4 +873,6 @@ religion_group_wilderness = {
 		
 		female_temple_holders = no
 	}
+	
+	max_wives = 0
 }

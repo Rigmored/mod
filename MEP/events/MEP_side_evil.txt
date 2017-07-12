@@ -1,3 +1,5 @@
+# evilside.3 (to do the corruption of default-evil characters) has been replaced by evilside.4 (triggered from on_chronicle_start) and evilside.5
+# evilside.3 is now just a notification for the player.
 namespace = evilside
 
 character_event = {
@@ -5,23 +7,28 @@ character_event = {
 	title = "EVTNAMEevilside.1"
 	desc = "EVTDESCevilside.1"
 	picture = "GFX_evil"
-	age = 16
-	only_rulers = yes
+	only_playable = yes
 	only_independent = yes
 
 
 	trigger = {
-		OR = {
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture = culture_black_numenorean
-		}
-		NOT = { culture = culture_ishmalogim }	
+		religion_group = religion_group_hildor	
 		NOT = { culture = culture_nurnim }
 		NOT = { trait = evil_side }
 		NOT = { trait = good_side }
 		NOT = { has_character_flag = evilsidestartup }
 		NOT = { has_global_flag = saurondefeated }
+		# also, Sauron should be ruling over mordor (tweak...)
+		OR = {
+			e_barad_dur = {
+				has_holder = yes
+				holder_scope = { character = 10016 }
+			}
+			k_mordor = {
+				has_holder = yes
+				holder_scope = { character = 10016 }
+			}
+		}
 	}
 
 	immediate = { set_character_flag = evilsidestartup }
@@ -36,17 +43,14 @@ character_event = {
 	}
 }
 
-##Event to switch to the Good side for players only##
+## Decision-triggered Event to switch to the Good side for players only##
 character_event = {
 	id = evilside.2
 	title = "EVTNAMEevilside.2"
 	desc = "EVTDESCevilside.2"#Perhaps you were wrong, perhaps Sauron is not a God. Maybe your people deserve hope, and not fear. If you dare, you could forsake the darkness, and try to help the enemies of the Dark Lord.
 	picture = "GFX_evil"
+	
 	is_triggered_only = yes
-
-	trigger = {
-		trait = evil_side 
-	}
 
 	immediate = { set_character_flag = switched_side }
 
@@ -82,6 +86,8 @@ character_event = {
 				culture = culture_gondorian
 				culture = culture_gondorian_middlemen
 				culture = culture_dunedain
+				culture = culture_arnorian
+				culture = culture_arnorian_middlemen
 			}
 		}
 		name = "EVTOPTAevilside.2"				  
@@ -115,7 +121,7 @@ character_event = {
 	}
 }
 
-
+# informational 'you are evil' event
 character_event = {
 	id = evilside.3
 	title = "EVTNAMEevilside.3"#Corrupted by Darkness
@@ -123,43 +129,93 @@ character_event = {
 	picture = "GFX_evil"
 	age = 16
 	only_rulers = yes
+	ai = no
 	only_independent = yes
-	religion_group = religion_group_melkor
 
 	trigger = {
-		religion_group = religion_group_melkor
-		# NOT = { trait = evil_side } (additional effects mean this event must fire for already-evil rulers)
-		NOT = { trait = good_side }
-		NOT = { has_character_flag = evilsidestartup }
-	}
-	
-	mean_time_to_happen = {
-		days = 10
+		trait = evil_side
+		NOT = { has_character_flag = sidechosen_message }
 	}
 
-	immediate = { set_character_flag = evilsidestartup }
+	immediate = { set_character_flag = sidechosen_message }
 
 	option = {
-		name = "OK"	
+		name = "OK"
+	}
+}
 
+# does the startup
+character_event = {
+	id = evilside.4
+	age = 16
+	only_rulers = yes
+	only_independent = yes
+	# religion_group = religion_group_melkor
+	
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		any_independent_ruler = {
+			limit = {
+				OR = { mep_is_evil_side_trigger = yes
+					has_landed_title  = d_mornaugrim }
+				NOT = { has_character_flag = sidechosen }
+			}
+			character_event = { id = evilside.5 }
+		}
+		ROOT = {
+			if = {
+				limit = {
+					independent = yes 
+					NOT = { has_character_flag = sidechosen }
+					OR = {
+						mep_is_evil_side_trigger = yes
+						has_landed_title  = d_mornaugrim
+					}
+				}
+				character_event = { id = evilside.5 }
+			}
+		}
+	}
+	
+}
+
+# does the startup
+character_event = {
+	id = evilside.5
+	age = 16
+	#only_rulers = yes
+	#only_independent = yes
+	#religion_group = religion_group_melkor
+	
+	hide_window = yes	
+	is_triggered_only = yes
+
+	option = {
 		if = {
 			limit = { NOT = { trait = evil_side } } 
 			add_trait = evil_side
 		}		
-		# adds evil side to high-ranking vassals. since 
+		set_character_flag = sidechosen
+		# adds evil side to high-ranking vassals. Since they would not be loyal servants of an evil overlord otherwise 
 		any_vassal = {
 			limit = {
 				primary_title = { higher_tier_than = count } 
-				NOT = { trait = good_side }
-				NOT = { has_character_flag = evilsidestartup }
-				NOT = { religion_group = religion_group_eldar }
+				NOR = {
+					trait = good_side
+					has_character_flag = sidechosen
+					religion_group = religion_group_eldar
+					religion_group = religion_group_eruhini
+				}
 				# perhaps some additional limitations here
 			}
 			if = {
 				limit = { NOT = { trait = evil_side } } 
 				add_trait = evil_side
 			}	
-			set_character_flag = evilsidestartup 
+			set_character_flag = sidechosen 
 			# for evil king level vassals (like the Witch-Kings) we do their duke-level vassals as well
 			if = {
 				limit = {
@@ -168,25 +224,54 @@ character_event = {
 				any_vassal = {
 					limit = {
 						primary_title = { higher_real_tier_than = count } 
-						NOT = { trait = good_side }
-						NOT = { has_character_flag = evilsidestartup }
-						NOT = { religion_group = religion_group_eldar }
+						NOR = {
+							trait = good_side
+							has_character_flag = sidechosen
+							religion_group = religion_group_eldar
+							religion_group = religion_group_eruhini
+						}
 					}
 					if = {
 						limit = { NOT = { trait = evil_side } } 
 						add_trait = evil_side
 					}
-					set_character_flag = evilsidestartup 
+					set_character_flag = sidechosen 
 				}
 				any_courtier = {
 					limit = {
 						NOT = { trait = evil_side }
-						NOT = { trait = good_side }
-						NOT = { has_character_flag = evilsidestartup }
-						NOT = { religion_group = religion_group_eldar }
+						NOR = {
+							trait = good_side
+							has_character_flag = sidechosen
+							religion_group = religion_group_eldar
+							religion_group = religion_group_eruhini
+						}
 					}
 					add_trait = evil_side
-					set_character_flag = evilsidestartup 
+					set_character_flag = sidechosen 
+				}
+				# finally, corrupt the holding rulers in the capital province
+				capital_scope = {
+					any_province_holding = {
+						owner = {
+							if = {
+								limit = {
+									NOT = { character = ROOT } # The ruler is already done...
+									NOT = { character = PREVPREVPREV } # We've already done this vassal king
+									de_facto_liege = PREVPREVPREV # excluding capital baony holders who belong to someone else
+									NOT = { trait = evil_side } # just in case
+									NOR = {
+										trait = good_side
+										has_character_flag = sidechosen
+										religion_group = religion_group_eldar
+										religion_group = religion_group_eruhini
+									}
+								}
+								add_trait = evil_side
+								set_character_flag = evilsidestartup 				
+							}	
+						}
+					}
 				}
 			}
 		}
@@ -196,15 +281,127 @@ character_event = {
 			any_courtier = {
 				limit = {
 					NOT = { trait = evil_side }
-					NOT = { trait = good_side }
-					NOT = { has_character_flag = evilsidestartup }
-					NOT = { religion_group = religion_group_eldar }
+					NOR = {
+						trait = good_side
+						has_character_flag = sidechosen
+						religion_group = religion_group_eldar
+						religion_group = religion_group_eruhini
+					}
 				}
 				add_trait = evil_side
 				set_character_flag = evilsidestartup 
 			}
+			# finally, corrupt the holding rulers in the capital province
+			capital_scope = {
+				any_province_holding = {
+					owner = {
+						if = {
+							limit = {
+								NOT = { character = ROOT }
+								de_facto_liege = ROOT
+								NOT = { trait = evil_side }
+								NOR = {
+									trait = good_side
+									has_character_flag = sidechosen
+									religion_group = religion_group_eldar
+									religion_group = religion_group_eruhini
+								}
+							}
+							add_trait = evil_side
+							set_character_flag = evilsidestartup 
+						}
+					}					
+				}
+
+			}
 		}
+	}
+	
+}
 
+# random event for evil side rulers, intended to mark good_side vassals or courtiers as criminal
+character_event = {
+	id = evilside.7
+	title = EVTTITevilside.7
+	desc = EVTDESCevilside.7
+	picture = "GFX_good"
+	only_playable = yes
 
+	trigger = {
+		trait = evil_side
+		NOT = { has_character_flag = very_tolerant_of_good }
+		OR = {
+			# has an evil_side vassal not already marked as a criminal
+			any_vassal = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# has an evil_side courtier not already marked as a criminal
+			any_courtier = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 90 }
+
+	# once marked with the opinion modifier, they are criminals who can be banished, imprisoned, revoked, or executed
+	option = {
+		name = EVTOPTAevilside.7
+		any_vassal = {
+			limit = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_good_from_corrupted
+				who = ROOT
+				duration = -1
+			}
+		}
+		any_courtier = {
+			limit = {
+				trait = good_side
+				prisoner = no
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = mep_is_good_from_corrupted
+					}
+				}
+			}
+			# mark!
+			reverse_opinion = {
+				modifier = mep_is_good_from_corrupted
+				who = ROOT
+				duration = -1
+			}
+		}
+	}
+	# player only option to get the flag 'very_tolerant_of_good'
+	option = {
+		name = EVTOPTBevilside.7
+		trigger = { ai = no }
+		set_character_flag = very_tolerant_of_good
 	}
 }

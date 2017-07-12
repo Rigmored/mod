@@ -1,0 +1,44 @@
+targetted_decisions = {
+	duel_decision = {
+		is_high_prio = yes
+		filter = rivals
+		ai_target_filter = rivals
+		from_potential = {
+			is_adult = yes
+			prisoner = no
+			has_dlc = "Way of Life"
+			has_focus = focus_war
+			has_regent = no
+			OR = {
+				ai = no
+				AND = {
+					is_female = no
+					NOT = { trait = craven }
+					NOT = { trait = content }
+				}
+			}
+			NOT = { has_character_modifier = diplo_fight }
+		}
+		potential = {
+			ai = no
+			is_adult = yes
+			prisoner = no
+			NOT = { character = FROM }
+			NOT = { has_character_modifier = diplo_fight }
+			OR = {
+				ROOT = { is_female = no }
+				FROM = { is_female = yes }
+			}
+			NOT = { trait = incapable }
+		}
+		allow = {
+			is_within_diplo_range = ROOT
+			FROM = { is_foe = ROOT }
+		}
+		effect = {
+			FROM = {
+				character_event = { id = duel_diplo.1000 }
+			}
+		}
+	}
+}

@@ -1,0 +1,74 @@
+1.1.1 = {
+    active = no
+}
+11361.1.1 = {
+    active = yes
+	liege = e_steward_gondor
+	holder = 1945 # Faramir
+	law = succ_open_elective
+	effect = {
+	    set_title_flag = rangers_of_ithilien
+		k_ithilien = { #remove temp title
+		    holder_scope = {
+			    c_usuluni = {
+				    gain_title = PREV 
+				}
+            }
+        }
+        succession = open_elective
+		holder_scope = {
+		    recalc_succession = yes
+			long_character_event = { id = gondorwotr.18 }
+			spawn_unit = {
+			    province = 51 # Henneth Annun
+				owner = THIS 
+				troops = {
+				    archers = { 1000 }
+					light_infantry = { 333 }
+				}
+				attrition = 0
+			}
+			spawn_unit = {
+			    province = 51 # Henneth Annun
+				owner = THIS 
+				troops = {
+				    archers = { 1000 }
+					light_infantry = { 333 }
+				}
+				attrition = 0
+			}
+			spawn_unit = {
+			    province = 51 # Henneth Annun
+				owner = THIS 
+				troops = {
+				    archers = { 1000 }
+					light_infantry = { 333 }
+				}
+				attrition = 0
+			}
+			create_character = {
+			    random_traits = no
+				name = "Madril"
+				dynasty = random
+				religion = religion_dunedain
+				culture = culture_gondorian
+				female = no
+				age = 60
+				attributes = {
+				    martial = 8
+					diplomacy = 5
+					stewardship = 5
+					intrigue = 5
+					learning = 5
+				}
+				health = 6
+				fertility = 0.5
+				trait = blood_of_numenor
+				trait = skilled_tactician
+				trait = ithilien_captain
+				trait = brave
+				trait = patient
+			}
+		}
+	}
+}

@@ -2,52 +2,29 @@ namespace = wotr
 
 ####Continued from wotr_Events, easier to find validator errors if smaller files##
 
-##The dwarves send Gimli##
-character_event = {
-    id = wotr.1
-    title = "EVTTITwotr.1"
-    desc = "EVTDESCwotr.1"
-    picture = "GFX_council_elrond"
-	only_independent = yes
-	
-	trigger = {
-		has_landed_title = k_erebor
-		year = 11363
-		NOT = { year = 11364 }
-		NOT = { has_character_flag = wotr1 }
-		age = 1
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-        name = "EVTOPTAwotr.1"
-		set_character_flag = wotr1
-		any_courtier ={
-			limit = { 
-				dynasty = 4001
-				age = 139
-				has_character_flag=gimli
-			}
-			add_trait = on_fellowshipquest 
-		}
-		any_playable_ruler ={
-			limit = { 
-				dynasty = 4001
-				age = 139
-				has_character_flag=gimli
-			}
-			add_trait = on_fellowshipquest 
-		}		
-	}
-}
-		
+# TODO : wotr.201 and wotr.13 ignore the possibilty of Gandalf being dead (fix it)
+# Add some events for the leader of Lorien being someone other than Galadriel
+
 ############################################################################################################################
 ##Now it is around 11364, and the questline should progress. The council of Rivendell starts################################
 ############################################################################################################################
-		
+
+# Frodo arrives at Rivendell
+character_event = {
+	id = wotr.2
+	title = EVTTITwotr.2
+	desc = EVTDESCwotr.2
+	picture = GFX_council_elrond
+	
+	is_triggered_only = yes
+	
+	immediate = { set_global_flag = wotr_ringb_at_rivendell }
+	
+	option = {
+		name = EVTOPTAwotr.2
+	}
+
+ }
 
 		
 ##Elrond hosts the Council##
@@ -56,21 +33,201 @@ character_event = {
     title = "EVTTITwotr.3"
     desc = "EVTDESCwotr.3"
     picture = "GFX_council_elrond"
-	is_triggered_only = yes
+	only_playable = yes
+	has_global_flag = wotr_starting_council_of_rivendell
+	
+	trigger = {
+		event_target:mep_chartarget_elrond = { character = PREV }
+		has_landed_title = c_imladris
+		has_global_flag = wotr_ringb_at_rivendell
+		has_global_flag = mep_torivendell_gondor
+		has_global_flag = mep_torivendell_mirkwood
+		has_global_flag = mep_torivendell_erebor
+		NOT = { has_global_flag = galadrielhasring }
+	}
+	
+	mean_time_to_happen = { days = 14 }
 	
 	option = {
-	name = "EVTOPTAwotr.3"
-	set_global_flag = councilofelrond
-	any_independent_ruler = {
+		name = "EVTOPTAwotr.3"
+		# changing a buttload of flags
+		hidden_tooltip = {
+			set_global_flag = councilofelrond
+			clr_global_flag = wotr_starting_council_of_rivendell
+			clr_global_flag = wotr_ringb_at_rivendell
+			clr_global_flag = mep_torivendell_gondor
+			clr_global_flag = mep_torivendell_mirkwood
+			clr_global_flag = mep_torivendell_erebor
+		}
+		# Aragorn gets his special reforging Narsil event
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.4 }
+			}
+		}
+		# general notification events. Not for Elrond, Aragorn, or Fellowship members
+		any_playable_ruler  = {
 			limit = {
-				age = 1
-				is_alive=yes
-				trait = good_side
+				mep_is_good_side_trigger = yes
+				NOT = { event_target:mep_chartarget_aragorn = { character = PREV } }
+				NOT = { event_target:mep_chartarget_elrond = { character = PREV } }
+				NOT = { event_target:mep_fellowship_ringbearer = { character = PREV } }
 			}
 			character_event = { id = wotr.5 }
 		}
+		# we get the wizard
+		if = {  # Gandalf
+			limit = {
+				event_target:mep_chartarget_gandalf = {
+					is_alive = yes
+					NOT = { has_character_flag = badgandalf }
+				}
+			}
+			event_target:mep_chartarget_gandalf = {
+				mep_prep_fellowship_wizard = yes
+			}
+			narrative_event = { id = wotr.500 days = 2 }
+			any_playable_ruler = {
+				limit = {
+					trait = on_fellowshipquest
+					ai = no
+				}
+				narrative_event = { id = wotr.500 days = 2 }
+			}
+		}
+		if = {  # Pallando (primary fallback)
+			limit = {
+				event_target:mep_chartarget_gandalf = {
+					OR = { is_alive = no
+						has_character_flag = badgandalf }
+				}
+				event_target:mep_chartarget_pallando = {
+					is_alive = yes
+				}
+			}
+			event_target:mep_chartarget_pallando = {
+				remove_trait = at_east
+				mep_prep_fellowship_wizard = yes
+			}
+			narrative_event = { id = wotr.501 days = 2 }
+			any_playable_ruler = {
+				limit = {
+					trait = on_fellowshipquest
+					ai = no
+				}
+				narrative_event = { id = wotr.501 days = 2 }
+			}
+		}
+		if = { # Alatar (secondary fallback)
+			limit = {
+				event_target:mep_chartarget_gandalf = {
+					OR = {is_alive = no
+						has_character_flag = badgandalf }
+				}
+				event_target:mep_chartarget_pallando = {
+					is_alive = no
+				}
+				# currently no 3rd fallback
+				event_target:mep_chartarget_alatar = {
+					is_alive = yes
+				}
+			}
+			event_target:mep_chartarget_alatar = {
+				remove_trait = at_east
+				mep_prep_fellowship_wizard = yes
+			}
+			narrative_event = { id = wotr.501 days = 2 }
+			any_playable_ruler = {
+				limit = {
+					trait = on_fellowshipquest
+					ai = no
+				}
+				narrative_event = { id = wotr.501 days = 2 }
+			}
+		}
+		if = { # No Wizards avaliable
+			limit = {
+				event_target:mep_chartarget_gandalf = {
+					OR = {is_alive = no
+						has_character_flag = badgandalf }
+				}
+				event_target:mep_chartarget_pallando = {
+					is_alive = no
+				}
+				# currently no 3rd fallback
+				event_target:mep_chartarget_alatar = {
+					is_alive = no
+				}
+			}
+			narrative_event = { id = wotr.502 days = 2 }
+			any_playable_ruler = {
+				limit = {
+					trait = on_fellowshipquest
+					ai = no
+				}
+				narrative_event = { id = wotr.502 days = 2 }
+			}
+			narrative_event = { id = wotr.502 days = 2 }
+			set_global_flag = mep_nofellowship_wizard
+		}
 	}	
-}
+ }
+## Introducing the Wizard (or not)
+narrative_event = {
+	id = wotr.500  # Gandalf is here!
+	title = EVTTITwotr.500
+	desc = EVTDESCwotr.500
+	picture = GFX_evt_hobbitfireworks
+	
+	is_triggered_only = yes
+	
+	# Good. He explains the Saruman has gone bad
+	option = {
+		name = EVTOPTAwotr.500
+		trigger = {
+			event_target:mep_chartarget_saruman = { has_character_flag = evilsaruman }
+		}
+	}
+	# Good
+	option = {
+		name = EVTOPTBwotr.500
+		trigger = {
+			event_target:mep_chartarget_saruman = { NOT = { has_character_flag = evilsaruman } }
+		}
+	}
+	
+ }
+
+narrative_event = {
+	id = wotr.501  # A Blue Wizard is here!
+	title = EVTTITwotr.501
+	desc = EVTDESCwotr.501
+	picture = GFX_evt_blue_istari
+	
+	is_triggered_only = yes
+	
+	# What happened to Gandalf?
+	option = {
+		name = EVTOPTAwotr.501
+	}
+	
+ }
+
+narrative_event = {
+	id = wotr.502  # No Wizards available
+	title = EVTTITwotr.502
+	desc = EVTDESCwotr.502
+	picture = GFX_evt_blue_istari
+	
+	is_triggered_only = yes
+	
+	# What happened to Gandalf?
+	option = {
+		name = EVTOPTAwotr.502
+	}
+	
+ }
 	
 ##Aragorn arrives in Rivendell##
 character_event = {
@@ -78,31 +235,33 @@ character_event = {
     title = "EVTTITwotr.4"
     desc = "EVTDESCwotr.4"
     picture = "GFX_council_elrond"
-	age = 16
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.4"
 		remove_trait = narsil
-		add_trait = anduril
+		add_artifact = anduril
+		new_artifact = {
+			set_creation_date = 1.1.1
+		}
 		prestige = 100
 	}	
-}
+ }
 	
 	
-##Rulers with the trait Guardian of Middle-Earth are informed of the Council##
+## Good side rulers are informed of the Council##
 character_event = {
     id = wotr.5
     title = "EVTTITwotr.5"
     desc = "EVTDESCwotr.5"
     picture = "GFX_council_elrond"
-	age = 16
+	
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.5"
 	}	
-}
+ }
 	
 ##Event for when a ruler triggers the decision to sway the council##
 character_event = {
@@ -110,9 +269,11 @@ character_event = {
     title = "EVTTITwotr.6"
     desc = "EVTDESCwotr.6"
     picture = "GFX_council_elrond"
-	age = 16
+
 	is_triggered_only = yes
+	trigger = { has_global_flag = councilofelrond }
 	
+	# Tell them to go to Mount Doom
 	option = {
 		name = "EVTOPTAwotr.6"
 		set_global_flag = questformtdoom
@@ -120,49 +281,78 @@ character_event = {
 		prestige = 200
 	}
 	
+	# Toss the Ring into the sea
 	option = {
 		name = "EVTOPTBwotr.6"
 		clr_global_flag = councilofelrond
 		set_global_flag = ringlost
 		prestige = -100
-		any_playable_ruler = {
-			limit = {
-				is_alive=yes
-				trait = ring
-			}
+		event_target:mep_fellowship_ringbearer = {
 			remove_trait = ring
 			add_trait = ringbearer1
 		}
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 16
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.11 }
 			}
-			character_event = { id = wotr.11 }
 		}
+		# the other fellowship members
+		if = {
+			limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
+			event_target:mep_fellowship_wizard = {
+				if = { limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+			}
+		}
+		event_target:mep_fellowship_gondorian = {
+			if = {
+				limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = {
+				limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = {limit = { ai = no }
+				character_event = { id = wotr.7 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = { limit = { ai = no }
+			character_event = { id = wotr.7 days = 2 } }
+		}
+
 	}
 	
+	# Become the guardian (imprison) Fodo
 	option = {
 		name = "EVTOPTCwotr.6"
 		clr_global_flag = councilofelrond
 		set_global_flag = frodosafe
 		prestige = -100
-		any_playable_ruler = {
-			limit = {
-				is_alive=yes
-				trait = ring
-			}
+		event_target:mep_fellowship_ringbearer = {
 			character_event = { id = wotr.9 }
 		}
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 16
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.11 }
 			}
-			character_event = { id = wotr.11 }
 		}
+		# the other fellowship members
+		mep_fellowship_ends_at_rivendell_effect = yes
 	}
-}
+ }
 	
 	
 ##Fellowship disbands if the ring is cast into the sea##
@@ -171,21 +361,15 @@ character_event = {
     title = "EVTTITwotr.7"
     desc = "EVTDESCwotr.7"
     picture = "GFX_council_elrond"
-	age = 16
 	
-	trigger = {
-		has_global_flag = ringlost
-		trait = on_fellowshipquest
-		year = 11362
-		NOT = { year = 11380 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.7"
 		remove_trait = on_fellowshipquest
 		prestige = 100
 	}
-}
+ }
 	
 ##Fellowship disbands if the Frodo is taken under the protection of another ruler##
 character_event = {
@@ -193,43 +377,30 @@ character_event = {
     title = "EVTTITwotr.8"
     desc = "EVTDESCwotr.8"
     picture = "GFX_council_elrond"
-	age = 16
 	
-	trigger = {
-		has_global_flag = frodosafe
-		trait = on_fellowshipquest
-		year = 11362
-		NOT = { year = 11380 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.8"
 		remove_trait = on_fellowshipquest
 		prestige = 100
 	}
-}
+ }
 	
-	##Frodo is informed he must go with another ruler##
-	character_event = {
+##Frodo is informed he must go with another ruler##
+character_event = {
     id = wotr.9
     title = "EVTTITwotr.9"
     desc = "EVTDESCwotr.9"
     picture = "GFX_council_elrond"
-	age = 16
+
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.9"
 		imprison = FROM
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 16
-			}
-			character_event = { id = wotr.11 }
-		}
 	}
-}
+ }
 	
 
 ############################################################################################################################
@@ -242,45 +413,96 @@ character_event = {
     title = "EVTTITwotr.10"
     desc = "EVTDESCwotr.10"
     picture = "GFX_council_elrond"
-	age = 16
+	only_playable = yes
+	has_global_flag = councilofelrond
 	
 	trigger = {
-		has_landed_title = d_rivendell
-		culture = culture_noldor
 		has_global_flag = councilofelrond
+		has_landed_title = d_rivendell
 		year = 11365
 		NOT = { has_character_flag = wotr10 }
+		NOT = { has_global_flag = galadrielhasring }
 	}
 	
+	mean_time_to_happen = { days = 30 }
+	
+	# The usual quest
 	option = {
 		name = "EVTOPTAwotr.10"
-		set_global_flag = questformtdoom
-		clr_global_flag = councilofelrond
-		set_character_flag = wotr10
+		hidden_tooltip = {
+			set_global_flag = questformtdoom
+			clr_global_flag = councilofelrond
+			set_character_flag = wotr10
+		}
 		prestige = 100
+		# summary of fellowship members
+		d_rivendell = {
+			holder_scope = {
+				narrative_event = { id = wotr.504 }
+			}
+		}
+		if = {
+			limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
+			event_target:mep_fellowship_wizard = {
+				if = {
+					limit = { ai = no }
+					narrative_event = { id = wotr.504 }
+				}
+			}
+		}
+		# the other fellowship members
+		event_target:mep_fellowship_ringbearer = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_chartarget_aragorn = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_gondorian = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = { limit = { ai = no }
+			narrative_event = { id = wotr.504 } }
+		}
 	}
-	
+	# imprison the ringbearer in Rivendell
 	option = {
 		name = "EVTOPTBwotr.10"
 		trigger = { ai = no }
 		clr_global_flag = councilofelrond
 		set_global_flag = frodosafe
-		any_playable_ruler = {
-			limit = {
-				is_alive=yes
-				trait = ring
-			}
+		event_target:mep_fellowship_ringbearer = {
 			character_event = { id = wotr.9 }
 		}
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 16
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.11 }
 			}
-			character_event = { id = wotr.11 }
 		}
+		# the other fellowship members
+		mep_fellowship_ends_at_rivendell_effect = yes
 	}	
-}
+ }
 	
 
 ##If the Ring does not go to Mt.Doom, then Aragorn heads south to war with Anduril##
@@ -289,7 +511,6 @@ character_event = {
     title = "EVTTITwotr.11"
     desc = "EVTDESCwotr.11"
     picture = "GFX_travel_gondor"
-	age = 16
 	is_triggered_only = yes
 	
 	option = {
@@ -303,111 +524,536 @@ character_event = {
 		trigger = { ai = no }
 		prestige = -200
 	}
-}
+ }
+
+narrative_event = {
+    id = wotr.504
+    title = "EVTTITwotr.504"
+    desc = "EVTDESCwotr.504"
+    picture = "GFX_evt_council_elrond"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.504"
+	}
+ }
 
 #######################################################################################
 ###############make plot chains for aragorn going south in separate file###############
 #######################################################################################
+# JamesFox note: for a quick pre-trigger, I will be using Morgoth. Using fellowship members
+# does not always work because the Ringbearer might not be Frodo and Aragorn might be dead
+# So the pre-trigger 'only_playable = yes' might not apply to any fellowship member.
+# Normally, only 4 religion_umaiar characters are around, however, so we can use them as
+# a pre-trigger and hand the actual event to the fellowship members if they have players
+# this also should be faster than using 'only_playable = yes'
 
-##The Fellowship Heads South, as rulers Aragorn and Frodo are informed##
+# The fellowhip reaches Moria (hidden controller)
+character_event = {
+	id = wotr.200
+	religion = religion_umaiar
+	has_global_flag = questformtdoom
+	
+	hide_window = yes
+	
+	trigger = {
+		event_target:mep_chartarget_morgoth = { character = PREV }
+		NOT = { has_global_flag = questformtdoom_moria1 } 
+		NOT = { has_global_flag = galadrielhasring }
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	# setting flags and dispatching events
+	option = {
+		event_target:mep_fellowship_ringbearer = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_chartarget_aragorn = {
+			mep_reached_moria_effect = yes
+		}
+		if = {
+			limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
+			event_target:mep_fellowship_wizard = {
+				mep_reached_moria_effect = yes
+			}
+		}
+		event_target:mep_fellowship_gondorian = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_fellowship_dwarf = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_fellowship_elf = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			mep_reached_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			mep_reached_moria_effect = yes
+		}
+		set_global_flag = questformtdoom_moria1
+	}
+ }
+
+# The fellowhip reaches Moria  : Message shown to Fellowship non-ai players
 character_event = {
     id = wotr.12
     title = "EVTTITwotr.12"
     desc = "EVTDESCwotr.12"
     picture = "GFX_travel_gondor"
-	age = 16
 	
-	trigger = {
-		has_global_flag = questformtdoom
-		age = 30
-		NOT = { year = 11367 }
-		NOT = { has_character_flag = wotr12 }
-		OR = {
-			dynasty = 2001
-			dynasty = 803
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 14 
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.12"
-		set_character_flag = wotr12
-		set_character_flag = minesofmoria
 	}
-}
+ }
+
+# The fellowhip meets the Balrog (hidden controller)
+character_event = {
+	id = wotr.201
+	religion = religion_umaiar
+	has_global_flag = questformtdoom_moria1
 	
+	hide_window = yes
 	
-##The Fellowship meets the Balrog!##
+	trigger = {
+		event_target:mep_chartarget_morgoth = { character = PREV }
+		has_global_flag = questformtdoom
+		NOT = { has_global_flag = questformtdoom_moria2 }
+		NOT = { has_global_flag = galadrielhasring }		
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	immediate = {
+		event_target:mep_chartarget_aragorn = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_ringbearer = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_gondorian = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_dwarf = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_elf = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			mep_fellowship_moria1_effect = yes
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			mep_fellowship_moria1_effect = yes
+		}		
+	}
+	
+	# The Balrog is here
+	option = {
+		trigger = {
+			c_moria = {
+				OR = {
+					holder_scope = { trait = balrog }
+					holder_scope = {
+						any_realm_character = { trait = balrog }
+					}
+				}
+			}
+		}
+		# Marking the balrog for later use...
+		c_moria = {
+			if = {
+				limit = { holder_scope = { trait = balrog } }
+				holder_scope = { save_event_target_as = mep_fellowship_balrog }
+			}
+			holder_scope = {
+				any_realm_character = {
+					limit = { trait = balrog }
+					save_event_target_as = mep_fellowship_balrog
+				}
+			}
+		}
+		# The wizard will face the Balrog
+		if = {
+			limit = {
+				NOT = { has_global_flag = mep_nofellowship_wizard }
+				event_target:mep_fellowship_wizard = { is_alive = yes }
+			}
+			# Messages for other fellowhip members
+			event_target:mep_chartarget_aragorn = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 }
+				}
+			}
+			event_target:mep_fellowship_ringbearer = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_gondorian = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_dwarf = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_elf = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_hobbit1 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_hobbit2 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			event_target:mep_fellowship_hobbit3 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.13 } }
+			}
+			# Dispatch Wizard event
+			event_target:mep_fellowship_wizard = {
+				character_event = { id = wotr.507 }  # Facing the Balrog
+			}
+		}
+		# No Wizard to face the Balrog!
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = mep_nofellowship_wizard
+					event_target:mep_fellowship_wizard = { is_alive = no }
+				}
+			}
+			# Messages for other fellowhip members
+			event_target:mep_chartarget_aragorn = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_ringbearer = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_gondorian = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_dwarf = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_elf = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_hobbit1 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_hobbit2 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+			event_target:mep_fellowship_hobbit3 = {
+				if = { limit = { ai = no }
+					character_event = { id = wotr.505 } }
+			}
+		}
+		set_global_flag = questformtdoom_moria2
+	}
+	
+	# The Balrog, for some reason, is dead or not in Moria
+	option = {
+		trigger = {
+			c_moria = {
+				OR = {
+					holder_scope = { trait = balrog }
+					holder_scope = {
+						any_realm_character = { trait = balrog }
+					}
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
+			event_target:mep_fellowship_wizard = {
+				if = {
+					limit = { ai = no }
+					character_event = { id = wotr.506 }
+				}
+			}
+		}
+		event_target:mep_chartarget_aragorn = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_ringbearer = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_gondorian = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = { limit = { ai = no }
+				character_event = { id = wotr.506 } }
+		}
+		set_global_flag = questformtdoom_moria2
+	}
+ }
+
+##The Fellowship meets the Balrog!   : Message shown to Fellowship non-ai players
 character_event = {
     id = wotr.13
     title = "EVTTITwotr.13"
     desc = "EVTDESCwotr.13"
-    picture = "GFX_war_at_north"
-	age = 16
+    picture = "GFX_evt_worship_balrog"
 	
-	trigger = {
-		has_character_flag = minesofmoria
-		age = 30
-		NOT = { year = 11367 }
-		NOT = { has_character_flag = wotr13 }
-		OR = {
-			dynasty = 2001
-			dynasty = 803
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 14 
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.13"
-		set_character_flag = wotr13
-		set_character_flag = lothlorien
 	}
-}
+ }
+## The Fellowship meets the Balrog! (No Wizard available version)  : Message shown to Fellowship non-ai players
+character_event = {
+    id = wotr.505
+    title = "EVTTITwotr.505"
+    desc = "EVTDESCwotr.505"
+    picture = "GFX_evt_worship_balrog"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.505"
+	}
+ }
+
+## No Balrog in Moria...
+character_event = {
+    id = wotr.506
+    title = "EVTTITwotr.506"
+	desc = {
+		trigger = {
+			c_moria = {
+				holder_scope = { mep_is_evil_side_trigger = yes }
+			}
+		}
+		text = "EVTDESCwotr.506a"
+	}
+	desc = {
+		trigger = {
+			c_moria = {
+				holder_scope = { 
+					religion_group = religion_group_khazad
+					NOT = { trait = evil_side }
+				}
+			}
+		}
+		text = "EVTDESCwotr.506b"
+	}
+	desc = {
+		trigger = {
+			c_moria = {
+				holder_scope = {
+					NOT = { mep_is_evil_side_trigger = yes }
+					NOT = { religion_group = religion_group_khazad }
+				}
+			}
+		}
+		text = "EVTDESCwotr.506c"
+	}
+    
+    picture = "GFX_evt_worship_balrog"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.506"
+	}
+ }
+
+## Wizard vs Balrog (currently very simple, the Balrog always dies, the Wizard always 'dies', going to Valinor)
+character_event = {
+    id = wotr.507
+    title = "EVTTITwotr.507"
+    desc = "EVTDESCwotr.507"
+    picture = "GFX_evt_worship_balrog"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.507"
+		# Kill the Balrog
+		custom_tooltip = {
+			text = TT_wotr107A
+			event_target:mep_fellowship_balrog = {
+				death = { death_reason = death_duel  killer = PREV }
+			}
+			set_global_flag = durins_bane_is_dead
+		}
+		# The Wizard goes to Valinor
+		custom_tooltip = {
+			text = TT_wotr107B
+			remove_trait = on_fellowshipquest
+			add_trait = sailed_west
+			e_valinor = {
+				holder_scope = {
+					event_target:mep_fellowship_wizard = { move_character = PREV }
+				}
+			}
+		}
+	}
+ }
+
+# The Fellowship goes to Lorien (hidden controller)
+character_event = {
+	id = wotr.202
+	religion = religion_umaiar
+	has_global_flag = questformtdoom_moria2
+	
+	hide_window = yes
+	
+	trigger = {
+		event_target:mep_chartarget_morgoth = { character = PREV }
+		has_global_flag = questformtdoom
+		NOT = { has_global_flag = lorienarrival }
+		NOT = { has_global_flag = galadrielhasring }
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	# setting flags and dispatching events
+	option = {
+		# fellowship flags and events
+		event_target:mep_chartarget_aragorn = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_ringbearer = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_gondorian = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_dwarf = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_elf = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			mep_escape_moria_effect = yes
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			mep_escape_moria_effect = yes
+		}
+		set_global_flag = lorienarrival
+		# triggering an event for the leader of moria
+		any_independent_ruler = {
+			limit = {
+				has_landed_title = c_moria
+				# the leader must be bad, and the ruler of Loríen must NOT be bad, and they are currently at peace (between them)
+				mep_is_evil_side_trigger = yes
+				k_elves = {
+					holder_scope = {
+						NOT = { mep_is_evil_side_trigger = yes }
+						NOT = { war_with = PREVPREV }
+					}
+				}
+
+			}
+			character_event = { id = wotr.15 }
+		}
+	}
+ }
 	
 	
 ##The Fellowship goes to Lorien##
 character_event = {
     id = wotr.14
     title = "EVTTITwotr.14"
-    desc = "EVTDESCwotr.14"
-    picture = "GFX_shadows_coming"
-	age = 16
-	
-	trigger = {
-		has_character_flag = lothlorien
-		age = 30
-		NOT = { year = 11367 }
-		NOT = { has_character_flag = wotr14 }
-		OR = {
-			dynasty = 2001
-			dynasty = 803
-		}
+	desc = {
+		trigger = { mep_galadriel_in_lorien = yes }
+		text = EVTDESCwotr.14A
 	}
+	desc = {
+		trigger = {
+			NOT = { mep_galadriel_in_lorien = yes }
+			k_elves = {
+				holder_scope = { mep_is_evil_side_trigger = yes }
+			}
+		}
+		text = EVTDESCwotr.14B
+	}
+	desc = {
+		trigger = {
+			NOT = { mep_galadriel_in_lorien = yes }
+			k_elves = {
+				holder_scope = { NOT = { mep_is_evil_side_trigger = yes } }
+			}
+		}
+		text = EVTDESCwotr.14C
+	}
+    picture = "GFX_shadows_coming"
 	
-	mean_time_to_happen = {
-		days = 14 
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			OR = {
+				mep_galadriel_in_lorien = yes
+					k_elves = {
+				holder_scope = { NOT = {mep_is_evil_side_trigger = yes } }
+				}
+			}
+		}
+		name = "EVTOPTAwotr.14"
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.14"
-		set_character_flag = wotr14
-		set_global_flag = lorienarrival
-		any_independent_ruler = {
-			limit = {
-				has_landed_title = c_moria
+		trigger = {
+			NOT = { mep_galadriel_in_lorien = yes }
+			k_elves = {
+				holder_scope = { mep_is_evil_side_trigger = yes }
 			}
-			character_event = { id = wotr.15 }
 		}
+		name = "EVTOPTBwotr.14"
 	}
-}
+ }
 	
-##The Orcs of Moria raid Lorien in Revenge##
+##The Orcs of Moria attack Lorien in Revenge##
 character_event = {
     id = wotr.15
     title = "EVTTITwotr.15"
@@ -416,6 +1062,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
+		name = EVTOPTAwotr.15
 		add_claim = c_wester_north_lorien
 		add_claim = c_lorien
 		k_elves = {
@@ -425,34 +1072,70 @@ character_event = {
 			}
 		}
 	}
-}
+	
+	option = {
+		name = EVTOPTBwotr.15
+		trigger = { ai = no }
+		prestige = -300
+		set_global_flag = wotr_moria_attacks_lorien
+		# add some sort of revolt modifier?
+	}
+ }
+
+# The fellowhip in Lorien (hidden controller)
+character_event = {
+	id = wotr.203
+	religion = religion_umaiar
+	has_global_flag = lorienarrival
+	
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = galadrielhasring }
+		NOT = { has_global_flag = questformtdoom_ringinlorien }
+		event_target:mep_chartarget_morgoth = { character = PREV }
+		has_global_flag = questformtdoom
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	option = {
+		# If the orcs are attacking, an informational event for the ruler
+		if = {
+			limit = { has_global_flag = wotr_moria_attacks_lorien }
+			k_elves = {
+				holder_scope = {
+					character_event = { id = wotr.16 }
+				}
+			}
+		}
+		# If Galadriel is a ruler in Lorien, and the ringbearer is alive, she gets the event
+		if = {
+			limit = { mep_galadriel_in_lorien = yes }
+			event_target:mep_chartarget_galadriel = {
+				character_event = { id = wotr.17 days = 4 }
+			}
+		}
+		
+		# flags
+		set_global_flag = questformtdoom_ringinlorien
+	}
+ }
 			
 
-##Galadriel is informed that the fellowship is here, and that orcs are attacking#
+##The ruler of Lorien is informed that the fellowship is here, and that orcs are attacking#
 character_event = {
     id = wotr.16
     title = "EVTTITwotr.16"
     desc = "EVTDESCwotr.16"
     picture = "GFX_war_at_north"
-	age = 16
 	
-	trigger = {
-		has_global_flag = lorienarrival
-		NOT = { has_character_flag = wotr16 }
-		dynasty = 3004
-		NOT = { year = 11370 }
-	}
-	
-	mean_time_to_happen = {
-		days = 1
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.16"
-		set_character_flag = ringinlorien
-		set_character_flag = wotr16
 	}
-}
+ }
 	
 ##Galadriel is offered the ring by Frodo#
 character_event = {
@@ -460,69 +1143,83 @@ character_event = {
     title = "EVTTITwotr.17"
     desc = "EVTDESCwotr.17"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_character_flag = ringinlorien
-		NOT = { has_character_flag = wotr17 }
-		year = 11362
-		NOT = { year = 11380 }
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-		name = "EVTOPTAwotr.17"
-		trigger = { ai = yes }
-		random_list = {
-			5 = { 
-				add_trait = ring
-				clr_global_flag = fellowshipquest
-				set_global_flag = galadrielhasring
-				set_character_flag = wotr17
-				any_playable_ruler  = {
-					limit = {
-						trait = ring
-					}
-					remove_trait = ring
-					add_trait = ringbearer1
-				}
-			}
-            95 = {
-				piety = 200
-				set_character_flag = wotr17
-				set_global_flag = ringleaveslorien
-			}
-		}
-	}
-	
+	# The ring-bearer keeps the ring...
 	option = {
 		name = "EVTOPTBwotr.17"
-		trigger = { ai = no }
-		clr_character_flag = ringinlorien
-		set_global_flag = ringleaveslorien
-		set_character_flag = wotr17
+		ai_chance = { factor = 95 }
+		hidden_tooltip = {
+			set_character_flag = wotr17
+			set_global_flag = questformtdoom_ringleaveslorien
+		}
 		piety = 200
 	}
 	
+	# Galadriel takes the ring
 	option = {
 		name = "EVTOPTCwotr.17"
-		trigger = { ai = no }
-		add_trait = ring
-		clr_global_flag = fellowshipquest
-		set_global_flag = galadrielhasring
-		set_character_flag = wotr17
-		any_playable_ruler  = {
-			limit = {
-				trait = ring
-			}
+		ai_chance = { factor = 5 }
+		# take the ring
+		event_target:mep_fellowship_ringbearer = {
 			remove_trait = ring
 			add_trait = ringbearer1
 		}
+		add_trait = ring
+		# set the flags
+		hidden_tooltip = {
+			clr_global_flag = fellowshipquest
+			set_global_flag = galadrielhasring
+			clr_global_flag = questformtdoom_ringinlorien
+			clr_global_flag = questformtdoom
+			set_character_flag = wotr17
+		}
+		# Arargorn heads south still
+		if = {
+			limit = {
+				event_target:mep_chartarget_aragorn = {
+					is_alive = yes
+					trait = on_fellowshipquest
+				}
+			}
+			event_target:mep_chartarget_aragorn = {
+				character_event = { id = wotr.18 days = 3 }
+			}
+		}
+		# send fellowship disbands message
+		event_target:mep_fellowship_ringbearer = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_gondorian = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.19 days = 2 } }
+		}
+
 	}
-}
+	
+ }
 
 ######later do events for Galadriel when she takes the ring, and inform world of it but not now###########
 
@@ -532,21 +1229,18 @@ character_event = {
     title = "EVTTITwotr.18"
     desc = "EVTDESCwotr.18"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_global_flag = galadrielhasring
-		trait = blood_of_isildur
-		age = 30
-		NOT = { has_global_flag = wotr18 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.18"
-		set_global_flag = aragornwar
-		set_global_flag = wotr18
+		hidden_tooltip = {
+			set_global_flag = aragornwar
+			set_global_flag = wotr18
+			remove_trait = on_fellowshipquest
+		}
 	}
-}
+ }
 	
 ##Fellowship disbands if Galadriel takes the Ring##
 character_event = {
@@ -554,85 +1248,266 @@ character_event = {
     title = "EVTTITwotr.19"
     desc = "EVTDESCwotr.19"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_global_flag = galadrielhasring
-		trait = on_fellowshipquest
-		age = 30
-		NOT = { has_character_flag = wotr19 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.19"
 		remove_trait = on_fellowshipquest
-		set_character_flag = wotr19
+		hidden_tooltip = {
+			set_character_flag = wotr19
+		}
 	}
-}
-	
-##The Fellowship leaves Lorien, Aragorn event for fight with Uruks##
+ }
+#----------------------------------------------------------------------------------------	
+# Controller event for dispatching the fellowship battle/breakup
 character_event = {
+	id = wotr.204
+	religion = religion_umaiar
+	has_global_flag = questformtdoom_ringleaveslorien
+	
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = questformtdoom_fellowshipbreak }
+		event_target:mep_chartarget_morgoth = { character = PREV }
+		has_global_flag = questformtdoom
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	option = {
+		# narrative event, attacked by orcs, for all party members except the ringbearer and boromir
+		event_target:mep_chartarget_aragorn = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = { limit = { is_alive = yes }
+			narrative_event = { id = wotr.20 days = 3 } }
+		}
+		# Special event for fellowhip member Boromir
+		event_target:mep_chartarget_boromir = {
+			if = { limit = {
+					is_alive = yes
+					trait = on_fellowshipquest
+				}
+				long_character_event = { id = wotr.510 days = 3 }
+			}
+		}
+		# Special event for ringbearer if boromir is a member of the fellowship
+		event_target:mep_fellowship_ringbearer = {
+			if = { limit = {
+					is_alive = yes
+					event_target:mep_chartarget_boromir = {
+						is_alive = yes
+						trait = on_fellowshipquest
+					}
+				}
+			character_event = { id = wotr.21 days = 3 }
+			}
+		}
+		# Special event for ringbearer if boromir is NOT a member of the fellowship
+		event_target:mep_fellowship_ringbearer = {
+			if = { limit = {
+					is_alive = yes
+					event_target:mep_chartarget_boromir = {
+						OR = { is_alive = no
+							NOT = { trait = on_fellowshipquest } }
+					}
+				}
+				character_event = { id = wotr.25 days = 3 }
+			}
+		}
+		
+		# flags
+		set_global_flag = questformtdoom_fellowshipbreak
+		set_global_flag = anduinfight
+		clr_global_flag = questformtdoom_ringleaveslorien
+	}
+ }
+
+##The Fellowship leaves Lorien, Event for fight with Uruks##
+narrative_event = {
     id = wotr.20
     title = "EVTTITwotr.20"
     desc = "EVTDESCwotr.20"
     picture = "GFX_boromir_death"
-	age = 16
 	
-	trigger = {
-		has_global_flag = ringleaveslorien
-		age = 30
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr20 }
-		dynasty = 2001
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 14
-	}
+	# Button mentioning Boromir
 	option = {
 		name = "EVTOPTAwotr.20"
-		set_character_flag = wotr20
-		set_global_flag = anduinfight
+		trigger = {
+			event_target:mep_chartarget_boromir = {
+				is_alive = yes
+				trait = on_fellowshipquest
+			}
+		}
 	}
-}
 	
-##The Fellowship leaves Lorien, Frodo event for fight with Uruks##
+	# Button not mentioning Boromir
+	option = {
+		name = "EVTOPTBwotr.20"
+		trigger = {
+			event_target:mep_chartarget_boromir = {
+				OR = { is_alive = no
+					NOT = { trait = on_fellowshipquest }
+				}
+			}
+		}
+	}
+ }
+
+# Event for Boromir : Take the ring or not?
+long_character_event = {
+    id = wotr.510
+    title = "EVTTITwotr.510"
+    desc = "EVTDESCwotr.510"
+    picture = "GFX_boromir_death"
+
+	is_triggered_only = yes
+	
+	# Try to take the ring
+	option = {
+		name = "EVTOPTAwotr.510"
+		set_character_flag = b_tried_to_take_ring
+		random_list = {
+			# Boromir gets the ring!
+			5 = { 
+				character_event = { id = wotr.22 }
+				event_target:mep_fellowship_ringbearer = {
+					character_event = { id = wotr.511 days = 1 }
+				}
+			}
+			# Boromir fails to get the ring
+            95 = {
+				event_target:mep_fellowship_ringbearer = {
+					character_event = { id = wotr.512 days = 1 }
+				}
+				character_event = { id = wotr.23 days = 2 }
+         }
+		}
+	}
+	
+	# Restrain yourself (player-only, no real difference except no chance of getting the ring)
+	option = {
+		name = "EVTOPTBwotr.510"
+		trigger = { ai = no }
+		event_target:mep_fellowship_ringbearer = {
+			character_event = { id = wotr.512 days = 1 }
+		}
+		character_event = { id = wotr.23 days = 2 }
+	}
+ }
+	
+##The Fellowship leaves Lorien, ringbearer event for encounter with Boromir##
 character_event = {
     id = wotr.21
     title = "EVTTITwotr.21"
     desc = "EVTDESCwotr.21"
     picture = "GFX_boromir_death"
-	age = 16
-	
-	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = boromirwent
-		age = 30
-		NOT = { age = 60 }
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr21 }
-		dynasty = 803
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
+
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.21"
 		set_character_flag = wotr21
-		random_list = {
-			5 = { 
-				set_global_flag = frodofightboromir
-				remove_trait = ring
-				add_trait = ringbearer1
+	}
+ }
+
+# ringbearer event (should take place after wotr.510 and wotr.21) if Boromir takes the ring
+character_event = {
+    id = wotr.511
+    title = "EVTTITwotr.511"
+    desc = "EVTDESCwotr.511"
+    picture = "GFX_boromir_death"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.511"
+		event_target:mep_chartarget_boromir = {
+			add_trait = ring
+		}
+		remove_trait = ring
+		add_trait = ringbearer1
+		set_global_flag = boromirhasring
+		random = {
+			chance = 50
+			add_trait = wounded
+		}
+		remove_trait = on_fellowshipquest
+	}
+ }
+
+# ringbearer event if Boromir fails to take the ring (or perhaps did not really try)
+character_event = {
+    id = wotr.512
+    title = "EVTTITwotr.512"
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = b_tried_to_take_ring }
+		}
+		text = EVTDESCwotr.512a
+	}
+	desc = {
+		trigger = {
+			FROM = { NOT = { has_character_flag = b_tried_to_take_ring } }
+		}
+		text = EVTDESCwotr.512b
+	}
+    picture = "GFX_boromir_death"
+	
+	immediate = {
+		set_global_flag = frodogoestomordor
+	}
+	
+	is_triggered_only = yes
+	
+	# Samwise is coming with me
+	option = {
+		name = "EVTOPTAwotr.512"
+		trigger = {
+			event_target:mep_chartarget_samwise = {
+				is_alive = yes
+				trait = on_fellowshipquest
+				NOT = { character = PREV }
 			}
-            95 = {
-				set_global_flag = frodogoestomordor
-            }
 		}
 	}
-}
+	# I go alone
+	option = {
+		name = "EVTOPTBwotr.512"
+		trigger = {
+			event_target:mep_chartarget_samwise = {
+				OR = {
+					is_alive = no
+					NOT = { trait = on_fellowshipquest }
+					character = PREV
+				}
+			}
+		}
+	}
+	# end option
+ }
 	
 ##Option for if Boromir got the ring##
 character_event = {
@@ -640,83 +1515,134 @@ character_event = {
     title = "EVTTITwotr.22"
     desc = "EVTDESCwotr.22"
     picture = "GFX_kinstrife"
-	age = 16
 	
-	trigger = {
-		has_global_flag = frodofightboromir
-		trait = on_fellowshipquest
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr22 }
-		dynasty = 100
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.22"
-		set_character_flag = wotr22
-		set_global_flag = boromirhasring
-		add_trait = ring
+		hidden_tooltip = {
+			set_character_flag = wotr22
+			set_global_flag = boromirhasring
+		}
 		remove_trait = on_fellowshipquest
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 30				
+		# dispatching a notification event for Aragorn
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = {
+					is_alive = yes
+					trait = on_fellowshipquest			
+				}
+				character_event = { id = wotr.41 }
 			}
-			character_event = { id = wotr.41 }
+		}
+		# fellowhip disbands...
+		event_target:mep_fellowship_dwarf = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.43 } }
+		}
+		event_target:mep_fellowship_elf = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.43 } }
+		}
+		event_target:mep_fellowship_hobbit1 = {
+			if = { limit = { is_alive = yes }
+			character_event = { id = wotr.43 } }
+		}
+		event_target:mep_fellowship_hobbit2 = {
+			if = {  limit = { is_alive = yes }
+			character_event = { id = wotr.43 } }
+		}
+		event_target:mep_fellowship_hobbit3 = {
+			if = {  limit = { is_alive = yes }
+			character_event = { id = wotr.43 } }
 		}
 	}
-}
-	
+ }
+
 ##Aragorn is informed if Boromir got the ring##
 character_event = {
     id = wotr.41
     title = "EVTTITwotr.41"
     desc = "EVTDESCwotr.41"
     picture = "GFX_kinstrife"
-	age = 16
+
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.41"
 		add_claim = e_steward_gondor
+		add_claim = e_gondor
 		remove_trait = on_fellowshipquest
 		set_global_flag = aragornwar
-			any_independent_ruler = {
+		any_independent_ruler = {
 			limit = {
 				age = 1
 				is_alive = yes				
 			}
-			character_event = { id = wotr.42 days = 90 }
+			narrative_event = { id = wotr.42 days = 90 }
 		}
 	}
-}
+ }
+
+#----------------------------------------------------------------------------------------	
+# Controller event for sending the 'Boromir has the ring' narrative event
+character_event = {
+	id = wotr.205
+	religion = religion_umaiar
+	has_global_flag = boromirhasring
+	
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = boromirhasring_rulersnotified }
+		event_target:mep_chartarget_morgoth = { character = PREV }
+	}
+	
+	mean_time_to_happen = { days = 80 }
+	
+	option = {
+		any_independent_ruler = {
+			limit = {
+				# just in case
+				NOT = { event_target:mep_chartarget_aragorn = { character = PREV } }
+				NOT = { event_target:mep_fellowship_ringbearer = { character = PREV } }
+				NOT = { event_target:mep_chartarget_samwise = { character = PREV } }
+			}
+			narrative_event = { id = wotr.42 days = 1  random = 4 }
+		}
+		set_global_flag = boromirhasring_rulersnotified
+	}
+ }
 	
 ##All Rulers are informed if Gondor has taken the ring##
-character_event = {
+narrative_event = {
     id = wotr.42
     title = "EVTTITwotr.42"
     desc = "EVTDESCwotr.42"
     picture = "GFX_kinstrife"
-	age = 16
+
 	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.42"
+		trigger = {
+			NOT = {
+				event_target:mep_chartarget_sauron = { character = PREV }
+				event_target:mep_chartarget_denethor = { character = PREV }
+			}
+		}
 	}
 	
 	option = {
 		name = "EVTOPTBwotr.42"
-		trigger = { has_landed_title = c_barad_dur }
+		trigger = { event_target:mep_chartarget_sauron = { character = PREV } }
 	}
 	
 	option = {
 		name = "EVTOPTCwotr.42"
-		trigger = { has_landed_title = c_minas_tirith }
+		trigger = { event_target:mep_chartarget_denethor = { character = PREV } }
 	}
-}
+ }
 	
 ##Fellowship disbands if Boromir took the ring##
 character_event = {
@@ -724,126 +1650,192 @@ character_event = {
     title = "EVTTITwotr.43"
     desc = "EVTDESCwotr.43"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_global_flag = boromirhasring
-		trait = on_fellowshipquest
-		year = 11362
-		NOT = { year = 11390 }
-	}
-	
-	mean_time_to_happen = {
-		days = 1
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.43"
 		remove_trait = on_fellowshipquest
 		prestige = -100
 	}
-}
+ }
 	
 #########################################################################################################################
 ######later needs specific events for boromir taking the ring, right now he just goes back to minas tirith with it#######
 	
-##option for if Frodo escaped Boromir##
+## Boromir-Event, post ringbearer encounter
 character_event = {
     id = wotr.23
     title = "EVTTITwotr.23"
     desc = "EVTDESCwotr.23"
     picture = "GFX_boromir_death"
-	age = 16
 	
-	trigger = {
-		has_global_flag = frodogoestomordor
-		trait = on_fellowshipquest
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr23 }
-		dynasty = 100
-		age = 41
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
+	# Charge into battle and likely die
 	option = {
 		name = "EVTOPTAwotr.23"
 		set_character_flag = wotr22
-		remove_trait = on_fellowshipquest
 		random_list = {
 			15 = { 
 				add_trait = wounded
+				long_character_event = { id = wotr.513 days = 1 }
 			}
 			5 = {
 				add_maimed_trait_effect = yes
+				long_character_event = { id = wotr.513 days = 1 }
 			}
 			80 = {
 				set_global_flag = boromirdeath
 				death = {
 					death_reason = death_battle
 				}
+				set_global_flag = fellowship_broken
 			} 
 		}
 	}
-}
 	
-##Aragorn after fight with Uruks##
-character_event = {
-    id = wotr.24
-    title = "EVTTITwotr.24"
-    desc = "EVTDESCwotr.24"
-    picture = "GFX_boromir_death"
-	age = 16
-	
-	trigger = {
-		NOT = { has_global_flag = boromirhasring }
-		has_global_flag = anduinfight
-		age = 30
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr24 }
-		dynasty = 2001
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
+	# Run like a coward
 	option = {
-		name = "EVTOPTAwotr.24"
-		set_character_flag = wotr24
-		set_character_flag = towardsrohan
+		name = "EVTOPTBwotr.23"
+		trigger = { ai = no }
+		remove_trait = on_fellowshipquest
+		add_trait = craven
+		set_global_flag = fellowship_broken
 	}
-}
+ }
+
+# Boromir event if he survives battle with Uruks
+long_character_event = {
+    id = wotr.513
+    title = "EVTTITwotr.513"
+	desc = EVTDESCwotr.513
+    picture = "GFX_boromir_death"
 	
-##Frodo at Anduin, if Faramir went instead of Boromir##
+	is_triggered_only = yes
+	
+	# Back to Gondor
+	option = {
+		name = "EVTOPTAwotr.513"
+		remove_trait = on_fellowshipquest
+		set_global_flag = fellowship_broken
+	}
+ }
+
+# Ringbearer event if Boromir was not part of the fellowship.
 character_event = {
     id = wotr.25
     title = "EVTTITwotr.25"
     desc = "EVTDESCwotr.25"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_global_flag = ringleaveslorien
-		has_global_flag = faramirwent
-		age = 30
-		NOT = { age = 60 }
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr25 }
-		dynasty = 803
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.25"
 		set_character_flag = wotr25
 		set_global_flag = frodogoestomordor
+		set_global_flag = fellowship_broken
 	}
-}
+ }
+#----------------------------------------------------------------------------------------	
+# Controller for handling post breakup info events for those heading west
+character_event = {
+	id = wotr.206
+	religion = religion_umaiar
+	has_global_flag = frodogoestomordor
+	
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = fellowship_broken
+		NOT = { has_global_flag = fellowship_broken2 }
+		event_target:mep_chartarget_morgoth = { character = PREV }
+	}
+	
+	mean_time_to_happen = { days = 14 }
+	
+	option = {
+		# first, those hobbits being taken by isengard
+		# ignore the possibility that they may be both dead
+		event_target:mep_fellowship_hobbit2 = {  # Normally Merry
+			if = { limit = { ai = no }
+				long_character_event = { id = wotr.515 }
+			}
+		}
+		event_target:mep_fellowship_hobbit3 = {  # Normally Pippin
+			if = { limit = { ai = no }
+				long_character_event = { id = wotr.515 }
+			}
+		}
+		# If the 'gondorian' is not Boromoir, he leaves for Gondor
+		event_target:mep_fellowship_gondorian = {
+			if = {
+				limit = {
+					NOT = { character = 1944 }  # Boromir
+					is_alive = yes
+				}
+				character_event = { id = wotr.26 }
+			}
+		}
+		# Finally, the event for the remaining 3 members of the fellowship
+		# for now, I will ignore the possibility that they are all dead
+		event_target:mep_chartarget_aragorn = {
+			if = {
+				limit = {
+					is_alive = yes
+					trait = on_fellowshipquest
+				}
+				character_event = { id = wotr.24 }
+			}
+		}
+		event_target:mep_fellowship_elf = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.24 }
+			}
+		}
+		event_target:mep_fellowship_dwarf = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = wotr.24 }
+			}
+		}
+		# setting the flag indicating this is done	
+		set_global_flag = fellowship_broken2 
+	}
+ }
+
+# Event for those seized by orcs (merry and pippin)
+long_character_event = {
+    id = wotr.515
+    title = "EVTTITwotr.515"
+	desc = EVTDESCwotr.515
+    picture = "GFX_dark_tree"
+	
+	is_triggered_only = yes
+	
+	# Info!
+	option = {
+		name = "EVTOPTAwotr.515"
+	}
+ }
+	
+# General event for the three who are going to Rohan
+character_event = {
+    id = wotr.24
+    title = "EVTTITwotr.24"
+    desc = "EVTDESCwotr.24"
+    picture = "GFX_boromir_death"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAwotr.24"
+		set_character_flag = wotr24
+		set_character_flag = towardsrohan
+	}
+ }
 	
 ##Faramir returns to Minas Tirith to aid his father after Frodo has left##
 character_event = {
@@ -851,35 +1843,25 @@ character_event = {
     title = "EVTTITwotr.26"
     desc = "EVTDESCwotr.26"
     picture = "GFX_shadows_coming"
-	age = 16
 	
-	trigger = {
-		has_global_flag = frodogoestomordor
-		has_global_flag = faramirwent
-		trait = on_fellowshipquest
-		NOT = { year = 11368 }
-		NOT = { has_character_flag = wotr23 }
-		dynasty = 100
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = "EVTOPTAwotr.26"
 		set_character_flag = wotr26
 		remove_trait = on_fellowshipquest
 	}
-}
-	
+ }
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Post fellowhsip events.
+
 ##Aragorn in Rohan##
 character_event = {
     id = wotr.27
     title = "EVTTITwotr.27"
     desc = "EVTDESCwotr.27"
     picture = "GFX_oath_of_eorl"
-	age = 16
+	only_playable = yes
 	
 	trigger = {
 		has_character_flag = towardsrohan
@@ -899,9 +1881,10 @@ character_event = {
 		name = "EVTOPTAwotr.27"
 		set_character_flag = wotr27
 		set_character_flag = towardsfangorn
+		add_friend = 27
 	}
 	
-}
+ }
 	
 ##Aragorn in Fangorn##
 character_event = {
@@ -909,7 +1892,7 @@ character_event = {
    	title = "EVTTITwotr.28"
    	desc = "EVTDESCwotr.28"
    	picture = "GFX_oath_of_eorl"
-	age = 16
+	only_playable = yes
 	
 	trigger = {
 		has_character_flag = towardsfangorn
@@ -926,11 +1909,26 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAwotr.28"
-		set_character_flag = wotr28
-		set_character_flag = towardsedoras
-		set_global_flag = aragornwar
+		# bringing the wizard back from valinor: move him to mithlond (edoras might not be safe anymore)
+		e_lindon = {
+			holder_scope = {
+				event_target:mep_fellowship_wizard = {
+					# there is no way he was killed or messed with in valinor, right?
+					move_character = PREV
+					remove_trait = sailed_west
+					add_trait = on_fellowshipquest
+					set_character_flag = towardsedoras
+				}
+			}
+		}
+		# set flags
+		hidden_tooltip = {
+			set_character_flag = wotr28
+			set_character_flag = towardsedoras
+			set_global_flag = aragornwar
+		}
 	}	
-}
+ }
 	
 ##Aragorn in Edoras##
 character_event = {
@@ -938,7 +1936,7 @@ character_event = {
   	title = "EVTTITwotr.29"
    	desc = "EVTDESCwotr.29"
   	picture = "GFX_oath_of_eorl"
-	age = 16
+	only_playable = yes
 	
 	trigger = {
 		has_character_flag = towardsedoras
@@ -958,7 +1956,7 @@ character_event = {
 		set_global_flag = gandalfedoras
 	}
 	
-}
+ }
 	
 ##Gandalf in Edoras####BUT USING ELROND AS PLACEHOLDER UNTIL WE GET GANDALF IN GAME###########
 character_event = {
@@ -992,7 +1990,7 @@ character_event = {
 		}
 			
 	}
-}
+ }
 
 	
 ##Intermediate Event to kill Theoden just in case the ring quest got interrupted##
@@ -1005,10 +2003,10 @@ character_event = {
     title = "EVTTITwotr.31"
     desc = "EVTDESCwotr.31"
     picture = "GFX_shadows_coming"
-	age = 70
+	only_playable = yes
 	
 	trigger = {
-		dynasty = 5
+		character = 24
 		age = 70
 		year = 11368
 		trait = saruman_spell
@@ -1025,7 +2023,7 @@ character_event = {
 			death_reason = death_natural
 		}
 	}
-}
+ }
 	
 ##Event for Theoden when he is cured##
 character_event = {
@@ -1047,7 +2045,7 @@ character_event = {
 			}
 			character_event = { id = wotr.33 days = 7 }
 		}
-		any_playable_ruler_ruler = {
+		any_playable_ruler = {
 			limit = {
 				has_landed_title = d_eastfolde
 			}
@@ -1055,7 +2053,7 @@ character_event = {
 		add_claim= c_gap_of_rohan
 		}
 	}
-}
+ }
 	
 ##Event for Saruman when Theoden is cured##
 character_event = {
@@ -1076,7 +2074,7 @@ character_event = {
 		name = "EVTOPTBwotr.33"
 		trigger = { ai = no }
 	}
-}
+ }
 
 ##Event for Saruman when Theoden is cured##
 character_event = {
@@ -1134,7 +2132,7 @@ character_event = {
 		name = "EVTOPTBwotr.39"
 		trigger = { ai = no }
 	}
-}
+ }
 
 ##Saruman calls in his Dunlendish allies##
 	character_event = {
@@ -1172,7 +2170,7 @@ character_event = {
 		trigger = { ai = no }
 		set_character_flag = wotr69	
 	}
-}
+ }
 	
 ##Dunland receives the call from Saruman##
 character_event = {
@@ -1193,7 +2191,7 @@ character_event = {
 		name = "EVTOPTBwotr.70"
 		trigger = { ai = no }
 	}
-}
+ }
 	
 ##Theoden when Saruman launches his great assault##
 character_event = {
@@ -1260,7 +2258,7 @@ character_event = {
 		set_character_flag = wotr34
 		wealth = 1000
 	}
-}
+ }
 	
 ##Aragorn when Rohan is under attack##
 character_event = {
@@ -1327,7 +2325,7 @@ character_event = {
 			character_event = { id = wotr.50 }
 		}
 	}
-}
+ }
 		
 		
 ##Ents join in if Merry and Pippin were captured, first Saruman gets an event##
@@ -1361,7 +2359,7 @@ character_event = {
 			character_event = { id = wotr.37 }
 		}
 	}
-}
+ }
 		
 ##Ents join in if Merry and Pippin were captured, then fangorn gets an event##
 character_event = {
@@ -1385,7 +2383,7 @@ character_event = {
 			character_event = { id = wotr.40 days = 7 }
 		}
 	}	
-}
+ }
 		
 ##Ents join Rohans war if Merry and Pippin were captured, but has to go through event 40 first##
 character_event = {
@@ -1425,7 +2423,7 @@ character_event = {
 			}
 		}
 	}
-}
+ }
 		
 ##Ents join in if Merry and Pippin were captured, first Rohan gets an event##
 character_event = {
@@ -1459,7 +2457,7 @@ character_event = {
 			character_event = { id = wotr.38 }
 		}
 	}
-}
+ }
 		
 ##event 41 to 43 used above##
 		
@@ -1511,7 +2509,7 @@ character_event = {
 			}
 		}
 	}
-}
+ }
 ##After the war is won by Rohan, Rohan reconquers the westmarch##
 character_event = {
 	id = wotr.440
@@ -1560,7 +2558,7 @@ character_event = {
 			}
 		}
 	}
-}
+ }
 		
 ##If for some reason the Saruman invasion doesn't trigger via event, it should happen in 11367 at the latest, together with the main war against Gondor##
 character_event = {
@@ -1591,1992 +2589,5 @@ character_event = {
 		trigger = { ai = no }
 		set_character_flag = wotr45
 	}
-}
+ }
 	
-#######################################################################################################################################
-###############11367 is the major war year for Sauron##################################################################################
-#######################################################################################################################################
-	
-##Some flavor events for Denethor##
-	
-##If Boromir took the Ring##
-character_event = {
-    id = wotr.46
-    title = "EVTTITwotr.46"
-    desc = "EVTDESCwotr.46"
-    picture = "GFX_evil_king"
-	age = 16
-	
-	trigger = {
-		has_landed_title = e_steward_gondor
-		dynasty = 100
-		age = 50
-		has_global_flag = boromirhasring
-		NOT = { has_character_flag = wotr46 }
-		NOT = { year = 11368 }
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-		name = "EVTOPTAwotr.46"
-		set_character_flag = wotr46
-		add_trait = proud
-	}
-}
-	
-##11364, if he still holds river##
-character_event = {
-    id = wotr.47
-    title = "EVTTITwotr.47"
-    desc = "EVTDESCwotr.47"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-		has_landed_title = c_east_osgiliath
-		dynasty = 100
-		NOT = { has_character_flag = wotr47 }
-		year = 11364
-		NOT = { year = 11365 }
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-		name = "EVTOPTAwotr.47"
-		set_character_flag = wotr47
-	}
-}
-	
-##11365, if he has lost river##
-character_event = {
-    id = wotr.48
-    title = "EVTTITwotr.48"
-    desc = "EVTDESCwotr.48"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-		NOT = { has_landed_title = c_east_osgiliath }
-		dynasty = 100
-		NOT = { has_character_flag = wotr48 }
-		year = 11365
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-		name = "EVTOPTAwotr.48"#We need more men...
-		set_character_flag = wotr48
-	}
-}
-	
-##11366 gondor flavor##
-character_event = {
-    id = wotr.49
-    title = "EVTTITwotr.49"
-    desc = "EVTDESCwotr.49"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-		has_landed_title = e_steward_gondor
-		dynasty = 100
-		NOT = { has_global_flag = wotr49 }
-		year = 11364
-	}
-	
-	mean_time_to_happen = {
-		days = 14
-	}
-	
-	option = {
-		name = "EVTOPTAwotr.49"
-		set_global_flag = wotr49
-	}
-}
-	
-##Denethor is informed Aragorn fights with the Rohirrim##
-	character_event = {
-    id = wotr.50
-    title = "EVTTITwotr.50"
-    desc = "EVTDESCwotr.50"
-    picture = "GFX_travel_gondor"
-	age = 16
-	is_triggered_only = yes
-	
-	
-	option = {
-		name = "EVTOPTAwotr.50"
-		trigger = { age = 60 }
-	}
-	
-	option = {
-		name = "EVTOPTBwotr.50"
-	}
-}
-
-	
-##################################################
-##################Now the fun begins##############
-##################################################
-	
-	##Sauron starts his great war##
-	character_event = {
-    id = wotr.51
-    title = "EVTTITwotr.51"
-    desc = "EVTDESCwotr.51"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = c_barad_dur
-	NOT = { has_character_flag = wotr51 }
-	year = 11367
-	NOT = { year = 11370 }
-	}
-	
-	mean_time_to_happen = {
-	days = 30
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.51"
-	set_global_flag = greatwar1
-	add_claim = k_anorien
-	add_claim = k_lebennin
-	add_claim = d_lossarnach
-	add_claim = d_royal_demesne
-	add_claim = c_minas_tirith
-	add_claim = c_pelennor
-	add_claim = c_west_osgiliath
-	add_claim = c_imloth_melui
-	set_character_flag = wotr51
-		any_independent_ruler = {
-			limit = {
-			has_landed_title = e_steward_gondor
-			}
-			character_event = { id = wotr.52 }
-		}
-	}
-	
-	
-	}
-	
-	##Sauron starts his great war, Gondor is informed##
-	character_event = {
-    id = wotr.52
-    title = "EVTTITwotr.52"
-    desc = "EVTDESCwotr.52"
-    picture = "GFX_war_gondor"
-	age = 16
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.52"
-	}
-	}
-	
-	##A few days later, the war starts##
-		character_event = {
-    id = wotr.53
-    title = "EVTTITwotr.53"
-    desc = "EVTDESCwotr.53"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = c_barad_dur
-	has_global_flag = greatwar1
-	NOT = { has_global_flag = wotr53 }
-	year = 11367
-	age = 1
-	##war = no
-	}
-	
-	mean_time_to_happen = {
-	days = 7
-	}
-
-			
-	option = {
-	name = "EVTOPTAwotr.53"
-	set_global_flag = wotr53
-	any_independent_ruler = {
-			limit = {
-				OR = {
-					culture_group = culture_group_easterling
-					culture_group = culture_group_southron
-					culture = culture_black_numenorean
-				}
-				trait = evil_side
-			}
-			character_event = { id = warofthering.10 days = 90 }
-		}
-				e_steward_gondor = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim_all
-			}
-			}
-							create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 33
-		}
-	new_character = {
-		spawn_unit = {
-				province = 462 ##harad
-				disband_on_peace = no
-				troops =
-				{
-					light_cavalry = { 10000 10000 }
-					heavy_infantry = { 5000 5000 }
-					light_infantry = { 10000 10000 }
-					archers = { 2000 2000 }
-				}
-			}		
-			}
-		}
-		}
-	
-	
-	##Umbar attacks Belfalas and Anfalas##
-	##DELETED - Umbar now joins the main mordorian assault##	
-	
-	##Aragorn is informed Minas Tirith is under attack##
-	character_event = {
-    id = wotr.55
-    title = "EVTTITwotr.55"
-    desc = "EVTDESCwotr.55"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	trait = blood_of_isildur
-	age = 30
-	NOT = { has_character_flag = wotr55 }
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { year = 11370 }
-	}
-	
-	mean_time_to_happen = {
-	days = 14 
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.55"
-	set_global_flag = pathofthedead
-	set_character_flag = wotr55
-	}
-	}
-	
-	##Gondor is informed Aragorn is on his way##
-	character_event = {
-    id = wotr.56
-    title = "EVTTITwotr.56"
-    desc = "EVTDESCwotr.56"
-    picture = "GFX_travel_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = e_steward_gondor
-	age = 30
-	NOT = { has_global_flag = wotr56 }
-	has_global_flag = pathofthedead
-	NOT = { year = 11370 }
-	}
-	
-	mean_time_to_happen = {
-	days = 40
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.56"
-	set_global_flag = wotr56
-	any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 30
-			}
-			character_event = { id = wotr.57 days = 45 }
-		}
-	}
-	
-	option = {
-	name = "EVTOPTBwotr.56"
-	set_global_flag = wotr56
-		any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 30
-			}
-			character_event = { id = wotr.57 days = 45 }
-		}
-	}	
-	}
-	
-	##Round-about way of making Aragorn join the Gondorian War##
-	character_event = {
-    id = wotr.57
-    title = "EVTTITwotr.57"
-    desc = "EVTDESCwotr.57"
-    picture = "GFX_dead_army"
-	age = 16
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.57"
-	ROOT = {
-	join_defender_wars = FROM
-				}
-	create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_dunedain
-			culture = culture_gondorian
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 215 #Tarlang
-				disband_on_peace = no
-				troops =
-				{
-					light_infantry = { 4000 4000 }
-					archers = { 4000 4000 }
-				}
-			}
-		}
-		set_character_flag = ingondor
-		}
-		}
-	
-	##Aragorn rounds up more men in the South##
-	character_event = {
-    id = wotr.58
-    title = "EVTTITwotr.58"
-    desc = "EVTDESCwotr.58"
-    picture = "GFX_gondor_army"
-	age = 16
-	
-	trigger = {
-	NOT = { year = 11370 }
-	trait = blood_of_isildur
-	age = 30
-	has_character_flag = ingondor
-	NOT = { has_character_flag = wotr57 }
-	}
-	
-	mean_time_to_happen = {
-	days = 30
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.58"
-	set_global_flag = aragornhelp
-	set_character_flag = wotr57
-	create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_dunedain
-			culture = culture_gondorian
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 18 # Pelargir
-				disband_on_peace = no
-				troops =
-				{
-					light_infantry = { 6000 6000 }
-					archers = { 4000 4000 }
-				}
-			}
-		}
-		}
-		}
-				
-	##Gondor is told Aragorn is coming with an army##
-	character_event = {
-    id = wotr.59
-    title = "EVTTITwotr.59"
-    desc = "EVTDESCwotr.59"
-    picture = "GFX_gondor_army"
-	age = 16
-	
-	trigger = {
-	NOT = { year = 11370 }
-	has_landed_title = e_steward_gondor
-	has_global_flag = aragornhelp
-	NOT = { has_global_flag = wotr59 }
-	age = 1
-	}
-
-	mean_time_to_happen = {
-	days = 7 
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.59"
-	trigger = { age = 45 }
-	set_global_flag = wotr59
-	}
-	
-	option = {
-	name = "EVTOPTBwotr.59"
-	set_global_flag = wotr59
-	piety = 200
-	add_trait = just
-	}
-	
-	}
-	
-	##Now for the Men of Rohan if they are still alive, and at peace##
-	
-	##Gondor lights the beacons##
-	character_event = {
-    id = wotr.60
-    title = "EVTTITwotr.60"
-    desc = "EVTDESCwotr.60"
-    picture = "GFX_oath_of_eorl"
-	age = 16
-	
-	trigger = {
-	has_landed_title = e_steward_gondor
-	has_global_flag = greatwar1
-	NOT = { has_character_flag = wotr60 }
-	NOT = { year = 11368 }
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 7 
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.60"
-	set_character_flag = wotr60
-	any_independent_ruler = {
-			limit = {
-				culture = culture_rohirrim
-				has_landed_title = k_rohan
-			}
-			character_event = { id = wotr.61 days = 120 }
-		}
-		}
-	
-	option = {
-	name = "EVTOPTBwotr.60"
-	trigger = { ai = no }
-	set_character_flag = wotr60
-	}
-	}
-	
-	##Rohan sees the beacons##
-	character_event = {
-    id = wotr.61
-    title = "EVTTITwotr.61"
-    desc = "EVTDESCwotr.61"
-    picture = "GFX_war_gondor"
-	age = 16
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.61"
-	ROOT = {
-	join_defender_wars = FROM
-				}
-			any_independent_ruler = {
-			limit = {
-				dynasty = 5
-				has_landed_title = c_minas_tirith
-			}
-			character_event = { id = wotr.68 days = 7 }
-		}
-		}
-		
-		option = {
-	name = "EVTOPTBwotr.61"
-		trigger = { ai = no }
-		}
-	}
-	
-	##Pick-up Event for steward of Gondor to get Aragorn into the war if he doesn't with first event due to sauron being slow to declare war##
-	character_event = {
-    id = wotr.62
-    title = "EVTTITwotr.62"
-    desc = "EVTDESCwotr.62"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-		has_landed_title = e_steward_gondor
-		has_global_flag = greatwar1
-		NOT = { has_character_flag = wotr62 }
-		year = 11369
-		NOT = { year = 11370 }
-		war = yes
-		age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 1
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.62"
-	set_character_flag = wotr62
-	any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
-			}
-			character_event = { id = wotr.63 }
-		}
-	}
-	}
-	
-	
-	##2nd Round-about way of making Aragorn join the Gondorian War##
-	character_event = {
-    id = wotr.63
-    title = "EVTTITwotr.63"
-    desc = "EVTDESCwotr.63"
-    picture = "GFX_war_gondor"
-	age = 16
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.63"
-	ROOT = {
-	join_defender_wars = FROM
-				}
-				}
-				}
-				
-	################################################
-	##Spawn some Easterling/Southron armies#########
-	################################################
-	
-	##Rhun gets 10,000 men##
-	character_event = {
-    id = wotr.64
-    title = "EVTTITwotr.64"
-    desc = "EVTDESCwotr.64"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = k_rhun
-	has_global_flag = greatwar1
-	NOT = { has_character_flag = wotr64 }
-	NOT = { year = 11368 }
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 1
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.64"
-	set_character_flag = wotr64
-			create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_easterlings
-			culture = culture_easterling
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 614 # Kas Rhûn
-				disband_on_peace = no
-				troops =
-				{
-					light_infantry = { 2000 2000 }
-					light_cavalry = { 2000 2000 }
-					horse_archers = { 1000 1000 }
-					knights = { 500 500 }
-				}
-			}
-		}
-		}
-		}
-		
-	##Harad gets 20,000 men##
-	character_event = {
-    id = wotr.65
-    title = "EVTTITwotr.65"
-    desc = "EVTDESCwotr.65"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = e_harad
-	has_global_flag = greatwar1
-	NOT = { has_character_flag = wotr65 }
-	NOT = { year = 11368 }
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 1
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.65"
-	set_character_flag = wotr65
-			create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 533 # Khôrsaj
-				disband_on_peace = no
-				troops =
-				{
-					light_cavalry = { 19000 19000 }
-					horse_archers = { 1000 1000 }
-					knights = { 500 500 }
-				}
-			}
-		}
-		}
-		}
-	
-	##Variags gets 10,000 men##
-	character_event = {
-    id = wotr.66
-    title = "EVTTITwotr.66"
-    desc = "EVTDESCwotr.66"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = k_khand
-	has_global_flag = greatwar1
-	NOT = { has_character_flag = wotr66 }
-	NOT = { year = 11368 }
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 1
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.66"
-	set_character_flag = wotr66
-			create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_southron
-			culture = culture_variags
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 272 # Khand
-				disband_on_peace = no
-				troops =
-				{
-					light_cavalry = { 8000 8000 }
-					horse_archers = { 1000 1000 }
-					knights = { 100 100 }
-				}
-			}
-		}
-		}
-		}	
-		
-	##Corsairs gets 5,000 men and money to raise mercenary fleet##
-	character_event = {
-    id = wotr.67
-    title = "EVTTITwotr.67"
-    desc = "EVTDESCwotr.67"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = k_umbar
-	has_global_flag = greatwar1
-	NOT = { has_character_flag = wotr67 }
-	NOT = { year = 11368 }
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 1
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.67"
-	set_character_flag = wotr67
-	wealth = 1000
-			create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = religion_black_numenorean
-			culture = culture_black_numenorean
-			female = no
-			age = 30
-			attributes = {
-				martial = 14
-			}
-			trait = brilliant_strategist
-		}
-			new_character = {
-			spawn_unit = {
-				province = 430 # Umbar
-				disband_on_peace = no
-				troops =
-				{
-					heavy_infantry = { 4000 4000 }
-					archers = { 1000 1000 }
-					knights = { 100 100 }
-				}
-			}
-		}
-		}
-		}		
-		
-	##Gondor is informed the Rohirrim are on the way to their aid##
-	character_event = {
-    id = wotr.68
-    title = "EVTTITwotr.68"
-    desc = "EVTDESCwotr.68"
-    picture = "GFX_war_gondor"
-	age = 16
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.68"
-	}
-	}		
-	
-	##WOTR 69 and 70 are used elsewhere above##
-	
-	#########################################################
-	##Now for the event-chain where Aragorn can become King##
-	#########################################################
-	
-	##AI Denethor commits suicide in despair if Boromir is dead on the ring-quest##
-	character_event = {
-    id = wotr.71
-    title = "EVTTITwotr.71"
-    desc = "EVTDESCwotr.71"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-		has_landed_title = e_steward_gondor
-		has_global_flag = greatwar1
-		has_global_flag = boromirdeath
-		NOT = { has_character_flag = wotr71 }
-		year = 11368
-		dynasty = 100
-		age = 60
-		NOT = { year = 11370 }
-		war = yes
-	}
-	
-		mean_time_to_happen = {
-	days = 14
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.71"
-	set_character_flag = wotr71
-	        death = {
-		death_reason = death_suicide
-				}
-	any_playable_ruler  = {
-			limit = {
-			religion = religion_dunedain
-			}
-			character_event = { id = wotr.72 }
-		}
-				}
-				
-	option = {
-	name = "EVTOPTBwotr.71"
-	trigger = { ai = no }
-	set_character_flag = wotr71
-	}
-	
-	}
-	
-	
-##Dunedain rulers are informed that Denethor is dead##
-	character_event = {
-    id = wotr.72
-    title = "EVTTITwotr.72"
-    desc = "EVTDESCwotr.72"
-    picture = "GFX_war_gondor"
-	age = 16
-	only_independent = yes
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.72"
-	}
-	
-	}
-	
-##If the year is past 11369, and Gondor is at peace, then either the war is won or lost. If won, the Steward still has c_minas tirith, so we'll do this first#
-	character_event = {
-    id = wotr.73
-    title = "EVTTITwotr.73"
-    desc = "EVTDESCwotr.73"
-    picture = "GFX_good"
-	age = 16
-	
-	trigger = {
-	has_landed_title = c_minas_tirith
-	has_landed_title = e_steward_gondor
-	religion = religion_dunedain
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { has_global_flag = wotr73 }
-	year = 11368
-	war = no
-	}
-	
-	mean_time_to_happen = {
-	days = 14
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.73"
-	clr_global_flag = gondor_threatened
-	set_global_flag = wotr73
-		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
-			}
-			character_event = { id = wotr.74 }
-		}
-	}
-	
-	option = {
-	name = "EVTOPTBwotr.73"
-	trigger = {
-		dynasty = 100
-		ai = no
-	}
-	set_global_flag = wotr73
-	clr_global_flag = gondor_threatened
-	character_event = { id = wotr.81 days = 30 }
-	any_independent_ruler = {
-		limit = {
-			trait = blood_of_isildur
-			age = 30
-		}
-			character_event = { id = wotr.74 }
-		}
-	}
-	
-	}
-	
-	##Aragorn is informed that he will be crowned King##
-	character_event = {
-    id = wotr.74
-    title = "EVTTITwotr.74"
-    desc = "EVTDESCwotr.74"
-    picture = "GFX_good"
-	age = 16
-	
-	is_triggered_only = yes
-	option = {
-	name = "EVTOPTAwotr.74"
-	add_trait = palantir
-		e_steward_gondor =	{
-			usurp_title = ROOT	
-		}
-		c_minas_tirith = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-		}				
-		character_event = { id = wotr.75 }
-	}	
-	}
-	
-	
-	
-##Aragorn is informed that he will be crowned King##
-character_event = {
-    id = wotr.75
-    title = "EVTTITwotr.75"
-    desc = "EVTDESCwotr.75"
-    picture = "GFX_gondor_guard"
-	age = 16
-	
-	is_triggered_only = yes
-	option = {
-	name = "EVTOPTAwotr.75"
-	set_global_flag = gondor_restored
-		remove_trait = on_fellowshipquest
-		character_event = { id = wotr.91 }	
-		e_gondor = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-			#transfer_vassals = e_steward_gondor
-		}
-		e_arnor = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-		}		
-		e_steward_gondor = {
-			destroy_landed_title = THIS
-		}
-		c_pelennor = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-		}
-		d_royal_demesne = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-		}	
-		# c_ered_nimrais = {
-			# grant_title = ROOT
-			# copy_title_laws = e_steward_gondor
-		# }	
-		# holder_scope = {
-			# gain_settlements_under_title = {
-					# title = k_arthedain
-					# }
-				# }
-		hidden_tooltip = {
-			activate_title = { title = e_steward_gondor status = no }
-			any_playable_ruler = {
-				limit = {
-					NOT = { has_landed_title = e_steward_gondor }
-					ai = no
-				}
-			}
-		}
-		e_steward_gondor = {
-			any_vassal = {
-				set_defacto_liege = e_gondor
-			}		
-			destroy_landed_title = THIS
-		}
-		any_independent_ruler = {
-			limit = {
-				NOT = { trait = blood_of_isildur }
-			}
-			character_event = { id = wotr.76 }
-		}		
-	}
-}
-	
-	
-	##Rulers are informed that the Re-United Kingdom has arisen again##
-		character_event = {
-    id = wotr.76
-    title = "EVTTITwotr.76"
-    desc = "EVTDESCwotr.76"
-    picture = "GFX_good"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.76"
-	trigger = {
-	religion=religion_dunedain
-	}
-	}
-	
-		option = {
-	name = "EVTOPTBwotr.76"
-	trigger = {
-	trait=evil_side
-	}
-	}
-	
-			option = {
-	name = "EVTOPTCwotr.76"
-	}
-	}
-	
-	##If the year is past 11369, and Gondor is at peace, then either the war is won or lost. This is for when the war is lost.#
-	character_event = {
-    id = wotr.77
-    title = "EVTTITwotr.77"
-    desc = "EVTDESCwotr.77"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = e_steward_gondor
-	NOT = { has_landed_title = c_minas_tirith }
-	religion = religion_dunedain
-	has_global_flag = greatwar1
-	has_global_flag = aragornwar
-	NOT = { has_global_flag = wotr77 }
-	year = 11368
-	war = no
-	}
-	
-	mean_time_to_happen = {
-	days = 14
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.77"
-	set_global_flag = wotr77
-		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
-	}
-	character_event = { id = wotr.78 }
-			}
-			}
-			
-		option = {
-	name = "EVTOPTBwotr.77"
-	set_global_flag = wotr77
-		any_independent_ruler = {
-	limit = {
-		trait = blood_of_isildur
-		age = 30
-	}
-	character_event = { id = wotr.79 }
-			}
-			}
-			
-			}
-			
-	##Aragorn is informed that the stewards reject him##
-	character_event = {
-    id = wotr.78
-    title = "EVTTITwotr.78"
-    desc = "EVTDESCwotr.78"
-    picture = "GFX_kinstrife"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.78"
-	remove_trait = on_fellowshipquest
-	clr_global_flag = gondor_threatened
-	}
-	
-	}
-	
-		##Aragorn is informed that the stewards accept him even though gondor lost##
-	character_event = {
-    id = wotr.79
-    title = "EVTTITwotr.79"
-    desc = "EVTDESCwotr.79"
-    picture = "GFX_kinstrife"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.79"
-	remove_trait = on_fellowshipquest
-			e_steward_gondor =	{
-			usurp_title = ROOT	
-		}				
-		character_event = { id = wotr.80 }
-	}
-	
-	}
-	
-##Aragorn gets his king titles even though gondor lost##
-character_event = {
-	id = wotr.80
-	title = "EVTTITwotr.80"
-	desc = "EVTDESCwotr.80"
-	picture = "GFX_good"
-	age = 16
-
-	is_triggered_only = yes
-
-	option = {
-		name = "EVTOPTAwotr.80"
-		clr_global_flag = gondor_threatened
-		set_global_flag = gondor_restoreddefeat
-		add_trait = annunimas
-		remove_trait = on_fellowshipquest
-		character_event = { id = wotr.91 }
-		e_gondor = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-#			transfer_vassals = e_steward_gondor
-		}
-		e_arnor = {
-			grant_title = ROOT
-			copy_title_laws = e_steward_gondor
-		}		
-		e_steward_gondor = {
-			any_vassal = {
-				set_defacto_liege = e_gondor
-			}		
-			destroy_landed_title = THIS
-		}
-		# holder_scope = {
-			# gain_settlements_under_title = {
-				# title = k_arthedain
-			# }
-		# }
-	}
-}
-		
-	##The steward chose to not welcome Aragorn, and instead bide his time to plot against him##
-	character_event = {
-    id = wotr.81
-    title = "EVTTITwotr.81"
-    desc = "EVTDESCwotr.81"
-    picture = "GFX_kinstrife"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.81"
-	add_claim = e_gondor
-	add_claim = c_minas_tirith
-	}
-	
-	}
-	
-	##If Boromir has the ring, Aragorn reacts##
-	character_event = {
-    id = wotr.82
-    title = "EVTTITwotr.82"
-    desc = "EVTDESCwotr.82"
-    picture = "GFX_evil_king"
-	age = 16
-	
-		trigger = {
-	has_landed_title = e_gondor
-	has_global_flag = boromirhasring
-	has_global_flag = aragornwar
-	dynasty = 2001
-	NOT = { has_global_flag = wotr82 }
-	}
-	
-	mean_time_to_happen = {
-	days = 7
-	}
-	
-	option = { 
-	name = "EVTOPTAwotr.82"
-	set_global_flag = wotr82
-	any_realm_character = {
-	limit = { trait = ring 	}
-	character_event = { id = wotr.83 }
-	}
-			}
-			}
-	
-	##Boromir is informed##
-	character_event = {
-    id = wotr.83
-    title = "EVTTITwotr.83"
-    desc = "EVTDESCwotr.83"
-    picture = "GFX_evil_king"
-	age = 16
-	
-    is_triggered_only = yes
-	
-	option = { 
-	name = "EVTOPTAwotr.83"
-		imprison = FROM
-	any_independent_ruler = {
-			limit = {
-				trait = blood_of_isildur
-				age = 25
-			}
-			character_event = { id = wotr.84 }
-		}
-			}
-	
-	option = {
-	name = "EVTOPTBwotr.83"
-	add_trait = evil_side
-	ROOT = { religion = religion_black_numenorean }
-		 random_list = {
-                  75 = { 
-					character_event = { id = wotr.85 }
-                          }
-                25  = {
-                    character_event = { id = wotr.86 }
-                }
-				}
-			}
-			}
-	
-	##Aragorn is told Boromir has been imprisoned##
-	character_event = {
-    id = wotr.84
-    title = "EVTTITwotr.84"
-    desc = "EVTDESCwotr.84"
-    picture = "GFX_gondor_guard"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.84"
-	}
-	
-	}
-	
-	##Boromir runs to Umbar##
-	character_event = {
-    id = wotr.85
-    title = "EVTTITwotr.85"
-    desc = "EVTDESCwotr.85"
-    picture = "GFX_sailor"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.85"
-	add_claim = e_gondor
-		any_independent_ruler = {
-			limit = {
-				has_landed_title = k_umbar
-			}
-			character_event = { id = wotr.87 }
-		}
-				any_independent_ruler = {
-			limit = {
-				has_landed_title = e_gondor
-			}
-			character_event = { id = wotr.89 }
-		}
-	}
-	
-	}
-	
-	##Boromir is caught ##
-	character_event = {
-    id = wotr.86
-    title = "EVTTITwotr.86"
-    desc = "EVTDESCwotr.86"
-    picture = "GFX_good"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.86"
-	imprison = yes
-	}
-	
-	}
-	
-	##Boromir runs to Umbar##
-	character_event = {
-    id = wotr.87
-    title = "EVTTITwotr.87"
-    desc = "EVTDESCwotr.87"
-    picture = "GFX_sailor"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.87"
-	FROM = { character_event = { id = wotr.88 days = 30 } }
-		}
-	}
-	
-	##Boromir runs to Umbar##
-	character_event = {
-    id = wotr.88
-    title = "EVTTITwotr.88"
-    desc = "EVTDESCwotr.88"
-    picture = "GFX_sailor"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.88"
-	FROM = { reverse_banish = ROOT }
-		}
-	}
-	
-		##Aragorn is told Boromir has escaped##
-	character_event = {
-    id = wotr.89
-    title = "EVTTITwotr.89"
-    desc = "EVTDESCwotr.89"
-    picture = "GFX_sailor"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.89"
-		}
-	}
-	
-	########################################################################
-	##make further boromir evil_side events in new doc######################
-	########################################################################
-	
-	
-	##Gondor seems a to lose too often, I'll give them 6500 troops when the war starts at Minas Tirith##
-	character_event = {
-    id = wotr.90
-    title = "EVTTITwotr.90"
-    desc = "EVTDESCwotr.90"
-    picture = "GFX_war_gondor"
-	age = 16
-	
-	trigger = {
-	has_landed_title = c_minas_tirith
-	NOT = { has_global_flag = wotr90 }
-	has_global_flag = greatwar1
-	age = 1
-	}
-	
-	mean_time_to_happen = {
-	days = 7
-	}
-	
-	option = {
-	name = "EVTOPTAwotr.90"
-	set_global_flag = wotr90
-			create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = ROOT
-			culture = ROOT
-			female = no
-			age = 33
-		}
-			new_character = {
-		spawn_unit = {
-				province = 422 # Minas Tirith
-				disband_on_peace = no
-				troops =
-				{
-					light_infantry = { 1000 1000 }
-					archers = { 1000 1000 }
-					heavy_infantry = { 3000 3000 }
-					knights = { 500 500 }
-					pikemen = { 1500 1500 }
-				}
-			}		
-			}
-			}
-			
-			}
-			
-########################################################################
-######################Aragorn crown events##############################
-########################################################################
-
-	
-## After Aragorn is crowned, Elrond give him the Scepter of Annuminas ##	
-
-character_event = {
-    id = wotr.91
-    title = "EVTTITwotr.91"
-    desc = "EVTDESCwotr.91"
-    picture = "GFX_elf_meeting"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-	name = "EVTOPTAwotr.91"
-		add_trait = annunimas	
-		character_event = { id = wotr.92 days = 1 }
-		}
-}
-
-## After Aragorn is crowned, he can change his name to Elessar ##
-
-character_event = {
-   	id = wotr.92
-   	title = "EVTTITwotr.92"
-    desc = "EVTDESCwotr.92"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.92" # My name is Now Elessar
-		set_name = "Elessar"
-		character_event = { id = wotr.93 days = 1 }
-	}
-	option = {
-		name = "EVTOPTBwotr.92" # My name is still Aragorn
-		trigger = { ai=no }
-		character_event = { id = wotr.93 days = 1 }
-	}
-}
-
-## After Aragorn is crowned, he can change his dynasty name to Telcontar ##
-
-character_event = {
-   	id = wotr.93
-   	title = "EVTTITwotr.93"
-    desc = "EVTDESCwotr.93"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.93" # The House Telcontar!
-		dynasty = 2004
-		character_event = { id = wotr.94 days = 1 }		
-	}
-	option = {
-		name = "EVTOPTBwotr.93" # The House Isildurionath
-		trigger = { ai=no }
-		character_event = { id = wotr.94 days = 1 }				
-	}
-}
-
-
-## After Aragorn is crowned, he can marry Arwen ##
-
-character_event = {
-   	id = wotr.94
-   	title = "EVTTITwotr.94"
-    desc = "EVTDESCwotr.94"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.94" # I'll ask Elrond !
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = elrond
-			}
-			character_event = { id = wotr.95 days=10 }
-		}	
-	}
-	option = {
-		name = "EVTOPTBwotr.94" # She's not of my kin.
-		trigger = { ai = no }	
-		remove_trait = vow_of_cerin_amroth
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = elrond
-			}
-			any_courtier = {
-				limit = {
-					has_character_flag = arwen
-				}
-				remove_trait = vow_of_cerin_amroth
-			}	
-		}			
-	}
-}
-
-## Elrond choose if Arwen will marry Aragorn ##
-
-character_event = {
-   	id = wotr.95
-   	title = "EVTTITwotr.95"
-    desc = "EVTDESCwotr.95"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.95" # Yes, it's time.		
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = aragorn
-			}
-			character_event = { id = wotr.96 days=1 }
-			remove_trait=vow_of_cerin_amroth
-		}	
-		any_courtier = {
-			limit = {
-				has_character_flag = arwen
-			}
-			remove_trait=vow_of_cerin_amroth
-			add_trait=elven_infertility
-		}			
-	}
-	option = {
-		name = "EVTOPTBwotr.95" # Her place is in West.
-		trigger = { ai = no }
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = aragorn
-			}
-			remove_trait=vow_of_cerin_amroth
-		}			
-		any_courtier = {
-			limit = {
-				has_character_flag = arwen
-			}
-		add_trait=sailed_west
-		remove_trait = vow_of_cerin_amroth
-		}			
-	}
-}
-
-## Elrond accept your wedding with Arwen! ##
-
-character_event = {
-   	id = wotr.96
-   	title = "EVTTITwotr.96"
-    desc = "EVTDESCwotr.96"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.96" # Arwen is now my wife!
-		character_event = { id = wotr.97 days = 365}
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = elrond
-			}
-			any_courtier = {
-				limit = {
-					has_character_flag = arwen
-				}
-			add_spouse=ROOT
-			}	
-		}
-	}
-	option = {
-		name = "EVTOPTBwotr.96" # No, i don't want her to be my wife.
-		trigger = { ai = no }	
-		remove_trait = vow_of_cerin_amroth	
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = elrond
-			}
-			any_courtier = {
-				limit = {
-					has_character_flag = arwen
-				}
-				remove_trait = vow_of_cerin_amroth
-			}	
-		}		
-	}
-}
-
-## Arwen is pregnant! ##
-
-character_event = {
-   	id = wotr.97
-   	title = "EVTTITwotr.97"
-    desc = "EVTDESCwotr.97"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.97" # I hope it will be a boy!
-		character_event = { id = wotr.98 days = 270 }
-	}
-}
-
-
-## First Child of Arwen and Aragorn - Eldarion ##
-
-character_event = {
-   	id = wotr.98
-   	title = "EVTTITwotr.98"
-    desc = "EVTDESCwotr.98"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.98" # His name will be Eldarion!
-		character_event = { id = wotr.99 days = 548 } ## Second Child
-		any_spouse = {
-			limit = { has_character_flag = arwen }
-			create_character = {
-				dynasty = ROOT
-				name = "Eldarion"
-				religion="religion_dunedain"
-				culture="culture_gondorian"
-				female = no
-				age = 0
-				dna="dmgmd0kffa0"
-				#properties="gc0ehdbebbb"				
-				attributes = {
-					martial = 5
-					stewardship = 5
-					intrigue = 5
-					learning = 5
-					diplomacy = 5
-				}
-				trait = blood_of_numenor
-				trait = blood_of_isildur
-				trait = half_elf			
-			}
-			new_character = {
-				set_father = ROOT
-				set_mother = PREV
-				set_character_flag = bloodline_passed	
-				set_character_flag = eldarion
-			}		
-		}		
-		recalc_succession = yes
-	}
-}
-
-## Arwen is pregnant! ##
-
-character_event = {
-   	id = wotr.99
-   	title = "EVTTITwotr.99"
-    desc = "EVTDESCwotr.99"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.99" # I hope it will be a girl !
-		character_event = { id = wotr.100 days = 270 }
-	}
-}
-
-## Second Child of Arwen and Aragorn - Luthien ##
-
-character_event = {
-   	id = wotr.100
-   	title = "EVTTITwotr.100"
-    desc = "EVTDESCwotr.100"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.100" # Her name will be Luthien!
-		character_event = { id = wotr.101 days = 764 } ## Third Child
-		any_spouse = {
-			limit = { has_character_flag = arwen }
-			create_character = {
-				dynasty = ROOT
-				name = "Luthien"
-				religion="religion_dunedain"
-				culture="culture_gondorian"
-				female = yes
-				age = 0
-				dna="dmmmd0kfaa0"
-				#properties="gc0ehdbebbb"		
-				attributes = {
-					martial = 3
-					stewardship = 3
-					intrigue = 3
-					learning = 3
-					diplomacy = 3
-				}
-				trait = blood_of_numenor
-				trait = half_elf
-			}
-			new_character = {
-				set_father = ROOT
-				set_mother = PREV
-				set_character_flag = bloodline_passed				
-			}		
-		}		
-	}
-}
-
-
-## Arwen is pregnant! ##
-
-character_event = {
-   	id = wotr.101
-   	title = "EVTTITwotr.101"
-    desc = "EVTDESCwotr.101"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.101" # I hope it will be a girl !
-		character_event = { id = wotr.102 days = 270 }
-	}
-}
-
-## Third Child of Arwen and Aragorn - Indis ##
-
-character_event = {
-   	id = wotr.102
-   	title = "EVTTITwotr.102"
-    desc = "EVTDESCwotr.102"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.102" # Her name will be Indis!
-		character_event = { id = wotr.103 days = 1112 } ## Fourth Child
-		any_spouse = {
-			limit = { has_character_flag = arwen }
-			create_character = {
-				dynasty = ROOT
-				name = "Indis"
-				religion="religion_dunedain"
-				culture="culture_gondorian"
-				female = yes
-				age = 0
-				dna="dkmcd0lfgc0"
-				#properties="gm0cbkbebbb"
-				attributes = {
-					martial = 3
-					stewardship = 3
-					intrigue = 3
-					learning = 3
-					diplomacy = 3
-				}
-				trait = blood_of_numenor
-				trait = half_elf			
-			}
-			new_character = {
-				set_father = ROOT
-				set_mother = PREV
-				set_character_flag = bloodline_passed				
-			}		
-		}		
-	}
-}
-
-## Arwen is pregnant! ##
-
-character_event = {
-   	id = wotr.103
-   	title = "EVTTITwotr.103"
-    desc = "EVTDESCwotr.103"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.103" # I hope it will be a girl !
-		character_event = { id = wotr.104 days = 270 }
-	}
-}
-
-## Fourth Child of Arwen and Aragorn - Altáriel ##
-
-character_event = {
-   	id = wotr.104
-   	title = "EVTTITwotr.104"
-    desc = "EVTDESCwotr.104"
-    picture = "GFX_crown_king"
-	age = 16
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.104" # Her name will be Altáriel!
-		any_spouse = {
-			limit = { has_character_flag = arwen }
-			create_character = {
-				dynasty = ROOT
-				name = "Altariel"
-				religion="religion_dunedain"
-				culture="culture_gondorian"
-				female = yes
-				age = 0
-				dna="ddagd0mfdc0"
-				#properties="gb0ebkbebbb"
-				attributes = {
-					martial = 3
-					stewardship = 3
-					intrigue = 3
-					learning = 3
-					diplomacy = 3
-				}
-				trait = blood_of_numenor
-				trait = half_elf
-			}
-			new_character = {
-				set_father = ROOT
-				set_mother = PREV
-				set_character_flag = bloodline_passed				
-			}		
-		}		
-	}
-}
-
-########################################################
-############ BREAK THE VOW OF CERIN AMROTH #############
-########################################################
-
-##  Sauron is not defeated, and you can't marry Arwen... ##
-character_event = {
-	id = wotr.105
-	title = "EVTwotr.105"
-	desc = "EVTDESCwotr.105"
-	picture = GFX_evt_grey_havens
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.105" # Send a message to Elrond 
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = elrond
-			}
-			character_event = { id = wotr.106 days=10 }
-		}	
-	}
-	option = {
-		name = "EVTOPTAwotr.105" # No, i'll wait again.
-		trigger = { ai = no }
-	}	
-}
-
-##  Elrond receive a message from Aragorn ##
-character_event = {
-	id = wotr.106
-	title = "EVTwotr.106"
-	desc = "EVTDESCwotr.106"
-	picture = GFX_evt_grey_havens
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.106" # Finally, he accept to abandon.
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = aragorn
-			}
-			character_event = { id = wotr.107 days=10 }
-		}	
-		any_courtier = {
-			limit = {
-				has_character_flag = arwen
-			}
-			add_trait = sailed_west
-			remove_trait = vow_of_cerin_amroth
-			e_valinor = {
-				holder_scope = { ROOT = { move_character = PREV } }
-			}		
-			recalc_succession = yes	
-		}		
-	}
-	option = {
-		name = "EVTOPTAwotr.106" # No, i'll wait again.
-		any_independent_ruler = {
-			limit = {
-				has_character_flag = aragorn
-			}
-			character_event = { id = wotr.108 days=10 }
-		}			
-	}	
-}
-
-##  Elrond give his answer to Aragorn - Arwen leaves for Aman ##
-character_event = {
-	id = wotr.107
-	title = "EVTwotr.107"
-	desc = "EVTDESCwotr.107"
-	picture = GFX_evt_grey_havens
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.107" # So... She's now in Aman...
-		remove_trait = vow_of_cerin_amroth		
-	}
-}
-
-
-##  Elrond give his answer to Aragorn - He'll wait again for you ##
-character_event = {
-	id = wotr.108
-	title = "EVTwotr.108"
-	desc = "EVTDESCwotr.108"
-	picture = GFX_evt_grey_havens
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAwotr.108" # I'll do my best !
-		set_character_flag=vowofcerinamroth
-		character_event = { id = wotr.109 days = 3650 }		
-	}
-}
-
-##  After ten years, Aragorn can ask once again ##
-character_event = {
-	id = wotr.109
-	title = "EVTwotr.109"
-	desc = "EVTDESCwotr.109"
-	picture = GFX_evt_grey_havens
-
-	is_triggered_only = yes
-	hide_window = yes	
-	
-	option = {
-		name = "EVTOPTAwotr.108" # I'll do my best !
-		clr_character_flag=vowofcerinamroth	
-	}
-}

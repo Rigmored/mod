@@ -5,6 +5,11 @@
 # If you have questions, these events were written by Bedivere (bedever42 on paradox, bedivere42 on MODDB) and are a heavily edited versions of the prosperity events introduced by the reaper's due DLC.
 # Enjoy!
 
+# Edit by JamesFox, 2017/04/27
+# - Using scripted triggers and effects for compactness
+# NOTE : the '#Narrows scope to one possible modifier' sections seem un-necessary, since there is nothing indicating a province
+# is supposed to have, or make use of, more than one population modifier at the same time.
+
 namespace = dynamic_pop
 
 character_event = {
@@ -23,62 +28,13 @@ character_event = {
 	immediate = {
 		any_realm_province = {
 			limit = {
-				owner = {
-					OR = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
-						culture_group = culture_group_halfling
-						culture_group = culture_group_melkor
-						culture_group = culture_group_numenorean
-						culture_group = culture_group_quendi
-						culture_group = culture_group_amanyar
-						culture_group = culture_group_umanyar
-						culture_group = culture_group_moriquendi
-						culture_group = culture_group_dwarves
-						culture = culture_umaiar
-					}
-				}
+				owner = { mep_has_popmod_culture = yes }
 				owner = { character = ROOT }
-				NOR = { #disallows event if province has these modifiers
-					has_province_modifier = depopulated_1
-					has_province_modifier = depopulated_2
-					has_province_modifier = depopulated_3
-				}
-				OR = { #allows event if province has one of these modifiers
-					has_province_modifier = prosperity_modifier_1
-					has_province_modifier = prosperity_modifier_2
-					has_province_modifier = prosperity_modifier_3
-				}
-				OR = {
-					has_province_modifier = one_population_human
-					has_province_modifier = two_population_human
-					has_province_modifier = three_population_human
-					has_province_modifier = four_population_human
-					has_province_modifier = five_population_human
-					has_province_modifier = six_population_human
-					has_province_modifier = one_population_dunedain
-					has_province_modifier = two_population_dunedain
-					has_province_modifier = three_population_dunedain
-					has_province_modifier = four_population_dunedain
-					has_province_modifier = five_population_dunedain
-					has_province_modifier = six_population_dunedain
-					has_province_modifier = one_population_elves
-					has_province_modifier = two_population_elves
-					has_province_modifier = three_population_elves
-					has_province_modifier = four_population_elves
-					has_province_modifier = five_population_elves
-					has_province_modifier = six_population_elves
-					has_province_modifier = one_population_dwarves
-					has_province_modifier = two_population_dwarves
-					has_province_modifier = three_population_dwarves
-					has_province_modifier = four_population_dwarves
-					has_province_modifier = five_population_dwarves
-					has_province_modifier = six_population_dwarves
-				}
+				#disallows event if province has these modifiers
+				NOT = { mep_has_depopulated_modifier = yes }
+				# event requires these modifiers
+				mep_has_properity_modifier = yes 
+				mep_has_increasable_popmod_trigger = yes
 			}
 			province_event = { 
 				id = dynamic_pop.110
@@ -132,29 +88,17 @@ province_event = { #Population gain
 					factor = 2.0
 					owner = {
 						OR = {
-							culture_group = culture_group_edain
-							culture_group = culture_group_middlemen
-							culture_group = culture_group_forodwaith
-							culture_group = culture_group_haldadian
-							culture_group = culture_group_southron
-							culture_group = culture_group_easterling
-							culture_group = culture_group_halfling
-							culture_group = culture_group_melkor
-							culture = culture_umaiar
+							mep_has_xhumans_culture = yes
+							culture = culture_umaiar  # for Sauron
 						}
 					}
 				}
 				modifier = {
 					factor = 0.3 #these races have less of a chance of increasing their population.
-					owner = {
-						OR = {
-							culture_group = culture_group_numenorean
-							culture_group = culture_group_quendi
-							culture_group = culture_group_amanyar
-							culture_group = culture_group_umanyar
-							culture_group = culture_group_moriquendi
-							culture_group = culture_group_dwarves
-						}
+					OR = {
+						mep_has_dunedain_popmod_trigger = yes
+						mep_has_elves_popmod_trigger = yes
+						mep_has_dwarves_popmod_trigger = yes
 					}
 				}
 						
@@ -267,11 +211,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#event requires these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = one_population_human
 						NOR = { #Narrows scope to one possible modifier
 							has_province_modifier = two_population_human
@@ -281,40 +222,13 @@ province_event = { #Population gain
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -327,20 +241,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = one_population_dunedain
 						NOR = { #Narrows scope to one possible modifier
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = two_population_dunedain
 							has_province_modifier = three_population_dunedain
@@ -349,21 +254,8 @@ province_event = { #Population gain
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -377,28 +269,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = one_population_elves
 						NOR = { #Narrows scope to one possible modifier
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = two_population_elves
 							has_province_modifier = three_population_elves
@@ -407,21 +283,10 @@ province_event = { #Population gain
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = one_population_elves
@@ -432,36 +297,13 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 50 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = one_population_dwarves
 						NOR = { #Narrows scope to one possible modifier
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = two_population_dwarves
 							has_province_modifier = three_population_dwarves
@@ -483,11 +325,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = two_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -497,40 +336,12 @@ province_event = { #Population gain
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
-						}
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -543,20 +354,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						# #check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = two_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = three_population_dunedain
@@ -565,21 +367,8 @@ province_event = { #Population gain
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -593,28 +382,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = two_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = three_population_elves
@@ -623,21 +396,10 @@ province_event = { #Population gain
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = two_population_elves
@@ -648,36 +410,13 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 100 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = two_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = three_population_dwarves
@@ -699,11 +438,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = three_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -713,40 +449,13 @@ province_event = { #Population gain
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -759,20 +468,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = three_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -781,21 +481,8 @@ province_event = { #Population gain
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -809,28 +496,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = three_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -839,21 +510,10 @@ province_event = { #Population gain
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = three_population_elves
@@ -864,36 +524,13 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 200 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = three_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -915,11 +552,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = four_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -929,40 +563,13 @@ province_event = { #Population gain
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -975,20 +582,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = four_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -997,21 +595,8 @@ province_event = { #Population gain
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -1025,28 +610,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = four_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -1055,21 +624,10 @@ province_event = { #Population gain
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = four_population_elves
@@ -1080,37 +638,13 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 350 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = four_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
 							has_province_modifier = three_population_dwarves
@@ -1131,11 +665,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = five_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -1145,40 +676,13 @@ province_event = { #Population gain
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -1191,20 +695,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = five_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -1213,21 +708,8 @@ province_event = { #Population gain
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -1241,28 +723,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = five_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -1271,21 +737,10 @@ province_event = { #Population gain
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = five_population_elves
@@ -1296,36 +751,13 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 500 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = five_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -1347,11 +779,8 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = six_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -1361,40 +790,13 @@ province_event = { #Population gain
 							has_province_modifier = five_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -1407,20 +809,11 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = six_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -1429,21 +822,8 @@ province_event = { #Population gain
 							has_province_modifier = five_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -1457,28 +837,12 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = six_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -1487,21 +851,10 @@ province_event = { #Population gain
 							has_province_modifier = five_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = six_population_elves
@@ -1512,36 +865,15 @@ province_event = { #Population gain
 				IF = {
 					limit = {
 						#check_variable = { which = population_value value = 700 } #gain modifiers at 50/100/200/350/500/700 value
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = prosperity_modifier_1
-							has_province_modifier = prosperity_modifier_2
-							has_province_modifier = prosperity_modifier_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_properity_modifier = yes
 						has_province_modifier = six_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_dunedain_popmod_trigger = yes
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -2082,16 +1414,9 @@ character_event = {
 					}
 				}
 				owner = { character = ROOT }
-				NOR = { #disallows event if province has these modifiers
-					has_province_modifier = prosperity_modifier_1
-					has_province_modifier = prosperity_modifier_2
-					has_province_modifier = prosperity_modifier_3
-				}
-				OR = { #allows event if province has one of these modifiers
-					has_province_modifier = depopulated_1
-					has_province_modifier = depopulated_2
-					has_province_modifier = depopulated_3
-				}
+				#disallows event if province has these modifier
+				NOT = { mep_has_properity_modifier = yes }
+				mep_has_depopulated_modifier = yes
 				OR = {
 					has_province_modifier = seven_population_human
 					has_province_modifier = two_population_human
@@ -2276,11 +1601,8 @@ province_event = {
 ### DECREASE FROM 2 POPULATION to 1 POPULATION ###
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = two_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -2290,40 +1612,13 @@ province_event = {
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -2336,20 +1631,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = two_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = three_population_dunedain
@@ -2358,21 +1644,8 @@ province_event = {
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -2385,28 +1658,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = two_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = three_population_elves
@@ -2415,21 +1672,10 @@ province_event = {
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = two_population_elves
@@ -2439,36 +1685,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = two_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = three_population_dwarves
@@ -2489,11 +1712,8 @@ province_event = {
 	##### DECREASE FROM 3 POPULATION to 2 POPULATION #####
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = three_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -2503,40 +1723,13 @@ province_event = {
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -2548,20 +1741,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = three_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -2570,21 +1754,8 @@ province_event = {
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -2597,28 +1768,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = three_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -2627,21 +1782,10 @@ province_event = {
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = three_population_elves
@@ -2651,36 +1795,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = three_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -2701,11 +1822,8 @@ province_event = {
 	##### DECREASE FROM 4 POPULATION to 3 POPULATION #####
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = four_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -2715,40 +1833,13 @@ province_event = {
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -2760,20 +1851,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = four_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -2782,21 +1864,8 @@ province_event = {
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -2809,28 +1878,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = four_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -2839,21 +1892,10 @@ province_event = {
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = four_population_elves
@@ -2863,36 +1905,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = four_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -2913,11 +1932,8 @@ province_event = {
 	##### DECREASE FROM 5 POPULATION to 4 POPULATION #####
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = five_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -2927,40 +1943,13 @@ province_event = {
 							has_province_modifier = six_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -2972,20 +1961,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = five_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -2994,21 +1974,8 @@ province_event = {
 							has_province_modifier = six_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -3021,28 +1988,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = five_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -3051,21 +2002,10 @@ province_event = {
 							has_province_modifier = six_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = five_population_elves
@@ -3075,36 +2015,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = five_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -3125,11 +2042,8 @@ province_event = {
 	##### DECREASE FROM 6 POPULATION to 5 POPULATION #####
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = six_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -3139,40 +2053,13 @@ province_event = {
 							has_province_modifier = five_population_human
 							has_province_modifier = seven_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -3184,20 +2071,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = six_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -3206,21 +2084,8 @@ province_event = {
 							has_province_modifier = five_population_dunedain
 							has_province_modifier = seven_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -3233,28 +2098,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = six_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -3263,21 +2112,10 @@ province_event = {
 							has_province_modifier = five_population_elves
 							has_province_modifier = seven_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = six_population_elves
@@ -3287,36 +2125,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = six_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves
@@ -3337,11 +2152,8 @@ province_event = {
 	##### DECREASE FROM 7 POPULATION to 6 POPULATION #####
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = seven_population_human
 						NOR = {
 							has_province_modifier = one_population_human
@@ -3351,40 +2163,13 @@ province_event = {
 							has_province_modifier = five_population_human
 							has_province_modifier = six_population_human
 							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							OR = {
-								culture_group = culture_group_edain
-								culture_group = culture_group_middlemen
-								culture_group = culture_group_forodwaith
-								culture_group = culture_group_haldadian
-								culture_group = culture_group_southron
-								culture_group = culture_group_easterling
-								culture_group = culture_group_halfling
-								culture_group = culture_group_melkor
+								mep_has_xhumans_culture = yes
 								culture = culture_umaiar
 							}
 						}
@@ -3396,20 +2181,11 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = seven_population_dunedain
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
+							mep_has_xhumans_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dunedain
 							has_province_modifier = two_population_dunedain
@@ -3418,21 +2194,8 @@ province_event = {
 							has_province_modifier = five_population_dunedain
 							has_province_modifier = six_population_dunedain
 							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
-							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_elves_popmod_trigger = yes							
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
 							culture_group = culture_group_numenorean
@@ -3445,28 +2208,12 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = seven_population_elves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes
 							
 							has_province_modifier = one_population_elves
 							has_province_modifier = two_population_elves
@@ -3475,21 +2222,10 @@ province_event = {
 							has_province_modifier = five_population_elves
 							has_province_modifier = six_population_elves
 							
-							has_province_modifier = one_population_dwarves
-							has_province_modifier = two_population_dwarves
-							has_province_modifier = three_population_dwarves
-							has_province_modifier = four_population_dwarves
-							has_province_modifier = five_population_dwarves
-							has_province_modifier = six_population_dwarves
-							has_province_modifier = seven_population_dwarves
+							mep_has_dwarves_popmod_trigger = yes
 						}
 						owner = {
-							OR = {
-								culture_group = culture_group_quendi
-								culture_group = culture_group_amanyar
-								culture_group = culture_group_umanyar
-								culture_group = culture_group_moriquendi
-							}
+							mep_is_genuine_elf = yes
 						}
 					}
 					remove_province_modifier = seven_population_elves
@@ -3499,36 +2235,13 @@ province_event = {
 				}
 				IF = {
 					limit = {
-						OR = { #allows event if province has one of these modifiers
-							has_province_modifier = depopulated_1
-							has_province_modifier = depopulated_2
-							has_province_modifier = depopulated_3
-						}
+						#allows event if province has one of these modifiers
+						mep_has_depopulated_modifier = yes
 						has_province_modifier = seven_population_dwarves
 						NOR = {
-							has_province_modifier = one_population_human
-							has_province_modifier = two_population_human
-							has_province_modifier = three_population_human
-							has_province_modifier = four_population_human
-							has_province_modifier = five_population_human
-							has_province_modifier = six_population_human
-							has_province_modifier = seven_population_human
-							
-							has_province_modifier = one_population_dunedain
-							has_province_modifier = two_population_dunedain
-							has_province_modifier = three_population_dunedain
-							has_province_modifier = four_population_dunedain
-							has_province_modifier = five_population_dunedain
-							has_province_modifier = six_population_dunedain
-							has_province_modifier = seven_population_dunedain
-							
-							has_province_modifier = one_population_elves
-							has_province_modifier = two_population_elves
-							has_province_modifier = three_population_elves
-							has_province_modifier = four_population_elves
-							has_province_modifier = five_population_elves
-							has_province_modifier = six_population_elves
-							has_province_modifier = seven_population_elves
+							mep_has_xhumans_popmod_trigger = yes							
+							mep_has_dunedain_popmod_trigger = yes							
+							mep_has_elves_popmod_trigger = yes
 							
 							has_province_modifier = one_population_dwarves
 							has_province_modifier = two_population_dwarves

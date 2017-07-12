@@ -159,10 +159,27 @@ huge_pop = {
 	icon = 31
 }
 
-being_purged = {
-	local_revolt_risk = 0.15 #previously 0.5 - should remain challenging...
+being_purged_ofevil = {
+	local_revolt_risk = 0.25
+	levy_size = -0.5
+	levy_reinforce_rate = -0.5
 	icon = 31
 }
+
+being_purged_ofgood = {
+	local_revolt_risk = 0.25
+	levy_size = -0.5
+	levy_reinforce_rate = -0.5
+	icon = 31
+}
+
+being_purged_ofgoodeo = {
+	local_revolt_risk = 0.25 #previously 0.5 - should remain challenging...
+	levy_size = -0.5
+	levy_reinforce_rate = -0.5
+	icon = 31
+}
+
 
 
 ##### Gandalf Province Modifier #####
@@ -174,6 +191,7 @@ gandalf_is_here = {
 	levy_reinforce_rate = 0.9
 	land_morale = 1.5
 	icon = 31
+	disease_defence = 0.2
 }	
 
 ##### THREATEN BY EVIL CHARACTER #####
@@ -357,6 +375,53 @@ being_colonised_with_southrons = {
 	temple_tax_modifier = -0.5
 	icon = 22
 }
+
+being_colonised_by_dwarves = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+being_colonised_by_elves = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+
+being_colonised_by_high_elves = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+being_colonised_with_wood_elves = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+
+being_colonised_with_humans_good= {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+being_colonised_with_forodwaith = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+being_colonised_with_orctrollkind = {
+	city_tax_modifier = -0.5
+	castle_tax_modifier = -0.5
+	temple_tax_modifier = -0.5
+	icon = 22
+}
+
+# ---
 
 population_increasing = {
 	icon = 7
@@ -689,4 +754,21 @@ depopulated_3 = {
 	icon = 3
 	major = yes
 	disease_defence = 0.15
+}
+#-------------------------------------------------------------
+# used to track whether a dwarven leader is trying to retake Khazad-dûm
+retaking_khazaddum = {
+	icon = 13
+	global_tax_modifier = 0.05
+	add_piety_modifier  = 0.1
+}
+# wilderness CB timeout
+mod_mep_seized_wilderness = {
+	icon = 1
+	vassal_opinion = 1
+}
+# for last alliance timeout
+mep_lastalliance_failed = {
+	icon = 1
+	vassal_opinion = -10
 }

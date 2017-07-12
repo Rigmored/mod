@@ -574,8 +574,8 @@
 }
 
 # p2 base
-#2 = {
-#}
+2 = {
+}
 
 # p3 clothes
 3 = {
@@ -1264,7 +1264,7 @@
 			factor = 0
 			culture = culture_wight
 			NOT = {
-				trait = ring_dwar
+				trait = ring_dwarf
 			}
 		}		
 		modifier = {
@@ -1564,12 +1564,7 @@
 			NOT = { martial = 12 }
 			NOT = {
 				primary_title = {
-					OR = {
-						mercenary = yes
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order
-					}
+					mercenary = yes
 				}
 			}
 		}
@@ -1608,12 +1603,7 @@
 					}
 					NOT = {
 						primary_title = {
-							OR = {
-								mercenary = yes
-								title = d_knights_hospitaler
-								title = d_knights_templar
-								title = d_teutonic_order
-							}
+							mercenary = yes
 						}
 					}
 				}
@@ -1796,88 +1786,66 @@
    	}
 }
 
-# p8 "elvish beards"
+# p8 "elvish beards" (aka red_dots)
 8 = {
-	0 = { # blank
-		factor = 1000
+	0 = { # nothing
+		factor = 100
 		modifier = {
 			factor = 0
-			trait = elf
-			NOT = {
-				trait = beard_elf
-			}
-		}
- 	}
-
-	1 = { # red dots
-		factor = 1
-		modifier = {
-			factor = 0
-			trait = elf
 			trait = beard_elf
 		}
   	}
+	1 = { # beard (red dots)
+		factor = 100
+		modifier = {
+			factor = 0
+			AND = {
+				trait = elf
+				NOT = { trait = beard_elf }
+			}
+		}
+ 	}
+
 }
 
-# p9 boils
+# p9 boils(elvish childhood as well)
 9 = {
 
 	0 = { # blank
-		factor = 100
+		factor = 200
 		modifier = {
 			factor = 0
-			OR = {
-				AND = {
-					trait = spiritform
-					has_character_flag = sauron
-				}
-				AND = {
-					trait = elf_childhood
-					trait = elf
-				}				
-				trait = mouthofsauron
-			}
+			# exclude sauron if he does not have the ring
+			has_character_flag = sauron
+			NOT = { trait = ring }
 		}
 		modifier = {
-			factor = 200
-			trait = ring
-		}				
+			factor = 0
+			trait = elf_childhood
+		}
+		modifier = {
+			factor = 0
+			trait = mouthofsauron
+		}		
  	}
 
-	1 = { # boils
-		factor = 100
+	1 = { # boils (and child elf)
+		factor = 200
 		modifier = {
 			factor = 0
-			AND = {
-				NOT = { trait = mouthofsauron }
-				culture = culture_black_numenorean
-			}
-		}		
-		modifier = {
-			factor = 200
-			OR = {
-				trait = mouthofsauron
-				trait = elf_childhood
-			}
-		}	
+			NOT = { trait = elf_childhood }
+			religion_group = religion_group_eldar
+		}
 		modifier = {
 			factor = 0
-			AND = {
-				NOT = { trait = elf_childhood }
-				trait = elf
-			}
-		}		
+			culture = culture_black_numenorean
+			NOT = { trait = mouthofsauron }
+		}
 		modifier = {
-			factor = 200
-			trait = elf_childhood
-		}		
-		modifier = {
-			factor = 200
-			AND = {
-				has_character_flag = sauron
-				NOT = { trait = ring }
-			}
-		}			
+			factor = 0
+			has_character_flag = sauron
+			trait = ring
+		}				
  	}	
 }
 

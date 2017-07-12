@@ -1,0 +1,419 @@
+# Crown level (de jure) laws
+# Laws ending with 0 will be default laws at game start
+
+de_jure_laws = {
+
+### 'Nice/Just/Lordly' Crown Authority
+# The default Crown Authority makes King's Peace hard and Revocation easy
+# This lead to turbulence as at low/mid authority, vassals will constantly make war upon another,
+# and at mid/high authority, overlords will revoke titles to seize land if below their demense
+# limit, ignoring both friendhip, opinion, and any penalty/danger caused by unjustified actions
+# For Tolkien's Middle-Earth, that might be okay for lesser, quarrelsome humans, but is out
+# of character for Elves, Dwarves, Dúnedain (except possibly Black Númenóreans), and Hobbits
+## unjust revocation can be blocked with a special governemnt type, but king's peace requires laws
+## SO : for jcrown_authority, king's peace is level 1 (instead of 3), and title revocation requires
+# level 2. Level 3 also forbids external wars and gives protected inheritance. Also, the AI
+# will never try to get to level 4.
+
+	jcrown_authority_0 = {
+		show_as_title = yes
+		group = jcrown_authority
+		default = yes
+		
+		feudal_opinion = 5
+		city_opinion = 5
+		temple_opinion = 5
+		
+		allow = {
+			holder_scope = { is_republic = no }
+			has_law = jcrown_authority_1
+		}
+		potential = {
+			NOT = { has_dlc = "Zeus" }
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+				mep_canhave_nice_feudalism = yes
+			}
+			
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = jcrown_authority_0
+				revoke_law = jcrown_authority_1
+				revoke_law = jcrown_authority_2
+				revoke_law = jcrown_authority_3
+				revoke_law = jcrown_authority_4
+			}
+			
+#			set_appoint_generals = no
+#			set_appoint_regents = no
+			set_the_kings_peace = no
+			set_the_kings_full_peace = no
+			set_protected_inheritance = no
+			set_allow_title_revokation = no
+			set_allow_free_infidel_revokation = no
+#			set_allow_free_revokation = no
+		}
+		
+		city_vassal_min_levy = 0.0
+		castle_vassal_min_levy = 0.0
+		temple_vassal_min_levy = 0.0
+	}
+	
+	jcrown_authority_1 = {
+		show_as_title = yes
+		group = jcrown_authority
+		
+		feudal_opinion = -5
+		city_opinion = -5
+		temple_opinion = -5
+		
+		allow = {
+			OR = {
+				has_law = jcrown_authority_0
+				has_law = jcrown_authority_2
+			}
+		}
+		potential = {
+			NOT = { has_dlc = "Zeus" }
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+				mep_canhave_nice_feudalism = yes
+			}
+			
+		}
+		revoke_allowed = {
+			always = no
+		}			
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_law = jcrown_authority_0 }
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		
+		pass_effect = {
+			hidden_tooltip = {
+				if = { 
+					limit = {
+						has_law = jcrown_authority_0
+					}
+					any_de_jure_vassal = {
+						limit = {
+							OR = {
+								religion_group = ROOT
+								is_liege_or_above = ROOT
+							}
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_increased_authority
+							months = 60
+						}
+					}
+				}
+			}
+		}
+		
+		effect = {
+			hidden_tooltip = {
+				revoke_law = jcrown_authority_0
+				revoke_law = jcrown_authority_1
+				revoke_law = jcrown_authority_2
+				revoke_law = jcrown_authority_3
+				revoke_law = jcrown_authority_4
+			}
+#			set_appoint_generals = yes
+#			set_appoint_regents = no
+			set_the_kings_peace = yes
+			set_the_kings_full_peace = no
+			set_protected_inheritance = no
+			set_allow_title_revokation = no
+			set_allow_free_infidel_revokation = no
+#			set_allow_free_revokation = no
+		}
+		
+		city_vassal_min_levy = 0.2
+		castle_vassal_min_levy = 0.2
+		temple_vassal_min_levy = 0.2
+	}
+	
+	jcrown_authority_2 = {
+		show_as_title = yes
+		group = jcrown_authority
+		
+		feudal_opinion = -10
+		city_opinion = -10
+		temple_opinion = -10
+		
+		allow = {
+			holder_scope = { is_republic = no }
+			OR = {
+				has_law = jcrown_authority_1
+				has_law = jcrown_authority_3
+			}
+		}
+		potential = {
+			NOT = { has_dlc = "Zeus" }
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+				mep_canhave_nice_feudalism = yes
+			}
+			
+		}
+		revoke_allowed = {
+			always = no
+		}			
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.01
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_law = jcrown_authority_1 }
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		
+		pass_effect = {
+			hidden_tooltip = {
+				if = { 
+					limit = {
+						has_law = jcrown_authority_1
+					}
+					any_de_jure_vassal = {
+						limit = {
+							OR = {
+								religion_group = ROOT
+								is_liege_or_above = ROOT
+							}
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_increased_authority
+							months = 60
+						}
+					}
+				}
+			}
+		}
+		
+		effect = {
+			hidden_tooltip = {
+				revoke_law = jcrown_authority_0
+				revoke_law = jcrown_authority_1
+				revoke_law = jcrown_authority_2
+				revoke_law = jcrown_authority_3
+				revoke_law = jcrown_authority_4
+			}
+#			set_appoint_generals = yes
+#			set_appoint_regents = no
+			set_the_kings_peace = yes
+			set_the_kings_full_peace = no
+			set_protected_inheritance = no
+			set_allow_title_revokation = yes
+			set_allow_free_infidel_revokation = no
+#			set_allow_free_revokation = no
+		}
+		
+		city_vassal_min_levy = 0.4
+		castle_vassal_min_levy = 0.4
+		temple_vassal_min_levy = 0.4
+	}
+	
+	jcrown_authority_3 = {
+		show_as_title = yes
+		group = jcrown_authority
+		
+		feudal_opinion = -20
+		city_opinion = -20
+		temple_opinion = -20
+		
+		allow = {
+			holder_scope = { is_republic = no }
+			OR = {
+				has_law = jcrown_authority_2
+				has_law = jcrown_authority_4
+			}
+		}
+		potential = {
+			NOT = { has_dlc = "Zeus" }
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+				mep_canhave_nice_feudalism = yes
+			}
+			
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.005
+			}
+			modifier = {
+				factor = 0
+				holder_scope = {
+					religion_group = religion_group_periannath
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_law = jcrown_authority_2 }
+					NOT = { ruled_years = 20 }
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		
+		pass_effect = {
+			hidden_tooltip = {
+				if = { 
+					limit = {
+						has_law = jcrown_authority_2
+					}
+					any_de_jure_vassal = {
+						limit = {
+							OR = {
+								religion = ROOT
+								is_liege_or_above = ROOT
+							}
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_increased_authority
+							months = 60
+						}
+					}
+				}
+			}
+		}
+		
+		effect = {
+		
+			hidden_tooltip = {
+				revoke_law = jcrown_authority_0
+				revoke_law = jcrown_authority_1
+				revoke_law = jcrown_authority_2
+				revoke_law = jcrown_authority_3
+				revoke_law = jcrown_authority_4
+			}
+#			set_appoint_generals = yes
+#			set_appoint_regents = yes
+			set_the_kings_peace = yes
+			set_the_kings_full_peace = yes
+			set_protected_inheritance = yes
+			set_allow_title_revokation = yes
+			set_allow_free_infidel_revokation = no
+#			set_allow_free_revokation = no
+		}
+		
+		city_vassal_min_levy = 0.6
+		castle_vassal_min_levy = 0.6
+		temple_vassal_min_levy = 0.6
+	}
+	
+	jcrown_authority_4 = {
+		show_as_title = yes
+		group = jcrown_authority
+		
+		feudal_opinion = -30
+		city_opinion = -30
+		temple_opinion = -30
+		
+		allow = {
+			holder_scope = { is_republic = no }
+			has_law = jcrown_authority_3
+		}
+		potential = {
+			NOT = { has_dlc = "Zeus" }
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+				mep_canhave_nice_feudalism = yes
+			}
+			
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		
+		ai_will_revoke = {
+			factor = 0
+		}
+		
+		pass_effect = {
+			hidden_tooltip = {
+				if = { 
+					limit = {
+						has_law = jcrown_authority_3
+					}
+					any_de_jure_vassal = {
+						limit = {
+							OR = {
+								religion_group = ROOT
+								is_liege_or_above = ROOT
+							}
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_increased_authority
+							months = 60
+						}
+					}
+				}
+			}
+		}
+		
+		effect = {
+			hidden_tooltip = {
+				revoke_law = jcrown_authority_0
+				revoke_law = jcrown_authority_1
+				revoke_law = jcrown_authority_2
+				revoke_law = jcrown_authority_3
+				revoke_law = jcrown_authority_4
+			}
+#			set_appoint_generals = yes
+#			set_appoint_regents = yes
+			set_the_kings_peace = yes
+			set_the_kings_full_peace = yes
+			set_protected_inheritance = yes
+			set_allow_title_revokation = yes
+			set_allow_free_infidel_revokation = no
+#			set_allow_free_revokation = no
+		}
+		
+		city_vassal_min_levy = 0.8
+		castle_vassal_min_levy = 0.8
+		temple_vassal_min_levy = 0.8
+	}
+
+
+}

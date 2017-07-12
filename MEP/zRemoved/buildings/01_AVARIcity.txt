@@ -1,0 +1,613 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+ 
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	build_time = time to build, in days
+ #	
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+###################### City buildings for Avari Elves - M code- ###################### 
+city = {
+
+################## Defense : fort level ###############################
+	ct_Mwall_1 = {
+		desc = ct_Mwall_1_desc
+		
+		gold_cost = 25
+		build_time = 91
+		fort_level = 0.2
+		ai_creation_factor = 60
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwall_2 = {
+		desc = ct_Mwall_1_desc
+
+		upgrades_from = ct_Mwall_1
+		gold_cost = 25
+		build_time = 91
+		fort_level = 0.2
+		ai_creation_factor = 59
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}	
+	ct_Mwall_3 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_Mwall_2
+		gold_cost = 50
+		build_time = 182
+		fort_level = 0.5
+		ai_creation_factor = 58
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwall_4 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_Mwall_3
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 57
+       		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwall_5 = {
+		desc = ca_wall_1_desc
+		
+		upgrades_from = ct_Mwall_4
+		gold_cost = 100
+		build_time = 365
+		fort_level = 1
+		ai_creation_factor = 56
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+
+################## Defense : garrison size ###############################	
+	ct_Mwatchtower_1 = {
+		desc = ct_Mwatchtower_1_desc
+		prerequisites = { ct_Mwall_1 }
+		gold_cost = 75
+		build_time = 270
+		garrison_size = 0.05
+		ai_creation_factor = 99	
+		potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+
+	ct_Mwatchtower_2 = {
+		desc = ct_Mwatchtower_1_desc
+		prerequisites = { ct_Mwall_2 }
+		upgrades_from = ct_Mwatchtower_1
+		gold_cost = 100
+		build_time = 370
+		garrison_size = 0.1
+		ai_creation_factor = 98
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwatchtower_3 = {
+		desc = ct_Mwatchtower_1_desc
+		
+		upgrades_from = ct_Mwatchtower_2
+		gold_cost = 150
+		build_time = 550
+		garrison_size = 0.15
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwatchtower_4 = {
+		desc = ct_Mwatchtower_1_desc
+		
+		upgrades_from = ct_Mwatchtower_3
+		gold_cost = 200
+		build_time = 730
+		garrison_size = 0.2
+		ai_creation_factor = 96
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mwatchtower_5 = {
+		desc = ct_Mwatchtower_1_desc
+		
+		upgrades_from = ct_Mwatchtower_4
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+        }
+	ct_Mwatchtower_6 = {
+		desc = ct_Mwatchtower_1_desc
+		
+		upgrades_from = ct_Mwatchtower_5
+		gold_cost = 250
+		build_time = 1100
+		garrison_size = 0.25
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+
+	}
+
+################## Offense : Levy size ###############################
+	ct_Mbarracks_1 = {
+		desc = ct_Mbarracks_1_desc
+		
+		gold_cost = 75
+		build_time = 270
+		levy_size = 0.05
+		ai_creation_factor = 98
+        	potential = {
+	   		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+	ct_Mbarracks_2 = {
+		desc = ct_Mbarracks_1_desc
+		
+		prerequisites = { ct_Mwall_1 }
+		upgrades_from = ct_Mbarracks_1
+		gold_cost = 100
+		build_time = 370
+		levy_size = 0.075
+		ai_creation_factor = 97
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	} 
+	ct_Mbarracks_3 = {
+		desc = ct_Mbarracks_1_desc
+		
+		upgrades_from = ct_Mbarracks_2
+		gold_cost = 150
+		build_time = 510
+		levy_size = 0.1
+		ai_creation_factor = 96
+        	potential = {
+           		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	} 
+	ct_Mbarracks_4 = {
+		desc = ct_Mbarracks_1_desc
+		
+		upgrades_from = ct_Mbarracks_3
+		gold_cost = 200
+		build_time = 780
+		levy_size = 0.125
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	} 
+	ct_Mbarracks_5 = {
+		desc = ct_Mbarracks_1_desc
+		
+		upgrades_from = ct_Mbarracks_4
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+	     	}
+	}
+	ct_Mbarracks_6 = {
+		desc = ct_Mbarracks_1_desc
+		upgrades_from = ct_Mbarracks_5
+		gold_cost = 250
+		build_time = 1100
+		levy_size = 0.15
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}
+	}
+
+################## Offense : Light infantry + archers ###############################
+	ct_Mtownmilitia_1 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 95
+		potential = {
+	  		has_global_flag = building
+			culture_group = culture_group_moriquendi
+            	}	
+	}
+	ct_Mtownmilitia_2 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		prerequisites = { ct_Mwall_1 }
+		upgrades_from = ct_Mtownmilitia_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 40
+		archers = 70
+		ai_creation_factor = 94
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}	
+	}
+	ct_Mtownmilitia_3 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		prerequisites = { ct_Mwall_2 }
+		upgrades_from = ct_Mtownmilitia_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 93
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}	
+	}
+	ct_Mtownmilitia_4 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		upgrades_from = ct_Mtownmilitia_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 60
+		archers = 90
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi	
+        	}	
+	}
+	ct_Mtownmilitia_5 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		upgrades_from = ct_Mtownmilitia_4
+		gold_cost = 400
+		build_time = 2190
+		light_infantry = 100
+		archers = 70
+		ai_creation_factor = 91
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}	
+	}
+	ct_Mtownmilitia_6 = {
+		desc = ct_Mtownmilitia_1_desc
+		
+		upgrades_from = ct_Mtownmilitia_5
+		gold_cost = 500
+		build_time = 2190
+		light_infantry = 80
+		archers = 110
+		ai_creation_factor = 90
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}	
+	}
+	
+################## Troops : pikemen ###############################
+	ct_Mguard_1 = {
+		desc = ct_Mguard_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		pikemen = 45
+		ai_creation_factor = 96
+		potential = {	
+     			has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mguard_2 = {
+		desc = ct_Mguard_1_desc
+		
+		prerequisites = { ct_Mwall_1 }
+		upgrades_from = ct_Mguard_1
+		gold_cost = 120
+		build_time = 547
+		pikemen = 55
+		ai_creation_factor = 95
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mguard_3 = {
+		desc = ct_Mguard_1_desc
+		
+		prerequisites = { ct_Mwall_2 }
+		upgrades_from = ct_Mguard_2
+		gold_cost = 200
+		build_time = 730
+		pikemen = 65
+		ai_creation_factor = 94
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mguard_4 = {
+		desc = ct_Mguard_1_desc
+		
+		upgrades_from = ct_Mguard_3
+		gold_cost = 300
+		build_time = 1095
+		pikemen = 75
+		ai_creation_factor = 93
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi	
+        	}
+	}
+	ct_Mguard_5 = {
+		desc = ct_Mguard_1_desc
+		
+		upgrades_from = ct_Mguard_4
+		gold_cost = 400
+		build_time = 2190
+		pikemen = 85
+		ai_creation_factor = 92
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	
+################## Economy : tax income ###############################
+	ct_Mmarketplace_1 = {
+		desc = ct_Mmarketplace_1_desc
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mmarketplace_2 = {
+		desc = ct_Mmarketplace_1_desc
+		prerequisites = { ct_Mwall_1 }
+		
+		upgrades_from = ct_Mmarketplace_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi	
+		}
+	}
+	ct_Mmarketplace_3 = {
+		desc = ct_Mmarketplace_1_desc
+		
+		prerequisites = { ct_Mwall_2 }
+		upgrades_from = ct_Mmarketplace_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mmarketplace_4 = {
+		desc = ct_Mmarketplace_1_desc
+		
+		upgrades_from = ct_Mmarketplace_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mmarketplace_5 = {
+		desc = ct_Mmarketplace_1_desc
+		
+		upgrades_from = ct_Mmarketplace_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mmarketplace_6 = {
+		desc = ct_Mmarketplace_1_desc
+		
+		upgrades_from = ct_Mmarketplace_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 105
+		add_number_to_name = no
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	
+	ct_Mport_1 = {
+		desc = ct_Mport_1_desc
+		port = yes
+		
+		gold_cost = 100
+		build_time = 365
+		tax_income = 3
+		ai_creation_factor = 110
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mport_2 = {
+		desc = ct_Mport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Mwall_1 }
+		upgrades_from = ct_Mport_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 3
+		ai_creation_factor = 109
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mport_3 = {
+		desc = ct_Mport_1_desc
+		port = yes
+		
+		prerequisites = { ct_Mwall_2 }
+		upgrades_from = ct_Mport_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 108
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+	ct_Mport_4 = {
+		desc = ct_Mport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Mport_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		ai_creation_factor = 107
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mport_5 = {
+		desc = ct_Mport_1_desc
+		port = yes
+		
+		upgrades_from = ct_Mport_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3
+		ai_creation_factor = 106
+        	potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+
+################## Shipyard : galleys ###############################
+	ct_Mshipyard_1 = {
+		desc = Mshipyard_desc
+		port = yes
+		gold_cost = 100
+		build_time = 365
+		galleys = 5
+		ai_creation_factor = 98
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mshipyard_2 = {
+		desc = Mshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Mshipyard_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 6
+		ai_creation_factor = 97
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mshipyard_3 = {
+		desc = Mshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Mshipyard_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 7
+		ai_creation_factor = 96
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+        	}
+	}
+	ct_Mshipyard_4 = {
+		desc = Mshipyard_desc
+		port = yes
+		
+		upgrades_from = ct_Mshipyard_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 8
+		ai_creation_factor = 95
+		potential = {
+            		has_global_flag = building
+			culture_group = culture_group_moriquendi
+		}
+	}
+
+}

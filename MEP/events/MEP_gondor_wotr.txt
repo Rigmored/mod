@@ -1,44 +1,74 @@
 namespace = gondorwotr
 
-####### GONDORIAN WARS DURING THE WAR OF THE RING #######
+# includes initial gondor-mordor war
+# corsair attack on Tolfalas
+# and rangers of ithilien
 
-#### First of all, the First Conquest of Osigiliath ####
+####### GONDORIAN WARS DURING THE WAR OF THE RING #######
+# JamesFox : Decided to simplify
+# The war for East-Osgiliath sometimes lasted into the 11370's. The presence of Boromir or Faramir is not vastly important
+# Also, the extra troops created by the coming of Aragorn were not tied to the progress of the war, which typically made
+# the war for East-Osgiliath even more unwinnable for Sauron. The war for Cair Andros generally did not happen.
+# There was also yet another separate scripted war for west Osgiliath afterwards (never happens)!
+# So: New simplified sequence:
+# gondor_threatened (pre war)
+# gondormordor_war_1 : optional, if not defending against attackers, Sauron attacks for the Anduin Crossings in a single war.
+# Umbar invades Tolfalas.
+# gondormordor_war_2 : started in 11366 or when Sauron has the crossings, c_east_osgiliath and c_cair_andros, whichever comes first. If the previous war is not
+# over, cancel it (using invalid peace). flag gondormordor_p1won indicates gondor won or was winning the previous war
+# gondormordor_war_3 : all out attack. base it either on the progress of Aragorn, or by 11369.
+# gondormordor_war_4 : Victory or Defeat of Mordor.  w global flags: gondormordor_mordorwon and gondormordor_gondorwon
+# gondormordor_war_5 : if gondormordor_gondorwon, counter attack
+
+
+
+#### First of all, the war to get East Osgiliath and Cair Andros ####
 narrative_event = {
     id = gondorwotr.0
     title = "EVTTITgondorwotr.0"
     desc = "EVTDESCgondorwotr.0"
     picture = "GFX_gondor_guard"
-	age = 16
+	religion = religion_umaiar
 	only_independent = yes
 
 	trigger = {
 		year = 11355
-		NOT = { year = 11363 }
-		trait = evil_side
-		NOT = { has_character_flag = warsinosgiliath1 }
-		culture = culture_maiar
-		has_landed_title = c_barad_dur
+		NOT = { year = 11365 }
+		# event_target:mep_chartarget_sauron = { character = PREV }
+		character = 10016
+		NOT = { has_global_flag = gondormordor_war_1a }
+		has_landed_title = e_barad_dur
+		NOT = { is_primary_war_defender = yes }
+		# Gondor exists and holds East Osgiliath and/or Cair Andros
+		e_steward_gondor = {
+			has_holder = yes
+			holder_scope = {
+				OR = {
+					c_east_osgiliath = { holder_scope = { same_realm = PREVPREV } }
+					c_cair_andros = { holder_scope = { same_realm = PREVPREV } }
+				}
+			}
+		}
+		has_game_rule = { name = wotr_lore  value = canon }
 	}
 	
 	mean_time_to_happen = {
 		days = 20
-	}	
-	
-	immediate = {
-		set_character_flag = warsinosgiliath1
-		set_global_flag = gondor_threatened
-	}	
+	}
 	
 	option = {
-		name = "EVTOPTAgondorwotr.0" ## I'll attack The Eastern Shore of Osgiliath!
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = e_steward_gondor
+		name = "EVTOPTAgondorwotr.0" ## I'll seize the crossings
+		add_claim = c_east_osgiliath
+		add_claim = c_cair_andros
+		e_steward_gondor = {
+			holder_scope = {
+				narrative_event = { id = gondorwotr.1 days = 5 }
 			}
-			narrative_event = { id = gondorwotr.1 days = 5 }
 		}
+		set_global_flag = gondormordor_war_1a
 	}	
 }
+
 	
 ### Denethor is informed ###
 narrative_event = {
@@ -46,295 +76,226 @@ narrative_event = {
     title = "EVTTITgondorwotr.1"
     desc = "EVTDESCgondorwotr.1"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
 	is_triggered_only = yes
 	
-	immediate = {
-		set_character_flag = warsinosgiliath1
-	}	
-	
 	option = {
+		trigger = {
+			event_target:mep_chartarget_boromir = { mep_char_leader_usable = yes }
+			event_target:mep_chartarget_faramnir = { mep_char_leader_usable = yes }
+		}
 		name = "EVTOPTAgondorwotr.1" ## I'll stronger the defenses of Osgiliath with Boromir and Faramir
-		set_global_flag = faramirboromirosgiliath
-		FROM = {
-			character_event = { id = gondorwotr.2 days = 5 }
+		hidden_tooltip = {
+			set_global_flag = faramirboromirosgiliath
+			FROM = {
+				character_event = { id = gondorwotr.2 days = 5 }
+			}
 		}
 	}	
 	option = {
+		trigger = {
+			event_target:mep_chartarget_boromir = { mep_char_leader_usable = yes }
+			ai = no
+		}
 		name = "EVTOPTBgondorwotr.1" ## I'll stronger the defenses of Osgiliath with Boromir only
-		trigger = { ai = no }
+		hidden_tooltip = {
 		set_global_flag = boromirosgiliath
-		FROM = {
-			character_event = { id = gondorwotr.3 days = 5 }
+			FROM = {
+				character_event = { id = gondorwotr.2 days = 5 }
+			}
 		}		
 	}
 	option = {
 		name = "EVTOPTCgondorwotr.1" ## I'll stronger the defenses of Osgiliath with Faramir only
-		trigger = { ai = no }
-		set_global_flag = faramirosgiliath
-		FROM = {
-			character_event = { id = gondorwotr.4 days = 5 }
-		}			
+		trigger = {
+			event_target:mep_chartarget_faramnir = { mep_char_leader_usable = yes }
+			ai = no
+		}
+		hidden_tooltip = {
+			set_global_flag = faramirosgiliath
+			FROM = {
+				character_event = { id = gondorwotr.2 days = 5 }
+			}
+		}
 	}
-}	
+	
+	option = {
+		ai_chance= { factor = 0.1 }
+		name = "EVTOPTDgondorwotr.1"
+		hidden_tooltip = {
+			set_global_flag = nooneosgiliath
+			FROM = {
+				character_event = { id = gondorwotr.2 days = 5 }
+			}
+		}
+	}
+}
+	
 
-### Sauron is informed that both Boromir and Faramir will defende Osgiliath ###
+### Sauron is informed that Boromir and/or Faramir will defended Osgiliath ###
 character_event = {
     id = gondorwotr.2
     title = "EVTTITgondorwotr.2"
     desc = "EVTDESCgondorwotr.2"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
 	immediate = {
-		add_claim = c_east_osgiliath
+		set_global_flag = gondormordor_war_1
 	}
 	
 	option = {
 		name = "EVTOPTAgondorwotr.2" ## Time to attack !
-		c_east_osgiliath = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim
+		custom_tooltip = {
+			text = TT_gondorwotr2A
+			# if gondor holds both, use claim all
+			if = {
+				limit = {
+					e_steward_gondor = {
+						holder_scope = {
+							c_east_osgiliath = { holder_scope = { same_realm = PREVPREV } }
+							c_cair_andros = { holder_scope = { same_realm = PREVPREV } }
+						}
+					}
+				}
+				# declare war...
+				e_steward_gondor = {
+					reverse_war = { target = ROOT  casus_belli = claim_all }
+				}
+			}
+			# otherwise, declare separate wars...
+			if = {
+				limit = {
+					e_steward_gondor = {
+						holder_scope = {
+							OR = {
+								NOT = {
+									c_east_osgiliath = { holder_scope = { same_realm = PREVPREV } }
+								}
+								NOT = {
+									c_cair_andros = { holder_scope = { same_realm = PREVPREV } }
+								}
+							}
+						}
+					}
+				}
+				c_east_osgiliath = {
+					reverse_war = { target = ROOT  casus_belli = claim }
+				}
+				c_cair_andros = {
+					reverse_war = { target = ROOT  casus_belli = claim }
+				}
 			}
 		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_orkish
-			culture = culture_orkish
-			female = no
-			age = 33
+		# spawn an orc army at Minas Morgul
+		custom_tooltip = {
+			text = TT_gondorwotr2B
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_orkish
+				culture = culture_orkish
+				trait = orc
+				trait = great_orc
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					# owner = PREV
+					province = 426 # Morgul
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 10000 10000 }
+						heavy_infantry = { 10000 10000 }
+						archers = { 6000 6000 }
+					}
+					maintenance = no
+				}		
+			}	
 		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 10000 10000 }
-					heavy_infantry = { 10000 10000 }
-					archers = { 6000 6000 }
+		# Spawn a Southron Army at Minas Morgul
+		custom_tooltip = {
+			text = TT_gondorwotr2C
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_southron
+				culture = culture_haradrim
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					province = 426 # Morgul
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 3000 3000 }
+						heavy_infantry = { 3000 3000 }
+						archers = { 2000 2000 }
+						war_elephants = { 15 15 }
+					}
+					maintenance = no
 				}
-			}		
-		}	
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 3000 3000 }
-					heavy_infantry = { 3000 3000 }
-					archers = { 2000 2000 }
-					war_elephants = { 15 15 }
-				}
-			}		
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_easterling
-			culture = culture_easterling
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2500 2500 }
-					heavy_infantry = { 1500 1500 }
-					archers = { 1500 1500 }
-				}
-			}		
-		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
-	}	
-}
-
-### Sauron is informed that both Boromir and Faramir will defende Osgiliath ###
-character_event = {
-    id = gondorwotr.3
-    title = "EVTTITgondorwotr.3"
-    desc = "EVTDESCgondorwotr.3"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		add_claim = c_east_osgiliath
-	}	
-	
-	option = {
-		name = "EVTOPTAgondorwotr.3" ## Time to attack !
-		c_east_osgiliath = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim
 			}
 		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_orkish
-			culture = culture_orkish
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 10000 10000 }
-					heavy_infantry = { 7000 7000 }
-					archers = { 4000 4000 }
-				}
-			}		
-		}	
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2000 2000 }
-					heavy_infantry = { 2000 2000 }
-					archers = { 1000 1000 }
-					war_elephants = { 15 15 }
-				}
-			}		
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_easterling
-			culture = culture_easterling
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2000 2000 }
-					heavy_infantry = { 500 500 }
-					archers = { 1000 1000 }
-				}
-			}		
-		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
-	}	
-}
-
-### Sauron is informed that both Boromir and Faramir will defende Osgiliath ###
-character_event = {
-    id = gondorwotr.4
-    title = "EVTTITgondorwotr.4"
-    desc = "EVTDESCgondorwotr.4"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		add_claim = c_east_osgiliath
-	}	
-	
-	option = {
-		name = "EVTOPTAgondorwotr.4" ## Time to attack !
-		c_east_osgiliath = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim
+		# Spawn an Easterling Army at Minas Morgul
+		custom_tooltip = {
+			text = TT_gondorwotr2D
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_easterlings
+				culture = culture_easterling
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					province = 426 # Morgul
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 2500 2500 }
+						heavy_infantry = { 1500 1500 }
+						archers = { 1500 1500 }
+					}
+					maintenance = no
+				}		
 			}
 		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_orkish
-			culture = culture_orkish
-			female = no
-			age = 33
+		# Spawn an Orcish army at Asargil
+		custom_tooltip = {
+			text = TT_gondorwotr2E
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_orkish
+				culture = culture_orkish
+				trait = orc
+				trait = great_orc
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					owner = ROOT
+					province = 49 # Asgaril
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 20000 20000 }
+						heavy_infantry = { 10000 10000 }
+						archers = { 7000 7000 }
+					}
+					maintenance = no
+				}		
+			}
 		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 10000 10000 }
-					heavy_infantry = { 10000 10000 }
-					archers = { 6000 6000 }
-				}
-			}		
-		}	
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 33
+		wealth = 500
+		hidden_tooltip = {
+			FROM = { narrative_event = { id = gondorwotr.5 } }
 		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2000 2000 }
-					heavy_infantry = { 2000 2000 }
-					archers = { 1500 1500 }
-					war_elephants = { 15 15 }
-				}
-			}		
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_easterling
-			culture = culture_easterling
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 426 # Morgul
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2000 2000 }
-					heavy_infantry = { 1000 1000 }
-					archers = { 1000 1000 }
-				}
-			}		
-		}	
-		FROM = { character_event = { id = gondorwotr.5 } }
 	}	
 }
-
 
 	
 ### Denethor is informed ###
@@ -343,60 +304,43 @@ narrative_event = {
     title = "EVTTITgondorwotr.5"
     desc = "EVTDESCgondorwotr.5"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
-	immediate = {
-		set_character_flag = warsinosgiliath1
-	}	
-	
+	# spawn troop at the crossings
 	option = {
-		name = "EVTOPTAgondorwotr.5" ## I'll stronger the defenses of Osgiliath with Boromir and Faramir
-		set_global_flag = warsinosgiliath
+		name = "EVTOPTAgondorwotr.5" 
 		if = {
-			limit = {
-				has_global_flag = faramirboromirosgiliath
-			}
-			any_child = {
-				limit = {
-					has_character_flag = boromir
-				}
-				join_defender_wars = ROOT
+			limit = { has_global_flag = faramirboromirosgiliath }
+			event_target:mep_chartarget_boromir = {
 				spawn_unit = {
-					province = 427 # East Osgiliath
+					owner = ROOT
+					province = 428 # West Osgiliath
 					troops = {
 						heavy_infantry = { 4500 4500 }
 						archers = { 2200 2200 }
 					}
+					disband_on_peace = yes
 				}
 			}
-			any_child = {
-				limit = {
-					has_character_flag = faramir
-				}
-				join_defender_wars = ROOT
+			event_target:mep_chartarget_faramir = {
 				spawn_unit = {
-					province = 427 # East Osgiliath
+					owner = ROOT
+					province = 428 # East Osgiliath
 					troops = {
 						light_infantry = { 1500 1500 }
 						archers = { 2500 2500 }
 					}
+					disband_on_peace = yes
 				}
 			}
 		}
 		if = {
-			limit = {
-				has_global_flag = boromirosgiliath
-			}
-			any_child = {
-				limit = {
-					has_character_flag = boromir
-				}
-				join_defender_wars = ROOT
+			limit = { has_global_flag = boromirosgiliath }
+			event_target:mep_chartarget_boromir = {
 				spawn_unit = {
-					province = 427 # East Osgiliath
+					owner = ROOT
+					province = 428 # West Osgiliath
 					troops = {
 						heavy_infantry = { 5500 5500 }
 						archers = { 2200 2200 }
@@ -405,153 +349,108 @@ narrative_event = {
 			}
 		}
 		if = {
-			limit = {
-				has_global_flag = faramirosgiliath
-			}
-			any_child = {
-				limit = {
-					has_character_flag = faramir
-				}
-				join_defender_wars = ROOT
+			limit = { has_global_flag = faramirosgiliath }
+			event_target:mep_chartarget_faramir = {
 				spawn_unit = {
-					province = 427 # East Osgiliath
+					owner = ROOT
+					province = 428 # West Osgiliath
 					troops = {
 						light_infantry = { 2500 2500 }
 						archers = { 4500 4500 }
 					}
+					disband_on_peace = yes
 				}
 			}
-		}		
-	}	
-}	
-
-
-#### Second of all, the Conquest of Cair Andros ####
-narrative_event = {
-    id = gondorwotr.6
-    title = "EVTTITgondorwotr.6"
-    desc = "EVTDESCgondorwotr.6"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	trigger = {
-		year = 11355
-		NOT = { year = 11366 }
-		trait = evil_side
-		NOT = { has_character_flag = warsincairandros }
-		culture = culture_maiar
-		has_landed_title = c_barad_dur
-		has_global_flag = warsinosgiliath
-		war = no
-	}
-	
-	mean_time_to_happen = {
-		days = 10
-	}	
-	
-	immediate = {
-		set_character_flag = warsincairandros
-	}	
-	
-	option = {
-		name = "EVTOPTAgondorwotr.6" ## I'll attack The Island of Cair Andros !
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = e_steward_gondor
-			}
-			narrative_event = { id = gondorwotr.7 days = 5 }
 		}
-	}	
-}
-
-### Denethor is informed ###
-narrative_event = {
-    id = gondorwotr.7
-    title = "EVTTITgondorwotr.7"
-    desc = "EVTDESCgondorwotr.7"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAgondorwotr.7" ## I'll stronger the defenses of Cair Andros with Faramir
-		trigger = { ai = no }
-		set_global_flag = faramircairandros
-		FROM = {
-			character_event = { id = gondorwotr.8 days = 5 }
-		}
-	}	
-	option = {
-		name = "EVTOPTBgondorwotr.7" ## No need to stronger the defenses.
-		FROM = {
-			character_event = { id = gondorwotr.8 days = 5 }
-		}		
-	}
-}	
-
-### Sauron will attack Cair Andros ###
-character_event = {
-    id = gondorwotr.8
-    title = "EVTTITgondorwotr.8"
-    desc = "EVTDESCgondorwotr.8"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		add_claim = c_cair_andros
-	}
-	
-	option = {
-		name = "EVTOPTAgondorwotr.8" ## Attack !
-		set_global_flag = warincairandros
-		FROM = { character_event = { id = gondorwotr.9 } }
-		c_cair_andros = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim
-			}
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_orkish
-			culture = culture_orkish
-			female = no
-			age = 33
-		}
-		new_character = {
+		if = {
+			limit = { has_global_flag = nooneosgiliath }
 			spawn_unit = {
-				province = 8 # Cair Andros
-				disband_on_peace = yes
+				owner = ROOT
+				province = 428 # West Osgiliath
 				troops = {
-					light_infantry = { 20000 20000 }
-					heavy_infantry = { 10000 10000 }
-					archers = { 7000 7000 }
+					light_infantry = { 2500 2500 }
+					archers = { 4500 4500 }
 				}
-			}		
-		}			
+					disband_on_peace = yes
+			}
+		}		
 	}	
 }	
+
 
 ### Reinforcements for Gondor ###
+# This supposed to be send from the South, since it might trigger an Umbarean attack
 character_event = {
     id = gondorwotr.9
     title = "EVTTITgondorwotr.9"
     desc = "EVTDESCgondorwotr.9"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
+	only_playable = yes
+	has_global_flag = gondormordor_war_1
 
-	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = gondormordor_war_2 }
+		NOT = { has_global_flag = gondormordor_southtroops1 }
+		has_landed_title = k_lebennin
+		e_steward_gondor = {
+			holder_scope = {
+				# Cair Andros is a Gondorian Province
+				c_cair_andros = {
+					holder_scope = {
+						same_realm = PREVPREV
+					}
+					# Cair Andros is under Siege (or occupied)
+					location = {
+						any_province_holding = {
+							OR = {
+								is_occupied = yes
+								has_siege = yes
+							}
+					
+						}
+					}
+				}
+				# Gondor is liege of Lebennin
+				is_liege_of = PREVPREV
+			}
+		} 
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	immediate = {
+		set_global_flag = gondormordor_southtroops1
+	}
 	
 	option = {
-		name = "EVTOPTAgondorwotr.9" ## We should resist !
+		name = "EVTOPTAgondorwotr.9" ## We should teleport some troops there !
+		custom_tooltip = {
+			text = TT_gondorwotr9A
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_dunedain
+				culture = culture_gondorian
+				trait = blood_of_numenor2
+				trait = unyielding_leader
+				female = no
+				age = 48
+			}
+			new_character = {
+				spawn_unit = {
+					province = 7 # Elena
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 4000 4000 }
+						heavy_infantry = { 2000 2000 }
+						archers = { 4000 4000 }
+					}
+				}		
+			}
+		}
+		hidden_tooltip = {
+			set_global_flag = gondormordor_southtroops1_s
+		}
 		random_list = {
 			20 = {
 			}
@@ -565,44 +464,13 @@ character_event = {
 				}
 			}
 		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_dunedain
-			culture = culture_gondorian
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 8 # Cair Andros
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2500 2500 }
-					heavy_infantry = { 2000 2000 }
-					archers = { 1000 1000 }
-				}
-			}		
-		}	
-		if = {
-			limit = {
-				has_character_flag = faramircairandros 
-			}
-			any_child = {
-				limit = {
-					has_character_flag = faramir
-				}
-				join_defender_wars = ROOT
-				spawn_unit = {
-					province = 8 # Cair Andros
-					troops = {
-						light_infantry = { 1500 1500 }
-						archers = { 3000 3000 }
-					}
-				}	
-			}
-		}
+
 	}	
+	
+	option = {
+		name = "EVTOPTBgondorwotr.9" ## No
+		trigger = { ai = no }
+	}
 }	
 
 ########### THE CORSAIRS OF UMBAR - Tolfalas Invasion ############
@@ -613,28 +481,44 @@ narrative_event = {
     title = "EVTTITgondorwotr.10"
     desc = "EVTDESCgondorwotr.10"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
+	only_playable = yes
+	has_global_flag = gondormordor_southtroops1_s
 	
-	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = corsairsintolfalas1 }
+		has_landed_title = k_umbar
+		is_primary_war_defender = no
+		# North Tolfalas is Gondorian
+		e_steward_gondor = {
+			holder_scope = {
+				c_tolfalas = { holder_scope = { same_realm = PREVPREV } }
+			}
+		}
+
+	}
+	
+	mean_time_to_happen = { days = 80 }
 	
 	immediate = {
-		set_character_flag = corsairsintolfalas
+		set_global_flag = corsairsintolfalas1
 	}	
 	
 	option = {
 		name = "EVTOPTAgondorwotr.10" ## I'll attack The Island of Tolfalas
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = e_steward_gondor
+		ai_chance = { factor = 8 }
+		hidden_tooltip = {
+			set_global_flag = corsairsintolfalas2
+			e_steward_gondor = {
+				holder_scope = {
+					narrative_event = { id = gondorwotr.11 days = 20 }
+				}
 			}
-			narrative_event = { id = gondorwotr.11 days = 20 }
 		}
 	}	
 	
 	option = {
 		name = "EVTOPTAgondorwotr.10" ## I won't do it.
-		trigger = { ai = no }
+		ai_chance = { factor = 2 }
 	}		
 }
 
@@ -644,19 +528,13 @@ narrative_event = {
     title = "EVTTITgondorwotr.11"
     desc = "EVTDESCgondorwotr.11"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
 
-	is_triggered_only = yes
-	
-	immediate = {
-		set_character_flag = corsairsintolfalas
-	}	
+	is_triggered_only = yes	
 	
 	option = {
 		name = "EVTOPTAgondorwotr.11" ## Wait WHAT?
 		FROM = {
-			character_event = { id = gondorwotr.12 days = 40 }
+			narrative_event = { id = gondorwotr.12 }
 		}
 	}	
 }
@@ -667,8 +545,6 @@ narrative_event = {
     title = "EVTTITgondorwotr.12"
     desc = "EVTDESCgondorwotr.12"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -680,60 +556,71 @@ narrative_event = {
 	
 	option = {
 		name = "EVTOPTAgondorwotr.12" ## Attack !
-		FROM = {
-			character_event = { id = gondorwotr.13 days = 40 }
-		}
-		set_global_flag = corsairsintolfalas
-		d_tolfalas = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim_all
+		hidden_tooltip = {
+			FROM = {
+				narrative_event = { id = gondorwotr.13 days = 40 }
 			}
-		}		
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_black_numenorean
-			culture = culture_black_numenorean
-			female = no
-			age = 33
 		}
-		new_character = {
-			spawn_unit = {
-				province = 67 # Tolfalas
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 500 500 }
-					heavy_infantry = { 1000 1000 }
-					archers = { 700 700 }
-				}
-			}		
-		}	
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_umbareans
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 67 # Tolfalas
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2500 2500 }
-					heavy_infantry = { 300 300 }
-					archers = { 1000 1000 }
-				}
-			}		
-		}			
-		spawn_unit = {
-			province = ROOT
-			troops = {
-				galleys = { 300 300 }
+		custom_tooltip = {
+			text = TT_gondorwotr12A
+			c_tolfalas = {
+				reverse_war = { target = ROOT  casus_belli = claim_all }
 			}
-		}		
+		}
+		custom_tooltip = {
+			text = TT_gondorwotr12B		
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_black_numenorean
+				culture = culture_black_numenorean
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					owner = PREV
+					province = 67 # Tolfalas
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 500 500 }
+						heavy_infantry = { 1000 1000 }
+						archers = { 700 700 }
+					}
+				}		
+			}	
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_southron
+				culture = culture_umbareans
+				female = no
+				age = 33
+			}
+			new_character = {
+				spawn_unit = {
+					owner = PREV
+					province = 67 # Tolfalas
+					disband_on_peace = yes
+					troops = {
+						light_infantry = { 2500 2500 }
+						heavy_infantry = { 300 300 }
+						archers = { 1000 1000 }
+					}
+				}		
+			}
+		}
+		custom_tooltip = {
+			text = TT_gondorwotr12C
+			spawn_fleet = {
+				owner = THIS
+				province = 700 # Abarlonear, near Tolfalas
+				troops = {
+					galleys = { 150 150 }
+				}
+				disband_on_peace = yes
+			}
+		}
 	}	
 }
 
@@ -743,8 +630,6 @@ narrative_event = {
     title = "EVTTITgondorwotr.13"
     desc = "EVTDESCgondorwotr.13"
     picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
 
 	is_triggered_only = yes
 	
@@ -755,12 +640,13 @@ narrative_event = {
 			dynasty = none
 			religion = religion_dunedain
 			culture = culture_gondorian
+			trait = blood_of_numenor2
 			female = no
 			age = 33
 		}
 		new_character = {
 			spawn_unit = {
-				province = 67 # Tolfalas
+				province = 367 # South Tolfalas
 				disband_on_peace = yes
 				troops = {
 					light_infantry = { 700 700 }
@@ -771,206 +657,316 @@ narrative_event = {
 		}			
 	}
 }
+#--------------------------------------------------------------------------
+# End of phase 1
 
 
-############## INVASION OF OSGILIATH WEST #############
-
-#### Sauron will attack ####
-narrative_event = {
-    id = gondorwotr.14
-    title = "EVTTITgondorwotr.14"
-    desc = "EVTDESCgondorwotr.14"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
+## Event that triggers in 11366, or when Sauron has won (or lost) his first war
+# Taking stock and shifting phases
+character_event = {
+	id = gondorwotr.14
+	religion = religion_umaiar
+	has_global_flag = gondormordor_war_1
+	
+	hide_window = yes
+	
 	trigger = {
-		year = 11357
-		NOT = { year = 11370 }
-		trait = evil_side
-		culture = culture_maiar
-		has_landed_title = c_barad_dur
-		has_global_flag = warsincairandros
-		war = no
+		has_game_rule = { name = wotr_lore  value = canon }  # just in case
+		# You are Sauron
+		event_target:mep_chartarget_sauron = { character = PREV }
+		has_landed_title = e_barad_dur
+		# Trigger options :
+		OR = {
+			year = 11366  # the year is 11366 (or later)
+			war = no  # at peace
+			NOR = {   # no wars primarily between Mordor and Gondor
+				any_war = {
+					defender = { has_landed_title = e_steward_gondor }
+					attacker = ROOT
+				}
+				any_war = {
+					attacker = { has_landed_title = e_steward_gondor }
+					defender = ROOT
+				}
+			}
+		}
+	}
+	
+	# Phase 2: 'Peace' between the attacks
+	immediate = {
+		set_global_flag = gondormordor_war_2
+		clr_global_flag = gondormordor_war_1
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	# Still attacking Gondor, Trigger event to cancel war
+	option = {
+		trigger = {
+			war = yes
+			any_war = {
+				defender = { has_landed_title = e_steward_gondor }
+				attacker = ROOT
+			}
+		}
+		character_event = { id = gondorwotr.15 }
+	}
+	# Gondor is attacking us! Trigger special defensive event
+	option = {
+		trigger = {
+			war = yes
+			any_war = {
+				attacker = { has_landed_title = e_steward_gondor }
+				defender = ROOT
+			}
+		}
+		set_global_flag = gondormordor_p1won
+		character_event = { id = gondorwotr.16 }
+	}
+	# Not at war with Gondor
+	option = {
+		trigger = {
+			NOR = {   # no wars primarily between Mordor and Gondor
+				any_war = {
+					defender = { has_landed_title = e_steward_gondor }
+					attacker = ROOT
+				}
+				any_war = {
+					attacker = { has_landed_title = e_steward_gondor }
+					defender = ROOT
+				}
+			}
+		}
+		character_event = { id = gondorwotr.17 }
+	}	
+	
+}
+
+# Sauron's phase 1 offensive war is still undecided. Cancel it, to clear the way for a later, greater attack...
+character_event = {
+	id = gondorwotr.15
+	title = EVTTITgondorwotr.15
+	desc = EVTDESCgondorwotr.15
+	picture = GFX_sauron_commands
+	
+	is_triggered_only = yes
+	
+	# Cancel the war against gondor, we will strike back harder in a while
+	option = {
+		name = EVTOPTAgondorwotr.15
+		custom_tooltip = {
+			text = TT_gondorwotr15A
+			any_war = {
+				if = {
+					limit = {
+						defender = { has_landed_title = e_steward_gondor }
+						attacker = ROOT
+					}
+					if = {
+						limit = {
+							NOT = { war_score = -40 }
+						}
+						set_global_flag = gondormordor_p1won
+					}
+					end_war = invalid
+				}
+			}
+			e_steward_gondor = {
+				holder_scope = {
+					narrative_event = { id = gondorwotr.30 }
+				}
+			}
+		}
 		
 	}
 	
-	mean_time_to_happen = {
-		days = 40
-	}	
-	
-	immediate = {
-		set_character_flag = warsinosgiliath2
-	}	
-	
+	# As the player, I'd rather derail future events
 	option = {
-		name = "EVTOPTAgondorwotr.14" ## I'll conquer the other shore of the Anduin.
-		any_playable_ruler = {
-			limit = {
-				has_landed_title = e_steward_gondor
-			}
-			narrative_event = { id = gondorwotr.15 days = 10 }
-		}
-	}	
-	
-	option = {
-		name = "EVTOPTBgondorwotr.14" ## I won't.
+		name = EVTOPTBgondorwotr.15
 		trigger = { ai = no }
-	}		
-}
-
-#### Sauron will attack ####
-narrative_event = {
-    id = gondorwotr.15
-    title = "EVTTITgondorwotr.15"
-    desc = "EVTDESCgondorwotr.15"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		set_character_flag = warsinosgiliath2
-	}	
-	
-	option = {
-		name = "EVTOPTAgondorwotr.15" ## Oh no...
-		FROM = {
-			narrative_event = { id = gondorwotr.16 days = 10 }
-		}
-	}	
-}
-
-#### WAR ! ####
-narrative_event = {
-    id = gondorwotr.16
-    title = "EVTTITgondorwotr.16"
-    desc = "EVTDESCgondorwotr.16"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		add_claim = c_west_osgiliath
-		add_claim = c_east_osgiliath
 	}
-	
-	option = {
-		name = "EVTOPTAgondorwotr.16" ## TO WAR !!
-		set_global_flag = warinosgiliath2
-		c_east_osgiliath = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim_all
-			}
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_orkish
-			culture = culture_orkish
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 427 # East Osgiliath
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 10000 10000 }
-					heavy_infantry = { 7000 7000 }
-					archers = { 4000 4000 }
-				}
-			}		
-		}	
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_southron
-			culture = culture_haradrim
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 427 # East Osgiliath
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 7000 7000 }
-					heavy_infantry = { 2000 2000 }
-					archers = { 3000 3000 }
-					war_elephants = { 15 15 }
-				}
-			}		
-		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_easterling
-			culture = culture_easterling
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 427 # East Osgiliath
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 5000 5000 }
-					heavy_infantry = { 2500 2500 }
-					archers = { 3000 3000 }
-				}
-			}		
-		}	
-		FROM = { character_event = { id = gondorwotr.17 } }
-	}	
+
 }
 
-### Gondor shall resist ! ###
-narrative_event = {
-    id = gondorwotr.17
-    title = "EVTTITgondorwotr.17"
-    desc = "EVTDESCgondorwotr.17"
-    picture = "GFX_gondor_guard"
-	age = 16
-	only_independent = yes
-
+# Steward Gondor is actually attacking you. Rally the troops
+character_event = {
+	id = gondorwotr.16
+	title = EVTTITgondorwotr.16
+	desc = EVTDESCgondorwotr.16
+	picture = GFX_sauron_commands
+	
 	is_triggered_only = yes
 	
-	
+	# They are fools to think they can succeed
 	option = {
-		name = "EVTOPTAgondorwotr.17" ## We shall resist !
-		c_east_osgiliath = {
-			reverse_war = {
-				target = ROOT
-				casus_belli = claim
+		name = EVTOPTAgondorwotr.16
+		custom_tooltip = {
+			text = TT_gondorwotr16A
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_orkish
+				culture = culture_orkish
+				trait = orc
+				trait = great_orc
+				trait = evil_side
+				trait = mountain_terrain_leader
+				trait = brilliant_strategist
+				female = no
+				age = 39
+			}
+			new_character = {
+				spawn_unit = {
+					province = 654  # Barad-Dûr
+					owner = PREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes				
+				}
 			}
 		}
-		create_random_soldier = {
-			random_traits = yes
-			dynasty = none
-			religion = religion_dunedain
-			culture = culture_gondorian
-			female = no
-			age = 33
-		}
-		new_character = {
-			spawn_unit = {
-				province = 428 # East Osgiliath
-				disband_on_peace = yes
-				troops = {
-					light_infantry = { 2000 2000 }
-					heavy_infantry = { 3000 3000 }
-					archers = { 2000 2000 }
-					knights = { 300 300 }
+		custom_tooltip = {
+			text = TT_gondorwotr16B
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_orkish
+				culture = culture_orkish
+				trait = orc
+				trait = great_orc
+				trait = evil_side
+				trait = unyielding_leader
+				trait = brilliant_strategist
+				female = no
+				age = 42
+			}
+			new_character = {
+				spawn_unit = {
+					province = 426  # Minas Morgul
+					owner = PREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes				
 				}
-			}		
-		}	
-	}	
+			}
+		}
+		custom_tooltip = {
+			text = TT_gondorwotr16C
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = religion_uruk
+				culture = culture_urukhai
+				trait = orc
+				trait = great_orc
+				trait = evil_side
+				trait = unyielding_leader
+				trait = brilliant_strategist
+				female = no
+				age = 42
+			}
+			new_character = {
+				spawn_unit = {
+					province = 149 # Cirith Ungol
+					owner = PREV
+					disband_on_peace = yes
+					attrition = 0
+					maintenance_multiplier = 0.1
+					troops = {
+						heavy_infantry = { 2800 2800 }
+						light_infantry = { 5700 5700 }
+						pikemen = { 2800 2800 }
+						archers = { 5700 5700 }
+						light_cavalry = { 2800 2800 } 
+					}
+					reinforces = yes				
+				}
+			}
+		}
+		custom_tooltip = {
+			text = TT_gondorwotr16D
+			any_army = { morale = 1.0 }
+		}
+		wealth = 1000
+	}
+
 }
+
+# We start phase two in peace, with a loss or a win
+character_event = {
+	id = gondorwotr.17
+	title = EVTTITgondorwotr.17
+	desc = {  # lost trigger
+		trigger = {
+			OR = {
+				NOT = { any_realm_lord = { has_landed_title = c_east_osgiliath } }
+				NOT = { any_realm_lord = { has_landed_title = c_cair_andros } }
+			}
+		}
+		text = EVTDESCgondorwotr.17a
+	}
+	desc = {
+		trigger = {  # won trigger
+			any_realm_lord = { has_landed_title = c_east_osgiliath }
+			any_realm_lord = { has_landed_title = c_cair_andros }
+		}
+		text = EVTDESCgondorwotr.17b
+	}
+	picture = GFX_sauron_commands
+	
+	is_triggered_only = yes
+	
+	# Prepare for a bigger strike
+	option = {
+		name = EVTOPTAgondorwotr.17
+		hidden_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						NOT = { any_realm_lord = { has_landed_title = c_east_osgiliath } }
+						NOT = { any_realm_lord = { has_landed_title = c_cair_andros } }
+					}
+				}
+				set_global_flag = gondormordor_p1won
+			}
+			# not sure what else to do here
+		}
+		
+	}
+
+}
+
+# A notification for the Steward on Gondor that the ongoing war (Sauron trying to take
+# East Osgiliath and Cair Andros) is cancelled
+narrative_event = {
+	id = gondorwotr.30
+	title = EVTTITgondorwotr.30
+	desc = EVTDESCgondorwotr.30
+	picture = GFX_shadows_coming
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAgondorwotr.30
+	}
+}
+
 
 ########################################################
 #################EVENTS FOR THE RANGERS#################
@@ -1010,14 +1006,10 @@ character_event = {
 	    name = "EVTOPTAgondorwotr.19"
         trigger = {
 		    wealth = 250
-			ROOT = {
-			    AND = {
-			        has_landed_title = d_ithilien_rangers
-				    trait = ithilien_captain
-				    is_alive = yes
-					age = 16
-				}
-			}
+			has_landed_title = d_ithilien_rangers
+			trait = ithilien_captain
+			is_alive = yes
+			age = 16
 		}
 		wealth = -250
 		ROOT = {
@@ -1048,7 +1040,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_henneth_annun
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1060,7 +1052,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_emyn_arnen
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1072,7 +1064,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_west_osgiliath
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1083,7 +1075,7 @@ character_event = {
 			}
 		}
 		ROOT = {
-		    character_event = { gondorwotr.21 }
+		    character_event = { id = gondorwotr.21 }
 	    }
 	}
 }
@@ -1106,7 +1098,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_minas_ithil
 		ROOT = {
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1118,7 +1110,7 @@ character_event = {
 		}
 		set_character_flag = flag_send_to_east_osgiliath
 		ROOT ={
-		    character_event = { gondorwotr.22 days = 20 }
+		    character_event = { id = gondorwotr.22 days = 20 }
 		}
 	}
 	option = {
@@ -1129,7 +1121,7 @@ character_event = {
 			}
 		}
 		ROOT = {
-		    character_event = { gondorwotr.20 }
+		    character_event = { id = gondorwotr.20 }
 		}
 	}
 }
@@ -1150,141 +1142,141 @@ character_event = {
 			    is_alive = yes
 			}
 		}
-		if = {
-		    any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_henneth_annun
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 51
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_henneth_annun
-			        clr_character_flag = flag_hiring_soldiers
-		    	}
-		    }
-		    any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_emyn_arnen
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 55
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_emyn_arnen
-			        clr_character_flag = flag_hiring_soldiers
+		any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_henneth_annun
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
 		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 51
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
+			    }
+			    clr_character_flag = flag_send_to_henneth_annun
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+		any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_emyn_arnen
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 55
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
+			    }
+			    clr_character_flag = flag_send_to_emyn_arnen
+			    clr_character_flag = flag_hiring_soldiers
 		    }
-            any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_west_osgiliath
+		}
+        any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_west_osgiliath
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 428
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 428
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_west_osgiliath
-			        clr_character_flag = flag_hiring_soldiers
+			    clr_character_flag = flag_send_to_west_osgiliath
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+        any_independent_ruler = {
+		    limit = {
+			    has_character_flag = flag_send_to_minas_ithil
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 426
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-		    }
-            any_independent_ruler = {
-		        limit = {
-			        has_character_flag = flag_send_to_minas_ithil
+			    clr_character_flag = flag_send_to_minas_ithil
+			    clr_character_flag = flag_hiring_soldiers
+			}
+		}
+        any_independent_ruler = {
+		    limit = {
+				has_character_flag = flag_send_to_east_osgiliath
+			}
+			ROOT = {
+			    create_random_soldier = {
+			        random_traits = yes
+			        dynasty = none
+			        religion = religion_dunedain
+			        culture = culture_gondorian
+			        female = no
+			        age = 33
+				    trait = ithilien_ranger
+		        }
+			    new_character = {
+			        spawn_unit = {
+				        province = 427
+					    troops = {
+					        archers = { 500 500 }
+					    }
+					    attrition = 0
+				    }
 			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 426
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-			        clr_character_flag = flag_send_to_minas_ithil
-			        clr_character_flag = flag_hiring_soldiers
-			    }
-		    }
-            any_independent_ruler = {
-		        limit = {
-				    has_character_flag = flag_send_to_east_osgiliath
-			    }
-			    ROOT = {
-			        create_random_soldier = {
-			            random_traits = yes
-			            dynasty = none
-			            religion = religion_dunedain
-			            culture = culture_gondorian
-			            female = no
-			            age = 33
-				        trait = ithilien_ranger
-		            }
-			        new_character = {
-			            spawn_unit = {
-				            province = 427
-					        troops = {
-					            archers = 500
-					        }
-					        attrition = 0
-				        }
-			        }
-		            clr_character_flag = flag_send_to_east_osgiliath
-		            clr_character_flag = flag_hiring_soldiers
-			    }
-		    }
-	    }
+		        clr_character_flag = flag_send_to_east_osgiliath
+		        clr_character_flag = flag_hiring_soldiers
+			}
+		}
+
 	}
+}

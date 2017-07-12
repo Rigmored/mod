@@ -1,0 +1,181 @@
+targetted_decisions = { 
+
+	# in MEP, species is emulated via religion, which as a side effect makes certain alliances
+	# impossible. To get around that required events and special decisions. 
+	
+	join_defend_against_evil_war = {
+
+		is_high_prio = yes # Will show an alert if special action is available
+  
+		filter = all #Filter characters targetted by the player
+  
+		ai_target_filter = all #Filter for characters targetted by the AI
+  
+		from_potential = {
+			# The person making the decision must be a defender of middle earth
+			is_ruler = yes
+			trait = good_side
+			independent = yes
+			mercenary = no
+			# However, if AI, some are completeley unlikely
+			OR = {
+				ai = no
+				NOR = {
+					culture = culture_huorn
+					culture = culture_valar
+				}
+			}
+		}
+  
+		potential = {
+			# The recipient must be a defender ruler (or an adorable hobbit ) defending against evil
+			OR = {
+				trait = good_side
+				culture = culture_maiar
+				culture_group = culture_group_halfling
+			}
+			is_ruler = yes
+			is_primary_war_defender = yes
+			any_war = {
+				attacker = {
+					mep_is_evil_side_trigger = yes
+					war_with = PREVPREV
+				}
+			}
+		}
+  
+		allow = {
+			# the person making the decision must be at peace
+			FROM = {
+				trait = good_side
+				war = no
+			}
+			# the target must be loosing the defensive war against evil
+			ROOT = {
+				custom_tooltip = {
+					text = TT_MEP_AIDWAR1
+					any_war = {
+						war_score = 20
+						attacker = {
+							mep_is_evil_side_trigger = yes
+							war_with = PREVPREV
+						}
+					}
+				}
+				# Also, the distance between the two should be small enough (unless it's the player)
+				OR = {
+					FROM = { ai = no } 
+					capital_scope = {
+						NOT = { distance = { who = FROM value = 600 } }
+					}
+				}
+			}
+			
+		}
+  
+		effect = {
+			FROM = {
+				join_defender_wars = ROOT
+			}
+			ROOT = {
+				letter_event = { id = alliancesystem.50 }
+			}
+		}
+  
+		revoke_allowed = {
+			always = no 
+		}
+		
+		# Very low probability that an AI will do this
+		ai_will_do = {
+			factor = 0.01
+		}
+	}
+	
+	
+	# The species/religion thing also means any attempt to invite someone to your court will *always*
+	# be refused if there is a species difference.
+	
+	invite_tocourt_special = {
+
+		is_high_prio = no
+  
+		filter = all
+  
+		ai_target_filter = all
+  
+		from_potential = {
+			# The person making the decision must be a ruler (and the player)
+			is_ruler = yes
+			wealth = 200
+			ai = no
+		}
+  
+		potential = {
+			# The recipient must be a a courtier with no prospects in another court
+			is_ruler = no
+			dynasty = none
+			is_heir = no
+			NOT = { num_of_claims = 1 }
+			host = {
+				NOT = { character = FROM }
+			}
+			age = 16
+
+		}
+  
+		allow = {
+			opinion = { who = FROM value = 20 } 
+			custom_tooltip = {
+				text = TT_MEP_INVITE_S1
+				is_councillor = no
+				is_married = no
+				NOT = { num_of_lovers = 1 }
+			}
+			# don't allow evil characters to go to good, and vice versa
+			OR = {
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S2
+					FROM = { mep_is_good_side_trigger = yes }
+					NOT = { mep_is_evil_side_trigger = yes }
+				}
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S3
+					FROM = { mep_is_evil_side_trigger = yes	}
+					NOT = { mep_is_good_side_trigger = yes }					
+				}
+				# but do allow 'neutrals' to have no such restriction
+				custom_tooltip = {
+					text = TT_MEP_INVITE_S4
+					FROM = {
+						NOT = { 
+							mep_is_good_side_trigger = yes
+							mep_is_evil_side_trigger = yes
+						}
+					}
+				}
+			}
+
+		}
+  
+		effect = {
+			# money changes hands and person comes to FROM court
+			FROM = {
+				wealth = -150
+			}
+			ROOT = {
+				wealth = 150
+				move_character = FROM
+			}
+		}
+  
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+  
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

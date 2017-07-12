@@ -1,43 +1,45 @@
 decisions = {
+
 	## If the line of Isildur failed, an option for the steward to claim the crown of Gondor ##
-	claim_king_gondor = {
-		is_high_prio = no
-		potential = {
-			ai = no
-			has_dlc = "Legacy of Rome"
-			age = 16
-			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_global_flag = steward_king_gondor }
-			has_landed_title = e_steward_gondor
-			religion = religion_dunedain
-			any_playable_ruler = {
-				trait = blood_of_isildur
-				NOT = { is_alive = yes }
-			}
-			has_character_flag = special_decisions_open
-		}
-		allow = {
-			prestige = 3000
-			completely_controls = k_anorien
-			completely_controls = k_lebennin
-			completely_controls = k_anfalas
-			completely_controls = k_belfalas
-			completely_controls = k_ithilien
-			completely_controls = k_pinnath_gelin
-			completely_controls = k_andrast
-		}
-		effect = {
-			set_global_flag = steward_king_gondor
-			narrative_event = { id = RoN.5 }
-		}
-	}
+	# Disabled because RoN.5 is missing
+	#claim_king_gondor = {
+	#	is_high_prio = no
+	#	potential = {
+	#		ai = no
+	#		has_dlc = "Legacy of Rome"
+	#		age = 16
+	#		prisoner = no
+	#		NOT = { trait = incapable }
+	#		NOT = { has_global_flag = steward_king_gondor }
+	#		has_landed_title = e_steward_gondor
+	#		religion = religion_dunedain
+	#		any_playable_ruler = {
+	#			trait = blood_of_isildur
+	#			NOT = { is_alive = yes }
+	#		}
+	#		has_character_flag = special_decisions_open
+	#	}
+	#	allow = {
+	#		prestige = 3000
+	#		completely_controls = k_anorien
+	#		completely_controls = k_lebennin
+	#		completely_controls = k_anfalas
+	#		completely_controls = k_belfalas
+	#		completely_controls = k_ithilien
+	#		completely_controls = k_pinnath_gelin
+	#		completely_controls = k_andrast
+	#	}
+	#	effect = {
+	#		set_global_flag = steward_king_gondor
+	#		narrative_event = { id = RoN.5 }
+	#	}
+	#}
+	
 	## For the King of Mirkwood, to claim the High Kingship of the Silvan Elves ##
 	claim_king_silvan_elves = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -56,12 +58,12 @@ decisions = {
 			narrative_event = { id = claimtitles.1 }
 		}
 	}
+	
 	## For the King of Bellakar, to claim the High Kingship of Anadune ##
 	claim_king_anadune = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -84,12 +86,12 @@ decisions = {
 			narrative_event = { id = claimtitles.3 }
 		}
 	}
+	
 	## For the King of Arthedain, to claim the Kingdom of Arnor ##
 	claim_king_arnor = {
 		is_high_prio = no
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -116,13 +118,13 @@ decisions = {
 			narrative_event = { id = claimtitles.5 }
 		}
 	}
-	### NOT USED FOR NOW ###	
-## For the King of Arnor or Gondor to claim the Reunited Kingdom ##
+	
+	
+## For the King of Arnor and Gondor to claim the Reunited Kingdom ##
 	claim_reunited_kingdom = {
 		is_high_prio = yes
 		potential = {
 			ai = no
-			has_dlc = "Legacy of Rome"
 			age = 16
 			prisoner = no
 			NOT = { trait = incapable }
@@ -137,6 +139,13 @@ decisions = {
 			OR = {
 				completely_controls = k_arthedain
 				completely_controls = k_cardolan
+				# or, Elessar after the War of the Ring
+				AND = {
+					character = 2038
+					has_global_flag = saurondefeated
+					war = no
+					wealth = 50 # must not be bankrupt...
+				}
 			}
 			completely_controls = k_anorien
 			completely_controls = k_ithilien

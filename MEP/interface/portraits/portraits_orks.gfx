@@ -22,7 +22,7 @@ spriteTypes = {
 			"GFX_ork_male_mouth:d2"
 			"GFX_ork_male_nose:d3"
 			"GFX_ork_male_eyes:d6"
-			"GFX_ork_male_eyes2:d6:e"
+			# "GFX_ork_male_eyes2:d6:e"
 			"GFX_ork_male_clothes:p3:c2"
 			"GFX_ork_male_headgear_mid:p5:c3"
 			"GFX_ork_male_ear:d7"			
@@ -36,6 +36,8 @@ spriteTypes = {
 			"GFX_ork_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 	hair_color_index = 8
 		hair_color = { # dark, base, highlight
@@ -75,7 +77,7 @@ spriteTypes = {
 			"GFX_ork_male_mouth_midage:d2"
 			"GFX_ork_male_nose_midage:d3"					#10
 			"GFX_ork_male_eyes_midage:d6"
-			"GFX_ork_male_eyes2:d6:e"
+			# "GFX_ork_male_eyes2:d6:e"
 			"GFX_ork_male_clothes:p3:c2"
 			"GFX_ork_male_headgear_mid:p5:c3"
 			"GFX_ork_male_ear_midage:d7"					#15
@@ -89,6 +91,8 @@ spriteTypes = {
 			"GFX_ork_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 
 		hair_color_index = 8
@@ -139,6 +143,8 @@ spriteTypes = {
 			"GFX_ork_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 
 		hair_color_index = 8
@@ -197,6 +203,8 @@ spriteTypes = {
 			"GFX_goblin_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 
 		hair_color_index = 8
@@ -251,6 +259,8 @@ spriteTypes = {
 			"GFX_goblin_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 
 		hair_color_index = 8
@@ -305,6 +315,8 @@ spriteTypes = {
 			"GFX_goblin_male_headgear:p5:c5"
 			"GFX_character_imprisoned:p6"
 			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
 		}
 
 		hair_color_index = 8
@@ -981,13 +993,13 @@ spriteTypes = {
 		can_be_lowres = yes
 	}
 
-	spriteType = {
-		name = "GFX_ork_male_eyes2"
-		texturefile = "gfx\\characters\\ork_male\\ork_male_eyes2.dds"
-		noOfFrames = 13
-		norefcount = yes
-		can_be_lowres = yes
-	}
+	#spriteType = {
+	#	name = "GFX_ork_male_eyes2"
+	#	texturefile = "gfx\\characters\\ork_male\\ork_male_eyes2.dds"
+	#	noOfFrames = 13
+	#	norefcount = yes
+	#	can_be_lowres = yes
+	#}
 
 	spriteType = {
 		name = "GFX_ork_male_clothes"
@@ -1092,6 +1104,873 @@ spriteTypes = {
 		norefcount = yes
 		can_be_lowres = yes
 	}	
+	
+	
+### goblinS of MM ####
+	
+# CULTURE_INDEX: 0 = clothes behind, 1 = headgear behind, 2 = clothes, 3 = headgear mid, 4 = clothes infront, 5 = headgear
+	
+# goblinS female
+	portraitType = {
+		name = "PORTRAIT_goblingfx_female"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p1:h:y"
+			"GFX_goblin_female_base:p2"
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"	
+			"GFX_goblin_female_ear:d7"			
+		   	"GFX_goblin_female_hair:p1:h:y"
+			"GFX_empty:p3:c4"						
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_empty:p3:c0"              #1
+			"GFX_empty:p5:c1"             #2				
+			"GFX_character_scars:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 60 60 60 } { 187 187 187 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}
+	
+	# middle age
+	portraitType = {
+		name = "PORTRAIT_goblingfx_female1"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p1:h:y"
+			"GFX_goblin_female_base:p2"
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"	
+			"GFX_goblin_female_ear:d7"			
+		   	"GFX_goblin_female_hair:p1:h:y"
+			"GFX_empty:p3:c4"						
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_empty:p3:c0"              #1
+			"GFX_empty:p5:c1"             #2				
+			"GFX_character_scars:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 110 110 110 } { 255 250 255 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}
+	
+	# old age
+	portraitType = {
+		name = "PORTRAIT_goblingfx_female2"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p1:h:y"
+			"GFX_goblin_female_base:p2"
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"	
+			"GFX_goblin_female_ear:d7"			
+		   	"GFX_goblin_female_hair:p1:h:y"
+			"GFX_empty:p3:c4"						
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_empty:p3:c0"              #1
+			"GFX_empty:p5:c1"             #2				
+			"GFX_character_scars:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 60 60 60 } { 187 187 187 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}		
+	### goblin FEMALE ####
+	
+	spriteType = {
+		name = "GFX_character_blinded_eyes"
+		texturefile = "gfx\\characters\\shared\\blinded_eyes.dds"
+		noOfFrames = 2
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_hair_behind"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_behind_1.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_hair_behind_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_behind_2.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_hair_behind_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_behind_3.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+
+
+	spriteType = {
+		name = "GFX_goblin_female_base"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_base_1.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_base_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_base_2.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_base_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_base_3.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_neck"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_neck_1.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_neck_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_neck_2.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_neck_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_neck_3.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_cheeks"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_cheeks_1.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_goblin_female_cheeks_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_cheeks_2.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_goblin_female_cheeks_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_cheeks_3.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_chin"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_chin_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_chin_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_chin_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_chin_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_chin_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_mouth"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_mouth_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_mouth_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_mouth_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_mouth_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_mouth_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_nose"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_nose_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_nose_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_nose_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_goblin_female_nose_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_nose_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+#	spriteType = {
+#		name = "GFX_goblin_female_head"
+#		texturefile = "gfx\\characters\\goblin_female\\goblin_female_head_1.dds"
+#		noOfFrames = 3
+#		norefcount = yes
+#		can_be_lowres = yes
+#	}
+
+	spriteType = {
+		name = "GFX_goblin_female_eyes"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_eyes_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_eyes_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_eyes_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_eyes_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_eyes_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_eyes2"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_eyes2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_ear"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_ear_1.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_ear_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_ear_2.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_ear_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_ear_3.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_goblin_female_hair"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_1.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+		spriteType = {
+		name = "GFX_goblin_female_hair_midage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_2.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_goblin_female_hair_oldage"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_female_hair_3.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_goblin_background"
+		texturefile = "gfx\\characters\\goblin_female\\goblin_backgrounds.dds"
+		noOfFrames = 21
+		norefcount = yes
+		can_be_lowres = yes
+	}		
+		
+# orkS female
+	portraitType = {
+		name = "PORTRAIT_orkgfx_female"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p3:c0"
+			"GFX_empty:p5:c1"			
+			"GFX_ork_female_hair_behind:p1:h:y"
+			"GFX_ork_female_base:p2"
+		   	"GFX_ork_female_hair:p1:h:y"			
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"			
+			"GFX_empty:d7"				
+			"GFX_empty:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p3:c4"			
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 60 60 60 } { 187 187 187 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}
+	
+	# middle age
+	portraitType = {
+		name = "PORTRAIT_orkgfx_female1"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p3:c0"
+			"GFX_empty:p5:c1"			
+			"GFX_ork_female_hair_behind:p1:h:y"
+			"GFX_ork_female_base:p2"
+		   	"GFX_ork_female_hair:p1:h:y"			
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"			
+			"GFX_empty:d7"				
+			"GFX_empty:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p3:c4"			
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 110 110 110 } { 255 250 255 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}
+	
+	# old age
+	portraitType = {
+		name = "PORTRAIT_orkgfx_female2"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_character_background:p0"
+			"GFX_empty:p3:c0"
+			"GFX_empty:p5:c1"			
+			"GFX_ork_female_hair_behind:p1:h:y"
+			"GFX_ork_female_base:p2"
+		   	"GFX_ork_female_hair:p1:h:y"			
+			"GFX_empty:d0"
+			"GFX_empty:d4"
+			"GFX_empty:d1"
+			"GFX_empty:d2"
+			"GFX_empty:d3"
+			"GFX_empty:d6"
+			"GFX_empty:d6:e"			
+			"GFX_empty:d7"				
+			"GFX_empty:p7"
+			"GFX_empty:p8"
+			"GFX_empty:p9"
+			"GFX_empty:p3:c4"			
+			"GFX_empty:p5:c3"             #14
+			"GFX_empty:p5:c5"                 #20
+			"GFX_empty:p3:c2"                  #12	
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_imprisoned:p6"
+			"GFX_empty:p11"
+			"GFX_empty:p12"
+			"GFX_empty:p13"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight
+			{ 60 60 60 } { 187 187 187 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 58 109 193}
+			{ 120 74 46 }
+			{ 34 103 36 }
+		}
+		
+		headgear_that_hides_hair = { 10 }
+	}		
+	### ork FEMALE ####
+	
+	spriteType = {
+		name = "GFX_ork_female_clothes"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_clothes.dds"
+		noOfFrames = 12
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_ork_female_clothes_behind"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_clothes_behind.dds"
+		noOfFrames = 12
+		norefcount = yes
+		can_be_lowres = yes
+	}	
+	
+	spriteType = {
+		name = "GFX_ork_female_headgear_behind"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_headgear_behind.dds"
+		noOfFrames = 12
+		norefcount = yes
+		can_be_lowres = yes
+	}	
+	
+	spriteType = {
+		name = "GFX_ork_female_headgear_mid"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_headgear_mid.dds"
+		noOfFrames = 12
+		norefcount = yes
+		can_be_lowres = yes
+	}	
+	
+	spriteType = {
+		name = "GFX_ork_female_headgear"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_headgear.dds"
+		noOfFrames = 12
+		norefcount = yes
+		can_be_lowres = yes
+	}	
+
+	spriteType = {
+		name = "GFX_ork_female_hair_behind"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_behind_1.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_hair_behind_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_behind_2.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_hair_behind_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_behind_3.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+
+
+	spriteType = {
+		name = "GFX_ork_female_base"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_base_1.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_base_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_base_2.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_base_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_base_3.dds"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_neck"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_neck_1.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_neck_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_neck_2.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_neck_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_neck_3.dds"
+		noOfFrames = 4
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_cheeks"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_cheeks_1.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_ork_female_cheeks_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_cheeks_2.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_ork_female_cheeks_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_cheeks_3.dds"
+		noOfFrames = 11
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_chin"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_chin_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_chin_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_chin_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_chin_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_chin_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_mouth"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_mouth_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_mouth_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_mouth_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_mouth_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_mouth_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_nose"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_nose_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_nose_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_nose_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_ork_female_nose_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_nose_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+#	spriteType = {
+#		name = "GFX_ork_female_head"
+#		texturefile = "gfx\\characters\\ork_female\\ork_female_head_1.dds"
+#		noOfFrames = 3
+#		norefcount = yes
+#		can_be_lowres = yes
+#	}
+
+	spriteType = {
+		name = "GFX_ork_female_eyes"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_eyes_1.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_eyes_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_eyes_2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_eyes_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_eyes_3.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_eyes2"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_eyes2.dds"
+		noOfFrames = 13
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_ear"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_ear_1.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_ear_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_ear_2.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_ear_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_ear_3.dds"
+		noOfFrames = 10
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "GFX_ork_female_hair"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_1.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+		spriteType = {
+		name = "GFX_ork_female_hair_midage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_2.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
+	
+	spriteType = {
+		name = "GFX_ork_female_hair_oldage"
+		texturefile = "gfx\\characters\\ork_female\\ork_female_hair_3.dds"
+		noOfFrames = 14
+		norefcount = yes
+		can_be_lowres = yes
+	}
 	
 	spriteType = {
 		name = "GFX_ork_background"

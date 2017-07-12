@@ -1,0 +1,73 @@
+###################################
+#
+# THE OLD GODS 
+# - Defensive pagan events
+#
+###################################
+
+# Written by Mathilda Bjarnehed & Milla Isaksson
+
+namespace = TOG
+
+###ANCESTOR WORSHIP DECISION EVENTS###
+# Almost completely cleared for MEP
+#HEALTH OUTCOMES
+
+
+
+#Blessing of health healing illness
+character_event = {
+	id = TOG.7015
+	desc = EVTDESC_TOG_7015
+	border = GFX_event_normal_frame_religion
+	picture = GFX_evt_tribal_shrine
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_disease_trigger = yes
+	}
+
+	option = {
+		name = EVTOPTA_TOG_7015
+		remove_disease_trait_effect = yes	
+		remove_character_modifier = blessing_of_health
+
+		if = {
+			limit = { trait = cynical }
+			remove_trait = cynical
+		}
+		if = {
+			limit = { NOT = { trait = zealous } }
+			add_trait = zealous
+		}
+		clr_character_flag = old_gods_blessing
+	}
+}
+
+
+###MAIN DEITY EVENTS###
+
+#Removing monument
+province_event = {
+	id = TOG.7528
+	
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_province_modifier = holy_monument
+			has_province_modifier = ancestral_monument
+		}
+	}
+
+	immediate = { 
+		if = {
+			limit = { NOT = { owner = { character = event_target:monument_erector } } }
+			remove_province_modifier = holy_monument
+			remove_province_modifier = ancestral_monument
+		}
+		province_event = { id = TOG.7528 days = 365 } 
+	}
+}

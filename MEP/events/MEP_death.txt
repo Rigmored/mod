@@ -1,0 +1,320 @@
+# Assembled Death events
+namespace = mepdeath
+
+## General death event (dispatch)
+character_event = {
+	id = mepdeath.0
+	hide_window = yes
+	
+	option = {
+		# dispatching the elven 'marriedforever' event
+		if = {
+			limit = {
+				trait = elf
+				NOT = { trait = elf_childhood }
+			}
+			any_spouse = {
+				limit = {
+					is_alive = yes
+					trait = elf
+					NOT = { trait = elf_childhood }
+				}
+				character_event = { id = mepmarriage.11  days = 1 }
+			}
+		}
+	}
+}
+
+### DEATH OF A NUMENOREAN OF MEDIUM BLOOD CHARACTER ###
+character_event = {
+	id = mepdeath.10
+	title = "EVTITmepdeath.10"
+	desc = "EVTDESCmepdeath.10"
+	picture = GFX_evt_death
+	
+    trigger = {
+			age = 110
+			NOT = { has_character_flag = numenorean_death }
+           	NOT = { trait = elf }
+           	NOT = { trait = dwarven }
+			trait = blood_of_numenor2
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		
+		### Dates Modifiers ###
+		modifier = {
+			factor = 5
+			year = 8000
+		}
+		modifier = {
+			factor = 0.8
+			year = 9000
+		}
+		modifier = {
+			factor = 2
+			year = 10000
+		}
+		modifier = {
+			factor = 3
+			year = 11400
+		}		
+		### Age Modifiers ###
+		modifier = {
+			factor = 0.8
+			age = 120
+		}
+		modifier = {
+			factor = 0.65
+			age = 130
+		}
+		modifier = {
+			factor = 0.5
+			age = 140
+		}
+		modifier = {
+			factor = 0.4
+			age = 150
+		}
+		### Health Modifiers ###
+		modifier = {
+			factor = 0.9
+			age = 110
+		}
+		modifier = {
+			factor = 0.75
+			age = 210
+		}
+		modifier = {
+			factor = 0.6
+			age = 310
+		}
+		modifier = {
+			factor = 0.4
+			age = 400
+		}
+		### Health Modifiers ###
+		modifier = {
+			factor = 10.0
+			health = 100.0
+			NOT = { base_health = 10.0 }			
+		}		
+			modifier = {
+			factor = 7.0
+			health = 70.0
+			NOT = { base_health = 9.0 }			
+		}	
+			modifier = {
+			factor = 5.0
+			health = 50.0
+			NOT = { base_health = 8.0 }			
+		}		
+		modifier = {
+			factor = 3.0
+			health = 30.0
+			NOT = { base_health = 7.0 }			
+		}
+		modifier = {
+			factor = 2.0
+			health = 20.0
+			NOT = { base_health = 6.0 }			
+		}		
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.55
+			NOT = { base_health = 4.0 }
+		}
+		#### Traits Modifier ####
+		modifier = {
+			factor = 7.5
+			trait = prince_numenor
+		}	
+		modifier = {
+			factor = 5.0
+			trait = numenorean
+		}			
+		modifier = {
+			factor = 10.0
+			OR = {
+				trait = blood_of_isildur
+				trait = blood_of_anarion
+			}
+		}	
+		modifier = {
+			factor = 25.0
+			trait = half_elf
+		}	
+		modifier = {
+			factor = 12.0
+			trait = elven_blood
+		}	
+		modifier = {
+			factor = 0.5
+				trait = infirm
+		}	
+		modifier = {
+			factor = 0.3
+				trait = depressed
+		}	
+		modifier = {
+			factor = 0.7
+				trait = stressed
+		}					
+	}
+
+	option = {
+		name = "EVTOPTAmepdeath.10" # I'll sleep now.
+		death = {
+			death_reason = death_natural
+		}			
+		set_character_flag = numenorean_death
+	}
+	
+	option = {
+		name = "EVTOPTBmepdeath.10" # I won't leave this world!
+		trigger = { ai = no }
+		set_character_flag = numenorean_death
+		health = -5
+		random_list = {
+			22 = {
+					add_trait = stressed
+				}
+			22 = {
+					add_trait = depressed
+			}
+			22 = {
+					add_trait = envious
+			}	
+			22 = {
+					add_trait = zealous
+			}	
+			12 = {
+					add_trait = infirm
+			}				
+		}		
+	}	
+
+}  
+
+# Dwarven Death event...
+character_event = {
+	id = mepdeath.11
+	# title = "EVTTITmepdeath.11"
+	# desc = "EVTDESCmepdeath.11"
+	# picture = GFX_evt_death
+	hide_window = yes
+	religion_group = religion_group_khazad	
+		
+	trigger = {
+		trait = dwarven
+		age = 240
+		NOT = { has_character_flag = death_dwarves }
+		NOT = { trait = immortal }
+	}
+	
+	mean_time_to_happen = {
+		days = 7300
+		
+		### Age Modifiers ###
+		modifier = {
+			factor = 0.8
+			age = 250
+		}
+		modifier = {
+			factor = 0.65
+			age = 260
+		}
+		modifier = {
+			factor = 0.5
+			age = 270
+		}
+		modifier = {
+			factor = 0.4
+			age = 275
+		}
+		modifier = {
+			factor = 0.3
+			age = 290
+		}	
+		modifier = {
+			factor = 0.2
+			age = 300
+		}			
+		### Health Modifiers ###
+		modifier = {
+			factor = 0.75
+			NOT = { base_health = 5.0 }
+		}
+		modifier = {
+			factor = 0.55
+			NOT = { base_health = 4.0 }
+		}
+		modifier = {
+			factor = 2.0
+			health = 20.0
+		}
+		#### Traits Modifier ####
+		modifier = {
+			factor = 0.5
+				trait = infirm
+		}	
+		modifier = {
+			factor = 0.3
+				trait = depressed
+		}	
+		modifier = {
+			factor = 0.7
+				trait = stressed
+		}	
+		modifier = {
+			factor = 2.0
+				trait = strong
+		}
+		modifier = {
+			factor = 2.0
+				trait = tall
+		}
+		modifier = {
+			factor = 2.0
+				trait = imposing
+		}		
+		modifier = {
+			factor = 4.0 # Adds 80 years, each increment of 1 = 20 years
+				trait = heir_of_durin
+		}
+		modifier = {
+			factor = 20.0 # Adds 400 years each increment of 10 = 200 years
+				trait = durin_reincarnation
+		}
+		modifier = { # This adds compatibility for the immortality event introduced by Reaper's Due.  Comment the code if you don't want this functionality.
+			factor = 900.0 # Adds 18k years each increment of of 100 = 2000 years
+				trait = immortal
+		}
+		
+		#### Titles Modifier ####
+		modifier = {
+			factor = 4.0
+			has_landed_title = e_durins_folk
+		}	
+		modifier = {
+			factor = 2.0
+			has_landed_title = d_moria
+		}	
+		modifier = {
+			factor = 4.0
+			has_landed_title = d_erebor
+		}			
+	}
+
+	option = {
+		# name = "EVTOPTAmepdeath.11" #OK
+		death = {
+			death_reason = death_natural
+		}	
+		set_character_flag = death_dwarves
+	}
+} 

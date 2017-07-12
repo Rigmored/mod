@@ -1,0 +1,774 @@
+###########################################
+#                                         #
+# M&M MISC Events                         #
+#                                         #
+# ID MNM.10000 - 10001     	              #
+#                                         #
+###########################################
+
+namespace = MNM
+
+###RANKING UP EVENTS####
+
+# Hidden start: Send the rank-up request to the current Grandmaster (delayed event on self, from decision to rank up)
+character_event = {
+	id = MNM.10002
+
+	hide_window = yes
+
+	trigger = {
+		has_character_flag = has_sent_request_to_rank_up
+	}
+	
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { is_in_society = yes }
+			random_society_member = {
+				limit = {
+					is_society_grandmaster = yes
+					same_society_as = ROOT
+				}
+				character_event = { id = MNM.10000 } # send request to Grand Master. Relic rewards also handled by this event
+			}
+		}
+		if = {
+			limit = { is_in_society = no }
+			clr_character_flag = has_sent_request_to_rank_up
+		}
+	}
+}
+
+# Grandmaster gets the rank-up request
+character_event = {
+	id = MNM.10000
+	
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:rank_up_target = { letter_event = { id = MNM.10001 } }
+
+		FROM = {
+			if = {
+				limit = {
+					society_rank == 2
+					is_christian_monastic_member_trigger = yes
+				}
+				
+				random = {
+					chance = 20
+					modifier = {
+						ai = no
+						factor = 5
+					}
+					letter_event = { id = MNM.4431 days = 30 random = 15 } #Gives saint's fingerbone
+				}
+			}
+		}
+	}
+}
+
+#Grand master approves my request
+letter_event = {
+	id = MNM.10001
+	desc = EVTDESC_MNM_10001_A
+	border = GFX_event_letter_frame_intrigue
+
+	trigger = {
+		society_rank < 4
+		has_character_flag = has_sent_request_to_rank_up
+	}
+	
+	is_triggered_only = yes
+
+	#Yes
+	option = {
+		text = EVTOPTA_10001
+		if = { limit = { society_rank < 4 } #todo: Remember you can rankup to 4 in some societies
+			society_rank_up = 1
+		}
+		clr_character_flag = has_sent_request_to_rank_up
+	}
+}
+
+
+
+#Becoming stressed about keeping a secret
+character_event = {
+    id = MNM.10020
+    picture = GFX_evt_uncomfortable
+    border = GFX_event_normal_frame_intrigue
+
+    desc = {
+    	trigger = { 
+    		has_dlc = "Mystics" 
+    		trait = paranoid
+    	}
+    	text = EVTDESC_MNM_10020_A
+    	picture = GFX_evt_uncomfortable
+    }
+
+    desc = {
+    	trigger = { 
+    		NOT = { has_dlc = "Mystics" }
+    		trait = paranoid
+    	}
+    	text = EVTDESC_MNM_10020_A
+    	picture = GFX_evt_shadowy_cabal
+    }
+
+    desc = {
+    	trigger = { 
+    		has_dlc = "Mystics" 
+    		NOT = { trait = paranoid }
+    	}
+    	text = EVTDESC_MNM_10020_B
+    	picture = GFX_evt_uncomfortable
+    }
+
+    desc = {
+    	trigger = { 
+    		NOT = { has_dlc = "Mystics" }
+    		NOT = { trait = paranoid }
+    	}
+    	text = EVTDESC_MNM_10020_B
+    	picture = GFX_evt_shadowy_cabal
+    }
+
+	is_in_society = yes
+	
+    is_triggered_only = yes
+    
+    trigger = {
+    	society_is_criminal = yes
+    	NOT = { trait = stressed }
+    }
+
+    option = { 
+        name = EVTOPTA_MNM_10020
+
+	    add_trait = stressed
+    }
+}
+
+
+#Excluded from society due to breaking the limitations
+character_event = {
+	id = MNM.10021
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		society = {
+			random_society_member = { 
+				limit = { is_society_grandmaster = yes } 
+				character_event = { id = MNM.10022 }
+			}
+		}
+	}
+}
+
+
+character_event = {
+    id = MNM.10022
+    hide_window = yes
+    is_triggered_only = yes
+    immediate = { FROM = { letter_event = { id = MNM.10023 } } }
+}
+
+
+letter_event = {
+	id = MNM.10023
+	border = GFX_event_letter_frame_religion
+
+	#desc = {
+	#	trigger = { is_devil_worshiper_trigger = yes }
+	#	text = EVTDESC_MNM_10023_DW #Not written because currently there is no potential
+	#}
+	desc = {
+		trigger = { is_monastic_member_trigger = yes }
+		text = EVTDESC_MNM_10023_MO
+	}
+	desc = {
+		trigger = { 
+			society_member_of = secret_religious_cult 
+			FROM = { ROOT = { is_openly_of_prevs_secret_religion_trigger = yes } }
+		}
+		text = EVTDESC_MNM_10023_SR_A
+	}
+	desc = {
+		trigger = { 
+			society_member_of = secret_religious_cult 
+			FROM = { ROOT = { is_openly_of_prevs_secret_religion_trigger = no } }
+		}
+		text = EVTDESC_MNM_10023_SR_B
+	}
+	desc = {
+		trigger = { always = no }
+		text = EVTDESC_MNM_10023_HERMETICS
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTA_MNM_10023
+		leave_society = yes
+	}
+}
+
+character_event = {
+    id = MNM.10019
+    desc = EVTDESC_MNM_10019
+    picture = GFX_evt_society_joining
+    border = GFX_event_normal_frame_religion
+
+    is_triggered_only = yes
+
+    option = { 
+        name = ALAS
+        set_interested_society = none
+    }
+}
+
+# Force join AI characters to societies
+character_event = {
+	id = MNM.10030
+	hide_window = yes
+	
+	only_rulers = yes
+	is_triggered_only = yes
+	
+	has_dlc = "Mystics"
+	
+	immediate = {
+		if = {
+			limit = {
+				ai = yes
+				prisoner = no
+				NOT = { trait = incapable }
+				is_in_society = yes
+				society_rank < 3
+				society_can_rank_up = yes
+			}
+			random_list = {
+				75 = {}
+				25 = {
+					society_rank_up = 1					
+				}
+			}
+		}
+		any_courtier = {
+			limit = {
+				ai = yes
+				prisoner = no
+				NOT = { trait = incapable }
+				is_adult = yes
+				is_in_society = no
+				controls_religion = no
+				block_general_event_trigger = no
+			}
+			character_event = { id = MNM.10031 }
+		}
+		if = {
+			limit = {
+				ai = yes
+				prisoner = no
+				NOT = { trait = incapable }
+				is_adult = yes
+				is_in_society = no
+				controls_religion = no
+				block_general_event_trigger = no
+			}
+			character_event = { id = MNM.10031 }
+		}
+	}
+}
+
+character_event = {
+	id = MNM.10031
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			95 = { # do nothing
+			}
+			5 = { # try to join a society
+				modifier = {
+					factor = 2
+					higher_tier_than = BARON
+				}
+				
+				random_list = {
+					1200 = { } # Fall back dead weight
+
+					150 = {
+						trigger = {
+							can_join_society = heren_isseon
+						}
+						modifier = {
+							factor = 5
+							is_dumb_trigger = no
+							OR = { 
+								learning = 12
+								trait = scholar
+								trait = erudite
+								trait = genius
+								trait = mystic
+							}
+						}
+						modifier = {
+							factor = 0
+							is_landed = no
+						}
+						join_society = heren_isseon
+						random_list = { # Artificially increase society influence for balance purposes
+							75 = {
+								modifier = {
+									factor = 0
+									society_influence >= 30
+								}
+								add_mission_succeed_influence_effect = yes
+							}
+							25 = {
+							}
+						}
+						if = {
+							limit = {
+								NOT = {
+									society = {
+										any_society_member = {
+											is_society_grandmaster = yes
+										}
+									}
+								}
+							}
+							set_society_grandmaster = yes
+						}
+					}
+					#50 = {
+					#	trigger = {
+					#		can_join_society = the_plaguebringers
+					#	}
+					#	modifier = {
+					#		factor = 5
+					#		OR = {
+					#			has_impious_trait_trigger = yes
+					#			has_vice_trigger = yes
+					#			trait = drunkard
+					#			trait = possessed
+					#			trait = lunatic
+					#		}
+					#	}
+					#	join_society = the_plaguebringers
+					#	random_list = { # Artificially increase society influence for balance purposes
+					#		75 = {
+					#			modifier = {
+					#				factor = 0
+					#				society_influence >= 30
+					#			}
+					#			add_mission_succeed_influence_effect = yes
+					#		}
+					#		25 = {
+					#		}
+					#	}
+					#	if = {
+					#		limit = {
+					#			NOT = {
+					#				society = {
+					#					any_society_member = {
+					#						is_society_grandmaster = yes
+					#					}
+					#				}
+					#			}
+					#		}
+					#		set_society_grandmaster = yes
+					#	}
+					#}
+				}
+			}
+		}
+	}
+}
+
+###Society relationship events###
+
+#Making an enemy
+character_event = {
+    id = MNM.10040
+    hide_window = yes
+    is_triggered_only = yes
+    trigger = {
+    	society = {
+    		any_society_member = {
+    			NOT = { reverse_opinion = { who = ROOT value = -20 } }
+    			NOT = { opinion = { who = ROOT value = 0 } }
+    			NOT = { is_rival = ROOT }
+    			NOT = { has_character_flag = ineligible_for_society_rivalry }
+    			ai = yes
+    		}
+    	}
+    }
+    immediate = {
+    	society = {
+    		random_society_member = {
+    			limit = {
+    				NOT = { reverse_opinion = { who = ROOT value = -20 } }
+	    			NOT = { opinion = { who = ROOT value = 0 } }
+	    			NOT = { is_rival = ROOT }
+	    			NOT = { has_character_flag = ineligible_for_society_rivalry }
+	    			ai = yes
+    			}
+    			character_event = { id = MNM.10041 }
+    		}
+    	}
+    }
+}
+
+
+character_event = {
+    id = MNM.10041
+    hide_window = yes
+    is_triggered_only = yes
+    immediate = { FROM = { character_event = { id = MNM.10042 } } }
+}	
+
+
+character_event = {
+    id = MNM.10042
+    picture = GFX_evt_rival_rulers
+    border = GFX_event_normal_frame_war
+
+    desc = {
+    	trigger = { 
+    		NOR = {
+    			is_devil_worshiper_trigger = yes
+    			society_member_of = heren_isseon
+    		}
+    	}
+    	text = EVTDESC_MNM_10042
+    	picture = GFX_evt_rival_rulers
+    }
+    desc = {
+    	trigger = { is_devil_worshiper_trigger = yes }
+    	text = EVTDESC_MNM_10042
+    	picture = GFX_evt_shadowy_cabal
+    }
+    desc = {
+    	trigger = { society_member_of = heren_isseon }
+    	text = EVTDESC_MNM_10042
+    	picture = GFX_evt_gathering_of_minds
+    }
+
+    is_triggered_only = yes
+    
+    #Make them enemy
+    option = { 
+        name = EVTOPTA_MNM_10042
+        add_rival = FROM
+
+        ai_chance = {
+        	factor = 90
+        	modifier = {
+        		has_evil_trait_trigger = yes
+        		factor = 15
+        	}
+        }
+    }
+
+
+    #Ignore them
+    option = {
+        name = EVTOPTB_MNM_10042
+
+        detract_society_currency_minor_effect = yes
+
+        if = {
+        	limit = { ai = no }
+        	FROM = { set_character_flag = ineligible_for_society_rivalry }
+        }
+
+        ai_chance = {
+        	factor = 10
+        	modifier = {
+        		has_benevolent_trait_trigger = yes
+        		factor = 15
+        	}
+        }
+    }
+}
+
+
+#Making a friend
+character_event = {
+    id = MNM.10043
+    hide_window = yes
+    is_triggered_only = yes
+    trigger = {
+    	society = {
+    		any_society_member = {
+    			reverse_opinion = { who = ROOT value = 30 }
+    			opinion = { who = ROOT value = 40 }
+    			NOR = {
+    				is_friend = ROOT
+    				is_rival = ROOT
+    				is_close_relative = ROOT
+    			}
+    			NOT = { has_character_flag = ineligible_for_society_friendship }
+    			ai = yes
+    		}
+    	}
+    }
+    immediate = {
+    	society = {
+    		random_society_member = {
+    			limit = {
+    				reverse_opinion = { who = ROOT value = 30 }
+	    			opinion = { who = ROOT value = 40 }
+	    			NOR = {
+	    				is_friend = ROOT
+	    				is_rival = ROOT
+	    				is_close_relative = ROOT
+	    			}
+	    			NOT = { has_character_flag = ineligible_for_society_friendship }
+	    			ai = yes
+	    		}
+    			character_event = { id = MNM.10044 }
+    		}
+    	}
+    }
+}
+
+character_event = {
+    id = MNM.10044
+    hide_window = yes
+    is_triggered_only = yes
+    immediate = { FROM = { character_event = { id = MNM.10045 } } }
+}	
+
+
+character_event = {
+    id = MNM.10045
+    picture = GFX_evt_state_diplomacy
+    border = GFX_event_normal_frame_diplomacy
+
+    desc = {
+    	trigger = { 
+    		NOR = {
+    			is_devil_worshiper_trigger = yes
+    			society_member_of = heren_isseon
+    			society_member_of = secret_religious_cult
+    			is_christian_monastic_member_trigger = yes
+    		}
+    	}
+    	text = EVTDESC_MNM_10045
+    	picture = GFX_evt_rival_rulers
+    }
+    desc = {
+    	trigger = { is_devil_worshiper_trigger = yes }
+    	text = EVTDESC_MNM_10045
+    	picture = GFX_evt_magic_ritual
+    }
+    desc = {
+    	trigger = { society_member_of = heren_isseon }
+    	text = EVTDESC_MNM_10045
+    	picture = GFX_evt_experiment
+    }
+    desc = {
+    	trigger = { society_member_of = secret_religious_cult }
+    	text = EVTDESC_MNM_10045
+    	picture = GFX_evt_secret_ceremony
+    }
+    desc = {
+    	trigger = { is_christian_monastic_member_trigger = yes }
+    	text = EVTDESC_MNM_10045
+    	picture = GFX_evt_monastery_monks
+    }
+
+    is_triggered_only = yes
+    
+    #Make them friend
+    option = { 
+        name = EVTOPTA_MNM_10045
+        add_friend = FROM
+
+        ai_chance = {
+        	factor = 75
+        	modifier = {
+        		has_pleasant_trait_trigger = yes
+        		factor = 15
+        	}	
+        }
+    }
+
+    #Love?
+    option = {
+    	trigger = { FROM = { root_attraction_trigger = yes } }
+        name = EVTOPTC_MNM_10045
+        custom_tooltip = { text = EVTOPTB_MNM_6903_TT }
+
+        if = {
+        	limit = { ai = no }
+        	FROM = { set_character_flag = ineligible_for_society_friendship }
+        }
+
+        ai_chance = {
+        	factor = 25
+        	modifier = {
+        		factor = 0
+        		NOR = {
+        			trait = lustful
+        			AND = {
+        				NOT = { any_lover = { is_alive = yes } }
+        				is_married = yes
+        			}
+        			FROM = { has_attractive_trait_trigger = yes }
+        		}
+        	}
+        }
+    }
+
+    #Nah
+    option = {
+        name = EVTOPTB_MNM_10045
+
+        if = {
+        	limit = { ai = no }
+        	FROM = { set_character_flag = ineligible_for_society_friendship }
+        }
+
+        ai_chance = {
+        	factor = 25
+        	modifier = {
+        		has_unpleasant_trait_trigger = yes
+        		factor = 15
+        	}
+        }
+    }
+}
+
+
+
+
+
+character_event = {
+	id = MNM.6664
+	desc = MNM.6664.d
+	picture = "GFX_evt_dark_prayer"
+	border = GFX_event_normal_frame_religion
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		tooltip = {
+			remove_character_modifier = highly_suspect
+		}
+	}
+}
+
+character_event = {
+	id = MNM.6665
+	desc = MNM.6664.d
+	picture = "GFX_evt_dark_prayer"
+	border = GFX_event_normal_frame_religion
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+		tooltip = {
+			remove_character_modifier = under_suspicion
+		}
+	}
+}
+
+#quest modifiers
+character_event = {
+	id = MNM.6666
+	
+	hide_window = yes
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		# name = EXCELLENT
+		add_mission_succeed_influence_effect = yes
+	}
+}
+
+character_event = {
+	id = MNM.6667
+	
+	hide_window = yes
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		# name = ALAS
+		add_mission_fail_influence_effect = yes
+	}
+}
+
+
+
+character_event = { # Fired from on_character_leave_society (meant to clear any society related flags and effects)
+    id = MNM.10018
+    is_triggered_only = yes
+    hide_window = yes
+    
+    immediate = {
+    	clean_up_after_leaving_society_effect = yes #NOTE: update if more societies are added
+    }
+}
+
+character_event = {
+    id = MNM.10024
+    desc = EVTDESC_MNM_10024
+    picture = GFX_evt_ritual_scroll
+    border = GFX_event_normal_frame_religion
+    is_triggered_only = yes
+	
+    trigger = {
+		NOT = { 
+			FROM = {
+				any_society_member = { always = yes }
+			}
+		}
+    }
+	
+	immediate = { set_character_flag = society_join_block }
+
+    option = {      
+        name = EVTOPTA_MNM_10024
+		join_society = FROM
+		set_society_grandmaster = yes # Set character as Grand Master
+		add_society_currency_massive_effect = yes # Give the Grand Master a start-up capital to induct members
+		clr_character_flag = society_join_block
+    }
+	
+	option = {
+		name = EVTOPTB_MNM_10024
+		clr_character_flag = society_join_block
+	}
+}
+

@@ -1,218 +1,87 @@
-###Dunedain, Elves, and Dwarves are waning in the 3rd Age. While it may be possible to "paint the map" with these cultures, the provinces should mostly be lightly populated and it ##should be extremely expensive and time consuming to get fully populated new provinces of elves, dwarves or dunedain
+###Dunedain, Elves, and Dwarves are waning in the 3rd Age. While it may be possible to
+# "paint the map" with these cultures, the provinces should mostly be lightly populated
+# and it should be extremely expensive and time consuming to get fully populated new
+# provinces of elves, dwarves or dunedain
 
 # Population event numbers:
 # (0 - 24 )
 # Population cleaner event numbers:
 # (25 - 48 )
+#
+# # Added by JamesFox, 2017/04/27 : population.100 to population.105, for setup
+# - These replace the startup, and are neater because they are triggered from on_chronicle_start
+# - merged events dealing with culture change into one event per group
+# - Using scripted triggers and effects for compactness
+# - Removed population.0 , population.1 (replaced with a new one), population.3 (not necessary with population.100), population.7,
+# population.8, population.14, population.20, population.21
+# - commented out population.25 to population.48, since I don't see the necessity for them
 
 namespace = population
 
 #DUNEDAIN - First we set the province modifier for the provinces at start, only Minas Tirith, Pelargir, and Dol Amroth gets dense population, a few others get medium, the others get #lightly populated
 
-province_event = {
-	id = population.0
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOT = { has_global_flag = population_setup }
-		culture_group = culture_group_numenorean
-		AND = {
-			NOT = { has_province_modifier = two_population_dunedain }
-			NOT = { has_province_modifier = four_population_dunedain }
-			NOT = { has_province_modifier = six_population_dunedain }
-		}
-	}	
-	
-	mean_time_to_happen = {
-	days = 1	
-	}
-	
-	option = {
-		name = "OK"
-		#the provinces that are not majorly settled all get the lightly populated one
-		if = { 
-			limit = {
-				AND = {
-					NOT = { province_id = 422  } #minas tirith
-					NOT = { province_id = 656  } # Dol Amroth
-					NOT = { province_id = 18  }# Pelargir
-					NOT = { province_id = 17  }#Minas Arnach
-					NOT = { province_id = 1 } #pelennor
-					NOT = { province_id = 270 } #Fornost
-					NOT = { province_id = 659 } # Annunimas
-					NOT = { province_id = 105 } # Barrow Downs/Tyrn Gorthad capital of cardolan
-	#lossarnach is also stated to be at least normally settled
-					NOT = { province_id = 10 } # Celerdain
-					NOT = { province_id = 11 } 
-					NOT = { province_id = 12 }
-					NOT = { province_id = 13 }
-	#also the pelargir duchy should have normal dunedain settlement level
-					NOT = { province_id = 16 }
-					NOT = { province_id = 24 }
-	#dol amroth duchy also gets normal settlement levels
-					NOT = { province_id = 429 }
-					NOT = { province_id = 40 }
-					NOT = { province_id = 41 }
-					NOT = { province_id = 42 }
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = two_population_dunedain duration = -1 }
-				remove_province_modifier = one_population_dunedain
-			}
-		}
-
-	#the provinces of the major duchies get normal population levels
-		if = { 
-			limit = {
-				OR = {
-					province_id = 1 #pelennor
-	#lossarnach is also stated to be at least normally settled
-					province_id = 10 # Celerdain
-					province_id = 11 
-					province_id = 12
-					province_id = 13
-	#also the pelargir duchy should have normal dunedain settlement level
-					province_id = 16
-					province_id = 24
-	#dol amroth duchy also gets normal settlement levels
-					province_id = 429
-					province_id = 40
-					province_id = 41
-					province_id = 42
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = four_population_dunedain duration = -1 }
-				remove_province_modifier = one_population_dunedain
-			}
-		}	
-#the major urban centers get heavily populated
-		if = { 
-			limit = {
-				OR = {
-					province_id = 422 #minas tirith
-					province_id = 656 # Dol Amroth
-					province_id = 17 #Minas Arnach
-					province_id = 18 #Pelargir
-					province_id = 270 #Fornost
-					province_id = 659 # Annunimas
-					province_id = 105 # Barrow Downs/Tyrn Gorthad capital of cardolan
-				}
-			}
-			ROOT = {
-			add_province_modifier = { name = six_population_dunedain duration = -1 }
-			remove_province_modifier = one_population_dunedain
-			}
-		}
-	}
-}
-
-
 #Now we remove the province modifier if the population of the province changes#
+# changes so that this event fires only for cultures not covered by the population modifiers
 province_event = {
 	id = population.1
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
+	# title = population0title #hidden
+	# desc = population0desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
 	trigger = {
-		NOT = { culture_group = culture_group_numenorean }
-			OR = {
-			has_province_modifier = one_population_dunedain
-			has_province_modifier = two_population_dunedain
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = seven_population_dunedain
-			}
-		}	
-	
-		mean_time_to_happen = {
-		days = 1	
-		}
-	
-		option = {
-			name = "OK"
-			remove_province_modifier = one_population_dunedain
-			remove_province_modifier = two_population_dunedain
-			remove_province_modifier = three_population_dunedain
-			remove_province_modifier = four_population_dunedain
-			remove_province_modifier = five_population_dunedain
-			remove_province_modifier = six_population_dunedain
-			remove_province_modifier = seven_population_dunedain
-		}
-	}
-	
-#Now if a new province is changed to numenorean group culture, it gets the lightly populated modifier#
-province_event = {
-	id = population.2
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-	culture_group = culture_group_numenorean
-		AND = {
-		NOT = {	has_province_modifier = one_population_dunedain }
-		NOT = {	has_province_modifier = two_population_dunedain }
-		NOT = { has_province_modifier = three_population_dunedain }
-		NOT = { has_province_modifier = four_population_dunedain }
-		NOT = { has_province_modifier = five_population_dunedain }
-		NOT = { has_province_modifier = six_population_dunedain }
-		NOT = { has_province_modifier = seven_population_dunedain }
-		}
+		NOT = { mep_has_popmod_culture = yes }
+		mep_has_popmod_trigger = yes	
 	}
 	
 	mean_time_to_happen = {
-	months = 6
+		months = 2	
 	}
 	
 	option = {
-	name = "OK"
-	add_province_modifier = { name = one_population_dunedain duration = -1 }
+		# name = "OK"
+		mep_popmod_remove_effect = yes
 	}
 }
 	
-###Fix event set to fire 2 years after start, so that the initial event doesnt refire, ie, a reconquered minas tirith shouldnt get the heavily populated modifer, it should get the lightly populated one
-
-character_event = {
-	id = population.3
-	desc = "EVTDESCcultureconversion.0"
-	picture = GFX_evt_throne_room
+# Now if a new province is changed to numenorean group culture, it gets the lightly populated modifier#
+# removing old modifiers is also done here
+province_event = {
+	id = population.2
+	#  title = population0title #hidden
+	#  desc = population0desc #hidden
+	#  picture = GFX_evt_council
 	hide_window = yes
 	
-	trigger = {	
-	ai = no
-	NOT = { has_global_flag = population_setup }
+	trigger = {
+		culture_group = culture_group_numenorean
+		NOT = { mep_has_dunedain_popmod_trigger = yes }
 	}
 	
-	is_triggered_only = yes #annual pulse
+	mean_time_to_happen = {
+		months = 2
+	}
 	
 	option = {
-	name = OK
-	set_global_flag = population_setup
+		# name = "OK"
+		mep_popmod_remove_effect = yes
+		add_province_modifier = { name = one_population_dunedain duration = -1 }
 	}
+}
 	
-	}
-	
-	##Now for when a province is occupied, a population decline happens##
-	character_event = {
+## Now for when a N�men�rean province is occupied, a population decline happens ##
+character_event = {
 	id = population.4
 	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 	
 	trigger = {
-		culture_group = culture_group_numenorean
+		
 		higher_tier_than = BARON
 		any_demesne_title = {
 			location = {
+				culture_group = culture_group_numenorean
 				OR = {
 					has_province_modifier = four_population_dunedain
 					has_province_modifier = five_population_dunedain
@@ -220,13 +89,13 @@ character_event = {
 					has_province_modifier = seven_population_dunedain
 				}
 			}
-		tier = baron
-		NOT = { controlled_by = ROOT }
+			tier = baron
+			NOT = { controlled_by = ROOT }  # Is this enough? What if the occupiers are nice?  
 		}
 	}
 	
 	mean_time_to_happen = {
-	months = 60 #5 years
+		months = 60 #5 years
 	}
 	
 	option = {
@@ -236,41 +105,36 @@ character_event = {
 				limit = {
 					NOT = { controlled_by = ROOT }
 				}
-	#goes from urban to densely populated
+				#goes from urban to densely populated
 				if = {
-					limit = {
-						has_province_modifier = seven_population_dunedain
-					}
-				add_province_modifier = { name = six_population_dunedain duration = -1 }
-				remove_province_modifier = seven_population_dunedain
+					limit = { has_province_modifier = seven_population_dunedain }
+					add_province_modifier = { name = six_population_dunedain duration = -1 }
+					remove_province_modifier = seven_population_dunedain
+					break = yes
 				}
-	#goes from densely to more populated
+				#goes from densely to more populated
 				if = {
-					limit = {
-						has_province_modifier = six_population_dunedain
-					}
-				add_province_modifier = { name = five_population_dunedain duration = -1 }
-				remove_province_modifier = six_population_dunedain
+					limit = { has_province_modifier = six_population_dunedain }
+					add_province_modifier = { name = five_population_dunedain duration = -1 }
+					remove_province_modifier = six_population_dunedain
+					break = yes
 				}
-	#goes from densely to normally populated
+				#goes from densely to normally populated
 				if = {
-					limit = {
-						has_province_modifier = five_population_dunedain
-					}
-				add_province_modifier = { name = four_population_dunedain duration = -1 }
-				remove_province_modifier = five_population_dunedain
+					limit = { has_province_modifier = five_population_dunedain }
+					add_province_modifier = { name = four_population_dunedain duration = -1 }
+					remove_province_modifier = five_population_dunedain
+					break = yes
 				}
-	#goes from normal to lightly populated
+				#goes from normal to lightly populated
 				if = {
-					limit = {
-						has_province_modifier = four_population_dunedain
-					}
-				add_province_modifier = { name = three_population_dunedain duration = -1 }
-				remove_province_modifier = four_population_dunedain
+					limit = { has_province_modifier = four_population_dunedain }
+					add_province_modifier = { name = three_population_dunedain duration = -1 }
+					remove_province_modifier = four_population_dunedain
 				}
 			}
 		}
-	}	
+	}  # Done with option	
 }
 	
 #Now to increase the population level via decision event#
@@ -288,27 +152,23 @@ character_event = {
 	
 		option = { 
 			name = population5B #Yes, make efforts to increase population in a random province
-			wealth = -250
+			wealth = -500
 			prestige = -125
 			random_realm_province = {
-			limit = { 
-				OR = {
-					has_province_modifier = one_population_dunedain
-					has_province_modifier = two_population_dunedain
-					has_province_modifier = three_population_dunedain
-					has_province_modifier = four_population_dunedain
-					has_province_modifier = five_population_dunedain
-					has_province_modifier = six_population_dunedain
-				}
-			}
-		add_province_modifier = { name = population_increasing duration = -1 }
+			limit = { mep_dunedian_popmod_increasable_trigger = yes } 
+			add_province_modifier = { name = population_increasing duration = -1 }
 		}
 	}
 	
 	option = {
 		name = population5C #Yes, make the effort where my steward is located
-		trigger = { ai = no }
-		wealth = -250
+		trigger = {
+			ai = no
+			job_treasurer = {
+				location = { mep_dunedian_popmod_increasable_trigger = yes }
+			}
+		}
+		wealth = -500
 		prestige = -125
 		any_courtier = {
 			limit = { has_job_title = job_treasurer }
@@ -319,6 +179,7 @@ character_event = {
 	
 #Event where you are told the efforts have succeeded, and population is growing#
 province_event = {
+
     id = population.6
     desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
     picture = GFX_good
@@ -366,317 +227,197 @@ province_event = {
             add_province_modifier = { name = two_population_dunedain duration = -1 }
         }             
     }
-
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.25
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = two_population_dunedain
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-		}
-		has_province_modifier = one_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_dunedain
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.26
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = three_population_dunedain
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = seven_population_dunedain
-		}
-		has_province_modifier = two_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = two_population_dunedain
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.27
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = four_population_dunedain
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = seven_population_dunedain
-		}
-		has_province_modifier = three_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = three_population_dunedain
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.28
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = five_population_dunedain
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = seven_population_dunedain
-		}
-		has_province_modifier = four_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = four_population_dunedain
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.29
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = six_population_dunedain
-			has_province_modifier = seven_population_dunedain
-		}
-		has_province_modifier = five_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = five_population_dunedain
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.30
-	title = population27title #hidden
-	desc = population27desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_numenorean
-		OR = {
-			has_province_modifier = seven_population_dunedain
-		}
-		has_province_modifier = six_population_dunedain #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = six_population_dunedain
-	}
-}
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.25
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = two_population_dunedain
+#			has_province_modifier = three_population_dunedain
+#			has_province_modifier = four_population_dunedain
+#			has_province_modifier = five_population_dunedain
+#			has_province_modifier = six_population_dunedain
+#		}
+#		has_province_modifier = one_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = one_population_dunedain
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.26
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = three_population_dunedain
+#			has_province_modifier = four_population_dunedain
+#			has_province_modifier = five_population_dunedain
+#			has_province_modifier = six_population_dunedain
+#			has_province_modifier = seven_population_dunedain
+#		}
+#		has_province_modifier = two_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = two_population_dunedain
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.27
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = four_population_dunedain
+#			has_province_modifier = five_population_dunedain
+#			has_province_modifier = six_population_dunedain
+#			has_province_modifier = seven_population_dunedain
+#		}
+#		has_province_modifier = three_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = three_population_dunedain
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.28
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = five_population_dunedain
+#			has_province_modifier = six_population_dunedain
+#			has_province_modifier = seven_population_dunedain
+#		}
+#		has_province_modifier = four_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = four_population_dunedain
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.29
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = six_population_dunedain
+#			has_province_modifier = seven_population_dunedain
+#		}
+#		has_province_modifier = five_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = five_population_dunedain
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.30
+#	title = population27title #hidden
+#	desc = population27desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_numenorean
+#		OR = {
+#			has_province_modifier = seven_population_dunedain
+#		}
+#		has_province_modifier = six_population_dunedain #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = six_population_dunedain
+#	}
+#}
 
 
 ##Now for ELVES
 
-province_event = {
-	id = population.7
-	title = population7title #hidden
-	desc = population_desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOT = { has_global_flag = population_setup }
-			OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-			}
-		AND = {
-			NOT = { has_province_modifier = one_population_elves }
-			NOT = { has_province_modifier = two_population_elves }
-			NOT = { has_province_modifier = three_population_elves }
-			NOT = { has_province_modifier = four_population_elves }
-			NOT = { has_province_modifier = five_population_elves }
-			NOT = { has_province_modifier = six_population_elves }
-			NOT = { has_province_modifier = seven_population_elves }
-		}
-	}	
-	
-	mean_time_to_happen = {
-	days = 1	
-	}
-	
-	option = {
-		name = "OK"
-		#the provinces that are not majorly settled all get the lightly populated one
-		if = { 
-			limit = {
-				AND = {
-					NOT = { province_id = 235 } # Lorien  
-					NOT = { province_id = 234 } # Imladris 
-					NOT = { province_id = 657 } # Mithlond	
-					NOT = { province_id = 323 } # #Thranduill's Halls
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = two_population_elves duration = -1 }
-				remove_province_modifier = one_population_elves
-			}
-		}
-	
-		#the major urban centers get heavily populated
-		if = { 
-			limit = {
-				OR = {
-					province_id = 235  # Lorien  
-					province_id = 234  # Imladris 
-					province_id = 657  # Mithlond	
-					province_id = 323  # #Thranduill's Halls
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = six_population_elves duration = -1 }
-				remove_province_modifier = one_population_elves
-			}
-		}
-	}
-}
-
-
-#Now we remove the province modifier if the population of the province changes#
-province_event = {
-	id = population.8
-	title = population8title #hidden
-	desc = population_desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		AND = {
-			NOT = { culture_group = culture_group_amanyar}
-			NOT = { culture_group = culture_group_quendi}
-			NOT = { culture_group = culture_group_umanyar }
-			NOT = { culture_group = culture_group_moriquendi }
-		}
-		OR = {
-			has_province_modifier = one_population_elves
-			has_province_modifier = two_population_elves
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-	}	
-	
-	mean_time_to_happen = {
-	days = 1	
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_elves
-		remove_province_modifier = two_population_elves
-		remove_province_modifier = three_population_elves
-		remove_province_modifier = four_population_elves
-		remove_province_modifier = five_population_elves
-		remove_province_modifier = six_population_elves
-		remove_province_modifier = seven_population_elves
-	}
-}
 	
 #Now if a new province is changed to elven group culture, it gets the lightly populated modifier#
+# also removes old modifier
 province_event = {
 	id = population.9
-	title = population9title #hidden
-	desc = population9desc #hidden
-	picture = GFX_evt_council
+	# title = population9title #hidden
+	# desc = population9desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		AND = {
-			NOT = {	has_province_modifier = one_population_elves }
-			NOT = {	has_province_modifier = two_population_elves }
-			NOT = {	has_province_modifier = three_population_elves }
-			NOT = {	has_province_modifier = four_population_elves }
-			NOT = {	has_province_modifier = five_population_elves }
-			NOT = {	has_province_modifier = six_population_elves }
-			NOT = {	has_province_modifier = seven_population_elves }
-		}
+	trigger = {	
+		mep_is_province_elven_trigger = yes
+		NOT = { mep_has_elves_popmod_trigger = yes }
 	}	
 	
 	mean_time_to_happen = {
-		months = 6
+		months = 2
 	}
 	
 	option = {
-		name = "OK"
+		# name = "OK"
+		mep_popmod_remove_effect = yes
 		add_province_modifier = { name = one_population_elves duration = -1 }
 	}
 }
@@ -687,14 +428,9 @@ character_event = {
 	id = population.11
 	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
 		higher_tier_than = BARON
 		any_demesne_title = {
 			location = {
@@ -711,47 +447,42 @@ character_event = {
 	}
 	
 	mean_time_to_happen = {
-	months = 60 #5 years
+		months = 60 #5 years
 	}
 	
 	option = {
 		name = population4A
-		random_demesne_province={
+		random_demesne_province = {
 			if = {
 				limit = {
 					NOT = { controlled_by = ROOT }
 				}
-	#goes from urban to densely populated
+				#goes from urban to densely populated
 				if = {
-					limit = {
-						has_province_modifier = seven_population_elves
-					}
-				add_province_modifier = { name = six_population_elves duration = -1 }
-				remove_province_modifier = seven_population_elves
+					limit = { has_province_modifier = seven_population_elves }
+					add_province_modifier = { name = six_population_elves duration = -1 }
+					remove_province_modifier = seven_population_elves
+					break = yes
 				}
-	#goes from densely to more populated
+				#goes from densely to more populated
 				if = {
-					limit = {
-						has_province_modifier = six_population_elves
-					}
-				add_province_modifier = { name = five_population_elves duration = -1 }
-				remove_province_modifier = six_population_elves
+					limit = { has_province_modifier = six_population_elves }
+					add_province_modifier = { name = five_population_elves duration = -1 }
+					remove_province_modifier = six_population_elves
+					break = yes
 				}
-	#goes from more to normally populated
+				#goes from more to normally populated
 				if = {
-					limit = {
-						has_province_modifier = five_population_elves
-					}
-				add_province_modifier = { name = four_population_elves duration = -1 }
-				remove_province_modifier = five_population_elves
+					limit = { has_province_modifier = five_population_elves }
+					add_province_modifier = { name = four_population_elves duration = -1 }
+					remove_province_modifier = five_population_elves
+					break = yes
 				}
-	#goes from normal to lightly populated
+				#goes from normal to lightly populated
 				if = {
-					limit = {
-						has_province_modifier = four_population_elves
-					}
-				add_province_modifier = { name = three_population_elves duration = -1 }
-				remove_province_modifier = four_population_elves
+					limit = { has_province_modifier = four_population_elves }
+					add_province_modifier = { name = three_population_elves duration = -1 }
+					remove_province_modifier = four_population_elves
 				}
 			}
 		}
@@ -773,27 +504,23 @@ character_event = {
 	
 	option = { 
 		name = population5B #Yes, make efforts to increase population in a random province
-		wealth = -250
+		wealth = -800
 		prestige = -125
 		random_realm_province = {
-			limit = { 
-				OR = {
-					has_province_modifier = one_population_elves
-					has_province_modifier = two_population_elves
-					has_province_modifier = three_population_elves
-					has_province_modifier = four_population_elves
-					has_province_modifier = five_population_elves
-					has_province_modifier = six_population_elves
-				}
-			}
+			limit = { mep_elves_popmod_increasable_trigger = yes }
 			add_province_modifier = { name = population_increasing duration = -1 }
 		}
 	}
 	
 	option = {
 		name = population5C #Yes, make the effort where my steward is located
-		trigger = { ai = no }
-		wealth = -250
+		trigger = {
+			ai = no
+			job_treasurer = {
+				location = { mep_elves_popmod_increasable_trigger = yes }
+			}
+		}
+		wealth = -800
 		prestige = -125
 		any_courtier = {
 			limit = { has_job_title = job_treasurer }
@@ -810,14 +537,7 @@ province_event = {
 	
 	trigger = {
 		has_province_modifier = population_increasing
-		OR = {
-			has_province_modifier = one_population_elves
-			has_province_modifier = two_population_elves
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-		}
+		mep_elves_popmod_increasable_trigger = yes
 	}
 	
 	mean_time_to_happen = {
@@ -832,26 +552,31 @@ province_event = {
 			limit = { has_province_modifier = six_population_elves }
 			remove_province_modifier = six_population_elves
 			add_province_modifier = { name = seven_population_elves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = five_population_elves }
 			remove_province_modifier = five_population_elves
 			add_province_modifier = { name = six_population_elves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = four_population_elves }
 			remove_province_modifier = four_population_elves
 			add_province_modifier = { name = five_population_elves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = three_population_elves }
 			remove_province_modifier = three_population_elves
 			add_province_modifier = { name = four_population_elves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = two_population_elves }
 			remove_province_modifier = two_population_elves
 			add_province_modifier = { name = three_population_elves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = one_population_elves }
@@ -861,333 +586,224 @@ province_event = {
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.31
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = two_population_elves
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = one_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_elves
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.32
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = three_population_elves
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = two_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = two_population_elves
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.33
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = four_population_elves
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = three_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = three_population_elves
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.34
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = five_population_elves
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = four_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = four_population_elves
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.35
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = six_population_elves
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = five_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = five_population_elves
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.36
-	title = population26title #hidden
-	desc = population26desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_moriquendi
-		}
-		OR = {
-			has_province_modifier = seven_population_elves
-		}
-		has_province_modifier = six_population_elves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = six_population_elves
-	}
-}
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.31
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = two_population_elves
+#			has_province_modifier = three_population_elves
+#			has_province_modifier = four_population_elves
+#			has_province_modifier = five_population_elves
+#			has_province_modifier = six_population_elves
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = one_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = one_population_elves
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.32
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = three_population_elves
+#			has_province_modifier = four_population_elves
+#			has_province_modifier = five_population_elves
+#			has_province_modifier = six_population_elves
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = two_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = two_population_elves
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.33
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = four_population_elves
+#			has_province_modifier = five_population_elves
+#			has_province_modifier = six_population_elves
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = three_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = three_population_elves
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.34
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = five_population_elves
+#			has_province_modifier = six_population_elves
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = four_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = four_population_elves
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.35
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = six_population_elves
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = five_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = five_population_elves
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.36
+#	title = population26title #hidden
+#	desc = population26desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_amanyar
+#			culture_group = culture_group_quendi
+#			culture_group = culture_group_umanyar
+#			culture_group = culture_group_moriquendi
+#		}
+#		OR = {
+#			has_province_modifier = seven_population_elves
+#		}
+#		has_province_modifier = six_population_elves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = six_population_elves
+#	}
+#}
 
 ##Now for DWARVES
 
-province_event = {
-	id = population.14
-	title = population_title #hidden
-	desc = population_desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOT = { has_global_flag = population_setup }
-		culture_group = culture_group_dwarves
-		AND = {
-			NOT = { has_province_modifier = one_population_dwarves }
-			NOT = { has_province_modifier = two_population_dwarves }
-			NOT = { has_province_modifier = three_population_dwarves }
-			NOT = { has_province_modifier = four_population_dwarves }
-			NOT = { has_province_modifier = five_population_dwarves }
-			NOT = { has_province_modifier = six_population_dwarves }
-			NOT = { has_province_modifier = seven_population_dwarves }
-		}
-	}	
-	
-	mean_time_to_happen = {
-		days = 1	
-	}
-	
-
-	
-	option = {
-		name = "OK"
-	#the provinces that are not majorly settled all get the medium populated one
-		if = { 
-			limit = {
-				AND = {
-					NOT = { province_id = 285 } # Khazad-Dum
-					NOT = { province_id = 292 } # Erebor  
-					NOT = { province_id = 644 } # Zirakdum 
-					NOT = { province_id = 812 } # Stonefoot2
-					NOT = { province_id = 679 }  #Dain's Halls
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = four_population_dwarves duration = -1 }
-				remove_province_modifier = one_population_dwarves
-			}
-		}
-	
-#the major urban centers get heavily populated
-		if = {
-			limit = {
-				OR = {
-					province_id = 285  # Khazad-Dum
-					province_id = 292  # Erebor  
-					province_id = 644  # Zirakdum 
-					province_id = 812  # Stonefoot2
-					province_id = 679  # Dain's Halls
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = six_population_dwarves duration = -1 }
-				remove_province_modifier = one_population_dwarves
-			}
-		}
-	}
-}
-
-
-#Now we remove the province modifier if the population of the province changes#
-province_event = {
-	id = population.15
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOT = { culture_group = culture_group_dwarves }
-		OR = {
-			has_province_modifier = one_population_dwarves
-			has_province_modifier = two_population_dwarves
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-	}	
-	
-	mean_time_to_happen = {
-		days = 1
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_dwarves
-		remove_province_modifier = two_population_dwarves
-		remove_province_modifier = three_population_dwarves
-		remove_province_modifier = four_population_dwarves
-		remove_province_modifier = five_population_dwarves
-		remove_province_modifier = six_population_dwarves
-		remove_province_modifier = seven_population_dwarves
-	}
-}
-	
 #Now if a new province is changed to dwarven group culture, it gets the lightly populated modifier#
+# we remove old modifiers here
 province_event = {
 	id = population.16
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
+	# title = population0title #hidden
+	# desc = population0desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
 	trigger = {
 		culture_group = culture_group_dwarves
-		AND = {
-			NOT = { has_province_modifier = one_population_dwarves }
-			NOT = { has_province_modifier = two_population_dwarves }
-			NOT = { has_province_modifier = three_population_dwarves }
-			NOT = { has_province_modifier = four_population_dwarves }
-			NOT = { has_province_modifier = five_population_dwarves }
-			NOT = { has_province_modifier = six_population_dwarves }
-			NOT = { has_province_modifier = seven_population_dwarves }
-		}
+		NOT = { mep_has_dwarves_popmod_trigger = yes }
 	}
 	
 	mean_time_to_happen = {
-		months = 6
+		months = 2
 	}
 	
 	option = {
-		name = "OK"
+		# name = "OK"
+		mep_popmod_remove_effect = yes
 		add_province_modifier = { name = one_population_dwarves duration = -1 }
 	}
 }
@@ -1198,6 +814,7 @@ character_event = {
 	id = population.17
 	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 	
 	trigger = {
 		culture_group = culture_group_dwarves
@@ -1224,40 +841,35 @@ character_event = {
 		name = population4A
 		random_demesne_province={
 			if = {
-					limit = {
+				limit = {
 					NOT = { controlled_by = ROOT }
-					}
-	#goes from urban to densely populated
-				if = {
-					limit = {
-						has_province_modifier = seven_population_dwarves
-					}
-				add_province_modifier = { name = six_population_dwarves duration = -1 }
-				remove_province_modifier = seven_population_dwarves
 				}
-	#goes from densely to more populated
+				#goes from urban to densely populated
 				if = {
-					limit = {
-						has_province_modifier = six_population_dwarves
-					}
-				add_province_modifier = { name = five_population_dwarves duration = -1 }
-				remove_province_modifier = six_population_dwarves
+					limit = { has_province_modifier = seven_population_dwarves }
+					add_province_modifier = { name = six_population_dwarves duration = -1 }
+					remove_province_modifier = seven_population_dwarves
+					break = yes
 				}
-	#goes from more to normally populated
+				#goes from densely to more populated
 				if = {
-					limit = {
-						has_province_modifier = five_population_dwarves
-					}
-				add_province_modifier = { name = four_population_dwarves duration = -1 }
-				remove_province_modifier = five_population_dwarves
+					limit = { has_province_modifier = six_population_dwarves }
+					add_province_modifier = { name = five_population_dwarves duration = -1 }
+					remove_province_modifier = six_population_dwarves
+					break = yes
 				}
-	#goes from normal to lightly populated
+				#goes from more to normally populated
 				if = {
-					limit = {
-						has_province_modifier = four_population_dwarves
-					}
-				add_province_modifier = { name = three_population_dwarves duration = -1 }
-				remove_province_modifier = four_population_dwarves
+					limit = { has_province_modifier = five_population_dwarves }
+					add_province_modifier = { name = four_population_dwarves duration = -1 }
+					remove_province_modifier = five_population_dwarves
+					break = yes
+				}
+				#goes from normal to lightly populated
+				if = {
+					limit = { has_province_modifier = four_population_dwarves }
+					add_province_modifier = { name = three_population_dwarves duration = -1 }
+					remove_province_modifier = four_population_dwarves
 				}
 			}
 		}
@@ -1279,18 +891,11 @@ character_event = {
 	
 	option = {
 		name = population5B #Yes, make efforts to increase population in a random province
-		wealth = -250
+		wealth = -500
 		prestige = -125
 		random_realm_province = {
 			limit = {
-				OR = {
-					has_province_modifier = one_population_dwarves
-					has_province_modifier = two_population_dwarves
-					has_province_modifier = three_population_dwarves
-					has_province_modifier = four_population_dwarves
-					has_province_modifier = five_population_dwarves
-					has_province_modifier = six_population_dwarves
-				}
+				mep_dwarves_popmod_increasable_trigger = yes
 			}
 			add_province_modifier = { name = population_increasing duration = -1 }
 		}
@@ -1298,8 +903,13 @@ character_event = {
 	
 	option = {
 		name = population5C #Yes, make the effort where my steward is located
-		trigger = { ai = no }
-		wealth = -250
+		trigger = {
+			ai = no
+			job_treasurer = {
+				location = { mep_dwarves_popmod_increasable_trigger = yes }
+			}
+		}
+		wealth = -500
 		prestige = -125
 		any_courtier = {
 			limit = { has_job_title = job_treasurer }
@@ -1316,14 +926,7 @@ province_event = {
 	
 	trigger = {
 		has_province_modifier = population_increasing
-		OR = {
-			has_province_modifier = one_population_dwarves
-			has_province_modifier = two_population_dwarves
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-		}
+		mep_dwarves_popmod_increasable_trigger = yes
 	}
 	
 	mean_time_to_happen = {
@@ -1338,26 +941,31 @@ province_event = {
 			limit = { has_province_modifier = six_population_dwarves }
 			remove_province_modifier = six_population_dwarves
 			add_province_modifier = { name = seven_population_dwarves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = five_population_dwarves }
 			remove_province_modifier = five_population_dwarves
 			add_province_modifier = { name = six_population_dwarves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = four_population_dwarves }
 			remove_province_modifier = four_population_dwarves
 			add_province_modifier = { name = five_population_dwarves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = three_population_dwarves }
 			remove_province_modifier = three_population_dwarves
 			add_province_modifier = { name = four_population_dwarves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = two_population_dwarves }
 			remove_province_modifier = two_population_dwarves
 			add_province_modifier = { name = three_population_dwarves duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = one_population_dwarves }
@@ -1367,356 +975,182 @@ province_event = {
 	}
 }
 
-province_event = {
-	id = population.37
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = two_population_dwarves
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = one_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_dwarves
-	}
-}
+#province_event = {
+#	id = population.37
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = two_population_dwarves
+#			has_province_modifier = three_population_dwarves
+#			has_province_modifier = four_population_dwarves
+#			has_province_modifier = five_population_dwarves
+#			has_province_modifier = six_population_dwarves
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = one_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = one_population_dwarves
+#	}
+#}
+#
+#province_event = {
+#	id = population.38
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = three_population_dwarves
+#			has_province_modifier = four_population_dwarves
+#			has_province_modifier = five_population_dwarves
+#			has_province_modifier = six_population_dwarves
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = two_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = two_population_dwarves
+#	}
+#}
+#
+#province_event = {
+#	id = population.39
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = four_population_dwarves
+#			has_province_modifier = five_population_dwarves
+#			has_province_modifier = six_population_dwarves
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = three_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = three_population_dwarves
+#	}
+#}
+#
+#province_event = {
+#	id = population.40
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = five_population_dwarves
+#			has_province_modifier = six_population_dwarves
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = four_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = four_population_dwarves
+#	}
+#}
+#
+#province_event = {
+#	id = population.41
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = six_population_dwarves
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = five_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = five_population_dwarves
+#	}
+#}
+#
+#province_event = {
+#	id = population.42
+#	title = population25title #hidden
+#	desc = population25desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		culture_group = culture_group_dwarves
+#		OR = {
+#			has_province_modifier = seven_population_dwarves
+#		}
+#		has_province_modifier = six_population_dwarves #Has two province modifiers
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = six_population_dwarves
+#	}
+#}
 
-province_event = {
-	id = population.38
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = three_population_dwarves
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = two_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = two_population_dwarves
-	}
-}
-
-province_event = {
-	id = population.39
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = four_population_dwarves
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = three_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = three_population_dwarves
-	}
-}
-
-province_event = {
-	id = population.40
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = five_population_dwarves
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = four_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = four_population_dwarves
-	}
-}
-
-province_event = {
-	id = population.41
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = six_population_dwarves
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = five_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = five_population_dwarves
-	}
-}
-
-province_event = {
-	id = population.42
-	title = population25title #hidden
-	desc = population25desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		culture_group = culture_group_dwarves
-		OR = {
-			has_province_modifier = seven_population_dwarves
-		}
-		has_province_modifier = six_population_dwarves #Has two province modifiers
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = six_population_dwarves
-	}
-}
-
-##Now for EVERYONE ELSE!
-province_event = {
-	id = population.20
-	title = population_title #hidden
-	desc = population_desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOT = { has_global_flag = population_setup }
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		AND = {
-			NOT = { has_province_modifier = one_population_human }
-			NOT = { has_province_modifier = two_population_human }
-			NOT = { has_province_modifier = three_population_human }
-			NOT = { has_province_modifier = four_population_human }
-			NOT = { has_province_modifier = five_population_human }
-			NOT = { has_province_modifier = six_population_human }
-			NOT = { has_province_modifier = seven_population_human }
-		}
-	}	
-	
-	mean_time_to_happen = {
-		days = 1	
-	}
-	
-### Provinces that have increased population
-	
-	#the provinces that are not majorly settled all get low population
-	option = {
-		name = "OK"
-	#the provinces that are not majorly settled all get the medium populated one
-		if = {
-			limit = {
-				NOR = {
-					province_id = 271  # Gladden Fields
-					province_id = 404  # Langwed's Vale
-					province_id = 409  # Talath Harroch
-					province_id = 409  # Talath Harroch
-					province_id = 569  # Dor Rhovanion
-					province_id = 267  # Bree
-					province_id = 654  # Barad-dur
-					province_id = 539  # Dale 
-					province_id = 540  # Esgaroth
-					province_id = 689  # Beorn's Halls
-					province_id = 84   # Hobbiton
-					province_id = 92   # Longcleeve
-					province_id = 642  # Gundabad
-					province_id = 624  # Carn Dum
-					province_id = 310  # Amon Lanc
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = two_population_human duration = -1 }
-				remove_province_modifier = one_population_human
-			}
-		}
-
-	option = {
-		name = "OK"
-	#the provinces that are not majorly settled all get the medium populated one
-		if = {
-			limit = {
-				OR = {
-					province_id = 271  # Gladden Fields
-					province_id = 404  # Langwed's Vale
-					province_id = 409  # Talath Harroch
-					province_id = 409  # Talath Harroch
-					province_id = 569  # Dor Rhovanion
-					province_id = 84   # Hobbiton
-					province_id = 92   # Longcleeve
-					province_id = 310  # Amon Lanc (Dul Guldur)
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = four_population_human duration = -1 }
-				remove_province_modifier = one_population_human
-			}
-		}
-	
-#the major urban centers get heavily populated
-		if = { 
-			limit = {
-				OR = {
-					province_id = 267  # Bree
-					province_id = 654  # Barad-dur
-					province_id = 539  # Dale 
-					province_id = 540  # Esgaroth
-					province_id = 689  # Beorn's Halls
-					province_id = 642  # Gundabad
-					province_id = 624  # Carn Dum
-				}
-			}
-			ROOT = {
-				add_province_modifier = { name = six_population_human duration = -1 }
-				remove_province_modifier = one_population_human
-			}
-		}
-	}
-}
-
-
-#Now we remove the province modifier if the population of the province changes#
-province_event = {
-	id = population.21
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		NOR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = one_population_human
-			has_province_modifier = two_population_human
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-	}	
-	
-	mean_time_to_happen = {
-		days = 1
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = one_population_human
-		remove_province_modifier = two_population_human
-		remove_province_modifier = three_population_human
-		remove_province_modifier = four_population_human
-		remove_province_modifier = five_population_human
-		remove_province_modifier = six_population_human
-		remove_province_modifier = seven_population_human
-	}
-}
-	
-#Now if a new province is changed to dwarven group culture, it gets the lightly populated modifier#
+#Now if a new province is changed to "Human" group culture, it gets the lightly populated modifier#
 province_event = {
 	id = population.22
-	title = population0title #hidden
-	desc = population0desc #hidden
-	picture = GFX_evt_council
+	# title = population0title #hidden
+	# desc = population0desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		AND = {
-			NOT = { has_province_modifier = one_population_human }
-			NOT = { has_province_modifier = two_population_human }
-			NOT = { has_province_modifier = three_population_human }
-			NOT = { has_province_modifier = four_population_human }
-			NOT = { has_province_modifier = five_population_human }
-			NOT = { has_province_modifier = six_population_human }
-			NOT = { has_province_modifier = seven_population_human }
-		}
+		mep_has_xhumans_culture = yes
+		NOT = { mep_has_xhumans_popmod_trigger = yes }
 	}	
 	
 	mean_time_to_happen = {
@@ -1724,7 +1158,8 @@ province_event = {
 	}
 	
 	option = {
-		name = "OK"
+		# name = "OK"
+		mep_popmod_remove_effect = yes
 		add_province_modifier = { name = one_population_human duration = -1 }
 	}
 }
@@ -1735,18 +1170,10 @@ character_event = {
 	id = population.23
 	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
 	picture = "GFX_shadows_coming"
+	only_playable = yes
 	
 	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
+		mep_has_xhumans_culture = yes
 		higher_tier_than = BARON
 		any_demesne_title = {
 			location = {
@@ -1765,14 +1192,14 @@ character_event = {
 	mean_time_to_happen = {
 		months = 60 #5 years
 	}
-	
+  
 	option = {
 		name = population4A
 		random_demesne_province={
 			if = {
-					limit = {
+				limit = {
 					NOT = { controlled_by = ROOT }
-					}
+			}
 	#goes from normal to lightly populated
 				if = {
 					limit = {
@@ -1783,11 +1210,10 @@ character_event = {
 				}
 	#goes from more to normally populated
 				if = {
-					limit = {
-						has_province_modifier = five_population_human
-					}
-				add_province_modifier = { name = four_population_human duration = -1 }
-				remove_province_modifier = five_population_human
+					limit = { has_province_modifier = five_population_human }
+					add_province_modifier = { name = four_population_human duration = -1 }
+					remove_province_modifier = five_population_human
+					break = yes
 				}
 	#goes from densely to more populated
 				if = {
@@ -1813,7 +1239,7 @@ character_event = {
 #Now to increase the population level via decision event#
 character_event = {
 	id = population.24
-	desc = population18desc # Though Dwarves replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage your people to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
+	desc = population24desc # 
 	picture = "GFX_evt_elven_story"
 	
 	is_triggered_only = yes
@@ -1825,18 +1251,11 @@ character_event = {
 	
 	option = {
 		name = population5B #Yes, make efforts to increase population in a random province
-		wealth = -250
+		wealth = -200
 		prestige = -125
 		random_realm_province = {
 			limit = {
-				OR = {
-					has_province_modifier = one_population_human
-					has_province_modifier = two_population_human
-					has_province_modifier = three_population_human
-					has_province_modifier = four_population_human
-					has_province_modifier = five_population_human
-					has_province_modifier = six_population_human
-				}
+				 mep_xhumans_popmod_increasable_trigger = yes
 			}
 			add_province_modifier = { name = population_increasing duration = -1 }
 		}
@@ -1844,8 +1263,13 @@ character_event = {
 	
 	option = {
 		name = population5C #Yes, make the effort where my steward is located
-		trigger = { ai = no }
-		wealth = -250
+		trigger = { 
+			ai = no
+			job_treasurer = {
+				location = { mep_xhumans_popmod_increasable_trigger = yes } 
+			}
+		}
+		wealth = -200
 		prestige = -125
 		any_courtier = {
 			limit = { has_job_title = job_treasurer }
@@ -1862,14 +1286,7 @@ province_event = {
 	
 	trigger = {
 		has_province_modifier = population_increasing
-		OR = {
-			has_province_modifier = one_population_human
-			has_province_modifier = two_population_human
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-		}
+		mep_xhumans_popmod_increasable_trigger = yes
 	}
 	
 	mean_time_to_happen = {
@@ -1884,26 +1301,31 @@ province_event = {
 			limit = { has_province_modifier = six_population_human }
 			remove_province_modifier = six_population_human
 			add_province_modifier = { name = seven_population_human duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = five_population_human }
 			remove_province_modifier = five_population_human
 			add_province_modifier = { name = six_population_human duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = four_population_human }
 			remove_province_modifier = four_population_human
 			add_province_modifier = { name = five_population_human duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = three_population_human }
 			remove_province_modifier = three_population_human
 			add_province_modifier = { name = four_population_human duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = two_population_human }
 			remove_province_modifier = two_population_human
 			add_province_modifier = { name = three_population_human duration = -1 }
+			break = yes
 		}
 		if = { 
 			limit = { has_province_modifier = one_population_human }
@@ -1913,221 +1335,696 @@ province_event = {
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.43
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.43
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = two_population_human
+#			has_province_modifier = three_population_human
+#			has_province_modifier = four_population_human
+#			has_province_modifier = five_population_human
+#			has_province_modifier = six_population_human
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = one_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = one_population_human
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.44
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = three_population_human
+#			has_province_modifier = four_population_human
+#			has_province_modifier = five_population_human
+#			has_province_modifier = six_population_human
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = two_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = two_population_human
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.45
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = four_population_human
+#			has_province_modifier = five_population_human
+#			has_province_modifier = six_population_human
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = three_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = three_population_human
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.46
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = five_population_human
+#			has_province_modifier = six_population_human
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = four_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = four_population_human
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.47
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = six_population_human
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = five_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = five_population_human
+#	}
+#}
+#
+#province_event = { #Cleans up the counties with 2 province modifiers
+#	id = population.48
+#	title = population28title #hidden
+#	desc = population28desc #hidden
+#	picture = GFX_evt_council
+#	hide_window = yes
+#	
+#	trigger = {
+#		OR = {
+#			culture_group = culture_group_edain
+#			culture_group = culture_group_middlemen
+#			culture_group = culture_group_forodwaith
+#			culture_group = culture_group_haldadian
+#			culture_group = culture_group_southron
+#			culture_group = culture_group_easterling
+#			culture_group = culture_group_halfling
+#			culture_group = culture_group_melkor
+#		}
+#		OR = {
+#			has_province_modifier = seven_population_human
+#		}
+#		has_province_modifier = six_population_human
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 90
+#	}
+#	
+#	option = {
+#		name = "OK"
+#		remove_province_modifier = six_population_human
+#	}
+#}
+
+#-------------------------------------------------------------------------------------------
+# General setup, called from on_chronicle_start
+character_event = {
+	id = population.100
+	#desc = "OK"
+	#picture = GFX_evt_rebuilding
 	hide_window = yes
+
+	is_triggered_only = yes
 	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = two_population_human
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = one_population_human
+	immediate = {
+		hidden_tooltip = {
+
+			any_independent_ruler = {
+				any_realm_province = {
+					limit = {
+						NOT = { has_province_flag = population_startup_done }
+					}
+					# D�nedain
+					if = {
+						limit = {
+							culture_group = culture_group_numenorean
+							NOT = { mep_has_dunedain_popmod_trigger = yes }
+						}
+						province_event = { id = population.102 }
+					}
+					# Elves
+					if = {
+						limit = {
+							mep_is_province_elven_trigger = yes
+							NOT = { mep_has_elves_popmod_trigger = yes }
+						}
+						province_event = { id = population.103 }
+					}
+					# Dwarves
+					if = {
+						limit = {
+							culture_group = culture_group_dwarves
+							NOT = { mep_has_dwarves_popmod_trigger = yes }
+						}
+						province_event = { id = population.104 }
+					}
+					# Others (Humans/Hobbits/Orcs/Trolls
+					if = {
+						limit = {
+							mep_has_xhumans_culture = yes
+							NOT = { mep_has_xhumans_popmod_trigger = yes }
+						}
+						province_event = { id = population.105 }
+					}
+					set_province_flag = population_startup_done
+				} # end any province
+
+			} # end any independent ruler
+	
+		} # end hidden tooltip
+	}
+
+	option = {
+		# name = "OK"
 	}
 	
-	mean_time_to_happen = {
-		days = 90
+}
+
+# Because population.100 does nok work for the player's nation
+character_event = {
+	id = population.101
+	#desc = "OK"
+	#picture = GFX_evt_rebuilding
+	hide_window = yes
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			if = {
+				limit = {
+					ai = no
+					independent = yes
+				}
+				any_realm_province = {
+					limit = {
+						NOT = { has_province_flag = population_startup_done }
+					}
+					# D�nedain
+					if = {
+						limit = {
+							culture_group = culture_group_numenorean
+							NOT = { mep_has_dunedain_popmod_trigger = yes }
+						}
+						province_event = { id = population.102 }
+					}
+					# Elves
+					if = {
+						limit = {
+							mep_is_province_elven_trigger = yes
+							NOT = { mep_has_elves_popmod_trigger = yes }
+						}
+						province_event = { id = population.103 }
+					}
+					# Dwarves
+					if = {
+						limit = {
+							culture_group = culture_group_dwarves
+							NOT = { mep_has_dwarves_popmod_trigger = yes }
+						}
+						province_event = { id = population.104 }
+					}
+					# Others (Humans/Hobbits/Orcs/Trolls
+					if = {
+						limit = {
+							mep_has_xhumans_culture = yes
+							NOT = { mep_has_xhumans_popmod_trigger = yes }
+						}
+						province_event = { id = population.105 }
+					}
+					set_province_flag = population_startup_done
+				} # end any province
+			}
+	
+		} # end hidden tooltip
+	}
+
+	option = {
+		# name = "OK"
+	}
+	
+}
+
+
+
+# Population setup for D�nedain, should be only called once
+province_event = {
+	id = population.102
+	# title = population102title #hidden
+	# desc = population102desc #hidden
+	# picture = GFX_evt_council
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a d�nedian province where population_startup_done is false
+			# Densely Populated (level 6)
+			if = {
+				limit = {
+					OR = {
+						province_id = 422 # Minas Tirith
+						province_id = 656 # Dol Amroth
+						province_id = 17  # Minas Arnach
+						province_id = 18  # Pelargir
+						province_id = 270 # Fornost
+						AND = {
+							NOT = { year = 9400 }
+							province_id = 659 # Annunimas
+						}
+						province_id = 105 # Barrow Downs/Tyrn Gorthad capital of cardolan
+						province_id = 430 # Umbar						
+					}
+
+				}
+				add_province_modifier = { name = six_population_dunedain duration = -1 }	
+				set_province_flag = population_startup_done							
+			}
+			# Medium Populated (level 4)
+			if = { 
+				limit = {
+					OR = {
+						province_id = 1 # Pelennor
+						#lossarnach is also stated to be at least normally settled
+						province_id = 10 # Celerdain
+						province_id = 11 
+						province_id = 12
+						province_id = 13
+						#also the pelargir duchy should have normal dunedain settlement level
+						province_id = 16
+						province_id = 24
+						#dol amroth duchy also gets normal settlement levels
+						province_id = 429
+						province_id = 40
+						province_id = 41
+						province_id = 42
+						# Other capitals
+						province_id = 26 # Linhir
+						province_id = 517 # �r�z�yan
+						province_id = 431 # Maros	
+						AND = {
+							year = 9400
+							province_id = 659 # Annunimas
+						}						
+						
+					}
+				}
+				add_province_modifier = { name = four_population_dunedain duration = -1 }
+				set_province_flag = population_startup_done
+			}
+			# the remainder get Lightly Populated (level 2)
+			if = {
+				limit = {
+					NOT = { has_province_flag = population_startup_done }
+				}
+				add_province_modifier = { name = two_population_dunedain duration = -1 }
+				set_province_flag = population_startup_done
+			}
+		}
 	}
 	
 	option = {
-		name = "OK"
-		remove_province_modifier = one_population_human
+		# name = "OK"
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.44
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
+# Population setup for Elves, should be only called once
+province_event = {
+	id = population.103
+	# title = population103title #hidden
+	# desc = population103desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = three_population_human
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = two_population_human
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 90
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a elven province where population_startup_done is false
+			# Densely Populated (level 6)
+			if = {
+				limit = {
+					OR = {
+						province_id = 235  # Lorien  
+						province_id = 234  # Imladris 
+						province_id = 657  # Mithlond	
+						province_id = 323  # #Thranduill's Halls
+						AND = { 
+							province_id = 429 # Edhellond
+							year = 6600
+							NOT = { year = 8330 }
+						}
+					}
+				}
+				add_province_modifier = { name = six_population_elves duration = -1 }	
+				set_province_flag = population_startup_done							
+			}
+			# Medium Populated (level 4)
+			if = { 
+				limit = {
+					OR = {
+						province_id = 335  # Harlond
+						province_id = 350  # Forlond
+						province_id = 284  # Nan Celebrant
+						province_id = 327  # Taeg Din
+						province_id = 583  # Ulumuir (by the Sea of Rh�n)
+						AND = { 
+							province_id = 429 # Edhellond
+							OR = {
+								AND = {
+									year = 5900
+									NOT = { year = 6600 }
+								}
+								AND = {
+									year = 8330
+									NOT = { year = 9100 }
+								}
+							}
+						}
+					}
+				}
+				add_province_modifier = { name = four_population_elves duration = -1 }
+				set_province_flag = population_startup_done
+			}
+			# the remainder get Lightly Populated (level 2)
+			if = {
+				limit = {
+					NOT = { has_province_flag = population_startup_done }
+				}
+				add_province_modifier = { name = two_population_elves duration = -1 }
+				set_province_flag = population_startup_done
+			}
+		}
 	}
 	
 	option = {
-		name = "OK"
-		remove_province_modifier = two_population_human
+		# name = "OK"
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.45
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
+# Population setup for Dwarves, should be only called once
+province_event = {
+	id = population.104
+	# title = population104title #hidden
+	# desc = population104desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = four_population_human
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = three_population_human
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 90
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a dwarven province where population_startup_done is false
+			# Densely Populated (level 6)
+			if = {
+				limit = {
+					OR = {
+						province_id = 285  # Khazad-Dum
+						province_id = 292  # Erebor  
+						province_id = 644  # Zirakdum 
+						province_id = 812  # Stonefoot2
+						province_id = 679  # Dain's Halls
+					}
+				}
+				add_province_modifier = { name = six_population_dwarves duration = -1 }	
+				set_province_flag = population_startup_done							
+			}
+			# the remainder get Medium Populated (level 4), except for Thr�r's Coombe
+			if = {
+				limit = {
+					NOT = { has_province_flag = population_startup_done }
+					NOT = { province_id = 571 }
+				}
+				add_province_modifier = { name = four_population_dwarves duration = -1 }
+				set_province_flag = population_startup_done
+			}
+			# Thr�r's Coombe
+			if = {
+				limit = {
+					NOT = { has_province_flag = population_startup_done }
+					province_id = 571
+				}
+				add_province_modifier = { name = two_population_dwarves duration = -1 }
+				set_province_flag = population_startup_done
+			}
+		}
 	}
 	
 	option = {
-		name = "OK"
-		remove_province_modifier = three_population_human
+		# name = "OK"
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.46
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
+# Population setup for 'Everyone Else' (Humans/Hobbits/Orcs/Trolls)
+province_event = {
+	id = population.105
+	# title = population105title #hidden
+	# desc = population105desc #hidden
+	# picture = GFX_evt_council
 	hide_window = yes
 	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = five_population_human
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = four_population_human
-	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 90
+	immediate = {
+		hidden_tooltip = {
+			# Here, we should be examining a properly cultured province where population_startup_done is false
+			# the province choice is somewhat lacking
+			# Densely Populated (level 6)
+			if = {
+				limit = {
+					OR = {
+						province_id = 267  # Bree
+						province_id = 97  # Buckland
+						province_id = 95  # Michel Delving
+						# For Orcs
+						province_id = 654  # Barad-dur
+						province_id = 642  # Gundabad
+						province_id = 624  # Carn Dum
+						province_id = 285  # Moria
+						# Men
+						province_id = 539  # Dale 
+						province_id = 540  # Esgaroth
+						province_id = 689  # Beorn's Halls
+						province_id = 115  # Edoras
+						province_id = 489  # Talazhan
+						province_id = 450  # Ahr�l Admal
+						province_id = 614  # Kas Rh�n
+						# Evil Isengard
+						AND = {
+							province_id = 225  # orthanc-isengard
+							year = 11333
+							NOT = { year = 11363 }
+						}
+						
+					}
+				}
+				add_province_modifier = { name = six_population_human duration = -1 }	
+				set_province_flag = population_startup_done							
+			}
+			# Medium Populated (level 4)
+			if = { 
+				limit = {
+					OR = {
+						# Hobbits/Bree
+						province_id = 84   # Hobbiton
+						province_id = 92   # Longcleeve
+						province_id = 658  # Tookland
+						province_id = 75   # Frogmorton
+						province_id = 85   # Bywater
+						province_id = 89   # Overhill
+						province_id = 90   # Greenfields
+						province_id = 86   # Waymeet
+						province_id = 83   # Longbottom
+						province_id = 81   # Sackville
+						province_id = 271  # Gladden Fields
+						province_id = 265  # Combe
+						province_id = 264  # Archet
+						# For Orcs
+						province_id = 310  # Amon Lanc (Dul Guldur)
+						province_id = 805  # Mount Gram
+						province_id = 679  # Dain's Halls
+						province_id = 570  # Goblin-Town
+						province_id = 72   # Vale of Ud�n
+						province_id = 691  # Morannon
+						province_id = 662  # Durthang
+						province_id = 149  # Cirith Ungol
+						province_id = 150  # Carach Angren
+						province_id = 426  # Minas Morgul
+						province_id = 619  # Nan Gurth
+						# Non Men of Darkness
+						province_id = 404  # Langwed's Vale
+						province_id = 409  # Talath Harroch
+						province_id = 569  # Dor Rhovanion
+						province_id = 417  # Forest Gate
+						province_id = 688  # Carrock
+						province_id = 415  # Woodmen_town (West Bight)
+						province_id = 156  # S�duri
+						province_id = 383  # Galtrev
+						province_id = 178  # Bar Morthil (Andrast)
+						province_id = 220  # Calembel
+						province_id = 114  # Aldburg
+						province_id = 117  # King Fold
+						province_id = 122  # Helm's Deep
+						province_id = 112  # Snowbourn
+						province_id = 203 # Annon Wain
+						province_id = 197 # Lond Galen
+						province_id = 547 # Tunn Vidugava
+						# Southerners
+						province_id = 478  # Sukh Akhor
+						province_id = 135  # Amonost
+						province_id = 440  # Urlutsu Nurn
+						province_id = 456  # Bogath
+						province_id = 533  # Khorsaj
+						province_id = 481  # An Pharaz
+						province_id = 467  # Kadar Argon
+						province_id = 471  # Korondaj
+						province_id = 504  # Bur Lurmsak�n
+						province_id = 449  # Ammu Khand
+						province_id = 494  # Ovathrac
+						# Eastrlings (incl Dorwinion)
+						province_id = 608  # Agasha Dag
+						province_id = 602  # Mistrand
+						province_id = 604  # Gathod
+						province_id = 576  # Szrel-Kain
+						province_id = 564  # Buhr Widu
+						
+					}
+				}
+				add_province_modifier = { name = four_population_human duration = -1 }
+				set_province_flag = population_startup_done
+			}
+			# the remainder get Lightly Populated (level 2)
+			if = {
+				limit = {
+					NOT = { has_province_flag = population_startup_done }
+				}
+				add_province_modifier = { name = two_population_human duration = -1 }
+				set_province_flag = population_startup_done
+			}
+		}
 	}
 	
 	option = {
-		name = "OK"
-		remove_province_modifier = four_population_human
+		# name = "OK"
 	}
 }
 
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.47
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = six_population_human
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = five_population_human
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = five_population_human
-	}
-}
-
-province_event = { #Cleans up the counties with 2 province modifiers
-	id = population.48
-	title = population28title #hidden
-	desc = population28desc #hidden
-	picture = GFX_evt_council
-	hide_window = yes
-	
-	trigger = {
-		OR = {
-			culture_group = culture_group_edain
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture_group = culture_group_halfling
-			culture_group = culture_group_melkor
-		}
-		OR = {
-			has_province_modifier = seven_population_human
-		}
-		has_province_modifier = six_population_human
-	}
-	
-	mean_time_to_happen = {
-		days = 90
-	}
-	
-	option = {
-		name = "OK"
-		remove_province_modifier = six_population_human
-	}
-}

@@ -1,0 +1,112 @@
+decisions = {
+	##Goodies purge baddies##
+	purge_province = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			job_marshal = { is_alive = yes }
+			any_realm_province = {
+				OR = {
+					culture_group = culture_group_melkor
+					religion_group = religion_group_melkor
+				}
+			}
+			NOT = {
+				culture = culture_maiar
+				culture = culture_istari
+				culture_group = culture_group_melkor
+			}
+			demesne_size = 1
+			NOT = { has_character_flag = purgingprovince }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 100
+			job_marshal = {
+				location = {
+					OR = {
+						culture_group = culture_group_melkor
+						religion_group = religion_group_melkor
+					}
+				}
+				#has_job_action = action_purge_province
+			}
+		}
+		effect = {
+			job_marshal = {
+				location = {
+					province_event = { id = purge.0 }
+				}
+			}
+		}
+	}
+	##Baddies purge goodies##
+	purge_province_evil = {
+		is_high_prio = no
+		potential = {
+			ai = no
+			job_marshal = { is_alive = yes }
+			any_realm_province = {
+				OR = {
+					religion = religion_dunedain
+					religion_group = religion_group_eldar
+					religion = religion_mahal
+					religion = religion_rhovanion
+					religion = religion_haldadian
+					religion = religion_southron
+					religion = religion_black_numenorean
+					religion = religion_easterlings
+					culture = culture_entish
+				}
+			}
+			OR = {
+				ROOT = {
+					culture = culture_maiar
+					trait = evil_side
+				}
+				ROOT = {
+					OR = {
+						culture = culture_orkish
+						culture = culture_goblin
+						culture = culture_urukhai
+					}
+				}
+			}
+			demesne_size = 1
+			NOT = { has_character_flag = purgingprovince }
+			has_character_flag = special_decisions_open
+		}
+		allow = {
+			war = no
+			prisoner = no
+			age = 16
+			prestige = 100
+			job_marshal = {
+				location = {
+					OR = {
+						religion = religion_dunedain
+						religion_group = religion_group_eldar
+						religion = religion_mahal
+						religion = religion_rhovanion
+						religion = religion_haldadian
+						religion = religion_southron
+						religion = religion_black_numenorean
+						religion = religion_easterlings
+						culture = culture_entish
+					}
+				}
+				#has_job_action = action_purge_province
+			}
+		}
+		effect = {
+			job_marshal = {
+				location = {
+					province_event = { id = purge.0 }
+				}
+			}
+		}
+	}
+}

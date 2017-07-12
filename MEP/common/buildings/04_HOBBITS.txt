@@ -246,6 +246,72 @@ city = {
 	    		culture_group = culture_group_halfling 
             }
 	}
+	
+	# Special Hobbit Farms
+	ct_Hobfarm_1 = {
+		desc = ct_Hfarm_1_desc
+		gold_cost = 67
+		build_time = 244
+		tax_income = 2
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			culture_group = culture_group_halfling
+			OR = {
+				terrain = farmlands
+				terrain = plains
+			}
+        }
+	}
+	ct_Hobfarm_2 = {
+		desc = ct_Hfarm_1_desc
+		upgrades_from = ct_Hobfarm_1
+		gold_cost = 67
+		build_time = 244
+		tax_income = 2
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_halfling
+			OR = {
+				terrain = farmlands
+				terrain = plains
+			}
+        }
+	}
+	ct_Hobfarm_3 = {
+		desc = ct_Hfarm_1_desc
+		upgrades_from = ct_Hobfarm_2
+		gold_cost = 67
+		build_time = 244
+		tax_income = 2
+		ai_creation_factor = 110
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_halfling
+			OR = {
+				terrain = farmlands
+				terrain = plains
+			}
+        }
+	}
+	
+	ct_Hobfarm_4 = {
+		desc = ct_Hfarm_1_desc
+		upgrades_from = ct_Hobfarm_3
+		gold_cost = 100
+		build_time = 244
+		tax_income = 2
+		ai_creation_factor = 85
+		add_number_to_name = no
+		potential = {
+			has_global_flag = building
+			culture_group = culture_group_halfling
+			terrain = farmlands
+        }
+	}
 
 ### Inns for Hobbits and Breelander ###
 

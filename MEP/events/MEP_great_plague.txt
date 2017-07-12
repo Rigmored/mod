@@ -7,13 +7,12 @@ narrative_event = {
     picture = "GFX_evt_abandoned_lands"
 
 	trigger = {
+		has_game_rule = { name = great_plague value = on }
 		year = 9978
 		NOT = { year = 10180 }
 		NOT = { has_global_flag = great_plague }
 		has_landed_title = c_uldovhar
 	}
-	
-	is_triggered_only = yes
 			  
 	option = {
 		name = "EVTOPTAgreatplague.0" ## OK		

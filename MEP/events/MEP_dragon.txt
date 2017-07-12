@@ -8,9 +8,6 @@ narrative_event = {
     picture = "GFX_good"
 
 	trigger = {
-		NOT = { has_character_flag = grey_dragon_event }
-		NOT = { has_character_modifier = successfully_fought_dragon }
-		NOT = { has_character_modifier = news_of_wealth }
 		OR = {
 			has_landed_title = c_cirith_auris
 			has_landed_title = c_withered_heath
@@ -35,17 +32,15 @@ narrative_event = {
 		wealth = 1000
 	}
 	
-	in_triggered_only = yes
+	is_triggered_only = yes
 
 	option = {
 		name = "EVTOPTAdragon.0"
 		random_list = {
 			55 = {
 				narrative_event = { id = dragon.1 days = 150 }
-				set_character_flag = grey_dragon_event
 			}
 			45 = {
-				add_character_modifier = { name = news_of_wealth duration = 365 }
 			}		
 		}
 	}	
@@ -93,7 +88,7 @@ narrative_event = {
 }
 
 
-## The Dwarf will defend his fortress - the Dragon is coming ##
+## The Dwarf will defende his fortress - the Dragon is coming ##
 character_event = {
     id = dragon.2
     title = "EVTTITdragon.2"
@@ -192,8 +187,8 @@ character_event = {
 character_event = {
 	id = dragon.5
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -201,7 +196,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -247,15 +242,27 @@ character_event = {
 			### Weapons Modifier ###
 			modifier = {
 				factor = 4
-				FROMFROM = { trait = anduril }
+				FROM = { has_artifact = anduril }
 			}
 			modifier = {
 				factor = 3
-				FROMFROM = { trait = glamdring }
+				FROM = { has_artifact = glamdring }
 			}
 			modifier = {
 				factor = 3
-				FROMFROM = { trait = orcrist }
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
+				factor = 4
+				FROM = { has_artifact = durins_axe }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = dwarvish_sword }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = erebor_spear }
 			}
 			modifier = {
 				factor = 5
@@ -354,7 +361,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -425,7 +432,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -472,19 +479,27 @@ character_event = {
 			### Weapons Modifier ###
 			modifier = {
 				factor = 4
-				FROM = { trait = anduril }
+				FROM = { has_artifact = anduril }
 			}
 			modifier = {
 				factor = 3
-				FROM = { trait = glamdring }
+				FROM = { has_artifact = glamdring }
 			}
 			modifier = {
 				factor = 3
-				FROM = { trait = orcrist }
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
+				factor = 4
+				FROM = { has_artifact = durins_axe }
 			}
 			modifier = {
 				factor = 2
-				FROM = { trait = mithril }
+				FROM = { has_artifact = dwarvish_sword }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = erebor_spear }
 			}	
 			modifier = {
 				factor = 13
@@ -579,7 +594,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROMFROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -648,26 +663,22 @@ character_event = {
 #### Victory ! ####
 character_event = {
 	id = dragon.6
-	desc = "EVTDESCdragon.6"
-	picture = GFX_evt_dragon
+	# desc = "EVTDESCdragon.6"
+	# picture = GFX_evt_dragon
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAdragon.6"
+		# name = "EVTOPTAdragon.6"
 		duel_target = {
 			limit = { has_opinion_modifier = { who = ROOT modifier = opinion_duel_target } }
 			character_event = { id = dragon.7 }
 			remove_trait = duel_target
 		}
-		remove_trait = duel_target
-		clr_character_flag = grey_dragon_event
-		add_character_modifier = { name = successfully_fought_dragon duration = 3650 }
-		prestige = 500
-		piety = 250
-	}
-}
+		remove_trait = duel_target	
+	}	
+}	 
 
 #### Death of one of the character after the battle ####
 character_event = {
@@ -697,7 +708,7 @@ character_event = {
 				age = 1
 				culture_group = culture_group_dwarves
 				OR = {
-					NOT = { has_landed_title = k_grey_mountains }
+					NOT = { has_landed_title = d_grey_mountains }
 					NOT = { has_landed_title = c_cirith_auris }
 					NOT = { has_landed_title = c_withered_heath }
 					NOT = { has_landed_title = c_cirith_himmimond }
@@ -858,14 +869,14 @@ character_event = {
 #### Victory of first round ! ####
 character_event = {
 	id = dragon.14
-	desc = "EVTDESCdragon.14"
-	picture = GFX_evt_dragon
+	# desc = "EVTDESCdragon.14"
+	# picture = GFX_evt_dragon
 
 	is_triggered_only = yes
 	hide_window = yes
 	
 	option = {
-		name = "EVTOPTAdragon.14"
+		# name = "EVTOPTAdragon.14"
 		random_list = {
 			50 = {
 				duel_target = {
@@ -894,7 +905,7 @@ character_event = {
 		hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	
 	}	
 	option = {
-		name = "EVTOPTBdragon.15" ## I'll try to flee away !
+		name = "EVTOPTBdragon.15" ## I'll try to flew away !
 		random_list = {
 			45 = {
 				hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = dragon.16 } } } }	## You failed to escape, second duel
@@ -910,8 +921,8 @@ character_event = {
 character_event = {
 	id = dragon.16
 	is_triggered_only = yes
-	picture = GFX_evt_duel0
-	desc = "AI_EVENT"
+	# picture = GFX_evt_duel0
+	# desc = "AI_EVENT"
 	hide_window = yes		
 	
 	# Nobody but the actual referee should ever get this
@@ -919,7 +930,7 @@ character_event = {
 
 	# FROMFROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -965,15 +976,27 @@ character_event = {
 			### Weapons Modifier ###
 			modifier = {
 				factor = 4
-				FROMFROM = { trait = anduril }
+				FROM = { has_artifact = anduril }
 			}
 			modifier = {
 				factor = 3
-				FROMFROM = { trait = glamdring }
+				FROM = { has_artifact = glamdring }
 			}
 			modifier = {
 				factor = 3
-				FROMFROM = { trait = orcrist }
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
+				factor = 4
+				FROM = { has_artifact = durins_axe }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = dwarvish_sword }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = erebor_spear }
 			}
 			modifier = {
 				factor = 5
@@ -1072,7 +1095,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
@@ -1143,7 +1166,7 @@ character_event = {
 	
 	# FROM wins the round
 	option = {
-		name = "AI_EVENT"
+		# name = "AI_EVENT"
 		ai_chance = {
 			factor = 50
 			
@@ -1190,15 +1213,27 @@ character_event = {
 			### Weapons Modifier ###
 			modifier = {
 				factor = 4
-				FROM = { trait = anduril }
+				FROM = { has_artifact = anduril }
 			}
 			modifier = {
 				factor = 3
-				FROM = { trait = glamdring }
+				FROM = { has_artifact = glamdring }
 			}
 			modifier = {
 				factor = 3
-				FROM = { trait = orcrist }
+				FROM = { has_artifact = orcrist }
+			}
+			modifier = {
+				factor = 4
+				FROM = { has_artifact = durins_axe }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = dwarvish_sword }
+			}
+			modifier = {
+				factor = 2
+				FROM = { has_artifact = erebor_spear }
 			}
 			modifier = {
 				factor = 2
@@ -1297,7 +1332,7 @@ character_event = {
 			# Health Effects
 			modifier = {
 				factor = 1.5
-				is_ill = yes
+				FROMFROM = { trait = ill }
 			}
 			modifier = {
 				factor = 2
