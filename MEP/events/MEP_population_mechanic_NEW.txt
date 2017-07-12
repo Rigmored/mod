@@ -69,7 +69,7 @@ province_event = {
 	}
 }
 	
-## Now for when a Númenórean province is occupied, a population decline happens ##
+## Now for when a Nï¿½menï¿½rean province is occupied, a population decline happens ##
 character_event = {
 	id = population.4
 	desc = population4desc # This province is occupied by enemies and many precious lives have been lost. 
@@ -179,59 +179,54 @@ character_event = {
 	
 #Event where you are told the efforts have succeeded, and population is growing#
 province_event = {
-	id = population.6
-	desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
-	picture = GFX_good
-	
-	trigger = {
-		has_province_modifier = population_increasing
-		mep_dunedian_popmod_increasable_trigger = yes
-	}
-	
-	mean_time_to_happen = {
-		months = 240
-	}
-	
-	option = {
-		name = population6A #Good tidings!
-		remove_province_modifier = population_increasing
-		if = { 
-			limit = { has_province_modifier = one_population_dunedain }
-			remove_province_modifier = one_population_dunedain
-			add_province_modifier = { name = two_population_dunedain duration = -1 }
-			break = yes
-		}
-		if = { 
-			limit = { has_province_modifier = two_population_dunedain }
-			remove_province_modifier = two_population_dunedain
-			add_province_modifier = { name = three_population_dunedain duration = -1 }
-			break = yes
-		}
-		if = { 
-			limit = { has_province_modifier = three_population_dunedain }
-			remove_province_modifier = three_population_dunedain
-			add_province_modifier = { name = four_population_dunedain duration = -1 }
-			break = yes
-		}
-		if = { 
-			limit = { has_province_modifier = four_population_dunedain }
-			remove_province_modifier = four_population_dunedain
-			add_province_modifier = { name = five_population_dunedain duration = -1 }
-			break = yes
-		}
-		if = { 
-			limit = { has_province_modifier = five_population_dunedain }
-			remove_province_modifier = five_population_dunedain
-			add_province_modifier = { name = six_population_dunedain duration = -1 }
-			break = yes
-		}
-		if = { 
-			limit = { has_province_modifier = six_population_dunedain }
-			remove_province_modifier = six_population_dunedain
-			add_province_modifier = { name = seven_population_dunedain duration = -1 }
-		}
-	}
 
+    id = population.6
+    desc = population6desc #The population in this province, with the expenditure of a great amount of wealth and influence, has grown greatly in the last 20 years.
+    picture = GFX_good
+  
+    trigger = {
+        has_province_modifier = population_increasing
+        mep_dunedian_popmod_increasable_trigger = yes
+    }
+  
+    mean_time_to_happen = {
+        months = 240
+    }
+  
+    option = {
+        name = population6A #Good tidings!
+        remove_province_modifier = population_increasing
+        if = {
+            limit = { has_province_modifier = six_population_dunedain }
+            remove_province_modifier = six_population_dunedain
+            add_province_modifier = { name = seven_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = five_population_dunedain }
+            remove_province_modifier = five_population_dunedain
+            add_province_modifier = { name = six_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = four_population_dunedain }
+            remove_province_modifier = four_population_dunedain
+            add_province_modifier = { name = five_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = three_population_dunedain }
+            remove_province_modifier = three_population_dunedain
+            add_province_modifier = { name = four_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = two_population_dunedain }
+            remove_province_modifier = two_population_dunedain
+            add_province_modifier = { name = three_population_dunedain duration = -1 }
+        }
+        if = {
+            limit = { has_province_modifier = one_population_dunedain }
+            remove_province_modifier = one_population_dunedain
+            add_province_modifier = { name = two_population_dunedain duration = -1 }
+        }             
+    }
 }
 
 #province_event = { #Cleans up the counties with 2 province modifiers
@@ -1197,41 +1192,44 @@ character_event = {
 	mean_time_to_happen = {
 		months = 60 #5 years
 	}
-	
+  
 	option = {
 		name = population4A
 		random_demesne_province={
 			if = {
 				limit = {
 					NOT = { controlled_by = ROOT }
-				}
-				#goes from urban to densely populated
+			}
+	#goes from normal to lightly populated
 				if = {
-					limit = { has_province_modifier = seven_population_human }
-					add_province_modifier = { name = six_population_human duration = -1 }
-					remove_province_modifier = seven_population_human
-					break = yes
+					limit = {
+						has_province_modifier = four_population_human
+					}
+				add_province_modifier = { name = three_population_human duration = -1 }
+				remove_province_modifier = four_population_human
 				}
-				#goes from densely to more populated
-				if = {
-					limit = { has_province_modifier = six_population_human }
-					add_province_modifier = { name = five_population_human duration = -1 }
-					remove_province_modifier = six_population_human
-					break = yes
-				}
-				#goes from more to normally populated
+	#goes from more to normally populated
 				if = {
 					limit = { has_province_modifier = five_population_human }
 					add_province_modifier = { name = four_population_human duration = -1 }
 					remove_province_modifier = five_population_human
 					break = yes
 				}
-				#goes from normal to lightly populated
+	#goes from densely to more populated
 				if = {
-					limit = { has_province_modifier = four_population_human }
-					add_province_modifier = { name = three_population_human duration = -1 }
-					remove_province_modifier = four_population_human
-					break = yes
+					limit = {
+						has_province_modifier = six_population_human
+					}
+				add_province_modifier = { name = five_population_human duration = -1 }
+				remove_province_modifier = six_population_human
+				}
+	#goes from urban to densely populated
+				if = {
+					limit = {
+						has_province_modifier = seven_population_human
+					}
+				add_province_modifier = { name = six_population_human duration = -1 }
+				remove_province_modifier = seven_population_human
 				}
 			}
 		}
@@ -1574,7 +1572,7 @@ character_event = {
 					limit = {
 						NOT = { has_province_flag = population_startup_done }
 					}
-					# Dúnedain
+					# Dï¿½nedain
 					if = {
 						limit = {
 							culture_group = culture_group_numenorean
@@ -1640,7 +1638,7 @@ character_event = {
 					limit = {
 						NOT = { has_province_flag = population_startup_done }
 					}
-					# Dúnedain
+					# Dï¿½nedain
 					if = {
 						limit = {
 							culture_group = culture_group_numenorean
@@ -1687,7 +1685,7 @@ character_event = {
 
 
 
-# Population setup for Dúnedain, should be only called once
+# Population setup for Dï¿½nedain, should be only called once
 province_event = {
 	id = population.102
 	# title = population102title #hidden
@@ -1699,7 +1697,7 @@ province_event = {
 	
 	immediate = {
 		hidden_tooltip = {
-			# Here, we should be examining a dúnedian province where population_startup_done is false
+			# Here, we should be examining a dï¿½nedian province where population_startup_done is false
 			# Densely Populated (level 6)
 			if = {
 				limit = {
@@ -1741,7 +1739,7 @@ province_event = {
 						province_id = 42
 						# Other capitals
 						province_id = 26 # Linhir
-						province_id = 517 # Ûrêzâyan
+						province_id = 517 # ï¿½rï¿½zï¿½yan
 						province_id = 431 # Maros	
 						AND = {
 							year = 9400
@@ -1808,7 +1806,7 @@ province_event = {
 						province_id = 350  # Forlond
 						province_id = 284  # Nan Celebrant
 						province_id = 327  # Taeg Din
-						province_id = 583  # Ulumuir (by the Sea of Rhûn)
+						province_id = 583  # Ulumuir (by the Sea of Rhï¿½n)
 						AND = { 
 							province_id = 429 # Edhellond
 							OR = {
@@ -1870,7 +1868,7 @@ province_event = {
 				add_province_modifier = { name = six_population_dwarves duration = -1 }	
 				set_province_flag = population_startup_done							
 			}
-			# the remainder get Medium Populated (level 4), except for Thrór's Coombe
+			# the remainder get Medium Populated (level 4), except for Thrï¿½r's Coombe
 			if = {
 				limit = {
 					NOT = { has_province_flag = population_startup_done }
@@ -1879,7 +1877,7 @@ province_event = {
 				add_province_modifier = { name = four_population_dwarves duration = -1 }
 				set_province_flag = population_startup_done
 			}
-			# Thrór's Coombe
+			# Thrï¿½r's Coombe
 			if = {
 				limit = {
 					NOT = { has_province_flag = population_startup_done }
@@ -1928,8 +1926,8 @@ province_event = {
 						province_id = 689  # Beorn's Halls
 						province_id = 115  # Edoras
 						province_id = 489  # Talazhan
-						province_id = 450  # Ahrûl Admal
-						province_id = 614  # Kas Rhûn
+						province_id = 450  # Ahrï¿½l Admal
+						province_id = 614  # Kas Rhï¿½n
 						# Evil Isengard
 						AND = {
 							province_id = 225  # orthanc-isengard
@@ -1965,7 +1963,7 @@ province_event = {
 						province_id = 805  # Mount Gram
 						province_id = 679  # Dain's Halls
 						province_id = 570  # Goblin-Town
-						province_id = 72   # Vale of Udûn
+						province_id = 72   # Vale of Udï¿½n
 						province_id = 691  # Morannon
 						province_id = 662  # Durthang
 						province_id = 149  # Cirith Ungol
@@ -1979,7 +1977,7 @@ province_event = {
 						province_id = 417  # Forest Gate
 						province_id = 688  # Carrock
 						province_id = 415  # Woodmen_town (West Bight)
-						province_id = 156  # Súduri
+						province_id = 156  # Sï¿½duri
 						province_id = 383  # Galtrev
 						province_id = 178  # Bar Morthil (Andrast)
 						province_id = 220  # Calembel
@@ -1999,7 +1997,7 @@ province_event = {
 						province_id = 481  # An Pharaz
 						province_id = 467  # Kadar Argon
 						province_id = 471  # Korondaj
-						province_id = 504  # Bur Lurmsakûn
+						province_id = 504  # Bur Lurmsakï¿½n
 						province_id = 449  # Ammu Khand
 						province_id = 494  # Ovathrac
 						# Eastrlings (incl Dorwinion)
