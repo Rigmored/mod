@@ -4720,18 +4720,18 @@ character_event = {
 		}
 	## the Palantir ##
 	if = {
-			limit = { trait = palantir }
+			limit = { has_artifact = artifact_palantir }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir } 
+						NOT = { has_artifact = artifact_palantir } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 				}
 				add_trait = dead_target
@@ -4741,8 +4741,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir  } }
-							add_trait = palantir 
+							limit = { NOT = { has_artifact = artifact_palantir  } }
+							add_artifact = artifact_palantir 
 							character_event = { id = 250285 }
 							ROOT = { add_trait = dead_target }
 						}	
@@ -4752,8 +4752,8 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir } }
-					add_trait = palantir
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 					ROOT = { add_trait = dead_target }
 				}	
@@ -4761,8 +4761,8 @@ character_event = {
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir } }
-					add_trait = palantir
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 					ROOT = { add_trait = dead_target }
 				}	
@@ -4770,8 +4770,8 @@ character_event = {
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir } }
-					add_trait = palantir
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 					ROOT = { add_trait = dead_target }
 				}
@@ -4779,8 +4779,8 @@ character_event = {
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir } }
-					add_trait = palantir
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 					ROOT = { add_trait = dead_target }
 				}
@@ -4788,8 +4788,8 @@ character_event = {
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir } }
-					add_trait = palantir
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir
 					character_event = { id = 250285 }
 					ROOT = { add_trait = dead_target }
 				}
@@ -4797,17 +4797,17 @@ character_event = {
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir } }		
 				}
-				spouse = { add_trait = palantir character_event = { id = 250285 } }
+				spouse = { add_artifact = artifact_palantir character_event = { id = 250285 } }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir } }
 				}
-				liege = { add_trait = palantir character_event = { id = 250285 } }
+				liege = { add_artifact = artifact_palantir character_event = { id = 250285 } }
 				add_trait = dead_target
 			}
 			if = {
@@ -4815,8 +4815,8 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir } }
-					add_trait = palantir 
+					limit = { NOT = { has_artifact = artifact_palantir } }
+					add_artifact = artifact_palantir 
 					character_event = { id = 250285 }
 				}
 			}
@@ -5356,18 +5356,18 @@ character_event = {
 		}
 	## The Palantir of Annuminas ##	
 	if = {
-			limit = { trait = palantir_annuminas }
+			limit = { has_artifact = artifact_palantir_annuminas }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_annuminas } 
+						NOT = { has_artifact = artifact_palantir_annuminas } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_annuminas 
+					add_artifact = artifact_palantir_annuminas 
 				}
 				add_trait = dead_target
 			}
@@ -5376,8 +5376,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_annuminas  } }
-							add_trait = palantir_annuminas 
+							limit = { NOT = { has_artifact = artifact_palantir_annuminas  } }
+							add_artifact = artifact_palantir_annuminas 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5386,57 +5386,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_annuminas } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_annuminas } }		
 				}
-				spouse = { add_trait = palantir_annuminas  }
+				spouse = { add_artifact = artifact_palantir_annuminas  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_annuminas } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_annuminas } }
 				}
-				liege = { add_trait = palantir_annuminas  }
+				liege = { add_artifact = artifact_palantir_annuminas  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5444,25 +5444,25 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_annuminas } }
-					add_trait = palantir_annuminas 
+					limit = { NOT = { has_artifact = artifact_palantir_annuminas } }
+					add_artifact = artifact_palantir_annuminas 
 				}
 			}
 		}
 	## The Palantir of Orthanc ##	
 	if = {
-			limit = { trait = palantir_orthanc }
+			limit = { has_artifact = artifact_palantir_orthanc }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_orthanc } 
+						NOT = { has_artifact = artifact_palantir_orthanc } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_orthanc 
+					add_artifact = artifact_palantir_orthanc 
 				}
 				add_trait = dead_target
 			}
@@ -5471,8 +5471,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_orthanc  } }
-							add_trait = palantir_orthanc 
+							limit = { NOT = { has_artifact = artifact_palantir_orthanc  } }
+							add_artifact = artifact_palantir_orthanc 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5481,57 +5481,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_orthanc } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_orthanc } }		
 				}
-				spouse = { add_trait = palantir_orthanc  }
+				spouse = { add_artifact = artifact_palantir_orthanc  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_orthanc } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_orthanc } }
 				}
-				liege = { add_trait = palantir_orthanc  }
+				liege = { add_artifact = artifact_palantir_orthanc  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5539,25 +5539,25 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_orthanc } }
-					add_trait = palantir_orthanc 
+					limit = { NOT = { has_artifact = artifact_palantir_orthanc } }
+					add_artifact = artifact_palantir_orthanc 
 				}
 			}
 		}
 	## The Palantir of Amon Sûl ##	
 	if = {
-			limit = { trait = palantir_sul }
+			limit = { has_artifact = artifact_palantir_sul }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_sul } 
+						NOT = { has_artifact = artifact_palantir_sul } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_sul 
+					add_artifact = artifact_palantir_sul 
 				}
 				add_trait = dead_target
 			}
@@ -5566,8 +5566,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_sul  } }
-							add_trait = palantir_sul 
+							limit = { NOT = { has_artifact = artifact_palantir_sul  } }
+							add_artifact = artifact_palantir_sul 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5576,57 +5576,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_sul } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_sul } }		
 				}
-				spouse = { add_trait = palantir_sul  }
+				spouse = { add_artifact = artifact_palantir_sul  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_sul } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_sul } }
 				}
-				liege = { add_trait = palantir_sul  }
+				liege = { add_artifact = artifact_palantir_sul  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5634,25 +5634,25 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_sul } }
-					add_trait = palantir_sul 
+					limit = { NOT = { has_artifact = artifact_palantir_sul } }
+					add_artifact = artifact_palantir_sul 
 				}
 			}
 		}
 	## The Palantir of Elostirion ##	
 	if = {
-			limit = { trait = palantir_elostirion }
+			limit = { has_artifact = artifact_palantir_elostirion }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_elostirion } 
+						NOT = { has_artifact = artifact_palantir_elostirion } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_elostirion 
+					add_artifact = artifact_palantir_elostirion 
 				}
 				add_trait = dead_target
 			}
@@ -5661,8 +5661,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_elostirion  } }
-							add_trait = palantir_elostirion 
+							limit = { NOT = { has_artifact = artifact_palantir_elostirion  } }
+							add_artifact = artifact_palantir_elostirion 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5671,57 +5671,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_elostirion } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_elostirion } }		
 				}
-				spouse = { add_trait = palantir_elostirion  }
+				spouse = { add_artifact = artifact_palantir_elostirion  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_elostirion } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_elostirion } }
 				}
-				liege = { add_trait = palantir_elostirion  }
+				liege = { add_artifact = artifact_palantir_elostirion  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5729,25 +5729,25 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_elostirion } }
-					add_trait = palantir_elostirion 
+					limit = { NOT = { has_artifact = artifact_palantir_elostirion } }
+					add_artifact = artifact_palantir_elostirion 
 				}
 			}
 		}
 	## The Palantir of Osgiliath ##	
 	if = {
-			limit = { trait = palantir_osgiliath }
+			limit = { has_artifact = artifact_palantir_osgiliath }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_osgiliath } 
+						NOT = { has_artifact = artifact_palantir_osgiliath } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_osgiliath 
+					add_artifact = artifact_palantir_osgiliath 
 				}
 				add_trait = dead_target
 			}
@@ -5756,8 +5756,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_osgiliath  } }
-							add_trait = palantir_osgiliath 
+							limit = { NOT = { has_artifact = artifact_palantir_osgiliath  } }
+							add_artifact = artifact_palantir_osgiliath 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5766,57 +5766,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_osgiliath } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_osgiliath } }		
 				}
-				spouse = { add_trait = palantir_osgiliath  }
+				spouse = { add_artifact = artifact_palantir_osgiliath  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_osgiliath } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_osgiliath } }
 				}
-				liege = { add_trait = palantir_osgiliath  }
+				liege = { add_artifact = artifact_palantir_osgiliath  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5824,25 +5824,25 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_osgiliath } }
-					add_trait = palantir_osgiliath 
+					limit = { NOT = { has_artifact = artifact_palantir_osgiliath } }
+					add_artifact = artifact_palantir_osgiliath 
 				}
 			}
 		}
 	## The Palantir of Minas Ithil ##	
 	if = {
-			limit = { trait = palantir_ithil }
+			limit = { has_artifact = artifact_palantir_ithil }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = palantir_ithil } 
+						NOT = { has_artifact = artifact_palantir_ithil } 
 					}
 				}
 				current_heir = {
-					add_trait = palantir_ithil 
+					add_artifact = artifact_palantir_ithil 
 				}
 				add_trait = dead_target
 			}
@@ -5851,8 +5851,8 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = palantir_ithil  } }
-							add_trait = palantir_ithil 
+							limit = { NOT = { has_artifact = artifact_palantir_ithil  } }
+							add_artifact = artifact_palantir_ithil 
 							ROOT = { add_trait = dead_target }
 						}	
 					}					
@@ -5861,57 +5861,57 @@ character_event = {
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil
+					limit = { dynasty = ROOT is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil
 					ROOT = { add_trait = dead_target }
 				}	
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil
+					limit = { is_primary_heir = yes is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil
+					limit = { is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil
 					ROOT = { add_trait = dead_target }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = palantir_ithil } }		
+					spouse = { is_alive = yes NOT = { has_artifact = artifact_palantir_ithil } }		
 				}
-				spouse = { add_trait = palantir_ithil  }
+				spouse = { add_artifact = artifact_palantir_ithil  }
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = palantir_ithil } }
+					liege = { NOT = { character = ROOT } NOT = { has_artifact = artifact_palantir_ithil } }
 				}
-				liege = { add_trait = palantir_ithil  }
+				liege = { add_artifact = artifact_palantir_ithil  }
 				add_trait = dead_target
 			}
 			if = {
@@ -5919,8 +5919,8 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = palantir_ithil } }
-					add_trait = palantir_ithil 
+					limit = { NOT = { has_artifact = artifact_palantir_ithil } }
+					add_artifact = artifact_palantir_ithil 
 				}
 			}
 		}	
