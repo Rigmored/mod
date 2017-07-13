@@ -638,7 +638,7 @@ religion_group_hildor = {  #Men of Darkness
 	}
 }
 
-religion_group_melkorx = {
+religion_group_melkor = {
 	has_coa_on_barony_only = yes
 	graphical_culture = westerngfx
 	playable = yes
@@ -804,36 +804,22 @@ religion_group_melkorx = {
 		max_wives = 1
 		defensive_attrition = yes
 	}
-	
-}
-
-# Spiders should not be able to intermmarry
-religion_group_ungoliant = {
-
-	has_coa_on_barony_only = yes
-	graphical_culture = easterngfx
-	playable = yes
-	
-	color = { 0.83 0.10 0.5 }
-	
-	ai_convert_same_group = 0 # never try to convert
-	ai_convert_other_group = 0	# never try to convert
-	ai_fabricate_claims = no
-
 	religion_spider = {
-		graphical_culture = easterngfx
+		graphical_culture = westerngfx
 		icon = 4
 		color = { 0.83 0.10 0.5 }
 		
-		high_god_name = GOD_UNGOLIANT
+		high_god_name = GOD_MORGOTH
 		
 		god_names = {
-			GOD_UNGOLIANT GOD_MELKOR PROPHET_SAURON
+			GOD_MORGOTH PROPHET_SAURON
 		}
 	
-		evil_god_names = { GOD_ERU }
+		evil_god_names = {
+			GOD_ERU
+		}
 
-		feminist = yes
+		feminist=yes
 		raised_vassal_opinion_loss = no
 		short_reign_opinion_year_mult = 5 # The default is 2
 		aggression = 5.0 # AI aggression factor
@@ -841,7 +827,8 @@ religion_group_ungoliant = {
 		defensive_attrition = yes
 		max_consorts = 1
 	}
-
+	
+		
 }
 
 #Wilderness
