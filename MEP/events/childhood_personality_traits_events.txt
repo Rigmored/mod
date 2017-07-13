@@ -40,10 +40,6 @@ character_event = {
 			trait = slothful
 		}
 		modifier = {
-			factor = 3
-			religion_group = religion_group_ungoliant
-		}
-		modifier = {
 			trait = clubfooted
 			factor = 1.05
 		}
@@ -178,10 +174,6 @@ character_event = {
 			factor = 0.8
 		}
 		modifier = {
-			factor = 0.33
-			religion_group = religion_group_ungoliant
-		}
-		modifier = {
 			trait = harelip
 			factor = 0.9
 		}
@@ -310,10 +302,6 @@ character_event = {
 			trait = envious
 		}
 		modifier = {
-			factor = 3
-			religion_group = religion_group_ungoliant
-		}
-		modifier = {
 			factor = 0.5
 			trait = kind
 		}
@@ -439,8 +427,6 @@ character_event = {
 		NOT = { trait = charitable }
 		NOT = { trait = greedy }
 		has_guardian = yes
-		NOT = { religion_group = religion_group_ungoliant }
-		NOT = { religion_group = religion_group_melkorx }
 	}
 	
 	weight_multiplier = {
@@ -994,7 +980,6 @@ character_event = {
 		NOT = { trait = kind }
 		NOT = { trait = envious }
 		has_guardian = yes
-		NOT = { mep_is_evil_side_trigger = yes }
 	}
 	
 	weight_multiplier = {
@@ -1654,10 +1639,6 @@ character_event = {
 			factor = 1.1
 		}
 		modifier = {
-			factor = 2
-			religion_group = religion_group_melkorx
-		}
-		modifier = {
 			trait = harelip
 			factor = 1.1
 		}
@@ -1905,10 +1886,6 @@ character_event = {
 	
 	weight_multiplier = {
 		days = 1
-		modifier = {
-			factor = 2
-			mep_is_evil_side_trigger = yes
-		}
 		modifier = {
 			trait = clubfooted
 			factor = 1.1
@@ -2410,7 +2387,6 @@ character_event = {
 		NOT = { trait = shy }
 		NOT = { trait = gregarious }
 		has_guardian = yes
-		NOT = { religion_group = religion_group_ungoliant }
 	}
 	
 	weight_multiplier = {
@@ -2695,10 +2671,6 @@ character_event = {
 	weight_multiplier = {
 		days = 1
 		modifier = {
-			factor = 2
-			mep_is_evil_side_trigger = yes
-		}
-		modifier = {
 			trait = clubfooted
 			factor = 1.5
 		}
@@ -2824,10 +2796,6 @@ character_event = {
 	
 	weight_multiplier = {
 		days = 1
-		modifier = {
-			factor = 0.33
-			mep_is_evil_side_trigger = yes
-		}
 		modifier = {
 			trait = clubfooted
 			factor = 1.1
@@ -4298,7 +4266,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		NOT = { religion_group = religion_group_melkorx }
+		NOT = { religion_group = religion_group_melkor }
 		has_guardian = yes
 		NOT = { trait = zealous }
 		NOT = { trait = cynical }

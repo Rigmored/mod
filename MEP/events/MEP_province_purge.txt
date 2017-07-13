@@ -31,9 +31,9 @@ character_event = {
 				# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
 				# like some sort of 'good orc'
 				OR = {
-					NOT = { mep_evil_religion = yes }
+					NOT = { religion_group = religion_group_melkor }
 					AND = {
-						mep_evil_religion = yes
+						religion_group = religion_group_melkor
 						NOT = { trait = good_side }
 					}
 				}
@@ -47,10 +47,7 @@ character_event = {
 
 		any_realm_province = {
 			limit = {
-				OR = {
-					religion_group = religion_group_melkorx
-					religion_group = religion_group_ungoliant
-				}
+				religion_group = religion_group_melkor
 				# because otherwise just holding a single barony is enough...
 				holder_scope = {
 					OR = {
@@ -59,12 +56,9 @@ character_event = {
 					}
 					# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
 					# like some sort of 'good orc'
-					OR = {
-						NOT = { mep_evil_religion = yes }
-						AND = {
-							mep_evil_religion = yes
-							NOT = { trait = good_side }
-						}
+					NOT = {
+						religion_group = religion_group_melkor
+						trait = good_side
 					}
 				}
 				NOT = { has_province_modifier = being_purged_ofevil }
@@ -78,10 +72,8 @@ character_event = {
 			hidden_tooltip = {
 				set_province_flag = mep_purge_delay
 			}
-			
 		}
 	}
-	
 }
 
 # Annual event to complete the purging of evil
@@ -155,7 +147,6 @@ character_event = {
 			}
 		}
 	}
-	
 }
 	
 #Now for the baddies
@@ -460,7 +451,9 @@ character_event = {
 		FROM = {
 			real_tier = count
 			location  = {
-				mep_being_purged_trigger = yes
+				has_province_modifier = being_purged_ofevil
+				has_province_modifier = being_purged_ofgood
+				has_province_modifier = being_purged_ofgoodeo
 			}
 		}
 	}
@@ -562,10 +555,10 @@ province_event = {
 		OR = {
 			AND = {
 				has_province_modifier = being_purged_ofevil
-				NOT = { mep_evil_religion = yes }
+				NOT = { religion_group = religion_group_melkor }
 			}
 			AND = {
-				mep_evil_religion = yes
+				religion_group = religion_group_melkor
 				OR = {
 					has_province_modifier = being_purged_ofgood
 					has_province_modifier = being_purged_ofgoodeo
@@ -579,7 +572,7 @@ province_event = {
 	option = {
 		trigger = {
 			has_province_modifier = being_purged_ofevil
-			NOT = { mep_evil_religion = yes }
+			NOT = { religion_group = religion_group_melkor }
 		}
 		remove_province_modifier = being_purged_ofevil
 		clr_province_flag = mep_purge_delay
@@ -587,7 +580,7 @@ province_event = {
 	
 	option = {
 		trigger = {
-			mep_evil_religion = yes
+			religion_group = religion_group_melkor
 			OR = {
 				has_province_modifier = being_purged_ofgood
 				has_province_modifier = being_purged_ofgoodeo

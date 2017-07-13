@@ -5,6 +5,8 @@
 # mep_is_good_side_trigger
 # mep_is_very_nice_trigger
 # mep_is_evil_side_trigger
+# mep_is_immortal_race_trigger
+# mep_allows_shield_maidens_trigger
 # mep_dont_do_nice_trigger
 # mep_cant_get_disease_trigger
 # mep_wont_hire_physician_trigger
@@ -14,12 +16,16 @@
 # mep_has_disease_trigger
 # mep_is_genuine_elf
 # mep_has_elf_stuff
+# mep_is_elf_culture
 # mep_is_genuine_high_elf
+# mep_is_good_side_race
 # mep_never_councillor_trigger
 # mep_pick_good_side_trigger
 # mep_should_be_unkillable_trigger
 # mep_cant_get_drunk_trigger
+# mep_is_human_trigger
 # mep_dont_seduce_trigger
+# mep_horse_people_culture
 # mep_will_purge_evil
 # mep_will_purge_good
 # mep_is_evil_overlord
@@ -27,28 +33,10 @@
 # mep_base_marriage_compatible
 # mep_eligible_elf_marriage
 # mep_eligible_dwarf_marriage
-
-### Culture/Religion Groups
-# mep_is_immortal_race_trigger
-# mep_allows_shield_maidens_trigger
-# mep_is_elf_culture
-# mep_is_good_side_race
-# mep_is_human_trigger
-# mep_horse_people_culture
 # mep_winter_culture
-# mep_never_spread_culture
-# mep_has_nondunedain_human_culture
-# mep_horsey_people_culture
-# mep_prim_humans_culture
-# mep_prim_humans_culture_notbree
-# mep_orc_troll_culture
-# mep_is_black_numenorean_culture
-# mep_is_good_numenorean_culture
-# mep_evil_religion
 
-### titles
+# titles
 # mep_gondor_arnor_emp_trigger
-# conquest_culture_trigger
 
 ### provinces
 # mep_has_immortal_population_trigger
@@ -58,9 +46,13 @@
 # mep_wilderness_province_trigger
 # mep_is_province_elven_trigger
 # mep_good_side_province
+# mep_has_nondunedain_human_culture
+# mep_horsey_people_culture
 # mep_general_buildings_human
+# mep_prim_humans_culture
+# mep_prim_humans_culture_notbree
+# mep_orc_troll_culture
 # mep_pop_always_evil_purge_culture
-# mep_being_purged_trigger
 
 ### provinces for dynamic population stuff
 # mep_has_dunedain_popmod_trigger
@@ -77,13 +69,15 @@
 # mep_has_increasable_popmod_trigger
 # mep_has_depopulated_modifier
 # mep_has_properity_modifier
-# mep_high_pop_trigger
-# mep_low_pop_trigger
 
 ### province CB shorteners
 # mep_province_owned_by_root
 # mep_borders_ROOTrealm_2seazones
 # mep_borders_ROOTrealm_1seazone
+
+### Cultural groups
+# mep_is_black_numenorean_culture
+# mep_is_good_numenorean_culture
 
 ### special groups
 # mep_evil_or_wont_sell_moria
@@ -141,12 +135,27 @@ mep_is_evil_side_trigger = {
 	OR = {
 		trait = evil_side
 		AND = {
-			OR = {
-				religion_group = religion_group_melkorx
-				religion_group = religion_group_ungoliant
-			}
+			religion_group = religion_group_melkor
 			NOT = { trait = good_side}
 		}						
+	}
+}
+
+mep_is_immortal_race_trigger = {
+	OR = {
+		religion_group = religion_group_eruhini # Ainur (like Eagles)
+		religion_group = religion_group_enyd    # Ents
+		religion_group = religion_group_eldar   # Elves
+		religion = religion_umaiar
+		religion = religion_wight
+		religion = religion_dragons
+	}
+}
+
+mep_allows_shield_maidens_trigger = {
+	OR = {
+		culture = culture_eotheod
+		culture = culture_rohirrim
 	}
 }
 
@@ -155,10 +164,7 @@ mep_dont_do_nice_trigger = {
 	OR = {
 		trait = evil_side
 		AND = {
-			OR = {
-				religion_group = religion_group_melkorx
-				religion_group = religion_group_ungoliant
-			}
+			religion_group = religion_group_melkor
 			NOT = { trait = good_side}
 		}
 		religion_group = religion_group_wilderness		
@@ -174,7 +180,7 @@ mep_cant_get_disease_trigger = {
 		religion = religion_wight
 		religion = religion_umaiar
 		religion = religion_dragons
-		religion_group = religion_group_ungoliant
+		religion = religion_spider
 		religion_group = religion_group_wilderness	
 		trait = balrog
 		trait = valar
@@ -194,7 +200,7 @@ mep_wont_hire_physician_trigger = {
 				religion = religion_umaiar
 				religion = religion_wight
 				religion = religion_dragons
-				religion_group = religion_group_ungoliant
+				religion = religion_spider
 			}
 		}
 		religion_group = religion_group_wilderness
@@ -278,10 +284,30 @@ mep_has_elf_stuff = {
 	}
 }
 
+mep_is_elf_culture = {
+	OR = {
+		culture_group = culture_group_quendi
+		culture_group = culture_group_amanyar
+		culture_group = culture_group_umanyar
+		culture_group = culture_group_moriquendi
+	}
+}
+
 mep_is_genuine_high_elf = {
 	trait = elf
 	religion_group = religion_group_eldar
 	culture_group = culture_group_amanyar
+}
+
+mep_is_good_side_race = {
+	OR = {
+		religion_group = religion_group_khazad
+		religion_group = religion_group_eldar
+		religion = religion_numenorean
+		religion = religion_dunedain
+		religion = religion_edain
+		religion = religion_druedain
+	}
 }
 
 mep_never_councillor_trigger = {
@@ -312,8 +338,7 @@ mep_pick_good_side_trigger = {
 		culture = culture_adunaic
 		culture = culture_black_numenorean
 	}
-	NOT = { religion_group = religion_group_melkorx }
-	NOT = { religion_group = religion_group_ungoliant }
+	NOT = { religion_group = religion_group_melkor }
 }
 
 
@@ -356,8 +381,15 @@ mep_cant_get_drunk_trigger = {
 		trait = maiar
 		trait = balrog
 		trait = enigma
-		religion_group = religion_group_ungoliant
+		religion = religion_spider
 		culture_group = culture_group_onodrim
+	}
+}
+
+mep_is_human_trigger = {
+	OR = {
+		religion_group = religion_group_edain
+		religion_group = religion_group_hildor
 	}
 }
 
@@ -371,9 +403,20 @@ mep_dont_seduce_trigger = {
 		}
 		religion_group = religion_group_wilderness  # not actual character
 		# religion_group = religion_group_enyd
-		religion_group = religion_group_melkorx  # probably too evil and chaotic to seduce
-		religion_group = religion_group_ungoliant  # Spiders eat their mates sometimes
+		religion_group = religion_group_melkor  # probably too evil and chaotic to seduce
 		religion_group = religion_group_eruhini # Eagles, Valar, Tom Bombadil, etc		
+	}
+}
+
+mep_horse_people_culture = {
+	OR = {
+		culture = culture_variags
+		culture = culture_eotheod
+		culture = culture_rohirrim	
+		culture = culture_balchoth
+		culture = culture_wainriders
+		culture = culture_khundolars
+		culture = culture_jangovars
 	}
 }
 
@@ -399,10 +442,7 @@ mep_will_purge_evil = {
 
 mep_will_purge_good = {
 	NOT = { has_character_flag = very_tolerant_of_good }
-	OR = {
-		religion_group = religion_group_melkorx
-		religion_group = religion_group_ungoliant
-	}
+	religion_group = religion_group_melkor
 	NOT = { trait = good_side }
 	OR = {
 		is_tributary = no
@@ -410,9 +450,8 @@ mep_will_purge_good = {
 			NOR = {  # My boss won't let me...
 				trait = good_side
 				AND = {
-					NOT = { religion_group = religion_group_melkorx }
+					NOT = { religion_group = religion_group_melkor }
 					NOT = { religion_group = religion_group_hildor }
-					NOT = { religion_group = religion_group_ungoliant }
 				}
 				
 			}
@@ -487,67 +526,6 @@ mep_eligible_dwarf_marriage = {
 	NOT = { trait = dwarven_infertility }
 	prisoner = no
 }
-
-#--------------------------------------------------------
-### Culture/Religion Groups
-
-mep_is_immortal_race_trigger = {
-	OR = {
-		religion_group = religion_group_eruhini # Ainur (like Eagles)
-		religion_group = religion_group_enyd    # Ents
-		religion_group = religion_group_eldar   # Elves
-		religion = religion_umaiar
-		religion = religion_wight
-		religion = religion_dragons
-	}
-}
-
-mep_allows_shield_maidens_trigger = {
-	OR = {
-		culture = culture_eotheod
-		culture = culture_rohirrim
-	}
-}
-
-mep_is_elf_culture = {
-	OR = {
-		culture_group = culture_group_quendi
-		culture_group = culture_group_amanyar
-		culture_group = culture_group_umanyar
-		culture_group = culture_group_moriquendi
-	}
-}
-
-mep_is_good_side_race = {
-	OR = {
-		religion_group = religion_group_khazad
-		religion_group = religion_group_eldar
-		religion = religion_numenorean
-		religion = religion_dunedain
-		religion = religion_edain
-		religion = religion_druedain
-	}
-}
-
-mep_is_human_trigger = {
-	OR = {
-		religion_group = religion_group_edain
-		religion_group = religion_group_hildor
-	}
-}
-
-mep_horse_people_culture = {
-	OR = {
-		culture = culture_variags
-		culture = culture_eotheod
-		culture = culture_rohirrim	
-		culture = culture_balchoth
-		culture = culture_wainriders
-		culture = culture_khundolars
-		culture = culture_jangovars
-	}
-}
-
 mep_winter_culture = {
 	OR = {
 		culture_group = culture_group_forodwaith
@@ -570,83 +548,6 @@ mep_winter_culture = {
 		culture = culture_noldor	
 	}
 }
-
-mep_never_spread_culture = {
-	OR = {
-		culture_group = culture_group_eru
-		culture_group = culture_group_onodrim
-		culture = culture_wight
-		culture = culture_balrog
-		culture = culture_dragons
-		religion_group = religion_group_wilderness
-		culture_group = culture_group_wilderness
-	}
-}
-mep_has_nondunedain_human_culture = {
-	OR = {
-		culture_group = culture_group_edain
-		culture_group = culture_group_middlemen
-		culture_group = culture_group_forodwaith
-		culture_group = culture_group_haldadian
-		culture_group = culture_group_southron
-		culture_group = culture_group_easterling						
-	}
-}
-mep_horsey_people_culture = {
-	OR = {
-		culture = culture_eotheod
-		culture = culture_rohirrim
-	}
-}
-# Drúedian are now culture_group_haldadian, but still have special buildings...
-mep_prim_humans_culture = {
-	OR = {
-		culture_group = culture_group_forodwaith
-		culture_group = culture_group_haldadian
-	}
-	NOT = { culture = culture_druedain }
-}
-
-mep_prim_humans_culture_notbree = {
-	OR = {
-		culture_group = culture_group_forodwaith
-		culture = culture_druedain
-		AND = {
-			culture_group = culture_group_haldadian
-			NOT = { culture = culture_breelander }
-		}
-	}
-}
-
-mep_orc_troll_culture = {
-	OR = {
-		culture = culture_half_orc
-		culture = culture_urukhai
-		culture = culture_goblin
-		culture = culture_orkish
-		culture = culture_troll
-	}
-}
-
-mep_is_black_numenorean_culture = {
-	OR = {
-		culture = culture_black_numenorean
-		culture = culture_adunaic
-	}
-}
-mep_is_good_numenorean_culture = {
-	culture_group = culture_group_numenorean
-	NOT = { mep_is_black_numenorean_culture = yes }
-}
-
-mep_evil_religion = {
-	OR = {
-		religion_group = religion_group_melkorx
-		religion_group = religion_group_ungoliant
-	}
-}
-
-
 #--------------------------------------------------------------------
 # titles
 mep_gondor_arnor_emp_trigger = {
@@ -659,43 +560,6 @@ mep_gondor_arnor_emp_trigger = {
 	}
 }
 
-# Saves over 30 lines of stuff in province culture conversion events...
-conquest_culture_trigger = {
-	OR = {
-		primary_title = {
-			conquest_culture = PREV
-		}
-		ROOT = {
-			county = {
-				conquest_culture = PREVPREV
-			}
-		}
-		ROOT = {
-			duchy = {
-				holder_scope = {
-					character = PREVPREVPREV
-				}
-				conquest_culture = PREVPREV
-			}
-		}
-		ROOT = {
-			kingdom = {
-				holder_scope = {
-					character = PREVPREVPREV
-				}
-				conquest_culture = PREVPREV
-			}
-		}
-		ROOT = {
-			empire = {
-				holder_scope = {
-					character = PREVPREVPREV
-				}
-				conquest_culture = PREVPREV
-			}
-		}
-	}
-}
 
 #---------------------------------------------------------------------------
 # Province Triggers
@@ -719,7 +583,7 @@ mep_population_immune_trigger = {
 		religion = religion_wight
 		religion = religion_umaiar
 		religion = religion_dragons
-		religion_group = religion_group_ungoliant
+		religion = religion_spider
 		religion_group = religion_group_wilderness	
 	}
 }
@@ -788,7 +652,23 @@ mep_good_side_province = {
 	}
 } 
 
+mep_has_nondunedain_human_culture = {
+	OR = {
+		culture_group = culture_group_edain
+		culture_group = culture_group_middlemen
+		culture_group = culture_group_forodwaith
+		culture_group = culture_group_haldadian
+		culture_group = culture_group_southron
+		culture_group = culture_group_easterling						
+	}
+}
 
+mep_horsey_people_culture = {
+	OR = {
+		culture = culture_rohirrim
+		culture = culture_eotheod
+	}
+}
 
 mep_general_buildings_human = {
 	OR = {
@@ -801,6 +681,35 @@ mep_general_buildings_human = {
 	NOT = { culture = culture_druedain }  # just in case someone move druedian back to culture_group_edain 
 }
 
+# Drúedian are now culture_group_haldadian, but still have special buildings...
+mep_prim_humans_culture = {
+	OR = {
+		culture_group = culture_group_forodwaith
+		culture_group = culture_group_haldadian
+	}
+	NOT = { culture = culture_druedain }
+}
+
+mep_prim_humans_culture_notbree = {
+	OR = {
+		culture_group = culture_group_forodwaith
+		culture = culture_druedain
+		AND = {
+			culture_group = culture_group_haldadian
+			NOT = { culture = culture_breelander }
+		}
+	}
+}
+
+mep_orc_troll_culture = {
+	OR = {
+		culture = culture_half_orc
+		culture = culture_urukhai
+		culture = culture_goblin
+		culture = culture_orkish
+		culture = culture_troll
+	}
+}
 
 mep_pop_always_evil_purge_culture = {
 	OR = {
@@ -817,14 +726,6 @@ mep_pop_always_evil_purge_culture = {
 		religion = religion_dunedain
 		religion = religion_edain
 		religion = religion_druedain							
-	}
-}
-
-mep_being_purged_trigger = {
-	OR = {
-		has_province_modifier = being_purged_ofevil
-		has_province_modifier = being_purged_ofgood
-		has_province_modifier = being_purged_ofgoodeo
 	}
 }
 
@@ -990,32 +891,6 @@ mep_has_properity_modifier = {
 		has_province_modifier = prosperity_modifier_3
 	}
 }
-
-mep_high_pop_trigger = {
-	OR = {
-		has_province_modifier = six_population_dunedain
-		has_province_modifier = seven_population_dunedain
-		has_province_modifier = six_population_elves
-		has_province_modifier = seven_population_elves
-		has_province_modifier = six_population_dwarves
-		has_province_modifier = seven_population_dwarves
-		has_province_modifier = six_population_human
-		has_province_modifier = seven_population_human
-	}
-}
-
-mep_low_pop_trigger = {
-	OR = {
-		has_province_modifier = one_population_dunedain
-		has_province_modifier = two_population_dunedain
-		has_province_modifier = one_population_elves
-		has_province_modifier = two_population_elves
-		has_province_modifier = one_population_dwarves
-		has_province_modifier = two_population_dwarves
-		has_province_modifier = one_population_human
-		has_province_modifier = two_population_human
-	}
-}
 #-----------------------------------------------------------
 # province CB shorteners
 mep_province_owned_by_root = {
@@ -1130,6 +1005,19 @@ mep_borders_ROOTrealm_1seazone = {
 		# end of top level OR block
 	}
 }
+#------------------------------------------------------------------------------------------------------
+## Cultural greoups
+mep_is_black_numenorean_culture = {
+	OR = {
+		culture = culture_black_numenorean
+		culture = culture_adunaic
+	}
+}
+mep_is_good_numenorean_culture = {
+	culture_group = culture_group_numenorean
+	NOT = { mep_is_black_numenorean_culture = yes }
+}
+
 #-----------------------------------------------------------------------------------------------------------
 # special groups
 mep_evil_or_wont_sell_moria = {
@@ -1234,7 +1122,7 @@ mep_galadriel_in_lorien = {
 mep_temp_muslim_standin_trigger = {
 	OR = {
 		religion = religion_southron
-		religion_group = religion_group_melkorx
+		religion_group = religion_group_melkor
 	}
 }
 
