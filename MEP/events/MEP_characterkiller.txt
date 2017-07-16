@@ -426,7 +426,7 @@ character_event = {
 character_event = {
     id = maiarkiller.6
 	only_rulers = no
-	religion_group = religion_group_melkor
+	religion_group = religion_group_melkorx
 	
 	hide_window = yes
 	
@@ -437,7 +437,8 @@ character_event = {
 		NOT = { trait = good_side }
 		top_liege = { 
 			NOT = { religion_group = religion_group_wilderness }
-			NOT = { religion_group = religion_group_melkor }
+			NOT = { religion_group = religion_group_melkorx }
+			NOT = { religion_group = religion_group_ungoliant }
 			NOT = { trait = evil_side }
 			NOT = { has_character_flag = very_tolerant_of_evil }
 		}
@@ -504,6 +505,37 @@ character_event = {
 	}
 }
 
+## Killing stray Spiders in non-evil Courts
+character_event = {
+    id = maiarkiller.9
+	only_rulers = no
+	religion_group = religion_group_ungoliant
+	
+	hide_window = yes
+	
+	mean_time_to_happen = { days = 45 }
+	
+	trigger = {
+		culture = culture_spider
+		NOT = { trait = good_side }
+		top_liege = { 
+			NOT = { religion_group = religion_group_wilderness }
+			NOT = { religion_group = religion_group_melkorx }
+			NOT = { religion_group = religion_group_ungoliant }
+			NOT = { trait = evil_side }
+			NOT = { has_character_flag = very_tolerant_of_evil }
+		}
+	}
+	
+	immediate = {
+        death = { death_reason = death_murder }
+    }
+	
+	option = {
+        # die!
+    }
+}
+
 # great big called from game start 'killer' to convert game-spawned barons and courtiers
 character_event = {
 	id = maiarkiller.10
@@ -535,4 +567,62 @@ character_event = {
 			}
 		}
 	}
+}
+
+# Killing NON-stray Wilderness courtiers (because the game keeps generating them)...
+character_event = {
+	id = maiarkiller.11
+	hide_window = yes
+	only_playable = yes
+	
+	mean_time_to_happen = { days = 365 }
+	
+	trigger = {
+		religion_group = religion_group_wilderness
+		higher_real_tier_than  = baron
+	}
+	
+	immediate = {
+		set_variable = { which = mep_courtier_counter  value = 1 }
+		# counting unattached wilderness courtiers
+		any_courtier = {
+			limit = {
+				religion_group = religion_group_wilderness
+				is_ruler = no
+			}
+			PREV = { change_variable = { which = mep_courtier_counter value = 1 }}
+		}
+	}
+	
+	option = {
+		trigger = {
+			check_variable = { which = mep_courtier_counter  value = 8 }
+		}
+		# Calculating courtiers to kill...
+		set_variable = { which = mep_courtiers_tokill  which = mep_courtier_counter }
+		subtract_variable = { which = mep_courtiers_tokill  value = 5 }
+		# The loop of MURDER
+		while = {
+			limit = {
+				check_variable = { which = mep_courtiers_tokill  value = 1 }
+			}    
+			subtract_variable = { which = mep_courtiers_tokill value = 1 }
+			random_courtier = {
+				limit = {
+					religion_group = religion_group_wilderness
+					is_ruler = no
+				}
+				death = { death_reason = death_missing }
+			}
+		}
+	}
+	
+	option = {
+		trigger = {
+			NOT = { check_variable = { which = mep_courtier_counter  value = 8 } }
+		}
+		# Do Nothing...
+	}
+	
+	
 }
