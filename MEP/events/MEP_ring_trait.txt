@@ -1,0 +1,42 @@
+namespace = giveringtrait
+
+# These events give and remove the "ring" trait to allow events and other things in the mod that are tied to the "ring" trait to still function.
+
+# This event give the "ring" trait to the bearer of the one ring artifact
+character_event = {
+    id = giveringtrait.0
+	hide_window = yes
+	
+	trigger = {
+		has_artifact = artifact_ring
+		NOT = {
+			trait = ring
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAgiveringtrait.0" 
+		add_trait = ring	
+	}
+}
+
+# This event remove the "ring" trait if the character loses or gives away their one ring artifact
+character_event = {
+    id = giveringtrait.1
+	hide_window = yes
+	
+	trigger = {
+		trait = ring
+		NOT = {
+			has_artifact = artifact_ring
+		}
+	}
+	
+	option = {
+		name = "EVTOPTAgiveringtrait.1" 
+		remove_trait = ring	
+	}
+}
+	
+
+

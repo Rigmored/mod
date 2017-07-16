@@ -1,0 +1,888 @@
+# Scripted Effects for MEP
+# Note: I assume all effects are called from and AND block (if not, wrap call in AND)
+
+# mep_colonize_opinion_effect
+# pick_20yr_sending_colonists_effect
+# pick_40yr_sending_colonists_effect
+# pick_60yr_sending_colonists_effect
+# mep_stop_colonisation_effect
+
+# population modifier stuff
+# mep_dunedain_popmod_remove_effect
+# mep_elven_popmod_remove_effect
+# mep_dwarven_popmod_remove_effect
+# mep_human_popmod_remove_effect
+# mep_popmod_remove_effect
+
+# mep_dwarf_colonize_pick_culture
+
+## 'killer' effects for evil races that are not supposed to proliferate
+# mep_young_fevil_change_effect
+
+# Adding default race traits
+# mep_char_is_elf_effect
+# mep_char_is_dwarf_effect
+
+#mep_prep_fellowship_wizard 
+
+# creating some random courtiers
+# mep_make_random_noldorelf_character
+# mep_make_random_sindarelf_character
+# mep_make_random_falathrimelf_character
+# mep_make_random_silvanelf_character
+# mep_make_random_avarielf_character
+# mep_make_random_nandorelf_character
+# mep_generate_eleven_courtiers_effect
+
+# WOTR effects
+
+#===============================================================================================================
+# Colonization stuff
+mep_colonize_opinion_effect = {
+	if = {
+		limit = {
+			job_treasurer = {
+				location = {
+					owner = {
+						is_liege_or_above = ROOT
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+			}
+		}
+		job_treasurer = {
+			location = {
+				owner = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_colonizes_my_province
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			job_treasurer = {
+				location = {
+					owner = {
+						is_liege_or_above = ROOT
+						OR = {
+							NOT = { culture = ROOT }
+							NOT = { religion = ROOT }
+						}
+					}
+				}
+			}
+		}
+		job_treasurer = {
+			location = {
+				owner = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_colonizes_my_province_wrong
+					}
+				}
+			}
+		}
+	}
+}
+
+pick_20yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 7200 }
+	}
+}
+
+pick_40yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 14600 }
+	}
+}
+
+pick_60yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 21915 }
+	}
+}
+
+mep_stop_colonisation_effect = {
+	remove_province_modifier = being_colonised
+	remove_province_modifier = being_colonised_with_dwarves
+	remove_province_modifier = being_colonised_with_elves
+	remove_province_modifier = being_colonised_with_halflings
+	remove_province_modifier = being_colonised_with_gondorian_middlemen
+	remove_province_modifier = being_colonised_with_arnorian_middlemen
+	remove_province_modifier = being_colonised_with_southrons
+	remove_province_modifier = being_colonised_by_dwarves
+	remove_province_modifier = being_colonised_by_elves
+	remove_province_modifier = being_colonised_by_high_elves
+	remove_province_modifier = being_colonised_with_wood_elves
+	remove_province_modifier = being_colonised_with_humans_good
+	remove_province_modifier = being_colonised_with_forodwaith
+	remove_province_modifier = being_colonised_with_orctrollkind
+	set_variable = { which = mepvar_colonizingculture value = 0 }	
+}
+#----------------------------------------------------------------------
+# population modifier stuff
+mep_dunedain_popmod_remove_effect = {
+	remove_province_modifier = one_population_dunedain
+	remove_province_modifier = two_population_dunedain
+	remove_province_modifier = three_population_dunedain
+	remove_province_modifier = four_population_dunedain
+	remove_province_modifier = five_population_dunedain
+	remove_province_modifier = six_population_dunedain
+	remove_province_modifier = seven_population_dunedain
+}
+
+mep_elven_popmod_remove_effect = {
+	remove_province_modifier = one_population_elves
+	remove_province_modifier = two_population_elves
+	remove_province_modifier = three_population_elves
+	remove_province_modifier = four_population_elves
+	remove_province_modifier = five_population_elves
+	remove_province_modifier = six_population_elves
+	remove_province_modifier = seven_population_elves
+}
+
+mep_dwarven_popmod_remove_effect = {
+	remove_province_modifier = one_population_dwarves
+	remove_province_modifier = two_population_dwarves
+	remove_province_modifier = three_population_dwarves
+	remove_province_modifier = four_population_dwarves
+	remove_province_modifier = five_population_dwarves
+	remove_province_modifier = six_population_dwarves
+	remove_province_modifier = seven_population_dwarves
+}
+
+mep_human_popmod_remove_effect = {
+	remove_province_modifier = one_population_human
+	remove_province_modifier = two_population_human
+	remove_province_modifier = three_population_human
+	remove_province_modifier = four_population_human
+	remove_province_modifier = five_population_human
+	remove_province_modifier = six_population_human
+	remove_province_modifier = seven_population_human
+}
+
+mep_popmod_remove_effect = {
+	mep_dunedain_popmod_remove_effect = yes
+	mep_elven_popmod_remove_effect = yes
+	mep_dwarven_popmod_remove_effect = yes
+	mep_human_popmod_remove_effect = yes
+}
+#-------------------------------------------------------------------------------
+# province scope, ROOT would be ruler who launches event
+# culture codes : 0 longbeard, 1 ironfist, 2 broadbeam, 3 firebeard, 4 blacklock, 5 stonefoot, 6 stiffbeard, 7 petty
+mep_dwarf_colonize_pick_culture = {
+	set_variable = { which = mepvar_colonizingculture value = 0 }	# Default Longbeard
+	if = { limit = { ROOT = { culture = culture_ironfist} }
+		set_variable = { which = mepvar_colonizingculture value = 1 }							
+	}
+	if = { limit = { ROOT = { culture = culture_broadbeam} }
+		set_variable = { which = mepvar_colonizingculture value = 2 }							
+	}
+	if = { limit = { ROOT = { culture = culture_firebeard} }
+		set_variable = { which = mepvar_colonizingculture value = 3 }							
+	}
+	if = { limit = { ROOT = { culture = culture_blacklock} }
+		set_variable = { which = mepvar_colonizingculture value = 4 }							
+	}
+	if = { limit = { ROOT = { culture = culture_stonefoot} }
+		set_variable = { which = mepvar_colonizingculture value = 5 }							
+	}
+	if = { limit = { ROOT = { culture = culture_stiffbeard} }
+		set_variable = { which = mepvar_colonizingculture value = 6 }							
+	}
+	if = { limit = { ROOT = { culture = culture_petty_dwarves} }
+		set_variable = { which = mepvar_colonizingculture value = 7 }							
+	}
+
+}
+#----------------------------------------------------------------------------------------
+## 'killer' effects for races that are not supposed to proliferate
+# changes characters to orcs/trolls/black numenoreans
+mep_young_fevil_change_effect = {
+	# this is for evil characters only, so we might as well make sure they are evil
+	if = {
+		limit = {  NOT = { trait = evil_side }  }
+		add_trait = evil_side
+	}
+	# removing things that are going to go away
+	if = {
+		limit = { is_married = yes }
+		any_spouse = {
+			remove_spouse = PREV
+		}
+	}
+	if = {
+		limit = { trait = wight }
+		remove_trait = wight
+	}
+	if = {
+		limit = { trait = balrog }
+		remove_trait = balrog
+	}
+	if = {
+		limit = { trait = maiar }
+		remove_trait = maiar
+	}
+	# picking the target race
+	random_list = {
+		# Black Numenorean
+		10 = {
+			# Much more likely to be Black Númenórean in a Black Númenórean province
+			modifier = {
+				factor = 9
+				location = {
+					culture = culture_black_numenorean
+				}
+			}
+			modifier = {
+				factor = 9
+				employer = {
+					culture = culture_black_numenorean
+				}
+			}
+			# setting culture and religion...
+			culture = culture_black_numenorean
+			religion = religion_black_numenorean
+			set_graphical_culture = culture_black_numenorean
+			# numenorean blood traits
+			random_list = {
+				30 = { add_trait = blood_of_numenor }
+				70 = { add_trait = blood_of_numenor2 }
+			}
+			
+		}
+		# Orc/Uruk/Goblin
+		80 = {
+			if = { 
+				limit = {  NOT = { trait = orc }  }
+				add_trait = orc
+			}
+			# picking Goblin, Orc, or Uruk/Goblin
+			random_list = {
+				# Goblin
+				10 = {
+					modifier = {
+						factor = 9
+						location = { culture = culture_goblin }
+					}
+					modifier = {
+						factor = 9
+						employer = { culture = culture_goblin }
+					}
+					# setting culture and religion...
+					culture = culture_goblin
+					religion = religion_orkish
+					set_graphical_culture = culture_goblin
+				}
+				# Generic Orc
+				80 = {
+					# setting culture and religion...
+					culture = culture_orkish
+					religion = religion_orkish
+					set_graphical_culture = culture_orkish
+				}
+				# Uruk-hai
+				10 = {
+					modifier = {
+						factor = 9
+						location = { culture = culture_urukhai }
+					}
+					modifier = {
+						factor = 9
+						employer = { culture = culture_urukhai }
+					}
+					modifier = {
+						factor = 0
+						NOT = { year = 10800 }  # Uruk-Hai are first known to have appeared TA 2475)
+					}
+					# setting culture and religion...
+					culture = culture_urukhai
+					religion = religion_uruk
+					set_graphical_culture = culture_urukhai
+				}
+			}
+			# we now add orcish warrior traits
+			random_list = {
+				20 = { add_trait = weak_orc }
+				50 = { add_trait = orc_warrior }
+				20 = { add_trait = strong_orc }
+				10 = { add_trait = great_orc }
+			}
+		}
+		# Troll
+		10 = {
+			modifier = {
+				factor = 9
+				location = { culture = culture_troll }
+			}
+			modifier = {
+				factor = 9
+				employer = { culture = culture_troll }
+			}
+			if = {   # Trolls get the Orc 'Creature of Melkor') trait as well.
+				limit = {  NOT = { trait = orc }  }
+				add_trait = orc
+			}
+			# setting culture and religion...
+			culture = culture_troll
+			religion = religion_olog
+			set_graphical_culture = culture_troll
+			
+		}
+	}
+	# dynasty = random
+	recalc_succession = yes
+}
+#----------------------------------------------------------------------
+# Adding default race traits for generated characters
+# the character already has elf religion...
+mep_char_is_elf_effect = {
+	if = {
+		limit = {
+			NOT = { trait = elf }
+			NOT = { trait = half_elf }			
+		}
+		add_trait = elf
+	}
+	if = {
+		limit = {
+			NOT = { age = 12 }
+			age = 1
+			NOT = { trait = elf_childhood }
+		}
+		if = {
+			limit = { is_married = yes }
+			any_spouse = { remove_spouse = PREV }
+		}
+		add_trait = elf_childhood
+	}
+}
+
+mep_char_is_dwarf_effect = {
+	if = {
+		limit = {
+			NOT = { trait = dwarven } 
+		}
+		add_trait = dwarven
+	}
+}
+
+#------------------------------------------------------------------------
+# misc effects: prepping the wizard
+mep_prep_fellowship_wizard = {
+	if = {
+		limit = { prisoner = yes }
+		prisoner = no
+	}
+	move_character = PREV
+	# just in case
+	remove_trait = incapable
+	remove_trait = sick_incapable
+	remove_trait = lunatic
+	remove_trait = infirm
+	remove_trait = wounded
+	# finishing
+	add_trait = on_fellowshipquest
+	save_event_target_as = mep_fellowship_wizard
+}
+#====================================================================================================
+mep_make_random_noldorelf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_noldor
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 5640
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_noldor
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 5832
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+mep_make_random_sindarelf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_sindar
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 4520
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_sindar
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 4410
+				trait = elf
+				immortal_age = 25
+			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+mep_make_random_falathrimelf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_falathrim
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 6120
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_falathrim
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 5840
+				trait = elf
+				immortal_age = 25
+			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+mep_make_random_silvanelf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_silvan
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 2915
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_silvan
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 2740
+				trait = elf
+				immortal_age = 25
+			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+mep_make_random_avarielf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_avari
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 3310
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_avari
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 3640
+				trait = elf
+				immortal_age = 25
+			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+mep_make_random_nandorelf_character = {
+	random_list = {
+		67 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_nandor
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 2810
+				trait = elf
+				immortal_age = 25
+			}
+		}
+		33 = {
+			create_character = {
+				religion = religion_moriquendi
+				culture = culture_nandor
+				random_traits = yes
+				dynasty = random
+				female = yes
+				age = 2960
+				trait = elf
+				immortal_age = 25
+			}
+		}
+	}
+	new_character = {
+		random_list = {
+			20 = { change_diplomacy = 5 }
+			20 = { change_martial = 5 }
+			20 = { change_stewardship = 5 }
+			20 = { change_intrigue = 5 }
+			20 = { change_learning = 5 }
+		}
+	}
+}
+
+# Called from a character scope, uses the variable mep_courtiers_tomake, which must be initialized with
+# a maximum value first.
+mep_generate_eleven_courtiers_effect = {
+	set_variable = { which = mep_courtier_counter  value = 1 }
+	# counting usable courtiers
+	any_courtier = {
+		limit = {
+			NOT = { trait = elf_childhood }
+			is_incapable = no
+			prisoner = no
+		}
+		PREV = { change_variable = { which = mep_courtier_counter value = 1 }}
+	}
+	# calculating how many courtiers to make
+	subtract_variable = { which = mep_courtiers_tomake  which = mep_courtier_counter }
+	if = {
+		limit = {
+			check_variable = { which = mep_courtiers_tomake  value = 1 }
+		}
+		# Here, we generate courtiers in a loop.
+		while = {
+			limit = {
+				check_variable = { which = mep_courtiers_tomake  value = 1 }
+			}    
+			subtract_variable = { which = mep_courtiers_tomake value = 1 }
+			# Generate the courtier. since I feel mixed culture courts are likely,
+			# I use a random list (a different one for each capital_scope culture)
+			capital_scope = {
+				trigger_switch = {
+					on_trigger = culture
+					# Noldor Culture Provinces
+					culture_noldor = {
+						PREV = {
+							random_list = {
+								60 = { mep_make_random_noldorelf_character = yes }
+								20 = { mep_make_random_sindarelf_character = yes }
+								19 = { mep_make_random_silvanelf_character = yes }
+								1 = {
+									modifier = {
+										factor = 20
+										capital_scope = { port = yes }
+									}
+									mep_make_random_falathrimelf_character = yes
+								}
+							}
+						}
+					}
+					# Sindar Culture Provinces
+					culture_sindar = {
+						PREV = {
+							random_list = {
+								20 = { mep_make_random_noldorelf_character = yes }
+								60 = { mep_make_random_sindarelf_character = yes }
+								19 = { mep_make_random_silvanelf_character = yes }
+								1 = {
+									modifier = {
+										factor = 20
+										capital_scope = { port = yes }
+									}
+									mep_make_random_falathrimelf_character = yes
+								}
+							}
+						}
+					}
+					# Falathrim Culture Provinces
+					culture_falathrim = {
+						PREV = {
+							random_list = {
+								13 = { mep_make_random_noldorelf_character = yes }
+								14 = { mep_make_random_sindarelf_character = yes }
+								13 = { mep_make_random_silvanelf_character = yes }
+								60 = { mep_make_random_falathrimelf_character = yes }
+							}
+						}
+					}
+					# Silvan Culture Provinces
+					culture_silvan = {
+						PREV = {
+							random_list = {
+								70 = { mep_make_random_silvanelf_character = yes }
+								7 = {
+									modifier = {
+										factor = 4
+										culture = culture_noldor
+									}
+									mep_make_random_noldorelf_character = yes
+								}
+								8 = {
+									modifier = {
+										factor = 4
+										culture = culture_sindar
+									}
+									mep_make_random_sindarelf_character = yes
+								}
+								8 = { mep_make_random_avarielf_character = yes }
+								7 = {
+									modifier = {
+										factor = 0.05
+										year = 10350
+									}
+									modifier = {
+										factor = 3
+										NOT = { year = 6600 }
+									}
+									mep_make_random_nandorelf_character = yes
+								}
+							}
+						}
+					}
+					# Nandor Culture Provinces
+					culture_nandor = {
+						PREV = {
+							random_list = {
+								70 = { mep_make_random_nandorelf_character = yes }
+								10 = {
+									modifier = {
+										factor = 2
+										year = 6600
+									}
+									modifier = {
+										factor = 2
+										year = 8500
+									}
+									mep_make_random_silvanelf_character = yes
+								}
+								10 = { mep_make_random_sindarelf_character = yes }
+								10 = { mep_make_random_avarielf_character = yes }
+							}
+						}
+					}
+					# Avari Culture Provinces
+					culture_avari = {
+						PREV = {
+							random_list = {
+								60 = { mep_make_random_avarielf_character = yes }
+								5 = { mep_make_random_noldorelf_character = yes }
+								10 = { mep_make_random_sindarelf_character = yes }
+								13 = {
+									modifier = {
+										factor = 0
+										NOT = { year = 6600 }
+									}
+									mep_make_random_silvanelf_character = yes
+								}
+								12 = {
+									modifier = {
+										factor = 0.1
+										year = 10350
+									}
+									modifier = {
+										factor = 3
+										NOT = { year = 6600 }
+									}
+									mep_make_random_nandorelf_character = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#===========================================================================================
+# WOTR effects (because trait scope is usable only for triggers, damnit)
+
+# does not cover ringbearer or aragorn
+mep_fellowship_ends_at_rivendell_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
+		event_target:mep_fellowship_wizard = {
+			if = {
+				limit = { ai = no}
+				character_event = { id = wotr.8  days = 2 }
+			}
+		}
+	}
+	event_target:mep_fellowship_gondorian = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+	event_target:mep_fellowship_dwarf = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+	event_target:mep_fellowship_elf = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+	event_target:mep_fellowship_hobbit1 = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+	event_target:mep_fellowship_hobbit2 = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+	event_target:mep_fellowship_hobbit3 = {
+		if = {
+			limit = { ai = no}
+			character_event = { id = wotr.8  days = 2 }
+		}
+	}
+}
+
+mep_reached_moria_effect = {
+	if = {
+		limit = { ai = no }
+		character_event = { id = wotr.12 }
+	}
+	if = {
+		limit = { is_alive = yes }
+		set_character_flag = wotr12
+		set_character_flag = minesofmoria
+	}
+}
+
+mep_fellowship_moria1_effect = {
+	if = {
+		limit = { is_alive = yes }
+		set_character_flag = wotr13
+		set_character_flag = lothlorien
+	}
+}
+
+mep_escape_moria_effect = {
+	if = {
+		limit = { ai = no }
+		character_event = { id = wotr.14 }
+	}
+	if = {
+		limit = { is_alive = yes }
+		set_character_flag = wotr14
+	}
+}
+
+
