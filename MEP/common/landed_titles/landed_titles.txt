@@ -8043,7 +8043,7 @@ e_durins_folk = {
 		color={ 236 190 52 }
 		color2={ 125 125 142 }
 		
-		# capital = 292 # Erebor ??
+		capital = 292 # Erebor
 		
 		culture = culture_longbeard
 		religion = religion_mahal
@@ -8917,6 +8917,7 @@ k_dol_guldur = {
 			culture_dragons = "Dol Guldur"
 			culture_spider = "Dol Guldur"
 			culture_maiar = "Dol Guldur"
+			culture_umaiar = "Dol Guldur"
 			culture_silvan = "Amon Lanc"
 			culture_sindar = "Amon Lanc"
 			culture_avari = "Amon Lanc"
@@ -8935,6 +8936,7 @@ k_dol_guldur = {
 				culture_dragons = "Dol Guldur"
 				culture_spider = "Dol Guldur"
 				culture_maiar = "Dol Guldur"
+				culture_umaiar = "Dol Guldur"
 			}
 			b_sammath_gul = {
 			}
@@ -13275,74 +13277,16 @@ k_nothing = {
 			b_bald_hill = { }
 			b_old_forest_tunnel = { }
 		}
-		
 	}
-	
-	# Edhellond is an independendent Elf-port in the middle of Gondor for over 2 thousand years
-	# So, remove it from dejure Gondor
-	d_edhellond = {
-	
-		color={ 74 92 109 }
-		color2={ 255 255 255 }
-	
-		capital = 429  # Edhellond
-		culture = culture_sindar	
-		religion = religion_moriquendi
-		dignity = 5
-		
-		allow = {
-			religion_group = religion_group_eldar
-		}
-	
-		c_edhellond = {
-			color={ 74 92 109 }
-			color2={ 255 255 255 }
-		
-			b_edhellond = { }
-			b_lond_cobas = { }
-			b_tirith_cobas = { }	
-			b_annubad = { }
-			b_silagond = { }
-			b_sirionad = { }	
-		}
-	}
-	
-	# The Drúadan Forest is deep inside normal Gondorian territory, but was also apart from it.
-	# as per hhardy01, I have separated it completely. (The existing history files have it as
-	# part of Gondor, but until 9605, the holder was also the King of Old Púkel Land, and thus
-	# not part of Gondor.
-	d_tawar_in_druedain = {
-	
-		color={ 174 184 106 }
-		color2={ 255 255 255 }
-	
-		capital = 671  # Drúadan Forest
-		religion = religion_druedain
-		culture = culture_druedain
-		dignity = 1
-		
-		allow = {
-			religion = religion_druedain
-			culture = culture_druedain
-		}
-	
-		c_druadan_forest = {
-			color={ 174 184 106 }
-			color2={ 255 255 255 }
-		
-			b_druedain_village = { }
-			b_eilenach = { }
-			b_stonewain = { }
-		}
-	}
+
 	
 	# A small Dwarf-Realm founded in the fourth age. The previous mod creators gave it an entire
 	# dejure kingdom, but I've already gotten rid of the Erebor kindom, so I'll get rid of the
 	# 'historically' later and smaller k_aglarond as well. 
 	d_aglarond = {
-	    color={ 121 172 40 }
+		color={ 121 172 40 }
 		color2={ 125 125 142 }
-	      
+		  
 		capital = 670 #Glittering Caves
 		
 		culture = culture_longbeard
@@ -13362,7 +13306,64 @@ k_nothing = {
 			b_lower_deep = { }
 		}
 	}
+		
+	# Edhellond is an independendent Elf-port in the middle of Gondor for over 2 thousand years
+	# So, remove it from dejure Gondor
+	d_edhellond = {
+
+		color={ 74 92 109 }
+		color2={ 255 255 255 }
+
+		capital = 429  # Edhellond
+		culture = culture_sindar	
+		religion = religion_moriquendi
+		dignity = 5
+		
+		allow = {
+			religion_group = religion_group_eldar
+		}
+
+		c_edhellond = {
+			color={ 74 92 109 }
+			color2={ 255 255 255 }
+		
+			b_edhellond = { }
+			b_lond_cobas = { }
+			b_tirith_cobas = { }	
+			b_annubad = { }
+			b_silagond = { }
+			b_sirionad = { }	
+		}
+	}
 	
+	# The Drúadan Forest is deep inside normal Gondorian territory, but was also apart from it.
+	# as per hhardy01, I have separated it completely. (The existing history files have it as
+	# part of Gondor, but until 9605, the holder was also the King of Old Púkel Land, and thus
+	# not part of Gondor.
+	d_tawar_in_druedain = {
+
+		color={ 174 184 106 }
+		color2={ 255 255 255 }
+
+		capital = 671  # Drúadan Forest
+		religion = religion_druedain
+		culture = culture_druedain
+		dignity = 1
+		
+		allow = {
+			religion = religion_druedain
+			culture = culture_druedain
+		}
+
+		c_druadan_forest = {
+			color={ 174 184 106 }
+			color2={ 255 255 255 }
+		
+			b_druedain_village = { }
+			b_eilenach = { }
+			b_stonewain = { }
+		}
+	}
 }
 
 

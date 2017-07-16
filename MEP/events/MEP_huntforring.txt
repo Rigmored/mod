@@ -2,7 +2,7 @@ namespace = huntforring
 character_event = {
     id = huntforring.0
     title = "EVTTIThuntforring.0"
-    desc = "EVTDESChuntforring.0" #The Ring is out there somewhere. Do you want to launch an expedition ...
+    desc = "EVTDESChuntforring.0" #The ring is out there somewhere. Do you want to launch an expedition ...
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	
@@ -73,7 +73,7 @@ character_event = {
 		}
 		clr_character_flag = huntforring
 	}
-		
+
 	option = {
 		name = "EVTOPTChuntforring.1" #It is held by a King! That will cost dearly...
 		trigger = {
@@ -85,7 +85,7 @@ character_event = {
 		character_event = { id = huntforring.3 }
 		wealth = -3000
 	}
-		
+
 	option = {
 		name = "EVTOPTDhuntforring.1"#It is held by a King! I can't afford that...
 		trigger = {
@@ -201,9 +201,8 @@ character_event = {
 		name = "EVTOPTNhuntforring.1"#Never mind...
 		clr_character_flag = huntforring
 	}
-	
 }
-		
+
 character_event = {
     id = huntforring.2
     title = "EVTTIThuntforring.2"
@@ -220,7 +219,7 @@ character_event = {
 character_event = {
     id = huntforring.3
     title = "EVTTIThuntforring.3"#
-    desc = "EVTDESChuntforring.3"#The expedition will be expensive, and dangerous no doubt. Who will you send to recover the Ring? Only you or your heir, if of age, can be trusted...
+    desc = "EVTDESChuntforring.3"#The expedition will be expensive, and dangerous no doubt. Who will you send to recover the ring? Only you or your heir, if of age, can be trusted...
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	
@@ -228,7 +227,7 @@ character_event = {
 		name = "EVTOPTAhuntforring.3"#I trust only myself to do this!
 		character_event = { id = huntforring.5 days = 7 }
 	}
-	
+
 	option = {
 		name = "EVTOPTBhuntforring.3"#I will send my heir.
 		trigger = {
@@ -240,7 +239,7 @@ character_event = {
 		}
 	}
 }
-	
+
 ##Event for whoever is sent, if not the ruler himself##
 character_event = {
     id = huntforring.4
@@ -255,7 +254,7 @@ character_event = {
 		character_event = { id = huntforring.6 days = 180 }
 	}
 }
-	
+
 ##Event for when the ruler goes himself##
 character_event = {
     id = huntforring.5
@@ -270,7 +269,7 @@ character_event = {
 		character_event = { id = huntforring.6 days = 180 }
 	}	
 }
-	
+
 ##the expedition approaches the target##
 character_event = {
     id = huntforring.6
@@ -280,26 +279,34 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAhuntforring.6"#Quietly... steadily...
+		name = "EVTOPTAhuntforring.6" # Quietly... steadily...
 		trigger = {
-			NOT = { culture = culture_maiar }
+			NOT = { culture = culture_umaiar }
 		}
-		ring = {
-			character_event = { id = huntforring.7 days = 7 }
+		any_character = {
+			AND = {
+				trait = ring
+				has_artifact = artifact_ring
+			}
+			character_event = { id = huntforring.7 days = 5 }
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTBhuntforring.6"#I fear nothing! We'll just go in and grab it by force!
-		trigger = { 
-			culture = culture_maiar
+		trigger = {
+			culture = culture_umaiar
 		}
-		ring = {
+		any_character = {
+			AND = {
+				trait = ring
+				has_artifact = artifact_ring
+			}
 			character_event = { id = huntforring.8 days = 2 }
 		}
 	}
 }
-	
+
 ##the expedition goes in quietly, the ringbearer is informed##
 character_event = {
     id = huntforring.7
@@ -324,7 +331,7 @@ character_event = {
 		character_event = { id = huntforring.10 days = 2 }
 	}
 }
-	
+
 ##the expedition is met by armed guards trying to arrest them##
 	character_event = {
     id = huntforring.9
@@ -332,7 +339,7 @@ character_event = {
     desc = "EVTDESChuntforring.9"#As you lay low, scouting the area, you are intercepted by a large hostile force which wants to bring you in to their lord for questioning. What do you do?
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
@@ -349,7 +356,7 @@ character_event = {
             }
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
@@ -417,15 +424,14 @@ character_event = {
 			}
 		}
 	}
-	
-	
+
 	option = {
 		name = "EVTOPTBhuntforring.9"#We're discovered! Hold them off while I flee!
 		trigger = { ai = no }
 		remove_trait = huntforring
 	}
 }
-	
+
 ##they win the fight##
 character_event = {
     id = huntforring.11
@@ -517,6 +523,7 @@ character_event = {
 				FROM = { character_event = { id = huntforring.15 days = 1 } }
 			}
 			75 = {
+				remove_artifact = artifact_ring
 				remove_trait = ring
 				death = {
 					death_reason = death_battle
@@ -554,6 +561,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.16"#At last!
 		remove_trait = huntforring
+		add_artifact = artifact_ring
 		add_trait = ring
 		set_character_flag = courtierwithring
 		clr_character_flag = huntforring
@@ -585,6 +593,7 @@ character_event = {
 			remove_trait = ring 
 			add_trait = ringbearer2
 		}
+		add_artifact = artifact_ring
 		add_trait = ring
 		clr_character_flag = huntforring
 		clr_character_flag = sentringhunters
@@ -599,6 +608,7 @@ character_event = {
 			remove_trait = ring 
 			add_trait = ringbearer2
 		}
+		add_artifact = artifact_ring
 		add_trait = ring
 		clr_character_flag = sentringhunters
 		clr_character_flag = huntforring
@@ -623,6 +633,7 @@ character_event = {
 				FROMFROM = { character_event = { id = huntforring.15 } }
 			}
 			75 = {
+				remove_artifact = artifact_ring
 				remove_trait = ring
 				death = {
 					death_reason = death_battle
@@ -649,6 +660,7 @@ character_event = {
 				FROMFROM = { character_event = { id = huntforring.15 } }
 			}
 			75 = {
+				remove_artifact = artifact_ring
 				remove_trait = ring
 				death = {
 					death_reason = death_battle
@@ -663,7 +675,7 @@ character_event = {
 character_event = {
     id = huntforring.18
     title = "EVTTIThuntforring.18"
-    desc = "EVTDESChuntforring.18"#Rumor spreads to every corner of middle-earth. A Ring-Lord has arisen, and either by force or stealth taken the ring of power from its previous holder! This cannot be good news...
+    desc = "EVTDESChuntforring.18"#Rumor spreads to every corner of middle-earth. A ring-Lord has arisen, and either by force or stealth taken the ring of power from its previous holder! This cannot be good news...
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes	
 	

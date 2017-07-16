@@ -668,6 +668,70 @@ artifact_palantir_orthanc = {
 	}
 }
 
+# The ONE RING
+	artifact_ring = {
+	max_amount = 1
+	spawn_date = 6502.1.1 #  #Sauron forges the One Ring.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6502 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 10016 # Sauron
+			NOT = { year = 8343 } # Sauron is defeated and loses the one ring
+		}
+		# Isildur takes the ring after cutting it from Sauron's hand.
+		additive_modifier = {
+			value = 100
+			year = 8343
+			NOT = { year = 8345 } # Isildur is ambushed at Gladden Fields and losed the ring in the Anduin.
+			character = 12136 # Isildur
+		}
+		# The ring sits at the bottom of the Anduin River.
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 10806 } # Gollum finds the Ring.
+			character = 25046 # Anduin River
+		}
+		# The Ring is lost in the Anduin River for many long years until it is found by a river dweller.
+		additive_modifier = {
+			value = 100
+			character = 8190 # Sméagol
+			year = 10806
+			NOT = { year = 11284 } # Gollum loses the ring and Bilbo finds it..
+		}
+		# Bilbo finds the ring and holds it for many years.
+		additive_modifier = {
+			value = 100
+			year = 11284
+			NOT = { year = 11344 }
+			character = 8065 # Bilbo Baggins
+		}
+		# Bilbo gives the ring to Frodo on his birthday
+		additive_modifier = {
+			value = 100
+			year = 11344
+			NOT = { year = 11362 } # Ring is destroyed in the fires of Mount Doom.
+			character = 8079 # Frodo Baggins
+		}
+	}
+
+	artifacts = {
+		artifact_ring = {
+			value = 1
+		}
+	}
+}
+
 
 
 

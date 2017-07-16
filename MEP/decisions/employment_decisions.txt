@@ -26,7 +26,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -61,7 +61,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -85,7 +85,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 10
+			treasury = 100
 		}
 		effect = {
 			treasury = -10
@@ -96,7 +96,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -120,7 +120,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 10
+			treasury = 1000
 		}
 		effect = {
 			treasury = -10
@@ -131,7 +131,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -175,6 +175,11 @@ decisions = {
 			treasury = -200
 			prestige = -200
 			piety = -200
+						add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_character = {
 				random_traits = yes
 				dynasty = none
@@ -204,15 +209,20 @@ decisions = {
 			NOT = { religion_group = religion_group_melkor }
 		}
 		allow = {
-			treasury = 100
+			treasury = 1000
 			prestige = 100
 			NOT = {
 				has_character_modifier = in_seclusion
 			}
 		}
 		effect = {
-			treasury = 100
+			treasury = 1000
 			prestige = 100
+				add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_character = {
 				random_traits = yes
 				dynasty = random
@@ -263,7 +273,7 @@ decisions = {
 			}
 		}
 		allow = {
-			treasury = 100
+			treasury = 1000
 			prestige = 100
 			NOT = {
 				has_character_modifier = in_seclusion
@@ -271,8 +281,13 @@ decisions = {
 			NOT = { has_character_modifier = employment_timer }
 		}
 		effect = {
-			treasury = 100
+			treasury = 1000
 			prestige = 100
+						add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_random_soldier = {
 				random_traits = yes
 				dynasty = none
@@ -369,7 +384,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 100
+			treasury = 1000
 			prestige = 100
 		}
 		effect = {
@@ -393,7 +408,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
