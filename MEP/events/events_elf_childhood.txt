@@ -10,8 +10,8 @@ narrative_event = {
 
 	trigger = {
 		mep_is_elf_culture = yes
-		age = 16
-		NOT = { age = 60 }
+		age = 1
+		NOT = { age = 10 }
 	}
 	
 	is_triggered_only = yes
@@ -31,7 +31,7 @@ narrative_event = {
 
 	trigger = {
 		mep_is_elf_culture = yes
-		age = 60
+		age = 12
 		trait = elf_childhood
 	}
 	
@@ -411,167 +411,3 @@ narrative_event = {
 
 ######## Will remove any children as councillors ########
 #### An elf child is a councillor #### -BR NOTE: Deleted because it causes AI Lag
-#### An elf child is a councillor ####
-character_event = {
-    id = elfchild.4
-    title = "EVTTITelfchild.4"
-    desc = "EVTDESCelfchild.4"
-    picture = "GFX_evt_elven_story"
-	
-	trigger = {
-		trait = elf
-		trait = elf_childhood
-		OR = {
-			has_job_title = job_chancellor
-			has_job_title = job_marshal
-			has_job_title = job_treasurer
-			has_job_title = job_spymaster
-			has_job_title = job_spiritual
-		}
-	}
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAelfchild.4" ## I'm too young for this!
-		liege = { character_event = { id = elfchild.5 } }
-		if = {	
-			limit = {
-				has_job_title = job_chancellor
-			}
-			remove_title = job_chancellor
-		}
-		if = {	
-			limit = {
-				has_job_title = job_marshal
-			}
-			remove_title = job_marshal
-		}
-		if = {	
-			limit = {
-				has_job_title = job_treasurer
-			}
-			remove_title = job_treasurer
-		}
-		if = {	
-			limit = {
-				has_job_title = job_spymaster
-			}
-			remove_title = job_spymaster
-		}
-		if = {	
-			limit = {
-				has_job_title = job_spiritual
-			}
-			remove_title = job_spiritual
-		}		
-	}			
-}	
-
-#### An elf child is a councillor ####
-character_event = {
-    id = elfchild.5
-    title = "EVTTITelfchild.5"
-    desc = "EVTDESCelfchild.5"
-    picture = "GFX_evt_elven_story"
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTAelfchild.5" ## Ok.
-		FROM = { custom_tooltip = { text = ISACHILD } }		
-		create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = ROOT
-			culture = ROOT
-			female = no
-			age = 150
-			trait = elf
-		}
-		new_character = {
-			random_list = {
-				20 = {
-					random_list = {
-						25 = {
-							add_trait = amateurish_plotter
-						}
-						25 = {
-							add_trait = flamboyant_schemer
-						}
-						25 = {
-							add_trait = intricate_webweaver
-						}
-						25 = {
-							add_trait = elusive_shadow
-						}
-					}
-				}
-				20 = {
-					random_list = {
-						25 = {
-							add_trait = naive_appeaser
-						}
-						25 = {
-							add_trait = underhanded_rogue
-						}
-						25 = {
-							add_trait = charismatic_negotiator
-						}
-						25 = {
-							add_trait = grey_eminence
-						}
-					}				
-				}
-				20 = {
-					random_list = {
-						25 = {
-							add_trait = indulgent_wastrel
-						}
-						25 = {
-							add_trait = thrifty_clerk
-						}
-						25 = {
-							add_trait = fortune_builder
-						}
-						25 = {
-							add_trait = midas_touched
-						}
-					}				
-				}
-				20 = {
-					random_list = {
-						25 = {
-							add_trait = misguided_warrior
-						}
-						25 = {
-							add_trait = tough_soldier
-						}
-						25 = {
-							add_trait = skilled_tactician
-						}
-						25 = {
-							add_trait = brilliant_strategist
-						}
-					}				
-				}
-				20 = {
-					random_list = {
-						25 = {
-							add_trait = detached_priest
-						}
-						25 = {
-							add_trait = martial_cleric
-						}
-						25 = {
-							add_trait = scholarly_theologian
-						}
-						25 = {
-							add_trait = mastermind_theologian
-						}
-					}				
-				}	
-			}
-		}
-	}			
-}	
