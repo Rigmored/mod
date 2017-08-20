@@ -8,18 +8,22 @@ character_event = {
 	
 	option = {
 		# dispatching the elven 'marriedforever' event
-		if = {
-			limit = {
-				trait = elf
-				NOT = { trait = elf_childhood }
-			}
-			any_spouse = {
+		ROOT = {
+			if = {
 				limit = {
-					is_alive = yes
+					is_alive = no
 					trait = elf
 					NOT = { trait = elf_childhood }
 				}
-				character_event = { id = mepmarriage.11  days = 1 }
+				any_spouse = {
+					limit = {
+						is_alive = yes
+						trait = elf
+						NOT = { trait = elf_childhood }
+						NOT = { trait = marriedforever }
+					}
+					character_event = { id = mepmarriage.11  days = 1 }
+				}
 			}
 		}
 	}
