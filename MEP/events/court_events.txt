@@ -23,7 +23,7 @@ character_event = {
 		NOT = { trait = proud }
 		NOT = { trait = humble }
         NOT = { trait = elf_childhood }
-        NOT = { religion_group = religion_group_melkorx }
+        NOT = { religion_group = religion_group_melkor }
 		NOT = { religion_group = religion_group_ungoliant }
 	}
 
@@ -163,8 +163,7 @@ character_event = {
 	only_men = yes
 	
 	trigger = {
-        NOT = { religion_group = religion_group_melkorx }
-		NOT = { religion_group = religion_group_ungoliant }
+		NOT = { mep_evil_religion = yes }
 		is_married = yes
 		spouse = {
 			is_abroad = no
@@ -242,8 +241,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
-		NOT = { religion_group = religion_group_melkorx }
-		NOT = { religion_group = religion_group_ungoliant }
+		NOT = { mep_evil_religion = yes }
 		in_command = no
 		any_vassal = {
 			tier = baron
@@ -344,8 +342,7 @@ character_event = {
 	
 	trigger = {
 		in_command = no
-        NOT = { religion_group = religion_group_melkorx }
-		NOT = { religion_group = religion_group_ungoliant }
+        NOT = { mep_evil_religion = yes }
 		father_even_if_dead = {
 			is_alive = no
 			prestige = 100
@@ -394,8 +391,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
-        NOT = { religion_group = religion_group_melkorx }
-		NOT = { religion_group = religion_group_ungoliant }
+        NOT = { mep_evil_religion = yes }
 		in_command = no
 		OR = {
 			trait = fair
@@ -538,8 +534,7 @@ character_event = {
 	only_men = yes
 	
 	trigger = {
-		NOT = { religion_group = religion_group_ungoliant }
-        NOT = { religion_group = religion_group_melkorx }
+		NOT = { mep_evil_religion = yes }
 		NOT = { religion_group = religion_group_enyd }
 		any_child = {
 			is_married = no
@@ -625,8 +620,7 @@ character_event = {
 	
 	trigger = {
 		in_command = no
-		NOT = { religion_group = religion_group_ungoliant }
-		NOT = { religion_group = religion_group_melkorx }
+		NOT = { mep_evil_religion = yes }
         spouse = {
 			is_abroad = no
 			prisoner = no
@@ -714,7 +708,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
-        NOT = { religion_group = religion_group_melkorx }
+        NOT = { religion_group = religion_group_melkor }
 		NOT = { religion_group = religion_group_ungoliant }
 		is_landed = yes
 		capital_scope = { TECH_NOBLE_CUSTOMS = 4 }

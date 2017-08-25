@@ -830,18 +830,20 @@ character_event = {
 			}	
 			70 = {
 				FROM = {
+					# if no-one has the has the Palantir of Osgiliath, trigger a special event first
 					if = {
 						limit = {
-							palantir_osgiliath = { NOT = { is_alive = yes } }
-						}						
+							any_character = { has_artifact = artifact_palantir_osgiliath }
+						}
 						character_event = { id = buildings.32 days = 25 } # You found something into the ruins...
 					}
+					# Otherwise, go directly to done!
 					if = {
 						limit = {
-							palantir_osgiliath = { is_alive = yes }
-						}						
-						character_event = { id = buildings.30 days = 25 } # You found something into the ruins...
-					}					
+							NOT = { any_character = { has_artifact = artifact_palantir_osgiliath } }
+						}
+						character_event = { id = buildings.30 days = 25 }
+					}				
 				}
 			}				
 		}
@@ -1003,6 +1005,7 @@ character_event = {
 
 
 ## Rebuilding of osgiliath Events - You found something into the ruins ##
+# Only triggered if the Palantir of Osgiliath is not owned by anyone...
 character_event = {
 	id = buildings.32
 	title = "EVTTITbuildings.32"
@@ -1013,7 +1016,10 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAbuildings.32" ## Great !
-		add_trait = palantir_osgiliath
+		add_artifact = artifact_palantir_osgiliath
+		hidden_tooltip = {
+			new_artifact = { set_creation_date = 1.1.1 }	
+		}
 		character_event = { id = buildings.30 days = 10 }		
 	}		
 }
@@ -1657,7 +1663,12 @@ character_event = {
 					character_event = { id = buildings.138 days = 45 } # Fail
 				}
 			}	
+			# The Palantir of Minas Ithil. Disabled if the palantir exists already
 			70 = {
+				modifier = {
+					factor = 0
+					any_character = { has_artifact = artifact_palantir_ithil }
+				}
 				FROM = {
 					character_event = { id = buildings.139 days = 25} # You found something into the ruins...
 				}
@@ -1773,6 +1784,7 @@ character_event = {
 
 
 ## Rebuilding of Minas Ithil Events - You found something into the ruins ##
+# Note that this can only fire if the Palantir was previously lost...
 character_event = {
 	id = buildings.139
 	title = "EVTTITbuildings.139"
@@ -1783,17 +1795,11 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAbuildings.139" ## Great !
-		add_trait = palantir_ithil
-		character_event = { id = buildings.137 days = 10 }	
+		character_event = { id = buildings.137 days = 10 }
+		add_artifact = artifact_palantir_ithil
 		hidden_tooltip = {
-			any_character = {
-				limit = {
-					trait = palantir_ithil
-					NOT = { character = ROOT }
-				}
-				remove_trait = palantir_ithil
-			}
-		}
+			new_artifact = { set_creation_date = 1.1.1 }	
+		}		
 			
 	}		
 }

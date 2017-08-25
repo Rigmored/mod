@@ -7,20 +7,18 @@
 namespace=palantir
 
 #### EVENTS OF THE PALANTIRI #####
+# (New Description) : The Palantíri are now artifacts, so distributing them is now done via artifact spawns.
+# The below events are thus notification events only.
 
-## Event to give the Palantir of Amon Sûl if not owned before 10318 ##
+## Event to give the Palantir of Amon Sûl if not owned before 10318 (old Description) ##
 character_event = {
 	id = palantir.0
 	desc = "EVTDESCpalantir.0"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_sul = { is_alive = yes } }
-		has_landed_title = c_weather_hills
-		age=1
-		NOT = { year = 10318 }
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_sul
 		NOT = { has_global_flag = palantir_sul }
 	}
 	
@@ -30,23 +28,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.0" # I'll keep this Stone !
-		add_trait = palantir_sul
 		set_global_flag = palantir_sul
 	}	
 } 
 
-## Event to give the Palantir of Elostirion if not owned##
+## Event to give the Palantir of Elostirion if not owned (old Description)##
 character_event = {
 	id = palantir.1
 	desc = "EVTDESCpalantir.1"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_elostirion = { is_alive = yes } }
-		has_landed_title = c_towerhills
-		age=1
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_elostirion
 		NOT = { has_global_flag = palantir_elostirion }
 	}
 	
@@ -56,23 +50,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.1" # I'll keep this Stone !
-		add_trait = palantir_elostirion
 		set_global_flag = palantir_elostirion
 	}	
 } 
 
-## Event to give the Palantir of Minas Anor if not owned##
+## Event to give the Palantir of Minas Anor if not owned (old Description)##
 character_event = {
 	id = palantir.2
 	desc = "EVTDESCpalantir.2"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir = { is_alive = yes } }
-		has_landed_title = c_minas_tirith
-		age=1
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_anor
 		NOT = { has_global_flag = palantir_anor }
 	}
 	
@@ -82,23 +72,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.2" # I'll keep this Stone !
-		add_trait = palantir
 		set_global_flag = palantir_anor
 	}	
 } 
 
-## Event to give the Palantir of Minas Ithil if not owned##
+## Event to give the Palantir of Minas Ithil if not owned (old Description)##
 character_event = {
 	id = palantir.3
 	desc = "EVTDESCpalantir.3"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_ithil = { is_alive = yes } }
-		has_landed_title = c_morgul
-		age=1
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_ithil
 		NOT = { has_global_flag = palantir_ithil }
 	}
 	
@@ -108,23 +94,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.3" # I'll keep this Stone !
-		add_trait = palantir_ithil
 		set_global_flag = palantir_ithil
 	}	
 } 
 
-## Event to give the Palantir of Ortanc if not owned ##
+## Event to give the Palantir of Orthanc if not owned (old Description) ##
 character_event = {
 	id = palantir.4
 	desc = "EVTDESCpalantir.4"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_orthanc = { is_alive = yes } }
-		has_landed_title = c_orthanc
-		age=1
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_orthanc
 		NOT = { has_global_flag = palantir_orthanc }
 	}
 	
@@ -134,24 +116,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.4" # I'll keep this Stone !
-		add_trait = palantir_orthanc
 		set_global_flag = palantir_orthanc
 	}	
 } 
 
-## Event to give the Palantir of Osgiliath if not owned ##
+## Event to give the Palantir of Osgiliath if not owned (old Description) ##
 character_event = {
 	id = palantir.5
 	desc = "EVTDESCpalantir.5"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_osgiliath = { is_alive = yes } }
-		NOT = { year = 9780 }
-		has_landed_title = c_east_osgiliath
-		age=1
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_osgiliath
 		NOT = { has_global_flag = palantir_osgiliath }
 	}
 	
@@ -161,24 +138,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.5" # I'll keep this Stone !
-		add_trait = palantir_osgiliath
 		set_global_flag = palantir_osgiliath
 	}	
 } 
 
-## Event to give the Palantir of Annuminas if not owned before 10318 ##
+## Event to give the Palantir of Annuminas if not owned before 10318 (old Description) ##
 character_event = {
 	id = palantir.6
 	desc = "EVTDESCpalantir.6"
 	picture = GFX_evt_palantir
+	only_playable = yes
 	
 	trigger = {
-		NOT = { palantir_annuminas = { is_alive = yes } }
-		has_landed_title = c_annuminas
-		age=1
-		NOT = { year = 10318 }
-		NOT = { culture = culture_wilderness }
-		NOT = { religion = religion_wilderness }
+		has_artifact = artifact_palantir_annuminas
 		NOT = { has_global_flag = palantir_annuminas }
 	}
 	
@@ -188,7 +160,6 @@ character_event = {
 
 	option = {
 		name = "EVTOPTApalantir.6" # I'll keep this Stone !
-		add_trait = palantir_annuminas	
 		set_global_flag = palantir_annuminas		
 	}	
 } 
@@ -210,11 +181,11 @@ character_event = {
 		set_character_flag = visit_elostirion
 		if = {
 			limit = { 
-				NOT = { trait = palantir_elostirion }
+				NOT = { has_artifact = artifact_palantir_elostirion }
 			}
 			any_playable_ruler = {
 				limit = { 
-					trait = palantir_elostirion
+					has_artifact = artifact_palantir_elostirion
 					age = 1
 				}
 				character_event = { id = palantir.8 days = 100 }
@@ -222,7 +193,7 @@ character_event = {
 		}
 		if = {
 			limit = { 
-				trait = palantir_elostirion
+				has_artifact = artifact_palantir_elostirion
 			}
 			character_event = { id = palantir.9 days = 5 }
 		}		
@@ -384,18 +355,18 @@ character_event = {
 		war = no
 		has_landed_title = c_minas_tirith
 		has_ambition = obj_claim_palantir_anor
-		NOT = { trait = palantir }
+		NOT = { has_artifact = artifact_palantir_anor }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir
+				has_artifact = artifact_palantir_anor
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir			
+				has_artifact = artifact_palantir_anor			
 			}
 		}
 		NOT = { has_character_flag = requested_anor_stone }
@@ -442,7 +413,7 @@ character_event = {
 		set_character_flag = requested_anor_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir
+				has_artifact = artifact_palantir_anor
 				age=1			
 			}
 			character_event = { id = palantir.15 days = 4 } 
@@ -497,9 +468,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_anor } 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir 
 			character_event = { id = palantir.16 days = 5 }
 		}
 	}
@@ -584,7 +560,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_minas_tirith
 				has_ambition = obj_claim_palantir_anor
-				NOT = { trait = palantir }
+				NOT = { has_artifact = artifact_palantir_anor }
 				NOT = { has_character_flag = requested_anor_stone }
 				NOT = { has_character_flag = plot_for_anor_stone }	
 				has_character_flag = anor_stone_denied
@@ -592,7 +568,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_morgul
 				has_ambition = obj_claim_palantir_ithil
-				NOT = { trait = palantir_ithil }
+				NOT = { has_artifact = artifact_palantir_ithil }
 				NOT = { has_character_flag = requested_ithil_stone }
 				NOT = { has_character_flag = plot_for_ithil_stone }	
 				has_character_flag = ithil_stone_denied
@@ -600,7 +576,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_weather_hills
 				has_ambition = obj_claim_palantir_sul
-				NOT = { trait = palantir_sul }
+				NOT = { has_artifact = artifact_palantir_sul }
 				NOT = { has_character_flag = requested_sul_stone }
 				NOT = { has_character_flag = plot_for_sul_stone }	
 				has_character_flag = sul_stone_denied
@@ -608,7 +584,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_east_osgiliath
 				has_ambition = obj_claim_palantir_osgiliath
-				NOT = { trait = palantir_osgiliath }
+				NOT = { has_artifact = artifact_palantir_osgiliath }
 				NOT = { has_character_flag = requested_osgiliath_stone }
 				NOT = { has_character_flag = plot_for_osgiliath_stone }	
 				has_character_flag = osgiliath_stone_denied
@@ -616,7 +592,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_towerhills
 				has_ambition = obj_claim_palantir_elostirion
-				NOT = { trait = palantir_elostirion }
+				NOT = { has_artifact = artifact_palantir_elostirion }
 				NOT = { has_character_flag = requested_elostirion_stone }
 				NOT = { has_character_flag = plot_for_elostirion_stone }	
 				has_character_flag = elostirion_stone_denied
@@ -624,7 +600,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_annuminas
 				has_ambition = obj_claim_palantir_annuminas
-				NOT = { trait = palantir_annuminas }
+				NOT = { has_artifact = artifact_palantir_annuminas }
 				NOT = { has_character_flag = requested_annuminas_stone }
 				NOT = { has_character_flag = plot_for_annuminas_stone }	
 				has_character_flag = annuminas_stone_denied
@@ -632,7 +608,7 @@ character_event = {
 			AND = {
 				has_landed_title = c_orthanc
 				has_ambition = obj_claim_palantir_orthanc
-				NOT = { trait = palantir_orthanc }
+				NOT = { has_artifact = artifact_palantir_orthanc }
 				NOT = { has_character_flag = requested_orthanc_stone }
 				NOT = { has_character_flag = plot_for_orthanc_stone }	
 				has_character_flag = orthanc_stone_denied
@@ -681,7 +657,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_anor
-				NOT = { trait = palantir }
+				NOT = { has_artifact = artifact_palantir_anor }
 				age = 1
 			}
 			set_character_flag = plot_for_anor_stone
@@ -689,7 +665,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_ithil
-				NOT = { trait = palantir_ithil }
+				NOT = { has_artifact = artifact_palantir_ithil }
 				age = 1
 			}
 			set_character_flag = plot_for_ithil_stone
@@ -697,7 +673,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_sul
-				NOT = { trait = palantir_sul }
+				NOT = { has_artifact = artifact_palantir_sul }
 				age = 1
 			}
 			set_character_flag = plot_for_sul_stone
@@ -705,7 +681,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_osgiliath
-				NOT = { trait = palantir_osgiliath }
+				NOT = { has_artifact = artifact_palantir_osgiliath }
 				age = 1
 			}
 			set_character_flag = plot_for_osgiliath_stone
@@ -713,7 +689,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_elostirion
-				NOT = { trait = palantir_elostirion }
+				NOT = { has_artifact = artifact_palantir_elostirion }
 				age = 1
 			}
 			set_character_flag = plot_for_elostirion_stone
@@ -721,7 +697,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_annuminas
-				NOT = { trait = palantir_annuminas }
+				NOT = { has_artifact = artifact_palantir_annuminas }
 				age = 1
 			}
 			set_character_flag = plot_for_annuminas_stone
@@ -729,7 +705,7 @@ character_event = {
 		if = {
 			limit = {
 				has_ambition = obj_claim_palantir_orthanc
-				NOT = { trait = palantir_orthanc }
+				NOT = { has_artifact = artifact_palantir_orthanc }
 				age = 1
 			}
 			set_character_flag = plot_for_orthanc_stone
@@ -760,12 +736,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_anor
-				NOT = { trait = palantir }
+				NOT = { has_artifact = artifact_palantir_anor }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir
+					has_artifact = artifact_palantir_anor
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -774,12 +750,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_ithil
-				NOT = { trait = palantir_ithil }
+				NOT = { has_artifact = artifact_palantir_ithil }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_ithil
+					has_artifact = artifact_palantir_ithil
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -788,12 +764,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_sul
-				NOT = { trait = palantir_sul }
+				NOT = { has_artifact = artifact_palantir_sul }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_sul
+					has_artifact = artifact_palantir_sul
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -802,12 +778,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_osgiliath
-				NOT = { trait = palantir_osgiliath }
+				NOT = { has_artifact = artifact_palantir_osgiliath }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_osgiliath
+					has_artifact = artifact_palantir_osgiliath
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -816,12 +792,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_elostirion
-				NOT = { trait = palantir_elostirion }
+				NOT = { has_artifact = artifact_palantir_elostirion }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_elostirion
+					has_artifact = artifact_palantir_elostirion
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -830,12 +806,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_annuminas
-				NOT = { trait = palantir_annuminas }
+				NOT = { has_artifact = artifact_palantir_annuminas }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_annuminas
+					has_artifact = artifact_palantir_annuminas
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -844,12 +820,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_orthanc
-				NOT = { trait = palantir_orthanc }
+				NOT = { has_artifact = artifact_palantir_orthanc }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_orthanc
+					has_artifact = artifact_palantir_orthanc
 					age=1			
 				}
 				character_event = { id = palantir.20 days = 10 } 
@@ -862,12 +838,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_anor
-				NOT = { trait = palantir }
+				NOT = { has_artifact = artifact_palantir_anor }
 				age = 1
 			}	
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir
+					has_artifact = artifact_palantir_anor
 					age=1			
 				}
 			character_event = { id = palantir.27 days = 10 } 
@@ -876,12 +852,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_ithil
-				NOT = { trait = palantir_ithil }
+				NOT = { has_artifact = artifact_palantir_ithil }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_ithil
+					has_artifact = artifact_palantir_ithil
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -890,12 +866,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_sul
-				NOT = { trait = palantir_sul }
+				NOT = { has_artifact = artifact_palantir_sul }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_sul
+					has_artifact = artifact_palantir_sul
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -904,12 +880,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_osgiliath
-				NOT = { trait = palantir_osgiliath }
+				NOT = { has_artifact = artifact_palantir_osgiliath }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_osgiliath
+					has_artifact = artifact_palantir_osgiliath
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -918,12 +894,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_elostirion
-				NOT = { trait = palantir_elostirion }
+				NOT = { has_artifact = artifact_palantir_elostirion }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_elostirion
+					has_artifact = artifact_palantir_elostirion
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -932,12 +908,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_annuminas
-				NOT = { trait = palantir_annuminas }
+				NOT = { has_artifact = artifact_palantir_annuminas }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_annuminas
+					has_artifact = artifact_palantir_annuminas
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -946,12 +922,12 @@ character_event = {
 		if = { 
 			limit = {
 				has_ambition = obj_claim_palantir_orthanc
-				NOT = { trait = palantir_orthanc }
+				NOT = { has_artifact = artifact_palantir_orthanc }
 				age = 1
 			}			
 			any_playable_ruler = { 
 				limit = {
-					trait = palantir_orthanc
+					has_artifact = artifact_palantir_orthanc
 					age=1			
 				}
 				character_event = { id = palantir.27 days = 10 } 
@@ -965,7 +941,7 @@ character_event = {
 	}	
 } 
 
-## Attack to stole the palantir ##
+## Attack to steal the palantir ##
 character_event = {
 	id = palantir.20
 	title = "EVTTITpalantir.20"		
@@ -993,7 +969,7 @@ character_event = {
 	}		
 } 
 
-## You now have the Anor-Stone ##
+## You now have the Palantir ##
 character_event = {
 	id = palantir.21
 	title = "EVTTITpalantir.21"		
@@ -1010,17 +986,34 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_anor_stone
-			add_trait = palantir
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_anor } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}
+			
 		if = {
 			limit = {
 				has_character_flag = plot_for_ithil_stone
 				age=1
 			}
 			clr_character_flag = plot_for_ithil_stone
-			add_trait = palantir_ithil
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_ithil } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}	
@@ -1030,7 +1023,15 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_sul_stone
-			add_trait = palantir_sul
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_sul } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}	
@@ -1040,7 +1041,15 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_osgiliath_stone
-			add_trait = palantir_osgiliath
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_osgiliath } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}	
@@ -1050,7 +1059,15 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_elostirion_stone
-			add_trait = palantir_elostirion
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_elostirion } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}
@@ -1060,7 +1077,15 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_annuminas_stone
-			add_trait = palantir_annuminas
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_annuminas } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}	
@@ -1070,7 +1095,15 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_orthanc_stone
-			add_trait = palantir_orthanc
+			FROM = {
+				any_artifact = {
+					limit = { has_artifact_flag = flag_palantir_orthanc } 
+					transfer_artifact = {
+						from = PREV
+						to = PREVPREV
+					}
+				}
+			}
 			prestige = -50
 			piety = -50
 		}		
@@ -1095,7 +1128,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir
 			prestige = -150
 			piety = -150
 		}
@@ -1106,7 +1138,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_ithil
 			prestige = -150
 			piety = -150
 		}	
@@ -1117,7 +1148,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_sul
 			prestige = -150
 			piety = -150
 		}	
@@ -1128,7 +1158,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_osgiliath
 			prestige = -150
 			piety = -150
 		}		
@@ -1139,7 +1168,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_elostirion
 			prestige = -150
 			piety = -150
 		}	
@@ -1150,7 +1178,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_annuminas
 			prestige = -150
 			piety = -150
 		}	
@@ -1161,7 +1188,6 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_orthanc
 			prestige = -150
 			piety = -150
 		}			
@@ -1224,7 +1250,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_anor_stone
-			add_trait = palantir
 			prestige = -200
 			piety = -200
 		}
@@ -1234,7 +1259,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_ithil_stone
-			add_trait = palantir_ithil
 			prestige = -200
 			piety = -200
 		}	
@@ -1244,7 +1268,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_sul_stone
-			add_trait = palantir_sul
 			prestige = -200
 			piety = -200
 		}	
@@ -1254,7 +1277,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_osgiliath_stone
-			add_trait = palantir_osgiliath
 			prestige = -200
 			piety = -200
 		}	
@@ -1264,7 +1286,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_elostirion_stone
-			add_trait = palantir_elostirion
 			prestige = -200
 			piety = -200
 		}	
@@ -1274,7 +1295,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_annuminas_stone
-			add_trait = palantir_annuminas
 			prestige = -200
 			piety = -200
 		}	
@@ -1284,7 +1304,6 @@ character_event = {
 				age=1
 			}
 			clr_character_flag = plot_for_orthanc_stone
-			add_trait = palantir_orthanc
 			prestige = -200
 			piety = -200
 		}		
@@ -1309,7 +1328,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_anor } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -1318,7 +1343,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_ithil
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_ithil } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}	
 		if = {
 			limit = {
@@ -1327,7 +1358,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_sul
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_sul } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}	
 		if = {
 			limit = {
@@ -1336,7 +1373,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_osgiliath
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_osgiliath } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -1345,7 +1388,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_elostirion
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_elostirion } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}	
 		if = {
 			limit = {
@@ -1354,7 +1403,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_annuminas
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_annuminas } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -1363,7 +1418,13 @@ character_event = {
 					age=1				
 				}
 			}
-			remove_trait = palantir_orthanc
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_orthanc } 
+				transfer_artifact = {
+					from = ROOT
+					to = FROMFROM
+				}
+			}
 		}		
 		death = {
 			death_reason = death_murder
@@ -1403,7 +1464,7 @@ character_event = {
 
 
 
-########### Anor-Stone #############
+########### Itil-Stone #############
 # The Lord of Minas Ithil will ask another dunedain to give him the ithil-Stone #
 character_event = {
 	id = palantir.28
@@ -1423,18 +1484,18 @@ character_event = {
 		war = no
 		has_landed_title = c_morgul
 		has_ambition = obj_claim_palantir_ithil
-		NOT = { trait = palantir_ithil }
+		NOT = { has_artifact = artifact_palantir_ithil }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_ithil
+				has_artifact = artifact_palantir_ithil
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_ithil			
+				has_artifact = artifact_palantir_ithil			
 			}
 		}
 		NOT = { has_character_flag = requested_ithil_stone }
@@ -1481,7 +1542,7 @@ character_event = {
 		set_character_flag = requested_ithil_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_ithil
+				has_artifact = artifact_palantir_ithil
 				age=1			
 			}
 			character_event = { id = palantir.29 days = 4 } 
@@ -1536,9 +1597,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_ithil
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_ithil } 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_ithil
 			character_event = { id = palantir.30 days = 5 }
 		}
 	}
@@ -1622,18 +1688,18 @@ character_event = {
 		war = no
 		has_landed_title = c_east_osgiliath
 		has_ambition = obj_claim_palantir_osgiliath
-		NOT = { trait = palantir_osgiliath }
+		NOT = { has_artifact = artifact_palantir_osgiliath }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_osgiliath
+				has_artifact = artifact_palantir_osgiliath
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_osgiliath			
+				has_artifact = artifact_palantir_osgiliath			
 			}
 		}
 		NOT = { has_character_flag = requested_osgiliath_stone }
@@ -1680,7 +1746,7 @@ character_event = {
 		set_character_flag = requested_osgiliath_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_osgiliath
+				has_artifact = artifact_palantir_osgiliath
 				age=1			
 			}
 			character_event = { id = palantir.33 days = 4 } 
@@ -1693,7 +1759,7 @@ character_event = {
 	}
 }
 
-# The Guardian of the Anor-Stone is asked
+# The Guardian of the Osgiliath is asked
 character_event = {
 	id = palantir.33
 	title = "EVTTITpalantir.33"
@@ -1735,9 +1801,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_osgiliath
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_osgiliath } 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_osgiliath
 			character_event = { id = palantir.34 days = 5 }
 		}
 	}
@@ -1771,7 +1842,7 @@ character_event = {
 	}
 }
 
-## You receive the Anor-Stone ##
+## You receive the Osgiliath-Stone ##
 character_event = {
 	id = palantir.34
 	title = "EVTTITpalantir.34"	
@@ -1786,7 +1857,7 @@ character_event = {
 	}		
 } 
 
-## You don't receive the Anor-Stone ##
+## You don't receive the Osgilith-Stone ##
 character_event = {
 	id = palantir.35
 	title = "EVTTITpalantir.35"		
@@ -1821,18 +1892,18 @@ character_event = {
 		war = no
 		has_landed_title = c_orthanc
 		has_ambition = obj_claim_palantir_orthanc
-		NOT = { trait = palantir_orthanc }
+		NOT = { has_artifact = artifact_palantir_orthanc }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_orthanc
+				has_artifact = artifact_palantir_orthanc
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_orthanc			
+				has_artifact = artifact_palantir_orthanc			
 			}
 		}
 		NOT = { has_character_flag = requested_orthanc_stone }
@@ -1879,7 +1950,7 @@ character_event = {
 		set_character_flag = requested_orthanc_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_orthanc
+				has_artifact = artifact_palantir_orthanc
 				age=1			
 			}
 			character_event = { id = palantir.37 days = 4 } 
@@ -1934,9 +2005,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_orthanc
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_orthanc} 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_orthanc
 			character_event = { id = palantir.38 days = 5 }
 		}
 	}
@@ -2020,18 +2096,18 @@ character_event = {
 		war = no
 		has_landed_title = c_towerhills
 		has_ambition = obj_claim_palantir_elostirion
-		NOT = { trait = palantir_elostirion }
+		NOT = { has_artifact = artifact_palantir_elostirion }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_elostirion
+				has_artifact = artifact_palantir_elostirion
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_elostirion			
+				has_artifact = artifact_palantir_elostirion			
 			}
 		}
 		NOT = { has_character_flag = requested_elostirion_stone }
@@ -2078,7 +2154,7 @@ character_event = {
 		set_character_flag = requested_elostirion_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_elostirion
+				has_artifact = artifact_palantir_elostirion
 				age=1			
 			}
 			character_event = { id = palantir.41 days = 4 } 
@@ -2133,9 +2209,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_elostirion
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_elostirion} 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_elostirion
 			character_event = { id = palantir.42 days = 5 }
 		}
 	}
@@ -2219,18 +2300,18 @@ character_event = {
 		war = no
 		has_landed_title = c_annuminas
 		has_ambition = obj_claim_palantir_annuminas
-		NOT = { trait = palantir_annuminas }
+		NOT = { has_artifact = artifact_palantir_annuminas }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_annuminas
+				has_artifact = artifact_palantir_annuminas
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_annuminas			
+				has_artifact = artifact_palantir_annuminas			
 			}
 		}
 		NOT = { has_character_flag = requested_annuminas_stone }
@@ -2277,7 +2358,7 @@ character_event = {
 		set_character_flag = requested_annuminas_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_annuminas
+				has_artifact = artifact_palantir_annuminas
 				age=1			
 			}
 			character_event = { id = palantir.45 days = 4 } 
@@ -2332,9 +2413,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_annuminas
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_annuminas } 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_annuminas
 			character_event = { id = palantir.46 days = 5 }
 		}
 	}
@@ -2418,18 +2504,18 @@ character_event = {
 		war = no
 		has_landed_title = c_weather_hills
 		has_ambition = obj_claim_palantir_sul
-		NOT = { trait = palantir_sul }
+		NOT = { has_artifact = artifact_palantir_sul }
 		OR = {
 			liege = {
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_sul
+				has_artifact = artifact_palantir_sul
 			}
 			any_playable_ruler = {
 				culture_group = culture_group_numenorean
 				NOT = { character = ROOT }
 				war = no
-				trait = palantir_sul			
+				has_artifact = artifact_palantir_sul			
 			}
 		}
 		NOT = { has_character_flag = requested_sul_stone }
@@ -2478,7 +2564,7 @@ character_event = {
 		set_character_flag = requested_sul_stone
 		any_playable_ruler = { 
 			limit = {
-				trait = palantir_sul
+				has_artifact = artifact_palantir_sul
 				age=1			
 			}
 			character_event = { id = palantir.49 days = 4 } 
@@ -2533,9 +2619,14 @@ character_event = {
 				opinion = { who = FROM value = 25 }
 			}
 		}
-		remove_trait = palantir_sul
+		any_artifact = {
+			limit = { has_artifact_flag = flag_palantir_anor } 
+			transfer_artifact = {
+				from = PREV
+				to = FROM
+			}
+		}
 		FROM = {
-			add_trait = palantir_sul
 			character_event = { id = palantir.50 days = 5 }
 		}
 	}
@@ -2611,74 +2702,55 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTApalantir.52" #Living holders
-		palantir = {
-			limit = { 
-				is_alive = yes
+		any_character = {
+			if = { limit = { has_artifact = artifact_palantir_anor }
+				custom_tooltip = { text = CURRENTANOR }
 			}
+			if = { limit = { has_artifact = artifact_palantir_sul }
+				custom_tooltip = { text = CURRENTSUL }
+			}
+			if = { limit = { has_artifact = artifact_palantir_ithil }
+				custom_tooltip = { text = CURRENTITHIL }
+			}
+			if = { limit = { has_artifact = artifact_palantir_osgiliath }
+				custom_tooltip = { text = CURRENTOSGILIATH }
+			}
+			if = { limit = { has_artifact = artifact_palantir_elostirion }
+				custom_tooltip = { text = CURRENTELENDIL }
+			}
+			if = { limit = { has_artifact = artifact_palantir_annuminas }
+				custom_tooltip = { text = CURRENTANNUMINAS }
+			}
+			if = { limit = { has_artifact = artifact_palantir_orthanc }
+				custom_tooltip = { text = CURRENTORTHANC }
+			}
+		}
+		if = {
+			limit = { has_artifact = artifact_palantir_anor }
 			custom_tooltip = { text = CURRENTANOR }
-		}
-		if = {
-			limit = { trait = palantir }
-			custom_tooltip = { text = CURRENTANOR }
 		}		
-		palantir_sul = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTSUL }
-		}
 		if = {
-			limit = { trait = palantir_sul }
+			limit = { has_artifact = artifact_palantir_sul }
 			custom_tooltip = { text = CURRENTSUL }
 		}		
-		palantir_ithil = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTITHIL }
-		}
 		if = {
-			limit = { trait = palantir_ithil }
+			limit = { has_artifact = artifact_palantir_ithil }
 			custom_tooltip = { text = CURRENTITHIL }
 		}		
-		palantir_osgiliath = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTOSGILIATH }
-		}
 		if = {
-			limit = { trait = palantir_osgiliath }
+			limit = { has_artifact = artifact_palantir_osgiliath }
 			custom_tooltip = { text = CURRENTOSGILIATH }
 		}		
-		palantir_elostirion = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTELENDIL }
-		}
 		if = {
-			limit = { trait = palantir_elostirion }
+			limit = { has_artifact = artifact_palantir_elostirion }
 			custom_tooltip = { text = CURRENTELENDIL }
 		}		
-		palantir_annuminas = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTANNUMINAS }
-		}
 		if = {
-			limit = { trait = palantir_annuminas }
+			limit = { has_artifact = artifact_palantir_annuminas }
 			custom_tooltip = { text = CURRENTANNUMINAS }
 		}		
-		palantir_orthanc = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTORTHANC }
-		}
 		if = {
-			limit = { trait = palantir_orthanc }
+			limit = { has_artifact = artifact_palantir_orthanc }
 			custom_tooltip = { text = CURRENTORTHANC }
 		}		
 	}
@@ -2765,13 +2837,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir_orthanc }
-			palantir_orthanc = { is_alive = yes religion = FROM }
+			NOT = { has_artifact = artifact_palantir_orthanc }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_orthanc
+				religion = FROM
+			}
 		}
 		name = "EVTOPTApalantir.56" # The Guardian of the Orthanc-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir_orthanc
+				has_artifact = artifact_palantir_orthanc
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2780,13 +2855,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir_osgiliath }
-			palantir_osgiliath = { is_alive = yes religion = FROM }
+			NOT = { has_artifact = artifact_palantir_osgiliath }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_osgiliath
+				religion = FROM
+			}
 		}	
 		name = "EVTOPTBpalantir.56" # The Guardian of the Osgiliath-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir_osgiliath
+				has_artifact = artifact_palantir_osgiliath
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2795,13 +2873,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir_ithil }
-			palantir_ithil = { is_alive = yes religion = FROM }
+			NOT = { has_artifact = artifact_palantir_ithil }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_ithil
+				religion = FROM
+			}
 		}	
 		name = "EVTOPTCpalantir.56" # The Guardian of the Ithil-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir_ithil
+				has_artifact = artifact_palantir_ithil
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2810,13 +2891,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir }
-			palantir = { is_alive = yes religion = FROM }
+			NOT = { has_artifact = artifact_palantir_anor }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_anor
+				religion = FROM
+			}
 		}	
 		name = "EVTOPTDpalantir.56" # The Guardian of the Anor-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir
+				has_artifact = artifact_palantir_anor
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2825,10 +2909,9 @@ character_event = {
 	
 	option = {
 		trigger = {
-			palantir = { is_alive = no }
-			palantir_ithil = { is_alive = no }
-			palantir_osgiliath = { is_alive = no }
-			palantir_orthanc = { is_alive = no }			
+			NOT = {
+				any_playable_ruler = { mep_has_southern_palantiri = yes }
+			}		
 		}	
 		name = "EVTOPTEpalantir.56" # No Stones in the South
 		clr_character_flag = use_palantir_war
@@ -2836,22 +2919,13 @@ character_event = {
 
 	option = {
 		trigger = {
-			palantir = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
-			}
-			palantir_ithil = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
-			}
-			palantir_osgiliath = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
-			}
-			palantir_orthanc = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
-			}			
+			any_playable_ruler = { mep_has_southern_palantiri = yes }
+			NOT = {
+				any_playable_ruler = {
+					mep_has_southern_palantiri = yes
+					religion = FROM
+				}
+			}		
 		}	
 		name = "EVTOPTFpalantir.56" # No Stones in the hands of our allies in North
 		clr_character_flag = use_palantir_war
@@ -2869,16 +2943,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir_annuminas }
-			palantir_annuminas = { 
-				is_alive = yes 
-				religion = FROM 
+			NOT = { has_artifact = artifact_palantir_annuminas }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_annuminas
+				religion = FROM
 			}
 		}
 		name = "EVTOPTApalantir.57" # The Guardian of the Annuminas-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir_annuminas
+				has_artifact = artifact_palantir_annuminas
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2887,16 +2961,16 @@ character_event = {
 	
 	option = {
 		trigger = {
-			NOT = { trait = palantir_sul }
-			palantir_sul = { 
-				is_alive = yes 
+			NOT = { has_artifact = artifact_palantir_sul }
+			any_playable_ruler = {
+				has_artifact = artifact_palantir_sul
 				religion = FROM
 			}
 		}	
-		name = "EVTOPTBpalantir.57" # The Guardian of the Osgiliath-Stone
+		name = "EVTOPTBpalantir.57" # The Guardian of the Amon-Sul-Stone
 		any_playable_ruler = {
 			limit = { 
-				trait = palantir_sul
+				has_artifact = artifact_palantir_sul
 				age = 1
 			}
 			character_event = { id = palantir.58 }
@@ -2905,8 +2979,14 @@ character_event = {
 	
 	option = {
 		trigger = {
-			palantir_sul = { is_alive = no }
-			palantir_annuminas = { is_alive = no }
+			NOT = {
+				any_playable_ruler = {
+					OR = {
+						has_artifact = artifact_palantir_annuminas
+						has_artifact = artifact_palantir_sul
+					}
+				}
+			}
 		}	
 		name = "EVTOPTCpalantir.57" # No Stones in the North
 		clr_character_flag = use_palantir_war
@@ -2914,13 +2994,20 @@ character_event = {
 
 	option = {
 		trigger = {
-			palantir_sul = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
+			any_playable_ruler = {
+				OR = {
+					has_artifact = artifact_palantir_annuminas
+					has_artifact = artifact_palantir_sul
+				}
 			}
-			palantir_annuminas = { 
-				is_alive = yes 
-				NOT = { religion = FROM } 
+			NOT = {
+				any_playable_ruler = {
+					OR = {
+						has_artifact = artifact_palantir_annuminas
+						has_artifact = artifact_palantir_sul
+					}
+					religion = FROM
+				}
 			}
 		}	
 		name = "EVTOPTDpalantir.57" # No Stones in the hands of our allies in North

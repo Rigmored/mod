@@ -944,7 +944,18 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwotr.74"
-		add_trait = palantir
+		# Aragorn gets the Palantir of Minas Anor
+		any_character = {
+			limit = { has_artifact = artifact_palantir_anor }
+			any_artifact = {
+				limit = { has_artifact_flag = flag_palantir_anor } 
+				transfer_artifact = {
+					from = PREV
+					to = ROOT
+				}
+			}
+		}
+		# he also gets Minas Tirith and the steward title (temporarily).
 		e_steward_gondor =	{
 			usurp_title = ROOT	
 		}
@@ -1159,7 +1170,7 @@ character_event = {
 		name = "EVTOPTAwotr.80"
 		clr_global_flag = gondor_threatened
 		set_global_flag = gondor_restoreddefeat
-		add_trait = annunimas
+		add_trait = annuminas
 		remove_trait = on_fellowshipquest
 		character_event = { id = wotr.91 }
 		e_gondor = {
@@ -1451,7 +1462,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwotr.91"
-		add_trait = annunimas	
+		add_trait = annuminas	
 		character_event = { id = wotr.92 days = 1 }
 	}
 }

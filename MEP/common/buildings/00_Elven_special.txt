@@ -1,17 +1,5 @@
 castle = {
-	ca_edhellond_ruins = { ### Edhellond Ruins
-		desc = ca_edhellond_ruins_desc
-		gold_cost = 850
-		build_time = 1460 #4y
-		tax_income = -3	
-		garrison_size = -0.2		
-		ai_creation_factor = 86		
-        	potential = {
-           		province_id = 429 # Edhellond
-			year = 10324
-			NOT = { has_global_flag = edhellond_rebuilded_finally }
-       		}
-	}
+
 	ca_imladris = { #Imladris#
 		desc = ca_imladris_desc
 		gold_cost = 150
@@ -215,5 +203,20 @@ castle = {
 			    }
 			}
         }
+	}
+	
+	ct_edhellond_ruins = { ### Edhellond Ruins
+		desc = ca_edhellond_ruins_desc
+		not_if_x_exists = { ct_edhellond }
+		gold_cost = 850
+		build_time = 1460 #4y
+		tax_income = -3	
+		garrison_size = -0.2		
+		ai_creation_factor = 86		
+        potential = {
+           	province_id = 429 # Edhellond
+			year = 10324
+			NOT = { has_global_flag = edhellond_rebuilded_finally }
+       	}
 	}
 }

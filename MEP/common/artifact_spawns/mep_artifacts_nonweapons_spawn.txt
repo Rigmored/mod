@@ -1,0 +1,756 @@
+# Palantiri
+
+artifact_palantir_anor = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8250 }
+			character = 12135 # Elendil
+		}
+		# Elendil sent 4 of the stones south with his sons
+		additive_modifier = {
+			value = 100
+			year = 8250
+			NOT = { year = 8343 }
+			character = 12137 # Anárion The Anor Stone resided with him
+		}
+		# The stone is then passed successively through the kings and then the stewards of Gondor.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_gondor
+			}
+			year = 8343
+			NOT = { year = 11327 }
+			
+		}
+		# The Last Steward of Gondor and probably the first to use the stone.
+		additive_modifier = {
+			value = 100
+			year = 11327
+			NOT = { year = 11362 }
+			character = 1943 # Denethor II
+		}
+		# After Denethor perishes holding the stone of Anor, Aragorn son of Arathorn receives the stone as his birthright.
+		additive_modifier = {
+			value = 100
+			year = 11362
+			character = 2038 # Aragorn II ## First King of the Reunited Kingdom
+		}
+	}
+
+	artifacts = {
+		artifact_palantir_anor = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_ithil = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+			year = 11323  # After the fall of Sauron, the Ithil stone should only be recoverable by event
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8250 }
+			character = 12135 # Elendil
+		}
+		# Elendil sent 4 of the stones south with his sons
+		additive_modifier = {
+			value = 100
+			year = 8250
+			NOT = { year = 8343 }
+			character = 12136 # Isildur kept three of the stones and placed this one in Minas Ithil
+		}
+		# The stone is then passed successively through the kings and then the stewards of Gondor.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_gondor
+			}
+			year = 8343
+			NOT = { year = 10345 }
+			
+		}
+		# After Minas Ithil falls, the nazgul claim the stone and take it to Sauron.
+		additive_modifier = {
+			value = 100
+			year = 10345
+			NOT = { year = 10346 }
+			character = 12223 # Minas Ithil taken by the Nazgul
+		}
+		# After Minas Ithil falls, the nazgul claim the stone and take it to Sauron.
+		additive_modifier = {
+			value = 100
+			year = 10346
+			NOT = { year = 11363 } # Death of Sauron, and the stone is presumed lost.
+			character = 10016 # Sauron
+		}
+	}
+
+	artifacts = {
+		artifact_palantir_ithil = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_osgiliath = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+			year = 9780 # Osgiliath stone lost
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8250 }
+			character = 12135 # Elendil
+		}
+		# Elendil sent 4 of the stones south with his sons
+		additive_modifier = {
+			value = 100
+			year = 8250
+			NOT = { year = 8343 }
+			character = 12136 # Isildur kept three of the stones and placed this one in East Osgiliath
+		}
+		# The stone is then passed successively through the kings and then the stewards of Gondor.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_gondor
+			}
+			year = 8343
+			NOT = { year = 9780 } # The stone of Osgiliath falls into the Anduin during the kinstrife
+		}
+	}
+
+	artifacts = {
+		artifact_palantir_osgiliath = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_elostirion = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8343 }
+			character = 12135 # Elendil
+		}
+		# Isildur Inherits the Northern Kingdom when Elendil falls fighting Sauron in the last Alliance.
+		additive_modifier = {
+			value = 100
+			year = 8343
+			NOT = { year = 8345 } # Isildur is slain by orcs in Gladden Fields.
+			character = 12136 # Isildur
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 8592 }
+			character = 12141 # Valandil
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8592
+			NOT = { year = 8682 }
+			character = 2001 # Eldacar
+		}
+		# Held by the keepers of the tower hills.
+		additive_modifier = {
+			value = 100
+			year = 8682
+			NOT = { year = 10236 }
+			primary_title = {
+				title = d_hobbitwestmarch
+			}
+		}
+		# Calmacil is the last keeper before Arthedain falls and Cirdan retrieves the stone and becomes it's guardian.
+		additive_modifier = {
+			value = 100
+			year = 10236
+			NOT = { year = 10318 }
+			character = 2248 # Calmacil
+		}
+		## Fall of Arthedain, Cirdan becomes the keeper of the Palantir of Elostirion.
+		additive_modifier = {
+			value = 100
+			year = 10318
+			character = 3065 # Cirdan ### Note that in the year = 11396 the ring bearers of middle earth cross over the sea taking the Palantir of Elostirion with them.
+		}
+	}
+
+	artifacts = {
+		artifact_palantir_elostirion = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_sul = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+			year = 10318  # Amon Sul stone lost.
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8343 }
+			character = 12135 # Elendil
+		}
+		# Isildur Inherits the Northern Kingdom when Elendil falls fighting Sauron in the last Alliance.
+		additive_modifier = {
+			value = 100
+			year = 8343
+			NOT = { year = 8345 } # Isildur is slain by orcs in Gladden Fields.
+			character = 12136 # Isildur
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 8592 }
+			character = 12141 # Valandil
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8592
+			NOT = { year = 8682 }
+			character = 2001 # Eldacar
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8682
+			NOT = { year = 9204 }
+			primary_title = {
+				title = e_arnor
+			}
+		}
+		# Held by the Kings of Arthedain for many years.
+		additive_modifier = {
+			value = 100
+			year = 9204
+			NOT = { year = 10307 }
+			primary_title = {
+				title = k_arthedain
+			}
+		}
+		# Arventui takes the Palantir of Annuminas and the Scepter of Annuminas and sinks in the northern sea of Forochel losing both for all time.
+		additive_modifier = {
+			value = 100
+			year = 10307
+			NOT = { year = 10318 }
+			character = 2022 # Arvedui Last king of Arthedain
+		}
+	}
+
+	artifacts = {
+		artifact_palantir_sul = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_annuminas = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+			year = 10318  # Annuminas stone lost.
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8343 }
+			character = 12135 # Elendil
+		}
+		# Isildur Inherits the Northern Kingdom when Elendil falls fighting Sauron in the last Alliance.
+		additive_modifier = {
+			value = 100
+			year = 8343
+			NOT = { year = 8345 } # Isildur is slain by orcs in Gladden Fields.
+			character = 12136 # Isildur
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 8592 }
+			character = 12141 # Valandil
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8592
+			NOT = { year = 8682 }
+			character = 2001 # Eldacar
+		}
+		# Held by the Kings of Arnor for many years.
+		additive_modifier = {
+			value = 100
+			year = 8682
+			NOT = { year = 9204 }
+			primary_title = {
+				title = e_arnor
+			}
+		}
+		# Held by the Kings of Arthedain for many years.
+		additive_modifier = {
+			value = 100
+			year = 9204
+			NOT = { year = 10307 }
+			primary_title = {
+				title = k_arthedain
+			}
+		}
+		# Arventui takes the Palantir of Annuminas and the Scepter of Annuminas and sinks in the northern sea of Forochel losing both for all time.
+		additive_modifier = {
+			value = 100
+			year = 10307
+			NOT = { year = 10318 }
+			character = 2022 # Arvedui Last king of Arthedain
+		}
+		
+	}
+
+	artifacts = {
+		artifact_palantir_annuminas = {
+			value = 1
+		}
+	}
+}
+
+artifact_palantir_orthanc = {
+	max_amount = 1
+	spawn_date = 3600.1.1 #  It is assumed that Fëanor created the Palantiri prior to leaving Valinor on 4282.1.1.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3600 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3238 # Curufinwë Fëanáro ## Fëanor created the Palantiri
+			NOT = { year = 4283 }
+		}
+		# The Palantiri pass to the sons of Fëanor at his death (most likely).
+		additive_modifier = {
+			value = 100
+			character = 3239 # Nelyafinwë Maitimo ## Maedhros (and Maglor) would have inherited the Palantiri from Fëanor placing them in a position to give them to Elros (and Elrond).
+			year = 4283
+			NOT = { year = 4902 } # date of Maedhros's death, he would have passed the palantiri on prior to this but its an easy date.
+		}
+		# Maedhros (and Maglor) give the Palantiri to Elros and Elrond.
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		# Held by rulers of Númenor, the first being Elros who recieves the palantiri from Maedhros and then the palantiri become heirlooms of his house.
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 8212 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		# Then Elendil takes the Palantiri from the sinking Island of Númenor
+		additive_modifier = {
+			value = 100
+			year = 8212
+			NOT = { year = 8250 }
+			character = 12135 # Elendil
+		}
+		# Elendil sent 4 of the stones south with his sons
+		additive_modifier = {
+			value = 100
+			year = 8250
+			NOT = { year = 8345 } # Isildur is slain by orcs in Gladden Fields.
+			character = 12136 # Isildur kept three of the stones and placed this one in the Tower of Orthanc.
+		}
+		# The stone is then passed successively through the kings and then the stewards of Gondor.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_gondor
+			}
+			year = 8343
+			NOT = { year = 9637 }
+		}
+		# The stone is then passed successively through the keepers of isengard.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = d_isengard
+			}
+			year = 9637
+			NOT = { year = 9856 }
+		}
+		# The stone is again passed successively through the kings and then the stewards of Gondor.
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = e_gondor
+			}
+			year = 9856
+			NOT = { year = 11102 }
+		}
+		
+		# The keys of orthanc are granted to Saruman who finds the stone in the tower.
+		additive_modifier = {
+			value = 100
+			year = 11102
+			NOT = { year = 11363 }
+			character = 10032 # Saruman
+		}
+		## Saruman, being corrupted by Sauron, is defeated by Rohan and the Ents and loses the Palantir after Wormtongue throws it
+		# at King Theoden's Party.
+		# The Palantir is taken by Gandalf and given to Aragorn shortly after
+		additive_modifier = {
+			value = 100
+			year = 11363
+			NOT = { year = 11373 }
+			character = 2038 ## Aragorn
+		}
+		# later, before FA 15, the Palantir is restored to Orthanc when it is renovated. However, unlike the game,
+		# Orthanc itself is not occupied by Ents (only the surrounding area). But for the game, Treebeard will get it.
+		additive_modifier = {
+			value = 100
+			year = 11373
+			character = 10048 ## Fangorn - Treebeard
+		}
+		
+		### The history of this palantir should be looked at again, we might want to add gandalf/Pipin/Aragorn to the list and use
+		# the palantir to trigger WOTR events.
+	}
+
+	artifacts = {
+		artifact_palantir_orthanc = {
+			value = 1
+		}
+	}
+}
+
+# The ONE RING
+#	artifact_ring = {
+#	max_amount = 1
+#	spawn_date = 6502.1.1 #  #Sauron forges the One Ring.
+#	
+#	spawn_chance = {
+#		value = 100
+#		modifier = {
+#			factor = 0
+#			NOT = { year = 6502 }
+#			year = 11362
+#		}
+#	}
+#
+#	weight = {
+#		value = 0
+#		additive_modifier = {
+#			value = 100
+#			character = 10016 # Sauron
+#			NOT = { year = 8343 } # Sauron is defeated and loses the one ring
+#		}
+#		# Isildur takes the ring after cutting it from Sauron's hand.
+#		additive_modifier = {
+#			value = 100
+#			year = 8343
+#			NOT = { year = 8345 } # Isildur is ambushed at Gladden Fields and losed the ring in the Anduin.
+#			character = 12136 # Isildur
+#		}
+#		# The ring sits at the bottom of the Anduin River.
+#		additive_modifier = {
+#			value = 100
+#			year = 8345
+#			NOT = { year = 10806 } # Gollum finds the Ring.
+#			character = 25046 # Anduin River
+#		}
+#		# The Ring is lost in the Anduin River for many long years until it is found by a river dweller.
+#		additive_modifier = {
+#			value = 100
+#			character = 8190 # Sméagol
+#			year = 10806
+#			NOT = { year = 11284 } # Gollum loses the ring and Bilbo finds it..
+#		}
+#		# Bilbo finds the ring and holds it for many years.
+#		additive_modifier = {
+#			value = 100
+#			year = 11284
+#			NOT = { year = 11344 }
+#			character = 8065 # Bilbo Baggins
+#		}
+#		# Bilbo gives the ring to Frodo on his birthday
+#		additive_modifier = {
+#			value = 100
+#			year = 11344
+#			NOT = { year = 11362 } # Ring is destroyed in the fires of Mount Doom.
+#			character = 8079 # Frodo Baggins
+#		}
+#	}
+#
+#	artifacts = {
+#		artifact_ring = {
+#			value = 1
+#		}
+#	}
+#}
+
+
+
+
+
+

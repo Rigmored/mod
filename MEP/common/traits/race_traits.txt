@@ -12,7 +12,8 @@ elf = {
 	religion_group_eruhini_opinion = 25
 	religion_group_enyd_opinion = 25	
 	# Those who hate elves
-	religion_group_melkorx_opinion = -90
+	religion_group_melkor_opinion = -90
+	religion_group_dragon_opinion = -80
 	religion_group_ungoliant_opinion = -80
 	
 	# other modifers
@@ -104,10 +105,7 @@ elf_friend = {
 		NOT = { religion_group = religion_group_eldar }
 		NOT = { trait = evil_side }
 		OR = {
-			NOR = {
-				religion_group = religion_group_melkorx
-				religion_group = religion_group_ungoliant
-			}
+			NOT = { mep_evil_religion = yes }
 			trait = good_side
 		}
 	}
@@ -125,7 +123,8 @@ dwarven = {
 	tolerates_religion_group_periannath = yes
 	tolerates_religion_group_edain = yes
 	# Those who hate dwarves
-	religion_group_melkorx_opinion = -100
+	religion_group_melkor_opinion = -100
+	religion_group_dragon_opinion = -90
 	religion_group_ungoliant_opinion = -50
 	# Those who mildly dislike dwarves more than usual
 	religion_group_eldar_opinion = -10
@@ -135,7 +134,8 @@ dwarven = {
    	health = 15.0
   	same_opinion = 20	
 	martial = 2
-    	stewardship = 3
+	fertility_penalty = -0.25
+    stewardship = 3
 	customizer = yes
 	command_modifier = {
 		terrain = mountain
@@ -196,10 +196,7 @@ dwarf_friend = {
 		NOT = { religion_group = religion_group_khazad }
 		NOT = { trait = evil_side }
 		OR = {
-			NOR = {
-				religion_group = religion_group_melkorx
-				religion_group = religion_group_ungoliant
-			}
+			NOT = { mep_evil_religion = yes }
 			trait = good_side
 		}
 	}
@@ -395,7 +392,8 @@ eagle = {
 	# okay relations
 	tolerates_religion_group_eldar = yes
 	# Those who hate eagles
-	religion_group_melkorx_opinion = -100
+	religion_group_melkor_opinion = -100
+	religion_group_dragon_opinion = -70
 	religion_group_ungoliant_opinion = -90
 	# Those who like eagles
 	religion_numenorean_opinion = 30
@@ -423,6 +421,7 @@ hobbit = {
     tolerates_religion_group_eldar = yes
     # Those who hate hobbits
     religion_group_melkor_opinion = -50
+	religion_group_dragon_opinion = -60
 	religion_group_ungoliant_opinion = -40
    
     # other modifers
@@ -445,10 +444,7 @@ hobbit_friend = {
 		NOT = { religion_group = religion_group_periannath }
 		NOT = { trait = evil_side }
 		OR = {
-			NOR = {
-				religion_group = religion_group_melkor
-				religion_group = religion_group_ungoliant
-			}
+			NOT = { mep_evil_religion = yes }
 			trait = good_side
 		}
 	}
@@ -468,6 +464,7 @@ ent = {
 	# Those who hate ents
 	religion_group_melkor_opinion = -50  # Normally they would hate them More, but ents have been isolated for a very long time
 	religion_group_ungoliant_opinion = -60
+	religion_group_dragon_opinion = -50
 	# Those who like ents
 	religion_group_eldar_opinion = 20
 	
@@ -498,6 +495,7 @@ valar = {
 	# Those who hate the Valar
 	religion_group_melkor_opinion = -100
 	religion_group_ungoliant_opinion = -100
+	religion_group_dragon_opinion = -100
 	religion_group_hildor_opinion = -30	
 	culture_flex = 0.7
 	# other modifers
@@ -526,6 +524,7 @@ enigma = {
 	# Those who hate Tom
 	religion_group_melkor_opinion = -60 # Although they probably Don't know he exists.
 	religion_group_ungoliant_opinion = -50
+	religion_group_dragon_opinion = -50
 	
 	# other modifers
 	fertility_penalty = -5.0
@@ -616,7 +615,7 @@ worship_balrog = {
 			trait = evil_side
 			AND = {
 				OR = {
-					religion_group = religion_group_melkorx
+					religion_group = religion_group_melkor
 					religion_group = religion_group_ungoliant
 				}
 				NOT = { trait = good_side } 
@@ -650,7 +649,7 @@ spider = {
     religion_group_enyd_opinion = -80
     religion_group_edain_opinion = -80
     religion_group_hildor_opinion = -25  # Even Men of Darkness surely find Huge Spiders unsettling at best...
-	religion_group_melkorx_opinion = -10
+	religion_group_melkor_opinion = -10
    
     # other modifers
     fertility_penalty = -5.0
@@ -804,7 +803,7 @@ spiritform = {
 ## Fire-Dragons
 uruloke = {	
 	potential = {
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 		culture = culture_dragons
 	}
 	# those who hate dragons (most everybody not evil)
@@ -830,7 +829,7 @@ uruloke = {
 ## Ringlókë
 cold_drake = {
 	potential = {
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 		culture = culture_dragons
 	}
 	# those who hate dragons (most everybody not evil)
@@ -856,7 +855,7 @@ cold_drake = {
 ## Penrámalókë
 long_worms = {
 	potential = {
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 		culture = culture_dragons
 	}
 	# those who hate dragons (most everybody not evil)

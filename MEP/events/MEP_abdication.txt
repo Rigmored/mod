@@ -181,40 +181,46 @@ character_event = {
 					remove_trait = arkenstone
 				}
 			}
-		## the Palantir ##
+		## Generic Palantir ##
 		if = {
-				limit = { trait = palantir }
+				limit = { has_artifact = artifact_palantir_anor }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir } 
+							NOT = { has_artifact = artifact_palantir_anor } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir
-						character_event = { id = 250285 }
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_anor } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
 					}
-					remove_trait = palantir
 				}
 			}	
-		## Scepter of Annuminas ##
+		## Scepter of annuminas ##
 		if = {
-				limit = { trait = annunimas }
+				limit = { trait = annuminas }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = annunimas } 
+							NOT = { trait = annuminas } 
 						}
 					}
 					current_heir = {
-						add_trait = annunimas 
+						add_trait = annuminas 
 						character_event = { id = 250286 }
 					}
-					remove_trait = annunimas 
+					remove_trait = annuminas 
 				}
 			}	
 		## The Horn of Gondor ##
@@ -479,106 +485,148 @@ character_event = {
 				}
 			}
 		}	
-		## The Palantir of Annuminas ##	
+		## The Palantir of annuminas ##	
 		if = {
-				limit = { trait = palantir_annuminas }
+				limit = { has_artifact = artifact_palantir_annuminas }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir_annuminas } 
+							NOT = { has_artifact = artifact_palantir_annuminas } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_annuminas 
-					}
-					remove_trait = palantir_annuminas 
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_annuminas } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}
 		## The Palantir of Orthanc ##	
 		if = {
-				limit = { trait = palantir_orthanc }
+				limit = { has_artifact = artifact_palantir_orthanc }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir_orthanc } 
+							NOT = { has_artifact = artifact_palantir_orthanc } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_orthanc 
-					}
-					remove_trait = palantir_orthanc
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_orthanc } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}
 		## The Palantir of Amon Sûl ##	
 		if = {
-				limit = { trait = palantir_sul }
+				limit = { has_artifact = artifact_palantir_sul }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir_sul } 
+							NOT = { has_artifact = artifact_palantir_sul } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_sul 
-					}
-					remove_trait = palantir_sul
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_sul } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}
 		## The Palantir of Elostirion ##	
 		if = {
-				limit = { trait = palantir_elostirion }
+				limit = { has_artifact = artifact_palantir_elostirion }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = {  
 							is_alive = yes  
-							NOT = { trait = palantir_elostirion } 
+							NOT = { has_artifact = artifact_palantir_elostirion } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_elostirion 
-					}
-					remove_trait = palantir_elostirion
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_elostirion } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}
 		## The Palantir of Osgiliath ##	
 		if = {
-				limit = { trait = palantir_osgiliath }
+				limit = { has_artifact = artifact_palantir_osgiliath }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir_osgiliath } 
+							NOT = { has_artifact = artifact_palantir_osgiliath } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_osgiliath 
-					}
-					remove_trait = palantir_osgiliath
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_osgiliath } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}
 		## The Palantir of Minas Ithil ##	
 		if = {
-			limit = { trait = palantir_ithil }
+			limit = { has_artifact = artifact_palantir_ithil }
 				if = { 
 					limit = { 
 						is_ruler = yes
 						current_heir = { 
 							is_alive = yes  
-							NOT = { trait = palantir_ithil } 
+							NOT = { has_artifact = artifact_palantir_ithil } 
 						}
 					}
 					current_heir = {
-						add_trait = palantir_ithil 
-					}
-					remove_trait = palantir_ithil
+						PREV = {
+							any_artifact = {
+								limit = { has_artifact_flag = flag_palantir_ithil } 
+								transfer_artifact = {
+									from = PREV
+									to = PREVPREV
+								}
+							}
+						}
+					} 
 				}
 			}	
 		## Lesser Ring ##	

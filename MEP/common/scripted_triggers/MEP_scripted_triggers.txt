@@ -27,6 +27,7 @@
 # mep_base_marriage_compatible
 # mep_eligible_elf_marriage
 # mep_eligible_dwarf_marriage
+# mep_has_southern_palantiri
 
 ### Culture/Religion Groups
 # mep_is_immortal_race_trigger
@@ -97,6 +98,11 @@
 # mep_temp_muslim_standin_trigger
 # mep_canhave_nice_feudalism
 
+## Other
+# mep_coloniz_cheap
+# mep_coloniz_quick
+
+
 #---------------------------------------------------------------------------------------
 # Character Triggers
 
@@ -142,8 +148,9 @@ mep_is_evil_side_trigger = {
 		trait = evil_side
 		AND = {
 			OR = {
-				religion_group = religion_group_melkorx
+				religion_group = religion_group_melkor
 				religion_group = religion_group_ungoliant
+				religion_group = religion_group_dragon
 			}
 			NOT = { trait = good_side}
 		}						
@@ -156,8 +163,9 @@ mep_dont_do_nice_trigger = {
 		trait = evil_side
 		AND = {
 			OR = {
-				religion_group = religion_group_melkorx
+				religion_group = religion_group_melkor
 				religion_group = religion_group_ungoliant
+				religion_group = religion_group_dragon
 			}
 			NOT = { trait = good_side}
 		}
@@ -173,7 +181,7 @@ mep_cant_get_disease_trigger = {
 		religion_group = religion_group_eldar
 		religion = religion_wight
 		religion = religion_umaiar
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 		religion_group = religion_group_ungoliant
 		religion_group = religion_group_wilderness	
 		trait = balrog
@@ -193,7 +201,7 @@ mep_wont_hire_physician_trigger = {
 			OR = {
 				religion = religion_umaiar
 				religion = religion_wight
-				religion = religion_dragons
+				religion_group = religion_group_dragon
 				religion_group = religion_group_ungoliant
 			}
 		}
@@ -312,8 +320,9 @@ mep_pick_good_side_trigger = {
 		culture = culture_adunaic
 		culture = culture_black_numenorean
 	}
-	NOT = { religion_group = religion_group_melkorx }
+	NOT = { religion_group = religion_group_melkor }
 	NOT = { religion_group = religion_group_ungoliant }
+	NOT = { religion_group = religion_group_dragon }
 }
 
 
@@ -325,7 +334,7 @@ mep_should_be_unkillable_trigger = {
 		}
 		culture = culture_balrog
 		culture = culture_wight
-		culture = culture_dragons
+		religion_group = religion_group_dragon
 		culture_group = culture_group_wilderness
 		trait = maiar
 		trait = balrog
@@ -351,7 +360,7 @@ mep_cant_get_drunk_trigger = {
 		}
 		culture = culture_balrog
 		culture = culture_wight
-		culture = culture_dragons
+		religion_group = religion_group_dragon
 		culture_group = culture_group_wilderness
 		trait = maiar
 		trait = balrog
@@ -371,7 +380,7 @@ mep_dont_seduce_trigger = {
 		}
 		religion_group = religion_group_wilderness  # not actual character
 		# religion_group = religion_group_enyd
-		religion_group = religion_group_melkorx  # probably too evil and chaotic to seduce
+		religion_group = religion_group_melkor  # probably too evil and chaotic to seduce
 		religion_group = religion_group_ungoliant  # Spiders eat their mates sometimes
 		religion_group = religion_group_eruhini # Eagles, Valar, Tom Bombadil, etc		
 	}
@@ -400,8 +409,9 @@ mep_will_purge_evil = {
 mep_will_purge_good = {
 	NOT = { has_character_flag = very_tolerant_of_good }
 	OR = {
-		religion_group = religion_group_melkorx
+		religion_group = religion_group_melkor
 		religion_group = religion_group_ungoliant
+		religion_group = religion_group_dragon
 	}
 	NOT = { trait = good_side }
 	OR = {
@@ -410,9 +420,10 @@ mep_will_purge_good = {
 			NOR = {  # My boss won't let me...
 				trait = good_side
 				AND = {
-					NOT = { religion_group = religion_group_melkorx }
+					NOT = { religion_group = religion_group_melkor }
 					NOT = { religion_group = religion_group_hildor }
 					NOT = { religion_group = religion_group_ungoliant }
+					NOT = { religion_group = religion_group_dragon }
 				}
 				
 			}
@@ -429,7 +440,7 @@ mep_is_evil_overlord = {
 		trait = maiar
 		trait = balrog
 		trait = nazgul
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 	}
 }
 
@@ -488,6 +499,15 @@ mep_eligible_dwarf_marriage = {
 	prisoner = no
 }
 
+mep_has_southern_palantiri = {
+	OR = {
+		has_artifact = artifact_palantir_anor
+		has_artifact = artifact_palantir_ithil
+		has_artifact = artifact_palantir_orthanc
+		has_artifact = artifact_palantir_osgiliath
+	}
+}
+
 #--------------------------------------------------------
 ### Culture/Religion Groups
 
@@ -498,7 +518,7 @@ mep_is_immortal_race_trigger = {
 		religion_group = religion_group_eldar   # Elves
 		religion = religion_umaiar
 		religion = religion_wight
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 	}
 }
 
@@ -641,8 +661,9 @@ mep_is_good_numenorean_culture = {
 
 mep_evil_religion = {
 	OR = {
-		religion_group = religion_group_melkorx
+		religion_group = religion_group_melkor
 		religion_group = religion_group_ungoliant
+		religion_group = religion_group_dragon
 	}
 }
 
@@ -707,7 +728,7 @@ mep_has_immortal_population_trigger = {
 		religion_group = religion_group_eldar   # Elves
 		religion = religion_umaiar
 		religion = religion_wight
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 	}
 }
 
@@ -718,7 +739,7 @@ mep_population_immune_trigger = {
 		religion_group = religion_group_eldar
 		religion = religion_wight
 		religion = religion_umaiar
-		religion = religion_dragons
+		religion_group = religion_group_dragon
 		religion_group = religion_group_ungoliant
 		religion_group = religion_group_wilderness	
 	}
@@ -1234,7 +1255,7 @@ mep_galadriel_in_lorien = {
 mep_temp_muslim_standin_trigger = {
 	OR = {
 		religion = religion_southron
-		religion_group = religion_group_melkorx
+		religion_group = religion_group_melkor
 	}
 }
 
@@ -1249,6 +1270,20 @@ mep_canhave_nice_feudalism = {
 		religion_group = religion_group_periannath
 		religion = religion_dunedain
 		religion = religion_numenorean
+	}
+}
+
+## Other
+mep_coloniz_cheap = {
+	OR = {
+		has_game_rule = { name = colon_diffc value = cheap }
+		has_game_rule = { name = colon_diffc value = quickncheap }
+	}
+}
+mep_coloniz_quick = {
+	OR = {
+		has_game_rule = { name = colon_diffc value = quick }
+		has_game_rule = { name = colon_diffc value = quickncheap }
 	}
 }
 

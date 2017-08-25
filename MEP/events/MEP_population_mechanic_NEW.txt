@@ -197,36 +197,42 @@ province_event = {
         name = population6A #Good tidings!
         remove_province_modifier = population_increasing
         if = {
-            limit = { has_province_modifier = six_population_dunedain }
-            remove_province_modifier = six_population_dunedain
-            add_province_modifier = { name = seven_population_dunedain duration = -1 }
+			limit = { has_province_modifier = one_population_dunedain }
+			remove_province_modifier = one_population_dunedain
+			add_province_modifier = { name = two_population_dunedain duration = -1 }
+			break = yes
+		}
+		if = { 
+			limit = { has_province_modifier = two_population_dunedain }
+			remove_province_modifier = two_population_dunedain
+			add_province_modifier = { name = three_population_dunedain duration = -1 }
+			break = yes
         }
         if = {
-            limit = { has_province_modifier = five_population_dunedain }
-            remove_province_modifier = five_population_dunedain
-            add_province_modifier = { name = six_population_dunedain duration = -1 }
+			limit = { has_province_modifier = three_population_dunedain }
+			remove_province_modifier = three_population_dunedain
+			add_province_modifier = { name = four_population_dunedain duration = -1 }
+			break = yes
         }
         if = {
             limit = { has_province_modifier = four_population_dunedain }
             remove_province_modifier = four_population_dunedain
             add_province_modifier = { name = five_population_dunedain duration = -1 }
+			break = yes
         }
         if = {
-            limit = { has_province_modifier = three_population_dunedain }
-            remove_province_modifier = three_population_dunedain
-            add_province_modifier = { name = four_population_dunedain duration = -1 }
+			limit = { has_province_modifier = five_population_dunedain }
+			remove_province_modifier = five_population_dunedain
+			add_province_modifier = { name = six_population_dunedain duration = -1 }
+			break = yes
         }
         if = {
-            limit = { has_province_modifier = two_population_dunedain }
-            remove_province_modifier = two_population_dunedain
-            add_province_modifier = { name = three_population_dunedain duration = -1 }
-        }
-        if = {
-            limit = { has_province_modifier = one_population_dunedain }
-            remove_province_modifier = one_population_dunedain
-            add_province_modifier = { name = two_population_dunedain duration = -1 }
+			limit = { has_province_modifier = six_population_dunedain }
+			remove_province_modifier = six_population_dunedain
+			add_province_modifier = { name = seven_population_dunedain duration = -1 }
         }             
     }
+
 }
 
 #province_event = { #Cleans up the counties with 2 province modifiers
@@ -1200,36 +1206,33 @@ character_event = {
 				limit = {
 					NOT = { controlled_by = ROOT }
 			}
-	#goes from normal to lightly populated
+				#goes from urban to densely populated
 				if = {
-					limit = {
-						has_province_modifier = four_population_human
-					}
-				add_province_modifier = { name = three_population_human duration = -1 }
-				remove_province_modifier = four_population_human
+					limit = { has_province_modifier = seven_population_human }
+					add_province_modifier = { name = six_population_human duration = -1 }
+					remove_province_modifier = seven_population_human
+					break = yes
 				}
-	#goes from more to normally populated
+				#goes from densely to more populated
+				if = {
+					limit = { has_province_modifier = six_population_human }
+					add_province_modifier = { name = five_population_human duration = -1 }
+					remove_province_modifier = six_population_human
+					break = yes
+				}
+				#goes from more to normally populated
 				if = {
 					limit = { has_province_modifier = five_population_human }
 					add_province_modifier = { name = four_population_human duration = -1 }
 					remove_province_modifier = five_population_human
 					break = yes
 				}
-	#goes from densely to more populated
+				#goes from normal to lightly populated
 				if = {
-					limit = {
-						has_province_modifier = six_population_human
-					}
-				add_province_modifier = { name = five_population_human duration = -1 }
-				remove_province_modifier = six_population_human
-				}
-	#goes from urban to densely populated
-				if = {
-					limit = {
-						has_province_modifier = seven_population_human
-					}
-				add_province_modifier = { name = six_population_human duration = -1 }
-				remove_province_modifier = seven_population_human
+					limit = { has_province_modifier = four_population_human }
+					add_province_modifier = { name = three_population_human duration = -1 }
+					remove_province_modifier = four_population_human
+					break = yes
 				}
 			}
 		}

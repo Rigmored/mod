@@ -1,12 +1,15 @@
 decisions = {
+
+	# These decisions generally assume just using a Palantir is likely to make your personality worse
+	# But I'll generalize to more than 2 Palantir, and make Sauron immune.
 	looking_at_palantir = {
 		potential = {
 			ai = no
-			#ai cannot use dynasty decisions
-			OR = {
-				trait = palantir
-				trait = palantir_orthanc
-			}
+			NOT = { event_target:mep_chartarget_sauron = { character = PREV } }
+			any_artifact = {
+				has_artifact_flag = flag_a_palantir
+				NOT = { has_artifact_flag = flag_palantir_elostirion }
+			}			
 			NOT = { has_character_flag = looked_at_palantir }
 			NOT = { has_character_flag = looked_at_palantir2 }
 			NOT = { has_global_flag = saurondefeated }
@@ -35,9 +38,10 @@ decisions = {
 		potential = {
 			ai = no
 			#ai cannot use dynasty decisions
-			OR = {
-				trait = palantir
-				trait = palantir_orthanc
+			NOT = { event_target:mep_chartarget_sauron = { character = PREV } }
+			any_artifact = {
+				has_artifact_flag = flag_a_palantir
+				NOT = { has_artifact_flag = flag_palantir_elostirion }
 			}
 			has_character_flag = looked_at_palantir
 			NOT = { has_character_flag = looked_at_palantir2 }
@@ -67,9 +71,10 @@ decisions = {
 		potential = {
 			ai = no
 			#ai cannot use dynasty decisions
-			OR = {
-				trait = palantir
-				trait = palantir_orthanc
+			NOT = { event_target:mep_chartarget_sauron = { character = PREV } }
+			any_artifact = {
+				has_artifact_flag = flag_a_palantir
+				NOT = { has_artifact_flag = flag_palantir_elostirion }
 			}
 			has_character_flag = looked_at_palantir2
 			NOT = { has_global_flag = saurondefeated }
@@ -98,9 +103,10 @@ decisions = {
 		potential = {
 			ai = no
 			#ai cannot use dynasty decisions
-			OR = {
-				trait = palantir
-				trait = palantir_orthanc
+			NOT = { event_target:mep_chartarget_sauron = { character = PREV } }
+			any_artifact = {
+				has_artifact_flag = flag_a_palantir
+				NOT = { has_artifact_flag = flag_palantir_elostirion }
 			}
 			has_character_flag = renounce_to_palantir
 			NOT = { has_global_flag = saurondefeated }
@@ -130,12 +136,9 @@ decisions = {
 			ai = no
 			NOT = { has_character_flag = visit_elostirion }
 			OR = {
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_quendi
-				culture_group = culture_group_umanyar
-				culture_group = culture_group_numenorean
+				mep_is_good_numenorean_culture = yes
+				religion_group = religion_group_eldar
 			}
-			NOT = { culture = culture_black_numenorean }
 			has_character_flag = special_decisions_open
 		}
 		allow = {
@@ -143,12 +146,10 @@ decisions = {
 			prisoner = no
 			NOT = { trait = incapable }
 			OR = {
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_quendi
-				culture_group = culture_group_umanyar
+				religion_group = religion_group_eldar
 				AND = {
 					age = 70
-					culture_group = culture_group_numenorean
+					mep_is_good_numenorean_culture = yes
 				}
 			}
 			prestige = 100
@@ -162,19 +163,15 @@ decisions = {
 			piety = -100
 		}
 	}
-	#### Call another Guardian of a Palantiri to help ####
+	#### Palantiri use during wartime ####
 	use_palantir_war = {
 		is_high_prio = no
 		potential = {
 			ai = no
 			#ai cannot use dynasty decisions
-			OR = {
-				trait = palantir
-				trait = palantir_orthanc
-				trait = palantir_annuminas
-				trait = palantir_osgiliath
-				trait = palantir_ithil
-				trait = palantir_sul
+			any_artifact = {
+				has_artifact_flag = flag_a_palantir
+				NOT = { has_artifact_flag = flag_palantir_elostirion }
 			}
 			NOT = { has_character_flag = use_palantir_war }
 			NOT = { has_character_flag = palantir_locked }

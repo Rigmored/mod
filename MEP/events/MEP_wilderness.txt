@@ -8,7 +8,7 @@ character_event = {
 
 	option = {
 		name = "colonisation0A" #Yes, our people need new lands to settle.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -17,7 +17,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -250
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		mep_colonize_opinion_effect = yes
 	}
 	
@@ -38,7 +45,11 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 240 #debug, should be 240
+		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -70,7 +81,7 @@ character_event = {
 
 	option = {
 		name = "colonisation2A" #Yes, dwarves will live in this province.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -79,7 +90,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -1200
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -1200
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -600
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
@@ -101,6 +119,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 480
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -134,7 +156,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -1600
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -1600
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -800
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
@@ -156,6 +185,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 720
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -180,7 +213,7 @@ character_event = {
 
 	option = {
 		name = "colonisation6A" #Yes, halflings will live in this province.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -189,7 +222,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -500
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
@@ -211,6 +251,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 360
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -236,7 +280,7 @@ character_event = {
 
 	option = {
 		name = "colonisation8A" #No, this province will be for the High Men.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -245,14 +289,21 @@ character_event = {
 				}
 			}
 		}
-		wealth = -1000
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -1000
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -500
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
 	option = {
 		name = "colonisation8B" #Yes, send in some Gondorian Middle-Men.
 		trigger = { NOT = { culture = culture_black_numenorean } }
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -261,14 +312,21 @@ character_event = {
 				}
 			}
 		}
-		wealth = -250
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 		
 	option = {
 		name = "colonisation8C" #Yes, send in some Arnorian Middle-Men.
 		trigger = { NOT = { culture = culture_black_numenorean } }
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -277,14 +335,21 @@ character_event = {
 				}
 			}
 		}
-		wealth = -250
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 
 	option = {
 		name = "colonisation8D" #Yes, send in some Southrons instead.
 		trigger = { culture = culture_black_numenorean }
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -293,7 +358,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -250
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
@@ -315,6 +387,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -343,6 +419,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -371,6 +451,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -392,11 +476,21 @@ character_event = {
 	id = colonisation.12
 	desc = "colonisation11desc" #doesnt matter, only AI sees this
 	picture = GFX_harad_market
+	only_playable = yes
 	
 	trigger = {
 		war = no
-		wealth = 600
 		ai = yes
+		OR = {
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				wealth = 300
+			}
+			AND = {
+				mep_coloniz_cheap = yes
+				wealth = 175
+			}
+		}
 		NOR = {
 			culture_group = culture_group_numenorean
 			mep_is_immortal_race_trigger = yes
@@ -424,8 +518,15 @@ character_event = {
 			limit = { mep_wilderness_province_trigger = yes }
 			add_province_modifier = { name = being_colonised duration = -1 }
 		}	
-		wealth = -300
-		pick_20yr_sending_colonists_effect = yes	
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
+		mep_20_10_yr_colonist_effect = yes	
 	}
 	
 }
@@ -435,12 +536,38 @@ character_event = {
 	id = colonisation.13
 	desc = "colonisation11desc" #doesnt matter, only AI sees this
 	picture = GFX_harad_market
+	only_playable = yes
 	
 	trigger = {
-		wealth = 600
 		war = no
 		culture_group = culture_group_numenorean
 		ai = yes
+		
+		OR = {
+			# culture dunedain colonizes expensivly
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				culture = culture_dunedain
+				wealth = 650
+			}
+			# middle cost: cheap dunedian, or non-cheap non-dunedian
+			AND = {
+				mep_coloniz_cheap = yes
+				culture = culture_dunedain
+				wealth = 350
+			}
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				NOT = { culture = culture_dunedain }
+				wealth = 300
+			}
+			# cheap non-dunedian colonization possible
+			AND = {
+				NOT = { culture = culture_dunedain }
+				mep_coloniz_cheap = yes
+				wealth = 175
+			}
+		}
 		
 		any_realm_province = {
 			mep_wilderness_province_trigger = yes
@@ -462,12 +589,19 @@ character_event = {
 		trigger = { 
 			culture = culture_gondorian
 		}
-		wealth = -300
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		random_realm_province = {
 			limit = { mep_wilderness_province_trigger = yes }
 			add_province_modifier = { name = being_colonised_with_gondorian_middlemen duration = -1 }
 		}	
-		pick_20yr_sending_colonists_effect = yes	
+		mep_20_10_yr_colonist_effect = yes	
 	} 
 
 	#Dunedain colonise with arnorian if arnorian
@@ -476,12 +610,19 @@ character_event = {
 		trigger = { 
 			culture = culture_arnorian
 		}
-		wealth = -300
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		random_realm_province = {
 			limit = { mep_wilderness_province_trigger = yes }
 			add_province_modifier = { name = being_colonised_with_arnorian_middlemen duration = -1 }
 		}	
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 	}
 	
 	#Dunedain colonise with dunedain if dunedain
@@ -490,12 +631,19 @@ character_event = {
 		trigger = { 
 			culture = culture_dunedain
 		}
-		wealth = -600
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -600
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -300
+		}
 		random_realm_province = {
 			limit = { mep_wilderness_province_trigger = yes }
 			add_province_modifier = { name = being_colonised duration = -1 }
 		}	
-		pick_20yr_sending_colonists_effect = yes	
+		mep_20_10_yr_colonist_effect = yes	
 	}
 	
 	#Black Numenoreans colonise with Haradrim
@@ -504,12 +652,19 @@ character_event = {
 		trigger = { 
 			culture = culture_black_numenorean 
 		}
-		wealth = -300
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		random_realm_province = {
 			limit = { mep_wilderness_province_trigger = yes }
 			add_province_modifier = { name = being_colonised_with_southrons duration = -1 }
 		}	
-		pick_20yr_sending_colonists_effect = yes	
+		mep_20_10_yr_colonist_effect = yes	
 	}	
 }
 	
@@ -524,7 +679,7 @@ character_event = {
 
 	option = {
 		name = "colonisation20A" #Yes, our people need new lands to settle.
-		pick_40yr_sending_colonists_effect = yes
+		mep_40_20_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -534,7 +689,14 @@ character_event = {
 				mep_dwarf_colonize_pick_culture = yes
 			}
 		}
-		wealth = -300
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -350
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -175
+		}
 		prestige = 100
 		mep_colonize_opinion_effect = yes
 	}
@@ -557,6 +719,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 480
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -597,7 +763,7 @@ character_event = {
 
 	option = {
 		name = "colonisation22A" #The Realm needs this. Strike the Earth!.
-		pick_40yr_sending_colonists_effect = yes
+		mep_40_20_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -607,7 +773,14 @@ character_event = {
 				mep_dwarf_colonize_pick_culture = yes
 			}
 		}
-		wealth = -700
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -700
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -350
+		}
 		prestige = -300
 		mep_colonize_opinion_effect = yes
 	}
@@ -626,7 +799,16 @@ character_event = {
 	
 	trigger = {
 		war = no
-		wealth = 500
+		OR = {
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				wealth = 350
+			}
+			AND = {
+				mep_coloniz_cheap = yes
+				wealth = 200
+			}
+		}
 		ai = yes
 		culture_group = culture_group_dwarves
 		religion_group = religion_group_khazad
@@ -665,8 +847,15 @@ character_event = {
 			}
 			mep_dwarf_colonize_pick_culture = yes
 		}	
-		wealth = -300
-		pick_40yr_sending_colonists_effect = yes	
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -300
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -150
+		}
+		mep_40_20_yr_colonist_effect = yes	
 	}
 	
 }
@@ -684,7 +873,7 @@ character_event = {
 
 	option = {
 		name = "colonisation30A" #Yes, Middle-Earth is for Elves too.
-		pick_60yr_sending_colonists_effect = yes
+		mep_60_30_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -712,7 +901,14 @@ character_event = {
 				}				
 			}
 		}
-		wealth = -500
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
 		prestige = 100
 		mep_colonize_opinion_effect = yes
 	}
@@ -734,7 +930,7 @@ character_event = {
 
 	option = {
 		name = "colonisation31A" #No, this province will be for the High Elves.
-		pick_60yr_sending_colonists_effect = yes
+		mep_60_30_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -756,13 +952,20 @@ character_event = {
 			}
 		}
 		prestige = 200
-		wealth = -1500
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -1500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -750
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 	
 	option = {
 		name = "colonisation31B" #Yes, send in some Wood Elves.
-		pick_60yr_sending_colonists_effect = yes
+		mep_60_30_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -771,7 +974,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -500
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
 		mep_colonize_opinion_effect = yes	
 	}
 		
@@ -794,6 +1004,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 720
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -853,6 +1067,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 720
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -891,6 +1109,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 720
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -917,7 +1139,16 @@ character_event = {
 	
 	trigger = {
 		war = no
-		wealth = 700
+		OR = {
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				wealth = 550
+			}
+			AND = {
+				mep_coloniz_cheap = yes
+				wealth = 300
+			}
+		}
 		ai = yes
 		mep_is_genuine_elf = yes
 		NOT = { culture_group = culture_group_amanyar}
@@ -965,8 +1196,15 @@ character_event = {
 				}
 			}
 		}	
-		wealth = -500
-		pick_60yr_sending_colonists_effect = yes	
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
+		mep_60_30_yr_colonist_effect = yes	
 	}
 }
 
@@ -978,7 +1216,16 @@ character_event = {
 	
 	trigger = {
 		war = no
-		wealth = 700
+		OR = {
+			AND = {
+				NOT = { mep_coloniz_cheap = yes }
+				wealth = 550
+			}
+			AND = {
+				mep_coloniz_cheap = yes
+				wealth = 300
+			}
+		}
 		ai = yes
 		mep_is_genuine_high_elf = yes
 		any_realm_province = {
@@ -1006,8 +1253,15 @@ character_event = {
 				duration = -1
 			}
 		}	
-		wealth = -500
-		pick_60yr_sending_colonists_effect = yes	
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
+		mep_60_30_yr_colonist_effect = yes	
 	}
 	
 }
@@ -1030,7 +1284,7 @@ character_event = {
 
 	option = {
 		name = "colonisation40A" # Yes, the Second-Born are vigorous.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -1146,7 +1400,14 @@ character_event = {
 
 			}
 		}
-		wealth = -400
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -400
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -200
+		}
 		prestige = -100
 		mep_colonize_opinion_effect = yes	
 	}
@@ -1169,8 +1430,11 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
-
 	
 	option = {
 		name = OK
@@ -1278,7 +1542,7 @@ character_event = {
 
 	option = {
 		name = "colonisation42A" # Yes, the Second-Born are vigorous.
-		pick_20yr_sending_colonists_effect = yes
+		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
 				add_province_modifier = {
@@ -1287,7 +1551,14 @@ character_event = {
 				}
 			}
 		}
-		wealth = -400
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -400
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -200
+		}
 		prestige = -100
 		mep_colonize_opinion_effect = yes	
 	}
@@ -1310,6 +1581,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -1357,7 +1632,14 @@ character_event = {
 				NOT = { culture = culture_troll }
 				NOT = { has_province_modifier = sending_colonists }
 			}
-			add_province_modifier = { name = sending_colonists duration = 7200 }
+			if = {
+				limit = { NOT = { mep_coloniz_quick = yes } }
+				add_province_modifier = { name = sending_colonists duration = 7305 }
+			}
+			if = {
+				limit = { mep_coloniz_quick = yes }
+				add_province_modifier = { name = sending_colonists duration = 3650 }
+			}
 		}
 		job_treasurer = {
 			location = {
@@ -1368,7 +1650,14 @@ character_event = {
 				set_variable = { which = mepvar_colonizingculture value =  1 }
 			}
 		}
-		wealth = -250
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -250
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -125
+		}
 		mep_colonize_opinion_effect = yes
 	}
 	
@@ -1386,7 +1675,16 @@ character_event = {
 					culture = culture_urukhai
 					NOT = { has_province_modifier = sending_colonists }
 				}
-				wealth = 500
+				OR = {
+					AND = {
+						NOT = { mep_coloniz_cheap = yes }
+						wealth = 500
+					}
+					AND = {
+						mep_coloniz_cheap = yes
+						wealth = 250
+					}
+				}
 			}
 		}
 		random_demesne_province = {
@@ -1394,7 +1692,14 @@ character_event = {
 				culture = culture_goblin
 				NOT = { has_province_modifier = sending_colonists }
 			}
-			add_province_modifier = { name = sending_colonists duration = 7200 }
+			if = {
+				limit = { NOT = { mep_coloniz_quick = yes } }
+				add_province_modifier = { name = sending_colonists duration = 7305 }
+			}
+			if = {
+				limit = { mep_coloniz_quick = yes }
+				add_province_modifier = { name = sending_colonists duration = 3650 }
+			}
 		}
 		job_treasurer = {
 			location = {
@@ -1405,7 +1710,14 @@ character_event = {
 				set_variable = { which = mepvar_colonizingculture value =  4 }
 			}
 		}
-		wealth = -180
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -180
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -90
+		}
 		mep_colonize_opinion_effect = yes
 		
 	}
@@ -1419,14 +1731,30 @@ character_event = {
 				culture = culture_urukhai
 				NOT = { has_province_modifier = sending_colonists }
 			}
-			wealth = 500
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 500
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 250
+				}
+			}
 		}
 		random_demesne_province = {
 			limit = {
 				culture = culture_urukhai
 				NOT = { has_province_modifier = sending_colonists }
 			}
-			add_province_modifier = { name = sending_colonists duration = 7200 }
+			if = {
+				limit = { NOT = { mep_coloniz_quick = yes } }
+				add_province_modifier = { name = sending_colonists duration = 7305 }
+			}
+			if = {
+				limit = { mep_coloniz_quick = yes }
+				add_province_modifier = { name = sending_colonists duration = 3650 }
+			}
 		}
 		job_treasurer = {
 			location = {
@@ -1437,7 +1765,14 @@ character_event = {
 				set_variable = { which = mepvar_colonizingculture value =  3 }
 			}
 		}
-		wealth = -500
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
 		mep_colonize_opinion_effect = yes
 		
 	}
@@ -1456,7 +1791,14 @@ character_event = {
 				culture = culture_troll
 				NOT = { has_province_modifier = sending_colonists }
 			}
-			add_province_modifier = { name = sending_colonists duration = 7200 }
+			if = {
+				limit = { NOT = { mep_coloniz_quick = yes } }
+				add_province_modifier = { name = sending_colonists duration = 7305 }
+			}
+			if = {
+				limit = { mep_coloniz_quick = yes }
+				add_province_modifier = { name = sending_colonists duration = 3650 }
+			}
 		}
 		job_treasurer = {
 			location = {
@@ -1467,7 +1809,14 @@ character_event = {
 				set_variable = { which = mepvar_colonizingculture value =  6 }
 			}
 		}
-		wealth = -350
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -350
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -175
+		}
 		mep_colonize_opinion_effect = yes
 		
 	}
@@ -1519,6 +1868,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 
 	option = {

@@ -1,10 +1,15 @@
 # Scripted Effects for MEP
 # Note: I assume all effects are called from and AND block (if not, wrap call in AND)
 
-# mep_colonize_opinion_effect
+## mep_colonize_opinion_effect
 # pick_20yr_sending_colonists_effect
 # pick_40yr_sending_colonists_effect
 # pick_60yr_sending_colonists_effect
+# pick_10yr_sending_colonists_effect
+# pick_30yr_sending_colonists_effect
+# mep_20_10_yr_colonist_effect
+# mep_40_20_yr_colonist_effect
+# mep_60_30_yr_colonist_effect
 # mep_stop_colonisation_effect
 
 # population modifier stuff
@@ -99,7 +104,7 @@ pick_20yr_sending_colonists_effect = {
 				has_province_modifier = sending_colonists
 			}
 		}
-		add_province_modifier = { name = sending_colonists duration = 7200 }
+		add_province_modifier = { name = sending_colonists duration = 7305 }
 	}
 }
 
@@ -128,6 +133,65 @@ pick_60yr_sending_colonists_effect = {
 			}
 		}
 		add_province_modifier = { name = sending_colonists duration = 21915 }
+	}
+}
+
+pick_10yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 3650 }
+	}
+}
+
+pick_30yr_sending_colonists_effect = {
+	random_demesne_province = {
+		limit = {
+			NOR = {
+				religion = religion_wilderness
+				culture = culture_wilderness
+				culture = culture_mountains
+				has_province_modifier = sending_colonists
+			}
+		}
+		add_province_modifier = { name = sending_colonists duration = 10957 }
+	}
+}
+mep_20_10_yr_colonist_effect = {
+	if = {
+		limit = { mep_coloniz_quick = yes }
+		pick_10yr_sending_colonists_effect = yes
+	}
+	if = {
+		limit = { NOT = { mep_coloniz_quick = yes } }
+		pick_20yr_sending_colonists_effect = yes
+	}
+}
+mep_40_20_yr_colonist_effect = {
+	if = {
+		limit = { mep_coloniz_quick = yes }
+		pick_20yr_sending_colonists_effect = yes
+	}
+	if = {
+		limit = { NOT = { mep_coloniz_quick = yes } }
+		pick_40yr_sending_colonists_effect = yes
+	}
+}
+
+mep_60_30_yr_colonist_effect = {
+	if = {
+		limit = { mep_coloniz_quick = yes }
+		pick_30yr_sending_colonists_effect = yes
+	}
+	if = {
+		limit = { NOT = {mep_coloniz_quick = yes } }
+		pick_60yr_sending_colonists_effect = yes
 	}
 }
 

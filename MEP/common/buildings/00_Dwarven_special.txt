@@ -415,4 +415,20 @@ castle = {
 			}
         }
 	}
+	
+	ct_lonely_mountain = { #Erebor wilderness#
+		desc = ct_lonely_mountain_desc
+		gold_cost = 10
+		build_time = 10
+		garrison_size = -2
+		tax_income = -3
+		ai_creation_factor = 110
+		add_number_to_name = no
+		
+        potential = {
+            province_id = 292 #Erebor
+			NOT = { has_global_flag = erebor_built }
+			NOT = { year = 10000 }
+        }
+	}
 }

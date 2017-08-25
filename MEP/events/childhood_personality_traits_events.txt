@@ -439,8 +439,7 @@ character_event = {
 		NOT = { trait = charitable }
 		NOT = { trait = greedy }
 		has_guardian = yes
-		NOT = { religion_group = religion_group_ungoliant }
-		NOT = { religion_group = religion_group_melkorx }
+		NOT = { mep_evil_religion = yes }
 	}
 	
 	weight_multiplier = {
@@ -1655,7 +1654,10 @@ character_event = {
 		}
 		modifier = {
 			factor = 2
-			religion_group = religion_group_melkorx
+			OR = {
+				religion_group = religion_group_melkor
+				religion_group = religion_group_dragon
+			}
 		}
 		modifier = {
 			trait = harelip
@@ -4298,7 +4300,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		NOT = { religion_group = religion_group_melkorx }
+		NOT = { religion_group = religion_group_melkor }
 		has_guardian = yes
 		NOT = { trait = zealous }
 		NOT = { trait = cynical }

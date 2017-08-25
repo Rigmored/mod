@@ -97,7 +97,7 @@ character_event = {
     title = "EVTTITmepmarriage.2"
     desc = "EVTDESCmepmarriage.2"
     picture = "GFX_good"
-	religion_group = religion_group_melkorx
+	religion_group = religion_group_melkor
 	is_married = yes
 	
 	trigger = {
@@ -406,6 +406,8 @@ character_event = {
 	}  
 }
 # for Elves: triggered event for adding the 'marriedforever' trait that prevents remarriage
+# The attempt to trigger this from on_death results in repeated triggers, so this event is
+# currently disabled.
 character_event = {
 	id = mepmarriage.11
 	title = "EVTTITmepmarriage.11"  # Death is not the end

@@ -65,7 +65,16 @@ decisions = {
 			prisoner = no
 			age = 16
 			prestige = 500
-			wealth = 300
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 300
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 150
+				}
+			}
 			job_treasurer = {
 				location = {
 					mep_wilderness_province_trigger = yes
@@ -126,9 +135,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 500
-			wealth = 1300
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 1300
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 650
+				}
+			}
 			any_courtier = {
 				culture_group = culture_group_dwarves
 				religion = religion_mahal
@@ -185,9 +202,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 500
-			wealth = 1700
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 1700
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 850
+				}
+			}
 			any_courtier = { mep_is_genuine_elf = yes }
 			job_treasurer = {
 				location = {
@@ -234,9 +259,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 500
-			wealth = 500
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 500
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 250
+				}
+			}
 			any_courtier = {
 				culture_group = culture_group_halfling
 				religion = religion_perian
@@ -293,9 +326,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 500
-			wealth = 400
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 400
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 200
+				}
+			}
 			job_treasurer = {
 				# again, your treasurer must be in a wilderness, which is mountainous or hilly
 				location = {
@@ -315,6 +356,7 @@ decisions = {
 	}
 	
 	# Special Dwarven colonization 2 (from and by dwarves)
+	# This one allows dwarven colonisation of arctic lands.
 	colonisation_nonmountains_for_dwarves = {
 		is_high_prio = no
 		
@@ -330,7 +372,6 @@ decisions = {
 						OR = {
 							terrain = mountain
 							terrain = hills
-							terrain = arctic
 							terrain = jungle
 							terrain = marsh
 							terrain = steppe							
@@ -355,9 +396,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 700
-			wealth = 800
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 800
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 400
+				}
+			}
 			job_treasurer = {
 				# again, your treasurer must be in a wilderness, which is NOT mountainous or hilly
 				location = {
@@ -366,7 +415,6 @@ decisions = {
 						OR = {
 							terrain = mountain
 							terrain = hills
-							terrain = arctic
 							terrain = jungle
 							terrain = marsh
 							terrain = steppe							
@@ -412,9 +460,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 500
-			wealth = 600
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 600
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 300
+				}
+			}
 			job_treasurer = {
 				# again, your treasurer must be in a wilderness (no terrain restrictions for now)
 				location = {
@@ -489,9 +545,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 400
-			wealth = 500
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 500
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 250
+				}
+			}
 			job_treasurer = {
 				location = {
 					mep_wilderness_province_trigger = yes
@@ -536,9 +600,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 450
-			wealth = 1000
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 1000
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 500
+				}
+			}
 			any_courtier = {
 				culture_group = culture_group_forodwaith
 			}
@@ -583,9 +655,17 @@ decisions = {
 		allow = {
 			war = no
 			prisoner = no
-			age = 16
 			prestige = 250
-			wealth = 350
+			OR = {
+				AND = {
+					NOT = { mep_coloniz_cheap = yes }
+					wealth = 350
+				}
+				AND = {
+					mep_coloniz_cheap = yes
+					wealth = 175
+				}
+			}
 			job_treasurer = {
 				location = {
 					mep_wilderness_province_trigger = yes

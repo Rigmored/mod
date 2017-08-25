@@ -26,7 +26,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -61,7 +61,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -85,7 +85,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 10
+			treasury = 100
 		}
 		effect = {
 			treasury = -10
@@ -96,7 +96,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -120,7 +120,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 10
+			treasury = 100
 		}
 		effect = {
 			treasury = -10
@@ -131,7 +131,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}
@@ -175,6 +175,11 @@ decisions = {
 			treasury = -200
 			prestige = -200
 			piety = -200
+			add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_character = {
 				random_traits = yes
 				dynasty = none
@@ -201,7 +206,7 @@ decisions = {
 		potential = {
 			ai = no
 			has_character_flag = employment_decisions_open
-			NOT = { religion_group = religion_group_melkor }
+			NOT = { mep_evil_religion = yes }
 		}
 		allow = {
 			treasury = 100
@@ -213,6 +218,11 @@ decisions = {
 		effect = {
 			treasury = 100
 			prestige = 100
+			add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_character = {
 				random_traits = yes
 				dynasty = random
@@ -273,6 +283,11 @@ decisions = {
 		effect = {
 			treasury = 100
 			prestige = 100
+			add_character_modifier = {
+				name = employment_timer
+				duration = 365
+				hidden = yes
+			}
 			create_random_soldier = {
 				random_traits = yes
 				dynasty = none
@@ -369,7 +384,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 100
+			treasury = 200
 			prestige = 100
 		}
 		effect = {
@@ -393,7 +408,7 @@ decisions = {
 			}
 			add_character_modifier = {
 				name = employment_timer
-				duration = 1
+				duration = 365
 				hidden = yes
 			}
 		}

@@ -30,7 +30,7 @@ province_event = {
 				owner = { culture_group = culture_group_numenorean }
 			}
 			AND = {  # For religion group melkor, all religions are species except orkish+uruk
-				religion_group = religion_group_melkorx
+				religion_group = religion_group_melkor
 				OR = {
 					owner = { religion = ROOT }
 					AND = {
@@ -45,7 +45,7 @@ province_event = {
 			}
 			AND = {  # Non-Human, Non-Melkor
 				NOT = { mep_is_human_trigger = yes }
-				NOT = { religion_group = religion_group_melkorx }
+				NOT = { religion_group = religion_group_melkor }
 				owner = { NOT = { religion_group = ROOT } }
 			}
 			AND = {  # Non-Númenórean human culture
