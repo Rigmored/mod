@@ -66,8 +66,7 @@ perceptive = {
 melodious_voice = {
 potential = {
 		NOT = {
-			religion_group = religion_group_melkor
-			religion_group = religion_group_ungoliant
+		religion_group = religion_group_melkor
 	    }
 	}
 	birth = 100
@@ -154,7 +153,6 @@ absentminded = {
 calm_voice = {
 	potential = {
 		NOT = { religion_group = religion_group_melkor }
-		NOT = { religion_group = religion_group_ungoliant }
 	}
 	birth = 100
 	inherit_chance = 25
@@ -189,7 +187,9 @@ imposing = {
 }
 fashionable = {
 	potential = {
-		NOT = { mep_evil_religion = yes }
+		NOT = {
+		religion_group = religion_group_melkor 
+	    }
 	}
 	lifestyle = yes
 	
@@ -218,7 +218,7 @@ rude = {
 
 honorable = {
 	potential = {
-		NOT = { mep_evil_religion = yes }
+		NOT = { religion_group = religion_group_melkor }
 	}
 	personality = yes
 	

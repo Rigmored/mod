@@ -206,7 +206,7 @@ decisions = {
 		potential = {
 			ai = no
 			has_character_flag = employment_decisions_open
-			NOT = { mep_evil_religion = yes }
+			NOT = { religion_group = religion_group_melkor }
 		}
 		allow = {
 			treasury = 100
@@ -216,7 +216,7 @@ decisions = {
 			}
 		}
 		effect = {
-			treasury = 100
+			treasury = -100
 			prestige = 100
 			add_character_modifier = {
 				name = employment_timer
@@ -281,9 +281,9 @@ decisions = {
 			NOT = { has_character_modifier = employment_timer }
 		}
 		effect = {
-			treasury = 100
+			treasury = -100
 			prestige = 100
-			add_character_modifier = {
+						add_character_modifier = {
 				name = employment_timer
 				duration = 365
 				hidden = yes
@@ -384,7 +384,7 @@ decisions = {
 		}
 		allow = {
 			NOT = { has_character_modifier = employment_timer }
-			treasury = 200
+			treasury = 100
 			prestige = 100
 		}
 		effect = {
