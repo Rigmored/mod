@@ -13,10 +13,12 @@ character_event = {
 
 	trigger = {
 		NOT = { culture_group = culture_group_halfling }
+		NOT = { religion_group = religion_group_wilderness }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
 		NOT = { trait = paranoid }
-		trait = ring
+		NOT = { trait = nazgul }
+		has_artifact = artifact_ring
 	}
 
 	mean_time_to_happen = {
@@ -54,7 +56,8 @@ character_event = {
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
-		trait = ring
+		NOT = { trait = nazgul }
+		has_artifact = artifact_ring
 		trait = paranoid
 	}
 
@@ -124,10 +127,11 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 		NOT = { trait = wroth }
 	}
 
@@ -159,10 +163,11 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 		NOT = { trait = hedonist }
 	}
 
@@ -202,10 +207,11 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 		NOT = { trait = impaler }
 		trait = wroth
 		trait = paranoid
@@ -248,12 +254,14 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 		NOT = { trait = lunatic }
-		NOT = { learning = 20 }
+		NOT = { trait = fea_strong }
+		NOT = { learning = 18 }
 	}
 
 	mean_time_to_happen = {
@@ -277,10 +285,11 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 	}
 
 	mean_time_to_happen = {
@@ -313,10 +322,11 @@ character_event = {
 
 
 	trigger = {
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { culture_group = culture_group_halfling }
 		NOT = { culture = culture_maiar }
 		NOT = { culture = culture_enigma }
+		NOT = { trait = nazgul }
 		trait = impaler
 		trait = wroth
 		NOT = { learning = 20 }
@@ -337,7 +347,7 @@ character_event = {
 	}
 }
 
-##galadriel gets positive reply##
+## Notification that the ring has caused evil_side
 character_event = {
 	id = ring.8
 	title = "EVTTITring.8"#Corrupted by Darkness

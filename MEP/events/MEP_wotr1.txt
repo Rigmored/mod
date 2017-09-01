@@ -287,7 +287,7 @@ character_event = {
 		year = 11363
 		NOT = { year = 11365 }
 		event_target:mep_chartarget_gandalf = { is_alive = yes }
-		trait = ring
+		has_artifact = artifact_ring
 		NOT = { has_global_flag = fellowshipquest }
 	}
 	
@@ -399,7 +399,7 @@ character_event = {
 		NOT = { year = 11365 }
 		has_global_flag = aragornactive
 		NOT = { has_character_flag = warofthering18 }
-		ring = {
+		onering = {
 			trait = on_fellowshipquest
 			is_alive = yes
 			prisoner = no 
@@ -412,7 +412,7 @@ character_event = {
 	option = {
         name = "EVTOPTAwarofthering.18"
 		set_character_flag = warofthering18
-		ring = {
+		onering = {
 			character_event = { id = warofthering.20 }	
 		}
 	}
@@ -421,12 +421,10 @@ character_event = {
 	option = {
         name = "EVTOPTBwarofthering.18"
 		trigger = { ai = no }
-		ring = {
+		onering = {
 			character_event = { id = warofthering.19  days = 1 }
-			remove_trait = ring
-			add_trait = ringbearer2
+			mep_transfer_onering_to_root = yes
 		}
-		add_trait = ring
 		hidden_tooltip = {
 			set_character_flag = warofthering18
 			set_global_flag = aragornhasring
@@ -451,7 +449,6 @@ character_event = {
 			remove_trait = on_fellowshipquest
 			set_character_flag = warofthering19
 		}
-		add_trait = on_fellowshipquest
 		event_target:mep_chartarget_samwise = {
 			remove_trait = on_fellowshipquest
 		}
@@ -543,8 +540,10 @@ character_event = {
 				character_event = { id = warofthering.23  days = 2}
 			}
 		}
-		remove_trait = ring
+		# I'll move the ring to a random Nazgul until warofthering.25
+		nazgul = { mep_transfer_onering_from_root = yes }
 		death = { death_reason = death_battle }
+		# For the other Hobbits, the Quest is over
 		event_target:mep_chartarget_samwise = {
 			remove_trait = on_fellowshipquest
 		}
@@ -637,8 +636,11 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwarofthering.25"
-		add_trait = ring
-		remove_trait = ringbearer2
+		# The One Ring should be in the hands of one of the Nazgul
+		onering = {
+			mep_transfer_onering_to_root = yes
+			remove_trait = ringbearer2  # Being 'undead' already, a Nazgul probably shouldn't have this
+		}
 		any_playable_ruler = {
 			limit = { is_alive = yes }
 			narrative_event = { id = warofthering.26 }

@@ -1,7 +1,9 @@
 temple = {
-	tp_Dwalltower_1 = {	
-		desc = tp_Dwalltower_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 1 }
+	# Replacing the earlier Wall-Towers and Walls with more Dwarf-appropriate 'Fortifications'
+	tp_dwarvenfortifications_1 = {
+		desc = tp_dwarvenfortifications_1_desc
+		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 0 }
+		not_if_x_exists = { ca_lonely_mountain }
 		potential = {
 		    FROM = {
 				NOR = {
@@ -16,17 +18,16 @@ temple = {
 			    culture_group = culture_group_dwarves
 			}
 		}
-		prerequisites = { tp_Dwall_1 }
-		gold_cost = 50
-		build_time = 182
-		fort_level = 0.25
-		garrison_size = 0.05
-		ai_creation_factor = 82
+		gold_cost = 150
+		build_time = 365
+		fort_level = 1.0
+		garrison_size = 0.03
+		ai_creation_factor = 90
 		
-		extra_tech_building_start = 1.4
+		extra_tech_building_start = 1.0
 	}
-	tp_Dwalltower_2 = {
-		desc = tp_Dwalltower_1_desc
+	tp_dwarvenfortifications_2 = {
+		desc = tp_dwarvenfortifications_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 3 }
 		potential = {
 		has_global_flag = building
@@ -43,18 +44,17 @@ temple = {
 			    culture_group = culture_group_dwarves
 			}
 		}
-		prerequisites = { tp_Dwall_2 }
-		upgrades_from = tp_Dwalltower_1
-		gold_cost = 100
-		build_time = 182
-		fort_level = 0.25
-		garrison_size = 0.05
-		ai_creation_factor = 81
-
-		extra_tech_building_start = 1.8
-	}	
-	tp_Dwalltower_3 = {
-		desc = tp_Dwalltower_1_desc
+		upgrades_from = tp_dwarvenfortifications_1
+		gold_cost = 200
+		build_time = 547 #1.5y
+		fort_level = 1.0
+		garrison_size = 0.06
+		ai_creation_factor = 89
+		
+		extra_tech_building_start = 1.2
+	}
+	tp_dwarvenfortifications_3 = {
+		desc = tp_dwarvenfortifications_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 4 }
 		potential = {
 		has_global_flag = building
@@ -71,17 +71,17 @@ temple = {
 			    culture_group = culture_group_dwarves
 			}
 		}
-		upgrades_from = tp_Dwalltower_2
+		upgrades_from = tp_dwarvenfortifications_2
 		gold_cost = 250
-		build_time = 182
-		fort_level = 0.25
-		garrison_size = 0.05
-		ai_creation_factor = 80
+		build_time = 730 #2y
+		fort_level = 1.0
+		garrison_size = 0.09
+		ai_creation_factor = 88
 
 		extra_tech_building_start = 1.2
 	}
-	tp_Dwalltower_4 = {
-		desc = tp_Dwalltower_1_desc
+	tp_dwarvenfortifications_4 = {
+		desc = tp_dwarvenfortifications_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 5 }
 		potential = {
 		has_global_flag = building
@@ -98,17 +98,17 @@ temple = {
 			    culture_group = culture_group_dwarves
 			}
 		}
-		upgrades_from = tp_Dwalltower_3
+		upgrades_from = tp_dwarvenfortifications_3
 		gold_cost = 350
-		build_time = 365
-		fort_level = 0.75
-		garrison_size = 0.05
-		ai_creation_factor = 79
+		build_time = 1095 #3y
+		fort_level = 1.5
+		garrison_size = 0.12
+		ai_creation_factor = 87
 
 		extra_tech_building_start = 1.2
 	}
-	tp_Dwalltower_5 = {
-		desc = tp_Dwalltower_1_desc
+	tp_dwarvenfortifications_5 = {
+		desc = tp_dwarvenfortifications_1_desc
 		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 7 }
 		potential = {
 		has_global_flag = building
@@ -125,210 +125,17 @@ temple = {
 			    culture_group = culture_group_dwarves
 			}
 		}
-		upgrades_from = tp_Dwalltower_4
+		upgrades_from = tp_dwarvenfortifications_4
 		gold_cost = 500
-		build_time = 365
-		fort_level = 0.75
+		build_time = 1460 #4y
+		fort_level = 1.5
 		garrison_size = 0.15
-		ai_creation_factor = 78
-
-		extra_tech_building_start = 1.2
-	}
-	tp_Dwalltower_6 = {
-		desc = tp_Dwalltower_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 8 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwalltower_5
-		gold_cost = 800
-		build_time = 365
-		fort_level = 0.75
-		garrison_size = 0.15
-		ai_creation_factor = 78
+		ai_creation_factor = 86
 
 		extra_tech_building_start = 1.2
 	}
 
-	tp_Dwall_1 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 1 }
-		potential = {
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		gold_cost = 50
-		build_time = 365
-		fort_level = 0.25
-		levy_size = 0.03
-		tax_income = 0.5
-		ai_creation_factor = 95
-
-		extra_tech_building_start = 1.5
-	}
-	tp_Dwall_2 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 3 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwall_1
-		gold_cost = 110
-		build_time = 547
-		fort_level = 0.25
-		levy_size = 0.06
-		tax_income = 0.5
-		ai_creation_factor = 94
-
-		extra_tech_building_start = 1.0
-	}
-	tp_Dwall_3 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 4 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwall_2
-		gold_cost = 250
-		build_time = 730
-		fort_level = 0.5
-		levy_size = 0.09
-		tax_income = 0.5
-		ai_creation_factor = 93
-
-		extra_tech_building_start = 1.5
-	}
-	tp_Dwall_4 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 6 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwall_3
-		gold_cost = 350
-		build_time = 1095
-		fort_level = 0.5
-		levy_size = 0.12
-		tax_income = 0.5
-		ai_creation_factor = 92
-
-		extra_tech_building_start = 1.2
-	}
-	tp_Dwall_5 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 7 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwall_4
-		gold_cost = 500
-		build_time = 1460
-		fort_level = 1
-		levy_size = 0.15
-		tax_income = 1
-		ai_creation_factor = 91
-
-		extra_tech_building_start = 1.2
-	}
-	tp_Dwall_6 = {
-		desc = tp_Dwall_1_desc
-		trigger = { TECH_FORTIFICATIONS_CONSTRUCTION = 8 }
-		potential = {
-		has_global_flag = building
-		    FROM = {
-				NOR = {
-				culture_group = culture_group_melkor
-				AND = {
-				    culture = culture_maiar
-					trait = evil_side
-				    }
-				}
-			}
-			ROOT = {
-			    culture_group = culture_group_dwarves
-			}
-		}
-		upgrades_from = tp_Dwall_5
-		gold_cost = 800
-		build_time = 1460
-		fort_level = 1
-		levy_size = 0.15
-		tax_income = 1
-		ai_creation_factor = 91
-
-		extra_tech_building_start = 1.2
-	}
-
+	# Dwarf 'Monasteries'
 	tp_Dmonastery_1 = {
 		desc = tp_Dmonastery_1_desc
 		trigger = { TECH_TEMPLE_CONSTRUCTION = 1 }

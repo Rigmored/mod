@@ -2,7 +2,15 @@ namespace = colonisation
 
 character_event = {
 	id = colonisation.0
-	desc = "colonisation0desc" #Do you want to colonize this province? It can take up to 20 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources in the new lands.
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation0descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation0descB
+	}
+	#Do you want to colonize this province? It can take up to 20 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources in the new lands.
 	picture = GFX_evt_ruins
 	is_triggered_only = yes
 
@@ -673,6 +681,14 @@ character_event = {
 
 character_event = {
 	id = colonisation.20
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation20descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation20descB
+	}
 	desc = "colonisation20desc" #Do you want to colonize this province? Your Dwarves believe it may be rich, but this can take up to 40 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources to colonize the Mountains.;;;;;;;;;;;;x
 	picture = GFX_evt_ruins
 	is_triggered_only = yes
@@ -757,7 +773,15 @@ province_event = {
 
 character_event = {
 	id = colonisation.22
-	desc = "colonisation0desc" #Do you want to colonize this province? Your Dwarves dislike the lack of mountains or hills, but money can persuade them to move. This can take up to 40 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources to colonize the Mountains.;;;;;;;;;;;;x
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation22descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation22descB
+	}	
+	#Do you want to colonize this province? Your Dwarves dislike the lack of mountains or hills, but money can persuade them to move. This can take up to 40 years, and one of your demesne provinces will suffer tax and levy penalties while it expends its resources to colonize the Mountains.;;;;;;;;;;;;x
 	picture = GFX_evt_ruins
 	is_triggered_only = yes
 
@@ -867,7 +891,15 @@ character_event = {
 # 9 Eglath, 10 Mithrim, 11 Nandor, 12 Laegrim (Values higher than 3 are Elder Days cultures, but I'll stick them in anyways)
 character_event = {
 	id = colonisation.30
-	desc = "colonisation30desc" #Do you want to colonize this province? Elves may be dwindling, but with effort, you can grow...
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation30descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation30descB
+	}
+	#Do you want to colonize this province? Elves may be dwindling, but with effort, you can grow...
 	picture = GFX_evt_ruins
 	is_triggered_only = yes
 
@@ -924,7 +956,15 @@ character_event = {
 # High Elves : 0 Noldor, 1 Vanyar, 2 Falmari
 character_event = {
 	id = colonisation.31
-	desc = "colonisation31desc" # The High Elves are few, and the Valar want them in Aman. Perhaps you could colonize with Wood Elves instead...
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation31descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation31descB
+	}
+	# The High Elves are few, and the Valar want them in Aman. Perhaps you could colonize with Wood Elves instead...
 	picture = GFX_evt_elves
 	is_triggered_only = yes
 
@@ -1278,7 +1318,15 @@ character_event = {
  
 character_event = {
 	id = colonisation.40
-	desc = "colonisation40desc" # Do you wish to have Humans colonize this province? It will...
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation40descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation40descB
+	}
+	# Do you wish to have Humans colonize this province? It will...
 	picture = GFX_travel_gondor
 	is_triggered_only = yes
 
@@ -1536,7 +1584,14 @@ province_event = {
 # Colonize Arctic Wilderness with Forodwaith Humans (non-evil, non-human colonizers)
 character_event = {
 	id = colonisation.42
-	desc = "colonisation42desc" # Do you wish to have Humans colonize this province? It will...
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation42descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation42descB
+	}
 	picture = GFX_abandoned_lands
 	is_triggered_only = yes
 
@@ -1610,7 +1665,14 @@ province_event = {
 character_event = {
 	id = colonisation.50
 	title = colonisation50title
-	desc = "colonisation50desc" 
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes } }
+		text = colonisation50descA
+	}
+	desc = {
+		trigger = { mep_coloniz_quick = yes }
+		text = colonisation50descB
+	}
 	picture = GFX_shadows_coming
 	is_triggered_only = yes
 	

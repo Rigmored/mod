@@ -4000,18 +4000,17 @@ character_event = {
 		}
 	## The One Ring ##	
 	if = {
-			limit = { trait = ring }
+			limit = { has_artifact = artifact_ring }
 			if = { 
 				limit = { 
 					is_ruler = yes
 					current_heir = { 
 						dynasty = ROOT 
 						is_alive = yes  
-						NOT = { trait = ring } 
 					}
 				}
 				current_heir = {
-					add_trait = ring 
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
 				}
 				add_trait = dead_target
@@ -4021,73 +4020,78 @@ character_event = {
 				family_palace = {
 					current_heir = { 
 						if = {
-							limit = { NOT = { trait = ring  } }
-							add_trait = ring 
+							mep_transfer_onering_from_root = yes
 							character_event = { id = 250278 }
-							ROOT = { add_trait = dead_target }
 						}	
 					}					
-				}				
+				}
+				add_trait = dead_target				
 			}
 			if = { 
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = ring } }
-					add_trait = ring
+					limit = { dynasty = ROOT is_alive = yes }
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
-					ROOT = { add_trait = dead_target }
-				}	
+				}
+				add_trait = dead_target
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_sibling = {
-					limit = { dynasty = ROOT is_alive = yes NOT = { trait = ring } }
-					add_trait = ring
+					limit = { dynasty = ROOT is_alive = yes }
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
-					ROOT = { add_trait = dead_target }
-				}	
+				}
+				add_trait = dead_target				
 			}	
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_dynasty_member = {
-					limit = { is_alive = yes NOT = { trait = ring } }
-					add_trait = ring
+					limit = { is_alive = yes }
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
-					ROOT = { add_trait = dead_target }
 				}
+				add_trait = dead_target
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_primary_heir = yes is_alive = yes NOT = { trait = ring } }
-					add_trait = ring
+					limit = { is_primary_heir = yes is_alive = yes }
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
-					ROOT = { add_trait = dead_target }
 				}
+				add_trait = dead_target
 			}
 			if = {
 				limit = { NOT = { trait = dead_target } }
 				random_child = {
-					limit = { is_alive = yes NOT = { trait = ring } }
-					add_trait = ring
+					limit = { is_alive = yes }
+					mep_transfer_onering_from_root = yes
 					character_event = { id = 250278 }
-					ROOT = { add_trait = dead_target }
 				}
+				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }
-					spouse = { is_alive = yes NOT = { trait = ring } }		
+					spouse = { is_alive = yes }		
 				}
-				spouse = { add_trait = ring character_event = { id = 250278 } }
+				spouse = {
+					mep_transfer_onering_from_root = yes
+					character_event = { id = 250278 }
+				}
 				add_trait = dead_target
 			}
 			if = {
 				limit = { 
 					NOT = { trait = dead_target }	
-					liege = { NOT = { character = ROOT } NOT = { trait = ring } }
+					liege = { NOT = { character = ROOT } }
 				}
-				liege = { add_trait = ring character_event = { id = 250278 } }
+				liege = {
+					mep_transfer_onering_from_root = yes
+					character_event = { id = 250278 }
+				}
 				add_trait = dead_target
 			}
 			if = {
@@ -4095,8 +4099,7 @@ character_event = {
 					NOT = { trait = dead_target }	
 				}
 				random_vassal = { 
-					limit = { NOT = { trait = ring } }
-					add_trait = ring 
+					mep_transfer_onering_from_root = yes 
 					character_event = { id = 250278 }
 				}
 			}

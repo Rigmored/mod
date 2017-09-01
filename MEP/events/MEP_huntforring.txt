@@ -55,7 +55,7 @@ character_event = {
 		name = "EVTOPTAhuntforring.1" #It is held by an Emperor! That will cost dearly...
 		trigger = {
 			wealth = 5000
-			ring = {
+			onering = {
 				tier = EMPEROR
 			}
 		}
@@ -67,7 +67,7 @@ character_event = {
 		name = "EVTOPTBhuntforring.1"#It is held by an Emperor! I can't afford that...
 		trigger = {
 			NOT = { wealth = 5000 }
-			ring = {
+			onering = {
 				tier = EMPEROR
 			}
 		}
@@ -78,7 +78,7 @@ character_event = {
 		name = "EVTOPTChuntforring.1" #It is held by a King! That will cost dearly...
 		trigger = {
 			wealth = 3000
-			ring = {
+			onering = {
 				tier = KING
 			}
 		}
@@ -90,7 +90,7 @@ character_event = {
 		name = "EVTOPTDhuntforring.1"#It is held by a King! I can't afford that...
 		trigger = {
 			NOT = { wealth = 3000 }
-			ring = {
+			onering = {
 				tier = KING
 			}
 		}
@@ -101,7 +101,7 @@ character_event = {
 		name = "EVTOPTEhuntforring.1"#It is held by a Duke! That will cost dearly...
 		trigger = {
 			wealth = 2500
-			ring = {
+			onering = {
 				tier = DUKE
 			}
 		}
@@ -113,7 +113,7 @@ character_event = {
 		name = "EVTOPTFhuntforring.1"#It is held by a Duke! I can't afford that...
 		trigger = {
 			NOT = { wealth = 2500 }
-			ring = {
+			onering = {
 				tier = DUKE
 			}
 		}
@@ -124,7 +124,7 @@ character_event = {
 		name = "EVTOPTGhuntforring.1"#It is held by a Count! That will cost dearly...
 		trigger = {
 			wealth = 1500
-			ring = {
+			onering = {
 				tier = COUNT
 			}
 		}
@@ -136,7 +136,7 @@ character_event = {
 		name = "EVTOPTHhuntforring.1"#It is held by a Count! I can't afford that...
 		trigger = {
 			NOT = { wealth = 1500 }
-			ring = {
+			onering = {
 				tier = COUNT
 			}
 		}
@@ -147,7 +147,7 @@ character_event = {
 		name = "EVTOPTIhuntforring.1"#It is held by a Baron! That will cost dearly...
 		trigger = {
 			wealth = 1000
-			ring = {
+			onering = {
 				tier = BARON
 			}
 		}
@@ -159,7 +159,7 @@ character_event = {
 		name = "EVTOPTJhuntforring.1"#It is held by a Baron! I can't afford that...
 		trigger = {
 			NOT = { wealth = 1000 }
-			ring = {
+			onering = {
 				tier = BARON
 			}
 		}
@@ -170,7 +170,7 @@ character_event = {
 		name = "EVTOPTKhuntforring.1"#It is held by a nobody. But it will be expensive...
 		trigger = {
 			wealth = 1000
-			ring = {
+			onering = {
 				is_ruler = no
 			}
 		}
@@ -182,7 +182,7 @@ character_event = {
 		name = "EVTOPTLhuntforring.1"#I can't afford that...
 		trigger = {
 			NOT = { wealth = 1000 }
-			ring = {
+			onering = {
 				is_ruler = no
 			}
 		}
@@ -284,7 +284,7 @@ character_event = {
 		trigger = {
 			NOT = { culture = culture_umaiar }
 		}
-		ring = {
+		onering = {
 			character_event = { id = huntforring.7 days = 7 }
 		}
 	}
@@ -294,7 +294,7 @@ character_event = {
 		trigger = {
 			culture = culture_umaiar
 		}
-		ring = {
+		onering = {
 			character_event = { id = huntforring.8 days = 2 }
 		}
 	}
@@ -336,7 +336,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
-			ring = {
+			onering = {
 				tier = EMPEROR 
 			}
 		}
@@ -353,7 +353,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
-			ring = {
+			onering = {
 				tier = KING 
 			}
 		}
@@ -370,7 +370,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
-			ring = {
+			onering = {
 				tier = DUKE 
 			}
 		}
@@ -387,7 +387,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
-			ring = {
+			onering = {
 				tier = COUNT 
 			}
 		}
@@ -404,7 +404,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.9"#Men, to arms! Fight!
 		trigger = {
-			ring = {
+			onering = {
 				tier = BARON 
 			}
 		}
@@ -436,7 +436,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAhuntforring.11"#Have the tracker and dogs ready! They can find him when invisible!
-		ring = {
+		onering = {
 			character_event = { id = huntforring.14 days = 7 }
 		}
 	}
@@ -455,34 +455,15 @@ character_event = {
 		clr_character_flag = huntforring
 		random_list = {
 			20 = {
-				death = {
-					death_reason = death_battle 
-				}
-				ring = {
-					character_event = { id = huntforring.13 }
-				}
+				death = { death_reason = death_battle }
 			}
-			20 = {
-				imprison = FROMFROM
-				remove_trait = huntforring
-				ring = {
-					character_event = { id = huntforring.13 }
-				}
-			}
-			40 = {
-				add_trait = wounded
-				remove_trait = huntforring
-				ring = {
-					character_event = { id = huntforring.13 }
-				}
-			}
-			20 = {
-				add_trait = maimed
-				remove_trait = huntforring
-				ring = {
-					character_event = { id = huntforring.13 }
-				}
-			}		 
+			20 = { imprison = FROMFROM }
+			40 = { add_trait = wounded }
+			20 = { add_trait = maimed }		 
+		}
+		remove_trait = huntforring
+		onering = {
+			character_event = { id = huntforring.13 }
 		}
 	}
 }
@@ -517,10 +498,8 @@ character_event = {
 				FROM = { character_event = { id = huntforring.15 days = 1 } }
 			}
 			75 = {
-				remove_trait = ring
-				death = {
-					death_reason = death_battle
-				}
+				FROM = { mep_transfer_onering_from_root = yes }
+				death = { death_reason = death_battle }
 				FROM = { character_event = { id = huntforring.16  days = 1 } }
 			}
 		}
@@ -554,7 +533,6 @@ character_event = {
 	option = {
 		name = "EVTOPTAhuntforring.16"#At last!
 		remove_trait = huntforring
-		add_trait = ring
 		set_character_flag = courtierwithring
 		clr_character_flag = huntforring
 	}
@@ -581,11 +559,9 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAhuntforring.17"#Just give me the ring, and all is forgiven.
-		ring = {
-			remove_trait = ring 
-			add_trait = ringbearer2
+		onering = {
+			mep_transfer_onering_to_root = yes
 		}
-		add_trait = ring
 		clr_character_flag = huntforring
 		clr_character_flag = sentringhunters
 		any_playable_ruler = {
@@ -595,11 +571,9 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTBhuntforring.17"#Betrayal! Throw him in the dungeon!
-		ring = {
-			remove_trait = ring 
-			add_trait = ringbearer2
+		onering = {
+			mep_transfer_onering_to_root = yes
 		}
-		add_trait = ring
 		clr_character_flag = sentringhunters
 		clr_character_flag = huntforring
 	}
@@ -623,11 +597,13 @@ character_event = {
 				FROMFROM = { character_event = { id = huntforring.15 } }
 			}
 			75 = {
-				remove_trait = ring
+				FROMFROM = {
+					mep_transfer_onering_from_root = yes
+					character_event = { id = huntforring.16 }
+				}
 				death = {
 					death_reason = death_battle
 				}
-				FROMFROM = { character_event = { id = huntforring.16 } }
 			}
 		}
 	}
@@ -649,11 +625,13 @@ character_event = {
 				FROMFROM = { character_event = { id = huntforring.15 } }
 			}
 			75 = {
-				remove_trait = ring
+				FROMFROM = {
+					mep_transfer_onering_from_root = yes
+					character_event = { id = huntforring.16 }
+				}
 				death = {
 					death_reason = death_battle
 				}
-				FROMFROM = { character_event = { id = huntforring.16 } }
 			}
 		}
 	}	

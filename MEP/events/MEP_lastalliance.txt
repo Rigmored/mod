@@ -1832,9 +1832,9 @@ character_event = {
 		trigger = { character = 12135 }
 		ai_chance = { factor = 0.3 }
 		event_target:mep_lastalliance_evil_combatant = {
+			mep_transfer_onering_to_root = yes
 			character_event = { id = lastalliance.64 }
 		}
-		add_trait = ring
 		
 	}
 	
@@ -1844,9 +1844,9 @@ character_event = {
 		trigger = { NOT = {character = 12135 } }
 		ai_chance = { factor = 2 }
 		event_target:mep_lastalliance_evil_combatant = {
+			mep_transfer_onering_to_root = yes
 			character_event = { id = lastalliance.64 }
 		}
-		add_trait = ring
 		
 	}
 	
@@ -1854,6 +1854,8 @@ character_event = {
 	option = {
 		name = EVTOPTClastalliance.63
 		ai_chance = { factor = 1 }
+		destroy_artifact = artifact_ring
+		add_trait = ringbearer1
 		event_target:mep_lastalliance_evil_combatant = {
 			death = { death_reason = death_destroyed_alongside_one_ring  killer = PREV }
 		}
@@ -1882,8 +1884,6 @@ character_event = {
 	# Could be worse..!
 	option = {
 		name = EVTOPTlastalliance.64
-		remove_trait = ring
-		add_trait = ringbearer2
 		add_trait = spiritform
 		activate_title = { title = d_sauron_exile status = yes }
 		d_sauron_exile = { gain_title = PREV }

@@ -288,7 +288,8 @@ character_event = {
 		set_global_flag = ringlost
 		prestige = -100
 		event_target:mep_fellowship_ringbearer = {
-			remove_trait = ring
+			destroy_artifact = artifact_ring
+			remove_trait = onering
 			add_trait = ringbearer1
 		}
 		event_target:mep_chartarget_aragorn = {
@@ -1163,10 +1164,9 @@ character_event = {
 		ai_chance = { factor = 5 }
 		# take the ring
 		event_target:mep_fellowship_ringbearer = {
-			remove_trait = ring
-			add_trait = ringbearer1
+			mep_transfer_onering_to_root = yes
+			# add_trait = ringbearer1 # Note: ringbearer1 is supposed to be if the ring is destroyed
 		}
-		add_trait = ring
 		# set the flags
 		hidden_tooltip = {
 			clr_global_flag = fellowshipquest
@@ -1445,10 +1445,9 @@ character_event = {
 	option = {
 		name = "EVTOPTAwotr.511"
 		event_target:mep_chartarget_boromir = {
-			add_trait = ring
+			mep_transfer_onering_from_root = yes
 		}
-		remove_trait = ring
-		add_trait = ringbearer1
+		# add_trait = ringbearer1 # ringbearer1 is supposed to be for when the ring is destroyed
 		set_global_flag = boromirhasring
 		random = {
 			chance = 50

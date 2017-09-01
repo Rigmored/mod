@@ -138,23 +138,23 @@ character_event = {
 }
 	
 #Now to increase the population level via decision event#
-	character_event = {
-		id = population.5
-		desc = population5desc # Though the Men of the West replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage young Dunedain families to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
-		picture = "GFX_good"
+character_event = {
+	id = population.5
+	desc = population5desc # Though the Men of the West replenish their numbers slowly, during times of plenty you can expend gold and influence to encourage young Dunedain families to have more children. You should see results within twenty years. NOTE: There is no point doing so in a densely populated province.
+	picture = "GFX_good"
 	
-		is_triggered_only = yes
+	is_triggered_only = yes
 	
-		option = {
-			name = population5A #No, not right now
-			trigger = { ai = no }
-		}
+	option = {
+		name = population5A #No, not right now
+		trigger = { ai = no }
+	}
 	
-		option = { 
-			name = population5B #Yes, make efforts to increase population in a random province
-			wealth = -500
-			prestige = -125
-			random_realm_province = {
+	option = { 
+		name = population5B #Yes, make efforts to increase population in a random province
+		wealth = -500
+		prestige = -125
+		random_realm_province = {
 			limit = { mep_dunedian_popmod_increasable_trigger = yes } 
 			add_province_modifier = { name = population_increasing duration = -1 }
 		}
@@ -167,7 +167,7 @@ character_event = {
 			job_treasurer = {
 				location = { mep_dunedian_popmod_increasable_trigger = yes }
 			}
-		}
+		}	
 		wealth = -500
 		prestige = -125
 		any_courtier = {
@@ -190,6 +190,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	option = {
@@ -547,6 +551,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	
@@ -936,6 +944,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	
@@ -1293,6 +1305,10 @@ province_event = {
 	
 	mean_time_to_happen = {
 		months = 240
+		modifier = {
+			factor = 0.5
+			mep_coloniz_quick = yes
+		}
 	}
 	
 	
@@ -1555,6 +1571,168 @@ province_event = {
 #		remove_province_modifier = six_population_human
 #	}
 #}
+#---------------------------------------------------------------------------------------
+# New start population increase events, for use with title_decisions
+
+# Population increase for humans, hobbits, orcs, and other 'ordinary growth' species
+character_event = {
+	id = population.50
+	title = population50title
+	desc = {
+		trigger = { mep_coloniz_quick = yes}
+		text = population50descA
+	}
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes} }
+		text = population50descB
+	}
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = population5A #No, not right now
+		trigger = { ai = no }
+	}
+	
+	option = {
+		name = population50B #Yes, make efforts to increase population in this province
+		FROM = {
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -100
+		}
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -200
+		}
+		prestige = -125
+	}
+}
+
+# Population increase for Dúnedain
+character_event = {
+	id = population.51
+	title = population51title
+	desc = {
+		trigger = { mep_coloniz_quick = yes}
+		text = population51descA
+	}
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes} }
+		text = population51descB
+	}
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = population5A #No, not right now
+		trigger = { ai = no }
+	}
+	
+	option = {
+		name = population51B #Yes, make efforts to increase population in this province
+		FROM = {
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		prestige = -125
+	}
+}
+
+# Population increase for Dwarves
+character_event = {
+	id = population.52
+	title = population52title
+	desc = {
+		trigger = { mep_coloniz_quick = yes}
+		text = population52descA
+	}
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes} }
+		text = population52descB
+	}
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = population5A #No, not right now
+		trigger = { ai = no }
+	}
+	
+	option = {
+		name = population52B #Yes, make efforts to increase population in this province
+		FROM = {
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -250
+		}
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -500
+		}
+		prestige = -125
+	}
+}
+
+# Population increase for Elves
+character_event = {
+	id = population.53
+	title = population53title
+	desc = {
+		trigger = { mep_coloniz_quick = yes}
+		text = population53descA
+	}
+	desc = {
+		trigger = { NOT = { mep_coloniz_quick = yes} }
+		text = population53descB
+	}
+	picture = "GFX_evt_elven_story"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = population5A #No, not right now
+		trigger = { ai = no }
+	}
+	
+	option = {
+		name = population53B #Yes, make efforts to increase population in this province
+		FROM = {
+			location = {
+				add_province_modifier = { name = population_increasing duration = -1 }
+			}
+		}
+		if = {
+			limit = { mep_coloniz_cheap = yes }
+			wealth = -400
+		}
+		if = {
+			limit = { NOT = { mep_coloniz_cheap = yes } }
+			wealth = -800
+		}
+		prestige = -125
+	}
+}
 
 #-------------------------------------------------------------------------------------------
 # General setup, called from on_chronicle_start

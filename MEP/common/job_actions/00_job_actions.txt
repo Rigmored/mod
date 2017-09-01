@@ -286,36 +286,36 @@ action_colonize_province = {
 
 # MEP custom, used to target the provinces where the population level modifier is 1 to 6
 # making it a valid target for the 'increase population' decision
-action_increase_population = {
-	attribute = stewardship
-	
-	potential = {
-
-	}	
-
-	trigger = {
-		any_province_lord = {
-			OR = {		
-				top_liege = { character = FROM } 
-				liege = { liege = { character = FROM } } 
-				liege = { character = FROM }
-				character = FROM
-				
-			}
-		}
-		owner = {
-			PREV = {
-			  controlled_by = PREV
-			}
-		}
-		mep_has_increasable_popmod_trigger = yes
-		NOT = { has_province_modifier = population_increasing }
-		NOT = { mep_being_purged_trigger = yes }
-		
-	}
-	
-	events = { }
-}
+#action_increase_population = {
+#	attribute = stewardship
+#	
+#	potential = {
+#
+#	}	
+#
+#	trigger = {
+#		any_province_lord = {
+#			OR = {		
+#				top_liege = { character = FROM } 
+#				liege = { liege = { character = FROM } } 
+#				liege = { character = FROM }
+#				character = FROM
+#				
+#			}
+#		}
+#		owner = {
+#			PREV = {
+#			  controlled_by = PREV
+#			}
+#		}
+#		mep_has_increasable_popmod_trigger = yes
+#		NOT = { has_province_modifier = population_increasing }
+#		NOT = { mep_being_purged_trigger = yes }
+#		
+#	}
+#	
+#	events = { }
+#}
 
 
 # Spymaster

@@ -1,88 +1,388 @@
-decisions = {
-	## ##
+# Instead of using the stward to mark the province to increase the population, 
+# use title decisions instead. FROM is the decision taker, ROOT is the targeted title
+title_decisions = {
+	
+	# Increasing Population for Non-Dwarf/Dúnedian/Elf
 	increase_pop_other = {
+	
+		filter = realm_owned
+		ai_target_filter = realm_owned
+		
 		potential = {
-			mep_has_xhumans_culture = yes
-			any_realm_province = {
+			# counties in your realm that the right culture/religion, but not maxxed out already
+			tier = count
+			holder_scope = {
+				OR = {
+					holder = FROM
+					is_liege_or_above = FROM
+				}
+			}
+			location = {
 				mep_xhumans_popmod_increasable_trigger = yes
 			}
-			has_character_flag = special_decisions_open
 		}
 		
-		allow = { 
-			prestige = 150
-			wealth = 250
+		from_potential = {
+			# mep_has_xhumans_culture = yes
+		}
+		
+		allow = {
+			ROOT = {
+				# unoccupied provinces which are not already population_increasing
+				location = {
+					NOT = { has_province_modifier = population_increasing }
+					NOT = { mep_being_purged_trigger = yes }
+				}
+				is_occupied = no
+			}
+			FROM = {
+				prestige = 150
+				# the cost depends on game rules. There is a buffer to prevent immediate debt
+				OR = {
+					AND = {
+						mep_coloniz_cheap = yes
+						wealth = 125
+					}
+					AND = {
+						NOT = { mep_coloniz_cheap = yes }
+						wealth = 250
+					}
+				}
+			}
 		}
 		
 		effect = {
-			ROOT = {
-				character_event = { id = population.24 }
+			FROM = {
+				character_event = { id = population.50 }
 			}
-		}
-	}
-	increase_pop_dunedain = {
-		potential = {
-			culture_group = culture_group_numenorean
-			any_realm_province = {
-				mep_xhumans_popmod_increasable_trigger = yes
-			}
-			has_character_flag = special_decisions_open
 		}
 		
-		allow = { 
-			prestige = 150
-			wealth = 600
-		}
+		ai_will_do = { factor = 0.1 }
 		
-		effect = {
-			ROOT = {
-				character_event = { id = population.5 }
-			}
-		}
-	}
-	
-	increase_pop_elves = {
-	
-		potential = {
-			mep_is_elf_culture = yes
-			any_realm_province = {
-				mep_elves_popmod_increasable_trigger = yes
-			}
-			has_character_flag = special_decisions_open
-		}
-		
-		allow = { 
-			prestige = 155
-			wealth = 900
-		}
-		
-		effect = {
-			ROOT = {
-				character_event = { id = population.12 }
-			}
-		}
-	}
+		revoke_allowed = { always = no } # not used
 
+	}
+	
+	# Increasing Population for Dúnedain
+	increase_pop_dunedain = {
+	
+		filter = realm_owned
+		ai_target_filter = realm_owned
+		
+		potential = {
+			# counties in your realm that have Dúnedain, but not maxxed out already
+			tier = count
+			holder_scope = {
+				OR = {
+					holder = FROM
+					is_liege_or_above = FROM
+				}
+			}
+			location = {
+				mep_dunedian_popmod_increasable_trigger = yes
+			}
+		}
+		
+		from_potential = {
+			# culture_group = culture_group_numenorean
+		}
+		
+		allow = {
+			ROOT = {
+				# unoccupied provinces which are not already population_increasing
+				location = {
+					NOT = { has_province_modifier = population_increasing }
+					NOT = { mep_being_purged_trigger = yes }
+				}
+				is_occupied = no
+			}
+			FROM = {
+				# the cost depends on game rules. There is a buffer to prevent immediate debt
+				prestige = 150
+				OR = {
+					AND = {
+						mep_coloniz_cheap = yes
+						wealth = 275
+					}
+					AND = {
+						NOT = { mep_coloniz_cheap = yes }
+						wealth = 550
+					}
+				}
+			}
+		}
+		
+		effect = {
+			FROM = {
+				character_event = { id = population.51 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { culture_group = culture_group_numenorean } }
+			}
+			# there are good and bad numenoreans, so the following is to set the right choice...
+			modifier = {
+				factor = 0
+				FROM = { mep_is_evil_side_trigger = yes }
+				ROOT = {
+					location = { mep_is_good_numenorean_culture = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = { mep_is_good_side_trigger = yes }
+				ROOT = {
+					location = { mep_is_black_numenorean_culture = yes }
+				}
+			}
+		}
+		
+		revoke_allowed = { always = no } # not used
+
+	}
+	
+	# Increasing Population for Dwarves
 	increase_pop_dwarves = {
 	
+		filter = realm_owned
+		ai_target_filter = realm_owned
+		
 		potential = {
-			culture_group = culture_group_dwarves
-			any_realm_province = {
+			# counties in your realm that have dwarves, but not maxxed out already 
+			tier = count
+			holder_scope = {
+				OR = {
+					holder = FROM
+					is_liege_or_above = FROM
+				}
+			}
+			location = {
 				mep_dwarves_popmod_increasable_trigger = yes
 			}
-			has_character_flag = special_decisions_open
 		}
 		
-
-		allow = { 
-			prestige = 125
-			wealth = 600
+		from_potential = {
+			# culture_group = culture_group_dwarves
+		}
+		
+		allow = {
+			ROOT = {
+				# unoccupied provinces which are not already population_increasing
+				location = {
+					NOT = { has_province_modifier = population_increasing }
+					NOT = { mep_being_purged_trigger = yes }
+				}
+				is_occupied = no
+			}
+			FROM = {
+				prestige = 150
+				# the cost depends on game rules. There is a buffer to prevent immediate debt
+				OR = {
+					AND = {
+						mep_coloniz_cheap = yes
+						wealth = 275
+					}
+					AND = {
+						NOT = { mep_coloniz_cheap = yes }
+						wealth = 550
+					}
+				}
+			}
 		}
 		
 		effect = {
-			ROOT = {
-				character_event = { id = population.18 }
+			FROM = {
+				character_event = { id = population.52 }
 			}
 		}
-	}	
+		
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { culture_group = culture_group_dwarves } }
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					mep_is_evil_side_trigger = yes
+					NOT = { culture_group = culture_group_dwarves } # This makes sure the odd 'evil dwarf' ruler will still do this
+				}
+			}
+		}
+		
+		revoke_allowed = { always = no } # not used
+
+	}
+	
+	# Increasing Population for Elves
+	increase_pop_elves = {
+	
+		filter = realm_owned
+		ai_target_filter = realm_owned
+		
+		potential = {
+			# counties in your realm that have elves, but not maxxed out already
+			tier = count
+			holder_scope = {
+				OR = {
+					holder = FROM
+					is_liege_or_above = FROM
+				}
+			}
+			location = {
+				mep_elves_popmod_increasable_trigger = yes
+			}
+		}
+		
+		from_potential = {
+			# religion_group = religion_group_eldar
+		}
+		
+		allow = {
+			ROOT = {
+				# unoccupied provinces which are not already population_increasing
+				location = {
+					NOT = { has_province_modifier = population_increasing }
+					NOT = { mep_being_purged_trigger = yes }
+				}
+				is_occupied = no
+			}
+			FROM = {
+				prestige = 150
+				# the cost depends on game rules. There is a buffer to prevent immediate debt
+				OR = {
+					AND = {
+						mep_coloniz_cheap = yes
+						wealth = 425
+					}
+					AND = {
+						NOT = { mep_coloniz_cheap = yes }
+						wealth = 850
+					}
+				}
+			}
+		}
+		
+		effect = {
+			FROM = {
+				character_event = { id = population.53 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { religion_group = religion_group_eldar } }
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					mep_is_evil_side_trigger = yes
+					NOT = { religion_group = religion_group_eldar } # This makes sure the odd 'evil elf' ruler will still do this
+				}
+			}
+		}
+		
+		revoke_allowed = { always = no } # not used
+
+	}
+
+
 }
+
+
+# The old decisions (commented out) are below. If uncommented, correct the bugs before using
+#decisions = {
+#	## ##
+#	increase_pop_other = {
+#		potential = {
+#			mep_has_xhumans_culture = yes
+#			any_realm_province = {
+#				mep_xhumans_popmod_increasable_trigger = yes
+#			}
+#			has_character_flag = special_decisions_open
+#		}
+#		
+#		allow = { 
+#			prestige = 150
+#			wealth = 250
+#		}
+#		
+#		effect = {
+#			ROOT = {
+#				character_event = { id = population.24 }
+#			}
+#		}
+#	}
+#	increase_pop_dunedain = {
+#		potential = {
+#			culture_group = culture_group_numenorean
+#			any_realm_province = {
+#				mep_xhumans_popmod_increasable_trigger = yes
+#			}
+#			has_character_flag = special_decisions_open
+#		}
+#		
+#		allow = { 
+#			prestige = 150
+#			wealth = 600
+#		}
+#		
+#		effect = {
+#			ROOT = {
+#				character_event = { id = population.5 }
+#			}
+#		}
+#	}
+#	
+#	increase_pop_elves = {
+#	
+#		potential = {
+#			mep_is_elf_culture = yes
+#			any_realm_province = {
+#				mep_elves_popmod_increasable_trigger = yes
+#			}
+#			has_character_flag = special_decisions_open
+#		}
+#		
+#		allow = { 
+#			prestige = 155
+#			wealth = 900
+#		}
+#		
+#		effect = {
+#			ROOT = {
+#				character_event = { id = population.12 }
+#			}
+#		}
+#	}
+#
+#	increase_pop_dwarves = {
+#	
+#		potential = {
+#			culture_group = culture_group_dwarves
+#			any_realm_province = {
+#				mep_dwarves_popmod_increasable_trigger = yes
+#			}
+#			has_character_flag = special_decisions_open
+#		}
+#		
+#
+#		allow = { 
+#			prestige = 125
+#			wealth = 600
+#		}
+#		
+#		effect = {
+#			ROOT = {
+#				character_event = { id = population.18 }
+#			}
+#		}
+#	}	
+#}

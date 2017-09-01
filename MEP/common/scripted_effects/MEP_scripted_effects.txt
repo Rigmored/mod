@@ -39,7 +39,15 @@
 # mep_make_random_nandorelf_character
 # mep_generate_eleven_courtiers_effect
 
-# WOTR effects
+### WOTR effects
+# mep_fellowship_ends_at_rivendell_effect
+# mep_reached_moria_effect
+# mep_fellowship_moria1_effect
+# mep_escape_moria_effect
+
+### Artifacts
+# mep_transfer_onering_from_root
+# mep_transfer_onering_to_root 
 
 #===============================================================================================================
 # Colonization stuff
@@ -948,5 +956,44 @@ mep_escape_moria_effect = {
 		set_character_flag = wotr14
 	}
 }
+#=====================================================================
+### Artifacts
+mep_transfer_onering_from_root = {
+	ROOT = {
+		any_artifact = {
+			limit = { has_artifact_flag = artifact_ring } 
+			transfer_artifact = {
+				from = ROOT
+				to = PREVPREV
+			}
+		}
+		remove_trait = onering
+		add_trait = ringbearer2
+	}
+	add_trait = onering
+	if = {
+		limit = { trait = ringbearer2 }
+		remove_trait = ringbearer2
+	}
+} 
+
+mep_transfer_onering_to_root = {
+	any_artifact = {
+		limit = { has_artifact_flag = artifact_ring } 
+		transfer_artifact = {
+			from = PREV
+			to = ROOT
+		}
+	}
+	remove_trait = onering
+	add_trait = ringbearer2
+	ROOT = {
+		add_trait = onering
+		if = {
+			limit = { trait = ringbearer2 }
+			remove_trait = ringbearer2
+		}
+	}
+} 
 
 

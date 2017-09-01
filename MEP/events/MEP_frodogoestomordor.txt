@@ -144,7 +144,7 @@ character_event = {
 			if = {
 				limit = {
 					is_alive = yes
-					trait = ring
+					trait = onering
 				}
 				character_event = { id = frodo.6 days = 30 }
 			}
@@ -285,7 +285,7 @@ character_event = {
 		has_global_flag = invademordor
 		NOT = { has_global_flag = frodo9 }
 		NOT = { has_global_flag = boromirhasring }
-		trait = ring
+		has_artifact = artifact_ring
 	}
 	
 	immediate = {
@@ -339,19 +339,15 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAfrodo.11"
-		remove_trait = ring
+		event_target:mep_chartarget_sauron = {
+			if = {
+				limit = { is_alive = yes }
+				mep_transfer_onering_from_root = yes
+				character_event = { id = frodo.21 days = 7 }
+			}
+		}
 		death = {
 			death_reason = death_battle
-		}
-		any_independent_ruler  = {
-			limit = {
-				OR = {
-					has_landed_title = k_mordor
-					has_landed_title = c_barad_dur
-				}
-				dynasty = 10012	
-			}
-			character_event = { id = frodo.21 days = 7 }
 		}
 		log = "EVENT REACHED FRODO 11"
 	}
@@ -400,7 +396,7 @@ character_event = {
 	}
 }
 	
-###They reach Mt.Doom##
+###They reach Mt.Doom, and Destroy The One Ring
 character_event = {
     id = frodo.14
     title = "EVTTITfrodo.14"
@@ -412,8 +408,11 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAfrodo.14"
-		remove_trait = ring
+		
+		destroy_artifact = artifact_ring
+		remove_trait = onering
 		add_trait = ringbearer1
+		
 		any_independent_ruler  = {
 			limit = {
 				OR = {
@@ -428,7 +427,7 @@ character_event = {
 	}
 }
 	
-###They reach Mt.Doom##
+###They reach Mt.Doom, but fail, Sauron gets the ring
 character_event = {
     id = frodo.15
     title = "EVTTITfrodo.15"
@@ -440,19 +439,15 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAfrodo.15"
-		remove_trait = ring
-		death = {
-			death_reason = death_suicide
-		}
-		any_independent_ruler  = {
-			limit = {
-				OR = {
-					has_landed_title = k_mordor
-					has_landed_title = c_barad_dur
-				}
-				dynasty = 10012	
+		event_target:mep_chartarget_sauron = {
+			if = {
+				limit = { is_alive = yes }
+				mep_transfer_onering_from_root = yes
+				character_event = { id = frodo.24 }
 			}
-			character_event = { id = frodo.24 }
+		}
+		death = {
+			death_reason = death_battle
 		}
 		log = "EVENT REACHED FRODO 15"		
 	}
@@ -719,7 +714,6 @@ character_event = {
 	option = {
 		name = "EVTOPTAfrodo.21"
 		set_global_flag = sauronhasring
-		add_trait = ring
 		any_independent_ruler  = {
 			character_event = { id = frodo.22 }
 		}
@@ -782,7 +776,6 @@ character_event = {
 	option = {
 		name = "EVTOPTAfrodo.24"
 		set_global_flag = sauronhasring
-		add_trait = ring
 		any_independent_ruler  = {
 			character_event = { id = frodo.22 }
 		}

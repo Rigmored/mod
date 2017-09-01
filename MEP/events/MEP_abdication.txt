@@ -57,20 +57,16 @@ character_event = {
 		}
 		## The One Ring ##	
 		if = {
-			limit = { trait = ring }
+			limit = { has_artifact = artifact_ring }
 			if = { 
 				limit = { 
 					is_ruler = yes
-					current_heir = { 
-						is_alive = yes  
-						NOT = { trait = ring } 
-					}
+					current_heir = { is_alive = yes }  
 				}
 				current_heir = {
-					add_trait = ring 
+					mep_transfer_onering_from_root = yes 
 					character_event = { id = 250278 }
 				}
-				remove_trait = ring
 			}
 		}
 		## Narya ##	
