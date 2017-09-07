@@ -56,14 +56,16 @@ character_event = {
 	
 	trigger = {
 		trait = elf
-		spouse = {
-			NOT = { trait = elf }
-			NOT = { 
+		any_spouse = {
+			NOR = {
+				trait = elf
 				AND = {
-					has_character_flag = elfhumanmarriage
-					religion_group = religion_group_edain
-					}
+					age = 60
+					religion_group = religion_group_eldar
 				}
+			}
+			NOT = { has_character_flag = elfhumanmarriage }
+			is_landed = no
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = elfhumanmarriage }
@@ -75,8 +77,15 @@ character_event = {
 		name = "EVTOPTAmepmarriage.1" ### Revoke it
 		any_spouse = {
 			limit = {
+				NOR = {
+					trait = elf
+					AND = {
+						age = 60
+						religion_group = religion_group_eldar
+					}
+				}
+				NOT = { has_character_flag = elfhumanmarriage }
 				is_landed = no
-				NOT = { trait = elf }
 			}
 			remove_spouse = ROOT
 			# banish = yes
@@ -102,8 +111,12 @@ character_event = {
 	
 	trigger = {
 		trait = orc
-		spouse = {
-			NOT = { trait = orc }
+		any_spouse = {
+			is_landed = no
+			NOR = {
+				trait = orc
+				mep_orc_troll_culture = yes
+			}
 		}
 		NOT = { has_character_flag = wrongmarriage1 }
 		NOT = { has_character_flag = orchumanmarriage }
@@ -116,7 +129,10 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_landed = no
-				NOT = { trait = orc }
+				NOR = {
+					trait = orc
+					mep_orc_troll_culture = yes
+				}
 			}
 			remove_spouse = ROOT
 			# banish = yes
