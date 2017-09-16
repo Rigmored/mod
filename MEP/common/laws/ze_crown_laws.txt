@@ -156,7 +156,16 @@ de_jure_laws = {
 			holder_scope = {
 				OR = {
 					AND = {
-						NOT = { mep_canhave_nice_feudalism = yes }
+						NOT = { trait = evil_side }
+						OR = {
+							religion_group = religion_group_eldar
+							religion_group = religion_group_enyd
+							religion_group = religion_group_khazad
+							religion_group = religion_group_eruhini
+							religion_group = religion_group_periannath
+							religion = religion_dunedain
+							religion = religion_numenorean
+						}
 						primary_title = { 
 							OR = {
 								has_law = ze_administration_laws_1
@@ -165,7 +174,18 @@ de_jure_laws = {
 						}
 					}
 					AND = {
-						mep_canhave_nice_feudalism = yes
+						OR = {
+							trait = evil_side
+							NOR = {
+								religion_group = religion_group_eldar
+								religion_group = religion_group_enyd
+								religion_group = religion_group_khazad
+								religion_group = religion_group_eruhini
+								religion_group = religion_group_periannath
+								religion = religion_dunedain
+								religion = religion_numenorean
+							}
+						}
 						primary_title = { has_law = ze_administration_laws_2 }
 					}
 				}
@@ -182,7 +202,16 @@ de_jure_laws = {
 				factor = 3
 				always = yes
 				holder_scope = {
-					mep_canhave_nice_feudalism = yes
+					NOT = { trait = evil_side }
+					OR = {
+						religion_group = religion_group_eldar
+						religion_group = religion_group_enyd
+						religion_group = religion_group_khazad
+						religion_group = religion_group_eruhini
+						religion_group = religion_group_periannath
+						religion = religion_dunedain
+						religion = religion_numenorean
+					}
 				}
 			}
 		}

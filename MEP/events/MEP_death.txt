@@ -10,25 +10,25 @@ character_event = {
 	
 	option = {
 		# dispatching the elven 'marriedforever' event
-		# This does NOT work properly, and I don't know why
-		#ROOT = {
-		#	if = {
-		#		limit = {
-		#			is_alive = no
-		#			trait = elf
-		#			NOT = { trait = elf_childhood }
-		#		}
-		#		any_spouse = {
-		#			limit = {
-		#				is_alive = yes
-		#				trait = elf
-		#				NOT = { trait = elf_childhood }
-		#				NOT = { trait = marriedforever }
-		#			}
-		#			character_event = { id = mepmarriage.11  days = 1 }
-		#		}
-		#	}
-		#}
+		
+		ROOT = {
+			if = {
+				limit = {
+					# is_alive = no
+					trait = elf
+					NOT = { trait = elf_childhood }
+				}
+				any_spouse = {
+					limit = {
+						is_alive = yes
+						trait = elf
+						NOT = { trait = elf_childhood }
+						NOT = { trait = marriedforever }
+					}
+					character_event = { id = mepmarriage.11  days = 1 }
+				}
+			}
+		}
 	}
 }
 
