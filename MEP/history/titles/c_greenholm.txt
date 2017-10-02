@@ -1,3 +1,4 @@
+# The Hobbit settlement of Greenholm actualy lies inside the Shire, not the Westmarch
 8220.1.1={
 	law = agnatic_succession
 	law = succ_primogeniture
@@ -54,6 +55,7 @@ holder = 2242 # Herucar
 {
 holder = 2243 # Minadir
 }
+## The province history has Greenhold becoming Wilderness in 9752 ??
 9849.1.1=
 {
 holder = 2244 # Orchaldor
@@ -74,15 +76,21 @@ holder = 2247 # Calimir
 {
 holder = 2248 # Calmacil
 }
-10318.1.1=
-{
-holder = 0
-liege = 0
+## The province history has Greenholm going Hobbit in 10300, 18 years before the end of Arthedian.
+# This seems unlikely.
+
+# inserted wilderness holder here, instead of 'holder = 0'
+10318.1.1 = {
+	holder = 25033
+	liege = d_wild_west_march
 }
-10350.1.1=
-{
-holder = 8600
-liege = 0
+
+# Dinodas was born 11300, so the previous ruler date of 10350 is likely a typo
+# Dinodas and his children are listed under 'Rulers in Cardolan' (?!?), and 
+# have no family connection with Fastred 
+11340.1.1 = {
+	holder = 8600
+	liege = 0
 }
 11396.1.1=
 {

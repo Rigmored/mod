@@ -13788,6 +13788,31 @@ k_shire = {
 	}
 }
 
+## This a substitute title for k_shire, covering the shire after Hobbits took over,
+# but before Bucca of the Marish established the thaindom. For all except 4 years
+# of this period, the shire was vassal of k_arthedain, and as such has to be a duke
+# level title, but the 4 farthings are specified in the history files as being
+# no longer in existance once the Hobbits settles in the shire.
+# Flag copied from k_thain_shire.tga
+d_the_shire = {
+	color={ 0.83 0.78 0.54 }
+	color2={ 125 125 142 }
+	
+	culture_dunedain = "Sûza-t"
+	culture_arnorian = "Sûza-t"
+	culture_gondorian = "Sûza-t"
+	culture_goblin = "Akashuga-uzg"
+	culture_orkish = "Akashuga-uzg"
+	culture_maiar = "Akashuga-uzg"
+	
+	capital = 74 # The Marish
+	
+	allow = {
+		k_shire = { has_holder = no }
+		culture_group = culture_group_halfling
+	}
+}
+
 d_dunland = {
 	color={ 160 86 31 }
 	color2={ 125 125 142 }
@@ -13813,7 +13838,7 @@ k_eredrim = { ## Realm of Lamedon before Gondor - Future Army of the Dead
 	}			
 	
 }
-### Fellowship Titles ###
+### Fellowship Titles -- does not seem to be used at all ###
 d_ringbearer = { 
     color={ 218 165 32 }
 	color2={ 255 255 20 }

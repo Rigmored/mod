@@ -1,0 +1,521 @@
+################################
+# Steam Achievement Events
+################################
+# MEP - removed stuff inapplicable to Middle-Earth
+
+# Empressive
+character_event = {
+	id = 702
+	hide_window = yes
+	
+	ai = no
+	only_women = yes
+	
+	trigger = {
+		primary_title = { tier = EMPEROR }
+		mother_even_if_dead = {
+			primary_title = { tier = EMPEROR }
+		}
+		mother_even_if_dead = {
+			mother_even_if_dead = {
+				primary_title = { tier = EMPEROR }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		set_character_flag = achievement_empressive
+	}
+}
+
+# Black Widow
+character_event = {
+	id = 703
+	hide_window = yes
+	
+	ai = no
+	only_women = yes
+	min_age = 16
+	
+	trigger = {
+		any_spouse_even_if_dead = {
+			count = 3
+			is_alive = no
+			killer = { character = ROOT }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		set_character_flag = achievement_black_widow
+	}
+}
+
+
+# Full House
+character_event = {
+	id = 706
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			father = {
+				ai = no
+				NOT = { has_character_flag = achievement_full_house }
+			}
+			mother = { 
+				ai = no 
+				NOT = { has_character_flag = achievement_full_house }
+			}
+		}
+	}
+	
+	immediate = {
+		
+		if = {
+			limit = {
+				father = { 
+					ai = no
+					NOT = { has_character_flag = achievement_full_house }
+					NOT = { check_variable = { which = "bob_saget" value = 4.5 } }
+				}
+			}
+			father = {
+				change_variable = { which = "bob_saget" value = 1 }
+			}
+		}
+		if = {
+			limit = {
+				mother = { 
+					ai = no
+					NOT = { has_character_flag = achievement_full_house }
+					NOT = { check_variable = { which = "bob_saget" value = 4.5 } }
+				}
+			}
+			mother = {
+				change_variable = { which = "bob_saget" value = 1 }
+			}
+		}
+		
+		if = {
+			limit = {
+				father = { 
+					ai = no
+					NOT = { has_character_flag = achievement_full_house }
+					check_variable = { which = "bob_saget" value = 4.5 }
+				}
+			}
+			father = {
+				set_character_flag = achievement_full_house
+			}
+		}
+		if = {
+			limit = {
+				mother = { 
+					ai = no
+					NOT = { has_character_flag = achievement_full_house }
+					check_variable = { which = "bob_saget" value = 4.5 }
+				}
+			}
+			mother = {
+				set_character_flag = achievement_full_house
+			}
+		}
+	}
+}
+
+# Keeping it in the Family
+character_event = {
+	id = 707
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		trait = inbred
+		OR = {
+			father = {
+				ai = no
+				NOT = { has_character_flag = achievement_in_the_family }
+			}
+			mother = {
+				ai = no
+				NOT = { has_character_flag = achievement_in_the_family }
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				father = {
+					ai = no
+					NOT = { has_character_flag = achievement_in_the_family }
+				}
+			}
+			father = { set_character_flag = achievement_in_the_family }
+		}
+		if = {
+			limit = {
+				mother = {
+					ai = no
+					NOT = { has_character_flag = achievement_in_the_family }
+				}
+			}
+			mother = { set_character_flag = achievement_in_the_family }
+		}
+	}	
+}
+
+# The Marriage Game
+character_event = {
+	id = 708
+	hide_window = yes
+	
+	ai = no
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_get_married }
+	}
+	
+	immediate = {
+		set_character_flag = achievement_get_married
+	}	
+}
+
+
+
+# Casanova
+character_event = {
+	id = 718
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_casanova }
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = { check_variable = { which = "casanova_check" value = 9.5 } }
+			}
+			change_variable = { which = "casanova_check" value = 1 }
+		}
+		if = {
+			limit = {
+				check_variable = { which = "casanova_check" value = 9.5 }
+			}
+			set_character_flag = achievement_casanova
+		}
+	}
+}
+
+# Mudslinger
+character_event = {
+	id = 719
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_mudslinger }
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = { check_variable = { which = "mudslinger_check" value = 19.5 } }
+			}
+			change_variable = { which = "mudslinger_check" value = 1 }
+		}
+		if = {
+			limit = {
+				check_variable = { which = "mudslinger_check" value = 19.5 }
+			}
+			set_character_flag = achievement_mudslinger
+		}
+	}
+}
+
+# Bring it On
+character_event = {
+	id = 720
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_bring_it_on }
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = { check_variable = { which = bring_it_on_check value = 6.5 } }
+			}
+			change_variable = { which = bring_it_on_check value = 1 }
+		}
+		if = {
+			limit = {
+				check_variable = { which = bring_it_on_check value = 6.5 }
+			}
+			set_character_flag = achievement_bring_it_on
+		}
+	}
+}
+
+# Family Bliss
+character_event = {
+	id = 721
+	hide_window = yes
+	
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_family_bliss }
+		any_close_relative = {
+			count = 6
+			is_friend = ROOT
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_character_flag = achievement_family_bliss
+	}
+}
+
+# Until Death Do Us Part
+character_event = {
+	id = 722
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		killer = {
+			ai = no
+			any_spouse = {
+				character = ROOT
+			}
+		}
+	}
+	
+	immediate = {
+		killer = {
+			if = {
+				limit = {
+					NOT = { has_character_flag = achievement_spouse_killer }
+				}
+				set_character_flag = achievement_spouse_killer 
+			}
+		}
+	}
+}
+
+
+# Just don't point that pointy thing at me! Achievement + flag clearing
+character_event = {
+	id = 725
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				FROM = {  
+					has_character_flag = is_mercenary_leader
+				}
+				ai = no 
+			}
+			set_character_flag = achievement_pointy_thing
+		}
+		clr_character_flag = is_mercenary_leader
+		clr_character_flag = raiding_adventurer
+	}
+}
+
+# I am the law
+character_event = {
+	id = 726
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { 
+			ai = no
+			NOT = { character = ROOT }
+		}
+	}
+	
+	immediate = {
+		FROM = { set_character_flag = achievement_i_am_the_law }
+	}
+}
+
+# Peace in our time
+character_event = {
+	id = 727
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		ai = no
+	}
+	
+	immediate = {
+		set_character_flag = achievement_peace_in_our_time
+	}
+}
+
+# Somebody paid to win
+character_event = {
+	id = 728
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_character_flag = achievement_someone_paid_to_win
+	}
+}
+
+# Pay to win (Victory)
+character_event = {
+	id = 729
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { 
+			ai = no
+			owns_mercenary_units = yes
+		}
+	}
+	
+	immediate = {
+		FROM = { set_character_flag = achievement_pay_to_win }
+	}
+}
+
+# Pay to win (Reverse Demands)
+character_event = {
+	id = 730
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		ai = no
+		owns_mercenary_units = yes
+	}
+	
+	immediate = {
+		set_character_flag = achievement_pay_to_win
+	}
+}
+
+# Eternity Denied (on death check)
+character_event = {
+	id = 731
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "Reapers"
+		immortal = yes
+		killer = {
+			has_dlc = "Reapers"
+			ai = no
+			NOT = { has_character_flag = achievement_eternity_denied }
+		}
+	}
+	
+	immediate = {
+		killer = { set_character_flag = achievement_eternity_denied }
+	}
+}
+
+
+# Hospitable, build a hospital
+character_event = {
+	id = 733
+	hide_window = yes
+	
+	ai = no
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "Reapers"
+		NOT = { has_character_flag = achievement_hospitable }
+	}
+	
+	immediate = {
+		set_character_flag = achievement_hospitable
+	}
+}
+
+# Aptly Named (on death check)
+character_event = {
+	id = 734
+	hide_window = yes
+	
+	is_triggered_only = yes
+	ai = no
+	
+	trigger = {
+		is_ironman = yes
+		has_dlc = "Reapers"
+		trait = has_bubonic_plague
+		death_reason = death_trait
+	}
+	
+	immediate = {
+		set_global_flag = achievement_aptly_named
+	}
+}
+
+# Dark Lord. Become Grandmaster of any devil-worshiper society
+character_event = {
+	id = 735
+	hide_window = yes
+	
+	is_triggered_only = yes
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_dark_lord }
+		is_devil_worshiper_trigger = yes
+		is_society_grandmaster = yes
+	}
+	immediate = {
+		set_character_flag = achievement_dark_lord
+	}
+}
+
