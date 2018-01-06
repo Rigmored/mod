@@ -9,7 +9,7 @@ character_event = {
     id = dwarfconq.10
 	title = EVTTITdwarfconq.10
     desc = EVTDESCdwarfconq.10
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -74,7 +74,7 @@ character_event = {
     id = dwarfconq.11
 	title = EVTTITdwarfconq.11
     desc = EVTDESCdwarfconq.11
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -165,7 +165,7 @@ character_event = {
     id = dwarfconq.12
 	title = EVTTITdwarfconq.12
     desc = EVTDESCdwarfconq.12
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -278,7 +278,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.13b
 	}
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 
 	is_triggered_only = yes
 	
@@ -378,7 +378,7 @@ character_event = {
 	id = dwarfconq.14
 	title = EVTTITdwarfconq.14
 	desc = EVTDESCdwarfconq.14
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -432,7 +432,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.15b
 	}
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 
 	is_triggered_only = yes
 	
@@ -542,7 +542,7 @@ character_event = {
 	id = dwarfconq.16
 	title = EVTTITdwarfconq.16
 	desc = EVTDESCdwarfconq.16
-	picture = "GFX_dwarves_mines"
+	picture = "GFX_evt_dwarves_mines"
 	
 	is_triggered_only = yes
 	
@@ -597,7 +597,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.17b
 	}
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 
 	is_triggered_only = yes
 	
@@ -698,7 +698,7 @@ character_event = {
 	id = dwarfconq.18
 	title = EVTTITdwarfconq.18
 	desc = EVTDESCdwarfconq.18
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -735,7 +735,7 @@ character_event = {
 	id = dwarfconq.20
 	title = EVTTITdwarfconq.20
 	desc = EVTDESCdwarfconq.20
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -756,7 +756,7 @@ character_event = {
 	id = dwarfconq.21
 	title = EVTTITdwarfconq.21
 	desc = EVTDESCdwarfconq.21
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -780,7 +780,7 @@ character_event = {
 		trigger = { NOT = { religion_group = religion_group_khazad } }
 		text = EVTDESCdwarfconq.22b
 	}
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -802,7 +802,7 @@ character_event = {
 		trigger = { NOT = { religion_group = religion_group_khazad } }
 		text = EVTDESCdwarfconq.23b
 	}
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -817,7 +817,7 @@ character_event = {
 	id = dwarfconq.24
 	title = EVTTITdwarfconq.24
 	desc = EVTDESCdwarfconq.24
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -839,7 +839,7 @@ character_event = {
 	id = dwarfconq.25
 	title = EVTTITdwarfconq.25
 	desc = EVTDESCdwarfconq.25
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -849,7 +849,7 @@ character_event = {
 			location = {
 				OR = {
 					province_id = 2 # Azanulbizar
-					province_id = 285 # Khazad-Dûm
+					province_id = 285 # Khazad-Dum
 				}
 				mep_evil_religion = yes
 				NOT = { has_province_modifier = being_purged_ofevil }
@@ -859,11 +859,11 @@ character_event = {
 			OR = {
 				AND = {
 					culture = culture_longbeard
-					not = evil_side
+					NOT = { trait = evil_side }
 				}
 				top_liege = {
 					culture = culture_longbeard
-					not = evil_side
+					NOT = { trait = evil_side }
 				}
 			}
 		}
@@ -891,7 +891,7 @@ province_event = {
 	id = dwarfconq.26
 	title = EVTTITdwarfconq.26
 	desc = EVTDESCdwarfconq.26
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -987,7 +987,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.31c
 	}
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1164,7 +1164,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.32c
 	}
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1331,7 +1331,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.33b
 	}	
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1385,7 +1385,7 @@ character_event = {
 	id = dwarfconq.34
 	title = EVTTITdwarfconq.34
 	desc = EVTDESCdwarfconq.34
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -1519,7 +1519,7 @@ character_event = {
 	id = dwarfconq.35
 	title = EVTTITdwarfconq.35
 	desc =  EVTDESCdwarfconq.35
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1549,7 +1549,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.36b
 	}	
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1632,7 +1632,7 @@ character_event = {
 	id = dwarfconq.37
 	title = EVTTITdwarfconq.37
 	desc = EVTDESCdwarfconq.37
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -1716,7 +1716,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.41c
 	}
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1854,7 +1854,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.42c
 	}
-    picture = "GFX_dwarves"
+    picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -1979,7 +1979,7 @@ character_event = {
 		}
 		text = EVTDESCdwarfconq.43b
 	}	
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -2062,7 +2062,7 @@ character_event = {
 	id = dwarfconq.44
 	title = EVTTITdwarfconq.37
 	desc = EVTDESCdwarfconq.37
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -2103,7 +2103,7 @@ character_event = {
 	id = dwarfconq.50
 	title = EVTTITdwarfconq.50
 	desc = EVTDESCdwarfconq.50
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 
 	is_triggered_only = yes
 	
@@ -2205,7 +2205,7 @@ character_event = {
 	id = dwarfconq.51
 	title = EVTTITdwarfconq.51
 	desc = EVTDESCdwarfconq.51
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -2242,7 +2242,7 @@ character_event = {
 	id = dwarfconq.52
 	title = EVTTITdwarfconq.52
 	desc = EVTDESCdwarfconq.52
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 
 	is_triggered_only = yes
 	
@@ -2356,7 +2356,7 @@ character_event = {
 	id = dwarfconq.53
 	title = EVTTITdwarfconq.53
 	desc = EVTDESCdwarfconq.53
-	picture = "GFX_dwarves_mines"
+	picture = "GFX_evt_dwarves_mines"
 	
 	is_triggered_only = yes
 	
@@ -2394,7 +2394,7 @@ character_event = {
 	id = dwarfconq.54
 	title = EVTTITdwarfconq.54
 	desc = EVTDESCdwarfconq.54
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 
 	is_triggered_only = yes
 	
@@ -2499,7 +2499,7 @@ character_event = {
 	id = dwarfconq.55
 	title = EVTTITdwarfconq.55
 	desc = EVTDESCdwarfconq.55
-	picture = "GFX_dwarves"
+	picture = "GFX_evt_dwarves"
 	
 	is_triggered_only = yes
 	
@@ -2536,7 +2536,7 @@ character_event = {
 	id = dwarfconq.60
 	title = EVTTITdwarfconq.60
 	desc = EVTDESCdwarfconq.60
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -2557,7 +2557,7 @@ character_event = {
 	id = dwarfconq.61
 	title = EVTTITdwarfconq.61
 	desc = EVTDESCdwarfconq.61
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -2581,7 +2581,7 @@ character_event = {
 		trigger = { NOT = { religion_group = religion_group_khazad } }
 		text = EVTDESCdwarfconq.62b
 	}
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -2597,7 +2597,7 @@ character_event = {
 	id = dwarfconq.64
 	title = EVTTITdwarfconq.64
 	desc = EVTDESCdwarfconq.64
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	
@@ -2618,7 +2618,7 @@ character_event = {
 	id = dwarfconq.65
 	title = EVTTITdwarfconq.65
 	desc = EVTDESCdwarfconq.65
-	picture = "GFX_dwarves_hall"
+	picture = "GFX_evt_dwarves_hall"
 	
 	is_triggered_only = yes
 	

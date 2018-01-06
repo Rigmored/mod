@@ -164,8 +164,7 @@ focus_seduction = {
 		is_adult = yes
 		NOT = { trait = incapable }
 		NOT = { trait = celibate }
-		NOT = { trait = monk }
-		NOT = { trait = nun }
+		NOT = { is_ascetic_trigger = yes }
 		NOT = { trait = eunuch }
 		custom_tooltip = {
 			text = is_not_ascetic
@@ -179,7 +178,7 @@ focus_seduction = {
 	
 	# AI Pick chance
 	chance = {
-		factor = 25
+		factor = 50
 		
 		modifier = {
 			factor = 0
@@ -188,6 +187,13 @@ focus_seduction = {
 		modifier = {
 			factor = 0
 			religion_group = religion_group_eldar
+		}
+		modifier = {
+			factor = 0
+			has_game_rule = {
+				name = ai_seduction
+				value = off
+			}
 		}
 		
 		modifier = {
@@ -321,6 +327,13 @@ focus_intrigue = {
 		
 		modifier = {
 			factor = 0
+			has_game_rule = {
+				name = ai_intrigue
+				value = off
+			}
+		}
+		modifier = {
+			factor = 0
 			trait = honest
 		}
 		modifier = {
@@ -396,6 +409,7 @@ focus_intrigue = {
 	
 	# MODIFIERS
 	intrigue = 3
+	plot_power_modifier = 0.05
 }
 
 focus_hunting = {
@@ -928,4 +942,5 @@ focus_theology = {
 	# MODIFIERS
 	learning = 2
 	church_opinion = 20
+	health = 1.0
 }

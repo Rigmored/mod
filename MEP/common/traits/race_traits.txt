@@ -104,6 +104,7 @@ elf_friend = {
 	potential = {
 		NOT = { religion_group = religion_group_eldar }
 		NOT = { trait = evil_side }
+		NOT = { trait = zealous } # aka 'Racist'
 		OR = {
 			NOT = { mep_evil_religion = yes }
 			trait = good_side
@@ -195,6 +196,7 @@ dwarf_friend = {
 	potential = {
 		NOT = { religion_group = religion_group_khazad }
 		NOT = { trait = evil_side }
+		NOT = { trait = zealous } # aka 'Racist'
 		OR = {
 			NOT = { mep_evil_religion = yes }
 			trait = good_side
@@ -256,7 +258,6 @@ prince_numenor = {
 	vassal_opinion = 30	
 	agnatic = yes
 	fertility_penalty = -0.1
-	over_vassal_limit = 15	
 	opposites =  {
 		blood_of_numenor2
 		# blood_of_numenor
@@ -304,7 +305,6 @@ blood_of_isildur = {
 	customizer = no
 	same_opinion = 20
 	vassal_opinion = 50	
-	over_vassal_limit = 15
 	cached = yes
 	
 	command_modifier = {
@@ -321,8 +321,7 @@ blood_of_anarion = {
 	agnatic = yes
 	customizer = no
 	same_opinion = 20
-	vassal_opinion = 50	
-	over_vassal_limit = 15	
+	vassal_opinion = 50		
 	cached = yes
 
 	command_modifier = {
@@ -340,6 +339,7 @@ half_elf = {
 	fertility_penalty = -0.1
 	cached = yes
 }
+
 elven_blood = {
 	potential = {
 		NOT = { religion_group = religion_group_eldar }
@@ -443,6 +443,7 @@ hobbit_friend = {
 	potential = {
 		NOT = { religion_group = religion_group_periannath }
 		NOT = { trait = evil_side }
+		NOT = { trait = zealous } # aka 'Racist'
 		OR = {
 			NOT = { mep_evil_religion = yes }
 			trait = good_side

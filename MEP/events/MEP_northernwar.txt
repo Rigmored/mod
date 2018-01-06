@@ -7,7 +7,7 @@ character_event = {
     title = "EVTTITnorthernwar.1"#Ill tidings
     desc = "EVTDESCnorthernwar.1"#You hear reports that the Easterlings are preparing for some kind of war, gathering under the black flag of Mordor. Mercenaries and warlike clans flock to them.
     picture = "GFX_good"
-	age = 16
+	
 	only_independent = yes
 
 	trigger = {
@@ -35,7 +35,7 @@ character_event = {
     title = "EVTTITnorthernwar.2"#Ill tidings
     desc = "EVTDESCnorthernwar.2"#You hear reports that the Easterlings are preparing for some kind of war, gathering under the black flag of Mordor. Mercenaries and warlike clans flock to them.
     picture = "GFX_good"
-	age = 16
+	
 	only_independent = yes
 
 	trigger = {
@@ -63,7 +63,7 @@ character_event = {
 	title = "EVTTITnorthernwar.3"#Ill tidings
 	desc = "EVTDESCnorthernwar.3"#Your scouts report increased activity amonst the orcs of the mountains. They seem to be preparing for war, and have gathered a large host already, tens of thousands strong.
 	picture = "GFX_good"
-	age = 16
+	
 	only_independent = yes
 
 	trigger = {
@@ -91,7 +91,7 @@ character_event = {
 	title = "EVTTITnorthernwar.4"#Ill tidings
 	desc = "EVTDESCnorthernwar.4"#Your scouts report increased activity amongst the orcs of the mountains. Dol Guldur is also marshalling it's forces, they will no doubt try to attack us.
 	picture = "GFX_good"
-	age = 16
+	
 	only_independent = yes
 
 	trigger = {
@@ -119,7 +119,7 @@ character_event = {
 	title = "EVTTITnorthernwar.5"#Ill tidings
 	desc = "EVTDESCnorthernwar.5"#Your scouts report increased activity amongst the orcs of the mountains. Wargs howl in the night, and the southern lands are awash in blood. War is coming.
 	picture = "GFX_good"
-	age = 16
+	
 	only_independent = yes
 
 	trigger = {
@@ -154,14 +154,14 @@ character_event = {
 	title = "EVTTITnorthernwar.6"#Invasion of Lorien
 	desc = "EVTDESCnorthernwar.6"#The Elves of Lorien and their cursed Queen have defied you for far too long. It is time to send the armies gathered at Dol Guldur against them with orders to slay every elf they find.
 	picture="GFX_good"
-	age = 16
+	
 
 	trigger = {
 		has_landed_title = c_barad_dur
 		NOT = { trait = incapable }
 		NOT = { has_global_flag = lorieninvasion }
 		has_dlc = "The Old Gods"
-		age = 16
+		
 		has_global_flag = greatwar1
 		NOT = { year = 11368 }
 	}
@@ -175,7 +175,7 @@ character_event = {
 		set_global_flag = lorieninvasion
 		random_realm_lord = {
 			limit = {
-				age = 16
+				
 				is_female = no
 				is_ruler = yes
 				culture = culture_orkish
@@ -292,13 +292,13 @@ character_event = {
 	title = "EVTTITnorthernwar.9"#Invasion of Dale
 	desc = "EVTDESCnorthernwar.9"#Your Lord Sauron has commanded you to raise an invasion force to attack the Northmen. The army is ready to march!
 	picture="GFX_good"
-	age = 16
+	
 
 	trigger = {
 		has_landed_title = k_rhun
 		NOT = { has_global_flag = daleinvasion }
 		has_dlc = "The Old Gods"
-		age = 16
+		
 		has_global_flag = greatwar1
 		NOT = { year = 11368 }
 	}
@@ -312,7 +312,7 @@ character_event = {
 		set_global_flag = daleinvasion
 		random_courtier = {
 			limit = {
-				age = 16
+				
 				is_female = no
 				is_ruler = yes
 			}
@@ -450,13 +450,13 @@ character_event = {
 	title = "EVTTITnorthernwar.12"#Invasion of Mirkwood
 	desc = "EVTDESCnorthernwar.12"#The Goblins of the North, together with a force from Dol Guldur are ready to assault Thranduil's realm in Mirkwood. The woodland realm will burn with the fires of war!
 	picture="GFX_good"
-	age = 16
+	
 
 	trigger = {
 		has_landed_title = c_barad_dur
 		NOT = { has_global_flag = mirkwoodinvasion }
 		has_dlc = "The Old Gods"
-		age = 16
+		
 		NOT = { year = 11368 }
 		has_global_flag = greatwar1
 	}
@@ -470,7 +470,7 @@ character_event = {
 		set_global_flag = mirkwoodinvasion
 		any_realm_lord = {
 			limit = {
-				age = 16
+				
 				is_female = no
 				is_ruler = yes
 				has_landed_title = c_amon_lanc
@@ -593,7 +593,7 @@ character_event = {
 		has_landed_title = k_gundabad
 		NOT = { has_global_flag = anduinvaleinvasion }
 		has_dlc = "The Old Gods"
-		age = 16
+		
 		NOT = { year = 11368 }
 		has_global_flag = greatwar1
 	}
@@ -635,14 +635,14 @@ character_event = {
 	title = "EVTTITnorthernwar.16"#Invasion of Dale
 	desc = "EVTDESCnorthernwar.16"#The men of Rhun march against you in great force from the south - you should prepare every last man to defend their homeland, or they will surely lose it!
 	picture="GFX_good"
-	age = 16
+	
 
 	trigger = {
 		has_landed_title = k_dale
 		has_global_flag = daleinvasion
 		NOT = { has_global_flag = daledefense }
 		has_dlc = "The Old Gods"
-		age = 16
+		
 		has_global_flag = greatwar1
 		NOT = { year = 11368 }
 	}

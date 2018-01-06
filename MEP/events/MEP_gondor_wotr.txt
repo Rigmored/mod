@@ -679,17 +679,22 @@ character_event = {
 		OR = {
 			year = 11366  # the year is 11366 (or later)
 			war = no  # at peace
-			NOR = {   # no wars primarily between Mordor and Gondor
+			# no wars primarily between Mordor and Gondor
+			NOR = {
 				any_war = {
 					defender = { has_landed_title = e_steward_gondor }
-					attacker = ROOT
+					attacker = { character = ROOT }
 				}
 				any_war = {
 					attacker = { has_landed_title = e_steward_gondor }
-					defender = ROOT
+					defender = { character = ROOT }
 				}
 			}
 		}
+	}
+	
+	mean_time_to_happen = {
+		days = 60
 	}
 	
 	# Phase 2: 'Peace' between the attacks
@@ -706,7 +711,7 @@ character_event = {
 			war = yes
 			any_war = {
 				defender = { has_landed_title = e_steward_gondor }
-				attacker = ROOT
+				attacker = { character = ROOT }
 			}
 		}
 		character_event = { id = gondorwotr.15 }
@@ -717,7 +722,7 @@ character_event = {
 			war = yes
 			any_war = {
 				attacker = { has_landed_title = e_steward_gondor }
-				defender = ROOT
+				defender = { character = ROOT }
 			}
 		}
 		set_global_flag = gondormordor_p1won
@@ -729,11 +734,11 @@ character_event = {
 			NOR = {   # no wars primarily between Mordor and Gondor
 				any_war = {
 					defender = { has_landed_title = e_steward_gondor }
-					attacker = ROOT
+					attacker = { character = ROOT }
 				}
 				any_war = {
 					attacker = { has_landed_title = e_steward_gondor }
-					defender = ROOT
+					defender = { character = ROOT }
 				}
 			}
 		}
@@ -760,7 +765,7 @@ character_event = {
 				if = {
 					limit = {
 						defender = { has_landed_title = e_steward_gondor }
-						attacker = ROOT
+						attacker = { character = ROOT }
 					}
 					if = {
 						limit = {
@@ -817,7 +822,7 @@ character_event = {
 			}
 			new_character = {
 				spawn_unit = {
-					province = 654  # Barad-DÃ»r
+					province = 654  # Barad-Dûr
 					owner = PREV
 					disband_on_peace = yes
 					attrition = 0

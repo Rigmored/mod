@@ -1,0 +1,231 @@
+#  some MEP stuff to include in 00_scripted_triggers (and elsewhere)
+
+mep_is_good_side_trigger = {
+	OR = {
+		trait = good_side
+		AND = {
+			OR = {
+				religion_group = religion_group_eruhini # Ainur (like Eagles)
+				religion_group = religion_group_enyd    # Ents
+				religion_group = religion_group_eldar   # Elves
+				religion_group = religion_group_khazad  # Dwarves
+				religion = religion_numenorean
+				religion = religion_dunedain
+				religion = religion_edain
+				religion = religion_druedain
+				religion = religion_rhovanion								
+			}
+			NOT = { trait = evil_side}
+			NOT = { culture = culture_adunaic }
+			NOT = { culture = culture_black_numenorean }
+		}
+	}
+}
+
+mep_is_evil_side_trigger = {
+	OR = {
+		trait = evil_side
+		AND = {
+			OR = {
+				religion_group = religion_group_melkor
+				religion_group = religion_group_ungoliant
+				religion_group = religion_group_dragon
+			}
+			NOT = { trait = good_side}
+		}						
+	}
+}
+
+mep_infertile_trait = {
+	OR = {
+		trait = marriedforever
+		trait = wight
+		trait = nazgul
+		trait = spiritform
+		trait = wilderness
+		trait = elven_infertility
+		trait = dwarven_infertility
+		trait = human_infertility
+	}			
+}
+
+mep_traits_adding_stewardship = {
+	OR = {
+		trait = craftsman
+		trait = skilled_craftsman
+		trait = master_craftsman
+		trait = legendary_craftman
+		trait = ship_builder
+		trait = trader
+		trait = tradesman
+		trait = great_merchant
+		trait = mushroom_farmer
+		trait = hop_farmer
+		trait = pipe_weed_farmer
+	}
+}
+
+mep_can_be_merc_leader_mixin = {
+	OR = {
+		trait = horse_master
+		trait = strong_orc
+		trait = great_orc
+		trait = great_elf
+		trait = legendary_warrior
+		trait = mumakil_commander
+		trait = great_axeman
+		trait = dragon_slayer
+		trait = dunedain_captain
+		trait = grey_member
+		trait = master_bowman
+		trait = black_serpent
+	}
+}
+
+mep_inaccessible_traits = {
+	OR = {
+		trait = at_east
+		trait = sailed_west
+		trait = journey_to_valinor
+	}
+}
+
+mep_has_important_trait = {
+	OR = {
+		# In Middle-Earth, being immortal is not necessarily important...
+		AND = {
+			immortal = yes
+			NOT = { trait = wilderness }
+			NOT = { trait = elf }
+			NOT = { trait = ent }
+			NOT = { trait = spider }
+			NOT = { trait = wight }
+			NOT = { trait = eagle }
+		}
+		# other important MEP traits
+		trait = balrog
+		trait = fea_strong
+		trait = durin_reincarnation
+		trait = heir_of_durin
+		trait = prince_numenor
+		trait = blood_of_isildur
+		trait = blood_of_anarion
+		trait = half_elf
+		trait = valar
+		trait = enigma
+		trait = valar
+		trait = nazgul
+		religion_group = religion_group_dragon
+		religion = religion_umaiar
+		trait = leader_whitecouncil
+		trait = white_council
+		trait = onering
+		trait = on_fellowshipquest
+		trait = erebor_founder
+		trait = aglarond_founder
+		trait = healer_master
+		trait = legendary_craftman
+		trait = legendary_musician
+		trait = great_merchant
+		trait = ship_builder
+		trait = narya
+		trait = nenya
+		trait = vilya
+		trait = great_orc
+		trait = legendary_warrior
+		trait = dragon_slayer
+		trait = black_serpent
+		trait = horse_master
+		trait = mumakil_commander
+	}
+}
+
+mep_interesting_face_trigger = {
+	OR = {
+		trait = spider
+		trait = nazgul
+		trait = wight
+		trait = orc
+		trait = half_orc
+	}
+}
+
+mep_vrich_city_building = {
+	OR = {
+		has_building = ct_marketplace_5
+		has_building = ct_marketplace_6
+		# MEP corresponding buildings
+		has_building = ct_MOorcmarketplace_5
+		has_building = ct_MT_lair_6
+		has_building = ct_MGmarketplace_5
+		has_building = ct_MGmarketplace_6
+		has_building = ct_Hobfarm_4
+		has_building = ct_Rmarketplace_5
+		has_building = ct_Rmarketplace_6
+		has_building = ct_Hmarketplace_5
+		has_building = ct_Hmarketplace_6
+		has_building = ct_Ntown_5
+		has_building = ct_Ntown_6
+		has_building = ct_BNtown_5
+		has_building = ct_BNtown_6
+		has_building = ct_Pelargir
+		has_building = ct_Emarketplace_5
+		has_building = ct_Emarketplace_6
+		has_building = ct_Dtown_5
+		has_building = ct_Dtown_6
+		has_building = ct_dwarfmines_5
+		has_building = ct_dwarfmines_6
+		has_building = ct_mithrilmines_2
+		has_building = ct_mithrilmines_3
+		has_building = ct_jeweler_3
+		has_building = ct_gwaith_i_mirdain
+		has_building = ct_edhellond
+	}
+}
+
+mep_attraction_compatible_root = {
+	OR = {
+		# humans, elves, hobbits, and the like
+		AND = {
+			OR = {
+				religion_group_edain
+				religion_group_hildor
+				religion_group_periannath
+				religion_group_eldar
+				trait = valar
+				trait = enigma
+				trait = maiar
+				trait = half_orc
+			}
+			ROOT = {
+				OR = {
+					religion_group_edain
+					religion_group_hildor
+					religion_group_periannath
+					religion_group_eldar
+					trait = valar
+					trait = enigma
+					trait = maiar
+					trait = half_orc
+				}
+			}
+		}
+		# Orcs and Goblins
+		AND = {
+			OR = {
+				trait = half_orc
+				religion = religion_orkish
+				religion = religion_uruk
+			}
+			ROOT = {
+				OR = {
+					trait = half_orc
+					religion = religion_orkish
+					religion = religion_uruk
+				}
+			}
+		}
+		# Others
+		religion_group = ROOT
+	}
+}

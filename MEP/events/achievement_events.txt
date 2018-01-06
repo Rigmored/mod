@@ -3,6 +3,23 @@
 ################################
 # MEP - removed stuff inapplicable to Middle-Earth
 
+# Mr. Doge-Elect
+character_event = {
+	id = 701
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	ai = no
+	
+	trigger = {
+		NOT = { has_character_flag = achievement_doge_elect }
+	}
+	
+	immediate = {
+		set_character_flag = achievement_doge_elect
+	}
+}
 # Empressive
 character_event = {
 	id = 702

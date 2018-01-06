@@ -1,0 +1,11 @@
+# Scripted triggers used by the game
+
+# Check if a character can be assigned to lead troops
+# Root = Character
+fit_to_lead_troops = {
+	is_adult = yes
+	NOT = { trait = elf_childhood }
+	NOT = { trait = spiritform }
+	NOT = { trait = wilderness }
+	NOT = { has_character_modifier = in_meditation }
+}

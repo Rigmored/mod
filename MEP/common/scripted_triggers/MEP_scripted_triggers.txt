@@ -2,9 +2,7 @@
 # Note: I assume all triggers are called from and AND block (if not, wrap call in AND, unless the contents of the trigger is one block)
 
 ## characters
-# mep_is_good_side_trigger
 # mep_is_very_nice_trigger
-# mep_is_evil_side_trigger
 # mep_dont_do_nice_trigger
 # mep_cant_get_disease_trigger
 # mep_wont_hire_physician_trigger
@@ -106,27 +104,7 @@
 #---------------------------------------------------------------------------------------
 # Character Triggers
 
-mep_is_good_side_trigger = {
-	OR = {
-		trait = good_side
-		AND = {
-			OR = {
-				religion_group = religion_group_eruhini # Ainur (like Eagles)
-				religion_group = religion_group_enyd    # Ents
-				religion_group = religion_group_eldar   # Elves
-				religion_group = religion_group_khazad  # Dwarves
-				religion = religion_numenorean
-				religion = religion_dunedain
-				religion = religion_edain
-				religion = religion_druedain
-				religion = religion_rhovanion								
-			}
-			NOT = { trait = evil_side}
-			NOT = { culture = culture_adunaic }
-			NOT = { culture = culture_black_numenorean }
-		}
-	}
-}
+
 
 mep_is_very_nice_trigger = {
 	OR = {
@@ -143,19 +121,6 @@ mep_is_very_nice_trigger = {
 	}
 }
 
-mep_is_evil_side_trigger = {
-	OR = {
-		trait = evil_side
-		AND = {
-			OR = {
-				religion_group = religion_group_melkor
-				religion_group = religion_group_ungoliant
-				religion_group = religion_group_dragon
-			}
-			NOT = { trait = good_side}
-		}						
-	}
-}
 
 # Dont't do nice things, because evil or wilderness
 mep_dont_do_nice_trigger = {
@@ -191,6 +156,7 @@ mep_cant_get_disease_trigger = {
 		trait = elf_childhood
 	}
 }
+
 # most immortals, and evil races, don't hire physicians/doctors
 # I assume elves and non-evil istari will, because elves are renowned healers and they could have non-immortal courtiers
 # valar don't, because they forbid mortals from the land where they live, the cowards
@@ -394,8 +360,19 @@ mep_will_purge_evil = {
 		culture = culture_umaiar
 		trait = evil_side
 		AND = {
+			independent = no
+			any_liege = {
+				OR = {
+					culture_group = culture_group_melkor
+					culture = culture_umaiar
+					trait = evil_side
+				}
+			}
+			
+		}
+		AND = {
 			is_tributary = yes
-			any_suzerain = {  # My boss won't let me...
+			suzerain = {  # My boss won't let me...
 				OR = {
 					culture_group = culture_group_melkor
 					culture = culture_umaiar
@@ -407,26 +384,21 @@ mep_will_purge_evil = {
 }
 
 mep_will_purge_good = {
+	mep_is_evil_side_trigger = yes
 	NOT = { has_character_flag = very_tolerant_of_good }
+	
+	# independent, or no good side lieges
 	OR = {
-		religion_group = religion_group_melkor
-		religion_group = religion_group_ungoliant
-		religion_group = religion_group_dragon
+		independent = yes
+		NOT = {
+			any_liege = { mep_is_good_side_trigger = yes }
+		}
 	}
-	NOT = { trait = good_side }
+	# if he is tributary, then his suzerian must not be good side
 	OR = {
 		is_tributary = no
-		any_suzerain = {
-			NOR = {  # My boss won't let me...
-				trait = good_side
-				AND = {
-					NOT = { religion_group = religion_group_melkor }
-					NOT = { religion_group = religion_group_hildor }
-					NOT = { religion_group = religion_group_ungoliant }
-					NOT = { religion_group = religion_group_dragon }
-				}
-				
-			}
+		suzerain = {
+			NOT = { mep_is_good_side_trigger = yes }
 		}
 	}
 }
@@ -472,7 +444,7 @@ mep_base_marriage_compatible = {
 			same_sex = ROOT
 		}
 		AND = {
-		NOT = { trait = homosexual }
+			NOT = { trait = homosexual }
 			ROOT = { NOT = { trait = homosexual } }
 			is_opposite_sex = ROOT
 		}
@@ -489,11 +461,11 @@ mep_eligible_elf_marriage = {
 mep_eligible_dwarf_marriage = {
 	can_marry  = yes
 	has_concubinage = no
-	age = 45
+	age = 40
 	NOT = { age = 260 }
-	if = {
-		limit = { is_female = yes }
+	OR = {
 		NOT = { age = 140 }
+		is_female = no
 	}
 	NOT = { trait = dwarven_infertility }
 	prisoner = no

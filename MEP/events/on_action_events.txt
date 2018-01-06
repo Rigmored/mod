@@ -6862,3 +6862,154 @@ diploresponse_event = {
 		name = "OK"
 	}
 }
+
+# GIVE_ARTIFACT_INTERACTION_ACCEPT_EVENT =
+diploresponse_event = {
+	id = 538
+	desc = EVTDESC538
+
+	major = no
+	is_triggered_only = yes
+
+	trigger = {
+		ai = no
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+
+character_event = { # Fix adventurers turning Tribal land Feudal
+	id = 539
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_rulers = yes
+	
+	trigger = {
+		ai = yes
+		is_feudal = yes
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_realm_province = {
+						any_province_holding = {
+							holding_type = castle
+						}
+					}
+				}
+				any_realm_province = {
+					any_province_holding = {
+						holding_type = tribal
+					}
+				}
+			}
+			set_government_type = tribal_government
+		}
+	}
+}
+
+#Preserve player religion if heir has DLC locked religion
+character_event = {
+	id = 680
+	hide_window = yes
+	is_triggered_only = yes
+	ai = no
+	trigger = {
+		is_nomadic = no
+		player_heir = {
+			OR = {
+				has_unsafe_secret_religion = yes
+				has_unsafe_religion = yes
+			}
+		}
+	}
+	immediate = {
+		player_heir = {
+			if = {
+				limit = { has_unsafe_secret_religion = yes }
+				clear_secret_religion = yes
+			}
+			if = {
+				limit = { has_unsafe_religion = yes }
+				religion = ROOT
+			}
+		}
+	}
+}
+
+# On-action event: Avoided title revokation, declared independence
+character_event = {
+	id = 681
+	desc = "EVTDESC681"
+	picture = "GFX_evt_burning_house"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = "EVTOPTA150"
+	}
+}
+
+# On-action event: Avoided vassal retraction, declared independence
+character_event = {
+	id = 682
+	desc = "EVTDESC682"
+	picture = "GFX_evt_burning_house"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = "EVTOPTA150"
+	}
+}
+
+# On-action event: Avoided clan absorb, declared independence
+character_event = {
+	id = 683
+	desc = "EVTDESC683"
+	picture = "GFX_evt_burning_house"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = "EVTOPTA150"
+	}
+}
+
+# On-action event: Avoided clan split, declared independence
+character_event = {
+	id = 684
+	desc = "EVTDESC684"
+	picture = "GFX_evt_burning_house"
+	border = GFX_event_normal_frame_war
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = "EVTOPTA150"
+	}
+}
+
+# On-action event: Remove in-hiding trait on imprisonment
+character_event = {
+	id = 685
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		trait = in_hiding
+	}
+	
+	immediate = {
+		remove_trait = in_hiding
+	}
+}
