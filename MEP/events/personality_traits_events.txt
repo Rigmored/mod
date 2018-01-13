@@ -24,7 +24,7 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
-			religion_group = muslim
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = chaste
@@ -228,6 +228,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = gluttonous
 		}
 		NOT = {
@@ -403,6 +406,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = gluttonous
@@ -600,6 +606,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = greedy
 		}
 		NOT = {
@@ -781,6 +790,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = diligent
@@ -973,6 +985,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = envious
@@ -1174,6 +1189,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = envious
 		}
 		NOT = {
@@ -1369,6 +1387,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = wroth
 		}
 		NOT = {
@@ -1547,6 +1568,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = proud
@@ -1734,6 +1758,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = deceitful
@@ -1936,7 +1963,7 @@ character_event = {
 			personality_traits = 5
 			trait = craven
 			trait = brave
-			trait = berserker
+			trait = elf_childhood
 		}
 	}
 	
@@ -2109,6 +2136,9 @@ character_event = {
 	trigger = {
 		NOT = {
 			personality_traits = 5
+		}
+		NOT = {
+			trait = elf_childhood
 		}
 		NOT = {
 			trait = shy
@@ -2306,6 +2336,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = ambitious
 		}
 		NOT = {
@@ -2494,6 +2527,9 @@ character_event = {
 			personality_traits = 5
 		}
 		NOT = {
+			trait = elf_childhood
+		}
+		NOT = {
 			trait = arbitrary
 		}
 		NOT = {
@@ -2670,219 +2706,6 @@ character_event = {
 	}
 }
 
-#Cynical/Zealous
-character_event = {
-	id = 1014
-	desc = "EVTDESC1014"
-	picture = "GFX_evt_bishop"
-	
-	min_age = 16
-	religion_group = christian
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		NOT = {
-			personality_traits = 5
-		}
-		NOT = {
-			trait = cynical
-		}
-		NOT = {
-			trait = zealous
-		}
-	}
-
-	weight_multiplier = {
-		days = 1
-		
-		modifier = {
-			factor = 1.7
-			OR = {
-				trait = quick
-				trait = shrewd
-			}
-		}
-		modifier = {
-			factor = 1.5
-			trait = genius
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				trait = slow
-				trait = dull
-			}
-		}
-		modifier = {
-			factor = 2
-			trait = imbecile
-		}
-		modifier = {
-			factor = 1.5
-			trait = detached_priest
-		}
-		modifier = {
-			factor = 2
-			trait = mastermind_theologian
-		}
-		modifier = {
-			factor = 2
-			trait = scholarly_theologian
-		}
-	}
-	
-	option = {
-		name = "EVTOPTA1014"
-		if = {
-			limit = {
-				trait = patient
-				NOT = {
-					trait = paranoid
-				}
-			}
-			random = {
-				chance = 70
-				
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = paranoid
-				NOT = {
-					trait = patient
-				}
-			}
-			random = {
-				chance = 20
-				
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = patient
-				}
-				NOT = {
-					trait = paranoid
-				}
-			}
-			random = {
-				chance = 45
-				
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = patient
-				trait = paranoid
-			}
-			random = {
-				chance = 45
-				
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTB1014"
-		if = {
-			limit = {
-				trait = wroth
-				NOT = {
-					trait = slothful
-				}
-			}
-			random = {
-				chance = 70
-				
-				add_trait = cynical
-				hidden_tooltip = {
-					character_event = {
-						id = 38258 #Notify Cynical
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = slothful
-				NOT = {
-					trait = wroth
-				}
-			}
-			random = {
-				chance = 20
-				
-				add_trait = cynical
-				hidden_tooltip = {
-					character_event = {
-						id = 38258 #Notify Cynical
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = wroth
-				}
-				NOT = {
-					trait = slothful
-				}
-			}
-			random = {
-				chance = 45
-				
-				add_trait = cynical
-				hidden_tooltip = {
-					character_event = {
-						id = 38258 #Notify Cynical
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = wroth
-				trait = slothful
-			}
-			random = {
-				chance = 45
-				
-				add_trait = cynical
-				hidden_tooltip = {
-					character_event = {
-						id = 38258 #Notify Cynical
-					}
-				}
-			}
-		}
-	}
-}
 
 #Lustful/chaste - female
 character_event = {
@@ -2896,11 +2719,9 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
+		NOT = { trait = elf_childhood }
 		NOT = {
 			personality_traits = 5
-		}
-		NOT = {
-			religion_group = muslim
 		}
 		NOT = {
 			trait = chaste
@@ -3103,6 +2924,7 @@ character_event = {
 		NOT = {
 			personality_traits = 5
 		}
+		NOT = { trait = elf_childhood }
 		NOT = {
 			trait = paranoid
 		}
@@ -3298,6 +3120,7 @@ character_event = {
 		NOT = {
 			personality_traits = 5
 		}
+		NOT = { trait = elf_childhood }
 		NOT = {
 			trait = kind
 		}
@@ -3494,9 +3317,7 @@ character_event = {
 		NOT = {
 			personality_traits = 5
 		}
-		NOT = {
-			religion_group = muslim
-		}
+		NOT = { trait = elf_childhood }
 		NOT = {
 			trait = chaste
 		}
@@ -3510,6 +3331,7 @@ character_event = {
 		any_courtier = {
 			is_female = yes
 			age = 16
+			NOT = { trait = elf_childhood }
 			trait = homosexual
 		}
 	}
@@ -3702,9 +3524,7 @@ character_event = {
 		NOT = {
 			personality_traits = 5
 		}
-		NOT = {
-			religion_group = muslim
-		}
+		NOT = { trait = elf_childhood }
 		NOT = {
 			trait = chaste
 		}
@@ -3719,6 +3539,7 @@ character_event = {
 			is_female = no
 			age = 16
 			trait = homosexual
+			NOT = { trait = elf_childhood }
 		}
 	}
 	
@@ -3941,6 +3762,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
+		NOT = { trait = elf_childhood }
 		trait = chaste
 		personality_traits = 6
 	}
@@ -4035,10 +3857,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_temperance_food
-		}
+		personality_traits = 6
 		trait = gluttonous
 	}
 	
@@ -4048,10 +3867,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 10
-			has_ambition = obj_buddhist_temperance_food
 		}
 	}
 	
@@ -4104,10 +3919,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_reject_greed
-		}
+		personality_traits = 6
 		trait = greedy
 	}
 	
@@ -4117,10 +3929,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_reject_greed
 		}
 	}
 	
@@ -4236,10 +4044,8 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_reject_envy
-		}
+		personality_traits = 6
+		NOT = { trait = elf_childhood }
 		trait = envious
 	}
 	
@@ -4537,10 +4343,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_defeat_fear
-		}
+		personality_traits = 6
 		trait = craven
 	}
 	
@@ -4550,10 +4353,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_defeat_fear
 		}
 	}
 	
@@ -4880,275 +4679,6 @@ character_event = {
 	}
 }
 
-### Lustful Muslim ###
-character_event = {
-	id = 1060
-	desc = "EVTDESC1060"
-	picture = "GFX_evt_lovers"
-	
-	min_age = 16
-	only_capable = yes
-	religion_group = muslim
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		NOT = {
-			personality_traits = 5
-		}
-		NOT = {
-			trait = lustful
-		}
-		NOT = {
-			trait = homosexual
-		}
-	}
-	
-	weight_multiplier = {
-		days = 1
-		
-		modifier = {
-			factor = 1.7
-			trait = greedy
-		}
-		modifier = {
-			factor = 1.7
-			trait = hedonist
-		}
-		modifier = {
-			factor = 1.7
-			trait = gluttonous
-		}
-		modifier = {
-			factor = 0.5
-			trait = temperate
-		}
-	}
+### Lustful Muslim ### (removed, not apllicable to MEP)
 
-	option = {
-		name = "EVTOPTA1060"
-		if = {
-			limit = {
-				trait = honest
-				NOT = {
-					trait = slothful
-				}
-			}
-			random = {
-				chance = 70
-				
-				add_trait = lustful
-				hidden_tooltip = {
-					character_event = {
-						id = 38272 #Notify Lustful
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = slothful
-				NOT = {
-					trait = honest
-				}
-			}
-			random = {
-				chance = 20
-				
-				add_trait = lustful
-				hidden_tooltip = {
-					character_event = {
-						id = 38272 #Notify Lustful
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = honest
-				}
-				NOT = {
-					trait = slothful
-				}
-			}
-			random = {
-				chance = 45
-				
-				add_trait = lustful
-				hidden_tooltip = {
-					character_event = {
-						id = 38272 #Notify Lustful
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = honest
-				trait = slothful
-			}
-			random = {
-				chance = 45
-				
-				add_trait = lustful
-				hidden_tooltip = {
-					character_event = {
-						id = 38272 #Notify Lustful
-					}
-				}
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTB1060"
-		piety = 10
-	}
-}
-
-### Hafiz - only for Muslims ###
-character_event = {
-	id = 1070
-	desc = "EVTDESC1070"
-	picture = GFX_evt_monk
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	capable_only = yes
-	prisoner = no
-	religion_group = muslim
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		NOT = {
-			personality_traits = 5
-		}
-		NOT = {
-			trait = hafiz
-		}
-		NOT = {
-			trait = inbred
-		}
-		is_dumb_trigger = no
-		NOT = {
-			trait = infirm
-		}
-	}
-	
-	weight_multiplier = {
-		days = 1
-		
-		modifier = {
-			factor = 1.7
-			trait = scholar
-		}
-		modifier = {
-			factor = 1.7
-			trait = zealous
-		}
-		modifier = {
-			factor = 0.5
-			trait = cynical
-		}
-		modifier = {
-			factor = 0.5
-			trait = slothful
-		}
-		modifier = {
-			factor = 0.5
-			trait = content
-		}
-	}
-
-	option = {
-		name = "EVTOPTA1070"
-		set_character_flag = aspiring_hafiz_flag
-		add_character_modifier = {
-			name = aspiring_hafiz
-			duration = -1
-		}
-	}
-	option = {
-		name = "EVTOPTB1070"
-		if = {
-			limit = {
-				NOT = {
-					trait = slothful
-				}
-			}
-			random = {
-				chance = 20
-				add_trait = slothful
-				hidden_tooltip = {
-					character_event = {
-						id = 38251 #Notify Slothful
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = slothful
-			}
-			piety = -10
-		}
-	}
-}
-
-#Become Hafiz [Root.GetTitledFirstName]
-character_event = {
-	id = 1071
-	desc = "EVTDESC1071"
-	picture = GFX_evt_monk
-	border = GFX_event_normal_frame_religion
-	
-	min_age = 16
-	capable_only = yes
-	prisoner = no
-	religion_group = muslim
-	has_character_flag = aspiring_hafiz_flag
-	
-	trigger = {
-		has_character_modifier = aspiring_hafiz
-		NOT = {
-			trait = hafiz
-		}
-		had_character_flag = {
-			flag = aspiring_hafiz_flag
-			days = 365
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-		
-		modifier = {
-			factor = 0.7
-			trait = scholar
-		}
-		modifier = {
-			factor = 0.7
-			trait = zealous
-		}
-		modifier = {
-			factor = 2
-			trait = cynical
-		}
-		modifier = {
-			factor = 2
-			trait = slothful
-		}
-		modifier = {
-			factor = 2
-			trait = content
-		}
-	}
-
-	option = {
-		name = "EVTOPTA1071"
-		add_trait = hafiz
-		remove_character_modifier = aspiring_hafiz
-		clr_character_flag = aspiring_hafiz_flag
-	}
-}
+# Removed Hafiz (not applicable to MEP)

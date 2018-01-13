@@ -29,13 +29,7 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					AND = {
-						NOT = { religion = jain }
-						trait = administrator
-					}
-				}
-				NOT = { has_character_modifier = wol_raja_dharma }
+				NOT = { trait = administrator }
 				random = 85
 			}
 			character_event = { id = WoL.12502 }
@@ -119,9 +113,7 @@ character_event = {
 			AND = {
 				lifestyle_traits = 1 
 				has_character_modifier = wol_steward_2
-				NOT = { religion = jain }
 			}
-			has_character_modifier = wol_raja_dharma
 		}
 	}
 	
@@ -159,17 +151,7 @@ character_event = {
 			add_trait = administrator
 			break = yes
 		}
-		if = {
-			limit = {
-				trait = administrator 
-				religion = jain
-			}
-			add_character_modifier = {
-				modifier = wol_raja_dharma
-				duration = -1
-			}
-			break = yes
-		}
+
 	}
 }
 

@@ -6,6 +6,7 @@
 #has_benevolent_trait_trigger		Has a benevolent trait.
 #is_benevolent_trigger				Has a benevolent trait and not any evil traits.
 #has_pleasant_trait_trigger			Has a pleasant personality trait. 
+#has_pleasant_trait_trigger			Has a pleasant personality trait. 
 #has_pleasant_personality_trigger	Has a pleasant personality trait and not any unpleasant personality traits.
 #has_pious_trait_trigger			Has a piety trait.
 #is_pious_trigger					Has a piety trait and not any impious traits.
@@ -125,7 +126,7 @@ has_pious_trait_trigger = {
 		trait = humble
 		trait = content
 		trait = on_pilgrimage
-		trait = pilgrim
+		# trait = pilgrim
 		is_ascetic_trigger = yes
 #		trait = hajjaj
 #		trait = on_hajj
@@ -4006,7 +4007,7 @@ looting_artifact_event_religious_artifacts_trigger = {
 #				ROOT = { religion_group = indian_group }
 #			}
 #		}
-#	}
+	}
 }
 
 can_be_asked_to_leave_court_trigger = {
@@ -5248,46 +5249,46 @@ local_third_party_score_great_trigger = {
 
 # For checking the Chinese Emperor's likes & dislikes
 is_liked_by_China_trigger = {
-	liked_by_offmap = {
-        type = offmap_china
-    }
-    NOT = {
-        disliked_by_offmap = {
-            type = offmap_china
-        }
-    }
-    offmap_china = {
-        show_scope_change = no
-        custom_tooltip = { text = emperor_likes_THIS_tt }
-    }
+#	liked_by_offmap = {
+#        type = offmap_china
+#    }
+#    NOT = {
+#        disliked_by_offmap = {
+#            type = offmap_china
+#        }
+#    }
+#    offmap_china = {
+#        show_scope_change = no
+#        custom_tooltip = { text = emperor_likes_THIS_tt }
+#    }
 }
 
 is_disliked_by_China_trigger = {
-	disliked_by_offmap = {
-        type = offmap_china
-    }
-    NOT = {
-		liked_by_offmap = {
-            type = offmap_china
-        }
-    }
-    offmap_china = {
-        show_scope_change = no
-        custom_tooltip = { text = emperor_dislikes_THIS_tt }
-    }
+#	disliked_by_offmap = {
+#        type = offmap_china
+#    }
+#    NOT = {
+#		liked_by_offmap = {
+#            type = offmap_china
+#        }
+#    }
+#    offmap_china = {
+#        show_scope_change = no
+#        custom_tooltip = { text = emperor_dislikes_THIS_tt }
+#    }
 }
 
 is_liked_and_disliked_by_China = {
-    disliked_by_offmap = {
-        type = offmap_china
-    }
-    liked_by_offmap = {
-        type = offmap_china
-    }
-    offmap_china = {
-        show_scope_change = no
-        custom_tooltip = { text = emperor_has_ambiguous_feelings_of_THIS_tt }
-    }
+#    disliked_by_offmap = {
+#        type = offmap_china
+#    }
+#    liked_by_offmap = {
+#        type = offmap_china
+#    }
+#    offmap_china = {
+#        show_scope_change = no
+#        custom_tooltip = { text = emperor_has_ambiguous_feelings_of_THIS_tt }
+#    }
 }
 
 #Used in the invasion script...
@@ -5306,12 +5307,12 @@ valid_offmap_china_target = {
 }
 
 valid_offmap_china_target_location = {
-	OR = {
-		any_realm_province = { region = custom_chinese_invasion_target_region }
-		any_neighbor_independent_ruler = {
-			has_landed_title = e_china_west_governor
-		}
-	}
+#	OR = {
+#		any_realm_province = { region = custom_chinese_invasion_target_region }
+#		any_neighbor_independent_ruler = {
+#			has_landed_title = e_china_west_governor
+#		}
+#	}
 }
 
 valid_offmap_china_target_location_tributary_chain = {
@@ -5345,114 +5346,114 @@ likes_wealth = {
 likes_tributaries = {
 	context = tributary # Not a trigger, but used by the 'liked_by_offmap' & 'disliked_by_offmap' triggers
 }
-likes_indians = {
-	culture_group = indo_aryan_group
-}
-likes_dravidians = {
-	culture_group = dravidian_group
-}
-likes_tibetans = {
-	culture_group = tibetan_group
-}
-likes_germanics = {
-	OR = {
-		culture_group = north_germanic
-		culture_group = central_germanic
-		culture_group = west_germanic
-	}
-}
-likes_latino_iberians = {
-	OR = {
-		culture_group = latin
-		culture_group = iberian
-	}
-}
-likes_byzantines = {
-	culture_group = byzantine
-}
-likes_celts = {
-	culture_group = celtic
-}
-likes_finno_ugrics = {
-	OR = {
-		culture_group = finno_ugric
-		culture_group = magyar
-	}
-}
-likes_altaics = {
-	culture_group = altaic
-}
-likes_balto_slavics = {
-	OR = {
-		culture_group = baltic
-		culture_group = east_slavic
-		culture_group = west_slavic
-		culture_group = south_slavic
-	}
-}
-likes_arabs = {
-	culture_group = arabic
-}
-likes_iranians = {
-	culture_group = iranian
-}
-likes_africans = {
-	OR = {
-		culture_group = west_african
-		culture_group = east_african
-	}
-}
-likes_mesoamericans = {
-	culture_group = mesoamerican
-}
-likes_muslims = {
-	religion_group = muslim
-}
-likes_christians = {
-	religion_group = christian
-}
-likes_jews = {
-	religion_group = jewish_group
-}
-likes_mazdans = {
-	religion_group = zoroastrian_group
-}
-likes_zoroastrians = {
-	religion = zoroastrian
-}
-likes_mazdakis = {
-	religion = mazdaki
-}
-likes_manicheans = {
-	religion = manichean
-}
-likes_khurmaztans = {
-	religion = khurmazta
-}
-likes_buddhists = {
-	religion = buddhist
-}
-likes_hindus = {
-	religion = hindu
-}
-likes_jains = {
-	religion = jain
-}
-likes_tengris = {
-	OR = {
-		religion = tengri_pagan
-		religion = tengri_pagan_reformed
-	}
-}
-likes_zunists = {
-	OR = {
-		religion = zun_pagan
-		religion = zun_pagan_reformed
-	}
-}
-likes_bon = {
-	religion = bon
-}
+#likes_indians = {
+#	culture_group = indo_aryan_group
+#}
+#likes_dravidians = {
+#	culture_group = dravidian_group
+#}
+#likes_tibetans = {
+#	culture_group = tibetan_group
+#}
+#likes_germanics = {
+#	OR = {
+#		culture_group = north_germanic
+#		culture_group = central_germanic
+#		culture_group = west_germanic
+#	}
+#}
+#likes_latino_iberians = {
+#	OR = {
+#		culture_group = latin
+#		culture_group = iberian
+#	}
+#}
+#likes_byzantines = {
+#	culture_group = byzantine
+#}
+#likes_celts = {
+#	culture_group = celtic
+#}
+#likes_finno_ugrics = {
+#	OR = {
+#		culture_group = finno_ugric
+#		culture_group = magyar
+#	}
+#}
+#likes_altaics = {
+#	culture_group = altaic
+#}
+#likes_balto_slavics = {
+#	OR = {
+#		culture_group = baltic
+#		culture_group = east_slavic
+#		culture_group = west_slavic
+#		culture_group = south_slavic
+#	}
+#}
+#likes_arabs = {
+#	culture_group = arabic
+#}
+#likes_iranians = {
+#	culture_group = iranian
+#}
+#likes_africans = {
+#	OR = {
+#		culture_group = west_african
+#		culture_group = east_african
+#	}
+#}
+#likes_mesoamericans = {
+#	culture_group = mesoamerican
+#}
+#likes_muslims = {
+#	religion_group = muslim
+#}
+#likes_christians = {
+#	religion_group = christian
+#}
+#likes_jews = {
+#	religion_group = jewish_group
+#}
+#likes_mazdans = {
+#	religion_group = zoroastrian_group
+#}
+#likes_zoroastrians = {
+#	religion = zoroastrian
+#}
+#likes_mazdakis = {
+#	religion = mazdaki
+#}
+#likes_manicheans = {
+#	religion = manichean
+#}
+#likes_khurmaztans = {
+#	religion = khurmazta
+#}
+#likes_buddhists = {
+#	religion = buddhist
+#}
+#likes_hindus = {
+#	religion = hindu
+#}
+#likes_jains = {
+#	religion = jain
+#}
+#likes_tengris = {
+#	OR = {
+#		religion = tengri_pagan
+#		religion = tengri_pagan_reformed
+#	}
+#}
+#likes_zunists = {
+#	OR = {
+#		religion = zun_pagan
+#		religion = zun_pagan_reformed
+#	}
+#}
+#likes_bon = {
+#	religion = bon
+#}
 
 is_blood_relative_of_root_trigger = {
 	OR = {
@@ -5463,6 +5464,14 @@ is_blood_relative_of_root_trigger = {
 		is_aunt_uncle_of = ROOT
 		is_nibling_of = ROOT
 		dynasty = ROOT
+	}
+}
+
+is_any_kinslayer_trigger = {
+	OR = {
+		trait = kinslayer
+		trait = familial_kinslayer
+		trait = dynastic_kinslayer
 	}
 }
 
@@ -5527,14 +5536,6 @@ silk_road_trade_post_trigger = {
 	#		}
 	#	}
 	#}
-}
-
-is_any_kinslayer_trigger = {
-	OR = {
-		trait = kinslayer
-		trait = familial_kinslayer
-		trait = dynastic_kinslayer
-	}
 }
 
 has_unsafe_religion = {

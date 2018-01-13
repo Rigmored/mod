@@ -902,170 +902,168 @@ character_event = {
 }
 
 # Godly voter shows you how to be more pious.
-character_event = {
-	id = ZE.22500
-	desc = EVTDESC_ZE_22500
-	picture = GFX_evt_council_agreement
-	
-	min_age = 16
-	capable_only = yes
-	prisoner = no
-	
-	only_playable = yes
-
-	is_triggered_only = yes
-	
-	trigger = {
-		has_dlc = "Zeus"
-		is_voter = yes
-		NOR = { 
-			piety = 200
-			trait = zealous
-			trait = humble
-			trait = erudite
-			trait = theologian
-			trait = faqih
-			trait = hafiz
-			is_inaccessible_trigger = yes
-		}
-		
-		liege = {
-			any_realm_character = {
-				same_liege = ROOT
-				religion = ROOT
-				OR = {
-					AND = {
-						is_theocracy = yes
-						piety = 0
-						NOR = {
-							trait = bad_priest_muslim
-							trait = bad_priest_christian
-							trait = bad_priest_norse
-							trait = bad_priest_tengri
-							trait = bad_priest_zoroastrian
-							trait = bad_priest_aztec
-							trait = cynical
-						}
-					}
-					AND = {
-						piety = 200
-						NOT = { trait = cynical }
-						OR = {
-							trait = zealous
-							trait = humble
-							trait = erudite
-							trait = theologian
-							trait = faqih
-							trait = hafiz
-						}
-					}
-				}
-				NOR = {
-					character = ROOT
-					owes_favor_to = ROOT
-					trait = incapable
-					is_inaccessible_trigger = yes
-					is_rival = ROOT
-				}
-				is_voter = yes
-				prisoner = no
-			}
-		}
-	}
-	
-	immediate = {
-		liege = {
-			any_realm_character = {
-				limit = {
-					same_liege = ROOT
-					religion = ROOT
-					OR = {
-						AND = {
-							is_theocracy = yes
-							piety = 0
-							NOR = {
-								trait = bad_priest_muslim
-								trait = bad_priest_christian
-								trait = bad_priest_norse
-								trait = bad_priest_tengri
-								trait = bad_priest_zoroastrian
-								trait = bad_priest_aztec
-								trait = cynical
-							}
-						}
-						AND = {
-							piety = 200
-							NOT = { trait = cynical }
-							OR = {
-								trait = zealous
-								trait = humble
-								trait = erudite
-								trait = theologian
-								trait = faqih
-								trait = hafiz
-							}
-						}
-					}
-					NOR = {
-						character = ROOT
-						owes_favor_to = ROOT
-						trait = incapable
-						is_inaccessible_trigger = yes
-						is_rival = ROOT
-					}
-					is_voter = yes
-					prisoner = no
-				}
-				save_event_target_as = target_pious_voter
-			}
-		}
-	}
-	
-	# Accept
-	option = {
-		name = EVTOPTA_ZE_22500
-		
-		ai_chance = {
-			factor = 70
-			
-			modifier = {
-				factor = 0.5
-				trait = proud
-			}
-		}
-		
-		piety = 100
-		add_character_modifier = {
-			name = the_pious
-			years = 3
-		}
-		event_target:target_pious_voter = {
-			add_favor = ROOT
-			character_event = {	id = ZE.22510 days = 1 }
-		}
-	}
-	
-	# Deny
-	option = {
-		name = EVTOPTB_ZE_22500
-		
-		ai_chance = {
-			factor = 30
-		}
-		
-		piety = -50
-		
-		event_target:target_pious_voter = {
-			opinion = {
-				modifier = opinion_dislike
-				who = ROOT
-				years = 15
-			}
-			character_event = {	id = ZE.22520 days = 1 }
-		}
-		
-	}
-}
+#character_event = {
+#	id = ZE.22500
+#	desc = EVTDESC_ZE_22500
+#	picture = GFX_evt_council_agreement
+#	
+#	min_age = 16
+#	capable_only = yes
+#	prisoner = no
+#	
+#	only_playable = yes
+#
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		has_dlc = "Zeus"
+#		is_voter = yes
+#		NOR = { 
+#			piety = 200
+#			trait = zealous
+#			trait = humble
+#			trait = erudite
+#			trait = theologian
+#			trait = faqih
+#			trait = hafiz
+#			is_inaccessible_trigger = yes
+#		}
+#		
+#		liege = {
+#			any_realm_character = {
+#				same_liege = ROOT
+#				religion = ROOT
+#				OR = {
+#					AND = {
+#						is_theocracy = yes
+#						piety = 0
+#						NOR = {
+#							trait = bad_priest_muslim
+#							trait = bad_priest_christian
+#							trait = bad_priest_norse
+#							trait = bad_priest_tengri
+#							trait = bad_priest_zoroastrian
+#							trait = bad_priest_aztec
+#							trait = cynical
+#						}
+#					}
+#					AND = {
+#						piety = 200
+#						NOT = { trait = cynical }
+#						OR = {
+#							trait = zealous
+#							trait = humble
+#							trait = erudite
+#							trait = theologian
+#							trait = faqih
+#							trait = hafiz
+#						}
+#					}
+#				}
+#				NOR = {
+#					character = ROOT
+#					owes_favor_to = ROOT
+#					trait = incapable
+#					is_inaccessible_trigger = yes
+#					is_rival = ROOT
+#				}
+#				is_voter = yes
+#				prisoner = no
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		liege = {
+#			any_realm_character = {
+#				limit = {
+#					same_liege = ROOT
+#					religion = ROOT
+#					OR = {
+#						AND = {
+#							is_theocracy = yes
+#							piety = 0
+#							NOR = {
+#								trait = bad_priest_muslim
+#								trait = bad_priest_christian
+#								trait = bad_priest_norse
+#								trait = bad_priest_tengri
+#								trait = bad_priest_zoroastrian
+#								trait = bad_priest_aztec
+#								trait = cynical
+#							}
+#						}
+#						AND = {
+#							piety = 200
+#							NOT = { trait = cynical }
+#							OR = {
+#								trait = zealous
+#								trait = humble
+#								trait = erudite
+#								trait = theologian
+#							}
+#						}
+#					}
+#					NOR = {
+#						character = ROOT
+#						owes_favor_to = ROOT
+#						trait = incapable
+#						is_inaccessible_trigger = yes
+#						is_rival = ROOT
+#					}
+#					is_voter = yes
+#					prisoner = no
+#				}
+#				save_event_target_as = target_pious_voter
+#			}
+#		}
+#	}
+#	
+#	# Accept
+#	option = {
+#		name = EVTOPTA_ZE_22500
+#		
+#		ai_chance = {
+#			factor = 70
+#			
+#			modifier = {
+#				factor = 0.5
+#				trait = proud
+#			}
+#		}
+#		
+#		piety = 100
+#		add_character_modifier = {
+#			name = the_pious
+#			years = 3
+#		}
+#		event_target:target_pious_voter = {
+#			add_favor = ROOT
+#			character_event = {	id = ZE.22510 days = 1 }
+#		}
+#	}
+#	
+#	# Deny
+#	option = {
+#		name = EVTOPTB_ZE_22500
+#		
+#		ai_chance = {
+#			factor = 30
+#		}
+#		
+#		piety = -50
+#		
+#		event_target:target_pious_voter = {
+#			opinion = {
+#				modifier = opinion_dislike
+#				who = ROOT
+#				years = 15
+#			}
+#			character_event = {	id = ZE.22520 days = 1 }
+#		}
+#		
+#	}
+#}
 
 # The voter accepts your help!
 character_event = {
@@ -1706,8 +1704,6 @@ character_event = {
 					is_female = yes
 					ROOT = {
 						OR = {
-							religion = cathar
-							religion = messalian
 							primary_title = { has_law = status_of_women_4 }
 							has_game_rule = {
 								name = gender
@@ -1738,6 +1734,8 @@ character_event = {
 					}
 					liege = { character = ROOT }
 					is_close_relative = ROOT
+					trait = elf_childhood
+					trait = wilderness
 				}
 				OR = {
 					is_female = no
@@ -1745,8 +1743,6 @@ character_event = {
 						is_female = yes
 						ROOT = { 
 							OR = { 
-								religion = cathar
-								religion = messalian
 								primary_title = { has_law = status_of_women_4 }
 								has_game_rule = {
 									name = gender
@@ -1836,20 +1832,41 @@ character_event = {
 			hidden_tooltip = {
 				if = {
 					limit = {
-						religion_group = muslim
+						religion_group = religion_group_periannath
+					}
+					set_government_type = hobbit_thaindom
+				}
+				if = {
+					limit = {
+						religion = religion_southron
 					}
 					set_government_type = muslim_government
 				}
-				else_if = {
+				if = {
 					limit = {
-						culture_group = tibetan_group
-						OR = {
-							religion = bon
-							religion = buddhist
-						}
+						mep_canhave_nice_feudalism = yes
+						NOT = { religion_group = religion_group_periannath }
 					}
-					set_government_type = theocratic_feudal_government
+					set_government_type = just_feudal_government
 				}
+				if = {
+					limit = {
+						mep_is_evil_overlord = yes
+					}
+					set_government_type = darklord_government
+				}
+				if = {
+					limit = {
+						OR = {
+							religion_group = religion_group_melkor
+							religion_group = religion_group_ungoliant
+						}
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
+					}
+					set_government_type = orc_government
+				}
+
 				else = {
 					set_government_type = feudal_government
 				}

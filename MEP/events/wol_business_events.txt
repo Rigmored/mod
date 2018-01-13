@@ -651,25 +651,30 @@ character_event = {
 		name = { # A dozen of strong horses
 			text = EVTOPTA_WOL_10114_HORSES
 			trigger = { 
-				OR = {
-					religion_group = christian
-					religion_group = zoroastrian_group
-					religion_group = jewish_group
-					religion = taoist
+				NOT = { mep_dont_do_horses = yes }
+				NOR = {
+					culture_group = culture_group_forodwaith
+					religion_group = religion_southron
+					culture = culture_far_haradrim
 				}
 			}
 		}
 		name = { # A dozen of sturdy camels
 			text = EVTOPTA_WOL_10114_CAMELS
-			trigger = { religion_group = muslim }
+			trigger = {
+				religion_group = religion_southron
+				NOT = { culture = culture_far_haradrim }
+			}
 		}
-		name = { # An elephant
-			text = EVTOPTA_WOL_10114_ELEPHANT
-			trigger = { has_dharmic_religion_trigger = yes }
+		name = { # A Mûmak
+			text = EVTOPTA_WOL_10114_MUMAK
+			trigger = { 
+				culture = culture_far_haradrim
+			}
 		}
 		name = { # A dozen of tough warriors
 			text = EVTOPTA_WOL_10114_WARRIORS
-			trigger = { religion_group = pagan_group }
+			trigger = { culture_group = culture_group_forodwaith }
 		}
 		wealth = -30
 		FROM = {
@@ -1918,7 +1923,7 @@ character_event = {
 		}
 		add_trait = cruel
 		hidden_tooltip = {
-			character_event = { id = WoL.10208 days = 120 }			
+			character_event = { id = WoL.10216 days = 120 }			
 		}
 	}
 	
@@ -1926,10 +1931,12 @@ character_event = {
 		name = EVTOPTB_WOL_10206
 		scaled_wealth = -0.5
 		hidden_tooltip = {
-			character_event = { id = WoL.10208 days = 300 }
+			character_event = { id = WoL.10216 days = 300 }
 		}
 	}
 }
+
+# MEP: removed 'Bishop' events because the concept makes no sense in Middle-Earth
 
 # Quarry operations shut down notification
 province_event = {
@@ -1945,239 +1952,6 @@ province_event = {
 	}
 }
 
-# Bounce to bishop (hidden)
-character_event = {
-	id = WoL.10208
-	is_triggered_only = yes
-	hide_window = yes
-	
-	immediate = {
-		if = { 
-			limit = {
-				NOT = {
-					OR = {
-						religion_group = indian_group
-						religion_group = pagan_group
-					}
-				}
-				any_vassal = {
-					ai = yes
-					is_priest = yes
-					religion = ROOT
-				}
-			}
-			random_vassal = {
-				limit = {
-					ai = yes
-					is_priest = yes
-					religion = ROOT
-				}
-				character_event = { id = WoL.10209 }
-			}
-			break = yes
-		}
-		long_character_event = { id = WoL.10216 days = 60 }
-	}
-}
-
-# Bishop responds to tower (hidden)
-character_event = {
-	id = WoL.10209
-	is_triggered_only = yes
-	hide_window = yes
-	
-	immediate = {
-		FROM = {
-			character_event = { id = WoL.10210 }
-		}
-	}
-}
-
-# Bishop upset that you're trying to cheat your way into heaven 
-character_event = {
-	id = WoL.10210
-	is_triggered_only = yes
-	desc = EVTDESC_WOL_10210
-	picture = GFX_evt_bishop
-	border = GFX_event_normal_frame_economy
-	
-	option = {
-		name = EVTOPTA_WOL_10210
-		FROM = {
-			opinion = {
-				modifier = opinion_annoyed
-				who = ROOT
-				months = 12
-			}
-		}
-		hidden_tooltip = {
-			long_character_event = { id = WoL.10216 days = 60 }
-		}
-	}
-	
-	option = { # I guess we can cut some meters of the top of the tower
-		name = EVTOPTB_WOL_10210
-		prestige = -50
-		FROM = {
-			opinion = {
-				modifier = opinion_happy
-				who = ROOT
-				months = 240
-			}
-		}
-		religion_head = {
-			opinion = {
-				modifier = opinion_happy
-				who = ROOT
-				months = 240
-			}
-		}
-		hidden_tooltip = {
-			long_character_event = { id = WoL.10216 days = 60 }
-		}
-	}
-	
-	option = { # I'm just following the words of 'God'.
-		trigger = {
-			trait = possessed
-		}
-		name = EVTOPTC_WOL_10210
-		if = {
-			limit = { NOT = { trait = zealous } }
-			add_trait = zealous
-		}
-		religion_head = {
-			opinion = {
-				modifier = opinion_religious_agenda
-				who = ROOT
-				months = 60
-			}
-		}
-		hidden_tooltip = {
-			long_character_event = { id = WoL.10216 days = 60 }
-		}
-	}
-	
-	option = { # He's onto me. He must disappear.
-		trigger = {
-			trait = lunatic
-		}
-		name = EVTOPTD_WOL_10210
-		custom_tooltip = {
-			text = EVTTOOLTIPWOL10210
-			hidden_tooltip = {
-				character_event = { id = WoL.10211 days = 3 }
-			}
-		}
-	}
-}
-
-# Bishop bounce
-character_event = {
-	id = WoL.10211
-	is_triggered_only = yes
-	hide_window = yes
-	immediate = {
-		FROM = {
-			character_event = { id = WoL.10212 }
-		}
-	}
-}
-
-# Attempt to show bishop the top of the tower followed by the low of the ground
-character_event = {
-	id = WoL.10212
-	is_triggered_only = yes
-	desc = EVTDESC_WOL_10212
-	picture = GFX_evt_lunatic
-	border = GFX_event_normal_frame_economy
-	
-	option = {
-		name = EVTOPTA_WOL_10212
-		custom_tooltip = {
-			text = EVTTOOLTIPWOL10212
-			hidden_tooltip = {
-				FROM = { character_event = { id = WoL.10213 } }
-			}
-		}
-	}
-}
-
-# Bishop bounce
-character_event = {
-	id = WoL.10213
-	is_triggered_only = yes
-	hide_window = yes
-	immediate = {
-		FROM = {				
-			random_list = {
-					10 = {
-						character_event = { id = WoL.10214 }
-					}
-					90 = {
-						character_event = { id = WoL.10215}
-					}
-			}
-		}
-	}
-}
-
-# Bishop randomly dodges and you fall
-character_event = {
-	id = WoL.10214
-	is_triggered_only = yes
-	desc = EVTDESC_WOL_10214
-	picture = GFX_evt_bad_news
-	border = GFX_event_normal_frame_economy
-	
-	immediate = {
-		death = {
-			death_reason = death_accident_fall
-		}
-	}
-	
-	option = {
-		name = EVTOPTA_WOL_10214
-		tooltip = {
-			death = {
-				death_reason = death_accident_fall
-			}
-		}
-	}
-}
-
-# Bishop falls
-character_event = {
-	id = WoL.10215
-	is_triggered_only = yes
-	desc = EVTDESC_WOL_10215
-	picture = GFX_evt_drunk
-	border = GFX_event_normal_frame_economy
-	
-	immediate = {
-		FROMFROM = {
-			death = {
-				death_reason = death_murder_unknown_fall
-				killer = ROOT
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTA_WOL_10215
-		tooltip = {
-			FROMFROM = {
-				death = {
-					death_reason = death_murder_unknown_fall
-					killer = ROOT
-				}
-			}
-		}
-		hidden_tooltip = {
-			long_character_event = { id = WoL.10216 days = 57 }
-		}
-	}
-}
 
 # Construction complete
 long_character_event = {
@@ -3050,14 +2824,6 @@ character_event = {
 	}
 	
 	option = {
-		trigger = {
-			NOT = {
-				OR = {
-					religion_group = muslim
-					religion = iconoclast
-				}
-			}
-		}
 		name = EVTOPTB_WOL_10302
 		set_character_flag = maze_statues
 		scaled_wealth = -0.6
@@ -3108,12 +2874,6 @@ character_event = {
 	}
 	
 	option = {
-		trigger = {
-			OR = {
-				trait = decadent
-				NOT = { religion_group = muslim }
-			}
-		}
 		name = EVTOPTB_WOL_10303
 		add_character_modifier = {
 			name = maze_fountain_extravagant

@@ -2528,364 +2528,9 @@ character_event = {
 }
 
 # A Physician-Missionary arrives in a Tribal or Nomadic Court
-character_event = {
-	id = RIP.4100
-	desc = EVTDESC_RIP_4100
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_religion
-
-	min_age = 16
-	capable_only = yes
-	only_playable = yes
-	prisoner = no
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		has_dlc = "Reapers"
-		higher_tier_than = BARON
-		OR = {
-			is_tribal = yes
-			is_nomadic = yes
-		}
-		OR = {
-			NOT = {
-				has_character_flag = tribal_physician
-			}
-			had_character_flag = { flag = tribal_physician days = 9125 }
-		}
-		NOT = {
-			any_courtier_or_vassal = {
-				liege = { character = ROOT }
-				has_minor_title = title_court_physician
-			}
-		}
-		any_independent_ruler = {
-			ai = yes
-			is_adult = yes
-			is_feudal = yes
-			higher_tier_than = DUKE
-			NOT = { religion_group = ROOT }
-			is_within_diplo_range = ROOT
-			mercenary = no
-			holy_order = no
-			controls_religion = no
-			primary_title = {
-				is_landless_type_title = no
-			}
-			OR = {
-				NOT = { religion_group = pagan_group }
-				AND = {
-					religion_group = pagan_group
-					is_reformed_religion = yes
-				}
-			}
-		}
-	}
-	
-	weight_multiplier = {
-		days = 1
-		
-		modifier = {
-			factor = 2.5
-			num_of_symptoms = 1
-		}
-		modifier = {
-			factor = 2.5
-			is_ill = yes
-		}
-		modifier = {
-			factor = 1.5
-			trait = cynical
-		}
-	}
-	
-	immediate = {
-		set_character_flag = tribal_physician
-		random_independent_ruler = {
-			limit = {
-				ai = yes
-				is_adult = yes
-				is_feudal = yes
-				higher_tier_than = DUKE
-				NOT = { religion_group = ROOT }
-				is_within_diplo_range = ROOT
-				mercenary = no
-				holy_order = no
-				controls_religion = no
-				primary_title = {
-					is_landless_type_title = no
-				}
-				OR = {
-					NOT = { religion_group = pagan_group }
-					AND = {
-						religion_group = pagan_group
-						is_reformed_religion = yes
-					}
-				}
-			}
-			create_character = {
-				religion = THIS
-				culture = THIS
-				dynasty = none
-				age = 35
-				random_traits = yes
-				female = no
-				attributes = {
-					learning = 6
-				}
-				health = 6
-				trait = scholarly_theologian
-				trait = zealous
-				trait = physician
-				flag = is_court_physician
-			}
-			new_character = {
-				remove_trait = cynical
-				remove_trait = mystic
-				remove_trait = poet
-				remove_trait = socializer
-				remove_trait = gamer
-				remove_trait = hedonist
-				remove_trait = duelist
-				remove_trait = hunter
-				remove_trait = strategist
-				remove_trait = administrator
-				remove_trait = architect
-				remove_trait = gardener
-				remove_trait = schemer
-				remove_trait = impaler
-				remove_trait = seducer
-				remove_trait = seductress
-				remove_trait = theologian
-				remove_trait = scholar
-				save_event_target_as = missionary_physician_target
-				move_character = ROOT
-			}
-			save_event_target_as = origin_realm_of_missionary_physician_target
-		}
-	}
-
-	option = { # Recruit him
-		name = EVTOPTA_RIP_4100
-		
-		ai_chance = {
-			factor = 70
-			modifier = {
-				factor = 5
-				trait = cynical
-			}
-		}
-		
-		event_target:missionary_physician_target = {
-			opinion = {
-				modifier = opinion_loyal_servant
-				who = ROOT
-				years = 10
-			}
-			give_minor_title = title_court_physician
-		}
-		
-		if = {
-			limit = { controls_religion = no }
-			hidden_tooltip = {
-				character_event = { id = RIP.4101 days = 30 random = 30 }
-			}
-		}
-		
-	}
-	
-	option = { # Seize his assets and execute him!
-		name = EVTOPTB_RIP_4100
-		
-		ai_chance = {
-			factor = 30
-			modifier = {
-				factor = 5
-				trait = zealous
-			}
-		}
-		
-		wealth = 50
-		event_target:missionary_physician_target = {
-			death = {
-				death_reason = death_execution_burning
-				killer = ROOT
-			}
-		}
-		event_target:origin_realm_of_missionary_physician_target = {
-			opinion = {
-				modifier = opinion_dishonorable_scum
-				who = ROOT
-				years = 15
-			}
-		}
-	}
-}
-
+# removed for MEP
 # Convert to the physicians religion?
-character_event = {
-	id = RIP.4101
-	desc = EVTDESC_RIP_4101
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	trigger = {
-		event_target:missionary_physician_target = {
-			NOT = { religion_group = ROOT }
-		}
-		controls_religion = no
-	}
-	
-	option = {
-		name = EVTOPTA_RIP_4101
-		
-		ai_chance = {
-			factor = 60
-			modifier = {
-				factor = 2
-				trait = humble
-			}
-			modifier = {
-				factor = 2
-				trait = craven
-			}
-		}
-		
-		event_target:missionary_physician_target = {
-			opinion = {
-				modifier = opinion_did_not_trust_me
-				who = ROOT
-				years = 10
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTB_RIP_4101
-		
-		ai_chance = {
-			factor = 5
-			modifier = {
-				factor = 3
-				trait = cynical
-			}
-			modifier = {
-				factor = 1.5
-				trait = arbitrary
-			}
-			modifier = {
-				factor = 1.5
-				trait = trusting
-			}
-			modifier = {
-				factor = 0.75
-				NOT = {
-					year = 900
-				}
-			}
-			modifier = {
-				factor = 0.25
-				OR = {
-					culture_group = baltic
-					culture_group = finno_ugric  # The most stubborn pagans
-				}
-			}
-			modifier = {
-				factor = 0.25
-				culture_group = east_slavic # Like alcohol
-				event_target:missionary_physician_target = {
-					religion_group = muslim
-				}
-			}
-			modifier = {
-				factor = 0.25
-				culture_group = north_germanic # Vikings do like their alcohol
-				event_target:missionary_physician_target = {
-					religion_group = muslim
-				}
-			}
-			modifier = {
-				factor = 0.25
-				trait = paranoid
-			}
-			modifier = {
-				factor = 0
-				NOT = {
-					religion_group = pagan_group
-				}
-			}
-		}
-		
-		event_target:missionary_physician_target = {
-			opinion = {
-				modifier = opinion_glad
-				who = ROOT
-				years = 10
-			}
-		}
-		if = {
-			limit = {
-				religion_group = pagan_group
-			}
-			add_trait = sympathy_pagans
-		}
-		religion = event_target:missionary_physician_target
-		prestige = -500
-		piety = 250
-		any_courtier = {
-			limit = { 
-				is_close_relative = ROOT
-				NOT = { trait = zealous }
-			}
-			religion = event_target:missionary_physician_target
-		}
-		any_spouse = {
-			limit = { 
-				is_consort = no
-				NOT = { trait = zealous }
-			}
-			religion = event_target:missionary_physician_target
-		}
-	}
-	
-	option = {
-		name = EVTOPTC_RIP_4101
-		
-		ai_chance = {
-			factor = 30
-			modifier = {
-				factor = 5
-				trait = zealous
-			}
-			modifier = {
-				factor = 2
-				trait = stubborn
-			}
-			modifier = {
-				factor = 2
-				trait = cruel
-			}
-		}
-		
-		wealth = 50
-		event_target:missionary_physician_target = {
-			death = {
-				death_reason = death_execution_burning
-				killer = ROOT
-			}
-		}
-		event_target:origin_realm_of_missionary_physician_target = {
-			opinion = {
-				modifier = opinion_dishonorable_scum
-				who = ROOT
-				years = 15
-			}
-		}
-	}
-}
+# removed for MEP
 
 ####################################
 # RIP Prosperity Increasing Events #
@@ -5618,10 +5263,7 @@ character_event = {
 
 				if = {
 					limit = { 
-						NOR = {
-							trait = craven 
-							trait = berserker 
-						} 
+						NOT = { trait = craven } 
 						NOT = { has_dlc = "Zeus" } 
 					}
 					add_trait = craven
@@ -6169,7 +5811,7 @@ character_event = {
 		custom_tooltip = { text = EVTOPTB_RIP_29201_TOOLTIP }
 
 		if = {
-			limit = { NOR = { trait = craven trait = berserker } }
+			limit = { NOT = { trait = craven } }
 
 			random = {
 				chance = 20
@@ -7504,7 +7146,7 @@ character_event = {
 				OR = {
 					primary_title = { has_law = agnatic_succession }
 					primary_title = { has_law = succ_patrician_elective }
-					religion_group = muslim
+					# religion_group = muslim
 				}	
 			}
 			set_character_flag = text_girl_cant_inherit
@@ -7917,9 +7559,8 @@ character_event = {
 			}
 		}
 		OR = {
-			religion = manichean
-			religion = west_african_pagan_reformed
-			religion = west_african_pagan
+			religion_group = religion_group_eldar
+			religion_group = religion_group_khazad
 		}
 		OR = {
 			father = {
@@ -10573,1337 +10214,1337 @@ character_event = {
 }
 
 ###CHESS WITH DEATH###
-
-character_event = {
-	id = RIP.30220
-	hide_window = yes
-
-	min_age = 16
-	only_playable = yes
-	only_capable = yes
-	war = no
-	has_dlc = "Reapers"
-	ai = no
-
-	trigger = {
-		NOT = {
-			has_game_rule = {
-				name = supernatural_events
-				value = off
-			}
-		}
-		OR = {
-			religion_group = christian
-			any_realm_province = { any_neighbor_province = { owner = { religion_group = christian } } } 
-		}
-		is_nomadic = no
-		NOT = { has_character_flag = chess_with_death }
-		immortal = no
-	}
-
-	is_triggered_only = yes
-
-	weight_multiplier = {
-		days = 1
-		modifier = {
-			factor = 2
-			OR = {
-				any_realm_province = { disease = bubonic_plague }
-				any_realm_province = { any_neighbor_province = { disease = bubonic_plague } }
-			}
-		}
-		modifier = {
-			factor = 1.5
-			age = 70
-		}
-		modifier = {
-			factor = 1.4
-			NOT = { health = 2 }
-		}
-		modifier = {
-			factor = 1.2
-			NOT = { health = 4 }
-		}
-		modifier = {
-			factor = 1.3
-			trait = gamer
-		}
-	}
-
-	immediate = {
-		set_character_flag = chess_with_death
-		
-
-		if = {
-			limit = { religion_group = christian }
-			random_list = {
-				50 = {
-					create_character = {
-						random_traits = no
-						age = 32
-						dynasty = none
-						female = yes
-						trait = mastermind_theologian
-						trait = nun
-						trait = chaste
-						trait = shrewd
-						trait = gamer
-						trait = patient
-						trait = fatigue
-						trait = on_pilgrimage 
-						attributes = {
-							martial = 5
-						}
-					}
-					new_character = { save_event_target_as = death }
-				}
-				50 = {
-					create_character = {
-						random_traits = no
-						age = 32
-						dynasty = none
-						female = no
-						trait = mastermind_theologian
-						trait = monk
-						trait = chaste
-						trait = shrewd
-						trait = gamer
-						trait = patient
-						trait = fatigue 
-						trait = on_pilgrimage
-						attributes = {
-							martial = 5
-						}
-					}
-					new_character = { save_event_target_as = death }
-				}
-			}			
-		}
-		if = {
-			limit = { NOT = { religion_group = christian } }
-			random_list = {
-				50 = {
-					create_character = {
-						random_traits = no
-						age = 32
-						dynasty = none
-						female = yes
-						name = Eugenia
-						culture = italian
-						race = italian
-						religion = catholic
-						trait = mastermind_theologian
-						trait = nun
-						trait = chaste
-						trait = shrewd
-						trait = gamer
-						trait = patient
-						trait = fatigue 
-						trait = on_pilgrimage
-						attributes = {
-							martial = 5
-						}
-					}
-					new_character = { save_event_target_as = death }
-				}
-				50 = {
-					create_character = {
-						random_traits = no
-						age = 32
-						dynasty = none
-						female = no
-						name = Augusto
-						culture = italian
-						race = italian
-						religion = catholic
-						trait = mastermind_theologian
-						trait = monk
-						trait = chaste
-						trait = shrewd
-						trait = gamer
-						trait = patient
-						trait = fatigue 
-						trait = on_pilgrimage
-						attributes = {
-							martial = 5
-						}
-					}
-					new_character = { save_event_target_as = death }
-				}
-			}			
-		}
-
-		set_character_flag = chess_30222	
-		event_target:death = {
-			health = 10
-
-			character_event = { id = RIP.30221 }
-		}
-	}
-}
-
-#General ping event 
-character_event = {
-	id = RIP.30221
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	immediate = {
-		FROM = {	
-			trigger_switch = {
-				on_trigger = has_character_flag
-				chess_30222	= { character_event = { id = RIP.30222 } } #Seeing someone during a walk
-				chess_30223 = { character_event = { id = RIP.30223 days = 5 } } #Talking to the nun/monk, they want room & board
-				chess_30224 = { narrative_event = { id = RIP.30224 days = 14 random = 14 } } #Death comes for you
-				chess_30225 = { character_event = { id = RIP.30225 days = 1 } } #Outcome of attacking death
-				chess_30226 = { character_event = { id = RIP.30226 days = 5 } } #Picking chess pieces
-				chess_30227 = { character_event = { id = RIP.30227 days = 3 } } #First move
-				chess_30228 = { character_event = { id = RIP.30228 days = 1 } } #Outcome of first move
-				chess_30229 = { character_event = { id = RIP.30229 days = 5 } } #Another tactic
-				chess_30230 = { character_event = { id = RIP.30230 days = 1 } } #Outcome of the tactic
-				chess_30231 = { character_event = { id = RIP.30231 days = 5 } } #Last move
-				chess_30232 = { narrative_event = { id = RIP.30232 days = 1 } } #The end
-			}
-			clr_character_flag = chess_30222
-			clr_character_flag = chess_30223
-			clr_character_flag = chess_30224
-			clr_character_flag = chess_30225
-			clr_character_flag = chess_30226
-			clr_character_flag = chess_30227
-			clr_character_flag = chess_30228
-			clr_character_flag = chess_30229
-			clr_character_flag = chess_30230
-			clr_character_flag = chess_30231
-			clr_character_flag = chess_30232
-		}
-	}
-}
-
-#Notice someone when out on a walk
-character_event = {
-	id = RIP.30222
-	picture = GFX_evt_garden
-	desc = EVTDESC_RIP_30222
-	border = GFX_event_normal_frame_religion
-
-	hide_from = yes
-	hide_new = yes
-	is_triggered_only = yes
-
-	#Have a chat
-	option = {
-		name = EVTOPTA_RIP_30222
-
-		random = {
-			chance = 20
-			add_trait_gregarious_effect = yes			
-		}
-		random = {
-			chance = 30
-			remove_trait_shy_effect = yes
-		}
-	
-		set_character_flag = walked_with_death
-		set_character_flag = chess_30223
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Want to be alone
-	option = {
-		name = EVTOPTB_RIP_30222
-
-		random = {
-			chance = 20
-			add_trait_shy_effect = yes			
-		}
-		random = {
-			chance = 30
-			remove_trait_gregarious_effect = yes
-		}
-
-		set_character_flag = chess_30224
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }	
-	}
-}
-
-#You talk, they want room and board
-character_event = {
-	id = RIP.30223
-	picture = GFX_evt_wise_woman
-	border = GFX_event_normal_frame_religion
-
-	desc = {
-		trigger = { 
-			religion = FROM 
-			FROM = { is_female = yes }
-		}
-		text = EVTDESC_RIP_30223_A
-		picture = GFX_evt_wise_woman
-	}
-	desc = {
-		trigger = { 
-			religion = FROM 
-			FROM = { is_female = no }
-		}
-		text = EVTDESC_RIP_30223_B
-		picture = GFX_evt_monk
-	}
-	desc = {
-		trigger = { 
-			NOT = { religion = FROM }
-			FROM = { is_female = yes }
-		}
-		text = EVTDESC_RIP_30223_C
-		picture = GFX_evt_wise_woman
-	}
-	desc = {
-		trigger = { 
-			NOT = { religion = FROM }
-			FROM = { is_female = no }
-		}
-		text = EVTDESC_RIP_30223_D
-		picture = GFX_evt_monk
-	}
-
-	is_triggered_only = yes
-
-	#Come stay with me
-	option = {
-		name = EVTOPTA_RIP_30223
-		custom_tooltip = { text = EVTOPTA_RIP_30223_TOOLTIP }
-
-		if = {
-			limit = { NOT = { religion_group = christian } }
-			remove_trait_zealous_effect = yes
-			add_trait = sympathy_christendom
-		}
-
-		set_character_flag = invited_death
-		set_character_flag = chess_30224
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Have some money, sleep at the inn
-	option = {
-		name = EVTOPTB_RIP_30223
-		custom_tooltip = { text = EVTOPTB_RIP_30223_TOOLTIP }
-
-		scaled_wealth = { value = -0.1 min = -15 }
-
-		set_character_flag = gave_death_money
-		set_character_flag = chess_30224
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Go away! 
-	option = {
-		name = {
-			trigger = { religion_group = christian }
-			text = EVTOPTC_RIP_30223_A
-		}
-		name = {
-			trigger = { NOT = { religion_group = christian } }
-			text = EVTOPTC_RIP_30223_B
-		}
-
-		custom_tooltip = { text = EVTOPTC_RIP_30223_TOOLTIP }
-
-		if = {
-			limit = { religion_group = christian }
-
-			piety = -50
-
-			random = {
-				chance = 50
-				remove_trait_zealous_effect = yes
-			}
-		}
-
-		if = {
-			limit = { NOT = { trait = charitable } }
-			random = {
-				chance = 50
-				add_trait_greedy_effect = yes
-			}
-		}
-		random = {
-			chance = 50
-			remove_trait_charitable_effect = yes
-		}	
-
-		set_character_flag = chess_30224
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#The reveal
-narrative_event = {
-	id = RIP.30224
-	title = EVTNAME_RIP_30224
-	border = GFX_event_narrative_frame_intrigue
-	picture = GFX_evt_shadow
-
-	desc = {
-		trigger = { has_character_flag = invited_death }
-		text = EVTDESC_RIP_30224_A
-	}
-	desc = {
-		trigger = { 
-			NOT = { has_character_flag = invited_death }
-			has_character_flag = walked_with_death
-		}
-		text = EVTDESC_RIP_30224_B
-	}
-	desc = {
-		trigger = { 
-			NOR = {
-				has_character_flag = invited_death
-				has_character_flag = walked_with_death
-			}
-		}
-		text = EVTDESC_RIP_30224_C
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		FROM = { 
-			remove_trait = fatigue 
-			remove_trait = on_pilgrimage
-			remove_trait = nun
-			remove_trait = monk
-		}
-		if = { 
-			limit = {
-				OR = {
-					trait = seducer
-					trait = seductress
-				}
-				same_sex = FROM
-			}
-			FROM = { add_trait = homosexual } #To "enable" seduction
-		}
-	}
-
-	#Play chess with me!
-	option = {
-		name = EVTOPTA_RIP_30224
-		custom_tooltip = { text = EVTOPTA_RIP_30224_TOOLTIP }
-
-		set_character_flag = chess_30226
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Do your worst!
-	option = {
-		name = EVTOPTB_RIP_30224
-		custom_tooltip = { text = EVTOPTB_RIP_30224_TOOLTIP }
-
-		random_list = {
-			#You die
-			80 = {	
-				death = { death_reason = death_murder_unknown killer = FROM }
-
-				hidden_tooltip = {
-					FROM = {
-						leave_court_effect = yes
-		  				death = { death_reason = death_missing }
-					}
-				}
-			}
-			#You survive
-			20 = {
-				modifier = {
-					factor = 0
-					trait = wounded
-					trait = mangled
-					trait = one_eyed
-					trait = one_handed
-				}
-				custom_tooltip = { text = EVTOPTB_RIP_30224_TOOLTIP_SURVIVE }
-				set_character_flag = chess_30225
-				hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-			}
-		}
-
-		clr_character_flag = walked_with_death
-		clr_character_flag = invited_death
-		clr_character_flag = gave_death_money
-	}
-}
-
-#You survived but got injured
-character_event = {
-	id = RIP.30225
-	picture = GFX_evt_bloody_tools
-	desc = EVTDESC_RIP_30225
-	border = GFX_event_normal_frame_war
-
-	is_triggered_only = yes
-
-	immediate = {
-		random_list = {
-			25 = {
-				modifier = {
-					factor = 0
-					trait = wounded
-				}
-				set_character_flag = give_wounded
-			}
-			25 = {
-				modifier = {
-					factor = 0
-					trait = mangled
-				}
-				set_character_flag = give_mangled
-			}
-			25 = {
-				modifier = {
-					factor = 0
-					trait = one_eyed
-				}
-				set_character_flag = give_one_eyed
-			}
-			25 = {
-				modifier = {
-					factor = 0
-					trait = one_handed
-				}
-				set_character_flag = give_one_handed
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTB_RIP_30225
-
-		trigger_switch = {
-			on_trigger = has_character_flag
-			give_wounded	= { add_trait_wounded_effect = yes }
-			give_mangled	= { mangle_effect = yes }
-			give_one_eyed	= { add_trait_one_eyed_effect = yes }
-			give_one_handed	= { add_trait_one_handed_effect = yes }
-		}
-
-		clr_character_flag = give_wounded
-		clr_character_flag = give_mangled
-		clr_character_flag = give_one_eyed
-		clr_character_flag = give_one_handed
-		
-		FROM = { death = { death_reason = death_murder_unknown killer = ROOT } } 
-	}
-}
-
-#Chess starts, pick piece
-character_event = {
-	id = RIP.30226
-	picture = GFX_evt_court_physician
-	desc = EVTDESC_RIP_30226
-	border = GFX_event_normal_frame_intrigue
-
-	is_triggered_only = yes
-
-	immediate = {
-		set_variable = { which = chess_score value = 0 }
-
-		if = {
-			limit = { 
-				OR = {
-					has_character_flag = invited_death 
-					has_character_flag = gave_death_money
-				}
-			}
-			change_variable = { which = chess_score value = 1 }
-			clr_character_flag = invited_death
-			clr_character_flag = gave_death_money
-		}
-		clr_character_flag = walked_with_death
-	}
-
-	#White
-	option = {
-		name = EVTOPTA_RIP_30226
-		custom_tooltip = { text = EVTOPTA_RIP_30226_TOOLTIP }
-
-		set_character_flag = picked_white
-
-		set_character_flag = chess_30227
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	} 
-	
-	#Black
-	option = {
-		name = EVTOPTB_RIP_30226
-		custom_tooltip = { text = EVTOPTB_RIP_30226_TOOLTIP }
-
-		hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-		set_character_flag = picked_black
-
-		set_character_flag = chess_30227
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#First move
-character_event = {
-	id = RIP.30227
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_intrigue
-
-	desc = {
-		trigger = { has_character_flag = picked_black }
-		text = EVTDESC_RIP_30226_BLACK	
-	}
-	desc = {
-		trigger = { has_character_flag = picked_white }
-		text = EVTDESC_RIP_30226_WHITE	
-	}
-
-	is_triggered_only = yes
-
-	#Play it safe
-	option = {
-		name = EVTOPTA_RIP_30227
-
-		random_list = {
-			25 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-				set_character_flag = good_move
-			}
-			55 = {
-				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
-				set_character_flag = neutral_move
-			}
-			20 = {
-				custom_tooltip = { text = CHESS_BAD_MOVE }
-				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
-				set_character_flag = bad_move
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Play it risky
-	option = {
-		name = EVTOPTB_RIP_30227
-
-		random_list = {
-			20 = {
-				custom_tooltip = { text = CHESS_GREAT_MOVE }
-				set_character_flag = great_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-			}
-			40 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-			40 = {
-				custom_tooltip = { text = CHESS_TERRIBLE_MOVE }
-				set_character_flag = bad_move
-				hidden_tooltip = { change_variable = { which = chess_score value = -2 } }
-			}	
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Deceitful
-	option = {	
-		trigger = { 
-			trait = deceitful 
-			NOT = { trait = schemer }
-			NOT = {
-				AND = {
-					trait = strategist
-					is_smart_trigger = yes
-				}
-			}
-		}
-		name = EVTOPTC_RIP_30227
-		tooltip_info = deceitful
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Master schemer
-	option = {	
-		trigger = { trait = schemer }
-		name = EVTOPTC_RIP_30227
-		tooltip_info = schemer
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Gamer option
-	option = {
-		trigger = { trait = gamer }
-		name = EVTOPTD_RIP_30227
-		tooltip_info = gamer
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GREAT_MOVE }
-				set_character_flag = great_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Strategist option
-	option = {
-		trigger = { 
-			trait = strategist 
-		}
-		name = EVTOPTD_RIP_30227
-		tooltip_info = strategist
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Genius option
-	option = {
-		trigger = {
-			trait = genius
-			NOT = { trait = gamer }
-		}
-		name = EVTOPTE_RIP_30227
-		tooltip_info = genius
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GREAT_MOVE }
-				set_character_flag = great_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Quick
-	option = {
-		trigger = {
-			trait = quick
-			NOT = { trait = gamer }
-		}
-		name = EVTOPTE_RIP_30227
-		tooltip_info = quick
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Shrewd
-	option = {
-		trigger = {
-			trait = shrewd
-			NOT = { trait = gamer }
-		}
-		name = EVTOPTE_RIP_30227
-		tooltip_info = shrewd
-
-		random_list = {
-			100 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-		}
-
-		set_character_flag = chess_30228
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#Death reacts to you move
-character_event = {
-	id = RIP.30228
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_intrigue
-
-	desc = {
-		trigger = { has_character_flag = great_move }
-		text = EVTDESC_RIP_30228_GREAT
-	}
-	desc = {
-		trigger = { has_character_flag = good_move }
-		text = EVTDESC_RIP_30228_GOOD
-	}
-	desc = {
-		trigger = { has_character_flag = neutral_move }
-		text = EVTDESC_RIP_30228_NEUTRAL
-	}
-	desc = {
-		trigger = { has_character_flag = bad_move }
-		text = EVTDESC_RIP_30228_BAD
-	}
-
-	is_triggered_only = yes
-
-	option = {
-		name = {
-			trigger = { 
-				OR = {
-					has_character_flag = great_move 
-					has_character_flag = good_move
-				}
-			}
-			text = EVTOPTA_RIP_30228_A
-		}
-		name = {
-			trigger = { 
-				OR = {
-					has_character_flag = bad_move 
-					has_character_flag = neutral_move
-				}
-			}
-			text = EVTOPTA_RIP_30228_B
-		}
-		
-		custom_tooltip = { text = EVTOPTA_RIP_30228_TOOLTIP }
-		clr_character_flag = great_move
-		clr_character_flag = good_move
-		clr_character_flag = neutral_move
-		clr_character_flag = bad_move
-		
-		set_character_flag = chess_30229
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#Some other tactic
-character_event = {
-	id = RIP.30229
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_intrigue
-
-	desc = {
-		trigger = { check_variable = { which = chess_score value = 3 } }
-		text = EVTDESC_RIP_30229_GOOD
-	}
-	desc = {
-		trigger = { 
-			NOT = { check_variable = { which = chess_score value = 3 } }
-			check_variable = { which = chess_score value = 1 } 
-		}
-		text = EVTDESC_RIP_30229_NEUTRAL
-	}
-	desc = {
-		trigger = { NOT = { check_variable = { which = chess_score value = 1 } } }
-		text = EVTDESC_RIP_30229_BAD
-	}
-
-	is_triggered_only = yes
-
-	#Drinking competition 1
-	option = {
-		trigger = { trait = drunkard }
-		tooltip_info = drunkard
-		name = EVTOPTA_RIP_30229
-		custom_tooltip = { text = EVTOPTA_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_drinking_competition
-		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Drinking competition 2
-	option = {
-		trigger = { trait = hedonist }
-		tooltip_info = hedonist
-		name = EVTOPTA_RIP_30229
-		custom_tooltip = { text = EVTOPTA_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_drinking_competition
-		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Seduce (as man)
-	option = {
-		trigger = { 
-			trait = seducer 
-		}
-		tooltip_info = seducer
-		name = EVTOPTB_RIP_30229
-		custom_tooltip = { text = EVTOPTB_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_seduction
-		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Seduce (as woman)
-	option = { 
-		trigger = { 
-			trait = seductress 
-		}
-		tooltip_info = seductress
-		name = EVTOPTB_RIP_30229
-		custom_tooltip = { text = EVTOPTB_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_seduction
-		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Intimidate
-	option = {
-		trigger = { trait = impaler }
-		tooltip_info = impaler
-		name = EVTOPTC_RIP_30229
-		custom_tooltip = { text = EVTOPTC_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_intimidation
-		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Brag about past victories
-	option = {
-		trigger = { trait = gamer }
-		tooltip_info = gamer
-		name = EVTOPTF_RIP_30229
-		custom_tooltip = { text = EVTOPTF_RIP_30229_TOOLTIP }
-
-		set_character_flag = chess_brag
-		hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Knock wine
-	option = {
-		name = EVTOPTD_RIP_30229
-		custom_tooltip = { text = EVTOPTD_RIP_30229_TOOLTIP }
-
-		random_list = {
-			67 = {
-				custom_tooltip = { text = CHESS_GOOD_TRICK }
-				set_character_flag = good_trick
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-			33 = {
-				custom_tooltip = { text = CHESS_BAD_TRICK }
-				set_character_flag = bad_trick
-			}
-		}
-		set_character_flag = chess_30230
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Focus on the game, skips next event
-	option = {
-		name = EVTOPTE_RIP_30229
-
-		random_list = {
-			25 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-			75 = {
-				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
-			}
-		}
-
-		set_character_flag = chess_30231
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#Another tactic reaction
-character_event = {
-	id = RIP.30230
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_intrigue
-
-	desc = {
-		trigger = { has_character_flag = chess_drinking_competition }
-		text = EVTDESC_RIP_30230_DRINKING
-		picture = GFX_evt_drunk
-	}
-	desc = {
-		trigger = { has_character_flag = chess_seduction }
-		text = EVTDESC_RIP_30230_SEDUCTION
-		picture = GFX_evt_lovers
-	}
-	desc = {
-		trigger = { has_character_flag = chess_intimidation }
-		text = EVTDESC_RIP_30230_INTIMIDATION
-		picture = GFX_evt_impalement
-	}
-	desc = {
-		trigger = { has_character_flag = chess_brag }
-		text = EVTDESC_RIP_30230_BRAG
-		picture = GFX_evt_courtiers_talking
-	}
-	desc = {
-		trigger = { has_character_flag = good_trick }
-		text = EVTDESC_RIP_30230_GOOD_TRICK
-		picture = GFX_evt_drunk
-	}
-	desc = {
-		trigger = { has_character_flag = bad_trick }
-		text = EVTDESC_RIP_30230_BAD_TRICK
-		picture = GFX_evt_drunk
-	}
-
-	is_triggered_only = yes
-
-	option = {
-		trigger = { NOT = { has_character_flag = bad_trick } }
-		name = EVTOPTA_RIP_30230
-		custom_tooltip = { text = EVTOPTA_RIP_30228_TOOLTIP }
-
-		clr_character_flag = chess_drinking_competition
-		clr_character_flag = chess_seduction
-		clr_character_flag = chess_intimidation
-		clr_character_flag = chess_brag
-		clr_character_flag = good_trick
-
-		#Randomness
-		hidden_tooltip = {
-			random_list = {
-				50 = { change_variable = { which = chess_score value = -1 } }
-				50 = {}
-			}
-		}
-
-		set_character_flag = chess_30231
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	option = {
-		trigger = { has_character_flag = bad_trick } 
-		name = EVTOPTB_RIP_30230
-		custom_tooltip = { text = EVTOPTB_RIP_30230_TOOLTIP }
-
-		clr_character_flag = bad_trick
-
-		death = { death_reason = death_murder_unknown killer = FROM } 
-
-		hidden_tooltip = { 
-			FROM = {
-				leave_court_effect = yes
-				death = { death_reason = death_missing }
-			}	
-		}
-	}
-}
-
-#Last move
-character_event = {
-	id = RIP.30231
-	picture = GFX_evt_court_physician
-	border = GFX_event_normal_frame_intrigue
-
-	desc = {
-		trigger = { check_variable = { which = chess_score value = 5 } }
-		text = EVTDESC_RIP_30231_GOOD
-	}
-	desc = {
-		trigger = { 
-			NOT = { check_variable = { which = chess_score value = 5 } }
-			check_variable = { which = chess_score value = 4 } 
-		}
-		text = EVTDESC_RIP_30231_NEUTRAL
-	}
-	desc = {
-		trigger = { NOT = { check_variable = { which = chess_score value = 4 } } }
-		text = EVTDESC_RIP_30231_BAD
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		hidden_tooltip = {
-			random_spouse = {
-				limit = {
-					is_alive = yes
-					ai = yes
-					liege = { character = ROOT }
-				}
-				save_event_target_as = chess_sacrifice
-			}
-			random_friend = {
-				limit = {
-					is_alive = yes
-					ai = yes
-					liege = { character = ROOT }
-				}
-				save_event_target_as = chess_sacrifice
-			}
-			random_lover = {
-				limit = {
-					is_alive = yes
-					ai = yes
-					liege = { character = ROOT }
-				}
-				save_event_target_as = chess_sacrifice
-			}
-			random_child = {
-				limit = {
-					is_alive = yes
-					ai = yes
-					liege = { character = ROOT }
-				}
-				save_event_target_as = chess_sacrifice
-			}
-		}
-	}
-
-	#Trust my skill
-	option = {
-		name = EVTOPTA_RIP_30231
-
-		random_list = {
-			20 = {
-				modifier = {
-					factor = 0
-					NOR = {
-						trait = gamer
-						is_smart_trigger = yes
-					}
-				}
-				custom_tooltip = { text = CHESS_GREAT_MOVE }
-				set_character_flag = great_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-			}
-			20 = {
-				modifier = {
-					factor = 1.5
-					OR = {
-						trait = gamer
-						is_smart_trigger = yes
-					}
-				}
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-			50 = {
-				modifier = {
-					factor = 0.6
-					OR = {
-						trait = gamer
-						is_smart_trigger = yes
-					}
-				}
-				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
-				set_character_flag = neutral_move
-			}
-			30 = {
-				modifier = {
-					factor = 0.67
-					OR = {
-						trait = gamer
-						is_smart_trigger = yes
-					}
-				}
-				custom_tooltip = { text = CHESS_BAD_MOVE }
-				set_character_flag = bad_move
-				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
-			}
-		}
-
-		set_character_flag = chess_30232
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-
-	#Offer lover/friend
-	option = {
-		trigger = { event_target:chess_sacrifice = { always = yes } }
-		name = {
-			trigger = { any_spouse = { character = event_target:chess_sacrifice } }
-			text = EVTOPTB_RIP_30231_A
-		}
-		name = {
-			trigger = { any_friend = { character = event_target:chess_sacrifice } }
-			text = EVTOPTB_RIP_30231_B
-		}
-		name = {
-			trigger = { any_lover = { character = event_target:chess_sacrifice } }
-			text = EVTOPTB_RIP_30231_C
-		}
-		name = {
-			trigger = { any_child = { character = event_target:chess_sacrifice } }
-			text = EVTOPTB_RIP_30231_D
-		}
-
-		event_target:chess_sacrifice = { save_event_target_as = kill_sacrifice }
-
-		random_list = {
-			15 = {
-				custom_tooltip = { text = CHESS_GREAT_MOVE }
-				set_character_flag = great_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
-			}
-			35 = {
-				custom_tooltip = { text = CHESS_GOOD_MOVE }
-				set_character_flag = good_move
-				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
-			}
-			35 = {
-				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
-				set_character_flag = neutral_move
-			}
-			15 = {
-				custom_tooltip = { text = CHESS_BAD_MOVE }
-				set_character_flag = bad_move
-				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
-			}
-		}
-
-		set_character_flag = chess_30232
-		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
-	}
-}
-
-#The end of the game
-narrative_event = {
-	id = RIP.30232
-	title = EVTNAME_RIP_30232
-	border = GFX_event_narrative_frame_intrigue
-	picture = GFX_evt_danse_macabre
-
-	desc = {
-		trigger = { check_variable = { which = chess_score value = 5 } }
-		text = EVTDESC_RIP_30232_GOOD
-	}
-	desc = {
-		trigger = { NOT = { check_variable = { which = chess_score value = 5 } } }
-		text = EVTDESC_RIP_30232_BAD
-	}
-
-	immediate = {
-
-	}
-
-	is_triggered_only = yes
-
-	option = {
-		trigger = { check_variable = { which = chess_score value = 5 } }
-		name = EVTOPTA_RIP_30232
-		custom_tooltip = { text = EVTOPTB_RIP_302232_TOOLTIP }
-
-		if = {
-			limit = { NOT = { has_character_modifier = deaths_gift } }
-			add_character_modifier = {
-				name = deaths_gift
-				duration = -1
-			}
-		}
-
-		remove_disease_trait_effect = yes
-
-		hidden_tooltip = { 
-			FROM = {
-				leave_court_effect = yes
-				death = { death_reason = death_missing }
-			}	
-		}		
-	}
-
-	option = {
-		trigger = { NOT = { check_variable = { which = chess_score value = 5 } } }
-		name = EVTOPTB_RIP_30232
-		custom_tooltip = { text = EVTOPTB_RIP_30230_TOOLTIP }
-
-		death = { death_reason = death_murder_unknown killer = FROM } 
-		if = {
-			limit = { event_target:kill_sacrifice = { always = yes } }
-			event_target:kill_sacrifice = { death = { death_reason = death_murder_unknown killer = FROM } }
-		}
-
-		hidden_tooltip = { 
-			FROM = {
-				leave_court_effect = yes
-				death = { death_reason = death_missing }
-			}
-		}		
-	}
-}
-
-#Death's gift
-character_event = {
-	id = RIP.30233
-	desc = EVTDESC_TOG_7015
-	border = GFX_event_normal_frame_religion
-	picture = GFX_evt_danse_macabre
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_disease_trigger = yes
-	}
-
-	option = {
-		name = EVTOPTA_RIP_30233
-		remove_disease_trait_effect = yes	
-		remove_character_modifier = deaths_gift
-
-		if = {
-			limit = { trait = cynical }
-			remove_trait = cynical
-		}
-	}
-}
+# Disabled for MEP: Chess with death is Christian-specific (until someone rewrites it)
+#character_event = {
+#	id = RIP.30220
+#	hide_window = yes
+#
+#	min_age = 16
+#	only_playable = yes
+#	only_capable = yes
+#	war = no
+#	has_dlc = "Reapers"
+#	ai = no
+#
+#	trigger = {
+#		NOT = {
+#			has_game_rule = {
+#				name = supernatural_events
+#				value = off
+#			}
+#		}
+#		OR = {
+#			religion_group = christian
+#			any_realm_province = { any_neighbor_province = { owner = { religion_group = christian } } } 
+#		}
+#		is_nomadic = no
+#		NOT = { has_character_flag = chess_with_death }
+#		immortal = no
+#	}
+#
+#	is_triggered_only = yes
+#
+#	weight_multiplier = {
+#		days = 1
+#		modifier = {
+#			factor = 2
+#			OR = {
+#				any_realm_province = { disease = bubonic_plague }
+#				any_realm_province = { any_neighbor_province = { disease = bubonic_plague } }
+#			}
+#		}
+#		modifier = {
+#			factor = 1.5
+#			age = 70
+#		}
+#		modifier = {
+#			factor = 1.4
+#			NOT = { health = 2 }
+#		}
+#		modifier = {
+#			factor = 1.2
+#			NOT = { health = 4 }
+#		}
+#		modifier = {
+#			factor = 1.3
+#			trait = gamer
+#		}
+#	}
+#
+#	immediate = {
+#		set_character_flag = chess_with_death
+#		
+#
+#		if = {
+#			limit = { religion_group = christian }
+#			random_list = {
+#				50 = {
+#					create_character = {
+#						random_traits = no
+#						age = 32
+#						dynasty = none
+#						female = yes
+#						trait = mastermind_theologian
+#						trait = nun
+#						trait = chaste
+#						trait = shrewd
+#						trait = gamer
+#						trait = patient
+#						trait = fatigue
+#						trait = on_pilgrimage 
+#						attributes = {
+#							martial = 5
+#						}
+#					}
+#					new_character = { save_event_target_as = death }
+#				}
+#				50 = {
+#					create_character = {
+#						random_traits = no
+#						age = 32
+#						dynasty = none
+#						female = no
+#						trait = mastermind_theologian
+#						trait = monk
+#						trait = chaste
+#						trait = shrewd
+#						trait = gamer
+#						trait = patient
+#						trait = fatigue 
+#						trait = on_pilgrimage
+#						attributes = {
+#							martial = 5
+#						}
+#					}
+#					new_character = { save_event_target_as = death }
+#				}
+#			}			
+#		}
+#		if = {
+#			limit = { NOT = { religion_group = christian } }
+#			random_list = {
+#				50 = {
+#					create_character = {
+#						random_traits = no
+#						age = 32
+#						dynasty = none
+#						female = yes
+#						name = Eugenia
+#						culture = italian
+#						race = italian
+#						religion = catholic
+#						trait = mastermind_theologian
+#						trait = nun
+#						trait = chaste
+#						trait = shrewd
+#						trait = gamer
+#						trait = patient
+#						trait = fatigue 
+#						trait = on_pilgrimage
+#						attributes = {
+#							martial = 5
+#						}
+#					}
+#					new_character = { save_event_target_as = death }
+#				}
+#				50 = {
+#					create_character = {
+#						random_traits = no
+#						age = 32
+#						dynasty = none
+#						female = no
+#						name = Augusto
+#						culture = italian
+#						race = italian
+#						religion = catholic
+#						trait = mastermind_theologian
+#						trait = monk
+#						trait = chaste
+#						trait = shrewd
+#						trait = gamer
+#						trait = patient
+#						trait = fatigue 
+#						trait = on_pilgrimage
+#						attributes = {
+#							martial = 5
+#						}
+#					}
+#					new_character = { save_event_target_as = death }
+#				}
+#			}			
+#		}
+#
+#		set_character_flag = chess_30222	
+#		event_target:death = {
+#			health = 10
+#
+#			character_event = { id = RIP.30221 }
+#		}
+#	}
+#}
+#
+##General ping event 
+#character_event = {
+#	id = RIP.30221
+#	hide_window = yes
+#
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		FROM = {	
+#			trigger_switch = {
+#				on_trigger = has_character_flag
+#				chess_30222	= { character_event = { id = RIP.30222 } } #Seeing someone during a walk
+#				chess_30223 = { character_event = { id = RIP.30223 days = 5 } } #Talking to the nun/monk, they want room & board
+#				chess_30224 = { narrative_event = { id = RIP.30224 days = 14 random = 14 } } #Death comes for you
+#				chess_30225 = { character_event = { id = RIP.30225 days = 1 } } #Outcome of attacking death
+#				chess_30226 = { character_event = { id = RIP.30226 days = 5 } } #Picking chess pieces
+#				chess_30227 = { character_event = { id = RIP.30227 days = 3 } } #First move
+#				chess_30228 = { character_event = { id = RIP.30228 days = 1 } } #Outcome of first move
+#				chess_30229 = { character_event = { id = RIP.30229 days = 5 } } #Another tactic
+#				chess_30230 = { character_event = { id = RIP.30230 days = 1 } } #Outcome of the tactic
+#				chess_30231 = { character_event = { id = RIP.30231 days = 5 } } #Last move
+#				chess_30232 = { narrative_event = { id = RIP.30232 days = 1 } } #The end
+#			}
+#			clr_character_flag = chess_30222
+#			clr_character_flag = chess_30223
+#			clr_character_flag = chess_30224
+#			clr_character_flag = chess_30225
+#			clr_character_flag = chess_30226
+#			clr_character_flag = chess_30227
+#			clr_character_flag = chess_30228
+#			clr_character_flag = chess_30229
+#			clr_character_flag = chess_30230
+#			clr_character_flag = chess_30231
+#			clr_character_flag = chess_30232
+#		}
+#	}
+#}
+#
+##Notice someone when out on a walk
+#character_event = {
+#	id = RIP.30222
+#	picture = GFX_evt_garden
+#	desc = EVTDESC_RIP_30222
+#	border = GFX_event_normal_frame_religion
+#
+#	hide_from = yes
+#	hide_new = yes
+#	is_triggered_only = yes
+#
+#	#Have a chat
+#	option = {
+#		name = EVTOPTA_RIP_30222
+#
+#		random = {
+#			chance = 20
+#			add_trait_gregarious_effect = yes			
+#		}
+#		random = {
+#			chance = 30
+#			remove_trait_shy_effect = yes
+#		}
+#	
+#		set_character_flag = walked_with_death
+#		set_character_flag = chess_30223
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Want to be alone
+#	option = {
+#		name = EVTOPTB_RIP_30222
+#
+#		random = {
+#			chance = 20
+#			add_trait_shy_effect = yes			
+#		}
+#		random = {
+#			chance = 30
+#			remove_trait_gregarious_effect = yes
+#		}
+#
+#		set_character_flag = chess_30224
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }	
+#	}
+#}
+#
+##You talk, they want room and board
+#character_event = {
+#	id = RIP.30223
+#	picture = GFX_evt_wise_woman
+#	border = GFX_event_normal_frame_religion
+#
+#	desc = {
+#		trigger = { 
+#			religion = FROM 
+#			FROM = { is_female = yes }
+#		}
+#		text = EVTDESC_RIP_30223_A
+#		picture = GFX_evt_wise_woman
+#	}
+#	desc = {
+#		trigger = { 
+#			religion = FROM 
+#			FROM = { is_female = no }
+#		}
+#		text = EVTDESC_RIP_30223_B
+#		picture = GFX_evt_monk
+#	}
+#	desc = {
+#		trigger = { 
+#			NOT = { religion = FROM }
+#			FROM = { is_female = yes }
+#		}
+#		text = EVTDESC_RIP_30223_C
+#		picture = GFX_evt_wise_woman
+#	}
+#	desc = {
+#		trigger = { 
+#			NOT = { religion = FROM }
+#			FROM = { is_female = no }
+#		}
+#		text = EVTDESC_RIP_30223_D
+#		picture = GFX_evt_monk
+#	}
+#
+#	is_triggered_only = yes
+#
+#	#Come stay with me
+#	option = {
+#		name = EVTOPTA_RIP_30223
+#		custom_tooltip = { text = EVTOPTA_RIP_30223_TOOLTIP }
+#
+#		if = {
+#			limit = { NOT = { religion_group = christian } }
+#			remove_trait_zealous_effect = yes
+#			add_trait = sympathy_christendom
+#		}
+#
+#		set_character_flag = invited_death
+#		set_character_flag = chess_30224
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Have some money, sleep at the inn
+#	option = {
+#		name = EVTOPTB_RIP_30223
+#		custom_tooltip = { text = EVTOPTB_RIP_30223_TOOLTIP }
+#
+#		scaled_wealth = { value = -0.1 min = -15 }
+#
+#		set_character_flag = gave_death_money
+#		set_character_flag = chess_30224
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Go away! 
+#	option = {
+#		name = {
+#			trigger = { religion_group = christian }
+#			text = EVTOPTC_RIP_30223_A
+#		}
+#		name = {
+#			trigger = { NOT = { religion_group = christian } }
+#			text = EVTOPTC_RIP_30223_B
+#		}
+#
+#		custom_tooltip = { text = EVTOPTC_RIP_30223_TOOLTIP }
+#
+#		if = {
+#			limit = { religion_group = christian }
+#
+#			piety = -50
+#
+#			random = {
+#				chance = 50
+#				remove_trait_zealous_effect = yes
+#			}
+#		}
+#
+#		if = {
+#			limit = { NOT = { trait = charitable } }
+#			random = {
+#				chance = 50
+#				add_trait_greedy_effect = yes
+#			}
+#		}
+#		random = {
+#			chance = 50
+#			remove_trait_charitable_effect = yes
+#		}	
+#
+#		set_character_flag = chess_30224
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##The reveal
+#narrative_event = {
+#	id = RIP.30224
+#	title = EVTNAME_RIP_30224
+#	border = GFX_event_narrative_frame_intrigue
+#	picture = GFX_evt_shadow
+#
+#	desc = {
+#		trigger = { has_character_flag = invited_death }
+#		text = EVTDESC_RIP_30224_A
+#	}
+#	desc = {
+#		trigger = { 
+#			NOT = { has_character_flag = invited_death }
+#			has_character_flag = walked_with_death
+#		}
+#		text = EVTDESC_RIP_30224_B
+#	}
+#	desc = {
+#		trigger = { 
+#			NOR = {
+#				has_character_flag = invited_death
+#				has_character_flag = walked_with_death
+#			}
+#		}
+#		text = EVTDESC_RIP_30224_C
+#	}
+#
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		FROM = { 
+#			remove_trait = fatigue 
+#			remove_trait = on_pilgrimage
+#			remove_trait = nun
+#			remove_trait = monk
+#		}
+#		if = { 
+#			limit = {
+#				OR = {
+#					trait = seducer
+#					trait = seductress
+#				}
+#				same_sex = FROM
+#			}
+#			FROM = { add_trait = homosexual } #To "enable" seduction
+#		}
+#	}
+#
+#	#Play chess with me!
+#	option = {
+#		name = EVTOPTA_RIP_30224
+#		custom_tooltip = { text = EVTOPTA_RIP_30224_TOOLTIP }
+#
+#		set_character_flag = chess_30226
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Do your worst!
+#	option = {
+#		name = EVTOPTB_RIP_30224
+#		custom_tooltip = { text = EVTOPTB_RIP_30224_TOOLTIP }
+#
+#		random_list = {
+#			#You die
+#			80 = {	
+#				death = { death_reason = death_murder_unknown killer = FROM }
+#
+#				hidden_tooltip = {
+#					FROM = {
+#						leave_court_effect = yes
+#		  				death = { death_reason = death_missing }
+#					}
+#				}
+#			}
+#			#You survive
+#			20 = {
+#				modifier = {
+#					factor = 0
+#					trait = wounded
+#					trait = mangled
+#					trait = one_eyed
+#					trait = one_handed
+#				}
+#				custom_tooltip = { text = EVTOPTB_RIP_30224_TOOLTIP_SURVIVE }
+#				set_character_flag = chess_30225
+#				hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#			}
+#		}
+#
+#		clr_character_flag = walked_with_death
+#		clr_character_flag = invited_death
+#		clr_character_flag = gave_death_money
+#	}
+#}
+#
+##You survived but got injured
+#character_event = {
+#	id = RIP.30225
+#	picture = GFX_evt_bloody_tools
+#	desc = EVTDESC_RIP_30225
+#	border = GFX_event_normal_frame_war
+#
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		random_list = {
+#			25 = {
+#				modifier = {
+#					factor = 0
+#					trait = wounded
+#				}
+#				set_character_flag = give_wounded
+#			}
+#			25 = {
+#				modifier = {
+#					factor = 0
+#					trait = mangled
+#				}
+#				set_character_flag = give_mangled
+#			}
+#			25 = {
+#				modifier = {
+#					factor = 0
+#					trait = one_eyed
+#				}
+#				set_character_flag = give_one_eyed
+#			}
+#			25 = {
+#				modifier = {
+#					factor = 0
+#					trait = one_handed
+#				}
+#				set_character_flag = give_one_handed
+#			}
+#		}
+#	}
+#
+#	option = {
+#		name = EVTOPTB_RIP_30225
+#
+#		trigger_switch = {
+#			on_trigger = has_character_flag
+#			give_wounded	= { add_trait_wounded_effect = yes }
+#			give_mangled	= { mangle_effect = yes }
+#			give_one_eyed	= { add_trait_one_eyed_effect = yes }
+#			give_one_handed	= { add_trait_one_handed_effect = yes }
+#		}
+#
+#		clr_character_flag = give_wounded
+#		clr_character_flag = give_mangled
+#		clr_character_flag = give_one_eyed
+#		clr_character_flag = give_one_handed
+#		
+#		FROM = { death = { death_reason = death_murder_unknown killer = ROOT } } 
+#	}
+#}
+#
+##Chess starts, pick piece
+#character_event = {
+#	id = RIP.30226
+#	picture = GFX_evt_court_physician
+#	desc = EVTDESC_RIP_30226
+#	border = GFX_event_normal_frame_intrigue
+#
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		set_variable = { which = chess_score value = 0 }
+#
+#		if = {
+#			limit = { 
+#				OR = {
+#					has_character_flag = invited_death 
+#					has_character_flag = gave_death_money
+#				}
+#			}
+#			change_variable = { which = chess_score value = 1 }
+#			clr_character_flag = invited_death
+#			clr_character_flag = gave_death_money
+#		}
+#		clr_character_flag = walked_with_death
+#	}
+#
+#	#White
+#	option = {
+#		name = EVTOPTA_RIP_30226
+#		custom_tooltip = { text = EVTOPTA_RIP_30226_TOOLTIP }
+#
+#		set_character_flag = picked_white
+#
+#		set_character_flag = chess_30227
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	} 
+#	
+#	#Black
+#	option = {
+#		name = EVTOPTB_RIP_30226
+#		custom_tooltip = { text = EVTOPTB_RIP_30226_TOOLTIP }
+#
+#		hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#		set_character_flag = picked_black
+#
+#		set_character_flag = chess_30227
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##First move
+#character_event = {
+#	id = RIP.30227
+#	picture = GFX_evt_court_physician
+#	border = GFX_event_normal_frame_intrigue
+#
+#	desc = {
+#		trigger = { has_character_flag = picked_black }
+#		text = EVTDESC_RIP_30226_BLACK	
+#	}
+#	desc = {
+#		trigger = { has_character_flag = picked_white }
+#		text = EVTDESC_RIP_30226_WHITE	
+#	}
+#
+#	is_triggered_only = yes
+#
+#	#Play it safe
+#	option = {
+#		name = EVTOPTA_RIP_30227
+#
+#		random_list = {
+#			25 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#				set_character_flag = good_move
+#			}
+#			55 = {
+#				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
+#				set_character_flag = neutral_move
+#			}
+#			20 = {
+#				custom_tooltip = { text = CHESS_BAD_MOVE }
+#				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
+#				set_character_flag = bad_move
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Play it risky
+#	option = {
+#		name = EVTOPTB_RIP_30227
+#
+#		random_list = {
+#			20 = {
+#				custom_tooltip = { text = CHESS_GREAT_MOVE }
+#				set_character_flag = great_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#			}
+#			40 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#			40 = {
+#				custom_tooltip = { text = CHESS_TERRIBLE_MOVE }
+#				set_character_flag = bad_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = -2 } }
+#			}	
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Deceitful
+#	option = {	
+#		trigger = { 
+#			trait = deceitful 
+#			NOT = { trait = schemer }
+#			NOT = {
+#				AND = {
+#					trait = strategist
+#					is_smart_trigger = yes
+#				}
+#			}
+#		}
+#		name = EVTOPTC_RIP_30227
+#		tooltip_info = deceitful
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Master schemer
+#	option = {	
+#		trigger = { trait = schemer }
+#		name = EVTOPTC_RIP_30227
+#		tooltip_info = schemer
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Gamer option
+#	option = {
+#		trigger = { trait = gamer }
+#		name = EVTOPTD_RIP_30227
+#		tooltip_info = gamer
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GREAT_MOVE }
+#				set_character_flag = great_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Strategist option
+#	option = {
+#		trigger = { 
+#			trait = strategist 
+#		}
+#		name = EVTOPTD_RIP_30227
+#		tooltip_info = strategist
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Genius option
+#	option = {
+#		trigger = {
+#			trait = genius
+#			NOT = { trait = gamer }
+#		}
+#		name = EVTOPTE_RIP_30227
+#		tooltip_info = genius
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GREAT_MOVE }
+#				set_character_flag = great_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Quick
+#	option = {
+#		trigger = {
+#			trait = quick
+#			NOT = { trait = gamer }
+#		}
+#		name = EVTOPTE_RIP_30227
+#		tooltip_info = quick
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Shrewd
+#	option = {
+#		trigger = {
+#			trait = shrewd
+#			NOT = { trait = gamer }
+#		}
+#		name = EVTOPTE_RIP_30227
+#		tooltip_info = shrewd
+#
+#		random_list = {
+#			100 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30228
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##Death reacts to you move
+#character_event = {
+#	id = RIP.30228
+#	picture = GFX_evt_court_physician
+#	border = GFX_event_normal_frame_intrigue
+#
+#	desc = {
+#		trigger = { has_character_flag = great_move }
+#		text = EVTDESC_RIP_30228_GREAT
+#	}
+#	desc = {
+#		trigger = { has_character_flag = good_move }
+#		text = EVTDESC_RIP_30228_GOOD
+#	}
+#	desc = {
+#		trigger = { has_character_flag = neutral_move }
+#		text = EVTDESC_RIP_30228_NEUTRAL
+#	}
+#	desc = {
+#		trigger = { has_character_flag = bad_move }
+#		text = EVTDESC_RIP_30228_BAD
+#	}
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = {
+#			trigger = { 
+#				OR = {
+#					has_character_flag = great_move 
+#					has_character_flag = good_move
+#				}
+#			}
+#			text = EVTOPTA_RIP_30228_A
+#		}
+#		name = {
+#			trigger = { 
+#				OR = {
+#					has_character_flag = bad_move 
+#					has_character_flag = neutral_move
+#				}
+#			}
+#			text = EVTOPTA_RIP_30228_B
+#		}
+#		
+#		custom_tooltip = { text = EVTOPTA_RIP_30228_TOOLTIP }
+#		clr_character_flag = great_move
+#		clr_character_flag = good_move
+#		clr_character_flag = neutral_move
+#		clr_character_flag = bad_move
+#		
+#		set_character_flag = chess_30229
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##Some other tactic
+#character_event = {
+#	id = RIP.30229
+#	picture = GFX_evt_court_physician
+#	border = GFX_event_normal_frame_intrigue
+#
+#	desc = {
+#		trigger = { check_variable = { which = chess_score value = 3 } }
+#		text = EVTDESC_RIP_30229_GOOD
+#	}
+#	desc = {
+#		trigger = { 
+#			NOT = { check_variable = { which = chess_score value = 3 } }
+#			check_variable = { which = chess_score value = 1 } 
+#		}
+#		text = EVTDESC_RIP_30229_NEUTRAL
+#	}
+#	desc = {
+#		trigger = { NOT = { check_variable = { which = chess_score value = 1 } } }
+#		text = EVTDESC_RIP_30229_BAD
+#	}
+#
+#	is_triggered_only = yes
+#
+#	#Drinking competition 1
+#	option = {
+#		trigger = { trait = drunkard }
+#		tooltip_info = drunkard
+#		name = EVTOPTA_RIP_30229
+#		custom_tooltip = { text = EVTOPTA_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_drinking_competition
+#		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Drinking competition 2
+#	option = {
+#		trigger = { trait = hedonist }
+#		tooltip_info = hedonist
+#		name = EVTOPTA_RIP_30229
+#		custom_tooltip = { text = EVTOPTA_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_drinking_competition
+#		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Seduce (as man)
+#	option = {
+#		trigger = { 
+#			trait = seducer 
+#		}
+#		tooltip_info = seducer
+#		name = EVTOPTB_RIP_30229
+#		custom_tooltip = { text = EVTOPTB_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_seduction
+#		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Seduce (as woman)
+#	option = { 
+#		trigger = { 
+#			trait = seductress 
+#		}
+#		tooltip_info = seductress
+#		name = EVTOPTB_RIP_30229
+#		custom_tooltip = { text = EVTOPTB_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_seduction
+#		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Intimidate
+#	option = {
+#		trigger = { trait = impaler }
+#		tooltip_info = impaler
+#		name = EVTOPTC_RIP_30229
+#		custom_tooltip = { text = EVTOPTC_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_intimidation
+#		hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Brag about past victories
+#	option = {
+#		trigger = { trait = gamer }
+#		tooltip_info = gamer
+#		name = EVTOPTF_RIP_30229
+#		custom_tooltip = { text = EVTOPTF_RIP_30229_TOOLTIP }
+#
+#		set_character_flag = chess_brag
+#		hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Knock wine
+#	option = {
+#		name = EVTOPTD_RIP_30229
+#		custom_tooltip = { text = EVTOPTD_RIP_30229_TOOLTIP }
+#
+#		random_list = {
+#			67 = {
+#				custom_tooltip = { text = CHESS_GOOD_TRICK }
+#				set_character_flag = good_trick
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#			33 = {
+#				custom_tooltip = { text = CHESS_BAD_TRICK }
+#				set_character_flag = bad_trick
+#			}
+#		}
+#		set_character_flag = chess_30230
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Focus on the game, skips next event
+#	option = {
+#		name = EVTOPTE_RIP_30229
+#
+#		random_list = {
+#			25 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#			75 = {
+#				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
+#			}
+#		}
+#
+#		set_character_flag = chess_30231
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##Another tactic reaction
+#character_event = {
+#	id = RIP.30230
+#	picture = GFX_evt_court_physician
+#	border = GFX_event_normal_frame_intrigue
+#
+#	desc = {
+#		trigger = { has_character_flag = chess_drinking_competition }
+#		text = EVTDESC_RIP_30230_DRINKING
+#		picture = GFX_evt_drunk
+#	}
+#	desc = {
+#		trigger = { has_character_flag = chess_seduction }
+#		text = EVTDESC_RIP_30230_SEDUCTION
+#		picture = GFX_evt_lovers
+#	}
+#	desc = {
+#		trigger = { has_character_flag = chess_intimidation }
+#		text = EVTDESC_RIP_30230_INTIMIDATION
+#		picture = GFX_evt_impalement
+#	}
+#	desc = {
+#		trigger = { has_character_flag = chess_brag }
+#		text = EVTDESC_RIP_30230_BRAG
+#		picture = GFX_evt_courtiers_talking
+#	}
+#	desc = {
+#		trigger = { has_character_flag = good_trick }
+#		text = EVTDESC_RIP_30230_GOOD_TRICK
+#		picture = GFX_evt_drunk
+#	}
+#	desc = {
+#		trigger = { has_character_flag = bad_trick }
+#		text = EVTDESC_RIP_30230_BAD_TRICK
+#		picture = GFX_evt_drunk
+#	}
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		trigger = { NOT = { has_character_flag = bad_trick } }
+#		name = EVTOPTA_RIP_30230
+#		custom_tooltip = { text = EVTOPTA_RIP_30228_TOOLTIP }
+#
+#		clr_character_flag = chess_drinking_competition
+#		clr_character_flag = chess_seduction
+#		clr_character_flag = chess_intimidation
+#		clr_character_flag = chess_brag
+#		clr_character_flag = good_trick
+#
+#		#Randomness
+#		hidden_tooltip = {
+#			random_list = {
+#				50 = { change_variable = { which = chess_score value = -1 } }
+#				50 = {}
+#			}
+#		}
+#
+#		set_character_flag = chess_30231
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	option = {
+#		trigger = { has_character_flag = bad_trick } 
+#		name = EVTOPTB_RIP_30230
+#		custom_tooltip = { text = EVTOPTB_RIP_30230_TOOLTIP }
+#
+#		clr_character_flag = bad_trick
+#
+#		death = { death_reason = death_murder_unknown killer = FROM } 
+#
+#		hidden_tooltip = { 
+#			FROM = {
+#				leave_court_effect = yes
+#				death = { death_reason = death_missing }
+#			}	
+#		}
+#	}
+#}
+#
+##Last move
+#character_event = {
+#	id = RIP.30231
+#	picture = GFX_evt_court_physician
+#	border = GFX_event_normal_frame_intrigue
+#
+#	desc = {
+#		trigger = { check_variable = { which = chess_score value = 5 } }
+#		text = EVTDESC_RIP_30231_GOOD
+#	}
+#	desc = {
+#		trigger = { 
+#			NOT = { check_variable = { which = chess_score value = 5 } }
+#			check_variable = { which = chess_score value = 4 } 
+#		}
+#		text = EVTDESC_RIP_30231_NEUTRAL
+#	}
+#	desc = {
+#		trigger = { NOT = { check_variable = { which = chess_score value = 4 } } }
+#		text = EVTDESC_RIP_30231_BAD
+#	}
+#
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		hidden_tooltip = {
+#			random_spouse = {
+#				limit = {
+#					is_alive = yes
+#					ai = yes
+#					liege = { character = ROOT }
+#				}
+#				save_event_target_as = chess_sacrifice
+#			}
+#			random_friend = {
+#				limit = {
+#					is_alive = yes
+#					ai = yes
+#					liege = { character = ROOT }
+#				}
+#				save_event_target_as = chess_sacrifice
+#			}
+#			random_lover = {
+#				limit = {
+#					is_alive = yes
+#					ai = yes
+#					liege = { character = ROOT }
+#				}
+#				save_event_target_as = chess_sacrifice
+#			}
+#			random_child = {
+#				limit = {
+#					is_alive = yes
+#					ai = yes
+#					liege = { character = ROOT }
+#				}
+#				save_event_target_as = chess_sacrifice
+#			}
+#		}
+#	}
+#
+#	#Trust my skill
+#	option = {
+#		name = EVTOPTA_RIP_30231
+#
+#		random_list = {
+#			20 = {
+#				modifier = {
+#					factor = 0
+#					NOR = {
+#						trait = gamer
+#						is_smart_trigger = yes
+#					}
+#				}
+#				custom_tooltip = { text = CHESS_GREAT_MOVE }
+#				set_character_flag = great_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#			}
+#			20 = {
+#				modifier = {
+#					factor = 1.5
+#					OR = {
+#						trait = gamer
+#						is_smart_trigger = yes
+#					}
+#				}
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#			50 = {
+#				modifier = {
+#					factor = 0.6
+#					OR = {
+#						trait = gamer
+#						is_smart_trigger = yes
+#					}
+#				}
+#				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
+#				set_character_flag = neutral_move
+#			}
+#			30 = {
+#				modifier = {
+#					factor = 0.67
+#					OR = {
+#						trait = gamer
+#						is_smart_trigger = yes
+#					}
+#				}
+#				custom_tooltip = { text = CHESS_BAD_MOVE }
+#				set_character_flag = bad_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30232
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#
+#	#Offer lover/friend
+#	option = {
+#		trigger = { event_target:chess_sacrifice = { always = yes } }
+#		name = {
+#			trigger = { any_spouse = { character = event_target:chess_sacrifice } }
+#			text = EVTOPTB_RIP_30231_A
+#		}
+#		name = {
+#			trigger = { any_friend = { character = event_target:chess_sacrifice } }
+#			text = EVTOPTB_RIP_30231_B
+#		}
+#		name = {
+#			trigger = { any_lover = { character = event_target:chess_sacrifice } }
+#			text = EVTOPTB_RIP_30231_C
+#		}
+#		name = {
+#			trigger = { any_child = { character = event_target:chess_sacrifice } }
+#			text = EVTOPTB_RIP_30231_D
+#		}
+#
+#		event_target:chess_sacrifice = { save_event_target_as = kill_sacrifice }
+#
+#		random_list = {
+#			15 = {
+#				custom_tooltip = { text = CHESS_GREAT_MOVE }
+#				set_character_flag = great_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 2 } }
+#			}
+#			35 = {
+#				custom_tooltip = { text = CHESS_GOOD_MOVE }
+#				set_character_flag = good_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = 1 } }
+#			}
+#			35 = {
+#				custom_tooltip = { text = CHESS_NEUTRAL_MOVE }
+#				set_character_flag = neutral_move
+#			}
+#			15 = {
+#				custom_tooltip = { text = CHESS_BAD_MOVE }
+#				set_character_flag = bad_move
+#				hidden_tooltip = { change_variable = { which = chess_score value = -1 } }
+#			}
+#		}
+#
+#		set_character_flag = chess_30232
+#		hidden_tooltip = { FROM = { character_event = { id = RIP.30221 } } }
+#	}
+#}
+#
+##The end of the game
+#narrative_event = {
+#	id = RIP.30232
+#	title = EVTNAME_RIP_30232
+#	border = GFX_event_narrative_frame_intrigue
+#	picture = GFX_evt_danse_macabre
+#
+#	desc = {
+#		trigger = { check_variable = { which = chess_score value = 5 } }
+#		text = EVTDESC_RIP_30232_GOOD
+#	}
+#	desc = {
+#		trigger = { NOT = { check_variable = { which = chess_score value = 5 } } }
+#		text = EVTDESC_RIP_30232_BAD
+#	}
+#
+#	immediate = {
+#
+#	}
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		trigger = { check_variable = { which = chess_score value = 5 } }
+#		name = EVTOPTA_RIP_30232
+#		custom_tooltip = { text = EVTOPTB_RIP_302232_TOOLTIP }
+#
+#		if = {
+#			limit = { NOT = { has_character_modifier = deaths_gift } }
+#			add_character_modifier = {
+#				name = deaths_gift
+#				duration = -1
+#			}
+#		}
+#
+#		remove_disease_trait_effect = yes
+#
+#		hidden_tooltip = { 
+#			FROM = {
+#				leave_court_effect = yes
+#				death = { death_reason = death_missing }
+#			}	
+#		}		
+#	}
+#
+#	option = {
+#		trigger = { NOT = { check_variable = { which = chess_score value = 5 } } }
+#		name = EVTOPTB_RIP_30232
+#		custom_tooltip = { text = EVTOPTB_RIP_30230_TOOLTIP }
+#
+#		death = { death_reason = death_murder_unknown killer = FROM } 
+#		if = {
+#			limit = { event_target:kill_sacrifice = { always = yes } }
+#			event_target:kill_sacrifice = { death = { death_reason = death_murder_unknown killer = FROM } }
+#		}
+#
+#		hidden_tooltip = { 
+#			FROM = {
+#				leave_court_effect = yes
+#				death = { death_reason = death_missing }
+#			}
+#		}		
+#	}
+#}
+#
+##Death's gift
+#character_event = {
+#	id = RIP.30233
+#	desc = EVTDESC_TOG_7015
+#	border = GFX_event_normal_frame_religion
+#	picture = GFX_evt_danse_macabre
+#
+#	is_triggered_only = yes
+#
+#	trigger = {
+#		has_disease_trigger = yes
+#	}
+#
+#	option = {
+#		name = EVTOPTA_RIP_30233
+#		remove_disease_trait_effect = yes	
+#		remove_character_modifier = deaths_gift
+#
+#		if = {
+#			limit = { trait = cynical }
+#			remove_trait = cynical
+#		}
+#	}
+#}
 
 ### Immortal rival events
 #narrative_event = {
@@ -13087,13 +12728,6 @@ long_character_event = { # win - no wound
 	
 	desc = {
 		trigger = { 
-			trait = berserker 
-		}
-		text = placeholdername_3 #RIP.30302.d.berserker
-		
-	}
-	desc = {
-		trigger = { 
 			trait = craven 
 		}
 		text = placeholdername_7 #RIP.30302.d.craven
@@ -13103,10 +12737,7 @@ long_character_event = { # win - no wound
 
 	option = {
 		trigger = {
-			NOR = {
-				trait = berserker
-				trait = craven
-			}
+			NOT = {trait = craven }
 		}
 		name = RIP.30302.a
 		event_target:immortal_rival = {
@@ -13123,16 +12754,6 @@ long_character_event = { # win - no wound
 		}
 		custom_tooltip = { text = placeholdername_34 }
 	}
-	option = {
-		trigger = {
-			trait = berserker
-		}
-		name = placeholdername_4
-		event_target:immortal_rival = {
-			death = { death_reason = death_duel killer = ROOT }
-		}
-		custom_tooltip = { text = placeholdername_34 }
-	}
 }
 
 long_character_event = { # win - wound
@@ -13141,12 +12762,6 @@ long_character_event = { # win - wound
 	border = GFX_event_long_frame_war
 	picture = GFX_evt_melee
 	
-	desc = {
-		trigger = { 
-			trait = berserker 
-		}
-		text = placeholdername_3 #RIP.30302.d.berserker
-	}
 	desc = {
 		trigger = { 
 			trait = craven 
@@ -13158,10 +12773,7 @@ long_character_event = { # win - wound
 
 	option = {
 		trigger = {
-			NOR = {
-				trait = berserker
-				trait = craven
-			}
+			NOT = { trait = craven }
 		}
 		name = RIP.30303.a
 		event_target:immortal_rival = {
@@ -13180,17 +12792,7 @@ long_character_event = { # win - wound
 		add_trait_wounded_effect = yes
 		custom_tooltip = { text = placeholdername_34 }
 	}
-	option = {
-		trigger = {
-			trait = berserker
-		}
-		name = placeholdername_6
-		event_target:immortal_rival = {
-			death = { death_reason = death_duel killer = ROOT }
-		}
-		add_trait_wounded_effect = yes
-		custom_tooltip = { text = placeholdername_34 }
-	}
+
 }
 
 long_character_event = { # win - maimed
@@ -13199,12 +12801,6 @@ long_character_event = { # win - maimed
 	border = GFX_event_long_frame_war
 	picture = GFX_evt_melee
 	
-	desc = {
-		trigger = { 
-			trait = berserker 
-		}
-		text = placeholdername_3 #RIP.30302.d.berserker
-	}
 	desc = {
 		trigger = { 
 			trait = craven 
@@ -13247,25 +12843,7 @@ long_character_event = { # win - maimed
 		add_trait_wounded_effect = yes
 		custom_tooltip = { text = placeholdername_34 }
 	}
-	option = {
-		trigger = {
-			trait = berserker
-		}
-		name = placeholdername_6
-		event_target:immortal_rival = {
-			death = { death_reason = death_duel killer = ROOT }
-		}
-		if = {
-			limit = {
-				can_be_maimed_trigger = yes
-			}
-				add_maimed_trait_effect = yes
-			custom_tooltip = { text = placeholdername_34 }	
-			break = yes
-		}
-		add_trait_wounded_effect = yes
-		custom_tooltip = { text = placeholdername_34 }
-	}
+
 }
 
 long_character_event = { # loss - death

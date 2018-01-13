@@ -8,11 +8,11 @@ tribal = {
 		ai_creation_factor = 90
 		levy_reinforce_rate = 0.05
 		potential = {
-			has_global_flag = building
 			NOT = { culture_group = culture_group_wilderness }
     	}			 	
 		convert_to_city = ct_dirt_road_2
 		convert_to_castle = ca_dirt_road_2	
+		extra_tech_building_start = 10 # Should not be pre-built automatically
 	}
 
 	tb_old_south_road_ruins = { #Ruined North-South road name from Swanfleet to Isendale
@@ -78,9 +78,9 @@ city = {
 		ai_creation_factor = 90
 		levy_reinforce_rate = 0.05
 		potential = {
-       			NOT = { culture_group = culture_group_wilderness }
-    			}
-		}
+       		NOT = { culture_group = culture_group_wilderness }
+    	}
+	}
 	ct_paved_road_3 = {
 		desc = ct_paved_road_3_desc
 		gold_cost = 75
@@ -89,10 +89,8 @@ city = {
 		tax_income = 0.5	
 		ai_creation_factor = 88
 		levy_reinforce_rate = 0.05
-		potential = {
-        		has_global_flag = building
-    			}
-		}
+		extra_tech_building_start = 10 # Should not be pre-built automatically
+	}
 	ct_great_route_4 = {
 		desc = ct_great_route_4_desc
 		gold_cost = 190
@@ -102,8 +100,8 @@ city = {
 		ai_creation_factor = 85
 		levy_reinforce_rate = 0.1
 		potential = {
-       			has_global_flag = building
-    		}
+       		has_global_flag = building
+    	}
 	}	
 }
 

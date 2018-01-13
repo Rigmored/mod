@@ -22,13 +22,7 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
-			religion_group = muslim
-		}
 		spouse = {
-			NOT = {
-				religion_group = muslim
-			}
 			in_command = no
 			war = no
 			is_abroad = no
@@ -723,10 +717,7 @@ character_event = {
 		}
 		if = {
 			limit = {
-				OR = {
-					trait = craven
-					trait = berserker
-				}
+				trait = craven
 				NOT = {
 					trait = shy
 				}
@@ -736,10 +727,7 @@ character_event = {
 		if = {
 			limit = {
 				trait = shy
-				NOR = {
-					trait = craven
-					trait = berserker
-				}
+				NOT = { trait = craven }
 			}
 			add_trait = craven
 		}
@@ -818,7 +806,6 @@ character_event = {
 		random_list = {
 			30 = {
 				if = {
-					limit = { NOT = { trait = berserker } }
 					add_trait = craven
 					hidden_tooltip = {
 						character_event = {
@@ -828,28 +815,10 @@ character_event = {
 				}
 			}
 			30 = {
-				if = {
-					limit = {
-						NOT = {
-							religion_group = muslim
-						}
-					}
-					add_trait = chaste
-					hidden_tooltip = {
-						character_event = {
-							id = 38274 #Notify Chaste
-						}
-					}
-				}
-				if = {
-					limit = {
-						religion_group = muslim
-					}
-					add_trait = cynical
-					hidden_tooltip = {
-						character_event = {
-							id = 38258 #Notify Cynical
-						}
+				add_trait = chaste
+				hidden_tooltip = {
+					character_event = {
+						id = 38274 #Notify Chaste
 					}
 				}
 			}
@@ -909,6 +878,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
+		NOT = { religion_group = religion_group_eldar }
 		fertility = 0.5
 		has_epidemic = no
 		is_ill = no
@@ -937,9 +907,11 @@ character_event = {
 			has_epidemic = no
 			is_ill = no
 			has_lover = no
+			NOT = { trait = elf_childhood }
 		}
 		spouse = {
 			is_alive = yes
+			NOT = { mep_is_immortal_race_trigger = yes }
 			is_abroad = no
 			prisoner = no
 			OR = {
@@ -1049,47 +1021,7 @@ character_event = {
 			50 = {
 			}
 			20 = {
-				modifier = {
-					factor = 1.25
-					NOT = { religion_group = christian }
-				}
-				if = {
-					limit = {
-						religion_group = christian
-					}
-					add_trait = chaste
-					hidden_tooltip = {
-						character_event = {
-							id = 38274 #Notify Chaste
-						}
-					}
-				}
-				if = {
-					limit = {
-						NOT = { religion_group = christian }
-					}
-					piety = 5
-				}
-			}
-			25 = {
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-			5 = {
-				modifier = {
-					factor = 0
-					NOT = { religion_group = christian }
-				}
-				add_trait = celibate
-				hidden_tooltip = {
-					character_event = {
-						id = 38285 #Notify Celibate
-					}
-				}
+				piety = 5
 			}
 		}
 	}
@@ -2019,12 +1951,6 @@ character_event = {
 	}
 	option = {
 		name = "EVTOPTB64060" #Wine will cure my pains
-		trigger = {
-			OR = {
-				NOT = { religion_group = muslim }
-				trait = cynical
-			}
-		}
 		if = {
 			limit = {
 				NOT = {
@@ -2273,20 +2199,13 @@ character_event = {
 				tooltip = "EVTTOOLTIP64046" 
 			}
 		}
-		if = {
-			limit = {
-				NOT = {
-					religion_group = muslim
-				}
-			}
-			random = {
-				chance = 25
+		random = {
+			chance = 25
 				
-				add_trait = chaste
-				hidden_tooltip = {
-					character_event = {
-						id = 38274 #Notify Chaste
-					}
+			add_trait = chaste
+			hidden_tooltip = {
+				character_event = {
+					id = 38274 #Notify Chaste
 				}
 			}
 		}
@@ -2551,171 +2470,171 @@ character_event = {
 }
 
 #Your wife has retired to the convent for a short while
-character_event = {
-	id = 64080
-	desc = EVTDESC64080
-	picture = GFX_evt_monastery_nuns
-	
-	min_age = 16
-	only_men = yes
-	capable_only = yes
-	only_rulers = yes
-	religion_group = christian
-	lacks_dlc = "Way of Life"
-	is_married = yes
-	
-	trigger = {
-		spouse = {
-			is_alive = yes
-			is_abroad = no
-			prisoner = no
-			religion_group = christian
-			NOT = { trait = incapable }
-		}
-		fertility = 0.5
-		any_lover = {
-			NOT = {
-				spouse = {
-					character = ROOT
-				}
-			}
-			NOT = { trait = incapable }
-			is_female = yes
-			prisoner = no
-			is_pregnant = no
-			fertility = 0.5
-			NOT = {
-				age = 40
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 120
-	}
-	
-	immediate = {
-		random_lover = {
-			limit = {
-				NOT = {
-					spouse = {
-						character = ROOT
-					}
-				}
-				NOT = { trait = incapable }
-				is_female = yes
-				prisoner = no
-				is_pregnant = no
-				fertility = 0.5
-				NOT = {
-					age = 40
-				}				
-			}
-			save_event_target_as = target_lover
-		}
-		
-	}
-	
-	option = {
-		name = "EVTOPTA64080" #Perfect occasion to spend time with your lover
-		random = {
-			chance = 25
-			if = {
-				limit = { NOT = { trait = lustful } }
-				add_trait = lustful
-				hidden_tooltip = {
-					character_event = {
-						id = 38272 #Notify Lustful
-					}
-				}
-			}
-		}
-		random = {
-			chance = 50
-			
-			piety = -10
-			event_target:target_lover = {
-				impregnate_cuckoo = ROOT
-				hidden_tooltip = {
-					ROOT = {
-						character_event = {
-							id = 64101
-							days = 2
-							random = 2
-						}
-					}
-				}
-			}
-		}		
-	}
-	option = {
-		name = "EVTOPTB64080" #Be discreet about it
-		random = {
-			chance = 25
-		if = {
-			limit = { NOT = { trait = deceitful } }
-			add_trait = deceitful
-			hidden_tooltip = {
-				character_event = {
-					id = 38255 #Notify Deceitful
-				}
-			}
-		}
-	}
-		random = {
-			chance = 20
-			
-			piety = -10
-			event_target:target_lover = {
-				impregnate_cuckoo = ROOT
-				hidden_tooltip = {
-					ROOT = {
-						character_event = {
-							id = 64101
-							days = 2
-							random = 2
-						}
-					}
-				}
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTC64080" #Only see your lover on friendship terms
-		random_list = {
-			50 = {
-			}
-			25 = {
-			if = {
-				limit = { NOR = { trait = craven trait = berserker } }
-				add_trait = craven
-					hidden_tooltip = {
-					character_event = {
-						id = 38257 #Notify Craven
-					}
-				}			
-			}
-		}
-			25 = {
-				event_target:target_lover = {
-					character_event = {
-						id = 64046
-						tooltip = "EVTTOOLTIP64046" 
-					}
-				}
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTD64080" #Spend the time working instead
-		event_target:target_lover = {
-			character_event = {
-				id = 64046
-				tooltip = "EVTTOOLTIP64046" 
-			}
-		}
-	}
-}
+#character_event = {
+#	id = 64080
+#	desc = EVTDESC64080
+#	picture = GFX_evt_monastery_nuns
+#	
+#	min_age = 16
+#	only_men = yes
+#	capable_only = yes
+#	only_rulers = yes
+#	religion_group = christian
+#	lacks_dlc = "Way of Life"
+#	is_married = yes
+#	
+#	trigger = {
+#		spouse = {
+#			is_alive = yes
+#			is_abroad = no
+#			prisoner = no
+#			religion_group = christian
+#			NOT = { trait = incapable }
+#		}
+#		fertility = 0.5
+#		any_lover = {
+#			NOT = {
+#				spouse = {
+#					character = ROOT
+#				}
+#			}
+#			NOT = { trait = incapable }
+#			is_female = yes
+#			prisoner = no
+#			is_pregnant = no
+#			fertility = 0.5
+#			NOT = {
+#				age = 40
+#			}
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 120
+#	}
+#	
+#	immediate = {
+#		random_lover = {
+#			limit = {
+#				NOT = {
+#					spouse = {
+#						character = ROOT
+#					}
+#				}
+#				NOT = { trait = incapable }
+#				is_female = yes
+#				prisoner = no
+#				is_pregnant = no
+#				fertility = 0.5
+#				NOT = {
+#					age = 40
+#				}				
+#			}
+#			save_event_target_as = target_lover
+#		}
+#		
+#	}
+#	
+#	option = {
+#		name = "EVTOPTA64080" #Perfect occasion to spend time with your lover
+#		random = {
+#			chance = 25
+#			if = {
+#				limit = { NOT = { trait = lustful } }
+#				add_trait = lustful
+#				hidden_tooltip = {
+#					character_event = {
+#						id = 38272 #Notify Lustful
+#					}
+#				}
+#			}
+#		}
+#		random = {
+#			chance = 50
+#			
+#			piety = -10
+#			event_target:target_lover = {
+#				impregnate_cuckoo = ROOT
+#				hidden_tooltip = {
+#					ROOT = {
+#						character_event = {
+#							id = 64101
+#							days = 2
+#							random = 2
+#						}
+#					}
+#				}
+#			}
+#		}		
+#	}
+#	option = {
+#		name = "EVTOPTB64080" #Be discreet about it
+#		random = {
+#			chance = 25
+#		if = {
+#			limit = { NOT = { trait = deceitful } }
+#			add_trait = deceitful
+#			hidden_tooltip = {
+#				character_event = {
+#					id = 38255 #Notify Deceitful
+#				}
+#			}
+#		}
+#	}
+#		random = {
+#			chance = 20
+#			
+#			piety = -10
+#			event_target:target_lover = {
+#				impregnate_cuckoo = ROOT
+#				hidden_tooltip = {
+#					ROOT = {
+#						character_event = {
+#							id = 64101
+#							days = 2
+#							random = 2
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#	option = {
+#		name = "EVTOPTC64080" #Only see your lover on friendship terms
+#		random_list = {
+#			50 = {
+#			}
+#			25 = {
+#			if = {
+#				limit = { NOT = { trait = craven } }
+#				add_trait = craven
+#					hidden_tooltip = {
+#					character_event = {
+#						id = 38257 #Notify Craven
+#					}
+#				}			
+#			}
+#		}
+#			25 = {
+#				event_target:target_lover = {
+#					character_event = {
+#						id = 64046
+#						tooltip = "EVTTOOLTIP64046" 
+#					}
+#				}
+#			}
+#		}
+#	}
+#	option = {
+#		name = "EVTOPTD64080" #Spend the time working instead
+#		event_target:target_lover = {
+#			character_event = {
+#				id = 64046
+#				tooltip = "EVTTOOLTIP64046" 
+#			}
+#		}
+#	}
+#}
 
 #Two adult character are lovers and neither are married
 character_event = {
@@ -2915,14 +2834,9 @@ character_event = {
 			}
 		}
 	}
-	
+	# This should probably be MEPized
 	option = {
 		name = "EVTOPTA64090" #Ask for God's help with our childless marriage
-		trigger = {
-			NOT = {	religion = buddhist }
-			NOT = {	religion = jain }
-			NOT = {	religion_group = muslim }
-		}
 		random_list = {
 			70 = {
 			}
@@ -2959,26 +2873,7 @@ character_event = {
 			}
 		}
 	}
-	option = {
-		name = "EVTOPTC64090" #Ask for Allah's help with our childless marriage
-		trigger = {
-			religion_group = muslim
-		}
-		random_list = {
-			70 = {
-			}
-			20 = {
-				spouse = {
-					fertility = 0.2
-				}
-			}
-			10 = {
-				spouse = {
-					fertility = 0.1
-				}
-			}
-		}
-	}
+
 }
 
 #Your lover is eager to comfort you after you have had a particularly fiery row with your wife
@@ -3586,24 +3481,11 @@ character_event = {
 		}
 		random_list = {
 			50 = {
-				if = {
-					limit = {
-						NOT = {
-							religion_group = muslim
-						}
+				add_trait = chaste
+				hidden_tooltip = {
+					character_event = {
+						id = 38274 #Notify Chaste
 					}
-					add_trait = chaste
-					hidden_tooltip = {
-						character_event = {
-							id = 38274 #Notify Chaste
-						}
-					}
-				}
-				if = {
-					limit = {
-						religion_group = muslim
-					}
-					piety = 5
 				}
 			}
 			50 = {
@@ -3674,12 +3556,10 @@ character_event = {
 		prestige = -50
 		random = {
 			chance = 10
-			if = { limit = { NOT = { trait = berserker } } 
-				add_trait = craven
-				hidden_tooltip = {
-					character_event = {
-						id = 38257 #Notify Craven
-					}
+			add_trait = craven
+			hidden_tooltip = {
+				character_event = {
+					id = 38257 #Notify Craven
 				}
 			}
 		}
@@ -4086,11 +3966,6 @@ character_event = {
 	}
 	option = {
 		name = "EVTOPTB64140"
-		trigger = {
-			NOT = {
-				religion_group = muslim
-			}
-		}
 		random_list = {
 			50 = {
 			}
@@ -4103,24 +3978,11 @@ character_event = {
 				}
 			}
 			25 = {
-				if = {
-					limit = {
-						NOT = {
-							religion_group = muslim
-						}
+				add_trait = chaste
+				hidden_tooltip = {
+					character_event = {
+						id = 38274 #Notify Chaste
 					}
-					add_trait = chaste
-					hidden_tooltip = {
-						character_event = {
-							id = 38274 #Notify Chaste
-						}
-					}
-				}
-				if = {
-					limit = {
-						religion_group = muslim
-					}
-					piety = 5
 				}
 			}
 		}
@@ -4134,45 +3996,6 @@ character_event = {
 			character_event = {
 				id = 64045
 				tooltip = "EVTTOOLTIP64045" 
-			}
-		}
-	}
-	option = {
-		name = "EVTOPTD64140"
-		trigger = {
-			religion_group = muslim
-		}
-		random_list = {
-			50 = {
-			}
-			25 = {
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-			25 = {
-				if = {
-					limit = {
-						NOT = {
-							religion_group = muslim
-						}
-					}
-					add_trait = chaste
-					hidden_tooltip = {
-						character_event = {
-							id = 38274 #Notify Chaste
-						}
-					}
-				}
-				if = {
-					limit = {
-						religion_group = muslim
-					}
-					piety = 5
-				}
 			}
 		}
 	}

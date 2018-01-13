@@ -58,14 +58,14 @@ character_event = {
 					is_christian_monastic_member_trigger = yes
 				}
 				
-				random = {
-					chance = 20
-					modifier = {
-						ai = no
-						factor = 5
-					}
-					letter_event = { id = MNM.4431 days = 30 random = 15 } #Gives saint's fingerbone
-				}
+				#random = {
+				#	chance = 20
+				#	modifier = {
+				#		ai = no
+				#		factor = 5
+				#	}
+				#	letter_event = { id = MNM.4431 days = 30 random = 15 } #Gives saint's fingerbone
+				#}
 			}
 		}
 	}
@@ -86,7 +86,7 @@ letter_event = {
 
 	#Yes
 	option = {
-		text = EVTOPTA_10001
+		name = EVTOPTA_10001
 		if = { limit = { society_rank < 4 } #todo: Remember you can rankup to 4 in some societies
 			society_rank_up = 1
 		}

@@ -67,6 +67,16 @@ character_event = {
 			factor = 5.0
 			trait = content
 		}
+		modifier = {
+			factor = 15.0
+			mep_is_immortal_race_trigger = yes
+		}
+		modifier = {
+			factor = 3.0
+			liege = {
+				mep_is_immortal_race_trigger = yes
+			}
+		}
 	}
 	
 	option = {
@@ -113,20 +123,9 @@ character_event = {
 	}
 	
 	option = {
-		name = EVTOPTC37001 # Mention a Church career...
-		tooltip_info = diplomacy
-		trigger = {
-			religion_group = christian
-			diplomacy = 8
-		}
-		FROM = { character_event = { id = 37003 tooltip = EVTTOOLTIP37003 } }
-	}
-	
-	option = {
 		name = EVTOPTD37001 # Diplomatically refuse
 		tooltip_info = diplomacy
 		trigger = {
-			NOT = { religion_group = christian }
 			diplomacy = 8
 		}
 		FROM = { character_event = { id = 37003 tooltip = EVTTOOLTIP37003 } }
@@ -200,6 +199,7 @@ character_event = {
 	}
 }
 
+
 # The relative is disappointed
 character_event = {
 	id = 37004
@@ -254,7 +254,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 5.0
-				religion_group = muslim
+				religion = religion_southron
 			}
 			modifier = {
 				factor = 0.25
@@ -399,10 +399,6 @@ character_event = {
 			modifier = {
 				factor = 2.5
 				trait = ambitious
-			}
-			modifier = {
-				factor = 5.0
-				religion_group = muslim
 			}
 			modifier = {
 				factor = 0.25
@@ -922,382 +918,352 @@ character_event = {
 
 # First event of the series
 
-character_event = {
-	id = 37049
-	
-	hide_window = yes
-	
-	ai = no
-	capable_only = yes
-	prisoner = no
-	religion_group = christian
-	war = no
-	lacks_dlc = "Zeus"
-	
-	trigger = {
-	}
-	
-	mean_time_to_happen = {
-		months = 24
-	}
-
-	immediate = {
-		random_courtier = {
-			limit = {
-				religion_group = christian
-				is_ruler = no
-				has_ambition = obj_get_married
-				is_marriage_adult = yes
-				NOT = { age = 40 }
-				prisoner = no
-				is_betrothed = no
-				is_consort = no
-				is_married = no
-				
-				NOT = { trait = incapable }
-				NOT = {
-					trait = bastard
-				}
-				liege = {
-					character = ROOT
-				}
-				is_close_relative = ROOT
-				
-				NOT = {
-					has_minor_title = title_regent
-				}
-				
-				NOT = { has_character_flag = flag_denied_marriage }
-				NOT = { has_character_flag = flag_promised_marriage }
-			}
-			character_event = { id = 37050 }
-		}
-	}
-}
-
-character_event = {
-	id = 37050
-
-	hide_window = yes
-
-	is_triggered_only = yes
-	
-	immediate = {
-		liege = { character_event = { id = 37051 days = 3 } }
-	}
-	
-}
-
-# Liege responds to marriage request
-character_event = {
-	id = 37051
-	desc = EVTDESC37051
-	picture = GFX_evt_marriage
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA37051 # Promise that you'll arrange it
-		FROM = { character_event = { id = 37052 tooltip = EVTTOOLTIP37052 } }
-	}
-	
-	option = {
-		name = EVTOPTB37051 # Mention a Church career...
-		trigger = {
-			religion_group = christian
-			FROM = { religion_group = christian }
-		}
-		FROM = { character_event = { id = 37053 tooltip = EVTTOOLTIP37053 } }
-	}
-}
-
-# The relative is delighted
-character_event = {
-	id = 37052
-	desc = EVTDESC37052
-	picture = GFX_evt_marriage
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = OK # Great news!
-		set_character_flag = flag_promised_marriage
-		add_character_modifier = { name = promised_a_marriage duration = -1 }
-		opinion = {
-			who = FROM
-			modifier = opinion_promised_marriage
-			months = 60
-		}
-	}
-}
-
-# The relative is disappointed
-character_event = {
-	id = 37053
-	desc = EVTDESC37053
-	picture = GFX_evt_bad_news
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = OK # Bleak news
-		set_character_flag = flag_denied_marriage
-		opinion = {
-			who = FROM
-			modifier = opinion_denied_marriage
-			months = 60
-		}
-	}
-}
-
-# Relative reminds liege of promised marriage
-character_event = {
-	id = 37054
-	desc = EVTDESC37054
-	picture = GFX_evt_marriage
-	
-	min_age = 16
-	capable_only = yes
-	prisoner = no
-	lacks_dlc = "Zeus"
-	is_married = no
-	
-	trigger = {
-		is_ruler = no
-		is_betrothed = no
-		NOT = {
-			trait = bastard
-		}
-		has_ambition = obj_get_married
-		liege = {
-			is_close_relative = ROOT
-			ROOT = {
-				has_opinion_modifier = { who = PREV modifier = opinion_promised_marriage }
-			}
-		}
-		had_character_flag = { flag = flag_promised_marriage days = 365 }
-	}
-	
-	mean_time_to_happen = {
-		months = 4
-		
-		modifier = {
-			factor = 0.25
-			is_female = yes
-			trait = lustful
-		}
-		modifier = {
-			factor = 0.5
-			trait = ambitious
-		}
-		modifier = {
-			factor = 2.0
-			trait = slothful
-		}
-		modifier = {
-			factor = 5.0
-			trait = content
-		}
-	}
-	
-	option = {
-		name = EVTOPTA37054 # Ask dad
-		liege = { character_event = { id = 37055 days = 3 tooltip = EVTTOOLTIP37055 } }
-	}
-}
-
-# The liege is reminded of the promise
-character_event = {
-	id = 37055
-	desc = EVTDESC37055
-	picture = GFX_evt_marriage
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA37055 # Alright, alright!
-		trigger = {
-			FROM = {
-				is_married = no
-			}
-			any_courtier = {
-				OR = {
-					is_female = no
-					NOT = { age = 45 }
-				}
-				can_marry = FROM
-			}
-		}
-		remove_character_modifier = promised_a_marriage
-		clr_character_flag = flag_promised_marriage
-		random_courtier = {
-			limit = {
-				OR = {
-					is_female = no
-					NOT = { age = 45 }
-				}
-				can_marry = FROM
-			}
-			add_spouse = FROM
-		}
-	}
-	
-	option = {
-		name = EVTOPTB37055 # You're off to the monastery!
-		trigger = {
-			religion_group = christian
-			FROM = { religion_group = christian }
-			FROM = {
-				is_married = no
-			}
-			any_realm_lord = {
-				is_theocracy = yes
-			}
-		}
-		random_realm_lord = {
-			limit = {
-				is_theocracy = yes
-			}
-			reverse_banish = FROM
-		}
-		FROM = { 
-			cancel_ambition = yes
-			remove_character_modifier = promised_a_marriage
-			clr_character_flag = flag_promised_marriage
-			opinion = {
-				who = ROOT
-				modifier = opinion_sent_to_church
-				months = 120
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTC37055 # I haven't found anyone for you...
-		trigger = {
-			FROM = {
-				is_married = no
-			}
-		}
-		FROM = { 
-			set_character_flag = flag_denied_marriage 
-			clr_character_flag = flag_promised_marriage 
-			remove_character_modifier = promised_a_marriage
-		}
-	}
-	option = {
-		name = EVTOPTD37055
-		trigger = {
-			FROM = {
-				is_married = yes
-				spouse = {
-					is_alive = yes
-				}
-			}
-		}
-	}
-}
-
-# Male relative who was denied decides to marry in secret
-character_event = {
-	id = 37056
-	desc = EVTDESC37056
-	picture = GFX_evt_marriage
-	
-	min_age = 16
-	only_men = yes
-	capable_only = yes
-	prisoner = no
-	has_character_flag = flag_denied_marriage
-	lacks_dlc = "Zeus"
-	
-	trigger = {
-		is_ruler = no
-		is_betrothed = no
-		has_ambition = obj_get_married
-		any_courtier = {
-			is_female = yes
-			NOT = { age = 40 }
-			can_marry = ROOT
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 120
-		
-		modifier = {
-			factor = 0.25
-			trait = lustful
-		}
-		modifier = {
-			factor = 0.5
-			trait = ambitious
-		}
-		modifier = {
-			factor = 2.0
-			trait = slothful
-		}
-		modifier = {
-			factor = 5.0
-			trait = content
-		}
-	}
-	
-	option = {
-		name = EVTOPTA37056 # I'm getting married right now
-		random_courtier = {
-			limit = {
-				is_female = yes
-				NOT = { age = 40 }
-				can_marry = ROOT
-			}
-			add_spouse = ROOT
-		}
-		liege = { character_event = { id = 37057 tooltip = EVTTOOLTIP37057 } }
-	}
-}
-
-# The liege is informed of the secret marriage
-character_event = {
-	id = 37057
-	desc = EVTDESC37057
-	picture = GFX_evt_marriage
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA37057 # Ah well
-		tooltip_info = kind
-		trigger = {
-			trait = kind
-		}
-	}
-	
-	option = {
-		name = EVTOPTB37057 # The insolence!
-		trigger = {
-			NOT = { trait = kind }
-		}
-		opinion = {
-			who = FROM
-			modifier = opinion_secret_marriage
-			months = 60
-		}
-	}
-	
-	option = {
-		name = EVTOPTC37057 # They will both pay for this!
-		#tooltip_info = 
-		trigger = {
-			OR = {
-				trait = wroth
-				trait = envious
-			}
-		}
-		FROM = { imprison = ROOT }
-		FROM = { spouse = { imprison = ROOT } }
-	}
-}
+#character_event = {
+#	id = 37049
+#	
+#	hide_window = yes
+#	
+#	ai = no
+#	capable_only = yes
+#	prisoner = no
+#	religion_group = christian
+#	war = no
+#	lacks_dlc = "Zeus"
+#	
+#	trigger = {
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 24
+#	}
+#
+#	immediate = {
+#		random_courtier = {
+#			limit = {
+#				religion_group = christian
+#				is_ruler = no
+#				has_ambition = obj_get_married
+#				is_marriage_adult = yes
+#				NOT = { age = 40 }
+#				prisoner = no
+#				is_betrothed = no
+#				is_consort = no
+#				is_married = no
+#				
+#				NOT = { trait = incapable }
+#				NOT = {
+#					trait = bastard
+#				}
+#				liege = {
+#					character = ROOT
+#				}
+#				is_close_relative = ROOT
+#				
+#				NOT = {
+#					has_minor_title = title_regent
+#				}
+#				
+#				NOT = { has_character_flag = flag_denied_marriage }
+#				NOT = { has_character_flag = flag_promised_marriage }
+#			}
+#			character_event = { id = 37050 }
+#		}
+#	}
+#}
+#
+#character_event = {
+#	id = 37050
+#
+#	hide_window = yes
+#
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		liege = { character_event = { id = 37051 days = 3 } }
+#	}
+#	
+#}
+#
+## Liege responds to marriage request
+#character_event = {
+#	id = 37051
+#	desc = EVTDESC37051
+#	picture = GFX_evt_marriage
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA37051 # Promise that you'll arrange it
+#		FROM = { character_event = { id = 37052 tooltip = EVTTOOLTIP37052 } }
+#	}
+#	
+#	option = {
+#		name = EVTOPTB37051 # Mention a Church career...
+#		trigger = {
+#			religion_group = christian
+#			FROM = { religion_group = christian }
+#		}
+#		FROM = { character_event = { id = 37053 tooltip = EVTTOOLTIP37053 } }
+#	}
+#}
+#
+## The relative is delighted
+#character_event = {
+#	id = 37052
+#	desc = EVTDESC37052
+#	picture = GFX_evt_marriage
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = OK # Great news!
+#		set_character_flag = flag_promised_marriage
+#		add_character_modifier = { name = promised_a_marriage duration = -1 }
+#		opinion = {
+#			who = FROM
+#			modifier = opinion_promised_marriage
+#			months = 60
+#		}
+#	}
+#}
+#
+## The relative is disappointed
+#character_event = {
+#	id = 37053
+#	desc = EVTDESC37053
+#	picture = GFX_evt_bad_news
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = OK # Bleak news
+#		set_character_flag = flag_denied_marriage
+#		opinion = {
+#			who = FROM
+#			modifier = opinion_denied_marriage
+#			months = 60
+#		}
+#	}
+#}
+#
+## Relative reminds liege of promised marriage
+#character_event = {
+#	id = 37054
+#	desc = EVTDESC37054
+#	picture = GFX_evt_marriage
+#	
+#	min_age = 16
+#	capable_only = yes
+#	prisoner = no
+#	lacks_dlc = "Zeus"
+#	is_married = no
+#	
+#	trigger = {
+#		is_ruler = no
+#		is_betrothed = no
+#		NOT = {
+#			trait = bastard
+#		}
+#		has_ambition = obj_get_married
+#		liege = {
+#			is_close_relative = ROOT
+#			ROOT = {
+#				has_opinion_modifier = { who = PREV modifier = opinion_promised_marriage }
+#			}
+#		}
+#		had_character_flag = { flag = flag_promised_marriage days = 365 }
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 4
+#		
+#		modifier = {
+#			factor = 0.25
+#			is_female = yes
+#			trait = lustful
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = ambitious
+#		}
+#		modifier = {
+#			factor = 2.0
+#			trait = slothful
+#		}
+#		modifier = {
+#			factor = 5.0
+#			trait = content
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA37054 # Ask dad
+#		liege = { character_event = { id = 37055 days = 3 tooltip = EVTTOOLTIP37055 } }
+#	}
+#}
+#
+## The liege is reminded of the promise
+#character_event = {
+#	id = 37055
+#	desc = EVTDESC37055
+#	picture = GFX_evt_marriage
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA37055 # Alright, alright!
+#		trigger = {
+#			FROM = {
+#				is_married = no
+#			}
+#			any_courtier = {
+#				OR = {
+#					is_female = no
+#					NOT = { age = 45 }
+#				}
+#				can_marry = FROM
+#			}
+#		}
+#		remove_character_modifier = promised_a_marriage
+#		clr_character_flag = flag_promised_marriage
+#		random_courtier = {
+#			limit = {
+#				OR = {
+#					is_female = no
+#					NOT = { age = 45 }
+#				}
+#				can_marry = FROM
+#			}
+#			add_spouse = FROM
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTC37055 # I haven't found anyone for you...
+#		trigger = {
+#			FROM = {
+#				is_married = no
+#			}
+#		}
+#		FROM = { 
+#			set_character_flag = flag_denied_marriage 
+#			clr_character_flag = flag_promised_marriage 
+#			remove_character_modifier = promised_a_marriage
+#		}
+#	}
+#	option = {
+#		name = EVTOPTD37055
+#		trigger = {
+#			FROM = {
+#				is_married = yes
+#				spouse = {
+#					is_alive = yes
+#				}
+#			}
+#		}
+#	}
+#}
+#
+## Male relative who was denied decides to marry in secret
+#character_event = {
+#	id = 37056
+#	desc = EVTDESC37056
+#	picture = GFX_evt_marriage
+#	
+#	min_age = 16
+#	only_men = yes
+#	capable_only = yes
+#	prisoner = no
+#	has_character_flag = flag_denied_marriage
+#	lacks_dlc = "Zeus"
+#	
+#	trigger = {
+#		is_ruler = no
+#		is_betrothed = no
+#		has_ambition = obj_get_married
+#		any_courtier = {
+#			is_female = yes
+#			NOT = { age = 40 }
+#			can_marry = ROOT
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 120
+#		
+#		modifier = {
+#			factor = 0.25
+#			trait = lustful
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = ambitious
+#		}
+#		modifier = {
+#			factor = 2.0
+#			trait = slothful
+#		}
+#		modifier = {
+#			factor = 5.0
+#			trait = content
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA37056 # I'm getting married right now
+#		random_courtier = {
+#			limit = {
+#				is_female = yes
+#				NOT = { age = 40 }
+#				can_marry = ROOT
+#			}
+#			add_spouse = ROOT
+#		}
+#		liege = { character_event = { id = 37057 tooltip = EVTTOOLTIP37057 } }
+#	}
+#}
+#
+## The liege is informed of the secret marriage
+#character_event = {
+#	id = 37057
+#	desc = EVTDESC37057
+#	picture = GFX_evt_marriage
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA37057 # Ah well
+#		tooltip_info = kind
+#		trigger = {
+#			trait = kind
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTB37057 # The insolence!
+#		trigger = {
+#			NOT = { trait = kind }
+#		}
+#		opinion = {
+#			who = FROM
+#			modifier = opinion_secret_marriage
+#			months = 60
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTC37057 # They will both pay for this!
+#		#tooltip_info = 
+#		trigger = {
+#			OR = {
+#				trait = wroth
+#				trait = envious
+#			}
+#		}
+#		FROM = { imprison = ROOT }
+#		FROM = { spouse = { imprison = ROOT } }
+#	}
+#}
 
 # IDs to 37149 reserved for more events concerning this ambition
 

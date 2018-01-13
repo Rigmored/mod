@@ -4,18 +4,18 @@ mep_is_good_side_trigger = {
 	OR = {
 		trait = good_side
 		AND = {
+			NOT = { trait = evil_side}
 			OR = {
-				religion_group = religion_group_eruhini # Ainur (like Eagles)
-				religion_group = religion_group_enyd    # Ents
 				religion_group = religion_group_eldar   # Elves
 				religion_group = religion_group_khazad  # Dwarves
+				religion = religion_rhovanion
 				religion = religion_numenorean
 				religion = religion_dunedain
 				religion = religion_edain
 				religion = religion_druedain
-				religion = religion_rhovanion								
+				religion_group = religion_group_eruhini # Ainur (like Eagles)
+				religion_group = religion_group_enyd    # Ents							
 			}
-			NOT = { trait = evil_side}
 			NOT = { culture = culture_adunaic }
 			NOT = { culture = culture_black_numenorean }
 		}

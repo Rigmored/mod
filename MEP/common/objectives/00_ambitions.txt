@@ -589,7 +589,7 @@ obj_amass_wealth = {
 		NOT = { wealth = 200 }
 		is_ruler = yes
 		NOT = { trait = charitable }
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	chance = {
 		factor = 100
@@ -597,6 +597,17 @@ obj_amass_wealth = {
 		modifier = {
 			factor = 1.25
 			trait = patient
+		}
+		modifier = {
+			factor = 1.5
+			religion_group = religion_group_khazad
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				trait = dwarf_ring
+				trait = durin_ring
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -637,7 +648,7 @@ obj_become_paragon_of_virtue = {
 	type = character
 	
 	potential = {
-		NOT = { religion_group = indian_group }
+		NOT = { mep_is_evil_side_trigger = yes }
 	}
 	
 	allow = {
@@ -646,7 +657,7 @@ obj_become_paragon_of_virtue = {
 		is_ruler = yes
 		NOT = { trait = cruel }
 		NOT = { trait = impaler }
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	
 	chance = {
@@ -742,11 +753,13 @@ obj_become_exalted = {
 	
 	allow = {
 		is_adult = yes
+		NOT = { trait = wilderness }
+		NOT = { trait = elf_childhood }
 		NOT = { prestige = 200 }
 		is_ruler = yes
 		NOT = { trait = content }
 		NOT = { trait = humble }
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	chance = {
 		factor = 50
@@ -754,6 +767,10 @@ obj_become_exalted = {
 		modifier = {
 			factor = 1.25
 			trait = patient
+		}
+		modifier = {
+			factor 0.3
+			religion_group = religion_group_periannath
 		}
 		modifier = {
 			factor = 0.01
@@ -806,7 +823,6 @@ obj_get_married = {
 	type = character
 	
 	potential = {
-		NOT = { has_landed_title = k_papal_state }
 		is_married = no
 		is_consort = no
 		can_marry = yes
@@ -819,13 +835,10 @@ obj_get_married = {
 		}
 		prisoner = no
 		is_marriage_adult = yes
-		NOT = { trait = celibate }
-		NOT = { trait = incapable }
-		NOT = { trait = eunuch }
 		NOT = { is_ascetic_trigger = yes }
 		OR = {
 			is_female = no
-			NOT = { age = 40 }
+			mep_marriagable_female = yes
 		}
 		OR = {
 			is_ruler = no
@@ -882,7 +895,6 @@ obj_get_married = {
 				is_ruler = no
 				age = 40
 			}
-			has_landed_title = k_papal_state
 			trait = celibate
 			trait = incapable
 			trait = eunuch
@@ -929,11 +941,9 @@ obj_marry_ruler = {
 		}
 		prisoner = no
 		is_marriage_adult = yes
-		NOT = { trait = celibate }
-		NOT = { trait = incapable }
 		OR = {
 			is_female = no
-			NOT = { age = 45 }
+			mep_marriagable_female = yes
 		}
 		father = {
 			primary_title = {
@@ -1018,15 +1028,12 @@ obj_have_a_daughter = {
 			is_female = yes
 			num_of_children = 2
 		}
-		NOT = {
-			AND = {
-				age = 45
-				is_female = yes
-			}
+		OR = {
+			mep_marriagable_female = yes
+			is_female = no
 		}
-		NOT = { age = 75 }
 		NOT = { trait = celibate }
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	
 	chance = {
@@ -1053,10 +1060,9 @@ obj_have_a_daughter = {
 	abort = {
 		OR = {
 			AND = {
-				age = 45
 				is_female = yes
+				NOT = { mep_marriagable_female = yes }
 			}
-			age = 75
 			trait = celibate
 			trait = incapable
 		}
@@ -1101,15 +1107,12 @@ obj_have_a_son = {
 				}
 			}
 		}
-		NOT = {
-			AND = {
-				age = 45
-				is_female = yes
-			}
+		OR = {
+			is_female = no
+			mep_marriagable_female = yes
 		}
-		NOT = { age = 75 }
 		NOT = { trait = celibate }
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	chance = {
 		factor = 50
@@ -1135,10 +1138,9 @@ obj_have_a_son = {
 	abort = {
 		OR = {
 			AND = {
-				age = 45
+				NOT = { mep_marriagable_female = yes }
 				is_female = yes
 			}
-			age = 75
 			trait = celibate
 			trait = incapable
 		}
@@ -1166,8 +1168,9 @@ obj_wants_landed_title = {
 		prisoner = no
 		is_adult = yes
 		is_female = no
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = eunuch }
+		NOT = { trait = elf_childhood }
 		NOT = { is_ascetic_trigger = yes }
 		NOT = { has_minor_title = title_guru }
 		liege = {
@@ -1200,6 +1203,11 @@ obj_wants_landed_title = {
 		factor = 100
 		
 		modifier = {
+			factor = 0.05
+			mep_is_immortal_race_trigger = yes
+		}
+		
+		modifier = {
 			factor = 0.01
 			trait = content
 		}
@@ -1226,13 +1234,6 @@ obj_wants_landed_title = {
 		modifier = {
 			factor = 3.0
 			trait = ambitious
-		}
-		modifier = {
-			factor = 2.0
-			religion_group = muslim
-			liege = {
-				dynasty = ROOT
-			}
 		}
 	}
 	success = {
@@ -1284,6 +1285,7 @@ obj_become_heir = {
 			is_female = yes
 		}
 		NOT = { trait = bastard }
+		NOT = { trait = wilderness }
 		liege = {
 			any_child = {
 				is_primary_heir = yes
@@ -1307,11 +1309,16 @@ obj_become_heir = {
 		prisoner = no
 		is_adult = yes
 		is_primary_heir = no
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	
 	chance = {
 		factor = 50
+		
+		modifier = {
+			factor = 0.05
+			mep_is_immortal_race_trigger = yes
+		}
 		
 		modifier = {
 			factor = 2.0
@@ -1368,8 +1375,10 @@ obj_improve_martial = {
 	
 	allow = {
 		NOT = { martial = 8 }
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = infirm }
+		NOT = { trait = wilderness }
+		NOT = { trait = elf_childhood }
 		prisoner = no
 	}
 	chance = {
@@ -1432,7 +1441,7 @@ obj_improve_stewardship = {
 	
 	allow = {
 		NOT = { stewardship = 8 }
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = infirm }
 		prisoner = no
 	}
@@ -1499,7 +1508,7 @@ obj_improve_learning = {
 	
 	allow = {
 		NOT = { learning = 8 }
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = infirm }
 		prisoner = no
 	}
@@ -1562,7 +1571,7 @@ obj_improve_diplomacy = {
 	
 	allow = {
 		NOT = { diplomacy = 8 }
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = infirm }
 		prisoner = no
 	}
@@ -1625,7 +1634,7 @@ obj_improve_intrigue = {
 	
 	allow = {
 		NOT = { intrigue = 8 }
-		NOT = { trait = incapable }
+		is_incapable = no
 		NOT = { trait = infirm }
 		prisoner = no
 	}
@@ -1688,7 +1697,7 @@ obj_improve_intrigue = {
 #	
 #	allow = {
 #		decadence = 60
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #	}
 #	chance = {
 #		factor = 100
@@ -1744,6 +1753,7 @@ obj_become_king = {
 	
 	potential = {
 		is_adult = yes
+		NOT = { trait = elf_childhood }
 		is_playable = yes
 		is_landed = yes
 		lower_tier_than = KING
@@ -1751,24 +1761,35 @@ obj_become_king = {
 			independent = yes
 			liege = { independent = yes }
 		}
+		NAND = {
+			trait = nazgul
+			independent = no
+			liege = {
+				has_character_flag = sauron
+			}
+		}
 		NOT = {
 			any_heir_title = {
 				higher_tier_than = DUKE
 			}
 		}
+		trait = ambitious
 	}
 	
 	allow = {
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	
 	chance = {
 		factor = 100
 		
 		modifier = {
-			factor = 0
-			NOT = { religion_group = pagan_group }
-			NOT = { trait = ambitious }
+			factor = 0.1
+			OR = {
+				religion_group = religion_group_eldar
+				religion_group = religion_group_enyd
+				religion_group = religion_group_periannath
+			}
 		}
 		modifier = {
 			factor = 3.0
@@ -1787,16 +1808,6 @@ obj_become_king = {
 			trait = brave
 		}
 		modifier = {
-			factor = 3.0
-			OR = {
-				independent = yes
-				AND = {
-					religion_group = pagan_group
-					is_reformed_religion = no
-				}
-			}
-		}
-		modifier = {
 			factor = 0.1
 			trait = craven
 		}
@@ -1811,13 +1822,6 @@ obj_become_king = {
 		modifier = {
 			factor = 0.1
 			tier = COUNT
-		}
-		modifier = {
-			factor = 0.01
-			OR = {
-				religion = finnish_pagan
-				religion = west_african_pagan
-			}
 		}
 	}
 	
@@ -1878,7 +1882,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -1922,7 +1926,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -1966,7 +1970,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2013,7 +2017,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2058,7 +2062,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2102,7 +2106,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2146,7 +2150,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	
@@ -2191,7 +2195,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2235,7 +2239,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	chance = {
@@ -2282,7 +2286,7 @@ obj_become_king = {
 #	
 #	allow = {
 #		is_adult = yes
-#		NOT = { trait = incapable }
+#		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
 #	
@@ -2419,7 +2423,7 @@ obj_gain_any_title = {
 	}
 	
 	allow = {
-		NOT = { trait = incapable }
+		is_incapable = no
 	}
 	
 	chance = {
@@ -2428,6 +2432,10 @@ obj_gain_any_title = {
 		modifier = {
 			factor = 0
 			trait = content
+		}
+		modifier = {
+			factor = 0.1
+			mep_is_immortal_race_trigger = yes
 		}
 		modifier = {
 			factor = 1.5
@@ -2552,6 +2560,10 @@ obj_see_the_realm_prosper = {
 			}
 		}
 		modifier = {
+			factor = 0.3
+			mep_is_evil_side_trigger = yes
+		}
+		modifier = {
 			factor = 1.5
 			trait = charitable
 		}
@@ -2632,7 +2644,7 @@ obj_see_the_realm_prosper = {
 					limit = {
 						has_nickname = no
 						is_adult = yes
-						NOT = { trait = incapable }
+						is_incapable = no
 					}
 					random_list = {
 						5 = {

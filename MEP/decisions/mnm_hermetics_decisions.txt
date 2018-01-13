@@ -584,63 +584,63 @@ society_decisions = {
 		}
 	}
 	
-	hermetic_grand_debate = {
-		only_playable = yes
-		is_high_prio = yes
-		
-		potential = {
-			has_dlc = "Mystics"
-			is_playable = yes
-			is_adult = yes
-			society_member_of = heren_isseon
-			society_rank == 4
-		}
-		
-		allow = {
-			wealth = 100
-			prestige = 400
-			prisoner = no
-			NOT = { is_inaccessible_trigger = yes }
-			NOT = { trait = incapable }
-			custom_tooltip = {
-				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
-			}
-			custom_tooltip = {
-				text = GRAND_DEBATE_HOLDING_TOOLTIP
-				OR = {
-					NOT = { has_global_flag = holding_grand_debate }
-					had_global_flag = { flag = holding_grand_debate days = 150 }
-				}
-			}
-			custom_tooltip = {
-				text = GRAND_DEBATE_COOLDOWN_TOOLTIP
-				OR = {
-					NOT = { has_global_flag = held_grand_debate }
-					had_global_flag = { flag = held_grand_debate days = 3650 }
-				}
-			}
-		}
-		
-		effect = {
-			character_event = { id = MNM.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP }
-			wealth = -100
-			hidden_tooltip = {
-				clr_character_flag = grand_debate_has_ended
-				set_character_flag = do_not_disturb
-				set_global_flag = holding_grand_debate
-				character_event = { id = MNM.1982 days = 300 } # Safety catch flag clearing
-			}
-		}
-		
-		revoke_allowed = { always = no }
-		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				factor = 0.001 # Slow down
-			}
-		}
-	}
+	#hermetic_grand_debate = {
+	#	only_playable = yes
+	#	is_high_prio = yes
+	#	
+	#	potential = {
+	#		has_dlc = "Mystics"
+	#		is_playable = yes
+	#		is_adult = yes
+	#		society_member_of = heren_isseon
+	#		society_rank == 4
+	#	}
+	#	
+	#	allow = {
+	#		wealth = 100
+	#		prestige = 400
+	#		prisoner = no
+	#		NOT = { is_inaccessible_trigger = yes }
+	#		NOT = { trait = incapable }
+	#		custom_tooltip = {
+	#			text = is_not_busy_trigger_tooltip
+	#			hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+	#		}
+	#		custom_tooltip = {
+	#			text = GRAND_DEBATE_HOLDING_TOOLTIP
+	#			OR = {
+	#				NOT = { has_global_flag = holding_grand_debate }
+	#				had_global_flag = { flag = holding_grand_debate days = 150 }
+	#			}
+	#		}
+	#		custom_tooltip = {
+	#			text = GRAND_DEBATE_COOLDOWN_TOOLTIP
+	#			OR = {
+	#				NOT = { has_global_flag = held_grand_debate }
+	#				had_global_flag = { flag = held_grand_debate days = 3650 }
+	#			}
+	#		}
+	#	}
+	#	
+	#	effect = {
+	#		character_event = { id = MNM.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP }
+	#		wealth = -100
+	#		hidden_tooltip = {
+	#			clr_character_flag = grand_debate_has_ended
+	#			set_character_flag = do_not_disturb
+	#			set_global_flag = holding_grand_debate
+	#			character_event = { id = MNM.1982 days = 300 } # Safety catch flag clearing
+	#		}
+	#	}
+	#	
+	#	revoke_allowed = { always = no }
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#		
+	#		modifier = {
+	#			factor = 0.001 # Slow down
+	#		}
+	#	}
+	#}
 }

@@ -331,11 +331,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTA30004" #Poison!
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		spouse = {
 			random_child = {
 				limit = {
@@ -561,11 +556,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTC30006" #Poison courtier
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		random_list = {
 			50 = {
 				random_courtier = {
@@ -714,11 +704,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTC30006" #Poison courtier
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		random_list = {
 			50 = {
 				event_target:target_courtier = {
@@ -1445,10 +1430,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTA30032"
-		if = {
-			limit = { NOT = { trait = berserker } }
-			add_trait = craven
-		}
+		add_trait = craven
 	}
 	option = {
 		name = "EVTOPTB30032"
@@ -1549,10 +1531,7 @@ letter_event = {
 	option = {
 		name = "EVTOPTA30036"
 		prestige = -10
-		if = {
-			limit = { NOT = { trait = berserker } }
-			add_trait = craven
-		}
+		add_trait = craven
 	}
 	
 	option = {
@@ -2234,10 +2213,8 @@ character_event = {
 	is_triggered_only = yes	
 	
 	trigger = {
-		NOT = { religion = jain }
 		spouse = {
 			NOT = { trait = incapable }
-			NOT = { religion = jain }
 			is_female = yes
 			prisoner = no
 			is_alive = yes
@@ -2701,9 +2678,6 @@ character_event = {
 		}
 		NOT = {
 			has_character_modifier = learning_advice
-		}
-		NOT = {
-			religion_group = muslim
 		}
 		spouse = {
 			NOT = { trait = incapable }
@@ -3551,14 +3525,7 @@ character_event = {
 		NOT = {
 			demesne_size = 1
 		}
-		NOT = {
-			religion_group = muslim
-		}
-		spouse = {
-			NOT = {
-				religion_group = muslim
-			}
-		}
+
 		independent = no
 		any_courtier = {
 			OR = {
@@ -4009,11 +3976,6 @@ character_event = {
 	}
 	option = {
 		name = "EVTOPTB30080" #Execute courtier
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		event_target:sire_bastard = {
 			death = {
 				death_reason = death_execution_hanging
@@ -4071,11 +4033,6 @@ character_event = {
 	}
 	option = {
 		name = "EVTOPTB30081" #Execute
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		event_target:sire_bastard = {
 			death = {
 				death_reason = death_execution_hanging
@@ -4320,7 +4277,6 @@ character_event = {
 	option = {
 		name = "EVTOPTC30088"
 		trigger = {
-			NOT = { religion = jain }
 			NOT = {
 				has_character_flag = failed_hunt
 				has_character_flag = perfect_hunt

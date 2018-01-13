@@ -708,40 +708,40 @@ character_event = {
 ###########################################
 	
 # Feast begins
-character_event = {
-	id = RoI.1020
-	desc = EVTDESC_RoI_1020
-	picture = GFX_evt_feast
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1020
-		hidden_tooltip = { character_event = { id = RoI.1170 days = 25 } } # Religious ceremony
-		hidden_tooltip = { character_event = { id = RoI.1995 days = 30 } } # End feast
-		hidden_tooltip = { character_event = { id = RoI.1990 days = 31 } } # Clearing all flags and modifiers after feast
-		set_character_flag = diwali_feast_begun
-		hidden_tooltip = {
-			random_list = { # Choose random event
-				10 = { character_event = { id = RoI.1050 days = 10 random = 5 } } # Snake charmer
-#				2 = { character_event = { id = RoI.1140 days = 10 random = 5 } } # Apsara
-#				2 = { character_event = { id = RoI.1143 days = 10 random = 5 } } # Ghandarva
-				10 = { character_event = { id = RoI.1150 days = 10 random = 5 } } # Magician
-				10 = { character_event = { id = RoI.1160 days = 10 random = 5 } } # Monkeys
-				100 = {} # No random event
-			}
-		}
-		any_courtier = {
-			limit = {
-				is_adult = yes
-				is_ruler = no
-				NOT = { trait = incapable }
-			}
-			set_character_flag = attending_diwali_feast
-			hidden_tooltip = { character_event = { id = RoI.1990 days = 31 } } # Clearing all flags and modifiers after feast
-		}
-	}
-}
+#character_event = {
+#	id = RoI.1020
+#	desc = EVTDESC_RoI_1020
+#	picture = GFX_evt_feast
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA_RoI_1020
+#		hidden_tooltip = { character_event = { id = RoI.1170 days = 25 } } # Religious ceremony
+#		hidden_tooltip = { character_event = { id = RoI.1995 days = 30 } } # End feast
+#		hidden_tooltip = { character_event = { id = RoI.1990 days = 31 } } # Clearing all flags and modifiers after feast
+#		set_character_flag = diwali_feast_begun
+#		hidden_tooltip = {
+#			random_list = { # Choose random event
+#				10 = { character_event = { id = RoI.1050 days = 10 random = 5 } } # Snake charmer
+##				2 = { character_event = { id = RoI.1140 days = 10 random = 5 } } # Apsara
+##				2 = { character_event = { id = RoI.1143 days = 10 random = 5 } } # Ghandarva
+#				10 = { character_event = { id = RoI.1150 days = 10 random = 5 } } # Magician
+#				10 = { character_event = { id = RoI.1160 days = 10 random = 5 } } # Monkeys
+#				100 = {} # No random event
+#			}
+#		}
+#		any_courtier = {
+#			limit = {
+#				is_adult = yes
+#				is_ruler = no
+#				NOT = { trait = incapable }
+#			}
+#			set_character_flag = attending_diwali_feast
+#			hidden_tooltip = { character_event = { id = RoI.1990 days = 31 } } # Clearing all flags and modifiers after feast
+#		}
+#	}
+#}
 
 # Vassal arrives at feast
 character_event = {
@@ -1417,418 +1417,10 @@ character_event = {
 ###########################################
 # Religious ceremony                      #
 ###########################################
+# MEP Removed
 
-# Religious ceremony - liege
-character_event = {
-	id = RoI.1170
-
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	immediate = {
-		if = {
-			limit = {
-				has_character_modifier = holding_diwali_feast
-				religion = hindu
-			}
-			character_event = { id = RoI.1171 } # Hindu
-		}
-		if = {
-			limit = {
-				has_character_modifier = holding_diwali_feast
-				religion = buddhist
-			}
-			character_event = { id = RoI.1173 } # Buddhist
-		}
-		if = {
-			limit = {
-				has_character_modifier = holding_diwali_feast
-				religion = jain
-			}
-			character_event = { id = RoI.1175 } # Jain
-		}
-		if = {
-			limit = {
-				has_character_modifier = holding_kali_puja_feast
-			}
-			character_event = { id = RoI.1177 } # Kali Puja
-		}
-	}
-}
-
-# Hindu celebration - host
-character_event = {
-	id = RoI.1171
-	desc = EVTDESC_RoI_1171
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1171 #
-		piety = 30
-		any_vassal = {
-			limit = {
-				ai = no
-				has_character_flag = attending_diwali_feast
-			}
-			hidden_tooltip = { character_event = { id = RoI.1172 } }
-		}
-	}
-}
-
-# Hindu celebration - guests
-character_event = {
-	id = RoI.1172
-	desc = EVTDESC_RoI_1171
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1171 # 
-		piety = 10
-	}
-}
-
-# Buddhist celebration - host
-character_event = {
-	id = RoI.1173
-	desc = EVTDESC_RoI_1173
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1173 #
-		piety = 30
-		any_vassal = {
-			limit = {
-				ai = no
-				has_character_flag = attending_diwali_feast
-			}
-			hidden_tooltip = { character_event = { id = RoI.1174 } }
-		}
-	}
-}
-
-# Buddhist celebration - guests
-character_event = {
-	id = RoI.1174
-	desc = EVTDESC_RoI_1173
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1173 # 
-		piety = 10
-	}
-}
-
-# Jain celebration - host
-character_event = {
-	id = RoI.1175
-	desc = EVTDESC_RoI_1175
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1175 #
-		piety = 30
-		any_vassal = {
-			limit = {
-				ai = no
-				has_character_flag = attending_diwali_feast
-			}
-			hidden_tooltip = { character_event = { id = RoI.1176 } }
-		}
-	}
-}
-
-# Jain celebration - guests
-character_event = {
-	id = RoI.1176
-	desc = EVTDESC_RoI_1175
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1175 # 
-		piety = 10
-	}
-}
-
-# Kali Puja Celebration
-character_event = {
-	id = RoI.1177
-	desc = EVTDESC_RoI_1177
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1177 # Stay with the basics
-		any_vassal = {
-			limit = {
-				ai = no
-				has_character_flag = attending_diwali_feast
-			}
-			hidden_tooltip = { character_event = { id = RoI.1189 } }
-		}
-		hidden_tooltip = { character_event = { id = RoI.1188 } }
-	}
-	option = {
-		name = EVTOPTB_RoI_1177 # Really go for it - bloody madness
-		trigger = {
-			NOT = { trait = kind }
-		}
-		if = {
-			limit = { NOT = { trait = cruel } }
-			add_trait = cruel
-		}
-		if = {
-			limit = { NOT = { trait = zealous } }
-			random = {
-				chance = 20
-				add_trait = zealous
-				hidden_tooltip = {
-					character_event = {
-						id = 38269 #Notify Zealous
-					}
-				}
-			}
-		}
-		character_event = { id = RoI.1178 }
-	}
-}
-
-# Celebrate Kali - bloody madness - host
-character_event = {
-	id = RoI.1178
-	desc = EVTDESC_RoI_1178
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1178 # 1 - Ritual sacrifice of prisoner
-		trigger = {
-			any_courtier = {
-				prisoner = yes
-				host = { character = ROOT }
-			}
-		}
-		random_courtier = {
-			limit = {
-				prisoner = yes
-				host = { character = ROOT }
-			}
-			character_event = { id = RoI.1190 }
-		}
-		prestige = 20
-	}
-	option = {
-		name = EVTOPTB_RoI_1178 # 2 - Ritual sacrifice of servant
-		any_vassal = {
-			limit = { has_character_flag = attending_diwali_feast }
-			hidden_tooltip = { character_event = { id = RoI.1182 } }
-		}
-		hidden_tooltip = { character_event = { id = RoI.1181 } }
-		prestige = 10
-	}
-	option = {
-		name = EVTOPTC_RoI_1178 # 3 - Massive ritual blood sacrifice of animals (elephants, massive)
-		trigger = {
-			capital_scope = {
-				region = world_india
-			}
-		}
-		any_vassal = {
-			limit = { has_character_flag = attending_diwali_feast }
-			hidden_tooltip = { narrative_event = { id = RoI.1184 } }
-		}
-		hidden_tooltip = { narrative_event = { id = RoI.1183 } }
-		wealth = -10
-		prestige = 30
-	}
-}
-
-# Prisoner to be sacrificed gets this bridging event
-character_event = {
-	id = RoI.1190
-	
-	hide_window = yes
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		FROM = {
-			any_vassal = {
-				limit = { has_character_flag = attending_diwali_feast }
-				hidden_tooltip = { character_event = { id = RoI.1179 } }
-			}
-			hidden_tooltip = { character_event = { id = RoI.1180 } }
-		}
-	}
-}
-
-# Celebrate Kali - bloody madness 1 - guests
-character_event = {
-	id = RoI.1179
-	desc = EVTDESC_RoI_1179
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1179 # 
-		piety = 10
-	}
-}
-
-# Celebrate Kali - bloody madness 1 - host
-character_event = {
-	id = RoI.1180
-	desc = EVTDESC_RoI_1179
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1179 # 
-		piety = 30
-		if = {
-			limit = {
-				NOT = { has_character_flag = achievement_kali_maaa }
-				ai = no
-				FROM = {
-					primary_title = {
-						OR = {
-							tier = EMPEROR
-							tier = KING
-						}
-					}
-				}
-			}
-			set_character_flag = achievement_kali_maaa
-		}
-		FROM = {
-			death = {
-				death_reason = death_sacrificed
-				killer = ROOT
-			}
-		}
-	}
-}
-
-# Celebrate Kali - bloody madness 2 - host
-character_event = {
-	id = RoI.1181
-	desc = EVTDESC_RoI_1181
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1179 # 
-		piety = 30
-	}
-}
-
-# Celebrate Kali - bloody madness 2 - guests
-character_event = {
-	id = RoI.1182
-	desc = EVTDESC_RoI_1181
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1179 # 
-		piety = 10
-	}
-}
-
-# Celebrate Kali - bloody madness 3 - host
-narrative_event = {
-	id = RoI.1183
-	title = EVTTITLE_RoI_1183
-	desc = EVTDESC_RoI_1183
-	picture = GFX_evt_feast
-	border = GFX_event_narrative_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1183 # 
-		piety = 30
-	}
-}
-
-# Celebrate Kali - bloody madness 3 - guests
-narrative_event = {
-	id = RoI.1184
-	title = EVTTITLE_RoI_1183
-	desc = EVTDESC_RoI_1183
-	picture = GFX_evt_feast
-	border = GFX_event_narrative_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1183 # 
-		piety = 10
-	}
-}
-
-# Basic Kali Puja celebration - host
-character_event = {
-	id = RoI.1188
-	desc = EVTDESC_RoI_1188
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1188 # 
-		piety = 30
-	}
-}
-
-# Basic Kali Puja celebration - guests
-character_event = {
-	id = RoI.1189
-	desc = EVTDESC_RoI_1188
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA_RoI_1188 # 
-		piety = 10
-	}
-}
-
-###########################################
-# Flag management                         #
+############################################
+## Flag management                         #
 ###########################################
 
 # Clear all character flags and modifiers

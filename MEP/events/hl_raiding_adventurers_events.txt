@@ -30,6 +30,8 @@ character_event = {
 				value = none
 			}
 		}
+		NOT = { trait = elf_childhood }
+		NOT = { trait = wilderness }
 		
 		is_ruler = no
 		
@@ -42,16 +44,18 @@ character_event = {
 		is_allowed_to_loot = yes
 		NOT = { trait = content }
 		NOT = { trait = craven }
-		NOT = { trait = decadent }
 		OR = {
 			AND = {
 				any_liege = {
 					government = nomadic_government
 				}
-				culture_group = altaic
+				OR = {
+					culture_group = culture_group_easterling
+					culture_group = culture_group_southron
+				}
 			}
-			religion = norse_pagan
-			religion = norse_pagan_reformed
+			religion = religion_group_melkor
+
 			AND = {
 				trait = ambitious
 				martial = 15
@@ -60,7 +64,6 @@ character_event = {
 				NOR = {
 					trait = craven
 					trait = content
-					trait = decadent
 					any_child = {
 						OR = {
 							is_heir = yes
@@ -192,6 +195,10 @@ character_event = {
 				name = adventurers
 				value = rare
 			}
+		}
+		modifier = {
+			factor = 10
+			mep_is_good_side_trigger = yes
 		}
 #		modifier = {
 #			factor = 3.0

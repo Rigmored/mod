@@ -21,18 +21,11 @@ letter_event = {
 		name = EVTOPTA_WoL_4000 # Accept
 		trigger = {
 			NOT = { has_character_flag = do_not_disturb }
+			NOT = { trait = wilderness }
 		}
 		ai_chance = {
 			factor = 1
-			modifier = {
-				factor = 0
-				religion_group = muslim
-				NOR = {
-					trait = decadent
-					trait = hedonist
-					trait = drunkard
-				}
-			}
+
 			modifier = {
 				factor = 0
 				is_rival = FROMFROM
@@ -44,6 +37,10 @@ letter_event = {
 			modifier = {
 				factor = 0.1
 				NOT = { opinion = { who = FROMFROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				mep_infertile_trait = yes
 			}
 			modifier = {
 				factor = 5
@@ -114,14 +111,6 @@ letter_event = {
 				factor = 0.5
 				trait = paranoid
 			}
-			modifier = {
-				factor = 10
-				trait = decadent
-			}
-			modifier = {
-				factor = 10
-				has_character_flag = fake_guru
-			}
 		}
 		hidden_tooltip = { FROMFROM = { letter_event = { id = WoL.4001 days = 7 } } }
 		set_character_flag = do_not_disturb # NOTE
@@ -142,47 +131,47 @@ letter_event = {
 		hidden_tooltip = { FROMFROM = { letter_event = { id = WoL.4002 days = 7 } } }
 		clr_character_flag = carousing_invite
 	}
-	option = {
-		name = EVTOPTC_WoL_4000 # Decline and condemn decadence
-		piety = 30
-		prestige = 30
-		trigger = {
-			OR = {
-				AND = {
-					religion_group = muslim
-					trait = zealous
-				}
-				AND = {
-					has_minor_title = title_guru
-					NOT = { has_character_flag = fake_guru }
-				}
-			}
-		}
-		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 5
-				OR = {
-					trait = brave
-					opinion = { who = ROOT value = -50 }
-				}
-			}
-		}
-		FROMFROM = {
-			opinion = {
-				modifier = opinion_declined_party
-				who = ROOT
-				years = 2
-			}
-			opinion = {
-				modifier = opinion_angry
-				who = ROOT
-				years = 2
-			}
-		}
-		hidden_tooltip = { FROMFROM = { letter_event = { id = WoL.4003 days = 7 } } }
-		clr_character_flag = carousing_invite
-	}
+	#option = {
+	#	name = EVTOPTC_WoL_4000 # Decline and condemn decadence
+	#	piety = 30
+	#	prestige = 30
+	#	trigger = {
+	#		OR = {
+	#			AND = {
+	#				religion_group = muslim
+	#				trait = zealous
+	#			}
+	#			AND = {
+	#				has_minor_title = title_guru
+	#				NOT = { has_character_flag = fake_guru }
+	#			}
+	#		}
+	#	}
+	#	ai_chance = {
+	#		factor = 1
+	#		modifier = {
+	#			factor = 5
+	#			OR = {
+	#				trait = brave
+	#				opinion = { who = ROOT value = -50 }
+	#			}
+	#		}
+	#	}
+	#	FROMFROM = {
+	#		opinion = {
+	#			modifier = opinion_declined_party
+	#			who = ROOT
+	#			years = 2
+	#		}
+	#		opinion = {
+	#			modifier = opinion_angry
+	#			who = ROOT
+	#			years = 2
+	#		}
+	#	}
+	#	hidden_tooltip = { FROMFROM = { letter_event = { id = WoL.4003 days = 7 } } }
+	#	clr_character_flag = carousing_invite
+	#}
 }
 
 # Host receives positive answer to invitation
@@ -449,6 +438,7 @@ character_event = {
 								trait = lunatic
 								trait = possessed
 								trait = impaler
+								trait = torturer
 								top_liege = {
 									any_realm_character = {
 										has_opinion_modifier = {
@@ -459,6 +449,7 @@ character_event = {
 											trait = lunatic
 											trait = possessed
 											trait = impaler
+											trait = torturer
 										}
 									}
 								}
@@ -684,6 +675,7 @@ character_event = {
 					trait = lunatic
 					trait = possessed
 					trait = impaler
+					trait = torturer
 				}
 			}
 			character_event = { id = WoL.4101 }
@@ -700,6 +692,7 @@ character_event = {
 						trait = lunatic
 						trait = possessed
 						trait = impaler
+						trait = torturer
 					}
 					ROOT = { ai = yes }
 				}
@@ -802,21 +795,6 @@ character_event = {
 				}
 			}
 			add_trait = cannibal_trait
-		}
-		FROM = {
-			death = {
-				death_reason = death_murder_unknown_butchered
-				killer = ROOT
-			}
-			hidden_tooltip = {
-				if = {
-					limit = {
-						religion = bon
-						ROOT = { ai = no }
-					}
-					ROOT = { set_character_flag = achievement_bon_appetit }
-				}
-			}
 		}
 	}
 }

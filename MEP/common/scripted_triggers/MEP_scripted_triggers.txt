@@ -44,6 +44,7 @@
 # mep_is_black_numenorean_culture
 # mep_is_good_numenorean_culture
 # mep_evil_religion
+# mep_dont_do_horses
 
 ### titles
 # mep_gondor_arnor_emp_trigger
@@ -99,6 +100,7 @@
 ## Other
 # mep_coloniz_cheap
 # mep_coloniz_quick
+# mep_marriagable_female
 
 
 #---------------------------------------------------------------------------------------
@@ -291,9 +293,10 @@ mep_pick_good_side_trigger = {
 	NOT = { religion_group = religion_group_dragon }
 }
 
-
+# should be unkillable via standard assasination or battle-death
 mep_should_be_unkillable_trigger = {
 	OR = {
+		culture_group = culture_group_wilderness
 		AND = {
 			culture_group = culture_group_eru
 			NOT = { culture = culture_eagles }
@@ -301,7 +304,6 @@ mep_should_be_unkillable_trigger = {
 		culture = culture_balrog
 		culture = culture_wight
 		religion_group = religion_group_dragon
-		culture_group = culture_group_wilderness
 		trait = maiar
 		trait = balrog
 		AND = {
@@ -315,6 +317,7 @@ mep_should_be_unkillable_trigger = {
 		trait = fea_strong
 		trait = enigma
 		trait = nazgul
+		religion = religion_umaiar
 	}
 }
 
@@ -417,7 +420,7 @@ mep_is_evil_overlord = {
 }
 
 mep_eligible_for_heren_isseon = {
-	NOT = { evil_side }
+	NOT = { trait = evil_side }
 	OR = {
 		religion_group = religion_group_periannath
 		religion_group = religion_group_khazad
@@ -490,6 +493,7 @@ mep_is_immortal_race_trigger = {
 		religion_group = religion_group_eldar   # Elves
 		religion = religion_umaiar
 		religion = religion_wight
+		religion_group = religion_group_ungoliant
 		religion_group = religion_group_dragon
 	}
 }
@@ -636,6 +640,17 @@ mep_evil_religion = {
 		religion_group = religion_group_melkor
 		religion_group = religion_group_ungoliant
 		religion_group = religion_group_dragon
+	}
+}
+
+mep_dont_do_horses = {
+	OR = {
+		religion_group = religion_group_khazad
+		religion_group = religion_group_periannath
+		religion_group = religion_group_ungoliant
+		culture_group = culture_group_forodwaith
+		religion_group = religion_group_enyd
+		culture = culture_eagles
 	}
 }
 
@@ -1256,6 +1271,51 @@ mep_coloniz_quick = {
 	OR = {
 		has_game_rule = { name = colon_diffc value = quick }
 		has_game_rule = { name = colon_diffc value = quickncheap }
+	}
+}
+
+mep_marriagable_female = {
+	AND = {
+		is_female = yes
+		NOT = { mep_infertile_trait = yes }
+		NOR = {
+			is_incapable = yes
+			trait = eunuch
+			trait = celibate
+			trait = elf_childhood
+		}
+		age = 16
+		OR = {
+			AND = {
+				culture_group = culture_group_numenorean
+				age = 22
+				NOT = { age = 120 }
+			}
+			AND = {
+				religion_group = religion_group_khazad
+				age = 30
+				NOT = { age = 140 }
+			}
+			AND = {
+				religion_group = religion_group_periannath
+				NOT = { age = 55 }
+			}
+			AND = {
+				age = 200
+				mep_is_immortal_race_trigger = yes
+			}
+			AND = {
+				NOT = {
+					culture_group = culture_group_numenorean
+					religion_group = religion_group_khazad
+					religion_group = religion_group_periannath
+					mep_is_immortal_race_trigger = yes
+				}
+				NOT = { age = 40 }
+			}
+		}
+		
+		
 	}
 }
 

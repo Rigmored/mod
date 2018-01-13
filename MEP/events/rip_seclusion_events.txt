@@ -698,15 +698,6 @@ character_event = {
 			hidden_effect = {
 				death = { death_reason = death_execution_eaten }
 			}
-			hidden_tooltip = {
-				if = {
-					limit = {
-						religion = bon
-						ROOT = { ai = no }
-					}
-					ROOT = { set_character_flag = achievement_bon_appetit }
-				}
-			}
 		}
 		change_variable = { which = remaining_food value = 1 }
 		if = {
@@ -1713,7 +1704,6 @@ character_event = {
 			limit = {
 				NOT = { trait = craven }
 				NOT = { trait = brave }
-				NOT = { trait = berserker }
 			}
 			add_trait = craven
 			break = yes
@@ -2505,7 +2495,6 @@ character_event = {
 				NOR = {
 					trait = brave
 					trait = craven
-					trait = berserker
 				}
 			}
 			random = {

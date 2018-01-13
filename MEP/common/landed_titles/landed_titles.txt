@@ -13341,7 +13341,7 @@ k_nothing = {
 	# The Drúadan Forest is deep inside normal Gondorian territory, but was also apart from it.
 	# as per hhardy01, I have separated it completely. (The existing history files have it as
 	# part of Gondor, but until 9605, the holder was also the King of Old Púkel Land, and thus
-	# not part of Gondor.
+	# not part of Gondor).
 	d_tawar_in_druedain = {
 
 		color={ 174 184 106 }
@@ -13490,14 +13490,15 @@ e_reunited_kingdom = {
 	culture = culture_gondorian	
 	religion = religion_dunedain
 }
+
 e_gondor_kinstrife = {
-color={ 17 44 71 }
-color2={ 125 125 142 }
+	color={ 17 44 71 }
+	color2={ 125 125 142 }
 
-short_name = yes
+	short_name = yes
 
-culture = culture_gondorian
-religion = religion_dunedain
+	culture = culture_gondorian
+	religion = religion_dunedain
 
 	allow = {
 		e_gondor = {
@@ -13596,6 +13597,7 @@ e_isengard = {
 	}
 	dignity = 100 # Counted as having this many more counties than it does	
 }
+
 e_angmar = {
 
 		    color={ 181 181 181 }
@@ -13849,9 +13851,10 @@ d_ringbearer = {
 	title_prefix = "BEARER_OF"
 	
 	short_name = yes
+	landless = yes
 	
 	allow = {  
-		trait = ring
+		trait = onering
 		NOT = { has_character_flag = ringbearer_forfait }
 	}	
 }
@@ -13874,7 +13877,7 @@ d_sauron_exile = {
 }
 
 # basically, a place to collect all those 'missing' at_east characters so they do
-# not clutter up eleven courts
+# not clutter up Elven courts
 d_eastern_wilds = {
 	religion="religion_wilderness"
 	culture="culture_wilderness"

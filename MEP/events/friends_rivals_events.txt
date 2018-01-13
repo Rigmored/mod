@@ -780,10 +780,7 @@ character_event = { # Relay event for rulers
 					NOT = { sibling = ROOT }
 					NOT = { is_friend = ROOT }
 					NOT = { is_rival = ROOT }
-					OR = { 
-						trait = chaste
-						religion_group = muslim
-					}
+					trait = chaste
 					trait = shy
 				}
 			}
@@ -818,10 +815,7 @@ character_event = { # Relay event for rulers
 							NOT = { sibling = PREV }
 							NOT = { is_friend = PREV }
 							NOT = { is_rival = PREV }
-							OR = { 
-								trait = chaste
-								religion_group = muslim
-							}
+							trait = chaste
 							trait = shy
 						}
 						any_courtier = {
@@ -838,10 +832,7 @@ character_event = { # Relay event for rulers
 							NOT = { sibling = PREVPREV }
 							NOT = { is_friend = PREVPREV }
 							NOT = { is_rival = PREVPREV }
-							OR = { 
-								trait = chaste
-								religion_group = muslim
-							}
+							trait = chaste
 							trait = shy
 						}
 					}
@@ -895,10 +886,7 @@ character_event = { # Relay event for rulers
 				NOT = { sibling = event_target:lustful_courtier }
 				NOT = { is_friend = event_target:lustful_courtier }
 				NOT = { is_rival = event_target:lustful_courtier }
-				OR = { 
-					trait = chaste
-					religion_group = muslim
-				}
+				trait = chaste
 				trait = shy
 			}
 			save_event_target_as = shy_courtier
@@ -985,11 +973,6 @@ character_event = {
 		add_friend = FROM
 		remove_trait = shy
 		if = {
-			limit = {
-				NOT = {
-					religion_group = muslim
-				}
-			}
 			remove_trait = chaste
 		}
 		FROM = {
@@ -1125,10 +1108,7 @@ character_event = {
 				NOT = {
 					num_of_rivals = 5
 				}
-				OR = {
-					trait = chaste
-					religion_group = muslim
-				}
+				trait = chaste
 				OR = {
 					trait = paranoid
 					trait = shy
@@ -1183,10 +1163,7 @@ character_event = {
 				NOT = {
 					num_of_rivals = 5
 				}
-				OR = {
-					trait = chaste
-					religion_group = muslim
-				}
+				trait = chaste
 				OR = {
 					trait = paranoid
 					trait = shy
@@ -1288,10 +1265,7 @@ character_event = {
 				NOT = {
 					num_of_rivals = 5
 				}
-				OR = {
-					trait = chaste
-					religion_group = muslim
-				}
+				trait = chaste
 				OR = {
 					trait = paranoid
 					trait = shy
@@ -1463,11 +1437,6 @@ character_event = {
 			years = 5
 		}
 		if = {
-			limit = {
-				NOT = {
-					religion_group = muslim
-				}
-			}
 			random = {
 				chance = 25
 				remove_trait = chaste
@@ -2308,9 +2277,6 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					religion_group = muslim
-				}
 				NOT = {
 					num_of_traits = 5
 				}
@@ -4091,362 +4057,362 @@ character_event = {
 }
 
 ### Crusaders becomes friends/rivals ###
-character_event = {
-	id = 100105
-	desc = EVTDESC100105
-	picture = GFX_evt_crusaders
-	
-	only_men = yes
-	min_age = 16
-	prisoner = no
-	only_capable = yes
-	religion_group = christian
-	war = yes
-	
-	trigger = {
-		is_inaccessible_trigger = no
-		in_command = yes
-		trait = crusader
-		NOT = {
-			num_of_friends = 5
-		}
-		NOT = {
-			num_of_rivals = 5
-		}
-		host = {
-			any_courtier = {
-				is_inaccessible_trigger = no
-				is_female = no
-				prisoner = no
-				in_command = yes
-				war = yes
-				at_location = ROOT
-				trait = crusader
-				religion_group = christian
-				NOT = {
-					sibling = ROOT
-				}
-				age = 16
-				NOT = {
-					num_of_friends = 5
-				}
-				NOT = {
-					num_of_rivals = 5
-				}
-				NOT = {
-					is_friend = ROOT
-				}
-				NOT = {
-					is_rival = ROOT
-				}
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 80
-		
-		modifier = {
-			factor = 2
-			trait = deceitful
-		}
-		modifier = {
-			factor = 2
-			trait = paranoid
-		}
-		modifier = {
-			factor = 2
-			trait = cynical
-		}
-		
-		modifier = {
-			factor = 0.5
-			trait = gregarious
-		}
-		modifier = {
-			factor = 0.5
-			trait = brave
-		}
-		modifier = {
-			factor = 0.5
-			trait = honest
-		}
-	}
-
-	immediate = {
-		host = {
-			random_courtier = {
-				limit = {
-					is_inaccessible_trigger = no
-					is_female = no
-					prisoner = no
-					in_command = yes
-					war = yes
-					at_location = ROOT
-					trait = crusader
-					religion_group = christian
-					NOT = {
-						sibling = ROOT
-					}
-					age = 16
-					NOT = {
-						num_of_friends = 5
-					}
-					NOT = {
-						num_of_rivals = 5
-					}
-					NOT = {
-						is_friend = ROOT
-					}
-					NOT = {
-						is_rival = ROOT
-					}
-				}
-				save_event_target_as = fellow_crusader
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTA100105
-		piety = 10
-		event_target:fellow_crusader = {
-			set_character_flag = crusader_piety
-			character_event = {
-				id = 100106
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100106
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100105
-		prestige = 10
-		event_target:fellow_crusader = {
-			set_character_flag = crusader_prestige
-			character_event = {
-				id = 100106
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100106
-			}
-		}
-	}
-	option = {
-		name = EVTOPTC100105
-		if = {
-			limit = {
-				NOT = {
-					num_of_traits = 5
-				}
-				NOT = {
-					trait = greedy
-				}
-			}
-			random = {
-				chance = 25
-				add_trait = greedy
-				hidden_tooltip = {
-					character_event = {
-						id = 38252 #Notify Greedy
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					num_of_traits = 5
-				}
-				NOT = {
-					trait = cynical
-				}
-			}
-			random = {
-				chance = 25
-				add_trait = cynical
-				hidden_tooltip = {
-					character_event = {
-						id = 38258 #Notify Cynical
-					}
-				}
-			}
-		}
-	}
-	option = {
-		name = EVTOPTD100105
-		remove_trait = crusader
-	}
-}
-
-#Crusader Friend or Foe?
-character_event = {
-	id = 100106
-	desc = EVTDESC100106
-	picture = GFX_evt_crusaders
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100106
-		trigger = {
-			has_character_flag = crusader_prestige
-		}
-		add_rival = FROM
-		opinion = {
-			modifier = grievously_offended
-			who = FROM
-			years = 10
-		}
-		clr_character_flag = crusader_prestige
-		FROM = {
-			set_character_flag = prestige_crusader
-			character_event = {
-				id = 100107
-				days = 5
-				random = 5
-				tooltip = EVTTOOLTIP100107
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100106
-		trigger = {
-			has_character_flag = crusader_piety
-		}
-		add_rival = FROM
-		opinion = {
-			modifier = grievously_offended
-			who = FROM
-			years = 10
-		}
-		clr_character_flag = crusader_piety
-		FROM = {
-			set_character_flag = piety_crusader
-			character_event = {
-				id = 100107
-				days = 5
-				random = 5
-				tooltip = EVTTOOLTIP100107
-			}
-		}
-	}
-	option = {
-		name = EVTOPTC100106
-		trigger = {
-			has_character_flag = crusader_prestige
-		}
-		add_friend = FROM
-		clr_character_flag = crusader_prestige
-		FROM = {
-			set_character_flag = prestige_crusader
-			character_event = {
-				id = 100108
-				days = 5
-				random = 5
-				tooltip = EVTTOOLTIP100108
-			}
-		}
-	}
-	option = {
-		name = EVTOPTD100106
-		trigger = {
-			has_character_flag = crusader_piety
-		}
-		add_friend = FROM
-		clr_character_flag = crusader_piety
-		FROM = {
-			set_character_flag = piety_crusader
-			character_event = {
-				id = 100108
-				days = 5
-				random = 5
-				tooltip = EVTTOOLTIP100108
-			}
-		}
-	}
-	option = {
-		name = EVTOPTD100105
-		clr_character_flag = crusader_prestige
-		clr_character_flag = crusader_piety
-		remove_trait = crusader
-	}
-}
-
-#Crusader Foes
-character_event = {
-	id = 100107
-	desc = EVTDESC100107
-	picture = GFX_evt_crusaders
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100107
-		trigger = {
-			has_character_flag = piety_crusader
-			NOT = {
-				has_character_flag = prestige_crusader
-			}
-		}
-		clr_character_flag = piety_crusader
-		add_rival = FROM
-		opinion = {
-			modifier = grievously_offended
-			who = FROM
-			years = 10
-		}
-	}
-	option = {
-		name = EVTOPTB100107
-		trigger = {
-			has_character_flag = prestige_crusader
-			NOT = {
-				has_character_flag = piety_crusader
-			}
-		}
-		clr_character_flag = prestige_crusader
-		add_rival = FROM
-		opinion = {
-			modifier = grievously_offended
-			who = FROM
-			years = 10
-		}
-	}
-}
+#character_event = {
+#	id = 100105
+#	desc = EVTDESC100105
+#	picture = GFX_evt_crusaders
+#	
+#	only_men = yes
+#	min_age = 16
+#	prisoner = no
+#	only_capable = yes
+#	religion_group = christian
+#	war = yes
+#	
+#	trigger = {
+#		is_inaccessible_trigger = no
+#		in_command = yes
+#		trait = crusader
+#		NOT = {
+#			num_of_friends = 5
+#		}
+#		NOT = {
+#			num_of_rivals = 5
+#		}
+#		host = {
+#			any_courtier = {
+#				is_inaccessible_trigger = no
+#				is_female = no
+#				prisoner = no
+#				in_command = yes
+#				war = yes
+#				at_location = ROOT
+#				trait = crusader
+#				religion_group = christian
+#				NOT = {
+#					sibling = ROOT
+#				}
+#				age = 16
+#				NOT = {
+#					num_of_friends = 5
+#				}
+#				NOT = {
+#					num_of_rivals = 5
+#				}
+#				NOT = {
+#					is_friend = ROOT
+#				}
+#				NOT = {
+#					is_rival = ROOT
+#				}
+#			}
+#		}
+#	}
+#
+#	mean_time_to_happen = {
+#		months = 80
+#		
+#		modifier = {
+#			factor = 2
+#			trait = deceitful
+#		}
+#		modifier = {
+#			factor = 2
+#			trait = paranoid
+#		}
+#		modifier = {
+#			factor = 2
+#			trait = cynical
+#		}
+#		
+#		modifier = {
+#			factor = 0.5
+#			trait = gregarious
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = brave
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = honest
+#		}
+#	}
+#
+#	immediate = {
+#		host = {
+#			random_courtier = {
+#				limit = {
+#					is_inaccessible_trigger = no
+#					is_female = no
+#					prisoner = no
+#					in_command = yes
+#					war = yes
+#					at_location = ROOT
+#					trait = crusader
+#					religion_group = christian
+#					NOT = {
+#						sibling = ROOT
+#					}
+#					age = 16
+#					NOT = {
+#						num_of_friends = 5
+#					}
+#					NOT = {
+#						num_of_rivals = 5
+#					}
+#					NOT = {
+#						is_friend = ROOT
+#					}
+#					NOT = {
+#						is_rival = ROOT
+#					}
+#				}
+#				save_event_target_as = fellow_crusader
+#			}
+#		}
+#	}
+#	
+#	option = {
+#		name = EVTOPTA100105
+#		piety = 10
+#		event_target:fellow_crusader = {
+#			set_character_flag = crusader_piety
+#			character_event = {
+#				id = 100106
+#				days = 7
+#				random = 7
+#				tooltip = EVTTOOLTIP100106
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100105
+#		prestige = 10
+#		event_target:fellow_crusader = {
+#			set_character_flag = crusader_prestige
+#			character_event = {
+#				id = 100106
+#				days = 7
+#				random = 7
+#				tooltip = EVTTOOLTIP100106
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTC100105
+#		if = {
+#			limit = {
+#				NOT = {
+#					num_of_traits = 5
+#				}
+#				NOT = {
+#					trait = greedy
+#				}
+#			}
+#			random = {
+#				chance = 25
+#				add_trait = greedy
+#				hidden_tooltip = {
+#					character_event = {
+#						id = 38252 #Notify Greedy
+#					}
+#				}
+#			}
+#		}
+#		if = {
+#			limit = {
+#				NOT = {
+#					num_of_traits = 5
+#				}
+#				NOT = {
+#					trait = cynical
+#				}
+#			}
+#			random = {
+#				chance = 25
+#				add_trait = cynical
+#				hidden_tooltip = {
+#					character_event = {
+#						id = 38258 #Notify Cynical
+#					}
+#				}
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTD100105
+#		remove_trait = crusader
+#	}
+#}
+#
+##Crusader Friend or Foe?
+#character_event = {
+#	id = 100106
+#	desc = EVTDESC100106
+#	picture = GFX_evt_crusaders
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100106
+#		trigger = {
+#			has_character_flag = crusader_prestige
+#		}
+#		add_rival = FROM
+#		opinion = {
+#			modifier = grievously_offended
+#			who = FROM
+#			years = 10
+#		}
+#		clr_character_flag = crusader_prestige
+#		FROM = {
+#			set_character_flag = prestige_crusader
+#			character_event = {
+#				id = 100107
+#				days = 5
+#				random = 5
+#				tooltip = EVTTOOLTIP100107
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100106
+#		trigger = {
+#			has_character_flag = crusader_piety
+#		}
+#		add_rival = FROM
+#		opinion = {
+#			modifier = grievously_offended
+#			who = FROM
+#			years = 10
+#		}
+#		clr_character_flag = crusader_piety
+#		FROM = {
+#			set_character_flag = piety_crusader
+#			character_event = {
+#				id = 100107
+#				days = 5
+#				random = 5
+#				tooltip = EVTTOOLTIP100107
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTC100106
+#		trigger = {
+#			has_character_flag = crusader_prestige
+#		}
+#		add_friend = FROM
+#		clr_character_flag = crusader_prestige
+#		FROM = {
+#			set_character_flag = prestige_crusader
+#			character_event = {
+#				id = 100108
+#				days = 5
+#				random = 5
+#				tooltip = EVTTOOLTIP100108
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTD100106
+#		trigger = {
+#			has_character_flag = crusader_piety
+#		}
+#		add_friend = FROM
+#		clr_character_flag = crusader_piety
+#		FROM = {
+#			set_character_flag = piety_crusader
+#			character_event = {
+#				id = 100108
+#				days = 5
+#				random = 5
+#				tooltip = EVTTOOLTIP100108
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTD100105
+#		clr_character_flag = crusader_prestige
+#		clr_character_flag = crusader_piety
+#		remove_trait = crusader
+#	}
+#}
+#
+##Crusader Foes
+#character_event = {
+#	id = 100107
+#	desc = EVTDESC100107
+#	picture = GFX_evt_crusaders
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100107
+#		trigger = {
+#			has_character_flag = piety_crusader
+#			NOT = {
+#				has_character_flag = prestige_crusader
+#			}
+#		}
+#		clr_character_flag = piety_crusader
+#		add_rival = FROM
+#		opinion = {
+#			modifier = grievously_offended
+#			who = FROM
+#			years = 10
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100107
+#		trigger = {
+#			has_character_flag = prestige_crusader
+#			NOT = {
+#				has_character_flag = piety_crusader
+#			}
+#		}
+#		clr_character_flag = prestige_crusader
+#		add_rival = FROM
+#		opinion = {
+#			modifier = grievously_offended
+#			who = FROM
+#			years = 10
+#		}
+#	}
+#}
 
 #Crusader Friends
-character_event = {
-	id = 100108
-	desc = EVTDESC100108
-	picture = GFX_evt_crusaders
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100108
-		trigger = {
-			has_character_flag = piety_crusader
-			NOT = {
-				has_character_flag = prestige_crusader
-			}
-		}
-		clr_character_flag = piety_crusader
-		add_friend = FROM
-	}
-	option = {
-		name = EVTOPTB100108
-		trigger = {
-			has_character_flag = prestige_crusader
-			NOT = {
-				has_character_flag = piety_crusader
-			}
-		}
-		clr_character_flag = prestige_crusader
-		add_friend = FROM
-	}
-}
+#character_event = {
+#	id = 100108
+#	desc = EVTDESC100108
+#	picture = GFX_evt_crusaders
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100108
+#		trigger = {
+#			has_character_flag = piety_crusader
+#			NOT = {
+#				has_character_flag = prestige_crusader
+#			}
+#		}
+#		clr_character_flag = piety_crusader
+#		add_friend = FROM
+#	}
+#	option = {
+#		name = EVTOPTB100108
+#		trigger = {
+#			has_character_flag = prestige_crusader
+#			NOT = {
+#				has_character_flag = piety_crusader
+#			}
+#		}
+#		clr_character_flag = prestige_crusader
+#		add_friend = FROM
+#	}
+#}
 
 ### Learn from the best (and take his job) ###
 character_event = {
@@ -6317,399 +6283,399 @@ character_event = {
 }
 
 ### My friend is a heretic/infidel! ###
-character_event = {
-	id = 100180
-	desc = EVTDESC100180
-	picture = GFX_evt_heretic
-	
-	min_age = 16
-	prisoner = no
-	capable_only = yes
-	war = no
-	friends = yes
-	
-	trigger = {
-		is_inaccessible_trigger = no
-		is_heretic = no
-		in_command = no
-		scaled_wealth = 0.5
-		OR = {
-			religion_group = christian
-			religion_group = muslim
-			religion_group = jewish_group
-			religion_group = zoroastrian_group
-		}
-		NOT = {
-			has_character_modifier = heretic_friend_timer
-		}
-		any_friend = {
-			is_inaccessible_trigger = no
-			war = no
-			in_command = no
-			prisoner = no
-			NOT = { trait = incapable }
-			religion_group = ROOT
-			OR = {
-				is_heretic = yes
-				NOT = {
-					religion = ROOT
-				}
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 80
-		
-		modifier = {
-			factor = 0.5
-			trait = zealous
-		}
-		modifier = {
-			factor = 0.5
-			trait = gregarious
-		}
-		modifier = {
-			factor = 0.5
-			trait = kind
-		}
-		modifier = {
-			factor = 0.5
-			trait = trusting
-		}
-		
-		modifier = {
-			factor = 2
-			trait = cynical
-		}
-		modifier = {
-			factor = 2
-			trait = shy
-		}
-		modifier = {
-			factor = 2
-			trait = cruel
-		}
-		modifier = {
-			factor = 2
-			trait = paranoid
-		}
-	}
-	
-	immediate = {
-		add_character_modifier = {
-			name = heretic_friend_timer
-			duration = 1095
-			hidden = yes
-		}
-
-
-	}
-	
-	option = {
-		name = EVTOPTA100180
-		random_friend = {
-			limit = {
-				is_inaccessible_trigger = no
-				war = no
-				in_command = no
-				prisoner = no
-				OR = {
-					is_heretic = yes
-					NOT = {
-						religion = ROOT
-					}
-				}
-			}
-			character_event = {
-				id = 100181
-				days = 7
-				random = 14
-				tooltip = EVTTOOLTIP100181
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100180
-		piety = -10
-		random_friend = {
-			limit = {
-				is_inaccessible_trigger = no
-				war = no
-				prisoner = no
-				OR = {
-					is_heretic = yes
-					NOT = {
-						religion = ROOT
-					}
-				}
-			}
-			character_event = {
-				id = 100182
-				days = 7
-				random = 14
-				tooltip = EVTTOOLTIP100182
-			}
-		}
-	}
-	option = {
-		name = EVTOPTC100180
-		random_friend = {
-			limit = {
-				is_inaccessible_trigger = no
-				war = no
-				prisoner = no
-				OR = {
-					is_heretic = yes
-					NOT = {
-						religion = ROOT
-					}
-				}
-			}
-			opinion = {
-				modifier = opinion_glad
-				who = ROOT
-				years = 5
-			}
-			character_event = {
-				id = 100183
-				days = 7
-				random = 14
-				tooltip = EVTTOOLTIP100183
-			}
-		}
-	}
-	option = {
-		name = EVTOPTD100180
-		tooltip_info = zealous
-		trigger = {
-			trait = zealous
-		}
-		random_friend = {
-			limit = {
-				is_inaccessible_trigger = no
-				war = no
-				prisoner = no
-				OR = {
-					is_heretic = yes
-					NOT = {
-						religion = ROOT
-					}
-				}
-			}
-			remove_friend = ROOT
-			character_event = {
-				id = 100184
-				days = 7
-				random = 14
-				tooltip = EVTTOOLTIP100184
-			}
-		}				
-	}
-	option = {
-		name = EVTOPTE100180
-		tooltip_info = cynical
-		trigger = {
-			trait = cynical
-		}
-		random_friend = {
-			limit = {
-				is_inaccessible_trigger = no
-				war = no
-				prisoner = no
-				OR = {
-					is_heretic = yes
-					NOT = {
-						religion = ROOT
-					}
-				}
-			}
-			random = {
-				chance = 50
-				ROOT = {
-					religion = PREV
-				}
-				remove_trait = cynical
-			}
-		}
-	}
-}
-
-#ROOT tries to convert friend
-character_event = {
-	id = 100181
-	desc = EVTDESC100181
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100181
-		remove_friend = FROM
-		FROM = {
-			character_event = {
-				id = 100185
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100185
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100181
-		religion = FROM
-		FROM = {
-			character_event = {
-				id = 100186
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100186
-			}
-		}
-	}
-	option = {
-		name = EVTOPTC100181
-		FROM = {
-			set_character_flag = friend_religion
-			opinion = {
-				modifier = opinion_wrong_religion
-				who = ROOT
-				years = 2
-			}
-			hidden_tooltip = {
-				character_event = {
-					id = 100186
-					days = 7
-					random = 7
-					tooltip = EVTTOOLTIP100186
-				}
-			}
-		}
-	}
-}
-
-#ROOT accepts friend's religion
-character_event = {
-	id = 100182
-	desc = EVTDESC100182
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100182
-		opinion = {
-			modifier = opinion_accepted_religion
-			who = FROM
-			years = 5
-		}
-	}
-}
-
-#ROOT becomes interested in friend's religion
-character_event = {
-	id = 100183
-	desc = EVTDESC100183
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100183
-		trigger = {
-			NOT = {
-				FROM = {
-					religion = ROOT
-				}
-			}
-		}
-		opinion = {
-			modifier = opinion_accepted_religion
-			who = FROM
-			years = 5
-		}
-	}
-	option = {
-		name = EVTOPTB100183
-		trigger = {
-			FROM = {
-				religion = ROOT
-			}
-		}
-		opinion = {
-			modifier = opinion_accepted_religion
-			who = FROM
-			years = 5
-		}
-	}
-}
-
-#ROOT condemns friend's religion and stops being friend with him/her
-character_event = {
-	id = 100184
-	desc = EVTDESC100184
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100184
-		remove_friend = FROM
-	}
-}
-
-#ROOT
-character_event = {
-	id = 100185
-	desc = EVTDESC100185
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100185
-		remove_friend = FROM
-	}
-}
+#character_event = {
+#	id = 100180
+#	desc = EVTDESC100180
+#	picture = GFX_evt_heretic
+#	
+#	min_age = 16
+#	prisoner = no
+#	capable_only = yes
+#	war = no
+#	friends = yes
+#	
+#	trigger = {
+#		is_inaccessible_trigger = no
+#		is_heretic = no
+#		in_command = no
+#		scaled_wealth = 0.5
+#		OR = {
+#			religion_group = christian
+#			religion_group = muslim
+#			religion_group = jewish_group
+#			religion_group = zoroastrian_group
+#		}
+#		NOT = {
+#			has_character_modifier = heretic_friend_timer
+#		}
+#		any_friend = {
+#			is_inaccessible_trigger = no
+#			war = no
+#			in_command = no
+#			prisoner = no
+#			NOT = { trait = incapable }
+#			religion_group = ROOT
+#			OR = {
+#				is_heretic = yes
+#				NOT = {
+#					religion = ROOT
+#				}
+#			}
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 80
+#		
+#		modifier = {
+#			factor = 0.5
+#			trait = zealous
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = gregarious
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = kind
+#		}
+#		modifier = {
+#			factor = 0.5
+#			trait = trusting
+#		}
+#		
+#		modifier = {
+#			factor = 2
+#			trait = cynical
+#		}
+#		modifier = {
+#			factor = 2
+#			trait = shy
+#		}
+#		modifier = {
+#			factor = 2
+#			trait = cruel
+#		}
+#		modifier = {
+#			factor = 2
+#			trait = paranoid
+#		}
+#	}
+#	
+#	immediate = {
+#		add_character_modifier = {
+#			name = heretic_friend_timer
+#			duration = 1095
+#			hidden = yes
+#		}
+#
+#
+#	}
+#	
+#	option = {
+#		name = EVTOPTA100180
+#		random_friend = {
+#			limit = {
+#				is_inaccessible_trigger = no
+#				war = no
+#				in_command = no
+#				prisoner = no
+#				OR = {
+#					is_heretic = yes
+#					NOT = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#			character_event = {
+#				id = 100181
+#				days = 7
+#				random = 14
+#				tooltip = EVTTOOLTIP100181
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100180
+#		piety = -10
+#		random_friend = {
+#			limit = {
+#				is_inaccessible_trigger = no
+#				war = no
+#				prisoner = no
+#				OR = {
+#					is_heretic = yes
+#					NOT = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#			character_event = {
+#				id = 100182
+#				days = 7
+#				random = 14
+#				tooltip = EVTTOOLTIP100182
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTC100180
+#		random_friend = {
+#			limit = {
+#				is_inaccessible_trigger = no
+#				war = no
+#				prisoner = no
+#				OR = {
+#					is_heretic = yes
+#					NOT = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#			opinion = {
+#				modifier = opinion_glad
+#				who = ROOT
+#				years = 5
+#			}
+#			character_event = {
+#				id = 100183
+#				days = 7
+#				random = 14
+#				tooltip = EVTTOOLTIP100183
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTD100180
+#		tooltip_info = zealous
+#		trigger = {
+#			trait = zealous
+#		}
+#		random_friend = {
+#			limit = {
+#				is_inaccessible_trigger = no
+#				war = no
+#				prisoner = no
+#				OR = {
+#					is_heretic = yes
+#					NOT = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#			remove_friend = ROOT
+#			character_event = {
+#				id = 100184
+#				days = 7
+#				random = 14
+#				tooltip = EVTTOOLTIP100184
+#			}
+#		}				
+#	}
+#	option = {
+#		name = EVTOPTE100180
+#		tooltip_info = cynical
+#		trigger = {
+#			trait = cynical
+#		}
+#		random_friend = {
+#			limit = {
+#				is_inaccessible_trigger = no
+#				war = no
+#				prisoner = no
+#				OR = {
+#					is_heretic = yes
+#					NOT = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#			random = {
+#				chance = 50
+#				ROOT = {
+#					religion = PREV
+#				}
+#				remove_trait = cynical
+#			}
+#		}
+#	}
+#}
+#
+##ROOT tries to convert friend
+#character_event = {
+#	id = 100181
+#	desc = EVTDESC100181
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100181
+#		remove_friend = FROM
+#		FROM = {
+#			character_event = {
+#				id = 100185
+#				days = 7
+#				random = 7
+#				tooltip = EVTTOOLTIP100185
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100181
+#		religion = FROM
+#		FROM = {
+#			character_event = {
+#				id = 100186
+#				days = 7
+#				random = 7
+#				tooltip = EVTTOOLTIP100186
+#			}
+#		}
+#	}
+#	option = {
+#		name = EVTOPTC100181
+#		FROM = {
+#			set_character_flag = friend_religion
+#			opinion = {
+#				modifier = opinion_wrong_religion
+#				who = ROOT
+#				years = 2
+#			}
+#			hidden_tooltip = {
+#				character_event = {
+#					id = 100186
+#					days = 7
+#					random = 7
+#					tooltip = EVTTOOLTIP100186
+#				}
+#			}
+#		}
+#	}
+#}
+#
+##ROOT accepts friend's religion
+#character_event = {
+#	id = 100182
+#	desc = EVTDESC100182
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100182
+#		opinion = {
+#			modifier = opinion_accepted_religion
+#			who = FROM
+#			years = 5
+#		}
+#	}
+#}
+#
+##ROOT becomes interested in friend's religion
+#character_event = {
+#	id = 100183
+#	desc = EVTDESC100183
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100183
+#		trigger = {
+#			NOT = {
+#				FROM = {
+#					religion = ROOT
+#				}
+#			}
+#		}
+#		opinion = {
+#			modifier = opinion_accepted_religion
+#			who = FROM
+#			years = 5
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100183
+#		trigger = {
+#			FROM = {
+#				religion = ROOT
+#			}
+#		}
+#		opinion = {
+#			modifier = opinion_accepted_religion
+#			who = FROM
+#			years = 5
+#		}
+#	}
+#}
+#
+##ROOT condemns friend's religion and stops being friend with him/her
+#character_event = {
+#	id = 100184
+#	desc = EVTDESC100184
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100184
+#		remove_friend = FROM
+#	}
+#}
 
 #ROOT
-character_event = {
-	id = 100186
-	desc = EVTDESC100186
-	picture = GFX_evt_heretic
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100186
-		trigger = {
-			NOT = {
-				has_character_flag = friend_religion
-			}
-		}
-		opinion = {
-			modifier = opinion_happy_convertion
-			who = FROM
-			years = 2
-		}
-	}
-	option = {
-		name = EVTOPTB100186
-		trigger = {
-			has_character_flag = friend_religion
-		}
-		clr_character_flag = friend_religion
-		tooltip = {
-			opinion = {
-				modifier = opinion_wrong_religion
-				who = FROM
-				years = 2
-			}
-		}
-	}
-}
+#character_event = {
+#	id = 100185
+#	desc = EVTDESC100185
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100185
+#		remove_friend = FROM
+#	}
+#}
+#
+##ROOT
+#character_event = {
+#	id = 100186
+#	desc = EVTDESC100186
+#	picture = GFX_evt_heretic
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA100186
+#		trigger = {
+#			NOT = {
+#				has_character_flag = friend_religion
+#			}
+#		}
+#		opinion = {
+#			modifier = opinion_happy_convertion
+#			who = FROM
+#			years = 2
+#		}
+#	}
+#	option = {
+#		name = EVTOPTB100186
+#		trigger = {
+#			has_character_flag = friend_religion
+#		}
+#		clr_character_flag = friend_religion
+#		tooltip = {
+#			opinion = {
+#				modifier = opinion_wrong_religion
+#				who = FROM
+#				years = 2
+#			}
+#		}
+#	}
+#}
 
-### My friend is a much better diplomat than me, ask for help? ###
+## My friend is a much better diplomat than me, ask for help? ###
 character_event = {
 	id = 100190
 	desc = EVTDESC100190
@@ -8238,9 +8204,6 @@ character_event = {
 		in_command = no
 		learning = 5
 		NOT = {
-			religion_group = muslim
-		}
-		NOT = {
 			learning = 10
 		}
 		NOT = {
@@ -8255,9 +8218,6 @@ character_event = {
 			in_command = no
 			prisoner = no
 			learning = 11
-			NOT = {
-				religion_group = muslim
-			}
 			OR = {
 				piety = 100
 				trait = zealous
@@ -8324,9 +8284,6 @@ character_event = {
 				in_command = no
 				prisoner = no
 				learning = 11
-				NOT = {
-					religion_group = muslim
-				}
 				is_inaccessible_trigger = no
 			}
 			character_event = {
@@ -9766,7 +9723,6 @@ character_event = {
 		in_command = no
 		independent = no
 		NOR = {
-			religion = jain
 			trait = wounded
 			is_maimed_trigger = yes
 			is_inaccessible_trigger = yes
@@ -9994,11 +9950,6 @@ character_event = {
 		name = EVTOPTA100411
 		ai_chance = {
 			factor = 49
-		}
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
 		}
 		FROM = {
 			opinion = {
@@ -15924,344 +15875,5 @@ character_event = {
 			duration = 730
 		}
 		set_character_flag = avenged_father
-	}
-}
-
-### My friend has much better learning stats than me, ask for help? Muslim ###
-character_event = {
-	id = 100550
-	desc = EVTDESC100550
-	picture = GFX_evt_courtiers_talking
-	
-	prisoner = no
-	min_age = 16
-	capable_only = yes
-	religion_group = muslim
-	war = no
-	friends = yes
-	
-	trigger = {
-		in_command = no
-		learning = 5
-		NOT = {
-			learning = 10
-		}
-		NOT = {
-			has_character_modifier = friend_learning_timer
-		}
-		NOT = {
-			has_character_modifier = pious_imams
-		}
-		any_friend = {
-			war = no
-			in_command = no
-			prisoner = no
-			learning = 11
-			religion_group = muslim
-			OR = {
-				piety = 100
-				trait = zealous
-			}
-			religion = ROOT
-			is_heretic = no
-		}		
-	}
-	
-	mean_time_to_happen = {
-		months = 80
-		
-		modifier = {
-			factor = 2
-			trait = zealous
-		}
-		modifier = {
-			factor = 0.5
-			trait = cynical
-		}
-	}
-	
-	immediate = {
-		hidden_tooltip = {
-			add_character_modifier = {
-				name = friend_learning_timer
-				duration = 1825
-				hidden = yes
-			}
-		}
-	}
-	
-	option = {
-		name = EVTOPTA100230
-		random_friend = {
-			limit = {
-				war = no
-				in_command = no
-				prisoner = no
-				learning = 11
-				religion_group = muslim
-			}
-			character_event = {
-				id = 100551
-				days = 15
-				random = 15
-				tooltip = EVTTOOLTIP100231
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100550
-		piety = 10
-	}
-}
-
-#Friend is asked by ROOT for help
-character_event = {
-	id = 100551
-	desc = EVTDESC100551
-	picture = GFX_evt_courtiers_talking
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100231
-		FROM = {
-			opinion = {
-				modifier = opinion_very_grateful
-				who = ROOT
-				years = 5
-			}
-			character_event = {
-				id = 100552
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100232
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100551
-		FROM = {
-			opinion = {
-				modifier = opinion_disappointed
-				who = ROOT
-				years = 5
-			}
-			character_event = {
-				id = 100553
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100553
-			}
-		}
-	}
-	option = {
-		name = EVTOPTC100231
-		FROM = {
-			opinion = {
-				modifier = opinion_grateful
-				who = ROOT
-				years = 5
-			}
-			character_event = {
-				id = 100554
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100234
-			}
-		}
-	}
-}
-
-#ROOT gets help from friend
-character_event = {
-	id = 100552
-	desc = EVTDESC100552
-	picture = GFX_evt_courtiers_talking
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100232
-		trigger = {
-			NOT = {
-				has_character_flag = paid_advice
-			}
-		}
-		tooltip = {
-			opinion = {
-				modifier = opinion_very_grateful
-				who = ROOT
-				years = 5
-			}
-		}
-		change_learning = 1
-		add_character_modifier = {
-			name = pious_imams
-			duration = 1095
-		}
-	}
-	option = {
-		name = EVTOPTB100552
-		trigger = {
-			has_character_flag = paid_advice
-		}
-		clr_character_flag = paid_advice
-		tooltip = {
-			opinion = {
-				modifier = opinion_grateful
-				who = ROOT
-				years = 5
-			}
-		}
-		change_learning = 1
-		add_character_modifier = {
-			name = pious_imams
-			duration = 1095
-		}
-	}
-}
-
-#ROOT did not get help from friend
-character_event = {
-	id = 100553
-	desc = EVTDESC100553
-	picture = GFX_evt_courtiers_talking
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100553
-		tooltip = {
-			opinion = {
-				modifier = opinion_disappointed
-				who = ROOT
-				years = 5
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = stressed
-				}
-			}
-			add_trait = stressed
-		}
-	}
-}
-
-#ROOT only gets help from friend if friend is paid
-character_event = {
-	id = 100554
-	desc = EVTDESC100554
-	picture = GFX_evt_courtiers_talking
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100234
-		ai_chance = {
-			factor = 10
-			
-			modifier = {
-				factor = 0.01
-				scaled_wealth = 0.5
-			}
-			modifier = {
-				factor = 10
-				NOT = {
-					scaled_wealth = 0.5
-				}
-			}
-		}
-		opinion = {
-			modifier = opinion_disappointed
-			who = FROM
-			years = 5
-		}
-		FROM = {
-			character_event = {
-				id = 100555
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIPA100235
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100234
-		ai_chance = {
-			factor = 10
-			
-			modifier = {
-				factor = 10
-				scaled_wealth = 0.5
-			}
-			modifier = {
-				factor = 0.01
-				NOT = {
-					scaled_wealth = 0.5
-				}
-			}
-		}		
-		tooltip = {
-			transfer_scaled_wealth = {
-				to = FROM
-				value = 0.25
-			}
-		}
-		FROM = {
-			set_character_flag = paid_learning
-			character_event = {
-				id = 100555
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIPB100235
-			}
-		}
-	}
-}
-
-#Friend is/n't paid by ROOT
-character_event = {
-	id = 100555
-	desc = EVTDESC100555
-	picture = GFX_evt_courtiers_talking
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA100235
-		trigger = {
-			NOT = {
-				has_character_flag = paid_learning
-			}
-		}
-		tooltip = {
-			reverse_opinion = {
-				modifier = opinion_disappointed
-				who = FROM
-				years = 5
-			}
-		}
-	}
-	option = {
-		name = EVTOPTB100235
-		trigger = {
-			has_character_flag = paid_learning
-		}
-		clr_character_flag = paid_learning
-		FROM = {
-			set_character_flag = paid_advice
-			character_event = {
-				id = 100552
-				days = 7
-				random = 7
-				tooltip = EVTTOOLTIP100232
-			}
-			transfer_scaled_wealth = {
-				to = ROOT
-				value = 0.25
-			}
-		}
 	}
 }

@@ -1360,216 +1360,10 @@ narrative_event = { # Other side gets event
 }
 
 #Miracle
-narrative_event = {
-	id = 62013
-	desc = EVTDESC62013
-	title = EVTNAME62011
-	picture = GFX_evt_siege
-	border = GFX_event_narrative_frame_war
-
-	is_triggered_only = yes
-	
-	notification = yes
-
-	trigger = {
-		siege = {
-			is_attacker = no
-		}
-		religion_group = muslim
-		enemy = {
-			NOT = { religion_group = muslim }
-		}
-		has_game_rule = {
-			name = siege_events
-			value = on
-		}
-	}
-
-	weight_multiplier = {
-		months = 1
-		modifier = {
-			factor = 0.75
-			trait = zealous
-		}
-		modifier = {
-			factor = 0.75
-			piety = 500
-		}
-		modifier = {
-			factor = 1.25
-			trait = cynical
-		}
-		modifier = {
-			factor = 1.25
-			NOT = { piety = 0 }
-		}
-	}
-	
-	immediate = {
-		siege = {
-			morale = 1
-		}
-		siege = {
-			enemy = {
-				morale = -0.9			
-				troops = -0.9
-				leader = {
-					any_liege = {
-						limit = {
-							war_with = ROOT
-						}
-						narrative_event = { id = 62043 }
-					}
-					if = {
-						limit = {
-							war_with = ROOT
-						}
-						narrative_event = { id = 62043 }
-					}
-				}
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTA62013
-		tooltip = {
-			siege = {
-				morale = 1
-			}
-			siege = {
-				enemy = {
-					morale = -0.9			
-					troops = -0.9
-				}
-			}
-		}
-	}
-}
-
-narrative_event = { # Other side gets event
-	id = 62043
-	desc = EVTDESC62013
-	title = EVTNAME62041
-	
-	picture = GFX_evt_siege
-	border = GFX_event_narrative_frame_war
-
-	is_triggered_only = yes
-	
-	notification = yes
-	
-	trigger = {
-		ai = no
-	}
-	
-	option = {
-		name = EVTOPTA62041
-		custom_tooltip = { text = siege_miracle }
-	}
-}
+# removed for mep
 
 #Assault
-character_event = {
-	id = 62014
-	desc = EVTDESC62014
-	title = EVTNAME62014
-	picture = GFX_evt_crusaders
-	border = GFX_event_normal_frame_religion
-
-	religion_group = christian 
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		siege = {
-			is_attacker = yes
-		}
-		NOT = {	trait = craven }
-		NOT = {	trait = cynical	}
-		can_be_maimed_trigger = yes
-		NOT = {	trait = wounded	}
-		enemy = {
-			NOT = { religion_group = christian }
-		}		
-	}
-
-	weight_multiplier = {
-		months = 1
-		modifier = {
-			factor = 2.0
-			trait = zealous
-		}
-		modifier = {
-			factor = 2.0
-			trait = brave
-		}
-	}
-	
-	immediate = {
-		siege = {
-			enemy = {
-				morale = -0.1
-				leader = {
-					any_liege = {
-						limit = {
-							war_with = ROOT
-						}
-						character_event = { id = 62044 }
-					}
-					if = {
-						limit = {
-							war_with = ROOT
-						}
-						character_event = { id = 62044 }
-					}
-				}
-			}
-		}
-		random_list = {
-			80 = { add_trait = crusader }
-			10 = { add_maimed_trait_effect = yes }
-			10 = { add_trait = wounded hidden_tooltip = { character_event = { id = 38280 } } }
-		}
-	}
-
-	option = {
-		name = EVTOPTA62014
-		
-		tooltip = {
-			siege = {
-				enemy = {
-					morale = -0.1			
-				}
-			}
-			random_list = {
-				80 = { add_trait = crusader }
-				10 = { add_maimed_trait_effect = yes }
-				10 = { add_trait = wounded hidden_tooltip = { character_event = { id = 38280 } } }
-			}
-		}
-	}
-}
-
-character_event = { # Other side gets event
-	id = 62044
-	desc = EVTDESC62044
-	title = EVTNAME62044
-	
-	picture = GFX_evt_siege
-	border = GFX_event_normal_frame_war
-
-	is_triggered_only = yes
-	
-	trigger = {
-		ai = no
-	}
-	
-	option = {
-		name = EVTOPTA62044
-		custom_tooltip = { text = siege_treachery }
-	}
-}
+# removed for mep
 
 # Ill, pneumonic, leper or syphilitic
 character_event = {
@@ -1656,7 +1450,7 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { NOR = { trait = craven trait = berserker } }
+			limit = { NOT = { trait = craven } }
 			random = {
 				chance = 50
 				add_trait = craven
@@ -1725,14 +1519,6 @@ character_event = {
 		new_character = {
 			NOT = { has_landed_title = e_rebels }
 			rebel = no
-			NOT = { # Handled by SSI.61
-				OR = {
-					has_landed_title = e_mexikha
-					any_liege = {
-						has_landed_title = e_mexikha
-					}
-				}
-			}
 		}
 		
 		OR = {
@@ -1784,16 +1570,6 @@ character_event = {
 	
 	weight_multiplier = {
 		days = 1
-		modifier = {
-			factor = 2
-			is_female = yes
-			new_character = {
-				OR = {
-					religion_group = pagan_group
-					religion_group = zoroastrian_group
-				}
-			}
-		}
 		modifier = {
 			factor = 4 # Free prisoner
 			new_character = {

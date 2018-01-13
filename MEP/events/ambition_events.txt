@@ -219,11 +219,6 @@ character_event = {
 				character_event = { id = 94006 tooltip = EVTTOOLTIP94006 }
 			}
 		}
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 	}
 	option = {
 		name = EVTOPTB94005
@@ -741,48 +736,18 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94051
-		trigger = { NOT = { uses_decadence = yes } }
 		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
 	}
 	option = {
 		name = EVTOPTB94051
-		trigger = {
-			NOT = { uses_decadence = yes }
-			NOT = { religion_group = indian_group }
-		}
 		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
 	}
 	option = {
 		name = EVTOPTC94051
-		trigger = { NOT = { uses_decadence = yes } }
 		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
 	}
 	option = {
 		name = EVTOPTD94051
-		trigger = {
-			NOT = { uses_decadence = yes }
-			NOT = { religion_group = indian_group }
-		}
-		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
-	}
-	option = {
-		name = EVTOPTE94051
-		trigger = { uses_decadence = yes }
-		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
-	}
-	option = {
-		name = EVTOPTF94051
-		trigger = { uses_decadence = yes }
-		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
-	}
-	option = {
-		name = EVTOPTG94051
-		trigger = { uses_decadence = yes }
-		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
-	}
-	option = {
-		name = EVTOPTH94051
-		trigger = { uses_decadence = yes }
 		character_event = { id = 94052 days = 30 random = 10 tooltip = EVTTOOLTIP94052 }
 	}
 }
@@ -849,12 +814,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94053
-		trigger = {
-			OR = {
-				religion_group = christian
-				religion_group = muslim
-			}
-		}
 		character_event = { id = 94054 days = 30 random = 10 tooltip = EVTTOOLTIP94054 }
 		wealth = -5
 	}
@@ -865,11 +824,6 @@ character_event = {
 	}
 	option = {
 		name = EVTOPTC94053
-		trigger = {
-			NOT = {
-				religion_group = indian_group
-			}
-		}
 		character_event = { id = 94056 days = 30 random = 10 tooltip = EVTTOOLTIP94056 }
 		wealth = -15
 	}
@@ -1385,44 +1339,17 @@ character_event = {
 	
 	option = { # Otis
 		name = EVTOPTA94082
-		trigger = {
-			NOT = { religion_group = muslim }
-			NOT = { religion_group = indian_group }
-		}
 		character_event = { id = 94083 days = 5 tooltip = EVTTOOLTIP94083 }
 	}
 	option = { # Meldrick
 		name = EVTOPTB94082
-		trigger = {
-			NOT = { religion_group = muslim }
-			NOT = { religion_group = indian_group }
-		}
 		character_event = { id = 94084 days = 5 tooltip = EVTTOOLTIP94084 }
 	}
 	option = { # Dog
 		name = EVTOPTC94082
 		character_event = { id = 94085 days = 5 tooltip = EVTTOOLTIP94085 }
 	}
-	option = { # al-Otis
-		name = EVTOPTD94082
-		trigger = {
-			OR = {
-				religion_group = muslim
-				religion_group = indian_group
-			}
-		}
-		character_event = { id = 94092 days = 5 tooltip = EVTTOOLTIP94092 }
-	}
-	option = { # Ba'ah al-Drik
-		name = EVTOPTE94082
-		trigger = {
-			OR = {
-				religion_group = muslim
-				religion_group = indian_group
-			}
-		}
-		character_event = { id = 94093 days = 5 tooltip = EVTTOOLTIP94093 }
-	}
+
 }
 
 # Otis Flies
@@ -1442,22 +1369,6 @@ character_event = {
 	}
 }
 
-# al-Otis Flies (Muslim version)
-character_event = {
-	id = 94092
-	desc = EVTDESC94092
-	picture = GFX_evt_bloody_man
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94092
-		character_event = { id = 94094 days = 5 tooltip = EVTTOOLTIP94086 }
-	}
-}
 
 # Meldrick Flies
 character_event = {
@@ -1473,23 +1384,6 @@ character_event = {
 	option = {
 		name = EVTOPTA94084
 		character_event = { id = 94087 days = 5 tooltip = EVTTOOLTIP94086 }
-	}
-}
-
-# Ba'ah al-Drik Flies (Muslim version)
-character_event = {
-	id = 94093
-	desc = EVTDESC94093
-	picture = GFX_evt_bloody_man
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94093
-		character_event = { id = 94095 days = 5 tooltip = EVTTOOLTIP94086 }
 	}
 }
 
@@ -1532,26 +1426,6 @@ character_event = {
 	}
 }
 
-# al-Otis Aftermath (Muslim version)
-character_event = {
-	id = 94094
-	desc = EVTDESC94094
-	picture = GFX_evt_council
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94086
-		character_event = { id = 94096 days = 15 random = 5 tooltip = EVTTOOLTIP94089 }
-	}
-	option = {
-		name = EVTOPTB94086
-		custom_tooltip = { text = improve_learning_quit }
-	}
-}
 
 # Meldrick Aftermath
 character_event = {
@@ -1574,26 +1448,6 @@ character_event = {
 	}
 }
 
-# Ba'ah al-Drik Aftermath (Muslim version)
-character_event = {
-	id = 94095
-	desc = EVTDESC94095
-	picture = GFX_evt_whispers
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94087
-		character_event = { id = 94097 days = 15 random = 5 tooltip = EVTTOOLTIP94097 }
-	}
-	option = {
-		name = EVTOPTB94087
-		custom_tooltip = { text = improve_learning_quit }
-	}
-}
 
 # Dog Aftermath
 character_event = {
@@ -1608,12 +1462,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94088
-		trigger = { NOT = { religion_group = muslim } }
-		change_learning = 1
-	}
-	option = {
-		name = EVTOPTA94091
-		trigger = { religion_group = muslim }
 		change_learning = 1
 	}
 }
@@ -1635,22 +1483,6 @@ character_event = {
 	}
 }
 
-# al-Otis Second Attempt (Muslim version)
-character_event = {
-	id = 94096
-	desc = EVTDESC94096
-	picture = GFX_evt_falconing
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94096
-		character_event = { id = 94091 days = 6 tooltip = EVTTOOLTIP94091 }
-	}
-}
 
 # Meldrick Second Attempt
 character_event = {
@@ -1669,22 +1501,6 @@ character_event = {
 	}
 }
 
-# Ba'ah al-Drik Second Attempt
-character_event = {
-	id = 94097
-	desc = EVTDESC94097
-	picture = GFX_evt_falconing
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94090
-		character_event = { id = 94091 days = 6 tooltip = EVTTOOLTIP94091 }
-	}
-}
 
 # Aftermath
 character_event = {
@@ -1699,12 +1515,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94088
-		trigger = { NOT = { religion_group = muslim } }
-		change_learning = 2
-	}
-	option = {
-		name = EVTOPTA94091
-		trigger = { religion_group = muslim }
 		change_learning = 2
 	}
 }
@@ -1712,114 +1522,114 @@ character_event = {
 ### St. Augustine's Confessions
 
 # Augustine
-character_event = {
-	id = 94098
-	desc = EVTDESC94098
-	picture = GFX_evt_library
-	border = GFX_event_normal_frame_religion
-
-	capable_only = yes
-	only_rulers = yes
-	prisoner = no
-	min_age = 16
-	
-	trigger = {
-		OR = {
-			AND = {
-				has_focus = focus_theology
-				NOT = { learning = 8 }
-			}
-			has_ambition = obj_improve_learning
-		}
-		NOT = { religion_group = muslim }
-		NOT = { religion_group = indian_group }
-		NOT = { has_character_flag = flying_machine }
-		NOT = { has_character_flag = ancient_tome }
-		NOT = { has_character_flag = hermit_visit }
-		NOT = { has_character_flag = ancient_tome_taken }
-	}
-	
-	mean_time_to_happen = {
-		months = 280
-	}
-	
-	option = {
-		name = EVTOPTA94098
-		character_event = { id = 94099 days = 6 tooltip = EVTTOOLTIP94099 }
-		set_character_flag = ancient_tome
-		set_character_flag = ancient_tome_taken
-	}
-	option = {
-		name = EVTOPTB94098
-		custom_tooltip = { text = improve_learning_quit }
-	}
-}
-
-# Finished Reading
-character_event = {
-	id = 94099
-	desc = EVTDESC94099
-	picture = GFX_evt_library
-	border = GFX_event_normal_frame_religion
-	
-	hide_from = yes
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = EVTOPTA94099
-		change_learning = 2
-	}
-}
-
-### The Shahnameh
-
-# The Shahnameh
-character_event = {
-	id = 94100
-	desc = EVTDESC94100
-	picture = GFX_evt_library
-	border = GFX_event_normal_frame_religion
-	
-	capable_only = yes
-	only_rulers = yes
-	prisoner = no
-	min_age = 16
-	
-	trigger = {
-		year = 1010
-		OR = {
-			AND = {
-				has_focus = focus_theology
-				NOT = { learning = 8 }
-			}
-			has_ambition = obj_improve_learning
-		}
-		OR = {
-			religion_group = muslim
-			religion_group = indian_group
-		}
-		NOT = { has_character_flag = flying_machine }
-		NOT = { has_character_flag = ancient_tome }
-		NOT = { has_character_flag = hermit_visit }
-		NOT = { has_character_flag = ancient_tome_taken }
-	}
-	
-	mean_time_to_happen = {
-		months = 280
-	}
-	
-	option = {
-		name = EVTOPTA94098
-		character_event = { id = 94101 days = 6 tooltip = EVTTOOLTIP94099 }
-		set_character_flag = ancient_tome
-		set_character_flag = ancient_tome_taken
-	}
-	option = {
-		name = EVTOPTB94098
-		custom_tooltip = { text = improve_learning_quit }
-	}
-}
+#character_event = {
+#	id = 94098
+#	desc = EVTDESC94098
+#	picture = GFX_evt_library
+#	border = GFX_event_normal_frame_religion
+#
+#	capable_only = yes
+#	only_rulers = yes
+#	prisoner = no
+#	min_age = 16
+#	
+#	trigger = {
+#		OR = {
+#			AND = {
+#				has_focus = focus_theology
+#				NOT = { learning = 8 }
+#			}
+#			has_ambition = obj_improve_learning
+#		}
+#		NOT = { religion_group = muslim }
+#		NOT = { religion_group = indian_group }
+#		NOT = { has_character_flag = flying_machine }
+#		NOT = { has_character_flag = ancient_tome }
+#		NOT = { has_character_flag = hermit_visit }
+#		NOT = { has_character_flag = ancient_tome_taken }
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 280
+#	}
+#	
+#	option = {
+#		name = EVTOPTA94098
+#		character_event = { id = 94099 days = 6 tooltip = EVTTOOLTIP94099 }
+#		set_character_flag = ancient_tome
+#		set_character_flag = ancient_tome_taken
+#	}
+#	option = {
+#		name = EVTOPTB94098
+#		custom_tooltip = { text = improve_learning_quit }
+#	}
+#}
+#
+## Finished Reading
+#character_event = {
+#	id = 94099
+#	desc = EVTDESC94099
+#	picture = GFX_evt_library
+#	border = GFX_event_normal_frame_religion
+#	
+#	hide_from = yes
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = EVTOPTA94099
+#		change_learning = 2
+#	}
+#}
+#
+#### The Shahnameh
+#
+## The Shahnameh
+#character_event = {
+#	id = 94100
+#	desc = EVTDESC94100
+#	picture = GFX_evt_library
+#	border = GFX_event_normal_frame_religion
+#	
+#	capable_only = yes
+#	only_rulers = yes
+#	prisoner = no
+#	min_age = 16
+#	
+#	trigger = {
+#		year = 1010
+#		OR = {
+#			AND = {
+#				has_focus = focus_theology
+#				NOT = { learning = 8 }
+#			}
+#			has_ambition = obj_improve_learning
+#		}
+#		OR = {
+#			religion_group = muslim
+#			religion_group = indian_group
+#		}
+#		NOT = { has_character_flag = flying_machine }
+#		NOT = { has_character_flag = ancient_tome }
+#		NOT = { has_character_flag = hermit_visit }
+#		NOT = { has_character_flag = ancient_tome_taken }
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 280
+#	}
+#	
+#	option = {
+#		name = EVTOPTA94098
+#		character_event = { id = 94101 days = 6 tooltip = EVTTOOLTIP94099 }
+#		set_character_flag = ancient_tome
+#		set_character_flag = ancient_tome_taken
+#	}
+#	option = {
+#		name = EVTOPTB94098
+#		custom_tooltip = { text = improve_learning_quit }
+#	}
+#}
 
 # Finished Reading
 character_event = {
@@ -1978,7 +1788,6 @@ character_event = {
 			}
 			has_ambition = obj_improve_learning
 		}
-		NOT = { religion_group = indian_group }
 		NOT = { has_character_flag = flying_machine }
 		NOT = { has_character_flag = ancient_tome }
 		NOT = { has_character_flag = hermit_visit }
@@ -2014,7 +1823,6 @@ character_event = {
 			}
 			has_ambition = obj_improve_learning
 		}
-		NOT = { religion_group = indian_group }
 		NOT = { has_character_flag = flying_machine }
 		NOT = { has_character_flag = ancient_tome }
 		NOT = { has_character_flag = hermit_visit }
@@ -2239,11 +2047,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94116
-		if = {
-			limit = { religion = jain }
-			piety = -20
-			custom_tooltip = { text = jain_ahimsa_tooltip }
-		}
 		character_event = { id = 94117 tooltip = EVTTOOLTIP94112 }
 	}
 	option = {
@@ -2658,7 +2461,6 @@ character_event = {
 			}
 			has_ambition = obj_improve_diplomacy
 		}
-		NOT = { religion_group = indian_group }
 		NOT = { has_character_flag = the_feud }
 		NOT = { has_character_flag = the_mirror }
 		NOT = { has_character_flag = the_suicide }
@@ -2736,22 +2538,10 @@ character_event = {
 	
 	option = { # Magda
 		name = EVTOPTA94141
-		trigger = { NOT = { religion_group = muslim } }
 		character_event = { id = 94142 tooltip = EVTTOOLTIP94142 }
 	}
 	option = { # Meldrick
 		name = EVTOPTB94141
-		trigger = { NOT = { religion_group = muslim } }
-		character_event = { id = 94149 tooltip = EVTTOOLTIP94149 }
-	}
-	option = { # Wafaa
-		name = EVTOPTC94141
-		trigger = { religion_group = muslim }
-		character_event = { id = 94142 tooltip = EVTTOOLTIP94142 }
-	}
-	option = {	# Bah al-Drik
-		name = EVTOPTD94141
-		trigger = { religion_group = muslim }
 		character_event = { id = 94149 tooltip = EVTTOOLTIP94149 }
 	}
 }
@@ -2786,12 +2576,6 @@ character_event = {
 	
 	option = { # Magda
 		name = EVTOPTA94143
-		trigger = { NOT = { religion_group = muslim } }
-		character_event = { id = 94144 tooltip = EVTTOOLTIP94144 }
-	}
-	option = { # Wafaa
-		name = EVTOPTB94143
-		trigger = { religion_group = muslim }
 		character_event = { id = 94144 tooltip = EVTTOOLTIP94144 }
 	}
 }
@@ -2873,7 +2657,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA94146
-		trigger = { NOT = { religion_group = muslim } }
 		custom_tooltip = {
 			text = hurry_dungeons
 			hidden_tooltip = {
@@ -2888,20 +2671,7 @@ character_event = {
 			}
 		}
 	}
-	option = {
-		name = EVTOPTB94146
-		trigger = { religion_group = muslim }
-		hidden_tooltip = {
-			random_list = {
-				50 = {
-					character_event = { id = 94147 }
-				}
-				50 = {
-					character_event = { id = 94148 }
-				}
-			}
-		}
-	}
+
 }
 
 # Cook's Wife Dead
@@ -2968,14 +2738,9 @@ character_event = {
 	
 	option = { # Meldrick
 		name = EVTOPTA94150
-		trigger = { NOT = { religion_group = muslim } }
 		character_event = { id = 94151 tooltip = EVTTOOLTIP94151 }
 	}
-	option = { # Arab Meldrick
-		name = EVTOPTB94150
-		trigger = { religion_group = muslim }
-		character_event = { id = 94151 tooltip = EVTTOOLTIP94151 }
-	}
+
 }
 
 # Servant Caught
@@ -3072,24 +2837,6 @@ character_event = {
 				}
 			}
 		}
-		trigger = { NOT = { religion_group = muslim } }
-	}
-	option = {
-		name = EVTOPTA94153
-		custom_tooltip = { 
-			text = hurry_dungeons
-			hidden_tooltip = {
-				random_list = {
-					50 = {
-						character_event = { id = 94154 }
-					}
-					50 = {
-						character_event = { id = 94155 }
-					}
-				}
-			}
-		}
-		trigger = { religion_group = muslim }
 	}
 }
 

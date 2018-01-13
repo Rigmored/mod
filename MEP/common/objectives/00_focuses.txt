@@ -424,7 +424,7 @@ focus_hunting = {
 	allow = {
 		is_adult = yes
 		NOT = { trait = incapable }
-		NOT = { religion = jain }
+		NOT = { religion_group = religion_group_enyd }
 		prisoner = no
 	}
 	
@@ -582,21 +582,14 @@ focus_carousing = {
 	allow = {
 		is_adult = yes
 		NOT = { trait = incapable }
+		NOT = { trait = elf_childhood }
+		NOT = { trait = wilderness }
 		prisoner = no
 		OR = {
-			NOT = { religion_group = muslim }
-			trait = decadent
 			trait = hedonist
 			trait = drunkard
 		}
-		custom_tooltip = {
-			text = is_not_ascetic
-			hidden_tooltip = {
-				NOT = { has_character_modifier = hindu_ascetic }
-				NOT = { has_character_modifier = buddhist_ascetic }
-				NOT = { has_character_modifier = jain_naked_ascetic }
-			}
-		}
+		NOT = { religion = religion_umaiar }
 	}
 	
 	# AI Pick chance

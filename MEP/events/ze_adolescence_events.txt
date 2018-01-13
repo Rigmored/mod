@@ -2996,15 +2996,13 @@ character_event = {
 							any_sibling = { NOT = { religion_group = ROOT } }
 						}
 						trait = cynical
-						trait = sympathy_christendom
-						trait = sympathy_islam
-						trait = sympathy_pagans
-						trait = sympathy_zoroastrianism
-						trait = sympathy_judaism
-						trait = sympathy_indian
+						trait = elf_friend
+						trait = dwarf_friend
+						trait = hobbit_friend
+						mep_is_evil_side_trigger = yes
 					}
 				}
-				set_character_flag = curious_sympathy_religion
+				set_character_flag = curious_sympathy_meprace
 			}
 			10 = {
 				modifier = {
@@ -3021,101 +3019,58 @@ character_event = {
 		
 		# If sympathy for religion, choose which one...
 		if = {
-			limit = { has_character_flag = curious_sympathy_religion }
+			limit = { has_character_flag = curious_sympathy_meprace }
 			random_list = {
-				10 = {
-					set_character_flag = add_sympathy_christendom
+				33 = {
+					set_character_flag = add_sympathy_mepelves
 					modifier = {
 						factor = 0
-						religion_group = christian
+						religion_group = religion_group_eldar
 					}
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = christian }
-							location = { religion_group = christian } 
-							any_friend = { religion_group = christian }
-							any_sibling = { religion_group = christian } 
+							educator = { religion_group = religion_group_eldar }
+							location = { religion_group = religion_group_eldar } 
+							any_friend = { religion_group = religion_group_eldar }
+							any_sibling = { religion_group = religion_group_eldar } 
 						}
 					}
+					modifier = {
+						factor = 2
+						trait = half_elf
+					}
 				}
-				10 = {
-					set_character_flag = add_sympathy_islam
+				33 = {
+					set_character_flag = add_sympathy_mepdwarves
 					modifier = {
 						factor = 0
-						religion_group = muslim
+						religion_group = religion_group_khazad
 					}
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = muslim }
-							location = { religion_group = muslim } 
-							any_friend = { religion_group = muslim }
-							any_sibling = { religion_group = muslim }
+							educator = { religion_group = religion_group_khazad }
+							location = { religion_group = religion_group_khazad } 
+							any_friend = { religion_group = religion_group_khazad }
+							any_sibling = { religion_group = religion_group_khazad }
 						}
 					}
+					
 				}
-				10 = {
-					set_character_flag = add_sympathy_pagans
+				33 = {
+					set_character_flag = add_sympathy_mephobbits
 					modifier = {
 						factor = 0
-						religion_group = pagan_group
+						religion_group = religion_group_periannath
 					}
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = pagan_group }
-							location = { religion_group = pagan_group } 
-							any_friend = { religion_group = pagan_group } 
-							any_sibling = { religion_group = pagan_group } 
-						}
-					}
-				}
-				10 = {
-					set_character_flag = add_sympathy_zoroastrianism
-					modifier = {
-						factor = 0
-						religion_group = zoroastrian_group
-					}
-					modifier = {
-						factor = 0
-						NOR = {
-							educator = { religion_group = zoroastrian_group }
-							location = { religion_group = zoroastrian_group }
-							any_friend = { religion_group = zoroastrian_group }
-							any_sibling = { religion_group = zoroastrian_group }
-						}
-					}
-				}
-				10 = {
-					set_character_flag = add_sympathy_judaism
-					modifier = {
-						factor = 0
-						religion_group = jewish_group
-					}
-					modifier = {
-						factor = 0
-						NOR = {
-							educator = { religion_group = jewish_group }
-							location = { religion_group = jewish_group }
-							any_friend = { religion_group = jewish_group }
-							any_sibling = { religion_group = jewish_group }
-						}
-					}
-				}
-				10 = {
-					set_character_flag = add_sympathy_indian
-					modifier = {
-						factor = 0
-						religion_group = indian_group
-					}
-					modifier = {
-						factor = 0
-						NOR = {
-							educator = { religion_group = indian_group }
-							location = { religion_group = indian_group }
-							any_friend = { religion_group = indian_group }
-							any_sibling = { religion_group = indian_group }
+							educator = { religion_group = religion_group_periannath }
+							location = { religion_group = religion_group_periannath } 
+							any_friend = { religion_group = religion_group_periannath } 
+							any_sibling = { religion_group = religion_group_periannath } 
 						}
 					}
 				}
@@ -3137,12 +3092,10 @@ character_event = {
 							any_sibling = { NOT = { religion_group = ROOT } }
 						}
 						trait = cynical
-						trait = sympathy_christendom
-						trait = sympathy_islam
-						trait = sympathy_pagans
-						trait = sympathy_zoroastrianism
-						trait = sympathy_judaism
-						trait = sympathy_indian
+						trait = elf_friend
+						trait = dwarf_friend
+						trait = hobbit_friend
+						mep_is_evil_side_trigger = yes
 					}
 					OR = {
 						trait = shrewd
@@ -3181,7 +3134,7 @@ character_event = {
 	desc = {
 		text = EVTDESCB_ZE_13101
 		trigger = {
-			FROM = { has_character_flag = curious_sympathy_religion }
+			FROM = { has_character_flag = curious_sympathy_meprace }
 		} 
 	}
 	desc = {
@@ -3234,45 +3187,27 @@ character_event = {
 	option = {
 		name = EVTOPTB_ZE_13101
 		trigger = {
-			has_character_flag = curious_sympathy_religion
+			has_character_flag = curious_sympathy_meprace
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_christendom }
+			limit = { has_character_flag = add_sympathy_mepelves }
 			remove_trait = curious
-			add_trait = sympathy_christendom
-			clr_character_flag = add_sympathy_christendom
+			add_trait = elf_friend
+			clr_character_flag = add_sympathy_mepdwarves
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_islam }
+			limit = { has_character_flag = add_sympathy_mepdwarves }
 			remove_trait = curious
-			add_trait = sympathy_islam
-			clr_character_flag = add_sympathy_islam
+			add_trait = dwarf_friend
+			clr_character_flag = add_sympathy_mepdwarves
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_pagans }
+			limit = { has_character_flag = add_sympathy_mephobbits }
 			remove_trait = curious
-			add_trait = sympathy_pagans
-			clr_character_flag = add_sympathy_pagans
+			add_trait = hobbit_friend
+			clr_character_flag = add_sympathy_mephobbits
 		}
-		if = {
-			limit = { has_character_flag = add_sympathy_zoroastrianism }
-			remove_trait = curious
-			add_trait = sympathy_zoroastrianism
-			clr_character_flag = add_sympathy_zoroastrianism
-		}
-		if = {
-			limit = { has_character_flag = add_sympathy_judaism }
-			remove_trait = curious
-			add_trait = sympathy_judaism
-			clr_character_flag = add_sympathy_judaism
-		}
-		if = {
-			limit = { has_character_flag = add_sympathy_indian }
-			remove_trait = curious
-			add_trait = sympathy_indian
-			clr_character_flag = add_sympathy_indian
-		}
-		clr_character_flag = curious_sympathy_religion
+		clr_character_flag = curious_sympathy_meprace
 	}
 	option = {
 		name = EVTOPTC_ZE_13101
@@ -3376,38 +3311,6 @@ character_event = {
 				}
 			}
 			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_islam } }
-		}
-		if = {
-			limit = {
-				FROM = {
-					has_character_flag = add_sympathy_pagans
-				}
-			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_pagans } }
-		}
-		if = {
-			limit = {
-				FROM = {
-					has_character_flag = add_sympathy_zoroastrianism
-				}
-			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_zoroastrianism } }
-		}
-		if = {
-			limit = {
-				FROM = {
-					has_character_flag = add_sympathy_judaism
-				}
-			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_judaism } }
-		}
-		if = {
-			limit = {
-				FROM = {
-					has_character_flag = add_sympathy_indian
-				}
-			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_indian } }
 		}
 		if = {
 			limit = {
@@ -3574,21 +3477,6 @@ character_event = {
 			add_trait = sympathy_pagans
 			clr_character_flag = add_sympathy_pagans
 		}
-		if = {
-			limit = { has_character_flag = add_sympathy_zoroastrianism }
-			add_trait = sympathy_zoroastrianism
-			clr_character_flag = add_sympathy_zoroastrianism
-		}
-		if = {
-			limit = { has_character_flag = add_sympathy_judaism }
-			add_trait = sympathy_judaism
-			clr_character_flag = add_sympathy_judaism
-		}
-		if = {
-			limit = { has_character_flag = add_sympathy_indian }
-			add_trait = sympathy_indian
-			clr_character_flag = add_sympathy_indian
-		}
 		clr_character_flag = curious_sympathy_religion
 	}
 	option = {
@@ -3625,6 +3513,7 @@ character_event = {
 #############################################
 
 # idolizer turns into zealous, erudite or weak
+# in MEP, zealous means racist...
 character_event = {
 	id = ZE.13110
 
@@ -3648,12 +3537,12 @@ character_event = {
 					OR = {
 						trait = cynical
 						trait = zealous
-						trait = sympathy_christendom
-						trait = sympathy_islam
-						trait = sympathy_pagans
-						trait = sympathy_zoroastrianism
-						trait = sympathy_judaism
-						trait = sympathy_indian
+						trait = dwarf_friend
+						trait = elf_friend
+						trait = hobbit_friend
+						trait = half_elf
+						trait = enigma
+						trait = wilderness
 					}
 				}
 			}
@@ -3681,12 +3570,12 @@ character_event = {
 					OR = {
 						trait = cynical
 						trait = zealous
-						trait = sympathy_christendom
-						trait = sympathy_islam
-						trait = sympathy_pagans
-						trait = sympathy_zoroastrianism
-						trait = sympathy_judaism
-						trait = sympathy_indian
+						trait = dwarf_friend
+						trait = elf_friend
+						trait = hobbit_friend
+						trait = half_elf
+						trait = enigma
+						trait = wilderness
 					}
 					trait = erudite
 					OR = {

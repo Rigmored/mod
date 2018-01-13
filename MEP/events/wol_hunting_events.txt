@@ -27,7 +27,6 @@ character_event = {
 	trigger = {
 		has_focus = focus_hunting
 		in_command = no
-		NOT = { religion = jain }
 		NOT = { has_character_flag = do_not_disturb }
 		NOT = { has_character_flag = epic_hunt }
 	}
@@ -1764,7 +1763,6 @@ character_event = {
 		NOT = { has_character_modifier = pet_hunting_dog }
 		NOT = { has_character_flag = offered_puppy }
 		NOT = { has_character_flag = had_hunting_dog }
-		NOT = { religion = jain }
 	}
 
 	immediate = {
@@ -1974,228 +1972,43 @@ character_event = {
 	}
 	option = { # Tricky
 		name = EVTOPTC_WoL_5203
+		trigger = {
+			NOR = {
+				religion_group = religion_group_eruhini
+				religion_group = religion_group_eldar
+			}
+		}
 		set_character_flag = dog_name_tricky
 		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	}
-	option = { # Lucifer
+	option = { # Huan
 		name = EVTOPTD_WoL_5203
 		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion_group = christian
+			mep_is_good_side_trigger = yes
 		}
-		set_character_flag = dog_name_lucifer
+		set_character_flag = dog_name_huan
 		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	}
-	option = { # Shaytan
+	option = { # Gorgumoth
 		name = EVTOPTE_WoL_5203
 		trigger = {
 			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
+				religion_group = religion_group_eruhini
+				religion_group = religion_group_eldar
 			}
-			religion_group = muslim
 		}
-		set_character_flag = dog_name_shaytan
+		set_character_flag = dog_name_gorgumoth
 		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	}
-	option = { # Fenrir
+	option = { # Carcharoth
 		name = EVTOPTF_WoL_5203
 		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = norse_pagan
-				religion = norse_pagan_reformed
-			}
+			mep_is_evil_side_trigger = yes
 		}
-		set_character_flag = dog_name_fenrir
+		set_character_flag = dog_name_carcharoth
 		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	}
-	option = { # Erlik
-		name = EVTOPTG_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = tengri_pagan
-				religion = tengri_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_erlik
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Velnias
-		name = EVTOPTH_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = baltic_pagan
-				religion = baltic_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_velnias
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Tuoni
-		name = EVTOPTI_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = finnish_pagan
-				religion = finnish_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_tuoni
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Xolotl
-		name = EVTOPTJ_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = aztec
-				religion = aztec_reformed
-			}
-		}
-		set_character_flag = dog_name_xolotl
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Veles
-		name = EVTOPTK_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = slavic_pagan
-				religion = slavic_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_veles
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Guruhi
-		name = EVTOPTL_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = west_african_pagan
-				religion = west_african_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_guruhi
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Darkness
-		name = EVTOPTM_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			OR = {
-				religion = zun_pagan
-				religion = zun_pagan_reformed
-			}
-		}
-		set_character_flag = dog_name_darkness
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Ahriman
-		name = EVTOPTN_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion_group = zoroastrian_group
-		}
-		set_character_flag = dog_name_ahriman
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Satan
-		name = EVTOPTO_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion_group = jewish_group
-		}
-		set_character_flag = dog_name_satan
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Vinayaka
-		name = EVTOPTP_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion = hindu
-		}
-		set_character_flag = dog_name_vinayaka
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Mara
-		name = EVTOPTQ_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion = buddhist
-		}
-		set_character_flag = dog_name_mara
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
-	option = { # Punisher
-		name = EVTOPTR_WoL_5203
-		trigger = {
-			OR = {
-				trait = cynical
-				trait = possessed
-				is_devil_worshiper_trigger = yes
-			}
-			religion = jain
-		}
-		set_character_flag = dog_name_punisher
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
-	}
+	
 }
 
 # Puppy is growing and starts showing personality

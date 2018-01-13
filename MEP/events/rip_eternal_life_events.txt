@@ -41,6 +41,9 @@ narrative_event = {
 		}
 		is_inaccessible_trigger = no
 		immortal = no
+		NOT = {
+			mep_is_immortal_race_trigger = yes
+		}
 	}
 
 	mean_time_to_happen = {
@@ -256,16 +259,8 @@ narrative_event = {
 narrative_event = {
 	title = EVTNAME_RIP_21001
 	id = RIP.21001
-	desc = {
-		text = EVTDSC_RIP_21001
-		picture = GFX_evt_council_arabic
-		trigger = { culture_group = arabic }	
-	}
-	desc = {
-		text = EVTDSC_RIP_21001
-		picture = GFX_evt_council
-		trigger = { NOT = { culture_group = arabic } }
-	}
+	desc = EVTDSC_RIP_21001
+	picture = GFX_evt_council
 	border = GFX_event_narrative_frame_religion
 	is_triggered_only = yes
 	hide_from = yes
@@ -1192,8 +1187,8 @@ narrative_event = {
 			create_character = {
 				random_traits = no
 				dynasty = none
-				religion = west_african_pagan
-				culture = manden
+				religion = religion_southron
+				culture = culture_far_haradrim
 				female = yes
 				age = 36
 				health = 15
@@ -1255,11 +1250,11 @@ narrative_event = {
 		if = {
 			limit = { has_character_flag = intrigue_mystic }
 			create_character = {
-				name = "Cleopatra"
+				name = "Calimawen"
 				random_traits = no
 				dynasty = none
-				religion = hurufi
-				culture = egyptian_arabic
+				religion = religion_edain
+				culture = culture_maradin
 				female = yes
 				age = 72
 				health = 15
@@ -1308,73 +1303,6 @@ narrative_event = {
 						}
 						
 						change_intrigue = 6
-					}
-				}
-				save_event_target_as = eternal_life_mystic
-			}
-		}
-		if = {
-			limit = { has_character_flag = learning_mystic }
-			create_character = {
-				random_traits = no
-				dynasty = none
-				religion = buddhist
-				culture = sinhala
-				female = yes
-				age = 9
-				attributes = {
-					learning = 10
-				}
-				health = 15
-				trait = mystic
-				trait = brahmin
-				trait = theravada_buddhist
-				trait = quick
-				trait = fussy
-				trait = conscientious
-			}
-			new_character = {
-				set_character_flag = eternal_life_mystic
-
-				will_not_marry_effect = yes
-
-				remove_trait = kshatriya
-				remove_trait = vaishya
-				remove_trait = vajrayana_buddhist
-				remove_trait = mahayana_buddhist
-
-				give_nickname = nick_the_gentle
-				change_diplomacy = 2
-				change_stewardship = 2
-				change_intrigue = -1
-
-				random_list = {
-					90 = {
-						set_character_flag = mystic_is_fraud
-					}
-					10 = {
-						modifier = {
-							factor = 1.4
-							FROM = { learning = 10 }
-						}
-						modifier = {
-							factor = 1.4
-							FROM = { learning = 13 }
-						}
-						modifier = {
-							factor = 1.4
-							FROM = { learning = 16 }
-						}
-						modifier = {
-							factor = 1.4
-							FROM = { learning = 19 }
-						}
-						modifier = {
-							factor = 1.4
-							FROM = { learning = 22 }
-						}
-						
-						change_learning = 15
 					}
 				}
 				save_event_target_as = eternal_life_mystic
@@ -1605,38 +1533,7 @@ narrative_event = {
 			limit = { trait = zealous }
 			remove_trait = zealous
 		}
-		if = {
-			limit = {
-				FROM = { religion_group = pagan_group }
-				NOT = { 
-					trait = sympathy_pagans 
-					FROM = { religion_group = ROOT }
-				} 
-			}
-			add_trait = sympathy_pagans
-		}
 
-		if = {
-			limit = {
-				FROM = { religion_group = muslim } 
-				NOT = { 
-					trait = sympathy_islam 
-					FROM = { religion_group = ROOT }
-				} 
-			}
-			add_trait = sympathy_islam
-		}
-
-		if = {
-			limit = {
-				FROM = { religion_group = indian_group } 
-				NOT = { 
-					trait = sympathy_indian 
-					FROM = { religion_group = ROOT }
-				} 
-			}
-			add_trait = sympathy_indian
-		}
 	}
 	#Leave for different religion
 	option = {

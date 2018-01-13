@@ -641,19 +641,38 @@ letter_event = {
 			event_target:raiding_adventurer = {
 				if = {
 					limit = {
-						religion_group = muslim
+						religion = religion_southron
 					}
 					set_government_type = muslim_government
 				}
-				else_if = {
+				else_if {
 					limit = {
-						culture_group = tibetan_group
 						OR = {
-							religion = bon
-							religion = buddhist
+							religion_group = religion_group_melkor
+							religion_group = religion_group_ungoliant
 						}
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
 					}
-					set_government_type = theocratic_feudal_government
+					set_government_type = orc_government
+				}
+				else_if {
+					limit = {
+						mep_is_evil_overlord = yes
+					}
+					set_government_type = darklord_government
+				}
+				else_if {
+					limit = {
+						religion_group = religion_group_periannath
+					}
+					set_government_type = hobbit_thaindom
+				}
+				else_if {
+					limit = {
+						mep_canhave_nice_feudalism = yes
+					}
+					set_government_type = just_feudal_government
 				}
 				else = {
 					set_government_type = feudal_government
@@ -824,19 +843,38 @@ letter_event = {
 			event_target:raiding_adventurer = {
 				if = {
 					limit = {
-						religion_group = muslim
+						religion = religion_southron
 					}
 					set_government_type = muslim_government
 				}
-				else_if = {
+				else_if {
 					limit = {
-						culture_group = tibetan_group
 						OR = {
-							religion = bon
-							religion = buddhist
+							religion_group = religion_group_melkor
+							religion_group = religion_group_ungoliant
 						}
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
 					}
-					set_government_type = theocratic_feudal_government
+					set_government_type = orc_government
+				}
+				else_if {
+					limit = {
+						mep_is_evil_overlord = yes
+					}
+					set_government_type = darklord_government
+				}
+				else_if {
+					limit = {
+						religion_group = religion_group_periannath
+					}
+					set_government_type = hobbit_thaindom
+				}
+				else_if {
+					limit = {
+						mep_canhave_nice_feudalism = yes
+					}
+					set_government_type = just_feudal_government
 				}
 				else = {
 					set_government_type = feudal_government

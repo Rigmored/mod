@@ -736,6 +736,7 @@ character_event = {
 }
 
 ### Mercenary captain starts to gain sympathy for local religion
+# altered for MEP
 character_event = {
 	id = HL.10400
 
@@ -754,7 +755,15 @@ character_event = {
 			mercenary = yes
 		}
 		has_character_flag = is_mercenary_leader
-		NOT = { trait = zealous }
+		NOT = { trait = zealous } # aka 'Racist'
+		NOT = { mep_is_evil_side_trigger = yes } # because the only possible outcome is elf/dwarf/hobbit friend
+		mercenary_employer = {
+			OR = {
+				religion_group = religion_group_eldar
+				religion_group = religion_group_periannath
+				religion_group = religion_group_khazad
+			}
+		}
 	}
 
 	weight_multiplier = {
@@ -831,12 +840,9 @@ character_event = {
 			owner = {
 				trigger_switch = {
 					on_trigger = religion_group
-					christian 			= { FROM = { add_trait = sympathy_christendom } }
-					muslim 				= { FROM = { add_trait = sympathy_islam } }
-					pagan_group 		= { FROM = { add_trait = sympathy_pagans } }
-					zoroastrian_group 	= { FROM = { add_trait = sympathy_zoroastrianism } }
-					jewish_group 		= { FROM = { add_trait = sympathy_judaism } }
-					indian_group 		= { FROM = { add_trait = sympathy_indian } }
+					religion_group_khazad 		= { FROM = { add_trait = dwarf_friend } }
+					religion_group_eldar 		= { FROM = { add_trait = elf_friend } }
+					religion_group_periannath	= { FROM = { add_trait = hobbit_friend } }
 				}
 			}
 		}
@@ -844,197 +850,197 @@ character_event = {
 }
 
 ### Mercenary captain converts to local religion
-character_event = {
-	id = HL.10410
-
-	is_triggered_only = yes
-	hide_window = yes
-
-	only_men = yes
-	capable_only = yes
-	prisoner = no
-	ai = yes
-	only_rulers = yes
-
-	trigger = {
-		primary_title = {
-			NOT = { has_title_flag = ze_dyn_merc }
-			mercenary = yes
-		}
-		has_character_flag = is_mercenary_leader
-		NOT = { trait = zealous }
-	}
-
-	weight_multiplier = {
-		days = 1
-
-		modifier = {
-			factor = 0
-			primary_title = {
-				capital_scope = {
-					owner = {
-						religion = ROOT
-					}
-				}
-			}
-		}
-
-		modifier = {
-			factor = 1.5
-			mercenary_employer = {
-				is_alive = yes
-			}
-		}
-
-		modifier = {
-			factor = 2
-			mercenary_employer = {
-				is_friend = ROOT
-			}
-		}
-
-		modifier = {
-			factor = 2
-			primary_title = {
-				capital_scope = {
-					owner = {
-						NOT = { religion = ROOT }
-						is_friend = ROOT
-					}
-				}
-			}
-		}
-
-		modifier = {
-			factor = 4
-			primary_title = {
-				capital_scope = {
-					owner = {
-						OR = {
-							AND = {
-								religion_group = christian
-								ROOT = {
-									trait = sympathy_christendom
-								}
-							}
-							AND = {
-								religion_group = muslim
-								ROOT = {
-									trait = sympathy_islam
-								}
-							}
-							AND = {
-								religion_group = pagan_group
-								ROOT = {
-									trait = sympathy_pagans
-								}
-							}
-							AND = {
-								religion_group = zoroastrian_group
-								ROOT = {
-									trait = sympathy_zoroastrianism
-								}
-							}
-							AND = {
-								religion_group = jewish_group
-								ROOT = {
-									trait = sympathy_judaism
-								}
-							}
-							AND = {
-								religion_group = indian_group
-								ROOT = {
-									trait = sympathy_indian
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	immediate = {
-		primary_title = {
-			capital_scope = {
-				save_event_target_as = merc_location
-			}
-		}
-		primary_title = {
-			band_creator = {
-				if = {
-					limit = {
-						is_alive = yes
-					}
-					character_event = { id = HL.10411 }
-					break = yes
-				}
-			}
-		}
-		clear_event_target = merc_location
-	}
-}
-
-character_event = {
-	id = HL.10411
-	desc = EVTDESC_HL_10411
-	picture = GFX_evt_steppe_mercenaries
-	border = GFX_event_normal_frame_war
-
-	is_triggered_only = yes
-
-	option = {
-		name = "EVTOPTA_HL_10411"
-		event_target:merc_location = {
-			owner = {
-				FROM = {
-					unsafe_religion = PREV
-
-					random_list = {
-						10 = {
-							add_trait = zealous
-						}
-						90 = {
-						}
-					}
-
-					if = {
-						limit = {
-							ROOT = {
-								NOT = { trait = zealous }
-								NOT = { religion_group = PREVPREV }
-							}
-						}
-						ROOT = {
-							if = { limit = { trait = sympathy_christendom } remove_trait = sympathy_christendom }
-							if = { limit = { trait = sympathy_islam } remove_trait = sympathy_islam }
-							if = { limit = { trait = sympathy_pagans } remove_trait = sympathy_pagans }
-							if = { limit = { trait = sympathy_zoroastrianism } remove_trait = sympathy_zoroastrianism }
-							if = { limit = { trait = sympathy_judaism } remove_trait = sympathy_judaism }
-							if = { limit = { trait = sympathy_indian } remove_trait = sympathy_indian }
-						}
-						random_list = {
-							25 = {}
-							75 = {
-								PREV = {
-									trigger_switch = {
-										on_trigger = religion_group
-										christian 			= { ROOT = { add_trait = sympathy_christendom } }
-										muslim 				= { ROOT = { add_trait = sympathy_islam } }
-										pagan_group 		= { ROOT = { add_trait = sympathy_pagans } }
-										zoroastrian_group 	= { ROOT = { add_trait = sympathy_zoroastrianism } }
-										jewish_group 		= { ROOT = { add_trait = sympathy_judaism } }
-										indian_group 		= { ROOT = { add_trait = sympathy_indian } }
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+#character_event = {
+#	id = HL.10410
+#
+#	is_triggered_only = yes
+#	hide_window = yes
+#
+#	only_men = yes
+#	capable_only = yes
+#	prisoner = no
+#	ai = yes
+#	only_rulers = yes
+#
+#	trigger = {
+#		primary_title = {
+#			NOT = { has_title_flag = ze_dyn_merc }
+#			mercenary = yes
+#		}
+#		has_character_flag = is_mercenary_leader
+#		NOT = { trait = zealous }
+#	}
+#
+#	weight_multiplier = {
+#		days = 1
+#
+#		modifier = {
+#			factor = 0
+#			primary_title = {
+#				capital_scope = {
+#					owner = {
+#						religion = ROOT
+#					}
+#				}
+#			}
+#		}
+#
+#		modifier = {
+#			factor = 1.5
+#			mercenary_employer = {
+#				is_alive = yes
+#			}
+#		}
+#
+#		modifier = {
+#			factor = 2
+#			mercenary_employer = {
+#				is_friend = ROOT
+#			}
+#		}
+#
+#		modifier = {
+#			factor = 2
+#			primary_title = {
+#				capital_scope = {
+#					owner = {
+#						NOT = { religion = ROOT }
+#						is_friend = ROOT
+#					}
+#				}
+#			}
+#		}
+#
+#		modifier = {
+#			factor = 4
+#			primary_title = {
+#				capital_scope = {
+#					owner = {
+#						OR = {
+#							AND = {
+#								religion_group = christian
+#								ROOT = {
+#									trait = sympathy_christendom
+#								}
+#							}
+#							AND = {
+#								religion_group = muslim
+#								ROOT = {
+#									trait = sympathy_islam
+#								}
+#							}
+#							AND = {
+#								religion_group = pagan_group
+#								ROOT = {
+#									trait = sympathy_pagans
+#								}
+#							}
+#							AND = {
+#								religion_group = zoroastrian_group
+#								ROOT = {
+#									trait = sympathy_zoroastrianism
+#								}
+#							}
+#							AND = {
+#								religion_group = jewish_group
+#								ROOT = {
+#									trait = sympathy_judaism
+#								}
+#							}
+#							AND = {
+#								religion_group = indian_group
+#								ROOT = {
+#									trait = sympathy_indian
+#								}
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	immediate = {
+#		primary_title = {
+#			capital_scope = {
+#				save_event_target_as = merc_location
+#			}
+#		}
+#		primary_title = {
+#			band_creator = {
+#				if = {
+#					limit = {
+#						is_alive = yes
+#					}
+#					character_event = { id = HL.10411 }
+#					break = yes
+#				}
+#			}
+#		}
+#		clear_event_target = merc_location
+#	}
+#}
+#
+#character_event = {
+#	id = HL.10411
+#	desc = EVTDESC_HL_10411
+#	picture = GFX_evt_steppe_mercenaries
+#	border = GFX_event_normal_frame_war
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = "EVTOPTA_HL_10411"
+#		event_target:merc_location = {
+#			owner = {
+#				FROM = {
+#					unsafe_religion = PREV
+#
+#					random_list = {
+#						10 = {
+#							add_trait = zealous
+#						}
+#						90 = {
+#						}
+#					}
+#
+#					if = {
+#						limit = {
+#							ROOT = {
+#								NOT = { trait = zealous }
+#								NOT = { religion_group = PREVPREV }
+#							}
+#						}
+#						ROOT = {
+#							if = { limit = { trait = sympathy_christendom } remove_trait = sympathy_christendom }
+#							if = { limit = { trait = sympathy_islam } remove_trait = sympathy_islam }
+#							if = { limit = { trait = sympathy_pagans } remove_trait = sympathy_pagans }
+#							if = { limit = { trait = sympathy_zoroastrianism } remove_trait = sympathy_zoroastrianism }
+#							if = { limit = { trait = sympathy_judaism } remove_trait = sympathy_judaism }
+#							if = { limit = { trait = sympathy_indian } remove_trait = sympathy_indian }
+#						}
+#						random_list = {
+#							25 = {}
+#							75 = {
+#								PREV = {
+#									trigger_switch = {
+#										on_trigger = religion_group
+#										christian 			= { ROOT = { add_trait = sympathy_christendom } }
+#										muslim 				= { ROOT = { add_trait = sympathy_islam } }
+#										pagan_group 		= { ROOT = { add_trait = sympathy_pagans } }
+#										zoroastrian_group 	= { ROOT = { add_trait = sympathy_zoroastrianism } }
+#										jewish_group 		= { ROOT = { add_trait = sympathy_judaism } }
+#										indian_group 		= { ROOT = { add_trait = sympathy_indian } }
+#									}
+#								}
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
 
 ### Seduction event between captain and child of employer
 character_event = {

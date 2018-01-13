@@ -30,8 +30,7 @@ character_event = {
 				value = off
 			}
 		}
-		culture_group = altaic
-		NOT = { culture = khitan }
+		culture_group = culture_group_easterling
 		OR = {
 			father = {
 				OR = {
@@ -153,9 +152,7 @@ narrative_event = {
 		}
 		is_adult = yes
 		NOT = { num_of_children = 1 }
-		culture_group = altaic
-		NOT = { culture = khitan }
-		NOT = { religion = jain }
+		culture_group = culture_group_easterling
 		NOT = {
 			any_close_relative = {
 				OR = {
@@ -209,8 +206,7 @@ narrative_event = {
 	
 	trigger = {
 		has_dlc = "Horse Lords"
-		culture_group = altaic
-		NOT = { culture = khitan }
+		culture_group = culture_group_easterling
 		age = 5
 		NOT = { age = 10 }
 		NOT = {	any_sibling = { is_older_than = ROOT } }
@@ -2086,8 +2082,7 @@ character_event = {
 			10 = {				# Inherits Wolf's Blood
 				modifier = {
 					factor = 1.5
-					culture_group = altaic
-					NOT = { culture = khitan }
+					culture_group = culture_group_easterling
 				}
 				modifier = {
 					factor = 2

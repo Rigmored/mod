@@ -32,6 +32,7 @@ character_event = {
 				trait = celibate
 				trait = depressed
 				trait = eunuch
+				trait = torturer
 			}
 		}
 	}
@@ -67,17 +68,7 @@ character_event = {
 			}
 		}		
 	}
-	
-	option = {
-		name = EVTOPTB24501
-		add_trait = depressed
-		if = {
-			limit = {
-				religion_group = christian
-			}
-			add_trait = celibate
-		}
-	}	
+		
 }
 
 
@@ -144,13 +135,11 @@ character_event = {
 				is_female = no
 				is_alive = yes
 				NOT = { martial = 8 }
+				NOT = { trait = elf_childhood }
 			}
 			random_list = {
 				90 = {
-					if = {
-						limit = { NOT = { trait = berserker } }
-						add_trait = craven
-					}
+					 add_trait = craven
 				}
 				10 = {
 					add_trait = brave
@@ -560,41 +549,12 @@ character_event = {
 	
 	trigger ={
 		FROM = {
-			NOR = {
-				death_no_trace_trigger = yes
-				death_in_china_trigger = yes
-			}
+			NOT = { death_no_trace_trigger = yes }
 		}
 	}
 
 	option = {
-		name = EVTOPTA4140
-		trigger = {
-			religion_group = christian
-		}
-		add_character_modifier = {
-			name = the_sincere
-			years = 5
-		}
-	}
-	option = {
-		name = EVTOPTD4140
-		trigger = {
-			religion_group = muslim
-		}
-		add_character_modifier = {
-			name = the_sincere
-			years = 5
-		}
-	}
-	option = {
 		name = EVTOPTE4140
-		trigger = {
-			NOT = {
-				religion_group = muslim
-				religion_group = christian
-			}
-		}
 		add_character_modifier = {
 			name = the_sincere
 			years = 5
