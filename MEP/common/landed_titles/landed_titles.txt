@@ -10402,53 +10402,6 @@ e_lindon = {
 				}
 			}
 		}
-
-		d_belegaer = {
-			color={ 68 100 148 }
-			color2={ 255 255 255 }
-			
-			capital = 784 # Tol Fuin
-			
-			c_himling = {
-				color={ 7 36 60 }
-				color2={ 255 255 255 }
-			
-				b_himling = {
-				}
-				b_tol_himling = {
-				}
-				b_caras_him = {
-				}
-				b_caras_aleth = {
-				}
-			}
-			c_tol_fuin = {
-				color={ 7 36 60 }
-				color2={ 255 255 255 }
-			
-				b_tol_fuin = {
-				}
-				b_pelendolim = {
-				}
-				b_toronnion = {
-				}
-				b_ladros = {
-				}
-				b_aeluin = {
-				}				
-			}	
-			c_tol_morwen = {
-				color={ 7 36 60 }
-				color2={ 255 255 255 }		
-			
-				b_tol_morwen = {
-				}
-				b_stone_hapless = {
-				}
-				b_cabed_en_aras = {
-				}			
-			}			
-		}
 		d_celanoriand = {
 			color={ 68 100 148 }
 			color2={ 255 255 255 }
@@ -10523,7 +10476,66 @@ e_lindon = {
 		}		
 		
 	}
+
+	
+	k_western_isles = {
+		color={ 205 59 94 }
+		color2={ 125 125 125 }
+		
+		capital = 784 # Forlond
+		
+		culture = culture_noldor
+		religion = religion_moriquendi
+
+		d_belegaer = {
+			color={ 68 100 148 }
+			color2={ 255 255 255 }
+			
+			capital = 784 # Tol Fuin
+			
+			c_himling = {
+				color={ 7 36 60 }
+				color2={ 255 255 255 }
+			
+				b_himling = {
+				}
+				b_tol_himling = {
+				}
+				b_caras_him = {
+				}
+				b_caras_aleth = {
+				}
+			}
+			c_tol_fuin = {
+				color={ 7 36 60 }
+				color2={ 255 255 255 }
+			
+				b_tol_fuin = {
+				}
+				b_pelendolim = {
+				}
+				b_toronnion = {
+				}
+				b_ladros = {
+				}
+				b_aeluin = {
+				}				
+			}	
+			c_tol_morwen = {
+				color={ 7 36 60 }
+				color2={ 255 255 255 }		
+			
+				b_tol_morwen = {
+				}
+				b_stone_hapless = {
+				}
+				b_cabed_en_aras = {
+				}	
+			}
+		}		
+	}
 }
+
 	
 e_barad_dur = {
 	color={ 74 24 10 }
@@ -13391,6 +13403,21 @@ k_black_serpent = {
 	}
 }
 
+# Even imprisoned, Morgoth is still a king
+k_void = {
+	color = { 0 0 0 }
+	color2 = {  0 0 0 }
+	
+	landless = yes
+
+	title = "DARK_LORD"
+	title_female = "DARK_QUEEN"
+
+	short_name = yes
+	
+	}
+}
+
 d_master_buckland = {
 	color={ 50 200 200 }
 	color2={ 255 255 255 }
@@ -13510,13 +13537,14 @@ e_gondor_kinstrife = {
 	}
 }
 
+# For special Dwarf unification
 e_all_mountains = {
-color={ 17 44 71 }
-color2={ 125 125 142 }
+	color={ 17 44 71 }
+	color2={ 125 125 142 }
 
-short_name = yes
+	short_name = yes
 
-capital = 642 # Gundabad
+	capital = 642 # Gundabad
 	dignity = 1000 # Counted as having this many more counties than it does	
 
 	allow = {
@@ -13579,6 +13607,8 @@ e_numenor = {
 		#Cannot be held as a secondary title
 	}
 }
+
+# Saruman's special little empire...
 e_isengard = {
 	color={ 181 181 181 }
 	color2={ 125 125 142 }

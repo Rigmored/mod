@@ -1,0 +1,29 @@
+character_event = {
+   	id = leave.1
+   	title = "EVTTITleave.1"
+    desc = "EVTDESCleave.1"
+    picture = "GFX_sauron_commands"
+	
+	is_triggered_only = yes
+
+	trigger = {
+		trait = on_fellowshipquest
+	}
+	
+	option = {
+		name = "EVTOPTBleave.2" #I must leave.
+		trigger = { ai = no }	
+		remove_trait = on_fellowshipquest
+		any_independent_ruler = {
+			limit = {
+				trait = on_fellowshipquest
+			}
+			any_vassal = {
+				limit = {
+					trait = on_fellowshipquest
+				}
+				remove_trait = on_fellowshipquest
+			}	
+		}			
+	}
+}

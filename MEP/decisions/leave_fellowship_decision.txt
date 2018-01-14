@@ -1,0 +1,18 @@
+decisions = {
+	leave_fellowship_decision = {
+		only_playable = yes
+		potential = {
+			trait = on_fellowshipquest
+		}
+		allow = {
+			is_adult = yes
+			prisoner = no
+			custom_tooltip = {
+				text = is_not_busy_trigger_tooltip
+				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+			}
+		}
+		effect = {
+			character_event = { id = leave.1 }
+		}}
+	}

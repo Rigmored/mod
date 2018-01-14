@@ -21,9 +21,9 @@ elf = {
 	sex_appeal_opinion = 10
 	diplomacy = 2
 	stewardship = 2
-    fertility_penalty = -0.2
+    fertility_penalty = -0.5 # Elves were popping children out too quickly
 	health = 50
-    immortal = yes
+    # immortal = yes  # messes up portraits
 	customizer = yes	
     command_modifier = {
 		terrain = forest
@@ -58,7 +58,7 @@ elf_childhood = {
 	}
 	fertility_penalty = -5.0
 	health = 100.0
-	immortal = yes
+	# immortal = yes might mess up portraits
 	childhood  = yes
 	customizer = no	
 	cannot_marry = yes
@@ -135,7 +135,7 @@ dwarven = {
    	health = 15.0
   	same_opinion = 20	
 	martial = 2
-	fertility_penalty = -0.25
+	fertility_penalty = -0.35
     stewardship = 3
 	customizer = yes
 	command_modifier = {
@@ -230,7 +230,7 @@ numenorean = {
 	opposite_opinion = 20
 	vassal_opinion = -5
 	agnatic = yes
-	fertility_penalty = -0.1
+	fertility_penalty = -0.15
 	opposites =  {
 		blood_of_numenor2
 		# blood_of_numenor
@@ -257,7 +257,7 @@ prince_numenor = {
 	same_opinion = 35
 	vassal_opinion = 30	
 	agnatic = yes
-	fertility_penalty = -0.1
+	fertility_penalty = -0.15
 	opposites =  {
 		blood_of_numenor2
 		# blood_of_numenor
@@ -279,7 +279,7 @@ blood_of_numenor = {
 	intrigue = 2
 	customizer = yes
 	same_opinion = 25
-	fertility_penalty = -0.1
+	fertility_penalty = -0.15
 	opposites =  {
 		blood_of_numenor2
 	}
@@ -298,7 +298,7 @@ blood_of_numenor2 = {
 }
 blood_of_isildur = {
 	health = 7.0
-	fertility_penalty = -0.1	
+	fertility_penalty = -0.15
 	intrigue = 3
 	martial = 5
 	agnatic = yes
@@ -315,7 +315,7 @@ blood_of_isildur = {
 }
 blood_of_anarion = {
 	health = 7.0
-	fertility_penalty = -0.1	
+	fertility_penalty = -0.15	
 	intrigue = 2
 	martial = 2
 	agnatic = yes
@@ -336,7 +336,7 @@ half_elf = {
     health = 12.0
 	customizer = yes
 	same_opinion = 20
-	fertility_penalty = -0.1
+	fertility_penalty = -0.15
 	cached = yes
 }
 
@@ -402,7 +402,7 @@ eagle = {
 	# other modifers
 	same_opinion = 10
 	fertility_penalty = -5.0
-    	health = 1000.0
+    health = 1000.0
    	diplomacy = 3
 	stewardship = 3
 	martial = 3

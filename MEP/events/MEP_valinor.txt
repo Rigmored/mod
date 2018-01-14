@@ -335,6 +335,7 @@ character_event = {
 	}
 }
 
+
 character_event = {
 	id = valinor.20
 	# title = "Morgoth is Imprisoned"
@@ -351,9 +352,15 @@ character_event = {
 				NOT = { has_character_flag = morgoth_imprisoned }
 			
 			}
-			any_courtier = {
+			any_independent_ruler = {
 				limit = { has_character_flag = morgoth_bauglir }
 				imprison = PREV
+				# adds a modifier so that Manwe will consider Morgoth a criminal
+				reverse_opinion = {
+					modifier = mep_is_corrupted_from_good
+					who = PREV
+					years = -1
+				}
 			}
 			set_character_flag = morgoth_imprisoned
 		}
