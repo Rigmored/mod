@@ -162,18 +162,11 @@ focus_seduction = {
 	
 	allow = {
 		is_adult = yes
+		NOT = { mep_dont_seduce_trigger = yes }
 		NOT = { trait = incapable }
 		NOT = { trait = celibate }
 		NOT = { is_ascetic_trigger = yes }
 		NOT = { trait = eunuch }
-		custom_tooltip = {
-			text = is_not_ascetic
-			hidden_tooltip = {
-				NOT = { has_character_modifier = hindu_ascetic }
-				NOT = { has_character_modifier = buddhist_ascetic }
-				NOT = { has_character_modifier = jain_naked_ascetic }
-			}
-		}
 	}
 	
 	# AI Pick chance
@@ -185,7 +178,7 @@ focus_seduction = {
 			trait = chaste
 		}
 		modifier = {
-			factor = 0
+			factor = 0.1
 			religion_group = religion_group_eldar
 		}
 		modifier = {
@@ -850,6 +843,8 @@ focus_theology = {
 	}
 	
 	allow = {
+		NOT = { religion_group = religion_group_eruhini }
+		NOT = { religion = religion_umaiar }
 		is_adult = yes
 		NOT = { trait = incapable }
 	}

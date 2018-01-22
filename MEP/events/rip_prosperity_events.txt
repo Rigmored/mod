@@ -703,126 +703,127 @@ province_event = { # Province Modifier Tombola
 	}
 }
 
-province_event = { #Reclaim Land
-	id = RIP.11705
-	title = PROSPERITY_TITLE
-	desc = RIP.11705.d
-	picture = "GFX_evt_culture_change"
-	border = GFX_event_normal_frame_economy
-	
-	has_flag = crown_focus_province
-	
-	trigger = {
-		has_province_modifier = prosperity_modifier_3
-		NOT = {
-			num_of_max_settlements = 7
-		}
-	}	
-	
-	mean_time_to_happen = {
-		years = 65
-		modifier = {
-			factor = 1.2
-			owner = {
-				independent = no
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				stewardship = 12
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				stewardship = 16
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				stewardship = 18
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				learning = 12
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				learning = 16
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				learning = 18
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				is_smart_trigger = yes
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				OR = {
-					trait = administrator
-					trait = architect
-					trait = scholar
-					trait = gardener
-				}
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				trait = diligent
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				OR = {
-					trait = scholarly_theologian
-					trait = mastermind_theologian
-					trait = charismatic_negotiator
-					trait = grey_eminence
-					trait = fortune_builder
-					trait = midas_touched
-				}
-			}
-		}
-	}
-	
-	
-	option = {
-		name = RIP.11705.a
-		
-		ai_chance = { 
-			factor = 95
-		}
-		
-		owner = {
-			scaled_wealth = -2.5
-		}
-		add_holding_slot = 1
-	}
-	option = {
-		name = RIP.11705.b
-		
-		ai_chance = { 
-			factor = 5
-		}
-		
-	}
-}
+# Disabled for MEP since it requires spare baron-level titles for each province
+#province_event = { #Reclaim Land
+#	id = RIP.11705
+#	title = PROSPERITY_TITLE
+#	desc = RIP.11705.d
+#	picture = "GFX_evt_culture_change"
+#	border = GFX_event_normal_frame_economy
+#	
+#	has_flag = crown_focus_province
+#	
+#	trigger = {
+#		has_province_modifier = prosperity_modifier_3
+#		NOT = {
+#			num_of_max_settlements = 7
+#		}
+#	}	
+#	
+#	mean_time_to_happen = {
+#		years = 65
+#		modifier = {
+#			factor = 1.2
+#			owner = {
+#				independent = no
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				stewardship = 12
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				stewardship = 16
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				stewardship = 18
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				learning = 12
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				learning = 16
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				learning = 18
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				is_smart_trigger = yes
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				OR = {
+#					trait = administrator
+#					trait = architect
+#					trait = scholar
+#					trait = gardener
+#				}
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				trait = diligent
+#			}
+#		}
+#		modifier = {
+#			factor = 0.9
+#			owner = {
+#				OR = {
+#					trait = scholarly_theologian
+#					trait = mastermind_theologian
+#					trait = charismatic_negotiator
+#					trait = grey_eminence
+#					trait = fortune_builder
+#					trait = midas_touched
+#				}
+#			}
+#		}
+#	}
+#	
+#	
+#	option = {
+#		name = RIP.11705.a
+#		
+#		ai_chance = { 
+#			factor = 95
+#		}
+#		
+#		owner = {
+#			scaled_wealth = -2.5
+#		}
+#		add_holding_slot = 1
+#	}
+#	option = {
+#		name = RIP.11705.b
+#		
+#		ai_chance = { 
+#			factor = 5
+#		}
+#		
+#	}
+#}
 
 province_event = { #Monetary Incentives for culture conversion
 	id = RIP.11706

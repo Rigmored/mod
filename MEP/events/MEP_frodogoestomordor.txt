@@ -835,10 +835,10 @@ character_event = {
 	option = {
 		name = "EVTOPTAfrodo.27"
 		random_list = {
-			90 = { 
+			80 = { 
 				character_event = { id = frodo.11 }
 			}
-			10 = {
+			20 = {
 				character_event = { id = frodo.12 }
 			}
 		}
@@ -1499,5 +1499,41 @@ province_event = {
 		}
 
 	}
+}
 
+### The intricate series of events sometimes becomes unglued
+## If Aragorn's war never happens in time, here is an alternative...
+character_event = {
+    id = frodo.50
+    title = "EVTTITfrodo.50" # Trust in Elbereth
+    desc = "EVTDESCfrodo.50"
+    picture = "GFX_good"
+	religion_group = religion_group_periannath
+	has_global_flag = frodogoestomordor
+	
+	trigger = {
+		event_target:mep_fellowship_ringbearer = { character = PREV }
+		has_global_flag = fellowship_broken2
+		NOT = { has_global_flag = frodo26 }
+		NOT = { has_global_flag = frodo9 }
+		NOT = { has_global_flag = gondor_restoreddefeat }
+		NOT = { has_global_flag = gondor_restored }
+		NOT = { has_global_flag = boromirhasring }
+		has_artifact = artifact_ring
+		year = 11372
+	}
+	
+	immediate = {
+		save_event_target_as = mep_frodo_target
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	option = {
+		name = "EVTOPTAfrodo.50"
+		set_global_flag = frodo26
+		character_event = { id = frodo.27 days = 30 }
+		log = "EVENT REACHED FRODO 50"
+	}
+	
 }
