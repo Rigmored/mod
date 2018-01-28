@@ -11,18 +11,10 @@ obj_become_a_rider = {
 					trait = imposing
 					trait = patient
 				}
-				OR = {
-					culture = culture_variags
-					culture = culture_eotheod
-					culture = culture_rohirrim			
-				}
+				mep_horse_people_culture = yes
 			}
 		}
-		OR = {
-			culture = culture_variags
-			culture = culture_eotheod
-			culture = culture_rohirrim			
-		}		
+		mep_horse_people_culture = yes		
 		is_adult = yes
 		martial = 5
 		NOT = { trait = incapable }
@@ -104,12 +96,12 @@ obj_become_a_rider = {
 obj_become_a_craftsman = {
 	type = character
 	allow = {
-		is_female = no
 		OR = {
 			culture = culture_noldor
 			culture_group = culture_group_dwarves
 		}
 		is_adult = yes
+		NOT = { trait = incapable }
 		stewardship = 7
 		age = 60
 		NOT = { trait = incapable }
@@ -218,20 +210,10 @@ obj_become_elf_warrior = {
 					trait = imposing
 					trait = patient
 				}
-				OR = {
-					culture_group = culture_group_moriquendi
-					culture_group = culture_group_umanyar
-					culture_group = culture_group_amanyar
-					culture_group = culture_group_quendi		
-				}
+				mep_is_elf_culture = yes
 			}
 		}
-		OR = {
-			culture_group = culture_group_moriquendi
-			culture_group = culture_group_umanyar
-			culture_group = culture_group_amanyar
-			culture_group = culture_group_quendi		
-		}		
+		mep_is_elf_culture = yes		
 		is_adult = yes
 		martial = 5
 		NOT = { trait = incapable }

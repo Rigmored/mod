@@ -149,7 +149,17 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAarnorgondor.5"#I will not let him down!
-		ROOT = { culture = culture_arnorian }
+		# modified culture change that does not assume the kid is numenorean
+		if = {
+			limit = { culture_group = culture_group_numenorean }
+			culture = culture_arnorian
+			religion = religion_dunedain
+		}
+		else_if = {
+			limit = { mep_has_nondunedain_human_culture = yes }
+			culture = culture_arnorian_middlemen
+			religion = religion_dunedain
+		}
 		wealth = 2000
 		e_arnor = {
 			usurp_title = ROOT
@@ -287,10 +297,9 @@ character_event = {
 	trigger = {
 		has_landed_title = e_arnor
 		NOT = { has_landed_title = e_gondor }
+		mep_is_human_trigger = yes
 		NOT = { culture = culture_arnorian }
-		NOT = { culture = culture_orkish }
-		NOT = { culture = culture_goblin }
-		NOT = { culture = culture_istari }
+		NOT = { culture = culture_arnorian_middlemen }
 		year = 11400
 		NOT = { has_character_flag = arnorgondor8 }
 	}
@@ -298,9 +307,18 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAarnorgondor.8"#I do feel like an Arnorian!
+		name = "EVTOPTAarnorgondor.8" #I do feel like an Arnorian!
 		set_character_flag = arnorgondor8
-		ROOT = { culture = culture_arnorian }
+		# modified culture change that does not assume the ruler is numenorean
+		if = {
+			limit = { culture_group = culture_group_numenorean }
+			culture = culture_arnorian
+			religion = religion_dunedain
+		}
+		else_if = {
+			culture = culture_arnorian_middlemen
+			religion = religion_dunedain
+		}
 	}
 	
 	option = {

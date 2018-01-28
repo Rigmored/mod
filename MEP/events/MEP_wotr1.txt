@@ -20,7 +20,7 @@ narrative_event = {
         set_character_flag = intro_event
 	}
 }
-
+# Message for Gondor that Rohan is threatened and probably cannot help
 character_event = {
     id = warofthering.2
     title = "EVTTITwarofthering.2"
@@ -52,6 +52,7 @@ character_event = {
 	}
 }
 
+# Message for ruler of Rohan that Gondor is threatened and cannot help
 character_event = {
     id = warofthering.3
     title = "EVTTITwarofthering.3"
@@ -83,6 +84,7 @@ character_event = {
 	}
 }
 
+# Sauron Commands (unless you are Saruman)
 character_event = {
     id = warofthering.4
     title = "EVTTITwarofthering.4"
@@ -218,7 +220,7 @@ character_event = {
 
 	trigger = {
 		year = 11362
-		NOT = { year = 11365 }
+		NOT = { year = 11364 }
 		character = 10016  #Sauron
 		has_landed_title = e_barad_dur
 		NOT = { has_character_flag = warofthering11 }
@@ -262,7 +264,7 @@ character_event = {
 		add_trait = huntforring
 	}		
 }
-	
+#----------------------------------------------------------------------------------	
 ##Frodo decides to leave ##
 ##Sets out together with his hobbit companions##
 character_event = {

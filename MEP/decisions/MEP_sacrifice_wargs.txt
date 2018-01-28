@@ -16,9 +16,12 @@ decisions = {
 			prestige = 100
 			piety = 100
 			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-				culture = culture_istari
+				mep_orc_goblin_culture = yes
+				AND = {
+					culture = culture_istari
+					trait = evil_side
+				}
+				religion = religion_umaiar
 			}
 		}
 		allow = {

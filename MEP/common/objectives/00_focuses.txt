@@ -573,16 +573,24 @@ focus_carousing = {
 	}
 	
 	allow = {
-		is_adult = yes
+		custom_tooltip = {
+			text = TT_MEP_NOT_A_CHILD
+			AND = {
+				is_adult = yes
+				NOT = { trait = elf_childhood }
+			}
+		}
+		hidden_tooltip = {
+			NOT = { trait = wilderness }
+		}
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
-		NOT = { trait = wilderness }
+		NOT = { religion = religion_umaiar }
 		prisoner = no
 		OR = {
 			trait = hedonist
 			trait = drunkard
 		}
-		NOT = { religion = religion_umaiar }
+		
 	}
 	
 	# AI Pick chance

@@ -71,6 +71,7 @@ decisions = {
 			}
 		}
 	}
+	
 	abdicate_throne_elf = {
 		potential = {
 			ai = no
@@ -80,12 +81,7 @@ decisions = {
 			current_heir = { dynasty = ROOT }
 			age = 1700
 			has_character_flag = family_decisions_open
-			OR = {
-				culture_group = culture_group_moriquendi
-				culture_group = culture_group_umanyar
-				culture_group = culture_group_amanyar
-				culture_group = culture_group_quendi
-			}
+			mep_is_elf_culture = yes
 			# Traits checks
 			NOT = { trait = lunatic }
 			NOT = { trait = possessed }

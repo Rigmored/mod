@@ -262,14 +262,15 @@ decisions = {
 				}
 			}
 			OR = {
-			culture_group = culture_group_melkor
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
-			culture = culture_black_numenorean
-			AND = {
-            culture = culture_maiar
-			trait = evil_side
-			}
+				culture_group = culture_group_melkor
+				culture_group = culture_group_southron
+				culture_group = culture_group_easterling
+				culture = culture_black_numenorean
+				culture = culture_umaiar
+				AND = {
+					culture = culture_maiar
+					trait = evil_side
+				}
 			}
 		}
 		allow = {
@@ -372,6 +373,7 @@ decisions = {
 				is_ruler = yes
 				has_character_flag = employment_decisions_open
 				OR = {
+					religion = religion_umaiar
 					trait = nazgul
 					AND = {
 						OR = {
@@ -404,6 +406,14 @@ decisions = {
 				}
 				new_character = {
 					culture = culture_goblin
+				}
+			}
+			if = {
+				limit = {
+					culture = culture_kul_uruk
+				}
+				new_character = {
+					culture = culture_kul_uruk
 				}
 			}
 			add_character_modifier = {

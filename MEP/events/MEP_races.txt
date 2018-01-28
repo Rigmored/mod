@@ -245,9 +245,7 @@ character_event = {
    
 	trigger = {
 		OR = {
-			culture = culture_orkish
-			culture = culture_goblin
-			culture = culture_urukhai
+			mep_orc_goblin_culture = yes
 			culture = culture_troll
 		}	
 		NOT = { trait = half_orc }
@@ -338,11 +336,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			culture = culture_orkish
-			culture = culture_goblin
-			culture = culture_urukhai
-		}
+		mep_orc_goblin_culture = yes
 		NOT = { trait = weak_orc }
 		NOT = { trait = orc_warrior }
 		NOT = { trait = strong_orc }
@@ -409,9 +403,30 @@ character_event = {
 				add_trait = great_orc
 			}	
 		}
-	}	
+	}
+	
+	option = {
+	    # name = EVTOPTAracetrait.1
+		trigger = {
+			culture = culture_kul_uruk
+		}
+	    random_list = {
+			15 = {
+				add_trait = weak_orc
+			}
+			40 = {
+				add_trait = orc_warrior
+			}	
+			30 = {
+				add_trait = strong_orc
+			}
+			15 = {
+				add_trait = great_orc
+			}	
+		}
+	}
+	
 }
-
 
 # some species/races or more or less unkillable by normal means
 character_event = {
@@ -587,14 +602,7 @@ character_event = {
 		# is_patrician = no
 		higher_real_tier_than = baron
 		capital_scope = {
-			OR = {
-				culture = culture_nandor
-				culture = culture_silvan
-				culture = culture_avari
-				culture = culture_sindar
-				culture = culture_noldor
-				culture = culture_falathrim
-			}
+			mep_make_random_elf_culture = yes
 		}
 	}
 	
@@ -626,14 +634,7 @@ character_event = {
 			}
 		}
 		capital_scope = {
-			OR = {
-				culture = culture_nandor
-				culture = culture_silvan
-				culture = culture_avari
-				culture = culture_sindar
-				culture = culture_noldor
-				culture = culture_falathrim
-			}
+			mep_make_random_elf_culture = yes
 		}
 	}
 	
@@ -663,14 +664,7 @@ character_event = {
 					higher_real_tier_than = baron
 					religion_group = religion_group_eldar
 					capital_scope = {
-						OR = {
-							culture = culture_nandor
-							culture = culture_silvan
-							culture = culture_avari
-							culture = culture_sindar
-							culture = culture_noldor
-							culture = culture_falathrim
-						}
+						mep_make_random_elf_culture = yes
 					}
 				}
 				set_variable = { which = mep_courtiers_tomake value = 11 }
@@ -683,14 +677,7 @@ character_event = {
 						higher_real_tier_than = baron
 						religion_group = religion_group_eldar
 						capital_scope = {
-							OR = {
-								culture = culture_nandor
-								culture = culture_silvan
-								culture = culture_avari
-								culture = culture_sindar
-								culture = culture_noldor
-								culture = culture_falathrim
-							}
+							mep_make_random_elf_culture = yes
 						}
 					}
 					set_variable = { which = mep_courtiers_tomake value = 11 }
@@ -706,14 +693,7 @@ character_event = {
 					higher_real_tier_than = baron
 					religion_group = religion_group_eldar
 					capital_scope = {
-						OR = {
-							culture = culture_nandor
-							culture = culture_silvan
-							culture = culture_avari
-							culture = culture_sindar
-							culture = culture_noldor
-							culture = culture_falathrim
-						}
+						mep_make_random_elf_culture = yes
 					}
 				}
 				set_variable = { which = mep_courtiers_tomake value = 11 }
@@ -726,14 +706,7 @@ character_event = {
 						higher_real_tier_than = baron
 						religion_group = religion_group_eldar
 						capital_scope = {
-							OR = {
-								culture = culture_nandor
-								culture = culture_silvan
-								culture = culture_avari
-								culture = culture_sindar
-								culture = culture_noldor
-								culture = culture_falathrim
-							}
+							mep_make_random_elf_culture = yes
 						}
 					}
 					set_variable = { which = mep_courtiers_tomake value = 11 }

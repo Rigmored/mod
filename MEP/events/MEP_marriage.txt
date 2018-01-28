@@ -198,9 +198,7 @@ character_event = {
 	trigger = {
 		spouse = {
 			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-				culture = culture_urukhai
+				mep_orc_goblin_culture = yes
 				culture = culture_troll
 				culture = culture_spider
 				religion = religion_orkish
@@ -209,13 +207,8 @@ character_event = {
 		}
 		ROOT = {
 			OR = {
-				culture_group = culture_group_edain
+				mep_has_nondunedain_human_culture = yes
 				culture_group = culture_group_numenorean
-				culture_group = culture_group_middlemen
-				culture_group = culture_group_forodwaith
-				culture_group = culture_group_haldadian
-				culture_group = culture_group_southron
-				culture_group = culture_group_easterling
 			}
 		}
 		NOT = { has_character_flag = orcmarriage1 }
@@ -229,9 +222,7 @@ character_event = {
 				limit = {
 					is_landed = no
 					OR = {
-						culture = culture_orkish
-						culture = culture_goblin
-						culture = culture_urukhai
+						mep_orc_goblin_culture = yes
 						culture = culture_troll
 						culture = culture_spider
 						religion = religion_orkish
@@ -262,13 +253,8 @@ character_event = {
 	
 	trigger = {
 		OR = {
-			culture_group = culture_group_edain
+			mep_has_nondunedain_human_culture = yes
 			culture_group = culture_group_numenorean
-			culture_group = culture_group_middlemen
-			culture_group = culture_group_forodwaith
-			culture_group = culture_group_haldadian
-			culture_group = culture_group_southron
-			culture_group = culture_group_easterling
 		}
 		trait = evil_side
 		NOT = { has_character_flag = orcmarriage2 }
@@ -421,9 +407,7 @@ character_event = {
 	    }
 	}  
 }
-# for Elves: triggered event for adding the 'marriedforever' trait that prevents remarriage
-# The attempt to trigger this from on_death results in repeated triggers, so this event is
-# currently disabled.
+# For Elves: triggered event for adding the 'marriedforever' trait that prevents remarriage
 character_event = {
 	id = mepmarriage.11
 	title = "EVTTITmepmarriage.11"  # Death is not the end
@@ -477,7 +461,7 @@ character_event = {
 	} 
 }
 
-# Human infertility. The previous version of this event just added it at 50, if the women became pregnant
+# Human infertility. Currently unused, should be revised if needed
 character_event = {
 	id = mepmarriage.14
 	title = "EVTTITmepmarriage.14"
@@ -488,7 +472,7 @@ character_event = {
 		
     trigger = {
 		age = 50
-		is_female=yes
+		is_female = yes
 		NOT = { has_character_flag = human_infertility }
         NOT = { trait = elf }
         NOT = { trait = dwarven }

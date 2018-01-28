@@ -2627,5 +2627,151 @@ character_event = {
 		wealth = 2000
 	}
 }
-
+##--------------------------------------------------------------------------------------
+# introductory events meant to guide a player into waiting for Durin's Bane to die
+character_event = {
+	id = dwarfconq.70
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	# just in case: make sure an appropriate recipient exists
+	trigger = {
+		c_erebor = {
+			holder_scope = {
+				culture = culture_longbeard
+				NOT = { trait = evil_side }
+			}
+		}
+	}
+	
+	# 3 different possible versions...
+	option = {
+		# for Dáin Ironfoot or Thorin III Stonehelm, if Burin has his annoying claim
+		if = {
+			limit = {
+				c_erebor = {
+					holder_scope = {
+						OR = { 
+							event_target:mep_chartarget_dainironfoot = { character = PREV }
+							event_target:mep_chartarget_thorinIIIstonehelm = { character = PREV }
+						}
+					}
+				}
+				event_target:mep_chartarget_burin = {
+					is_alive = yes
+					has_claim = k_misty_mountains
+				}	
+			}
+			c_erebor = {
+				holder_scope = {
+					long_character_event = { id = dwarfconq.71 }
+				}
+			}
+		}
+		# for Dáin Ironfoot or Thorin III Stonehelm, if Burin does NOT have that annoying claim
+		else_if = {
+			limit = {
+				c_erebor = {
+					holder_scope = {
+						OR = { 
+							event_target:mep_chartarget_dainironfoot = { character = PREV }
+							event_target:mep_chartarget_thorinIIIstonehelm = { character = PREV }
+						}
+					}
+				}
+				event_target:mep_chartarget_burin = {
+					OR = {
+						is_alive = no
+						NOT = { has_claim = k_misty_mountains }
+					}
+				}	
+			}
+			c_erebor = {
+				holder_scope = {
+					long_character_event = { id = dwarfconq.72 }
+				}
+			}
+		}
+		# the holder of Erebor is neither Dáin Ironfoot nor Thorin III Stonehelm
+		else = {
+			c_erebor = {
+				holder_scope = {
+					long_character_event = { id = dwarfconq.73 }
+				}
+			}
+		}
+		
+	}
+}
+# info event that metions Khazad-Dûm and optionally removes the claim of Burin son of Balin
+long_character_event = {
+	id = dwarfconq.71
+	title = EVTTITdwarfconq.71
+	desc = {
+		trigger = {
+			event_target:mep_chartarget_dainironfoot = { character = ROOT }
+		}
+		text = EVTDESCdwarfconq.71a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_chartarget_dainironfoot = { character = ROOT }
+		}
+		text = EVTDESCdwarfconq.71a
+	}
+	picture = "GFX_evt_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAdwarfconq.71
+		event_target:mep_chartarget_burin = {
+			remove_claim = k_misty_mountains
+			remove_claim = d_moria
+			remove_claim = c_moria
+		}
+	}
+	option = {
+		name = EVTOPTBdwarfconq.71
+		trigger = { ai = no }
+	}
+}
+# Similar to the above, but used when Burin is dead or has no claim (unlikley)
+long_character_event = {
+	id = dwarfconq.72
+	title = EVTTITdwarfconq.72
+	desc = {
+		trigger = {
+			event_target:mep_chartarget_dainironfoot = { character = ROOT }
+		}
+		text = EVTDESCdwarfconq.72a
+	}
+	desc = {
+		trigger = {
+			event_target:mep_chartarget_dainironfoot = { character = ROOT }
+		}
+		text = EVTDESCdwarfconq.72a
+	}
+	picture = "GFX_evt_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAdwarfconq.72
+	}
+}
+# Similar to the above, but used when the ruler of Erebor is neither Dáin Ironfoot nor Thorin III Stonehelm
+long_character_event = {
+	id = dwarfconq.73
+	title = EVTTITdwarfconq.73
+	desc = EVTDESCdwarfconq.73
+	picture = "GFX_evt_dwarves_hall"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAdwarfconq.72
+	}
+}
 

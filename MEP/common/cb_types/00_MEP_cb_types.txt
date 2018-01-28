@@ -390,46 +390,15 @@ wilderness = {
 		FROM = {
 			religion_group = religion_group_wilderness
 		}
-		# the person who declares the war belong to the right culture (unless not AI)		
+		# culture restrictions have been moved into ai_will_do		
 		ROOT = {
 			# right tier (unless independent)
 			OR = {
 				independent = yes
 				higher_tier_than  = count
 			}
-			# culture/species restrictions (the player is exempt)
-			OR = {
-				ai = no
-				custom_tooltip = {
-					text = TT_WILDERNESS_ATTACKER_RIGHT_CULTURESPECIES
-					# certain groups should never seize wilderness if they are ai
-					NOR = {
-						religion_group = religion_group_wilderness
-						AND = {
-							religion_group = religion_group_eruhini
-							NOT = { trait = evil_side }
-						}
-						culture = culture_balrog
-						culture = culture_dragons
-						culture = culture_spider
-						culture = culture_wight
-						AND = {
-							culture_group = culture_group_eru
-							NOT = { culture = culture_umaiar }
-							NOT = { trait = evil_side }
-						}
-						AND = {
-							religion_group = religion_group_enyd
-							NOT = { has_global_flag = mep_entwives_found }
-						}
-						culture = culture_druedain
-						culture = culture_lossoth
-						culture = culture_troll
-					}
-				}
-			}
+			NOT = { religion_group = religion_group_wilderness }
 		}
-
 	}
 
 	can_use_gui = {
@@ -445,7 +414,6 @@ wilderness = {
 	on_add = {
 		ROOT = { prestige = -250 }
 	}
-
 	
 	can_use_title = {
 		# county
@@ -596,6 +564,35 @@ wilderness = {
 	
 	ai_will_do = {
 		factor = 0.1
+		# AI matching the following should never launch wilderness wars
+		modifier = {
+			factor = 0
+			ROOT = {
+				NOR = {
+					culture = culture_druedain
+					culture = culture_lossoth
+					culture = culture_spider
+					culture = culture_troll
+					culture = culture_wight
+					AND = {
+						religion_group = religion_group_eruhini
+						NOT = { trait = evil_side }
+					}
+					culture = culture_balrog
+					culture = culture_dragons
+					AND = {
+						culture_group = culture_group_eru
+						NOT = { culture = culture_umaiar }
+						NOT = { trait = evil_side }
+					}
+					AND = {
+						religion_group = religion_group_enyd
+						NOT = { has_global_flag = mep_entwives_found }
+					}
+				}
+			}
+		}
+		# Races/Species that are not typically expansionist
 		modifier = {
 			factor = 0.1
 			ROOT = {
@@ -607,6 +604,7 @@ wilderness = {
 				}
 			}
 		}
+		# Is the ruler the sort to expand?
 		modifier = {
 			factor = 0.01
 			ROOT = {
@@ -643,10 +641,11 @@ ring_conquest = {
 			has_artifact = artifact_ring
 			independent = yes
 			NOT = { culture_group = culture_group_halfling }
+			NOT = { religion_group = religion_group_wilderness }
 			NOT = { same_realm = FROM }
 		}
 		FROM = { 
-			NOT = { religion = religion_wilderness } 
+			NOT = { religion_group = religion_wilderness_group } 
 		} 	
 	}
 
@@ -762,7 +761,9 @@ ring_conquest = {
 	}
 }
 
-
+# somewhat like wilderness, except for mountains, certain culture groups only, and
+# you can still attack if the owner is not wilderness, and the targeted county does
+# not have to be next door.
 mountains_invasion = {
 	name = CB_NAME_WILDERNESS_MOUNTAINS
 	war_name = WAR_NAME_WILDERNESS_MOUNTAINS
@@ -784,9 +785,7 @@ mountains_invasion = {
 			# culture/species restrictions (the player is not exempt)
 			OR = {
 				culture_group = culture_group_dwarves
-				culture = culture_urukhai
-				culture = culture_goblin
-				culture = culture_orkish
+				mep_orc_goblin_culture = yes
 				culture = culture_troll
 				culture = culture_balrog
 				culture = culture_dragons

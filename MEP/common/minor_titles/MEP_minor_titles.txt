@@ -133,13 +133,9 @@ title_co_ruler = {
 		has_character_flag = coruler
 		is_feudal = yes
 		OR = {
-			has_landed_title = e_steward_gondor
-			has_landed_title = e_gondor
-			has_landed_title = e_gondor_kinstrife
-			has_landed_title = e_arnor
+			mep_gondor_arnor_emp_trigger = yes
 			has_landed_title = k_arthedain
 			has_landed_title = k_cardolan
-			has_landed_title = e_reunited_kingdom
 		}
 	}
 		
@@ -264,11 +260,7 @@ title_captaingeneral = {
 	allowed_to_grant = {
 		is_feudal = yes
 		OR = {
-			has_landed_title = e_steward_gondor
-			has_landed_title = e_gondor
-			has_landed_title = e_gondor_kinstrife
-			has_landed_title = e_arnor
-			has_landed_title = e_reunited_kingdom
+			mep_gondor_arnor_emp_trigger = yes
 			has_landed_title = k_arthedain
 			has_landed_title = k_cardolan
 			}
@@ -315,11 +307,7 @@ title_wardenofthekeys = {
 
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor
-				has_landed_title = e_gondor_kinstrife
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -362,11 +350,7 @@ title_captainoffountain = {
 	}		
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor
-				has_landed_title = e_gondor_kinstrife
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -408,11 +392,7 @@ title_captaincitadel = {
 }		
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor_kinstrife
-				has_landed_title = e_gondor
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -454,11 +434,7 @@ title_wardenofwhitetree = {
 }		
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor_kinstrife
-				has_landed_title = e_gondor
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -500,11 +476,7 @@ title_admiralofpelargir = {
 }		
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor
-				has_landed_title = e_gondor_kinstrife
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -546,11 +518,7 @@ title_honorarycitadelguard = {
 }		
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor
-				has_landed_title = e_gondor_kinstrife
-			}
+			mep_has_gondor = yes
 		}
 	
 	
@@ -593,11 +561,7 @@ title_lieutenantgeneral = {
 		allowed_to_grant = {
 			is_feudal = yes
 			OR = {
-				has_landed_title = e_steward_gondor
-				has_landed_title = e_gondor
-				has_landed_title = e_gondor_kinstrife
-				has_landed_title = e_arnor
-				has_landed_title = e_reunited_kingdom
+				mep_gondor_arnor_emp_trigger = yes
 				has_landed_title = k_arthedain
 				has_landed_title = k_cardolan
 			}
@@ -1099,6 +1063,7 @@ title_master_of_the_horse = {
 			OR = {
 				has_landed_title = k_rohan
 				culture_group = culture_group_middlemen
+				culture_group = culture_group_nothmen
 				culture_group = culture_group_haldadian
 				culture_group = culture_group_easterling
 			}
@@ -1181,14 +1146,15 @@ title_lieutenantofbaraddur = {
 	monthly_prestige = 0.9
 	
 	allowed_to_hold = {}
-		allowed_to_grant = {
-			is_feudal = yes
-			has_landed_title = e_barad_dur
-			ROOT = {
+	
+	allowed_to_grant = {
+		is_feudal = yes
+		has_landed_title = e_barad_dur
+		ROOT = {
 			is_feudal = yes
 			has_landed_title = c_amon_lanc
 		}
-		}
+	}
 	
 	
 	gain_effect = {
@@ -1618,17 +1584,7 @@ title_azrakubarkkhazad = { #Master of (the) Axe Dwarves
 	}
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = { ##Can be granted in any dwarven kingdom
-				has_landed_title = e_durins_folk
-				has_landed_title = k_northeast_mountains
-				has_landed_title = k_broadbeams
-				has_landed_title = k_firebeards
-				has_landed_title = d_aglarond
-				has_landed_title = k_zirakdum
-				has_landed_title = k_stonefoot
-				has_landed_title = k_nurunkhizdin
-				has_landed_title = k_gundabad
-			}
+			mep_has_dwarf_realm = yes
 		}
 	
 	
@@ -1669,16 +1625,7 @@ title_azrakuukab = { #Master of (the) Quarrelers
 		}
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = { ##Can be granted in any dwarven kingdom
-				has_landed_title = k_northeast_mountains
-				has_landed_title = k_broadbeams
-				has_landed_title = k_firebeards
-				has_landed_title = d_aglarond
-				has_landed_title = k_zirakdum
-				has_landed_title = k_stonefoot
-				has_landed_title = k_nurunkhizdin
-				has_landed_title = k_gundabad
-			}
+			mep_has_dwarf_realm = yes
 		}
 	
 	gain_effect = {
@@ -1719,17 +1666,7 @@ title_azrakutherakaidag = { #Master of (the) Pikes
 	}
 		allowed_to_grant = {
 			is_feudal = yes
-			OR = { ##Can be granted in any dwarven kingdom
-				has_landed_title = e_durins_folk
-				has_landed_title = k_northeast_mountains
-				has_landed_title = k_broadbeams
-				has_landed_title = k_firebeards
-				has_landed_title = d_aglarond
-				has_landed_title = k_zirakdum
-				has_landed_title = k_stonefoot
-				has_landed_title = k_nurunkhizdin
-				has_landed_title = k_gundabad
-			}
+			mep_has_dwarf_realm = yes
 		}
 	
 	
@@ -1775,17 +1712,7 @@ title_azrakutalakh = { #Master of (the) Smiths
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -1830,17 +1757,7 @@ title_azrakuutrab = { #Master of (the) Crafters
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -1880,17 +1797,7 @@ title_umrazugabsh = { #Keeper of (the) Treasure
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -1931,17 +1838,7 @@ title_umrazuathak = { #Keeper of (the) Mines
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -1980,17 +1877,7 @@ title_azrakusabaj = { #Master of Spies/Scouts
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -2028,17 +1915,7 @@ title_uryat = { #A minor Advisor
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -2077,17 +1954,7 @@ title_azrakuafhan = { #Master of Lore
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -2131,18 +1998,7 @@ title_azrakuatarubkarath = { #Master of (the) Crafters of Runes
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom
-			has_landed_title = e_durins_folk
-			has_landed_title = k_misty_mountains
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -2182,18 +2038,7 @@ title_umrazudarag = { #Keeper of (the) Tombs
 	}
 	allowed_to_grant = {
 		is_feudal = yes
-		OR = { ##Can be granted in any dwarven kingdom (or aglarond)
-			has_landed_title = e_durins_folk
-			has_landed_title = k_misty_mountains
-			has_landed_title = k_northeast_mountains
-			has_landed_title = k_broadbeams
-			has_landed_title = k_firebeards
-			has_landed_title = d_aglarond
-			has_landed_title = k_zirakdum
-			has_landed_title = k_stonefoot
-			has_landed_title = k_nurunkhizdin
-			has_landed_title = k_gundabad
-		}
+		mep_has_dwarf_realm = yes
 	}
 	
 	
@@ -2258,14 +2103,8 @@ title_umrazudarag = { #Keeper of (the) Tombs
 #		OR = {
 #			AND = { #Limits position in courts with the following cultures.
 #				OR = {
-#					culture_group = culture_group_moriquendi
-#					culture_group = culture_group_umanyar
-#					culture_group = culture_group_amanyar
-#					culture_group = culture_group_quendi
-#					culture = culture_gondorian	
-#					culture = culture_dunedain
-#					culture = culture_arnorian
-#					culture = culture_numenorean
+#					mep_is_elf_culture = yes
+#					mep_is_good_numenorean_culture = yes
 #				}
 #				OR = { #Limits position to those with the healer traits.
 #					trait = herbalist
@@ -2276,27 +2115,15 @@ title_umrazudarag = { #Keeper of (the) Tombs
 #			}
 #			AND = {
 #				NOR = {
-#					culture_group = culture_group_moriquendi
-#					culture_group = culture_group_umanyar
-#					culture_group = culture_group_amanyar
-#					culture_group = culture_group_quendi
-#					culture = culture_gondorian	
-#					culture = culture_dunedain
-#					culture = culture_arnorian
-#					culture = culture_numenorean
+#					mep_is_elf_culture = yes
+#					mep_is_good_numenorean_culture = yes
 #				}
 #				learning = 15
 #			}
 #			AND = {
 #				NOR = {
-#					culture_group = culture_group_moriquendi
-#					culture_group = culture_group_umanyar
-#					culture_group = culture_group_amanyar
-#					culture_group = culture_group_quendi
-#					culture = culture_gondorian	
-#					culture = culture_dunedain
-#					culture = culture_arnorian
-#					culture = culture_numenorean
+#					mep_is_elf_culture = yes
+#					mep_is_good_numenorean_culture = yes
 #				}
 #				learning = 10
 #				OR = {

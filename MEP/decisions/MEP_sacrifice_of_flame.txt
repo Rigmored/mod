@@ -7,17 +7,15 @@ decisions = {
 			has_landed_title = c_moria
 			prisoner = no
 			has_character_flag = special_decisions_open
-			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-			}
+			mep_orc_goblin_culture = yes
 			NOT = { has_character_flag = flamesacrificestarted }
 			NOT = { has_character_flag = flamesacrificedone }
 			NOT = { has_character_flag = sacrificedone }
 			NOT = { trait = worship_balrog }
 			any_realm_character = {
 				culture = culture_balrog
-				religion = religion_eruhini
+				religion = religion_umaiar
+				trait = balrog
 			}
 		}
 		allow = {
@@ -25,10 +23,7 @@ decisions = {
 			in_command = no
 			prisoner = no
 			age = 16
-			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-			}
+			mep_orc_goblin_culture = yes
 			any_demesne_title = { is_occupied = no }
 			any_courtier = { prisoner = yes }
 		}

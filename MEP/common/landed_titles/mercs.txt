@@ -15,14 +15,14 @@ d_blackwolds = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	            any_realm_title = { title = k_angmar }
-				any_realm_title = { title = d_bree-land }
-				any_realm_title = { title = c_mendriyar } 
-				any_realm_title = { title = c_north_bree-land } 
-				any_realm_title = { title = c_west_bree-land }
-				any_realm_title = { title = c_bree-land } 
-	}
+		OR = {
+	        any_realm_title = { title = k_angmar }
+			any_realm_title = { title = d_bree-land }
+			any_realm_title = { title = c_mendriyar } 
+			any_realm_title = { title = c_north_bree-land } 
+			any_realm_title = { title = c_west_bree-land }
+			any_realm_title = { title = c_bree-land } 
+		}
 	}
 	mercenary_type = blackwolds_mercenaries
 }
@@ -41,8 +41,8 @@ d_ruffians = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	OR = {
+		OR = {
+			OR = {
 				any_realm_title = { title = d_bree-land }
 				any_realm_title = { title = c_mendriyar } 
 				any_realm_title = { title = c_north_bree-land } 
@@ -53,10 +53,10 @@ d_ruffians = {
 				any_realm_title = { title = d_north_farthing }
 				any_realm_title = { title = d_west_farthing }
 				any_realm_title = { title = d_south_farthing }
-	}		
-	trait = evil_side
-	culture = culture_dunlending
-	}
+			}		
+			trait = evil_side
+			culture = culture_dunlending
+		}
 	}
 	mercenary_type = ruffians_mercenaries
 }
@@ -111,6 +111,7 @@ d_nargubraz = {
 	}
 	mercenary_type = nargubraz_mercenaries
 }
+# The only evil Dwarves in the game
 d_mornaugrim = {
 	color = { 102 90 90 }
 	color2 = {  0 0 0 }
@@ -125,31 +126,30 @@ d_mornaugrim = {
 	independent = yes
 	allow = {
 	
-	OR = {
-				any_realm_title = { title = k_mordor } 
-				any_realm_title = { title = d_mordor } 
-				any_realm_title = { title = c_barad_dur }
-				any_realm_title = { title = d_north_gorgoroth } 
-				any_realm_title = { title = k_nurn }
-				any_realm_title = { title = d_lugskai }
-				any_realm_title = { title = d_nurn }
-				any_realm_title = { title = d_emyn_burzum }
-				any_realm_title = { title = d_neburkha }
-				any_realm_title = { title = k_khand }
-				any_realm_title = { title = d_khand } 
-				any_realm_title = { title = d_laorki } 
-				any_realm_title = { title = d_ubesesh }
-				any_realm_title = { title = k_nurad } 
-				any_realm_title = { title = d_nurad }
-				any_realm_title = { title = d_harmal }
+		OR = {
+			any_realm_title = { title = k_mordor } 
+			any_realm_title = { title = d_mordor } 
+			any_realm_title = { title = c_barad_dur }
+			any_realm_title = { title = d_north_gorgoroth } 
+			any_realm_title = { title = k_nurn }
+			any_realm_title = { title = d_lugskai }
+			any_realm_title = { title = d_nurn }
+			any_realm_title = { title = d_emyn_burzum }
+			any_realm_title = { title = d_neburkha }
+			any_realm_title = { title = k_khand }
+			any_realm_title = { title = d_khand } 
+			any_realm_title = { title = d_laorki } 
+			any_realm_title = { title = d_ubesesh }
+			any_realm_title = { title = k_nurad } 
+			any_realm_title = { title = d_nurad }
+			any_realm_title = { title = d_harmal }
 	
-	}
-	OR = {
-				culture_group = culture_group_melkor
-				culture = culture_maiar
-				trait = evil_side
-	
-	}
+		}
+		OR = {
+			culture_group = culture_group_melkor
+			culture = culture_umaiar
+			trait = evil_side
+		}
 
 	}
 	mercenary_type = mornaugrim_mercenaries
@@ -170,16 +170,14 @@ d_dourhands = {
 	independent = yes
 	allow = {
 	
-	OR = {
-				any_realm_title = { title = d_north_luin } 
-				any_realm_title = { title = d_south_luin }
-	
-	}
-	OR = {
-				culture_group = culture_group_dwarves
-				trait = evil_side
-	
-	}
+		OR = {
+			any_realm_title = { title = d_north_luin } 
+			any_realm_title = { title = d_south_luin }
+		}
+		OR = {
+			culture_group = culture_group_dwarves
+			trait = evil_side
+		}
 	}
 	mercenary_type = dourhands_mercenaries
 }
@@ -197,17 +195,17 @@ d_airund = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture_group = culture_group_haldadian
-	any_realm_title = { title = k_enedwaith }
-	any_realm_title = { title = d_dunland } 
-	any_realm_title = { title = d_enedwaith }
-	any_realm_title = { title = d_angren }
-	any_realm_title = { title = d_gwathlo }
-	any_realm_title = { title = k_isengard } 
-	any_realm_title = { title = d_isengard }
-	any_realm_title = { title = d_isenmarch }
-	}
+		OR = {
+			culture_group = culture_group_haldadian
+			any_realm_title = { title = k_enedwaith }
+			any_realm_title = { title = d_dunland } 
+			any_realm_title = { title = d_enedwaith }
+			any_realm_title = { title = d_angren }
+			any_realm_title = { title = d_gwathlo }
+			any_realm_title = { title = k_isengard } 
+			any_realm_title = { title = d_isengard }
+			any_realm_title = { title = d_isenmarch }
+		}
 	}
 	mercenary_type = airund_mercenaries
 }
@@ -225,23 +223,23 @@ d_rivermen_clans = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture_group = culture_group_haldadian
+		OR = {
+			culture_group = culture_group_haldadian
 	
-	any_realm_title = { title = d_girithlin }
-	any_realm_title = { title = d_dol_caladir }
-	any_realm_title = { title = d_dol_tiinereb }
-	any_realm_title = { title = d_faerdor }
-	any_realm_title = { title = d_saralainn }
-	any_realm_title = { title = k_enedwaith }
-	any_realm_title = { title = d_dunland } 
-	any_realm_title = { title = d_enedwaith }
-	any_realm_title = { title = d_angren }
-	any_realm_title = { title = d_gwathlo }
-	any_realm_title = { title = k_isengard } 
-	any_realm_title = { title = d_isengard }
-	any_realm_title = { title = d_isenmarch }
-	}
+			any_realm_title = { title = d_girithlin }
+			any_realm_title = { title = d_dol_caladir }
+			any_realm_title = { title = d_dol_tiinereb }
+			any_realm_title = { title = d_faerdor }
+			any_realm_title = { title = d_saralainn }
+			any_realm_title = { title = k_enedwaith }
+			any_realm_title = { title = d_dunland } 
+			any_realm_title = { title = d_enedwaith }
+			any_realm_title = { title = d_angren }
+			any_realm_title = { title = d_gwathlo }
+			any_realm_title = { title = k_isengard } 
+			any_realm_title = { title = d_isengard }
+			any_realm_title = { title = d_isenmarch }
+		}
 	}
 	mercenary_type = rivermen_mercenaries
 }
@@ -259,17 +257,17 @@ d_circinn_clans = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture_group = culture_group_haldadian
-	any_realm_title = { title = k_enedwaith }
-	any_realm_title = { title = d_dunland } 
-	any_realm_title = { title = d_enedwaith }
-	any_realm_title = { title = d_angren }
-	any_realm_title = { title = d_gwathlo }
-	any_realm_title = { title = k_isengard } 
-	any_realm_title = { title = d_isengard }
-	any_realm_title = { title = d_isenmarch }
-	}
+		OR = {
+			culture_group = culture_group_haldadian
+			any_realm_title = { title = k_enedwaith }
+			any_realm_title = { title = d_dunland } 
+			any_realm_title = { title = d_enedwaith }
+			any_realm_title = { title = d_angren }
+			any_realm_title = { title = d_gwathlo }
+			any_realm_title = { title = k_isengard } 
+			any_realm_title = { title = d_isengard }
+			any_realm_title = { title = d_isenmarch }
+		}
 	}
 	mercenary_type = circinn_mercenaries
 }
@@ -397,25 +395,12 @@ d_gadrauhteis = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	culture = culture_woodsmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			culture = culture_woodsmen
+			culture = culture_dorwinrim
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = gadrauhteis_mercenaries
 }
@@ -433,24 +418,10 @@ d_eolhgardings = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = eolhgardings_mercenaries
 }
@@ -468,24 +439,10 @@ d_beoralas = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = beoralas_mercenaries
 }
@@ -503,24 +460,10 @@ d_ontheras = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = ontheras_mercenaries
 }
@@ -538,24 +481,10 @@ d_dryhtenas = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = dryhtenas_mercenaries
 }
@@ -573,24 +502,10 @@ d_eoedreas = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = eoedreas_mercenaries
 }
@@ -608,24 +523,10 @@ d_padricas = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	culture = culture_northmen
-	any_realm_title = { title = k_dale }
-	any_realm_title = { title = d_dale } 
-	any_realm_title = { title = c_dale }
-	any_realm_title = { title = d_grasgard }
-	any_realm_title = { title = d_carnen }
-	any_realm_title = { title = k_brownlands } 
-	any_realm_title = { title = d_haradnur }
-	any_realm_title = { title = d_brownlands }
-	any_realm_title = { title = k_rhovanion }
-	any_realm_title = { title = d_dor_rhunen }
-	any_realm_title = { title = d_rhovanion }
-	any_realm_title = { title = d_celduin }
-	any_realm_title = { title = k_dorwinion }
-	any_realm_title = { title = d_riavod }
-	any_realm_title = { title = d_uldonavan }
-	}
+		OR = {
+			culture = culture_northmen
+			mep_has_rhovanion_title = yes
+		}
 	}
 	mercenary_type = padricas_mercenaries
 }
@@ -663,11 +564,11 @@ d_snaga_clans = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-                culture_group = culture_group_melkor
-				culture = culture_maiar
-				trait = evil_side	
-	}
+		OR = {
+            culture_group = culture_group_melkor
+			culture = culture_umaiar
+			trait = evil_side	
+		}
 	}
 	mercenary_type = snaga_mercenaries
 }
@@ -763,19 +664,16 @@ d_avari_wandering = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-                culture_group = culture_group_quendi
-			    culture_group = culture_group_amanyar
-			    culture_group = culture_group_umanyar
-			    culture_group = culture_group_moriquendi
-				any_realm_title = { title = k_eregion }
-	            any_realm_title = { title = k_mirkwood }
-	            any_realm_title = { title = k_elves }
-	            any_realm_title = { title = k_avari }
-	            any_realm_title = { title = k_mithlond }
-				any_realm_title = { title = k_harlindon }
-	            any_realm_title = { title = k_forlindon }
-	}
+		OR = {
+            mep_is_elf_culture = yes
+			any_realm_title = { title = k_eregion }
+	        any_realm_title = { title = k_mirkwood }
+	        any_realm_title = { title = k_elves }
+	        any_realm_title = { title = k_avari }
+	        any_realm_title = { title = k_mithlond }
+			any_realm_title = { title = k_harlindon }
+	        any_realm_title = { title = k_forlindon }
+		}
 	}
 	mercenary_type = avari_mercenaries
 }
@@ -792,22 +690,22 @@ d_silvan_tribes = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-				any_realm_title = { title = k_eregion }
-	            any_realm_title = { title = k_mirkwood }
-	            any_realm_title = { title = k_elves }
-				any_realm_title = { title = d_emyn_guldur }
-				any_realm_title = { title = d_mirkwood }
-				any_realm_title = { title = d_emyn_lasgalen }
-	            any_realm_title = { title = d_cell_angol }
-	            any_realm_title = { title = k_east_lorien }
-				any_realm_title = { title = d_lorien }
-				any_realm_title = { title = d_nimrodel }
-				any_realm_title = { title = d_rivendell }
-				any_realm_title = { title = d_eregion }
-				any_realm_title = { title = d_ost_in_edhil }
-	}
-	NOT = { trait = evil_side }
+		OR = {
+			any_realm_title = { title = k_eregion }
+	        any_realm_title = { title = k_mirkwood }
+	        any_realm_title = { title = k_elves }
+			any_realm_title = { title = d_emyn_guldur }
+			any_realm_title = { title = d_mirkwood }
+			any_realm_title = { title = d_emyn_lasgalen }
+	        any_realm_title = { title = d_cell_angol }
+	        any_realm_title = { title = k_east_lorien }
+			any_realm_title = { title = d_lorien }
+			any_realm_title = { title = d_nimrodel }
+			any_realm_title = { title = d_rivendell }
+			any_realm_title = { title = d_eregion }
+			any_realm_title = { title = d_ost_in_edhil }
+		}
+		NOT = { trait = evil_side }
 	}
 	mercenary_type = silvan_mercenaries
 }
@@ -1019,10 +917,10 @@ d_ninniden_peoples = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = d_entyn-i-onodlo }
-	any_realm_title = { title = d_nindalf }
-	}
+		OR = {
+			any_realm_title = { title = d_entyn-i-onodlo }
+			any_realm_title = { title = d_nindalf }
+		}
 	}
 	mercenary_type = ninniden_mercenaries
 }
@@ -1088,11 +986,11 @@ d_umlir_tribes = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = d_forochel }
-	culture = culture_lossoth
-	religion = religion_lossoth
-	}
+		OR = {
+			any_realm_title = { title = d_forochel }
+			culture = culture_lossoth
+			religion = religion_lossoth
+		}
 	}
 	mercenary_type = umlir_mercenaries
 }
@@ -1154,7 +1052,7 @@ d_kibic_tribes = {
 	primary = yes
 	independent = yes
 	allow = {
-	any_realm_title = { title = k_harondor }
+		any_realm_title = { title = k_harondor }
 	}
 	mercenary_type = kibic_mercenaries
 }
@@ -1171,11 +1069,11 @@ d_urdwan_nomads = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = k_harondor }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	}
+		OR = {
+			any_realm_title = { title = k_harondor }
+			culture_group = culture_group_southron
+			religion_group = religion_group_hildor
+		}
 	}
 	mercenary_type = urdwan_mercenaries
 }
@@ -1193,18 +1091,7 @@ d_men_bozisha = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = e_harad }
-	any_realm_title = { title = k_chelkar }
-	any_realm_title = { title = k_haruzan }
-	any_realm_title = { title = k_akhor }
-	any_realm_title = { title = k_pezarsan }
-	any_realm_title = { title = k_lurmsakun }
-	any_realm_title = { title = k_arysis }
-	any_realm_title = { title = k_haradwaith }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	}
+		mep_southron_merc_trigger = yes
 	}
 	mercenary_type = bozisha_mercenaries
 }
@@ -1222,18 +1109,7 @@ d_koanoze_peoples = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = e_harad }
-	any_realm_title = { title = k_chelkar }
-	any_realm_title = { title = k_haruzan }
-	any_realm_title = { title = k_akhor }
-	any_realm_title = { title = k_pezarsan }
-	any_realm_title = { title = k_lurmsakun }
-	any_realm_title = { title = k_arysis }
-	any_realm_title = { title = k_haradwaith }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	}
+		mep_southron_merc_trigger = yes
 	}
 	mercenary_type = koanoze_mercenaries
 }
@@ -1251,12 +1127,12 @@ d_mardruak_men = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = k_bellakar }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	culture = culture_black_numenorean
-	}
+		OR = {
+			any_realm_title = { title = k_bellakar }
+			culture_group = culture_group_southron
+			religion_group = religion_group_hildor
+			culture = culture_black_numenorean
+		}
 	}
 	mercenary_type = mardruak_mercenaries
 }
@@ -1274,18 +1150,7 @@ d_aukuag_clans = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = e_harad }
-	any_realm_title = { title = k_chelkar }
-	any_realm_title = { title = k_haruzan }
-	any_realm_title = { title = k_akhor }
-	any_realm_title = { title = k_pezarsan }
-	any_realm_title = { title = k_lurmsakun }
-	any_realm_title = { title = k_arysis }
-	any_realm_title = { title = k_haradwaith }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	}
+		mep_southron_merc_trigger = yes
 	}
 	mercenary_type = aukuag_mercenaries
 }
@@ -1303,18 +1168,7 @@ d_ayten_clans = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = e_harad }
-	any_realm_title = { title = k_chelkar }
-	any_realm_title = { title = k_haruzan }
-	any_realm_title = { title = k_akhor }
-	any_realm_title = { title = k_pezarsan }
-	any_realm_title = { title = k_lurmsakun }
-	any_realm_title = { title = k_arysis }
-	any_realm_title = { title = k_haradwaith }
-	culture_group = culture_group_southron
-	religion_group = religion_group_hildor
-	}
+		mep_southron_merc_trigger = yes
 	}
 	mercenary_type = ayten_mercenaries
 }
@@ -1333,15 +1187,15 @@ d_corsairs_of_umbar = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = c_umbar }
-	trait = evil_side
-	culture = culture_maiar
-	culture = culture_black_numenorean
-	religion_group = religion_group_melkor
-	culture_group = culture_group_easterling
-	culture_group = culture_group_southron
-	}
+		OR = {
+			any_realm_title = { title = c_umbar }
+			trait = evil_side
+			culture = culture_umaiar
+			culture = culture_black_numenorean
+			religion_group = religion_group_melkor
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+		}
 	}
 	mercenary_type = corsairs_of_umbar_mercenaries
 }
@@ -1358,17 +1212,17 @@ d_raiders_of_bellakar = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = d_mardruak }
-	any_realm_title = { title = d_ashatur }
-	any_realm_title = { title = k_bellakar }
-	trait = evil_side
-	culture = culture_maiar
-	culture = culture_black_numenorean
-	religion_group = religion_group_melkor
-	culture_group = culture_group_easterling
-	culture_group = culture_group_southron
-	}
+		OR = {
+			any_realm_title = { title = d_mardruak }
+			any_realm_title = { title = d_ashatur }
+			any_realm_title = { title = k_bellakar }
+			trait = evil_side
+			culture = culture_umaiar
+			culture = culture_black_numenorean
+			religion_group = religion_group_melkor
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+		}
 	}
 	mercenary_type = raiders_of_bellakar_mercenaries
 }
@@ -1385,16 +1239,16 @@ d_pirates_of_mirlond = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = d_mirlond }
-	any_realm_title = { title = c_mirlond }
-	trait = evil_side
-	culture = culture_maiar
-	culture = culture_black_numenorean
-	religion_group = religion_group_melkor
-	culture_group = culture_group_easterling
-	culture_group = culture_group_southron
-	}
+		OR = {
+			any_realm_title = { title = d_mirlond }
+			any_realm_title = { title = c_mirlond }
+			trait = evil_side
+			culture = culture_umaiar
+			culture = culture_black_numenorean
+			religion_group = religion_group_melkor
+			culture_group = culture_group_easterling
+			culture_group = culture_group_southron
+		}
 	}
 	mercenary_type = pirates_of_mirlond_mercenaries
 }
@@ -1411,12 +1265,13 @@ d_pelargir_company = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = c_pelargir }
-	trait = good_side
-	culture = culture_dunedain
-	culture = culture_gondorian
-	}
+		OR = {
+			any_realm_title = { title = c_pelargir }
+			trait = good_side
+			culture = culture_dunedain
+			culture = culture_gondorian
+			culture = culture_gondorian_middlemen
+		}
 	}
 	mercenary_type = pelargir_company_mercenaries
 }
@@ -1433,12 +1288,12 @@ d_dol_amroth_company = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = c_dol_amroth }
-	trait = good_side
-	culture = culture_dunedain
-	culture = culture_gondorian
-	}
+		OR = {
+			any_realm_title = { title = c_dol_amroth }
+			trait = good_side
+			culture = culture_dunedain
+			culture = culture_gondorian
+		}
 	}
 	mercenary_type = dol_amroth_company_mercenaries
 }
@@ -1455,13 +1310,14 @@ d_tolfalas_company = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = c_tolfalas }
-	any_realm_title = { title = c_south_tolfalas }
-	trait = good_side
-	culture = culture_dunedain
-	culture = culture_gondorian
-	}
+		OR = {
+			any_realm_title = { title = c_tolfalas }
+			any_realm_title = { title = c_south_tolfalas }
+			trait = good_side
+			culture = culture_dunedain
+			culture = culture_gondorian
+			culture = culture_gondorian_middlemen
+		}
 	}
 	mercenary_type = tolfalas_company_mercenaries
 }
@@ -1478,11 +1334,11 @@ d_mithlond_company = {
 	primary = yes
 	independent = yes
 	allow = {
-	OR = {
-	any_realm_title = { title = c_mithlond }
-	trait = good_side
-	religion_group = religion_group_eldar
-	}
+		OR = {
+			any_realm_title = { title = c_mithlond }
+			trait = good_side
+			religion_group = religion_group_eldar
+		}
 	}
 	mercenary_type = mithlond_company_mercenaries
 }

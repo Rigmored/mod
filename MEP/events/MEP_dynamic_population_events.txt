@@ -32,6 +32,7 @@ character_event = {
 				owner = { character = ROOT }
 				#disallows event if province has these modifiers
 				NOT = { mep_has_depopulated_modifier = yes }
+				NOT = { mep_being_purged_trigger = yes }
 				# event requires these modifiers
 				mep_has_properity_modifier = yes 
 				mep_has_increasable_popmod_trigger = yes
@@ -1396,19 +1397,11 @@ character_event = {
 			limit = {
 				owner = {
 					OR = {
-						culture_group = culture_group_edain
-						culture_group = culture_group_middlemen
-						culture_group = culture_group_forodwaith
-						culture_group = culture_group_haldadian
-						culture_group = culture_group_southron
-						culture_group = culture_group_easterling
+						mep_has_nondunedain_human_culture = yes
 						culture_group = culture_group_halfling
 						culture_group = culture_group_melkor
 						culture_group = culture_group_numenorean
-						culture_group = culture_group_quendi
-						culture_group = culture_group_amanyar
-						culture_group = culture_group_umanyar
-						culture_group = culture_group_moriquendi
+						mep_is_elf_culture = yes
 						culture_group = culture_group_dwarves
 						culture = culture_umaiar
 					}

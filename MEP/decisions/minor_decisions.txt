@@ -113,9 +113,8 @@ decisions = {
 			prisoner = no
 			has_character_flag = festivity_decisions_open
 			OR = {
-				culture = culture_sindar
-				culture = culture_silvan
-				culture = culture_nandor
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_aumanyar
 			}
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
@@ -129,9 +128,8 @@ decisions = {
 		allow = {
 			war = no
 			OR = {
-				culture = culture_sindar
-				culture = culture_silvan
-				culture = culture_nandor
+				culture_group = culture_group_umanyar
+				culture_group = culture_group_aumanyar
 			}
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
@@ -223,11 +221,7 @@ decisions = {
 			is_feudal = yes
 			prisoner = no
 			has_character_flag = festivity_decisions_open
-			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-				culture = culture_urukhai
-			}
+			mep_orc_goblin_culture = yes
 			NOT = { has_character_modifier = holding_large_feast }
 			NOT = { has_character_modifier = large_feast_timer }
 			NOT = { has_character_modifier = fabulous_feast }
@@ -239,11 +233,7 @@ decisions = {
 		}
 		allow = {
 			war = no
-			OR = {
-				culture = culture_orkish
-				culture = culture_goblin
-				culture = culture_urukhai
-			}
+			mep_orc_goblin_culture = yes
 			any_demesne_title = { is_occupied = no }
 			prisoner = no
 			scaled_wealth = 0.20
@@ -325,9 +315,8 @@ decisions = {
 				religion = religion_haldadian
 				religion = religion_ishmalogim
 				culture = culture_noldor
-				culture = culture_silvan
-				culture = culture_nandor
 				culture = culture_sindar
+				culture_group = culture_group_aumanyar
 			}
 			NOT = { has_character_modifier = holding_grand_hunt }
 			NOT = { has_character_flag = do_not_disturb }
@@ -343,9 +332,8 @@ decisions = {
 				religion = religion_haldadian
 				religion = religion_ishmalogim
 				culture = culture_noldor
-				culture = culture_silvan
 				culture = culture_sindar
-				culture = culture_nandor
+				culture_group = culture_group_aumanyar
 			}
 			war = no
 			any_demesne_title = { is_occupied = no }

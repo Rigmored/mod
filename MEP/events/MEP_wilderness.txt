@@ -310,7 +310,7 @@ character_event = {
 	
 	option = {
 		name = "colonisation8B" #Yes, send in some Gondorian Middle-Men.
-		trigger = { NOT = { culture = culture_black_numenorean } }
+		trigger = { mep_is_good_numenorean_culture = yes }
 		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
@@ -333,7 +333,7 @@ character_event = {
 		
 	option = {
 		name = "colonisation8C" #Yes, send in some Arnorian Middle-Men.
-		trigger = { NOT = { culture = culture_black_numenorean } }
+		trigger = { mep_is_good_numenorean_culture = yes }
 		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
@@ -356,7 +356,7 @@ character_event = {
 
 	option = {
 		name = "colonisation8D" #Yes, send in some Southrons instead.
-		trigger = { culture = culture_black_numenorean }
+		trigger = { mep_is_black_numenorean_culture = yes }
 		mep_20_10_yr_colonist_effect = yes
 		job_treasurer = {
 			location = {
@@ -887,8 +887,9 @@ character_event = {
 #----------------------------------------------------------------------------------------------------------
 # additional elven colonization events
 # Associated culture values : 
-# Non-High Elves : 0 Silvan, 1 Sindar, 2 Falathrim, 3 Avari, 4 Minyar, 5 Tatyar, 6 Nelyar, 7 Teleri, 8 Doriathrim,
-# 9 Eglath, 10 Mithrim, 11 Nandor, 12 Laegrim (Values higher than 3 are Elder Days cultures, but I'll stick them in anyways)
+# Non-High Elves : 0 Silvan, 1 Sindar, 2 Falathrim, 3 Avari, 4 Minyar, 5 Tatyar, 6 Nelyar, 7 Teleri, 10 Sirannar,
+# 11 Nandor, 12 Laegrim
+# (Values higher than 3, except for 10,11, are Elder Days cultures, but I'll stick them in anyways)
 character_event = {
 	id = colonisation.30
 	desc = {
@@ -924,9 +925,7 @@ character_event = {
 						culture_tatyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  5 } } }
 						culture_nelyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  6 } } }
 						culture_teleri		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  7 } } }
-						culture_doriathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  8 } } }
-						culture_eglath		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  9 } } }
-						culture_mithrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
+						culture_sirannar	= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
 						culture_nandor		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 11 } } }
 						culture_laegrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 12 } } }
 					}
@@ -1077,14 +1076,8 @@ province_event = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 7 } }
 			culture =  culture_teleri }
 		if = {
-			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 8 } }
-			culture =  culture_doriathrim }
-		if = {
-			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 9 } }
-			culture =  culture_eglath }
-		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 10 } }
-			culture =  culture_mithrim }
+			culture =  culture_sirannar }
 		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 11 } }
 			culture =  culture_nandor }
@@ -1170,8 +1163,9 @@ province_event = {
 
 ##AI wont use the decisions properly, we make them colonize via event instead - for Elves (no High Elves colonization)
 # Associated culture values : 
-# Non High-Elves : 0 Silvan, 1 Sindar, 2 Falathrim, 3 Avari, 4 Minyar, 5 Tatyar, 6 Nelyar, 7 Teleri, 8 Doriathrim,
-# 9 Eglath, 10 Mithrim, 11 Nandor, 12 Laegrim (Values higher than 3 are Elder Days cultures, but I'll stick them in anyways)
+# Non High-Elves : 0 Silvan, 1 Sindar, 2 Falathrim, 3 Avari, 4 Minyar, 5 Tatyar, 6 Nelyar, 7 Teleri,
+# 10 Sirannar, 11 Nandor, 12 Laegrim
+# Values higher than 3 (except for 10,11) are Elder Days cultures, but I'll stick them in anyways)
 character_event = {
 	id = colonisation.35
 	desc = "colonisation11desc" #doesnt matter, only AI sees this
@@ -1228,9 +1222,7 @@ character_event = {
 					culture_tatyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  5 } } }
 					culture_nelyar		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  6 } } }
 					culture_teleri		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  7 } } }
-					culture_doriathrim	= { PREV = { set_variable = { which = mepvar_colonizingculture value =  8 } } }
-					culture_eglath		= { PREV = { set_variable = { which = mepvar_colonizingculture value =  9 } } }
-					culture_mithrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
+					culture_sirannar	= { PREV = { set_variable = { which = mepvar_colonizingculture value = 10 } } }
 					culture_nandor		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 11 } } }
 					culture_laegrim		= { PREV = { set_variable = { which = mepvar_colonizingculture value = 12 } } }
 				}
@@ -1958,7 +1950,7 @@ province_event = {
 		}
 		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 5 } }
-			culture = culture_wargs
+			culture = culture_kul_uruk
 		}
 		if = {
 			limit = { is_variable_equal = { which = mepvar_colonizingculture value = 6 } }

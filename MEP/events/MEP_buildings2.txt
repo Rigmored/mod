@@ -122,7 +122,7 @@ character_event = {
 					if = {
 						limit = {
 							OR = { mep_horsey_people_culture = yes
-								mep_general_buildings_human = yes }
+								mep_generic_buildings_culture = yes }
 						}
 						province_event = {	id = buildings.209 }
 					}
@@ -253,13 +253,8 @@ province_event = {
 					}
 				}
 				# Silvan
-				if = { limit = {
-						OR = {
-							culture = culture_silvan
-							culture = culture_nandor
-							culture = culture_laegrim
-						}
-					}
+				if = {
+					limit = { culture_group = culture_group_aumanyar }
 					any_province_holding = {
 						if = {
 							limit = { holding_type = castle}
@@ -297,15 +292,8 @@ province_event = {
 					}
 				}
 				# Sindar / Falathrim
-				if = { limit = {
-						OR = {
-							culture = culture_sindar
-							culture = culture_doriathrim
-							culture = culture_eglath
-							culture = culture_falathrim
-							culture = culture_mithrim
-						}
-					}
+				if = {
+					limit = { culture_group = culture_group_umanyar }
 					any_province_holding = {
 						if = {
 							limit = { holding_type = castle}
@@ -425,13 +413,8 @@ province_event = {
 					}
 				}
 				# Silvan
-				if = { limit = {
-						OR = {
-							culture = culture_silvan
-							culture = culture_nandor
-							culture = culture_laegrim
-						}
-					}
+				if = {
+					limit = { culture_group = culture_group_aumanyar }
 					any_province_holding = {
 						if = {
 							limit = { holding_type = castle}
@@ -469,15 +452,8 @@ province_event = {
 					}
 				}
 				# Sindar / Falathrim
-				if = { limit = {
-						OR = {
-							culture = culture_sindar
-							culture = culture_doriathrim
-							culture = culture_eglath
-							culture = culture_falathrim
-							culture = culture_mithrim
-						}
-					}
+				if = {
+					limit = { culture_group = culture_group_umanyar }
 					any_province_holding = {
 						if = {
 							limit = { holding_type = castle}
@@ -1328,8 +1304,7 @@ province_event = {
 			}
 			# Orcs and Uruk-Hai
 			if = { limit = {
-					OR = { culture = culture_orkish
-							culture = culture_urukhai }
+					mep_orc_culture = yes
 				}
 				any_province_holding = {
 					if = {
@@ -1424,8 +1399,7 @@ province_event = {
 				}
 				# Orcs and Uruk-Hai
 				if = { limit = {
-						OR = { culture = culture_orkish
-								culture = culture_urukhai }
+						mep_orc_culture = yes
 					}
 					any_province_holding = {
 						if = {
@@ -1529,8 +1503,7 @@ province_event = {
 				}
 				# Orcs and Uruk-Hai
 				if = { limit = {
-						OR = { culture = culture_orkish
-								culture = culture_urukhai }
+						mep_orc_culture = yes
 					}
 					any_province_holding = {
 						if = {

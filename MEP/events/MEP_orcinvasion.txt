@@ -16,6 +16,7 @@ character_event = {
 	desc = "OK"
 	picture = "GFX_evt_crusaders"
 	border = GFX_event_normal_frame_war
+	religion_group = religion_group_melkor
 	
 	#hide_window = yes # Only fires for unplayable landless characters
 	
@@ -27,11 +28,7 @@ character_event = {
 	trigger = {
 		has_dlc = "The Old Gods"
 		
-		OR = {
-		culture = culture_orkish
-		culture = culture_urukhai
-		culture = culture_goblin
-		}
+		mep_orc_goblin_culture = yes
 		
 		is_ruler = no
 		
@@ -589,12 +586,7 @@ character_event = {
 		
 		NOT = { trait = content }
 		NOT = { trait = craven }
-		
-		OR = { # Only these for now
-		culture = culture_orkish
-		culture = culture_urukhai
-		culture = culture_goblin
-		}
+		mep_orc_goblin_culture = yes
 		
 		NOT = { # Somewhat clunky way of checking that the character does not stand to inherit any titles
 			any_heir_title = {
