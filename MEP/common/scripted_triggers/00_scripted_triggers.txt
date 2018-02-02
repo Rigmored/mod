@@ -815,7 +815,7 @@ has_secret_religion_trait_trigger = {
 can_be_mercenary_leader_potential_trigger = {
 	prisoner = no
 	is_ruler = no
-	is_adult = yes
+	mep_is_adult = yes
 	
 	NOR = { 
 		trait = incapable
@@ -846,7 +846,7 @@ can_be_mercenary_leader_potential_trigger = {
 }
 #Used with character interaction to replace merc leader. DO NOT REMOVE
 can_be_mercenary_leader_allow_trigger = {
-	is_adult = yes
+	mep_is_adult = yes
 	liege = { character = FROM }
 	custom_tooltip = {
 		text = mercenary_martial_education_tooltip
@@ -982,7 +982,7 @@ can_be_chancellor_trigger = {
 					}
 				}
 			}
-			is_adult = yes
+			mep_is_adult = yes
 		}
 		has_character_flag = special_chancellor
 	}
@@ -1043,7 +1043,7 @@ can_be_marshal_trigger = {
 			#	NOT = { religion = hindu }
 			#	trait = kshatriya
 			#}
-			is_adult = yes
+			mep_is_adult = yes
 		}
 		has_character_flag = special_marshal
 	}
@@ -1101,7 +1101,7 @@ can_be_treasurer_trigger = {
 					}
 				}
 			}
-			is_adult = yes
+			mep_is_adult = yes
 		}
 		has_character_flag = special_treasurer
 	}
@@ -1172,7 +1172,7 @@ can_be_spymaster_trigger = {
 					}
 				}
 			}
-			is_adult = yes
+			mep_is_adult = yes
 		}
 		has_character_flag = special_spymaster
 	}
@@ -1197,7 +1197,7 @@ can_be_spiritual_trigger = {
 	}
 	OR = {
 		AND = {
-			is_adult = yes
+			mep_is_adult = yes
 			OR = {
 				is_female = no
 				religion_allows_female_temple_holders = yes
@@ -1284,7 +1284,7 @@ can_be_councilmember_king_trigger = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 	}
 }
 
@@ -1326,7 +1326,7 @@ can_be_councilmember_emperor_trigger = {
 					}
 				}
 			}
-			is_adult = yes
+			mep_is_adult = yes
 		}
 	}
 }
@@ -1502,7 +1502,7 @@ developing_epidemic_disease_trigger = {
 }
 
 can_be_prophet_of_doom_trigger = {
-	is_adult = yes
+	mep_is_adult = yes
 	is_married = no
 	trait = zealous
 	is_landed = no
@@ -1647,7 +1647,7 @@ death_suicide_trigger = {
 
 block_general_event_trigger = {
 	OR = {	
-		is_adult = no
+		mep_is_child = yes
 		trait = incapable
 		prisoner = yes
 		is_inaccessible_trigger = yes
@@ -2096,7 +2096,7 @@ is_murder_quest_target_of_root_trigger = {
 assassins_appropriate_target_trigger = {
 	always = no
 	#is_within_diplo_range = ROOT
-	#is_adult = yes
+	#mep_is_adult = yes
 	#is_quest_target = no
 #
 	#OR = {
@@ -2860,7 +2860,7 @@ has_sympathy_for_true_religion_of_root_trigger = {
 
 ok_sr_induction_mission_target_trigger = {
 	always = no
-	#is_adult = yes
+	#mep_is_adult = yes
 	#NOT = { secret_religion = ROOT }
 	#NOT = { religion = { target_type = secret target = ROOT } }
 	#prisoner = no
@@ -2908,7 +2908,7 @@ ok_sr_sympathy_mission_target_trigger = {
 	#ROOT = { PREV = { is_openly_of_prevs_secret_religion_trigger = no } }
 	#ROOT = { PREV = { has_sympathy_for_true_religion_of_prev_trigger = no } }
 	#prisoner = no
-	#is_adult = yes
+	#mep_is_adult = yes
 	#NOT = { trait = incapable }
 	#is_inaccessible_trigger = no
 	#NOT = { has_character_modifier = secret_religion_sympathy_timer }
@@ -4022,7 +4022,7 @@ can_be_asked_to_leave_court_trigger = {
 		dynasty = FROM
 		is_married = FROM
 		is_consort = FROM
-		is_adult = no
+		mep_is_child = yes
 		is_close_relative = FROM
 		has_character_flag = eternal_life_mystic
 		has_character_flag = immortal_rival

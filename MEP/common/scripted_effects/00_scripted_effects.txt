@@ -13356,7 +13356,7 @@ set_horoscope_modifier_effect = { # Modifiers received by target during the Herm
 	if = {
 		limit = {
 			has_childhood_horoscope_modifier_trigger = no
-			is_adult = no
+			mep_is_child = yes
 			NOT = { has_character_flag = avoided_destiny }
 		}
 		trigger_switch = {
@@ -16665,7 +16665,7 @@ return_to_china_tombola_effect = {
 }
 
 clean_up_after_kow_tow_effect = {
-	remove_trait = kow_tow_travels
+	# remove_trait = kow_tow_travels
 	clr_character_flag = do_not_disturb
 	
 	clr_character_flag = read_the_guanzi

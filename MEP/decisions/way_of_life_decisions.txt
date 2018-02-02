@@ -401,7 +401,7 @@ targetted_decisions = {
 		}
 		allow = {
 			prisoner = no
-			is_adult = yes
+			mep_is_adult = yes
 			is_within_diplo_range = FROM
 		}
 		effect = {
@@ -638,7 +638,7 @@ targetted_decisions = {
 		
 		from_potential = {
 			is_playable = yes
-			is_adult = yes
+			mep_is_adult = yes
 			has_focus = focus_carousing
 			prisoner = no
 			NOT = { religion_group = religion_group_melkor } # Too Nasty to have parties, any 'party' should be custom...
@@ -648,7 +648,7 @@ targetted_decisions = {
 			NOT = { has_character_flag = party_host }
 		}
 		potential = {
-			is_adult = yes
+			mep_is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			NOT = { trait = incapable }
@@ -738,7 +738,7 @@ targetted_decisions = {
 		
 		from_potential = {
 			is_playable = yes
-			is_adult = yes
+			mep_is_adult = yes
 			prisoner = no
 			NOT = { mep_should_be_unkillable_trigger  = yes } # too dangerous and high end for duels
 			has_dlc = "Way of Life"
@@ -764,7 +764,7 @@ targetted_decisions = {
 		}
 		
 		potential = {
-			is_adult = yes
+			mep_is_adult = yes
 			prisoner = no
 			NOT = { character = FROM }
 			NOT = { mep_should_be_unkillable_trigger  = yes } # too dangerous and high end for duels
@@ -1013,7 +1013,7 @@ decisions = {
 		allow = {
 			prisoner = no
 			wealth = 25
-			is_adult = yes
+			mep_is_adult = yes
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
 				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }

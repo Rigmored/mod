@@ -45,7 +45,8 @@ mep_infertile_trait = {
 		trait = wilderness
 		trait = elven_infertility
 		trait = dwarven_infertility
-		trait = human_infertility
+		trait = not_fertile
+		trait = dunedain_infertility
 	}			
 }
 
@@ -227,5 +228,19 @@ mep_attraction_compatible_root = {
 		}
 		# Others
 		religion_group = ROOT
+	}
+}
+
+mep_is_adult = {
+	AND = {
+		is_adult = yes
+		NOT = { trait = elf_childhood }
+	}
+}
+
+mep_is_child = {
+	OR = {
+		is_adult = no
+		trait = elf_childhood
 	}
 }

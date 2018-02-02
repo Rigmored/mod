@@ -900,14 +900,13 @@ character_event = {
 			NOT = {
 				trait = celibate
 			}
-			age = 16
 			NOT = {
 				age = 50
 			}
 			has_epidemic = no
 			is_ill = no
 			has_lover = no
-			NOT = { trait = elf_childhood }
+			mep_is_adult = yes
 		}
 		spouse = {
 			is_alive = yes
@@ -934,6 +933,7 @@ character_event = {
 			limit = {
 				is_female = yes
 				prisoner = no
+				mep_is_adult = yes
 				NOT = { is_close_relative = ROOT }
 				NOT = {
 					trait = homosexual
@@ -942,7 +942,6 @@ character_event = {
 				NOT = {
 					trait = celibate
 				}
-				age = 16
 				NOT = {
 					age = 50
 				}
@@ -1583,6 +1582,7 @@ character_event = {
 	lacks_dlc = "Way of Life"
 	
 	trigger = {
+		mep_is_adult = yes
 		has_lover = yes
 		any_lover = {
 			OR = {
@@ -1908,6 +1908,7 @@ character_event = {
 	is_married = no
 	
 	trigger = {
+		mep_is_adult = yes
 		in_command = no
 		is_ill = no
 		OR = {
@@ -2014,6 +2015,7 @@ character_event = {
 	war = no
 	
 	trigger = {
+		mep_is_adult = yes
 		in_command = no
 		OR = {
 			trait = kind
@@ -2140,7 +2142,7 @@ character_event = {
 	trigger = {
 		has_polygamy = no
 		in_command = no
-		
+		mep_is_adult = yes
 		spouse = {
 			prisoner = no
 			in_command = no
@@ -2302,6 +2304,7 @@ character_event = {
 			is_abroad = no
 			NOT = { trait = incapable }
 		}
+		mep_is_adult = yes
 		fertility = 0.5
 		any_lover = {
 			is_female = yes
@@ -2491,6 +2494,7 @@ character_event = {
 #			religion_group = christian
 #			NOT = { trait = incapable }
 #		}
+#		mep_is_adult = yes
 #		fertility = 0.5
 #		any_lover = {
 #			NOT = {
@@ -2653,6 +2657,7 @@ character_event = {
 		is_ruler = no
 		has_lover = yes
 		is_consort = no
+		mep_is_adult = yes
 		NOT = { num_of_lovers = 2 }		
 		OR = {
 			trait = ambitious
@@ -2895,6 +2900,7 @@ character_event = {
 		is_inaccessible_trigger = no
 		in_command = no
 		trait = stressed
+		mep_is_adult = yes
 		fertility = 0.4
 		any_lover = {
 			is_inaccessible_trigger = no
@@ -3094,6 +3100,7 @@ character_event = {
 	
 	trigger = {
 		in_command = no
+		mep_is_adult = yes
 		spouse = {
 			NOT = { trait = incapable }
 			is_alive = yes
@@ -3248,6 +3255,7 @@ character_event = {
 	
 	trigger = {
 		in_command = no
+		mep_is_adult = yes
 		spouse = {
 			is_alive = yes
 			is_abroad = no
@@ -3436,6 +3444,7 @@ character_event = {
 	trigger = {
 		in_command = no
 		has_lover = yes
+		mep_is_adult = yes
 		any_lover = {
 			NOT = {
 				spouse = {
@@ -3535,6 +3544,7 @@ character_event = {
 	trigger = {
 		in_command = no
 		has_lover = no
+		mep_is_adult = yes
 		spouse = {
 			is_alive = yes
 			is_abroad = no
@@ -3728,6 +3738,7 @@ character_event = {
 			NOT = { trait = incapable }
 			in_command = no
 		}
+		mep_is_adult = yes
 		in_command = no
 		NOT = {
 			has_character_modifier = blissful_timer
@@ -3825,6 +3836,7 @@ character_event = {
 		in_command = no
 		is_married = no
 		has_lover = yes
+		mep_is_adult = yes
 		any_lover = {
 			is_abroad = no
 			prisoner = no
@@ -3923,6 +3935,7 @@ character_event = {
 	trigger = {
 		in_command = yes
 		has_lover = yes
+		mep_is_adult = yes
 		NOT = { num_of_lovers = 2 }
 		NOT = {
 			trait = honest

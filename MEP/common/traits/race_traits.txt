@@ -47,6 +47,7 @@ beard_elf = {
 	potential = { religion_group = religion_group_eldar }
 	customizer = no	
 	learning = 1
+	random = no
 	cached = yes
 }
 
@@ -61,6 +62,7 @@ elf_childhood = {
 	# immortal = yes might mess up portraits
 	childhood  = yes
 	customizer = no	
+	random = no
 	cannot_marry = yes
 	cached = yes
 	incapacitating = yes
@@ -154,6 +156,7 @@ dwarven_infertility = {
 		religion_group = religion_group_khazad
 	}
     fertility_penalty = -5.0
+	random = no
 	customizer = no	
 	cached = yes
 }
@@ -175,6 +178,7 @@ durin_reincarnation = {
 		morale_offence = 0.2
 		morale_defence = 0.2		
 	}
+	random = no
 	cached = yes
 }
 
@@ -186,6 +190,7 @@ heir_of_durin = {
 	stewardship = 3
 	martial = 5
 	diplomacy = 2
+	random = no
 	customizer = no
 	vassal_opinion = 50	
 	cached = yes
@@ -355,18 +360,39 @@ elven_blood = {
 	cached = yes
 }
 #--------------------------------------------------------------------------
-human_infertility = {
+dunedain_infertility = {
 	potential = {
+		is_female = yes
 		OR = {
-			religion_group = religion_group_edain
 			culture_group = culture_group_numenorean
-			mep_has_nondunedain_human_culture = yes
-            culture_group = culture_group_halfling			
-		}
+			trait = elven_blood
+		}		
 	}
     fertility_penalty = -5.0
+	random = no
 	customizer = no	
 	cached = yes
+}
+
+# new general infertility trait, Hidden
+not_fertile = {
+	potential = {
+		is_female = yes
+		NOT = { trait = elven_blood }
+		NOT = { culture_group = culture_group_numenorean }
+		NOT = { religion_group = religion_group_khazad }
+		NOT = { religion_group = religion_group_eldar }
+		
+	}
+	opposites = {
+		fertile
+	}
+	fertility_penalty = -50
+	# cannot_marry = yes
+	hidden = yes
+	customizer = no
+	random = no
+	
 }
 
 

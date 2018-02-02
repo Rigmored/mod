@@ -87,13 +87,13 @@ character_event = {
 			event_target:mep_chartarget_gandalf = {
 				mep_prep_fellowship_wizard = yes
 			}
-			narrative_event = { id = wotr.500 days = 2 }
+			narrative_event = { id = wotr.6 days = 2 }
 			any_playable_ruler = {
 				limit = {
 					trait = on_fellowshipquest
 					ai = no
 				}
-				narrative_event = { id = wotr.500 days = 2 }
+				narrative_event = { id = wotr.6 days = 2 }
 			}
 		}
 		if = {  # Pallando (primary fallback)
@@ -110,13 +110,13 @@ character_event = {
 				remove_trait = at_east
 				mep_prep_fellowship_wizard = yes
 			}
-			narrative_event = { id = wotr.501 days = 2 }
+			narrative_event = { id = wotr.7 days = 2 }
 			any_playable_ruler = {
 				limit = {
 					trait = on_fellowshipquest
 					ai = no
 				}
-				narrative_event = { id = wotr.501 days = 2 }
+				narrative_event = { id = wotr.7 days = 2 }
 			}
 		}
 		if = { # Alatar (secondary fallback)
@@ -137,13 +137,13 @@ character_event = {
 				remove_trait = at_east
 				mep_prep_fellowship_wizard = yes
 			}
-			narrative_event = { id = wotr.501 days = 2 }
+			narrative_event = { id = wotr.7 days = 2 }
 			any_playable_ruler = {
 				limit = {
 					trait = on_fellowshipquest
 					ai = no
 				}
-				narrative_event = { id = wotr.501 days = 2 }
+				narrative_event = { id = wotr.7 days = 2 }
 			}
 		}
 		if = { # No Wizards avaliable
@@ -160,38 +160,38 @@ character_event = {
 					is_alive = no
 				}
 			}
-			narrative_event = { id = wotr.502 days = 2 }
+			narrative_event = { id = wotr.8 days = 2 }
 			any_playable_ruler = {
 				limit = {
 					trait = on_fellowshipquest
 					ai = no
 				}
-				narrative_event = { id = wotr.502 days = 2 }
+				narrative_event = { id = wotr.8 days = 2 }
 			}
-			narrative_event = { id = wotr.502 days = 2 }
+			narrative_event = { id = wotr.8 days = 2 }
 			set_global_flag = mep_nofellowship_wizard
 		}
 	}	
  }
 ## Introducing the Wizard (or not)
 narrative_event = {
-	id = wotr.500  # Gandalf is here!
-	title = EVTTITwotr.500
-	desc = EVTDESCwotr.500
+	id = wotr.6  # Gandalf is here!
+	title = EVTTITwotr.6
+	desc = EVTDESCwotr.6
 	picture = GFX_evt_hobbitfireworks
 	
 	is_triggered_only = yes
 	
 	# Good. He explains the Saruman has gone bad
 	option = {
-		name = EVTOPTAwotr.500
+		name = EVTOPTAwotr.6
 		trigger = {
 			event_target:mep_chartarget_saruman = { has_character_flag = evilsaruman }
 		}
 	}
 	# Good
 	option = {
-		name = EVTOPTBwotr.500
+		name = EVTOPTBwotr.6
 		trigger = {
 			event_target:mep_chartarget_saruman = { NOT = { has_character_flag = evilsaruman } }
 		}
@@ -200,31 +200,31 @@ narrative_event = {
  }
 
 narrative_event = {
-	id = wotr.501  # A Blue Wizard is here!
-	title = EVTTITwotr.501
-	desc = EVTDESCwotr.501
+	id = wotr.7  # A Blue Wizard is here!
+	title = EVTTITwotr.7
+	desc = EVTDESCwotr.7
 	picture = GFX_evt_blue_istari
 	
 	is_triggered_only = yes
 	
 	# What happened to Gandalf?
 	option = {
-		name = EVTOPTAwotr.501
+		name = EVTOPTAwotr.7
 	}
 	
  }
 
 narrative_event = {
-	id = wotr.502  # No Wizards available
-	title = EVTTITwotr.502
-	desc = EVTDESCwotr.502
+	id = wotr.8  # No Wizards available
+	title = EVTTITwotr.8
+	desc = EVTDESCwotr.8
 	picture = GFX_evt_blue_istari
 	
 	is_triggered_only = yes
 	
 	# What happened to Gandalf?
 	option = {
-		name = EVTOPTAwotr.502
+		name = EVTOPTAwotr.8
 	}
 	
  }
@@ -265,9 +265,9 @@ character_event = {
 	
 ##Event for when a ruler triggers the decision to sway the council##
 character_event = {
-    id = wotr.6
-    title = "EVTTITwotr.6"
-    desc = "EVTDESCwotr.6"
+    id = wotr.9
+    title = "EVTTITwotr.9"
+    desc = "EVTDESCwotr.9"
     picture = "GFX_council_elrond"
 
 	is_triggered_only = yes
@@ -275,7 +275,7 @@ character_event = {
 	
 	# Tell them to go to Mount Doom
 	option = {
-		name = "EVTOPTAwotr.6"
+		name = "EVTOPTAwotr.9"
 		set_global_flag = questformtdoom
 		clr_global_flag = councilofelrond
 		prestige = 200
@@ -283,7 +283,7 @@ character_event = {
 	
 	# Toss the Ring into the sea
 	option = {
-		name = "EVTOPTBwotr.6"
+		name = "EVTOPTBwotr.9"
 		clr_global_flag = councilofelrond
 		set_global_flag = ringlost
 		prestige = -100
@@ -295,7 +295,7 @@ character_event = {
 		event_target:mep_chartarget_aragorn = {
 			if = {
 				limit = { is_alive = yes }
-				character_event = { id = wotr.11 }
+				character_event = { id = wotr.14 }
 			}
 		}
 		# the other fellowship members
@@ -303,51 +303,51 @@ character_event = {
 			limit = { NOT = { has_global_flag = mep_nofellowship_wizard } }
 			event_target:mep_fellowship_wizard = {
 				if = { limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 			}
 		}
 		event_target:mep_fellowship_gondorian = {
 			if = {
 				limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = {
 				limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 		}
 		event_target:mep_fellowship_elf = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit1 = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit2 = {
 			if = {limit = { ai = no }
-				character_event = { id = wotr.7 days = 2 } }
+				character_event = { id = wotr.10 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit3 = {
 			if = { limit = { ai = no }
-			character_event = { id = wotr.7 days = 2 } }
+			character_event = { id = wotr.10 days = 2 } }
 		}
 
 	}
 	
 	# Become the guardian (imprison) Fodo
 	option = {
-		name = "EVTOPTCwotr.6"
+		name = "EVTOPTCwotr.9"
 		clr_global_flag = councilofelrond
 		set_global_flag = frodosafe
 		prestige = -100
 		event_target:mep_fellowship_ringbearer = {
-			character_event = { id = wotr.9 }
+			character_event = { id = wotr.12 }
 		}
 		event_target:mep_chartarget_aragorn = {
 			if = {
 				limit = { is_alive = yes }
-				character_event = { id = wotr.11 }
+				character_event = { id = wotr.14 }
 			}
 		}
 		# the other fellowship members
@@ -358,15 +358,15 @@ character_event = {
 	
 ##Fellowship disbands if the ring is cast into the sea##
 character_event = {
-    id = wotr.7
-    title = "EVTTITwotr.7"
-    desc = "EVTDESCwotr.7"
+    id = wotr.10
+    title = "EVTTITwotr.10"
+    desc = "EVTDESCwotr.10"
     picture = "GFX_council_elrond"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.7"
+		name = "EVTOPTAwotr.10"
 		remove_trait = on_fellowshipquest
 		prestige = 100
 	}
@@ -374,15 +374,15 @@ character_event = {
 	
 ##Fellowship disbands if the Frodo is taken under the protection of another ruler##
 character_event = {
-    id = wotr.8
-    title = "EVTTITwotr.8"
-    desc = "EVTDESCwotr.8"
+    id = wotr.11
+    title = "EVTTITwotr.11"
+    desc = "EVTDESCwotr.11"
     picture = "GFX_council_elrond"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.8"
+		name = "EVTOPTAwotr.11"
 		remove_trait = on_fellowshipquest
 		prestige = 100
 	}
@@ -390,15 +390,15 @@ character_event = {
 	
 ##Frodo is informed he must go with another ruler##
 character_event = {
-    id = wotr.9
-    title = "EVTTITwotr.9"
-    desc = "EVTDESCwotr.9"
+    id = wotr.12
+    title = "EVTTITwotr.12"
+    desc = "EVTDESCwotr.12"
     picture = "GFX_council_elrond"
 
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.9"
+		name = "EVTOPTAwotr.12"
 		imprison = FROM
 	}
  }
@@ -408,11 +408,11 @@ character_event = {
 ##Events for Quest of Mt.Doom - will trigger either via player decision, or via AI in 11366#################################
 ############################################################################################################################
 	
-##Event to trigger it via AI-Elrond in 11366##
+##Event to trigger it via AI-Elrond in 11365##
 character_event = {
-    id = wotr.10
-    title = "EVTTITwotr.10"
-    desc = "EVTDESCwotr.10"
+    id = wotr.13
+    title = "EVTTITwotr.13"
+    desc = "EVTDESCwotr.13"
     picture = "GFX_council_elrond"
 	only_playable = yes
 	has_global_flag = councilofelrond
@@ -429,7 +429,7 @@ character_event = {
 	
 	# The usual quest
 	option = {
-		name = "EVTOPTAwotr.10"
+		name = "EVTOPTAwotr.13"
 		hidden_tooltip = {
 			set_global_flag = questformtdoom
 			clr_global_flag = councilofelrond
@@ -439,7 +439,7 @@ character_event = {
 		# summary of fellowship members
 		d_rivendell = {
 			holder_scope = {
-				narrative_event = { id = wotr.504 }
+				narrative_event = { id = wotr.15 }
 			}
 		}
 		if = {
@@ -447,57 +447,57 @@ character_event = {
 			event_target:mep_fellowship_wizard = {
 				if = {
 					limit = { ai = no }
-					narrative_event = { id = wotr.504 }
+					narrative_event = { id = wotr.15 }
 				}
 			}
 		}
 		# the other fellowship members
 		event_target:mep_fellowship_ringbearer = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_chartarget_aragorn = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_gondorian = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_elf = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_hobbit1 = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_hobbit2 = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 		event_target:mep_fellowship_hobbit3 = {
 			if = { limit = { ai = no }
-			narrative_event = { id = wotr.504 } }
+			narrative_event = { id = wotr.15 } }
 		}
 	}
 	# imprison the ringbearer in Rivendell
 	option = {
-		name = "EVTOPTBwotr.10"
+		name = "EVTOPTBwotr.13"
 		trigger = { ai = no }
 		clr_global_flag = councilofelrond
 		set_global_flag = frodosafe
 		event_target:mep_fellowship_ringbearer = {
-			character_event = { id = wotr.9 }
+			character_event = { id = wotr.12 }
 		}
 		event_target:mep_chartarget_aragorn = {
 			if = {
 				limit = { is_alive = yes }
-				character_event = { id = wotr.11 }
+				character_event = { id = wotr.14 }
 			}
 		}
 		# the other fellowship members
@@ -508,35 +508,35 @@ character_event = {
 
 ##If the Ring does not go to Mt.Doom, then Aragorn heads south to war with Anduril##
 character_event = {
-    id = wotr.11
-    title = "EVTTITwotr.11"
-    desc = "EVTDESCwotr.11"
+    id = wotr.14
+    title = "EVTTITwotr.14"
+    desc = "EVTDESCwotr.14"
     picture = "GFX_travel_gondor"
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.11"
+		name = "EVTOPTAwotr.14"
 		set_global_flag = aragornwar
 		prestige = 100
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.11"
+		name = "EVTOPTBwotr.14"
 		trigger = { ai = no }
 		prestige = -200
 	}
  }
 
 narrative_event = {
-    id = wotr.504
-    title = "EVTTITwotr.504"
-    desc = "EVTDESCwotr.504"
+    id = wotr.15
+    title = "EVTTITwotr.15"
+    desc = "EVTDESCwotr.15"
     picture = "GFX_evt_council_elrond"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.504"
+		name = "EVTOPTAwotr.15"
 	}
  }
 
@@ -552,7 +552,7 @@ narrative_event = {
 
 # The fellowhip reaches Moria (hidden controller)
 character_event = {
-	id = wotr.200
+	id = wotr.20
 	religion = religion_umaiar
 	has_global_flag = questformtdoom
 	
@@ -604,9 +604,9 @@ character_event = {
 
 # The fellowhip reaches Moria  : Message shown to Fellowship non-ai players
 character_event = {
-    id = wotr.12
-    title = "EVTTITwotr.12"
-    desc = "EVTDESCwotr.12"
+    id = wotr.21
+    title = "EVTTITwotr.21"
+    desc = "EVTDESCwotr.21"
     picture = "GFX_travel_gondor"
 	
 	hide_from = yes
@@ -614,13 +614,13 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.12"
+		name = "EVTOPTAwotr.21"
 	}
  }
 
 # The fellowhip meets the Balrog (hidden controller)
 character_event = {
-	id = wotr.201
+	id = wotr.22
 	religion = religion_umaiar
 	has_global_flag = questformtdoom_moria1
 	
@@ -696,40 +696,40 @@ character_event = {
 			# Messages for other fellowhip members
 			event_target:mep_chartarget_aragorn = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 }
+					character_event = { id = wotr.23 }
 				}
 			}
 			event_target:mep_fellowship_ringbearer = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_gondorian = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_dwarf = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_elf = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_hobbit1 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_hobbit2 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			event_target:mep_fellowship_hobbit3 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.13 } }
+					character_event = { id = wotr.23 } }
 			}
 			# Dispatch Wizard event
 			event_target:mep_fellowship_wizard = {
-				character_event = { id = wotr.507 }  # Facing the Balrog
+				character_event = { id = wotr.26 }  # Facing the Balrog
 			}
 		}
 		# No Wizard to face the Balrog!
@@ -743,35 +743,35 @@ character_event = {
 			# Messages for other fellowhip members
 			event_target:mep_chartarget_aragorn = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_ringbearer = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_gondorian = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_dwarf = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_elf = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_hobbit1 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_hobbit2 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 			event_target:mep_fellowship_hobbit3 = {
 				if = { limit = { ai = no }
-					character_event = { id = wotr.505 } }
+					character_event = { id = wotr.24 } }
 			}
 		}
 		set_global_flag = questformtdoom_moria2
@@ -794,41 +794,41 @@ character_event = {
 			event_target:mep_fellowship_wizard = {
 				if = {
 					limit = { ai = no }
-					character_event = { id = wotr.506 }
+					character_event = { id = wotr.25 }
 				}
 			}
 		}
 		event_target:mep_chartarget_aragorn = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_ringbearer = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_gondorian = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_elf = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_hobbit1 = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_hobbit2 = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		event_target:mep_fellowship_hobbit3 = {
 			if = { limit = { ai = no }
-				character_event = { id = wotr.506 } }
+				character_event = { id = wotr.25 } }
 		}
 		set_global_flag = questformtdoom_moria2
 	}
@@ -836,9 +836,9 @@ character_event = {
 
 ##The Fellowship meets the Balrog!   : Message shown to Fellowship non-ai players
 character_event = {
-    id = wotr.13
-    title = "EVTTITwotr.13"
-    desc = "EVTDESCwotr.13"
+    id = wotr.23
+    title = "EVTTITwotr.23"
+    desc = "EVTDESCwotr.23"
     picture = "GFX_evt_worship_balrog"
 	
 	hide_from = yes
@@ -846,14 +846,14 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.13"
+		name = "EVTOPTAwotr.23"
 	}
  }
 ## The Fellowship meets the Balrog! (No Wizard available version)  : Message shown to Fellowship non-ai players
 character_event = {
-    id = wotr.505
-    title = "EVTTITwotr.505"
-    desc = "EVTDESCwotr.505"
+    id = wotr.24
+    title = "EVTTITwotr.24"
+    desc = "EVTDESCwotr.24"
     picture = "GFX_evt_worship_balrog"
 	
 	hide_from = yes
@@ -861,21 +861,21 @@ character_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.505"
+		name = "EVTOPTAwotr.24"
 	}
  }
 
 ## No Balrog in Moria...
 character_event = {
-    id = wotr.506
-    title = "EVTTITwotr.506"
+    id = wotr.25
+    title = "EVTTITwotr.25"
 	desc = {
 		trigger = {
 			c_moria = {
 				holder_scope = { mep_is_evil_side_trigger = yes }
 			}
 		}
-		text = "EVTDESCwotr.506a"
+		text = "EVTDESCwotr.25a"
 	}
 	desc = {
 		trigger = {
@@ -886,7 +886,7 @@ character_event = {
 				}
 			}
 		}
-		text = "EVTDESCwotr.506b"
+		text = "EVTDESCwotr.25b"
 	}
 	desc = {
 		trigger = {
@@ -897,7 +897,7 @@ character_event = {
 				}
 			}
 		}
-		text = "EVTDESCwotr.506c"
+		text = "EVTDESCwotr.25c"
 	}
     
     picture = "GFX_evt_worship_balrog"
@@ -907,15 +907,15 @@ character_event = {
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.506"
+		name = "EVTOPTAwotr.25"
 	}
  }
 
 ## Wizard vs Balrog (currently very simple, the Balrog always dies, the Wizard always 'dies', going to Valinor)
 character_event = {
-    id = wotr.507
-    title = "EVTTITwotr.507"
-    desc = "EVTDESCwotr.507"
+    id = wotr.26
+    title = "EVTTITwotr.26"
+    desc = "EVTDESCwotr.26"
     picture = "GFX_evt_worship_balrog"
 	
 	is_triggered_only = yes
@@ -923,10 +923,10 @@ character_event = {
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.507"
+		name = "EVTOPTAwotr.26"
 		# Kill the Balrog
 		custom_tooltip = {
-			text = TT_wotr107A
+			text = TT_wotr26A
 			event_target:mep_fellowship_balrog = {
 				death = { death_reason = death_duel  killer = PREV }
 			}
@@ -934,7 +934,7 @@ character_event = {
 		}
 		# The Wizard goes to Valinor
 		custom_tooltip = {
-			text = TT_wotr107B
+			text = TT_wotr26B
 			remove_trait = on_fellowshipquest
 			add_trait = sailed_west
 			e_valinor = {
@@ -948,7 +948,7 @@ character_event = {
 
 # The Fellowship goes to Lorien (hidden controller)
 character_event = {
-	id = wotr.202
+	id = wotr.30
 	religion = religion_umaiar
 	has_global_flag = questformtdoom_moria2
 	
@@ -1005,7 +1005,7 @@ character_event = {
 				}
 
 			}
-			character_event = { id = wotr.15 }
+			character_event = { id = wotr.32 }
 		}
 	}
  }
@@ -1013,11 +1013,11 @@ character_event = {
 	
 ##The Fellowship goes to Lorien##
 character_event = {
-    id = wotr.14
-    title = "EVTTITwotr.14"
+    id = wotr.31
+    title = "EVTTITwotr.31"
 	desc = {
 		trigger = { mep_galadriel_in_lorien = yes }
-		text = EVTDESCwotr.14A
+		text = EVTDESCwotr.31A
 	}
 	desc = {
 		trigger = {
@@ -1026,7 +1026,7 @@ character_event = {
 				holder_scope = { mep_is_evil_side_trigger = yes }
 			}
 		}
-		text = EVTDESCwotr.14B
+		text = EVTDESCwotr.31B
 	}
 	desc = {
 		trigger = {
@@ -1035,7 +1035,7 @@ character_event = {
 				holder_scope = { NOT = { mep_is_evil_side_trigger = yes } }
 			}
 		}
-		text = EVTDESCwotr.14C
+		text = EVTDESCwotr.31C
 	}
     picture = "GFX_shadows_coming"
 	
@@ -1051,7 +1051,7 @@ character_event = {
 				}
 			}
 		}
-		name = "EVTOPTAwotr.14"
+		name = "EVTOPTAwotr.31"
 	}
 	
 	option = {
@@ -1061,21 +1061,21 @@ character_event = {
 				holder_scope = { mep_is_evil_side_trigger = yes }
 			}
 		}
-		name = "EVTOPTBwotr.14"
+		name = "EVTOPTBwotr.31"
 	}
  }
 	
 ##The Orcs of Moria attack Lorien in Revenge##
 character_event = {
-    id = wotr.15
-    title = "EVTTITwotr.15"
-    desc = "EVTDESCwotr.15"
+    id = wotr.32
+    title = "EVTTITwotr.32"
+    desc = "EVTDESCwotr.32"
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = EVTOPTAwotr.15
+		name = EVTOPTAwotr.32
 		add_claim = c_wester_north_lorien
 		add_claim = c_lorien
 		k_elves = {
@@ -1087,7 +1087,7 @@ character_event = {
 	}
 	
 	option = {
-		name = EVTOPTBwotr.15
+		name = EVTOPTBwotr.32
 		trigger = { ai = no }
 		prestige = -300
 		set_global_flag = wotr_moria_attacks_lorien
@@ -1097,7 +1097,7 @@ character_event = {
 
 # The fellowhip in Lorien (hidden controller)
 character_event = {
-	id = wotr.203
+	id = wotr.33
 	religion = religion_umaiar
 	has_global_flag = lorienarrival
 	
@@ -1118,7 +1118,7 @@ character_event = {
 			limit = { has_global_flag = wotr_moria_attacks_lorien }
 			k_elves = {
 				holder_scope = {
-					character_event = { id = wotr.16 }
+					character_event = { id = wotr.34 }
 				}
 			}
 		}
@@ -1126,7 +1126,7 @@ character_event = {
 		if = {
 			limit = { mep_galadriel_in_lorien = yes }
 			event_target:mep_chartarget_galadriel = {
-				character_event = { id = wotr.17 days = 4 }
+				character_event = { id = wotr.36 days = 4 }
 			}
 		}
 		
@@ -1138,24 +1138,24 @@ character_event = {
 
 ##The ruler of Lorien is informed that the fellowship is here, and that orcs are attacking#
 character_event = {
-    id = wotr.16
-    title = "EVTTITwotr.16"
-    desc = "EVTDESCwotr.16"
+    id = wotr.34
+    title = "EVTTITwotr.34"
+    desc = "EVTDESCwotr.34"
     picture = "GFX_war_at_north"
 	
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.16"
+		name = "EVTOPTAwotr.34"
 	}
  }
 	
 ##Galadriel is offered the ring by Frodo#
 character_event = {
-    id = wotr.17
-    title = "EVTTITwotr.17"
-    desc = "EVTDESCwotr.17"
+    id = wotr.36
+    title = "EVTTITwotr.36"
+    desc = "EVTDESCwotr.36"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
@@ -1163,7 +1163,7 @@ character_event = {
 	
 	# The ring-bearer keeps the ring...
 	option = {
-		name = "EVTOPTBwotr.17"
+		name = "EVTOPTBwotr.36"
 		ai_chance = { factor = 95 }
 		hidden_tooltip = {
 			set_character_flag = wotr17
@@ -1174,7 +1174,7 @@ character_event = {
 	
 	# Galadriel takes the ring
 	option = {
-		name = "EVTOPTCwotr.17"
+		name = "EVTOPTCwotr.36"
 		ai_chance = { factor = 5 }
 		# take the ring
 		event_target:mep_fellowship_ringbearer = {
@@ -1198,37 +1198,37 @@ character_event = {
 				}
 			}
 			event_target:mep_chartarget_aragorn = {
-				character_event = { id = wotr.18 days = 3 }
+				character_event = { id = wotr.37 days = 3 }
 			}
 		}
 		# send fellowship disbands message
 		event_target:mep_fellowship_ringbearer = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_gondorian = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_elf = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit1 = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit2 = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 		event_target:mep_fellowship_hobbit3 = {
 			if = { limit = { is_alive = yes }
-			character_event = { id = wotr.19 days = 2 } }
+			character_event = { id = wotr.38 days = 2 } }
 		}
 
 	}
@@ -1239,15 +1239,15 @@ character_event = {
 
 ##Aragorn goes south if Galadriel takes the Ring##
 character_event = {
-    id = wotr.18
-    title = "EVTTITwotr.18"
-    desc = "EVTDESCwotr.18"
+    id = wotr.37
+    title = "EVTTITwotr.37"
+    desc = "EVTDESCwotr.37"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.18"
+		name = "EVTOPTAwotr.37"
 		hidden_tooltip = {
 			set_global_flag = aragornwar
 			set_global_flag = wotr18
@@ -1258,15 +1258,15 @@ character_event = {
 	
 ##Fellowship disbands if Galadriel takes the Ring##
 character_event = {
-    id = wotr.19
-    title = "EVTTITwotr.19"
-    desc = "EVTDESCwotr.19"
+    id = wotr.38
+    title = "EVTTITwotr.38"
+    desc = "EVTDESCwotr.38"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.19"
+		name = "EVTOPTAwotr.38"
 		remove_trait = on_fellowshipquest
 		hidden_tooltip = {
 			set_character_flag = wotr19
@@ -1276,7 +1276,7 @@ character_event = {
 #----------------------------------------------------------------------------------------	
 # Controller event for dispatching the fellowship battle/breakup
 character_event = {
-	id = wotr.204
+	id = wotr.40
 	religion = religion_umaiar
 	has_global_flag = questformtdoom_ringleaveslorien
 	
@@ -1294,27 +1294,27 @@ character_event = {
 		# narrative event, attacked by orcs, for all party members except the ringbearer and boromir
 		event_target:mep_chartarget_aragorn = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		event_target:mep_fellowship_elf = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		event_target:mep_fellowship_hobbit1 = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		event_target:mep_fellowship_hobbit2 = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		event_target:mep_fellowship_hobbit3 = {
 			if = { limit = { is_alive = yes }
-			narrative_event = { id = wotr.20 days = 3 } }
+			narrative_event = { id = wotr.41 days = 3 } }
 		}
 		# Special event for fellowhip member Boromir
 		event_target:mep_chartarget_boromir = {
@@ -1322,7 +1322,7 @@ character_event = {
 					is_alive = yes
 					trait = on_fellowshipquest
 				}
-				long_character_event = { id = wotr.510 days = 3 }
+				long_character_event = { id = wotr.42 days = 3 }
 			}
 		}
 		# Special event for ringbearer if boromir is a member of the fellowship
@@ -1334,7 +1334,7 @@ character_event = {
 						trait = on_fellowshipquest
 					}
 				}
-			character_event = { id = wotr.21 days = 3 }
+			character_event = { id = wotr.43 days = 3 }
 			}
 		}
 		# Special event for ringbearer if boromir is NOT a member of the fellowship
@@ -1346,7 +1346,7 @@ character_event = {
 							NOT = { trait = on_fellowshipquest } }
 					}
 				}
-				character_event = { id = wotr.25 days = 3 }
+				character_event = { id = wotr.48 days = 3 }
 			}
 		}
 		
@@ -1359,9 +1359,9 @@ character_event = {
 
 ##The Fellowship leaves Lorien, Event for fight with Uruks##
 narrative_event = {
-    id = wotr.20
-    title = "EVTTITwotr.20"
-    desc = "EVTDESCwotr.20"
+    id = wotr.41
+    title = "EVTTITwotr.41"
+    desc = "EVTDESCwotr.41"
     picture = "GFX_boromir_death"
 	
 	is_triggered_only = yes
@@ -1369,7 +1369,7 @@ narrative_event = {
 	
 	# Button mentioning Boromir
 	option = {
-		name = "EVTOPTAwotr.20"
+		name = "EVTOPTAwotr.41"
 		trigger = {
 			event_target:mep_chartarget_boromir = {
 				is_alive = yes
@@ -1380,7 +1380,7 @@ narrative_event = {
 	
 	# Button not mentioning Boromir
 	option = {
-		name = "EVTOPTBwotr.20"
+		name = "EVTOPTBwotr.41"
 		trigger = {
 			event_target:mep_chartarget_boromir = {
 				OR = { is_alive = no
@@ -1393,9 +1393,9 @@ narrative_event = {
 
 # Event for Boromir : Take the ring or not?
 long_character_event = {
-    id = wotr.510
-    title = "EVTTITwotr.510"
-    desc = "EVTDESCwotr.510"
+    id = wotr.42
+    title = "EVTTITwotr.42"
+    desc = "EVTDESCwotr.42"
     picture = "GFX_boromir_death"
 
 	is_triggered_only = yes
@@ -1403,64 +1403,64 @@ long_character_event = {
 	
 	# Try to take the ring
 	option = {
-		name = "EVTOPTAwotr.510"
+		name = "EVTOPTAwotr.42"
 		set_character_flag = b_tried_to_take_ring
 		random_list = {
 			# Boromir gets the ring!
 			5 = { 
-				character_event = { id = wotr.22 }
+				character_event = { id = wotr.50 }
 				event_target:mep_fellowship_ringbearer = {
-					character_event = { id = wotr.511 days = 1 }
+					character_event = { id = wotr.44 days = 1 }
 				}
 			}
 			# Boromir fails to get the ring
             95 = {
 				event_target:mep_fellowship_ringbearer = {
-					character_event = { id = wotr.512 days = 1 }
+					character_event = { id = wotr.45 days = 1 }
 				}
-				character_event = { id = wotr.23 days = 2 }
+				character_event = { id = wotr.46 days = 2 }
          }
 		}
 	}
 	
 	# Restrain yourself (player-only, no real difference except no chance of getting the ring)
 	option = {
-		name = "EVTOPTBwotr.510"
+		name = "EVTOPTBwotr.42"
 		trigger = { ai = no }
 		event_target:mep_fellowship_ringbearer = {
-			character_event = { id = wotr.512 days = 1 }
+			character_event = { id = wotr.45 days = 1 }
 		}
-		character_event = { id = wotr.23 days = 2 }
+		character_event = { id = wotr.46 days = 2 }
 	}
  }
 	
 ##The Fellowship leaves Lorien, ringbearer event for encounter with Boromir##
 character_event = {
-    id = wotr.21
-    title = "EVTTITwotr.21"
-    desc = "EVTDESCwotr.21"
+    id = wotr.43
+    title = "EVTTITwotr.43"
+    desc = "EVTDESCwotr.43"
     picture = "GFX_boromir_death"
 
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.21"
+		name = "EVTOPTAwotr.43"
 		set_character_flag = wotr21
 	}
  }
 
 # ringbearer event (should take place after wotr.510 and wotr.21) if Boromir takes the ring
 character_event = {
-    id = wotr.511
-    title = "EVTTITwotr.511"
-    desc = "EVTDESCwotr.511"
+    id = wotr.44
+    title = "EVTTITwotr.44"
+    desc = "EVTDESCwotr.44"
     picture = "GFX_boromir_death"
 
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.511"
+		name = "EVTOPTAwotr.44"
 		event_target:mep_chartarget_boromir = {
 			mep_transfer_onering_from_root = yes
 		}
@@ -1476,19 +1476,19 @@ character_event = {
 
 # ringbearer event if Boromir fails to take the ring (or perhaps did not really try)
 character_event = {
-    id = wotr.512
-    title = "EVTTITwotr.512"
+    id = wotr.45
+    title = "EVTTITwotr.45"
 	desc = {
 		trigger = {
 			FROM = { has_character_flag = b_tried_to_take_ring }
 		}
-		text = EVTDESCwotr.512a
+		text = EVTDESCwotr.45a
 	}
 	desc = {
 		trigger = {
 			FROM = { NOT = { has_character_flag = b_tried_to_take_ring } }
 		}
-		text = EVTDESCwotr.512b
+		text = EVTDESCwotr.45b
 	}
     picture = "GFX_boromir_death"
 	
@@ -1500,7 +1500,7 @@ character_event = {
 	
 	# Samwise is coming with me
 	option = {
-		name = "EVTOPTAwotr.512"
+		name = "EVTOPTAwotr.45"
 		trigger = {
 			event_target:mep_chartarget_samwise = {
 				is_alive = yes
@@ -1511,7 +1511,7 @@ character_event = {
 	}
 	# I go alone
 	option = {
-		name = "EVTOPTBwotr.512"
+		name = "EVTOPTBwotr.45"
 		trigger = {
 			event_target:mep_chartarget_samwise = {
 				OR = {
@@ -1524,18 +1524,95 @@ character_event = {
 	}
 	# end option
  }
+ 
+ ## Boromir-Event, post ringbearer encounter
+character_event = {
+    id = wotr.46
+    title = "EVTTITwotr.46"
+    desc = "EVTDESCwotr.46"
+    picture = "GFX_boromir_death"
 	
+	is_triggered_only = yes
+	
+	# Charge into battle and likely die
+	option = {
+		name = "EVTOPTAwotr.46"
+		set_character_flag = wotr22
+		random_list = {
+			15 = { 
+				add_trait = wounded
+				long_character_event = { id = wotr.47 days = 1 }
+			}
+			5 = {
+				add_maimed_trait_effect = yes
+				long_character_event = { id = wotr.47 days = 1 }
+			}
+			80 = {
+				set_global_flag = boromirdeath
+				death = {
+					death_reason = death_battle
+				}
+				set_global_flag = fellowship_broken
+			} 
+		}
+	}
+	
+	# Run like a coward
+	option = {
+		name = "EVTOPTBwotr.46"
+		trigger = { ai = no }
+		remove_trait = on_fellowshipquest
+		add_trait = craven
+		set_global_flag = fellowship_broken
+	}
+ }
+
+# Boromir event if he survives battle with Uruks
+long_character_event = {
+    id = wotr.47
+    title = "EVTTITwotr.47"
+	desc = EVTDESCwotr.47
+    picture = "GFX_boromir_death"
+	
+	is_triggered_only = yes
+	
+	# Back to Gondor
+	option = {
+		name = "EVTOPTAwotr.47"
+		remove_trait = on_fellowshipquest
+		set_global_flag = fellowship_broken
+	}
+ }
+
+# Ringbearer event if Boromir was not part of the fellowship.
+character_event = {
+    id = wotr.48
+    title = "EVTTITwotr.48"
+    desc = "EVTDESCwotr.48"
+    picture = "GFX_shadows_coming"
+	
+	is_triggered_only = yes
+	hide_from = yes
+	
+	option = {
+		name = "EVTOPTAwotr.48"
+		set_character_flag = wotr25
+		set_global_flag = frodogoestomordor
+		set_global_flag = fellowship_broken
+	}
+ }
+#------------------------------------------------------------------	
 ##Option for if Boromir got the ring##
 character_event = {
-    id = wotr.22
-    title = "EVTTITwotr.22"
-    desc = "EVTDESCwotr.22"
+    id = wotr.50
+    title = "EVTTITwotr.50"
+    desc = "EVTDESCwotr.50"
     picture = "GFX_kinstrife"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.22"
+		name = "EVTOPTAwotr.50"
 		hidden_tooltip = {
 			set_character_flag = wotr22
 			set_global_flag = boromirhasring
@@ -1548,7 +1625,7 @@ character_event = {
 					is_alive = yes
 					trait = on_fellowshipquest			
 				}
-				character_event = { id = wotr.41 }
+				character_event = { id = wotr.51 }
 			}
 		}
 		# fellowhip disbands...
@@ -1577,33 +1654,33 @@ character_event = {
 
 ##Aragorn is informed if Boromir got the ring##
 character_event = {
-    id = wotr.41
-    title = "EVTTITwotr.41"
-    desc = "EVTDESCwotr.41"
+    id = wotr.51
+    title = "EVTTITwotr.51"
+    desc = "EVTDESCwotr.51"
     picture = "GFX_kinstrife"
 
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.41"
+		name = "EVTOPTAwotr.51"
 		add_claim = e_steward_gondor
 		add_claim = e_gondor
 		remove_trait = on_fellowshipquest
 		set_global_flag = aragornwar
-		any_independent_ruler = {
-			limit = {
-				age = 1
-				is_alive = yes				
-			}
-			narrative_event = { id = wotr.42 days = 90 }
-		}
+		# any_independent_ruler = {
+		#	limit = {
+		#		age = 1
+		#		is_alive = yes				
+		#	}
+		#	narrative_event = { id = wotr.42 days = 90 }
+		#}
 	}
  }
 
 #----------------------------------------------------------------------------------------	
 # Controller event for sending the 'Boromir has the ring' narrative event
 character_event = {
-	id = wotr.205
+	id = wotr.52
 	religion = religion_umaiar
 	has_global_flag = boromirhasring
 	
@@ -1624,7 +1701,7 @@ character_event = {
 				NOT = { event_target:mep_fellowship_ringbearer = { character = PREV } }
 				NOT = { event_target:mep_chartarget_samwise = { character = PREV } }
 			}
-			narrative_event = { id = wotr.42 days = 1  random = 4 }
+			narrative_event = { id = wotr.53 days = 1  random = 4 }
 		}
 		set_global_flag = boromirhasring_rulersnotified
 	}
@@ -1632,16 +1709,16 @@ character_event = {
 	
 ##All Rulers are informed if Gondor has taken the ring##
 narrative_event = {
-    id = wotr.42
-    title = "EVTTITwotr.42"
-    desc = "EVTDESCwotr.42"
+    id = wotr.53
+    title = "EVTTITwotr.53"
+    desc = "EVTDESCwotr.53"
     picture = "GFX_kinstrife"
 
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.42"
+		name = "EVTOPTAwotr.53"
 		trigger = {
 			NOT = {
 				event_target:mep_chartarget_sauron = { character = PREV }
@@ -1651,27 +1728,27 @@ narrative_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.42"
+		name = "EVTOPTBwotr.53"
 		trigger = { event_target:mep_chartarget_sauron = { character = PREV } }
 	}
 	
 	option = {
-		name = "EVTOPTCwotr.42"
+		name = "EVTOPTCwotr.53"
 		trigger = { event_target:mep_chartarget_denethor = { character = PREV } }
 	}
  }
 	
 ##Fellowship disbands if Boromir took the ring##
 character_event = {
-    id = wotr.43
-    title = "EVTTITwotr.43"
-    desc = "EVTDESCwotr.43"
+    id = wotr.54
+    title = "EVTTITwotr.54"
+    desc = "EVTDESCwotr.54"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.43"
+		name = "EVTOPTAwotr.54"
 		remove_trait = on_fellowshipquest
 		prestige = -100
 	}
@@ -1680,86 +1757,10 @@ character_event = {
 #########################################################################################################################
 ######later needs specific events for boromir taking the ring, right now he just goes back to minas tirith with it#######
 	
-## Boromir-Event, post ringbearer encounter
-character_event = {
-    id = wotr.23
-    title = "EVTTITwotr.23"
-    desc = "EVTDESCwotr.23"
-    picture = "GFX_boromir_death"
-	
-	is_triggered_only = yes
-	
-	# Charge into battle and likely die
-	option = {
-		name = "EVTOPTAwotr.23"
-		set_character_flag = wotr22
-		random_list = {
-			15 = { 
-				add_trait = wounded
-				long_character_event = { id = wotr.513 days = 1 }
-			}
-			5 = {
-				add_maimed_trait_effect = yes
-				long_character_event = { id = wotr.513 days = 1 }
-			}
-			80 = {
-				set_global_flag = boromirdeath
-				death = {
-					death_reason = death_battle
-				}
-				set_global_flag = fellowship_broken
-			} 
-		}
-	}
-	
-	# Run like a coward
-	option = {
-		name = "EVTOPTBwotr.23"
-		trigger = { ai = no }
-		remove_trait = on_fellowshipquest
-		add_trait = craven
-		set_global_flag = fellowship_broken
-	}
- }
-
-# Boromir event if he survives battle with Uruks
-long_character_event = {
-    id = wotr.513
-    title = "EVTTITwotr.513"
-	desc = EVTDESCwotr.513
-    picture = "GFX_boromir_death"
-	
-	is_triggered_only = yes
-	
-	# Back to Gondor
-	option = {
-		name = "EVTOPTAwotr.513"
-		remove_trait = on_fellowshipquest
-		set_global_flag = fellowship_broken
-	}
- }
-
-# Ringbearer event if Boromir was not part of the fellowship.
-character_event = {
-    id = wotr.25
-    title = "EVTTITwotr.25"
-    desc = "EVTDESCwotr.25"
-    picture = "GFX_shadows_coming"
-	
-	is_triggered_only = yes
-	hide_from = yes
-	
-	option = {
-		name = "EVTOPTAwotr.25"
-		set_character_flag = wotr25
-		set_global_flag = frodogoestomordor
-		set_global_flag = fellowship_broken
-	}
- }
 #----------------------------------------------------------------------------------------	
 # Controller for handling post breakup info events for those heading west
 character_event = {
-	id = wotr.206
+	id = wotr.60
 	religion = religion_umaiar
 	has_global_flag = frodogoestomordor
 	
@@ -1778,12 +1779,12 @@ character_event = {
 		# ignore the possibility that they may be both dead
 		event_target:mep_fellowship_hobbit2 = {  # Normally Merry
 			if = { limit = { ai = no }
-				long_character_event = { id = wotr.515 }
+				long_character_event = { id = wotr.61 }
 			}
 		}
 		event_target:mep_fellowship_hobbit3 = {  # Normally Pippin
 			if = { limit = { ai = no }
-				long_character_event = { id = wotr.515 }
+				long_character_event = { id = wotr.61 }
 			}
 		}
 		# If the 'gondorian' is not Boromoir, he leaves for Gondor
@@ -1804,19 +1805,19 @@ character_event = {
 					is_alive = yes
 					trait = on_fellowshipquest
 				}
-				character_event = { id = wotr.24 }
+				character_event = { id = wotr.62 }
 			}
 		}
 		event_target:mep_fellowship_elf = {
 			if = {
 				limit = { is_alive = yes }
-				character_event = { id = wotr.24 }
+				character_event = { id = wotr.62 }
 			}
 		}
 		event_target:mep_fellowship_dwarf = {
 			if = {
 				limit = { is_alive = yes }
-				character_event = { id = wotr.24 }
+				character_event = { id = wotr.62 }
 			}
 		}
 		# setting the flag indicating this is done	
@@ -1826,9 +1827,9 @@ character_event = {
 
 # Event for those seized by orcs (merry and pippin)
 long_character_event = {
-    id = wotr.515
-    title = "EVTTITwotr.515"
-	desc = EVTDESCwotr.515
+    id = wotr.61
+    title = "EVTTITwotr.61"
+	desc = EVTDESCwotr.61
     picture = "GFX_evt_dark_tree"
 	
 	is_triggered_only = yes
@@ -1836,22 +1837,22 @@ long_character_event = {
 	
 	# Info!
 	option = {
-		name = "EVTOPTAwotr.515"
+		name = "EVTOPTAwotr.61"
 	}
  }
 	
 # General event for the three who are going to Rohan
 character_event = {
-    id = wotr.24
-    title = "EVTTITwotr.24"
-    desc = "EVTDESCwotr.24"
+    id = wotr.62
+    title = "EVTTITwotr.62"
+    desc = "EVTDESCwotr.62"
     picture = "GFX_boromir_death"
 	
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.24"
+		name = "EVTOPTAwotr.62"
 		set_character_flag = wotr24
 		set_character_flag = towardsrohan
 	}
@@ -1859,16 +1860,16 @@ character_event = {
 	
 ##Faramir returns to Minas Tirith to aid his father after Frodo has left##
 character_event = {
-    id = wotr.26
-    title = "EVTTITwotr.26"
-    desc = "EVTDESCwotr.26"
+    id = wotr.63
+    title = "EVTTITwotr.63"
+    desc = "EVTDESCwotr.63"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	hide_from = yes
 	
 	option = {
-		name = "EVTOPTAwotr.26"
+		name = "EVTOPTAwotr.63"
 		set_character_flag = wotr26
 		remove_trait = on_fellowshipquest
 	}
@@ -1876,11 +1877,71 @@ character_event = {
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Post fellowhsip events.
 
+# Controller for aragorn / fangorn
+#character_event = {
+#	id = wotr.70
+#	religion = religion_umaiar
+#	has_global_flag = frodogoestomordor
+#	
+#	hide_window = yes
+#	
+#	trigger = {
+#		has_global_flag = fellowship_broken2
+#		NOT = { has_global_flag = towards_fangorn }
+#		event_target:mep_chartarget_morgoth = { character = PREV }
+#	}
+#	
+#	mean_time_to_happen = { days = 30 }
+#	
+#	option = {
+#		event_target:mep_chartarget_aragorn = {
+#			if = {
+#				limit = {
+#					is_alive = yes
+#					trait = on_fellowshipquest
+#				}
+#				# event for aragorn if eomer is alive
+#				if = {
+#					limit = { event_target:mep_chartarget_eomer = { is_alive = yes } }
+#					# event for aragorn
+#					# event for eomer
+#					event_target:mep_chartarget_eomer = {
+#						if = {
+#							limit = { ai = no }
+#						}
+#					}
+#				}
+#				# event for aragorn if eomer is dead
+#				else_if = {
+#				}
+#			}
+#		}
+#		event_target:mep_chartarget_eomer = {
+#			if = {
+#				limit = { is_alive = yes }
+#				# event for eomer if aragorn is on the quest
+#				if = {
+#					limit = {
+#						mep_
+#					}
+#				}
+#				# event for eomer if aragorn is not on the quest
+#			}
+#		}
+#		
+#		# event for legolas/gimli (aragorn on quest)
+#		# event for legolas/gimli (aragorn not on quest)
+#		
+#
+#		set_global_flag = towards_fangorn 
+#	}
+# }
+
 ##Aragorn in Rohan##
 character_event = {
-    id = wotr.27
-    title = "EVTTITwotr.27"
-    desc = "EVTDESCwotr.27"
+    id = wotr.71
+    title = "EVTTITwotr.71"
+    desc = "EVTDESCwotr.71"
     picture = "GFX_oath_of_eorl"
 	only_playable = yes
 	
@@ -1899,7 +1960,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTAwotr.27"
+		name = "EVTOPTAwotr.71"
 		set_character_flag = wotr27
 		set_character_flag = towardsfangorn
 		add_friend = 27
@@ -1909,9 +1970,9 @@ character_event = {
 	
 ##Aragorn in Fangorn##
 character_event = {
-	id = wotr.28
-   	title = "EVTTITwotr.28"
-   	desc = "EVTDESCwotr.28"
+	id = wotr.78
+   	title = "EVTTITwotr.78"
+   	desc = "EVTDESCwotr.78"
    	picture = "GFX_oath_of_eorl"
 	only_playable = yes
 	
@@ -1929,7 +1990,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTAwotr.28"
+		name = "EVTOPTAwotr.78"
 		# bringing the wizard back from valinor: move him to mithlond (edoras might not be safe anymore)
 		e_lindon = {
 			holder_scope = {
@@ -1953,9 +2014,9 @@ character_event = {
 	
 ##Aragorn in Edoras##
 character_event = {
-   	id = wotr.29
-  	title = "EVTTITwotr.29"
-   	desc = "EVTDESCwotr.29"
+   	id = wotr.81
+  	title = "EVTTITwotr.81"
+   	desc = "EVTDESCwotr.81"
   	picture = "GFX_oath_of_eorl"
 	only_playable = yes
 	
@@ -1972,7 +2033,7 @@ character_event = {
 		days = 30
 	}
 	option = {
-		name = "EVTOPTAwotr.29"
+		name = "EVTOPTAwotr.81"
 		set_character_flag = wotr29
 		set_global_flag = gandalfedoras
 	}
@@ -1981,9 +2042,9 @@ character_event = {
 	
 ##Gandalf in Edoras####BUT USING ELROND AS PLACEHOLDER UNTIL WE GET GANDALF IN GAME###########
 character_event = {
-    id = wotr.30
-    title = "EVTTITwotr.30"
-    desc = "EVTDESCwotr.30"
+    id = wotr.82
+    title = "EVTTITwotr.82"
+    desc = "EVTDESCwotr.82"
     picture = "GFX_oath_of_eorl"
 	
 	
@@ -2001,7 +2062,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTAwotr.30"
+		name = "EVTOPTAwotr.82"
 		set_character_flag = wotr30
 		any_independent_ruler = {
 			limit = {
@@ -2020,9 +2081,9 @@ character_event = {
 	
 
 character_event = {
-    id = wotr.31
-    title = "EVTTITwotr.31"
-    desc = "EVTDESCwotr.31"
+    id = wotr.83
+    title = "EVTTITwotr.83"
+    desc = "EVTDESCwotr.83"
     picture = "GFX_shadows_coming"
 	only_playable = yes
 	
@@ -2039,7 +2100,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.31"
+		name = "EVTOPTAwotr.83"
 	    death = {
 			death_reason = death_natural
 		}
@@ -2048,14 +2109,14 @@ character_event = {
 	
 ##Event for Theoden when he is cured##
 character_event = {
-    id = wotr.32
-    title = "EVTTITwotr.32"
-    desc = "EVTDESCwotr.32"
+    id = wotr.84
+    title = "EVTTITwotr.84"
+    desc = "EVTDESCwotr.84"
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.32"
+		name = "EVTOPTAwotr.84"
 		set_character_flag = theodenhealed
 		remove_trait = saruman_spell
 		add_claim= d_westmarch
@@ -2064,7 +2125,7 @@ character_event = {
 			limit = {
 				has_landed_title = c_orthanc
 			}
-			character_event = { id = wotr.33 days = 7 }
+			character_event = { id = wotr.88 days = 7 }
 		}
 		any_playable_ruler = {
 			limit = {
@@ -2078,30 +2139,31 @@ character_event = {
 	
 ##Event for Saruman when Theoden is cured##
 character_event = {
-    id = wotr.33
-    title = "EVTTITwotr.33"
-    desc = "EVTDESCwotr.33"
+    id = wotr.88
+    title = "EVTTITwotr.88"
+    desc = "EVTDESCwotr.88"
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.33"
+		name = "EVTOPTAwotr.88"
 		set_global_flag = wotr33
 		add_claim = k_rohan
 		wealth = 2000
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.33"
+		name = "EVTOPTBwotr.88"
 		trigger = { ai = no }
 	}
  }
-
+#-------------------------------------------------------------------------------------
+# saruman events for war start at 90
 ##Event for Saruman when Theoden is cured##
 character_event = {
-    id = wotr.39
-    title = "EVTTITwotr.39"
-    desc = "EVTDESCwotr.39"
+    id = wotr.91
+    title = "EVTTITwotr.91"
+    desc = "EVTDESCwotr.91"
     picture = "GFX_shadows_coming"
 	
 	trigger = {
@@ -2114,7 +2176,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.39"
+		name = "EVTOPTAwotr.91"
 		set_global_flag = sarumanstrikes
 		set_character_flag = wotr39
 		k_rohan = {
@@ -2150,16 +2212,16 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.39"
+		name = "EVTOPTBwotr.91"
 		trigger = { ai = no }
 	}
  }
 
 ##Saruman calls in his Dunlendish allies##
 	character_event = {
-    id = wotr.69
-    title = "EVTTITwotr.69"
-    desc = "EVTDESCwotr.69"
+    id = wotr.92
+    title = "EVTTITwotr.92"
+    desc = "EVTDESCwotr.92"
     picture = "GFX_shadows_coming"
 	
 	trigger = {
@@ -2176,18 +2238,18 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.69"
+		name = "EVTOPTAwotr.92"
 		set_character_flag = wotr69
 		any_independent_ruler = {
 			limit = {
 				has_landed_title = d_dunland
 			}
-			character_event = { id = wotr.70 }
+			character_event = { id = wotr.93 }
 		}
 	}
 		
 	option = {
-		name = "EVTOPTBwotr.69"
+		name = "EVTOPTBwotr.92"
 		trigger = { ai = no }
 		set_character_flag = wotr69	
 	}
@@ -2195,30 +2257,30 @@ character_event = {
 	
 ##Dunland receives the call from Saruman##
 character_event = {
-    id = wotr.70
-    title = "EVTTITwotr.70"
-    desc = "EVTDESCwotr.70"
+    id = wotr.93
+    title = "EVTTITwotr.93"
+    desc = "EVTDESCwotr.93"
     picture = "GFX_shadows_coming"
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.70"
+		name = "EVTOPTAwotr.93"
 		ROOT = {
 			join_attacker_wars = FROM
 		}
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.70"
+		name = "EVTOPTBwotr.93"
 		trigger = { ai = no }
 	}
  }
 	
 ##Theoden when Saruman launches his great assault##
 character_event = {
-    id = wotr.34
-    title = "EVTTITwotr.34"
-    desc = "EVTDESCwotr.34"
+    id = wotr.101
+    title = "EVTTITwotr.101"
+    desc = "EVTDESCwotr.101"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2236,7 +2298,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.34"
+		name = "EVTOPTAwotr.101"
 		trigger = { has_global_flag = aragornwar }
 		set_global_flag = wotr34
 		wealth = 1000
@@ -2269,12 +2331,12 @@ character_event = {
 				trait = blood_of_isildur
 				age = 30				
 			}
-			character_event = { id = wotr.35 }
+			character_event = { id = wotr.102 }
 		}	
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.34"
+		name = "EVTOPTBwotr.101"
 		trigger = { NOT = { has_global_flag = aragornwar } }
 		set_character_flag = wotr34
 		wealth = 1000
@@ -2283,15 +2345,15 @@ character_event = {
 	
 ##Aragorn when Rohan is under attack##
 character_event = {
-    id = wotr.35
-    title = "EVTTITwotr.35"
-    desc = "EVTDESCwotr.35"
+    id = wotr.102
+    title = "EVTTITwotr.102"
+    desc = "EVTDESCwotr.102"
     picture = "GFX_travel_gondor"
 	
 	is_triggered_only = yes
 	
 	option = {
-       name = "EVTOPTAwotr.35"
+       name = "EVTOPTAwotr.102"
 		ROOT = {
 			join_defender_wars = FROM
 		}
@@ -2351,9 +2413,9 @@ character_event = {
 		
 ##Ents join in if Merry and Pippin were captured, first Saruman gets an event##
 character_event = {
-    id = wotr.36
-    title = "EVTTITwotr.36"
-    desc = "EVTDESCwotr.36"
+    id = wotr.111
+    title = "EVTTITwotr.111"
+    desc = "EVTDESCwotr.111"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2371,28 +2433,28 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.36"
+		name = "EVTOPTAwotr.111"
 		set_character_flag = wotr36
 		any_independent_ruler = {
 			limit = {
 			has_landed_title = d_fangorn
 				}
-			character_event = { id = wotr.37 }
+			character_event = { id = wotr.112 }
 		}
 	}
  }
 		
 ##Ents join in if Merry and Pippin were captured, then fangorn gets an event##
 character_event = {
-    id = wotr.37
-    title = "EVTTITwotr.37"
-    desc = "EVTDESCwotr.37"
+    id = wotr.112
+    title = "EVTTITwotr.112"
+    desc = "EVTDESCwotr.112"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = "EVTOPTAwotr.37"
+		name = "EVTOPTAwotr.112"
 		wealth = 1000
 		set_global_flag = marchofents
 		add_claim=c_orthanc
@@ -2401,22 +2463,22 @@ character_event = {
 			limit = {
 				has_landed_title = k_rohan
 			}
-			character_event = { id = wotr.40 days = 7 }
+			character_event = { id = wotr.114 days = 7 }
 		}
 	}	
  }
 		
 ##Ents join Rohans war if Merry and Pippin were captured, but has to go through event 40 first##
 character_event = {
-    id = wotr.38
-    title = "EVTTITwotr.38"
-    desc = "EVTDESCwotr.38"
+    id = wotr.113
+    title = "EVTTITwotr.113"
+    desc = "EVTDESCwotr.113"
     picture = "GFX_shadows_coming"
 	
 	is_triggered_only = yes
 	
 	option = { 
-		name = "EVTOPTAwotr.38"
+		name = "EVTOPTAwotr.113"
 		set_global_flag = revengeofents
 		add_claim = c_orthanc
 		ROOT = {
@@ -2448,9 +2510,9 @@ character_event = {
 		
 ##Ents join in if Merry and Pippin were captured, first Rohan gets an event##
 character_event = {
-    id = wotr.40
-    title = "EVTTITwotr.40"
-    desc = "EVTDESCwotr.40"
+    id = wotr.114
+    title = "EVTTITwotr.114"
+    desc = "EVTDESCwotr.114"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2468,14 +2530,14 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.40"
+		name = "EVTOPTAwotr.114"
 		clr_global_flag = marchofents
 		set_character_flag = wotr40
 		any_independent_ruler = {
 			limit = {
 				has_landed_title = d_fangorn
 			}
-			character_event = { id = wotr.38 }
+			character_event = { id = wotr.113 }
 		}
 	}
  }
@@ -2484,9 +2546,9 @@ character_event = {
 		
 ##After they have helped Rohan, the Ents come for Saruman - Rohan is no longer threatened##
 character_event = {
-	id = wotr.44
-    title = "EVTTITwotr.44"
-    desc = "EVTDESCwotr.44"
+	id = wotr.115
+    title = "EVTTITwotr.115"
+    desc = "EVTDESCwotr.115"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2499,7 +2561,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.44"	
+		name = "EVTOPTAwotr.115"	
 		clr_global_flag = revengeofents
 		clr_global_flag = rohan_threatened
 		create_character = {
@@ -2533,9 +2595,9 @@ character_event = {
  }
 ##After the war is won by Rohan, Rohan reconquers the westmarch##
 character_event = {
-	id = wotr.440
-    title = "EVTTITwotr.440"
-    desc = "EVTDESCwotr.440"
+	id = wotr.130
+    title = "EVTTITwotr.130"
+    desc = "EVTDESCwotr.130"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2549,7 +2611,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.440"	
+		name = "EVTOPTAwotr.130"	
 		clr_global_flag = preparewarisengard
 		create_character = {
 			random_traits = yes
@@ -2583,9 +2645,9 @@ character_event = {
 		
 ##If for some reason the Saruman invasion doesn't trigger via event, it should happen in 11367 at the latest, together with the main war against Gondor##
 character_event = {
-    id = wotr.45
-    title = "EVTTITwotr.45"
-    desc = "EVTDESCwotr.45"
+    id = wotr.150
+    title = "EVTTITwotr.150"
+    desc = "EVTDESCwotr.150"
     picture = "GFX_shadows_coming"
 	
 	
@@ -2598,7 +2660,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTAwotr.45"
+		name = "EVTOPTAwotr.150"
 		set_global_flag = wotr33
 		set_character_flag = wotr45
 		add_claim = k_rohan
@@ -2606,7 +2668,7 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTBwotr.45"
+		name = "EVTOPTBwotr.150"
 		trigger = { ai = no }
 		set_character_flag = wotr45
 	}

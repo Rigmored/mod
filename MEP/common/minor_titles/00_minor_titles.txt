@@ -26,7 +26,7 @@ title_regent = {
 	monthly_prestige = 1.50
 	
 	allowed_to_hold = {
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 	}
 	
 	gain_effect = {
@@ -49,11 +49,10 @@ title_appointed_regent = {
 	monthly_prestige = 0.75
 
 	allowed_to_hold = {
-		is_adult = yes
+		mep_is_adult = yes
 		prisoner = no
 		NOT = { trait = incapable }
 		has_regent = no
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -200,7 +199,7 @@ title_commander = {
 						}
 					}
 				}
-				is_adult = yes
+				mep_is_adult = yes
 			}
 			has_character_flag = special_marshal
 		}
@@ -210,7 +209,6 @@ title_commander = {
 		NOT = { trait = incapable }
 		NOT = { is_inaccessible_trigger = yes }
 		NOT = { has_character_flag = guru }
-		NOT = { trait = elf_childhood }
 	}
 	
 	gain_effect = {
@@ -243,10 +241,9 @@ title_court_eunuch = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		trait = eunuch
 		NOT = { culture = culture_black_numenorean }
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -293,7 +290,7 @@ title_court_midget = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		trait = dwarf
 		OR = {
 			AND = {
@@ -304,7 +301,6 @@ title_court_midget = {
 			}
 			religion_group = religion_group_hildor
 		}
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -357,9 +353,8 @@ title_court_jester = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { has_character_flag = guru }
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -408,10 +403,9 @@ title_keeper_of_swans = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable } 
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -460,7 +454,7 @@ title_master_of_the_horse = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -480,7 +474,6 @@ title_master_of_the_horse = {
 		}
 		NOT = { trait = incapable }
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -519,7 +512,7 @@ title_master_of_the_hunt = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -540,7 +533,6 @@ title_master_of_the_hunt = {
 		NOT = { has_character_flag = guru }
 		NOT = { trait = incapable }
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -585,7 +577,7 @@ title_cupbearer = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -606,7 +598,6 @@ title_cupbearer = {
 		NOT = { has_character_flag = guru }
 		NOT = { trait = incapable }
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -644,7 +635,7 @@ title_seneschal = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -664,8 +655,7 @@ title_seneschal = {
 		}
 		NOT = { has_character_flag = guru }
 		NOT = { trait = incapable }
-		is_incapable = no
-		NOT = { trait = elf_childhood }		
+		is_incapable = no	
 	}
 	
 	allowed_to_grant = {
@@ -700,7 +690,7 @@ title_paramount_knight = {
 	allowed_to_hold = {
 		NOT = { trait = incapable }
 		is_incapable = no
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 	}
 
 	gain_effect = {
@@ -734,7 +724,7 @@ title_food_taster = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -752,7 +742,6 @@ title_food_taster = {
 				}
 			}
 		}
-		NOT = { trait = elf_childhood }
 	}
 	
 	allowed_to_grant = {
@@ -797,7 +786,7 @@ title_court_calligrapher = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -819,7 +808,6 @@ title_court_calligrapher = {
 			}
 		}
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -865,9 +853,8 @@ title_court_musician = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -907,7 +894,7 @@ title_court_poet = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -929,7 +916,6 @@ title_court_poet = {
 			}
 		}
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -969,7 +955,7 @@ title_court_poet = {
 #				}
 #			}
 #		}
-#		is_adult = yes
+#		mep_is_adult = yes
 #		OR = { 
 #			is_female = no
 #			liege = {
@@ -1031,7 +1017,7 @@ title_state_inquisitor = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1047,7 +1033,6 @@ title_state_inquisitor = {
 			}
 		}
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1083,7 +1068,7 @@ title_high_admiral = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1099,7 +1084,6 @@ title_high_admiral = {
 			}
 		}
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1135,7 +1119,7 @@ title_high_judge = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1151,7 +1135,6 @@ title_high_judge = {
 			}
 		}
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1228,10 +1211,9 @@ title_baghatur = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 
 	allowed_to_grant = {
@@ -1267,9 +1249,8 @@ title_cherbi = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1306,10 +1287,9 @@ title_darkhan = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable } 
 		is_incapable = no
-		NOT = { trait = elf_childhood }
 	}
 
 	allowed_to_grant = {
@@ -1344,9 +1324,8 @@ title_noyan = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1385,10 +1364,9 @@ title_behi = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		is_female = yes
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1424,9 +1402,8 @@ title_master_of_the_eagle = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1466,7 +1443,7 @@ title_champion = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1482,7 +1459,6 @@ title_champion = {
 			}
 		}
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1496,7 +1472,7 @@ title_champion = {
 				NOT = { culture = culture_breelander} }
 			culture_group = culture_group_forodwaith
 			culture = culture_urukhai
-			culture = culture_wargs
+			culture = culture_kul_uruk
 			culture = culture_troll
 		}
 	}
@@ -1527,7 +1503,7 @@ title_champion = {
 #				}
 #			}
 #		}
-#		is_adult = yes
+#		mep_is_adult = yes
 #		OR = { 
 #			is_female = no
 #			liege = {
@@ -1605,7 +1581,7 @@ title_master_of_the_bow = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1625,7 +1601,6 @@ title_master_of_the_bow = {
 		}
 		# NOT = { has_minor_title = title_master_of_the_blade }
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1746,7 +1721,7 @@ title_yabgu = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1763,7 +1738,6 @@ title_yabgu = {
 		}		
 		is_close_relative = FROM
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 
@@ -1800,7 +1774,7 @@ title_ishad = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1816,7 +1790,6 @@ title_ishad = {
 			}
 		}
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
 		is_incapable = no		
 	}
 
@@ -1853,9 +1826,8 @@ title_kundur = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1894,7 +1866,7 @@ title_master_of_the_royal_elephants = {
 				}
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = { 
 			is_female = no
 			liege = {
@@ -1914,7 +1886,6 @@ title_master_of_the_royal_elephants = {
 		}
 		NOT = { has_character_flag = guru }
 		NOT = { trait = incapable } 
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 	}
 	
@@ -1964,7 +1935,7 @@ title_master_of_the_royal_elephants = {
 #				}
 #			}
 #		}
-#		is_adult = yes
+#		mep_is_adult = yes
 #		OR = { 
 #			is_female = no
 #			liege = {
@@ -2032,7 +2003,7 @@ title_councilmember_king = {
 			}
 		}
 		can_be_councilmember_king_trigger = yes
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 		is_incapable = no
 	}
 	revoke_trigger = {
@@ -2084,7 +2055,7 @@ title_councilmember_emperor = {
 				}
 			}
 		}
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 		is_incapable = no
 		can_be_councilmember_emperor_trigger = yes
 	}
@@ -2189,8 +2160,7 @@ title_court_physician = {
 				}
 			}
 		}
-		is_adult = yes
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 		is_incapable = no
 
 		prisoner = no
@@ -2235,7 +2205,7 @@ title_heren_isseon_apprentice = {
 				primary_title = { temporary = yes } 
 			}
 		}
-		is_adult = yes
+		mep_is_adult = yes
 		OR = {
 			society_member_of = heren_isseon
 			is_in_society = no
@@ -2243,7 +2213,6 @@ title_heren_isseon_apprentice = {
 		mep_eligible_for_heren_isseon = yes
 		NOT = { trait = in_hiding }
 		prisoner = no
-		NOT = { trait = elf_childhood }
 		is_incapable = no
 		
 		hidden_trigger = {

@@ -24,13 +24,13 @@ letter_event = {
 		NOT = { has_character_flag = gbc_mourning }
 		OR = {
 			any_friend = {
-				is_adult = yes
+				mep_is_adult = yes
 				ai = yes
 				trait = has_bubonic_plague
 			}			
 	    	any_dynasty_member = {
 	    		is_offmap_ruler = no
-				is_adult = yes
+				mep_is_adult = yes
 				ai = yes
 				trait = has_bubonic_plague
 			}
@@ -44,14 +44,14 @@ letter_event = {
 		if = {
 			limit = {
 				any_friend = {
-					is_adult = yes
+					mep_is_adult = yes
 					ai = yes
 					trait = has_bubonic_plague
 				}
 			}
 			random_friend = {
 				limit = {
-					is_adult = yes
+					mep_is_adult = yes
 					ai = yes
 					trait = has_bubonic_plague        
 				}
@@ -62,7 +62,7 @@ letter_event = {
 			limit = {
 				NOT = {
 					any_friend = {
-						is_adult = yes
+						mep_is_adult = yes
 						ai = yes
 						trait = has_bubonic_plague
 					}
@@ -71,7 +71,7 @@ letter_event = {
 			random_dynasty_member = {
 				limit = {
 					is_offmap_ruler = no
-					is_adult = yes
+					mep_is_adult = yes
 					ai = yes
 					trait = has_bubonic_plague        
 				}
@@ -185,7 +185,7 @@ character_event = {
 	trigger = {
 		any_dynasty_member = {
 			is_offmap_ruler = no
-			is_adult = yes
+			mep_is_adult = yes
 			ai = yes
 			NOT = { trait = incapable }
 		}
@@ -195,7 +195,7 @@ character_event = {
 		random_dynasty_member = {
 			limit = {
 				is_offmap_ruler = no
-				is_adult = yes
+				mep_is_adult = yes
 				ai = yes
 				NOT = { trait = incapable }
 			}
@@ -404,7 +404,7 @@ character_event = {
 				}
 				random_courtier = {
 					limit = {
-						is_adult = yes
+						mep_is_adult = yes
 						opinion = {
 								who = ROOT
 								value = 25

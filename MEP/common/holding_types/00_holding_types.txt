@@ -1,0 +1,82 @@
+castle = {
+	trigger = {
+	}
+}
+
+city = {
+	trigger = {
+	}
+}
+
+temple = {
+	trigger = {
+	}
+}
+
+trade_post = {
+	trigger = {
+		custom_tooltip = {
+			text = TT_MEP_NOT_WILDERNESS
+			NOT = { religion_group = religion_group_wilderness }
+		}
+		NOT = { religion_group = religion_group_ungoliant }
+		NOT = { religion_group = religion_group_enyd }
+		mep_tp_compatible_align = yes
+		custom_tooltip = {
+			text = TT_MEP_NO_PURGE
+			NOT = { mep_being_purged_trigger = yes }
+		}
+		conditional_tooltip = {
+			trigger = {
+				OR = {
+					trade_route = north_south_road
+					trade_route = south_road
+					trade_route = royal_road
+					trade_route = great_east_road
+					trade_route = men_i_naugrim_road
+					trade_route = harad_trade_road
+				}
+				OR = {
+					FROM = { is_patrician = no }
+					AND = {
+						port = no
+						FROM = { is_patrician = yes }
+					}
+				}
+			}
+			OR = {
+				north_south_road_trade_post_trigger = yes
+				south_road_trade_post_trigger = yes
+				royal_road_trade_post_trigger = yes
+				great_east_road_trade_post_trigger = yes
+				men_i_naugrim_road_trade_post_trigger = yes
+				harad_trade_road_trade_post_trigger = yes
+			}
+		}
+	}
+}
+
+family_palace = {
+	trigger = {
+	}
+}
+
+tribal = {
+	trigger = {
+	}
+}
+
+nomad = {
+	trigger = {
+	}
+}
+
+fort = {
+	trigger = {
+	}
+}
+
+hospital = {
+	trigger = {
+	}
+}

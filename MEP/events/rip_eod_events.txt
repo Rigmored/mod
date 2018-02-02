@@ -930,13 +930,13 @@ character_event = {
 		if = {
 			limit = {
 				any_friend = {
-					is_adult = yes
+					mep_is_adult = yes
 				}	
 			}
 		
 			random_friend = {
 				limit = {
-					is_adult = yes
+					mep_is_adult = yes
 				}
 				save_event_target_as = EoD_worried_one
 				set_character_flag = worried_friend
@@ -947,12 +947,12 @@ character_event = {
 			limit = {
 				NOT = {
 					any_friend = {
-						is_adult = yes
+						mep_is_adult = yes
 					}
 				}
 				any_playable_ruler = {
 					ai = yes
-					is_adult = yes
+					mep_is_adult = yes
 					NOT = { is_rival = ROOT }
 				}
 			}
@@ -960,7 +960,7 @@ character_event = {
 			random_independent_ruler = {
 				limit = {
 					ai = yes
-					is_adult = yes
+					mep_is_adult = yes
 					is_landed = yes
 					NOT = { is_rival = ROOT }
 					NOT = { distance = { value = 200 who = ROOT } }
@@ -1023,13 +1023,13 @@ character_event = {
 			if = {
 				limit = {
 					any_rival = {
-						is_adult = yes
+						mep_is_adult = yes
 					}	
 				}
 			
 				random_rival = {
 					limit = {
-						is_adult = yes
+						mep_is_adult = yes
 					}
 					save_event_target_as = EoD_worried_one
 					set_character_flag = worried_rival
@@ -1040,19 +1040,19 @@ character_event = {
 				limit = {
 					NOT = {
 						any_rival = {
-							is_adult = yes
+							mep_is_adult = yes
 						}
 					}
 					any_playable_ruler = {
 						ai = yes
-						is_adult = yes
+						mep_is_adult = yes
 					}
 				}
 
 				random_independent_ruler = {
 					limit = {
 						ai = yes
-						is_adult = yes
+						mep_is_adult = yes
 						is_landed = yes
 						NOT = { distance = { value = 200 where = ROOT } }
 					}

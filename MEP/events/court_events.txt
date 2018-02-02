@@ -20,9 +20,9 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+		mep_is_adult = yes
 		NOT = { trait = proud }
 		NOT = { trait = humble }
-        NOT = { trait = elf_childhood }
         NOT = { religion_group = religion_group_melkor }
 		NOT = { religion_group = religion_group_ungoliant }
 	}
@@ -163,6 +163,7 @@ character_event = {
 	only_men = yes
 	
 	trigger = {
+		mep_is_adult = yes
 		NOT = { mep_evil_religion = yes }
 		is_married = yes
 		spouse = {
@@ -241,6 +242,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+		mep_is_adult = yes
 		NOT = { mep_evil_religion = yes }
 		in_command = no
 		any_vassal = {
@@ -294,6 +296,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+		mep_is_adult = yes
         NOT = { mep_is_evil_side_trigger = yes }
 		in_command = no
 		tier = count
@@ -341,6 +344,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+		mep_is_adult = yes
 		in_command = no
         NOT = { mep_evil_religion = yes }
 		father_even_if_dead = {
@@ -392,6 +396,7 @@ character_event = {
 	
 	trigger = {
         NOT = { mep_evil_religion = yes }
+		mep_is_adult = yes
 		in_command = no
 		OR = {
 			trait = fair
@@ -534,14 +539,14 @@ character_event = {
 	only_men = yes
 	
 	trigger = {
+		mep_is_adult = yes
 		NOT = { mep_evil_religion = yes }
 		NOT = { religion_group = religion_group_enyd }
 		any_child = {
 			is_married = no
 			is_female = no
-			age = 16
+			mep_is_adult = yes
 			NOT = { age = 21 }
-            NOT = { trait = elf_childhood }
 			NOT = { demesne_size = 1 }
 			NOT = { trait = chaste }
 			NOT = { trait = celibate }
@@ -554,8 +559,7 @@ character_event = {
 			limit = {
 				is_married = no
 				is_female = no
-				age = 16
-                NOT = { trait = elf_childhood }
+				mep_is_adult = yes
 				NOT = { age = 21 }
 				NOT = { demesne_size = 1 }
 				NOT = { trait = chaste }
@@ -620,6 +624,7 @@ character_event = {
 	
 	trigger = {
 		in_command = no
+		mep_is_adult = yes
 		NOT = { mep_evil_religion = yes }
         spouse = {
 			is_abroad = no
@@ -708,6 +713,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+	mep_is_adult = yes
         NOT = { religion_group = religion_group_melkor }
 		NOT = { religion_group = religion_group_ungoliant }
 		is_landed = yes
@@ -754,6 +760,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
+		mep_is_adult = yes
 		war = yes
 		any_current_enemy = {
 			culture = ROOT
@@ -1059,6 +1066,7 @@ character_event = {
 	
 	trigger = {
 		NOT = { has_dlc = "Zeus" }
+		mep_is_adult = yes
 		is_ruler = no
 		is_councillor = no
 		independent = no
@@ -1283,6 +1291,7 @@ character_event = {
 	prisoner = no
 
 	trigger = {
+		mep_is_adult = yes
 		NOT = { has_dlc = "Zeus" }
 		is_ruler = no
 		independent = no
@@ -1504,6 +1513,7 @@ character_event = {
 	
 	trigger = {
 		NOT = { has_dlc = "Zeus" }
+		mep_is_adult = yes
 		is_ruler = no
 		independent = no
 		is_councillor = no
@@ -1721,6 +1731,7 @@ character_event = {
 	
 	trigger = {
 		NOT = { has_dlc = "Zeus" }
+		mep_is_adult = yes
 		OR = {
 			is_theocracy = yes
 			is_ruler = no
@@ -1952,6 +1963,7 @@ character_event = {
 	
 	trigger = {
 		NOT = { has_dlc = "Zeus" }
+		mep_is_adult = yes
 		is_ruler = no
 		independent = no
 		is_councillor = no

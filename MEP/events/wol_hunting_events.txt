@@ -1772,14 +1772,14 @@ character_event = {
 				any_friend = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 				}
 			}
 			random_friend = {
 				limit = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 				}
 				character_event = { id = WoL.5201 }
 			}
@@ -1829,7 +1829,7 @@ character_event = {
 				any_courtier = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 					opinion = { who = ROOT value = 0 }
 				}
 			}
@@ -1837,7 +1837,7 @@ character_event = {
 				limit = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 					opinion = { who = ROOT value = 0 }
 				}
 				character_event = { id = WoL.5201 }
@@ -1868,14 +1868,14 @@ character_event = {
 				any_courtier = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 				}
 			}
 			random_courtier = {
 				limit = {
 					NOT = { trait = incapable }
 					prisoner = no
-					is_adult = yes
+					mep_is_adult = yes
 				}
 				character_event = { id = WoL.5201 }
 			}
@@ -2111,7 +2111,7 @@ character_event = {
 		name = EVTOPTA_WoL_5211
 		any_courtier = {
 			limit = {
-				is_adult = yes
+				mep_is_adult = yes
 				trait = hunter
 			}
 			opinion = {
@@ -2121,7 +2121,7 @@ character_event = {
 			}
 		}
 		any_courtier = {
-			limit = { is_adult = no }
+			limit = { mep_is_child = yes }
 			opinion = {
 				modifier = opinion_nice_dog_children
 				who = ROOT

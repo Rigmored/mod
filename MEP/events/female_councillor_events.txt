@@ -454,16 +454,16 @@ character_event = {
 		#Gets her married
 		hidden_tooltip = {
 			if = {
-				limit = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
+				limit = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
 				random_courtier = {
-					limit = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
+					limit = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
 					add_spouse_matrilineal = FROM
 				}
 				break = yes
 			}
 
 			if = {
-				limit = { NOT = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
+				limit = { NOT = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
 
 				create_random_diplomat = { 
 					random_traits = yes
@@ -556,16 +556,16 @@ character_event = {
 		#Gets her married
 		hidden_tooltip = {
 			if = {
-				limit = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
+				limit = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
 				random_courtier = {
-					limit = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
+					limit = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
 					add_spouse_matrilineal = FROM
 				}
 				break = yes
 			}
 
 			if = {
-				limit = { NOT = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
+				limit = { NOT = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
 
 				create_random_soldier = { 
 					random_traits = yes
@@ -663,16 +663,16 @@ character_event = {
 		#Gets her married
 		hidden_tooltip = {
 			if = {
-				limit = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
+				limit = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
 				random_courtier = {
-					limit = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
+					limit = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
 					add_spouse_matrilineal = FROM
 				}
 				break = yes
 			}
 
 			if = {
-				limit = { NOT = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
+				limit = { NOT = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
 
 				create_random_steward = { 
 					random_traits = yes
@@ -756,16 +756,16 @@ character_event = {
 		#Gets her married
 		hidden_tooltip = {
 			if = {
-				limit = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
+				limit = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } }
 				random_courtier = {
-					limit = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
+					limit = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes }
 					add_spouse_matrilineal = FROM
 				}
 				break = yes
 			}
 
 			if = {
-				limit = { NOT = { any_courtier = { NOT = { character = ROOT } is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
+				limit = { NOT = { any_courtier = { NOT = { character = ROOT } mep_is_adult = yes is_married = no is_female = no prisoner = no is_unimportant_trigger = yes } } }
 
 				create_random_intriguer = { 
 					random_traits = yes
@@ -817,7 +817,7 @@ character_event = {
 		any_realm_character = {	
 			is_close_relative = ROOT
 			is_female = yes
-			is_adult = yes
+			mep_is_adult = yes
 			liege = { character = ROOT }
 			NOT = { trait = content }
 
@@ -844,7 +844,7 @@ character_event = {
 			limit = {
 				is_close_relative = ROOT
 				is_female = yes
-				is_adult = yes
+				mep_is_adult = yes
 				NOT = { trait = content }
 				liege = { character = ROOT }
 				NOT = { character = ROOT }
@@ -1268,7 +1268,7 @@ character_event = {
 		any_vassal = {	
 			is_landed = yes
 			is_female = yes
-			is_adult = yes
+			mep_is_adult = yes
 			NOT = { trait = content }
 
 			NOR = {
@@ -1297,7 +1297,7 @@ character_event = {
 			limit = {
 				is_landed = yes
 				is_female = yes
-				is_adult = yes
+				mep_is_adult = yes
 				NOT = { trait = content }
 
 				NOR = {

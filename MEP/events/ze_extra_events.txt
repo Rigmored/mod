@@ -219,7 +219,7 @@ long_character_event = {
 				is_inaccessible_trigger = yes
 				is_rival = ROOT
 			}
-			is_adult = yes
+			mep_is_adult = yes
 			is_voter = no
 			prisoner = no
 		}
@@ -235,7 +235,7 @@ long_character_event = {
 					is_inaccessible_trigger = yes
 					is_rival = ROOT
 				}
-				is_adult = yes
+				mep_is_adult = yes
 				is_voter = no
 				prisoner = no
 			}
@@ -527,7 +527,7 @@ character_event = {
 					is_republic = yes
 				}
 				NOT = { is_rival = ROOT }
-				is_adult = yes
+				mep_is_adult = yes
 				reverse_opinion = {
 					who = ROOT
 					value = 10
@@ -535,7 +535,7 @@ character_event = {
 			}
 			capital_scope = {
 				owner = {
-					is_adult = yes
+					mep_is_adult = yes
 					ROOT = {
 						primary_title = {
 							band_creator = {
@@ -1670,6 +1670,7 @@ character_event = {
 	
 	trigger = {
 		is_nomadic = no
+		mep_is_adult = yes
 		NOT = { is_inaccessible_trigger = yes }
 		higher_tier_than = COUNT
 		
@@ -1715,13 +1716,14 @@ character_event = {
 			}
 			prisoner = no
 			is_ruler = no
-			is_adult = yes
+			mep_is_adult = yes
 		}
 	}
 	
 	immediate = {
 		any_friend = {
 			limit = {
+				mep_is_adult = yes
 				NOR = {
 					is_inaccessible_trigger = yes
 					trait = eunuch
@@ -1734,7 +1736,6 @@ character_event = {
 					}
 					liege = { character = ROOT }
 					is_close_relative = ROOT
-					trait = elf_childhood
 					trait = wilderness
 				}
 				OR = {
@@ -1754,7 +1755,7 @@ character_event = {
 				}
 				prisoner = no
 				is_ruler = no
-				is_adult = yes
+				mep_is_adult = yes
 			}
 			save_event_target_as = target_unlanded_friend
 		}

@@ -18,7 +18,7 @@ focus_rulership = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		prisoner = no
 	}
@@ -89,7 +89,7 @@ focus_business = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		prisoner = no
 	}
@@ -161,7 +161,7 @@ focus_seduction = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { mep_dont_seduce_trigger = yes }
 		NOT = { trait = incapable }
 		NOT = { trait = celibate }
@@ -309,7 +309,7 @@ focus_intrigue = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		prisoner = no
 	}
@@ -415,7 +415,7 @@ focus_hunting = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		NOT = { religion_group = religion_group_enyd }
 		prisoner = no
@@ -483,7 +483,7 @@ focus_war = {
 	
 	allow = {
 		prisoner = no
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 	}
 	
@@ -575,10 +575,7 @@ focus_carousing = {
 	allow = {
 		custom_tooltip = {
 			text = TT_MEP_NOT_A_CHILD
-			AND = {
-				is_adult = yes
-				NOT = { trait = elf_childhood }
-			}
+			mep_is_adult = yes
 		}
 		hidden_tooltip = {
 			NOT = { trait = wilderness }
@@ -656,7 +653,7 @@ focus_family = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 		prisoner = no
 	}
@@ -763,7 +760,7 @@ focus_scholarship = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 	}
 	
@@ -853,7 +850,7 @@ focus_theology = {
 	allow = {
 		NOT = { religion_group = religion_group_eruhini }
 		NOT = { religion = religion_umaiar }
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = incapable }
 	}
 	

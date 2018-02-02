@@ -601,7 +601,7 @@ character_event = { #Progress event type 2! #Unhappy with work (gain stressed or
     		save_event_target_as = friendly_advice_target
     	}
     	random_courtier = { #grown-up fallback in case no council member...
-    		limit = { is_adult = yes NOT = { trait = incapable } is_inaccessible_trigger = no }
+    		limit = { mep_is_adult = yes NOT = { trait = incapable } is_inaccessible_trigger = no }
     		save_event_target_as = friendly_advice_target
     	}
     	trigger_switch = {
@@ -1144,10 +1144,10 @@ character_event = { #Outcome: Book is finished! It went Great/Good/Decent!
 
 			    					additive_modifier = {
 										value = 10
-										any_rival = { is_adult = yes }
+										any_rival = { mep_is_adult = yes }
 									}
 									trigger = { 
-										any_rival = { is_adult = yes }
+										any_rival = { mep_is_adult = yes }
 										NOT = {
 											any_artifact = {
 												artifact_type = lessons_taught_to_me_by_rival_1
@@ -1253,10 +1253,10 @@ character_event = { #Outcome: Book is finished! It went Great/Good/Decent!
 			    					}
 			    					additive_modifier = {
 										value = 10
-										any_rival = { is_adult = yes }
+										any_rival = { mep_is_adult = yes }
 									}
 									trigger = { 
-										any_rival = { is_adult = yes }
+										any_rival = { mep_is_adult = yes }
 										NOT = {
 											any_artifact = {
 												artifact_type = lessons_taught_to_me_by_rival_2
@@ -1404,7 +1404,7 @@ character_event = { #Outcome: Book is finished! It went Great/Good/Decent!
 			    				}
 			    				10 = {
 			    					random_rival = {
-			    						limit = { root_attraction_trigger = yes is_adult = yes } #if ROOT can be attracted to them...
+			    						limit = { root_attraction_trigger = yes mep_is_adult = yes } #if ROOT can be attracted to them...
 			    						save_event_target_as = dedication_target
 			    					}
 			    					add_artifact = lessons_taught_to_me_by_rival_3
@@ -1425,7 +1425,7 @@ character_event = { #Outcome: Book is finished! It went Great/Good/Decent!
 									trigger = { 
 										any_rival = {
 											root_attraction_trigger = yes
-											is_adult = yes
+											mep_is_adult = yes
 										}
 										NOT = {
 											any_artifact = {

@@ -1415,7 +1415,7 @@ narrative_event = {
 		text = EVTDSC_RIP_21019_LEARNING_A
 		trigger = { 
 			FROM = { 
-				is_adult = no 
+				mep_is_child = yes 
 				religion = ROOT
 			} 
 		}
@@ -1457,7 +1457,7 @@ narrative_event = {
 		text = EVTDSC_RIP_21019_LEARNING_B
 		trigger = { 
 			FROM = { 
-				is_adult = no 
+				mep_is_child = yes 
 				NOT = { religion = ROOT }
 			} 
 		}
@@ -1587,7 +1587,7 @@ narrative_event = {
 			}
 		}
 		if = {
-			limit = { is_adult = no }
+			limit = { mep_is_child = yes }
 			FROM = {
 				narrative_event = { id = RIP.21400 days = 150 } 
 			}
@@ -4438,7 +4438,7 @@ character_event = {
 		if = {
 			limit = {
 				current_heir = { 
-					is_adult = yes
+					mep_is_adult = yes
 					prisoner = no
 					NOT = { trait = in_hiding }
 					NOT = { trait = incapable }
@@ -4465,7 +4465,7 @@ character_event = {
 			if = {
 				limit = {
 					is_offmap_ruler = no 
-					is_adult = yes
+					mep_is_adult = yes
 					prisoner = no
 					NOT = { trait = in_hiding }
 					NOT = { trait = incapable }
@@ -4489,7 +4489,7 @@ character_event = {
 		if = {
 			limit = {
 				OR = {
-					is_adult = no
+					mep_is_child = yes
 					prisoner = yes
 					trait = in_hiding
 					trait = incapable
@@ -4511,7 +4511,7 @@ character_event = {
 		if = {
 			limit = {
 				OR = {
-					is_adult = no
+					mep_is_child = yes
 					prisoner = yes
 					trait = in_hiding
 					trait = incapable

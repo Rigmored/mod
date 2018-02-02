@@ -948,44 +948,44 @@ mep_fellowship_ends_at_rivendell_effect = {
 		event_target:mep_fellowship_wizard = {
 			if = {
 				limit = { ai = no}
-				character_event = { id = wotr.8  days = 2 }
+				character_event = { id = wotr.11  days = 2 }
 			}
 		}
 	}
 	event_target:mep_fellowship_gondorian = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 	event_target:mep_fellowship_dwarf = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 	event_target:mep_fellowship_elf = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 	event_target:mep_fellowship_hobbit1 = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 	event_target:mep_fellowship_hobbit2 = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 	event_target:mep_fellowship_hobbit3 = {
 		if = {
 			limit = { ai = no}
-			character_event = { id = wotr.8  days = 2 }
+			character_event = { id = wotr.11  days = 2 }
 		}
 	}
 }
@@ -993,7 +993,7 @@ mep_fellowship_ends_at_rivendell_effect = {
 mep_reached_moria_effect = {
 	if = {
 		limit = { ai = no }
-		character_event = { id = wotr.12 }
+		character_event = { id = wotr.21 }
 	}
 	if = {
 		limit = { is_alive = yes }
@@ -1013,7 +1013,7 @@ mep_fellowship_moria1_effect = {
 mep_escape_moria_effect = {
 	if = {
 		limit = { ai = no }
-		character_event = { id = wotr.14 }
+		character_event = { id = wotr.31 }
 	}
 	if = {
 		limit = { is_alive = yes }
@@ -1059,5 +1059,22 @@ mep_transfer_onering_to_root = {
 		}
 	}
 } 
+#-------------------------------------------------------------------
+mep_addinfertile = {
+	if = {
+		limit = { trait = fertile }
+		remove_trait = fertile
+	}
+	add_trait = not_fertile
+	set_character_flag = human_infertility
+}
 
+mep_add_duninfertile = {
+	if = {
+		limit = { trait = fertile }
+		remove_trait = fertile
+	}
+	add_trait = dunedain_infertility
+	set_character_flag = human_infertility
+}
 

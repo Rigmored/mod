@@ -4602,7 +4602,7 @@ character_event = { # PING/Set-up event: Someone dies - is this what you foretol
 			}
 
 			AND = {
-				is_adult = yes
+				mep_is_adult = yes
 				any_rival = {
 					is_alive = yes
 					has_relationship_omen_modifier_trigger = yes
@@ -4610,7 +4610,7 @@ character_event = { # PING/Set-up event: Someone dies - is this what you foretol
 			}
 			any_child = {
 				is_alive = yes
-				is_adult = yes
+				mep_is_adult = yes
 				has_relationship_omen_modifier_trigger = yes
 			}
 			mother = {
@@ -4665,7 +4665,7 @@ character_event = { # PING/Set-up event: Someone dies - is this what you foretol
 		# Adult child gets event
 		random_child = {
 			limit = {
-				is_adult = yes
+				mep_is_adult = yes
 				NOT = { trait = incapable }
 				has_relationship_omen_modifier_trigger = yes
 			}
@@ -5378,16 +5378,16 @@ character_event = { # FALLBACK (delayed event): Something good happens
         	hidden_effect = {
 		        #... Find a friend
 				if = {
-					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } }
+					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } }
 
 					random_courtier = {
-						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } 
+						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } 
 						save_event_target_as = envisioned_friend
 					}
 				}
 				#... Or create a new one
 				if = {
-					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } } }
+					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } } }
 
 					create_character = {
 						random_traits = yes
@@ -5407,16 +5407,16 @@ character_event = { # FALLBACK (delayed event): Something good happens
     		hidden_effect = {
 		        #... Find a friend
 				if = {
-					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } }
+					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } }
 
 					random_courtier = {
-						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } 
+						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } 
 						save_event_target_as = envisioned_friend
 					}
 				}
 				#... Or create a new one
 				if = {
-					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } } }
+					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } } }
 
 					create_character = {
 						random_traits = yes
@@ -5608,17 +5608,17 @@ character_event = { # FALLBACK (delayed event): Something bad happens
         	hidden_effect = {
 				#... Find a rival
 				if = {
-					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } }
+					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } }
 
 					random_courtier = {
-						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } 
+						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } 
 						save_event_target_as = envisioned_rival
 					}
 				}
 
 				#... Or create a new one
 				if = {
-					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } } }
+					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } } }
 
 					create_character = {
 						random_traits = yes
@@ -5638,17 +5638,17 @@ character_event = { # FALLBACK (delayed event): Something bad happens
     		hidden_effect = {
 				#... Find a rival
 				if = {
-					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } }
+					limit = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } }
 
 					random_courtier = {
-						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } 
+						limit = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } 
 						save_event_target_as = envisioned_rival
 					}
 				}
 
 				#... Or create a new one
 				if = {
-					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } is_adult = yes } } }
+					limit = { NOT = { any_courtier = { NOR = { is_friend = ROOT is_rival = ROOT is_lover = ROOT } mep_is_adult = yes } } }
 
 					create_character = {
 						random_traits = yes
@@ -6165,14 +6165,14 @@ character_event = { # Child contemplates their destiny - is this what they want?
     trigger = {
 		is_alive = yes
 		any_courtier = {
-			is_adult = yes
+			mep_is_adult = yes
 			prisoner = no
 		}
     }
 
     immediate = {
     	random_courtier = {
-			limit = { is_adult = yes prisoner = no }
+			limit = { mep_is_adult = yes prisoner = no }
 			save_event_target_as = inspiring_adult
 		}
     	if = { limit = { has_guardian = yes }
@@ -6180,91 +6180,91 @@ character_event = { # Child contemplates their destiny - is this what they want?
 	    		on_trigger = has_character_flag
 				destined_steward = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15 is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15 is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_fighter = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15 is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no martial = 15 is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_diplomat = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15 is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15 is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_schemer = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15 is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15 is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_scholar = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 is_guardian = ROOT }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 is_guardian = ROOT }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
@@ -6275,91 +6275,91 @@ character_event = { # Child contemplates their destiny - is this what they want?
 	    		on_trigger = has_character_flag
 				destined_steward = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no }
+						limit = { mep_is_adult = yes prisoner = no }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15 }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15 }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15 has_education_stewardship_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no stewardship = 15  has_education_stewardship_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no stewardship = 15  has_education_stewardship_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_fighter = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no }
+						limit = { mep_is_adult = yes prisoner = no }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15 }
+						limit = { mep_is_adult = yes prisoner = no martial = 15 }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no martial = 15 has_education_martial_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no martial = 15  has_education_martial_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no martial = 15  has_education_martial_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_diplomat = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no }
+						limit = { mep_is_adult = yes prisoner = no }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15 }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15 }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15 has_education_diplomacy_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no diplomacy = 15  has_education_diplomacy_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no diplomacy = 15  has_education_diplomacy_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_schemer = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no }
+						limit = { mep_is_adult = yes prisoner = no }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15 }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15 }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15 has_education_intrigue_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no intrigue = 15  has_education_intrigue_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no intrigue = 15  has_education_intrigue_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}
 				destined_scholar = {
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no }
+						limit = { mep_is_adult = yes prisoner = no }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 					random_courtier = {
-						limit = { is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes has_top_tier_education_trait_trigger = yes }
+						limit = { mep_is_adult = yes prisoner = no learning = 15 has_education_learning_trigger = yes has_top_tier_education_trait_trigger = yes }
 						save_event_target_as = inspiring_adult
 					}
 				}

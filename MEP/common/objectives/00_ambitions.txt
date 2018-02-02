@@ -585,7 +585,7 @@ obj_amass_wealth = {
 	
 	allow = {
 		NOT = { has_dlc = "Zeus" }
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { wealth = 200 }
 		is_ruler = yes
 		NOT = { trait = charitable }
@@ -652,7 +652,7 @@ obj_become_paragon_of_virtue = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { piety = 100 }
 		is_ruler = yes
 		NOT = { trait = cruel }
@@ -752,9 +752,8 @@ obj_become_exalted = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		NOT = { trait = wilderness }
-		NOT = { trait = elf_childhood }
 		NOT = { prestige = 200 }
 		is_ruler = yes
 		NOT = { trait = content }
@@ -1166,11 +1165,10 @@ obj_wants_landed_title = {
 			ai = yes
 		}
 		prisoner = no
-		is_adult = yes
+		mep_is_adult = yes
 		is_female = no
 		is_incapable = no
 		NOT = { trait = eunuch }
-		NOT = { trait = elf_childhood }
 		NOT = { is_ascetic_trigger = yes }
 		NOT = { has_minor_title = title_guru }
 		liege = {
@@ -1307,7 +1305,7 @@ obj_become_heir = {
 			ai = yes
 		}
 		prisoner = no
-		is_adult = yes
+		mep_is_adult = yes
 		is_primary_heir = no
 		is_incapable = no
 	}
@@ -1368,7 +1366,7 @@ obj_improve_martial = {
 	type = character
 	
 	potential = {
-		age = 16
+		mep_is_adult = yes
 		is_playable = yes
 		NOT = { has_dlc = "Way of Life" }
 	}
@@ -1378,7 +1376,6 @@ obj_improve_martial = {
 		is_incapable = no
 		NOT = { trait = infirm }
 		NOT = { trait = wilderness }
-		NOT = { trait = elf_childhood }
 		prisoner = no
 	}
 	chance = {
@@ -1690,7 +1687,7 @@ obj_improve_intrigue = {
 #	type = character
 #	
 #	potential = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_ruler = yes
 #		uses_decadence = yes
 #	}
@@ -1752,8 +1749,7 @@ obj_become_king = {
 	ai_capital_kingdom_focus = yes # AI characters with this ambition will actually focus on taking the kingdom
 	
 	potential = {
-		is_adult = yes
-		NOT = { trait = elf_childhood }
+		mep_is_adult = yes
 		is_playable = yes
 		is_landed = yes
 		lower_tier_than = KING
@@ -1881,7 +1877,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -1925,7 +1921,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -1969,7 +1965,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2016,7 +2012,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2061,7 +2057,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2105,7 +2101,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2149,7 +2145,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2194,7 +2190,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2238,7 +2234,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2285,7 +2281,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		is_incapable = no
 #		NOT = { trait = infirm }
 #	}
@@ -2330,7 +2326,7 @@ obj_become_king = {
 #	}
 #	
 #	allow = {
-#		is_adult = yes
+#		mep_is_adult = yes
 #		NOT = { piety = 100 }
 #		is_ruler = yes
 #		NOT = { trait = slow }
@@ -2413,7 +2409,7 @@ obj_gain_any_title = {
 	
 	potential = {
 		has_dlc = "Zeus"
-		is_adult = yes
+		mep_is_adult = yes
 		is_playable = yes
 		independent = no
 		#liege = { independent = yes }
@@ -2525,7 +2521,7 @@ obj_see_the_realm_prosper = {
 		}
 		war = no
 		independent = yes
-		is_adult = yes
+		mep_is_adult = yes
 		NOR = { 
 			trait = incapable
 			is_inaccessible_trigger = yes
@@ -2643,7 +2639,7 @@ obj_see_the_realm_prosper = {
 				if = {
 					limit = {
 						has_nickname = no
-						is_adult = yes
+						mep_is_adult = yes
 						is_incapable = no
 					}
 					random_list = {

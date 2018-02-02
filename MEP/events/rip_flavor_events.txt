@@ -827,7 +827,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				is_female = no
-				is_adult = yes
+				mep_is_adult = yes
 				has_lover = no
 				trait = homosexual
 				NOT = { character = ROOT }
@@ -840,7 +840,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				is_female = no
-				is_adult = yes
+				mep_is_adult = yes
 				has_lover = no
 				trait = homosexual
 				NOT = { character = ROOT }
@@ -3458,7 +3458,7 @@ character_event = { # Execution nicknames
 			if = {
 				limit = {
 					has_nickname = no
-					is_adult = yes
+					mep_is_adult = yes
 					NOT = { trait = incapable }
 				}
 				random_list = {
@@ -3627,7 +3627,7 @@ character_event = {
 		spouse = { save_event_target_as = rip_widow }
 
 		random_child = { 
-			limit = { is_adult = yes }
+			limit = { mep_is_adult = yes }
 			save_event_target_as = rip_child
 		}
 
@@ -4801,7 +4801,7 @@ character_event = {
 		trigger = { 
 			#Must be appropriate love target
 			event_target:rip_heir = { 
-				is_adult = yes 
+				mep_is_adult = yes 
 				NOT = { is_close_relative = ROOT }
 				root_attraction_trigger = yes
 			}

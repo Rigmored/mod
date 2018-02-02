@@ -23,7 +23,7 @@ obj_become_council_member = {
 		}
 		has_dlc = "Zeus"
 		prisoner = no
-		is_adult = yes
+		mep_is_adult = yes
 		is_councillor = no
 		is_landed = yes
 		OR = {
@@ -144,7 +144,7 @@ obj_land_for_son = {
 		#liege = { independent = yes }
 		has_dlc = "Zeus"
 		prisoner = no
-		is_adult = yes
+		mep_is_adult = yes
 		NOR = { 
 			trait = incapable 
 			has_character_flag = land_for_son_successful
@@ -152,7 +152,7 @@ obj_land_for_son = {
 		any_child = {
 			is_female = no
 			is_landed = no
-			is_adult = yes
+			mep_is_adult = yes
 			is_heir = no
 			prisoner = no
 			NOR = {
@@ -227,7 +227,7 @@ obj_land_for_son = {
 			NOT = {
 				any_child = {
 					is_female = no
-					is_adult = yes
+					mep_is_adult = yes
 					is_landed = no
 					is_heir = no
 				}
@@ -254,7 +254,7 @@ obj_build_a_war_chest = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		is_ruler = yes
 		war = no
 		OR = {
@@ -411,7 +411,7 @@ obj_groom_an_heir = {
 	}
 	
 	allow = {
-		is_adult = yes
+		mep_is_adult = yes
 		is_ruler = yes
 		OR = {
 			NOT = { trait = eunuch }
@@ -423,7 +423,7 @@ obj_groom_an_heir = {
 			trait = incapable
 			is_inaccessible_trigger = yes
 			any_child = {
-				is_adult = yes 
+				mep_is_adult = yes 
 				NOR = {
 					trait = bastard
 					trait = eunuch
@@ -492,7 +492,7 @@ obj_groom_an_heir = {
 	}
 	success = {
 		any_child = {
-			is_adult = yes 
+			mep_is_adult = yes 
 			NOR = {
 				trait = bastard
 				trait = eunuch
@@ -520,7 +520,7 @@ obj_groom_an_heir = {
 		hidden_tooltip = {
 			any_child = {
 					limit = {
-						is_adult = yes 
+						mep_is_adult = yes 
 						NOR = {
 							trait = bastard
 							trait = eunuch

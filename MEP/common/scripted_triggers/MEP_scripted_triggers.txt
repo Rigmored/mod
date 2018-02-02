@@ -109,6 +109,16 @@
 # mep_coloniz_quick
 # mep_marriagable_female
 
+## Trade Post related
+# north_south_road_trade_post_trigger
+# south_road_trade_post_trigger
+# royal_road_trade_post_trigger
+# great_east_road_trade_post_trigger
+# men_i_naugrim_road_trade_post_trigger
+# harad_trade_road_trade_post_trigger
+# mep_no_trade_posts
+# mep_tp_compatible_align
+# mep_building_trade_route_trigger
 
 #---------------------------------------------------------------------------------------
 # Character Triggers
@@ -1413,7 +1423,7 @@ mep_marriagable_female = {
 			}
 			AND = {
 				religion_group = religion_group_periannath
-				NOT = { age = 55 }
+				NOT = { age = 50 }
 			}
 			AND = {
 				age = 200
@@ -1433,4 +1443,250 @@ mep_marriagable_female = {
 		
 	}
 }
+#----------------------------------------------------------------------
+# I have no idea why 'trade_route = north_south_road' is not good enough...
+north_south_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = north_south_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 270
+				province_id = 263
+				province_id = 267
+				province_id = 105
+				province_id = 169
+				province_id = 170
+				province_id = 173
+				province_id = 172
+				province_id = 291
+				province_id = 777
+				province_id = 381
+				province_id = 383
+				province_id = 385
+				province_id = 384
+				province_id = 226
+				province_id = 290
+				province_id = 225
+				province_id = 120
+				province_id = 119
+				province_id = 118
+				province_id = 117
+				province_id = 115
+				province_id = 112
+				province_id = 111
+				province_id = 114
+				province_id = 110
+				province_id = 3
+				province_id = 69
+				province_id = 4
+				province_id = 5
+				province_id = 7
+				province_id = 9
+				province_id = 45
+				province_id = 422
+			}
+		}
+	}
+}
 
+south_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = south_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 215
+				province_id = 1
+				province_id = 10
+				province_id = 11
+				province_id = 14
+				province_id = 17
+				province_id = 18
+				province_id = 219
+				province_id = 220
+				province_id = 221
+				province_id = 224
+				province_id = 31
+				province_id = 26
+				province_id = 25
+				province_id = 24
+			}
+		}
+	}
+}
+
+royal_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = royal_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 1
+				province_id = 428
+				province_id = 427
+				province_id = 53
+				province_id = 54
+				province_id = 426
+			}
+		}
+	}
+}
+
+great_east_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = great_east_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 657
+				province_id = 236
+				province_id = 687
+				province_id = 664
+				province_id = 95
+				province_id = 86
+				province_id = 84
+				province_id = 85
+				province_id = 75
+				province_id = 76
+				province_id = 266
+				province_id = 267
+				province_id = 265
+				province_id = 268
+				province_id = 305
+				province_id = 307
+				province_id = 369
+				province_id = 297
+				province_id = 372
+				province_id = 234
+				province_id = 286
+				province_id = 287
+				province_id = 288
+				province_id = 290
+				province_id = 285
+				province_id = 371
+				province_id = 570
+			}
+		}
+	}
+}
+
+men_i_naugrim_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = men_i_naugrim_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 570
+				province_id = 403
+				province_id = 688
+				province_id = 689
+				province_id = 285
+				province_id = 2
+				province_id = 295
+				province_id = 398
+				province_id = 399
+				province_id = 400
+				province_id = 417
+				province_id = 321
+				province_id = 322
+				province_id = 328
+				province_id = 540
+				province_id = 539
+				province_id = 292
+				province_id = 684
+				province_id = 683
+				province_id = 573
+				province_id = 574
+				province_id = 572
+			}
+		}
+	}
+}
+
+harad_trade_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = harad_trade_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 691
+				province_id = 585
+				province_id = 47
+				province_id = 48
+				province_id = 49
+				province_id = 52
+				province_id = 53
+				province_id = 55
+				province_id = 57
+				province_id = 59
+				province_id = 63
+				province_id = 127
+				province_id = 133
+				province_id = 138
+				province_id = 142
+				province_id = 141
+				province_id = 143
+				province_id = 467
+				province_id = 472
+				province_id = 533
+			}
+		}
+	}
+}
+
+mep_no_trade_posts = {
+	OR = {
+		religion_group = religion_group_wilderness
+		religion_group = religion_group_ungoliant
+		religion_group = religion_group_enyd
+		mep_being_purged_trigger = yes
+	}
+}
+
+# the scope should be the province, FROM the one who wants to build the trade post
+mep_tp_compatible_align = {
+	custom_tooltip = {
+		text = TT_MEP_NOT_OPPOSITE_ALIGN
+		OR = {
+			AND = {
+				FROM = { mep_is_good_side_trigger = yes }
+				NOT = { mep_evil_religion = yes }
+			}
+			AND = {
+				FROM = { mep_is_evil_side_trigger = yes }
+				NOT = { mep_good_side_province = yes }
+			}
+			FROM = {
+				NOT = { mep_is_good_side_trigger = yes }
+				NOT = { mep_is_evil_side_trigger = yes }
+			}
+		}
+	}
+}
+
+mep_building_trade_route_trigger = {
+	OR = {
+		AND = {
+			trade_route = north_south_road
+			north_south_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = south_road	
+			south_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = royal_road
+			royal_road_trade_post_trigger
+		}
+		AND = {
+			trade_route = great_east_road
+			great_east_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = men_i_naugrim_road
+			men_i_naugrim_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = harad_trade_road
+			harad_trade_road_trade_post_trigger = yes
+		}
+	}
+}

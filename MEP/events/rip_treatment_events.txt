@@ -1626,7 +1626,7 @@ character_event = {
 		}
 		
 		trigger = {
-			is_adult = yes
+			mep_is_adult = yes
 			OR = {
 				FROM = { learning = 18 }
 				FROM = { physician_good_trigger = yes }
@@ -1892,7 +1892,7 @@ character_event = {
 	option = {
 		trigger = {
 			trait = brave
-			is_adult = yes
+			mep_is_adult = yes
 		}
 		
 		name = EVTOPTF_RIP_11035
@@ -2195,7 +2195,7 @@ character_event = {
 		
 		trigger = {
 			FROM = { trait = mystic }
-			is_adult = yes
+			mep_is_adult = yes
 			NOT = {
 				has_game_rule = {
 					name = supernatural_events
@@ -2579,7 +2579,7 @@ character_event = {
 		
 		trigger = {
 			OR = {
-				is_adult = no
+				mep_is_child = yes
 				trait = craven
 				trait = paranoid
 			}
@@ -3345,14 +3345,14 @@ character_event = {
 			10 = { 
 				modifier = {
 					factor = 0
-					is_adult = no
+					mep_is_child = yes
 				}
 				set_character_flag = EVTDESC_RIP_11041_1_FLAG
 			}
 			10 = { 
 				modifier = {
 					factor = 0
-					is_adult = no
+					mep_is_child = yes
 				}
 				set_character_flag = EVTDESC_RIP_11041_2_FLAG 
 			}
@@ -3362,7 +3362,7 @@ character_event = {
 			10 = { 
 				modifier = {
 					factor = 0
-					is_adult = no
+					mep_is_child = yes
 				}
 				set_character_flag = EVTDESC_RIP_11041_6_FLAG
 			}

@@ -613,8 +613,8 @@ character_event = {
 		set_character_flag = party_host
 		set_character_flag = family_party
 		any_dynasty_member = {
+			limit = { NOT = { trait = on_fellowshipquest } }
 			set_character_flag = family_party
-			NOT = { trait = on_fellowshipquest }
 			character_event = { id = hobbits.9 days = 1 }
 		}
 		character_event = { id = hobbits.10 days = 2 }
