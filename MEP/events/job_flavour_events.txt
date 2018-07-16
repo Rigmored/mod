@@ -588,6 +588,7 @@ character_event = {
 				tooltip = "EVTTOOLTIP75013"
 			}
 		}
+		show_portrait = job_chancellor
 	}
 	option = {
 		name = "EVTOPTB75011"
@@ -1912,6 +1913,11 @@ character_event = {
 		}
 	}
 	
+	immediate = {
+		job_treasurer = {
+			save_event_target_as = my_treasurer
+		}
+	}
 	weight_multiplier = {
 		days = 1
 	}
@@ -1924,6 +1930,7 @@ character_event = {
 				tooltip = "EVTTOOLTIP75066"
 			}
 		}
+		show_portrait = event_target:my_treasurer
 	}
 }
 
@@ -2746,10 +2753,14 @@ character_event = {
 			}
 		}
 		
-		add_trait = arbitrary
-		hidden_tooltip = {
-			character_event = {
-				id = 38266 #Notify Arbitrary
+		random = {
+			chance = 25
+			
+			add_trait = arbitrary
+			hidden_tooltip = {
+				character_event = {
+					id = 38266 #Notify Arbitrary
+				}
 			}
 		}
 		
@@ -2809,8 +2820,6 @@ character_event = {
 				tooltip = "EVTTOOLTIP75114"
 			}
 		}
-		random = {
-			chance = 25
 			
 			add_trait = arbitrary
 			hidden_tooltip = {
@@ -2818,7 +2827,7 @@ character_event = {
 					id = 38266 #Notify Arbitrary
 				}
 			}
-		}
+
 		random_demesne_province = {
 			add_province_modifier = {
 				name = peasants_upset

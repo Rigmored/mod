@@ -571,6 +571,21 @@
 	15 = { # Mohawk
 		factor = 1
 	}
+	16 = { # New Short
+		factor = 1
+	}
+	17 = { # New Long
+		factor = 1
+	}
+	18 = { # Short Mullet
+		factor = 1
+	}
+	19 = { # Longer Mullet
+		factor = 1
+	}
+	20 = { # Long Curly
+		factor = 1
+	}
 }
 
 # p2 base
@@ -873,22 +888,25 @@
 		}			
 	}
 	
-	# Martial
+	# Martial 1
 	10 = {
-		factor = 100
+		factor = 40
 		modifier = {
 			factor = 0
 			NOT = { has_job_title  = job_marshal }
-			NOT = { martial = 12 }
+			NOT = { martial = 15 }
 			NOT = {
 				primary_title = {
 					OR = {
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order
+						mercenary = yes
+						holy_order = yes
 					}
 				}
 			}
+		}
+		modifier = {
+			factor = 0
+			in_command = no
 		}
 		modifier = {
 			factor = 0
@@ -904,35 +922,128 @@
 					NOT = {
 						primary_title = {
 							OR = {
-								title = d_knights_hospitaler
-								title = d_knights_templar
-								title = d_teutonic_order
+								mercenary = yes
+								holy_order = yes
 							}
 						}
-					}
-				}
-				AND = {
-					religion_group = christian
-					OR = {
-						AND = {
-							is_ruler = yes
-							is_theocracy = yes
-						}
-						has_job_title = job_spiritual
 					}
 				}
 			}
 		}
 	}
 
-	# Ragged prison clothes
-	
+	# Martial 2
 	11 = {
-		factor = 100
+		factor = 40
 		modifier = {
 			factor = 0
-			prisoner = no
+			in_command = no
+			NOT = { has_job_title  = job_marshal }
+			NOT = { martial = 15 }
+			NOT = {
+				primary_title = {
+					OR = {
+						mercenary = yes
+						holy_order = yes
+					}
+				}
+			}
 		}
+		modifier = {
+			factor = 0
+			OR = {
+				is_female = yes
+				real_tier = king
+				real_tier = emperor
+						AND = {
+					real_tier = duke
+					any_demesne_title = {
+						real_tier = baron
+					}
+					NOT = {
+						primary_title = {
+							OR = {
+								mercenary = yes
+								holy_order = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# Martial 3
+	12 = {
+		factor = 40
+		modifier = {
+			factor = 0
+			NOT = { has_job_title  = job_marshal }
+			NOT = { martial = 15 }
+			NOT = {
+				primary_title = {
+					OR = {
+						mercenary = yes
+						holy_order = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				is_female = yes
+				real_tier = king
+				real_tier = emperor
+				in_command = no
+			}
+		}
+	}
+	
+	# Martial 4 (fancy)
+	13 = {
+		factor = 40
+		modifier = {
+			factor = 0
+			in_command = no
+			NOT = { higher_tier_than = KING }
+		}
+		modifier = {
+			factor = 0
+			religion = religion_orkish
+			lower_real_tier_than = king
+		}
+		modifier = {
+			factor = 0
+			NOR = { 
+				culture_group = culture_group_dwarves
+				religion = religion_orkish
+			}
+		}
+	}
+	
+	# Martial High-Tier 
+	14 = {
+		factor = 40
+		modifier = { 
+			factor = 0
+			in_command = no
+			NOT = { higher_tier_than = KING }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				lower_real_tier_than = king
+				NOT = { religion = religion_orkish }
+			}
+		}
+		
+	#	modifier = {
+	#		factor = 20000
+	#		real_tier = emperor
+	#		in_command = yes
+	#	}
+	
 	}
 }
 
@@ -1032,11 +1143,23 @@
 			}
 		}	
 	}
+	11 = {
+		factor = 1
+	}
+	12 = {
+		factor = 1
+	}
+	13 = {
+		factor = 1
+	}
+	14 = {
+		factor = 1
+	}
 }
 
 # p5 headgear
 5 = {
-	# Imperial crown/Chaliph turban
+	# High King Crown
 	0 = {
 		factor = 100
 		modifier = {
@@ -1085,7 +1208,7 @@
 		}			
 	}
 	
-	# Royal crown/turban 1
+	# King's Crown 1
 	1 = {
 		factor = 1
 		modifier = {
@@ -1132,7 +1255,7 @@
 		}
 	}
 
-	# Royal crown/turban 2
+	# King's Crown 2
 	2 = {
 		factor = 1
 		modifier = {
@@ -1178,7 +1301,7 @@
 		}
 	}
 
-	# Royal crown/turban 3
+	# High Lord's Crown 1
 	3 = {
 		factor = 1
 		modifier = {

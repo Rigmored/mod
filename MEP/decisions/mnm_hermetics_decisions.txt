@@ -6,9 +6,9 @@
 
 targeted_decisions = {
 	brew_happiness_potion = {
-		filter = home_court
-		ai_target_filter = home_court
 		is_in_society = yes
+		filter = realm_including_me
+		ai_target_filter = realm_including_me
 
 		from_potential = {
 			has_dlc = "Mystics"
@@ -22,6 +22,12 @@ targeted_decisions = {
 			OR = {
 				trait = stressed
 				trait = depressed
+			}
+			OR = {
+				liege = {
+					character = FROM
+				}
+				character = FROM
 			}
 			OR = {
 				FROM = { ai = no }
@@ -207,7 +213,7 @@ targeted_decisions = {
 				save_event_target_as = horoscope_child
 				FROM = { character_event = { id = MNM.1250 days = 5 } }
 			}
-			detract_society_currency_medium_effect = yes
+			FROM = { detract_society_currency_medium_effect = yes }
 		}
 
 		revoke_allowed = { always = no }
@@ -561,6 +567,7 @@ society_decisions = {
 				}
 			}
 			NOT = { is_inaccessible_trigger = yes }
+			prisoner = no
 			NOT = { trait = incapable }
 		}
 

@@ -196,4 +196,33 @@ castle = {
 			ROOT = { mep_is_elf_culture = yes }
         }
 	}
+
+	ca_taur_romen = { ### The Avari Elves
+		desc = ca_taur_romen_desc
+		gold_cost = 5000
+		build_time = 1460 #4y
+		fort_level = 2.5
+		garrison_size = 1.0
+		ai_creation_factor = 86
+		light_infantry = 225
+		archers = 125
+		horse_archers = 100
+		tax_income = 5
+        
+		potential = {
+            FROMFROM = { title = b_uluimur }
+			FROM = {
+				NOR = {
+					culture_group = culture_group_melkor
+					AND = {
+				    	culture = culture_maiar
+						trait = evil_side
+				    }
+				}
+			}
+			ROOT = { mep_is_elf_culture = yes }
+        }
+	}
+
+
 }

@@ -31,6 +31,9 @@ settlement_decisions = {
 			}
 		}
 		allow = {
+			location = {
+				religion_group = FROM
+			}
 			OR = {
 				has_building = tb_hillfort_4
 				has_building = tb_Pwall_3
@@ -113,6 +116,9 @@ settlement_decisions = {
 			}
 		}
 		allow = {
+			location = {
+				religion_group = FROM
+			}
 			OR = {
 				has_building = tb_market_town_4
 				has_building = tb_Ptown_3 
@@ -288,13 +294,13 @@ settlement_decisions = {
 						is_merchant_republic = no
 						is_nomadic = no
 					}
-					capital_scope = {
-						ROOT = {
-							location = {
-								NOT = { province = PREVPREV }
-							}
-						}
-					}
+#					capital_scope = {
+#						ROOT = {
+#							location = {
+#								NOT = { province = PREVPREV }
+#							}
+#						}
+#					}
 				}
 			}
 		}
@@ -544,8 +550,8 @@ settlement_decisions = {
 				hidden_tooltip = {
 					location = {
 						province_event = { id = HL.4810 days = 1 }
+						province_event = { id = HL.4814 days = 2 random = 2 }
 					}
-					character_event = { id = HL.4814 days = 2 random = 2 }
 				}
 				destroy_settlement = THIS
 			}
@@ -706,6 +712,7 @@ settlement_decisions = {
 		effect = {
 			# Change culture and religion of new capital province and possibly more provinces depending on nomad population_and_manpower
 			location = {
+				show_scope_change = no
 				if = {
 					limit = {
 						NOT = { culture = FROM }
@@ -724,7 +731,7 @@ settlement_decisions = {
 					FROM = {
 						population_and_manpower = 5000
 						any_realm_province = {
-							NOT = { culture = FROM }
+							NOT = { culture = ROOT_FROM }
 							num_of_settlements = 1
 							ROOT = {
 								location = {
@@ -1601,7 +1608,7 @@ settlement_decisions = {
 					FROM = {
 						population_and_manpower = 5000
 						any_realm_province = {
-							NOT = { culture = FROM }
+							NOT = { culture = ROOT_FROM }
 							num_of_settlements = 1
 							ROOT = {
 								location = {
@@ -2214,7 +2221,7 @@ settlement_decisions = {
 										}
 									}
 								}
-								FROM = {
+								ROOT_FROM = {
 									spawn_unit = {
 										province = PREVPREVPREV
 										owner = THIS
@@ -2237,16 +2244,20 @@ settlement_decisions = {
 				usurp_title = FROM
 			}
 			
-			if = {
-				limit = { is_capital = no }
-				make_capital_holding = yes
+			hidden_tooltip = {
+				if = {
+					limit = { is_capital = no }
+					make_capital_holding = yes
+				}
 			}
 		
 			FROM = {
 				capital = PREV
 				
 				primary_title = {
-					FROM = {
+					show_scope_change = no
+					ROOT_FROM = {
+						show_scope_change = no
 						custom_tooltip = { 
 							text = TT_KHAN_INDEPENDENCE
 						}
@@ -2311,7 +2322,7 @@ settlement_decisions = {
 				
 				any_playable_ruler = {
 					limit = {
-						NOT = { character = FROM }
+						NOT = { character = ROOT_FROM }
 						ai = no
 					}
 					narrative_event = { id = HL.1 }
@@ -3116,8 +3127,8 @@ settlement_decisions = {
 								landless = no
 								temporary = no
 								custom_created = yes
-								culture = FROM
-								holder = FROM
+								culture = ROOT_FROM
+								holder = ROOT_FROM
 								base_title = THIS
 							}
 						}
@@ -3245,7 +3256,7 @@ settlement_decisions = {
 				
 				any_playable_ruler = {
 					limit = {
-						NOT = { character = FROM }
+						NOT = { character = ROOT_FROM }
 						ai = no
 					}
 					narrative_event = { id = HL.1 }

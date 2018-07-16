@@ -112,6 +112,7 @@ elf_friend = {
 			trait = good_side
 		}
 	}
+	ruler_designer_cost = 0
 	tolerates_religion_group_eldar = yes	# getting rid of base intolerance
 	religion_group_eldar_opinion = 30		# elves like her/him back
 	opposites = { elf }
@@ -207,6 +208,7 @@ dwarf_friend = {
 			trait = good_side
 		}
 	}
+	ruler_designer_cost = 0
 	tolerates_religion_group_khazad = yes	# getting rid of base intolerance
 	religion_group_khazad_opinion = 30		# dwarves like her/him back
 	opposites = { dwarf }
@@ -280,7 +282,7 @@ prince_numenor = {
 }
 
 blood_of_numenor = {
-    health = 10.0
+    health = 12.0
 	intrigue = 2
 	customizer = yes
 	same_opinion = 25
@@ -360,42 +362,6 @@ elven_blood = {
 	cached = yes
 }
 #--------------------------------------------------------------------------
-dunedain_infertility = {
-	potential = {
-		is_female = yes
-		OR = {
-			culture_group = culture_group_numenorean
-			trait = elven_blood
-		}		
-	}
-    fertility_penalty = -5.0
-	random = no
-	customizer = no	
-	cached = yes
-}
-
-# new general infertility trait, Hidden
-not_fertile = {
-	potential = {
-		is_female = yes
-		NOT = { trait = elven_blood }
-		NOT = { culture_group = culture_group_numenorean }
-		NOT = { religion_group = religion_group_khazad }
-		NOT = { religion_group = religion_group_eldar }
-		
-	}
-	opposites = {
-		fertile
-	}
-	fertility_penalty = -50
-	# cannot_marry = yes
-	hidden = yes
-	customizer = no
-	random = no
-	
-}
-
-
 skin_changer = {
     health = 4.0
 	customizer = yes
@@ -462,6 +428,7 @@ hobbit = {
 
 # Not for hobbits, but for hobbit-fanciers
 hobbit_friend = {
+	ruler_designer_cost = 0
 	potential = {
 		NOT = { religion_group = religion_group_periannath }
 		NOT = { trait = evil_side }
@@ -633,6 +600,7 @@ balrog = {
 
 # kinda like 'Balrog-Friend' 
 worship_balrog = {
+	ruler_designer_cost = 0
 	potential = {
 		OR = {
 			trait = evil_side
@@ -651,7 +619,7 @@ worship_balrog = {
 	}
 	opposites = { balrog }
     opposite_opinion = 50	
-	customizer = no	
+	customizer = yes	
     diplomacy = 1
 	stewardship = 1
 	martial = 2

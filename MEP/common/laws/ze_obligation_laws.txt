@@ -77,6 +77,10 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_feudal_1
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -89,6 +93,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_feudal_1
 				revoke_law = tax_levy_law_feudal_2
@@ -974,6 +979,10 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_iqta_1
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -987,6 +996,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_iqta_0
 				revoke_law = tax_levy_law_iqta_1
@@ -1871,6 +1881,10 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_republic_1
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -1884,6 +1898,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_republic_1
 				revoke_law = tax_levy_law_republic_2
@@ -2746,7 +2761,7 @@ laws = {
 			factor = 0.01
 			modifier = {
 				factor = 0
-				NOT = {
+				NAND = {
 					holder_scope = {
 						OR = {
 							is_republic = yes
@@ -2761,6 +2776,10 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_theocracy_1
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -2774,6 +2793,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_theocracy_1
 				revoke_law = tax_levy_law_theocracy_2
@@ -3110,6 +3130,13 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						OR = {
+							has_law = tax_levy_law_theocracy_3
+							has_law = tax_levy_law_theocracy_5			
+						}
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -3123,6 +3150,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_theocracy_0
 				revoke_law = tax_levy_law_theocracy_1
@@ -3492,7 +3520,7 @@ laws = {
 			factor = 0.01
 			modifier = {
 				factor = 0
-				NOT = {
+				NAND = {
 					holder_scope = {
 						OR = {
 							is_republic = yes
@@ -3507,6 +3535,10 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_tribal_1
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
@@ -3521,6 +3553,8 @@ laws = {
 						}
 					}
 				}
+				}
+
 				revoke_law = tax_levy_law_tribal_1
 				revoke_law = tax_levy_law_tribal_2
 				revoke_law = tax_levy_law_tribal_3
@@ -3852,10 +3886,17 @@ laws = {
 		}
 		effect = {
 			hidden_tooltip = {
+				if = {
+					limit = {
+						OR = {
+							has_law = tax_levy_law_tribal_3
+							has_law = tax_levy_law_tribal_5
+						}
+					}
 				holder_scope = {
 					any_vassal = {
 						limit = {
-							is_theocracy = yes
+								is_tribal = yes
 							NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
 							NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
 						}
@@ -3865,6 +3906,7 @@ laws = {
 							years = 5
 						}
 					}
+				}
 				}
 				revoke_law = tax_levy_law_tribal_0
 				revoke_law = tax_levy_law_tribal_1

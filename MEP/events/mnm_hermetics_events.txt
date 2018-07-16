@@ -1651,7 +1651,7 @@ character_event = {
  		FROM = { give_minor_title = title_heren_isseon_apprentice }
 
  		clr_quest = quest_heren_isseon_find_apprentice
-		sound_effect = hermetic_society_perform_experiment
+		sound_effect = hermetic_society_perform_experiment_01
  		add_society_currency_minor_effect = yes
     }
 
@@ -1674,7 +1674,7 @@ character_event = {
         name = EVTOPTA_MNM_1409
 
         clr_quest = quest_heren_isseon_find_apprentice
-		sound_effect = hermetic_society_perform_experiment
+		sound_effect = hermetic_society_perform_experiment_01
 
         if = {
         	limit = { FROM = { NOT = { learning = 12 } } }
@@ -2090,7 +2090,7 @@ narrative_event = {
         add_artifact = emerald_tablet
 
         clr_quest = quest_heren_isseon_find_text
-		sound_effect = hermetic_society_recover_scroll
+		sound_effect = hermetic_society_recover_scroll_01
         add_society_currency_massive_effect = yes
 
         hidden_effect = {
@@ -2121,7 +2121,7 @@ character_event = {
         name = EVTOPTA_MNM_1423
 
      	clr_quest = quest_heren_isseon_find_text
-		sound_effect = hermetic_society_recover_scroll
+		sound_effect = hermetic_society_recover_scroll_01
         add_society_currency_major_effect = yes
 
         hidden_effect = {
@@ -2152,7 +2152,7 @@ character_event = {
         name = EVTOPTA_MNM_1424
 
      	clr_quest = quest_heren_isseon_find_text
-		sound_effect = hermetic_society_recover_scroll
+		sound_effect = hermetic_society_recover_scroll_01
         add_society_currency_medium_effect = yes
 
         hidden_effect = {
@@ -2183,7 +2183,7 @@ character_event = {
         name = EVTOPTA_MNM_1425
 
      	clr_quest = quest_heren_isseon_find_text
-		sound_effect = hermetic_society_recover_scroll
+		sound_effect = hermetic_society_recover_scroll_01
         add_society_currency_minor_effect = yes
     }
 }
@@ -3906,7 +3906,7 @@ character_event = {
         name = EVTOPTA_MNM_1450
 
         clr_quest = quest_heren_isseon_infiltrate_laboratory 
-		sound_effect = hermetic_society_perform_experiment
+		sound_effect = hermetic_society_perform_experiment_01
         hidden_effect = {
 			event_target:infiltration_companion = { remove_opinion = { who = ROOT modifier = opinion_infiltration_companion } }
         }
@@ -6763,7 +6763,7 @@ character_event = { # gating event for the horoscope_child (to check status of h
 				horoscope_destiny_revealed = {
 					clr_character_flag = horoscope_destiny_revealed
 					set_character_flag = horoscope_child_receives_horoscope
-					event_target:horoscope_maker = { character_event = { id = MNM.1251 } } # for maker: the child is destined for grandeur within [horoscope_child.Getheren_isseonDestinedExpertise]
+					event_target:horoscope_maker = { character_event = { id = MNM.1251 } } # for maker: the child is destined for grandeur within [horoscope_child.GetHermeticsDestinedExpertise]
 				}
 				horoscope_child_receives_horoscope = {
 					if = { limit = { age = 4 }
@@ -7180,7 +7180,7 @@ character_event = {
 			}
         }
 
-		hidden_effect = { FROMFROM = { character_event = { id = MNM.1402 } } }
+		hidden_effect = { FROM = { character_event = { id = MNM.1402 } } }
 
 		ai_chance = {
 			factor = 50
@@ -7196,7 +7196,7 @@ character_event = {
         custom_tooltip = { text = EVTOPTB_MNM_1401_TT }
 
         reverse_opinion = {
-        	who = FROMFROM
+        	who = FROM
         	modifier = opinion_ungrateful
         }
         #Does not give follow-up because if a player recieves this, the sender is a courtier
@@ -7208,7 +7208,7 @@ character_event = {
 				factor = 3
 			}
 			modifier = {
-				liege = { character = FROMFROM } #A player will always get a yes
+				liege = { character = FROM } #A player will always get a yes
 				factor = 0
 			}
 		}
@@ -7222,8 +7222,6 @@ character_event = {
     desc = EVTDESC_MNM_1402
     picture = GFX_evt_experiment
     border = GFX_event_normal_frame_religion
-
-    hide_from = yes
 
     is_triggered_only = yes
     
@@ -7603,10 +7601,6 @@ character_event = {
 	
 	is_triggered_only = yes
 	
-	desc = {
-		trigger = { }
-		text = EVTDESC_MNM_1903
-	}
 	desc = {
 		trigger = { }
 		text = EVTDESC_MNM_1903
@@ -12094,7 +12088,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_medium_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1812 }
@@ -12120,7 +12114,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_minor_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1812 }
@@ -12407,7 +12401,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_medium_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1817 }
@@ -12433,7 +12427,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_minor_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1817 }
@@ -12708,7 +12702,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_medium_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1822 }
@@ -12735,7 +12729,7 @@ character_event = {
 				has_quest = quest_hermetic_gather_ingredients
 			}
 			clr_quest = quest_hermetic_gather_ingredients
-			sound_effect = hermetic_society_acquire_seed
+			sound_effect = hermetic_society_acquire_seed_01
 			add_society_currency_minor_effect = yes
 		}
 		custom_tooltip = { text = EVTTOOLTIP_MNM_1822 }
@@ -16097,7 +16091,7 @@ character_event = { # Outcome - Tracking planets
 			add_trait = patient
 		}
 		clr_quest = quest_heren_isseon_observe_sky
-		sound_effect = hermetic_society_observe_planet
+		sound_effect = hermetic_society_observe_planet_01
 		add_mission_succeed_influence_effect = yes
 		add_society_currency_medium_effect = yes
 		remove_astronomical_insight_modifier_effect = yes
@@ -16239,7 +16233,7 @@ character_event = { # Outcome - Name a newly found star
 	
 	after = {
 		clr_quest = quest_heren_isseon_observe_sky
-		sound_effect = hermetic_society_observe_planet
+		sound_effect = hermetic_society_observe_planet_01
 		add_mission_succeed_influence_effect = yes
 		add_society_currency_medium_effect = yes
 		remove_astronomical_insight_modifier_effect = yes
@@ -16258,7 +16252,7 @@ long_character_event = { # Outcome - Observe zodiac stars
 		name = EVTOPTA_MNM_1850
 		add_western_zodiac_trait_effect = yes
 		clr_quest = quest_heren_isseon_observe_sky
-		sound_effect = hermetic_society_observe_planet
+		sound_effect = hermetic_society_observe_planet_01
 		add_mission_succeed_influence_effect = yes
 		add_society_currency_medium_effect = yes
 		remove_astronomical_insight_modifier_effect = yes
@@ -16349,7 +16343,7 @@ long_character_event = {
 		prestige = 100
 		
 		clr_quest = quest_heren_isseon_observe_sky
-		sound_effect = hermetic_society_observe_planet
+		sound_effect = hermetic_society_observe_planet_01
 		add_mission_succeed_influence_effect = yes
 		add_society_currency_medium_effect = yes
 	}
@@ -16418,7 +16412,7 @@ long_character_event = {
 		trigger = { has_character_flag = comet_success }
 		
 		clr_quest = quest_heren_isseon_observe_sky
-		sound_effect = hermetic_society_observe_planet
+		sound_effect = hermetic_society_observe_planet_01
 		add_mission_succeed_influence_effect = yes
 		add_society_currency_medium_effect = yes
 	}

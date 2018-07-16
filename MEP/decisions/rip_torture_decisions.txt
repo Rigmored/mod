@@ -20,6 +20,7 @@ targetted_decisions = {
 		}
 
 		allow = {
+			NOT = { diplomatic_immunity = yes }
 			prisoner = yes
 		}
 
@@ -202,6 +203,8 @@ targetted_decisions = {
 			}
 			
 			FROM = {
+				show_scope_change = no
+				remove_opinions_with_prison_reason_effect = yes
 				save_event_target_as = remove_prison_reason_effect_accuser
 				ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
 				hidden_tooltip = { remove_prison_reason_effect = yes }
@@ -261,7 +264,7 @@ targetted_decisions = {
 				OR = {
 					reverse_opinion = { who = FROM value = 40 }
 					FROM = { NOT = { piety = 100 } }
-					FROM = { liege = { dynasty = ROOT } }
+					FROM = { LIEGE = { dynasty = ROOT } }
 				}
 			}
 			modifier = {
@@ -358,6 +361,7 @@ targetted_decisions = {
 		}
 
 		allow = {
+			NOT = { diplomatic_immunity = yes }
 			prisoner = yes
 		}
 
@@ -473,6 +477,7 @@ targetted_decisions = {
 			}
 			
 			FROM = {
+				show_scope_change = no
 				piety = -50
 				if = {
 					limit = { NOT = { trait = cruel } }
@@ -534,7 +539,8 @@ targetted_decisions = {
 				
 				FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
 				ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-				hidden_tooltip = { remove_prison_reason_effect = yes }
+				#hidden_tooltip = { remove_prison_reason_effect = yes } #NOTE: OUTDATED. Now uses the "remove_opinions_with_prison_reason_effect" instead.
+				FROM = { remove_opinions_with_prison_reason_effect = yes }
 			}
 		}
 		revoke_allowed = {
@@ -549,7 +555,7 @@ targetted_decisions = {
 				OR = {
 					reverse_opinion = { who = FROM value = 40 }
 					FROM = { NOT = { piety = 100 } }
-					FROM = { liege= { dynasty = ROOT } }
+					FROM = { LIEGE = { dynasty = ROOT } }
 				}
 			}
 			modifier = {
@@ -593,6 +599,7 @@ targetted_decisions = {
 		}
 
 		allow = {
+			NOT = { diplomatic_immunity = yes }
 			prisoner = yes
 		}
 
@@ -642,7 +649,8 @@ targetted_decisions = {
 
 			FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
 			ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-			hidden_tooltip = { remove_prison_reason_effect = yes }
+			#hidden_tooltip = { remove_prison_reason_effect = yes }
+			hidden_effect = { FROM = { remove_opinions_with_prison_reason_effect = yes } }
 		}
 		revoke_allowed = {
 			always = no
@@ -692,6 +700,7 @@ targetted_decisions = {
 			age = 13
 		}
 		allow = {
+			NOT = { diplomatic_immunity = yes }
 			prisoner = yes
 		}
 		effect = {
@@ -873,7 +882,8 @@ targetted_decisions = {
 			}
 			FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
 			ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-			hidden_tooltip = { remove_prison_reason_effect = yes }
+			#hidden_tooltip = { remove_prison_reason_effect = yes }
+			hidden_effect = { FROM = { remove_opinions_with_prison_reason_effect = yes } }
 		}
 		revoke_allowed = {
 			always = no
@@ -935,6 +945,9 @@ targetted_decisions = {
 			age = 12
 		}
 		
+		allow = {
+			NOT = { diplomatic_immunity = yes }
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -1058,6 +1071,7 @@ targetted_decisions = {
 				death_reason = death_execution_eaten
 				killer = FROM
 			}
+			save_event_target_as = kinslayer_target
 			FROM = {
 				if = {
 					limit = {
@@ -1074,13 +1088,7 @@ targetted_decisions = {
 						duration = -1
 					}
 				}
-				if = {
-					limit = {
-						dynasty = ROOT
-						NOT = { trait = kinslayer }
-					}
-					add_trait = kinslayer
-				}
+				add_kinslayer_trait_effect = yes
 			}
 		}
 	}

@@ -4575,6 +4575,7 @@ character_event = {
 	id = RIP.29014
 	border = GFX_event_normal_frame_intrigue
 	desc = EVTDSC_RIP_29014
+	portrait = event_target:rip_dead
 	picture = GFX_evt_bloody_tools
 
 	is_triggered_only = yes
@@ -7988,6 +7989,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					defender = { character = event_target:target_defender }
+					attacker = { character = FROM }
 				}
 				end_war = whitepeace
 			}
@@ -8051,6 +8053,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					defender = { character = event_target:target_defender }
+					attacker = { character = FROM }
 				}
 				end_war = whitepeace
 			}
@@ -8178,6 +8181,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					defender = { character = event_target:target_defender }
+					attacker = { character = FROM }
 				}
 				end_war = whitepeace
 			}
@@ -8247,6 +8251,7 @@ letter_event = {
 		any_war = {
 			limit = {
 				defender = { character = event_target:target_defender }
+				attacker = { character = ROOT }
 			}
 			end_war = whitepeace
 		}
@@ -8542,6 +8547,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					attacker = { character = event_target:target_attacker }
+					defender = { character = FROM }
 				}
 				end_war = success
 			}
@@ -8603,6 +8609,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					attacker = { character = event_target:target_attacker }
+					defender = { character = FROM }
 				}
 				end_war = success
 			}
@@ -8728,6 +8735,7 @@ letter_event = {
 			any_war = {
 				limit = {
 					attacker = { character = event_target:target_attacker }
+					defender = { character = FROM }
 				}
 				end_war = success
 			}
@@ -8795,6 +8803,7 @@ letter_event = {
 		any_war = {
 			limit = {
 				attacker = { character = event_target:target_attacker }
+				defender = { character = FROM }
 			}
 			end_war = success
 		}

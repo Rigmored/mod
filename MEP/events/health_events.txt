@@ -226,6 +226,7 @@ character_event = {
 			if = {
 				limit = {
 					has_dlc = "Reapers"
+					is_playable = no
 				}
 				set_character_flag = new_leper_character
 				host = {
@@ -236,6 +237,20 @@ character_event = {
 						}
 						character_event = { id = RIP.11031 days = 1 }
 					}
+				}
+				character_event = { id = RIP.11063 days = 20 }
+			}
+			if = {
+				limit = {
+					has_dlc = "Reapers"
+					is_playable = yes
+				}
+				set_character_flag = new_leper_character
+				random_courtier_or_vassal = {
+					limit = {
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
 				}
 				character_event = { id = RIP.11063 days = 20 }
 			}
@@ -435,8 +450,10 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.1
-			trait = incapable
-			immortal = yes # Incapable immortals more likely to wake up nuts
+			AND = {
+				trait = incapable
+				immortal = yes # Incapable immortals more likely to wake up nuts
+			}
 		}
 		modifier = {
 			factor = 0.25
@@ -1438,12 +1455,14 @@ character_event = {
 	id = 6100
 	desc = EVTDESC6100
 	picture = GFX_evt_illness
+	border = GFX_event_normal_frame_religion
 	
 	min_age = 45
+	only_capable = yes
 	
 	trigger = {
 		NOT = { trait = infirm }
-		NOT = { trait = incapable }
+		immortal = no
 		mep_is_human_trigger = yes # uses religion_group			
 		NOT = { mep_numenorean_traits_trigger = yes }			
 		NOT = { mep_elven_blood_tigger = yes }			
@@ -1469,6 +1488,14 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			age = 90
+		}
+		modifier = {
+			factor = 0.5
+			trait = cancer
+		}
+		modifier = {
+			factor = 0.5
+			is_weak_trigger = yes
 		}
 		modifier = {
 			factor = 0.75
@@ -2971,7 +2998,7 @@ character_event = {
 		text = EVTDESC_WOL_40_NC
 		trigger = {
 			is_female = yes
-			has_dlc = "Sons of Abraham"
+			has_DLC = "Sons of Abraham"
 		}
 		picture = GFX_evt_bad_news_female
 	}
@@ -2979,12 +3006,12 @@ character_event = {
 		text = EVTDESC_WOL_40_NC
 		trigger = {
 			is_female = no
-			has_dlc = "Sons of Abraham"
+			has_DLC = "Sons of Abraham"
 		}
 		picture = GFX_evt_bad_news
 	}
 	desc = {
-		trigger = { NOT = { has_dlc = "Sons of Abraham" } }
+		trigger = { NOT = { has_DLC = "Sons of Abraham" } }
 		text = EVTDESC_WOL_40_NC
 		picture = GFX_evt_recovery
 	}

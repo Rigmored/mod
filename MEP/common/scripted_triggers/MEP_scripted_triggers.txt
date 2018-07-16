@@ -692,6 +692,22 @@ mep_evil_religion = {
 	}
 }
 
+mep_any_religion = {
+	OR = {
+		religion_group = religion_group_eruhini
+		religion_group = religion_group_enyd
+		religion_group = religion_group_khazad
+		religion_group = religion_group_eldar
+		religion_group = religion_group_periannath
+		religion_group = religion_group_edain
+		religion_group = religion_group_hildor
+		religion_group = religion_group_melkor
+		religion_group = religion_group_ungoliant
+		religion_group = religion_group_dragon
+		religion_group = religion_group_wilderness
+	}
+}
+
 mep_dont_do_horses = {
 	OR = {
 		religion_group = religion_group_khazad
@@ -931,7 +947,7 @@ mep_general_buildings_human = {
 		culture_group = culture_group_easterling						
 	}
 	NOT = { mep_horsey_people_culture = yes }
-	NOT = { culture = culture_druedain }  # just in case someone move druedian back to culture_group_edain 
+	NOT = { culture = culture_druedain }  # just in case someone move druedain back to culture_group_edain 
 }
 
 
@@ -1674,7 +1690,7 @@ mep_building_trade_route_trigger = {
 		}
 		AND = {
 			trade_route = royal_road
-			royal_road_trade_post_trigger
+			royal_road_trade_post_trigger = yes
 		}
 		AND = {
 			trade_route = great_east_road

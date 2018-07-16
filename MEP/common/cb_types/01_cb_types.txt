@@ -582,6 +582,12 @@ great_realm_conflict = { # New3
 				}
 			}
 		}
+		FROM = {
+			relative_power = {
+				who = ROOT
+				power = 0.95
+			}
+		}
 	}
 	
 	can_use_title = {
@@ -1071,12 +1077,15 @@ hostages_cb = { # New5
 	
 	on_success = {
 		ROOT = {
+			show_scope_change = no
 			prestige = 250
 		}
 		FROM = {
+			show_scope_change = no
 			prestige = -250
 		}
 		FROM = {
+			show_scope_change = no
 			save_event_target_as = character_kidnapper
 			transfer_scaled_wealth = {
 				to = ROOT
@@ -1159,31 +1168,39 @@ hostages_cb = { # New5
 					years = 100
 				}
 			}
-			random_realm_character = {
-				limit = {
-					NOT = {
-						character = PREV
+			custom_tooltip = {
+				text = hostages_random_imprisonment_tt
+				hidden_effect = {
+					random_realm_character = {
+						limit = {
+							NOT = {
+								character = PREV
+							}
+							prisoner = no
+							ai = yes
+							is_close_relative = PREV
+						}
+						imprison = ROOT
 					}
-					prisoner = no
-					ai = yes
-					is_close_relative = PREV
 				}
-				imprison = ROOT
 			}
 		}
 	}
 
 	on_fail = {
 		ROOT = { 
+			show_scope_change = no
 			prestige = -250
 		}
 		FROM = { 
+			show_scope_change = no
 			prestige = 250
 		}
 	}
 
 	on_reverse_demand = {
 		ROOT = {
+			show_scope_change = no
 			transfer_scaled_wealth = {
 				to = FROM
 				value = 3.0
@@ -1191,6 +1208,7 @@ hostages_cb = { # New5
 			prestige = -250
 		}
 		FROM = { 
+			show_scope_change = no
 			prestige = 250
 		}
 	}
@@ -2460,7 +2478,7 @@ tributary_permanent_cb = { # New8
 				trigger = {
 					capital_scope = {
 						NOT = {
-							region = world_europe
+							region = world_rhovanion
 						}
 					}
 				}
@@ -2470,7 +2488,7 @@ tributary_permanent_cb = { # New8
 			conditional_tooltip = {
 				trigger = {
 					capital_scope = {
-						region = world_europe
+						region = world_gondor
 					}
 				}
 				prestige = 200

@@ -15,6 +15,8 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -22,10 +24,22 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 		add_trait = cough
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -325,6 +339,8 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -332,10 +348,22 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 		add_trait = fever
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -1138,6 +1166,8 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -1145,10 +1175,22 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 		add_trait = diarrhea
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -1515,6 +1557,8 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -1522,10 +1566,22 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 		add_trait = vomiting
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -1744,6 +1800,8 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -1751,10 +1809,22 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 		add_trait = headache
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -2127,6 +2197,8 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -2134,10 +2206,22 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 		add_trait = chest_pain
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -2373,6 +2457,8 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -2380,10 +2466,22 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 		add_trait = cramps
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -2543,6 +2641,8 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -2550,10 +2650,22 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 		add_trait = rash
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -2870,6 +2982,8 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -2877,10 +2991,22 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 		add_trait = abdominal_pain
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -3177,6 +3303,8 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -3184,10 +3312,22 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 		add_trait = fatigue
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -3563,6 +3703,8 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -3570,10 +3712,22 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 		add_trait = malaise
 		
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -3965,6 +4119,10 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 character_event = { 
 	id = RIP.5011
 	
+	trigger = {
+		has_character_flag = got_pneumonia
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -3997,6 +4155,10 @@ character_event = {
 #Syphilis (Great Pox/Aztec disease): rash fever headache
 character_event = { 
 	id = RIP.5014
+	
+	trigger = {
+		has_character_flag = got_syphilis
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4032,6 +4194,10 @@ character_event = {
 character_event = { 
 	id = RIP.5015
 	
+	trigger = {
+		has_character_flag = got_tuberculosis
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4064,6 +4230,10 @@ character_event = {
 character_event = { 
 	id = RIP.5016
 	
+	trigger = {
+		has_character_flag = got_typhoid_fever
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4095,6 +4265,10 @@ character_event = {
 #Typhus: fever headache rash fatigue diarrhea abdominal_pain
 character_event = { 
 	id = RIP.5017
+	
+	trigger = {
+		has_character_flag = got_typhus
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4130,8 +4304,11 @@ character_event = {
 character_event = { 
 	id = RIP.5012
 	
-	hide_window = yes
+	trigger = {
+		has_character_flag = got_bubonic_plague
+	}
 	
+	hide_window = yes
 	is_triggered_only = yes
 	
 	immediate = {
@@ -4163,6 +4340,10 @@ character_event = {
 #Measles: rash fever cough
 character_event = { 
 	id = RIP.5018
+	
+	trigger = {
+		has_character_flag = got_measles
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4196,6 +4377,10 @@ character_event = {
 #Smallpox: malaise fever headache rash
 character_event = { 
 	id = RIP.5019
+	
+	trigger = {
+		has_character_flag = got_smallpox
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4242,6 +4427,10 @@ character_event = {
 character_event = { 
 	id = RIP.5020
 	
+	trigger = {
+		has_character_flag = got_flu
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4277,6 +4466,10 @@ character_event = {
 character_event = { 
 	id = RIP.5021
 	
+	trigger = {
+		has_character_flag = got_dysentery
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4310,6 +4503,10 @@ character_event = {
 character_event = { 
 	id = RIP.5022
 	
+	trigger = {
+		has_character_flag = got_gout
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4340,6 +4537,10 @@ character_event = {
 #food poisoning: vomiting diarrhea cramps fever
 character_event = { 
 	id = RIP.5023
+	
+	trigger = {
+		has_character_flag = got_food_poisoning
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4373,6 +4574,10 @@ character_event = {
 character_event = { 
 	id = RIP.5024
 	
+	trigger = {
+		has_character_flag = got_rabies
+	}
+	
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -4405,6 +4610,10 @@ character_event = {
 #Cancer: malaise fatigue cough abdominal_pain chest_pain vomiting diarrhea headache
 character_event = { 
 	id = RIP.5025
+	
+	trigger = {
+		has_character_flag = got_cancer
+	}
 	
 	hide_window = yes
 	is_triggered_only = yes
@@ -4446,6 +4655,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -4481,10 +4692,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -4530,6 +4753,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -4565,10 +4790,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -4620,6 +4857,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -4662,10 +4901,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -4709,6 +4960,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -4751,10 +5004,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -4797,6 +5062,8 @@ character_event = {
 	desc = EVTDESCRIP.5040
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
+	
+	hide_from = yes
 	
 	is_triggered_only = yes
 	
@@ -4900,6 +5167,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -4930,10 +5199,22 @@ character_event = {
 			remove_trait = malaise
 		}
 		hidden_tooltip = {
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -4977,6 +5258,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5013,10 +5296,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5060,6 +5355,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5102,10 +5399,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5149,6 +5458,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5191,10 +5502,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5243,6 +5566,8 @@ character_event = {
 	desc = EVTDESCRIP.5032
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
+	
+	hide_from = yes
 	
 	is_triggered_only = yes
 	
@@ -5310,10 +5635,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5357,6 +5694,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5393,10 +5732,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5440,6 +5791,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5470,10 +5823,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5517,6 +5882,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5559,10 +5926,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5606,6 +5985,8 @@ character_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	option = {
@@ -5642,10 +6023,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5688,6 +6081,8 @@ character_event = {
 	desc = EVTDESCRIP.5037
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
+	
+	hide_from = yes
 	
 	is_triggered_only = yes
 	
@@ -5755,10 +6150,22 @@ character_event = {
 				}
 				health = -3
 			}
+			if = { 
+				limit = { is_playable = no }
 			host = {
 				random_courtier_or_vassal = { #Markus doing
 					limit = {
 						liege = { character = PREVPREV }
+						has_minor_title = title_court_physician
+					}
+					character_event = { id = RIP.11031 days = 1 }
+				}
+			}
+			}
+			if = { 
+				limit = { is_playable = yes }
+				random_courtier_or_vassal = { #Markus doing
+					limit = {
 						has_minor_title = title_court_physician
 					}
 					character_event = { id = RIP.11031 days = 1 }
@@ -5802,6 +6209,8 @@ character_event = {
 	desc = RIP.5041.d
 	border = GFX_event_normal_frame_religion
 
+	hide_from = yes
+
 	is_triggered_only = yes
 	
 	trigger = {
@@ -5842,7 +6251,7 @@ character_event = {
 				modifier = {
 					factor = 500
 					capital_scope = {
-						has_disease = yes
+						location = { has_disease = yes }
 					}
 				}
 				modifier = {
@@ -5901,6 +6310,8 @@ character_event = {
 	id = RIP.5051
 	picture = "GFX_evt_merchant_ship_at_sea_republic"
 	
+	hide_from = yes
+	
 	is_triggered_only = yes
 	
 	desc = {
@@ -5942,6 +6353,8 @@ character_event = {
 character_event = {
 	id = RIP.5052
 	hide_window = yes
+	
+	hide_from = yes
 	
 	is_triggered_only = yes
 	
@@ -6187,6 +6600,15 @@ character_event = {
 
 	option = {
 		name = EVTOPTA_RIP_5060
+		trigger = {
+			is_landed = yes
+			any_courtier_or_vassal = {
+				has_minor_title = title_court_physician
+				liege = {
+					character = ROOT
+				}
+			}
+		}
 
 		clr_character_flag = announce_syphilis
 		clr_character_flag = announce_pneumonic
@@ -6223,6 +6645,8 @@ character_event = {
 		clr_character_flag = announce_food_poisoning
 		clr_character_flag = announce_rabies
 		clr_character_flag = announce_cancer
+		
+		custom_tooltip = { text = ignore_ill_relatives_tooltip }
 	}
 }
 

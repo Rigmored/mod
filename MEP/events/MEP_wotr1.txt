@@ -452,22 +452,17 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwotr.19"
-		log = "wotr19"
 		hidden_tooltip = {
-			log = "wotr19a"
 			remove_trait = on_fellowshipquest
 			set_character_flag = warofthering19
 		}
 		event_target:mep_chartarget_samwise = {
-			log = "wotr19b"
 			remove_trait = on_fellowshipquest
 		}
 		event_target:mep_chartarget_merry = {
-			log = "wotr19c"
 			remove_trait = on_fellowshipquest
 		}
 		event_target:mep_chartarget_pippin = {
-			log = "wotr19d"
 			remove_trait = on_fellowshipquest
 		}
 	}
@@ -490,8 +485,6 @@ character_event = {
 		
 	option = {
         name = "EVTOPTAwarofthering.20"
-		log = "wotr20"
-		# froso (
 		character_event = { id = warofthering.21 days = 30 }  # If Frodo dies, the quest is over anyway
 		event_target:mep_chartarget_aragorn = {
 			character_event = { id = warofthering.35 days = 30 }
@@ -512,7 +505,6 @@ character_event = {
 	option = {
         name = "EVTOPTAwarofthering.21"
 		hidden_tooltip = { set_character_flag = warofthering20 }
-		log = "wotr21"
 		random_list = {
 			5  = { character_event = { id = warofthering.22 days = 1} }
             95 = { character_event = { id = warofthering.24 days = 1} }
@@ -531,7 +523,6 @@ character_event = {
 	
 	option = {
 		name = EVTOPTAwarofthering.35
-		log = "wotr35"
 	}
 }
 
@@ -550,7 +541,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwarofthering.22"
-		log = "wotr22"
 		hidden_tooltip = {
 			clr_global_flag = fellowshipquest
 			event_target:mep_chartarget_aragorn = {
@@ -563,15 +553,12 @@ character_event = {
 		# For the other Hobbits, the Quest is over
 		event_target:mep_chartarget_samwise = {
 			remove_trait = on_fellowshipquest
-			log = "wotr22a"
 		}
 		event_target:mep_chartarget_merry = {
 			remove_trait = on_fellowshipquest
-			log = "wotr22b"
 		}
 		event_target:mep_chartarget_pippin = {
 			remove_trait = on_fellowshipquest
-			log = "wotr22c"
 		}
 	}
 }
@@ -587,7 +574,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwarofthering.23"
-		log = "wotr23a"
 		remove_trait = on_fellowshipquest
 		random_list = {
 			50 = { add_trait = wounded }
@@ -597,7 +583,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTBwarofthering.23"
-		log = "wotr23b"
 		trigger = { ai = no }
 		remove_trait = on_fellowshipquest
 		add_trait = craven
@@ -620,7 +605,6 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTAwarofthering.24"
-		log = "wotr24"
 		any_independent_ruler = {
 			limit = { is_alive = yes }
 			character_event = { id = warofthering.27 days = 15 random = 4}

@@ -662,8 +662,11 @@
 		name = "Gothmog"
 	} #The Balrogs recieve their hröa
 	4822.1.1 = {
-		death = "4822.1.1"
-	} #Gothmog is slain by Ecthelion in Gondolin
+		death = {
+			death_reason = death_duel
+			killer = 3226 # Ecthelion
+		}
+	} #Slain in the Fall of Gondolin by Ecthelion
 }
 10026 = {
 	name = "Haldavelca"
@@ -680,7 +683,6 @@
 		religion = "religion_umaiar"
 	} #Haldavelca is corrupted by Melkor
 	57.1.1 = {
-
 		name = "Hallmog"
 	} #The Balrogs recieve their hröa
 	4899.1.1 = {
@@ -698,7 +700,10 @@
 		add_trait = aggressive_leader
 	} #The Balrog is awoken from its slumber by the Dwarves of Khazad-dûm and slays Durin VI
 	11362.1.25 = {
-		death = "11362.1.25"
+		death = {
+			death_reason = death_duel
+			killer = 10033
+		}
 	} #Dúrin's Bane is slain by Gandalf in Moria
 }
 10027 = {
@@ -1763,14 +1768,18 @@
 		add_trait = cruel
 		add_trait = proud
 		add_trait = deceitful
+		add_trait = nauglamir
 		add_trait = brilliant_strategist
 		effect = {
 			give_nickname = nick_father_dragons
 		}
 	}
 	4811.1.1 = {
-		death = "4811.1.1"
+		death = {
+			death_reason = death_duel
+			killer = 15203
 	}
+	} #Slain by turin turambar
 }
 
 10067 = {
@@ -1795,8 +1804,11 @@
 		}
 	}
 	4899.1.1 = {
-		death = "4899.1.1"
+		death = {
+			death_reason = death_duel
+			killer = 3001
 	}
+	} #Slain Earendil
 }
 
 10068 = {
@@ -1819,8 +1831,11 @@
 		}
 	}
 	11284.1.1 = {
-		death = yes
+		death = {
+			death_reason = death_duel
+			killer = 9905
 	}
+	} # Slain Bard
 }
 
 10069 = {
@@ -1843,8 +1858,11 @@
 		}
 	}
 	10343.1.1 = {
-		death = "10343.1.1"
+		death = {
+			death_reason = death_duel
+			killer = 9029
 	}
+	} # Slain by Fram
 }
 
 10070 = {

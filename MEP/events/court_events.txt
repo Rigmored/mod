@@ -55,7 +55,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.9
-			trait = ill
+			is_ill = yes
 		}
 		modifier = {
 			factor = 0.8
@@ -75,7 +75,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.8
-			trait = maimed
+			is_maimed_trigger = yes
 		}
 		modifier = {
 			factor = 0.5
@@ -128,6 +128,9 @@ character_event = {
 	}	
 	option = {
 		name = EVTOPTB73000 #Ignore him
+		custom_tooltip = {
+			text = ALL_DYNASTY_MEMBERS_MINUS_5
+			hidden_tooltip = {
 		any_dynasty_member = {
 			limit = {
 				NOT = {
@@ -138,6 +141,8 @@ character_event = {
 				who = ROOT
 				modifier = disrespects_dynasty
 				months = 120
+			}
+		}
 			}
 		}
 		random = {
@@ -170,6 +175,9 @@ character_event = {
 			is_abroad = no
 			prisoner = no
 			is_alive = yes
+			# NOT = { age = 21 }
+			NOT = { demesne_size = 1 }
+			fertility = 0.15
 		}
 	}
 
@@ -192,10 +200,15 @@ character_event = {
 	option = {
 		name = EVTOPTA73001 # Help her, by getting her more to read.
 		wealth = -10
-		spouse = { fertility = 0.1 }
+		spouse = {
+			fertility = 0.1
 		if = {
-			limit = { spouse = { not = {trait = lustful } } }
-			spouse = { add_trait = lustful }
+				limit = {
+					NOT = {
+						trait = lustful
+					}
+				}
+				add_trait = lustful
 		}
 		opinion = {
 			who = ROOT
@@ -203,15 +216,18 @@ character_event = {
 			months = 12
 		}		
 	}	
+	}	
 	option = {
 		name = EVTOPTB73001 # That is her interests, not mine.
 		piety = 5
-		spouse = { fertility = -0.1 }
+		spouse = {
+			fertility = -0.1
 		opinion = {
 			who = ROOT
 			modifier = spouse_ignores_me
 			months = 12
 		}		
+	}
 	}
 	option = {
 		name = EVTOPTC73001 # These are not ladylike!
@@ -265,7 +281,7 @@ character_event = {
 	option = {
 		name = EVTOPTA73002 # It is for the education of our people!
 		scaled_wealth = -0.20
-		piety = 20
+		piety = 10
 	}	
 	option = {
 		name = EVTOPTB73002 # If the Temple wants it, they can pay for it
@@ -349,7 +365,9 @@ character_event = {
         NOT = { mep_evil_religion = yes }
 		father_even_if_dead = {
 			is_alive = no
-			prestige = 100
+			primary_title = {
+				higher_tier_than = COUNT
+			}
 		}
 	}
 
@@ -430,7 +448,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.9
-			trait = ill
+			is_ill = yes
 		}
 		modifier = {
 			factor = 0.8
@@ -450,7 +468,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.8
-			trait = maimed
+			is_maimed_trigger = yes
 		}
 		modifier = {
 			factor = 0.5
@@ -551,7 +569,7 @@ character_event = {
 			NOT = { trait = chaste }
 			NOT = { trait = celibate }
 			NOT = { trait = eunuch }
-			NOT = { trait = monk }
+			NOT = { is_ascetic_trigger = yes }
 		}
 	}
 	immediate = {
@@ -565,7 +583,7 @@ character_event = {
 				NOT = { trait = chaste }
 				NOT = { trait = celibate }
 				NOT = { trait = eunuch }
-				NOT = { trait = monk }
+				NOT = { is_ascetic_trigger = yes }
 			}
 			save_event_target_as = knocked_up_maid
 		}
@@ -711,6 +729,7 @@ character_event = {
 	min_age = 16
 	only_playable = yes
 	prisoner = no
+	ai = no
 	
 	trigger = {
 	mep_is_adult = yes
@@ -759,9 +778,10 @@ character_event = {
 	only_playable = yes
 	prisoner = no
 	
+	war = yes
+	
 	trigger = {
 		mep_is_adult = yes
-		war = yes
 		any_current_enemy = {
 			culture = ROOT
 		}
@@ -799,7 +819,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.9
-			trait = ill
+			is_ill = yes
 		}
 		modifier = {
 			factor = 0.8
@@ -819,7 +839,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.8
-			trait = maimed
+			is_maimed_trigger = yes
 		}
 		modifier = {
 			factor = 0.5
@@ -941,7 +961,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.1
-			trait = ill
+			is_ill = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -961,7 +981,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.25
-			trait = maimed
+			is_maimed_trigger = yes
 		}
 		modifier = {
 			factor = 2.0
@@ -1037,12 +1057,12 @@ character_event = {
 		}
 		piety = -5
 		prestige = 5
-		add_trait = stressed
+		health = -2
 	}
 	option = {
 		name = EVTOPTD73011 # There is no hope.
 		piety = -10
-		add_trait = depressed
+		health = -2
 	}
 }
 
@@ -1063,9 +1083,9 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	lacks_dlc = "Zeus"
 	
 	trigger = {
-		NOT = { has_dlc = "Zeus" }
 		mep_is_adult = yes
 		is_ruler = no
 		is_councillor = no
@@ -1289,10 +1309,10 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	lacks_dlc = "Zeus"
 
 	trigger = {
 		mep_is_adult = yes
-		NOT = { has_dlc = "Zeus" }
 		is_ruler = no
 		independent = no
 		is_councillor = no
@@ -1510,9 +1530,9 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	lacks_dlc = "Zeus"
 	
 	trigger = {
-		NOT = { has_dlc = "Zeus" }
 		mep_is_adult = yes
 		is_ruler = no
 		independent = no
@@ -1728,9 +1748,9 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	lacks_dlc = "Zeus"
 	
 	trigger = {
-		NOT = { has_dlc = "Zeus" }
 		mep_is_adult = yes
 		OR = {
 			is_theocracy = yes
@@ -1960,9 +1980,9 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	lacks_dlc = "Zeus"
 	
 	trigger = {
-		NOT = { has_dlc = "Zeus" }
 		mep_is_adult = yes
 		is_ruler = no
 		independent = no

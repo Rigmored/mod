@@ -650,7 +650,66 @@ character_event = {
     }
 }
 
+#clearing secret_societies_interference flag
+character_event = {
+	id = MNM.6661
+	
+	is_triggered_only = yes
+	hide_window = yes
+	
+	immediate = {
+		clr_character_flag = secret_societies_interference 
+	}
 
+	option = {
+		
+	}
+}
+
+#Suspicion modifiers
+character_event = {
+	id = MNM.6662
+	desc = MNM.6662.d
+	picture = "GFX_evt_uncomfortable"
+	border = GFX_event_normal_frame_religion
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = MNM.6662.a
+		tooltip = {
+			add_character_modifier = {
+				name = under_suspicion duration = -1
+			}
+		}
+	}
+}
+
+character_event = {
+	id = MNM.6663
+	desc = MNM.6662.d
+	picture = "GFX_evt_uncomfortable"
+	border = GFX_event_normal_frame_religion
+
+	trigger = {
+		is_in_society = yes
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = MNM.6662.a
+		tooltip = {
+			add_character_modifier = {
+				name = highly_suspect duration = -1
+			}
+		}
+	}
+}
 
 
 

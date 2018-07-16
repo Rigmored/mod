@@ -1,0 +1,35 @@
+dunedain_infertility = {
+	potential = {
+		is_female = yes
+		OR = {
+			culture_group = culture_group_numenorean
+			trait = elven_blood
+		}		
+	}
+    fertility_penalty = -50
+	# cannot_marry = yes
+	random = no
+	customizer = no	
+	cached = yes
+}
+
+# new general infertility trait, Hidden
+not_fertile = {
+	potential = {
+		is_female = yes
+		NOT = { trait = elven_blood }
+		NOT = { culture_group = culture_group_numenorean }
+		NOT = { religion_group = religion_group_khazad }
+		NOT = { religion_group = religion_group_eldar }
+		
+	}
+	opposites = {
+		fertile
+	}
+	fertility_penalty = -50
+	# cannot_marry = yes
+	hidden = yes
+	customizer = no
+	random = no
+	
+}

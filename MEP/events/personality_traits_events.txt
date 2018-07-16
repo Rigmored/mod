@@ -888,6 +888,49 @@ character_event = {
 		name = "EVTOPTB1004"
 		if = {
 			limit = {
+					trait = depressed
+					trait = stressed
+			}
+			health = -0.5
+		}
+		if = {
+			limit = {
+					trait = depressed
+				NOT = {
+					trait = stressed
+				}
+			}
+			random = {
+				chance = 60
+				add_trait = stressed
+			}
+		}
+		if = {
+			limit = {
+					trait = stressed
+				NOT = {
+					trait = depressed
+				}
+			}
+			random = {
+				chance = 60
+				add_trait = depressed
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					trait = stressed
+					trait = depressed
+				}
+			}
+			random = {
+				chance = 60
+				add_trait = stressed
+			}
+		}
+		if = {
+			limit = {
 				trait = patient
 				NOT = {
 					trait = cynical
@@ -2226,6 +2269,34 @@ character_event = {
 		name = "EVTOPTB1011"
 		if = {
 			limit = {
+					trait = stressed
+			}
+			random = {
+				chance = 50
+				health = -0.5
+				modifier = {
+					factor = 1.5
+					trait = paranoid
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					trait = stressed
+				}
+			}
+			random = {
+				chance = 50
+				add_trait = stressed
+				modifier = {
+					factor = 1.5
+					trait = paranoid
+				}
+			}
+		}
+		if = {
+			limit = {
 				trait = brave
 				NOT = {
 					trait = paranoid
@@ -2530,6 +2601,30 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTA1013"
+		if = {
+			limit = {
+				NOR = {
+					trait = stressed
+					trait = depressed
+				}
+			}
+			health = 0.5
+		}
+		if = {
+			limit = {
+				trait = stressed
+				NOT = {
+					trait = depressed
+				}
+			}
+			remove_trait = stressed
+		}
+		if = {
+			limit = {
+				trait = depressed
+			}
+			remove_trait = depressed
+		}
 		if = {
 			limit = {
 				trait = diligent
@@ -4028,10 +4123,6 @@ character_event = {
 			factor = 2
 			personality_traits = 6
 		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_reject_envy
-		}
 	}
 	
 	option = {
@@ -4083,10 +4174,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_reject_hate
-		}
+		personality_traits = 6
 		trait = wroth
 	}
 	
@@ -4096,10 +4184,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_reject_hate
 		}
 	}
 	
@@ -4152,10 +4236,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_reject_pride
-		}
+		personality_traits = 6
 		trait = proud
 	}
 	
@@ -4165,10 +4246,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_reject_pride
 		}
 	}
 	
@@ -4594,10 +4671,7 @@ character_event = {
 	is_triggered_only = yes
 	
 	trigger = {
-		OR = {
-			personality_traits = 6
-			has_ambition = obj_buddhist_defeat_fear
-		}
+		personality_traits = 6
 		trait = paranoid
 	}
 	
@@ -4607,10 +4681,6 @@ character_event = {
 		modifier = {
 			factor = 2
 			personality_traits = 6
-		}
-		modifier = {
-			factor = 20
-			has_ambition = obj_buddhist_defeat_fear
 		}
 	}
 	
