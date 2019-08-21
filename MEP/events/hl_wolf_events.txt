@@ -766,6 +766,8 @@ narrative_event = {
 			random = {
 				chance = 30
 				add_trait = temperate
+			lose_weight_small_effect = yes
+			weight_trait_check_effect = yes
 				hidden_tooltip = {
 					character_event = {
 						id = 38276 #Notify Temperate
@@ -844,11 +846,15 @@ narrative_event = {
 					NOT = { trait = incapable }
 				}
 			}
-			random_lover = {
+			any_lover = {
 				limit = {
 					at_location = ROOT
 					NOT = { trait = incapable }
 				}
+				score_value = { #Prioritizes selecting an interesting courtier...
+		            value = 10
+		            interesting_courtier_selection_score = yes
+		        }
 				save_event_target_as = wolf_worried_homecoming
 			}
 			set_character_flag = wolf_homecoming_worried_character
@@ -863,11 +869,16 @@ narrative_event = {
 					NOT = { trait = incapable }
 				}
 			}
-			random_consort = {
+			any_consort = {
 				limit = {
+					NOT = { character = ROOT }
 					at_location = ROOT
 					NOT = { trait = incapable }
 				}
+				score_value = { #Prioritizes selecting an interesting courtier...
+		            value = 10
+		            interesting_courtier_selection_score = yes
+		        }
 				save_event_target_as = wolf_worried_homecoming
 			}
 			set_character_flag = wolf_homecoming_worried_character
@@ -878,7 +889,7 @@ narrative_event = {
 		name = EVTOPTA_HL_1250
 		prestige = 20
 		if = {
-			limit = { has_character_flag = wolf_homecoming_character }
+			limit = { has_character_flag = wolf_homecoming_worried_character }
 			event_target:wolf_worried_homecoming = {
 				opinion = {
 					who = ROOT
@@ -887,14 +898,14 @@ narrative_event = {
 				}
 			}
 		}
-		clr_character_flag = wolf_homecoming_character
+		clr_character_flag = wolf_homecoming_worried_character
 		clr_character_flag = do_not_disturb
 	}
 	option = {
 		name = EVTOPTB_HL_1250
 		prestige = 50
 		if = {
-			limit = { has_character_flag = wolf_homecoming_character }
+			limit = { has_character_flag = wolf_homecoming_worried_character }
 			event_target:wolf_worried_homecoming = {
 				opinion = {
 					who = ROOT
@@ -903,13 +914,13 @@ narrative_event = {
 				}
 			}
 		}
-		clr_character_flag = wolf_homecoming_character
+		clr_character_flag = wolf_homecoming_worried_character
 		clr_character_flag = do_not_disturb
 	}
 	option = {
 		name = EVTOPTC_HL_1250
 		trigger = {
-			has_character_flag = wolf_homecoming_character
+			has_character_flag = wolf_homecoming_worried_character
 		}
 		event_target:wolf_worried_homecoming = {
 			opinion = {
@@ -918,7 +929,7 @@ narrative_event = {
 				years = 3
 			}
 		}
-		clr_character_flag = wolf_homecoming_character
+		clr_character_flag = wolf_homecoming_worried_character
 		clr_character_flag = do_not_disturb
 	}
 }
@@ -1475,12 +1486,16 @@ character_event = {
 	}
 	
 	immediate = {
-		random_courtier = {
+		any_courtier = {
 			limit = {
 				at_location = ROOT
 				mep_is_adult = yes
 				NOT = { trait = incapable }
 			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
 			save_event_target_as = wolf_hunting_instinct_at_court_courtier
 		}
 	}
@@ -1906,22 +1921,30 @@ character_event = {
 	trigger = {
 		has_character_modifier = wolf_blood
 		has_character_flag = wolf_blood_inherited
-		NOT = { trait = ugly }
+		NOT = { trait = uncouth }
 	}
 	
 	option = {
 		name = EVTOPTA_HL_1620
 		trigger = {
-			NOT = { trait = fair }
+			NOT = { has_fair_trait_trigger = yes }
 		}
-		add_trait = ugly
+		add_trait = uncouth
 	}
 	option = {
 		name = EVTOPTB_HL_1620 # No longer fair I am!
 		trigger = {
-			trait = fair
+			has_fair_trait_trigger = yes
 		}
-		add_trait = ugly
+		if = { 
+			limit = { trait = fair }
+			remove_trait = fair
+		}
+		if = { 
+			limit = { trait = groomed }
+			remove_trait = groomed
+		}
+		add_trait = uncouth
 	}
 }
 

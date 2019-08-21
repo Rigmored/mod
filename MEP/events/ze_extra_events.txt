@@ -1077,6 +1077,7 @@ character_event = {
 		name = EVTOPTA_ZE_22510
 		
 		piety = 100
+		
 		tooltip = {
 			add_favor = FROM
 		}	
@@ -1856,14 +1857,19 @@ character_event = {
 				}
 				if = {
 					limit = {
-						OR = {
-							religion_group = religion_group_melkor
-							religion_group = religion_group_ungoliant
-						}
+						religion_group = religion_group_melkor
 						NOT = { trait = good_side }
 						NOT = { mep_is_evil_overlord = yes }
 					}
 					set_government_type = orc_government
+				}
+				if = {
+					limit = {
+						religion_group = religion_group_ungoliant
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
+					}
+					set_government_type = spider_government
 				}
 
 				else = {

@@ -54,7 +54,13 @@ letter_event = {
     option = { 
         name = EVTOPTA_MNM_44511
 
-        FROM = { ROOT = { join_prev_monastic_order_society = yes } }
+        FROM = {
+        	show_scope_change = no
+        	ROOT = {
+        		show_scope_change = no
+        		join_prev_monastic_order_society = yes
+        	}
+        }
 		
 		scaled_wealth = -0.25
 
@@ -304,7 +310,8 @@ character_event = {
 			}
 			text = EVTOPTA_MNM_4403_NOGOD
 		}
-
+		lose_weight_small_effect = yes
+		weight_trait_check_effect = yes
 		hidden_effect = {
 			set_variable = { which = holy_seclusion_points value = 0 }
 			set_character_flag = holy_seclusion_timer
@@ -559,6 +566,141 @@ character_event = {
 
 	hide_from = yes
 
+	immediate = {
+		trigger_switch = {
+			on_trigger = has_character_flag
+			holy_seclusion_lustful = {
+				if = {
+					limit = {
+						any_artifact = {
+							OR = {
+								has_artifact_flag = about_religion
+								artifact_type = the_confessions_of_root
+							}
+							is_artifact_equipped = yes
+						}
+					}
+					random_artifact = {
+						limit = {
+							OR = {
+								has_artifact_flag = about_religion
+								artifact_type = the_confessions_of_root
+							}
+							is_artifact_equipped = yes
+						}
+						preferred_limit = {
+							quality = 3
+						}
+						preferred_limit = {
+							quality = 2
+						}
+						preferred_limit = {
+							quality = 1
+						}
+						save_event_target_as = book_target
+					}
+				}
+			}
+			holy_seclusion_gluttonous = {
+				if = {
+					limit = {
+						any_artifact = {
+							has_artifact_flag = cooking
+							is_artifact_equipped = yes
+						}
+					}
+					random_artifact = {
+						limit = {
+							has_artifact_flag = cooking
+							is_artifact_equipped = yes
+							NOT = { artifact_type = gastronomic_tonics } #Not really about food
+						}
+						preferred_limit = {
+							quality = 3
+						}
+						preferred_limit = {
+							quality = 2
+						}
+						preferred_limit = {
+							quality = 1
+						}
+						save_event_target_as = book_target
+					}
+				}
+			}
+			holy_seclusion_greedy = {
+				if = {
+					limit = {
+						any_artifact = {
+							OR = {
+								artifact_type = the_confessions_of_root
+								has_artifact_flag = about_diplomacy
+							}
+							is_artifact_equipped = yes
+						}
+					}
+					random_artifact = {
+						limit = {
+							OR = {
+								artifact_type = the_confessions_of_root
+								has_artifact_flag = about_diplomacy
+							}
+							is_artifact_equipped = yes
+						}
+						preferred_limit = {
+							quality = 3
+						}
+						preferred_limit = {
+							quality = 2
+						}
+						preferred_limit = {
+							quality = 1
+						}
+						save_event_target_as = book_target
+					}
+				}
+			}
+			holy_seclusion_slothful = {
+				if = {
+					limit = {
+						any_artifact = {
+							OR = {
+								AND = {
+									has_artifact_flag = about_dynasty
+									original_owner = { NOT = { character = ROOT } }
+								}
+								has_artifact_flag = poetry
+							}
+							is_artifact_equipped = yes
+						}
+					}
+					random_artifact = {
+						limit = {
+							OR = {
+								AND = {
+									has_artifact_flag = about_dynasty
+									original_owner = { NOT = { character = ROOT } }
+								}
+								has_artifact_flag = poetry
+							}
+							is_artifact_equipped = yes
+						}
+						preferred_limit = {
+							quality = 3
+						}
+						preferred_limit = {
+							quality = 2
+						}
+						preferred_limit = {
+							quality = 1
+						}
+						save_event_target_as = book_target
+					}
+				}
+			}
+		}
+	}
+
 	desc = {
 		trigger = { has_character_flag = holy_seclusion_lustful }
 		text = EVTDESC_4405_LUSTFUL
@@ -567,7 +709,7 @@ character_event = {
 	desc = {
 		trigger = { has_character_flag = holy_seclusion_gluttonous }
 		text = EVTDESC_4405_GLUTTONOUS
-		picture = GFX_evt_dark_feast
+		picture = GFX_evt_feast
 	}
 	desc = {
 		trigger = { has_character_flag = holy_seclusion_greedy }
@@ -598,6 +740,11 @@ character_event = {
 			trigger = { has_character_flag = holy_seclusion_slothful }
 			text = EVTOPTA_4405_SLOTHFUL
 		}
+		if = {
+			limit = { has_character_flag = holy_seclusion_gluttonous }
+			gain_weight_small_effect = yes
+			weight_trait_check_effect = yes
+		}
 
 		random_list = {
 			65 = { 
@@ -612,6 +759,54 @@ character_event = {
 					character_event = { id = MNM.4407 days = 3 }
 				}
 			}
+		}
+	}
+
+	#Fight it  (with reading from your library!)
+	option = {
+		name = {
+			trigger = { has_character_flag = holy_seclusion_lustful }
+			text = EVTOPTB_4405_LUSTFUL_book
+		}
+		name = {
+			trigger = { has_character_flag = holy_seclusion_gluttonous }
+			text = EVTOPTB_4405_GLUTTONOUS_book
+		}
+		name = {
+			trigger = { has_character_flag = holy_seclusion_greedy }
+			text = EVTOPTB_4405_GREEDY_book
+		}
+		name = {
+			trigger = { has_character_flag = holy_seclusion_slothful }
+			text = EVTOPTB_4405_SLOTHFUL_book
+		}
+
+		tooltip_info_custom = available_because_books_tt
+
+		if = {
+			limit = { has_character_flag = holy_seclusion_gluttonous }
+			lose_weight_small_effect = yes
+			weight_trait_check_effect = yes
+		}
+
+		set_character_flag = used_a_book
+
+		random_list = {
+			70 = { 
+				custom_tooltip = { 
+					text = EVTOPTB_MNM_4405_tt_success
+					character_event = { id = MNM.4408 days = 14 }
+				}
+			}
+			30 = {
+				custom_tooltip = { 
+					text = EVTOPTB_MNM_4405_tt_fail
+					character_event = { id = MNM.4409 days = 14 }
+				}
+			}
+		}
+		trigger = {
+			event_target:book_target = { always = yes }
 		}
 	}
 
@@ -637,6 +832,11 @@ character_event = {
 		if = {
 			limit = { has_character_flag = holy_seclusion_greedy }
 			scaled_wealth = { value = -0.5 min = -50 }
+		}
+		if = {
+			limit = { has_character_flag = holy_seclusion_gluttonous }
+			lose_weight_small_effect = yes
+			weight_trait_check_effect = yes
 		}
 
 		random_list = {
@@ -861,20 +1061,45 @@ character_event = {
 	}
 
 	desc = {
-		trigger = { has_character_flag = holy_seclusion_lustful }
+		trigger = {
+			has_character_flag = holy_seclusion_lustful
+		}
 		text = EVTDESC_4408_LUSTFUL
 	}
 	desc = {
-		trigger = { has_character_flag = holy_seclusion_gluttonous }
+		trigger = {
+			has_character_flag = holy_seclusion_gluttonous
+		}
 		text = EVTDESC_4408_GLUTTONOUS
 	}
 	desc = {
-		trigger = { has_character_flag = holy_seclusion_greedy }
+		trigger = {
+			has_character_flag = holy_seclusion_greedy
+			NOT = { has_character_flag = used_a_book }
+		}
 		text = EVTDESC_4408_GREEDY
 	}
 	desc = {
-		trigger = { has_character_flag = holy_seclusion_slothful }
+		trigger = {
+			has_character_flag = holy_seclusion_slothful
+			NOT = { has_character_flag = used_a_book }
+
+		}
 		text = EVTDESC_4408_SLOTHFUL
+	}
+	desc = {
+		trigger = {
+			has_character_flag = holy_seclusion_greedy
+			has_character_flag = used_a_book
+		}
+		text = EVTDESC_4408_GREEDY_book
+	}
+	desc = {
+		trigger = {
+			has_character_flag = holy_seclusion_slothful
+			has_character_flag = used_a_book
+		}
+		text = EVTDESC_4408_SLOTHFUL_book
 	}
 
 
@@ -979,6 +1204,7 @@ character_event = {
 			clr_character_flag = holy_seclusion_gluttonous
 			clr_character_flag = holy_seclusion_greedy
 			clr_character_flag = holy_seclusion_slothful
+			clr_character_flag = used_a_book
 		}
 	}
 }
@@ -1102,7 +1328,12 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { is_dharmic_monastic_member_trigger = yes }
+			limit = { 
+				OR = {
+					society_member_of = monastic_order_stoics 
+					is_dharmic_monastic_member_trigger = yes 
+				}
+			}
 			add_character_modifier = {
 				name = rampant_sinner_dharmic
 				years = 3
@@ -1114,6 +1345,7 @@ character_event = {
 			clr_character_flag = holy_seclusion_gluttonous
 			clr_character_flag = holy_seclusion_greedy
 			clr_character_flag = holy_seclusion_slothful
+			clr_character_flag = used_a_book
 		}
 	}
 }
@@ -2046,7 +2278,17 @@ letter_event = {
 			sound_effect = monastic_orders_meditate_in_seclusion
 			remove_character_modifier = in_meditation
 		}
-		add_society_currency_medium_effect = yes
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_major_effect = yes
+		}
+		else = {
+			add_society_currency_medium_effect = yes
+		}
 		hidden_effect = { 
 			monastic_order_purity_effect = yes 
 			clr_character_flag = success_seculison_desc_A #Flags from 4426
@@ -2255,7 +2497,17 @@ letter_event = {
 		sound_effect = monastic_orders_pick_theology_focus
 		hidden_effect = { monastic_order_purity_effect = yes }
 		
-		add_society_currency_minor_effect = yes
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_medium_effect = yes
+		}
+		else = {
+			add_society_currency_minor_effect = yes
+		}
 	}
 
 }
@@ -2296,11 +2548,61 @@ character_event = {
 	hide_window = yes
 
 	immediate = {
+		if = { #If YOU are the leader of the society, find someone random...
+			limit = {
+				is_society_grandmaster = yes
+			}
 		random_society_member = {
 			limit = {
 				same_society_as = ROOT
-				is_society_grandmaster = yes
+					NOT = { character = ROOT }
+				}
+				character_event = {
+					id = MNM.4021
+				}
 			}
+		}
+		else_if = { #Else, find the leader (provided they are available)...
+			limit = {
+				any_society_member = {
+					same_society_as = ROOT
+				is_society_grandmaster = yes
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+			}
+			random_society_member = {
+				limit = {
+					same_society_as = ROOT
+					is_society_grandmaster = yes
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+				character_event = {
+					id = MNM.4021
+				}
+			}		
+		}
+		else_if = { #If not, find someone who is...
+			limit = {
+				any_society_member = {
+					same_society_as = ROOT
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+			}
+			random_society_member = {
+				limit = {
+					same_society_as = ROOT
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+			}
+			character_event = {
+				id = MNM.4021
+			}
+		}
+	}
+		else = { #Else, send it to yourself ...
 			character_event = {
 				id = MNM.4021
 			}
@@ -2326,11 +2628,18 @@ character_event = {
 
 letter_event = {
 	id = MNM.4022
-	desc = EVTDESC_MNM_4022
 	border = GFX_event_letter_frame_religion
 
 	is_triggered_only = yes
 
+	desc = {
+		trigger = { FROM = { NOT = { character = ROOT } } }
+		text = EVTDESC_MNM_4022
+	}
+	desc = {
+		trigger = { FROM = { character = ROOT } } #Added in case everyone is in prison or something...!
+		text = EVTDESC_MNM_4022_fallback
+	}
 
 	option = {
 		name = EVTOPT_MNM_4022
@@ -2339,7 +2648,17 @@ letter_event = {
 		sound_effect = monastic_orders_pilgrimage
 		hidden_effect = { monastic_order_purity_effect = yes }
 		
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_large_effect = yes
+		}
+		else = {
 		add_society_currency_major_effect = yes
+	}
 	}
 }
 
@@ -2378,11 +2697,61 @@ character_event = {
 	hide_window = yes
 
 	immediate = {
+		if = { #If YOU are the leader of the society, find someone random...
+			limit = {
+				is_society_grandmaster = yes
+			}
 		random_society_member = {
 			limit = {
 				same_society_as = ROOT
-				is_society_grandmaster = yes
+					NOT = { character = ROOT }
+				}
+				character_event = {
+					id = MNM.8097
+				}
 			}
+		}
+		else_if = { #Else, find the leader (provided they are available)...
+			limit = {
+				any_society_member = {
+					same_society_as = ROOT
+				is_society_grandmaster = yes
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+			}
+			random_society_member = {
+				limit = {
+					same_society_as = ROOT
+					is_society_grandmaster = yes
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+				character_event = {
+					id = MNM.8097
+				}
+			}		
+		}
+		else_if = { #If not, find someone who is...
+			limit = {
+				any_society_member = {
+					same_society_as = ROOT
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+			}
+			random_society_member = {
+				limit = {
+					same_society_as = ROOT
+					NOT = { character = ROOT }
+					block_general_event_trigger = no
+				}
+				character_event = {
+					id = MNM.8097
+				}
+			}
+		}
+		else = { #Else, send it to yourself ...
 			character_event = {
 				id = MNM.8097
 			}
@@ -2409,11 +2778,20 @@ character_event = {
 #Done
 letter_event = {
 	id = MNM.8099
-	desc = EVTDESC_MNM_8099
 	picture = GFX_evt_dharmic_pilgrims
 	border = GFX_event_letter_frame_religion
 
 	is_triggered_only = yes
+
+	desc = {
+		trigger = { FROM = { NOT = { character = ROOT } } }
+		text = EVTDESC_MNM_8099
+	}
+	desc = {
+		trigger = { FROM = { character = ROOT } } #Added in case everyone is in prison or something...!
+		text = EVTDESC_MNM_4022_fallback
+	}
+
 
 	trigger = { has_quest = quest_indian_monastic_order_pilgrimage }
 
@@ -2465,9 +2843,11 @@ character_event = {
 		FROM = {
 			holding_type = temple
 		}
+		NOT = { has_character_flag = monastic_orders_temple_construction_ongoing } #flag to avoid doubling of letter events when finishing two buildings at the same time
 	}
 	
 	immediate = {
+		set_character_flag = monastic_orders_temple_construction_ongoing
 		random_society_member = {
 			limit = {
 				same_society_as = ROOT
@@ -2508,7 +2888,20 @@ letter_event = {
 		clr_quest = monastic_orders_temple_construction
 		sound_effect = monastic_orders_build_temple_holding
 		hidden_effect = { monastic_order_purity_effect = yes }
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_large_effect = yes
+		}
+		else = {
 		add_society_currency_major_effect = yes
+	}
+	}
+	after = {
+		clr_character_flag = monastic_orders_temple_construction_ongoing
 	}
 }
 
@@ -2786,6 +3179,8 @@ character_event = {
 			random = {
 				chance = 10
 				add_trait = temperate
+				lose_weight_small_effect = yes
+				weight_trait_check_effect = yes
 			}
 			random = {
 				chance = 5
@@ -3256,8 +3651,10 @@ character_event = {
 		}
 		add_trait = diligent
 		hidden_effect = {
+			event_target:benedictines_diligent_mentor = {
 			character_event = { id = MNM.4609 }
 		}
+	}
 	}
 }
 
@@ -3547,7 +3944,17 @@ letter_event = {
 		wealth = -100
 		if = {
 			limit = { NOT = { has_quest = quest_monastic_order_donate_to_charity } }
+			if = {
+				limit = {
+					any_owned_bloodline = {
+						has_bloodline_flag = monastic_saintly_bloodline 
+					}
+				}
+				add_society_currency_medium_effect = yes
+			}
+			else = {
 			add_society_currency_minor_effect = yes
+		}
 		}
 		
 		if = {
@@ -3555,7 +3962,17 @@ letter_event = {
 			clr_quest = quest_monastic_order_donate_to_charity
 			sound_effect = monastic_orders_donate_charity
 			hidden_effect = { monastic_order_purity_effect = yes }
+			if = {
+				limit = {
+					any_owned_bloodline = {
+						has_bloodline_flag = monastic_saintly_bloodline
+					}
+				}
+				add_society_currency_major_effect = yes
+			}
+			else = {
 			add_society_currency_medium_effect = yes
+		}
 		}
 
 		add_character_modifier = {
@@ -5691,7 +6108,17 @@ character_event = {
 		}
 
 		prestige = 50
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_major_effect = yes
+		}
+		else = {
 		add_society_currency_medium_effect = yes
+    }
     }
 
     option = { # I shall burn ALL the books... (only available if you have more than one book)
@@ -5737,7 +6164,17 @@ character_event = {
 
 
 		prestige = 100
+		if = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = monastic_saintly_bloodline
+				}
+			}
+			add_society_currency_large_effect = yes
+		}
+		else = {
 		add_society_currency_major_effect = yes
+		}
 
 		trigger = {
 			any_artifact = {

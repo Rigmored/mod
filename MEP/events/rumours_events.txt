@@ -2371,6 +2371,7 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	only_playable = yes # We really don't care that a random courtier has upset their spouse
 	
 	trigger = {
 		any_lover = {
@@ -4608,7 +4609,10 @@ character_event = {
 	
 	option = {
 		name = EVTOPTA69075 #Admit that you are a coward
+		if = {
+			limit = { NOT = { trait = berserker } }
 		add_trait = craven
+		}
 		prestige = -5
 		remove_character_modifier = suspected_coward
 		clr_character_flag = flag_suspected_coward

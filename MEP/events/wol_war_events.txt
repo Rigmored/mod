@@ -62,7 +62,7 @@ character_event = {
 		}
 	}
 	
-	option = {
+	option = { #Challenge accepted
 		name = EVTOPTA_WOL_11000
 		ai_chance = {
 			factor = 20
@@ -81,7 +81,7 @@ character_event = {
 			#}
 			modifier = {
 				is_female = no
-				FROM = { is_female = yes }
+				FROMFROM = { is_female = yes }
 				top_liege = {
 					is_nomadic = no
 				}
@@ -95,6 +95,7 @@ character_event = {
 				remove_trait = craven
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		if = {
 			limit = { 
 				FROMFROM = { 
@@ -114,7 +115,7 @@ character_event = {
 		}
 		clr_character_flag = punish_declining
 	}
-	option = {
+	option = { #No, that sounds dangerous
 		name = EVTOPTB_WOL_11000
 		ai_chance = {
 			factor = 1
@@ -155,7 +156,7 @@ character_event = {
 		hidden_tooltip = {
 			remove_character_modifier = recent_duel_timer
 		}
-		FROMFROM = {
+		FROMFROM = { #attacker
 			hidden_tooltip = {
 				remove_character_modifier = recent_duel_timer
 				opinion = {
@@ -266,6 +267,7 @@ character_event = {
 }
 
 
+### NO LONGER IN USE (hence why numbers are off) ###
 # Duel (hidden)
 character_event = {
 	id = WoL.11005
@@ -672,6 +674,7 @@ long_character_event = {
 		custom_tooltip = {
 			text = EVTTOOLTIPWOL11006
 			hidden_tooltip = {
+				generate_tooltip = no
 				any_realm_character = {
 					opinion = {
 						modifier = opinion_ruthless
@@ -690,6 +693,7 @@ long_character_event = {
 					has_nickname = no
 				}
 				give_nickname = nick_the_ruthless
+				add_blood_splatter_effect = yes
 			}
 		}
 		if = {
@@ -703,13 +707,8 @@ long_character_event = {
 		}
 		if = {
 			limit = { event_target:challenger = { character = ROOT } }
-			if = {
-				limit = {
-					event_target:opponent = { dynasty = ROOT }
-					NOT = { trait = kinslayer }
-				}
-				add_trait = kinslayer
-			}
+			event_target:opponent = { save_event_target_as = kinslayer_target }
+			add_kinslayer_trait_effect = yes
 			tooltip = {
 				event_target:opponent = {
 					death = {
@@ -730,13 +729,8 @@ long_character_event = {
 		}
 		if = {
 			limit = { NOT = { event_target:challenger = { character = ROOT } } }
-			if = {
-				limit = {
-					event_target:challenger = { dynasty = ROOT }
-					NOT = { trait = kinslayer }
-				}
-				add_trait = kinslayer
-			}
+			event_target:challenger = { save_event_target_as = kinslayer_target }
+			add_kinslayer_trait_effect = yes
 			tooltip = {
 				event_target:challenger = {
 					death = {
@@ -841,17 +835,8 @@ long_character_event = {
 		hidden_tooltip = {
 			FROM = { clr_character_flag = duel_maim }
 		}
-		if = {
-			limit = {
-				FROM = {
-					dynasty = ROOT
-					NOT = { trait = kinslayer }
-				}
-			}
-			tooltip = {
-				FROM = { add_trait = kinslayer }
-			}
-		}
+		save_event_target_as = kinslayer_target
+		tooltip = { FROM = { add_kinslayer_trait_effect = yes } }
 		if = {
 			limit = { multiplayer = no }
 			death = {
@@ -887,13 +872,8 @@ long_character_event = {
 			limit = { multiplayer = yes }
 			if = {
 				limit = { event_target:challenger = { character = ROOT } }
-				if = {
-					limit = {
-						event_target:opponent = { dynasty = ROOT }
-						NOT = { trait = kinslayer }
-					}
-					add_trait = kinslayer
-				}
+				event_target:opponent = { save_event_target_as = kinslayer_target }
+				add_kinslayer_trait_effect = yes
 				death = {
 					death_reason = death_duel
 					killer = event_target:opponent
@@ -901,13 +881,8 @@ long_character_event = {
 			}
 			if = {
 				limit = { NOT = { event_target:challenger = { character = ROOT } } }
-				if = {
-					limit = {
-						event_target:challenger = { dynasty = ROOT }
-						NOT = { trait = kinslayer }
-					}
-					add_trait = kinslayer
-				}
+				event_target:challenger = { save_event_target_as = kinslayer_target }
+				add_kinslayer_trait_effect = yes
 				death = {
 					death_reason = death_duel
 					killer = event_target:challenger
@@ -920,19 +895,10 @@ long_character_event = {
 		name = EVTOPTA_CM_6303
 		if = {
 			limit = { event_target:challenger = { character = ROOT } }
-			if = {
-				limit = {
-					event_target:opponent = { dynasty = ROOT }
-				}
-				if = {
-					limit = { NOT = { trait = kinslayer } }
-					add_trait = kinslayer
-				}
-				if = {
-					limit = { event_target:opponent = { NOT = { trait = kinslayer } } }
-					tooltip = { event_target:opponent = { add_trait = kinslayer } }
-				}
-			}
+			event_target:opponent = { save_event_target_as = kinslayer_target }
+			add_kinslayer_trait_effect = yes
+			save_event_target_as = kinslayer_target
+			event_target:opponent = { add_kinslayer_trait_effect = yes }
 			if = {
 				limit = { multiplayer = no }
 				death = {
@@ -951,19 +917,10 @@ long_character_event = {
 		}
 		if = {
 			limit = { NOT = { event_target:challenger = { character = ROOT } } }
-			if = {
-				limit = {
-					event_target:challenger = { dynasty = ROOT }
-				}
-				if = {
-					limit = { NOT = { trait = kinslayer } }
-					add_trait = kinslayer
-				}
-				if = {
-					limit = { event_target:challenger = { NOT = { trait = kinslayer } } }
-					tooltip = { event_target:challenger = { add_trait = kinslayer } }
-				}
-			}
+			event_target:challenger = { save_event_target_as = kinslayer_target }
+			add_kinslayer_trait_effect = yes
+			save_event_target_as = kinslayer_target
+			event_target:challenger = { add_kinslayer_trait_effect = yes }
 			if = {
 				limit = { multiplayer = no }
 				death = {
@@ -1022,14 +979,10 @@ long_character_event = {
 				has_nickname = no
 			}
 			give_nickname = nick_the_beheader
+			add_blood_splatter_effect = yes
 		}
-		if = {
-			limit = {
-				event_target:opponent = { dynasty = ROOT }
-				NOT = { trait = kinslayer }
-			}
-			add_trait = kinslayer
-		}
+		event_target:opponent = { save_event_target_as = kinslayer_target }
+		add_kinslayer_trait_effect = yes
 		tooltip = {
 			event_target:opponent = {
 				death = {
@@ -1070,13 +1023,8 @@ long_character_event = {
 			}
 			give_nickname = nick_the_beheader
 		}
-		if = {
-			limit = {
-				event_target:challenger = { dynasty = ROOT }
-				NOT = { trait = kinslayer }
-			}
-			add_trait = kinslayer
-		}
+		event_target:challenger = { save_event_target_as = kinslayer_target }
+		add_kinslayer_trait_effect = yes
 		tooltip = {
 			event_target:challenger = {
 				death = {
@@ -1230,17 +1178,13 @@ character_event = {
 				character_event = { id = WoL.11101 } # running
 			}
 			30 = {
-				modifier = {
-					OR = {
-						trait = slothful
-						NOT = {
+				trigger = {
+					NOT = { trait = slothful }
 							any_courtier = {
 								trait = slothful
+						prisoner = no
 							}
 						}
-					}
-					factor = 0
-				}
 				character_event = { id = WoL.11102 } # slothful court
 			}
 			30 = {
@@ -1349,6 +1293,7 @@ character_event = {
 				ai = yes
 				mep_is_adult = yes
 				trait = slothful
+				prisoner = no
 			}
 			save_event_target_as = slothful_courtier
 		}
@@ -1394,7 +1339,20 @@ character_event = {
 	id = WoL.11103
 	is_triggered_only = yes
 	desc = EVTDESC_WOL_11103
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	border = GFX_event_normal_frame_war
 	
 	option = {
@@ -1442,7 +1400,20 @@ character_event = {
 	id = WoL.11104
 	is_triggered_only = yes
 	desc = EVTDESC_WOL_11104
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	border = GFX_event_normal_frame_war
 	
 	immediate = {
@@ -1466,6 +1437,7 @@ character_event = {
 	option = {
 		name = EVTOPTA_WOL_11104
 		event_target:portrait_target = {
+			show_scope_change = no
 			mangle_effect = yes
 		}
 		hidden_tooltip = {
@@ -1517,7 +1489,20 @@ character_event = {
 	id = WoL.11107
 	is_triggered_only = yes
 	desc = EVTDESC_WOL_11107
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	border = GFX_event_normal_frame_war
 	
 	option = {
@@ -1547,7 +1532,20 @@ character_event = {
 	id = WoL.11109
 	is_triggered_only = yes
 	desc = EVTDESC_WOL_11109
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	border = GFX_event_normal_frame_war
 	
 	option = {
@@ -1590,6 +1588,7 @@ character_event = {
 				set_character_flag = sparring_partner
 			}
 			ROOT = {
+				show_scope_change = no
 				add_friend = PREV
 			}
 		}
@@ -3265,6 +3264,8 @@ character_event = {
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 	
+	hide_from = yes
+	
 	trigger = {
 		NOT = {
 			OR = {
@@ -3310,6 +3311,8 @@ character_event = {
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 	
+	hide_from = yes
+	
 	trigger = {
 		has_character_modifier = wol_great_warrior
 		NOT = { lifestyle_traits = 1 }
@@ -3338,6 +3341,8 @@ character_event = {
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 	
+	hide_from = yes
+	
 	option = {
 		name = EVTOPTA_WOL_11203
 		prestige = 100
@@ -3351,6 +3356,8 @@ character_event = {
 	desc = EVTDESC_WOL_11204
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
+	
+	hide_from = yes
 	
 	option = {
 		name = EVTOPTA_WOL_11204
@@ -3377,6 +3384,8 @@ character_event = {
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 	
+	hide_from = yes
+	
 	option = {
 		name = EVTOPTA_WOL_11205
 		if = {
@@ -3400,6 +3409,9 @@ character_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
+
+	hide_from = yes
+
 	desc = {
 		text = EVTDESCA_WOL_11206
 		trigger = {
@@ -3751,7 +3763,10 @@ character_event = {
 			factor = 100
 			modifier = {
 				factor = 2
-				is_tribal = yes
+				OR = {
+					mep_winter_culture = yes
+					is_tribal = yes
+				}
 			}
 		}
 		trigger = {

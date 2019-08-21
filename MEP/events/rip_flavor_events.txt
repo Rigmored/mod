@@ -896,6 +896,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				NOT = { trait = incapable }
+				NOT = { is_senior_consort_party = yes }
 			}
 			hidden_tooltip = {
 				if = {
@@ -2665,6 +2666,7 @@ character_event = {
 		prestige = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = new_roads
 				duration = 730
@@ -2818,6 +2820,7 @@ character_event = {
 		piety = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = new_shrines
 				duration = 730
@@ -2971,6 +2974,7 @@ character_event = {
 		prestige = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = peasants_protected
 				duration = 730
@@ -3124,6 +3128,7 @@ character_event = {
 		prestige = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = messenger_stations
 				duration = 730
@@ -3277,6 +3282,7 @@ character_event = {
 		prestige = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = harvest_festivals
 				duration = 730
@@ -3414,6 +3420,7 @@ character_event = {
 		prestige = 25
 		
 		event_target:prosperity_target = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = inspired_peasantry
 				duration = 730
@@ -3611,9 +3618,18 @@ character_event = {
 
 	trigger = {
 		OR = {
-			any_lover = { is_alive = yes }
-			any_friend = { is_alive = yes }
-			any_rival = { is_alive = yes }
+			any_lover = {
+				is_alive = yes
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+			}
+			any_friend = {
+				is_alive = yes
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+			}
+			any_rival = {
+				is_alive = yes
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+			}
 		}
 		NOR = {
 			death_no_trace_trigger = yes
@@ -3627,25 +3643,34 @@ character_event = {
 		spouse = { save_event_target_as = rip_widow }
 
 		random_child = { 
-			limit = { mep_is_adult = yes }
+			limit = {
+				mep_is_adult = yes
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+			}
 			save_event_target_as = rip_child
 		}
 
 		#Lover event
 		random_lover = {
-			limit = { block_general_event_trigger = no NOT = { has_character_modifier = grief_timer } }
+			limit = {
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+				NOT = { has_character_modifier = grief_timer }
+			}
 			character_event = { id = RIP.29001 days = 20 } 
 		}
 
 		#Friend event
 		random_friend = {
-			limit = { block_general_event_trigger = no NOT = { has_character_modifier = grief_timer } }
+			limit = {
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+				NOT = { has_character_modifier = grief_timer }
+			}
 			save_event_target_as = rip_friend_1
 
 			ROOT = { 
 				random_friend = {
 					limit = { 
-						block_general_event_trigger = no 
+						NOT = { is_inaccessible_or_incapable_trigger = yes }
 						NOR = {
 							is_rival = event_target:rip_friend_1
 							character = event_target:rip_friend_1
@@ -3659,7 +3684,12 @@ character_event = {
 			}
 
 			random_list = {
-				75 = { character_event = { id = RIP.29005 days = 30 } }
+				75 = { 
+					trigger = {
+						NOT = { event_target:rip_dead = { killer = { character = event_target:rip_friend_1 } } } #Prevent crocodile tears.
+					}
+					character_event = { id = RIP.29005 days = 30 } 
+				}
 				25 = { 
 					modifier = {
 						factor = 0
@@ -3684,13 +3714,16 @@ character_event = {
 
 		#Rival event
 		random_rival = {
-			limit = { block_general_event_trigger = no NOT = { has_character_modifier = grief_timer } }
+			limit = {
+				NOT = { is_inaccessible_or_incapable_trigger = yes }
+				NOT = { has_character_modifier = grief_timer }
+			}
 			save_event_target_as = rip_enemy_1
 
 			liege = {
 				any_courtier = {
 					limit = { 
-						block_general_event_trigger = no 
+						NOT = { is_inaccessible_or_incapable_trigger = yes }
 						NOR = {
 							is_rival = event_target:rip_enemy_1
 							character = event_target:rip_enemy_1
@@ -3705,7 +3738,7 @@ character_event = {
 			ROOT = { 
 				random_rival = {
 					limit = { 
-						block_general_event_trigger = no 
+						NOT = { is_inaccessible_or_incapable_trigger = yes }
 						NOR = {
 							is_rival = event_target:rip_enemy_1
 							character = event_target:rip_enemy_1
@@ -3717,7 +3750,7 @@ character_event = {
 				}
 				random_child = {
 					limit = { 
-						block_general_event_trigger = no 
+						NOT = { is_inaccessible_or_incapable_trigger = yes }
 						NOR = {
 							is_rival = event_target:rip_enemy_1
 							character = event_target:rip_enemy_1
@@ -3729,7 +3762,7 @@ character_event = {
 				}
 				random_friend = {
 					limit = { 
-						block_general_event_trigger = no 
+						NOT = { is_inaccessible_or_incapable_trigger = yes }
 						NOR = {
 							is_rival = event_target:rip_enemy_1
 							character = event_target:rip_enemy_1
@@ -4575,11 +4608,10 @@ character_event = {
 	id = RIP.29014
 	border = GFX_event_normal_frame_intrigue
 	desc = EVTDSC_RIP_29014
-	portrait = event_target:rip_dead
+	show_from_from_from = yes
 	picture = GFX_evt_bloody_tools
 
 	is_triggered_only = yes
-	hide_from = yes
 
 	trigger = { NOT = { character = FROM } }
 
@@ -4753,13 +4785,13 @@ character_event = {
 				limit = { any_child = { ai = no } }
 
 				random_child = {
-					limit = { ai = no NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT } }
+					limit = { ai = no NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT character = ROOT } }
 					save_event_target_as = rip_heir
 				}
 				break = yes
 			}
 			if = {
-				limit = { any_child = { is_heir = yes } NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT } }
+				limit = { any_child = { is_heir = yes } NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT character = ROOT } }
 
 				random_child = {
 					limit = { is_heir = yes }
@@ -4768,7 +4800,7 @@ character_event = {
 				break = yes
 			}
 			random_child = {
-				limit = { age = 12 NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT } }
+				limit = { age = 12 NOR = { is_rival = ROOT is_friend = ROOT is_lover = ROOT character = ROOT } }
 				save_event_target_as = rip_heir
 			}
 		}
@@ -4809,7 +4841,7 @@ character_event = {
 
 			#Root must be motivated
 			OR = { 
-				event_target:rip_heir = { trait = fair }
+				event_target:rip_heir = { has_fair_trait_trigger = yes }
 				trait = lustful 
 				trait = seducer 
 				trait = seductress 
@@ -5264,7 +5296,10 @@ character_event = {
 
 				if = {
 					limit = { 
-						NOT = { trait = craven } 
+						NOR = {
+							trait = craven 
+							trait = berserker 
+						} 
 						NOT = { has_dlc = "Zeus" } 
 					}
 					add_trait = craven
@@ -5812,7 +5847,7 @@ character_event = {
 		custom_tooltip = { text = EVTOPTB_RIP_29201_TOOLTIP }
 
 		if = {
-			limit = { NOT = { trait = craven } }
+			limit = { NOR = { trait = craven trait = berserker } }
 
 			random = {
 				chance = 20
@@ -6254,7 +6289,7 @@ character_event = {
 				modifier = {
 					factor = 0
 					OR = {	
-						has_artifact = prosthetic_leg
+						has_artifact = prosthetic_leg_artifact
 						has_character_modifier = peg_leg
 					}
 				}
@@ -7403,7 +7438,18 @@ character_event = {
 
 character_event = {
 	id = RIP.29801
-	desc = EVTDESC_RIP_29801
+	desc = {
+		trigger = {
+			event_target:reincarnation_target = { is_female = no }
+		}
+		text = EVTDESC_RIP_29801
+	}
+	desc = {
+		trigger = {
+			event_target:reincarnation_target = { is_female = yes }
+		}
+		text = EVTDESC_RIP_29801_B
+	}
 	picture = GFX_evt_into_the_dungeon
 
 	ai = no
@@ -7422,9 +7468,8 @@ character_event = {
 	}
 
 	immediate = {
-		event_target:reincarnation_target = {
-			ROOT = { set_reincarnation = PREV }
-		}
+			ROOT = { set_reincarnation = event_target:reincarnation_target }
+
 	}
 
 	is_triggered_only = yes
@@ -9641,23 +9686,23 @@ letter_event = {
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 1 }
+						FROM = { combat_rating = 10 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 2 }
+						FROM = { combat_rating = 20 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 3 }
+						FROM = { combat_rating = 30 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 4 }
+						FROM = { combat_rating = 40 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 5 }
+						FROM = { combat_rating = 50 }
 					}
 
 					set_character_flag = lost_suicide_duel
@@ -9665,23 +9710,23 @@ letter_event = {
 				20 = {
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 1 }
+						FROM = { combat_rating = 10 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 2 }
+						FROM = { combat_rating = 20 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 3 }
+						FROM = { combat_rating = 30 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 4 }
+						FROM = { combat_rating = 40 }
 					}
 					modifier = {
 						factor = 1.5
-						FROM = { combat_rating = 5 }
+						FROM = { combat_rating = 50 }
 					}
 					set_character_flag = incapable_suicide_duel
 				}
@@ -12737,6 +12782,13 @@ long_character_event = { # win - no wound
 	
 	desc = {
 		trigger = { 
+			trait = berserker 
+		}
+		text = placeholdername_3 #RIP.30302.d.berserker
+		
+	}
+	desc = {
+		trigger = { 
 			trait = craven 
 		}
 		text = placeholdername_7 #RIP.30302.d.craven
@@ -12746,7 +12798,10 @@ long_character_event = { # win - no wound
 
 	option = {
 		trigger = {
-			NOT = {trait = craven }
+			NOR = {
+				trait = berserker
+				trait = craven
+			}
 		}
 		name = RIP.30302.a
 		event_target:immortal_rival = {
@@ -12763,6 +12818,16 @@ long_character_event = { # win - no wound
 		}
 		custom_tooltip = { text = placeholdername_34 }
 	}
+	option = {
+		trigger = {
+			trait = berserker
+		}
+		name = placeholdername_4
+		event_target:immortal_rival = {
+			death = { death_reason = death_duel killer = ROOT }
+		}
+		custom_tooltip = { text = placeholdername_34 }
+	}
 }
 
 long_character_event = { # win - wound
@@ -12771,6 +12836,12 @@ long_character_event = { # win - wound
 	border = GFX_event_long_frame_war
 	picture = GFX_evt_melee
 	
+	desc = {
+		trigger = { 
+			trait = berserker 
+		}
+		text = placeholdername_3 #RIP.30302.d.berserker
+	}
 	desc = {
 		trigger = { 
 			trait = craven 
@@ -12782,7 +12853,10 @@ long_character_event = { # win - wound
 
 	option = {
 		trigger = {
-			NOT = { trait = craven }
+			NOR = {
+				trait = berserker
+				trait = craven
+			}
 		}
 		name = RIP.30303.a
 		event_target:immortal_rival = {
@@ -12801,7 +12875,17 @@ long_character_event = { # win - wound
 		add_trait_wounded_effect = yes
 		custom_tooltip = { text = placeholdername_34 }
 	}
-
+	option = {
+		trigger = {
+			trait = berserker
+		}
+		name = placeholdername_6
+		event_target:immortal_rival = {
+			death = { death_reason = death_duel killer = ROOT }
+		}
+		add_trait_wounded_effect = yes
+		custom_tooltip = { text = placeholdername_34 }
+	}
 }
 
 long_character_event = { # win - maimed
@@ -12810,6 +12894,12 @@ long_character_event = { # win - maimed
 	border = GFX_event_long_frame_war
 	picture = GFX_evt_melee
 	
+	desc = {
+		trigger = { 
+			trait = berserker 
+		}
+		text = placeholdername_3 #RIP.30302.d.berserker
+	}
 	desc = {
 		trigger = { 
 			trait = craven 
@@ -12852,7 +12942,25 @@ long_character_event = { # win - maimed
 		add_trait_wounded_effect = yes
 		custom_tooltip = { text = placeholdername_34 }
 	}
-
+	option = {
+		trigger = {
+			trait = berserker
+		}
+		name = placeholdername_6
+		event_target:immortal_rival = {
+			death = { death_reason = death_duel killer = ROOT }
+		}
+		if = {
+			limit = {
+				can_be_maimed_trigger = yes
+			}
+				add_maimed_trait_effect = yes
+			custom_tooltip = { text = placeholdername_34 }	
+			break = yes
+		}
+		add_trait_wounded_effect = yes
+		custom_tooltip = { text = placeholdername_34 }
+	}
 }
 
 long_character_event = { # loss - death
@@ -12963,6 +13071,7 @@ character_event = { # trick
 		name = placeholdername_13 #RIP.30310.b	
 		tooltip_info = stewardship
 		capital_scope = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = trapped_immortal
 				duration = -1
@@ -13021,6 +13130,7 @@ character_event = { # the power of money
 			death = { death_reason = death_missing killer = ROOT }
 		}
 		capital_scope = {
+			show_scope_change = no
 			add_province_modifier = {
 				name = trapped_immortal
 				duration = -1

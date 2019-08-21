@@ -122,6 +122,7 @@ character_event = {
 			spouse = { 
 				NOT = { age = 30 } 
 				is_pregnant = no
+				fertility = 0.4
 			}
 		}
 		character_event = { id = 24504 days = 2 tooltip = EVTTOOLTIP24504 }
@@ -138,7 +139,10 @@ character_event = {
 			}
 			random_list = {
 				90 = {
-					 add_trait = craven
+					if = {
+						limit = { NOT = { trait = berserker } }
+					 	add_trait = craven
+					}
 				}
 				10 = {
 					add_trait = brave
@@ -509,6 +513,13 @@ character_event = {
 		liege = {
 			NOT = {
 				character = ROOT
+			}
+			ROOT = {
+				killer = {
+					NOT = {
+						character = PREVPREV
+					}
+				}
 			}
 			OR = {
 				tier = duke

@@ -14,10 +14,22 @@
 character_event = {
 	id = 37000
 	desc = EVTDESC37000
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	
 	min_age = 16
-	only_men = yes
 	capable_only = yes
 	prisoner = no
 	lacks_dlc = "Zeus"
@@ -26,6 +38,16 @@ character_event = {
 		has_ambition = obj_wants_landed_title
 		independent = no
 		liege = {
+			OR = {
+				AND = { 
+					ROOT = { is_female = yes }
+					mep_is_matriarchal_group_trigger = yes 
+				} 
+				AND = { 
+					ROOT = { is_female = no }
+					NOT = { mep_is_matriarchal_group_trigger = yes }
+				}
+			}
 			OR = {
 				war = no
 				ai = yes
@@ -68,11 +90,11 @@ character_event = {
 			trait = content
 		}
 		modifier = {
-			factor = 15.0
+			factor = 4.0
 			mep_is_immortal_race_trigger = yes
 		}
 		modifier = {
-			factor = 3.0
+			factor = 15.0
 			liege = {
 				mep_is_immortal_race_trigger = yes
 			}
@@ -89,7 +111,20 @@ character_event = {
 character_event = {
 	id = 37001
 	desc = EVTDESC37001
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	
 	is_triggered_only = yes
 	
@@ -136,7 +171,20 @@ character_event = {
 character_event = {
 	id = 37002
 	desc = EVTDESC37002
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	
 	is_triggered_only = yes
 	
@@ -280,7 +328,20 @@ character_event = {
 character_event = {
 	id = 37005
 	desc = EVTDESC37005
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	
 	is_triggered_only = yes
 	
@@ -313,7 +374,20 @@ character_event = {
 character_event = {
 	id = 37006
 	desc = EVTDESC37006
+	picture = { 
+		trigger = { 
+			mep_is_matriarchal_group_trigger = yes
+		} 
+		picture = GFX_evt_daughter_asking_mother
+	}
+	picture = { 
+		trigger = { 
+			NOT = { 
+				mep_is_matriarchal_group_trigger = yes
+			} 
+		} 
 	picture = GFX_evt_son_asking_father
+	}
 	
 	is_triggered_only = yes
 	
@@ -799,6 +873,8 @@ character_event = {
 		}
 		
 		# Create some decent commander characters
+		if = {
+			limit = { NOT = { mep_is_matriarchal_group_trigger = yes } }
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
@@ -830,6 +906,42 @@ character_event = {
 			culture = ROOT
 			female = no
 			age = 29
+		}
+		}
+		if = {
+			limit = { mep_is_matriarchal_group_trigger = yes }
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = ROOT
+				culture = ROOT
+				female = yes
+				age = 30
+			}
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = ROOT
+				culture = ROOT
+				female = yes
+				age = 25
+			}
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = ROOT
+				culture = ROOT
+				female = yes
+				age = 33
+			}
+			create_random_soldier = {
+				random_traits = yes
+				dynasty = none
+				religion = ROOT
+				culture = ROOT
+				female = yes
+				age = 29
+			}
 		}
 		
 		# Create a fleet, just to be sure
@@ -1281,6 +1393,7 @@ character_event = {
 		any_spouse = {
 			has_prev_education_trigger = yes
 			opinion = { who = ROOT value = 20 }
+			is_inaccessible_or_incapable_trigger = no
 		}
 		NOT = { has_character_flag = spouse_offered_help }
 	}

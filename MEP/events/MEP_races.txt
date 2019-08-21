@@ -18,8 +18,8 @@ character_event = {
 	trigger = {
 		NOT = { trait = elf }
 		NOT = { trait = half_elf }
-		NOT = { father = { always = yes } }
-		NOT = { mother = { always = yes } }
+		mep_parentless = yes
+		age < 125 # just in case
 	}
 	
 	mean_time_to_happen = {
@@ -28,31 +28,31 @@ character_event = {
 
 	option = {
 		name = EVTOPTAracetrait.1
-		mep_char_is_elf_effect = yes
+		mep_make_proper_elf_effect = yes
 	}
 }
-
-## The character is a Dwarf ##
-character_event = {
-	id = racetrait.2
-	title = EVTNAMEracetrait.1
-	desc = EVTDESCracetrait.1
-	picture = "GFX_evt_dwarves"
-	religion_group = religion_group_khazad
-	
-	trigger = {
-		NOT = { trait = dwarven }
-	}
-	
-	mean_time_to_happen = {
-		days = 31
-	}
-
-	option = {
-		name = EVTOPTAracetrait.1
-		mep_char_is_dwarf_effect = yes
-	}
-}
+#
+### The character is a Dwarf ##
+#character_event = {
+#	id = racetrait.2
+#	title = EVTNAMEracetrait.1
+#	desc = EVTDESCracetrait.1
+#	picture = "GFX_evt_dwarves"
+#	religion_group = religion_group_khazad
+#	
+#	trigger = {
+#		NOT = { trait = dwarven }
+#	}
+#	
+#	mean_time_to_happen = {
+#		days = 31
+#	}
+#
+#	option = {
+#		name = EVTOPTAracetrait.1
+#		mep_char_is_dwarf_effect = yes
+#	}
+#}
 
 ## The character is born from an Elf and a Dwarf ##
 character_event = {

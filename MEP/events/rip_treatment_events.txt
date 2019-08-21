@@ -40,10 +40,7 @@ character_event = {
 		name = EVTOPTA_RIP_11000
 		trigger = { NOT = { has_character_flag = pending_infection } }
 		remove_trait = severely_injured
-		if = {
-			limit = { NOT = { trait = scarred } }
-			add_trait = scarred
-		}
+		add_scarred_tiered_effect = yes
 	}
 
 	option = {
@@ -51,10 +48,7 @@ character_event = {
 		trigger = { has_character_flag = pending_infection }
 		remove_trait = severely_injured
 		add_trait = infection
-		if = {
-			limit = { NOT = { trait = scarred } }
-			add_trait = scarred
-		}
+		add_scarred_tiered_effect = yes
 		hidden_tooltip = {
 			clr_character_flag = pending_infection
 			character_event = { id = RIP.11001 days = 365 random = 1095 }
@@ -1484,6 +1478,7 @@ character_event = {
 	trigger = {
 		has_minor_title = title_court_physician
 		FROM = {
+			prisoner = no
 			OR = {
 				character_disease_trigger = yes
 				AND = {
@@ -2743,6 +2738,7 @@ character_event = {
 					NOR = { 
 						trait = craven
 						trait = brave
+						trait = berserker
 					}
 				}
 				add_trait = craven
@@ -3769,7 +3765,6 @@ character_event = {
 				modifier = {
 					factor = 0
 					trait = one_handed
-					
 				}
 				set_character_flag = EVTDESC_RIP_11047_3_FLAG 
 			}
@@ -3809,7 +3804,7 @@ character_event = {
 			10 = {  # physician tries to drown you
 				modifier = {
 					factor = 0
-					FROM = { 
+					FROMFROM = { 
 						NOR = { 
 							trait = zealous
 							trait = cruel
@@ -3822,7 +3817,6 @@ character_event = {
 			5 = {  # physician sacrifices your child
 			modifier = {
 					factor = 0
-					NOR = {
 						NOT = {
 							any_courtier = {
 								is_child_of = ROOT
@@ -3831,7 +3825,10 @@ character_event = {
 								is_abroad = no
 							}
 					}
-						FROM = { 
+				}
+				modifier = {
+					factor = 0
+					FROMFROM = { 
 							NOR = { 
 								trait = zealous
 								trait = cruel
@@ -3840,7 +3837,6 @@ character_event = {
 							}
 						}
 					}
-				}
 				set_character_flag = EVTDESC_RIP_11047_9_FLAG 
 			}
 			

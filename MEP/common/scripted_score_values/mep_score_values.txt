@@ -1,0 +1,111 @@
+# modifier weights
+
+# mep_disease_chance_race_score
+# mep_disease_chance_race_score_2 
+# mep_disease_chance_race_mtth_2
+# mep_disease_recovery_race_score
+# mep_disease_recovery_race_inv_score
+
+# some races in Middle-Earth are disease resistant or immune
+mep_disease_chance_race_score = {
+	modifier = {
+		factor = 0
+		mep_cant_get_disease_trigger = yes
+	}
+	modifier = {
+		factor = 0.1
+		trait = dwarven
+	}
+	modifier = {
+		factor = 0.2
+		trait = hobbit
+	}
+	modifier = {
+		factor = 0.3
+		mep_numenorean_traits_trigger = yes
+	}
+	modifier = {
+		factor = 0.2
+		mep_elven_blood_trigger = yes
+	}
+}
+# same as the previous, but excluding immune races (assume they are filtered out in the event trigger)
+mep_disease_chance_race_score_2 = {
+	modifier = {
+		factor = 0.1
+		trait = dwarven
+	}
+	modifier = {
+		factor = 0.2
+		trait = hobbit
+	}
+	modifier = {
+		factor = 0.3
+		mep_numenorean_traits_trigger = yes
+	}
+	modifier = {
+		factor = 0.2
+		mep_elven_blood_trigger = yes
+	}
+}
+# inverse of mep_disease_chance_race_score_2
+mep_disease_chance_race_mtth_2 = {
+	modifier = {
+		factor = 10
+		religion_group = religion_group_khazad
+	}
+	modifier = {
+		factor = 5
+		religion_group = religion_group_periannath
+	}
+	modifier = {
+		factor = 3.3
+		mep_numenorean_traits_trigger = yes
+	}
+	modifier = {
+		factor = 5
+		mep_elven_blood_trigger = yes
+	}
+}
+
+# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+# I'll copy that here, but I think they overdo it
+mep_disease_recovery_race_score = {
+	modifier = {
+		factor = 5
+		religion_group = religion_group_khazad
+	}
+	modifier = {
+		factor = 2.5
+		religion_group = religion_group_periannath
+	}
+	modifier = {
+		factor = 1.7
+		mep_numenorean_traits_trigger = yes
+	}
+	modifier = {
+		factor = 2.5
+		mep_elven_blood_trigger = yes
+	}
+}
+
+# The Silmarilien Mod has revovery from Illness being faster for disease-resistant
+# I'll copy that here, but I think they overdo it
+mep_disease_recovery_race_inv_score = {
+	modifier = {
+		factor = 0.2
+		religion_group = religion_group_khazad
+	}
+	modifier = {
+		factor = 0.4
+		religion_group = religion_group_periannath
+	}
+	modifier = {
+		factor = 0.6
+		mep_numenorean_traits_trigger = yes
+	}
+	modifier = {
+		factor = 0.4
+		mep_elven_blood_trigger = yes
+	}
+}

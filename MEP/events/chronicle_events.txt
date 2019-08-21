@@ -38,11 +38,24 @@ character_event = {
 				FROM = {
 					is_dying = no
 				}
+				ROOT = {
+					NOT = { has_character_flag = beneficiary_check_potential_player_character }
+				}
 			}
 			chronicle = {
 				entry = CHRONICLE_PLAYER_INHERITANCE_LANDLESS
 				portrait = [Root.GetID]
 				picture = GFX_evt_emissary
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = beneficiary_check_potential_player_character
+			}
+			chronicle = {
+				entry = CHRONICLE_BECAME_LORD_OF_CRUSADER_KINGDOM
+				portrait = [Root.GetID]
+				picture = GFX_evt_western_knights_byzantine
 			}
 		}
 		if = {
@@ -1063,9 +1076,185 @@ character_event = {
 	}
 }
 
+# My forces captured major settlement
+character_event = {
+	id = CM.10034
+	
+	hide_window = yes
+
+	is_triggered_only = yes
+	
+	ai = yes
+	
+	trigger = {
+		OR = {
+			FROM = { title = b_last_homely_house }
+		
+			FROM = { title = b_citadel_tirith }
+			FROM = { title = b_dome_of_the_stars }
+			FROM = { title = b_pelargir }
+			FROM = { title = b_tower_of_the_swan }
+			FROM = { title = b_minas_morgul }
+			FROM = { title = b_orthanc }
+			FROM = { title = b_carn_dum }
+			
+			FROM = { title = b_tyrn_gorthad }
+			FROM = { title = b_amon_sul }
+			FROM = { title = b_bree }
+			FROM = { title = b_citadel_fornost }
+			FROM = { title = b_annuminas }
+			FROM = { title = b_michel_delving }
+			FROM = { title = b_cameth_brin }
+			
+			FROM = { title = b_house_of_celeborn }
+			FROM = { title = b_gondamon }
+			FROM = { title = b_tamnogoth }
+			FROM = { title = b_kas_rhun }
+			FROM = { title = b_ammu_khand }
+			FROM = { title = b_ahrul_admal }
+			FROM = { title = b_zirakdum }
+			
+			FROM = { title = b_stonefoot }
+			FROM = { title = b_nurunkhizdin }
+			FROM = { title = b_gundabad_throne_hall }
+			FROM = { title = b_talazhan }
+			FROM = { title = b_gate_of_erebor }
+			FROM = { title = b_first_hall }
+			FROM = { title = b_king_thranduil_hall }
+			
+			FROM = { title = b_amon_lanc }
+			FROM = { title = b_dale_king_hall }
+			FROM = { title = b_dor_rhovanion }
+			FROM = { title = b_srzel_kain }
+			FROM = { title = b_mithlond }
+			FROM = { title = b_barad_dur }
+			FROM = { title = b_morannon }
+
+			FROM = { title = b_urlutsu_nurn }
+			FROM = { title = b_edoras }
+			FROM = { title = b_hornburg }
+			FROM = { title = b_beornhall }
+			FROM = { title = b_ostinedhil }
+			FROM = { title = b_umbar }
+			FROM = { title = b_urezayan }
+			
+			FROM = { title = b_tombombadil }
+			FROM = { title = b_glittering_caves }
+			FROM = { title = b_edhellond }
 
 
+		}
+	}
 
+	immediate = {
+		if = {
+			limit = {
+				top_liege = {
+					ai = no
+					NOT = { at_location = ROOT }
+				}
+			}
+			top_liege = {
+				chronicle = {
+					entry = CHRONICLE_MY_FORCES_CAPTURED_MAJOR_SETTLEMENT
+					portrait = [Root.GetID] # The commander
+				}
+			}
+		}
+	}
+}
+
+# Enemy forces captured major settlement
+character_event = {
+	id = CM.10035
+	
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	ai = yes
+	
+	trigger = {
+		OR = {
+			FROM = { title = b_last_homely_house }
+			FROM = { title = b_citadel_tirith }
+			FROM = { title = b_dome_of_the_stars }
+			FROM = { title = b_pelargir }
+			FROM = { title = b_tower_of_the_swan }
+			FROM = { title = b_minas_morgul }
+			FROM = { title = b_orthanc }
+			FROM = { title = b_carn_dum }
+			
+			FROM = { title = b_tyrn_gorthad }
+			FROM = { title = b_amon_sul }
+			FROM = { title = b_bree }
+			FROM = { title = b_citadel_fornost }
+			FROM = { title = b_annuminas }
+			FROM = { title = b_michel_delving }
+			FROM = { title = b_cameth_brin }
+			
+			FROM = { title = b_house_of_celeborn }
+			FROM = { title = b_gondamon }
+			FROM = { title = b_tamnogoth }
+			FROM = { title = b_kas_rhun }
+			FROM = { title = b_ammu_khand }
+			FROM = { title = b_ahrul_admal }
+			FROM = { title = b_zirakdum }
+			
+			FROM = { title = b_stonefoot }
+			FROM = { title = b_nurunkhizdin }
+			FROM = { title = b_gundabad_throne_hall }
+			FROM = { title = b_talazhan }
+			FROM = { title = b_gate_of_erebor }
+			FROM = { title = b_first_hall }
+			FROM = { title = b_king_thranduil_hall }
+			
+			FROM = { title = b_amon_lanc }
+			FROM = { title = b_dale_king_hall }
+			FROM = { title = b_dor_rhovanion }
+			FROM = { title = b_srzel_kain }
+			FROM = { title = b_mithlond }
+			FROM = { title = b_barad_dur }
+			FROM = { title = b_morannon }
+
+			FROM = { title = b_urlutsu_nurn }
+			FROM = { title = b_edoras }
+			FROM = { title = b_hornburg }
+			FROM = { title = b_beornhall }
+			FROM = { title = b_ostinedhil }
+			FROM = { title = b_umbar }
+			FROM = { title = b_urezayan }
+			
+			FROM = { title = b_tombombadil }
+			FROM = { title = b_glittering_caves }
+			FROM = { title = b_edhellond }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				FROM = {
+					owner = {
+						top_liege = {
+							ai = no
+						}
+					}
+				}
+			}
+			FROM = {
+				owner = {
+					top_liege = {
+						chronicle = {
+							entry = CHRONICLE_ENEMY_FORCES_CAPTURED_MAJOR_SETTLEMENT
+							portrait = [Root.GetID] # The owner of the enemy forces
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 # Marriage of primary heir  - ROOT is employer. FROM is employers "employee". new_character is the other spouse.
 character_event = {

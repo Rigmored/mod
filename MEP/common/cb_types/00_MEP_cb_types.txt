@@ -7,6 +7,7 @@
 ### muslim_county_conquest (county conquest by hildor/melkor)
 ### tribal_invasion
 
+# 2109/08/15 : Haruspicy
 # 2017/04/19 : Removed out 'Resistance Revolt'. Cleaned some syntax. (JamesFox)
 
 
@@ -34,6 +35,10 @@ isildur_reconquest = {
 
 	can_use_title = {
 		de_jure_liege_or_above = e_arnor
+	}
+	
+	on_add = {
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
 	}
 	
 	is_valid = {
@@ -169,6 +174,10 @@ elven_reconquest = {
 			mep_borders_ROOTrealm_2seazones = yes
 		}
 	}
+	
+	on_add = {
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
+	}
 
 	
 	is_valid = {
@@ -285,6 +294,10 @@ anarion_reconquest = {
 		de_jure_liege_or_above = e_gondor
 	}
 	
+	on_add = {
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
+	}
+	
 	is_valid = {
 		ROOT = {
 			independent = yes
@@ -374,6 +387,7 @@ anarion_reconquest = {
 	}
 }
 
+# For seizing wilderness to conquer
 wilderness = {
 	name = CB_NAME_WILDERNESS
 	war_name = WAR_NAME_WILDERNESS
@@ -675,6 +689,10 @@ ring_conquest = {
 		}
 	}
 	
+	on_add = {
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
+	}
+	
 	is_valid = {
 		ROOT = {
 			independent = yes
@@ -817,6 +835,7 @@ mountains_invasion = {
 	
 	on_add = {
 		ROOT = { prestige = -250 }
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
 	}
 
 	
@@ -1014,6 +1033,10 @@ viking_invasion = {
 		is_valid_viking_invasion_target = FROM # Checks that FROM holds the right amount of territory in the kingdom
 	}
 	
+	on_add = {
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
+	}
+	
 	is_valid_title = {
 		FROM = {
 			any_realm_title = {
@@ -1179,6 +1202,7 @@ muslim_county_conquest = {
 	
 	on_add = {
 		ROOT = { piety = -50 }
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
 	}
 	
 	can_use = {
@@ -1206,7 +1230,7 @@ muslim_county_conquest = {
 		
 		ROOT = {
 			OR = {
-				mep_evil_religion = yes
+				mep_is_evil_side_race = yes
 				religion_group = religion_group_hildor
 			}
 		}
@@ -1376,6 +1400,7 @@ tribal_invasion = {
 	
 	on_add = {
 		ROOT = { prestige = -500 }
+		hidden_tooltip = { fire_haruspicy_event_effect = yes }
 	}
 
 	can_use_title = {

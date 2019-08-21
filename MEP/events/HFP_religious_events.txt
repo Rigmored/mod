@@ -1,0 +1,293 @@
+# Written by Flavio (HFP.23001 - HFP.23027)
+
+namespace = HFP
+# Son/Daughter sent to the monastery.
+character_event = {
+	id = HFP.23001
+	desc = {
+		text = EVTDESCAHFP23001
+		trigger = { 
+			FROM = { 
+				OR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				NOR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = no 
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBHFP23001
+		trigger = { 
+			FROM = { 
+				OR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				NOR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = yes 
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCCHFP23001
+		trigger = { 
+			FROM = { 
+				NOR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				NOR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = no 
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCDHFP23001
+		trigger = { 
+			FROM = { 
+				NOR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				NOR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = yes 
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCEHFP23001
+		trigger = { 
+			FROM = { 
+				NOR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				OR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = no 
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCFHFP23001
+		trigger = { 
+			FROM = { 
+				NOR = { 
+					trait = ambitious 
+					trait = stubborn
+					trait = wroth
+				}
+				OR = { 
+					trait = kind 
+					trait = humble
+					trait = content
+				}
+				is_female = yes 
+			}
+		}
+	}
+	
+	picture = GFX_evt_monastery_monks
+	border = GFX_event_normal_frame_religion
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAHFP23001
+		trigger = { is_evil_trigger = yes }
+		if = { limit = { trait = stressed } random = { chance = 10 remove_trait = stressed } }
+	}
+	option = {
+		name = EVTOPTBHFP23001
+		trigger = { NOR = { is_evil_trigger = yes is_benevolent_trigger = yes } }
+	}
+	option = {
+		name = EVTOPTCHFP23001
+		trigger = { is_benevolent_trigger = yes }
+		if = { limit = { NOT = { trait = stressed } } random = { chance = 10 add_trait = stressed } }
+	}
+}
+
+#Hidden event assigning cooldown on Excommunication requests.
+# Root = Excommunicated person
+# From = Asker
+# FromFrom = Pope
+
+
+## New Lifting Excommunication Revamped event chain ##
+#Religious Head receives event determining punishment.
+
+
+# Possible impositions:
+
+#Tiered Money 
+#Tiered Prestige 
+#Vow of Celibacy 
+#Son/Daughter must take vows. 
+#Abdication-> Become Monk/Nun 
+#Enforce Papal Succession (Kings/Emperors) 
+#Change succession to Gavelkind (unless Elective or worse) (King/Emperors) 
+#Give Italian lands back (Emperors) 
+#Give Independence to Papacy (Emperors) 
+#Request vassalization (Italian Dukes)
+
+#Tiered Money.
+
+
+#Excommunicated ruler forced to pay money.
+
+
+#Tiered Prestige.
+
+
+#Excommunicated ruler forced to pay prestige.
+
+#Vow of celibacy.
+
+
+#Excommunicated ruler forced to become celibate.
+
+
+#Forced to give up a son.
+
+
+#Forced abdication.
+
+#Ruler forced to abdicate.
+
+#Forced Papal Investiture.
+
+
+#Ruler forced to enact Papal Investiture.
+
+#Forced Gavelkind.
+
+
+#Ruler forced to enact Gavelkind succession.
+
+
+#Pope wants a piece of Italy.
+
+
+#Ruler forced to give up Italian Lands.
+
+#Pope requests independence.
+
+
+#Ruler forced to give independence to Papcy.
+
+
+#Pope demands to become your liege.
+
+
+#Ruler forced to become Papal vassal.
+
+
+#on_imprisoned: stop pilgrimage.
+
+
+#on_war_ended_victory: restore spouse under enemy's concubinage.
+# From = Attacker, Root = Defender
+character_event = {
+	id = HFP.23025
+	hide_window = yes
+	trigger = { 
+		ROOT = { 
+			any_consort = {
+				FROM = {
+					has_opinion_modifier = {
+						modifier = opinion_abducted_spouse
+						who = PREV
+					}
+				}
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+
+	immediate = { 
+		ROOT = { 
+			any_consort = {
+				limit = {
+					FROM = {
+						has_opinion_modifier = {
+							modifier = opinion_abducted_spouse
+							who = PREV
+						}
+					}
+				}
+				ROOT = { remove_consort = PREV }
+				move_character = FROM
+			}
+		}
+	}
+}
+
+#on_war_ended_defeat: restore spouse under enemy's concubinage.
+# From = Attacker, Root = Defender
+character_event = {
+	id = HFP.23026
+	hide_window = yes
+	trigger = { 
+		FROM = { 
+			any_consort = {
+				ROOT = {
+					has_opinion_modifier = {
+						modifier = opinion_abducted_spouse
+						who = PREV
+					}
+				}
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+
+	immediate = { 
+		FROM = { 
+			any_consort = {
+				limit = {
+					ROOT = {
+						has_opinion_modifier = {
+							modifier = opinion_abducted_spouse
+							who = PREV
+						}
+					}
+				}
+				FROM = { remove_consort = PREV }
+				move_character = ROOT
+			}
+		}
+	}
+}
+
+# African rulers can pick a random Abrahamic sympathy.
+
+#On_startup:Cleanup the Maniots on Charlemagne start if Hellenism is off.

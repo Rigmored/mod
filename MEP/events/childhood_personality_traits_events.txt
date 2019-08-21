@@ -31,6 +31,7 @@ character_event = {
 		NOT = { trait = gluttonous }
 		prisoner = no
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -64,11 +65,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -114,6 +115,8 @@ character_event = {
 	option = {
 		name = "EVTOPTA1500"
 		add_trait = gluttonous
+		gain_weight_medium_effect = yes
+		weight_trait_check_effect = yes
 		hidden_tooltip = {
 			guardian = {
 				character_event = {
@@ -142,6 +145,8 @@ character_event = {
 	option = {
 		name = "EVTOPTA1501"
 		remove_trait = gluttonous
+		lose_weight_medium_effect = yes
+		weight_trait_check_effect = yes
 	}
 }
 
@@ -165,6 +170,7 @@ character_event = {
 		NOT = { trait = temperate }
 		NOT = { trait = gluttonous }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -198,11 +204,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -250,6 +256,8 @@ character_event = {
 	option = {
 		name = "EVTOPTA1510"
 		add_trait = temperate
+		lose_weight_medium_effect = yes
+		weight_trait_check_effect = yes
 		hidden_tooltip = {
 			guardian = {
 				character_event = {
@@ -278,6 +286,8 @@ character_event = {
 	option = {
 		name = "EVTOPTA1511"
 		remove_trait = temperate
+		gain_weight_medium_effect = yes
+		weight_trait_check_effect = yes
 	}
 }
 
@@ -301,6 +311,7 @@ character_event = {
 		NOT = { trait = charitable }
 		NOT = { trait = greedy }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -338,11 +349,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -439,7 +450,8 @@ character_event = {
 		NOT = { trait = charitable }
 		NOT = { trait = greedy }
 		has_guardian = yes
-		NOT = { mep_evil_religion = yes }
+		NOT = { has_character_flag = is_child_of_destiny }
+		NOT = { mep_is_evil_side_race = yes }
 	}
 	
 	weight_multiplier = {
@@ -473,11 +485,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -557,7 +569,7 @@ character_event = {
 #######################################################################
 
 #Event ID 1540-1549 is reserved for Slothful events#
-# Slothful Child
+#Slothful Child
 character_event = {
 	id = 1540
 	desc = "EVTDESC1540"
@@ -575,6 +587,7 @@ character_event = {
 		NOT = { trait = diligent }
 		NOT = { trait = slothful }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -608,11 +621,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -710,6 +723,7 @@ character_event = {
 		NOT = { trait = diligent }
 		NOT = { trait = slothful }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -743,11 +757,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -845,6 +859,7 @@ character_event = {
 		NOT = { trait = kind }
 		NOT = { trait = envious }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -886,11 +901,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -994,6 +1009,7 @@ character_event = {
 		NOT = { trait = envious }
 		has_guardian = yes
 		NOT = { mep_is_evil_side_trigger = yes }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1035,11 +1051,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -1136,6 +1152,7 @@ character_event = {
 		NOT = { trait = wroth }
 		NOT = { trait = patient }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1161,11 +1178,11 @@ character_event = {
 			factor = 1.1
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.1
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 5.0
 		}
 		modifier = {
@@ -1263,6 +1280,7 @@ character_event = {
 		NOT = { trait = wroth }
 		NOT = { trait = patient }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1288,11 +1306,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			 has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -1389,6 +1407,7 @@ character_event = {
 		NOT = { trait = proud }
 		NOT = { trait = humble }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1415,11 +1434,11 @@ character_event = {
 			factor = 0.1
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 5.0
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 0.25
 		}
 		modifier = {
@@ -1516,6 +1535,7 @@ character_event = {
 		NOT = { trait = proud }
 		NOT = { trait = humble }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1541,11 +1561,11 @@ character_event = {
 			factor = 2.0
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.1
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -1644,6 +1664,7 @@ character_event = {
 		NOT = { trait = honest }
 		NOT = { trait = deceitful }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1676,11 +1697,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -1777,6 +1798,7 @@ character_event = {
 		NOT = { trait = zealous }
 		NOT = { trait = cynical }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -1802,11 +1824,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -1903,12 +1925,13 @@ character_event = {
 		NOT = { trait = honest }
 		NOT = { trait = deceitful }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
 		days = 1
 		modifier = {
-			factor = 2
+			factor = 0.5
 			mep_is_evil_side_trigger = yes
 		}
 		modifier = {
@@ -1932,11 +1955,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -2033,6 +2056,7 @@ character_event = {
 		NOT = { trait = craven }
 		NOT = { trait = brave }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2058,11 +2082,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -2159,6 +2183,7 @@ character_event = {
 		NOT = { trait = craven }
 		NOT = { trait = brave }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2184,11 +2209,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -2286,6 +2311,7 @@ character_event = {
 		NOT = { trait = shy }
 		NOT = { trait = gregarious }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2311,11 +2337,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -2412,6 +2438,7 @@ character_event = {
 		NOT = { trait = shy }
 		NOT = { trait = gregarious }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 		NOT = { religion_group = religion_group_ungoliant }
 	}
 	
@@ -2438,11 +2465,11 @@ character_event = {
 			factor = 0.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 5.0
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 0.5
 		}
 		modifier = {
@@ -2540,6 +2567,7 @@ character_event = {
 		NOT = { trait = content }
 		NOT = { trait = ambitious }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2616,6 +2644,7 @@ character_event = {
 		NOT = { trait = content }
 		NOT = { trait = ambitious }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2692,6 +2721,7 @@ character_event = {
 		NOT = { trait = just }
 		NOT = { trait = arbitrary }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2721,11 +2751,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -2822,14 +2852,11 @@ character_event = {
 		NOT = { trait = just }
 		NOT = { trait = arbitrary }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
 		days = 1
-		modifier = {
-			factor = 0.33
-			mep_is_evil_side_trigger = yes
-		}
 		modifier = {
 			trait = clubfooted
 			factor = 1.1
@@ -2851,11 +2878,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -2895,6 +2922,10 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 2.0
+		}
+		modifier = {
+			factor = 0.33
+			mep_is_evil_side_trigger = yes
 		}
 	}
 	
@@ -2952,6 +2983,7 @@ character_event = {
 		NOT = { trait = zealous }
 		NOT = { trait = cynical }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -2977,11 +3009,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -3080,6 +3112,7 @@ character_event = {
 		NOT = { trait = kind }
 		NOT = { trait = cruel }
 		has_guardian = yes
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -3105,11 +3138,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -3156,6 +3189,7 @@ character_event = {
 	option = {
 		name = "EVTOPTA1965"
 		add_trait = cruel
+		pacifists_lose_piety_effect = yes
 		hidden_tooltip = {
 			guardian = {
 				character_event = {
@@ -3215,6 +3249,7 @@ character_event = {
 		NOT = {
 			trait = celibate
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 
 	mean_time_to_happen = {
@@ -3224,7 +3259,7 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			martial = 10
-			trait = fair
+			has_fair_trait_trigger = yes
 		}
 		
 		modifier = {
@@ -3280,6 +3315,7 @@ character_event = {
 		has_guardian = yes
 		num_traits = 4
 		trait = homosexual
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 
 	mean_time_to_happen = {
@@ -3327,6 +3363,7 @@ character_event = {
 		NOT = {
 			trait = celibate
 		}		
+		NOT = { has_character_flag = is_child_of_destiny }		
 	}
 
 	mean_time_to_happen = {
@@ -3365,6 +3402,7 @@ character_event = {
 		has_guardian = yes
 		num_traits = 4
 		trait = homosexual
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 
 	mean_time_to_happen = {
@@ -3468,11 +3506,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -3580,11 +3618,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -3690,11 +3728,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -3800,11 +3838,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -3911,11 +3949,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -4101,6 +4139,7 @@ character_event = {
 		NOT = { trait = gregarious }
 		has_guardian = yes
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4126,11 +4165,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -4201,6 +4240,7 @@ character_event = {
 	trigger = {
 		has_guardian = yes
 		NOT = { personality_traits = 5 }
+	NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4226,11 +4266,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -4341,6 +4381,7 @@ character_event = {
 		has_guardian = yes
 		NOT = { trait = craven }
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4366,11 +4407,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -4445,6 +4486,7 @@ character_event = {
 		NOT = { trait = zealous }
 		NOT = { trait = cynical }
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4470,11 +4512,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -4545,6 +4587,7 @@ character_event = {
 		has_guardian = yes
 		NOT = { is_ruler = yes }
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4570,11 +4613,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -4646,6 +4689,7 @@ character_event = {
 		has_guardian = yes
 		NOT = { is_ruler = yes }
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4671,11 +4715,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -4748,6 +4792,7 @@ character_event = {
 		NOT = { trait = lustful }
 		NOT = { trait = chaste }
 		NOT = { personality_traits = 5 }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4788,6 +4833,7 @@ character_event = {
 		has_guardian = yes
 		NOT = {	guardian = { trait = cruel } }
 		NOT = {	guardian = { trait = arbitrary } }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4813,11 +4859,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -4888,6 +4934,7 @@ character_event = {
 	trigger = {
 		has_guardian = yes
 		NOT = {	trait = kind }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -4913,11 +4960,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -4990,6 +5037,7 @@ character_event = {
 		has_guardian = yes
 		learning = 4
 		NOT = { trait = diligent }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5015,11 +5063,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -5093,6 +5141,7 @@ character_event = {
 		NOT = { trait = chaste }
 		NOT = { trait = temperate }
 		NOT = { trait = gluttonous }
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5118,11 +5167,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -5207,6 +5256,7 @@ character_event = {
 		NOT = {
 			trait = wounded
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5232,11 +5282,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -5310,6 +5360,7 @@ character_event = {
 		NOT = {
 			martial = 3
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5335,11 +5386,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -5420,6 +5471,7 @@ character_event = {
 		NOT = {
 			trait = wroth
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5445,11 +5497,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -5536,6 +5588,7 @@ character_event = {
 		NOT = {
 			trait = proud
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5561,11 +5614,11 @@ character_event = {
 			factor = 0.9
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.05
 		}
 		modifier = {
@@ -5634,7 +5687,7 @@ character_event = {
 	
 	trigger = {
 		has_guardian = yes
-		trait = ugly
+		has_ugly_trait_trigger = yes
 		guardian = {
 			any_courtier = {
 				trait = fair
@@ -5652,6 +5705,7 @@ character_event = {
 		NOT = {
 			trait = content
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5691,6 +5745,7 @@ character_event = {
 		NOT = {
 			trait = shy
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5743,6 +5798,7 @@ character_event = {
 		NOT = {
 			trait = zealous
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5768,11 +5824,11 @@ character_event = {
 			factor = 1.5
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.5
 		}
 		modifier = {
@@ -5857,6 +5913,7 @@ character_event = {
 		NOT = {
 			trait = deceitful
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -5976,6 +6033,7 @@ character_event = {
 		NOT = {
 			trait = diligent
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6001,11 +6059,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -6095,6 +6153,7 @@ character_event = {
 		NOT = {
 			trait = paranoid
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6120,11 +6179,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -6207,6 +6266,7 @@ character_event = {
 		NOT = {
 			trait = temperate
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6232,11 +6292,11 @@ character_event = {
 			factor = 1.05
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.95
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.10
 		}
 		modifier = {
@@ -6321,6 +6381,7 @@ character_event = {
 		NOT = {
 			trait = wounded
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6346,11 +6407,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {
@@ -6422,6 +6483,7 @@ character_event = {
 		}
 		has_guardian = yes
 		trait = ill
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6453,6 +6515,7 @@ character_event = {
 	trigger = {
 		has_guardian = yes
 		trait = homosexual
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6501,6 +6564,7 @@ character_event = {
 		NOT = {
 			trait = deceitful
 		}
+		NOT = { has_character_flag = is_child_of_destiny }
 	}
 	
 	weight_multiplier = {
@@ -6526,11 +6590,11 @@ character_event = {
 			factor = 0.95
 		}
 		modifier = {
-			trait = fair
+			has_fair_trait_trigger = yes
 			factor = 0.8
 		}
 		modifier = {
-			trait = ugly
+			has_ugly_trait_trigger = yes
 			factor = 1.25
 		}
 		modifier = {

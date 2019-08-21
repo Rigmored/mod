@@ -51,14 +51,15 @@ character_event = {
 				NOT = {
 					has_province_modifier = nomad_agitation
 				}
-    			OR = {
-    				AND = {
-    					event_target:raiding_adventurer = { is_seafarer = yes }
-    					port = yes
+    		}
+			preferred_limit = {
+				event_target:raiding_adventurer = {
+    				OR = {
+						has_religion_feature = religion_seafaring
+						is_seafarer = yes
     				}
-    				event_target:raiding_adventurer = { is_seafarer = no }
-    				NOT = { any_demesne_province = { port = yes } }
     			}
+				port = yes
     		}
 
     		set_variable = { which = price value = 100 }
@@ -113,14 +114,22 @@ character_event = {
 							NOT = {
 								has_province_modifier = nomad_agitation
 							}
+	    				}
+	    			}
+					preferred_limit = {
+						event_target:raiding_adventurer = {
 							OR = {
-			    				AND = {
-			    					event_target:raiding_adventurer = { is_seafarer = yes }
-			    					port = yes
-			    				}
-			    				event_target:raiding_adventurer = { is_seafarer = no }
-			    				NOT = { any_demesne_province = { port = yes } }
+								has_religion_feature = religion_seafaring
+								is_seafarer = yes
 			    			}
+			    		}
+						any_demesne_province = {
+							is_capital = no 
+			    			num_of_settlements = 1
+							NOT = {
+								has_province_modifier = nomad_agitation
+							}
+							port = yes
 	    				}
 	    			}
 	    			random_demesne_province = {
@@ -130,14 +139,20 @@ character_event = {
 							NOT = {
 								has_province_modifier = nomad_agitation
 							}
+			    		}
+						preferred_limit = {
+							event_target:raiding_adventurer = {
 							OR = {
-			    				AND = {
-			    					event_target:raiding_adventurer = { is_seafarer = yes }
-			    					port = yes
+									has_religion_feature = religion_seafaring
+									is_seafarer = yes
 			    				}
-			    				event_target:raiding_adventurer = { is_seafarer = no }
-			    				NOT = { any_demesne_province = { port = yes } }
 			    			}
+							is_capital = no 
+			    			num_of_settlements = 1
+							NOT = {
+								has_province_modifier = nomad_agitation
+							}
+							port = yes
 			    		}
 
 			    		set_variable = { which = price value = 100 }
@@ -171,9 +186,8 @@ character_event = {
 	    		}
     		}
     		20 = {
-    			modifier = {
-    				NOT = { event_target:selling_province = { always = yes } }
-    				factor = 0
+    			trigger = {
+					event_target:selling_province = { always = yes }
     			}
     			#Empty, your demesne province is kept as selling_province
     		}
@@ -199,14 +213,23 @@ character_event = {
 	    			can_marry = yes
 	    			NOT = { is_primary_heir = ROOT }
 	    			is_ruler = no
+                    character_disease_trigger = no
+                    has_disability_trigger = no
+	    			OR = {
+                        stewardship = 5
+                        martial = 5
+                        diplomacy = 5
+                        intrigue = 5
+                        learning = 5
+	    			}
+	    		}
+                preferred_limit = {
 	    			NOR = {
 	    				is_dumb_trigger = yes
-	    				character_disease_trigger = yes
-	    				has_disability_trigger = yes
 	    				has_mental_disorder_trigger = yes
 	    				trait = homosexual
 	    				trait = celibate
-	    				trait = ugly
+                        has_ugly_trait_trigger = yes
 	    			}
 	    			OR = {
 	    				is_smart_trigger = yes
@@ -219,6 +242,27 @@ character_event = {
 	    				learning = 15
 	    			}
 	    		}
+                preferred_limit = {
+                    NOR = {
+                        is_dumb_trigger = yes
+                        has_mental_disorder_trigger = yes
+                        trait = homosexual
+                        trait = celibate
+                        has_ugly_trait_trigger = yes
+                    }
+                }
+                preferred_limit = {
+                    NOR = {
+                        is_dumb_trigger = yes
+                        has_mental_disorder_trigger = yes
+                        has_ugly_trait_trigger = yes
+                    }
+                }
+                preferred_limit = {
+                    NOT = {
+                        has_ugly_trait_trigger = yes
+                    }
+                }
 	    		save_event_target_as = marriage_child
 	    	}
     	}
@@ -647,14 +691,19 @@ letter_event = {
 				}
 				else_if = {
 					limit = {
-						OR = {
-							religion_group = religion_group_melkor
-							religion_group = religion_group_ungoliant
-						}
+						religion_group = religion_group_melkor
 						NOT = { trait = good_side }
 						NOT = { mep_is_evil_overlord = yes }
 					}
 					set_government_type = orc_government
+				}
+				else_if = {
+					limit = {
+						religion_group = religion_group_ungoliant
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
+					}
+					set_government_type = spider_government
 				}
 				else_if = {
 					limit = {
@@ -849,14 +898,19 @@ letter_event = {
 				}
 				else_if = {
 					limit = {
-						OR = {
-							religion_group = religion_group_melkor
-							religion_group = religion_group_ungoliant
-						}
+						religion_group = religion_group_melkor
 						NOT = { trait = good_side }
 						NOT = { mep_is_evil_overlord = yes }
 					}
 					set_government_type = orc_government
+				}
+				else_if = {
+					limit = {
+						religion_group = religion_group_ungoliant
+						NOT = { trait = good_side }
+						NOT = { mep_is_evil_overlord = yes }
+					}
+					set_government_type = spider_government
 				}
 				else_if = {
 					limit = {
@@ -969,6 +1023,8 @@ letter_event = {
 		}
 
         #Adventurer declares war
+    	raiding_adventurer_war_declaration_effect = yes
+
     	ai_chance = {
         	factor = 50
         	modifier = { realm_levy_diff = { who = event_target:raiding_adventurer value = 1000 } factor = 1.3 }
@@ -979,7 +1035,6 @@ letter_event = {
         	modifier = { event_target:raiding_adventurer = { NOT = { has_character_flag = haggle_price } } factor = 5 }
         	modifier = { event_target:selling_province = { holder_scope = { character = ROOT } } factor = 1.5 }
         }
-		raiding_adventurer_war_declaration_effect = yes
     }
 	
 	#Decline - peaceful
@@ -992,6 +1047,9 @@ letter_event = {
 				has_character_flag = peaceful_negotiation
 			}
 		}
+		
+		clr_character_flag = peaceful_negotiation
+
     	ai_chance = {
         	factor = 50
         	modifier = { realm_levy_diff = { who = event_target:raiding_adventurer value = 1000 } factor = 1.3 }
@@ -1002,7 +1060,6 @@ letter_event = {
         	modifier = { event_target:raiding_adventurer = { NOT = { has_character_flag = haggle_price } } factor = 5 }
         	modifier = { event_target:selling_province = { holder_scope = { character = ROOT } } factor = 1.5 }
         }
-		clr_character_flag = peaceful_negotiation
     }
 
     after = {
@@ -1032,7 +1089,7 @@ character_event = {
     			modifier = { trait = craven factor = 5 }
     			liege = {
 					ROOT = { religion = PREV }
-					letter_event = { id = ADV.21 days = 7 }
+					character_event = { id = ADV.21 days = 7 }
 				}
     			any_courtier = {
     				limit = { is_landed = no }

@@ -111,6 +111,10 @@ letter_event = {
 				factor = 0.5
 				trait = paranoid
 			}
+			modifier = {
+				factor = 10
+				has_character_flag = fake_guru
+			}
 		}
 		hidden_tooltip = { FROMFROM = { letter_event = { id = WoL.4001 days = 7 } } }
 		set_character_flag = do_not_disturb # NOTE
@@ -525,9 +529,7 @@ character_event = {
 				character_event = { id = WoL.4110 }  # Party fling if both lustful
 			}
 			30 = {
-				modifier = {
-					factor = 0
-					NOT = {
+				trigger = {
 						top_liege = {
 							any_realm_character = {
 								has_opinion_modifier = {
@@ -538,7 +540,6 @@ character_event = {
 							}
 						}
 					}
-				}
 				character_event = { id = WoL.4120 } # Makes new friend
 			}
 			10 = {
@@ -676,6 +677,7 @@ character_event = {
 					trait = possessed
 					trait = impaler
 					trait = torturer
+					any_artifact = { artifact_type = the_omnivore }
 				}
 			}
 			character_event = { id = WoL.4101 }
@@ -693,6 +695,7 @@ character_event = {
 						trait = possessed
 						trait = impaler
 						trait = torturer
+						any_artifact = { artifact_type = the_omnivore }
 					}
 					ROOT = { ai = yes }
 				}
@@ -767,15 +770,6 @@ character_event = {
 					death_reason = death_murder_unknown_butchered
 					killer = ROOT
 				}
-				hidden_tooltip = {
-					if = {
-						limit = {
-							religion = bon
-							ROOT = { ai = no }
-						}
-						ROOT = { set_character_flag = achievement_bon_appetit }
-					}
-				}
 			}
 		}
 	}
@@ -795,6 +789,12 @@ character_event = {
 				}
 			}
 			add_trait = cannibal_trait
+		}
+		FROM = {
+			death = {
+				death_reason = death_murder_unknown_butchered
+				killer = ROOT
+			}
 		}
 	}
 }
@@ -1048,8 +1048,7 @@ character_event = {
 
 	is_triggered_only = yes
 
-	option = {
-		name = EVTOPTA_WoL_4120
+	immediate = {
 		top_liege = {
 			random_realm_character = {
 				limit = {
@@ -1059,11 +1058,18 @@ character_event = {
 					}
 					NOT = { is_friend = ROOT }
 				}
+				save_event_target_as = scoped_friend
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTA_WoL_4120
+		event_target:scoped_friend = {
 				add_friend = ROOT
 				hidden_tooltip = { character_event = { id = WoL.4121 } }
 			}
 		}
-	}
 }
 
 # Notify new friend
@@ -2025,6 +2031,36 @@ character_event = {
 			random = {
 				chance = 30
 				remove_trait = depressed
+			}
+		}
+	}
+}
+
+# Clear guest DND if dead
+character_event = {
+	id = WoL.4801
+	hide_window = yes
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_character_modifier = organizing_party
+		top_liege = {
+			any_realm_character = {
+				has_character_flag = do_not_disturb
+				has_opinion_modifier = { who = ROOT modifier = opinion_carousing }
+			}
+		}
+	}
+
+	immediate = {
+		top_liege = {
+			any_realm_character = {
+				limit = {
+					has_character_flag = do_not_disturb
+					has_opinion_modifier = { who = ROOT modifier = opinion_carousing }
+				}
+				clr_character_flag = do_not_disturb
 			}
 		}
 	}

@@ -1,0 +1,30 @@
+######################################
+# Scripted Triggers for determine exile
+######################################
+
+# Allows mods to limit where the game will move characters that are in need of a new court.
+# Root = character being exiled.
+# From = Potential new employer
+# MEP: using good side vs evil side...
+valid_exile_court_trigger = {
+	OR = {
+		AND = {
+			ROOT = { mep_is_good_side_trigger = yes }
+			FROM = {
+				NOT = { mep_is_evil_side_trigger = yes }
+			}
+		}
+		AND = {
+			ROOT = { mep_is_evil_side_trigger = yes }
+			FROM = {
+				NOT = { mep_is_good_side_trigger = yes }
+			}
+		}
+		AND = {
+			NOR = {
+				mep_is_good_side_trigger = yes
+				mep_is_evil_side_trigger = yes
+			}
+		}
+	}
+}

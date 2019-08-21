@@ -7,7 +7,7 @@
 #############################################
 #Written by Johan Andersson
 
-#A famous writer proposes to compose your house chronicles
+#A famous writer proposes to compose your family chronicles
 character_event = {
 	id = 73000
 	desc = EVTDESC73000
@@ -154,7 +154,7 @@ character_event = {
 	}	
 }	
 
-#Your wife takes a passion for romantic poetry. She keeps reading any sort of romantic poetry she can get hold of.
+#Your young wife takes a passion for romantic poetry. She keeps reading any sort of romantic poetry she can get hold of.
 character_event = {
 	id = 73001
 	desc = EVTDESC73001
@@ -166,11 +166,11 @@ character_event = {
 	only_playable = yes
 	prisoner = no
 	only_men = yes
+	is_married = yes
 	
 	trigger = {
 		mep_is_adult = yes
-		NOT = { mep_evil_religion = yes }
-		is_married = yes
+		NOT = { mep_is_evil_side_race = yes }
 		spouse = {
 			is_abroad = no
 			prisoner = no
@@ -188,7 +188,7 @@ character_event = {
 			spouse = { is_pregnant = yes }
 		}
 		modifier = {
-			factor = 4.0
+			factor = 2.0
 			spouse = { trait = poet }
 		}
 		modifier = {
@@ -259,7 +259,7 @@ character_event = {
 	
 	trigger = {
 		mep_is_adult = yes
-		NOT = { mep_evil_religion = yes }
+		NOT = { mep_is_evil_side_race = yes }
 		in_command = no
 		any_vassal = {
 			tier = baron
@@ -269,6 +269,17 @@ character_event = {
 			}
 		}
 	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				tier = baron
+				is_theocracy = yes
+			}
+			save_event_target_as = grumpy_priest				
+		}
+	}	
+	
 
 	weight_multiplier = {
 		days = 1
@@ -285,11 +296,8 @@ character_event = {
 	}	
 	option = {
 		name = EVTOPTB73002 # If the Temple wants it, they can pay for it
-		random_vassal = {
-			limit = {
-				tier = baron
-				is_theocracy = yes
-			}
+		event_target:grumpy_priest = {
+			show_scope_change = no
 			opinion = {
 				who = ROOT
 				modifier = ignores_local_saints
@@ -362,7 +370,7 @@ character_event = {
 	trigger = {
 		mep_is_adult = yes
 		in_command = no
-        NOT = { mep_evil_religion = yes }
+        NOT = { mep_is_evil_side_race = yes }
 		father_even_if_dead = {
 			is_alive = no
 			primary_title = {
@@ -413,7 +421,7 @@ character_event = {
 	prisoner = no
 	
 	trigger = {
-        NOT = { mep_evil_religion = yes }
+        NOT = { mep_is_evil_side_race = yes }
 		mep_is_adult = yes
 		in_command = no
 		OR = {
@@ -421,6 +429,7 @@ character_event = {
 			trait = ugly
 		}
 		NOT = {	trait = humble	}
+		NOT = {	trait = uncouth }
 	}
 
 	weight_multiplier = {
@@ -429,6 +438,10 @@ character_event = {
 			factor = 2.0
 			trait = proud
 			trait = fair
+		}
+		modifier = {
+			factor = 2.0
+			trait = groomed
 		}
 		modifier = {
 			factor = 0.8
@@ -511,7 +524,7 @@ character_event = {
 	option = {
 		name = EVTOPTA73005 #Introduce fashion at the court
 		if = {
-			limit = { trait = fair }
+			limit = { has_fair_trait_trigger = yes }
 			random = {
 				chance = 10
 				add_trait = proud 
@@ -558,7 +571,7 @@ character_event = {
 	
 	trigger = {
 		mep_is_adult = yes
-		NOT = { mep_evil_religion = yes }
+		NOT = { mep_is_evil_side_race = yes }
 		NOT = { religion_group = religion_group_enyd }
 		any_child = {
 			is_married = no
@@ -625,6 +638,20 @@ character_event = {
 			prestige = -5
 		}
 	}
+	option = {
+		name = EVTOPTC73006 #Give him a beating for messing with inferiors
+		pacifists_lose_piety_effect = yes
+		event_target:knocked_up_maid = {
+			opinion = {
+				modifier = resentful_of_my_behaviour
+				who = ROOT
+				years = 2
+			}
+			add_trait = wroth
+			add_trait = ambitious
+		}
+	}
+
 }
 	
 ### Bored wife: Your wife wants latest fashion fad.... ###
@@ -643,13 +670,14 @@ character_event = {
 	trigger = {
 		in_command = no
 		mep_is_adult = yes
-		NOT = { mep_evil_religion = yes }
+		NOT = { mep_is_evil_side_race = yes }
         spouse = {
 			is_abroad = no
 			prisoner = no
 			is_alive = yes
 			NOT = { trait = shy } 
 			NOT = { trait = zealous }
+			NOT = { trait = uncouth }
 			NOT = { demesne_size = 1 }
 			opinion = { who = ROOT value = 10 }
 		}
@@ -668,7 +696,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			spouse = { trait = fair }
+			spouse = { has_fair_trait_trigger = yes }
 		}
 		modifier = {
 			factor = 2.5
@@ -732,7 +760,7 @@ character_event = {
 	ai = no
 	
 	trigger = {
-	mep_is_adult = yes
+		mep_is_adult = yes
         NOT = { religion_group = religion_group_melkor }
 		NOT = { religion_group = religion_group_ungoliant }
 		is_landed = yes
@@ -777,7 +805,6 @@ character_event = {
 	min_age = 16
 	only_playable = yes
 	prisoner = no
-	
 	war = yes
 	
 	trigger = {
@@ -1288,7 +1315,7 @@ letter_event = {
 letter_event = {
 	id = 73205
 	desc = EVTDESC73205
-	# picture = GFX_evt_spymaster
+	picture = GFX_evt_spymaster
 	border = GFX_event_letter_frame_war
 	
 	is_triggered_only = yes
@@ -1624,7 +1651,7 @@ letter_event = {
 letter_event = {
 	id = 73222
 	desc = EVTDESC73222
-	# picture = GFX_evt_spymaster
+	picture = GFX_evt_spymaster
 	
 	is_triggered_only = yes
 
@@ -1854,7 +1881,7 @@ letter_event = {
 letter_event = {
 	id = 73232
 	desc = EVTDESC73232
-	# picture = GFX_evt_spymaster
+	picture = GFX_evt_spymaster
 	
 	is_triggered_only = yes
 

@@ -334,6 +334,13 @@ character_event = {
 	
 	is_triggered_only = yes
 	
+	trigger = {
+		FROM = { 
+			prisoner = yes 
+			is_alive = yes
+		}
+	}
+	
 	option = {
 		name = "EVTOPTA50006" # Denied
 		trigger = {
@@ -341,7 +348,17 @@ character_event = {
 				prisoner = yes
 			}
 		}
+		FROM = { 
+			lose_weight_medium_effect = yes
+			weight_trait_check_effect = yes
+		}
+
 		ai_chance = { factor = 34 }
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_angry
+			months = 12
+		}
 	}
 	
 	option = {
@@ -372,6 +389,11 @@ character_event = {
 					name = house_arrest
 					duration = -1
 				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_grateful
+					months = 12
+				}
 			}
 		}
 		hidden_tooltip = {
@@ -389,6 +411,10 @@ character_event = {
 			FROM = {
 				prisoner = yes
 			}
+		}
+		FROM = { 
+			lose_weight_medium_effect = yes
+			weight_trait_check_effect = yes
 		}
 		ai_chance = { 
 			factor = 33 
@@ -420,9 +446,13 @@ character_event = {
 					name = the_oubliette
 					duration = -1
 				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_hate
+					months = 12
+				}
 			}
 		}
-		
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
@@ -456,7 +486,7 @@ character_event = {
 			FROM = {
 				prisoner = no
 				opinion = {
-					modifier = opinion_released_prisoner
+					modifier = opinion_merciful
 					who = ROOT
 					months = 30
 				}
@@ -499,6 +529,11 @@ character_event = {
 			}
 			character_event = { id = ZE.12219 } # Loses pet rat
 		}
+		opinion = {
+			who = FROM
+			modifier = opinion_grateful
+			months = 12
+		}
 	}
 }
 
@@ -527,6 +562,11 @@ character_event = {
 				name = the_oubliette
 				duration = -1
 			}
+		}
+		opinion = {
+			who = FROM
+			modifier = opinion_hate
+			months = 12
 		}
 	}
 }
@@ -568,7 +608,7 @@ character_event = {
 	border = GFX_event_normal_frame_intrigue
 	
 	min_age = 14
-	only_rulers = yes
+	only_playable = yes
 	prisoner = no
 	capable_only = yes
 	
@@ -576,12 +616,15 @@ character_event = {
 		NOT = { trait = kind }
 		NOT = { trait = just }
 		OR = {
+			trait = envious
+			trait = wroth
+			trait = arbitrary
 			trait = lunatic
 			trait = possessed
 			trait = paranoid
 			trait = impaler
 			trait = cruel
-			trait = evil_side
+			mep_is_evil_side_trigger = yes
 		}
 		any_courtier = {
 			age = 14
@@ -619,7 +662,7 @@ character_event = {
 		name = EVTOPTA50010 # Resist my foul impulse
 		piety = 10
 		trigger = {
-			NOT = { trait = evil_side }
+			NOT = { mep_is_evil_side_trigger = yes }
 		}
 	}
 	
@@ -629,6 +672,8 @@ character_event = {
 			limit = { NOT = { mep_is_evil_side_trigger = yes } }
 			piety = -20
 		}
+		pacifists_lose_piety_effect = yes
+		
 		random_list = {
 			60 = {
 				add_trait = cruel
@@ -648,7 +693,6 @@ character_event = {
 			}
 		}
 
-		add_trait = torturer
 		random_courtier = {
 			limit = {
 				age = 14
@@ -698,6 +742,8 @@ character_event = {
 	option = {
 		name = "EVTOPTA50011"
 		
+		lose_weight_small_effect = yes
+		weight_trait_check_effect = yes
 		add_character_modifier = { 
 			name = tortured
 			duration = 60
@@ -731,7 +777,7 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTA50013"
-		add_trait = maimed
+		maim_hand_effect = yes
 	}
 }
 
@@ -781,12 +827,20 @@ character_event = {
 # Ruler is notified of the capture of an enemy commander
 character_event = {
 	id = 50020
+	title = captured_in_battle
 	desc = "EVTDESC50020"
 	picture = "GFX_evt_battle"
 	border = GFX_event_normal_frame_war
 	
 	is_triggered_only = yes
 	
+	portrait = event_target:captured_commander
+	
+	immediate = {
+    	event_target:captured_commander = { save_event_target_as = kinslayer_target }
+    }
+
+	# Warrior Lodge members only option...
 	option = {
 		name = "EVTOPTA50020"
 	}

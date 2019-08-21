@@ -161,10 +161,43 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		if = {
+			limit = { #If YOU are the grandmaster and there are others in the society...
+				OR = {
+					is_society_grandmaster = yes
+					society_rank == 4
+				}
+				any_society_member = {
+					NOT = { character = ROOT }
+					same_society_as = ROOT
+				}
+			}
 		society = {
 			random_society_member = { 
-				limit = { is_society_grandmaster = yes } 
-				character_event = { id = MNM.10022 }
+					limit = { NOT = { character = ROOT } }
+					character_event = { id = MNM.10022 } #Have some rando send the kick-out letter!
+				}
+			}
+		}
+		if = {
+			limit = { #If you are NOT the grandmaster/a leader...
+				NOT = { society_rank == 4 }
+			}
+			society = {
+				random_society_member = {
+					limit = {
+						OR = {
+							is_society_grandmaster = yes
+							society_rank == 4
+						}
+					}
+					character_event = { id = MNM.10022 } #Have the Grand Master send the kick-out letter!
+				}
+			}
+		}
+		else = { #If you are the last of your kind...
+			ROOT = {
+				leave_society = yes
 			}
 		}
 	}
@@ -182,6 +215,8 @@ character_event = {
 letter_event = {
 	id = MNM.10023
 	border = GFX_event_letter_frame_religion
+
+	is_triggered_only = yes
 
 	#desc = {
 	#	trigger = { is_devil_worshiper_trigger = yes }
@@ -210,10 +245,31 @@ letter_event = {
 		text = EVTDESC_MNM_10023_HERMETICS
 	}
 	
+	desc = { #Generic fallback
+		trigger = {
+			NOR = {
+				society_member_of = the_assassins
+				is_monastic_member_trigger = yes
+				society_member_of = secret_religious_cult
+			}
+		}
+		text = EVTDESC_MNM_10023_fallback
+	}
+
 	is_triggered_only = yes
 	
 	option = {
 		name = EVTOPTA_MNM_10023
+		name = {
+			text = EVTOPTA_MNM_10023_less_hostile
+			trigger = {
+				NOR = {
+					society_member_of = the_assassins
+					is_monastic_member_trigger = yes
+					society_member_of = secret_religious_cult
+				}
+			}
+		}
 		leave_society = yes
 	}
 }
@@ -259,7 +315,7 @@ character_event = {
 				}
 			}
 		}
-		any_courtier = {
+		if = {
 			limit = {
 				ai = yes
 				prisoner = no
@@ -271,7 +327,23 @@ character_event = {
 			}
 			character_event = { id = MNM.10031 }
 		}
-		if = {
+		any_courtier = {
+			limit = {
+				ai = yes
+				prisoner = no
+				NOT = { trait = incapable }
+				is_in_society = yes
+				society_rank < 3
+				society_can_rank_up = yes
+			}
+			random_list = {
+				75 = {}
+				25 = {
+					society_rank_up = 1					
+				}
+			}
+		}
+		any_courtier = {
 			limit = {
 				ai = yes
 				prisoner = no
@@ -325,6 +397,7 @@ character_event = {
 							is_landed = no
 						}
 						join_society = heren_isseon
+						
 						random_list = { # Artificially increase society influence for balance purposes
 							75 = {
 								modifier = {
@@ -401,6 +474,7 @@ character_event = {
     id = MNM.10040
     hide_window = yes
     is_triggered_only = yes
+    capable_only = yes
     trigger = {
     	society = {
     		any_society_member = {
@@ -507,16 +581,19 @@ character_event = {
     id = MNM.10043
     hide_window = yes
     is_triggered_only = yes
+    capable_only = yes
     trigger = {
     	society = {
     		any_society_member = {
     			reverse_opinion = { who = ROOT value = 30 }
     			opinion = { who = ROOT value = 40 }
     			NOR = {
+	    			is_lover = ROOT
     				is_friend = ROOT
     				is_rival = ROOT
     				is_close_relative = ROOT
     			}
+    			prisoner = no
     			NOT = { has_character_flag = ineligible_for_society_friendship }
     			ai = yes
     		}
@@ -529,10 +606,12 @@ character_event = {
     				reverse_opinion = { who = ROOT value = 30 }
 	    			opinion = { who = ROOT value = 40 }
 	    			NOR = {
+	    				is_lover = ROOT
 	    				is_friend = ROOT
 	    				is_rival = ROOT
 	    				is_close_relative = ROOT
 	    			}
+	    			prisoner = no
 	    			NOT = { has_character_flag = ineligible_for_society_friendship }
 	    			ai = yes
 	    		}
@@ -552,7 +631,7 @@ character_event = {
 
 character_event = {
     id = MNM.10045
-    picture = GFX_evt_state_diplomacy
+    picture = GFX_evt_courtiers_talking
     border = GFX_event_normal_frame_diplomacy
 
     desc = {
@@ -609,6 +688,8 @@ character_event = {
     	trigger = { FROM = { root_attraction_trigger = yes } }
         name = EVTOPTC_MNM_10045
         custom_tooltip = { text = EVTOPTB_MNM_6903_TT }
+
+        hidden_effect = { FROM = { character_event = { id = MNM.6906 days = 3 } } }
 
         if = {
         	limit = { ai = no }
@@ -721,6 +802,7 @@ character_event = {
 
 	trigger = {
 		is_in_society = yes
+		has_character_modifier = highly_suspect
 	}
 	
 	is_triggered_only = yes
@@ -741,6 +823,7 @@ character_event = {
 
 	trigger = {
 		is_in_society = yes
+		has_character_modifier = under_suspicion
 	}
 	
 	is_triggered_only = yes
@@ -766,7 +849,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		# name = EXCELLENT
+		name = EXCELLENT
 		add_mission_succeed_influence_effect = yes
 	}
 }
@@ -783,7 +866,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		# name = ALAS
+		name = ALAS
 		add_mission_fail_influence_effect = yes
 	}
 }

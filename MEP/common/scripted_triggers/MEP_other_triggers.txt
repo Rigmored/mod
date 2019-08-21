@@ -1,0 +1,925 @@
+### MEP triggers NOT related to groups of people ##
+# Note: I assume all triggers are called from and AND block (if not, wrap call in AND, unless the contents of the trigger is one block)
+
+## characters
+# mep_is_very_nice_trigger
+# mep_dont_do_nice_trigger
+# mep_cant_get_disease_trigger
+# mep_wont_hire_physician_trigger
+# mep_numenorean_traits_trigger
+# mep_elven_blood_tigger
+# mep_disease_resistant_trigger
+# mep_has_disease_trigger
+# mep_is_genuine_elf
+# mep_has_elf_stuff
+# mep_is_genuine_high_elf
+# mep_never_councillor_trigger
+# mep_pick_good_side_trigger
+# mep_cant_get_drunk_trigger
+# mep_dont_get_fat_trigger
+# mep_dont_seduce_trigger
+# mep_will_purge_evil
+# mep_will_purge_good
+# mep_is_evil_overlord
+# mep_eligible_for_heren_isseon
+# mep_base_marriage_compatible
+# mep_eligible_elf_marriage
+# mep_eligible_dwarf_marriage
+# mep_has_southern_palantiri
+
+### Culture/Religion Groups
+# mep_allows_shield_maidens_trigger
+# mep_is_elf_culture
+# mep_is_good_side_race
+# mep_is_human_trigger
+# mep_horse_people_culture
+# mep_winter_culture
+# mep_never_spread_culture
+# mep_has_nondunedain_human_culture
+# mep_horsey_people_culture
+# mep_prim_humans_culture
+# mep_prim_humans_culture_notbree
+# mep_orc_culture
+# mep_orc_goblin_culture
+# mep_orc_troll_culture
+# mep_is_black_numenorean_culture
+# mep_is_good_numenorean_culture
+# mep_dont_do_horses
+# mep_generic_buildings_culture
+
+### titles
+# mep_gondor_arnor_emp_trigger
+# conquest_culture_trigger
+# mep_has_rhovanion_title
+# mep_southron_merc_trigger
+# mep_has_gondor
+# mep_has_dwarf_realm
+
+### provinces
+# mep_has_immortal_population_trigger
+# mep_population_immune_trigger
+# mep_population_resistant_trigger
+# mep_province_being_colonized_trigger
+# mep_wilderness_province_trigger
+# mep_is_province_elven_trigger
+# mep_good_side_province
+# mep_general_buildings_human
+# mep_pop_always_evil_purge_culture
+# mep_being_purged_trigger
+
+### provinces for dynamic population stuff
+# mep_has_dunedain_popmod_trigger
+# mep_dunedian_popmod_increasable_trigger
+# mep_has_elves_popmod_trigger
+# mep_elves_popmod_increasable_trigger
+# mep_has_dwarves_popmod_trigger
+# mep_dwarves_popmod_increasable_trigger
+# mep_has_xhumans_popmod_trigger
+# mep_xhumans_popmod_increasable_trigger
+# mep_has_xhumans_culture
+# mep_has_popmod_trigger
+# mep_has_popmod_culture
+# mep_has_increasable_popmod_trigger
+# mep_has_depopulated_modifier
+# mep_has_properity_modifier
+# mep_high_pop_trigger
+# mep_low_pop_trigger
+
+### province CB shorteners
+# mep_province_owned_by_root
+# mep_borders_ROOTrealm_2seazones
+# mep_borders_ROOTrealm_1seazone
+
+### special groups
+# mep_evil_or_wont_sell_moria
+# mep_might_sell_moria
+# mep_char_leader_usable
+# mep_theodred_and_eomer_are_okay
+# mep_threatning_saruman
+# mep_galadriel_in_lorien
+# mep_parentless
+
+### government type related stuff
+# mep_temp_muslim_standin_trigger
+# mep_canhave_nice_feudalism
+
+## Other
+# mep_coloniz_cheap
+# mep_coloniz_quick
+# mep_marriagable_female
+# mep_is_old
+
+## Trade Post related
+# north_south_road_trade_post_trigger
+# south_road_trade_post_trigger
+# royal_road_trade_post_trigger
+# great_east_road_trade_post_trigger
+# men_i_naugrim_road_trade_post_trigger
+# harad_trade_road_trade_post_trigger
+# mep_no_trade_posts
+# mep_tp_compatible_align
+# mep_building_trade_route_trigger
+
+#---------------------------------------------------------------------------------------
+# Character Triggers
+
+
+mep_has_southern_palantiri = {
+	OR = {
+		has_artifact = artifact_palantir_anor
+		has_artifact = artifact_palantir_ithil
+		has_artifact = artifact_palantir_orthanc
+		has_artifact = artifact_palantir_osgiliath
+	}
+}
+
+#--------------------------------------------------------
+### Culture/Religion Groups
+
+
+
+
+#--------------------------------------------------------------------
+# titles
+mep_gondor_arnor_emp_trigger = {
+	OR = {
+		has_landed_title = e_gondor
+		has_landed_title = e_steward_gondor
+		has_landed_title = e_gondor_kinstrife
+		has_landed_title = e_arnor
+		has_landed_title = e_reunited_kingdom
+	}
+}
+
+# Saves over 30 lines of stuff in province culture conversion events...
+conquest_culture_trigger = {
+	OR = {
+		primary_title = {
+			conquest_culture = PREV
+		}
+		ROOT = {
+			county = {
+				conquest_culture = PREVPREV
+			}
+		}
+		ROOT = {
+			duchy = {
+				holder_scope = {
+					character = PREVPREVPREV
+				}
+				conquest_culture = PREVPREV
+			}
+		}
+		ROOT = {
+			kingdom = {
+				holder_scope = {
+					character = PREVPREVPREV
+				}
+				conquest_culture = PREVPREV
+			}
+		}
+		ROOT = {
+			empire = {
+				holder_scope = {
+					character = PREVPREVPREV
+				}
+				conquest_culture = PREVPREV
+			}
+		}
+	}
+}
+
+# used by many mercenaries
+mep_has_rhovanion_title = {
+	OR = {
+		any_realm_title = { title = k_dale }
+		any_realm_title = { title = d_dale } 
+		any_realm_title = { title = c_dale }
+		any_realm_title = { title = d_grasgard }
+		any_realm_title = { title = d_carnen }
+		any_realm_title = { title = k_brownlands } 
+		any_realm_title = { title = d_haradnur }
+		any_realm_title = { title = d_brownlands }
+		any_realm_title = { title = k_rhovanion }
+		any_realm_title = { title = d_dor_rhunen }
+		any_realm_title = { title = d_rhovanion }
+		any_realm_title = { title = d_celduin }
+		any_realm_title = { title = k_dorwinion }
+		any_realm_title = { title = d_riavod }
+		any_realm_title = { title = d_uldonavan }
+	}
+}
+
+mep_southron_merc_trigger = {
+	OR = {
+		any_realm_title = { title = e_harad }
+		any_realm_title = { title = k_chelkar }
+		any_realm_title = { title = k_haruzan }
+		any_realm_title = { title = k_akhor }
+		any_realm_title = { title = k_pezarsan }
+		any_realm_title = { title = k_lurmsakun }
+		any_realm_title = { title = k_arysis }
+		any_realm_title = { title = k_haradwaith }
+		culture_group = culture_group_southron
+		religion_group = religion_group_hildor
+	}
+}
+
+mep_has_gondor = {
+	OR = {
+		has_landed_title = e_gondor
+		has_landed_title = e_steward_gondor
+		has_landed_title = e_gondor_kinstrife
+	}
+}
+# has a title normally strictly dwarf-associated and independednt
+mep_has_dwarf_realm = {
+	OR = {
+		has_landed_title = e_durins_folk
+		has_landed_title = k_misty_mountains
+		has_landed_title = k_northeast_mountains
+		has_landed_title = k_broadbeams
+		has_landed_title = k_firebeards
+		has_landed_title = d_aglarond
+		has_landed_title = k_zirakdum
+		has_landed_title = k_stonefoot
+		has_landed_title = k_nurunkhizdin
+		has_landed_title = k_gundabad
+		has_landed_title = e_all_mountains
+	}
+}
+#
+
+mep_being_purged_trigger = {
+	OR = {
+		has_province_modifier = being_purged_ofevil
+		has_province_modifier = being_purged_ofgood
+		has_province_modifier = being_purged_ofgoodeo
+	}
+}
+
+#mep_pop_always_evil_purge_culture = yes
+#holder_scope = {
+#	NAND = {
+#		trait = evil_side
+#		religion = PREV
+#	}
+#}
+
+
+#--------------------------------------------------------------------------------------------
+## provinces for dynamic population stuff
+
+mep_has_dunedain_popmod_trigger = {
+	OR = {
+		has_province_modifier = one_population_dunedain
+		has_province_modifier = two_population_dunedain
+		has_province_modifier = three_population_dunedain
+		has_province_modifier = four_population_dunedain
+		has_province_modifier = five_population_dunedain
+		has_province_modifier = six_population_dunedain
+		has_province_modifier = seven_population_dunedain
+	}
+}
+
+mep_dunedian_popmod_increasable_trigger = {
+	OR = {
+		has_province_modifier = one_population_dunedain
+		has_province_modifier = two_population_dunedain
+		has_province_modifier = three_population_dunedain
+		has_province_modifier = four_population_dunedain
+		has_province_modifier = five_population_dunedain
+		has_province_modifier = six_population_dunedain
+	}
+}
+
+mep_has_elves_popmod_trigger = {
+	OR = {
+		has_province_modifier = one_population_elves
+		has_province_modifier = two_population_elves
+		has_province_modifier = three_population_elves
+		has_province_modifier = four_population_elves
+		has_province_modifier = five_population_elves
+		has_province_modifier = six_population_elves
+		has_province_modifier = seven_population_elves
+	}
+}
+
+mep_elves_popmod_increasable_trigger = {
+	OR = {
+		has_province_modifier = one_population_elves
+		has_province_modifier = two_population_elves
+		has_province_modifier = three_population_elves
+		has_province_modifier = four_population_elves
+		has_province_modifier = five_population_elves
+		has_province_modifier = six_population_elves
+	}
+}
+
+mep_has_dwarves_popmod_trigger = {
+	OR = {
+		has_province_modifier = one_population_dwarves
+		has_province_modifier = two_population_dwarves
+		has_province_modifier = three_population_dwarves
+		has_province_modifier = four_population_dwarves
+		has_province_modifier = five_population_dwarves
+		has_province_modifier = six_population_dwarves
+		has_province_modifier = seven_population_dwarves
+	}
+}
+
+mep_dwarves_popmod_increasable_trigger = {
+	OR = {
+		has_province_modifier = one_population_dwarves
+		has_province_modifier = two_population_dwarves
+		has_province_modifier = three_population_dwarves
+		has_province_modifier = four_population_dwarves
+		has_province_modifier = five_population_dwarves
+		has_province_modifier = six_population_dwarves
+	}
+}
+
+mep_has_xhumans_popmod_trigger = {
+	OR = {
+		has_province_modifier = one_population_human
+		has_province_modifier = two_population_human
+		has_province_modifier = three_population_human
+		has_province_modifier = four_population_human
+		has_province_modifier = five_population_human
+		has_province_modifier = six_population_human
+		has_province_modifier = seven_population_human
+	}
+}
+mep_xhumans_popmod_increasable_trigger = {
+	OR = {
+		has_province_modifier = one_population_human
+		has_province_modifier = two_population_human
+		has_province_modifier = three_population_human
+		has_province_modifier = four_population_human
+		has_province_modifier = five_population_human
+		has_province_modifier = six_population_human
+		has_province_modifier = seven_population_human
+	}
+}
+
+mep_has_xhumans_culture = {
+	OR = {
+		mep_has_nondunedain_human_culture = yes
+		culture_group = culture_group_halfling
+		AND = {
+			culture_group = culture_group_melkor
+			NOT = {
+				culture = culture_balrog
+				culture = culture_wight
+				culture = culture_dragons
+			}
+		}
+	}
+	
+}
+
+mep_has_popmod_trigger = {
+	OR = {
+		mep_has_dunedain_popmod_trigger = yes
+		mep_has_elves_popmod_trigger = yes
+		mep_has_dwarves_popmod_trigger = yes
+		mep_has_xhumans_popmod_trigger = yes
+	}
+}
+
+mep_has_popmod_culture = {
+	OR = {
+		culture_group = culture_group_numenorean
+		mep_is_province_elven_trigger = yes
+		culture_group = culture_group_dwarves	
+		mep_has_xhumans_culture = yes
+	}
+}
+
+mep_has_increasable_popmod_trigger = {
+	OR = {
+		mep_dunedian_popmod_increasable_trigger = yes
+		mep_elves_popmod_increasable_trigger = yes
+		mep_dwarves_popmod_increasable_trigger = yes
+		mep_xhumans_popmod_increasable_trigger = yes
+	}
+}
+
+mep_has_depopulated_modifier = {
+	OR = {
+		has_province_modifier = depopulated_1
+		has_province_modifier = depopulated_2
+		has_province_modifier = depopulated_3
+	}
+}
+
+mep_has_properity_modifier = {
+	OR = {
+		has_province_modifier = prosperity_modifier_1
+		has_province_modifier = prosperity_modifier_2
+		has_province_modifier = prosperity_modifier_3
+	}
+}
+
+mep_high_pop_trigger = {
+	OR = {
+		has_province_modifier = six_population_dunedain
+		has_province_modifier = seven_population_dunedain
+		has_province_modifier = six_population_elves
+		has_province_modifier = seven_population_elves
+		has_province_modifier = six_population_dwarves
+		has_province_modifier = seven_population_dwarves
+		has_province_modifier = six_population_human
+		has_province_modifier = seven_population_human
+	}
+}
+
+mep_low_pop_trigger = {
+	OR = {
+		has_province_modifier = one_population_dunedain
+		has_province_modifier = two_population_dunedain
+		has_province_modifier = one_population_elves
+		has_province_modifier = two_population_elves
+		has_province_modifier = one_population_dwarves
+		has_province_modifier = two_population_dwarves
+		has_province_modifier = one_population_human
+		has_province_modifier = two_population_human
+	}
+}
+#-----------------------------------------------------------
+# province CB shorteners
+mep_province_owned_by_root = {
+	AND = {
+		has_owner = yes
+		owner = {
+			OR = {
+				character = ROOT
+				is_liege_or_above = ROOT
+			}
+		}
+	}
+}
+
+mep_province_not_owned_by_root = {
+	OR = {
+		has_owner = no
+		owner = {
+			NOT = { character = ROOT }
+			NOT = { is_liege_or_above = ROOT }
+		}
+	}
+}
+
+
+# Used to test if a province borders, or is 2 or less seazones away, from the realm of ROOT
+mep_borders_ROOTrealm_2seazones = {
+	any_neighbor_province = {
+		OR = {
+			# The province directly borders realm of ROOT
+			AND = {
+				has_owner = yes
+				owner = {
+					OR = {
+						character = ROOT
+						is_liege_or_above = ROOT
+					}
+				}		
+			}
+			#  The neighbour provice is a seazone -> more checks needed
+			AND = {
+				is_land = no
+				# province bordering this seazone to be tested
+				any_neighbor_province = {
+					OR = {
+						# This province (bordering the seazone) is part of ROOT's realm
+						AND = {
+							has_owner = yes
+							owner = {
+								OR = {
+									character = ROOT
+									is_liege_or_above = ROOT
+								}
+							}
+						}
+						# The province bordering the seazone is also a seazone, so we scan
+						# *it's* neighbours to see if any of *them* belong to the realm of ROOT
+						AND = {
+							is_land = no
+							any_neighbor_province = {
+								has_owner = yes
+								owner = {
+									OR = {
+										character = ROOT
+										is_liege_or_above = ROOT
+									}
+								}
+
+							}
+						}
+						# end of second seazone neighbour scan
+					}
+				}
+				# end of checking the neighbours of the first level seazone block
+			}
+		}
+		# end of top level OR block
+	}
+}
+
+# Used to test if a province borders, or is a seazone away, from the realm of ROOT
+mep_borders_ROOTrealm_1seazone = {
+	any_neighbor_province = {
+		OR = {
+			# The province directly borders realm of ROOT
+			AND = {
+				has_owner = yes
+				owner = {
+					OR = {
+						character = ROOT
+						is_liege_or_above = ROOT
+					}
+				}
+			}
+			#  The neighbour provice is a seazone -> more checks needed
+			AND = {
+				is_land = no
+				# province bordering this seazone to be tested
+				any_neighbor_province = {
+					# This province (bordering the seazone) is part of ROOT's realm
+					has_owner = yes
+					owner = {
+						OR = {
+							character = ROOT
+							is_liege_or_above = ROOT
+						}
+					}
+				}
+				# end of checking the neighbours of the first level seazone block
+			}
+		}
+		# end of top level OR block
+	}
+}
+#-----------------------------------------------------------------------------------------------------------
+# special groups
+mep_evil_or_wont_sell_moria = {
+	NOT = { character = ROOT }
+	OR = {
+		AND = {
+			independent = yes
+			OR = {
+				mep_is_evil_side_trigger = yes
+				has_character_flag = refused_to_sell_moria
+			}
+		}				
+		top_liege = {
+			NOT = { character = ROOT }
+			OR = {
+				mep_is_evil_side_trigger = yes
+				has_character_flag = refused_to_sell_moria
+			}				
+		}
+	}
+}
+
+mep_might_sell_moria = {
+	NOT = { character = ROOT }
+	OR = {
+		AND = {
+			independent = yes
+			NOR = {
+				mep_is_evil_side_trigger = yes
+				has_character_flag = refused_to_sell_moria
+				culture = culture_longbeard
+				religion_group = religion_group_wilderness
+				culture_group = culture_group_wilderness
+			}
+		}				
+		top_liege = {
+			NOT = { character = ROOT }
+			NOR = {
+				mep_is_evil_side_trigger = yes
+				has_character_flag = refused_to_sell_moria
+				culture = culture_longbeard
+				religion_group = religion_group_wilderness
+				culture_group = culture_group_wilderness
+			}				
+		}
+	}
+}
+
+mep_char_leader_usable = {
+	AND = {
+		is_alive = yes
+		prisoner = no
+		# top_liege = PREV
+		is_incapable = no
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+		NOT = { trait = on_fellowshipquest }
+	}
+}
+
+mep_theodred_and_eomer_are_okay = {
+	event_target:mep_chartarget_theodred = {
+		is_alive = yes
+		prisoner = no
+		# top_liege = PREV
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+	}
+	event_target:mep_chartarget_eomer = {
+		is_alive = yes
+		prisoner = no
+		# top_liege = PREV
+		NOT = { trait = ringsearch }
+		NOT = { trait = huntforring }
+	}
+}
+
+mep_threatning_saruman = {
+	event_target:mep_chartarget_saruman = {
+		is_alive = yes
+		has_landed_title = c_orthanc
+		has_character_flag = evilsaruman
+	}
+}
+
+mep_galadriel_in_lorien = {
+	k_elves = {
+		OR = {
+			holder_scope = {
+				event_target:mep_chartarget_galadriel = { character = PREV }
+			}
+			any_realm_lord = {
+				event_target:mep_chartarget_galadriel = { character = PREV }
+			}
+		}
+	}
+}
+
+
+
+
+## Other
+mep_coloniz_cheap = {
+	OR = {
+		has_game_rule = { name = colon_diffc value = cheap }
+		has_game_rule = { name = colon_diffc value = quickncheap }
+	}
+}
+mep_coloniz_quick = {
+	OR = {
+		has_game_rule = { name = colon_diffc value = quick }
+		has_game_rule = { name = colon_diffc value = quickncheap }
+	}
+}
+
+
+#----------------------------------------------------------------------
+# I have no idea why 'trade_route = north_south_road' is not good enough...
+north_south_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = north_south_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 270
+				province_id = 263
+				province_id = 267
+				province_id = 105
+				province_id = 169
+				province_id = 170
+				province_id = 173
+				province_id = 172
+				province_id = 291
+				province_id = 777
+				province_id = 381
+				province_id = 383
+				province_id = 385
+				province_id = 384
+				province_id = 226
+				province_id = 290
+				province_id = 225
+				province_id = 120
+				province_id = 119
+				province_id = 118
+				province_id = 117
+				province_id = 115
+				province_id = 112
+				province_id = 111
+				province_id = 114
+				province_id = 110
+				province_id = 3
+				province_id = 69
+				province_id = 4
+				province_id = 5
+				province_id = 7
+				province_id = 9
+				province_id = 45
+				province_id = 422
+			}
+		}
+	}
+}
+
+south_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = south_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 215
+				province_id = 1
+				province_id = 10
+				province_id = 11
+				province_id = 14
+				province_id = 17
+				province_id = 18
+				province_id = 219
+				province_id = 220
+				province_id = 221
+				province_id = 224
+				province_id = 31
+				province_id = 26
+				province_id = 25
+				province_id = 24
+			}
+		}
+	}
+}
+
+royal_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = royal_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 1
+				province_id = 428
+				province_id = 427
+				province_id = 53
+				province_id = 54
+				province_id = 426
+			}
+		}
+	}
+}
+
+great_east_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = great_east_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 422
+				province_id = 657
+				province_id = 236
+				province_id = 687
+				province_id = 664
+				province_id = 95
+				province_id = 86
+				province_id = 84
+				province_id = 85
+				province_id = 75
+				province_id = 76
+				province_id = 266
+				province_id = 267
+				province_id = 265
+				province_id = 268
+				province_id = 305
+				province_id = 307
+				province_id = 369
+				province_id = 297
+				province_id = 372
+				province_id = 234
+				province_id = 286
+				province_id = 287
+				province_id = 288
+				province_id = 290
+				province_id = 285
+				province_id = 371
+				province_id = 570
+			}
+		}
+	}
+}
+
+men_i_naugrim_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = men_i_naugrim_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 570
+				province_id = 403
+				province_id = 688
+				province_id = 689
+				province_id = 285
+				province_id = 2
+				province_id = 295
+				province_id = 398
+				province_id = 399
+				province_id = 400
+				province_id = 417
+				province_id = 321
+				province_id = 322
+				province_id = 328
+				province_id = 540
+				province_id = 539
+				province_id = 292
+				province_id = 684
+				province_id = 683
+				province_id = 573
+				province_id = 574
+				province_id = 572
+			}
+		}
+	}
+}
+
+harad_trade_road_trade_post_trigger = {
+	custom_tooltip = {
+		text = harad_trade_road_province_desc
+		hidden_tooltip = {
+			OR = {
+				province_id = 691
+				province_id = 585
+				province_id = 47
+				province_id = 48
+				province_id = 49
+				province_id = 52
+				province_id = 53
+				province_id = 55
+				province_id = 57
+				province_id = 59
+				province_id = 63
+				province_id = 127
+				province_id = 133
+				province_id = 138
+				province_id = 142
+				province_id = 141
+				province_id = 143
+				province_id = 467
+				province_id = 472
+				province_id = 533
+			}
+		}
+	}
+}
+
+mep_no_trade_posts = {
+	OR = {
+		religion_group = religion_group_wilderness
+		religion_group = religion_group_ungoliant
+		religion_group = religion_group_enyd
+		mep_being_purged_trigger = yes
+	}
+}
+
+# the scope should be the province, FROM the one who wants to build the trade post
+mep_tp_compatible_align = {
+	custom_tooltip = {
+		text = TT_MEP_NOT_OPPOSITE_ALIGN
+		OR = {
+			AND = {
+				FROM = { mep_is_good_side_trigger = yes }
+				NOT = { mep_is_evil_side_race = yes }
+			}
+			AND = {
+				FROM = { mep_is_evil_side_trigger = yes }
+				NOT = { mep_good_side_province = yes }
+			}
+			FROM = {
+				NOT = { mep_is_good_side_trigger = yes }
+				NOT = { mep_is_evil_side_trigger = yes }
+			}
+		}
+	}
+}
+
+mep_building_trade_route_trigger = {
+	OR = {
+		AND = {
+			trade_route = north_south_road
+			north_south_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = south_road	
+			south_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = royal_road
+			royal_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = great_east_road
+			great_east_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = men_i_naugrim_road
+			men_i_naugrim_road_trade_post_trigger = yes
+		}
+		AND = {
+			trade_route = harad_trade_road
+			harad_trade_road_trade_post_trigger = yes
+		}
+	}
+}

@@ -1,0 +1,142 @@
+namespace = racesetup
+
+# Events for setting up and managing some race-specifiec mechanics
+
+# Used to calculate Númenórean 'scaling' global variables (which help determine ages and menopause)
+character_event = {
+	id = racesetup.0
+	hide_window = yes
+	is_triggered_only = yes
+	religion = religion_umaiar
+	
+	trigger = {
+		character = 10015  # to ensure this fires once, use Morgoth as the target
+	}
+	
+	immediate = {
+		export_to_variable = { which = work_year value = year }
+		subtract_variable = { which = work_year value = 7200 }
+		# pre 7200 (~2400 SA) : 85 -> 250 , 85 -> 405
+		if = {
+			limit = { year < 7200 }
+			set_variable = { which = global_agescale_numenorean_high  value = 2.9 }
+			set_variable = { which = global_agescale_numenorean_royal  value = 4.76 }
+			set_variable = { which = global_agescale_numenorean_black  value = 4.76 }  # Adunaic Royalty
+		}
+		# pre 8400 ( end of SA) : (reg) 85 -> 250 to 200 , (royal) 85 -> 405 to 290, (black) 85 -> 405 to 225
+		else_if = {
+			limit = { year < 8400 }
+			set_variable = { which = as_change value = 0.456 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_high  value = 2.9 }
+			subtract_variable = { which = global_agescale_numenorean_high which = as_change }
+			
+			set_variable = { which = as_change value = 1.127 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_royal  value = 4.76}
+			subtract_variable = { which = global_agescale_numenorean_royal which = as_change }
+			
+			set_variable = { which = as_change value = 1.761 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_black  value = 4.76}
+			subtract_variable = { which = global_agescale_numenorean_black which = as_change }
+		}
+		# Third Age : 85 -> 200 to 105, (royal) 85 -> 290 to 150 (in 2750), (black) 85 -> 225 to 100 2963
+		else_if = {
+			limit = { year < 11360 }
+			subtract_variable = { which = work_year value = 1200}
+			
+			set_variable = { which = as_change value = 0.378 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_high  value = 2.35 }
+			subtract_variable = { which = global_agescale_numenorean_high which = as_change }
+			
+			set_variable = { which = as_change value = 0.611 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_royal  value = 3.41 }
+			subtract_variable = { which = global_agescale_numenorean_royal which = as_change }
+			
+			set_variable = { which = as_change value = 0.497 }
+			multiply_variable = { which = as_change which = work_year }
+			divide_variable = { which = as_change value = 1000 }
+			set_variable = { which = global_agescale_numenorean_black  value = 2.65 }
+			subtract_variable = { which = global_agescale_numenorean_black which = as_change }
+		}
+		# After: static
+		else = {
+			set_variable = { which = global_agescale_numenorean_high  value = 1.23 }
+			set_variable = { which = global_agescale_numenorean_royal  value = 1.6 }
+			set_variable = { which = global_agescale_numenorean_black  value = 1.18 }
+		}
+	}
+	
+	option = {
+
+	}
+}
+
+# Used to transform generated characters into those of the proper age and traits
+character_event = {
+	id = racesetup.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	# Generated characters are deemed to be those with no parents, lacking the proper traits
+	trigger = {
+		mep_parentless = yes
+		NOT = { mep_has_nondunedain_human_culture = yes }  # no transformation needed
+		age < 125 # just in case
+	}
+	
+	immediate = {
+	log = "racesteup.1 activated"
+		# Elves
+		if = {
+			limit = {
+				religion_group = religion_group_eldar
+				NOT = { trait = elf }
+				NOT = { trait = half_elf }
+			}
+			log = "racesteup.1 elf"
+			mep_make_proper_elf_effect = yes
+		}
+		# Dwarves
+		else_if = {
+			limit = {
+				religion_group = religion_group_khazad
+				NOT = { trait = dwarven }
+			}
+			log = "racesteup.1 dwarf"
+			mep_make_proper_dwarf_effect = yes
+		}
+		# Dúnedain
+		else_if = {
+			limit = {
+				OR = {
+					mep_is_black_numenorean_culture = yes
+					mep_is_good_numenorean_culture = yes
+				}
+				NOR = {
+					trait = numenorean
+					trait = blood_of_numenor
+					trait = blood_of_numenor2
+				}
+			}
+			log = "racesteup.1 dunedain"
+			mep_make_proper_numenorean_effect = yes
+		}
+		# More to add later
+		
+
+	}
+	
+	option = {
+
+	}
+}
+

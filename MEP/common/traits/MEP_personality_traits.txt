@@ -59,7 +59,7 @@ torturer = {
 	same_opinion = 10
 	general_opinion	= -5
 	opposite_opinion = -40
-	combat_rating = 1
+	combat_rating = 5
 
 	ruler_designer_cost = 0
 
@@ -92,7 +92,7 @@ blood_thirsty = {
 	same_opinion = 15
 	general_opinion	= -5
 	opposite_opinion = -45
-	combat_rating = 2
+	combat_rating = 5
 	
 	ruler_designer_cost = 0
 	
@@ -144,3 +144,156 @@ resolute_leader = {
 	vassal_opinion = 10
 	ruler_designer_cost = 0
 }
+
+ruthless = {
+	ruler_designer_cost = 0
+    personality = yes
+#   opposites =  {
+#       chivalrous
+#   }
+    intrigue = 2
+    opposite_opinion = -10
+    ai_rationality = 10
+    ai_honor = -20
+    ai_ambition = 25
+	random = no
+}
+
+perceptive = {
+	birth = 100
+	inherit_chance = 25
+
+	opposites =  {
+		absentminded
+	}
+	
+	combat_rating = 5
+	
+	martial = 1
+	intrigue = 2
+	ruler_designer_cost = 0
+	
+}
+
+absentminded = {
+	birth = 100
+	inherit_chance = 25
+
+	opposites =  {
+		perceptive
+	}
+
+	same_opinion = 5
+
+	diplomacy_penalty = -1		
+	martial_penalty = -1
+	intrigue_penalty = -1
+	ruler_designer_cost = 0
+
+}
+
+calm_voice = {
+	potential = {
+		NOT = { religion_group = religion_group_melkor }
+	}
+	birth = 100
+	inherit_chance = 25
+
+	opposites =  {
+		melodious_voice
+		powerful_voice
+	}
+
+	sex_appeal_opinion = 5
+
+	diplomacy = 1
+	intrigue = 1
+	ruler_designer_cost = 0
+
+}
+
+imposing = {
+	birth = 50
+	inherit_chance = 25
+
+	martial = 1
+	
+	vassal_opinion = 5
+	ruler_designer_cost = 0
+}
+fashionable = {
+	potential = {
+		NOT = {
+		religion_group = religion_group_melkor 
+	    }
+	}
+	lifestyle = yes
+	
+	diplomacy = 1
+
+	sex_appeal_opinion = 10
+	same_opinion = 10
+	spouse_opinion = 5
+	
+	monthly_character_prestige = 0.01
+	ruler_designer_cost = 0
+}
+authoritative = {
+	personality = yes
+	
+	martial=1
+	diplomacy=1
+	ruler_designer_cost = 0
+}
+rude = {					
+	ruler_designer_cost = 0		
+	personality = yes
+	opposites = {
+		kind
+		humble
+	}
+}	
+
+
+honorable = {
+	potential = {
+		NOT = { religion_group = religion_group_melkor }
+	}
+	personality = yes
+	
+	opposites = {
+		ruthless
+		cruel
+	}
+	
+	intrigue_penalty = -2
+	monthly_character_piety = 1
+	
+	general_opinion = 10
+	same_opinion = 10
+	liege_opinion = 20
+	opposite_opinion = -10
+	
+	ai_honor = 25
+	ruler_designer_cost = 0
+}
+
+selfish = {					
+	personality = yes
+	opposites =  {
+		charitable
+		kind
+		just
+	}
+
+	stewardship = 1
+	
+	spouse_opinion = -5
+	dynasty_opinion = -5
+	
+	ai_greed = 10
+	ruler_designer_cost = 0
+}
+
+
+

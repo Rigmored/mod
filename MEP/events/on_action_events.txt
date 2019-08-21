@@ -12,7 +12,7 @@ letter_event = {
 
 	is_triggered_only = yes
 
-	desc = "A"
+	#desc = "A"
 }
 
 character_event = {
@@ -20,7 +20,7 @@ character_event = {
 
 	is_triggered_only = yes
 
-	desc = "B"
+	#desc = "B"
 }
 
 # Killer discovered after murder - consequences.
@@ -46,21 +46,21 @@ character_event = {
 			limit = { NOT = { has_character_modifier = known_murderer } }
 			add_character_modifier = {
 				name = known_murderer
-				duration = -1
+				years = 50
 			}
 		}
 		
-		if = {
-			limit = {
-				NOT = { trait = kinslayer }
-				event_target:target_victim = {
-					dynasty = ROOT
-				}
-			}
-			add_trait = kinslayer
-		}
+		event_target:target_victim = { save_event_target_as = kinslayer_target }
+		add_kinslayer_trait_effect = yes
 		
 		event_target:target_victim = {
+			any_spouse = { 
+				opinion = {
+					who = ROOT
+					modifier = opinion_spouse_slayer
+					months = 60
+			}
+		}
 			any_liege = {
 				if = {
 					limit = {
@@ -84,14 +84,6 @@ character_event = {
 						who = ROOT
 						modifier = opinion_dishonorable
 						months = 60
-					}
-					if = {
-						limit = { ROOT = { any_spouse = { character = PREV } } }
-						opinion = {
-							who = ROOT
-							modifier = opinion_spouse_slayer
-							months = 60
-						}
 					}
 				}
 			}
@@ -437,10 +429,21 @@ character_event = {
 					limit = { is_female = no }
 					
 					any_spouse = {
+						if = {
+							limit = { gender_equality_trigger = no }
 						opinion = {
 							who = PREV
 							modifier = opinion_unfaithful_husband
-							months = 120
+								years = 10
+							}
+						}
+						if = {
+							limit = { gender_equality_trigger = yes }
+							opinion = {
+								who = PREV
+								modifier = opinion_unfaithful_husband_crime
+								years = 10
+							}
 						}
 						opinion = {
 							who = PREVPREV
@@ -479,6 +482,8 @@ character_event = {
 			if = {
 				limit = {
 					NOT = { has_character_flag = adultery_discovered }
+					is_alive = yes
+					is_dying = no
 				}
 				ROOT = { save_event_target_as = target_adulterer }
 				character_event = { id = 20 }
@@ -498,6 +503,7 @@ character_event = {
 	id = 150
 	desc = "EVTDESC150"
 	picture = "GFX_evt_burning_house"
+	border = GFX_event_normal_frame_war
 	
 	is_triggered_only = yes 
 	
@@ -516,8 +522,9 @@ character_event = {
 
 character_event = {
 	id = 40000
-	desc = "EVTDESC40000"
-	picture = "GFX_evt_burning_house"
+	desc = EVTDESC40000
+	picture = GFX_evt_burning_house
+	border = GFX_event_normal_frame_war
 	
 	is_triggered_only = yes 
 	
@@ -535,6 +542,7 @@ character_event = {
 	id = 151
 	desc = "EVTDESC151"
 	picture = "GFX_evt_into_the_dungeon"
+	border = GFX_event_normal_frame_intrigue
 	
 	is_triggered_only = yes 
 	
@@ -560,6 +568,7 @@ character_event = {
 	id = 40001
 	desc = "EVTDESC40001"
 	picture = "GFX_evt_into_the_dungeon"
+	border = GFX_event_normal_frame_intrigue
 	
 	is_triggered_only = yes 
 	
@@ -573,6 +582,7 @@ character_event = {
 	id = 152	
 	desc = "EVTDESC152"
 	picture = GFX_evt_burning_house
+	border = GFX_event_normal_frame_intrigue
 	
 	is_triggered_only = yes 
 	
@@ -599,6 +609,7 @@ character_event = {
 	id = 40002
 	desc = "EVTDESC40002"
 	picture = GFX_evt_burning_house
+	border = GFX_event_normal_frame_intrigue
 	
 	is_triggered_only = yes 
 	
@@ -634,35 +645,18 @@ character_event = {
 	is_triggered_only = yes 
 	
 	immediate = {
-		FROM = {
-			if = {
-				limit = { 
-					dynasty = ROOT 
-				}
-				add_trait = kinslayer
-			}
-			if = {
-				limit = { 
-					any_spouse = { character = ROOT }
-				}
-				
-				#set_character_flag = achievement_spouse_killer #Moved to on_death to also cover undiscovered murder plots.
-				
-				spouse = {
-					any_dynasty_member = {
-						limit = {
-							is_alive = yes
-							NOT = { character = FROM }
-						}
+		any_spouse = {
 						opinion = {
 							who = FROM
 							modifier = opinion_spouse_slayer
 							months = 60
 						}
 					}
+		FROM = {
+			ROOT = { save_event_target_as = kinslayer_target }
+			add_kinslayer_trait_effect = yes
 				}
-			}
-		}
+		#set_character_flag = achievement_spouse_killer #Moved to on_death to also cover undiscovered murder plots.
 	}
 
 	option = {
@@ -1779,20 +1773,6 @@ diploresponse_event = {
 		ai = no
 	}
 	
-	#immediate = { # TODO
-	#	if = {
-	#		limit = {
-	#			has_dlc = "Zeus"
-	#			new_character = {
-	#				NOT = { has_focus = focus_ch_heritage }
-	#			}
-	#		}
-	#		new_character = {
-	#			set_focus = focus_ch_heritage
-	#		}
-	#	}
-	#}
-
 	option = {
 		name = "OK"
 	}
@@ -2178,7 +2158,6 @@ diploresponse_event = {
 	is_triggered_only = yes
 	major = no
 	is_hostile = yes
-	sound = wardeclared
 
 	trigger = {
 		ai = no
@@ -2211,7 +2190,6 @@ diploresponse_event = {
 	is_triggered_only = yes
 	major = no
 	is_hostile = yes
-	sound = wardeclared
 
 	trigger = {
 		ai = no
@@ -3277,7 +3255,18 @@ character_event = {
 # on_forced_consort
 character_event = {
 	id = 660
-	desc = EVTDESC660
+	desc = { 
+		text = EVTDESC660
+		trigger = {
+			is_female = yes
+		}
+	}
+	desc = { 
+		text = EVTDESC660_B
+		trigger = {
+			is_female = no
+		}
+	}
 	picture = GFX_evt_scandal
 	
 	is_triggered_only = yes 
@@ -3303,7 +3292,18 @@ character_event = {
 	}
 	
 	option = {
-		name = "EVTOPTA660"
+		name = { 
+			text = EVTOPTA660
+			trigger = {
+				is_female = yes
+			}
+		}
+		name = { 
+			text = EVTOPTA660
+			trigger = {
+				is_female = no
+			}
+		}
 		opinion = {
 			who = FROM
 			modifier = opinion_forced_consort
@@ -3331,11 +3331,39 @@ character_event = {
 
 character_event = {
 	id = 662
-	desc = "EVTDESC662"
+	desc = { 
+		text = EVTDESC662_B
+		trigger = {
+			is_female = yes
+		}
+	}
+	desc = { 
+		text = EVTDESC662
+		trigger = {
+			is_female = no
+		}
+	}
 	picture = GFX_evt_scandal
 	
 	is_triggered_only = yes 
 	
+	option = {
+		name = "EVTOPTB662"
+		trigger = {
+			NOR = {
+				is_rival = FROMFROM
+				num_of_rivals = 3
+			}
+		}
+		add_rival = FROMFROM
+		hidden_tooltip = {
+			opinion = {	
+				who = FROM
+				modifier = opinion_abducted_spouse
+				months = 1200
+			}
+		}
+	}
 	option = {
 		name = "EVTOPTA662"
 		opinion = {
@@ -3374,6 +3402,9 @@ character_event = {
 		top_liege = {
 			in_revolt = no
 		}
+	}
+	immediate = {
+		sound_effect = pagan_reformation
 	}
 	
 	option = {
@@ -3506,9 +3537,6 @@ character_event = {
 			}
 			clr_character_flag = do_not_disturb
 		}
-	}
-	
-	option = {
 	}
 }
 
@@ -3883,6 +3911,7 @@ character_event = {
 	}
 }
 
+# Crusade/Jihad is invalidated 
 
 ## Inheritance of Traits ##
 # Artifacts are being stripped out as they are converted (from traits)
@@ -6808,7 +6837,7 @@ character_event = {
 	}
 }
 
-# Coppied from Vanilla (JamesFox, 2017/04/21)
+# Copied from Vanilla (JamesFox, 2017/04/21)
 # ASK_TO_JOIN_AMBITION_INTERACTION_ACCEPT_EVENT =
 diploresponse_event = {
 	id = 535
@@ -7011,5 +7040,76 @@ character_event = {
 	
 	immediate = {
 		remove_trait = in_hiding
+	}
+}
+character_event = {
+	id = 687
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = {
+			ai = no
+		}
+		is_shattered_world = yes
+		has_character_flag = great_conqueror
+	}
+	immediate = {
+		FROM = {
+			set_character_flag = achievement_not_so_great
+		}
+	}
+}
+
+character_event = {
+	id = 688
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		ai = no
+		is_shattered_world = yes
+		FROM = { 
+			has_character_flag = great_conqueror
+		}
+	}
+	immediate = {
+		set_character_flag = achievement_not_so_great
+	}
+}
+
+
+# Scripted default elective token setup
+character_event = {
+	id = 689
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	only_rulers = yes
+	
+	immediate = {
+		any_demesne_title = {
+			if = {
+				limit = {
+					has_law = succ_elective_gavelkind
+				}
+				elective_voting_rules = elective_gavelkind
+			}
+			else_if = {
+				limit = {
+					has_law = succ_tanistry
+				}
+				elective_voting_rules = tanistry
+			}
+			else_if = {
+				limit = {
+					has_law = succ_feudal_elective
+				}
+				elective_voting_rules = feudal_elective
+			}
+		}
 	}
 }

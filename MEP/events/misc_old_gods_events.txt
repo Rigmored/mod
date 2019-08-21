@@ -15,6 +15,7 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		remove_character_modifier = launched_prepared_invasion
 		remove_opinion = {
 			who = FROM
 			modifier = preparing_to_invade
@@ -315,7 +316,7 @@ character_event = {
 		}
 		
 		spawn_fleet = {
-			province = closest
+			province = closest_to_capital
 			owner = ROOT
 			match_character = ROOT
 			match_mult = 0.15
@@ -420,7 +421,7 @@ character_event = {
 					attrition = 1.0
 				}
 				spawn_fleet = {
-					province = closest
+					province = closest_to_capital
 					owner = ROOT
 					match_character = ROOT
 					match_mult = 0.075
@@ -431,5 +432,5 @@ character_event = {
 		}
 	}
 }
-
+#Events inapplicable to MEP have been removed
 

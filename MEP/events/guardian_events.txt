@@ -86,6 +86,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		reverse_opinion = {
 			who = FROM
 			modifier = opinion_sad
@@ -95,6 +96,8 @@ character_event = {
 			chance = 40
 			FROM = { 
 				remove_trait = gluttonous
+			lose_weight_medium_effect = yes
+			weight_trait_check_effect = yes
 				hidden_tooltip = { 
 					character_event = { 
 						id = 1501 
@@ -129,6 +132,8 @@ character_event = {
 			50 = { 
 				FROM = { 
 					add_trait = temperate
+					lose_weight_medium_effect = yes
+					weight_trait_check_effect = yes
 					hidden_tooltip = { 
 						ROOT = { 
 							character_event = { 
@@ -144,6 +149,8 @@ character_event = {
 			50 = { 
 				FROM = { 
 					remove_trait = gluttonous
+			lose_weight_medium_effect = yes
+			weight_trait_check_effect = yes
 					hidden_tooltip = {
 						character_event = {	
 							id = 1501
@@ -270,6 +277,8 @@ character_event = {
 			chance = 10
 			FROM = { 
 				add_trait = gluttonous
+				gain_weight_small_effect = yes
+				weight_trait_check_effect = yes
 				hidden_tooltip = { 
 					ROOT = { 
 						character_event = { 
@@ -309,6 +318,8 @@ character_event = {
 			random_list = {
 				50 = {
 					add_trait = gluttonous
+					gain_weight_small_effect = yes
+					weight_trait_check_effect = yes
 					hidden_tooltip = {
 						ROOT = {
 							character_event = {
@@ -403,6 +414,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		random = {
 			chance = 40
 			FROM = { 
@@ -714,6 +726,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		random = {
 			chance = 40
 			FROM = { 
@@ -1076,6 +1089,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		random = {
 			chance = 40
 			FROM = { 
@@ -1407,6 +1421,7 @@ character_event = {
 				trait = arbitrary
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		FROM = {
 			random_list = {
 				70 = { }
@@ -1744,6 +1759,7 @@ character_event = {
 				trait = arbitrary
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			60 = { }
 			40 = { 
@@ -2038,6 +2054,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			50 = { }
 			40 = {
@@ -2734,6 +2751,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			60 = { }
 			40 = { 
@@ -3372,6 +3390,7 @@ character_event = {
 			}
 		}
 		
+		pacifists_lose_piety_effect = yes
 		if = {
 			limit = { trait = kind }
 			prestige = -5
@@ -3410,6 +3429,7 @@ character_event = {
 				trait = cruel
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			60 = { }
 			40 = { 
@@ -3512,7 +3532,7 @@ character_event = {
 	
 	min_age = 20
 	max_age = 70
-	only_rulers = yes
+	only_playable = yes
 	prisoner = no
 	capable_only = yes
 	
@@ -3855,6 +3875,7 @@ character_event = {
 				father = { trait = kind}
 			}			
 		}			
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			80 = {	FROM = { add_trait = wroth	hidden_tooltip = { ROOT = { character_event = { id = 38154}} character_event = { id = 38254}}}}
 			15 = {	FROM = { add_trait = deceitful	hidden_tooltip = { ROOT = { character_event = { id = 38155}} character_event = { id = 38255}}}}
@@ -3960,6 +3981,7 @@ character_event = {
 				father = { trait = wroth}
 			}
 		}			
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			40 = {	FROM = { add_trait = craven	hidden_tooltip = { ROOT = { character_event = { id = 38157}} character_event = { id = 38257} }}}
 			40 = {	FROM = { add_trait = wroth	hidden_tooltip = { ROOT = { character_event = { id = 38154}} character_event = { id = 38254} }}}
@@ -4054,6 +4076,7 @@ character_event = {
 				father = { trait = proud}
 			}
 		}			
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			40 = {	FROM = { add_trait = proud	hidden_tooltip = { ROOT = { character_event = { id = 38161}} character_event = { id = 38261} }}}
 			30 = {	FROM = { add_trait = wroth	hidden_tooltip = { ROOT = { character_event = { id = 38154}} character_event = { id = 38254} }}}
@@ -4366,6 +4389,7 @@ character_event = {
 				trait = cruel
 			}
 		}		
+		pacifists_lose_piety_effect = yes
 		random_list = {
 			70 = {	FROM = { add_trait = wroth	hidden_tooltip = { ROOT = { character_event = { id = 38154}} character_event = { id = 38254} }}}
 			30 = {	FROM = { add_trait = deceitful	hidden_tooltip = { ROOT = { character_event = { id = 38155}} character_event = { id = 38255}}}}
@@ -5064,7 +5088,19 @@ character_event = {
 					}
 				}
 			}
-			50 = {	FROM = { add_trait = temperate	hidden_tooltip = { ROOT = { character_event = { id = 38176}} character_event = { id = 38276 } }}}
+			50 = {
+				FROM = {
+					add_trait = temperate	
+					lose_weight_medium_effect = yes
+					weight_trait_check_effect = yes
+					hidden_tooltip = {
+						ROOT = {
+							character_event = { id = 38176}
+						}
+						character_event = { id = 38276 }
+					}
+				}
+			}
 		}
 	}
 
@@ -5084,7 +5120,11 @@ character_event = {
 		
 		random_list = {
 			50 = {	FROM = { add_trait = lustful	hidden_tooltip = { ROOT = { character_event = { id = 38172}} character_event = { id = 38272} }}}
-			50 = {	FROM = { add_trait = gluttonous	hidden_tooltip = { ROOT = { character_event = { id = 38177}} character_event = { id = 38277 } }}}
+			50 = {	FROM = { add_trait = gluttonous	
+
+				gain_weight_small_effect = yes
+				weight_trait_check_effect = yes
+				hidden_tooltip = { ROOT = { character_event = { id = 38177}} character_event = { id = 38277 } }}}
 		}
 	}
 }
@@ -5297,6 +5337,7 @@ character_event = {
 				trait = wroth
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		FROM = {
 			random_list = {
 				50 = { 
@@ -5779,6 +5820,35 @@ character_event = {
 			}
 		}
 	}
+		option = {
+		name = EVTOPTB38227 #Tell about the joys of giving money
+		if = {
+			limit = {
+				trait = greedy
+			}
+			prestige = -5
+		}
+		FROM = {
+			random_list = {
+				75 = {
+					add_trait = charitable
+					hidden_tooltip = {
+						ROOT = {
+							character_event = {
+								id = 38173 #Notify Child is charitable
+							}
+						}
+						character_event = {
+							id = 38273 #Notify Charitable
+						}
+					}
+				}
+				25 = {
+					change_stewardship = 1
+				}
+			}
+		}
+	}
 
 }
 
@@ -6216,6 +6286,8 @@ character_event = {
 				}
 				10 = {
 					add_trait = gluttonous
+					gain_weight_small_effect = yes
+					weight_trait_check_effect = yes
 					hidden_tooltip = {
 						ROOT = {
 							character_event = {
@@ -6249,6 +6321,8 @@ character_event = {
 			random_list = {
 				80 = {
 					add_trait = gluttonous
+					gain_weight_small_effect = yes
+					weight_trait_check_effect = yes
 					hidden_tooltip = {
 						ROOT = {
 							character_event = {
@@ -6342,6 +6416,7 @@ character_event = {
 				NOT = { trait = wroth }
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		FROM = {
 			random_list = {
 				80 = {
@@ -6569,6 +6644,7 @@ character_event = {
 				trait = cruel
 			}
 		}
+		pacifists_lose_piety_effect = yes
 		FROM = {
 			random = {
 				chance = 10
@@ -6750,6 +6826,8 @@ character_event = {
 			10 = {	
 				FROM = { 
 					add_trait = gluttonous
+					gain_weight_small_effect = yes
+					weight_trait_check_effect = yes
 					hidden_tooltip = { 
 						ROOT = {
 							character_event = { 

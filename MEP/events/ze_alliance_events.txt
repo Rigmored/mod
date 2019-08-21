@@ -117,6 +117,7 @@ character_event = {
 		ai_chance = { 
 			factor = 90
 		}
+		show_portrait = event_target:target_ruler
 		custom_tooltip = {
 			text = EVTOPTA_ZE_8000_TOOLTIP
 			hidden_tooltip = {
@@ -431,7 +432,12 @@ letter_event = {
 		custom_tooltip = {
 			text = EVTOPTA_ZE_8013_TOOLTIP
 			hidden_tooltip = {
+				if = {
+					limit = {
+						is_allied_with = FROM
+					}
 				break_alliance = FROM
+				}
 				remove_opinion = { modifier = in_non_aggression_pact who = FROM }
 				FROM = { letter_event = { id = ZE.8015 days = 3 } }
 				opinion = {
@@ -444,7 +450,7 @@ letter_event = {
 	}
 	#leave it
 	option = {
-		name = EVTOPTB_ZE_8012
+		name = EVTOPTC_ZE_8012
 		ai_chance = {
 			factor = 30
 		}
@@ -464,8 +470,6 @@ letter_event = {
 	desc = EVTDESC_ZE_8013
 
 	is_triggered_only = yes
-
-	#TODO check if alliance or non aggression pact and break either
 	option = {
 		name = EVTOPTA_ZE_8013
 		ai_chance = {
@@ -474,7 +478,12 @@ letter_event = {
 		custom_tooltip = {
 			text = EVTOPTA_ZE_8013_TOOLTIP
 			hidden_tooltip = {
+				if = {
+					limit = {
+						is_allied_with = FROM
+					}
 				break_alliance = FROM
+				}
 				remove_opinion = { modifier = in_non_aggression_pact who = FROM }
 				opinion = {
 					modifier = broken_non_aggression_pact
@@ -526,7 +535,12 @@ letter_event = {
 		name = EVTOPTA_ZE_8015
 		custom_tooltip = {
 			text = EVTOPTA_ZE_8013_TOOLTIP
+			if = {
+				limit = {
+					is_allied_with = FROM
+				}
 			break_alliance = FROM
+			}
 			remove_opinion = { modifier = in_non_aggression_pact who = FROM }
 			opinion = {
 				modifier = broken_non_aggression_pact

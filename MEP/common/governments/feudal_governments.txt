@@ -18,6 +18,7 @@ feudal_governments = {
 		}
 		free_revoke_on_governments = {
 			orc_government
+			spider_government
 			wilderness_nongovernment
 		}
 		vassal_call_to_arms = {
@@ -30,6 +31,7 @@ feudal_governments = {
 			NOT = { is_government_potential = hobbit_thaindom }
 			NOT = { is_government_potential = darklord_government }
 			NOT = { is_government_potential = orc_government }
+			NOT = { is_government_potential = spider_government }
 			NOT = { is_government_potential = wilderness_nongovernment }
 			# government type restrictions
 			NOT = { controls_religion = yes }
@@ -68,6 +70,8 @@ feudal_governments = {
 		free_revoke_on_governments = {
 			darklord_government
 			orc_government
+			spider_government
+			wilderness_nongovernment
 		}
 		vassal_call_to_arms = {
 			tribal_government
@@ -118,6 +122,8 @@ feudal_governments = {
 		free_revoke_on_governments = {
 			darklord_government  # if they can get away with it!
 			orc_government
+			spider_government
+			wilderness_nongovernment
 		}
 		frame_suffix = "_hobbit"
 		potential = {
@@ -158,6 +164,7 @@ feudal_governments = {
 		free_revoke_on_governments = {
 			just_feudal_government
 			hobbit_thaindom
+			wilderness_nongovernment
 		}
 		free_revoke_on_tiers = { baron count }
 		forced_contract = {
@@ -191,7 +198,7 @@ feudal_governments = {
 		capital_move_delay = 4500
 	}
 	
-	# Governemnt for Orcs, Trolls, ordinary Wights, and spiders
+	# Governemnt for Orcs, Trolls, ordinary Wights
 	orc_government = {
 	    preferred_holdings = { CASTLE }
 		allowed_holdings = {
@@ -207,16 +214,14 @@ feudal_governments = {
 		}
 		free_revoke_on_governments = {
 			just_feudal_government
-			hobbit_thaindom		
+			hobbit_thaindom	
+			wilderness_nongovernment			
 		}
 		free_revoke_on_tiers = { baron }
 
 		frame_suffix = "_orc"
 		potential = {
-			OR = {
-				religion_group = religion_group_melkor
-				religion_group = religion_group_ungoliant
-			}
+			religion_group = religion_group_melkor
 			NOT = { trait = good_side }
 			NOT = { mep_is_evil_overlord = yes }
 			is_patrician = no
@@ -231,6 +236,52 @@ feudal_governments = {
 		can_build_tribal = no
 		builds_with_prestige  = { FORT }
 		allow_looting = yes
+		
+		ignore_in_vassal_limit_calculation = {
+		    tribal_government
+		}
+		capital_move_delay = 600
+	}
+	
+	# Governemnt for Spiders
+	spider_government = {
+	    preferred_holdings = { CASTLE }
+		allowed_holdings = {
+		    CASTLE
+			TEMPLE
+			CITY
+			FORT
+		}
+		accepts_liege_governments = {
+		    darklord_government
+		}
+		free_revoke_on_governments = {
+			just_feudal_government
+			hobbit_thaindom	
+			wilderness_nongovernment			
+		}
+		free_revoke_on_tiers = { baron }
+
+		frame_suffix = "_orc"
+		potential = {
+			religion_group = religion_group_ungoliant
+			NOT = { trait = good_side }
+			NOT = { mep_is_evil_overlord = yes }
+			is_patrician = no
+		}
+		color = { 70 40 70 }
+		
+		allow_title_revokation = yes
+		allows_matrilineal_marriage = yes
+		dukes_called_kings = yes
+		can_imprison_without_reason = yes
+		can_revoke_without_reason = yes
+		ignores_de_jure_laws = yes
+		can_build_tribal = no
+		builds_with_prestige  = { FORT }
+		allow_looting = yes
+		max_consorts  = 3
+		women_can_take_consorts = yes
 		
 		ignore_in_vassal_limit_calculation = {
 		    tribal_government
@@ -254,6 +305,9 @@ feudal_governments = {
 			feudal_government
 			just_feudal_government
 			darklord_government
+		}
+		free_revoke_on_governments = {
+			wilderness_nongovernment			
 		}
 		free_revoke_on_tiers = {
 			duke

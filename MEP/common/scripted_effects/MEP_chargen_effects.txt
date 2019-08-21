@@ -1,0 +1,460 @@
+# Effects that help with making generated characters correct
+
+# Many immortal species (Elves, Ents, Eagles) have an immortal_age = 40
+# use this to get a properly immortal person of 40 or more
+# Due to a bug, the fallback is to just add race_immortal
+mep_age_to_immortal_effect = {
+	if = { # bug workaround
+		limit = { year >= 10000 }
+		add_trait = race_immortal
+	}
+	else = {
+		export_to_variable = { which = char_age value = age }
+		subtract_variable = { which = char_age value = 40 }
+		multiply_variable = { which = char_age value = -1 }
+		add_age = char_age
+		add_trait = race_immortal
+		if = {
+			limit = {
+				NOT = { check_variable = { which = char_age value = 0 } }
+			}
+			multiply_variable = { which = char_age value = -1 }
+			add_age = char_age
+		}
+	}
+}
+
+# In Middle-Earth, members of Immortal Races are commonly many thousands of years old
+# Use this effect to add a random but large age to a young generated member of these Races
+mep_add_immortal_age_effect = {
+	# limit_age is used to prevent characters that are too old (date dependent)
+	export_to_variable = { which = limit_age value = year }
+	subtract_variable = { which = limit_age value = 1500 }
+	# excess_age is part of working around the Y10K problem
+	export_to_variable = { which = excess_age value = year } 
+	subtract_variable = { which = excess_age value = 10000 }
+	random_list = {
+		5 = {
+			add_age = 0
+			modifier = {
+				factor = 0
+				check_variable = { which = excess_age value = 0 }
+			}
+		}
+		10 = {
+			add_age =  1000
+			modifier = {
+				factor = 0
+				check_variable = { which = excess_age value = 1000 }
+			}
+		}
+		10 = {
+			add_age =  2000
+			modifier = {
+				factor = 0
+				check_variable = { which = excess_age value = 2000 }
+			}
+		}
+		10 = {
+			add_age =  3000
+			modifier = {
+				factor = 0
+				check_variable = { which = excess_age value = 3000 }  # a start date before 1300 seems likely
+			}
+		}
+		10 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 4000 } }
+			}
+			add_age =  4000
+		}
+		10 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 5000 } }
+			}
+			add_age =  5000
+		}
+		10 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 6000 } }
+			}
+			add_age =  6000
+		}
+		5 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 7000 } }
+			}
+			add_age =  7000
+		}
+		5 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 8000 } }
+			}
+			add_age =  8000
+		}
+		5 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 9000 } }
+			}
+			add_age =  9000
+		}
+		2 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 10000 } }
+			}
+			add_age = 10000
+		}
+	}
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 100 }
+		10 = { add_age = 200 }
+		10 = { add_age = 300 }
+		10 = { add_age = 400 }
+		10 = { add_age = 500 }
+		10 = { add_age = 600 }
+		10 = { add_age = 700 }
+		10 = { add_age = 800 }
+		10 = { add_age = 900 }
+	}
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 10 }
+		10 = { add_age = 20 }
+		10 = { add_age = 30 }
+		10 = { add_age = 40 }
+		10 = { add_age = 50 }
+		10 = { add_age = 60 }
+		10 = { add_age = 70 }
+		10 = { add_age = 80 }
+		10 = { add_age = 90 }
+	}
+}
+
+# Similar to mep_add_immortal_age_effect, but never really gets to over 7000
+mep_add_immortal_age_effect_lesser = {
+	# limit_age is used to prevent characters that are too old (date dependent)
+	export_to_variable = { which = limit_age value = year }
+	subtract_variable = { which = limit_age value = 1500 }
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age =  1000 }
+		10 = { add_age =  2000 }
+		10 = { add_age =  3000 }
+		10 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 4000 } }
+			}
+			add_age =  4000
+		}
+		5 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 5000 } }
+			}
+			add_age =  5000
+		}
+		5 = {
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { which = char_age value = 6000 } }
+			}
+			add_age =  6000
+		}
+	}
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 100 }
+		10 = { add_age = 200 }
+		10 = { add_age = 300 }
+		10 = { add_age = 400 }
+		10 = { add_age = 500 }
+		10 = { add_age = 600 }
+		10 = { add_age = 700 }
+		10 = { add_age = 800 }
+		10 = { add_age = 900 }
+	}
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 10 }
+		10 = { add_age = 20 }
+		10 = { add_age = 30 }
+		10 = { add_age = 40 }
+		10 = { add_age = 50 }
+		10 = { add_age = 60 }
+		10 = { add_age = 70 }
+		10 = { add_age = 80 }
+		10 = { add_age = 90 }
+	}
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 1 }
+		10 = { add_age = 2 }
+		10 = { add_age = 3 }
+		10 = { add_age = 4 }
+		10 = { add_age = 5 }
+		10 = { add_age = 6 }
+		10 = { add_age = 7 }
+		10 = { add_age = 8 }
+		10 = { add_age = 9 }
+	}
+}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# used to apply the light_valinor trait if the scoped character is old enough
+# should only be used on culture_amanyar (High Elves)
+mep_check_add_light_valinor = {
+	# Two Trees destroyed in year 4266
+	export_to_variable = { which = ysince_tree value = year }
+	subtract_variable = { which = ysince_tree value = 4267 }
+	export_to_variable = { which = char_age value = age }
+	# Checking and applying
+	if = {
+		limit = {
+			check_variable = { which = char_age which = ysince_tree }
+			NOT = { trait = light_valinor }
+		}
+		add_trait = light_valinor
+	}
+}
+
+mep_make_proper_elf_effect = {
+	add_trait = elf
+	mep_age_to_immortal_effect = yes
+	mep_add_immortal_age_effect = yes
+	if = {
+		limit = { culture_group = culture_group_amanyar }
+		mep_check_add_light_valinor = yes
+	}
+}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Generated characters have normal ages for humans. For Dwarves, we will scale these
+# using (roughly) 16 -> 30, 60 -> 240, 110 -> 340
+# Note: due to a bug, this works badly if the year > 10000
+mep_scale_age_for_dwarf_effect = {
+	# because generated ages are rather young
+	random_list = {
+		10 = { add_age = 0 }
+		10 = { add_age = 1 }
+		10 = { add_age = 2 }
+		10 = { add_age = 3 }
+		10 = { add_age = 4 }
+		10 = { add_age = 5 }
+		10 = { add_age = 6 }
+		10 = { add_age = 7 }
+		10 = { add_age = 8 }
+		10 = { add_age = 9 }
+	}
+	export_to_variable = { which = char_age value = age }
+	export_to_variable = { which = target_age value = age }
+	log = "Age [char_age.GetValue]"
+	# Children
+	if = {
+		limit = {
+			NOT = { check_variable = { which = char_age value = 16 } }
+		}
+		multiply_variable = { which = target_age value = 1.875 }
+	}
+	# Adults
+	else_if = {
+		limit = {
+			NOT = { check_variable = { which = char_age value = 60 } }
+		}
+		subtract_variable = { which = target_age value = 16 }
+		multiply_variable = { which = target_age value = 4.7 }
+		# the history files have much older Dwarves in the second age, but I'll decrease the effect here
+		if = {
+			limit = { year < 8400 }
+			multiply_variable = { which = target_age value = 1.3 }
+		}
+		change_variable = { which = target_age value = 30 }
+		log = "TargetAge [target_age.GetValue]"
+	}
+	# Elderly
+	else = {
+		subtract_variable = { which = target_age value = 60 }
+		multiply_variable = { which = target_age value = 2 }
+		if = {
+			limit = { year < 8400 }
+			change_variable = { which = target_age value = 300 }
+		}
+		else = {
+			change_variable = { which = target_age value = 240 }
+		}
+	}
+	# Changing the age
+	subtract_variable = { which = target_age which = char_age }
+	add_age = target_age
+	set_variable = { which = char_age value = 0 }
+	set_variable = { which = target_age value = 0 }
+}
+
+mep_make_proper_dwarf_effect = {
+	add_trait = dwarven
+	if = {
+		limit = { year < 10000 }
+		mep_scale_age_for_dwarf_effect = yes
+	}
+}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Life scaling for high blooded Númenóreans
+# http://www.zarkanya.net/Tolkien/Decline%20of%20the%20Numenoreans.htm
+
+# Scaling age for Númenóreans, uses global variables to get the scale
+# Note that blood_of_numenor2 does not count for this 
+mep_scale_age_numenorean_effect = {
+	export_to_variable = { which = char_age value = age }
+	set_variable = { which = target_age which = char_age }
+	set_variable = { which = menopause_age value = 50 }
+	# Royal (non black/adunaic)
+	if = {
+		limit = {
+			OR = {
+				trait = prince_numenor
+				trait = blood_of_anarion
+				trait = blood_of_isildur
+			}
+			NOT = { mep_is_black_numenorean_culture = yes }
+		}
+		multiply_variable = { which = target_age  which = global_agescale_numenorean_royal }
+		multiply_variable = { which = menopause_age  which = global_agescale_numenorean_royal }
+	}
+	# Adûnaic / Black ( royalty, but for the 3rd age extended to all, since there is little difference )
+	else_if = {
+		limit = {
+			mep_is_black_numenorean_culture = yes
+			OR = {
+				year > 8220
+				AND = {
+					year <= 8220
+					trait = prince_numenor
+				}
+			}
+		}
+		multiply_variable = { which = target_age  which = global_agescale_numenorean_black }
+		multiply_variable = { which = menopause_age  which = global_agescale_numenorean_black }
+	}
+	# For more ordinary full-blooded (blood_of_numenor or numenorean, not black)
+	else = {
+		multiply_variable = { which = target_age  which = global_agescale_numenorean_high }
+		multiply_variable = { which = menopause_age  which = global_agescale_numenorean_high }
+	}
+	# We have a target age, we adjust
+	subtract_variable = { which = target_age value = char_age }
+	add_age = target_age
+	# Checking if we should add the infertile trait
+	if = {
+		limit = {
+			is_female = yes
+			NOT = { trait = dunedain_infertility }
+			age >= menopause_age
+		}
+		add_trait = dunedain_infertility
+	}
+}
+
+# Adding the correct (non-royal) Númenórean trait
+# Downfall in 8221
+mep_apply_numenorean_trait_effect = {
+	# Getting Date of Birth
+	export_to_variable = { which = char_age value = age }
+	export_to_variable = { which = year_born value = year }
+	subtract_variable = { which = year_born  which = char_age }
+	# If born early enough, always born in Númenor
+	if = {
+		limit = {
+			NOT = { check_variable = { which = year_born value = 8200 } }
+		}
+		add_trait = numenorean
+	}
+}
+
+# Apply Númenórean traits and aging to a generated character
+mep_make_proper_numenorean_effect = {
+	# First, 'True Blood' or 'Strong Traces' ?
+	if = {
+		limit = { year < 8550 }
+		add_trait = blood_of_numenor
+	}
+	else = {
+		if = {
+			limit = { year >= 11350 }
+			random_list = {
+				10 = { add_trait = blood_of_numenor }
+				90 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 11000 }
+			random_list = {
+				20 = { add_trait = blood_of_numenor }
+				80 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 10650 }
+			random_list = {
+				30 = { add_trait = blood_of_numenor }
+				70 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 10300 }
+			random_list = {
+				40 = { add_trait = blood_of_numenor }
+				60 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 9950 }
+			random_list = {
+				50 = { add_trait = blood_of_numenor }
+				50 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 9600 }
+			random_list = {
+				60 = { add_trait = blood_of_numenor }
+				40 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 9250 }
+			random_list = {
+				70 = { add_trait = blood_of_numenor }
+				30 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else_if = {
+			limit = { year >= 8900 }
+			random_list = {
+				80 = { add_trait = blood_of_numenor }
+				20 = { add_trait = blood_of_numenor2 }
+			}
+		}
+		else = {
+			random_list = {
+				90 = { add_trait = blood_of_numenor }
+				10 = { add_trait = blood_of_numenor2 }
+			}
+		}
+	}
+	if = {
+		limit = { trait = blood_of_numenor }
+		# Second, apply the age scaling (before Y10K, because doing it after is buggy)
+		if = {
+			limit = { year < 10000 }
+			mep_scale_age_numenorean_effect = yes
+		}	
+		# Third, possible numenorean trait
+		mep_apply_numenorean_trait_effect = yes
+	}
+}

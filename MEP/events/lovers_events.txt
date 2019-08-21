@@ -501,6 +501,7 @@ character_event = {
 			random = {
 				chance = 10
 				remove_trait = wounded
+				add_scarred_tiered_effect = yes
 			}
 		}
 	}
@@ -516,6 +517,7 @@ character_event = {
 			random = {
 				chance = 20
 				remove_trait = wounded
+				add_scarred_tiered_effect = yes
 			}
 		}
 	}
@@ -605,7 +607,7 @@ character_event = {
 		ai_chance = {
 			factor = 95
 		}
-		random_courtier = {
+		any_courtier = {
 			limit = {
 				age = 12
 				is_female = yes
@@ -631,6 +633,10 @@ character_event = {
 					age = 18
 				}
 			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
 			random_list = {
 				80 = {
 					set_character_flag = good_reply
@@ -657,7 +663,7 @@ character_event = {
 		ai_chance = {
 			factor = 95
 		}
-		random_courtier = {
+		any_courtier = {
 			limit = {
 				age = 12
 				is_female = no
@@ -683,6 +689,10 @@ character_event = {
 					age = 18
 				}
 			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
 			random_list = {
 				80 = {
 					set_character_flag = good_reply
@@ -717,7 +727,10 @@ character_event = {
 		}
 		if = {
 			limit = {
+				OR = {
 				trait = craven
+					trait = berserker
+				}
 				NOT = {
 					trait = shy
 				}
@@ -727,7 +740,10 @@ character_event = {
 		if = {
 			limit = {
 				trait = shy
-				NOT = { trait = craven }
+				NOR = {
+					trait = craven
+					trait = berserker
+				}
 			}
 			add_trait = craven
 		}
@@ -806,6 +822,7 @@ character_event = {
 		random_list = {
 			30 = {
 				if = {
+					limit = { NOT = { trait = berserker } }
 					add_trait = craven
 					hidden_tooltip = {
 						character_event = {
@@ -900,13 +917,13 @@ character_event = {
 			NOT = {
 				trait = celibate
 			}
+			mep_is_adult = yes
 			NOT = {
 				age = 50
 			}
 			has_epidemic = no
 			is_ill = no
 			has_lover = no
-			mep_is_adult = yes
 		}
 		spouse = {
 			is_alive = yes
@@ -929,7 +946,7 @@ character_event = {
 	}
 	
 	immediate = {
-		random_courtier = {
+		any_courtier = {
 			limit = {
 				is_female = yes
 				prisoner = no
@@ -949,6 +966,10 @@ character_event = {
 				is_ill = no
 				has_lover = no
 			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
 			save_event_target_as = target_lover
 		}
 	}
@@ -1930,6 +1951,16 @@ character_event = {
 		months = 120
 	}
 	
+	immediate = {
+		random_lover = {
+			limit = {
+				is_female = yes
+				is_married = yes 
+			}
+			save_event_target_as = lover		
+		}
+	}
+	
 	option = {
 		name = "EVTOPTA64060" #I will write a poem of my pain
 		if = {
@@ -1988,11 +2019,7 @@ character_event = {
 	}
 	option = {
 		name = "EVTOPTD64060" #She's married, I should forget her
-		random_lover = {
-			limit = {
-				is_female = yes
-				is_married = yes 
-			}
+		event_target:lover = {
 			character_event = {
 				id = 64046
 				tooltip = "EVTTOOLTIP64046"
@@ -3566,10 +3593,12 @@ character_event = {
 		prestige = -50
 		random = {
 			chance = 10
-			add_trait = craven
-			hidden_tooltip = {
-				character_event = {
-					id = 38257 #Notify Craven
+			if = { limit = { NOT = { trait = berserker } } 
+				add_trait = craven
+				hidden_tooltip = {
+					character_event = {
+						id = 38257 #Notify Craven
+					}
 				}
 			}
 		}

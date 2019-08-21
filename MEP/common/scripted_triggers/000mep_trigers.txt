@@ -1,4 +1,58 @@
 #  some MEP stuff to include in 00_scripted_triggers (and elsewhere)
+# Good vs Evil
+# mep_is_immortal_race_trigger
+# mep_is_good_side_race
+# mep_is_evil_side_race
+# mep_is_good_side_trigger
+# mep_is_evil_side_trigger
+# mep_infertile_trait
+# mep_traits_adding_stewardship
+# mep_can_be_merc_leader_mixin
+# mep_inaccessible_traits
+# mep_has_important_trait
+# mep_interesting_face_trigger
+# mep_attraction_group_nice_hum
+# mep_attraction_compatible_root
+# mep_attraction_compatible_prev
+# mep_is_adult
+# mep_is_child
+# mep_warrior_culture
+# mep_diplomatic_culture
+# mep_spiritual_culture
+# mep_minor_title_martial
+# mep_should_be_unkillable_trigger 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mep_is_immortal_race_trigger = {
+	OR = {
+		religion_group = religion_group_eruhini # Ainur (like Eagles)
+		religion_group = religion_group_enyd    # Ents
+		religion_group = religion_group_eldar   # Elves
+		religion = religion_umaiar
+		religion = religion_wight
+		religion_group = religion_group_ungoliant
+		religion_group = religion_group_dragon
+	}
+}
+
+mep_is_good_side_race = {
+	OR = {
+		religion_group = religion_group_khazad
+		religion_group = religion_group_eldar
+		religion = religion_numenorean
+		religion = religion_dunedain
+		religion = religion_edain
+		religion = religion_druedain
+		religion_group = religion_group_eruhini # Ainur (like Eagles)
+		religion_group = religion_group_enyd    # Ents
+	}
+}
+mep_is_evil_side_race = {
+	OR = {
+		religion_group = religion_group_melkor
+		religion_group = religion_group_ungoliant
+		religion_group = religion_group_dragon
+	}
+}
 
 mep_is_good_side_trigger = {
 	OR = {
@@ -6,15 +60,8 @@ mep_is_good_side_trigger = {
 		AND = {
 			NOT = { trait = evil_side}
 			OR = {
-				religion_group = religion_group_eldar   # Elves
-				religion_group = religion_group_khazad  # Dwarves
-				religion = religion_rhovanion
-				religion = religion_numenorean
-				religion = religion_dunedain
-				religion = religion_edain
-				religion = religion_druedain
-				religion_group = religion_group_eruhini # Ainur (like Eagles)
-				religion_group = religion_group_enyd    # Ents							
+				mep_is_good_side_race = yes
+				religion = religion_rhovanion							
 			}
 			NOT = { culture = culture_adunaic }
 			NOT = { culture = culture_black_numenorean }
@@ -26,16 +73,41 @@ mep_is_evil_side_trigger = {
 	OR = {
 		trait = evil_side
 		AND = {
-			OR = {
-				religion_group = religion_group_melkor
-				religion_group = religion_group_ungoliant
-				religion_group = religion_group_dragon
-			}
+			mep_is_evil_side_race = yes
 			NOT = { trait = good_side}
 		}						
 	}
 }
 
+# fire in a character scope, true if ROOT is on the 'opposite side'
+mep_good_evil_opposed_root_trigger = {
+	OR = {
+		AND = {
+			mep_is_good_side_trigger = yes
+			ROOT = { mep_is_evil_side_trigger = yes }
+		}
+		AND = {
+			mep_is_evil_side_trigger = yes
+			ROOT = { mep_is_good_side_trigger = yes }
+		}
+	}
+}
+# fire in a character scope, true if PREV is on the 'opposite side'
+mep_good_evil_opposed_prev_trigger = {
+	OR = {
+		AND = {
+			mep_is_good_side_trigger = yes
+			PREV = { mep_is_evil_side_trigger = yes }
+		}
+		AND = {
+			mep_is_evil_side_trigger = yes
+			PREV = { mep_is_good_side_trigger = yes }
+		}
+	}
+}
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 mep_infertile_trait = {
 	OR = {
 		trait = marriedforever
@@ -150,7 +222,7 @@ mep_interesting_face_trigger = {
 		trait = half_orc
 	}
 }
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 mep_vrich_city_building = {
 	OR = {
 		has_building = ct_marketplace_5
@@ -183,54 +255,72 @@ mep_vrich_city_building = {
 		has_building = ct_edhellond
 	}
 }
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Attraction Group 1: 'Nice' Humanoids (except Dwarves)
+mep_attraction_group_nice_hum = {
+	OR = {
+		religion_group = religion_group_edain
+		religion_group = religion_group_hildor
+		religion_group = religion_group_periannath
+		religion_group = religion_group_eldar
+		trait = valar
+		trait = enigma
+		trait = maiar
+		trait = half_orc
+	}
+}
+
+# Attraction Group 2: Nasty Humanoids
+mep_attraction_group_nasty_hum = {
+	OR = {
+		trait = half_orc
+		religion = religion_orkish
+		religion = religion_uruk
+		religion = religion_olog
+	}
+}
 
 mep_attraction_compatible_root = {
 	OR = {
 		# humans, elves, hobbits, and the like
 		AND = {
-			OR = {
-				religion_group = religion_group_edain
-				religion_group = religion_group_hildor
-				religion_group = religion_group_periannath
-				religion_group = religion_group_eldar
-				trait = valar
-				trait = enigma
-				trait = maiar
-				trait = half_orc
-			}
+			mep_attraction_group_nice_hum = yes
 			ROOT = {
-				OR = {
-					religion_group = religion_group_edain
-					religion_group = religion_group_hildor
-					religion_group = religion_group_periannath
-					religion_group = religion_group_eldar
-					trait = valar
-					trait = enigma
-					trait = maiar
-					trait = half_orc
-				}
+				mep_attraction_group_nice_hum = yes
 			}
 		}
 		# Orcs and Goblins
 		AND = {
-			OR = {
-				trait = half_orc
-				religion = religion_orkish
-				religion = religion_uruk
-			}
+			mep_attraction_group_nasty_hum = yes
 			ROOT = {
-				OR = {
-					trait = half_orc
-					religion = religion_orkish
-					religion = religion_uruk
-				}
+				mep_attraction_group_nasty_hum = yes
 			}
 		}
 		# Others
 		religion_group = ROOT
 	}
 }
-
+mep_attraction_compatible_prev = {
+	OR = {
+		# humans, elves, hobbits, and the like
+		AND = {
+			mep_attraction_group_nice_hum = yes
+			PREV = {
+				mep_attraction_group_nice_hum = yes
+			}
+		}
+		# Orcs and Goblins
+		AND = {
+			mep_attraction_group_nasty_hum = yes
+			PREV = {
+				mep_attraction_group_nasty_hum = yes
+			}
+		}
+		# Others
+		religion_group = PREV
+	}
+}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 mep_is_adult = {
 	AND = {
 		is_adult = yes
@@ -244,3 +334,85 @@ mep_is_child = {
 		trait = elf_childhood
 	}
 }
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mep_warrior_culture = {
+	OR = {
+		culture = culture_hillmen
+		culture = culture_dunlending
+		culture = culture_haradrim
+		religion = religion_orkish
+		religion = religion_uruk
+		religion = religion_olog
+		culture = culture_balchoth
+		culture = culture_wainriders
+		culture = culture_jangovars
+	}
+}
+mep_diplomatic_culture = {
+}
+mep_spiritual_culture = {
+}
+mep_minor_title_martial = {
+	OR = {
+		has_minor_title = title_captaingeneral
+		has_minor_title = title_captainoffountain
+		has_minor_title = title_captaincitadel
+		has_minor_title = title_admiralofpelargir
+		has_minor_title = title_lieutenantgeneral
+		has_minor_title = title_admiral
+		has_minor_title = title_masterbow
+		has_minor_title = title_captainaxebearers
+		has_minor_title = title_wardenrammasechor
+		
+		has_minor_title = title_firstmarshal
+		has_minor_title = title_secondmarshal
+		has_minor_title = title_thirdmarshal
+		
+		has_minor_title = title_LieutenantofDolGuldur
+		has_minor_title = title_lieutenantofbaraddur
+		
+		has_minor_title = title_masterofguardsofkhazad_dum
+		has_minor_title = title_masterofguardsofnortheast
+		has_minor_title = title_masterofguardsofaglarond
+		has_minor_title = title_masterofguardsofbroadbeams
+		has_minor_title = title_masterofguardsoffirebeads
+		has_minor_title = title_masterofguardsofnurunkhizdin
+		has_minor_title = title_masterofguardsofstonefoot
+		has_minor_title = title_masterofguardsofzirakdum
+		has_minor_title = title_masterofguardsofgundabad
+		has_minor_title = title_azrakubarkkhazad
+		has_minor_title = title_azrakuukab 
+		has_minor_title = title_azrakutherakaidag
+	}
+}
+
+# should be unkillable via standard assasination or battle-death
+mep_should_be_unkillable_trigger = {
+	OR = {
+		culture_group = culture_group_wilderness
+		AND = {
+			culture_group = culture_group_eru
+			NOT = { culture = culture_eagles }
+		}
+		culture = culture_balrog
+		culture = culture_wight
+		religion_group = religion_group_dragon
+		trait = maiar
+		trait = balrog
+		AND = {
+			culture_group = culture_group_onodrim
+			age = 2000
+		}
+		AND = {
+			trait = elf
+			age = 8000
+		}
+		trait = fea_strong
+		trait = enigma
+		trait = nazgul
+		religion = religion_umaiar
+	}
+}
+
+
+

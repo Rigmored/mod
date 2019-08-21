@@ -31,9 +31,9 @@ character_event = {
 				# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
 				# like some sort of 'good orc'
 				OR = {
-					NOT = { mep_evil_religion = yes }
+					NOT = { mep_is_evil_side_race = yes }
 					AND = {
-						mep_evil_religion = yes
+						mep_is_evil_side_race = yes
 						NOT = { trait = good_side }
 					}
 				}
@@ -60,9 +60,9 @@ character_event = {
 					# just in case we have a province ruler who is both good_side *AND* religion_group_melkor...
 					# like some sort of 'good orc'
 					OR = {
-						NOT = { mep_evil_religion = yes }
+						NOT = { mep_is_evil_side_race = yes }
 						AND = {
-							mep_evil_religion = yes
+							mep_is_evil_side_race = yes
 							NOT = { trait = good_side }
 						}
 					}
@@ -562,10 +562,10 @@ province_event = {
 		OR = {
 			AND = {
 				has_province_modifier = being_purged_ofevil
-				NOT = { mep_evil_religion = yes }
+				NOT = { mep_is_evil_side_race = yes }
 			}
 			AND = {
-				mep_evil_religion = yes
+				mep_is_evil_side_race = yes
 				OR = {
 					has_province_modifier = being_purged_ofgood
 					has_province_modifier = being_purged_ofgoodeo
@@ -579,7 +579,7 @@ province_event = {
 	option = {
 		trigger = {
 			has_province_modifier = being_purged_ofevil
-			NOT = { mep_evil_religion = yes }
+			NOT = { mep_is_evil_side_race = yes }
 		}
 		remove_province_modifier = being_purged_ofevil
 		clr_province_flag = mep_purge_delay
@@ -587,7 +587,7 @@ province_event = {
 	
 	option = {
 		trigger = {
-			mep_evil_religion = yes
+			mep_is_evil_side_race = yes
 			OR = {
 				has_province_modifier = being_purged_ofgood
 				has_province_modifier = being_purged_ofgoodeo
