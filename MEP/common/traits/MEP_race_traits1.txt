@@ -87,7 +87,7 @@ elf_childhood = {
 
 fea_strong = {
 	potential = { religion_group = religion_group_eldar }
-	opposites = { fea_weak fea_normal }
+	opposites = { fea_weak }
 	fertility = 2.0
 	martial = 4
 	learning = 1
@@ -98,19 +98,9 @@ fea_strong = {
 	cached = yes
 }
 
-fea_normal = {
-	potential = { religion_group = religion_group_eldar }
-	opposites = { fea_weak fea_strong }
-	martial = 2
-	random = no
-	customizer = yes	
-	cached = yes
-	combat_rating = 10
-}
-
 fea_weak = {
 	potential = { religion_group = religion_group_eldar }
-	opposites = { fea_normal fea_strong }
+	opposites = { fea_strong }
 	fertility_penalty = -2.0
 	martial_penalty = -1
 	diplomacy_penalty = -1
@@ -396,4 +386,49 @@ elven_blood = {
 	same_opinion = 25
 	fertility_penalty = -0.1
 	cached = yes
+}
+#---------------------------------------------------------------------
+hobbit = {
+    potential = { religion_group = religion_group_periannath } 
+    # okay relations
+    tolerates_religion_group_eruhini = yes
+    tolerates_religion_group_khazad = yes
+    tolerates_religion_group_eldar = yes
+    # Those who hate hobbits
+    religion_group_melkor_opinion = -50
+	religion_group_dragon_opinion = -60
+	religion_group_ungoliant_opinion = -40
+   
+    # other modifers
+    health = 6.5
+    same_opinion = 20
+    inherit_chance = 100
+    martial_penalty = -1
+    intrigue = 3
+    stewardship = 3
+    learning = -5
+    customizer = yes
+	combat_rating = -5
+    ai_ambition = -60 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = 50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    cached = yes
+}
+
+# Not for hobbits, but for hobbit-fanciers
+hobbit_friend = {
+	ruler_designer_cost = 0
+	potential = {
+		NOT = { religion_group = religion_group_periannath }
+		NOT = { trait = evil_side }
+		NOT = { trait = zealous } # aka 'Racist'
+		OR = {
+			NOT = { mep_is_evil_side_race = yes }
+			trait = good_side
+		}
+	}
+	tolerates_religion_group_periannath = yes	# getting rid of base intolerance
+	religion_group_periannath_opinion = 30		# hobbits like her/him back
+	opposites = { hobbit }
+	opposite_opinion = 50				# he/she likes hobbits
+	same_opinion = 20
 }

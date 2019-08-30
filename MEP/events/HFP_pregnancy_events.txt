@@ -8518,90 +8518,90 @@ character_event = {
 
 
 #Pagan Mother can go offer sacrifice to the gods for healthy child.
-character_event = {
-	id = HFP.20571
-	desc = EVTDESCHFPA20571
-	picture = GFX_evt_pagan
-	border = GFX_event_normal_frame_religion
-	trigger = { 
-		trait = pregnant
-		NOT = { trait = troubled_pregnancy } 
-		religion_group = pagan_group
-	}
-
-	is_triggered_only = yes
-
-	option = { 
-		name = EVTOPTAHFP20571
-		custom_tooltip = { text = tooltip_pagan_mom_sacrifice }
-		hidden_tooltip = { character_event = { id = HFP.20572 days = 3 } } #Pick one.
-		scaled_wealth = { value = -1 min = -5 max = -50 } 
-		add_character_modifier = {
-			name = mother_exposed_to_elements
-			duration = 60
-		}
-		ai_chance = { 
-			factor = 70 
-			modifier = { 
-				factor = 0.35 
-				trait = cynical
-			}
-			modifier = { 
-				factor = 0.5 
-				trait = craven
-			}
-			modifier = { 
-				factor = 0.5 
-				trait = paranoid
-			}
-			modifier = { 
-				factor = 0.5 
-				trait = feeble
-			}
-			modifier = { 
-				factor = 0.5 
-				is_ill = yes
-			}
-			modifier = { 
-				factor = 0
-				trait = in_hiding
-			}
-		}
-	}
-	option = { #No
-		name = EVTOPTBHFP20571
-		if = { 
-			limit = { trait = cynical } 
-			tiered_piety_negative_effect = yes
-			tiered_prestige_reward_effect = yes
-		}
-		if = { 
-			limit = { 
-				NOT = { trait = cynical } 
-			} 
-			random = { 
-				chance = 50
-				add_trait = cynical
-				hidden_tooltip = { character_event = { id = 38258 } }
-			}
-		}
-		if = { 
-			limit = { trait = zealous } 
-			random = { 
-				chance = 50
-				remove_trait = zealous
-				hidden_tooltip = { character_event = { id = 38269 } }
-			}
-		}
-		ai_chance = { 
-			factor = 30 
-			modifier = { 
-				factor = 0.5 
-				trait = zealous
-			}
-		}
-	}
-}
+#character_event = {
+#	id = HFP.20571
+#	desc = EVTDESCHFPA20571
+#	picture = GFX_evt_pagan
+#	border = GFX_event_normal_frame_religion
+#	trigger = { 
+#		trait = pregnant
+#		NOT = { trait = troubled_pregnancy } 
+#		religion_group = pagan_group
+#	}
+#
+#	is_triggered_only = yes
+#
+#	option = { 
+#		name = EVTOPTAHFP20571
+#		custom_tooltip = { text = tooltip_pagan_mom_sacrifice }
+#		hidden_tooltip = { character_event = { id = HFP.20572 days = 3 } } #Pick one.
+#		scaled_wealth = { value = -1 min = -5 max = -50 } 
+#		add_character_modifier = {
+#			name = mother_exposed_to_elements
+#			duration = 60
+#		}
+#		ai_chance = { 
+#			factor = 70 
+#			modifier = { 
+#				factor = 0.35 
+#				trait = cynical
+#			}
+#			modifier = { 
+#				factor = 0.5 
+#				trait = craven
+#			}
+#			modifier = { 
+#				factor = 0.5 
+#				trait = paranoid
+#			}
+#			modifier = { 
+#				factor = 0.5 
+#				trait = feeble
+#			}
+#			modifier = { 
+#				factor = 0.5 
+#				is_ill = yes
+#			}
+#			modifier = { 
+#				factor = 0
+#				trait = in_hiding
+#			}
+#		}
+#	}
+#	option = { #No
+#		name = EVTOPTBHFP20571
+#		if = { 
+#			limit = { trait = cynical } 
+#			tiered_piety_negative_effect = yes
+#			tiered_prestige_reward_effect = yes
+#		}
+#		if = { 
+#			limit = { 
+#				NOT = { trait = cynical } 
+#			} 
+#			random = { 
+#				chance = 50
+#				add_trait = cynical
+#				hidden_tooltip = { character_event = { id = 38258 } }
+#			}
+#		}
+#		if = { 
+#			limit = { trait = zealous } 
+#			random = { 
+#				chance = 50
+#				remove_trait = zealous
+#				hidden_tooltip = { character_event = { id = 38269 } }
+#			}
+#		}
+#		ai_chance = { 
+#			factor = 30 
+#			modifier = { 
+#				factor = 0.5 
+#				trait = zealous
+#			}
+#		}
+#	}
+#}
 
 #Pagan sacrifice: what are you wishing for?
 character_event = {

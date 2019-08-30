@@ -67,10 +67,6 @@ character_event = {
                 factor = 0.5
                 trait = craven
             }
-            modifier = {
-                factor = 0.3
-                religion = jain
-            }
         }
         if = {
             limit = { trait = craven }
@@ -277,6 +273,7 @@ character_event = {
                         }
                     }
                     FROM = { intrigue = ROOT } #they alone can match your intrigue
+					FROM = { mep_should_be_unkillable_trigger = yes }
                 }
             }
             set_character_flag = poison_can_fail_against@event_target:combatant_2
@@ -417,15 +414,6 @@ character_event = {
                 trait = craven
             }
             modifier = {
-                factor = 0.3
-                religion = jain
-            }
-            modifier = {
-                religion_group = christian
-                is_priest = yes
-                factor = 0
-            }
-            modifier = {
                 is_female = no
                 event_target:combatant_1 = { is_female = yes }
                 top_liege = {
@@ -507,6 +495,7 @@ character_event = {
                         }
                     }
                     event_target:combatant_1 = { intrigue = ROOT } #they alone can match your intrigue
+					event_target:combatant_1 = { mep_should_be_unkillable_trigger = yes }
                 }
             }
             set_character_flag = poison_can_fail_against@event_target:combatant_1
@@ -793,6 +782,7 @@ character_event = {
                         }
                     }
                     FROM = { intrigue = ROOT } #they alone can match your intrigue
+					FROM = { mep_should_be_unkillable_trigger = yes }
                 }
             }
             set_character_flag = poison_can_fail_against@event_target:combatant_2

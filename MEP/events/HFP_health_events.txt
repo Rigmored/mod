@@ -8924,6 +8924,9 @@ character_event = {
 	is_triggered_only = yes
 
 	option = { #Cook the bard.
+		trigger = {
+			NOT = { mep_is_good_side_trigger = yes }
+		}
 		name = EVTOPTAHFP20693
 		custom_tooltip = { text = tooltip_HFP20693_A }
 		if = { 

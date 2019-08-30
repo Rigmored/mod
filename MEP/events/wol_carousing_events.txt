@@ -443,6 +443,7 @@ character_event = {
 								trait = possessed
 								trait = impaler
 								trait = torturer
+								NOT = { mep_is_good_side_trigger = yes }
 								top_liege = {
 									any_realm_character = {
 										has_opinion_modifier = {
@@ -455,6 +456,8 @@ character_event = {
 											trait = impaler
 											trait = torturer
 										}
+										NOT = { mep_is_good_side_trigger = yes }
+										
 									}
 								}
 							}
@@ -679,6 +682,7 @@ character_event = {
 					trait = torturer
 					any_artifact = { artifact_type = the_omnivore }
 				}
+				NOT = { mep_is_good_side_trigger = yes }
 			}
 			character_event = { id = WoL.4101 }
 			break = yes
@@ -697,6 +701,7 @@ character_event = {
 						trait = torturer
 						any_artifact = { artifact_type = the_omnivore }
 					}
+					NOT = { mep_is_good_side_trigger = yes }
 					ROOT = { ai = yes }
 				}
 				character_event = { id = WoL.4101 }
@@ -717,7 +722,7 @@ character_event = {
 	option = {
 		name = EVTOPTA_WoL_4101 # No
 		ai_chance = {
-			factor = 0
+			factor = 1
 		}
 		if = {
 			limit = {
@@ -748,6 +753,10 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 1
+			modifier = {
+				factor = 0
+				mep_is_good_side_trigger = yes
+			}
 		}
 		if = {
 			limit = { 
@@ -780,6 +789,10 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 1
+			modifier = {
+				factor = 0
+				mep_is_good_side_trigger = yes
+			}
 		}
 		if = {
 			limit = { 

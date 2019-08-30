@@ -1127,15 +1127,14 @@ character_event = {
 	max_age = 16
 
 	trigger = {
+		mep_is_child = yes
 		guardian = {
 			OR = {			
-				trait = pacifist_elf
 				trait = trained_elf
 				trait = great_elf
 				trait = legendary_warrior
 			}
 		}
-		NOT = { trait = pacifist_elf }
 		NOT = { trait = trained_elf }
 		NOT = { trait = great_elf }
 		NOT = { trait = legendary_warrior }
@@ -1149,7 +1148,6 @@ character_event = {
 		modifier = {
 			factor = 0.85
 			OR = {
-				guardian = { trait = pacifist_elf }
 				guardian = { trait = trained_elf }
 				guardian = { trait = great_elf }
 				guardian = { trait = legendary_warrior }
@@ -1222,118 +1220,11 @@ character_event = {
 	option = {
 		name = "EVTOPTAsoldiertraits.14" # Stick 'em with the pointy end!
 		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
-		add_trait = pacifist_elf 
+		add_trait = trained_elf 
 	}
 }
 
 
-character_event = {
-	id = soldiertraits.15
-	desc = "EVTDESCsoldiertraits.15"
-	picture = GFX_evt_child_sword
-	religion_group = religion_group_eldar
-	
-	min_age = 6
-	max_age = 16
-
-	trigger = {
-		guardian = {
-			OR = {
-				trait = pacifist_elf
-				trait = trained_elf
-				trait = great_elf
-				trait = legendary_warrior
-			}
-		}
-		trait = pacifist_elf
-		NOT = { trait = trained_elf }
-		NOT = { trait = great_elf }
-		NOT = { trait = legendary_warrior }
-		mep_is_elf_culture = yes		
-	}
-
-	mean_time_to_happen = {
-		months = 60
-
-		# Mentor Effects
-		modifier = {
-			factor = 0.85
-			OR = {
-				guardian = { trait = trained_elf }
-				guardian = { trait = great_elf }
-				guardian = { trait = legendary_warrior }
-			}
-		}
-
-		# Personality Effects
-		#Good
-		modifier = {
-			factor = 0.85
-			OR = {
-				trait = diligent
-				trait = brave
-			}
-		}
-		modifier = {
-			factor = 0.75
-			trait = patient
-
-		}
-		#Bad
-		modifier = {
-			factor = 1.35
-			OR = {
-				trait = slothful
-				trait = craven
-			}
-		}		
-		
-		# Intelligence Effects
-		#Good
-		modifier = {
-			factor = 0.85
-			trait = genius
-		}
-		modifier = {
-			factor = 0.9
-			trait = quick
-		}
-		#Bad
-		modifier = {
-			factor = 1.2
-			trait = slow
-		}
-		modifier = {
-			factor = 1.35
-			trait = imbecile
-		}
-		
-		# Physical Effects
-		#Good
-		modifier = {
-			factor = 0.85
-			trait = strong
-		}
-		#Bad
-		modifier = {
-			factor = 1.35
-			trait = weak
-		}
-		#Sexism
-		modifier = {
-			factor = 2500
-			is_female = yes
-		}
-	}
-
-	option = {
-		name = "EVTOPTAsoldiertraits.15"
-		hidden_tooltip = { guardian = { character_event = {id = soldiertraits.18} } } #Guardian Notification.
-		remove_trait = pacifist_elf 
-		add_trait = trained_elf
-	}
-	
-}
 
 character_event = {
 	id = soldiertraits.16
@@ -1345,16 +1236,15 @@ character_event = {
 	max_age = 16
 
 	trigger = {
+		mep_is_child = yes
 		guardian = {
 			OR = {			
-				trait = pacifist_elf
 				trait = trained_elf
 				trait = great_elf
 				trait = legendary_warrior
 			}
 		}
 		trait = trained_elf
-
 		NOT = { trait = great_elf }
 		NOT = { trait = legendary_warrior }
 		mep_is_elf_culture = yes		
@@ -1452,9 +1342,9 @@ character_event = {
 	max_age = 16
 
 	trigger = {
+		mep_is_child = yes
 		guardian = {
 			OR = {		
-				trait = pacifist_elf
 				trait = trained_elf
 				trait = great_elf
 				trait = legendary_warrior

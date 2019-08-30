@@ -1,0 +1,354 @@
+# Unfortunatly, trying to use character histories for unique artifacts
+# does not work all that well
+
+# The ONE RING
+artifact_ring = {
+	max_amount = 1
+	spawn_date = 6502.1.1 #  #Sauron forges the One Ring.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6502 }
+			year = 11362
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 10016 # Sauron
+			NOT = { year = 8343 } # Sauron is defeated and loses the one ring
+		}
+		# Isildur takes the ring after cutting it from Sauron's hand.
+		additive_modifier = {
+			value = 100
+			year = 8343
+			NOT = { year = 8345 } # Isildur is ambushed at Gladden Fields and losed the ring in the Anduin.
+			character = 12136 # Isildur
+		}
+		# The ring sits at the bottom of the Anduin River.
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 10806 } # Gollum finds the Ring.
+			character = 25046 # Anduin River
+		}
+		# The Ring is lost in the Anduin River for many long years until it is found by a river dweller.
+		additive_modifier = {
+			value = 100
+			character = 8190 # Sméagol
+			year = 10806
+			NOT = { year = 11284 } # Gollum loses the ring and Bilbo finds it..
+		}
+		# Bilbo finds the ring and holds it for many years.
+		additive_modifier = {
+			value = 100
+			year = 11284
+			NOT = { year = 11344 }
+			character = 8065 # Bilbo Baggins
+		}
+		# Bilbo gives the ring to Frodo on his birthday
+		additive_modifier = {
+			value = 100
+			year = 11344
+			NOT = { year = 11362 } # Ring is destroyed in the fires of Mount Doom.
+			character = 8079 # Frodo Baggins
+		}
+	}
+
+	artifacts = {
+		artifact_ring = {
+			value = 1
+		}
+	}
+}
+#---------------------------------------------------------------------------------------------------------------
+# Three Rings for the Elven-kings under the sky
+vilya= {
+	max_amount = 1
+	spawn_date = 6492.1.1 #  #Celebrimbor forces the Elven Rings.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6492 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3248 # Celebrimbor
+			NOT = { year = 6590} # Celebrimbor sends the rings away
+		}
+		# Gil-Galad gets this ring
+		additive_modifier = {
+			value = 100
+			year = 6590
+			NOT = { year = 8343 } # Elrond gets the ring after Gil-Galad dies vs Sauron
+			character = 3139 # Gil-Galad
+		}
+		# Elrond has the ring
+		additive_modifier = {
+			value = 100
+			year = 8343
+			character = 3003 # Elrond
+		}
+
+	}
+
+	artifacts = {
+		vilya = {
+			value = 1
+		}
+	}
+}
+
+# Some sources say Círdan only got this ring near the end of the 2nd Age/
+narya = {
+	max_amount = 1
+	spawn_date = 6492.1.1 #  #Celebrimbor forces the Elven Rings.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6492 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3248 # Celebrimbor
+			NOT = { year = 6590} # Celebrimbor sends the rings away
+		}
+		# Círdan gets this ring
+		additive_modifier = {
+			value = 100
+			year = 6590
+			NOT = { year = 9343 } # Círdan gives his ring to Gandalf
+			character = 3065 # Círdan
+		}
+		# Gandalf has the ring
+		additive_modifier = {
+			value = 100
+			year = 9343
+			NOT = { year = 11366 }
+			character = 10033 # Gandalf
+		}
+		# Círdan gets Narya back ?
+		additive_modifier = {
+			value = 100
+			year = 11366
+			character = 3065 # Círdan
+		}
+
+	}
+
+	artifacts = {
+		narya = {
+			value = 1
+		}
+	}
+}
+
+nenya = {
+	max_amount = 1
+	spawn_date = 6492.1.1 #  #Celebrimbor forces the Elven Rings.
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6492 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3248 # Celebrimbor
+			NOT = { year = 6590} # Celebrimbor sends the rings away
+		}
+		# Galadriel
+		additive_modifier = {
+			value = 100
+			year = 6590
+			character = 3006 # Galadriel
+		}
+	}
+
+	artifacts = {
+		nenya = {
+			value = 1
+		}
+	}
+}
+#---------------------------------------------------------------------------------------------------------------
+# Seven for the Dwarf-lords in their halls of stone
+
+durin_ring = {
+	max_amount = 1
+	spawn_date = 6440.1.1 #  #I'll pick this date as when Celembrimbor and Sauron forged the Seven
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 6440 }
+		}
+	}
+
+	weight = {
+		value = 0
+		additive_modifier = {
+			value = 100
+			character = 3248 # Celebrimbor
+			NOT = { year = 6460} # Celebrimbor gives the ring to Durin III
+		}
+		# Heirs of Durin
+		additive_modifier = {
+			value = 100
+			year = 6460
+			NOT = { year = 11193 } # Thráin II dies in Dol Guldur, Sauron takes the ring
+			trait = heir_of_durin
+		}
+		additive_modifier = {
+			value = 100
+			year = 11193
+			character = 10016 # Sauron
+		}
+	}
+
+	artifacts = {
+		durin_ring = {
+			value = 1
+		}
+	}
+}
+
+#---------------------------------------------------------------------------------------------------------------
+# Nine for Mortal Men doomed to die
+
+#---------------------------------------------------------------------------------------------------------------
+# Other Rings
+
+# Ring of Barahir
+barahir = {
+	max_amount = 1
+	spawn_date = 3700.1.1 #  #I'll pick this date as when the ring was made in Valinor
+	
+	spawn_chance = {
+		value = 100
+		modifier = {
+			factor = 0
+			NOT = { year = 3700 }
+		}
+	}
+
+	weight = {
+		value = 0
+		## In the First age, the ring was owned by Finrod Felagund, then given to Barahir. handed down after that
+		additive_modifier = {
+			value = 100
+			year = 4902
+			NOT = { year = 5344 }
+			character = 3004 # Elros, first king of Numenor
+		}
+		additive_modifier = {
+			value = 100
+			year = 5344
+			NOT = { year = 5523 }
+			primary_title = {
+				title = e_numenor
+			}
+		}
+		additive_modifier = {
+			value = 100
+			year = 5523  # Wedding present from her Father
+			NOT = { year = 5557 }
+			character = 12014 # Silmariën
+		}
+		# then by the Lords of Andúnië
+		additive_modifier = {
+			value = 100
+			primary_title = {
+				title = k_andunie
+			}
+			year = 5557  # When Valandil is 25 (Númenórean adult age)
+			NOT = { year = 8218 }
+		}
+		# Amandil sails west, Elendil gets his stuff
+		additive_modifier = {
+			value = 100
+			year = 8218
+			NOT = { year = 8343 }
+			character = 12135 # Elendil
+		}
+		additive_modifier = {
+			value = 100
+			year = 8344
+			NOT = { year = 8345 }
+			character = 12136 # Isildur
+		}
+		additive_modifier = {
+			value = 100
+			year = 8345
+			NOT = { year = 8346 }
+			character = 2044 # Ohtar
+		}
+		# Afterwards, rulers of Arnor, then Arthedain
+		additive_modifier = {
+			value = 100
+			year = 8346
+			NOT = { year = 9204 }
+			primary_title = {
+				title = e_arnor
+			}
+		}
+		additive_modifier = {
+			value = 100
+			year = 9204
+			NOT = { year = 10318 }
+			primary_title = {
+				title = k_arthedain
+			}
+		}
+		# Arvedui gave the ring of Barahir to a Lossoth chieftain before getting on the ship that was wrecked
+		additive_modifier = {
+			value = 100
+			year = 10318
+			NOT = { year = 10333 }
+			primary_title = {
+				title = c_talvi_muri
+			}
+		}
+		# The Dunedian get it back at some point (assume 15 years).
+		# Some sources say it was kept in Rivendell, but I'll assume the Cheiftains if the Dunedain had it
+		additive_modifier = {
+			value = 100
+			year = 10333
+			NOT = { year = 10333 }
+			primary_title = {
+				title = d_dunedain_of_north
+			}
+		}
+		
+		
+		
+	}
+
+	artifacts = {
+		barahir = {
+			value = 1
+		}
+	}
+}

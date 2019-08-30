@@ -2523,16 +2523,7 @@ character_event = {
 		primary_title = {
 			holder_scope = {
 				is_nomadic = no
-				OR = {
-					independent = yes
-					NOT = {
-						any_liege = {
-							holy_order = yes
-						}
-					}
-				}
 				NOR = { 
-					religion_group = muslim 
 					mep_is_matriarchal_group_trigger = yes
 					has_religion_feature = religion_patriarchal
 				}
@@ -2549,9 +2540,8 @@ character_event = {
 			}
 			rebel = no
 			is_primary_type_title = no
-			NOT = { holder_scope = { government = confucian_bureaucracy } }
-			NOT = { holder_scope = { government = chinese_imperial_government } }
 			holder_scope = {
+				mep_prim_humans_culture_notbree = yes
 				OR = {
 					AND = {
 						is_tribal = yes
@@ -2562,8 +2552,6 @@ character_event = {
 						religion = west_african_pagan
 					}
 					has_religion_feature = religion_beatification
-					has_religion_feature = religion_feature_baltic
-					has_religion_feature = religion_feature_west_african
 				}
 			}
 		}

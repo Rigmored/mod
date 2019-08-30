@@ -62,51 +62,6 @@ eagle = {
 	cached = yes
 }
 
-hobbit = {
-    potential = { religion_group = religion_group_periannath } 
-    # okay relations
-    tolerates_religion_group_eruhini = yes
-    tolerates_religion_group_khazad = yes
-    tolerates_religion_group_eldar = yes
-    # Those who hate hobbits
-    religion_group_melkor_opinion = -50
-	religion_group_dragon_opinion = -60
-	religion_group_ungoliant_opinion = -40
-   
-    # other modifers
-    health = 6.5
-    same_opinion = 20
-    inherit_chance = 100
-    martial_penalty = -1
-    intrigue = 3
-    stewardship = 3
-    learning = -5
-    customizer = yes
-	combat_rating = -5
-    ai_ambition = -60 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
-    ai_rationality = 50 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
-    cached = yes
-}
-
-# Not for hobbits, but for hobbit-fanciers
-hobbit_friend = {
-	ruler_designer_cost = 0
-	potential = {
-		NOT = { religion_group = religion_group_periannath }
-		NOT = { trait = evil_side }
-		NOT = { trait = zealous } # aka 'Racist'
-		OR = {
-			NOT = { mep_is_evil_side_race = yes }
-			trait = good_side
-		}
-	}
-	tolerates_religion_group_periannath = yes	# getting rid of base intolerance
-	religion_group_periannath_opinion = 30		# hobbits like her/him back
-	opposites = { hobbit }
-	opposite_opinion = 50				# he/she likes hobbits
-	same_opinion = 20
-}
-
 
 ent = {	
 	potential = { religion_group = religion_group_enyd }
@@ -383,13 +338,10 @@ nazgul = {
 	cached = yes
 }
 
-# This Trait covers Trolls, Goblins, Orcs, and Uruk-hai
+# This Trait covers Orcs, Gonlins, and Uruk-hai
 orc = {
 	potential = {
-		OR = {
-			mep_orc_goblin_culture = yes
-			culture = culture_troll
-		}
+		mep_orc_goblin_culture = yes
 	}
 	# Those who hate Orcs/Trolls (most everybody not evil)
 	religion_group_eldar_opinion = -100
@@ -403,6 +355,34 @@ orc = {
 	customizer = yes
 	fertility = 0.2
 	martial = 2
+	ai_ambition = 300 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
+    ai_rationality = -150 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
+    ai_honor = -150 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.
+    same_opinion = 5
+	cached = yes
+}
+
+# This Trait covers Trolls
+troll = {
+	potential = {
+		religion = religion_olog
+	}
+	# Those who hate Orcs/Trolls (most everybody not evil)
+	religion_group_eldar_opinion = -100
+	religion_group_khazad_opinion = -100
+	religion_group_eruhini_opinion = -100
+	religion_group_periannath_opinion = -60
+	religion_group_enyd_opinion = -100
+	religion_group_edain_opinion = -60
+	# other modifers
+    health = 10.0
+	customizer = yes
+	fertility = 0.2
+	martial = 2
+	combat_rating = 5
+	diplomacy_penalty = -5
+    stewardship_penalty = -5
+    learning_penalty = -5
 	ai_ambition = 300 #Influences the AI's desire for expansion, primarily affecting the likelihood of wanting to declare war.
     ai_rationality = -150 #Influences the way the AI makes choices, such as whether the AI will compare its own levy size with its enemy levy size if it wants to go to war.
     ai_honor = -150 #Influences the likelihood the AI will honor relationships and alliances, and the chance of attacking despite such relations. Also affects its likelihood of joining plots.

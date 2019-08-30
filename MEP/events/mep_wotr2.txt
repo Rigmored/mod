@@ -2050,11 +2050,12 @@ character_event = {
 	
 	trigger = {
 		has_global_flag = gandalfedoras
-		age = 30
 		year = 11362
 		NOT = { year = 11369 }
 		NOT = { has_character_flag = wotr30 }
-		trait = vilya
+		event_target:mep_chartarget_gandalf = {
+			character = PREV
+		}
 	}
 	
 	mean_time_to_happen = {

@@ -104,16 +104,6 @@ light_valinor = {
 	customizer = no
 }
 
-#----------------------
-# used in some old inherit trait code in on_action_events.txt
-dead_target = {
-	cached = yes # Keep a cache of all trait holders, to use with the corresponding event trigger 	
-	customizer = no
-	random = no
-}
-
-
-
 ##### KINGS OF GONDOR (AND/OR ARNOR) TRAITS #####
 ship_king = {
 	customizer = no	
@@ -200,7 +190,6 @@ melodious_voice = {
 
 	opposites =  {
 		powerful_voice
-		calm_voice
 	}
 	
 	diplomacy = 2
@@ -214,7 +203,6 @@ powerful_voice = {
 
 	opposites =  {
 		melodious_voice
-		calm_voice
 	}
 	
 	diplomacy = 1
@@ -224,35 +212,7 @@ powerful_voice = {
 	ruler_designer_cost = 0
 
 }
-ambidextrous = {
-	birth = 50
-	inherit_chance = 25
 
-	opposites =  {
-		lefthanded
-	}
-		
-	martial = 1
-	stewardship = 1
-	learning = 1
-	ruler_designer_cost = 0
-
-}
-lefthanded = {
-	birth = 250
-	inherit_chance = 25
-
-	opposites =  {
-		ambidextrous
-	}
-
-	church_opinion = -10
-	diplomacy_penalty = -1		
-	martial = 1
-	intrigue = 1
-	ruler_designer_cost = 0
-
-}
 deaf = {
 	birth = 50
 	inherit_chance = 25

@@ -94,7 +94,6 @@ character_event = {
 	}
 	
 	immediate = {
-	log = "racesteup.1 activated"
 		# Elves
 		if = {
 			limit = {
@@ -102,7 +101,6 @@ character_event = {
 				NOT = { trait = elf }
 				NOT = { trait = half_elf }
 			}
-			log = "racesteup.1 elf"
 			mep_make_proper_elf_effect = yes
 		}
 		# Dwarves
@@ -111,7 +109,6 @@ character_event = {
 				religion_group = religion_group_khazad
 				NOT = { trait = dwarven }
 			}
-			log = "racesteup.1 dwarf"
 			mep_make_proper_dwarf_effect = yes
 		}
 		# Dúnedain
@@ -127,8 +124,23 @@ character_event = {
 					trait = blood_of_numenor2
 				}
 			}
-			log = "racesteup.1 dunedain"
 			mep_make_proper_numenorean_effect = yes
+		}
+		# Orcs
+		else_if = {
+			limit = {
+				religion = religion_orkish 
+				NOT = { trait = orc }
+			}
+			mep_make_proper_orc_effect = yes
+		}
+		# Wilderness
+		else_if = {
+			limit = {
+				religion_group = religion_group_wilderness
+				NOT = { trait = wilderness }
+			}
+			mep_make_proper_wilderness_effect = yes
 		}
 		# More to add later
 		
@@ -137,6 +149,105 @@ character_event = {
 	
 	option = {
 
+	}
+}
+
+# We need a repeat event to convert generated Elves into proper Elves at other times.
+# Run more frequently than once a year...
+character_event = {
+	id = racesetup.2
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_elves"
+	religion_group = religion_group_eldar
+	
+	trigger = {
+		NOT = { trait = elf }
+		NOT = { trait = half_elf }
+		mep_parentless = yes
+		age < 85 # just in case
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		mep_make_proper_elf_effect = yes
+	}
+}
+
+# We need a repeat event to convert generated Dwarves into proper Dwarves at other times.
+# Run more frequently than once a year...
+character_event = {
+	id = racesetup.3
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_dwarves"
+	religion_group = religion_group_khazad
+	
+	trigger = {
+		NOT = { trait = dwarven }
+		mep_parentless = yes
+		age < 85 # just in case
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		mep_make_proper_dwarf_effect = yes
+	}
+}
+
+# We need a repeat event to convert generated Orcs into proper Orcs at other times.
+# Run more frequently than once a year...
+character_event = {
+	id = racesetup.4
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_dwarves"
+	religion = religion_orkish
+	
+	trigger = {
+		NOT = { trait = orc }
+		mep_parentless = yes
+		age < 85 # just in case
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		mep_make_proper_orc_effect = yes
+	}
+}
+
+## The characters is Wilderness ##
+character_event = {
+	id = racetrait.5
+	title = EVTNAMEracetrait.1
+	desc = EVTDESCracetrait.1
+	picture = "GFX_evt_elves"
+	religion_group = religion_group_wilderness
+	
+	trigger = {
+		NOT = { trait = wilderness }
+		age < 85 # just in case
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	option = {
+		name = EVTOPTAracetrait.1
+		mep_make_proper_wilderness_effect = yes
 	}
 }
 

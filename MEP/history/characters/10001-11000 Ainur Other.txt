@@ -494,24 +494,12 @@
 		add_trait = aggressive_leader
 	} #Sauron returns to Mordor
 	6502.1.1 = {
-		effect_even_if_dead  = {
-			add_artifact = artifact_ring
-		}
 		add_trait = onering
 	} #Sauron forges the One Ring
 	8343.1.1 = {
 		remove_trait = onering
 		add_trait = ringbearer2
 		add_trait = spiritform
-		effect_even_if_dead  = {
-			any_artifact = {
-				limit = { has_artifact_flag = flag_the_one_ring } 
-				transfer_artifact = {
-					from = PREV
-					to = 12136 # Isildur
-				}
-			}
-		}
 	} #Sauron is defeated and loses the Ring
 	9343.1.1 = {
 		name = "Necromancer"
@@ -524,7 +512,6 @@
 		}
 	} #The Nazgul capture the Ithil-stone
 	11188.1.1 = {
-		add_trait = durin_ring
 		add_trait = dwarf_ring
 	}
 	11284.1.1 = {
@@ -949,9 +936,6 @@
 	
 	6.1.1 = {
 		birth = "6.1.1"
-		effect = {
-			set_character_flag = gandalf
-		}
 		employer = 10001
 	}
 	7.1.1 = { add_trait = race_immortal immortal_age = 40 }
@@ -964,20 +948,20 @@
 		name = "Gandalf"
 		effect_even_if_dead = {
 			set_character_flag = gandalf
+			set_character_flag = ringbearer
 			set_graphical_culture = culture_istari
 		}
 		employer = 3003 # Needed to move him out of Valinor so I'll stick him with Elrond		
 	} #The Five Istari arrive in Middle-earth
 	
 	10806.1.1 = {
-	    add_trait = narya
 		add_trait = white_council
 		add_trait = humble
 		add_trait = kind
 		add_trait = patient
 		add_trait = charismatic_negotiator
 		add_trait = celibate
-		effect =  {
+		effect_even_if_dead =  {
 			add_friend = 3006 #Galadriel
 			add_friend = 3065 #Cirdan
 			add_friend = 3005 #Celeborn
@@ -986,27 +970,27 @@
 	}
 	11284.5.30  = {
 		add_trait = inspiring_leader
-		effect = {
-		add_friend = 8140
-		add_friend = 8041
-		add_friend = 8028
-		add_friend = 8079
-		add_friend = 8065
-		add_friend = 10031
-		add_friend = 4040 #Thorin
-		add_friend = 4044 #Balin
-		add_friend = 4045 #Dwalin
-		add_friend = 4048 #Fili
-		add_friend = 4049 #Kili
-		add_friend = 4052 #Dori
-		add_friend = 4053 #Nori
-		add_friend = 4054 #Ori
-		add_friend = 4046 #Oin
-		add_friend = 4047 #Gloin
-		add_friend = 4081 #Bifur
-		add_friend = 4085 #Bofur
-		add_friend = 4086 #Bombur
-		add_friend = 339 #Beorn
+		effect_even_if_dead = {
+			add_friend = 8140
+			add_friend = 8041
+			add_friend = 8028
+			add_friend = 8079
+			add_friend = 8065
+			add_friend = 10031
+			add_friend = 4040 #Thorin
+			add_friend = 4044 #Balin
+			add_friend = 4045 #Dwalin
+			add_friend = 4048 #Fili
+			add_friend = 4049 #Kili
+			add_friend = 4052 #Dori
+			add_friend = 4053 #Nori
+			add_friend = 4054 #Ori
+			add_friend = 4046 #Oin
+			add_friend = 4047 #Gloin
+			add_friend = 4081 #Bifur
+			add_friend = 4085 #Bofur
+			add_friend = 4086 #Bombur
+			add_friend = 339 #Beorn
 		}
 	}
 	#Glamdring, Orcrist and Sting recovered from the Troll-hoard
@@ -1027,11 +1011,13 @@
 	} #Gandalf the White
 	
 	11366.1.1  = {
-		remove_trait = narya
+		effect_even_if_dead = {
+			clr_character_flag = ringbearer
+		}
+		
 		remove_trait = white_council
-		remove_trait = good_side
 		add_trait = sailed_west
-		employer = "10001"
+		employer = 10001
 	}
  }
  

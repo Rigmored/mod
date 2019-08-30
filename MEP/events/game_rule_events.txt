@@ -360,9 +360,7 @@ character_event = { # Border Gore cleanser (Limited)
 	
 	trigger = {
 		holy_order = no # Holy orders are intended to hold baronies all over the place
-		NOT = {
-			has_landed_title = k_papal_state # The Pope should also be able to hold baronies all over the place
-		}
+
 		has_game_rule = {
 			name = exclave_purge
 			value = limited
@@ -1603,9 +1601,7 @@ character_event = { # Border Gore cleanser (Significant)
 	
 	trigger = {
 		holy_order = no # Holy orders are intended to hold baronies all over the place
-		NOT = {
-			has_landed_title = k_papal_state # The Pope should also be able to hold baronies all over the place
-		}
+
 		has_game_rule = {
 			name = exclave_purge
 			value = significant
@@ -2846,9 +2842,6 @@ character_event = { # Border Gore cleanser (Harsh)
 	
 	trigger = {
 		holy_order = no # Holy orders are intended to hold baronies all over the place
-		NOT = {
-			has_landed_title = k_papal_state # The Pope should also be able to hold baronies all over the place
-		}
 		has_game_rule = {
 			name = exclave_purge
 			value = harsh
@@ -4089,9 +4082,6 @@ character_event = { # Border Gore cleanser (Total)
 	
 	trigger = {
 		holy_order = no # Holy orders are intended to hold baronies all over the place
-		NOT = {
-			has_landed_title = k_papal_state # The Pope should also be able to hold baronies all over the place
-		}
 		has_game_rule = {
 			name = exclave_purge
 			value = total
@@ -5332,9 +5322,7 @@ character_event = { # Border Gore cleanser (Limited Naval)
 	
 	trigger = {
 		holy_order = no # Holy orders are intended to hold baronies all over the place
-		NOT = {
-			has_landed_title = k_papal_state # The Pope should also be able to hold baronies all over the place
-		}
+
 		has_game_rule = {
 			name = exclave_purge
 			value = limited_naval
@@ -7811,20 +7799,6 @@ character_event = { # Generate 'Fake Family' for characters without any
 				}
 			}
 			set_mother = event_target:new_mother
-		}
-
-		if = { # Caste fix
-			limit = {
-				religion = hindu
-				trait = kshatriya
-			}
-			any_child = {
-				limit = {
-					religion = hindu
-					NOT = { trait = kshatriya }
-				}
-				add_trait = kshatriya
-			}
 		}
 		
 		any_child = {

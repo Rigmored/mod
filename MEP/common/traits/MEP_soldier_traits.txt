@@ -325,28 +325,6 @@ cached = yes
 
 ### Elvish Trait ###
 
-pacifist_elf = {
-	ruler_designer_cost = 0
-	leader = yes
-
-	martial_penalty = -1
-	
-	potential = {
-		OR = {
-			religion_group = religion_group_eldar
-		}
-	}	
-	
-	command_modifier = {
-		light_infantry = 0.1
-	}
-	opposites =  {
-		trained_elf
-		great_elf
-		legendary_warrior
-	}
-cached = yes		
-}
 
 trained_elf = {
 	ruler_designer_cost = 0
@@ -365,7 +343,6 @@ trained_elf = {
 		light_infantry = 0.2
 	}
 	opposites =  {
-		pacifist_elf
 		great_elf
 		legendary_warrior
 	}
@@ -390,7 +367,6 @@ great_elf = {
 		heavy_infantry = 0.1		
 	}
 	opposites =  {
-		pacifist_elf
 		trained_elf
 		legendary_warrior
 	}
@@ -415,7 +391,6 @@ legendary_warrior = {
 		heavy_infantry = 0.2		
 	}
 	opposites =  {
-		pacifist_elf
 		trained_elf
 		great_elf
 	}
@@ -1001,42 +976,46 @@ umbar_corsair = {
 	ruler_designer_cost = 0
 	leader = yes
 
-	martial = 3
+	martial = 1
 	combat_rating = 10
 	
-	monthly_character_prestige = 0.2
-	vassal_opinion = 10
-	sex_appeal_opinion = 10
+	monthly_character_prestige = 0.3
+	sex_appeal_opinion = 5
 	
 	potential = {
-		culture = culture_black_numenorean
-		culture = culture_umbareans
+		OR = {
+			culture = culture_black_numenorean
+			culture = culture_umbareans
+		}
 	}
+	same_opinion = 5
 	
-	command_modifier = {
-		heavy_infantry = 0.1
-		cavalry = 0.1
-	}
 	opposites =  {
+		pirate
+		ravager
 		corsair_captain
 	}
-cached = yes		
+	male_insult = COMPL_PIRATE
+	female_insult = COMPL_PIRATE
 }
 
 corsair_captain = {
 	ruler_designer_cost = 0
 	leader = yes
 
-	martial = 4
+	martial = 3
 	combat_rating = 15
 	
-	monthly_character_prestige = 0.3
-	vassal_opinion = 20
-	sex_appeal_opinion = 20	
+	monthly_character_prestige = 0.4
+	vassal_opinion = 5
+	sex_appeal_opinion = 10
+	same_opinion = 10
 	
 	potential = {
-		culture = culture_black_numenorean	
-		culture = culture_umbareans
+		OR = {
+			culture = culture_black_numenorean
+			culture = culture_umbareans
+		}
 	}
 	
 	command_modifier = {
@@ -1045,6 +1024,8 @@ corsair_captain = {
 	}
 	opposites =  {
 		umbar_corsair
+		pirate
+		ravager
 	}
 cached = yes		
 }

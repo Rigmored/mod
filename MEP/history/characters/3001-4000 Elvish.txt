@@ -30,6 +30,7 @@
 		remove_trait = half_elf
 		add_trait = race_immortal immortal_age = 40
 		add_trait = elf
+		add_trait = fea_strong
 		
 		employer = 10001
 	}
@@ -43,6 +44,7 @@
 	culture = "culture_sindar"
 	add_trait = elf
 	add_trait = fair
+	add_trait = fea_strong
 	father = 3116
 	mother = 3125
 	4815.1.1 = {
@@ -65,14 +67,13 @@
 	culture = "culture_noldor"
 	disallow_random_traits = yes
 	add_trait = grey_eminence
-	add_trait = elf
 	add_trait = fair
 	add_trait = strong
 	add_trait = twin
 	add_trait = quick
 	add_trait = perceptive
 	add_trait = healer_master
-	add_trait = great_elf
+	add_trait = half_elf
 	
 	father = 3001
 	mother = 3002
@@ -88,19 +89,22 @@
 		effect = { set_character_flag = elrond }
 		give_nickname = "nick_halfelven"
 	}
-	4889.1.1 = { add_trait = race_immortal immortal_age = 40 }
 	4894.1.1 = { 
 		effect = {
 			add_friend =  3006 #Galadriel
 			add_friend =  3065 #Cirdan
 			add_friend =  3005 #Celeborn
 			add_friend =  3139 #Gil-Galad
-			}
+		}
 		}	
-	8343.1.1 = {
-		add_trait = vilya
-		effect = { set_character_flag = ringbearer }
-	} #Elrond recieves Vilya from the body of Gil-galad
+	4902.1.1 = {
+		add_trait = elf
+		add_trait = fea_strong
+		add_trait = race_immortal
+		immortal_age = 40
+		add_trait = great_elf
+	}
+	8343.1.1 = { } #Elrond recieves Vilya from the body of Gil-galad
 	8452.1.1 = {
 		add_spouse = 3007
 	}
@@ -123,7 +127,7 @@
 	religion = "religion_moriquendi"
 	culture = "culture_noldor"
 	disallow_random_traits = yes
-	add_trait = elf
+	add_trait = half_elf
 	add_trait = fair
 	add_trait = strong
 	add_trait = twin
@@ -149,13 +153,14 @@
 	4902.1.1 = {
 		culture = "culture_numenorean"
 		religion = "religion_numenorean"
-		remove_trait = elf
+		remove_trait = half_elf
 		add_trait = blood_of_numenor
 		add_spouse = 15266
 		dynasty = 12001
 	}
 	4934.1.1 = {
 		name = "Minyatur"
+		add_trait = prince_numenor
 	}
 	5344.1.1 = {
 		death = "5344.1.1"
@@ -185,6 +190,7 @@
 	add_trait = great_elf
 	add_trait = good_side
 	add_trait = unyielding_leader
+	add_trait = fea_strong
 
 	father = 3119
 	mother = 3121
@@ -223,6 +229,7 @@
 	add_trait = poet
 	add_trait = scholar
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3145
 	mother = 3143
@@ -250,10 +257,9 @@
 	4387.1.1 = {
 		add_spouse = 3005
 	}
-	6596.1.1 = {
-		add_trait = nenya
+	6590.1.1 = {
 		add_trait = mirror_of_galadriel
-		effect = {
+		effect_even_if_dead = {
 			set_character_flag = ringbearer
 		}
 	} #Celebrimbor delivers the Ring Nenya to Galadriel
@@ -294,6 +300,7 @@
 
 	add_trait = elf
 	add_trait = fair
+	add_trait = fea_strong
 
 	father = 3005
 	mother = 3006
@@ -332,6 +339,7 @@
 	add_trait = skilled_tactician
 	add_trait = cavalry_leader
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	father = 3003
 	mother = 3007
@@ -365,6 +373,7 @@
 	add_trait = skilled_tactician
 	add_trait = light_foot_leader
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	father = 3003
 	mother = 3007
@@ -401,6 +410,7 @@
 	add_trait = brave
 	add_trait = charismatic_negotiator
 	add_trait = great_healer
+	add_trait = fea_strong
 
 	father = 3003
 	mother = 3007
@@ -1112,6 +1122,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = great_elf
+	add_trait = fea_strong
 	father = 3012
 	mother = 3013
 	95.1.1 = {
@@ -1144,6 +1155,7 @@
 	add_trait = midas_touched
 	add_trait = inspiring_leader
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	father = 3014
 	mother = 3015
@@ -1194,6 +1206,7 @@
 	add_trait = midas_touched
 	add_trait = inspiring_leader
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	
 	father = 3016
 	mother = 3017
@@ -1232,6 +1245,7 @@
 	add_trait = strong
 	father = 3032
 	mother = 3033
+	
 	105.1.1 = {
 		birth = "105.1.1"
 	}
@@ -1256,6 +1270,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	
 	father = 3034
 	mother = 3035
 	105.1.1 = {
@@ -1396,6 +1411,8 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	add_trait = fea_strong
+	
 	father = 3022
 	mother = 3023
 	135.1.1 = {
@@ -1460,6 +1477,7 @@
 	add_trait = charismatic_negotiator
 	add_trait = ship_builder
 	add_trait = beard_elf
+	add_trait = fea_strong
 
 	father = 3028
 	mother = 3029
@@ -1490,12 +1508,17 @@
 	1456.1.1 = {
 		add_spouse = 3086
 	}
-	6596.1.1 = {
-		add_trait = narya
+	6590.1.1 = {
+		effect_even_if_dead = {
+			set_character_flag = ringbearer
+		}
 	} #Celebrimbor delivers the Ring Narya to Círdan
 	9343.1.1 = {
-		remove_trait = narya
 		add_trait = beard_elf
+		effect_even_if_dead = {
+			clr_character_flag  = ringbearer
+			add_friend =  3065 # Círdan
+		}
 	} #Círdan gifts Narya to Olórin
 	10806.1.1 = {
 		add_trait = white_council
@@ -1509,7 +1532,9 @@
 		}
 	} #The White Council is formed	
 	11366.1.1  = {
-		add_trait = narya
+		effect_even_if_dead = {
+			set_character_flag = ringbearer  # Círdan gets Narya back from Gandalf ?
+		}
 	}
 }
 
@@ -1578,6 +1603,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	add_trait = fea_strong
 	father = 3026
 	mother = 3027
 	175.1.1 = {
@@ -1610,6 +1636,8 @@
 	father = 3034
 	mother = 3035
 	add_trait = great_elf
+	add_trait = fea_strong
+	
 	175.1.1 = {
 		birth = "175.1.1"
 	}
@@ -1638,6 +1666,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	add_trait = fea_strong
 
 	father = 3016
 	mother = 3017
@@ -1945,6 +1974,8 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	add_trait = fea_strong
+	
 	father = 3016
 	mother = 3017
 	295.1.1 = {
@@ -2171,6 +2202,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	father = 3020
 	mother = 3021
@@ -2366,6 +2398,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = cruel
+	add_trait = fea_strong
 	father = 3032
 	mother = 3033
 
@@ -2531,6 +2564,8 @@
 	add_trait = authoritative
 	add_trait = skilled_tactician
 	add_trait = great_elf
+	add_trait = fea_strong
+	
 	2874.1.1 = {
 		birth = "2874.1.1"
 	}
@@ -2573,6 +2608,7 @@
 	add_trait = skilled_tactician
 	add_trait = experimenter
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	dna = "cdhdk0khga0"
 	properties = "jb0becbe00b"
@@ -2625,6 +2661,7 @@
 	add_trait = trusting
 	add_trait = proud
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	dna = "clhde0chga0"
 	properties = "jf0eebbe00b"
@@ -2661,6 +2698,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = great_elf
+	add_trait = fea_strong
 	3114.1.1 = {
 		birth = "3114.1.1"
 	}
@@ -2683,6 +2721,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = great_elf
+	add_trait = fea_strong
 	4347.1.1 = {
 		birth = "4347.1.1"
 		effect = {
@@ -2821,6 +2860,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = great_elf
+	add_trait = fea_strong
 
 	father = 3056
 	mother = 10017
@@ -2847,6 +2887,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 
 	father = 15165
 	mother = 3115
@@ -2919,6 +2960,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = strong
+	add_trait = fea_strong
 	father = 3082
 	mother = 3089
 	1054.1.1 = {
@@ -3097,6 +3139,7 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3068
 	mother = 3087
 	1198.1.1 = {
@@ -3137,6 +3180,7 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3064
 	mother = 3075
 	1064.1.1 = {
@@ -3166,6 +3210,7 @@
 	add_trait = imposing
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3055
 	mother = 3128
@@ -3209,6 +3254,7 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3073
 	1533.1.1 = {
 		birth = "1533.1.1"
@@ -3237,6 +3283,7 @@
 	add_trait = inspiring_leader
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3129
 	mother = 3130
@@ -3285,6 +3332,7 @@
 	add_trait = staff_of_doom
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3129
 	mother = 3130
@@ -3330,6 +3378,7 @@
 	add_trait = elusive_shadow
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3129
 	mother = 3130
@@ -3369,6 +3418,7 @@
 	add_trait = inspiring_leader
 	add_trait = great_elf
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3129
 	mother = 3130
@@ -3414,10 +3464,11 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = sailed_west
-	add_trait = fashionable
+	add_trait = groomed
 	add_trait = kind
 	add_trait = honorable
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3132
 	mother = 3135
@@ -3477,6 +3528,7 @@
 	add_trait = inspiring_leader	
 	add_trait = brilliant_strategist
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	
 	father = 3131
 	mother = 3138
@@ -3498,12 +3550,7 @@
 	4822.1.1 = {
 		name = "Ereinion Gil-Galad"
 	}
-	6596.1.1 = {
-		add_trait = vilya
-		effect = {
-			set_character_flag = ringbearer
-		}
-	}
+	#6590.1.1 = { }
 	8343.1.1 = {
 		death = {
 			death_reason = death_battle
@@ -3527,6 +3574,7 @@
 	add_trait = intricate_webweaver
 	add_trait = duelist
 	add_trait = great_elf
+	add_trait = fea_strong
 	
 	father = 3098
 	mother = 3133
@@ -3564,6 +3612,7 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3070
 	mother = 3080
 	1629.1.1 = {
@@ -3585,6 +3634,7 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3070
 	mother = 3080
 	1820.1.1 = {
@@ -3606,6 +3656,7 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3070
 	mother = 3080
 	1916.1.1 = {
@@ -3636,6 +3687,7 @@
 	add_trait = grey_eminence
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	father = 3055
 	mother = 3128
@@ -3675,6 +3727,7 @@
 	add_trait = nauglamir
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3145
 	mother = 3143
@@ -3708,6 +3761,7 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3210
 	mother = 3212
 	2491.1.1 = {
@@ -3733,6 +3787,7 @@
 	add_trait = kind
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3145
 	mother = 3143
@@ -3796,6 +3851,7 @@
 	add_trait = just
 	add_trait = kind
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3148
 	mother = 3149
@@ -3833,6 +3889,7 @@
 	add_trait = patient
 	add_trait = great_elf
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3145
 	mother = 3143
@@ -3890,6 +3947,7 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3151
 	mother = 3152
 	4244.1.1 = {
@@ -3949,6 +4007,7 @@
 	add_trait = duelist
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3145
 	mother = 3143
@@ -4229,6 +4288,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	father = 3063
 	mother = 3092
 	977.1.1 = {
@@ -4252,6 +4312,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = great_elf
+	add_trait = fea_strong
 	father = 3063
 	mother = 3092
 	3354.1.1 = {
@@ -4408,6 +4469,7 @@
 	add_trait = just
 	add_trait = anglachel
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	
 	father = 3078
 	mother = 3084
@@ -4560,6 +4622,7 @@
 	add_trait = skilled_tactician
 	add_trait = inspiring_leader
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	father = 3066
 	mother = 3077
 	1802.1.1 = {
@@ -4891,6 +4954,7 @@
 	add_trait = sailed_west
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3094
 	mother = 3097
 	3219.1.1 = {
@@ -5155,7 +5219,6 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = perceptive
-	add_trait = ambidextrous
 	add_trait = imposing
 	add_trait = cavalry_leader
 	add_trait = duelist
@@ -5164,6 +5227,7 @@
 	add_trait = light_valinor
 	add_trait = tall
 	add_trait = legendary_warrior
+	add_trait = fea_strong
 	
 	father = 3206
 
@@ -5186,7 +5250,6 @@
 	4312.1.1 = {
 		name = "Glorfindel"
 		remove_trait = sailed_west
-		add_trait = fea_strong
 	}
 	8343.1.1 = {
 		employer = 3003
@@ -5210,6 +5273,7 @@
 	add_trait = poet
 	add_trait = chaste
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3207
 
@@ -5248,6 +5312,7 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3054
 	mother = 3085
 	862.1.1 = {
@@ -5312,6 +5377,7 @@
 	add_trait = fair
 	add_trait = strong
 	add_trait = sailed_west
+	add_trait = fea_strong
 	father = 3146
 	mother = 3147
 	4275.1.1 = {
@@ -5432,6 +5498,7 @@
 	add_trait = strong
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
 	father = 3217
 	mother = 3211
 	2300.1.1 = {
@@ -6016,6 +6083,7 @@
 	add_trait = genius
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 12
 	diplomacy = 11
@@ -6062,6 +6130,7 @@
 	add_trait = skilled_tactician
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 13
 	diplomacy = 8
@@ -6113,6 +6182,7 @@
 	add_trait = chaste
 	add_trait = legendary_musician
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 17
 	diplomacy = 10
@@ -6160,6 +6230,7 @@
 	add_trait = charismatic_negotiator
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 14
 	diplomacy = 5
@@ -6205,6 +6276,7 @@
 	add_trait = envious
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 	
 	father = 3238
 	mother = 3127
@@ -6249,6 +6321,7 @@
 	add_trait = perceptive
 	add_trait = legendary_warrior
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 7
 	diplomacy = 11
@@ -6298,6 +6371,7 @@
 	add_trait = legendary_warrior
 	add_trait = twin
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 16
 	diplomacy = 5
@@ -6342,6 +6416,7 @@
 	add_trait = legendary_warrior
 	add_trait = twin
 	add_trait = light_valinor
+	add_trait = fea_strong
 
 	martial = 16
 	diplomacy = 5
@@ -6369,29 +6444,30 @@
 	} #Slain in the Kinslaying of Sirion
 }
 
-3246 = {
-	name = "Telufinwë Umbarto"
-	dynasty = 3054
-	religion = "religion_moriquendi"
-	culture = "culture_noldor"
-	
-	add_trait = elf
-	add_trait = fair
-	add_trait = strong
-	add_trait = sailed_west
-	add_trait = light_valinor
-
-	father = 3238
-	mother = 3127
-	
-	4207.1.1 = {
-		birth = "4207.1.1"
-	}
-	4252.1.1 = { add_trait = race_immortal immortal_age = 40 }
-	4283.1.1 = {
-			death = { death_reason = death_battle }
-	} #Slain burning of ships at Losgar
-}
+# Problem character: an unmentioned son of Feanor with a name that is another one for Amrod
+#3246 = {
+#	name = "Telufinwë Umbarto"
+#	dynasty = 3054
+#	religion = "religion_moriquendi"
+#	culture = "culture_noldor"
+#	
+#	add_trait = elf
+#	add_trait = fair
+#	add_trait = strong
+#	add_trait = sailed_west
+#	add_trait = light_valinor
+#
+#	father = 3238
+#	mother = 3127
+#	
+#	4207.1.1 = {
+#		birth = "4207.1.1"
+#	}
+#	4252.1.1 = { add_trait = race_immortal immortal_age = 40 }
+#	4283.1.1 = {
+#			death = { death_reason = death_battle }
+#	} #Slain burning of ships at Losgar
+#}
 
 3247 = {
 	name = "Almaré"
@@ -6403,6 +6479,8 @@
 	add_trait = fair
 	add_trait = sailed_west
 	add_trait = light_valinor
+	add_trait = fea_strong
+	
 	father = 3198
 	2587.1.1 = {
 		birth = "2587.1.1"
@@ -6434,6 +6512,7 @@
 	add_trait = legendary_craftman
 	add_trait = gwaith_i_mirdain
 	add_trait = great_elf	
+	add_trait = fea_strong
 	
 	father = 3243
 	mother = 3247
@@ -6459,6 +6538,10 @@
 	4765.1.1 = {
 		add_spouse = 3409
 	}
+	# Celebrimbor Forges the 3 elven rings
+	#6492.1.1 = { }
+	# There is a pretty long delay before the War of the Elves and Sauron, the exact date the rings were 'sent away' is unclear
+	# 6590.1.1 = { }
 	6599.1.1 = {
 		death = { death_reason = death_battle }
 	} #Slain in the War of the Elves and Sauron
@@ -6811,6 +6894,7 @@
 	add_trait = elf
 	immortal_age = 40
 	add_trait = craftsman
+
 	father = 3268
 	8978.1.1 = {
 		birth = "8978.1.1"
@@ -7735,7 +7819,7 @@
 	add_trait = elf
 	add_trait = fair
 	add_trait = agile
-	add_trait = fashionable
+	add_trait = groomed
 	father = 3404
 	9800.1.1 = {
 		birth = yes
@@ -7753,7 +7837,7 @@
 	culture = "culture_noldor"
 	add_trait = elf
 	add_trait = fair
-	add_trait = fashionable
+	add_trait = groomed
 	add_trait = sailed_west
 	add_trait = temperate
 	add_trait = diligent
@@ -7785,7 +7869,7 @@
 	culture = "culture_noldor"
 	add_trait = elf
 	add_trait = fair
-	add_trait = fashionable
+	add_trait = groomed
 	add_trait = quick
 	add_trait = temperate
 	add_trait = diligent
@@ -8055,7 +8139,6 @@
 	add_trait = elf
 	add_trait = strong
 	add_trait = fea_weak
-	add_trait = calm_voice
 	add_trait = intricate_webweaver
 	
 	1742.1.1 = {
@@ -8220,7 +8303,6 @@
 	culture = "culture_nandor"
 	
 	add_trait = elf
-	add_trait = pacifist_elf
 	
 	2494.1.1 = {
 		birth = yes
@@ -8265,7 +8347,6 @@
 	
 	add_trait = elf
 	add_trait = temperate
-	add_trait = pacifist_elf
 	add_trait = nature_lover
 	
 	5843.1.1 = {

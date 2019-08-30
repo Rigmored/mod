@@ -6967,6 +6967,9 @@ character_event = {
 			FROM = { NOT = { religion = FROM } }
 			NOT = { mep_is_evil_side_trigger = yes }
 		}
+		ai_chance = { 
+			factor = 40 
+		}
 		custom_tooltip = { text = tooltip_21076_C } 
 		if = { 
 			limit = { 
@@ -6977,7 +6980,7 @@ character_event = {
 						NOT = { trait = elf_friend } 
 					} 
 					AND = { 
-						FROM = { religion_group_khazad }
+						FROM = { religion_group = religion_group_khazad }
 						NOT = { trait = dwarf_friend } 
 					} 
 					AND = { 
@@ -6990,9 +6993,6 @@ character_event = {
 		} 
 		set_character_flag = flag_appease_kind_religion
 		hidden_tooltip = { FROM = { character_event = { id = HF.21077 } } }
-		ai_chance = { 
-			factor = 40 
-		}
 	}
 	option = { #No.
 		name = EVTOPTDHFP21076

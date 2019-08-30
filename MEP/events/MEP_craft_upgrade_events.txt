@@ -161,58 +161,15 @@ character_event = {
 	option = {
 		name = "EVTOPTAcraft_upgrade.2" ## Enchant it!
 		hidden_tooltip = {
-			if = {
-				limit = {
-					OR = {
-						trait = skilled_craftsman
-						trait = ancient
-					}
-				}		
-				random_list = {
-					45 = {
-						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
-					}
-					55 = {
-						character_event = { id = craft_upgrade.5 days = 10 } ## Success
-					}
+			random_list = {
+				35 = {
+					character_event = { id = craft_upgrade.3 days = 10 } ## Fail
 				}
-				break = yes
-			}
-			if = {
-				limit = {
-					OR = {
-						trait = master_craftsman
-						trait = ancient
-					}
-				}		
-				random_list = {
-					25 = {
-						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
-					}
-					10 = {
-						character_event = { id = craft_upgrade.4 days = 10 } ## Exceptional!
-					}
-					65 = {
-						character_event = { id = craft_upgrade.5 days = 10 } ## Success
-					}
+				10 = {
+					character_event = { id = craft_upgrade.4 days = 10 } ## Exceptional!
 				}
-				break = yes
-			}
-			if = {
-				limit = {
-					trait = legendary_craftman
-					trait = ancient
-				}		
-				random_list = {
-					10 = {
-						character_event = { id = craft_upgrade.3 days = 10 } ## Fail
-					}
-					15 = {
-						character_event = { id = craft_upgrade.4 days = 10 } ## Exceptional!
-					}
-					75 = {
+				55 = {
 						character_event = { id = craft_upgrade.5 days = 10 } ## Success
-					}
 				}
 			}
 		}

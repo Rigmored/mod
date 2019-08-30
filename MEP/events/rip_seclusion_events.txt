@@ -668,7 +668,7 @@ character_event = {
 	option = {
 		name = RIP.11555.a
 		ai_chance = {
-			factor = 10
+			factor = 3
 
 			modifier = {
 				factor = 0
@@ -676,6 +676,21 @@ character_event = {
 					has_character_modifier = cannibal 
 					trait = cannibal_trait
 				}
+			}
+			modifier = {
+				factor = 0
+				NOR = {
+					mep_is_good_side_trigger = yes
+					religion_group = religion_wilderness
+				}
+			}
+			modifier = {
+				factor = 0.1
+				religion_group = religion_group_periannath
+			}
+			modifier = {
+				factor = 4
+				mep_is_evil_side_trigger = yes
 			}
 			
 			modifier = {
@@ -742,6 +757,30 @@ character_event = {
 	}
 
 	option = {
+		trigger = {
+			NOR = {
+				mep_is_good_side_trigger = yes
+				religion_group = religion_wilderness
+			}
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				religion_group = religion_group_periannath
+			}
+			modifier = {
+				factor = 4
+				mep_is_evil_side_trigger = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					trait = gluttonous 
+					trait = hedonist
+				}
+			}
+		}
 		name = RIP.11555.a
 		random_courtier = {
 			limit = {
@@ -777,11 +816,12 @@ character_event = {
 	option = {
 		trigger = {
 			NOR = {
-				trait = gluttonous 
-				trait = hedonist
 				has_character_modifier = cannibal
 				trait = cannibal_trait
 			}
+		}
+		ai_chance = {
+			factor = 10
 		}
 		name = RIP.11555.b
 		change_variable = { which = remaining_food value = -1 }

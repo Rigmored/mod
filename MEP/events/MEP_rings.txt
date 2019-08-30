@@ -16,12 +16,12 @@ namespace = rings
 	
 	option = {
 		name = "EVTOPTBrings.0" ## Show me the holders of the Dwarven Rings
-		character_event = { id = dwarvenrings.0 }
+		character_event = { id = rings.5 }
 	}
 	
 	option = {
 		name = "EVTOPTCrings.0" ## Show me the holders of the Lesser Rings
-		character_event = { id = lesserrings.0  }
+		character_event = { id = rings.6  }
 	}	
 
 }
@@ -37,34 +37,37 @@ character_event = {
 	
 	option = {
 		name = "EVTOPTArings.1" #Living holders
-		narya = {
-			limit = { 
-				is_alive = yes
+		# any character never scopes to the player...
+		any_character = {
+			limit = {
+				ai = yes
+				is_alive = yes 
+				num_of_artifacts = 1
 			}
-			custom_tooltip = { text = CURRENTNARYA }
+			if = {
+				limit = { has_artifact = narya } # Narya
+				custom_tooltip = { text = CURRENTNARYA }
+			}
+			if = {
+				limit = { has_artifact = nenya } # Nenya
+				custom_tooltip = { text = CURRENTNENYA }
+			}
+			if = {
+				limit = { has_artifact = vilya }  # Vilya
+				custom_tooltip = { text = CURRENTVILYA }
+			}
+		}
+		# checking for the player as ell
+		if = {
+			limit = { has_artifact = narya } # Narya
+			custom_tooltip = { text = CURRENTNARYA  }
 		}
 		if = {
-			limit = { trait = narya }
-			custom_tooltip = { text = CURRENTNARYA }
-		}		
-		nenya = {
-			limit = { 
-				is_alive = yes
-			}
+			limit = { has_artifact = nenya } # Nenya
 			custom_tooltip = { text = CURRENTNENYA }
 		}
 		if = {
-			limit = { trait = nenya }
-			custom_tooltip = { text = CURRENTNENYA }
-		}	
-		vilya = {
-			limit = { 
-				is_alive = yes
-			}
-			custom_tooltip = { text = CURRENTVILYA }
-		}
-		if = {
-			limit = { trait = vilya }
+			limit = { has_artifact = vilya }  # Vilya
 			custom_tooltip = { text = CURRENTVILYA }
 		}			
 	}
@@ -101,7 +104,7 @@ character_event = {
 }
 
 
-## List of holders of the rings ##
+## List of holders of the Weapons ##
 	character_event = {
     id = rings.3
     title = "EVTTITrings.3"
@@ -438,4 +441,118 @@ character_event = {
 		}			
 	}	
 
+}
+
+### Holders of the Dwarf Rings ###
+character_event = {
+	id = rings.5
+	picture = "GFX_evt_dwarven_rings"
+	desc = "EVTDESCdwarvenrings.0"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAdwarvenrings.0" #Living holders
+		any_character = {
+			limit = {
+				ai = yes
+				is_alive = yes 
+				num_of_artifacts = 1
+			}
+			if = {
+				limit = { has_artifact = durin_ring } # Ring made by Sauron for the Longbeards
+				custom_tooltip = { text = CURRENTDURINRING }
+			}
+		}
+		# checking for the player as ell
+		if = {
+			limit = { has_artifact = durin_ring } # Ring made by Sauron for the Longbeards
+			custom_tooltip = { text = CURRENTDURINRING  }
+		}
+
+		dwarf_ring = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTDWARFRING }
+		}
+		if = {
+			limit = { trait = dwarf_ring }
+			custom_tooltip = { text = CURRENTDWARFRING }
+		}		
+	}
+}
+
+### Holders of the Lesser Rings ###
+character_event = {
+	id = rings.6
+	picture = "GFX_evt_dwarven_rings"
+	desc = "EVTDESClesserrings.0"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlesserrings.0" #Living holders
+		any_character = {
+			limit = {
+				ai = yes
+				is_alive = yes 
+				num_of_artifacts = 1
+			}
+			if = {
+				limit = { has_artifact = barahir } # Hierloom Ring given to Barahir by Finrod Felagund in the First Age
+				custom_tooltip = { text = CURRENTRINGBARAHIR }
+			}
+		}
+		# checking for the player as ell
+		if = {
+			limit = { has_artifact = barahir } # Hierloom Ring given to Barahir by Finrod Felagund in the First Age
+			custom_tooltip = { text = CURRENTRINGBARAHIR }
+		}
+		
+		
+		ring_saruman = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTRINGSARUMAN }
+		}
+		if = {
+			limit = { trait = ring_saruman }
+			custom_tooltip = { text = CURRENTRINGSARUMAN }
+		}		
+		lesser_ring = {
+			limit = { 
+				is_alive = yes
+			}
+			custom_tooltip = { text = CURRENTLESSERRING }
+		}
+		if = {
+			limit = { trait = lesser_ring }
+			custom_tooltip = { text = CURRENTLESSERRING }
+		}		
+	}
+}
+
+
+
+######## DURING THE HUNT FOR THE RING, YOU FOUND A LESSER RING ########
+### Holders of the Lesser Rings ###
+narrative_event = {
+	id = rings.10
+	title = "EVTTITlesserrings.1"	
+	desc = "EVTDESClesserrings.1"
+	picture = "GFX_evt_ring_craft"	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTAlesserrings.1" ## It's a Ring !
+		add_trait = lesser_ring
+		clr_character_flag = huntforring
+		prestige = 100
+	}
+	option = {
+		name = "EVTOPTBlesserrings.1" ## I don't mind.
+	}	
 }

@@ -69,28 +69,18 @@ character_event = {
 			character_event = { id = learnwarrior.3 days = 70 } ## I can try again!
 		}
 		if = {
-			limit = { trait = pacifist_elf }
-			random = {
-				chance = 50
-				add_trait = trained_elf
-				remove_trait = pacifist_elf
-			}
-			character_event = { id = learnwarrior.3 days = 60 } ## I can try again!
-		}
-		if = {
 			limit = {
 				NOR = {
 					trait = legendary_warrior
 					trait = great_elf
 					trait = trained_elf
-					trait = pacifist_elf
 				}
 			}
 			random = {
-				chance = 30
-				add_trait = pacifist_elf
+				chance = 20
+				add_trait = trained_elf
 			}
-			character_event = { id = learnwarrior.3 days = 50 } ## I can try again!
+			character_event = { id = learnwarrior.3 days = 100 } ## I can try again!
 		}
 	}
 }
